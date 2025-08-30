@@ -1,16 +1,87 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from '@eslint/js'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
+import pluginReactHooks from 'eslint-plugin-react-hooks'
+import pluginImport from 'eslint-plugin-import'
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
+import pluginPrettier from 'eslint-plugin-prettier'
+import pluginQuery from '@tanstack/eslint-plugin-query'
+import pluginUnusedImports from 'eslint-plugin-unused-imports'
+import { defineConfig, globalIgnores } from 'eslint/config'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default defineConfig([
+    globalIgnores(['.next/*', 'node_modules', 'dist']),
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+    {
+        files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: globals.browser,
+        },
+        settings: {
+            react: {
+                version: 'detect',
+                jsxRuntime: 'automatic',
+            },
+        },
+        plugins: {
+            js,
+            react: pluginReact,
+            'react-hooks': pluginReactHooks,
+            import: pluginImport,
+            'jsx-a11y': pluginJsxA11y,
+            prettier: pluginPrettier,
+            'unused-imports': pluginUnusedImports,
+            '@tanstack/query': pluginQuery,
+        },
+        rules: {
+            ...pluginReact.configs.recommended.rules,
+            'react/react-in-jsx-scope': 'off',
+            'react/prop-types': 'off',
+            'react/jsx-sort-props': 'error',
+            'react/jsx-pascal-case': 'error',
+            'react/jsx-no-target-blank': 'error',
+            'react/jsx-uses-vars': 'error',
 
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'warn',
 
-export default eslintConfig;
+            'import/order': [
+                'error',
+                {
+                    groups: ['builtin', 'external', 'internal'],
+                    'newlines-between': 'always',
+                },
+            ],
+            'import/no-duplicates': 'error',
+
+            'jsx-a11y/alt-text': 'error',
+            'jsx-a11y/anchor-is-valid': 'error',
+            'jsx-a11y/label-has-associated-control': [
+                'error',
+                {
+                    required: {
+                        some: ['nesting', 'id'],
+                    },
+                },
+            ],
+
+            '@typescript-eslint/consistent-type-imports': [
+                'error',
+                {
+                    prefer: 'type-imports',
+                    disallowTypeAnnotations: false,
+                },
+            ],
+            '@typescript-eslint/no-empty-function': 'warn',
+
+            'prettier/prettier': 'error',
+            'unused-imports/no-unused-imports': 'error',
+        },
+    },
+
+    ...tseslint.configs.recommended,
+    ...pluginQuery.configs['flat/recommended'],
+])
