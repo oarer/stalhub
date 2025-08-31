@@ -214,7 +214,7 @@ export function GridBackgroundWithBeams({
     }, [lineWidth, cellSize])
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden">
             <div style={gridStyle} />
             <AnimatePresence>
                 {beams.map((b) => (

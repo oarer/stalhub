@@ -11,12 +11,12 @@ const BuildHash = () => (
         <Icon className="h-4 w-4" icon="mdi:code-tags" />
         <Link
             className="text-blue-600 transition-colors hover:underline dark:text-blue-400"
-            href={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}/tree/${process.env.VERCEL_GIT_COMMIT_SHA}`}
+            href={`https://github.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}/tree/${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}`}
             rel="noopener noreferrer"
             target="_blank"
-            title={process.env.VERCEL_GIT_COMMIT_SHA}
+            title={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
         >
-            {process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7)}
+            {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA?.slice(0, 7)}
         </Link>
     </span>
 )

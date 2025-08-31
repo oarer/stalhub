@@ -43,7 +43,6 @@ export default function RootLayout({
                         <Nav />
                         {children}
                     </Providers>
-
                     <Footer />
                 </Suspense>
             </body>

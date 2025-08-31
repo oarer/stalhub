@@ -61,7 +61,7 @@ export default function Tools() {
                                         icon={tool.icon}
                                     />
                                 </CardTitle>
-                                <CardDescription className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+                                <CardDescription className="text-center text-lg font-semibold text-neutral-800 dark:text-neutral-100">
                                     {tool.title}
                                 </CardDescription>
                             </CardHeader>
