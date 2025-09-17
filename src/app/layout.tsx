@@ -5,7 +5,7 @@ import '@/shared/styles/globals.css'
 import { raleway } from '@/app/fonts'
 import Nav from '@/shared/layouts/nav/Nav'
 import Providers from './providers'
-import { GridBackgroundWithBeams } from '../shared/Background'
+import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/Footer'
 
 export const metadata: Metadata = {

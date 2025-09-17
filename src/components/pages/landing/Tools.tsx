@@ -16,7 +16,10 @@ import { cn } from '@/lib/utils'
 
 export default function Tools() {
     return (
-        <section className="mx-auto flex flex-col gap-16 py-52" id="tools">
+        <section
+            className="mx-auto flex flex-col gap-16 pt-52 pb-20"
+            id="tools"
+        >
             <motion.div
                 className="text-center"
                 initial={{ y: 30, opacity: 0 }}

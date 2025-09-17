@@ -68,7 +68,7 @@ export default function Hero() {
 
             <motion.p
                 animate={{ y: 0, opacity: 1 }}
-                className="max-w-2xl text-2xl leading-relaxed font-semibold"
+                className="max-w-2xl text-2xl leading-relaxed font-semibold dark:text-neutral-200"
                 initial={{ y: 30, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
@@ -102,7 +102,7 @@ export default function Hero() {
                 ))}
             </motion.div>
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row dark:text-neutral-100">
                 <motion.div
                     animate={{ y: 0, opacity: 1 }}
                     initial={{ y: 30, opacity: 0 }}

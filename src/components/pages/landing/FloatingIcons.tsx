@@ -7,7 +7,7 @@ import { floatingIcons } from '@/constants/landing.const'
 
 export default function FloatingIcons() {
     return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block">
             {floatingIcons.map((iconData, index) => (
                 <motion.div
                     animate={{

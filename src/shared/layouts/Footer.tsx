@@ -6,11 +6,13 @@ import { Icon } from '@iconify/react'
 import { montserrat } from '@/app/fonts'
 import { useUwuStore } from '@/store/useUwuStore'
 
+// HUGE thanks to KryptonFox (GitHub: @kryptonFox) for this code snippet!
 const BuildHash = () => (
     <span className="flex items-center gap-1 text-xs text-neutral-600 dark:text-neutral-400">
         <Icon className="h-4 w-4" icon="mdi:code-tags" />
+        build@
         <Link
-            className="text-blue-600 transition-colors hover:underline dark:text-blue-400"
+            className="text-sky-600 transition-colors hover:underline dark:text-sky-400"
             href={`https://github.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}/tree/${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}`}
             rel="noopener noreferrer"
             target="_blank"
@@ -70,7 +72,7 @@ export default function Footer() {
                             Сайт сделан{' '}
                             <Link
                                 className="text-cyan-700 transition-colors duration-500 hover:text-sky-600 dark:text-cyan-400 dark:hover:text-sky-200"
-                                href="https://oarer.space"
+                                href="https://oarer.fun"
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
