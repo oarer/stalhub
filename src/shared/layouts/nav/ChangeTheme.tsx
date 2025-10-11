@@ -1,6 +1,8 @@
 import { type FC, useRef, useState } from 'react'
+
 import { useTheme } from 'next-themes'
 import { Icon } from '@iconify/react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import useClickOutside from '@/hooks/useClickOutside'
 
@@ -19,8 +21,8 @@ const themes: Theme[] = [
 const ThemeToggle: FC = () => {
     const { theme, setTheme } = useTheme()
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-
     const menuRef = useRef<HTMLDivElement>(null)
+
     useClickOutside(menuRef, () => setIsMenuOpen(false))
 
     const handleChange = (theme: string) => {
@@ -31,7 +33,7 @@ const ThemeToggle: FC = () => {
     return (
         <div className="relative" ref={menuRef}>
             <button
-                className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:scale-[98%] hover:bg-neutral-300/60 hover:opacity-100 active:scale-[95%] active:opacity-50 hover:dark:bg-neutral-700/30"
+                className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-neutral-300/60 hover:opacity-100 active:opacity-50 hover:dark:bg-neutral-700/30"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
                 <div
@@ -59,24 +61,31 @@ const ThemeToggle: FC = () => {
                 </div>
             </button>
 
-            <div
-                className={`absolute right-0 z-20 mt-5 flex origin-top-right flex-col gap-4 rounded-2xl border-2 border-neutral-800 bg-neutral-100 p-6 transition-opacity duration-500 dark:border-neutral-500 dark:bg-neutral-950 dark:text-neutral-100 ${
-                    isMenuOpen
-                        ? 'pointer-events-auto opacity-100'
-                        : 'pointer-events-none opacity-0'
-                }`}
-            >
-                {themes.map((theme) => (
-                    <button
-                        className="flex cursor-pointer items-center gap-2 transition-opacity duration-500 hover:opacity-70 active:opacity-50"
-                        key={theme.name}
-                        onClick={() => handleChange(theme.name)}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        animate={{ opacity: 1 }}
+                        className="ring-border absolute right-0 z-20 mt-5 flex origin-top-right flex-col gap-4 rounded-2xl bg-white/60 p-6 shadow-lg ring-2 backdrop-blur-lg dark:bg-neutral-900/70 dark:ring-[1.5px]"
+                        exit={{ opacity: 0 }}
+                        initial={{ opacity: 0 }}
+                        transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                        <Icon className="text-2xl" icon={theme.iconName} />
-                        <p>{theme.title}</p>
-                    </button>
-                ))}
-            </div>
+                        {themes.map((theme) => (
+                            <button
+                                className="flex cursor-pointer items-center gap-2 transition-all duration-400 hover:opacity-70 active:opacity-50"
+                                key={theme.name}
+                                onClick={() => handleChange(theme.name)}
+                            >
+                                <Icon
+                                    className="text-2xl"
+                                    icon={theme.iconName}
+                                />
+                                <p className="font-semibold">{theme.title}</p>
+                            </button>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     )
 }

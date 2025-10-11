@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
 
 import { Card, CardContent } from '@/components/ui/card/Card'
@@ -13,7 +13,7 @@ import { getSubTaskBgColor, getTasksByStatus } from './statusUtils'
 export default function Roadmap() {
     const renderSubTasks = (subTasks: RoadMap[]) => {
         return (
-            <div className="flex flex-col gap-3 border-l-2 border-neutral-200 pl-3 dark:border-neutral-700">
+            <div className="flex flex-col gap-3 border-l-2 border-white pl-3 dark:border-neutral-700">
                 {subTasks.map((subTask, index) => (
                     <motion.div
                         animate={{ opacity: 1, x: 0 }}
@@ -25,9 +25,9 @@ export default function Roadmap() {
                         key={`${subTask.name}-${index}`}
                         transition={{ delay: index * 0.05 }}
                     >
-                        <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
+                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
                             <Icon
-                                className="h-3 w-3 text-cyan-500 dark:text-cyan-400"
+                                className="text-md text-cyan-500 dark:text-cyan-400"
                                 icon={subTask.icon}
                             />
                         </div>
@@ -59,6 +59,7 @@ export default function Roadmap() {
                                 className={cn(
                                     'rounded-lg border p-4',
                                     config.bgColor,
+                                    config.border,
                                     config.color
                                 )}
                             >
@@ -75,12 +76,11 @@ export default function Roadmap() {
                                     className="bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
                                     variant="secondary"
                                 >
-                                    {statusTasks.length} tasks
+                                    {statusTasks.length} задач
                                 </Badge>
                             </div>
 
                             <div
-                                aria-label={`${config.label} tasks`}
                                 className="max-h-[60vh] space-y-3 overflow-y-auto mask-y-from-95% mask-y-to-100% p-2 py-4 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
                                 tabIndex={0}
                             >
@@ -88,17 +88,20 @@ export default function Roadmap() {
                                     statusTasks.map((task, index) => (
                                         <motion.div
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
+                                            className={cn(
+                                                'rounded-lg border border-white bg-white dark:border-neutral-800 dark:bg-neutral-900',
+                                                config.border
+                                            )}
                                             initial={{ opacity: 0, y: 20 }}
                                             key={`${task.name}-${index}`}
-                                            transition={{ delay: index * 0.5 }}
+                                            transition={{ delay: index * 0.1 }}
                                         >
                                             <Card className="group bg-transparent shadow-none">
                                                 <CardContent className="p-4">
                                                     <div className="mb-2 flex items-start gap-3">
-                                                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-200 text-white transition-colors group-hover:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-900 dark:group-hover:bg-neutral-700">
+                                                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white text-white transition-colors group-hover:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-900 dark:group-hover:bg-neutral-700">
                                                             <Icon
-                                                                className="h-4 w-4 text-cyan-400 dark:text-cyan-400"
+                                                                className="text-lg text-cyan-400 dark:text-cyan-400"
                                                                 icon={task.icon}
                                                             />
                                                         </div>

@@ -8,27 +8,31 @@ export interface RoadMap {
 
 export const statusConfig = {
     review: {
-        label: 'Review',
+        label: 'На рассмотрении',
         icon: 'mdi:clock-outline',
-        color: 'text-sky-600 dark:text-sky-300 border-sky-200 dark:border-sky-600',
+        color: 'text-sky-600 dark:text-sky-300',
+        border: 'border-sky-200 dark:border-sky-600',
         bgColor: 'bg-sky-50 dark:bg-sky-900/25',
     },
     inDev: {
-        label: 'In Development',
+        label: 'В разработке',
         icon: 'mdi:code-braces',
-        color: 'text-orange-600 dark:text-orange-300 border-orange-200 dark:border-orange-600',
+        color: 'text-orange-600 dark:text-orange-300',
+        border: 'border-orange-200 dark:border-orange-600',
         bgColor: 'bg-orange-50 dark:bg-orange-900/25',
     },
     production: {
-        label: 'Production',
+        label: 'Продакшн',
         icon: 'mdi:check-circle',
-        color: 'text-green-600 dark:text-green-300 border-green-200 dark:border-green-600',
+        color: 'text-green-600 dark:text-green-300',
+        border: 'border-green-200 dark:border-green-600',
         bgColor: 'bg-green-50 dark:bg-green-900/25',
     },
     cancel: {
-        label: 'Cancelled',
+        label: 'Отменено',
         icon: 'mdi:close-circle',
-        color: 'text-red-600 dark:text-red-300 border-red-200 dark:border-red-600',
+        color: 'text-red-600 dark:text-red-300',
+        border: 'border-red-200 dark:border-red-600',
         bgColor: 'bg-red-50 dark:bg-red-900/25',
     },
 }

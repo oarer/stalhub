@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useRef, useLayoutEffect } from 'react'
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
@@ -128,11 +129,7 @@ export function Accordion({
                             className={cn(
                                 variantClasses.trigger,
                                 sizeClasses.trigger,
-                                item.disabled &&
-                                    'cursor-not-allowed opacity-50',
-                                isExpanded(item.key) &&
-                                    variant === 'shadow' &&
-                                    'from-primary/10 to-accent/10 bg-gradient-to-r'
+                                item.disabled && 'cursor-not-allowed opacity-50'
                             )}
                             data-state={
                                 isExpanded(item.key) ? 'open' : 'closed'
@@ -181,7 +178,6 @@ export function Accordion({
                                         height: heights[item.key] ?? 'auto',
                                         opacity: 1,
                                     }}
-                                    aria-labelledby={triggerId}
                                     className={cn(
                                         variantClasses.content,
                                         sizeClasses.content,

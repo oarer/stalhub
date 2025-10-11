@@ -7,7 +7,7 @@ const badgeVariants = cva(
     {
         variants: {
             variant: {
-                primary: 'ring-transparent bg-neutral-200 dark:bg-neutral-800',
+                primary: 'ring-transparent bg-white dark:bg-neutral-800',
                 secondary: 'bg-transparent',
             },
         },

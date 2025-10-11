@@ -1,7 +1,10 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import { usePathname } from 'next/navigation'
 
 import { montserrat } from '@/app/fonts'
 import { useUwuStore } from '@/store/useUwuStore'
@@ -23,7 +26,7 @@ const BuildHash = () => (
     </span>
 )
 
-export default function Footer() {
+const Footer = () => {
     const { uwuMode, toggleUwu } = useUwuStore()
     const year = new Date().getFullYear()
 
@@ -49,7 +52,7 @@ export default function Footer() {
     ]
 
     return (
-        <footer className="outline-2 outline-neutral-300/40 backdrop-blur-xs dark:outline-neutral-700/40">
+        <footer className="outline-border/50 outline-2 backdrop-blur-xs">
             <div
                 className={`${montserrat.className} mx-auto flex max-w-[80rem] flex-col gap-8 px-6 py-8`}
             >
@@ -107,7 +110,7 @@ export default function Footer() {
                                             className="h-5 w-5 text-neutral-500 transition-colors duration-500 group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-50"
                                             icon={link.icon}
                                         />
-                                        <span className="text-left text-sm text-neutral-700 duration-500 dark:text-neutral-200 dark:group-hover:text-neutral-50">
+                                        <span className="text-left text-sm text-neutral-700 duration-500 dark:text-white dark:group-hover:text-neutral-50">
                                             {link.title}
                                         </span>
                                     </Link>
@@ -117,7 +120,7 @@ export default function Footer() {
                     </nav>
                 </div>
 
-                <div className="border-t border-neutral-300/20 py-8 text-sm font-semibold dark:border-neutral-700/20">
+                <div className="border-border border-t py-8 text-sm font-semibold">
                     <p className="text-neutral-700 dark:text-neutral-400">
                         Проект с{' '}
                         <Link
@@ -146,4 +149,18 @@ export default function Footer() {
             </div>
         </footer>
     )
+}
+
+export default function FooterLayout() {
+    const pathname = usePathname()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+    if (!mounted) return null
+
+    if (pathname === '/discord' || pathname.startsWith('/map')) return null
+
+    return <Footer />
 }

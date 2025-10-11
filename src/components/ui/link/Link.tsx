@@ -1,5 +1,6 @@
-import type { VariantProps } from 'class-variance-authority'
 import type { AnchorHTMLAttributes } from 'react'
+
+import type { VariantProps } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'

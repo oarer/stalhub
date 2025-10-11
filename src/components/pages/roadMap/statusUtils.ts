@@ -18,6 +18,6 @@ export const getSubTaskBgColor = (status: Status) => {
         case 'cancel':
             return 'bg-red-50 dark:bg-red-900/30 border-red-100 dark:border-red-700/50'
         default:
-            return 'bg-neutral-50 dark:bg-neutral-900/50 border-neutral-200 dark:border-neutral-700/50'
+            return 'bg-neutral-50 dark:bg-neutral-900/50 border-white dark:border-neutral-700/50'
     }
 }

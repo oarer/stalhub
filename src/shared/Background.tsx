@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+
 import { motion, AnimatePresence } from 'motion/react'
 
 interface Beam {

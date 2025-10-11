@@ -15,7 +15,7 @@ export default function Hero() {
 
     return (
         <section
-            className="mx-auto flex flex-col items-center justify-center gap-6 p-16 px-8 text-center xl:px-0 xl:pt-[170px]"
+            className="mx-auto flex flex-col items-center justify-center gap-6 text-center xl:px-0 xl:pt-[170px] xl:pb-[60px]"
             id="hero"
         >
             <motion.div
@@ -44,7 +44,7 @@ export default function Hero() {
 
             <motion.h1
                 animate={{ y: 0, opacity: 1 }}
-                className={`${unbounded.className} text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-7xl`}
+                className={`${unbounded.className} text-center text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-6xl lg:text-7xl`}
                 initial={{ y: 30, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
             >
@@ -68,7 +68,7 @@ export default function Hero() {
 
             <motion.p
                 animate={{ y: 0, opacity: 1 }}
-                className="max-w-2xl text-2xl leading-relaxed font-semibold dark:text-neutral-200"
+                className="max-w-xl px-4 text-center text-xl leading-relaxed font-semibold text-nowrap md:text-2xl dark:text-white"
                 initial={{ y: 30, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
@@ -77,14 +77,14 @@ export default function Hero() {
 
             <motion.div
                 animate={{ y: 0, opacity: 1 }}
-                className="flex flex-wrap justify-center gap-8"
+                className="flex flex-wrap justify-center gap-4 px-4 sm:gap-6 md:gap-8"
                 initial={{ y: 30, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
             >
                 {featuresHero.map((stat, index) => (
                     <motion.div
                         animate={{ opacity: 1 }}
-                        className="text-center"
+                        className="w-1/2 text-center sm:w-auto"
                         initial={{ opacity: 0 }}
                         key={stat.label}
                         transition={{
@@ -92,10 +92,12 @@ export default function Hero() {
                             delay: 0.6 + index * 0.3,
                         }}
                     >
-                        <div className={`text-2xl font-bold ${stat.color}`}>
+                        <div
+                            className={`text-xl font-bold md:text-2xl ${stat.color}`}
+                        >
                             {stat.value}
                         </div>
-                        <div className="text-sm font-semibold">
+                        <div className="text-xs font-semibold sm:text-sm">
                             {stat.label}
                         </div>
                     </motion.div>

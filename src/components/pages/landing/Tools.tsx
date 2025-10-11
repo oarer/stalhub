@@ -33,7 +33,7 @@ export default function Tools() {
                     >
                         Инструменты
                     </h1>
-                    <p className="text-center text-xl font-medium md:text-2xl dark:text-neutral-200/90">
+                    <p className="text-center text-xl font-medium md:text-2xl dark:text-white/90">
                         Обширная коллекция инструментов
                     </p>
                 </div>
@@ -51,7 +51,7 @@ export default function Tools() {
                     >
                         <CardLink
                             className={cn(
-                                'group h-full bg-neutral-200 backdrop-blur-md transition-transform duration-400 hover:-translate-y-1 dark:bg-neutral-950/20',
+                                'group h-full bg-white ring-2 ring-sky-500/20 backdrop-blur-md transition-transform duration-400 hover:-translate-y-1 dark:bg-black/20 dark:ring-sky-200/30',
                                 index % 2 === 0 &&
                                     'bg-[radial-gradient(105.38%_145.07%_at_41.4%_40.19%,#38bdf82b_0,#ff6aa900_65%)]'
                             )}

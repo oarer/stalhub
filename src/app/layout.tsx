@@ -1,5 +1,6 @@
-import type { Metadata } from 'next'
 import { Suspense } from 'react'
+
+import type { Metadata } from 'next'
 
 import '@/shared/styles/globals.css'
 import { raleway } from '@/app/fonts'

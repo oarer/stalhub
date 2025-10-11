@@ -110,6 +110,12 @@ export const DropDownLinks: DropdownMenuGroup[] = [
                 onClick: () => console.log('Profile clicked'),
             },
             {
+                key: 'items',
+                label: 'Поиск предметов',
+                icon: 'lucide:database',
+                onClick: () => console.log('Profile clicked'),
+            },
+            {
                 key: 'players',
                 label: 'Поиск игроков',
                 icon: 'lucide:user-round-search',

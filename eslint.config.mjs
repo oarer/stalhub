@@ -52,9 +52,23 @@ export default defineConfig([
                 'error',
                 {
                     groups: ['builtin', 'external', 'internal'],
+                    pathGroups: [
+                        {
+                            pattern: 'react',
+                            group: 'external',
+                            position: 'before',
+                        },
+                        {
+                            pattern: 'react*',
+                            group: 'external',
+                            position: 'before',
+                        },
+                    ],
+                    pathGroupsExcludedImportTypes: ['react'],
                     'newlines-between': 'always',
                 },
             ],
+
             'import/no-duplicates': 'error',
 
             'jsx-a11y/alt-text': 'error',

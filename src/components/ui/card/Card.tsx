@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
+
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
@@ -12,7 +13,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     ({ className, ...props }, ref) => (
         <div
             className={cn(
-                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 dark:bg-neutral-900/10 dark:ring-sky-700',
+                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 backdrop-blur-md dark:bg-black/20 dark:ring-sky-200/30',
                 className
             )}
             ref={ref}
@@ -31,7 +32,7 @@ const CardLink = forwardRef<HTMLAnchorElement, CardLinkProps>(
     ({ className, href, ...props }, ref) => (
         <Link
             className={cn(
-                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 dark:bg-neutral-900/10 dark:ring-sky-200/30',
+                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 backdrop-blur-md dark:bg-black/20 dark:ring-sky-200/30',
                 className
             )}
             href={href}

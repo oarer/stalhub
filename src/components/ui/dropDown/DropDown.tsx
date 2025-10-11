@@ -9,6 +9,7 @@ import {
     useCallback,
     useMemo,
 } from 'react'
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
@@ -22,7 +23,7 @@ import type {
 import { Button } from '@/components/ui/button/Button'
 
 const baseClasses =
-    'absolute z-40 min-w-[250px] bg-white dark:bg-neutral-900/70 backdrop-blur-md dark:ring-[1.5px] ring-2 ring-neutral-800 dark:ring-neutral-200 dark:ring-neutral-700/70 rounded-lg shadow-lg p-2'
+    'absolute z-40 min-w-[250px] bg-white dark:bg-neutral-900/70 backdrop-blur-md dark:ring-[1.5px] ring-2 ring-border rounded-lg shadow-lg p-2'
 
 const toggleSubmenuKey = (
     setOpenSubmenus: React.Dispatch<React.SetStateAction<Set<string>>>,
@@ -86,7 +87,7 @@ function DropdownMenuItem({
     }, [item, onClose, setOpenSubmenus, hasSubmenu])
 
     if (item.divider) {
-        return <div className="my-1 h-px bg-neutral-200 dark:bg-neutral-700" />
+        return <div className="my-1 h-px bg-white dark:bg-neutral-700" />
     }
 
     return (
@@ -103,7 +104,7 @@ function DropdownMenuItem({
                     'flex w-full cursor-pointer items-center justify-between rounded-xl px-2 py-1.5 text-left text-sm transition-colors',
                     item.disabled
                         ? 'cursor-not-allowed text-neutral-400 dark:text-neutral-500'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-700/40',
+                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700/40',
                     hasSubmenu && 'pr-2'
                 )}
                 disabled={item.disabled}
@@ -116,7 +117,7 @@ function DropdownMenuItem({
                     {item.icon && (
                         <Icon
                             aria-hidden="true"
-                            className="text-xl text-neutral-500 dark:text-neutral-200"
+                            className="text-xl text-neutral-500 dark:text-white"
                             icon={item.icon}
                         />
                     )}
@@ -138,7 +139,7 @@ function DropdownMenuItem({
                     >
                         <Icon
                             aria-hidden="true"
-                            className="text-[16px] text-neutral-500 dark:text-neutral-200"
+                            className="text-[16px] text-neutral-500 dark:text-white"
                             icon="lucide:chevron-right"
                         />
                     </motion.div>
@@ -254,7 +255,6 @@ function SubmenuWithState({
     return (
         <motion.div
             animate={{ opacity: 1 }}
-            aria-label="Submenu"
             className={baseClasses}
             data-submenu
             exit={{ opacity: 0 }}
@@ -356,7 +356,7 @@ export default function DropdownMenu({
                 >
                     <Icon
                         aria-hidden="true"
-                        className="text-[16px] text-neutral-500 dark:text-neutral-200"
+                        className="text-[16px] text-neutral-500 dark:text-white"
                         icon="lucide:chevron-right"
                     />
                 </motion.div>
@@ -366,7 +366,6 @@ export default function DropdownMenu({
                 {isOpen && (
                     <motion.div
                         animate={{ opacity: 1 }}
-                        aria-label="Dropdown menu"
                         className={dropdownPositionClass}
                         exit={{ opacity: 0 }}
                         initial={{ opacity: 0 }}

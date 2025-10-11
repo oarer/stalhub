@@ -8,7 +8,7 @@ export const linkVariants = cva(
                 primary:
                     'bg-sky-400 dark:bg-sky-600/70  shadow-md hover:bg-sky-500 dark:hover:opacity-140',
                 secondary:
-                    'bg-neutral-200 dark:bg-neutral-800/50 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800',
+                    'bg-white dark:bg-neutral-800/50 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800',
                 outline:
                     'gap-4 rounded-full font-semibold py-2 hover:opacity-100 active:opacity-50',
             },

@@ -1,9 +1,10 @@
 'use client'
 
+import { useContext, useRef } from 'react'
+
 import { motion, AnimatePresence, easeOut } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import { useContext, useRef } from 'react'
 
 function FrozenRouter({ children }: { children: React.ReactNode }) {
     const context = useContext(LayoutRouterContext ?? null)
