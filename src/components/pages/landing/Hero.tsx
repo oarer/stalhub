@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
+
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
@@ -12,6 +14,7 @@ import CLink from '@/components/ui/link/Link'
 
 export default function Hero() {
     const { uwuMode } = useUwuStore()
+    const { t } = useTranslation()
 
     return (
         <section
@@ -37,7 +40,7 @@ export default function Hero() {
                             className="text-xl text-cyan-400"
                             icon="lucide:boxes"
                         />
-                        <span className="text-sm">Всё в одном месте</span>
+                        <span className="text-sm">{t('landing.overview')}</span>
                     </Badge>
                 )}
             </motion.div>
@@ -60,7 +63,7 @@ export default function Hero() {
                         ease: 'linear',
                     }}
                 >
-                    Инструменты для
+                    {t('landing.tools_for')}
                 </motion.span>
                 <br />
                 <span className="dark:text-neutral-100">StalCraft</span>
@@ -72,7 +75,7 @@ export default function Hero() {
                 initial={{ y: 30, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
-                Всё необходимое для StalCraft
+                {t('landing.need')} StalCraft
             </motion.p>
 
             <motion.div
@@ -98,7 +101,7 @@ export default function Hero() {
                             {stat.value}
                         </div>
                         <div className="text-xs font-semibold sm:text-sm">
-                            {stat.label}
+                            {t(stat.label)}
                         </div>
                     </motion.div>
                 ))}
@@ -117,7 +120,7 @@ export default function Hero() {
                         variant="primary"
                     >
                         <Icon className="text-xl" icon="lucide:rocket" />
-                        Начать
+                        {t('landing.start')}
                     </CLink>
                 </motion.div>
 
@@ -132,7 +135,7 @@ export default function Hero() {
                         size="lg"
                         variant="secondary"
                     >
-                        Подробнее
+                        {t('landing.more_details')}
                         <Icon className="text-xl" icon="lucide:chevron-right" />
                     </CLink>
                 </motion.div>

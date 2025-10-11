@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
+
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 
@@ -15,6 +17,8 @@ import { tools } from '@/constants/landing.const'
 import { cn } from '@/lib/utils'
 
 export default function Tools() {
+    const { t } = useTranslation()
+
     return (
         <section
             className="mx-auto flex flex-col gap-16 pt-52 pb-20"
@@ -31,10 +35,10 @@ export default function Tools() {
                     <h1
                         className={`${unbounded.className} bg-gradient-to-r from-sky-600 to-sky-400 bg-clip-text text-3xl font-bold tracking-tight text-balance text-transparent md:text-5xl dark:from-sky-400 dark:to-sky-200`}
                     >
-                        Инструменты
+                        {t('landing.tools.title')}
                     </h1>
                     <p className="text-center text-xl font-medium md:text-2xl dark:text-white/90">
-                        Обширная коллекция инструментов
+                        {t('landing.tools.description')}
                     </p>
                 </div>
             </motion.div>
@@ -65,11 +69,11 @@ export default function Tools() {
                                     />
                                 </CardTitle>
                                 <CardDescription className="text-center text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-                                    {tool.title}
+                                    {t(tool.title)}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="text-center text-sm text-neutral-600 dark:text-neutral-400">
-                                {tool.desc}
+                                {t(tool.desc)}
                             </CardContent>
                         </CardLink>
                     </motion.div>

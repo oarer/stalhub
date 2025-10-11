@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import '@/shared/styles/globals.css'
 import { raleway } from '@/app/fonts'
 import Nav from '@/shared/layouts/nav/Nav'
-import Providers from './providers'
+import Providers from '../lib/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/Footer'
 
