@@ -37,6 +37,7 @@ export const statusConfig = {
     },
 }
 
+// by @Art3mLapa
 export const roadMap: RoadMap[] = [
     {
         name: 'Начальная страница',
@@ -163,6 +164,12 @@ export const roadMap: RoadMap[] = [
                 status: 'inDev',
             },
         ],
+    },
+    {
+        name: 'Локализация',
+        desc: 'Английская, Французская и Испанская локализация',
+        icon: 'lucide:languages',
+        status: 'inDev',
     },
     {
         name: 'Калькулятор ТТК',
