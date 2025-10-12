@@ -1,14 +1,16 @@
+import type { Locale } from './item.type'
+
 export type MarkerPoint = {
     id?: number
     coordinates: { lat: number; lng: number }
-    description?: { ru?: string; en?: string }
+    description?: Locale
     popup?: string
 }
 
 export type MarkerGroup = {
     id: number
     slug: string
-    name: { ru?: string; en?: string }
+    name: Locale
     settings: {
         name?: string
         image?: string
@@ -22,7 +24,7 @@ export type MarkerGroup = {
 export type MarkerClusterFull = {
     id: number
     slug?: string
-    name?: { ru?: string; en?: string }
+    name?: Locale
     markers: MarkerGroup[]
 }
 
@@ -35,7 +37,7 @@ export type MarkersFile = {
 export type MapConfig = {
     name: string
     url: string
-    title: string
+    title: Record<Locale, string>
     preview_image: string
     image: { width: number; height: number; maxZoom: number }
     markers: string

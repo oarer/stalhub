@@ -39,7 +39,7 @@ const NavMobile = () => {
             <div className="relative z-[2]" ref={menuRef}>
                 <div
                     className={clsx(
-                        'absolute top-14 min-w-80 origin-top-left rounded-2xl border-2 border-neutral-800 bg-neutral-100 p-4 shadow-md transition-all duration-300 ease-in-out dark:border-neutral-500 dark:bg-neutral-950 dark:text-neutral-100',
+                        'ring-ring absolute top-14 min-w-80 origin-top-left rounded-2xl bg-neutral-100 p-4 shadow-md ring-2 transition-all duration-300 ease-in-out dark:bg-neutral-950 dark:text-neutral-100',
                         isMenuOpen
                             ? 'translate-y-0 scale-100 opacity-100'
                             : 'pointer-events-none -translate-y-4 scale-95 opacity-0'
@@ -49,7 +49,7 @@ const NavMobile = () => {
                     <Accordion
                         className="flex flex-col gap-4"
                         defaultExpandedKeys={[]}
-                        items={DropDownMobile}
+                        items={DropDownMobile()}
                         selectionMode="single"
                         size="sm"
                     />

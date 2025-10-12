@@ -10,6 +10,8 @@ import {
     useMemo,
 } from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
@@ -65,6 +67,7 @@ function DropdownMenuItem({
     depth = 0,
 }: DropdownMenuItemProps) {
     const itemRef = useRef<HTMLButtonElement | null>(null)
+    const { t } = useTranslation()
 
     const showSubmenu = useMemo(
         () => openSubmenus.has(item.key),
@@ -94,7 +97,7 @@ function DropdownMenuItem({
         <div className="relative">
             {item.category && (
                 <p className="text-[13px] font-semibold dark:text-neutral-300">
-                    {item.category}
+                    {t(item.category)}
                 </p>
             )}
             <motion.button
@@ -123,11 +126,11 @@ function DropdownMenuItem({
                     )}
                     <div className="flex flex-col">
                         <span className="text-[13.5px] leading-tight font-semibold">
-                            {item.label}
+                            {t(item.label)}
                         </span>
                         {item.description && (
                             <span className="mt-0.5 text-xs leading-tight font-semibold text-neutral-500 dark:text-neutral-400">
-                                {item.description}
+                                {t(item.description)}
                             </span>
                         )}
                     </div>
@@ -294,6 +297,7 @@ export default function DropdownMenu({
     const [openSubmenus, setOpenSubmenus] = useState<Set<string>>(new Set())
     const dropdownRef = useRef<HTMLDivElement | null>(null)
     const triggerRef = useRef<HTMLButtonElement>(null)
+    const { t } = useTranslation()
 
     const toggleDropdown = useCallback(() => {
         setIsOpen((prev) => {
@@ -349,7 +353,7 @@ export default function DropdownMenu({
                 variant="outline"
             >
                 {icon && <Icon className="text-[19px]" icon={icon} />}
-                <p className="text-md font-semibold">{title}</p>
+                <p className="text-md font-semibold">{t(title)}</p>
                 <motion.div
                     animate={{ rotate: isOpen ? 90 : 0 }}
                     transition={{ duration: 0.2, ease: 'easeInOut' }}

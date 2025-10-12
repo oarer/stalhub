@@ -9,8 +9,7 @@ import { cn } from '@/lib/utils'
 import type { AccordionProps } from '@/types/ui/accordion.type'
 import {
     accordionVariants,
-    sizeVariants,
-    colorVariants,
+    accordionIndicatorVariants,
 } from '@/constants/ui/accordion.const'
 
 export function Accordion({
@@ -24,21 +23,15 @@ export function Accordion({
 }: AccordionProps) {
     const [expandedKeys, setExpandedKeys] =
         useState<string[]>(defaultExpandedKeys)
-    const [heights, setHeights] = useState<{ [key: string]: number }>({})
-    const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-    const resizeObservers = useRef<{ [key: string]: ResizeObserver | null }>({})
-
-    const variantClasses = accordionVariants[variant]
-    const sizeClasses = sizeVariants[size]
+    const [heights, setHeights] = useState<Record<string, number>>({})
+    const contentRefs = useRef<Record<string, HTMLDivElement | null>>({})
+    const resizeObservers = useRef<Record<string, ResizeObserver | null>>({})
 
     const measure = useCallback((key: string) => {
         const el = contentRefs.current[key]
         if (!el) return
         const h = el.scrollHeight
-        setHeights((prev) => {
-            if (prev[key] === h) return prev
-            return { ...prev, [key]: h }
-        })
+        setHeights((prev) => (prev[key] === h ? prev : { ...prev, [key]: h }))
     }, [])
 
     useLayoutEffect(() => {
@@ -92,32 +85,18 @@ export function Accordion({
     )
 
     return (
-        <div className={cn(variantClasses.base, className)}>
+        <div className={cn('flex flex-col gap-2', className)}>
             {items.map((item, index) => {
-                const itemColor =
-                    item.color ||
-                    (
-                        [
-                            'primary',
-                            'secondary',
-                            'accent',
-                            'success',
-                            'warning',
-                            'danger',
-                        ] as const
-                    )[index % 6]
-                const colorClass =
-                    variant === 'colorful' ? colorVariants[itemColor] : ''
-
                 const triggerId = `accordion-trigger-${item.key}`
                 const contentId = `accordion-content-${item.key}`
+                const expanded = isExpanded(item.key)
 
                 return (
                     <motion.div
                         animate={{ opacity: 1, y: 0 }}
                         className={cn(
-                            variantClasses.item,
-                            variant === 'colorful' && colorClass
+                            accordionVariants({ variant, size }),
+                            item.disabled && 'cursor-not-allowed opacity-50'
                         )}
                         initial={{ opacity: 0, y: 10 }}
                         key={item.key}
@@ -125,15 +104,8 @@ export function Accordion({
                     >
                         <button
                             aria-controls={contentId}
-                            aria-expanded={isExpanded(item.key)}
-                            className={cn(
-                                variantClasses.trigger,
-                                sizeClasses.trigger,
-                                item.disabled && 'cursor-not-allowed opacity-50'
-                            )}
-                            data-state={
-                                isExpanded(item.key) ? 'open' : 'closed'
-                            }
+                            aria-expanded={expanded}
+                            className="flex w-full cursor-pointer items-center justify-between"
                             disabled={item.disabled}
                             id={triggerId}
                             onClick={() =>
@@ -141,48 +113,43 @@ export function Accordion({
                             }
                             type="button"
                         >
-                            <div className="flex items-center gap-4 p-2">
+                            <div className="flex items-center gap-3 p-2">
                                 {item.icon && (
                                     <Icon
-                                        className="text-lg"
+                                        className="shrink-0 text-lg"
                                         icon={item.icon}
                                     />
                                 )}
-                                <span className="font-semibold opacity-70">
+                                <span className="font-semibold opacity-80">
                                     {item.title}
                                 </span>
                             </div>
                             <motion.div
-                                animate={{
-                                    rotate: isExpanded(item.key) ? 180 : 0,
-                                }}
+                                animate={{ rotate: expanded ? -180 : -90 }}
                                 transition={{
                                     duration: 0.3,
                                     ease: 'easeInOut',
                                 }}
                             >
                                 <Icon
-                                    className={cn(
-                                        variantClasses.indicator,
-                                        sizeClasses.indicator
-                                    )}
+                                    className={accordionIndicatorVariants({
+                                        variant,
+                                        size,
+                                        rotated: expanded,
+                                    })}
                                     icon="lucide:chevron-down"
                                 />
                             </motion.div>
                         </button>
 
                         <AnimatePresence initial={false}>
-                            {isExpanded(item.key) && (
+                            {expanded && (
                                 <motion.div
                                     animate={{
                                         height: heights[item.key] ?? 'auto',
                                         opacity: 1,
                                     }}
-                                    className={cn(
-                                        variantClasses.content,
-                                        sizeClasses.content,
-                                        'overflow-hidden'
-                                    )}
+                                    className="overflow-hidden"
                                     exit={{ height: 0, opacity: 0 }}
                                     id={contentId}
                                     initial={{ height: 0, opacity: 0 }}
@@ -199,7 +166,7 @@ export function Accordion({
                                     }}
                                 >
                                     <div
-                                        className="px-1 py-2"
+                                        className="py-2"
                                         ref={(el) => {
                                             contentRefs.current[item.key] = el
                                             if (el) measure(item.key)

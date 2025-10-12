@@ -54,5 +54,284 @@
             "open_source": "открытым исходным кодом",
             "license": "Лицензия "
         }
+    },
+    "roadmap": {
+        "title": "Список задач",
+        "sub_title": "которые предстоит сделать",
+        "tasks": "задач",
+        "status": {
+            "review": "На рассмотрении",
+            "inDev": "В разработке",
+            "production": "Продакшн",
+            "cancel": "Отменено"
+        },
+        "items": {
+            "home": {
+                "name": "Начальная страница",
+                "desc": "Титульная и приветствующая страница для новых пользователей",
+                "icon": "lucide:home",
+                "status": "production",
+                "subTasks": {
+                    "design": {
+                        "name": "Дизайн сайта",
+                        "desc": "Подобрана палитра, стиль и концепт будущего сайта",
+                        "icon": "lucide:palette",
+                        "status": "production"
+                    },
+                    "ui_library": {
+                        "name": "UI составляющее сайта",
+                        "desc": "UI-библиотека для создания инструментов и компонентов в едином стиле",
+                        "icon": "lucide:layout",
+                        "status": "production"
+                    }
+                }
+            },
+            "interactive_map": {
+                "name": "Интерактивная карта",
+                "desc": "Карты всех локаций и метки событий",
+                "icon": "lucide:map",
+                "status": "inDev",
+                "subTasks": {
+                    "all_locations_maps": {
+                        "name": "Карты всех локаций",
+                        "desc": "Южная зона, Любеч-3, Северная зона и локации ивентовых событий",
+                        "icon": "lucide:map-pin",
+                        "status": "inDev"
+                    },
+                    "event_marks": {
+                        "name": "Метки всех спотов, тайников, пузырей и аванпостов",
+                        "desc": "Метки событий с изображениями и информацией об открытии",
+                        "icon": "lucide:flag",
+                        "status": "inDev"
+                    },
+                    "export_marks": {
+                        "name": "Функция экспорта меток",
+                        "desc": "Экспорт меток событий в игру через замену файлов конфига",
+                        "icon": "lucide:download",
+                        "status": "review"
+                    }
+                }
+            },
+            "auction": {
+                "name": "Аукцион",
+                "desc": "Инструмент для просмотра и анализа лотов аукциона",
+                "icon": "lucide:gavel",
+                "status": "review",
+                "subTasks": {
+                    "latest_lots": {
+                        "name": "Просмотр последних лотов",
+                        "desc": "Страница с последними выложенными лотами аукциона",
+                        "icon": "lucide:list",
+                        "status": "review"
+                    },
+                    "price_tracking": {
+                        "name": "Отслеживание графика цены",
+                        "desc": "Поиск и отслеживание цены конкретного предмета",
+                        "icon": "lucide:trending-up",
+                        "status": "review"
+                    },
+                    "good_deals": {
+                        "name": "Выгодные лоты",
+                        "desc": "Отображение резко упавших в цене предметов и выгодных лотов",
+                        "icon": "lucide:tag",
+                        "status": "review"
+                    }
+                }
+            },
+            "player_search": {
+                "name": "Поиск игроков",
+                "desc": "Список последних и популярных персонажей в поиске",
+                "icon": "lucide:users",
+                "status": "review",
+                "subTasks": {
+                    "players_page": {
+                        "name": "Страница с персонажами",
+                        "desc": "Список по 5 последних и популярных персонажей",
+                        "icon": "lucide:user",
+                        "status": "review"
+                    }
+                }
+            },
+            "models_view": {
+                "name": "Просмотр моделей",
+                "desc": "Справочник и 3D-предпросмотр предметов",
+                "icon": "lucide:package",
+                "status": "review",
+                "subTasks": {
+                    "base_items_guide": {
+                        "name": "Справочник базовых вещей",
+                        "desc": "Википедия с базовыми вещами из EXBO Database",
+                        "icon": "lucide:book",
+                        "status": "review"
+                    },
+                    "missing_items_guide": {
+                        "name": "Справочник недостающих вещей",
+                        "desc": "Добавление вещей, отсутствующих в EXBO Database",
+                        "icon": "lucide:book-plus",
+                        "status": "review"
+                    },
+                    "preview_3d": {
+                        "name": "3D предпросмотр",
+                        "desc": "Примерка обвесов и краски на оружие и броню",
+                        "icon": "lucide:view",
+                        "status": "review"
+                    }
+                }
+            },
+            "build_calculator": {
+                "name": "Калькулятор сборок",
+                "desc": "Система сохранения сборок в локальном хранилище",
+                "icon": "lucide:calculator",
+                "status": "inDev",
+                "subTasks": {
+                    "save_builds": {
+                        "name": "Система сохранения сборок",
+                        "desc": "Сохранение сборки в локальном хранилище браузера",
+                        "icon": "lucide:save",
+                        "status": "inDev"
+                    }
+                }
+            },
+            "localization": {
+                "name": "Локализация",
+                "desc": "Английская, Французская и Испанская локализация",
+                "icon": "lucide:languages",
+                "status": "inDev"
+            },
+            "ttk_calculator": {
+                "name": "Калькулятор ТТК",
+                "desc": "Калькулятор времени до убийства",
+                "icon": "lucide:clock",
+                "status": "inDev"
+            },
+            "exchange_coins": {
+                "name": "Обменные монеты",
+                "desc": "Система для работы с обменными монетами",
+                "icon": "lucide:coins",
+                "status": "inDev"
+            },
+            "season_pass": {
+                "name": "Сезонный пропуск",
+                "desc": "Информация и отслеживание сезонного пропуска",
+                "icon": "lucide:ticket",
+                "status": "inDev"
+            },
+            "sensitivity": {
+                "name": "Чувствительность",
+                "desc": "Настройка чувствительности для игры",
+                "icon": "lucide:sliders",
+                "status": "inDev"
+            },
+            "kv_maps": {
+                "name": "КВ Карты",
+                "desc": "Холст для тактик и сохранения в локальном хранилище",
+                "icon": "lucide:map",
+                "status": "cancel",
+                "subTasks": {
+                    "drawing_canvas": {
+                        "name": "Холст для рисования",
+                        "desc": "Холст для тактик с метками палаток, баррикад и отрядов",
+                        "icon": "lucide:brush",
+                        "status": "cancel"
+                    },
+                    "save_tactics": {
+                        "name": "Сохранение тактик",
+                        "desc": "Сохранение тактик в локальном хранилище",
+                        "icon": "lucide:save",
+                        "status": "cancel"
+                    }
+                }
+            },
+            "squad_builder": {
+                "name": "Сбор отрядов",
+                "desc": "Сохранение отрядов с их снаряжением",
+                "icon": "lucide:users",
+                "status": "cancel"
+            },
+            "clan_ratings": {
+                "name": "Рейтинг кланов",
+                "desc": "Отслеживание рейтинга кланов в реальном времени",
+                "icon": "lucide:bar-chart",
+                "status": "inDev",
+                "subTasks": {
+                    "rating_tracking": {
+                        "name": "Отслеживание рейтинга",
+                        "desc": "Рейтинг кланов в реальном времени без перезагрузки",
+                        "icon": "lucide:refresh-cw",
+                        "status": "inDev"
+                    }
+                }
+            }
+        }
+    },
+    "nav": {
+        "groups": {
+            "calculators": {
+                "title": "Калькуляторы",
+                "items": {
+                    "art": {
+                        "label": "Сборки",
+                        "description": "Создайте сборку"
+                    },
+                    "ttk": {
+                        "label": "ТТК",
+                        "description": "Эффективность оружия"
+                    },
+                    "barter": {
+                        "label": "Обменные монеты",
+                        "description": "Бартер в обменные монеты"
+                    },
+                    "bp": {
+                        "label": "Сезонный пропуск",
+                        "description": "Расчёт уровней"
+                    },
+                    "dpi": {
+                        "label": "Чувствительность",
+                        "description": "Настройка DPI"
+                    }
+                }
+            },
+            "clans": {
+                "title": "Кланы",
+                "items": {
+                    "clanMaps": {
+                        "label": "КВ карты",
+                        "description": "Карты для колов"
+                    },
+                    "squads": {
+                        "label": "Сбор отрядов",
+                        "description": "Организация отрядов"
+                    },
+                    "top": {
+                        "label": "Рейтинг кланов",
+                        "description": "Список лучших кланов"
+                    }
+                }
+            },
+            "other": {
+                "title": "Прочее",
+                "items": {
+                    "maps": {
+                        "label": "Интерактивная карта"
+                    },
+                    "auction": {
+                        "label": "Аукцион"
+                    },
+                    "items": {
+                        "label": "Поиск предметов"
+                    },
+                    "players": {
+                        "label": "Поиск игроков"
+                    },
+                    "models": {
+                        "label": "Просмотр моделей",
+                        "description": "Скоро..."
+                    }
+                }
+            }
+        }
+    },
+    "map": {
+        "title": "Список карт"
     }
 }

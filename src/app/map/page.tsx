@@ -2,15 +2,19 @@
 
 import { useEffect } from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import Image from 'next/image'
 
 import { unbounded } from '../fonts'
 import { CardHeader, CardLink } from '@/components/ui/card/Card'
 import { useMaps } from '@/hooks/useMaps'
 import { CustomToast } from '@/components/ui/Toast'
+import type { Locale } from '@/types/item.type'
 
 export default function MapList() {
     const { maps, error } = useMaps()
+    const { t, i18n } = useTranslation()
 
     useEffect(() => {
         if (error) {
@@ -23,7 +27,7 @@ export default function MapList() {
             <h1
                 className={`${unbounded.className} bg-gradient-to-r from-sky-600 to-sky-400 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:text-5xl dark:from-sky-400 dark:to-sky-200`}
             >
-                Список карт
+                {t('map.title')}
             </h1>
 
             <div
@@ -52,7 +56,7 @@ export default function MapList() {
 
                         <div className="relative overflow-hidden bg-gradient-to-b px-3 py-4">
                             <span className="block text-center text-sm font-semibold transition-colors duration-300 group-hover:text-sky-500 sm:text-base">
-                                {m.title}
+                                {m.title[i18n.language as Locale]}
                             </span>
                             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gradient-to-r from-sky-600 to-sky-400 transition-all duration-300 group-hover:w-2/5" />
                         </div>

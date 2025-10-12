@@ -425,10 +425,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* attribution and scale controls */
 
 .leaflet-container .leaflet-control-attribution {
-    background: #fff;
-    background: rgba(255, 255, 255, 0.7);
-    margin: 0;
+    background: lab(100% 0 0 / 0.6);
+
+    .dark & {
+        background: lab(18.94% 0 0 / 0.5);
+    }
+
+    justify-items: center;
+    padding-bottom: 5px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
+
 .leaflet-control-attribution,
 .leaflet-control-scale-line {
     padding: 0 5px;
@@ -661,4 +670,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
     left: 0;
     margin-left: -12px;
     border-right-color: #fff;
+}
+
+.leaflet-attribution-flag {
+    visibility: hidden;
 }

@@ -1,3 +1,6 @@
+export type Locale = 'ru' | 'en' | 'es' | 'fr'
+export const LOCALE: Locale = 'ru'
+
 export type MessageText = {
     type: 'text'
     text: string

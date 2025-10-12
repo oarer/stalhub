@@ -7,13 +7,17 @@ import type { MapConfig } from '@/types/map.type'
 
 const MapTile = dynamic(() => import('./components/MapTile'), {
     ssr: false,
-    loading: () => <div>Загрузка карты…</div>,
+    loading: () => (
+        <section className="relative mx-auto mt-[104px] mb-12 flex max-w-[95rem] flex-col gap-10 px-4 pt-12 xl:mt-0 dark:text-white/70">
+            <div className="mx-auto flex items-center gap-4 xl:px-0 xl:pt-[170px] xl:pb-[60px]">
+                <p className="text-2xl font-semibold">Загрузка карты</p>
+            </div>
+        </section>
+    ),
 })
 
 export default function MapPage({ mapName }: { mapName: string }) {
-    const { maps, loading } = useMaps()
-
-    if (loading) return <p>Загрузка карты…</p>
+    const { maps } = useMaps()
 
     const mapConfig = maps.find((m: MapConfig) => m.name === mapName)
 

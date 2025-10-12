@@ -3,14 +3,14 @@
         {
             "name": "sever",
             "url": "http://localhost:3000/maps/sever/tiles/{z}/{x}/{y}.png",
-            "title": "Северная зона",
+            "title": { "ru": "Северная зона", "en": "North zone" },
             "preview_image": "http://localhost:3000/maps/sever/map.png",
             "image": { "width": 5120, "height": 5632, "maxZoom": 13 },
             "markers": "http://localhost:3000/maps/sever/markers.json"
         },
         {
             "name": "zaton",
-            "title": "Тихая заводь (Затон)",
+            "title": { "ru": "Тихая заводь (Затон)", "en": "Stillwaters (Zaton)" },
             "url": "http://localhost:3000/maps/zaton/tiles/{z}/{x}/{y}.png",
             "preview_image": "http://localhost:3000/maps/sever/map.png",
             "image": { "width": 4096, "height": 4096, "maxZoom": 12 },
