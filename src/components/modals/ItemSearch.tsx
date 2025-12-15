@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 
 import { useDebounce } from '@/hooks/useDebounce'
-import { infoColorMap, LOCALE } from '@/types/item.type'
+import { infoColorMap } from '@/types/item.type'
 import Input from '@/components/ui/Input'
 import { CardHeader, CardLink, CardTitle } from '@/components/ui/Card'
 import { usePreparedSearch } from '@/hooks/usePreparedSearch'
@@ -14,11 +14,13 @@ import { Modal } from '@/components/ui/Modal'
 import { type ItemListing } from '@/types/api.type'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '../ui/Skeleton'
+import { getLocale } from '@/lib/getLocale'
 
 const PAGE_STEP = 15
 
 const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
-    const name = item.name?.[LOCALE] ?? item.data ?? '—'
+    const locale = getLocale()
+    const name = item.name?.[locale] ?? item.data ?? '—'
     const iconPath = `https://raw.githubusercontent.com/oarer/sc-db/main/merged${item.icon}`
 
     return (
@@ -50,7 +52,11 @@ export default function ItemSearchModal() {
     const [visibleCount, setVisibleCount] = useState(PAGE_STEP)
 
     const debouncedQuery = useDebounce(query, 150)
-    const { filteredItems, loading, error } = usePreparedSearch(debouncedQuery)
+    const locale = getLocale()
+    const { filteredItems, loading, error } = usePreparedSearch(
+        debouncedQuery,
+        { locale }
+    )
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value)
@@ -62,7 +68,7 @@ export default function ItemSearchModal() {
         [filteredItems, visibleCount]
     )
 
-    if (!loading) return <Skeleton className="size-8" />
+    if (loading) return <Skeleton className="size-8" />
     if (error) return <div className="p-4">Ошибка: {String(error)}</div>
 
     return (

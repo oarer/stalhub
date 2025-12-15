@@ -6,8 +6,8 @@ import Fuse from 'fuse.js'
 import cyrillicToTranslit from 'cyrillic-to-translit-js'
 
 import { useSearchItem } from '@/hooks/useSearchItem'
-import type { ItemListing } from '@/types/api.type'
-import { LOCALE } from '@/types/item.type'
+import type { ItemListing, ItemName } from '@/types/api.type'
+import { LOCALE as DEFAULT_LOCALE } from '@/types/item.type'
 
 const translit = cyrillicToTranslit({ preset: 'ru' })
 
@@ -69,24 +69,31 @@ function foldHomoglyphsToLatin(s: string) {
         .trim()
 }
 
+interface UsePreparedSearchOptions {
+    locale?: keyof ItemName
+    minLength?: number
+    threshold?: number
+}
+
 export function usePreparedSearch(
     query: string,
-    opts?: {
-        locale?: string
-        minLength?: number
-        threshold?: number
-    }
+    opts?: UsePreparedSearchOptions
 ) {
     const MIN_LENGTH = opts?.minLength ?? 2
+    const locale: keyof ItemName = opts?.locale ?? DEFAULT_LOCALE
+    const threshold = opts?.threshold ?? 0.2
 
     const { items, loading, error } = useSearchItem()
 
     const preparedItems = useMemo<PreparedItem[]>(() => {
         if (!items || items.length === 0) return []
+
         return items.map((i: ItemListing) => {
-            const raw = (i.name && i.name[LOCALE]) ?? ''
+            const raw = (i.name && i.name[locale]) ?? ''
+
             const norm = normalizeText(raw)
-            const translitName = transliterateRuToLat(raw)
+            const translitName =
+                locale === 'ru' ? transliterateRuToLat(raw) : ''
             const folded = foldHomoglyphsToLatin(raw)
 
             return {
@@ -95,49 +102,50 @@ export function usePreparedSearch(
                 searchNameNorm: norm,
                 searchNameTranslit: translitName,
                 searchNameFolded: folded,
-                key: `${i.data}-${norm}-${i.icon}`,
+                key: `${i.data ?? ''}-${norm}-${i.icon ?? ''}`,
             }
         })
-    }, [items])
+    }, [items, locale])
 
     const fuse = useMemo(() => {
         if (!preparedItems || preparedItems.length === 0) return null
+
+        const keys: string[] = ['searchNameNorm', 'searchNameFolded']
+        if (locale === 'ru') keys.unshift('searchNameTranslit')
+        keys.push('searchName')
+
         return new Fuse(preparedItems, {
-            keys: ['searchNameTranslit', 'searchNameFolded'],
-            threshold: 0.2,
+            keys,
+            threshold,
             ignoreLocation: true,
             findAllMatches: true,
             includeScore: true,
         })
-    }, [preparedItems])
+    }, [preparedItems, locale, threshold])
 
     const filteredItems = useMemo(() => {
         const q = query.trim()
         if (q.length < MIN_LENGTH || !fuse) return []
 
         const qNorm = normalizeText(q)
-        const qTranslit = transliterateRuToLat(q).replace(/\s+/g, '')
+        const qTranslit =
+            locale === 'ru' ? transliterateRuToLat(q).replace(/\s+/g, '') : ''
         const qFolded = foldHomoglyphsToLatin(q)
 
-        const resultsA = fuse.search<PreparedItem>(qNorm).map((r) => r.item)
-        const resultsB = fuse.search<PreparedItem>(qTranslit).map((r) => r.item)
-        const resultsC = fuse.search<PreparedItem>(qFolded).map((r) => r.item)
+        const results: PreparedItem[] = []
+        const addResults = (arr: PreparedItem[]) => {
+            arr.forEach((item) => {
+                if (!results.includes(item)) results.push(item)
+            })
+        }
 
-        const seen = new Set<string>()
-        const merged: PreparedItem[] = []
+        addResults(fuse.search<PreparedItem>(qNorm).map((r) => r.item))
+        if (qTranslit)
+            addResults(fuse.search<PreparedItem>(qTranslit).map((r) => r.item))
+        addResults(fuse.search<PreparedItem>(qFolded).map((r) => r.item))
 
-        ;[...resultsA, ...resultsB, ...resultsC].forEach((it) => {
-            const nameFromItem = (it.name && it.name[LOCALE]) ?? it.searchName
-            const key =
-                (it.data as string) ?? (nameFromItem as string) ?? it.searchName
-            if (!seen.has(key)) {
-                seen.add(key)
-                merged.push(it)
-            }
-        })
-
-        return merged
-    }, [query, fuse, MIN_LENGTH])
+        return results
+    }, [query, fuse, MIN_LENGTH, locale])
 
     return { filteredItems, preparedItems, loading, error }
 }
