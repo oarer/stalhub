@@ -81,7 +81,7 @@ export function usePreparedSearch(
 ) {
     const MIN_LENGTH = opts?.minLength ?? 2
     const locale: keyof ItemName = opts?.locale ?? DEFAULT_LOCALE
-    const threshold = opts?.threshold ?? 0.2
+    const threshold = opts?.threshold ?? 0.4
 
     const { items, loading, error } = useSearchItem()
 
