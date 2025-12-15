@@ -50,30 +50,10 @@ interface RootProps {
     defaultOpen?: boolean
 }
 
-let externalOpen: (() => void) | null = null
-let externalClose: (() => void) | null = null
-
-export function openModal() {
-    externalOpen?.()
-}
-
-export function closeModal() {
-    externalClose?.()
-}
-
 export function ModalRoot({ children, defaultOpen = false }: RootProps) {
     const [isOpen, setIsOpen] = useState(!!defaultOpen)
     const open = useCallback(() => setIsOpen(true), [])
     const close = useCallback(() => setIsOpen(false), [])
-
-    useEffect(() => {
-        externalOpen = open
-        externalClose = close
-        return () => {
-            externalOpen = null
-            externalClose = null
-        }
-    }, [open, close])
 
     return (
         <ModalContext.Provider value={{ isOpen, open, close }}>
