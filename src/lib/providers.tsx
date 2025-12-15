@@ -14,6 +14,7 @@ import en from '@/locales/en.json'
 import ru from '@/locales/ru.json'
 import fr from '@/locales/fr.json'
 import es from '@/locales/es.json'
+import { getLocale } from './getLocale'
 
 interface Props {
     children: ReactNode
@@ -27,12 +28,9 @@ export default function Providers({ children }: Props) {
     useEffect(() => {
         setMounted(true)
 
-        if (!i18n.isInitialized) {
-            const lang =
-                typeof document !== 'undefined'
-                    ? document.cookie.match(/(?:^|; )lang=([^;]*)/)?.[1] || 'en'
-                    : 'en'
+        const lang = getLocale()
 
+        if (!i18n.isInitialized) {
             i18n.use(initReactI18next)
                 .init({
                     resources: {
@@ -43,9 +41,7 @@ export default function Providers({ children }: Props) {
                     },
                     lng: lang,
                     fallbackLng: 'ru',
-                    interpolation: {
-                        escapeValue: false,
-                    },
+                    interpolation: { escapeValue: false },
                 })
                 .then(() => setI18nReady(true))
         } else {

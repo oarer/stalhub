@@ -1,14 +1,13 @@
 'use client'
 
-import type React from 'react'
 import { memo, useState } from 'react'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { SidebarHeader } from './SidebarHeader'
-import { ClusterItem } from './СlusterItem'
-import { SidebarActions } from './SidebarActions'
+import SidebarHeader from './SidebarHeader'
+import ClusterItem from './СlusterItem'
+import SidebarActions from './SidebarActions'
 import type { MarkerClusterFull as MarkerClusterType } from '@/types/map.type'
 
 type Props = {
@@ -19,7 +18,6 @@ type Props = {
     toggleGroup: (clusterId: number, groupId: number) => void
     showAll: () => void
     hideAll: () => void
-    lang?: 'ru' | 'en'
     onExport?: () => void
     className?: string
 }
@@ -32,7 +30,6 @@ const Sidebar: React.FC<Props> = ({
     toggleGroup,
     showAll,
     hideAll,
-    lang = 'ru',
     onExport,
     className,
 }) => {
@@ -45,7 +42,7 @@ const Sidebar: React.FC<Props> = ({
                 {isOpen && (
                     <motion.aside
                         animate={{ opacity: 1, x: 0 }}
-                        className={`ring-border fixed top-1/3 left-4 z-[999] flex max-h-[70vh] min-w-[280px] flex-col gap-4 overflow-hidden rounded-lg bg-white/60 p-2 shadow-lg ring-2 backdrop-blur-md dark:bg-neutral-900/70 dark:ring-[1.5px] ${className}`}
+                        className={`ring-border/60 bg-background/60 fixed top-1/3 left-4 z-999 flex max-h-[70vh] min-w-[280px] flex-col gap-4 overflow-hidden rounded-lg p-2 shadow-lg ring-2 backdrop-blur-md ${className}`}
                         exit={{ opacity: 0, x: -20 }}
                         initial={{ opacity: 0, x: -20 }}
                         transition={{
@@ -87,7 +84,6 @@ const Sidebar: React.FC<Props> = ({
                                                 cluster.id
                                             )}
                                             key={cluster.id}
-                                            lang={lang}
                                             toggleCluster={toggleCluster}
                                             toggleGroup={toggleGroup}
                                             visibleGroupKeys={visibleGroupKeys}
@@ -108,7 +104,7 @@ const Sidebar: React.FC<Props> = ({
                     opacity: 1,
                     scale: 1,
                 }}
-                className="fixed top-1/2 z-[999] -translate-y-1/2 cursor-pointer rounded-xl bg-neutral-300/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-neutral-300/30 dark:bg-neutral-900/70 hover:dark:bg-neutral-800/60"
+                className="bg-background/60 fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-neutral-300/30 hover:dark:bg-neutral-800/60"
                 initial={{ opacity: 0, scale: 1 }}
                 onClick={() => setIsOpen(!isOpen)}
                 transition={{

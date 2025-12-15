@@ -13,7 +13,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     ({ className, ...props }, ref) => (
         <div
             className={cn(
-                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 backdrop-blur-md dark:bg-black/20 dark:ring-sky-200/30',
+                'dark:bg-background/20 ring-border/50 flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 backdrop-blur-md',
                 className
             )}
             ref={ref}
@@ -32,7 +32,7 @@ const CardLink = forwardRef<HTMLAnchorElement, CardLinkProps>(
     ({ className, href, ...props }, ref) => (
         <Link
             className={cn(
-                'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-sky-500/20 backdrop-blur-md dark:bg-black/20 dark:ring-sky-200/30',
+                'dark:bg-background/20 ring-border/50 flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 backdrop-blur-md',
                 className
             )}
             href={href}

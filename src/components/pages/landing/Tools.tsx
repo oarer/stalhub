@@ -11,7 +11,7 @@ import {
     CardHeader,
     CardLink,
     CardTitle,
-} from '@/components/ui/card/Card'
+} from '@/components/ui/Card'
 import { unbounded } from '@/app/fonts'
 import { tools } from '@/constants/landing.const'
 import { cn } from '@/lib/utils'

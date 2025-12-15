@@ -7,27 +7,37 @@ import { Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 
 import type { MarkersFile } from '@/types/map.type'
+import { type Locale } from '@/types/item.type'
+import { getLocale } from '@/lib/getLocale'
 
 type Props = {
     markersFile: MarkersFile | null
     visibleClusterIds: Set<number>
     visibleGroupKeys: Set<string>
-    lang: 'ru' | 'en'
     imageWidth: number
     imageHeight: number
     fullMaxLevel: number
+}
+
+function getLocalized(
+    maybeLocalized: Record<string, string> | undefined,
+    lang: Locale
+): string | undefined {
+    if (!maybeLocalized) return undefined
+    return maybeLocalized[lang] ?? maybeLocalized.ru ?? maybeLocalized.en
 }
 
 export default function ServerMarkers({
     markersFile,
     visibleClusterIds,
     visibleGroupKeys,
-    lang,
     imageWidth,
     imageHeight,
     fullMaxLevel,
 }: Props) {
     const map = useMap()
+    const lang = getLocale()
+
     if (!markersFile?.markers_clusters) return null
 
     const out: JSX.Element[] = []
@@ -49,13 +59,9 @@ export default function ServerMarkers({
                     coords.lat <= imageHeight &&
                     coords.lng <= imageWidth
 
-                let pos: L.LatLng
-
-                if (isPixelCoord) {
-                    pos = map.unproject([coords.lng, coords.lat], fullMaxLevel)
-                } else {
-                    pos = L.latLng(coords.lat, coords.lng)
-                }
+                const pos: L.LatLngExpression = isPixelCoord
+                    ? map.unproject([coords.lng, coords.lat], fullMaxLevel)
+                    : L.latLng(coords.lat, coords.lng)
 
                 const icon = L.icon({
                     iconUrl: group.settings?.image ?? '/default-icon.png',
@@ -67,19 +73,13 @@ export default function ServerMarkers({
                 })
 
                 const title =
-                    (group.name && group.name[lang]) || group.slug || 'marker'
-                const desc =
-                    (p.description &&
-                        (p.description[lang] ||
-                            p.description.ru ||
-                            p.description.en)) ||
-                    p.popup ||
-                    ''
+                    getLocalized(group.name, lang) || group.slug || 'marker'
+                const desc = getLocalized(p.description, lang) || p.popup || ''
 
                 out.push(
                     <Marker
                         icon={icon}
-                        key={`${cluster.id}-${group.id}-${p.id ?? `${pos.lat}-${pos.lng}`}`}
+                        key={`${cluster.id}-${group.id}-${p.id ?? `${(pos as L.LatLng).lat}-${(pos as L.LatLng).lng}`}`}
                         position={pos}
                     >
                         <Popup>
@@ -88,8 +88,9 @@ export default function ServerMarkers({
                             {desc}
                             <hr />
                             <small>
-                                Категория: {cluster.name?.[lang] ?? cluster.id}{' '}
-                                → {group.name?.[lang] ?? group.slug}
+                                Категория:{' '}
+                                {getLocalized(cluster.name, lang) ?? cluster.id}{' '}
+                                → {getLocalized(group.name, lang) ?? group.slug}
                             </small>
                         </Popup>
                     </Marker>

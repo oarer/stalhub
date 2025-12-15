@@ -1,16 +1,18 @@
 import type { Locale } from './item.type'
 
+export type LocalizedString = Partial<Record<Locale, string>>
+
 export type MarkerPoint = {
     id?: number
     coordinates: { lat: number; lng: number }
-    description?: Locale
+    description?: LocalizedString
     popup?: string
 }
 
 export type MarkerGroup = {
     id: number
     slug: string
-    name: Locale
+    name: LocalizedString
     settings: {
         name?: string
         image?: string
@@ -24,7 +26,7 @@ export type MarkerGroup = {
 export type MarkerClusterFull = {
     id: number
     slug?: string
-    name?: Locale
+    name?: LocalizedString
     markers: MarkerGroup[]
 }
 
@@ -37,7 +39,7 @@ export type MarkersFile = {
 export type MapConfig = {
     name: string
     url: string
-    title: Record<Locale, string>
+    title: LocalizedString
     preview_image: string
     image: { width: number; height: number; maxZoom: number }
     markers: string

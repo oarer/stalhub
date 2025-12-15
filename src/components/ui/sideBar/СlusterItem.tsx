@@ -1,13 +1,16 @@
 'use client'
 
-import type React from 'react'
 import { useState } from 'react'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
 import type { MarkerClusterFull as MarkerClusterType } from '@/types/map.type'
-import { CheckBox } from '../checkBox/CheckBox'
+import { CheckBox } from '../CheckBox'
+import type { Locale } from '@/types/item.type'
+import { getLocale } from '@/lib/getLocale'
+
+type TranslatedText = Partial<Record<Locale, string>>
 
 interface ClusterItemProps {
     cluster: MarkerClusterType
@@ -15,20 +18,23 @@ interface ClusterItemProps {
     visibleGroupKeys: Set<string>
     toggleCluster: (clusterId: number) => void
     toggleGroup: (clusterId: number, groupId: number) => void
-    lang: 'ru' | 'en'
 }
 
-export const ClusterItem: React.FC<ClusterItemProps> = ({
+export default function ClusterItem({
     cluster,
     isVisible,
     visibleGroupKeys,
     toggleCluster,
     toggleGroup,
-    lang,
-}) => {
+}: ClusterItemProps) {
     const [isExpanded, setIsExpanded] = useState(true)
-    const clusterName =
-        cluster.name?.[lang] ?? cluster.name?.ru ?? `cluster ${cluster.id}`
+    const lang = getLocale() as Locale
+
+    const clusterName = String(
+        (cluster.name as TranslatedText)?.[lang] ||
+            (cluster.name as TranslatedText)?.ru ||
+            `cluster ${cluster.id}`
+    )
 
     return (
         <motion.div
@@ -83,7 +89,7 @@ export const ClusterItem: React.FC<ClusterItemProps> = ({
                     cluster.markers.length > 0 && (
                         <motion.div
                             animate={{ opacity: 1, height: 'auto' }}
-                            className="ml-7 flex"
+                            className="ml-7 flex flex-col gap-1"
                             exit={{ opacity: 0, height: 0 }}
                             initial={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
@@ -92,6 +98,10 @@ export const ClusterItem: React.FC<ClusterItemProps> = ({
                                 const groupKey = `${cluster.id}_${marker.id}`
                                 const isGroupVisible =
                                     visibleGroupKeys.has(groupKey)
+
+                                const markerName =
+                                    (marker.name as TranslatedText)?.[lang] ||
+                                    marker.slug
 
                                 return (
                                     <motion.label
@@ -108,7 +118,7 @@ export const ClusterItem: React.FC<ClusterItemProps> = ({
                                                 )
                                             }
                                             showCheckmark={false}
-                                            size={'xs'}
+                                            size="xs"
                                         />
 
                                         <Icon
@@ -117,7 +127,7 @@ export const ClusterItem: React.FC<ClusterItemProps> = ({
                                         />
 
                                         <span className="text-xs">
-                                            {marker.name?.[lang] ?? marker.slug}
+                                            {markerName}
                                         </span>
                                     </motion.label>
                                 )

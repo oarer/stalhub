@@ -2,10 +2,12 @@
 
 import type React from 'react'
 
-import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+
+import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { Button } from '../button/Button'
+import { Button } from '../Button'
 
 interface SidebarHeaderProps {
     hasClusters: boolean
@@ -13,15 +15,17 @@ interface SidebarHeaderProps {
     hideAll: () => void
 }
 
-export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
+export default function SidebarHeader({
     hasClusters,
     showAll,
     hideAll,
-}) => {
+}: SidebarHeaderProps) {
+    const { t } = useTranslation()
+
     return (
         <motion.div
             animate={{ opacity: 1, y: 0 }}
-            className="border-border flex items-center justify-between gap-2 border-b pb-3"
+            className="border-border/30 flex items-center justify-between gap-2 border-b-2 pb-3"
             initial={{ opacity: 0, y: -10 }}
         >
             <Button
@@ -32,7 +36,7 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
                 variant={'secondary'}
             >
                 <Icon className="text-md" icon="lucide:eye" />
-                Показать все
+                {t('map.sideBar.showAll')}
             </Button>
 
             <Button
@@ -43,7 +47,7 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
                 variant={'secondary'}
             >
                 <Icon className="text-md" icon="lucide:eye-off" />
-                Скрыть все
+                {t('map.sideBar.hideAll')}
             </Button>
         </motion.div>
     )

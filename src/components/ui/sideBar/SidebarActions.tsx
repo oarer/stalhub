@@ -2,16 +2,20 @@
 
 import type React from 'react'
 
-import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+
+import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { Button } from '../button/Button'
+import { Button } from '../Button'
 
 interface SidebarActionsProps {
     onExport?: () => void
 }
 
-export const SidebarActions: React.FC<SidebarActionsProps> = ({ onExport }) => {
+export default function SidebarActions({ onExport }: SidebarActionsProps) {
+    const { t } = useTranslation()
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
@@ -19,7 +23,7 @@ export const SidebarActions: React.FC<SidebarActionsProps> = ({ onExport }) => {
     return (
         <motion.div
             animate={{ opacity: 1, y: 0 }}
-            className="border-border flex items-center justify-between gap-2 border-t pt-3"
+            className="border-border/30 flex items-center justify-between gap-2 border-t-2 pt-3"
             initial={{ opacity: 0, y: 10 }}
             transition={{ delay: 0.2 }}
         >
@@ -30,7 +34,7 @@ export const SidebarActions: React.FC<SidebarActionsProps> = ({ onExport }) => {
                     variant={'secondary'}
                 >
                     <Icon icon="lucide:download" />
-                    Экспорт
+                    {t('map.sideBar.export')}
                 </Button>
             )}
 
@@ -39,8 +43,8 @@ export const SidebarActions: React.FC<SidebarActionsProps> = ({ onExport }) => {
                 onClick={scrollToTop}
                 variant={'secondary'}
             >
-                <Icon className="h-4 w-4" icon="lucide:arrow-up" />
-                Наверх
+                <Icon icon="lucide:arrow-up" />
+                {t('map.sideBar.top')}
             </Button>
         </motion.div>
     )

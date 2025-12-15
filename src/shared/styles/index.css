@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+@import './tokens/colors.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    @import './browser.css';
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        scroll-behavior: smooth;
+    }
+
+    html {
+        scroll-padding-top: 100px;
+    }
+
+    *,
+    *::before,
+    *::after {
+        font-synthesis-weight: none;
+        font-synthesis-style: none;
+        scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+}

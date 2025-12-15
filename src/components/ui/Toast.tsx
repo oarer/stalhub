@@ -62,15 +62,15 @@ export function CustomToast(
                 )}
             >
                 <div className="flex min-w-0 flex-1 items-center gap-3">
-                    <div className="flex-shrink-0 text-lg">{icons[type]}</div>
-                    <p className="min-w-0 text-sm font-semibold break-words text-gray-900 dark:text-gray-100">
+                    <div className="shrink-0 text-lg">{icons[type]}</div>
+                    <p className="wrap-break-wor min-w-0 text-sm font-semibold text-gray-900 dark:text-gray-100">
                         {message}
                     </p>
                 </div>
 
                 {type !== 'loading' && (
                     <button
-                        className="ml-4 shrink-0 rounded-md text-sm font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                        className="ml-4 shrink-0 cursor-pointer rounded-md text-sm font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                         onClick={() => toast.dismiss(id)}
                     >
                         <Icon className="text-lg" icon="lucide:x" />

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Icon } from '@iconify/react/dist/iconify.js'
 
-import CLink from '@/components/ui/link/Link'
+import CLink from '@/components/ui/Link'
 import type { AccordionItem } from '@/types/ui/accordion.type'
 import { type DropdownMenuGroup } from '@/types/ui/dropdown.type'
 
@@ -110,12 +110,6 @@ export const DropDownLinks: DropdownMenuGroup[] = [
                 key: 'auction',
                 label: 'nav.groups.other.items.auction.label',
                 icon: 'lucide:landmark',
-                onClick: () => console.log('Profile clicked'),
-            },
-            {
-                key: 'items',
-                label: 'nav.groups.other.items.items.label',
-                icon: 'lucide:database',
                 onClick: () => console.log('Profile clicked'),
             },
             {

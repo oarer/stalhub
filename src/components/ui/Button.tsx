@@ -26,10 +26,7 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
                 {...props}
             >
                 {loading && (
-                    <Icon
-                        className="text-xl"
-                        icon="line-md:loading-twotone-loop"
-                    />
+                    <Icon className="text-xl" icon="lucide:loader-circle" />
                 )}
                 {children}
             </button>

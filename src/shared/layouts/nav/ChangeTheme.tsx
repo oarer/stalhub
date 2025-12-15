@@ -1,8 +1,8 @@
-import { type FC, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { useTheme } from 'next-themes'
 import { Icon } from '@iconify/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 import useClickOutside from '@/hooks/useClickOutside'
 
@@ -18,7 +18,7 @@ const themes: Theme[] = [
     { name: 'light', title: 'Светлая', iconName: 'lucide:sun' },
 ]
 
-const ThemeToggle: FC = () => {
+export default function ChangeTheme() {
     const { theme, setTheme } = useTheme()
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
     const menuRef = useRef<HTMLDivElement>(null)
@@ -65,7 +65,7 @@ const ThemeToggle: FC = () => {
                 {isMenuOpen && (
                     <motion.div
                         animate={{ opacity: 1 }}
-                        className="ring-border absolute right-0 z-20 mt-5 flex origin-top-right flex-col gap-4 rounded-2xl bg-white/60 p-6 shadow-lg ring-2 backdrop-blur-lg dark:bg-neutral-900/70 dark:ring-[1.5px]"
+                        className="ring-border/30 bg-background/95 absolute top-12 right-0 z-20 flex origin-top-right flex-col gap-4 rounded-2xl p-6 shadow-lg ring-2 backdrop-blur-xl"
                         exit={{ opacity: 0 }}
                         initial={{ opacity: 0 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
@@ -89,5 +89,3 @@ const ThemeToggle: FC = () => {
         </div>
     )
 }
-
-export default ThemeToggle

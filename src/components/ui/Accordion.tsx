@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useLayoutEffect } from 'react'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
 import { cn } from '@/lib/utils'

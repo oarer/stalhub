@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useSearchParams } from 'next/navigation'
 
-import { useUwuStore } from '@/store/useUwuStore'
+import { useUwuStore } from '@/stores/useUwu.store'
 
 export function UwuProvider({ children }: { children: React.ReactNode }) {
     const searchParams = useSearchParams()

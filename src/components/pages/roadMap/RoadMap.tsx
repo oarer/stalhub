@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { Card, CardContent } from '@/components/ui/card/Card'
-import { Badge } from '@/components/ui/badge/Badge'
+import { Card, CardContent } from '@/components/ui/Card'
+import { Badge } from '@/components/ui/Badge'
 import { cn } from '@/lib/utils'
 import type { RoadMap } from '@/constants/roadMap.const'
 import { statusConfig } from '@/constants/roadMap.const'
@@ -30,7 +30,7 @@ export default function Roadmap() {
                         key={`${subTask.name}-${index}`}
                         transition={{ delay: index * 0.05 }}
                     >
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
                             <Icon
                                 className="text-md text-cyan-500 dark:text-cyan-400"
                                 icon={subTask.icon}
@@ -53,7 +53,7 @@ export default function Roadmap() {
     return (
         <>
             <h1
-                className={`${unbounded.className} bg-gradient-to-r from-sky-600 to-sky-400 bg-clip-text text-center text-3xl font-bold tracking-tight text-balance text-transparent md:text-5xl dark:from-sky-400 dark:to-sky-200`}
+                className={`${unbounded.className} bg-linear-to-r from-sky-600 to-sky-400 bg-clip-text text-center text-3xl font-bold tracking-tight text-balance text-transparent md:text-5xl dark:from-sky-400 dark:to-sky-200`}
             >
                 {t('roadmap.title')}
                 <br />
@@ -116,7 +116,7 @@ export default function Roadmap() {
                                                 >
                                                     <CardContent className="p-4">
                                                         <div className="mb-2 flex items-start gap-3">
-                                                            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white text-white transition-colors group-hover:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-900 dark:group-hover:bg-neutral-700">
+                                                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-white transition-colors group-hover:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-900 dark:group-hover:bg-neutral-700">
                                                                 <Icon
                                                                     className="text-lg text-cyan-400 dark:text-cyan-400"
                                                                     icon={

@@ -6,11 +6,11 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 
-import { Badge } from '@/components/ui/badge/Badge'
+import { Badge } from '@/components/ui/Badge'
 import { unbounded } from '@/app/fonts'
 import { featuresHero } from '@/constants/landing.const'
-import { useUwuStore } from '@/store/useUwuStore'
-import CLink from '@/components/ui/link/Link'
+import { useUwuStore } from '@/stores/useUwu.store'
+import CLink from '@/components/ui/Link'
 
 export default function Hero() {
     const { uwuMode } = useUwuStore()

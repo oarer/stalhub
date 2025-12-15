@@ -6,11 +6,13 @@ import Link from 'next/link'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 
-import ThemeToggle from '@/shared/layouts/nav/ChangeTheme'
+import ChangeTheme from './ChangeTheme'
 import useSvg from '@/hooks/useSvg'
 import NavMobile from './NavMobile'
 import { DropDownLinks } from '@/constants/nav.const'
-import DropdownMenu from '@/components/ui/dropDown/DropDown'
+import DropdownMenu from '@/components/ui/DropDown'
+import ChangeLang from './ChangeLang'
+import ItemSearchModal from '@/components/modals/ItemSearch'
 
 export default function Nav() {
     const svgPath = useSvg()
@@ -27,13 +29,15 @@ export default function Nav() {
                 paddingTop: isScrolled ? '1rem' : '2rem',
                 paddingBottom: isScrolled ? '1rem' : '2rem',
             }}
-            className={`fixed top-0 z-[99] w-full items-center text-neutral-700 backdrop-blur-sm dark:text-neutral-100 ${
-                isScrolled ? 'outline-border/50 outline-2' : 'outline-none'
+            className={`fixed top-0 isolate z-99 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${
+                isScrolled
+                    ? 'outline-border/40 outline-2'
+                    : 'outline-border/2 outline-2'
             }`}
             initial={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
             transition={{ duration: 0.7 }}
         >
-            <nav className="mx-auto xl:max-w-[90rem]">
+            <nav className="mx-auto xl:max-w-360">
                 <div className="container mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-6">
                     <div className="lg:hidden">
                         <NavMobile />
@@ -51,7 +55,7 @@ export default function Nav() {
                             />
                         </Link>
                     </div>
-                    <div className="hidden gap-8 lg:flex">
+                    <div className="hidden items-center gap-8 lg:flex">
                         {DropDownLinks.map((menu, index) => (
                             <DropdownMenu
                                 icon={menu?.icon}
@@ -61,9 +65,11 @@ export default function Nav() {
                                 title={menu.title}
                             />
                         ))}
+                        <ItemSearchModal />
                     </div>
                     <div className="relative flex items-center justify-end gap-3">
-                        <ThemeToggle />
+                        <ChangeLang />
+                        <ChangeTheme />
                     </div>
                 </div>
             </nav>

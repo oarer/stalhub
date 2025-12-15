@@ -1,0 +1,25 @@
+@theme {
+    --color-border: var(--border);
+    --color-border-secondary: var(--border-secondary);
+    --color-background: var(--background);
+}
+
+:root {
+    --grid-line: #ffffff;
+    --beam-color: #3b82f6;
+    --glow-color: rgba(59, 130, 246, 0.4);
+
+    --border: lab(63.3038% -18.433 -51.0407);
+    --border-secondary: lab(15.204% 0 0);
+    --background: lab(100% 0 0);
+}
+
+.dark {
+    --grid-line: #121212;
+    --beam-color: #38bdf8;
+    --glow-color: rgba(56, 189, 248, 0.3);
+
+    --border: lab(88.6983% -11.3978 -16.8488);
+    --border-secondary: lab(27.036% 0 0);
+    --background: lab(7.74% 0 0);
+}

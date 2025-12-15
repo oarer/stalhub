@@ -9,7 +9,7 @@ import { Icon } from '@iconify/react'
 import { usePathname } from 'next/navigation'
 
 import { montserrat } from '@/app/fonts'
-import { useUwuStore } from '@/store/useUwuStore'
+import { useUwuStore } from '@/stores/useUwu.store'
 
 // HUGE thanks to KryptonFox (GitHub: @kryptonFox) for this code snippet!
 const BuildHash = () => (
@@ -55,9 +55,9 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="outline-border/50 outline-2 backdrop-blur-xs">
+        <footer className="outline-border/40 outline-2 backdrop-blur-xs">
             <div
-                className={`${montserrat.className} mx-auto flex max-w-[80rem] flex-col gap-8 px-6 py-8`}
+                className={`${montserrat.className} mx-auto flex max-w-7xl flex-col gap-8 px-6 py-8`}
             >
                 <div className="grid grid-cols-1 gap-6 font-semibold md:grid-cols-3">
                     <section className="flex flex-col gap-3">
@@ -123,11 +123,11 @@ const Footer = () => {
                     </nav>
                 </div>
 
-                <div className="border-border border-t py-8 text-sm font-semibold">
+                <div className="border-border/30 border-t py-8 text-sm font-semibold">
                     <p className="text-neutral-700 dark:text-neutral-400">
                         {t('footer.project.with')}
                         <Link
-                            className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
+                            className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
                             href="https://github.com/oarer/stalhub"
                             rel="noopener noreferrer"
                             target="_blank"
@@ -136,7 +136,7 @@ const Footer = () => {
                         </Link>
                         . {t('footer.project.license')}
                         <Link
-                            className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
+                            className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
                             href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                             rel="noopener noreferrer"
                             target="_blank"

@@ -12,7 +12,7 @@ import {
 
 import { useTranslation } from 'react-i18next'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
 import { cn } from '@/lib/utils'
@@ -22,10 +22,10 @@ import type {
     DropdownMenuItemProps,
     SubmenuWithStateProps,
 } from '@/types/ui/dropdown.type'
-import { Button } from '@/components/ui/button/Button'
+import { Button } from '@/components/ui/Button'
 
 const baseClasses =
-    'absolute z-40 min-w-[250px] bg-white dark:bg-neutral-900/70 backdrop-blur-md dark:ring-[1.5px] ring-2 ring-border rounded-lg shadow-lg p-2'
+    'absolute z-999 min-w-[250px] bg-background/95 ring-2 backdrop-blur-xl ring-border/50 rounded-lg shadow-lg p-2'
 
 const toggleSubmenuKey = (
     setOpenSubmenus: React.Dispatch<React.SetStateAction<Set<string>>>,
@@ -90,7 +90,7 @@ function DropdownMenuItem({
     }, [item, onClose, setOpenSubmenus, hasSubmenu])
 
     if (item.divider) {
-        return <div className="my-1 h-px bg-white dark:bg-neutral-700" />
+        return <div className="bg-background my-1 h-px" />
     }
 
     return (
@@ -104,10 +104,10 @@ function DropdownMenuItem({
                 aria-expanded={hasSubmenu ? showSubmenu : undefined}
                 aria-haspopup={hasSubmenu ? 'menu' : undefined}
                 className={cn(
-                    'flex w-full cursor-pointer items-center justify-between rounded-xl px-2 py-1.5 text-left text-sm transition-colors',
+                    'flex w-full items-center justify-between rounded-xl px-2 py-1.5 text-left text-sm transition-colors',
                     item.disabled
                         ? 'cursor-not-allowed text-neutral-400 dark:text-neutral-500'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700/40',
+                        : 'cursor-pointer text-neutral-700 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700/40',
                     hasSubmenu && 'pr-2'
                 )}
                 disabled={item.disabled}
@@ -344,7 +344,7 @@ export default function DropdownMenu({
                 aria-expanded={isOpen}
                 aria-haspopup="menu"
                 className={`flex cursor-pointer items-center outline-none ${
-                    isOpen ? 'bg-neutral-300/60 dark:bg-neutral-700/30' : ''
+                    isOpen ? 'bg-background' : ''
                 }`}
                 onClick={toggleDropdown}
                 ref={triggerRef}
@@ -352,7 +352,7 @@ export default function DropdownMenu({
                 tabIndex={0}
                 variant="outline"
             >
-                {icon && <Icon className="text-[19px]" icon={icon} />}
+                {icon && <Icon className="text-xl" icon={icon} />}
                 <p className="text-md font-semibold">{t(title)}</p>
                 <motion.div
                     animate={{ rotate: isOpen ? 90 : 0 }}
@@ -360,7 +360,7 @@ export default function DropdownMenu({
                 >
                     <Icon
                         aria-hidden="true"
-                        className="text-[16px] text-neutral-500 dark:text-white"
+                        className="text-lg text-neutral-500 dark:text-white"
                         icon="lucide:chevron-right"
                     />
                 </motion.div>

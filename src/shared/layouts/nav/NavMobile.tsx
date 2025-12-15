@@ -6,7 +6,7 @@ import clsx from 'clsx'
 
 import { DropDownMobile, MobileLinks } from '@/constants/nav.const'
 import useClickOutside from '@/hooks/useClickOutside'
-import { Accordion } from '@/components/ui/accordion/Accordion'
+import { Accordion } from '@/components/ui/Accordion'
 
 const NavMobile = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -36,10 +36,10 @@ const NavMobile = () => {
                 />
             </button>
 
-            <div className="relative z-[2]" ref={menuRef}>
+            <div className="relative z-9" ref={menuRef}>
                 <div
                     className={clsx(
-                        'ring-ring absolute top-14 min-w-80 origin-top-left rounded-2xl bg-neutral-100 p-4 shadow-md ring-2 transition-all duration-300 ease-in-out dark:bg-neutral-950 dark:text-neutral-100',
+                        'ring-border absolute top-14 min-w-80 origin-top-left rounded-2xl bg-neutral-100 p-4 shadow-md ring-2 transition-all duration-300 ease-in-out dark:bg-neutral-950 dark:text-neutral-100',
                         isMenuOpen
                             ? 'translate-y-0 scale-100 opacity-100'
                             : 'pointer-events-none -translate-y-4 scale-95 opacity-0'

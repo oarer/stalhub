@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 
 import { unbounded } from '../fonts'
-import { CardHeader, CardLink } from '@/components/ui/card/Card'
+import { CardHeader, CardLink } from '@/components/ui/Card'
 import { useMaps } from '@/hooks/useMaps'
 import { CustomToast } from '@/components/ui/Toast'
 import type { Locale } from '@/types/item.type'

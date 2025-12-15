@@ -1,0 +1,207 @@
+'use client'
+
+import { useMemo } from 'react'
+
+import { Scatter } from 'react-chartjs-2'
+
+import { useTheme } from 'next-themes'
+import type { ChartOptions } from 'chart.js'
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Tooltip as ChartTooltip,
+    Legend,
+} from 'chart.js'
+
+import { Card, CardContent } from '@/components/ui/Card'
+import { calcArtifactPercent, getArtifactColor } from '@/utils/artUtils'
+import type { Lot } from '@/types/item.type'
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, ChartTooltip, Legend)
+
+type Props = {
+    data?: Lot[]
+}
+
+type ChartPoint = {
+    x: string
+    y: number
+    time: string
+    endTime: string
+    amount: number
+    artPercent: number
+    qlt: number
+    ptn: number
+    startPrice: number
+    currentPrice?: number
+    buyoutPrice?: number | null
+    isBuyout: boolean
+}
+
+export default function AuctionCurrent({ data }: Props) {
+    const { resolvedTheme } = useTheme()
+    const isDark = resolvedTheme === 'dark'
+
+    const options = useMemo<ChartOptions<'scatter'>>(
+        () => ({
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    reverse: true,
+                    type: 'category',
+                    ticks: {
+                        color: isDark ? '#aaa' : '#333',
+                        font: { weight: 'bold', size: 12 },
+                    },
+                    grid: { color: isDark ? '#44464c' : '#ccc' },
+                },
+                y: {
+                    type: 'linear',
+                    ticks: {
+                        color: isDark ? '#aaa' : '#333',
+                        font: { weight: 'bold', size: 12 },
+                    },
+                    grid: { color: isDark ? '#44464c' : '#ccc' },
+                },
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    mode: 'nearest',
+                    intersect: false,
+                    backgroundColor: isDark ? '#080808' : '#fff',
+                    titleColor: isDark ? '#fbfbfe' : '#171717',
+                    bodyColor: isDark ? '#d4d4d4' : '#525252',
+                    borderColor: isDark ? '#3d4a52' : '#badbeb',
+                    borderWidth: 2,
+                    padding: 12,
+                    displayColors: false,
+                    titleFont: { size: 13, weight: 'bold' },
+                    bodyFont: { size: 12, weight: 'bold' },
+                    callbacks: {
+                        title: (items) => {
+                            const raw = items?.[0]?.raw as
+                                | ChartPoint
+                                | undefined
+                            return raw ? `Дата выставления: ${raw.time}` : ''
+                        },
+                        label: (context) => {
+                            const raw = context.raw as ChartPoint
+                            const lines: string[] = []
+
+                            lines.push(`Окончание торгов: ${raw.endTime}`)
+
+                            lines.push(
+                                `Начальная ставка: ${Intl.NumberFormat('ru-RU').format(raw.startPrice)}`
+                            )
+                            lines.push(
+                                `Текущая ставка: ${
+                                    raw.currentPrice != null
+                                        ? Intl.NumberFormat('ru-RU').format(
+                                              raw.currentPrice
+                                          )
+                                        : '—'
+                                }`
+                            )
+                            if (raw.buyoutPrice != null) {
+                                lines.push(
+                                    `Выкуп: ${Intl.NumberFormat('ru-RU').format(raw.buyoutPrice)}`
+                                )
+                            }
+
+                            if (raw.amount > 1)
+                                lines.push(`Кол-во: ${raw.amount}`)
+                            if (raw.artPercent > 0)
+                                lines.push(
+                                    `Процент: ${raw.artPercent.toFixed(2)}%`
+                                )
+                            if (raw.ptn > 0) lines.push(`Потенциал: ${raw.ptn}`)
+
+                            return lines
+                        },
+                    },
+                },
+            },
+            elements: {
+                point: { hoverRadius: 7 },
+            },
+        }),
+        [isDark]
+    )
+
+    const safeData = Array.isArray(data) ? data : []
+
+    const chartData = safeData.map((item) => ({
+        startTime: new Date(item.startTime).toLocaleString('ru-RU', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        }),
+        endTime: new Date(item.endTime).toLocaleString('ru-RU', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        }),
+        amount: item.amount,
+        buyoutPrice: item.buyoutPrice ?? null,
+        startPrice: item.startPrice,
+        currentPrice: item.currentPrice,
+        artPercent: item.additional ? calcArtifactPercent(item.additional) : 0,
+        ptn: item.additional?.ptn ?? 0,
+        qlt: item.additional?.qlt ?? 0,
+    }))
+
+    if (chartData.length === 0) {
+        return null
+    }
+
+    const points: ChartPoint[] = chartData.map((d) => {
+        const useBuyout = d.buyoutPrice != null
+        const yValue = useBuyout ? (d.buyoutPrice as number) : d.startPrice
+        return {
+            x: d.startTime,
+            y: yValue,
+            time: d.startTime,
+            endTime: d.endTime,
+            amount: d.amount,
+            artPercent: d.artPercent,
+            qlt: d.qlt ?? 0,
+            ptn: d.ptn ?? 0,
+            startPrice: d.startPrice,
+            currentPrice: d.currentPrice,
+            buyoutPrice: d.buyoutPrice,
+            isBuyout: useBuyout,
+        }
+    })
+
+    const dataForChart = {
+        labels: chartData.map((d) => d.startTime),
+        datasets: [
+            {
+                label: 'Текущие лоты',
+                data: points,
+                pointBackgroundColor: points.map((p) =>
+                    getArtifactColor(p.qlt)
+                ),
+                pointBorderColor: isDark ? '#fff' : '#000',
+                pointRadius: 5,
+                showLine: false,
+            },
+        ],
+    }
+
+    return (
+        <Card>
+            <CardContent className="h-80 w-full">
+                <Scatter data={dataForChart} options={options} />
+            </CardContent>
+        </Card>
+    )
+}

@@ -6,17 +6,20 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 
 import L from 'leaflet'
 
+/* eslint-disable import/order */
+import ZoomControl from './ZoomControl'
 import CanvasLayer from './CanvasLayer'
 import SetImageBounds from './SetImageBounds'
 import ServerMarkers from './ServerMarkers'
 import { useMarkersFile } from '@/hooks/useMarkersFile'
 import { serverMarkersToGeoJSON } from './serverToGeoJSON'
 import Sidebar from '@/components/ui/sideBar/SideBar'
-import type { MarkerClusterFull } from '@/types/map.type'
-import ZoomControl from './ZoomControl'
+/* eslint-enable import/order */
 
 import 'leaflet-draw/dist/leaflet.draw.css'
 import '@/shared/styles/map.css'
+
+import type { MarkerClusterFull } from '@/types/map.type'
 
 type TileMapProps = {
     url: string
@@ -24,7 +27,6 @@ type TileMapProps = {
     imageHeight: number
     fullMaxLevel: number
     markersUrl?: string
-    lang?: 'ru' | 'en'
 }
 
 export default function MapTile({
@@ -33,7 +35,6 @@ export default function MapTile({
     imageHeight,
     fullMaxLevel,
     markersUrl,
-    lang = 'ru',
 }: TileMapProps) {
     const {
         markersFile,
@@ -53,10 +54,12 @@ export default function MapTile({
             imageWidth,
             imageHeight
         )
+
         let drawnGeo: GeoJSON.FeatureCollection = {
             type: 'FeatureCollection',
             features: [],
         }
+
         try {
             if (featureGroupRef.current) {
                 drawnGeo =
@@ -103,7 +106,6 @@ export default function MapTile({
             <Sidebar
                 clusterList={clusterList as MarkerClusterFull[]}
                 hideAll={hideAll}
-                lang={lang}
                 onExport={handleExport}
                 showAll={showAll}
                 toggleCluster={toggleCluster}
@@ -111,6 +113,7 @@ export default function MapTile({
                 visibleClusterIds={visibleClusterIds}
                 visibleGroupKeys={visibleGroupKeys}
             />
+
             <MapContainer
                 center={[0, 0]}
                 crs={L.CRS.Simple}
@@ -121,6 +124,7 @@ export default function MapTile({
                 zoomControl={false}
             >
                 <ZoomControl />
+
                 <TileLayer
                     maxNativeZoom={fullMaxLevel}
                     noWrap
@@ -134,8 +138,6 @@ export default function MapTile({
                     imageWidth={imageWidth}
                 />
 
-                {/* <FeatureGroup ref={featureGroupRef}></FeatureGroup> */}
-
                 <CanvasLayer
                     draw={(ctx) => {
                         ctx.imageSmoothingEnabled = false
@@ -146,7 +148,6 @@ export default function MapTile({
                     fullMaxLevel={fullMaxLevel}
                     imageHeight={imageHeight}
                     imageWidth={imageWidth}
-                    lang={lang}
                     markersFile={markersFile}
                     visibleClusterIds={visibleClusterIds}
                     visibleGroupKeys={visibleGroupKeys}

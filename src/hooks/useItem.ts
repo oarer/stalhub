@@ -4,18 +4,23 @@ import axios, { AxiosError } from 'axios'
 
 import type { Item } from '@/types/item.type'
 
-export function useFetchType(url?: string) {
+const GITHUB_BASE =
+    'https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/items/'
+
+export function useItem(path?: string) {
     const [data, setData] = useState<Item | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<AxiosError | null>(null)
 
-    const fetcher = useCallback(async (u?: string) => {
-        if (!u) return
+    const fetcher = useCallback(async (p?: string) => {
+        if (!p) return
         setLoading(true)
         setError(null)
 
+        const fullUrl = `${GITHUB_BASE}${p}`
+
         try {
-            const res = await axios.get<Item>(u)
+            const res = await axios.get<Item>(fullUrl)
             const raw = res.data
 
             if (
@@ -45,6 +50,6 @@ export function useFetchType(url?: string) {
         data,
         loading,
         error,
-        refetch: (u?: string) => fetcher(u ?? url),
+        refetch: (p?: string) => fetcher(p ?? path),
     }
 }
