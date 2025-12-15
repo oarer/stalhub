@@ -99,7 +99,7 @@ export const sortArtifactsByPercent = <
 }
 
 export const normalizeLotsData = (data: LotsResponse) => {
-    const sorted = [...data.prices].sort(
+    const sorted = [...data.lots].sort(
         (a, b) => new Date(a.endTime).getTime() - new Date(b.endTime).getTime()
     )
 
