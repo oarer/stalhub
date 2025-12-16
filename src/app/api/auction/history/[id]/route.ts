@@ -11,8 +11,11 @@ interface LotsResponse {
     [key: string]: unknown
 }
 
-export async function GET(context: { params: Promise<{ id: string }> }) {
-    const { id } = await context.params
+export async function GET(
+    req: Request,
+    { params }: { params: Promise<{ id: string }> }
+) {
+    const { id } = await params
 
     try {
         const { data } = await axios.get<LotsResponse>(
