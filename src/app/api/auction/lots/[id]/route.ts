@@ -11,24 +11,15 @@ interface LotsResponse {
     [key: string]: unknown
 }
 
-export async function GET(
-    req: Request,
-    context: { params: Promise<{ id: string }> }
-) {
+export async function GET(context: { params: Promise<{ id: string }> }) {
     const { id } = await context.params
-    const { searchParams } = new URL(req.url)
-
-    const limit = searchParams.get('limit') ?? '10'
-    const additional = searchParams.get('additional') ?? 'true'
 
     try {
         const { data } = await axios.get<LotsResponse>(
-            `https://eapi.stalcraft.net/ru/auction/${id}/lots`,
+            `${process.env.API_URL}/available-lots?region=ru&id=${id}`,
             {
-                params: { limit, additional },
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${process.env.EXBO_TOKEN}`,
                 },
             }
         )
