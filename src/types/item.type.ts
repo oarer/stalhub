@@ -90,6 +90,12 @@ export type ElementListBlock = {
     elements: InfoElement[]
 }
 
+export type AddStatBlock = {
+    type: 'addStat'
+    title: Message
+    elements: InfoElement[]
+}
+
 export type PriceElement = {
     type: 'price'
     currency: string
@@ -163,6 +169,7 @@ export type InfoBlock =
     | ElementListBlock
     | DamageDistanceInfoBlock
     | NumericVariantsElement
+    | AddStatBlock
 
 export interface Item {
     id: string

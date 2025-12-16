@@ -5,14 +5,15 @@ import React from 'react'
 import type {
     InfoElement,
     TextInfoBlock,
-    DamageDistanceInfoBlock,
     ElementListBlock,
     Locale,
     Message,
+    AddStatBlock,
 } from '@/types/item.type'
-import { messageToString, roundNumber } from '@/utils/itemUtils'
+import { messageToString } from '@/utils/itemUtils'
 import InfoElementRenderer from './InfoRenderer'
 import { Card, CardContent } from '@/components/ui/Card'
+import Input from '@/components/ui/Input'
 
 const HIDDEN_KEYS = new Set([
     'core.quality.common',
@@ -53,21 +54,21 @@ export const TextBlock: React.FC<{ block: TextInfoBlock; locale: Locale }> = ({
     )
 }
 
-export const DamageBlock: React.FC<{ block: DamageDistanceInfoBlock }> = ({
-    block,
-}) => (
+export const NumericVariantsCard: React.FC<{
+    numericVariants: number
+    onChange: (v: number) => void
+}> = ({ numericVariants, onChange }) => (
     <Card>
-        <CardContent>
-            <h4 className="mb-2 font-semibold">Damage</h4>
-            <div className="grid grid-cols-2 gap-2 text-sm text-gray-200">
-                <div>Start: {roundNumber(block.startDamage)}</div>
-                <div>End: {roundNumber(block.endDamage)}</div>
-                <div>
-                    Decrease: {roundNumber(block.damageDecreaseStart)} →{' '}
-                    {roundNumber(block.damageDecreaseEnd)}
-                </div>
-                <div>Max distance: {roundNumber(block.maxDistance)}</div>
-            </div>
+        <CardContent className="flex items-center justify-between">
+            <p className="text-lg font-semibold">Заточка</p>
+            <Input
+                className="w-fit px-2 py-2"
+                max={15}
+                min={0}
+                onChange={(e) => onChange(Number(e.target.value))}
+                type="number"
+                value={numericVariants}
+            />
         </CardContent>
     </Card>
 )
@@ -88,9 +89,11 @@ const getElementKeys = (el: InfoElement): string[] => {
     }
 }
 
+type Block = ElementListBlock | AddStatBlock
+
 export const ListBlock: React.FC<{
     numericVariants: number
-    block: ElementListBlock
+    block: Block
     locale: Locale
 }> = ({ block, locale, numericVariants }) => {
     if (!Array.isArray(block.elements) || block.elements.length === 0)

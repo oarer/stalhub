@@ -12,8 +12,9 @@ import {
     isNumericVariantsBlock,
     messageToString,
 } from '@/utils/itemUtils'
-import { TextBlock, ListBlock } from './components/blocks'
+import { TextBlock, NumericVariantsCard, ListBlock } from './components/blocks'
 import {
+    type AddStatBlock,
     InfoColor,
     infoColorMap,
     type DamageDistanceInfoBlock,
@@ -31,7 +32,6 @@ import { unbounded } from '@/app/fonts'
 import { getLocale } from '@/lib/getLocale'
 import { useAuctionHistory } from '@/hooks/useAuctionHistory'
 import { DamageChart } from '../ttk/components/DamageChart'
-import { NumericVariantsCard } from './components/NumericVariantsCard'
 import LoadingItem from './components/loading'
 import { useAuctionCurrent } from '@/hooks/useAuctionCurrent'
 import AuctionTabs from './components/Auction/AuctionTabs'
@@ -160,8 +160,8 @@ export default function ItemFetch() {
 
                     {data.infoBlocks
                         .filter(
-                            (b): b is ElementListBlock =>
-                                b.type === 'list' &&
+                            (b): b is AddStatBlock | ElementListBlock =>
+                                (b.type === 'list' || b.type === 'addStat') &&
                                 Array.isArray(b.elements) &&
                                 b.elements.length > 0
                         )
