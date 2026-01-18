@@ -2,7 +2,7 @@
 
 import React, { createContext, useCallback, useContext, useState } from 'react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 
 type TabsContextValue = {
     value: string
@@ -17,7 +17,7 @@ interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
     onValueChange?: (value: string) => void
 }
 
-export function Tabs({
+export function TabsRoot({
     defaultValue,
     value,
     onValueChange,
@@ -154,4 +154,11 @@ export function TabsContent({
             {children}
         </div>
     )
+}
+
+export const Tabs = {
+    Root: TabsRoot,
+    List: TabsList,
+    Trigger: TabsTrigger,
+    Content: TabsContent,
 }

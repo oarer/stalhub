@@ -6,8 +6,8 @@ import Fuse from 'fuse.js'
 import cyrillicToTranslit from 'cyrillic-to-translit-js'
 
 import { useSearchItem } from '@/hooks/useSearchItem'
-import type { ItemListing, ItemName } from '@/types/api.type'
-import { LOCALE as DEFAULT_LOCALE } from '@/types/item.type'
+import type { ItemListing } from '@/types/api.type'
+import { LOCALE as DEFAULT_LOCALE, type ItemName } from '@/types/item.type'
 
 const translit = cyrillicToTranslit({ preset: 'ru' })
 

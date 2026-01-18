@@ -3,13 +3,13 @@ import { forwardRef } from 'react'
 
 import Link from 'next/link'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
+const CardRoot = forwardRef<HTMLDivElement, CardProps>(
     ({ className, ...props }, ref) => (
         <div
             className={cn(
@@ -21,7 +21,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         />
     )
 )
-Card.displayName = 'UI.Card'
+CardRoot.displayName = 'UI.CardRoot'
 
 interface CardLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     children: ReactNode
@@ -108,12 +108,12 @@ const CardFooter = forwardRef<HTMLDivElement, CardProps>(
 )
 CardFooter.displayName = 'UI.CardFooter'
 
-export {
-    Card,
-    CardLink,
-    CardHeader,
-    CardTitle,
-    CardDescription,
-    CardContent,
-    CardFooter,
+export const Card = {
+    Root: CardRoot,
+    Link: CardLink,
+    Header: CardHeader,
+    Title: CardTitle,
+    Description: CardDescription,
+    Content: CardContent,
+    Footer: CardFooter,
 }

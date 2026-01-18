@@ -1,7 +1,7 @@
 import { toast } from 'sonner'
 import { Icon } from '@iconify/react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 
 type ToastType = 'success' | 'error' | 'info' | 'loading'
 

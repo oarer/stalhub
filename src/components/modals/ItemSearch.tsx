@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { useDebounce } from '@/hooks/useDebounce'
 import { infoColorMap } from '@/types/item.type'
 import Input from '@/components/ui/Input'
-import { CardHeader, CardLink, CardTitle } from '@/components/ui/Card'
+import { Card } from '@/components/ui/Card'
 import { usePreparedSearch } from '@/hooks/usePreparedSearch'
 import { Modal } from '@/components/ui/Modal'
 import { type ItemListing } from '@/types/api.type'
@@ -24,9 +24,9 @@ const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
     const iconPath = `https://raw.githubusercontent.com/oarer/sc-db/main/merged${item.icon}`
 
     return (
-        <CardLink href={item.data.replace(/\.json$/, '')}>
-            <CardHeader className="flex flex-row items-center gap-4">
-                <CardTitle>
+        <Card.Link href={item.data.replace(/\.json$/, '')}>
+            <Card.Header className="flex flex-row items-center gap-4">
+                <Card.Title>
                     <Image
                         alt={name}
                         height={44}
@@ -35,15 +35,15 @@ const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
                         src={iconPath}
                         width={44}
                     />
-                </CardTitle>
+                </Card.Title>
                 <p
                     className="text-lg font-semibold"
                     style={{ color: infoColorMap[item.color] }}
                 >
                     {name}
                 </p>
-            </CardHeader>
-        </CardLink>
+            </Card.Header>
+        </Card.Link>
     )
 })
 

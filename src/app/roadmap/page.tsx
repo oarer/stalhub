@@ -1,9 +1,5 @@
-import Roadmap from '@/components/pages/roadMap/RoadMap'
+import RoadmapView from '@/views/roadmap'
 
-export default function RoadMapPage() {
-    return (
-        <main className="mx-auto flex flex-col gap-16 pt-40 pb-20">
-            <Roadmap />
-        </main>
-    )
+export default function RoadmapPage() {
+    return <RoadmapView />
 }

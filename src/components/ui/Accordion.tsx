@@ -5,7 +5,7 @@ import { useState, useCallback, useRef, useLayoutEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 import type { AccordionProps } from '@/types/ui/accordion.type'
 import {
     accordionVariants,

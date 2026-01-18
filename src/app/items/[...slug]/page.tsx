@@ -1,7 +1,14 @@
-'use client'
+import ItemsView from '@/views/items'
 
-import ItemFetch from '@/components/pages/items/Page'
+type PageProps = {
+    params: Promise<{ slug: string[] }>
+}
 
-export default function ItemsPage() {
-    return <ItemFetch />
+export default async function ItemsPage({ params }: PageProps) {
+    const { slug } = await params
+
+    const path = Array.isArray(slug) ? slug : []
+    const id = slug[slug.length - 1]
+
+    return <ItemsView id={id} path={path} />
 }

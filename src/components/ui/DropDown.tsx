@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 import useClickOutside from '@/hooks/useClickOutside'
 import type {
     DropdownProps,

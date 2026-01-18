@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 import type { VariantProps } from 'class-variance-authority'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 import { checkboxVariants } from '@/constants/ui/checkBox.const'
 
 export interface ICheckboxProps

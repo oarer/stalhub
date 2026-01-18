@@ -7,10 +7,11 @@ export const getLocale = (): Locale => {
             match === 'ru' ||
             match === 'en' ||
             match === 'es' ||
-            match === 'fr'
+            match === 'fr' ||
+            match === 'ko'
         ) {
             return match
         }
     }
-    return 'en'
+    return 'ru'
 }

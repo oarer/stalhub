@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import '@/shared/styles/index.css'
 import { raleway } from '@/app/fonts'
 import Nav from '@/shared/layouts/nav/Nav'
-import Providers from '@/lib/providers'
+import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/Footer'
 
@@ -26,6 +26,8 @@ export default function RootLayout({
 }: {
     children: React.ReactNode
 }) {
+    const inDev = process.env.NODE_ENV === 'production'
+
     return (
         <html className="dark" lang="en" suppressHydrationWarning>
             <body
@@ -41,10 +43,10 @@ export default function RootLayout({
                 />
                 <Suspense fallback={<div />}>
                     <Providers>
-                        <Nav />
+                        {!inDev && <Nav />}
                         {children}
                     </Providers>
-                    <Footer />
+                    {!inDev && <Footer />}
                 </Suspense>
             </body>
         </html>

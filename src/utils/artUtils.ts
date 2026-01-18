@@ -1,3 +1,4 @@
+import { formatDate } from '@/lib/date'
 import type { LotsResponse } from '@/types/item.type'
 
 export type ArtifactAdditional = {
@@ -60,19 +61,19 @@ export const getQualityName = (qlt?: number): string => {
 export const getArtifactColor = (qlt: number): string => {
     switch (qlt) {
         case 0:
-            return '#fff'
+            return '#FFFFFF'
         case 1:
-            return '#22c55e'
+            return '#9DEB9D'
         case 2:
-            return '#3b82f6'
+            return '#9F9FED'
         case 3:
-            return '#a855f7'
+            return '#BF5BAD'
         case 4:
-            return '#eab308'
+            return '#EA9D9E'
         case 5:
-            return '#f97316'
+            return '#FFD700'
         case 6:
-            return '#ef4444'
+            return '#FFD700'
         default:
             return '#fff'
     }
@@ -104,10 +105,7 @@ export const normalizeLotsData = (data: LotsResponse) => {
     )
 
     return sorted.map((lot) => ({
-        name: new Date(lot.endTime).toLocaleTimeString('ru-RU', {
-            hour: '2-digit',
-            minute: '2-digit',
-        }),
+        name: formatDate(lot.endTime, 'time'),
         startPrice: lot.startPrice,
         currentPrice: lot.currentPrice,
         buyoutPrice: lot.buyoutPrice,

@@ -4,7 +4,7 @@ import type { VariantProps } from 'class-variance-authority'
 import { Icon } from '@iconify/react'
 
 import { buttonVariants } from '@/constants/ui/button.const'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/cn'
 
 interface IButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,

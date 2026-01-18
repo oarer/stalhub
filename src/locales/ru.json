@@ -341,5 +341,46 @@
             "export": "Экспорт",
             "top": "Наверх"
         }
+    },
+    "player": {
+        "rank": {
+            "LEADER": "Лидер",
+            "COLONEL": "Полковник",
+            "OFFICER": "Офицер",
+            "SERGEANT": "Сержант",
+            "SOLDIER": "Боец",
+            "COMMONER": "Запасной",
+            "RECRUIT": "Рядовой"
+        },
+        "alliance": {
+            "merc": "Наёмник",
+            "covenant": "Завет",
+            "freedom": "Заря",
+            "duty": "Долг",
+            "bandits": "Бандит",
+            "stalkers": "Сталкер"
+        },
+        "category": {
+            "EXPLORATION": "Исследование",
+            "SURVIVAL": "Выживание",
+            "HIDEOUT": "Убежище",
+            "SESSION_MODES": "Сессионные режимы",
+            "ECONOMY": "Экономика",
+            "COMBAT": "Бой"
+        }
+    },
+    "time": {
+        "second": { "one": "секунду", "few": "секунды", "many": "секунд" },
+        "minute": { "one": "минуту", "few": "минуты", "many": "минут" },
+        "hour": { "one": "час", "few": "часа", "many": "часов" },
+        "day": { "one": "день", "few": "дня", "many": "дней" },
+        "month": { "one": "месяц", "few": "месяца", "many": "месяцев" },
+        "year": { "one": "год", "few": "года", "many": "лет" },
+        "and": "и"
+    },
+    "unit": {
+        "km": "км",
+        "kg": "кг",
+        "unit": "ед"
     }
 }

@@ -42,7 +42,7 @@ const Sidebar: React.FC<Props> = ({
                 {isOpen && (
                     <motion.aside
                         animate={{ opacity: 1, x: 0 }}
-                        className={`ring-border/60 bg-background/60 fixed top-1/3 left-4 z-999 flex max-h-[70vh] min-w-[280px] flex-col gap-4 overflow-hidden rounded-lg p-2 shadow-lg ring-2 backdrop-blur-md ${className}`}
+                        className={`ring-border/60 bg-background/60 fixed top-1/3 left-4 z-999 flex max-h-[70vh] min-w-70 flex-col gap-4 overflow-hidden rounded-lg p-2 shadow-lg ring-2 backdrop-blur-md ${className}`}
                         exit={{ opacity: 0, x: -20 }}
                         initial={{ opacity: 0, x: -20 }}
                         transition={{

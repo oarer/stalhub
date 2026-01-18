@@ -1,6 +1,7 @@
 import { type ArtifactAdditional } from '@/utils/artUtils'
 
-export type Locale = 'ru' | 'en' | 'es' | 'fr'
+export type Locale = 'ru' | 'en' | 'es' | 'fr' | 'ko'
+export type ItemName = Partial<Record<Locale, string>>
 export const LOCALE: Locale = 'ru'
 
 export type LocalizedString = {
@@ -187,8 +188,8 @@ export interface Lot {
     startPrice: number
     currentPrice?: number
     buyoutPrice: number
-    startTime: string
-    endTime: string
+    startTime: Date
+    endTime: Date
     additional?: ArtifactAdditional
 }
 export interface LotsResponse {
@@ -199,7 +200,7 @@ export interface LotsResponse {
 export interface LotHistory {
     amount: number
     price: number
-    time: string
+    time: Date
     additional?: ArtifactAdditional
 }
 

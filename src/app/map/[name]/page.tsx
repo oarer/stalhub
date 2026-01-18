@@ -1,11 +1,11 @@
-import MapPage from '@/components/pages/map/MapPage'
+import MapView from '@/views/maps/map/MapView'
 
-export default async function Page({
+export default async function MapPage({
     params,
 }: {
     params: Promise<{ name: string }>
 }) {
     const { name } = await params
 
-    return <MapPage mapName={name} />
+    return <MapView mapName={name} />
 }
