@@ -34,7 +34,13 @@ export function getStatValue(
             s.id === id || s.meta?.id === id || DB_STATS_BY_ID[s.id]?.id === id
     )
 
-    return stat ? stat.value : 0
+    if (!stat) return 0
+
+    if (typeof stat.value !== 'number') {
+        return 0
+    }
+
+    return stat.value
 }
 
 export type StatKey = keyof typeof STATS_MAP
