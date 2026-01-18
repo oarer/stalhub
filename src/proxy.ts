@@ -5,7 +5,8 @@ export function proxy(req: NextRequest) {
         if (
             req.nextUrl.pathname.startsWith('/indev') ||
             req.nextUrl.pathname.startsWith('/_next') ||
-            req.nextUrl.pathname.startsWith('/favicon.ico')
+            req.nextUrl.pathname.startsWith('/favicon.ico') ||
+            req.nextUrl.pathname.startsWith('/models/stalki.glb')
         ) {
             return NextResponse.next()
         }
