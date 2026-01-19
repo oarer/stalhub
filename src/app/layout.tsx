@@ -10,45 +10,45 @@ import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/Footer'
 
 export const metadata: Metadata = {
-    title: 'StalHub',
-    description: 'TODO',
-    openGraph: {
-        type: 'website',
-        title: 'StalHub',
-        description: 'TODO',
-        url: 'https://stalhub.ru',
-        siteName: 'StalHub',
-    },
+	title: 'StalHub',
+	description: 'TODO',
+	openGraph: {
+		type: 'website',
+		title: 'StalHub',
+		description: 'TODO',
+		url: 'https://stalhub.ru',
+		siteName: 'StalHub',
+	},
 }
 
 export default function RootLayout({
-    children,
+	children,
 }: {
-    children: React.ReactNode
+	children: React.ReactNode
 }) {
-    const inDev = process.env.NODE_ENV === 'production'
+	const inDev = process.env.NODE_ENV === 'production'
 
-    return (
-        <html className="dark" lang="en" suppressHydrationWarning>
-            <body
-                className={`${raleway.className} bg-neutral-100 transition-colors duration-500 ease-in-out dark:bg-neutral-950`}
-            >
-                <GridBackgroundWithBeams
-                    cellSize={20}
-                    cols={100}
-                    glowIntensity={1.5}
-                    lineWidth={2}
-                    maxBeams={4}
-                    rows={100}
-                />
-                <Suspense fallback={<div />}>
-                    <Providers>
-                        {!inDev && <Nav />}
-                        {children}
-                    </Providers>
-                    {!inDev && <Footer />}
-                </Suspense>
-            </body>
-        </html>
-    )
+	return (
+		<html className="dark" lang="en" suppressHydrationWarning>
+			<body
+				className={`${raleway.className} bg-neutral-100 transition-colors duration-500 ease-in-out dark:bg-neutral-950`}
+			>
+				<GridBackgroundWithBeams
+					cellSize={20}
+					cols={100}
+					glowIntensity={1.5}
+					lineWidth={2}
+					maxBeams={4}
+					rows={100}
+				/>
+				<Suspense fallback={<div />}>
+					<Providers>
+						{!inDev && <Nav />}
+						{children}
+					</Providers>
+					{!inDev && <Footer />}
+				</Suspense>
+			</body>
+		</html>
+	)
 }

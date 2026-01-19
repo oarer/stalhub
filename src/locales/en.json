@@ -1,345 +1,345 @@
 {
-    "landing": {
-        "overview": "All in one place",
-        "tools_for": "Tools for",
-        "need": "Everything needed for",
-        "features": {
-            "items": "Items",
-            "tools": "Tools",
-            "uptime": "Uptime"
-        },
-        "start": "Get started",
-        "more_details": "More details",
-        "tools": {
-            "title": "Tools",
-            "description": "Extensive collection of tools",
-            "tool_list": {
-                "builds": {
-                    "title": "Builds Calculator",
-                    "desc": "Create and save artifact builds, experiment with combinations and compare the effectiveness of different setups"
-                },
-                "bp": {
-                    "title": "Battle Pass Calculator",
-                    "desc": "A convenient tool for calculating Battle Pass progress"
-                },
-                "ttk": {
-                    "title": "TTK Calculator",
-                    "desc": "Estimate TTK for any weapon and armor. Compare weapons and armor to find the optimal choice"
-                },
-                "workspace": {
-                    "title": "Convenient tool workspace",
-                    "desc": "Instead of regular pages we made all tools as widgets"
-                },
-                "map": {
-                    "title": "Interactive map",
-                    "desc": "Explore the world with a handy interactive map: guides for quests, spots, stashes and much more"
-                },
-                "player_search": {
-                    "title": "Player search",
-                    "desc": "Find a player by nickname and view their statistics"
-                }
-            }
-        }
-    },
-    "footer": {
-        "made_by": "Site made ",
-        "and": " and ",
-        "links": {
-            "bug_report": "Report a bug on GitHub",
-            "telegram": "News channel",
-            "discord": "Our Discord"
-        },
-        "project": {
-            "with": "Project with ",
-            "open_source": "open source",
-            "license": "License "
-        }
-    },
-    "roadmap": {
-        "title": "Task list",
-        "sub_title": "to be done",
-        "tasks": "tasks",
-        "status": {
-            "review": "Under review",
-            "inDev": "In development",
-            "production": "Production",
-            "cancel": "Cancelled"
-        },
-        "items": {
-            "home": {
-                "name": "Home page",
-                "desc": "Title and welcome page for new users",
-                "icon": "lucide:home",
-                "status": "production",
-                "subTasks": {
-                    "design": {
-                        "name": "Site design",
-                        "desc": "Color palette, style and concept for the future site selected",
-                        "icon": "lucide:palette",
-                        "status": "production"
-                    },
-                    "ui_library": {
-                        "name": "Site UI component",
-                        "desc": "UI library for creating tools and components in a unified style",
-                        "icon": "lucide:layout",
-                        "status": "production"
-                    }
-                }
-            },
-            "interactive_map": {
-                "name": "Interactive map",
-                "desc": "Maps of all locations and event markers",
-                "icon": "lucide:map",
-                "status": "inDev",
-                "subTasks": {
-                    "all_locations_maps": {
-                        "name": "Maps of all locations",
-                        "desc": "Southern zone, Liubech-3, Northern zone and event locations",
-                        "icon": "lucide:map-pin",
-                        "status": "inDev"
-                    },
-                    "event_marks": {
-                        "name": "Markers for all spots, stashes, bubbles and outposts",
-                        "desc": "Event markers with images and information about openings",
-                        "icon": "lucide:flag",
-                        "status": "inDev"
-                    },
-                    "export_marks": {
-                        "name": "Export markers feature",
-                        "desc": "Export event markers to the game by replacing config files",
-                        "icon": "lucide:download",
-                        "status": "review"
-                    }
-                }
-            },
-            "auction": {
-                "name": "Auction",
-                "desc": "Tool for viewing and analyzing auction lots",
-                "icon": "lucide:gavel",
-                "status": "review",
-                "subTasks": {
-                    "latest_lots": {
-                        "name": "View latest lots",
-                        "desc": "Page with the latest posted auction lots",
-                        "icon": "lucide:list",
-                        "status": "review"
-                    },
-                    "price_tracking": {
-                        "name": "Price chart tracking",
-                        "desc": "Search and track the price of a specific item",
-                        "icon": "lucide:trending-up",
-                        "status": "review"
-                    },
-                    "good_deals": {
-                        "name": "Good deals",
-                        "desc": "Display items that have sharply dropped in price and profitable lots",
-                        "icon": "lucide:tag",
-                        "status": "review"
-                    }
-                }
-            },
-            "player_search": {
-                "name": "Player search",
-                "desc": "List of recent and popular characters in search",
-                "icon": "lucide:users",
-                "status": "review",
-                "subTasks": {
-                    "players_page": {
-                        "name": "Players page",
-                        "desc": "List of the 5 most recent and popular characters",
-                        "icon": "lucide:user",
-                        "status": "review"
-                    }
-                }
-            },
-            "models_view": {
-                "name": "Models view",
-                "desc": "Reference and 3D preview of items",
-                "icon": "lucide:package",
-                "status": "review",
-                "subTasks": {
-                    "base_items_guide": {
-                        "name": "Base items guide",
-                        "desc": "A wiki of base items from the EXBO Database",
-                        "icon": "lucide:book",
-                        "status": "review"
-                    },
-                    "missing_items_guide": {
-                        "name": "Missing items guide",
-                        "desc": "Adding items missing from the EXBO Database",
-                        "icon": "lucide:book-plus",
-                        "status": "review"
-                    },
-                    "preview_3d": {
-                        "name": "3D preview",
-                        "desc": "Try on attachments and paint on weapons and armor",
-                        "icon": "lucide:view",
-                        "status": "review"
-                    }
-                }
-            },
-            "build_calculator": {
-                "name": "Builds calculator",
-                "desc": "System for saving builds to local storage",
-                "icon": "lucide:calculator",
-                "status": "inDev",
-                "subTasks": {
-                    "save_builds": {
-                        "name": "Build saving system",
-                        "desc": "Save builds to the browser's local storage",
-                        "icon": "lucide:save",
-                        "status": "inDev"
-                    }
-                }
-            },
-            "localization": {
-                "name": "Localization",
-                "desc": "English, French and Spanish localization",
-                "icon": "lucide:languages",
-                "status": "inDev"
-            },
-            "ttk_calculator": {
-                "name": "TTK calculator",
-                "desc": "Time-to-kill calculator",
-                "icon": "lucide:clock",
-                "status": "inDev"
-            },
-            "exchange_coins": {
-                "name": "Exchange coins",
-                "desc": "System for working with exchange coins",
-                "icon": "lucide:coins",
-                "status": "inDev"
-            },
-            "season_pass": {
-                "name": "Season pass",
-                "desc": "Information and tracking for the season pass",
-                "icon": "lucide:ticket",
-                "status": "inDev"
-            },
-            "sensitivity": {
-                "name": "Sensitivity",
-                "desc": "Sensitivity settings for the game",
-                "icon": "lucide:sliders",
-                "status": "inDev"
-            },
-            "kv_maps": {
-                "name": "KV Maps",
-                "desc": "Canvas for tactics and saving to local storage",
-                "icon": "lucide:map",
-                "status": "cancel",
-                "subTasks": {
-                    "drawing_canvas": {
-                        "name": "Drawing canvas",
-                        "desc": "Tactics canvas with markers for tents, barricades and squads",
-                        "icon": "lucide:brush",
-                        "status": "cancel"
-                    },
-                    "save_tactics": {
-                        "name": "Save tactics",
-                        "desc": "Save tactics to local storage",
-                        "icon": "lucide:save",
-                        "status": "cancel"
-                    }
-                }
-            },
-            "squad_builder": {
-                "name": "Squad builder",
-                "desc": "Save squads with their equipment",
-                "icon": "lucide:users",
-                "status": "cancel"
-            },
-            "clan_ratings": {
-                "name": "Clan ratings",
-                "desc": "Track clan ratings in real time",
-                "icon": "lucide:bar-chart",
-                "status": "inDev",
-                "subTasks": {
-                    "rating_tracking": {
-                        "name": "Rating tracking",
-                        "desc": "Clan ratings in real time without page reload",
-                        "icon": "lucide:refresh-cw",
-                        "status": "inDev"
-                    }
-                }
-            }
-        }
-    },
-    "nav": {
-        "groups": {
-            "calculators": {
-                "title": "Calculators",
-                "items": {
-                    "art": {
-                        "label": "Builds",
-                        "description": "Create a build"
-                    },
-                    "ttk": {
-                        "label": "TTK",
-                        "description": "Weapon effectiveness"
-                    },
-                    "barter": {
-                        "label": "Exchange coins",
-                        "description": "Barter into exchange coins"
-                    },
-                    "bp": {
-                        "label": "Season pass",
-                        "description": "Level calculation"
-                    },
-                    "dpi": {
-                        "label": "Sensitivity",
-                        "description": "DPI settings"
-                    }
-                }
-            },
-            "clans": {
-                "title": "Clans",
-                "items": {
-                    "clanMaps": {
-                        "label": "KV maps",
-                        "description": "Maps for calls"
-                    },
-                    "squads": {
-                        "label": "Squad builder",
-                        "description": "Organize squads"
-                    },
-                    "top": {
-                        "label": "Clan ratings",
-                        "description": "Top clans list"
-                    }
-                }
-            },
-            "other": {
-                "title": "Other",
-                "items": {
-                    "maps": {
-                        "label": "Interactive map"
-                    },
-                    "auction": {
-                        "label": "Auction"
-                    },
-                    "items": {
-                        "label": "Item search"
-                    },
-                    "players": {
-                        "label": "Player search"
-                    },
-                    "models": {
-                        "label": "Models view",
-                        "description": "Coming soon..."
-                    }
-                }
-            }
-        }
-    },
-    "map": {
-        "title": "List of maps",
-        "loading": "Loading map",
-        "notFound": "Map not found",
-        "sideBar": {
-            "showAll": "Show all",
-            "hideAll": "Show all",
-            "export": "Export",
-            "top": "Top"
-        }
-    }
+	"landing": {
+		"overview": "All in one place",
+		"tools_for": "Tools for",
+		"need": "Everything needed for",
+		"features": {
+			"items": "Items",
+			"tools": "Tools",
+			"uptime": "Uptime"
+		},
+		"start": "Get started",
+		"more_details": "More details",
+		"tools": {
+			"title": "Tools",
+			"description": "Extensive collection of tools",
+			"tool_list": {
+				"builds": {
+					"title": "Builds Calculator",
+					"desc": "Create and save artifact builds, experiment with combinations and compare the effectiveness of different setups"
+				},
+				"bp": {
+					"title": "Battle Pass Calculator",
+					"desc": "A convenient tool for calculating Battle Pass progress"
+				},
+				"ttk": {
+					"title": "TTK Calculator",
+					"desc": "Estimate TTK for any weapon and armor. Compare weapons and armor to find the optimal choice"
+				},
+				"workspace": {
+					"title": "Convenient tool workspace",
+					"desc": "Instead of regular pages we made all tools as widgets"
+				},
+				"map": {
+					"title": "Interactive map",
+					"desc": "Explore the world with a handy interactive map: guides for quests, spots, stashes and much more"
+				},
+				"player_search": {
+					"title": "Player search",
+					"desc": "Find a player by nickname and view their statistics"
+				}
+			}
+		}
+	},
+	"footer": {
+		"made_by": "Site made ",
+		"and": " and ",
+		"links": {
+			"bug_report": "Report a bug on GitHub",
+			"telegram": "News channel",
+			"discord": "Our Discord"
+		},
+		"project": {
+			"with": "Project with ",
+			"open_source": "open source",
+			"license": "License "
+		}
+	},
+	"roadmap": {
+		"title": "Task list",
+		"sub_title": "to be done",
+		"tasks": "tasks",
+		"status": {
+			"review": "Under review",
+			"inDev": "In development",
+			"production": "Production",
+			"cancel": "Cancelled"
+		},
+		"items": {
+			"home": {
+				"name": "Home page",
+				"desc": "Title and welcome page for new users",
+				"icon": "lucide:home",
+				"status": "production",
+				"subTasks": {
+					"design": {
+						"name": "Site design",
+						"desc": "Color palette, style and concept for the future site selected",
+						"icon": "lucide:palette",
+						"status": "production"
+					},
+					"ui_library": {
+						"name": "Site UI component",
+						"desc": "UI library for creating tools and components in a unified style",
+						"icon": "lucide:layout",
+						"status": "production"
+					}
+				}
+			},
+			"interactive_map": {
+				"name": "Interactive map",
+				"desc": "Maps of all locations and event markers",
+				"icon": "lucide:map",
+				"status": "inDev",
+				"subTasks": {
+					"all_locations_maps": {
+						"name": "Maps of all locations",
+						"desc": "Southern zone, Liubech-3, Northern zone and event locations",
+						"icon": "lucide:map-pin",
+						"status": "inDev"
+					},
+					"event_marks": {
+						"name": "Markers for all spots, stashes, bubbles and outposts",
+						"desc": "Event markers with images and information about openings",
+						"icon": "lucide:flag",
+						"status": "inDev"
+					},
+					"export_marks": {
+						"name": "Export markers feature",
+						"desc": "Export event markers to the game by replacing config files",
+						"icon": "lucide:download",
+						"status": "review"
+					}
+				}
+			},
+			"auction": {
+				"name": "Auction",
+				"desc": "Tool for viewing and analyzing auction lots",
+				"icon": "lucide:gavel",
+				"status": "review",
+				"subTasks": {
+					"latest_lots": {
+						"name": "View latest lots",
+						"desc": "Page with the latest posted auction lots",
+						"icon": "lucide:list",
+						"status": "review"
+					},
+					"price_tracking": {
+						"name": "Price chart tracking",
+						"desc": "Search and track the price of a specific item",
+						"icon": "lucide:trending-up",
+						"status": "review"
+					},
+					"good_deals": {
+						"name": "Good deals",
+						"desc": "Display items that have sharply dropped in price and profitable lots",
+						"icon": "lucide:tag",
+						"status": "review"
+					}
+				}
+			},
+			"player_search": {
+				"name": "Player search",
+				"desc": "List of recent and popular characters in search",
+				"icon": "lucide:users",
+				"status": "review",
+				"subTasks": {
+					"players_page": {
+						"name": "Players page",
+						"desc": "List of the 5 most recent and popular characters",
+						"icon": "lucide:user",
+						"status": "review"
+					}
+				}
+			},
+			"models_view": {
+				"name": "Models view",
+				"desc": "Reference and 3D preview of items",
+				"icon": "lucide:package",
+				"status": "review",
+				"subTasks": {
+					"base_items_guide": {
+						"name": "Base items guide",
+						"desc": "A wiki of base items from the EXBO Database",
+						"icon": "lucide:book",
+						"status": "review"
+					},
+					"missing_items_guide": {
+						"name": "Missing items guide",
+						"desc": "Adding items missing from the EXBO Database",
+						"icon": "lucide:book-plus",
+						"status": "review"
+					},
+					"preview_3d": {
+						"name": "3D preview",
+						"desc": "Try on attachments and paint on weapons and armor",
+						"icon": "lucide:view",
+						"status": "review"
+					}
+				}
+			},
+			"build_calculator": {
+				"name": "Builds calculator",
+				"desc": "System for saving builds to local storage",
+				"icon": "lucide:calculator",
+				"status": "inDev",
+				"subTasks": {
+					"save_builds": {
+						"name": "Build saving system",
+						"desc": "Save builds to the browser's local storage",
+						"icon": "lucide:save",
+						"status": "inDev"
+					}
+				}
+			},
+			"localization": {
+				"name": "Localization",
+				"desc": "English, French and Spanish localization",
+				"icon": "lucide:languages",
+				"status": "inDev"
+			},
+			"ttk_calculator": {
+				"name": "TTK calculator",
+				"desc": "Time-to-kill calculator",
+				"icon": "lucide:clock",
+				"status": "inDev"
+			},
+			"exchange_coins": {
+				"name": "Exchange coins",
+				"desc": "System for working with exchange coins",
+				"icon": "lucide:coins",
+				"status": "inDev"
+			},
+			"season_pass": {
+				"name": "Season pass",
+				"desc": "Information and tracking for the season pass",
+				"icon": "lucide:ticket",
+				"status": "inDev"
+			},
+			"sensitivity": {
+				"name": "Sensitivity",
+				"desc": "Sensitivity settings for the game",
+				"icon": "lucide:sliders",
+				"status": "inDev"
+			},
+			"kv_maps": {
+				"name": "KV Maps",
+				"desc": "Canvas for tactics and saving to local storage",
+				"icon": "lucide:map",
+				"status": "cancel",
+				"subTasks": {
+					"drawing_canvas": {
+						"name": "Drawing canvas",
+						"desc": "Tactics canvas with markers for tents, barricades and squads",
+						"icon": "lucide:brush",
+						"status": "cancel"
+					},
+					"save_tactics": {
+						"name": "Save tactics",
+						"desc": "Save tactics to local storage",
+						"icon": "lucide:save",
+						"status": "cancel"
+					}
+				}
+			},
+			"squad_builder": {
+				"name": "Squad builder",
+				"desc": "Save squads with their equipment",
+				"icon": "lucide:users",
+				"status": "cancel"
+			},
+			"clan_ratings": {
+				"name": "Clan ratings",
+				"desc": "Track clan ratings in real time",
+				"icon": "lucide:bar-chart",
+				"status": "inDev",
+				"subTasks": {
+					"rating_tracking": {
+						"name": "Rating tracking",
+						"desc": "Clan ratings in real time without page reload",
+						"icon": "lucide:refresh-cw",
+						"status": "inDev"
+					}
+				}
+			}
+		}
+	},
+	"nav": {
+		"groups": {
+			"calculators": {
+				"title": "Calculators",
+				"items": {
+					"art": {
+						"label": "Builds",
+						"description": "Create a build"
+					},
+					"ttk": {
+						"label": "TTK",
+						"description": "Weapon effectiveness"
+					},
+					"barter": {
+						"label": "Exchange coins",
+						"description": "Barter into exchange coins"
+					},
+					"bp": {
+						"label": "Season pass",
+						"description": "Level calculation"
+					},
+					"dpi": {
+						"label": "Sensitivity",
+						"description": "DPI settings"
+					}
+				}
+			},
+			"clans": {
+				"title": "Clans",
+				"items": {
+					"clanMaps": {
+						"label": "KV maps",
+						"description": "Maps for calls"
+					},
+					"squads": {
+						"label": "Squad builder",
+						"description": "Organize squads"
+					},
+					"top": {
+						"label": "Clan ratings",
+						"description": "Top clans list"
+					}
+				}
+			},
+			"other": {
+				"title": "Other",
+				"items": {
+					"maps": {
+						"label": "Interactive map"
+					},
+					"auction": {
+						"label": "Auction"
+					},
+					"items": {
+						"label": "Item search"
+					},
+					"players": {
+						"label": "Player search"
+					},
+					"models": {
+						"label": "Models view",
+						"description": "Coming soon..."
+					}
+				}
+			}
+		}
+	},
+	"map": {
+		"title": "List of maps",
+		"loading": "Loading map",
+		"notFound": "Map not found",
+		"sideBar": {
+			"showAll": "Show all",
+			"hideAll": "Show all",
+			"export": "Export",
+			"top": "Top"
+		}
+	}
 }

@@ -1,11 +1,11 @@
 import MapView from '@/views/maps/map/MapView'
 
 export default async function MapPage({
-    params,
+	params,
 }: {
-    params: Promise<{ name: string }>
+	params: Promise<{ name: string }>
 }) {
-    const { name } = await params
+	const { name } = await params
 
-    return <MapView mapName={name} />
+	return <MapView mapName={name} />
 }

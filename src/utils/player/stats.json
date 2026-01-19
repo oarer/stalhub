@@ -1,2198 +1,2198 @@
 [
-    {
-        "id": "dun-pas",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dun-pas",
-            "args": {},
-            "lines": {
-                "ru": "Данжей пройдено",
-                "en": "Dungeons completed",
-                "es": "Mazmorras completadas",
-                "fr": "Donjons terminés",
-                "ko": "완료한 던전"
-            }
-        }
-    },
-    {
-        "id": "kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито игроков",
-                "en": "Kills",
-                "es": "Bajas",
-                "fr": "Éliminations",
-                "ko": "처치 횟수"
-            }
-        }
-    },
-    {
-        "id": "ast",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ast",
-            "args": {},
-            "lines": {
-                "ru": "Помощь в убийстве",
-                "en": "Assists",
-                "es": "Asistencias",
-                "fr": "Assistances",
-                "ko": "도움 횟수"
-            }
-        }
-    },
-    {
-        "id": "dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей",
-                "en": "Deaths",
-                "es": "Muertes",
-                "fr": "Morts",
-                "ko": "사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "max-kil-ser",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.max-kil-ser",
-            "args": {},
-            "lines": {
-                "ru": "Максимальная серия убийств",
-                "en": "Longest killstreak",
-                "es": "Racha de bajas más larga",
-                "fr": "Plus longue série d\u0027éliminations",
-                "ko": "최다 연속 처치"
-            }
-        }
-    },
-    {
-        "id": "exp-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.exp-kil",
-            "args": {},
-            "lines": {
-                "ru": "Взорвано игроков",
-                "en": "Players blown up",
-                "es": "Jugadores volados en mil pedazos",
-                "fr": "Joueurs explosés",
-                "ko": "폭발로 처치한 플레이어 수"
-            }
-        }
-    },
-    {
-        "id": "col-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.col-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от холодного оружия",
-                "en": "Deaths from melee weapons",
-                "es": "Muertes por armas cuerpo a cuerpo",
-                "fr": "Morts par armes de mêlée",
-                "ko": "근접 무기로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "exp-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.exp-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от взрывов",
-                "en": "Deaths from explosions",
-                "es": "Muertes por explosiones",
-                "fr": "Morts par explosion",
-                "ko": "폭발로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "fal-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.fal-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от падения",
-                "en": "Deaths from falling",
-                "es": "Muertes por caídas",
-                "fr": "Morts par chute",
-                "ko": "추락으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "suf-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.suf-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от удушья",
-                "en": "Deaths from suffocation",
-                "es": "Muertes por asfixia",
-                "fr": "Morts par suffocation",
-                "ko": "질식으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "suicides",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.suicides",
-            "args": {},
-            "lines": {
-                "ru": "Самоубийств",
-                "en": "Suicides",
-                "es": "Suicidios",
-                "fr": "Suicides",
-                "ko": "자살 횟수"
-            }
-        }
-    },
-    {
-        "id": "dam-dea-pla",
-        "category": "COMBAT",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dam-dea-pla",
-            "args": {},
-            "lines": {
-                "ru": "Нанесено урона игрокам",
-                "en": "Damage dealt to players",
-                "es": "Daño infligido a jugadores",
-                "fr": "Dégâts infligés aux joueurs",
-                "ko": "플레이어에게 입힌 피해량"
-            }
-        }
-    },
-    {
-        "id": "dam-rec-pla",
-        "category": "COMBAT",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dam-rec-pla",
-            "args": {},
-            "lines": {
-                "ru": "Получено урона от игроков",
-                "en": "Damage received from players",
-                "es": "Daño recibido de jugadores",
-                "fr": "Dégâts reçus des joueurs",
-                "ko": "플레이어에게 받은 피해량"
-            }
-        }
-    },
-    {
-        "id": "dam-dea-all",
-        "category": "COMBAT",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dam-dea-all",
-            "args": {},
-            "lines": {
-                "ru": "Нанесено урона всего",
-                "en": "Total damage dealt",
-                "es": "Daño total infligido",
-                "fr": "Total des dégâts infligés",
-                "ko": "입힌 총 피해량"
-            }
-        }
-    },
-    {
-        "id": "dam-rec-all",
-        "category": "COMBAT",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dam-rec-all",
-            "args": {},
-            "lines": {
-                "ru": "Получено урона всего",
-                "en": "Total damage received",
-                "es": "Daño total recibido",
-                "fr": "Total des dégâts reçus",
-                "ko": "받은 총 피해량"
-            }
-        }
-    },
-    {
-        "id": "dam-exp",
-        "category": "COMBAT",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dam-exp",
-            "args": {},
-            "lines": {
-                "ru": "Нанесено урона игрокам взрывами",
-                "en": "Damage dealt to players with explosions",
-                "es": "Daño infligido a jugadores con explosiones",
-                "fr": "Dégâts infligés aux joueurs par des explosions",
-                "ko": "폭발로 플레이어에게 입힌 피해량"
-            }
-        }
-    },
-    {
-        "id": "pla-tim",
-        "category": "EXPLORATION",
-        "type": "DURATION",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.pla-tim",
-            "args": {},
-            "lines": {
-                "ru": "Времени в игре",
-                "en": "Time spent in the game",
-                "es": "Tiempo pasado en el juego",
-                "fr": "Temps passé dans le jeu",
-                "ko": "게임 플레이 시간"
-            }
-        }
-    },
-    {
-        "id": "reg-tim",
-        "category": "EXPLORATION",
-        "type": "DATE",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.reg-tim",
-            "args": {},
-            "lines": {
-                "ru": "Пришел в Зону",
-                "en": "Arrived in the Zone",
-                "es": "Llegadas a la Zona",
-                "fr": "Arrivée dans la Zone",
-                "ko": "구역 도착 날짜"
-            }
-        }
-    },
-    {
-        "id": "dis-on-foo",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dis-on-foo",
-            "args": {},
-            "lines": {
-                "ru": "Преодолено пешком",
-                "en": "Distance traveled on foot",
-                "es": "Distancia recorrida a pie",
-                "fr": "Distance parcourue à pied",
-                "ko": "걸어서 이동한 거리"
-            }
-        }
-    },
-    {
-        "id": "dis-cra",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dis-cra",
-            "args": {},
-            "lines": {
-                "ru": "Преодолено ползком",
-                "en": "Distance traveled by crawling",
-                "es": "Distancia recorrida arrastrándose",
-                "fr": "Distance parcourue en rampant",
-                "ko": "포복으로 이동한 거리"
-            }
-        }
-    },
-    {
-        "id": "dis-sne",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dis-sne",
-            "args": {},
-            "lines": {
-                "ru": "Преодолено крадучись",
-                "en": "Distance traveled by crouching",
-                "es": "Distancia recorrida agachándose",
-                "fr": "Distance parcourue accroupi",
-                "ko": "웅크리며 이동한 거리"
-            }
-        }
-    },
-    {
-        "id": "dis-air",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dis-air",
-            "args": {},
-            "lines": {
-                "ru": "Преодолено в полете (падении)",
-                "en": "Distance traveled by air (falling)",
-                "es": "Distancia recorrida por el aire (caída)",
-                "fr": "Distance parcourue en l\u0027air (chute)",
-                "ko": "공중에서 이동한 거리 (낙하)"
-            }
-        }
-    },
-    {
-        "id": "ach-gai",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ach-gai",
-            "args": {},
-            "lines": {
-                "ru": "Достижений получено",
-                "en": "Achievements obtained",
-                "es": "Logros obtenidos",
-                "fr": "Succès obtenus",
-                "ko": "달성 업적들"
-            }
-        }
-    },
-    {
-        "id": "ite-cra",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ite-cra",
-            "args": {},
-            "lines": {
-                "ru": "Изготовлено предметов",
-                "en": "Items crafted",
-                "es": "Objetos creados",
-                "fr": "Objets fabriqués",
-                "ko": "제작한 아이템 개수"
-            }
-        }
-    },
-    {
-        "id": "ach-points",
-        "category": "NONE",
-        "type": "INTEGER",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "rad-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.rad-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от заражения",
-                "en": "Deaths from infection",
-                "es": "Muertes por infección",
-                "fr": "Morts par infections",
-                "ko": "감염으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "ble-to-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ble-to-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от кровопотери",
-                "en": "Deaths from blood loss",
-                "es": "Muertes por pérdida de sangre",
-                "fr": "Morts par hémorragie",
-                "ko": "출혈로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "med-sup-use",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.med-sup-use",
-            "args": {},
-            "lines": {
-                "ru": "Медикаментов использовано",
-                "en": "Medicines used",
-                "es": "Medicamentos usados",
-                "fr": "Médicaments utilisés",
-                "ko": "사용한 치료제 개수"
-            }
-        }
-    },
-    {
-        "id": "back-fix",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.back-fix",
-            "args": {},
-            "lines": {
-                "ru": "Отремонтировано рюкзаков",
-                "en": "Backpacks repaired",
-                "es": "Mochilas reparadas",
-                "fr": "Sacs à dos réparés",
-                "ko": "수리한 배낭 개수"
-            }
-        }
-    },
-    {
-        "id": "wea-fix",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.wea-fix",
-            "args": {},
-            "lines": {
-                "ru": "Отремонтировано оружия",
-                "en": "Weapons repaired",
-                "es": "Armas reparadas",
-                "fr": "Armes réparées",
-                "ko": "수리한 무기 개수"
-            }
-        }
-    },
-    {
-        "id": "arm-fix",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.arm-fix",
-            "args": {},
-            "lines": {
-                "ru": "Отремонтировано брони",
-                "en": "Armor repaired",
-                "es": "Armaduras reparadas",
-                "fr": "Armure réparée",
-                "ko": "수리한 방어구 개수"
-            }
-        }
-    },
-    {
-        "id": "foo-eat",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.foo-eat",
-            "args": {},
-            "lines": {
-                "ru": "Пищи съедено",
-                "en": "Food eaten",
-                "es": "Alimentos consumidos",
-                "fr": "Nourriture consommée",
-                "ko": "섭취한 음식 수"
-            }
-        }
-    },
-    {
-        "id": "tpacks-delivered",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-delivered",
-            "args": {},
-            "lines": {
-                "ru": "Доставлено посылок",
-                "en": "Packages delivered",
-                "es": "Paquetes entregados",
-                "fr": "Paquets livrés",
-                "ko": "배송한 소포 개수"
-            }
-        }
-    },
-    {
-        "id": "tpacks-inter",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-inter",
-            "args": {},
-            "lines": {
-                "ru": "Перехвачено посылок",
-                "en": "Packages intercepted",
-                "es": "Paquetes interceptados",
-                "fr": "Paquets interceptés",
-                "ko": "가로챈 소포 개수"
-            }
-        }
-    },
-    {
-        "id": "tpacks-craft",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-craft",
-            "args": {},
-            "lines": {
-                "ru": "Изготовлено посылок",
-                "en": "Packages crafted",
-                "es": "Paquetes creados",
-                "fr": "Paquets fabriqués",
-                "ko": "제작한 소포 개수"
-            }
-        }
-    },
-    {
-        "id": "tpacks-money",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-money",
-            "args": {},
-            "lines": {
-                "ru": "Заработано денег на доставке посылок",
-                "en": "Money earned by delivering packages",
-                "es": "Dinero ganado entregando paquetes",
-                "fr": "Argent gagné en livrant des colis",
-                "ko": "소포 배송으로 벌어들인 금액"
-            }
-        }
-    },
-    {
-        "id": "tpacks-money-w",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-money-w",
-            "args": {},
-            "lines": {
-                "ru": "Потрачено денег на посылки",
-                "en": "Money spent on packages",
-                "es": "Dinero gastado en paquetes",
-                "fr": "Argent dépensé pour les paquets",
-                "ko": "소포에 소모된 금액"
-            }
-        }
-    },
-    {
-        "id": "tpacks-distance",
-        "category": "EXPLORATION",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tpacks-distance",
-            "args": {},
-            "lines": {
-                "ru": "Преодолено с торговым рюкзаком",
-                "en": "Distance traveled with a trader’s backpack",
-                "es": "Distancia recorrida con una mochila de comerciante",
-                "fr": "Distance parcourue avec un sac à dos de commerçant",
-                "ko": "상인의 배낭을 메고 이동한 거리"
-            }
-        }
-    },
-    {
-        "id": "raffle-tickets-ny22",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.raffle-tickets-ny22",
-            "args": {},
-            "lines": {
-                "ru": "Найдено билетов участника",
-                "en": "Participation Tickets found",
-                "es": "Entradas de participación encontradas",
-                "fr": "Tickets de participation trouvés",
-                "ko": "참여 티켓 발견"
-            }
-        }
-    },
-    {
-        "id": "blizzard-won",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.blizzard-won",
-            "args": {},
-            "lines": {
-                "ru": "Пережито аномальных буранов",
-                "en": "Anomalous Blizzards survived",
-                "es": "Ventiscas anómalas sobrevividas",
-                "fr": "Blizzards anormaux auxquels vous avez survécu",
-                "ko": "생존한 이상 눈보라 횟수"
-            }
-        }
-    },
-    {
-        "id": "incident-part",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.incident-part",
-            "args": {},
-            "lines": {
-                "ru": "Проведено операций с группой Костелевского",
-                "en": "Operations undertaken with the Kostelevsky group",
-                "es": "Operaciones realizadas con el grupo Kostelevsky",
-                "fr": "Opérations menées avec le groupe Kostelevsky",
-                "ko": "코스텔레프스키 그룹과 수행한 작전 횟수"
-            }
-        }
-    },
-    {
-        "id": "incident-win",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.incident-win",
-            "args": {},
-            "lines": {
-                "ru": "Проведено успешных операций с группой Костелевского",
-                "en": "Operations successfully undertaken with the Kostelevsky group",
-                "es": "Operaciones realizadas con éxito con el grupo Kostelevsky",
-                "fr": "Opérations menées avec succès avec le groupe Kostelevsky",
-                "ko": "코스텔레프스키 그룹과 성공적으로 수행한 작전 횟수"
-            }
-        }
-    },
-    {
-        "id": "completed-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.completed-ops",
-            "args": {},
-            "lines": {
-                "ru": "Операций пройдено",
-                "en": "Operations Completed",
-                "es": "Operaciones completadas",
-                "fr": "Opérations terminées",
-                "ko": "작전 완료"
-            }
-        }
-    },
-    {
-        "id": "big-cleanup-completed-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.big-cleanup-completed-ops",
-            "args": {},
-            "lines": {
-                "ru": "Операций \"Большая Уборка\" пройдено",
-                "en": "The Big Clean Up Operations Completed",
-                "es": "Operaciones Gran Limpieza completadas",
-                "fr": "Opérations Grand Nettoyage terminées",
-                "ko": "대규모 소탕 작전 완료"
-            }
-        }
-    },
-    {
-        "id": "focus-completed-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.focus-completed-ops",
-            "args": {},
-            "lines": {
-                "ru": "Операций \"Фокусировка\" пройдено",
-                "en": "Focus Operations Completed",
-                "es": "Operaciones Enfoque completadas",
-                "fr": "Opérations Focalisation terminées",
-                "ko": "집중 작전 완료"
-            }
-        }
-    },
-    {
-        "id": "kills-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.kills-ops",
-            "args": {},
-            "lines": {
-                "ru": "Противников убито в Операциях",
-                "en": "Enemies Killed in Operations",
-                "es": "Enemigos eliminados en las Operaciones",
-                "fr": "Adversaires éliminés en Opérations",
-                "ko": "작전 중 처치한 적"
-            }
-        }
-    },
-    {
-        "id": "big-cleanup-max-key-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.big-cleanup-max-key-ops",
-            "args": {},
-            "lines": {
-                "ru": "Максимальный пройденный допуск Операции \"Большая Уборка\"",
-                "en": "Highest Clearance level reached in the Big Clean Up Operation",
-                "es": "Máximo nivel del acceso superado en la Operación Gran Limpieza",
-                "fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Grand Nettoyage",
-                "ko": "대규모 소탕 작전에서 달성한 가장 높은 클리어 등급"
-            }
-        }
-    },
-    {
-        "id": "focus-max-key-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.focus-max-key-ops",
-            "args": {},
-            "lines": {
-                "ru": "Максимальный пройденный допуск Операции \"Фокусировка\"",
-                "en": "Highest Clearance level reached in Focus Operation",
-                "es": "Máximo nivel del acceso superado en la Operación Enfoque",
-                "fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Focalisation",
-                "ko": "집중 작전에서 달성한 가장 높은 클리어 등급"
-            }
-        }
-    },
-    {
-        "id": "scout-powerful-shot-damage-ops",
-        "category": "SESSION_MODES",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.scout-powerful-shot-damage-ops",
-            "args": {},
-            "lines": {
-                "ru": "Нанесено урона способностью \"Мощный выстрел\"",
-                "en": "Damage Dealt with Powerful Shot Ability",
-                "es": "Daño infligido por la habilidad Disparo poderoso",
-                "fr": "Dégâts infligés avec la compétence Tir puissant",
-                "ko": "파워풀 샷 능력으로 입힌 피해량"
-            }
-        }
-    },
-    {
-        "id": "scout-powerful-shot-max-damage-ops",
-        "category": "SESSION_MODES",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.scout-powerful-shot-max-damage-ops",
-            "args": {},
-            "lines": {
-                "ru": "Максимальный урон способностью \"Мощный выстрел\"",
-                "en": "Maximum damage dealt with Powerful Shot ability",
-                "es": "Daño máximo por la habilidad Disparo poderoso",
-                "fr": "Dégâts maximum infligés avec la compétence Tir puissant",
-                "ko": "파워풀 샷 능력으로 입힌 최대 피해량"
-            }
-        }
-    },
-    {
-        "id": "support-healed-ops",
-        "category": "SESSION_MODES",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.support-healed-ops",
-            "args": {},
-            "lines": {
-                "ru": "Исцелено урона способностью \"Лечебные патроны\"",
-                "en": "Damage Healed with Healing Rounds Ability",
-                "es": "Daño sanado por la habilidad Cartuchos curativos",
-                "fr": "Soins prodigués avec la compétence Cartouches curatives",
-                "ko": "치유 탄환 능력으로 치유한 피해량"
-            }
-        }
-    },
-    {
-        "id": "support-grenades-used-ops",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.support-grenades-used-ops",
-            "args": {},
-            "lines": {
-                "ru": "Использований способности \"Лечебный состав\"",
-                "en": "Uses of Healing Compound Ability",
-                "es": "Utilizaciones de la habilidad Composición curativa",
-                "fr": "Utilisations de la compétence Composé médical",
-                "ko": "힐링 컴파운드 능력 사용 횟수"
-            }
-        }
-    },
-    {
-        "id": "tank-damage-delayed-ops",
-        "category": "SESSION_MODES",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tank-damage-delayed-ops",
-            "args": {},
-            "lines": {
-                "ru": "Урона отложено способностью \"Отложенный урон\"",
-                "en": "Damage Delayed with Delayed Damage Ability",
-                "es": "Daño pospuesto por la habilidad Daño pospuesto",
-                "fr": "Dégâts différés par la compétence Dégâts différés",
-                "ko": "피해 딜레이 능력으로 지연된 피해량"
-            }
-        }
-    },
-    {
-        "id": "tank-ultimate-max-damage-ops",
-        "category": "SESSION_MODES",
-        "type": "DECIMAL",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tank-ultimate-max-damage-ops",
-            "args": {},
-            "lines": {
-                "ru": "Максимальный урон способностью \"Тремор\"",
-                "en": "Maximum damage dealt with Tremor ability",
-                "es": "Daño máximo  por la habilidad Temblores",
-                "fr": "Dégâts maximum infligés avec la compétence Trémor",
-                "ko": "트레머 능력으로 입힌 최대 피해량"
-            }
-        }
-    },
-    {
-        "id": "air-drops-fnd",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.air-drops-fnd",
-            "args": {},
-            "lines": {
-                "ru": "Обнаружено сброшенных контейнеров",
-                "en": "Dropped containers discovered",
-                "es": "Contenedores entregados descubiertos",
-                "fr": "Conteneurs abandonnés découverts",
-                "ko": "투하된 컨테이너 발견 횟수"
-            }
-        }
-    },
-    {
-        "id": "air-drops-hckd",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.air-drops-hckd",
-            "args": {},
-            "lines": {
-                "ru": "Взломано сброшенных контейнеров",
-                "en": "Dropped containers broken into",
-                "es": "Contenedores entregados accedidos",
-                "fr": "Conteneurs abandonnés forcés",
-                "ko": "투하된 컨테이너 개봉 횟수"
-            }
-        }
-    },
-    {
-        "id": "mining-count",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mining-count",
-            "args": {},
-            "lines": {
-                "ru": "Тайников выкопано",
-                "en": "Stashes dug up",
-                "es": "Alijos desenterrados",
-                "fr": "Cachettes dénichées",
-                "ko": "발견한 은닉품 개수"
-            }
-        }
-    },
-    {
-        "id": "ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от аномалий",
-                "en": "Deaths from anomalies",
-                "es": "Muertes por anomalías",
-                "fr": "Morts dues à des anomalies",
-                "ko": "이상현상으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "fun-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.fun-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Омута»",
-                "en": "Deaths from Whirlpool",
-                "es": "Muertes por Torbellinos",
-                "fr": "Morts dues à un Tourbillon",
-                "ko": "소용돌이로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "car-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.car-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Волчка»",
-                "en": "Deaths from Blender",
-                "es": "Muertes por Remolinos",
-                "fr": "Morts dues à une Toupie",
-                "ko": "블렌더로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "kis-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.kis-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Холодца»",
-                "en": "Deaths from Aspic",
-                "es": "Muertes por Áspic",
-                "fr": "Morts dues à un Aspic",
-                "ko": "아스픽으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "tra-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tra-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Батута»",
-                "en": "Deaths from Trampoline",
-                "es": "Muertes por Trampolines",
-                "fr": "Morts dues à un Trampoline",
-                "ko": "트램펄린으로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "lig-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.lig-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Зажигалки»",
-                "en": "Deaths from Lighter",
-                "es": "Muertes por Abrasadores",
-                "fr": "Morts dues à un Briquet",
-                "ko": "라이터로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "ste-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ste-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Чайника»",
-                "en": "Deaths from Kettle",
-                "es": "Muertes por Teteras",
-                "fr": "Morts dues à un Geyser",
-                "ko": "케틀로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "ele-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ele-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Разряда»",
-                "en": "Deaths from Discharge",
-                "es": "Muertes por Descargas",
-                "fr": "Morts dues à une Décharge",
-                "ko": "방출로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "cir-ano-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.cir-ano-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от «Пекла»",
-                "en": "Deaths from Inferno",
-                "es": "Muertes por Infernos",
-                "fr": "Morts dues à un Inferno",
-                "ko": "인페르노로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "art-col",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.art-col",
-            "args": {},
-            "lines": {
-                "ru": "Артефактов собрано",
-                "en": "Artifacts collected",
-                "es": "Artefactos obtenidos",
-                "fr": "Artefacts collectés",
-                "ko": "수집한 아티팩트 개수"
-            }
-        }
-    },
-    {
-        "id": "scr-thr",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.scr-thr",
-            "args": {},
-            "lines": {
-                "ru": "Болтов брошено",
-                "en": "Bolts thrown",
-                "es": "Tornillos lanzados",
-                "fr": "Boulons lancés",
-                "ko": "던진 볼트 개수"
-            }
-        }
-    },
-    {
-        "id": "scn-cnt",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.scn-cnt",
-            "args": {},
-            "lines": {
-                "ru": "Сканирований проведено",
-                "en": "Scans conducted",
-                "es": "Escaneos realizados",
-                "fr": "Scans effectués",
-                "ko": "완료한 스캔 횟수"
-            }
-        }
-    },
-    {
-        "id": "sgn-fnd",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sgn-fnd",
-            "args": {},
-            "lines": {
-                "ru": "Обнаружено сигналов",
-                "en": "Signals discovered",
-                "es": "Señales descubiertas",
-                "fr": "Signaux découverts",
-                "ko": "탐지된 신호 개수"
-            }
-        }
-    },
-    {
-        "id": "hid-wrk-crft",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-wrk-crft",
-            "args": {},
-            "lines": {
-                "ru": "Изделий создано на верстаке",
-                "en": "Items created on the workbench",
-                "es": "Objetos creados en el banco de trabajo",
-                "fr": "Objets créés à l\u0027établi",
-                "ko": "작업대에서 제작한 아이템 개수"
-            }
-        }
-    },
-    {
-        "id": "hid-lab-crft",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-lab-crft",
-            "args": {},
-            "lines": {
-                "ru": "Изделий создано на лабораторном столе",
-                "en": "Items created on the laboratory table",
-                "es": "Objetos creados en la mesa del laboratorio",
-                "fr": "Objets créés au comptoir de laboratoire",
-                "ko": "연구대에서 제작한 아이템 개수"
-            }
-        }
-    },
-    {
-        "id": "hid-ktch-crft",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-ktch-crft",
-            "args": {},
-            "lines": {
-                "ru": "Изделий создано на кухонном столе",
-                "en": "Items created on the kitchen table",
-                "es": "Objetos creados en la mesa de la cocina",
-                "fr": "Objets créés au plan de travail",
-                "ko": "주방 테이블에서 제작한 아이템 개수"
-            }
-        }
-    },
-    {
-        "id": "hid-enrg",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-enrg",
-            "args": {},
-            "lines": {
-                "ru": "Сожжено энергии на создание изделий",
-                "en": "Energy burned to create items",
-                "es": "Energía quemada para crear objetos",
-                "fr": "Énergie consommée pour créer des objets",
-                "ko": "아이템 제작을 위해 소모된 에너지"
-            }
-        }
-    },
-    {
-        "id": "hid-plc",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-plc",
-            "args": {},
-            "lines": {
-                "ru": "Поставлено объектов в Убежище",
-                "en": "Objects placed in the hideout",
-                "es": "Objetos colocados en el escondite",
-                "fr": "Objets placés dans le refuge",
-                "ko": "은신처에 보관한 물건 개수"
-            }
-        }
-    },
-    {
-        "id": "hid-mat-mon",
-        "category": "HIDEOUT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.hid-mat-mon",
-            "args": {},
-            "lines": {
-                "ru": "Потрачено ресурсов на создание изделий в денежном эквиваленте",
-                "en": "Monetary resources spent on item creation",
-                "es": "Recursos invertidos en la creación de productos en términos monetarios",
-                "fr": "Ressources monétaires dépensées dans la création d\u0027objets",
-                "ko": "아이템 제작에 사용된 재화 금액"
-            }
-        }
-    },
-    {
-        "id": "mut-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито мутантов",
-                "en": "Mutants killed",
-                "es": "Mutantes matados",
-                "fr": "Mutants tués",
-                "ko": "처치한 돌연변이 수"
-            }
-        }
-    },
-    {
-        "id": "mut-pse-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-pse-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито диких гончих",
-                "en": "Wild hounds killed",
-                "es": "Sabuesos salvajes matados",
-                "fr": "Molosses sauvages éliminés",
-                "ko": "처치한 와일드 하운드 수"
-            }
-        }
-    },
-    {
-        "id": "mut-dog-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-dog-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито шавок",
-                "en": "Mutts killed",
-                "es": "Chuchos matados",
-                "fr": "Clébard éliminés",
-                "ko": "처치한 돌연변이 들개 수"
-            }
-        }
-    },
-    {
-        "id": "mut-flsh-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-flsh-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито хрюш",
-                "en": "Piggies killed",
-                "es": "Puercos matados",
-                "fr": "Porcinous éliminés",
-                "ko": "처치한 돌연변이 돼지 수"
-            }
-        }
-    },
-    {
-        "id": "mut-psi-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-psi-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито пси-гончих",
-                "en": "Psy-hounds killed",
-                "es": "Sabuesos psy matados",
-                "fr": "Molosses-Psy éliminés",
-                "ko": "처치한 사이킥 하운드 수"
-            }
-        }
-    },
-    {
-        "id": "mut-boar-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-boar-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито кабанов",
-                "en": "Boars killed",
-                "es": "Jabalíes matados",
-                "fr": "Sangliers tués",
-                "ko": "처치한 돌연변이 멧돼지 수"
-            }
-        }
-    },
-    {
-        "id": "mut-krv-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-krv-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито упырей",
-                "en": "Ghouls killed",
-                "es": "Necrófagos matados",
-                "fr": "Goules éliminées",
-                "ko": "처치한 구울 수"
-            }
-        }
-    },
-    {
-        "id": "mut-elp-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-elp-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито шнырей",
-                "en": "Skitters killed",
-                "es": "Merodeadores matados",
-                "fr": "Pilleurs éliminés",
-                "ko": "처치한 스키터 수"
-            }
-        }
-    },
-    {
-        "id": "mut-gig-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-gig-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито буреломов",
-                "en": "Behemoths killed",
-                "es": "Mastodontes matados",
-                "fr": "Béhémoths éliminés",
-                "ko": "처치한 베히모스 수"
-            }
-        }
-    },
-    {
-        "id": "mut-tush-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-tush-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито крыс",
-                "en": "Rats killed",
-                "es": "Ratas matadas",
-                "fr": "Rats éliminés",
-                "ko": "처치한 돌연변이 쥐 수"
-            }
-        }
-    },
-    {
-        "id": "mut-chi-kill",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mut-chi-kill",
-            "args": {},
-            "lines": {
-                "ru": "Убито бестий",
-                "en": "Fiends killed",
-                "es": "Fieras matadas",
-                "fr": "Démons éliminés",
-                "ko": "처치한 악마 수"
-            }
-        }
-    },
-    {
-        "id": "par-tim",
-        "category": "EXPLORATION",
-        "type": "DURATION",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.par-tim",
-            "args": {},
-            "lines": {
-                "ru": "Времени в отряде",
-                "en": "Time spent in a squad",
-                "es": "Tiempo pasado en un escuadrón",
-                "fr": "Temps passé dans une équipe",
-                "ko": "분대에서 지낸 시간"
-            }
-        }
-    },
-    {
-        "id": "tra",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.tra",
-            "args": {},
-            "lines": {
-                "ru": "Успешных обменов",
-                "en": "Successful exchanges",
-                "es": "Intercambios con éxito",
-                "fr": "Transactions réussies",
-                "ko": "성공적인 거래 횟수"
-            }
-        }
-    },
-    {
-        "id": "bul-dea",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.bul-dea",
-            "args": {},
-            "lines": {
-                "ru": "Смертей от пуль",
-                "en": "Deaths from bullets",
-                "es": "Muertes por balas",
-                "fr": "Morts par balles",
-                "ko": "총알로 인한 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "sho-fir",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sho-fir",
-            "args": {},
-            "lines": {
-                "ru": "Выстрелов произведено",
-                "en": "Shots fired",
-                "es": "Disparos realizados",
-                "fr": "Coups tirés",
-                "ko": "총알 발사 횟수"
-            }
-        }
-    },
-    {
-        "id": "sho-hit",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sho-hit",
-            "args": {},
-            "lines": {
-                "ru": "Количество попаданий",
-                "en": "Number of hits",
-                "es": "Número de impactos",
-                "fr": "Nombre de coups à la cible",
-                "ko": "총알 명중 횟수"
-            }
-        }
-    },
-    {
-        "id": "sho-hea",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sho-hea",
-            "args": {},
-            "lines": {
-                "ru": "Выстрелов в голову",
-                "en": "Headshots",
-                "es": "Disparos a la cabeza",
-                "fr": "Tirs à la tête",
-                "ko": "헤드샷 횟수"
-            }
-        }
-    },
-    {
-        "id": "sho-bod",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sho-bod",
-            "args": {},
-            "lines": {
-                "ru": "Выстрелов в тело",
-                "en": "Shots to torso",
-                "es": "Disparos al torso",
-                "fr": "Tirs au torse",
-                "ko": "몸통 명중 횟수"
-            }
-        }
-    },
-    {
-        "id": "sho-lim",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.sho-lim",
-            "args": {},
-            "lines": {
-                "ru": "Выстрелов в конечности",
-                "en": "Shots to limbs",
-                "es": "Disparos a las extremidades",
-                "fr": "Tirs sur les membres",
-                "ko": "사지 명중 횟수"
-            }
-        }
-    },
-    {
-        "id": "gre-thr",
-        "category": "COMBAT",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.gre-thr",
-            "args": {},
-            "lines": {
-                "ru": "Гранат брошено",
-                "en": "Grenades thrown",
-                "es": "Granadas lanzadas",
-                "fr": "Grenades lancées",
-                "ko": "던진 수류탄 개수"
-            }
-        }
-    },
-    {
-        "id": "equ-upg",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.equ-upg",
-            "args": {},
-            "lines": {
-                "ru": "Апгрейдов снаряжения",
-                "en": "Gear upgrades",
-                "es": "Mejoras de equipamiento",
-                "fr": "Améliorations d\u0027équipement",
-                "ko": "장비 업그레이드 시도 횟수"
-            }
-        }
-    },
-    {
-        "id": "suc-equ-upg",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.suc-equ-upg",
-            "args": {},
-            "lines": {
-                "ru": "Успешных апгрейдов снаряжения",
-                "en": "Successful gear upgrades",
-                "es": "Mejoras de equipamiento con éxito",
-                "fr": "Améliorations d\u0027équipement réussies",
-                "ko": "장비 업그레이드 성공 횟수"
-            }
-        }
-    },
-    {
-        "id": "kni-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.kni-kil",
-            "args": {},
-            "lines": {
-                "ru": "Зарезано игроков",
-                "en": "Players slaughtered",
-                "es": "Jugadores masacrados",
-                "fr": "Joueurs abattus",
-                "ko": "근접 무기로 처치한 플레이어 수"
-            }
-        }
-    },
-    {
-        "id": "gui-ent",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.gui-ent",
-            "args": {},
-            "lines": {
-                "ru": "Вступлений в группировки",
-                "en": "Times you’ve joined a clan",
-                "es": "Veces que te has unido a un clan",
-                "fr": "Nombre de fois où vous avez rejoint un clan",
-                "ko": "클랜 가입 횟수"
-            }
-        }
-    },
-    {
-        "id": "unit-ent",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.unit-ent",
-            "args": {},
-            "lines": {
-                "ru": "Вступлений в подразделения",
-                "en": "Times you’ve joined a subdivision",
-                "es": "Veces que te has unido a una subdivisión",
-                "fr": "Nombre de fois où vous avez rejoint une sous-division",
-                "ko": "부대 가입 횟수"
-            }
-        }
-    },
-    {
-        "id": "bas-cap-amo",
-        "category": "NONE",
-        "type": "INTEGER",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "bas-cap-tim",
-        "category": "NONE",
-        "type": "DURATION",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "bas-def-amo",
-        "category": "NONE",
-        "type": "INTEGER",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "bas-def-tim",
-        "category": "NONE",
-        "type": "DURATION",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "joined-guild",
-        "category": "NONE",
-        "type": "DATE",
-        "name": {
-            "type": "text",
-            "text": ""
-        }
-    },
-    {
-        "id": "part-bf",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.part-bf",
-            "args": {},
-            "lines": {
-                "ru": "Проведено игр в режиме «Противостояние»",
-                "en": "Games played in Standoff mode",
-                "es": "Partidas jugadas en el modo de enfrentamiento",
-                "fr": "Parties jouées en mode Confrontation",
-                "ko": "대치 모드에서 플레이한 게임 수"
-            }
-        }
-    },
-    {
-        "id": "gg-won",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.gg-won",
-            "args": {},
-            "lines": {
-                "ru": "Побед в режиме «Гонка Вооружений»",
-                "en": "Victories in Arms Race mode",
-                "es": "Victorias en el modo Carrera Armamentista",
-                "fr": "Victoires en mode Corse aux armements",
-                "ko": "무기 경쟁 모드에서 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "kills-bf",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.kills-bf",
-            "args": {},
-            "lines": {
-                "ru": "Убито игроков в режиме «Противостояние»",
-                "en": "Players killed in Standoff mode",
-                "es": "Jugadores matados en el modo de enfrentamiento",
-                "fr": "Joueurs tués en mode Confrontation",
-                "ko": "대치 모드에서 처치한 플레이어 수"
-            }
-        }
-    },
-    {
-        "id": "deaths-bf",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.deaths-bf",
-            "args": {},
-            "lines": {
-                "ru": "Смертей в режиме «Противостояние»",
-                "en": "Deaths in Standoff mode",
-                "es": "Muertes en el modo de enfrentamiento",
-                "fr": "Morts en mode Confrontation",
-                "ko": "대치 모드에서 사망 횟수"
-            }
-        }
-    },
-    {
-        "id": "won-bf",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.won-bf",
-            "args": {},
-            "lines": {
-                "ru": "Побед в режиме «Противостояние»",
-                "en": "Victories in Standoff mode",
-                "es": "Victorias en el modo de enfrentamiento",
-                "fr": "Victoires en mode Confrontation",
-                "ko": "대치 모드에서 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "lost-bf",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.lost-bf",
-            "args": {},
-            "lines": {
-                "ru": "Поражений в режиме «Противостояние»",
-                "en": "Defeats in Standoff mode",
-                "es": "Derrotas en el modo de enfrentamiento",
-                "fr": "Défaites en mode Confrontation",
-                "ko": "대치 모드에서 패배 횟수"
-            }
-        }
-    },
-    {
-        "id": "won-fights-equal",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.won-fights-equal",
-            "args": {},
-            "lines": {
-                "ru": "Побед в поединках в равных условиях",
-                "en": "Victories in fights on equal terms",
-                "es": "Victorias en combates en igualdad de condiciones",
-                "fr": "Victoires à armes égales",
-                "ko": "동등한 조건에서의 전투 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "won-fights-personal",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.won-fights-personal",
-            "args": {},
-            "lines": {
-                "ru": "Побед в поединках с личным снаряжением",
-                "en": "Victories in fights with your own gear",
-                "es": "Victorias en combates con tu propio equipamiento",
-                "fr": "Victoires remportées avec votre propre équipement",
-                "ko": "개인 장비로 전투 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "fights-part",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.fights-part",
-            "args": {},
-            "lines": {
-                "ru": "Участий в поединках",
-                "en": "Fights taken part in",
-                "es": "Combates en los que has participado",
-                "fr": "Combats auxquels vous avez participé",
-                "ko": "참가한 전투 횟수"
-            }
-        }
-    },
-    {
-        "id": "earned-on-arenas",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.earned-on-arenas",
-            "args": {},
-            "lines": {
-                "ru": "Выиграно на ставках",
-                "en": "Won on bets",
-                "es": "Ganado en apuestas",
-                "fr": "Gains des paris",
-                "ko": "투기장 베팅 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "br-won",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.br-won",
-            "args": {},
-            "lines": {
-                "ru": "Побед в королевской битве",
-                "en": "Victories in Battle Royale mode",
-                "es": "Victorias en el modo Battle Royale",
-                "fr": "Victoires en mode Battle Royale",
-                "ko": "배틀 로얄 모드에서 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "br-count",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.br-count",
-            "args": {},
-            "lines": {
-                "ru": "Сыграно королевских битв",
-                "en": "Games played in Battle Royale mode",
-                "es": "Partidas jugadas en el modo Battle Royale",
-                "fr": "Parties jouées en mode Battle Royale",
-                "ko": "배틀 로얄 모드에서 플레이한 게임 수"
-            }
-        }
-    },
-    {
-        "id": "br-kills",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.br-kills",
-            "args": {},
-            "lines": {
-                "ru": "Убийств в королевской битве",
-                "en": "Kills in Battle Royale mode",
-                "es": "Bajas en el modo Battle Royale",
-                "fr": "Éliminations en mode Battle Royale",
-                "ko": "배틀 로얄 모드에서 처치 횟수"
-            }
-        }
-    },
-    {
-        "id": "br-tasks",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.br-tasks",
-            "args": {},
-            "lines": {
-                "ru": "Выполнено задач в королевской битве",
-                "en": "Tasks completed in Battle Royale mode",
-                "es": "Tareas completadas en el modo Battle Royale",
-                "fr": "Tâches accomplies en mode Battle Royale",
-                "ko": "배틀 로얄 모드에서 완료한 임무 수"
-            }
-        }
-    },
-    {
-        "id": "ravent-count",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ravent-count",
-            "args": {},
-            "lines": {
-                "ru": "Сыграно матчей в Арене Ворона",
-                "en": "Matches played in Crow Arena",
-                "es": "Partidas en la Arena de Crow",
-                "fr": "Matchs joués en Arène de Corbeau",
-                "ko": "까마귀 투기장에서 플레이한 게임 수"
-            }
-        }
-    },
-    {
-        "id": "ravent-won",
-        "category": "SESSION_MODES",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ravent-won",
-            "args": {},
-            "lines": {
-                "ru": "Побед в Арене Ворона",
-                "en": "Wins in Crow Arena",
-                "es": "Gana en la Arena de Crow",
-                "fr": "Victoires en Arène de Corbeau",
-                "ko": "까마귀 투기장에서 승리 횟수"
-            }
-        }
-    },
-    {
-        "id": "cha-mes-sen",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.cha-mes-sen",
-            "args": {},
-            "lines": {
-                "ru": "Сообщений в чат отправлено",
-                "en": "Messages sent in chat",
-                "es": "Mensajes enviados en el chat",
-                "fr": "Messages envoyés dans le chat",
-                "ko": "채팅으로 보낸 메시지 개수"
-            }
-        }
-    },
-    {
-        "id": "npc-kil",
-        "category": "SURVIVAL",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.npc-kil",
-            "args": {},
-            "lines": {
-                "ru": "Убито NPC",
-                "en": "NPCs killed",
-                "es": "NPC matados",
-                "fr": "PNJ tués",
-                "ko": "처치한 NPC 수"
-            }
-        }
-    },
-    {
-        "id": "mon-gai-tra",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mon-gai-tra",
-            "args": {},
-            "lines": {
-                "ru": "Заработано денег от продажи торговцам",
-                "en": "Money earned from sales to merchants",
-                "es": "Dinero ganado por ventas a mercaderes",
-                "fr": "Argent gagné en vendant aux marchands",
-                "ko": "상인에게 판매로 벌어들인 금액"
-            }
-        }
-    },
-    {
-        "id": "mon-gai-que",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mon-gai-que",
-            "args": {},
-            "lines": {
-                "ru": "Заработано денег с квестов",
-                "en": "Money earned from quests",
-                "es": "Dinero obtenido por misiones",
-                "fr": "Argent gagné lors des quêtes",
-                "ko": "퀘스트로 벌어들인 금액"
-            }
-        }
-    },
-    {
-        "id": "ite-bou-tra",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ite-bou-tra",
-            "args": {},
-            "lines": {
-                "ru": "Куплено вещей у торговцев",
-                "en": "Items bought from merchants",
-                "es": "Objetos comprados a mercaderes",
-                "fr": "Objets achetés à des marchands",
-                "ko": "상인에게 구매한 아이템 수"
-            }
-        }
-    },
-    {
-        "id": "ite-sol-tra",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.ite-sol-tra",
-            "args": {},
-            "lines": {
-                "ru": "Продано вещей торговцам",
-                "en": "Items sold to merchants",
-                "es": "Objetos vendidos a mercaderes",
-                "fr": "Objets vendus aux marchands",
-                "ko": "상인에게 판매한 아이템 수"
-            }
-        }
-    },
-    {
-        "id": "que-fin",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.que-fin",
-            "args": {},
-            "lines": {
-                "ru": "Заданий завершено",
-                "en": "Quests completed",
-                "es": "Misiones completadas",
-                "fr": "Quêtes terminées",
-                "ko": "완료한 퀘스트 개수"
-            }
-        }
-    },
-    {
-        "id": "dai-que-fin",
-        "category": "EXPLORATION",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.dai-que-fin",
-            "args": {},
-            "lines": {
-                "ru": "Ежедневных заданий завершено",
-                "en": "Daily quests completed",
-                "es": "Misiones diarias completadas",
-                "fr": "Quêtes quotidiennes terminées",
-                "ko": "완료한 일일 퀘스트 개수"
-            }
-        }
-    },
-    {
-        "id": "max-mon-amo",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.max-mon-amo",
-            "args": {},
-            "lines": {
-                "ru": "Наибольшее количество денег на счету",
-                "en": "Highest amount of money in your account",
-                "es": "Mayor cantidad de dinero en tu cuenta",
-                "fr": "Somme d\u0027argent la plus élevée sur votre compte",
-                "ko": "계좌 내 최대 달성 금액"
-            }
-        }
-    },
-    {
-        "id": "mon-gai-dro",
-        "category": "ECONOMY",
-        "type": "INTEGER",
-        "name": {
-            "type": "translation",
-            "key": "general.stats.stat.mon-gai-dro",
-            "args": {},
-            "lines": {
-                "ru": "Найдено денег",
-                "en": "Money found",
-                "es": "Dinero encontrado",
-                "fr": "Argent trouvé",
-                "ko": "총 취득 금액"
-            }
-        }
-    }
+	{
+		"id": "dun-pas",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dun-pas",
+			"args": {},
+			"lines": {
+				"ru": "Данжей пройдено",
+				"en": "Dungeons completed",
+				"es": "Mazmorras completadas",
+				"fr": "Donjons terminés",
+				"ko": "완료한 던전"
+			}
+		}
+	},
+	{
+		"id": "kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито игроков",
+				"en": "Kills",
+				"es": "Bajas",
+				"fr": "Éliminations",
+				"ko": "처치 횟수"
+			}
+		}
+	},
+	{
+		"id": "ast",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ast",
+			"args": {},
+			"lines": {
+				"ru": "Помощь в убийстве",
+				"en": "Assists",
+				"es": "Asistencias",
+				"fr": "Assistances",
+				"ko": "도움 횟수"
+			}
+		}
+	},
+	{
+		"id": "dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей",
+				"en": "Deaths",
+				"es": "Muertes",
+				"fr": "Morts",
+				"ko": "사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "max-kil-ser",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.max-kil-ser",
+			"args": {},
+			"lines": {
+				"ru": "Максимальная серия убийств",
+				"en": "Longest killstreak",
+				"es": "Racha de bajas más larga",
+				"fr": "Plus longue série d\u0027éliminations",
+				"ko": "최다 연속 처치"
+			}
+		}
+	},
+	{
+		"id": "exp-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.exp-kil",
+			"args": {},
+			"lines": {
+				"ru": "Взорвано игроков",
+				"en": "Players blown up",
+				"es": "Jugadores volados en mil pedazos",
+				"fr": "Joueurs explosés",
+				"ko": "폭발로 처치한 플레이어 수"
+			}
+		}
+	},
+	{
+		"id": "col-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.col-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от холодного оружия",
+				"en": "Deaths from melee weapons",
+				"es": "Muertes por armas cuerpo a cuerpo",
+				"fr": "Morts par armes de mêlée",
+				"ko": "근접 무기로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "exp-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.exp-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от взрывов",
+				"en": "Deaths from explosions",
+				"es": "Muertes por explosiones",
+				"fr": "Morts par explosion",
+				"ko": "폭발로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "fal-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.fal-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от падения",
+				"en": "Deaths from falling",
+				"es": "Muertes por caídas",
+				"fr": "Morts par chute",
+				"ko": "추락으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "suf-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.suf-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от удушья",
+				"en": "Deaths from suffocation",
+				"es": "Muertes por asfixia",
+				"fr": "Morts par suffocation",
+				"ko": "질식으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "suicides",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.suicides",
+			"args": {},
+			"lines": {
+				"ru": "Самоубийств",
+				"en": "Suicides",
+				"es": "Suicidios",
+				"fr": "Suicides",
+				"ko": "자살 횟수"
+			}
+		}
+	},
+	{
+		"id": "dam-dea-pla",
+		"category": "COMBAT",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dam-dea-pla",
+			"args": {},
+			"lines": {
+				"ru": "Нанесено урона игрокам",
+				"en": "Damage dealt to players",
+				"es": "Daño infligido a jugadores",
+				"fr": "Dégâts infligés aux joueurs",
+				"ko": "플레이어에게 입힌 피해량"
+			}
+		}
+	},
+	{
+		"id": "dam-rec-pla",
+		"category": "COMBAT",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dam-rec-pla",
+			"args": {},
+			"lines": {
+				"ru": "Получено урона от игроков",
+				"en": "Damage received from players",
+				"es": "Daño recibido de jugadores",
+				"fr": "Dégâts reçus des joueurs",
+				"ko": "플레이어에게 받은 피해량"
+			}
+		}
+	},
+	{
+		"id": "dam-dea-all",
+		"category": "COMBAT",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dam-dea-all",
+			"args": {},
+			"lines": {
+				"ru": "Нанесено урона всего",
+				"en": "Total damage dealt",
+				"es": "Daño total infligido",
+				"fr": "Total des dégâts infligés",
+				"ko": "입힌 총 피해량"
+			}
+		}
+	},
+	{
+		"id": "dam-rec-all",
+		"category": "COMBAT",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dam-rec-all",
+			"args": {},
+			"lines": {
+				"ru": "Получено урона всего",
+				"en": "Total damage received",
+				"es": "Daño total recibido",
+				"fr": "Total des dégâts reçus",
+				"ko": "받은 총 피해량"
+			}
+		}
+	},
+	{
+		"id": "dam-exp",
+		"category": "COMBAT",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dam-exp",
+			"args": {},
+			"lines": {
+				"ru": "Нанесено урона игрокам взрывами",
+				"en": "Damage dealt to players with explosions",
+				"es": "Daño infligido a jugadores con explosiones",
+				"fr": "Dégâts infligés aux joueurs par des explosions",
+				"ko": "폭발로 플레이어에게 입힌 피해량"
+			}
+		}
+	},
+	{
+		"id": "pla-tim",
+		"category": "EXPLORATION",
+		"type": "DURATION",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.pla-tim",
+			"args": {},
+			"lines": {
+				"ru": "Времени в игре",
+				"en": "Time spent in the game",
+				"es": "Tiempo pasado en el juego",
+				"fr": "Temps passé dans le jeu",
+				"ko": "게임 플레이 시간"
+			}
+		}
+	},
+	{
+		"id": "reg-tim",
+		"category": "EXPLORATION",
+		"type": "DATE",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.reg-tim",
+			"args": {},
+			"lines": {
+				"ru": "Пришел в Зону",
+				"en": "Arrived in the Zone",
+				"es": "Llegadas a la Zona",
+				"fr": "Arrivée dans la Zone",
+				"ko": "구역 도착 날짜"
+			}
+		}
+	},
+	{
+		"id": "dis-on-foo",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dis-on-foo",
+			"args": {},
+			"lines": {
+				"ru": "Преодолено пешком",
+				"en": "Distance traveled on foot",
+				"es": "Distancia recorrida a pie",
+				"fr": "Distance parcourue à pied",
+				"ko": "걸어서 이동한 거리"
+			}
+		}
+	},
+	{
+		"id": "dis-cra",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dis-cra",
+			"args": {},
+			"lines": {
+				"ru": "Преодолено ползком",
+				"en": "Distance traveled by crawling",
+				"es": "Distancia recorrida arrastrándose",
+				"fr": "Distance parcourue en rampant",
+				"ko": "포복으로 이동한 거리"
+			}
+		}
+	},
+	{
+		"id": "dis-sne",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dis-sne",
+			"args": {},
+			"lines": {
+				"ru": "Преодолено крадучись",
+				"en": "Distance traveled by crouching",
+				"es": "Distancia recorrida agachándose",
+				"fr": "Distance parcourue accroupi",
+				"ko": "웅크리며 이동한 거리"
+			}
+		}
+	},
+	{
+		"id": "dis-air",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dis-air",
+			"args": {},
+			"lines": {
+				"ru": "Преодолено в полете (падении)",
+				"en": "Distance traveled by air (falling)",
+				"es": "Distancia recorrida por el aire (caída)",
+				"fr": "Distance parcourue en l\u0027air (chute)",
+				"ko": "공중에서 이동한 거리 (낙하)"
+			}
+		}
+	},
+	{
+		"id": "ach-gai",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ach-gai",
+			"args": {},
+			"lines": {
+				"ru": "Достижений получено",
+				"en": "Achievements obtained",
+				"es": "Logros obtenidos",
+				"fr": "Succès obtenus",
+				"ko": "달성 업적들"
+			}
+		}
+	},
+	{
+		"id": "ite-cra",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ite-cra",
+			"args": {},
+			"lines": {
+				"ru": "Изготовлено предметов",
+				"en": "Items crafted",
+				"es": "Objetos creados",
+				"fr": "Objets fabriqués",
+				"ko": "제작한 아이템 개수"
+			}
+		}
+	},
+	{
+		"id": "ach-points",
+		"category": "NONE",
+		"type": "INTEGER",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "rad-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.rad-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от заражения",
+				"en": "Deaths from infection",
+				"es": "Muertes por infección",
+				"fr": "Morts par infections",
+				"ko": "감염으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "ble-to-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ble-to-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от кровопотери",
+				"en": "Deaths from blood loss",
+				"es": "Muertes por pérdida de sangre",
+				"fr": "Morts par hémorragie",
+				"ko": "출혈로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "med-sup-use",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.med-sup-use",
+			"args": {},
+			"lines": {
+				"ru": "Медикаментов использовано",
+				"en": "Medicines used",
+				"es": "Medicamentos usados",
+				"fr": "Médicaments utilisés",
+				"ko": "사용한 치료제 개수"
+			}
+		}
+	},
+	{
+		"id": "back-fix",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.back-fix",
+			"args": {},
+			"lines": {
+				"ru": "Отремонтировано рюкзаков",
+				"en": "Backpacks repaired",
+				"es": "Mochilas reparadas",
+				"fr": "Sacs à dos réparés",
+				"ko": "수리한 배낭 개수"
+			}
+		}
+	},
+	{
+		"id": "wea-fix",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.wea-fix",
+			"args": {},
+			"lines": {
+				"ru": "Отремонтировано оружия",
+				"en": "Weapons repaired",
+				"es": "Armas reparadas",
+				"fr": "Armes réparées",
+				"ko": "수리한 무기 개수"
+			}
+		}
+	},
+	{
+		"id": "arm-fix",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.arm-fix",
+			"args": {},
+			"lines": {
+				"ru": "Отремонтировано брони",
+				"en": "Armor repaired",
+				"es": "Armaduras reparadas",
+				"fr": "Armure réparée",
+				"ko": "수리한 방어구 개수"
+			}
+		}
+	},
+	{
+		"id": "foo-eat",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.foo-eat",
+			"args": {},
+			"lines": {
+				"ru": "Пищи съедено",
+				"en": "Food eaten",
+				"es": "Alimentos consumidos",
+				"fr": "Nourriture consommée",
+				"ko": "섭취한 음식 수"
+			}
+		}
+	},
+	{
+		"id": "tpacks-delivered",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-delivered",
+			"args": {},
+			"lines": {
+				"ru": "Доставлено посылок",
+				"en": "Packages delivered",
+				"es": "Paquetes entregados",
+				"fr": "Paquets livrés",
+				"ko": "배송한 소포 개수"
+			}
+		}
+	},
+	{
+		"id": "tpacks-inter",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-inter",
+			"args": {},
+			"lines": {
+				"ru": "Перехвачено посылок",
+				"en": "Packages intercepted",
+				"es": "Paquetes interceptados",
+				"fr": "Paquets interceptés",
+				"ko": "가로챈 소포 개수"
+			}
+		}
+	},
+	{
+		"id": "tpacks-craft",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-craft",
+			"args": {},
+			"lines": {
+				"ru": "Изготовлено посылок",
+				"en": "Packages crafted",
+				"es": "Paquetes creados",
+				"fr": "Paquets fabriqués",
+				"ko": "제작한 소포 개수"
+			}
+		}
+	},
+	{
+		"id": "tpacks-money",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-money",
+			"args": {},
+			"lines": {
+				"ru": "Заработано денег на доставке посылок",
+				"en": "Money earned by delivering packages",
+				"es": "Dinero ganado entregando paquetes",
+				"fr": "Argent gagné en livrant des colis",
+				"ko": "소포 배송으로 벌어들인 금액"
+			}
+		}
+	},
+	{
+		"id": "tpacks-money-w",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-money-w",
+			"args": {},
+			"lines": {
+				"ru": "Потрачено денег на посылки",
+				"en": "Money spent on packages",
+				"es": "Dinero gastado en paquetes",
+				"fr": "Argent dépensé pour les paquets",
+				"ko": "소포에 소모된 금액"
+			}
+		}
+	},
+	{
+		"id": "tpacks-distance",
+		"category": "EXPLORATION",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tpacks-distance",
+			"args": {},
+			"lines": {
+				"ru": "Преодолено с торговым рюкзаком",
+				"en": "Distance traveled with a trader’s backpack",
+				"es": "Distancia recorrida con una mochila de comerciante",
+				"fr": "Distance parcourue avec un sac à dos de commerçant",
+				"ko": "상인의 배낭을 메고 이동한 거리"
+			}
+		}
+	},
+	{
+		"id": "raffle-tickets-ny22",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.raffle-tickets-ny22",
+			"args": {},
+			"lines": {
+				"ru": "Найдено билетов участника",
+				"en": "Participation Tickets found",
+				"es": "Entradas de participación encontradas",
+				"fr": "Tickets de participation trouvés",
+				"ko": "참여 티켓 발견"
+			}
+		}
+	},
+	{
+		"id": "blizzard-won",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.blizzard-won",
+			"args": {},
+			"lines": {
+				"ru": "Пережито аномальных буранов",
+				"en": "Anomalous Blizzards survived",
+				"es": "Ventiscas anómalas sobrevividas",
+				"fr": "Blizzards anormaux auxquels vous avez survécu",
+				"ko": "생존한 이상 눈보라 횟수"
+			}
+		}
+	},
+	{
+		"id": "incident-part",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.incident-part",
+			"args": {},
+			"lines": {
+				"ru": "Проведено операций с группой Костелевского",
+				"en": "Operations undertaken with the Kostelevsky group",
+				"es": "Operaciones realizadas con el grupo Kostelevsky",
+				"fr": "Opérations menées avec le groupe Kostelevsky",
+				"ko": "코스텔레프스키 그룹과 수행한 작전 횟수"
+			}
+		}
+	},
+	{
+		"id": "incident-win",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.incident-win",
+			"args": {},
+			"lines": {
+				"ru": "Проведено успешных операций с группой Костелевского",
+				"en": "Operations successfully undertaken with the Kostelevsky group",
+				"es": "Operaciones realizadas con éxito con el grupo Kostelevsky",
+				"fr": "Opérations menées avec succès avec le groupe Kostelevsky",
+				"ko": "코스텔레프스키 그룹과 성공적으로 수행한 작전 횟수"
+			}
+		}
+	},
+	{
+		"id": "completed-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.completed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Операций пройдено",
+				"en": "Operations Completed",
+				"es": "Operaciones completadas",
+				"fr": "Opérations terminées",
+				"ko": "작전 완료"
+			}
+		}
+	},
+	{
+		"id": "big-cleanup-completed-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.big-cleanup-completed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Операций \"Большая Уборка\" пройдено",
+				"en": "The Big Clean Up Operations Completed",
+				"es": "Operaciones Gran Limpieza completadas",
+				"fr": "Opérations Grand Nettoyage terminées",
+				"ko": "대규모 소탕 작전 완료"
+			}
+		}
+	},
+	{
+		"id": "focus-completed-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.focus-completed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Операций \"Фокусировка\" пройдено",
+				"en": "Focus Operations Completed",
+				"es": "Operaciones Enfoque completadas",
+				"fr": "Opérations Focalisation terminées",
+				"ko": "집중 작전 완료"
+			}
+		}
+	},
+	{
+		"id": "kills-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.kills-ops",
+			"args": {},
+			"lines": {
+				"ru": "Противников убито в Операциях",
+				"en": "Enemies Killed in Operations",
+				"es": "Enemigos eliminados en las Operaciones",
+				"fr": "Adversaires éliminés en Opérations",
+				"ko": "작전 중 처치한 적"
+			}
+		}
+	},
+	{
+		"id": "big-cleanup-max-key-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.big-cleanup-max-key-ops",
+			"args": {},
+			"lines": {
+				"ru": "Максимальный пройденный допуск Операции \"Большая Уборка\"",
+				"en": "Highest Clearance level reached in the Big Clean Up Operation",
+				"es": "Máximo nivel del acceso superado en la Operación Gran Limpieza",
+				"fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Grand Nettoyage",
+				"ko": "대규모 소탕 작전에서 달성한 가장 높은 클리어 등급"
+			}
+		}
+	},
+	{
+		"id": "focus-max-key-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.focus-max-key-ops",
+			"args": {},
+			"lines": {
+				"ru": "Максимальный пройденный допуск Операции \"Фокусировка\"",
+				"en": "Highest Clearance level reached in Focus Operation",
+				"es": "Máximo nivel del acceso superado en la Operación Enfoque",
+				"fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Focalisation",
+				"ko": "집중 작전에서 달성한 가장 높은 클리어 등급"
+			}
+		}
+	},
+	{
+		"id": "scout-powerful-shot-damage-ops",
+		"category": "SESSION_MODES",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.scout-powerful-shot-damage-ops",
+			"args": {},
+			"lines": {
+				"ru": "Нанесено урона способностью \"Мощный выстрел\"",
+				"en": "Damage Dealt with Powerful Shot Ability",
+				"es": "Daño infligido por la habilidad Disparo poderoso",
+				"fr": "Dégâts infligés avec la compétence Tir puissant",
+				"ko": "파워풀 샷 능력으로 입힌 피해량"
+			}
+		}
+	},
+	{
+		"id": "scout-powerful-shot-max-damage-ops",
+		"category": "SESSION_MODES",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.scout-powerful-shot-max-damage-ops",
+			"args": {},
+			"lines": {
+				"ru": "Максимальный урон способностью \"Мощный выстрел\"",
+				"en": "Maximum damage dealt with Powerful Shot ability",
+				"es": "Daño máximo por la habilidad Disparo poderoso",
+				"fr": "Dégâts maximum infligés avec la compétence Tir puissant",
+				"ko": "파워풀 샷 능력으로 입힌 최대 피해량"
+			}
+		}
+	},
+	{
+		"id": "support-healed-ops",
+		"category": "SESSION_MODES",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.support-healed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Исцелено урона способностью \"Лечебные патроны\"",
+				"en": "Damage Healed with Healing Rounds Ability",
+				"es": "Daño sanado por la habilidad Cartuchos curativos",
+				"fr": "Soins prodigués avec la compétence Cartouches curatives",
+				"ko": "치유 탄환 능력으로 치유한 피해량"
+			}
+		}
+	},
+	{
+		"id": "support-grenades-used-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.support-grenades-used-ops",
+			"args": {},
+			"lines": {
+				"ru": "Использований способности \"Лечебный состав\"",
+				"en": "Uses of Healing Compound Ability",
+				"es": "Utilizaciones de la habilidad Composición curativa",
+				"fr": "Utilisations de la compétence Composé médical",
+				"ko": "힐링 컴파운드 능력 사용 횟수"
+			}
+		}
+	},
+	{
+		"id": "tank-damage-delayed-ops",
+		"category": "SESSION_MODES",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tank-damage-delayed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Урона отложено способностью \"Отложенный урон\"",
+				"en": "Damage Delayed with Delayed Damage Ability",
+				"es": "Daño pospuesto por la habilidad Daño pospuesto",
+				"fr": "Dégâts différés par la compétence Dégâts différés",
+				"ko": "피해 딜레이 능력으로 지연된 피해량"
+			}
+		}
+	},
+	{
+		"id": "tank-ultimate-max-damage-ops",
+		"category": "SESSION_MODES",
+		"type": "DECIMAL",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tank-ultimate-max-damage-ops",
+			"args": {},
+			"lines": {
+				"ru": "Максимальный урон способностью \"Тремор\"",
+				"en": "Maximum damage dealt with Tremor ability",
+				"es": "Daño máximo  por la habilidad Temblores",
+				"fr": "Dégâts maximum infligés avec la compétence Trémor",
+				"ko": "트레머 능력으로 입힌 최대 피해량"
+			}
+		}
+	},
+	{
+		"id": "air-drops-fnd",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.air-drops-fnd",
+			"args": {},
+			"lines": {
+				"ru": "Обнаружено сброшенных контейнеров",
+				"en": "Dropped containers discovered",
+				"es": "Contenedores entregados descubiertos",
+				"fr": "Conteneurs abandonnés découverts",
+				"ko": "투하된 컨테이너 발견 횟수"
+			}
+		}
+	},
+	{
+		"id": "air-drops-hckd",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.air-drops-hckd",
+			"args": {},
+			"lines": {
+				"ru": "Взломано сброшенных контейнеров",
+				"en": "Dropped containers broken into",
+				"es": "Contenedores entregados accedidos",
+				"fr": "Conteneurs abandonnés forcés",
+				"ko": "투하된 컨테이너 개봉 횟수"
+			}
+		}
+	},
+	{
+		"id": "mining-count",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mining-count",
+			"args": {},
+			"lines": {
+				"ru": "Тайников выкопано",
+				"en": "Stashes dug up",
+				"es": "Alijos desenterrados",
+				"fr": "Cachettes dénichées",
+				"ko": "발견한 은닉품 개수"
+			}
+		}
+	},
+	{
+		"id": "ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от аномалий",
+				"en": "Deaths from anomalies",
+				"es": "Muertes por anomalías",
+				"fr": "Morts dues à des anomalies",
+				"ko": "이상현상으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "fun-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.fun-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Омута»",
+				"en": "Deaths from Whirlpool",
+				"es": "Muertes por Torbellinos",
+				"fr": "Morts dues à un Tourbillon",
+				"ko": "소용돌이로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "car-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.car-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Волчка»",
+				"en": "Deaths from Blender",
+				"es": "Muertes por Remolinos",
+				"fr": "Morts dues à une Toupie",
+				"ko": "블렌더로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "kis-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.kis-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Холодца»",
+				"en": "Deaths from Aspic",
+				"es": "Muertes por Áspic",
+				"fr": "Morts dues à un Aspic",
+				"ko": "아스픽으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "tra-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tra-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Батута»",
+				"en": "Deaths from Trampoline",
+				"es": "Muertes por Trampolines",
+				"fr": "Morts dues à un Trampoline",
+				"ko": "트램펄린으로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "lig-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.lig-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Зажигалки»",
+				"en": "Deaths from Lighter",
+				"es": "Muertes por Abrasadores",
+				"fr": "Morts dues à un Briquet",
+				"ko": "라이터로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "ste-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ste-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Чайника»",
+				"en": "Deaths from Kettle",
+				"es": "Muertes por Teteras",
+				"fr": "Morts dues à un Geyser",
+				"ko": "케틀로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "ele-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ele-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Разряда»",
+				"en": "Deaths from Discharge",
+				"es": "Muertes por Descargas",
+				"fr": "Morts dues à une Décharge",
+				"ko": "방출로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "cir-ano-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.cir-ano-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от «Пекла»",
+				"en": "Deaths from Inferno",
+				"es": "Muertes por Infernos",
+				"fr": "Morts dues à un Inferno",
+				"ko": "인페르노로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "art-col",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.art-col",
+			"args": {},
+			"lines": {
+				"ru": "Артефактов собрано",
+				"en": "Artifacts collected",
+				"es": "Artefactos obtenidos",
+				"fr": "Artefacts collectés",
+				"ko": "수집한 아티팩트 개수"
+			}
+		}
+	},
+	{
+		"id": "scr-thr",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.scr-thr",
+			"args": {},
+			"lines": {
+				"ru": "Болтов брошено",
+				"en": "Bolts thrown",
+				"es": "Tornillos lanzados",
+				"fr": "Boulons lancés",
+				"ko": "던진 볼트 개수"
+			}
+		}
+	},
+	{
+		"id": "scn-cnt",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.scn-cnt",
+			"args": {},
+			"lines": {
+				"ru": "Сканирований проведено",
+				"en": "Scans conducted",
+				"es": "Escaneos realizados",
+				"fr": "Scans effectués",
+				"ko": "완료한 스캔 횟수"
+			}
+		}
+	},
+	{
+		"id": "sgn-fnd",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sgn-fnd",
+			"args": {},
+			"lines": {
+				"ru": "Обнаружено сигналов",
+				"en": "Signals discovered",
+				"es": "Señales descubiertas",
+				"fr": "Signaux découverts",
+				"ko": "탐지된 신호 개수"
+			}
+		}
+	},
+	{
+		"id": "hid-wrk-crft",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-wrk-crft",
+			"args": {},
+			"lines": {
+				"ru": "Изделий создано на верстаке",
+				"en": "Items created on the workbench",
+				"es": "Objetos creados en el banco de trabajo",
+				"fr": "Objets créés à l\u0027établi",
+				"ko": "작업대에서 제작한 아이템 개수"
+			}
+		}
+	},
+	{
+		"id": "hid-lab-crft",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-lab-crft",
+			"args": {},
+			"lines": {
+				"ru": "Изделий создано на лабораторном столе",
+				"en": "Items created on the laboratory table",
+				"es": "Objetos creados en la mesa del laboratorio",
+				"fr": "Objets créés au comptoir de laboratoire",
+				"ko": "연구대에서 제작한 아이템 개수"
+			}
+		}
+	},
+	{
+		"id": "hid-ktch-crft",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-ktch-crft",
+			"args": {},
+			"lines": {
+				"ru": "Изделий создано на кухонном столе",
+				"en": "Items created on the kitchen table",
+				"es": "Objetos creados en la mesa de la cocina",
+				"fr": "Objets créés au plan de travail",
+				"ko": "주방 테이블에서 제작한 아이템 개수"
+			}
+		}
+	},
+	{
+		"id": "hid-enrg",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-enrg",
+			"args": {},
+			"lines": {
+				"ru": "Сожжено энергии на создание изделий",
+				"en": "Energy burned to create items",
+				"es": "Energía quemada para crear objetos",
+				"fr": "Énergie consommée pour créer des objets",
+				"ko": "아이템 제작을 위해 소모된 에너지"
+			}
+		}
+	},
+	{
+		"id": "hid-plc",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-plc",
+			"args": {},
+			"lines": {
+				"ru": "Поставлено объектов в Убежище",
+				"en": "Objects placed in the hideout",
+				"es": "Objetos colocados en el escondite",
+				"fr": "Objets placés dans le refuge",
+				"ko": "은신처에 보관한 물건 개수"
+			}
+		}
+	},
+	{
+		"id": "hid-mat-mon",
+		"category": "HIDEOUT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.hid-mat-mon",
+			"args": {},
+			"lines": {
+				"ru": "Потрачено ресурсов на создание изделий в денежном эквиваленте",
+				"en": "Monetary resources spent on item creation",
+				"es": "Recursos invertidos en la creación de productos en términos monetarios",
+				"fr": "Ressources monétaires dépensées dans la création d\u0027objets",
+				"ko": "아이템 제작에 사용된 재화 금액"
+			}
+		}
+	},
+	{
+		"id": "mut-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито мутантов",
+				"en": "Mutants killed",
+				"es": "Mutantes matados",
+				"fr": "Mutants tués",
+				"ko": "처치한 돌연변이 수"
+			}
+		}
+	},
+	{
+		"id": "mut-pse-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-pse-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито диких гончих",
+				"en": "Wild hounds killed",
+				"es": "Sabuesos salvajes matados",
+				"fr": "Molosses sauvages éliminés",
+				"ko": "처치한 와일드 하운드 수"
+			}
+		}
+	},
+	{
+		"id": "mut-dog-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-dog-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито шавок",
+				"en": "Mutts killed",
+				"es": "Chuchos matados",
+				"fr": "Clébard éliminés",
+				"ko": "처치한 돌연변이 들개 수"
+			}
+		}
+	},
+	{
+		"id": "mut-flsh-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-flsh-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито хрюш",
+				"en": "Piggies killed",
+				"es": "Puercos matados",
+				"fr": "Porcinous éliminés",
+				"ko": "처치한 돌연변이 돼지 수"
+			}
+		}
+	},
+	{
+		"id": "mut-psi-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-psi-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито пси-гончих",
+				"en": "Psy-hounds killed",
+				"es": "Sabuesos psy matados",
+				"fr": "Molosses-Psy éliminés",
+				"ko": "처치한 사이킥 하운드 수"
+			}
+		}
+	},
+	{
+		"id": "mut-boar-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-boar-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито кабанов",
+				"en": "Boars killed",
+				"es": "Jabalíes matados",
+				"fr": "Sangliers tués",
+				"ko": "처치한 돌연변이 멧돼지 수"
+			}
+		}
+	},
+	{
+		"id": "mut-krv-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-krv-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито упырей",
+				"en": "Ghouls killed",
+				"es": "Necrófagos matados",
+				"fr": "Goules éliminées",
+				"ko": "처치한 구울 수"
+			}
+		}
+	},
+	{
+		"id": "mut-elp-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-elp-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито шнырей",
+				"en": "Skitters killed",
+				"es": "Merodeadores matados",
+				"fr": "Pilleurs éliminés",
+				"ko": "처치한 스키터 수"
+			}
+		}
+	},
+	{
+		"id": "mut-gig-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-gig-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито буреломов",
+				"en": "Behemoths killed",
+				"es": "Mastodontes matados",
+				"fr": "Béhémoths éliminés",
+				"ko": "처치한 베히모스 수"
+			}
+		}
+	},
+	{
+		"id": "mut-tush-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-tush-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито крыс",
+				"en": "Rats killed",
+				"es": "Ratas matadas",
+				"fr": "Rats éliminés",
+				"ko": "처치한 돌연변이 쥐 수"
+			}
+		}
+	},
+	{
+		"id": "mut-chi-kill",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mut-chi-kill",
+			"args": {},
+			"lines": {
+				"ru": "Убито бестий",
+				"en": "Fiends killed",
+				"es": "Fieras matadas",
+				"fr": "Démons éliminés",
+				"ko": "처치한 악마 수"
+			}
+		}
+	},
+	{
+		"id": "par-tim",
+		"category": "EXPLORATION",
+		"type": "DURATION",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.par-tim",
+			"args": {},
+			"lines": {
+				"ru": "Времени в отряде",
+				"en": "Time spent in a squad",
+				"es": "Tiempo pasado en un escuadrón",
+				"fr": "Temps passé dans une équipe",
+				"ko": "분대에서 지낸 시간"
+			}
+		}
+	},
+	{
+		"id": "tra",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.tra",
+			"args": {},
+			"lines": {
+				"ru": "Успешных обменов",
+				"en": "Successful exchanges",
+				"es": "Intercambios con éxito",
+				"fr": "Transactions réussies",
+				"ko": "성공적인 거래 횟수"
+			}
+		}
+	},
+	{
+		"id": "bul-dea",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.bul-dea",
+			"args": {},
+			"lines": {
+				"ru": "Смертей от пуль",
+				"en": "Deaths from bullets",
+				"es": "Muertes por balas",
+				"fr": "Morts par balles",
+				"ko": "총알로 인한 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "sho-fir",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sho-fir",
+			"args": {},
+			"lines": {
+				"ru": "Выстрелов произведено",
+				"en": "Shots fired",
+				"es": "Disparos realizados",
+				"fr": "Coups tirés",
+				"ko": "총알 발사 횟수"
+			}
+		}
+	},
+	{
+		"id": "sho-hit",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sho-hit",
+			"args": {},
+			"lines": {
+				"ru": "Количество попаданий",
+				"en": "Number of hits",
+				"es": "Número de impactos",
+				"fr": "Nombre de coups à la cible",
+				"ko": "총알 명중 횟수"
+			}
+		}
+	},
+	{
+		"id": "sho-hea",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sho-hea",
+			"args": {},
+			"lines": {
+				"ru": "Выстрелов в голову",
+				"en": "Headshots",
+				"es": "Disparos a la cabeza",
+				"fr": "Tirs à la tête",
+				"ko": "헤드샷 횟수"
+			}
+		}
+	},
+	{
+		"id": "sho-bod",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sho-bod",
+			"args": {},
+			"lines": {
+				"ru": "Выстрелов в тело",
+				"en": "Shots to torso",
+				"es": "Disparos al torso",
+				"fr": "Tirs au torse",
+				"ko": "몸통 명중 횟수"
+			}
+		}
+	},
+	{
+		"id": "sho-lim",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sho-lim",
+			"args": {},
+			"lines": {
+				"ru": "Выстрелов в конечности",
+				"en": "Shots to limbs",
+				"es": "Disparos a las extremidades",
+				"fr": "Tirs sur les membres",
+				"ko": "사지 명중 횟수"
+			}
+		}
+	},
+	{
+		"id": "gre-thr",
+		"category": "COMBAT",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.gre-thr",
+			"args": {},
+			"lines": {
+				"ru": "Гранат брошено",
+				"en": "Grenades thrown",
+				"es": "Granadas lanzadas",
+				"fr": "Grenades lancées",
+				"ko": "던진 수류탄 개수"
+			}
+		}
+	},
+	{
+		"id": "equ-upg",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.equ-upg",
+			"args": {},
+			"lines": {
+				"ru": "Апгрейдов снаряжения",
+				"en": "Gear upgrades",
+				"es": "Mejoras de equipamiento",
+				"fr": "Améliorations d\u0027équipement",
+				"ko": "장비 업그레이드 시도 횟수"
+			}
+		}
+	},
+	{
+		"id": "suc-equ-upg",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.suc-equ-upg",
+			"args": {},
+			"lines": {
+				"ru": "Успешных апгрейдов снаряжения",
+				"en": "Successful gear upgrades",
+				"es": "Mejoras de equipamiento con éxito",
+				"fr": "Améliorations d\u0027équipement réussies",
+				"ko": "장비 업그레이드 성공 횟수"
+			}
+		}
+	},
+	{
+		"id": "kni-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.kni-kil",
+			"args": {},
+			"lines": {
+				"ru": "Зарезано игроков",
+				"en": "Players slaughtered",
+				"es": "Jugadores masacrados",
+				"fr": "Joueurs abattus",
+				"ko": "근접 무기로 처치한 플레이어 수"
+			}
+		}
+	},
+	{
+		"id": "gui-ent",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.gui-ent",
+			"args": {},
+			"lines": {
+				"ru": "Вступлений в группировки",
+				"en": "Times you’ve joined a clan",
+				"es": "Veces que te has unido a un clan",
+				"fr": "Nombre de fois où vous avez rejoint un clan",
+				"ko": "클랜 가입 횟수"
+			}
+		}
+	},
+	{
+		"id": "unit-ent",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.unit-ent",
+			"args": {},
+			"lines": {
+				"ru": "Вступлений в подразделения",
+				"en": "Times you’ve joined a subdivision",
+				"es": "Veces que te has unido a una subdivisión",
+				"fr": "Nombre de fois où vous avez rejoint une sous-division",
+				"ko": "부대 가입 횟수"
+			}
+		}
+	},
+	{
+		"id": "bas-cap-amo",
+		"category": "NONE",
+		"type": "INTEGER",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "bas-cap-tim",
+		"category": "NONE",
+		"type": "DURATION",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "bas-def-amo",
+		"category": "NONE",
+		"type": "INTEGER",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "bas-def-tim",
+		"category": "NONE",
+		"type": "DURATION",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "joined-guild",
+		"category": "NONE",
+		"type": "DATE",
+		"name": {
+			"type": "text",
+			"text": ""
+		}
+	},
+	{
+		"id": "part-bf",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.part-bf",
+			"args": {},
+			"lines": {
+				"ru": "Проведено игр в режиме «Противостояние»",
+				"en": "Games played in Standoff mode",
+				"es": "Partidas jugadas en el modo de enfrentamiento",
+				"fr": "Parties jouées en mode Confrontation",
+				"ko": "대치 모드에서 플레이한 게임 수"
+			}
+		}
+	},
+	{
+		"id": "gg-won",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.gg-won",
+			"args": {},
+			"lines": {
+				"ru": "Побед в режиме «Гонка Вооружений»",
+				"en": "Victories in Arms Race mode",
+				"es": "Victorias en el modo Carrera Armamentista",
+				"fr": "Victoires en mode Corse aux armements",
+				"ko": "무기 경쟁 모드에서 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "kills-bf",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.kills-bf",
+			"args": {},
+			"lines": {
+				"ru": "Убито игроков в режиме «Противостояние»",
+				"en": "Players killed in Standoff mode",
+				"es": "Jugadores matados en el modo de enfrentamiento",
+				"fr": "Joueurs tués en mode Confrontation",
+				"ko": "대치 모드에서 처치한 플레이어 수"
+			}
+		}
+	},
+	{
+		"id": "deaths-bf",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.deaths-bf",
+			"args": {},
+			"lines": {
+				"ru": "Смертей в режиме «Противостояние»",
+				"en": "Deaths in Standoff mode",
+				"es": "Muertes en el modo de enfrentamiento",
+				"fr": "Morts en mode Confrontation",
+				"ko": "대치 모드에서 사망 횟수"
+			}
+		}
+	},
+	{
+		"id": "won-bf",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.won-bf",
+			"args": {},
+			"lines": {
+				"ru": "Побед в режиме «Противостояние»",
+				"en": "Victories in Standoff mode",
+				"es": "Victorias en el modo de enfrentamiento",
+				"fr": "Victoires en mode Confrontation",
+				"ko": "대치 모드에서 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "lost-bf",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.lost-bf",
+			"args": {},
+			"lines": {
+				"ru": "Поражений в режиме «Противостояние»",
+				"en": "Defeats in Standoff mode",
+				"es": "Derrotas en el modo de enfrentamiento",
+				"fr": "Défaites en mode Confrontation",
+				"ko": "대치 모드에서 패배 횟수"
+			}
+		}
+	},
+	{
+		"id": "won-fights-equal",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.won-fights-equal",
+			"args": {},
+			"lines": {
+				"ru": "Побед в поединках в равных условиях",
+				"en": "Victories in fights on equal terms",
+				"es": "Victorias en combates en igualdad de condiciones",
+				"fr": "Victoires à armes égales",
+				"ko": "동등한 조건에서의 전투 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "won-fights-personal",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.won-fights-personal",
+			"args": {},
+			"lines": {
+				"ru": "Побед в поединках с личным снаряжением",
+				"en": "Victories in fights with your own gear",
+				"es": "Victorias en combates con tu propio equipamiento",
+				"fr": "Victoires remportées avec votre propre équipement",
+				"ko": "개인 장비로 전투 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "fights-part",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.fights-part",
+			"args": {},
+			"lines": {
+				"ru": "Участий в поединках",
+				"en": "Fights taken part in",
+				"es": "Combates en los que has participado",
+				"fr": "Combats auxquels vous avez participé",
+				"ko": "참가한 전투 횟수"
+			}
+		}
+	},
+	{
+		"id": "earned-on-arenas",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.earned-on-arenas",
+			"args": {},
+			"lines": {
+				"ru": "Выиграно на ставках",
+				"en": "Won on bets",
+				"es": "Ganado en apuestas",
+				"fr": "Gains des paris",
+				"ko": "투기장 베팅 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "br-won",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.br-won",
+			"args": {},
+			"lines": {
+				"ru": "Побед в королевской битве",
+				"en": "Victories in Battle Royale mode",
+				"es": "Victorias en el modo Battle Royale",
+				"fr": "Victoires en mode Battle Royale",
+				"ko": "배틀 로얄 모드에서 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "br-count",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.br-count",
+			"args": {},
+			"lines": {
+				"ru": "Сыграно королевских битв",
+				"en": "Games played in Battle Royale mode",
+				"es": "Partidas jugadas en el modo Battle Royale",
+				"fr": "Parties jouées en mode Battle Royale",
+				"ko": "배틀 로얄 모드에서 플레이한 게임 수"
+			}
+		}
+	},
+	{
+		"id": "br-kills",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.br-kills",
+			"args": {},
+			"lines": {
+				"ru": "Убийств в королевской битве",
+				"en": "Kills in Battle Royale mode",
+				"es": "Bajas en el modo Battle Royale",
+				"fr": "Éliminations en mode Battle Royale",
+				"ko": "배틀 로얄 모드에서 처치 횟수"
+			}
+		}
+	},
+	{
+		"id": "br-tasks",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.br-tasks",
+			"args": {},
+			"lines": {
+				"ru": "Выполнено задач в королевской битве",
+				"en": "Tasks completed in Battle Royale mode",
+				"es": "Tareas completadas en el modo Battle Royale",
+				"fr": "Tâches accomplies en mode Battle Royale",
+				"ko": "배틀 로얄 모드에서 완료한 임무 수"
+			}
+		}
+	},
+	{
+		"id": "ravent-count",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ravent-count",
+			"args": {},
+			"lines": {
+				"ru": "Сыграно матчей в Арене Ворона",
+				"en": "Matches played in Crow Arena",
+				"es": "Partidas en la Arena de Crow",
+				"fr": "Matchs joués en Arène de Corbeau",
+				"ko": "까마귀 투기장에서 플레이한 게임 수"
+			}
+		}
+	},
+	{
+		"id": "ravent-won",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ravent-won",
+			"args": {},
+			"lines": {
+				"ru": "Побед в Арене Ворона",
+				"en": "Wins in Crow Arena",
+				"es": "Gana en la Arena de Crow",
+				"fr": "Victoires en Arène de Corbeau",
+				"ko": "까마귀 투기장에서 승리 횟수"
+			}
+		}
+	},
+	{
+		"id": "cha-mes-sen",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.cha-mes-sen",
+			"args": {},
+			"lines": {
+				"ru": "Сообщений в чат отправлено",
+				"en": "Messages sent in chat",
+				"es": "Mensajes enviados en el chat",
+				"fr": "Messages envoyés dans le chat",
+				"ko": "채팅으로 보낸 메시지 개수"
+			}
+		}
+	},
+	{
+		"id": "npc-kil",
+		"category": "SURVIVAL",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.npc-kil",
+			"args": {},
+			"lines": {
+				"ru": "Убито NPC",
+				"en": "NPCs killed",
+				"es": "NPC matados",
+				"fr": "PNJ tués",
+				"ko": "처치한 NPC 수"
+			}
+		}
+	},
+	{
+		"id": "mon-gai-tra",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mon-gai-tra",
+			"args": {},
+			"lines": {
+				"ru": "Заработано денег от продажи торговцам",
+				"en": "Money earned from sales to merchants",
+				"es": "Dinero ganado por ventas a mercaderes",
+				"fr": "Argent gagné en vendant aux marchands",
+				"ko": "상인에게 판매로 벌어들인 금액"
+			}
+		}
+	},
+	{
+		"id": "mon-gai-que",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mon-gai-que",
+			"args": {},
+			"lines": {
+				"ru": "Заработано денег с квестов",
+				"en": "Money earned from quests",
+				"es": "Dinero obtenido por misiones",
+				"fr": "Argent gagné lors des quêtes",
+				"ko": "퀘스트로 벌어들인 금액"
+			}
+		}
+	},
+	{
+		"id": "ite-bou-tra",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ite-bou-tra",
+			"args": {},
+			"lines": {
+				"ru": "Куплено вещей у торговцев",
+				"en": "Items bought from merchants",
+				"es": "Objetos comprados a mercaderes",
+				"fr": "Objets achetés à des marchands",
+				"ko": "상인에게 구매한 아이템 수"
+			}
+		}
+	},
+	{
+		"id": "ite-sol-tra",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.ite-sol-tra",
+			"args": {},
+			"lines": {
+				"ru": "Продано вещей торговцам",
+				"en": "Items sold to merchants",
+				"es": "Objetos vendidos a mercaderes",
+				"fr": "Objets vendus aux marchands",
+				"ko": "상인에게 판매한 아이템 수"
+			}
+		}
+	},
+	{
+		"id": "que-fin",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.que-fin",
+			"args": {},
+			"lines": {
+				"ru": "Заданий завершено",
+				"en": "Quests completed",
+				"es": "Misiones completadas",
+				"fr": "Quêtes terminées",
+				"ko": "완료한 퀘스트 개수"
+			}
+		}
+	},
+	{
+		"id": "dai-que-fin",
+		"category": "EXPLORATION",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.dai-que-fin",
+			"args": {},
+			"lines": {
+				"ru": "Ежедневных заданий завершено",
+				"en": "Daily quests completed",
+				"es": "Misiones diarias completadas",
+				"fr": "Quêtes quotidiennes terminées",
+				"ko": "완료한 일일 퀘스트 개수"
+			}
+		}
+	},
+	{
+		"id": "max-mon-amo",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.max-mon-amo",
+			"args": {},
+			"lines": {
+				"ru": "Наибольшее количество денег на счету",
+				"en": "Highest amount of money in your account",
+				"es": "Mayor cantidad de dinero en tu cuenta",
+				"fr": "Somme d\u0027argent la plus élevée sur votre compte",
+				"ko": "계좌 내 최대 달성 금액"
+			}
+		}
+	},
+	{
+		"id": "mon-gai-dro",
+		"category": "ECONOMY",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.mon-gai-dro",
+			"args": {},
+			"lines": {
+				"ru": "Найдено денег",
+				"en": "Money found",
+				"es": "Dinero encontrado",
+				"fr": "Argent trouvé",
+				"ko": "총 취득 금액"
+			}
+		}
+	}
 ]

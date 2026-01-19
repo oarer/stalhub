@@ -1,37 +1,37 @@
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
-input[type='number'],
-input[type='number']:hover,
-input[type='number']:focus {
-    appearance: none;
-    -moz-appearance: textfield;
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+	appearance: none;
+	-moz-appearance: textfield;
 }
 
 ::-moz-selection {
-    background-color: #e6f7fe;
-    color: #023145;
+	background-color: #e6f7fe;
+	color: #023145;
 }
 
 ::selection {
-    background-color: #e6f7fe;
-    color: #023145;
+	background-color: #e6f7fe;
+	color: #023145;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-input[type='number'] {
-    -moz-appearance: textfield;
+input[type="number"] {
+	-moz-appearance: textfield;
 }
 
 ::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+	display: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
