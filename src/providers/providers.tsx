@@ -1,20 +1,18 @@
 'use client'
 
-import { useRef, useState, useEffect, type ReactNode } from 'react'
-
-import { I18nextProvider, initReactI18next } from 'react-i18next'
-
-import { ThemeProvider } from 'next-themes'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Toaster } from 'sonner'
 import i18n from 'i18next'
 
-import { UwuProvider } from '@/providers/uwuProvider'
-import en from '@/locales/en.json'
-import ru from '@/locales/ru.json'
-import fr from '@/locales/fr.json'
-import es from '@/locales/es.json'
+import { ThemeProvider } from 'next-themes'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { I18nextProvider, initReactI18next } from 'react-i18next'
+import { Toaster } from 'sonner'
 import { getLocale } from '@/lib/getLocale'
+import en from '@/locales/en.json'
+import es from '@/locales/es.json'
+import fr from '@/locales/fr.json'
+import ru from '@/locales/ru.json'
+import { UwuProvider } from '@/providers/uwuProvider'
 
 interface Props {
 	children: ReactNode

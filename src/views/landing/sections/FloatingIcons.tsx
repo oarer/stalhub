@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
+import { motion } from 'motion/react'
 
 import { floatingIcons } from '@/constants/landing.const'
 

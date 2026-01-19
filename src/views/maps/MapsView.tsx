@@ -1,16 +1,13 @@
 'use client'
 
-import { useEffect } from 'react'
-
-import { useTranslation } from 'react-i18next'
-
 import Image from 'next/image'
-
-import { Card } from '@/components/ui/Card'
-import { useMaps } from '@/hooks/useMaps'
-import { CustomToast } from '@/components/ui/Toast'
-import type { Locale } from '@/types/item.type'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { unbounded } from '@/app/fonts'
+import { Card } from '@/components/ui/Card'
+import { CustomToast } from '@/components/ui/Toast'
+import { useMaps } from '@/hooks/useMaps'
+import type { Locale } from '@/types/item.type'
 
 export default function MapsView() {
 	const { maps, error } = useMaps()

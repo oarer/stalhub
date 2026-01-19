@@ -1,20 +1,18 @@
-import React from 'react'
-
-import { Line } from 'react-chartjs-2'
-
-import type { ChartOptions, ChartData, TooltipItem } from 'chart.js'
+import type { ChartData, ChartOptions, TooltipItem } from 'chart.js'
 import {
-	Chart as ChartJS,
 	CategoryScale,
+	Chart as ChartJS,
+	Filler,
+	Legend,
 	LinearScale,
-	PointElement,
 	LineElement,
+	PointElement,
 	Title,
 	Tooltip,
-	Legend,
-	Filler,
 } from 'chart.js'
 import { useTheme } from 'next-themes'
+import React from 'react'
+import { Line } from 'react-chartjs-2'
 
 import { Card } from '@/components/ui/Card'
 

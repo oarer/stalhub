@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next'
-
 import { Icon } from '@iconify/react'
+import { useTranslation } from 'react-i18next'
 
 import { Tooltip } from '@/components/ui/Tooltip'
 import { formatDate } from '@/lib/date'

@@ -1,13 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-
-import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 import type { VariantProps } from 'class-variance-authority'
-
-import { cn } from '@/lib/cn'
+import { AnimatePresence, motion } from 'motion/react'
+import { useState } from 'react'
 import { checkboxVariants } from '@/constants/ui/checkBox.const'
+import { cn } from '@/lib/cn'
 
 export interface ICheckboxProps
 	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>,

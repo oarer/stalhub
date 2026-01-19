@@ -1,8 +1,8 @@
 import { Badge } from '@/components/ui/Badge'
 import { getLocale } from '@/lib/getLocale'
+import type { Achievements } from '@/types/player.type'
 import { messageToString } from '@/utils/itemUtils'
 import { ACHIEVEMENTS_MAP } from '@/utils/player/AchievementsParse'
-import type { Achievements } from '@/types/player.type'
 
 export default function AchievementsView({ data }: { data: Achievements[] }) {
 	const locale = getLocale()

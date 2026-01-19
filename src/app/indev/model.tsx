@@ -1,17 +1,17 @@
 'use client'
 
-import { Suspense, useEffect, useRef } from 'react'
-
-import { Canvas } from '@react-three/fiber'
 import {
 	Html,
 	OrbitControls,
 	PerspectiveCamera,
 	useGLTF,
 } from '@react-three/drei'
-import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+
+import { Canvas } from '@react-three/fiber'
+import { Bloom, EffectComposer } from '@react-three/postprocessing'
+import { Suspense, useEffect, useRef } from 'react'
 import * as THREE from 'three'
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 
 import { Skeleton } from '@/components/ui/Skeleton'
 

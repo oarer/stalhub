@@ -1,16 +1,15 @@
 'use client'
 
+import { AnimatePresence, motion } from 'motion/react'
 import {
 	createContext,
+	type ReactNode,
 	useCallback,
 	useContext,
 	useEffect,
 	useRef,
 	useState,
-	type ReactNode,
 } from 'react'
-
-import { motion, AnimatePresence } from 'motion/react'
 
 type Position = 'top' | 'bottom' | 'left' | 'right'
 

@@ -1,14 +1,11 @@
 'use client'
 
-import { type JSX } from 'react'
-
-import { Marker, Popup, useMap } from 'react-leaflet'
-
 import L from 'leaflet'
-
-import type { MarkersFile } from '@/types/map.type'
-import { type Locale } from '@/types/item.type'
+import { type JSX } from 'react'
+import { Marker, Popup, useMap } from 'react-leaflet'
 import { getLocale } from '@/lib/getLocale'
+import { type Locale } from '@/types/item.type'
+import type { MarkersFile } from '@/types/map.type'
 
 type Props = {
 	markersFile: MarkersFile | null

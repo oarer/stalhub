@@ -1,8 +1,7 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
-
 import dynamic from 'next/dynamic'
+import { useTranslation } from 'react-i18next'
 
 import { useMaps } from '@/hooks/useMaps'
 import type { MapConfig } from '@/types/map.type'

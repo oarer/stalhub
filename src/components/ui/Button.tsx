@@ -1,7 +1,7 @@
-import { forwardRef } from 'react'
+import { Icon } from '@iconify/react'
 
 import type { VariantProps } from 'class-variance-authority'
-import { Icon } from '@iconify/react'
+import { forwardRef } from 'react'
 
 import { buttonVariants } from '@/constants/ui/button.const'
 import { cn } from '@/lib/cn'

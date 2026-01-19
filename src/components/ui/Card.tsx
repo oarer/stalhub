@@ -1,7 +1,6 @@
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
-
-import Link from 'next/link'
 
 import { cn } from '@/lib/cn'
 

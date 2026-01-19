@@ -29,7 +29,9 @@ export function useSearchItem() {
 			if (cached) {
 				try {
 					setItems(JSON.parse(cached))
-				} catch {}
+				} catch {
+					null
+				}
 			}
 			if (cachedCommit) setCommit(cachedCommit)
 
@@ -70,8 +72,7 @@ export function useSearchItem() {
 		}
 
 		load()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [setItems, setCommit, setError, setLoading, items, commit])
 
 	return useItemStore()
 }

@@ -1,10 +1,8 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-
-import { useMap } from 'react-leaflet'
-
 import L from 'leaflet'
+import { useEffect, useRef } from 'react'
+import { useMap } from 'react-leaflet'
 
 type Props = {
 	draw: (ctx: CanvasRenderingContext2D, map: L.Map) => void
@@ -42,7 +40,9 @@ export default function CanvasLayer({ draw }: Props) {
 		return () => {
 			try {
 				map.getPanes().overlayPane.removeChild(canvas)
-			} catch {}
+			} catch {
+				null
+			}
 			map.off('move resize zoom', update)
 		}
 	}, [map, draw])

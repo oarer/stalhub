@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server'
 import type { AxiosError } from 'axios'
+import { NextResponse } from 'next/server'
 
 import { apiClient } from '@/app/api/interceptors/sc/auth.interceptor'
 import type { PlayerInfo } from '@/types/player.type'

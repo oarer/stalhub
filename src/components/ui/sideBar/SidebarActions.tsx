@@ -1,9 +1,9 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
+import { Icon } from '@iconify/react'
 
 import { motion } from 'motion/react'
-import { Icon } from '@iconify/react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '../Button'
 

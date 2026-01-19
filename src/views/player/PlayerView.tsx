@@ -4,8 +4,8 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { playerQueries } from '@/queries/player/player.queries'
 import ClanView from './components/ClanView'
-import StatsView from './components/StatsView'
 import HeroView from './components/hero/HeroView'
+import StatsView from './components/StatsView'
 
 export default function PlayerView({
 	region,

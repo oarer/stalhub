@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next'
-
 import { Icon } from '@iconify/react/dist/iconify.js'
+import { useTranslation } from 'react-i18next'
 
 import CLink from '@/components/ui/Link'
 import type { AccordionItem } from '@/types/ui/accordion.type'

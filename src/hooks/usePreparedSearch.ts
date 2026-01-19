@@ -1,9 +1,9 @@
 'use client'
 
-import { useMemo } from 'react'
+import cyrillicToTranslit from 'cyrillic-to-translit-js'
 
 import Fuse from 'fuse.js'
-import cyrillicToTranslit from 'cyrillic-to-translit-js'
+import { useMemo } from 'react'
 
 import { useSearchItem } from '@/hooks/useSearchItem'
 import type { ItemListing } from '@/types/api.type'

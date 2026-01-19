@@ -1,28 +1,25 @@
 'use client'
 
+import { Icon } from '@iconify/react'
+import { AnimatePresence, motion } from 'motion/react'
 import type React from 'react'
 import {
-	useState,
-	useRef,
+	useCallback,
 	useEffect,
 	useLayoutEffect,
-	useCallback,
 	useMemo,
+	useRef,
+	useState,
 } from 'react'
-
 import { useTranslation } from 'react-i18next'
-
-import { motion, AnimatePresence } from 'motion/react'
-import { Icon } from '@iconify/react'
-
-import { cn } from '@/lib/cn'
+import { Button } from '@/components/ui/Button'
 import useClickOutside from '@/hooks/useClickOutside'
+import { cn } from '@/lib/cn'
 import type {
-	DropdownProps,
 	DropdownMenuItemProps,
+	DropdownProps,
 	SubmenuWithStateProps,
 } from '@/types/ui/dropdown.type'
-import { Button } from '@/components/ui/Button'
 
 const baseClasses =
 	'absolute z-999 min-w-[250px] bg-background/95 ring-2 backdrop-blur-xl ring-border/50 rounded-lg shadow-lg p-2'
@@ -253,7 +250,7 @@ function SubmenuWithState({
 			window.removeEventListener('scroll', handleScroll, true)
 			ro?.disconnect()
 		}
-	}, [updatePosition, parentRef, submenuRef])
+	}, [updatePosition, parentRef])
 
 	return (
 		<motion.div

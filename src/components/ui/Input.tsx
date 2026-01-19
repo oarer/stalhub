@@ -1,8 +1,7 @@
-import { useRef, useState } from 'react'
-import type { InputHTMLAttributes } from 'react'
-
-import { twMerge } from 'tailwind-merge'
 import { Icon } from '@iconify/react'
+import type { InputHTMLAttributes } from 'react'
+import { useRef, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type Props = InputHTMLAttributes<HTMLInputElement>
 

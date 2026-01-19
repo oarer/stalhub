@@ -1,16 +1,14 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
-
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
-
-import { Badge } from '@/components/ui/Badge'
+import { useTranslation } from 'react-i18next'
 import { unbounded } from '@/app/fonts'
+import { Badge } from '@/components/ui/Badge'
+import CLink from '@/components/ui/Link'
 import { featuresHero } from '@/constants/landing.const'
 import { useUwuStore } from '@/stores/useUwu.store'
-import CLink from '@/components/ui/Link'
 
 export default function Hero() {
 	const { uwuMode } = useUwuStore()

@@ -1,4 +1,4 @@
-import type { InternalAxiosRequestConfig, AxiosError } from 'axios'
+import type { AxiosError, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
 
 import { TokenPool } from '@/lib/tokenPool'

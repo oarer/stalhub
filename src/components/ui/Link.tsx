@@ -1,9 +1,9 @@
-import type { AnchorHTMLAttributes } from 'react'
+import { Icon } from '@iconify/react'
 
 import type { VariantProps } from 'class-variance-authority'
-import { twMerge } from 'tailwind-merge'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
+import type { AnchorHTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import { linkVariants } from '@/constants/ui/link.const'
 

@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react'
-
-import { createPortal } from 'react-dom'
-import { useMap } from 'react-leaflet'
-
 import { Icon } from '@iconify/react'
 import L from 'leaflet'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { useMap } from 'react-leaflet'
 
 export default function ZoomControl() {
 	const map = useMap()

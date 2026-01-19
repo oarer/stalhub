@@ -1,9 +1,8 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
-
 import { Icon } from '@iconify/react'
-import { motion, AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
 
 import useClickOutside from '@/hooks/useClickOutside'
 import { getLocale } from '@/lib/getLocale'

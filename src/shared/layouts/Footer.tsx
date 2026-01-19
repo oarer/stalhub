@@ -1,17 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import { useTranslation } from 'react-i18next'
-
-import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { montserrat } from '@/app/fonts'
 import { useUwuStore } from '@/stores/useUwu.store'
 
-// HUGE thanks to KryptonFox (GitHub: @kryptonFox) for this code snippet!
+// HUGE thanks to KryptonFox (GitHub: @kryptonFox) for this code snippet <3
 const BuildHash = () => (
 	<span className="flex items-center gap-1 text-xs text-neutral-600 dark:text-neutral-400">
 		<Icon className="h-4 w-4" icon="mdi:code-tags" />

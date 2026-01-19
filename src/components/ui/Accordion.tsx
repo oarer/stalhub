@@ -1,16 +1,15 @@
 'use client'
 
-import { useState, useCallback, useRef, useLayoutEffect } from 'react'
-
-import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
+import { AnimatePresence, motion } from 'motion/react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import {
+	accordionIndicatorVariants,
+	accordionVariants,
+} from '@/constants/ui/accordion.const'
 import { cn } from '@/lib/cn'
 import type { AccordionProps } from '@/types/ui/accordion.type'
-import {
-	accordionVariants,
-	accordionIndicatorVariants,
-} from '@/constants/ui/accordion.const'
 
 export function Accordion({
 	items,

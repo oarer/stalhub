@@ -1,5 +1,5 @@
-import { toast } from 'sonner'
 import { Icon } from '@iconify/react'
+import { toast } from 'sonner'
 
 import { cn } from '@/lib/cn'
 
@@ -57,7 +57,7 @@ export function CustomToast(
 		(id) => (
 			<div
 				className={cn(
-					'flex w-full max-w-[364px] rounded-xl px-3 py-2 shadow-md ring-2 transition-all',
+					'flex w-full max-w-91 rounded-xl px-3 py-2 shadow-md ring-2 transition-all',
 					toastStyles[type]
 				)}
 			>

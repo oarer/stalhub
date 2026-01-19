@@ -1,18 +1,16 @@
 'use client'
 
-import { useState } from 'react'
-
-import Link from 'next/link'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
-
-import ChangeTheme from './ChangeTheme'
-import useSvg from '@/hooks/useSvg'
-import NavMobile from './NavMobile'
-import { DropDownLinks } from '@/constants/nav.const'
-import DropdownMenu from '@/components/ui/DropDown'
-import ChangeLang from './ChangeLang'
+import Link from 'next/link'
+import { useState } from 'react'
 import ItemSearchModal from '@/components/modals/ItemSearch'
+import DropdownMenu from '@/components/ui/DropDown'
+import { DropDownLinks } from '@/constants/nav.const'
+import useSvg from '@/hooks/useSvg'
+import ChangeLang from './ChangeLang'
+import ChangeTheme from './ChangeTheme'
+import NavMobile from './NavMobile'
 
 export default function Nav() {
 	const svgPath = useSvg()

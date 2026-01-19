@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
 import { playerService } from '@/services/player/player.service'
-import type { PlayerParams, PlayerInfo } from '@/types/player.type'
+import type { PlayerInfo, PlayerParams } from '@/types/player.type'
 
 class PlayerQueries {
 	get({ region, character }: PlayerParams) {

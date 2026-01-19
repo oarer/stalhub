@@ -1,8 +1,7 @@
-import { NextResponse } from 'next/server'
 import type { AxiosError } from 'axios'
-
-import type { LotsResponse } from '@/types/item.type'
+import { NextResponse } from 'next/server'
 import { apiClient } from '@/app/api/interceptors/sc/auth.interceptor'
+import type { LotsResponse } from '@/types/item.type'
 
 export async function GET(
 	req: Request,

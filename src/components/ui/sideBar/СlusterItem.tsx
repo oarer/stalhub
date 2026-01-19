@@ -1,14 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-
-import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
+import { AnimatePresence, motion } from 'motion/react'
+import { useState } from 'react'
+import { getLocale } from '@/lib/getLocale'
+import type { Locale } from '@/types/item.type'
 import type { MarkerClusterFull as MarkerClusterType } from '@/types/map.type'
 import { CheckBox } from '../CheckBox'
-import type { Locale } from '@/types/item.type'
-import { getLocale } from '@/lib/getLocale'
 
 type TranslatedText = Partial<Record<Locale, string>>
 
@@ -63,6 +62,7 @@ export default function ClusterItem({
 				<motion.label
 					className="group flex flex-1 cursor-pointer items-center gap-2"
 					whileHover={{ x: 2 }}
+					htmlFor={clusterName}
 				>
 					<CheckBox
 						checked={isVisible}
@@ -108,6 +108,7 @@ export default function ClusterItem({
 										className="group flex cursor-pointer items-center gap-2"
 										key={groupKey}
 										whileHover={{ x: 2 }}
+										htmlFor={marker.slug}
 									>
 										<CheckBox
 											checked={isGroupVisible}

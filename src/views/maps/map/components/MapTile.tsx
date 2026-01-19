@@ -1,19 +1,17 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
-
-import { MapContainer, TileLayer } from 'react-leaflet'
 
 import L from 'leaflet'
-
+import { useMemo, useRef } from 'react'
+import { MapContainer, TileLayer } from 'react-leaflet'
+import Sidebar from '@/components/ui/sideBar/SideBar'
+import { useMarkersFile } from '@/hooks/useMarkersFile'
+import CanvasLayer from './CanvasLayer'
+import ServerMarkers from './ServerMarkers'
+import SetImageBounds from './SetImageBounds'
+import { serverMarkersToGeoJSON } from './serverToGeoJSON'
 /* eslint-disable import/order */
 import ZoomControl from './ZoomControl'
-import CanvasLayer from './CanvasLayer'
-import SetImageBounds from './SetImageBounds'
-import ServerMarkers from './ServerMarkers'
-import { useMarkersFile } from '@/hooks/useMarkersFile'
-import { serverMarkersToGeoJSON } from './serverToGeoJSON'
-import Sidebar from '@/components/ui/sideBar/SideBar'
 /* eslint-enable import/order */
 
 import 'leaflet-draw/dist/leaflet.draw.css'

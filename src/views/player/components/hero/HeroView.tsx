@@ -1,16 +1,15 @@
-import { useTranslation } from 'react-i18next'
-
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 import { Card } from '@/components/ui/Card'
 import type { PlayerInfo } from '@/types/player.type'
 import { allianceColors } from '@/types/player.type'
+import { getStatValue } from '@/utils/player/StatParse'
 import { StalcraftText } from '@/utils/StalcraftText'
 import AchievementsView from '../AchievementsView'
-import { getStatValue } from '@/utils/player/StatParse'
-import HeroStats from './HeroStats'
 import HeroCombat from './HeroCombat'
+import HeroStats from './HeroStats'
 
 export default function HeroView({ data }: { data: PlayerInfo }) {
 	const { t } = useTranslation()

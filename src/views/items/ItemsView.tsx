@@ -1,34 +1,32 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import Image from 'next/image'
-
-import { useItem } from '@/hooks/useItem'
+import { useEffect, useState } from 'react'
+import { unbounded } from '@/app/fonts'
+import { Card } from '@/components/ui/Card'
 import { CustomToast } from '@/components/ui/Toast'
+import { useAuctionCurrent } from '@/hooks/useAuctionCurrent'
+import { useAuctionHistory } from '@/hooks/useAuctionHistory'
+import { useItem } from '@/hooks/useItem'
+import { getLocale } from '@/lib/getLocale'
+import {
+	type AddStatBlock,
+	type DamageDistanceInfoBlock,
+	type ElementListBlock,
+	type InfoBlock,
+	InfoColor,
+	infoColorMap,
+	type TextInfoBlock,
+} from '@/types/item.type'
 import {
 	getCategoryLabel,
 	isNumericVariantsBlock,
 	messageToString,
 } from '@/utils/itemUtils'
-import { TextBlock, NumericVariantsCard, ListBlock } from './components/blocks'
-import {
-	type AddStatBlock,
-	InfoColor,
-	infoColorMap,
-	type DamageDistanceInfoBlock,
-	type ElementListBlock,
-	type InfoBlock,
-	type TextInfoBlock,
-} from '@/types/item.type'
-import { Card } from '@/components/ui/Card'
-import { unbounded } from '@/app/fonts'
-import { getLocale } from '@/lib/getLocale'
-import { useAuctionHistory } from '@/hooks/useAuctionHistory'
 import { DamageChart } from '../ttk/components/DamageChart'
-import LoadingItem from './components/loading'
-import { useAuctionCurrent } from '@/hooks/useAuctionCurrent'
 import AuctionTabs from './components/auction/AuctionTabs'
+import { ListBlock, NumericVariantsCard, TextBlock } from './components/blocks'
+import LoadingItem from './components/loading'
 
 type ItemsViewProps = { path: string[]; id: string }
 
@@ -56,7 +54,7 @@ export default function ItemsView({ path, id }: ItemsViewProps) {
 	useEffect(() => {
 		if (id) refetch(githubUrl)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [id])
+	}, [id, refetch, githubUrl])
 
 	// ! TODO SUSPENSE QUERIES
 

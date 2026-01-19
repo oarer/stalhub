@@ -1,17 +1,16 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
-
-import { motion } from 'motion/react'
 import { Icon } from '@iconify/react'
 
-import { Card } from '@/components/ui/Card'
+import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
+import { unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
-import { cn } from '@/lib/cn'
+import { Card } from '@/components/ui/Card'
 import type { RoadMap } from '@/constants/roadMap.const'
 import { statusConfig } from '@/constants/roadMap.const'
+import { cn } from '@/lib/cn'
 import { getSubTaskBgColor, getTasksByStatus } from './statusUtils'
-import { unbounded } from '@/app/fonts'
 
 export default function RoadmapView() {
 	const { t } = useTranslation()

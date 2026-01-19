@@ -1,12 +1,10 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
-
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
-
-import { Card } from '@/components/ui/Card'
+import { useTranslation } from 'react-i18next'
 import { unbounded } from '@/app/fonts'
+import { Card } from '@/components/ui/Card'
 import { tools } from '@/constants/landing.const'
 import { cn } from '@/lib/cn'
 

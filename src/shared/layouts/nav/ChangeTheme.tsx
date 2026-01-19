@@ -1,8 +1,7 @@
-import { useRef, useState } from 'react'
-
-import { useTheme } from 'next-themes'
 import { Icon } from '@iconify/react'
-import { motion, AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useTheme } from 'next-themes'
+import { useRef, useState } from 'react'
 
 import useClickOutside from '@/hooks/useClickOutside'
 

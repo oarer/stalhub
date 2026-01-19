@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import { useUwuStore } from '@/stores/useUwu.store'
 

@@ -1,14 +1,13 @@
 'use client'
 
-import { memo, useState } from 'react'
-
-import { motion, AnimatePresence } from 'motion/react'
 import { Icon } from '@iconify/react'
 
+import { AnimatePresence, motion } from 'motion/react'
+import { memo, useState } from 'react'
+import type { MarkerClusterFull as MarkerClusterType } from '@/types/map.type'
+import SidebarActions from './SidebarActions'
 import SidebarHeader from './SidebarHeader'
 import ClusterItem from './СlusterItem'
-import SidebarActions from './SidebarActions'
-import type { MarkerClusterFull as MarkerClusterType } from '@/types/map.type'
 
 type Props = {
 	clusterList: MarkerClusterType[]
