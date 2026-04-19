@@ -66,7 +66,7 @@ export default async function RootLayout({
 							<Providers>
 								<InDevNav />
 								<Nav />
-								{children}
+								<main className="min-h-screen">{children}</main>
 								<Footer />
 							</Providers>
 						</NextIntlClientProvider>
