@@ -114,6 +114,10 @@
 					"players": {
 						"label": "Player Search"
 					},
+					"markerEditor": {
+						"label": "Marker Editor",
+						"description": "Import CFG, generate markers, export fast"
+					},
 					"models": {
 						"label": "Model Viewer",
 						"description": "Coming soon..."

@@ -261,6 +261,25 @@ export const DropDownLinks = (): DropdownMenuGroup[] => {
 					),
 				},
 				{
+					key: 'markerEditor',
+					content: (
+						<CLink
+							className="flex w-full items-center justify-start gap-2 rounded-lg px-3 py-1"
+							href="/marker-editor"
+						>
+							<Icon className="text-xl" icon="lucide:map-pin" />
+							<div className="flex flex-col">
+								<p className="font-semibold text-neutral-700 dark:text-neutral-100">
+									Редактор меток
+								</p>
+								<span className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
+									CFG + генерация + экспорт
+								</span>
+							</div>
+						</CLink>
+					),
+				},
+				{
 					key: 'models',
 					content: (
 						<CLink
@@ -393,6 +412,13 @@ export const DropDownMobile = (
 				>
 					<Icon className="text-xl" icon="lucide:user-round-search" />
 					<p>{t('nav.groups.other.items.players.label')}</p>
+				</CLink>
+				<CLink
+					className="flex items-center justify-start gap-3 px-2 py-1"
+					href="/marker-editor"
+				>
+					<Icon className="text-xl" icon="lucide:map-pin" />
+					<p>Редактор меток</p>
 				</CLink>
 				<CLink
 					className="flex items-center justify-start gap-3 px-2 py-1"
