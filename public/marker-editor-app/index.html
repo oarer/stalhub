@@ -9,28 +9,28 @@
   <body>
     <aside class="sidebar">
       <h1>SimpleMapper</h1>
-      <p class="subtitle">Карта + инструменты</p>
+      <p class="subtitle">РљР°СЂС‚Р° + РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</p>
 
-      <div class="control-label">Карта</div>
+      <div class="control-label">РљР°СЂС‚Р°</div>
       <div class="inline-note">main: <b>map</b></div>
 
       <div class="stats" id="map-stats"></div>
-      <div class="stats" id="load-stats">Ожидание загрузки...</div>
+      <div class="stats" id="load-stats">РћР¶РёРґР°РЅРёРµ Р·Р°РіСЂСѓР·РєРё...</div>
 
-      <h2>Инструменты</h2>
-      <label class="control-label" for="image-input">Картинка</label>
+      <h2>РРЅСЃС‚СЂСѓРјРµРЅС‚С‹</h2>
+      <label class="control-label" for="image-input">РљР°СЂС‚РёРЅРєР°</label>
       <input id="image-input" type="file" accept="image/*" />
-      <div class="inline-note" id="source-image-size">Источник: не загружен</div>
+      <div class="inline-note" id="source-image-size">РСЃС‚РѕС‡РЅРёРє: РЅРµ Р·Р°РіСЂСѓР¶РµРЅ</div>
 
-      <label class="control-label">Целевое разрешение</label>
+      <label class="control-label">Р¦РµР»РµРІРѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ</label>
       <div class="res-row">
         <input id="target-width" type="number" max="4096" step="1" value="256" />
-        <button id="aspect-lock-btn" type="button" class="aspect-lock-btn" title="Связь сторон">??</button>
+        <button id="aspect-lock-btn" type="button" class="aspect-lock-btn" title="РЎРІСЏР·СЊ СЃС‚РѕСЂРѕРЅ">lock</button>
         <input id="target-height" type="number" max="4096" step="1" value="256" />
       </div>
       <div class="inline-note" id="target-resolution-note">256 x 256</div>
 
-      <label class="control-label" for="gen-icon">Иконка</label>
+      <label class="control-label" for="gen-icon">РРєРѕРЅРєР°</label>
       <select id="gen-icon">
         <option value="0">custom</option>
         <option value="1">chest</option>
@@ -42,41 +42,41 @@
       </select>
       <label class="toggle">
         <input id="auto-icons" type="checkbox" checked />
-        <span>Авто-иконки</span>
+        <span>РђРІС‚Рѕ-РёРєРѕРЅРєРё</span>
       </label>
       <label class="toggle">
         <input id="high-perf-mode" type="checkbox" />
-        <span>High-perf mode (кружки)</span>
+        <span>High-perf mode (РєСЂСѓР¶РєРё)</span>
       </label>
 
-      <label class="control-label" for="sticker-scale">Масштаб (в тайлах)</label>
+      <label class="control-label" for="sticker-scale">РњР°СЃС€С‚Р°Р± (РІ С‚Р°Р№Р»Р°С…)</label>
       <input id="sticker-scale" type="number" min="0.2" max="200" step="0.2" value="1" />
 
       <div class="button-row">
-        <button id="generate-btn" type="button">Сгенерировать</button>
-        <button id="clear-generated-btn" type="button">Очистить</button>
+        <button id="generate-btn" type="button">РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ</button>
+        <button id="clear-generated-btn" type="button">РћС‡РёСЃС‚РёС‚СЊ</button>
       </div>
       <div class="button-row">
-        <button id="delete-selected-btn" type="button">Удалить Выделенные</button>
+        <button id="delete-selected-btn" type="button">РЈРґР°Р»РёС‚СЊ Р’С‹РґРµР»РµРЅРЅС‹Рµ</button>
       </div>
       <div class="button-row">
-        <button id="bake-image-btn" type="button">Запечь Картинку</button>
-        <button id="bake-cfg-btn" type="button">Запечь CFG</button>
+        <button id="bake-image-btn" type="button">Р—Р°РїРµС‡СЊ РљР°СЂС‚РёРЅРєСѓ</button>
+        <button id="bake-cfg-btn" type="button">Р—Р°РїРµС‡СЊ CFG</button>
       </div>
-      <div class="inline-note" id="gen-stats">Нет сгенерированных меток</div>
+      <div class="inline-note" id="gen-stats">РќРµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹С… РјРµС‚РѕРє</div>
 
       <h2>CFG</h2>
       <input id="cfg-file-input" type="file" accept=".cfg,.json,application/json,text/plain" style="display:none" />
       <div class="button-row">
-        <button id="cfg-pick-btn" type="button">Выбрать CFG</button>
+        <button id="cfg-pick-btn" type="button">Р’С‹Р±СЂР°С‚СЊ CFG</button>
       </div>
-      <div class="inline-note" id="cfg-status">CFG: не выбран</div>
+      <div class="inline-note" id="cfg-status">CFG: РЅРµ РІС‹Р±СЂР°РЅ</div>
 
       <div class="footer-note">
-        Панорама: ПКМ. ЛКМ: выделение/таск меток. Зум: колесо мыши.
+        РџР°РЅРѕСЂР°РјР°: РџРљРњ. Р›РљРњ: РІС‹РґРµР»РµРЅРёРµ/С‚Р°СЃРє РјРµС‚РѕРє. Р—СѓРј: РєРѕР»РµСЃРѕ РјС‹С€Рё.
       </div>
       <div class="footer-note">
-        <a href="/marker-editor" style="color: #9dd6ff">Debug: удаление тайлов</a>
+        <a href="/marker-editor" style="color: #9dd6ff">Debug: СѓРґР°Р»РµРЅРёРµ С‚Р°Р№Р»РѕРІ</a>
       </div>
     </aside>
 
@@ -84,7 +84,7 @@
       <canvas id="viewer"></canvas>
       <aside class="perf-panel" id="perf-panel">
         <div class="perf-title">Perf</div>
-        <div class="perf-content" id="perf-stats">Ожидание...</div>
+        <div class="perf-content" id="perf-stats">РћР¶РёРґР°РЅРёРµ...</div>
       </aside>
     </main>
 
