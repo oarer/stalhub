@@ -1,5 +1,6 @@
-const TILE_SIZE = 256;
+﻿const TILE_SIZE = 256;
 const WAYPOINT_ICON_IDS = [0, 1, 2, 3, 4, 5, 6];
+const WAYPOINT_ICON_NAMES = ["custom", "chest", "cross", "flag", "flash", "magnifier", "question"];
 const FAR_MARKER_SCALE_THRESHOLD = 0.9;
 const TINTED_ICON_CACHE_LIMIT = 24000;
 const WAYPOINT_INDEX_CHUNK_PX = 1024;
@@ -166,14 +167,14 @@ function renderResolutionUi() {
     targetResolutionNote.textContent = `${width} x ${height}`;
   }
   if (aspectLockBtn) {
-    aspectLockBtn.textContent = state.imageTool.aspectLocked ? "🔒" : "🔓";
-    aspectLockBtn.title = state.imageTool.aspectLocked ? "Связь сторон включена" : "Связь сторон выключена";
+    aspectLockBtn.textContent = state.imageTool.aspectLocked ? "рџ”’" : "рџ”“";
+    aspectLockBtn.title = state.imageTool.aspectLocked ? "РЎРІСЏР·СЊ СЃС‚РѕСЂРѕРЅ РІРєР»СЋС‡РµРЅР°" : "РЎРІСЏР·СЊ СЃС‚РѕСЂРѕРЅ РІС‹РєР»СЋС‡РµРЅР°";
   }
   if (sourceImageSize) {
     if (state.imageTool.sourceWidth > 0 && state.imageTool.sourceHeight > 0) {
-      sourceImageSize.textContent = `Источник: ${state.imageTool.sourceWidth} x ${state.imageTool.sourceHeight}`;
+      sourceImageSize.textContent = `РСЃС‚РѕС‡РЅРёРє: ${state.imageTool.sourceWidth} x ${state.imageTool.sourceHeight}`;
     } else {
-      sourceImageSize.textContent = "Оригинал: не загружен";
+      sourceImageSize.textContent = "РћСЂРёРіРёРЅР°Р»: РЅРµ Р·Р°РіСЂСѓР¶РµРЅ";
     }
   }
 }
@@ -195,10 +196,10 @@ function parseCfgText(text) {
   try {
     raw = JSON.parse(text);
   } catch (error) {
-    throw new Error("CFG не является валидным JSON");
+    throw new Error("CFG РЅРµ СЏРІР»СЏРµС‚СЃСЏ РІР°Р»РёРґРЅС‹Рј JSON");
   }
   if (!Array.isArray(raw)) {
-    throw new Error("CFG должен быть массивом меток");
+    throw new Error("CFG РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјР°СЃСЃРёРІРѕРј РјРµС‚РѕРє");
   }
   return raw;
 }
@@ -210,7 +211,7 @@ function applyWaypointsFromRaw(raw, sourceLabel = "") {
   invalidateWaypointIndex();
   renderWaypointList();
   draw();
-  setCfgStatus(sourceLabel ? `CFG: ${sourceLabel} (${state.waypoints.length} меток)` : `CFG: ${state.waypoints.length} меток`);
+  setCfgStatus(sourceLabel ? `CFG: ${sourceLabel} (${state.waypoints.length} РјРµС‚РѕРє)` : `CFG: ${state.waypoints.length} РјРµС‚РѕРє`);
 }
 
 async function loadWaypointsFromSelectedCfg() {
@@ -222,7 +223,7 @@ async function loadWaypointsFromSelectedCfg() {
     draw();
     return;
   }
-  // Данные уже загружены в память при выборе файла, здесь только перерисовываем после смены карты.
+  // Р”Р°РЅРЅС‹Рµ СѓР¶Рµ Р·Р°РіСЂСѓР¶РµРЅС‹ РІ РїР°РјСЏС‚СЊ РїСЂРё РІС‹Р±РѕСЂРµ С„Р°Р№Р»Р°, Р·РґРµСЃСЊ С‚РѕР»СЊРєРѕ РїРµСЂРµСЂРёСЃРѕРІС‹РІР°РµРј РїРѕСЃР»Рµ СЃРјРµРЅС‹ РєР°СЂС‚С‹.
   renderWaypointList();
   draw();
 }
@@ -320,12 +321,12 @@ function renderPerfOverlay(now = performance.now(), force = false) {
 
   perfStats.textContent = [
     `FPS: ${p.fps.toFixed(1)}`,
-    `Кадр: ${p.lastDrawMs.toFixed(2)} ms (avg ${p.avgDrawMs.toFixed(2)} ms)`,
-    `Зум: ${s.zoom.toFixed(2)}x`,
-    `Этапы(ms): clear ${s.tClear.toFixed(2)} | tiles ${s.tTiles.toFixed(2)} | grid ${s.tGrid.toFixed(2)} | gen ${s.tGenerated.toFixed(2)} | wp ${s.tWaypoints.toFixed(2)} | sel ${s.tSelection.toFixed(2)}`,
-    `Режим: ${s.qualityMode}, high-perf: ${s.highPerfMode ? "on" : "off"}`,
-    `Тайлы в кадре: ${s.tilesVisible} (готово ${s.tilesReady}, loading ${s.tilesLoading}, fail ${s.tilesFailed})`,
-    `Кэш тайлов: ${tileCache.total} (готово ${tileCache.ready}, loading ${tileCache.loading}, fail ${tileCache.failed})`,
+    `РљР°РґСЂ: ${p.lastDrawMs.toFixed(2)} ms (avg ${p.avgDrawMs.toFixed(2)} ms)`,
+    `Р—СѓРј: ${s.zoom.toFixed(2)}x`,
+    `Р­С‚Р°РїС‹(ms): clear ${s.tClear.toFixed(2)} | tiles ${s.tTiles.toFixed(2)} | grid ${s.tGrid.toFixed(2)} | gen ${s.tGenerated.toFixed(2)} | wp ${s.tWaypoints.toFixed(2)} | sel ${s.tSelection.toFixed(2)}`,
+    `Р РµР¶РёРј: ${s.qualityMode}, high-perf: ${s.highPerfMode ? "on" : "off"}`,
+    `РўР°Р№Р»С‹ РІ РєР°РґСЂРµ: ${s.tilesVisible} (РіРѕС‚РѕРІРѕ ${s.tilesReady}, loading ${s.tilesLoading}, fail ${s.tilesFailed})`,
+    `РљСЌС€ С‚Р°Р№Р»РѕРІ: ${tileCache.total} (РіРѕС‚РѕРІРѕ ${tileCache.ready}, loading ${tileCache.loading}, fail ${tileCache.failed})`,
     `Gen: draw ${s.generatedVisible}, candidates ${s.generatedCandidates}, rows ${s.generatedRows}`,
     `WP: draw ${s.waypointsVisible}/${s.waypointsChecked}, tinted ${s.waypointTinted}, fallback ${s.waypointFallback}`,
     `Grid/Select: lines ${s.gridLines}, rings ${s.selectionRings}, box ${s.selectionBoxActive ? "on" : "off"}, selected ${s.selected}`,
@@ -359,7 +360,7 @@ function registerDrawPerf(drawMs, drawStats) {
 }
 
 function markInteraction() {
-  // Режим подмены иконок при движении отключён: оставляем полный рендер всегда.
+  // Р РµР¶РёРј РїРѕРґРјРµРЅС‹ РёРєРѕРЅРѕРє РїСЂРё РґРІРёР¶РµРЅРёРё РѕС‚РєР»СЋС‡С‘РЅ: РѕСЃС‚Р°РІР»СЏРµРј РїРѕР»РЅС‹Р№ СЂРµРЅРґРµСЂ РІСЃРµРіРґР°.
 }
 
 function mapToPixel(tileX, tileZ) {
@@ -601,7 +602,7 @@ function applySelectionMove(deltaTileX, deltaTileZ) {
     }
   }
 
-  // Позиции части вейпоинтов изменились.
+  // РџРѕР·РёС†РёРё С‡Р°СЃС‚Рё РІРµР№РїРѕРёРЅС‚РѕРІ РёР·РјРµРЅРёР»РёСЃСЊ.
   invalidateWaypointIndex();
 }
 
@@ -670,7 +671,7 @@ async function preloadWholeMapTiles() {
   state.tileLoad.total = allTiles.length;
   state.tileLoad.done = 0;
   state.tileLoad.inProgress = true;
-  setLoadStats(`Загрузка карты: 0/${state.tileLoad.total}`);
+  setLoadStats(`Р—Р°РіСЂСѓР·РєР° РєР°СЂС‚С‹: 0/${state.tileLoad.total}`);
 
   const tasks = allTiles.map(async (key) => {
     const [sx, sz] = key.split(",");
@@ -678,13 +679,13 @@ async function preloadWholeMapTiles() {
     await waitTileEntry(entry);
     state.tileLoad.done += 1;
     if (state.tileLoad.done % 25 === 0 || state.tileLoad.done === state.tileLoad.total) {
-      setLoadStats(`Загрузка карты: ${state.tileLoad.done}/${state.tileLoad.total}`);
+      setLoadStats(`Р—Р°РіСЂСѓР·РєР° РєР°СЂС‚С‹: ${state.tileLoad.done}/${state.tileLoad.total}`);
     }
   });
 
   await Promise.all(tasks);
   state.tileLoad.inProgress = false;
-  setLoadStats(`Карта загружена: ${state.tileLoad.total}/${state.tileLoad.total}`);
+  setLoadStats(`РљР°СЂС‚Р° Р·Р°РіСЂСѓР¶РµРЅР°: ${state.tileLoad.total}/${state.tileLoad.total}`);
 }
 
 function loadWaypointIcon(iconIndex) {
@@ -717,7 +718,7 @@ function waitWaypointIcon(iconIndex) {
       return;
     }
     if (entry.failed) {
-      reject(new Error(`Не удалось загрузить иконку ${iconIndex}`));
+      reject(new Error(`РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РёРєРѕРЅРєСѓ ${iconIndex}`));
       return;
     }
 
@@ -727,7 +728,7 @@ function waitWaypointIcon(iconIndex) {
     };
     const onError = () => {
       cleanup();
-      reject(new Error(`Не удалось загрузить иконку ${iconIndex}`));
+      reject(new Error(`РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РёРєРѕРЅРєСѓ ${iconIndex}`));
     };
     const cleanup = () => {
       entry.image.removeEventListener("load", onLoad);
@@ -817,14 +818,12 @@ function decodeColorRaw(colorRaw) {
   };
 }
 
-function toDisplayWaypoint(raw, id, fromBuffer = false) {
-  const iconIndex = Number(raw.icon_index ?? raw.iconIndex ?? 0);
-
+function parseDisplayWaypointColor(raw) {
   let colorRaw = Number(raw.colorRaw ?? raw.color ?? -1);
-  let color = null;
+  const hasColorObject = raw.color && typeof raw.color === "object" && typeof raw.color.hex === "string";
 
-  if (raw.color && typeof raw.color === "object" && typeof raw.color.hex === "string") {
-    color = {
+  if (hasColorObject) {
+    const color = {
       argb: Number(raw.color.argb ?? 0),
       a: Number(raw.color.a ?? 255),
       r: Number(raw.color.r ?? 255),
@@ -835,31 +834,39 @@ function toDisplayWaypoint(raw, id, fromBuffer = false) {
     if (!Number.isFinite(colorRaw)) {
       colorRaw = ((color.a << 24) | (color.r << 16) | (color.g << 8) | color.b) | 0;
     }
+    return { colorRaw, color };
   }
 
-  if (!color) {
-    if (!Number.isFinite(colorRaw)) {
-      colorRaw = -1;
-    }
-    color = decodeColorRaw(colorRaw);
+  if (!Number.isFinite(colorRaw)) {
+    colorRaw = -1;
   }
+  return { colorRaw, color: decodeColorRaw(colorRaw) };
+}
+
+function parseDisplayWaypointPos(raw) {
+  return {
+    x: Number(raw.pos?.x ?? 0),
+    y: Number(raw.pos?.y ?? 70),
+    z: Number(raw.pos?.z ?? 0),
+  };
+}
+
+function toDisplayWaypoint(raw, id, fromBuffer = false) {
+  const iconIndex = Number(raw.icon_index ?? raw.iconIndex ?? 0);
+  const { colorRaw, color } = parseDisplayWaypointColor(raw);
 
   return {
     id,
     name: raw.name || (fromBuffer ? "buffer" : `WP-${id + 1}`),
     iconIndex,
-    iconName: ["custom", "chest", "cross", "flag", "flash", "magnifier", "question"][iconIndex] || "unknown",
+    iconName: WAYPOINT_ICON_NAMES[iconIndex] || "unknown",
     colorRaw,
     color,
     type: raw.type || "manual",
     canPositionFloat: Boolean(raw.can_position_float ?? raw.canPositionFloat ?? true),
     time: Number(raw.time ?? Date.now()),
     fromBuffer,
-    pos: {
-      x: Number(raw.pos?.x ?? 0),
-      y: Number(raw.pos?.y ?? 70),
-      z: Number(raw.pos?.z ?? 0),
-    },
+    pos: parseDisplayWaypointPos(raw),
   };
 }
 
@@ -1030,7 +1037,7 @@ function drawWaypoints(useFastMode = false) {
     }
   };
 
-  // Во время перетаскивания позиции меняются каждый кадр, индекс может устаревать.
+  // Р’Рѕ РІСЂРµРјСЏ РїРµСЂРµС‚Р°СЃРєРёРІР°РЅРёСЏ РїРѕР·РёС†РёРё РјРµРЅСЏСЋС‚СЃСЏ РєР°Р¶РґС‹Р№ РєР°РґСЂ, РёРЅРґРµРєСЃ РјРѕР¶РµС‚ СѓСЃС‚Р°СЂРµРІР°С‚СЊ.
   if (state.selectionDrag.active) {
     const drawCollection = (collection) => {
       for (const waypoint of collection) {
@@ -1103,6 +1110,77 @@ function drawWaypoints(useFastMode = false) {
   };
 }
 
+function getGeneratedRenderModes(useFastMode) {
+  return {
+    useFarMode: state.scale < FAR_MARKER_SCALE_THRESHOLD || useFastMode,
+    useSimpleCircles: state.renderConfig.highPerfMode,
+  };
+}
+
+function drawGeneratedFallbackMarker(pos, colorHex, useSimpleCircles) {
+  if (useSimpleCircles) {
+    const radius = 4 / state.scale;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = colorHex;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(0,0,0,0.55)";
+    ctx.lineWidth = Math.max(1 / state.scale, 0.75 / state.scale);
+    ctx.stroke();
+    return;
+  }
+
+  const s = Math.max(1 / state.scale, 0.7 / state.scale);
+  ctx.fillStyle = colorHex;
+  ctx.fillRect(pos.x - s * 0.5, pos.y - s * 0.5, s, s);
+}
+
+function drawGeneratedMarkerIcon(pos, colorHex, iconIndex) {
+  const tinted = getTintedIcon(iconIndex, colorHex);
+  if (tinted) {
+    const w = tinted.width / state.scale;
+    const h = tinted.height / state.scale;
+    ctx.drawImage(tinted, pos.x - w / 2, pos.y - h / 2, w, h);
+    return;
+  }
+
+  const r = 4 / state.scale;
+  ctx.beginPath();
+  ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2);
+  ctx.fillStyle = colorHex;
+  ctx.fill();
+}
+
+function updateGeneratedBounds(generated, scaleX, scaleZ) {
+  const boundMinTileX = generated.centerTileX - scaleX / 2;
+  const boundMaxTileX = generated.centerTileX + scaleX / 2;
+  const boundMinTileZ = generated.centerTileZ - scaleZ / 2;
+  const boundMaxTileZ = generated.centerTileZ + scaleZ / 2;
+  const p1 = mapToPixel(boundMinTileX, boundMinTileZ);
+  const p2 = mapToPixel(boundMaxTileX, boundMaxTileZ);
+  const margin = 12 / state.scale;
+
+  state.generatedBounds = {
+    minX: Math.min(p1.x, p2.x) - margin,
+    minY: Math.min(p1.y, p2.y) - margin,
+    maxX: Math.max(p1.x, p2.x) + margin,
+    maxY: Math.max(p1.y, p2.y) + margin,
+  };
+}
+
+function drawGeneratedBounds() {
+  if (!state.generatedBounds) return;
+
+  ctx.strokeStyle = "rgba(94,194,255,0.8)";
+  ctx.lineWidth = Math.max(1 / state.scale, 0.8 / state.scale);
+  ctx.strokeRect(
+    state.generatedBounds.minX,
+    state.generatedBounds.minY,
+    state.generatedBounds.maxX - state.generatedBounds.minX,
+    state.generatedBounds.maxY - state.generatedBounds.minY
+  );
+}
+
 function drawGeneratedMarkers(useFastMode = false) {
   const generated = state.generated;
   if (!generated || !generated.markers.length) {
@@ -1119,8 +1197,7 @@ function drawGeneratedMarkers(useFastMode = false) {
 
   const scaleX = generated.scaleTiles;
   const scaleZ = generated.scaleTiles * (generated.height / generated.width);
-  const useFarMode = state.scale < FAR_MARKER_SCALE_THRESHOLD || useFastMode;
-  const useSimpleCircles = state.renderConfig.highPerfMode;
+  const { useFarMode, useSimpleCircles } = getGeneratedRenderModes(useFastMode);
   const visible = getVisibleGeneratedPixelBounds(generated);
   let drawnCount = 0;
   let candidateCount = 0;
@@ -1140,62 +1217,17 @@ function drawGeneratedMarkers(useFastMode = false) {
       drawnCount += 1;
 
       if (useFarMode || useSimpleCircles) {
-        if (useSimpleCircles) {
-          const radius = 4 / state.scale;
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-          ctx.fillStyle = marker.colorHex;
-          ctx.fill();
-          ctx.strokeStyle = "rgba(0,0,0,0.55)";
-          ctx.lineWidth = Math.max(1 / state.scale, 0.75 / state.scale);
-          ctx.stroke();
-        } else {
-          const s = Math.max(1 / state.scale, 0.7 / state.scale);
-          ctx.fillStyle = marker.colorHex;
-          ctx.fillRect(pos.x - s * 0.5, pos.y - s * 0.5, s, s);
-        }
+        drawGeneratedFallbackMarker(pos, marker.colorHex, useSimpleCircles);
         continue;
       }
 
       const iconIndex = useAutoIcons ? marker.iconIndex ?? selectedIconIndex : selectedIconIndex;
-      const tinted = getTintedIcon(iconIndex, marker.colorHex);
-      if (tinted) {
-        const w = tinted.width / state.scale;
-        const h = tinted.height / state.scale;
-        ctx.drawImage(tinted, pos.x - w / 2, pos.y - h / 2, w, h);
-      } else {
-        const r = 4 / state.scale;
-        ctx.beginPath();
-        ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = marker.colorHex;
-        ctx.fill();
-      }
+      drawGeneratedMarkerIcon(pos, marker.colorHex, iconIndex);
     }
   }
 
-  const boundMinTileX = generated.centerTileX - scaleX / 2;
-  const boundMaxTileX = generated.centerTileX + scaleX / 2;
-  const boundMinTileZ = generated.centerTileZ - scaleZ / 2;
-  const boundMaxTileZ = generated.centerTileZ + scaleZ / 2;
-  const p1 = mapToPixel(boundMinTileX, boundMinTileZ);
-  const p2 = mapToPixel(boundMaxTileX, boundMaxTileZ);
-
-  const margin = 12 / state.scale;
-  state.generatedBounds = {
-    minX: Math.min(p1.x, p2.x) - margin,
-    minY: Math.min(p1.y, p2.y) - margin,
-    maxX: Math.max(p1.x, p2.x) + margin,
-    maxY: Math.max(p1.y, p2.y) + margin,
-  };
-
-  ctx.strokeStyle = "rgba(94,194,255,0.8)";
-  ctx.lineWidth = Math.max(1 / state.scale, 0.8 / state.scale);
-  ctx.strokeRect(
-    state.generatedBounds.minX,
-    state.generatedBounds.minY,
-    state.generatedBounds.maxX - state.generatedBounds.minX,
-    state.generatedBounds.maxY - state.generatedBounds.minY
-  );
+  updateGeneratedBounds(generated, scaleX, scaleZ);
+  drawGeneratedBounds();
   return {
     generatedVisible: drawnCount,
     generatedCandidates: candidateCount,
@@ -1270,7 +1302,7 @@ function draw() {
   if (!state.activeMap) {
     ctx.fillStyle = "#9db1c5";
     ctx.font = "14px Segoe UI";
-    ctx.fillText("Карта не выбрана", 20, 30);
+    ctx.fillText("РљР°СЂС‚Р° РЅРµ РІС‹Р±СЂР°РЅР°", 20, 30);
     registerDrawPerf(performance.now() - startedAt, {
       tilesVisible: 0,
       tilesReady: 0,
@@ -1350,11 +1382,11 @@ function updateMapStats() {
   const heightTiles = map.bounds.maxZ - map.bounds.minZ + 1;
 
   mapStats.innerHTML = [
-    `Тайлов: <b>${map.tileCount}</b>`,
-    `Тип: <b>.${map.extension}</b>`,
+    `РўР°Р№Р»РѕРІ: <b>${map.tileCount}</b>`,
+    `РўРёРї: <b>.${map.extension}</b>`,
     `X: <b>${map.bounds.minX}..${map.bounds.maxX}</b>`,
     `Z: <b>${map.bounds.minZ}..${map.bounds.maxZ}</b>`,
-    `Сетка: <b>${widthTiles} x ${heightTiles}</b>`,
+    `РЎРµС‚РєР°: <b>${widthTiles} x ${heightTiles}</b>`,
   ].join("<br>");
 }
 
@@ -1374,7 +1406,7 @@ function renderWaypointList() {
       <div><b>${waypoint.fromBuffer ? "[B] " : ""}${waypoint.name}</b> (icon ${waypoint.iconIndex}: ${iconName}) ${
         selected ? "<b>[selected]</b>" : ""
       }</div>
-      <div>Цвет: <span class="color-swatch" style="background:${colorHex}"></span> ${colorHex}</div>
+      <div>Р¦РІРµС‚: <span class="color-swatch" style="background:${colorHex}"></span> ${colorHex}</div>
       <div>X: ${waypoint.pos.x.toFixed(2)} Y: ${waypoint.pos.y.toFixed(2)} Z: ${waypoint.pos.z.toFixed(2)}</div>
       <div>Tile X: ${tile.x.toFixed(2)} Tile Z: ${tile.z.toFixed(2)}</div>
     `;
@@ -1435,7 +1467,7 @@ function prepareImageData(image, targetWidth = 256, targetHeight = 256) {
   canvas2.width = width;
   canvas2.height = height;
   const c2 = canvas2.getContext("2d", { willReadFrequently: true });
-  // Намеренно растягиваем в заданный рендер, чтобы детализация зависела от выбранного разрешения.
+  // РќР°РјРµСЂРµРЅРЅРѕ СЂР°СЃС‚СЏРіРёРІР°РµРј РІ Р·Р°РґР°РЅРЅС‹Р№ СЂРµРЅРґРµСЂ, С‡С‚РѕР±С‹ РґРµС‚Р°Р»РёР·Р°С†РёСЏ Р·Р°РІРёСЃРµР»Р° РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЂР°Р·СЂРµС€РµРЅРёСЏ.
   c2.drawImage(image, 0, 0, width, height);
   return c2.getImageData(0, 0, width, height);
 }
@@ -1542,8 +1574,8 @@ function scoreStampPlacement(targetMask, coveredMask, width, height, cx, cy, ico
     }
   }
 
-  // Счёт: награждаем за новое покрытие, немного за удержание внутри цели,
-  // и штрафуем за "пролив" в пустые зоны.
+  // РЎС‡С‘С‚: РЅР°РіСЂР°Р¶РґР°РµРј Р·Р° РЅРѕРІРѕРµ РїРѕРєСЂС‹С‚РёРµ, РЅРµРјРЅРѕРіРѕ Р·Р° СѓРґРµСЂР¶Р°РЅРёРµ РІРЅСѓС‚СЂРё С†РµР»Рё,
+  // Рё С€С‚СЂР°С„СѓРµРј Р·Р° "РїСЂРѕР»РёРІ" РІ РїСѓСЃС‚С‹Рµ Р·РѕРЅС‹.
   const score = gain * 1.25 + overlap * 0.25 - spill * 0.5;
   return { score, gain };
 }
@@ -1815,6 +1847,151 @@ function generateAdaptiveMarkers(imageData, { resolution, maxMarkers }) {
   return markers.slice(0, maxMarkers);
 }
 
+function buildCoverageMarkerFromPixel(imageData, width, height, near) {
+  const rgb = sampleRgb(imageData, near.x, near.y, 1);
+  return {
+    px: near.x,
+    py: near.y,
+    nx: (near.x + 0.5) / width - 0.5,
+    ny: (near.y + 0.5) / height - 0.5,
+    area: 1,
+    r: rgb.r,
+    g: rgb.g,
+    b: rgb.b,
+    colorHex: rgbaToHex(rgb.r, rgb.g, rgb.b),
+  };
+}
+function isTooCloseToPlacedPoints(placedPoints, point, minDistSq, lookback = 180) {
+  for (let i = placedPoints.length - 1; i >= 0 && i >= placedPoints.length - lookback; i -= 1) {
+    const p = placedPoints[i];
+    const dx = p.x - point.x;
+    const dy = p.y - point.y;
+    if (dx * dx + dy * dy < minDistSq) {
+      return true;
+    }
+  }
+  return false;
+}
+function placeCoverageMarker(ctx, marker, iconMask) {
+  marker.iconIndex = iconMask.iconIndex;
+  ctx.coveredTarget += paintStampCoverage(
+    ctx.coveredMask,
+    ctx.targetMask,
+    ctx.width,
+    ctx.height,
+    marker.px,
+    marker.py,
+    iconMask
+  );
+  ctx.positioned.push(marker);
+  ctx.placedPoints.push({ x: marker.px, y: marker.py });
+}
+function tryPlaceCoverageMarkerAt(ctx, near, enforceDistance = true) {
+  if (!near) return false;
+  if (enforceDistance && isTooCloseToPlacedPoints(ctx.placedPoints, near, ctx.minDistSq)) {
+    return false;
+  }
+  const best = chooseBestMaskAt(
+    ctx.targetMask,
+    ctx.coveredMask,
+    ctx.width,
+    ctx.height,
+    near.x,
+    near.y,
+    ctx.candidateMasks
+  );
+  if (best.gain <= 0) return false;
+  const marker = buildCoverageMarkerFromPixel(ctx.imageData, ctx.width, ctx.height, near);
+  placeCoverageMarker(ctx, marker, best.iconMask);
+  return true;
+}
+function runCoverageGridPass(ctx) {
+  for (let gy = 0; gy < ctx.height && ctx.positioned.length < ctx.maxMarkers; gy += ctx.baseStep) {
+    const row = Math.floor(gy / ctx.baseStep);
+    const shift = row % 2 === 0 ? 0 : Math.floor(ctx.baseStep / 2);
+    for (let gx = shift; gx < ctx.width && ctx.positioned.length < ctx.maxMarkers; gx += ctx.baseStep) {
+      const near = findNearestTargetPixel(
+        ctx.targetMask,
+        ctx.coveredMask,
+        ctx.width,
+        ctx.height,
+        gx,
+        gy,
+        Math.max(2, ctx.baseStep),
+        true
+      );
+      tryPlaceCoverageMarkerAt(ctx, near, true);
+    }
+  }
+}
+function getBestUncoveredCell(ctx) {
+  let bestCell = null;
+  let bestUncoveredRatio = 0;
+  for (let y0 = 0; y0 < ctx.height; y0 += ctx.cellSize) {
+    for (let x0 = 0; x0 < ctx.width; x0 += ctx.cellSize) {
+      const x1 = Math.min(ctx.width, x0 + ctx.cellSize);
+      const y1 = Math.min(ctx.height, y0 + ctx.cellSize);
+      let targetPixels = 0;
+      let uncoveredPixels = 0;
+      for (let y = y0; y < y1; y += 1) {
+        for (let x = x0; x < x1; x += 1) {
+          const idx = y * ctx.width + x;
+          if (!ctx.targetMask[idx]) continue;
+          targetPixels += 1;
+          if (!ctx.coveredMask[idx]) {
+            uncoveredPixels += 1;
+          }
+        }
+      }
+      if (!targetPixels) continue;
+      const uncoveredRatio = uncoveredPixels / targetPixels;
+      if (uncoveredRatio < ctx.minCellUncoveredRatio) continue;
+      if (uncoveredRatio > bestUncoveredRatio) {
+        bestUncoveredRatio = uncoveredRatio;
+        bestCell = { x0, y0, x1, y1 };
+      }
+    }
+  }
+  return bestCell;
+}
+function getUncoveredCellCentroid(cell, targetMask, coveredMask, width) {
+  let sumX = 0;
+  let sumY = 0;
+  let count = 0;
+  for (let y = cell.y0; y < cell.y1; y += 1) {
+    for (let x = cell.x0; x < cell.x1; x += 1) {
+      const idx = y * width + x;
+      if (targetMask[idx] && !coveredMask[idx]) {
+        sumX += x;
+        sumY += y;
+        count += 1;
+      }
+    }
+  }
+  if (!count) return null;
+  return { x: Math.round(sumX / count), y: Math.round(sumY / count) };
+}
+function runCoverageFillPass(ctx) {
+  while (ctx.positioned.length < ctx.maxMarkers && ctx.coveredTarget / ctx.targetCount < ctx.targetCoverage) {
+    const bestCell = getBestUncoveredCell(ctx);
+    if (!bestCell) break;
+    const centroid = getUncoveredCellCentroid(bestCell, ctx.targetMask, ctx.coveredMask, ctx.width);
+    if (!centroid) break;
+    const near = findNearestTargetPixel(
+      ctx.targetMask,
+      ctx.coveredMask,
+      ctx.width,
+      ctx.height,
+      centroid.x,
+      centroid.y,
+      Math.max(2, Math.floor(ctx.cellSize / 2)),
+      true
+    );
+    if (!tryPlaceCoverageMarkerAt(ctx, near, false)) {
+      break;
+    }
+  }
+}
 async function optimizeMarkersForCoverage(imageData, baseMarkers, { resolution, maxMarkers, useAutoIcons, fixedIconIndex }) {
   const { width, height } = imageData;
   const resolutionLevel = Math.max(64, Math.min(1024, resolution));
@@ -1825,20 +2002,9 @@ async function optimizeMarkersForCoverage(imageData, baseMarkers, { resolution, 
   const iconMasks = await getIconMasks(stampSize);
   const candidateMasks = useAutoIcons ? iconMasks : iconMasks.filter((item) => item.iconIndex === fixedIconIndex);
   const positioned = [];
-
   if (!targetCount || !candidateMasks.length) {
     return baseMarkers;
   }
-
-  let coveredTarget = 0;
-  const placedPoints = [];
-  const place = (marker, iconMask) => {
-    marker.iconIndex = iconMask.iconIndex;
-    coveredTarget += paintStampCoverage(coveredMask, targetMask, width, height, marker.px, marker.py, iconMask);
-    positioned.push(marker);
-    placedPoints.push({ x: marker.px, y: marker.py });
-  };
-
   const targetCoverage = Math.max(0.9, Math.min(0.997, 0.9 + detailLevel * 0.00045));
   const estimatedSpacing = Math.max(2, Math.sqrt(targetCount / Math.max(1, maxMarkers)));
   const densityScale =
@@ -1847,135 +2013,28 @@ async function optimizeMarkersForCoverage(imageData, baseMarkers, { resolution, 
       : 1 + Math.min(0.16, ((100 - detailLevel) / 100) * 0.16);
   const baseStep = Math.max(2, Math.round(estimatedSpacing * densityScale));
   const minDist = Math.max(1.25, baseStep * 0.58);
-  const minDistSq = minDist * minDist;
-
-  // Проход 1: равномерная раскладка по сетке всей области (без приоритета контраста).
-  for (let gy = 0; gy < height && positioned.length < maxMarkers; gy += baseStep) {
-    const row = Math.floor(gy / baseStep);
-    const shift = row % 2 === 0 ? 0 : Math.floor(baseStep / 2);
-
-    for (let gx = shift; gx < width && positioned.length < maxMarkers; gx += baseStep) {
-      const near = findNearestTargetPixel(targetMask, coveredMask, width, height, gx, gy, Math.max(2, baseStep), true);
-      if (!near) continue;
-
-      let tooClose = false;
-      for (let i = placedPoints.length - 1; i >= 0 && i >= placedPoints.length - 180; i -= 1) {
-        const p = placedPoints[i];
-        const dx = p.x - near.x;
-        const dy = p.y - near.y;
-        if (dx * dx + dy * dy < minDistSq) {
-          tooClose = true;
-          break;
-        }
-      }
-      if (tooClose) continue;
-
-      const best = chooseBestMaskAt(targetMask, coveredMask, width, height, near.x, near.y, candidateMasks);
-      if (best.gain <= 0) continue;
-
-      const rgb = sampleRgb(imageData, near.x, near.y, 1);
-      const marker = {
-        px: near.x,
-        py: near.y,
-        nx: (near.x + 0.5) / width - 0.5,
-        ny: (near.y + 0.5) / height - 0.5,
-        area: 1,
-        r: rgb.r,
-        g: rgb.g,
-        b: rgb.b,
-        colorHex: rgbaToHex(rgb.r, rgb.g, rgb.b),
-      };
-      place(marker, best.iconMask);
-    }
-  }
-
-  // Проход 2: добивка ячеек с худшим покрытием для выравнивания плотности.
-  const cellSize = Math.max(5, Math.round(baseStep * 1.9));
-  const minCellUncoveredRatio = detailLevel >= 180 ? 0.035 : detailLevel >= 100 ? 0.05 : detailLevel >= 70 ? 0.08 : 0.06;
-  while (positioned.length < maxMarkers && coveredTarget / targetCount < targetCoverage) {
-    let bestCell = null;
-    let bestUncoveredRatio = 0;
-
-    for (let y0 = 0; y0 < height; y0 += cellSize) {
-      for (let x0 = 0; x0 < width; x0 += cellSize) {
-        const x1 = Math.min(width, x0 + cellSize);
-        const y1 = Math.min(height, y0 + cellSize);
-
-        let targetPixels = 0;
-        let uncoveredPixels = 0;
-        for (let y = y0; y < y1; y += 1) {
-          for (let x = x0; x < x1; x += 1) {
-            const idx = y * width + x;
-            if (!targetMask[idx]) continue;
-            targetPixels += 1;
-            if (!coveredMask[idx]) {
-              uncoveredPixels += 1;
-            }
-          }
-        }
-
-        if (!targetPixels) continue;
-        const uncoveredRatio = uncoveredPixels / targetPixels;
-        if (uncoveredRatio < minCellUncoveredRatio) continue;
-        if (uncoveredRatio > bestUncoveredRatio) {
-          bestUncoveredRatio = uncoveredRatio;
-          bestCell = { x0, y0, x1, y1 };
-        }
-      }
-    }
-
-    if (!bestCell) break;
-
-    let sumX = 0;
-    let sumY = 0;
-    let count = 0;
-    for (let y = bestCell.y0; y < bestCell.y1; y += 1) {
-      for (let x = bestCell.x0; x < bestCell.x1; x += 1) {
-        const idx = y * width + x;
-        if (targetMask[idx] && !coveredMask[idx]) {
-          sumX += x;
-          sumY += y;
-          count += 1;
-        }
-      }
-    }
-    if (!count) break;
-
-    const centroidX = Math.round(sumX / count);
-    const centroidY = Math.round(sumY / count);
-    const near = findNearestTargetPixel(
-      targetMask,
-      coveredMask,
-      width,
-      height,
-      centroidX,
-      centroidY,
-      Math.max(2, Math.floor(cellSize / 2)),
-      true
-    );
-    if (!near) break;
-
-    const best = chooseBestMaskAt(targetMask, coveredMask, width, height, near.x, near.y, candidateMasks);
-    if (best.gain <= 0) break;
-
-    const rgb = sampleRgb(imageData, near.x, near.y, 1);
-    const marker = {
-      px: near.x,
-      py: near.y,
-      nx: (near.x + 0.5) / width - 0.5,
-      ny: (near.y + 0.5) / height - 0.5,
-      area: 1,
-      r: rgb.r,
-      g: rgb.g,
-      b: rgb.b,
-      colorHex: rgbaToHex(rgb.r, rgb.g, rgb.b),
-    };
-    place(marker, best.iconMask);
-  }
-
+  const ctxCoverage = {
+    imageData,
+    width,
+    height,
+    targetMask,
+    coveredMask,
+    targetCount,
+    candidateMasks,
+    positioned,
+    placedPoints: [],
+    maxMarkers,
+    targetCoverage,
+    baseStep,
+    minDistSq: minDist * minDist,
+    cellSize: Math.max(5, Math.round(baseStep * 1.9)),
+    minCellUncoveredRatio: detailLevel >= 180 ? 0.035 : detailLevel >= 100 ? 0.05 : detailLevel >= 70 ? 0.08 : 0.06,
+    coveredTarget: 0,
+  };
+  runCoverageGridPass(ctxCoverage);
+  runCoverageFillPass(ctxCoverage);
   return positioned;
 }
-
 function buildGeneratedWaypoints() {
   const generated = state.generated;
   if (!generated) return [];
@@ -2022,7 +2081,7 @@ function downloadJson(filename, obj) {
 async function generateFromImage() {
   const file = imageInput.files?.[0];
   if (!file) {
-    updateGeneratedStats("Выбери картинку для генерации");
+    updateGeneratedStats("Р’С‹Р±РµСЂРё РєР°СЂС‚РёРЅРєСѓ РґР»СЏ РіРµРЅРµСЂР°С†РёРё");
     return;
   }
 
@@ -2030,7 +2089,7 @@ async function generateFromImage() {
   const fixedIconIndex = Number(genIconSelect.value) || 0;
   const useAutoIcons = autoIconsInput ? autoIconsInput.checked : true;
 
-  updateGeneratedStats("Генерация: равномерный посев точек...");
+  updateGeneratedStats("Р“РµРЅРµСЂР°С†РёСЏ: СЂР°РІРЅРѕРјРµСЂРЅС‹Р№ РїРѕСЃРµРІ С‚РѕС‡РµРє...");
 
   try {
     const image = await loadImageFromFile(file);
@@ -2053,24 +2112,24 @@ async function generateFromImage() {
     };
     buildGeneratedMarkerRows(state.generated);
 
-    updateGeneratedStats(`Готово: ${markers.length} меток, рендер ${imageData.width}x${imageData.height}`);
+    updateGeneratedStats(`Р“РѕС‚РѕРІРѕ: ${markers.length} РјРµС‚РѕРє, СЂРµРЅРґРµСЂ ${imageData.width}x${imageData.height}`);
     draw();
   } catch (error) {
     console.error(error);
-    updateGeneratedStats(`Ошибка генерации: ${error.message}`);
+    updateGeneratedStats(`РћС€РёР±РєР° РіРµРЅРµСЂР°С†РёРё: ${error.message}`);
   }
 }
 
 function clearGenerated() {
   state.generated = null;
   state.generatedBounds = null;
-  updateGeneratedStats("Нет сгенерированных меток");
+  updateGeneratedStats("РќРµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹С… РјРµС‚РѕРє");
   draw();
 }
 
 function bakeImageToBuffer() {
   if (!state.generated || !state.generated.markers.length) {
-    updateGeneratedStats("Нечего запекать из картинки");
+    updateGeneratedStats("РќРµС‡РµРіРѕ Р·Р°РїРµРєР°С‚СЊ РёР· РєР°СЂС‚РёРЅРєРё");
     return;
   }
 
@@ -2086,7 +2145,7 @@ function bakeImageToBuffer() {
   invalidateWaypointIndex();
   renderWaypointList();
   draw();
-  updateGeneratedStats(`Запечено в буфер: +${data.length} (в буфере ${state.stagedWaypoints.length})`);
+  updateGeneratedStats(`Р—Р°РїРµС‡РµРЅРѕ РІ Р±СѓС„РµСЂ: +${data.length} (РІ Р±СѓС„РµСЂРµ ${state.stagedWaypoints.length})`);
 }
 
 function buildCfgPayload() {
@@ -2124,7 +2183,7 @@ function reindexWaypointCollection(list) {
 
 function deleteSelectedMarkers() {
   if (!state.selectedIds.size) {
-    updateGeneratedStats("Нет выделенных меток для удаления");
+    updateGeneratedStats("РќРµС‚ РІС‹РґРµР»РµРЅРЅС‹С… РјРµС‚РѕРє РґР»СЏ СѓРґР°Р»РµРЅРёСЏ");
     return;
   }
 
@@ -2177,7 +2236,7 @@ function deleteSelectedMarkers() {
   invalidateWaypointIndex();
   renderWaypointList();
   draw();
-  updateGeneratedStats(`Удалено меток: ${removed}`);
+  updateGeneratedStats(`РЈРґР°Р»РµРЅРѕ РјРµС‚РѕРє: ${removed}`);
 }
 
 async function bakeCfg() {
@@ -2191,10 +2250,10 @@ async function bakeCfg() {
       await writable.write(JSON.stringify(payload, null, 2));
       await writable.close();
       state.cfgSource.loaded = true;
-      setCfgStatus(`CFG: ${state.cfgSource.name || "файл"} (${payload.length} меток)`);
+      setCfgStatus(`CFG: ${state.cfgSource.name || "С„Р°Р№Р»"} (${payload.length} РјРµС‚РѕРє)`);
     } else {
       downloadJson("waypoints.cfg", payload);
-      setCfgStatus(`CFG: экспортирован в загрузки (${payload.length} меток)`);
+      setCfgStatus(`CFG: СЌРєСЃРїРѕСЂС‚РёСЂРѕРІР°РЅ РІ Р·Р°РіСЂСѓР·РєРё (${payload.length} РјРµС‚РѕРє)`);
     }
 
     state.stagedWaypoints = [];
@@ -2203,10 +2262,10 @@ async function bakeCfg() {
     invalidateWaypointIndex();
     renderWaypointList();
     draw();
-    updateGeneratedStats(`Сохранено в cfg: ${payload.length} меток`);
+    updateGeneratedStats(`РЎРѕС…СЂР°РЅРµРЅРѕ РІ cfg: ${payload.length} РјРµС‚РѕРє`);
   } catch (error) {
     console.error(error);
-    updateGeneratedStats(`Ошибка записи cfg: ${error.message}`);
+    updateGeneratedStats(`РћС€РёР±РєР° Р·Р°РїРёСЃРё cfg: ${error.message}`);
   }
 }
 
@@ -2234,7 +2293,7 @@ async function pickCfgFile() {
     } catch (error) {
       if (error && error.name === "AbortError") return;
       console.error(error);
-      setCfgStatus(`CFG: ошибка (${error.message})`);
+      setCfgStatus(`CFG: РѕС€РёР±РєР° (${error.message})`);
       return;
     }
   }
@@ -2254,7 +2313,7 @@ async function onCfgFileInputChanged() {
     applyWaypointsFromRaw(raw, file.name);
   } catch (error) {
     console.error(error);
-    setCfgStatus(`CFG: ошибка (${error.message})`);
+    setCfgStatus(`CFG: РѕС€РёР±РєР° (${error.message})`);
   }
 }
 
@@ -2265,15 +2324,15 @@ async function refreshGeneratedIconStrategy() {
   const fixedIconIndex = Number(genIconSelect.value) || 0;
   state.generated.useAutoIcons = useAutoIcons;
   state.generated.iconIndex = fixedIconIndex;
-  updateGeneratedStats("Обновляю иконки...");
+  updateGeneratedStats("РћР±РЅРѕРІР»СЏСЋ РёРєРѕРЅРєРё...");
 
   try {
     applyIconStrategyToMarkers(state.generated.markers, useAutoIcons, fixedIconIndex);
-    updateGeneratedStats(`Обновлено: ${state.generated.markers.length} меток`);
+    updateGeneratedStats(`РћР±РЅРѕРІР»РµРЅРѕ: ${state.generated.markers.length} РјРµС‚РѕРє`);
     draw();
   } catch (error) {
     console.error(error);
-    updateGeneratedStats(`Ошибка пересчёта: ${error.message}`);
+    updateGeneratedStats(`РћС€РёР±РєР° РїРµСЂРµСЃС‡С‘С‚Р°: ${error.message}`);
   }
 }
 
@@ -2501,7 +2560,7 @@ if (imageInput) {
       }
     } catch (error) {
       console.error(error);
-      sourceImageSize.textContent = `Источник: ошибка (${error.message})`;
+      sourceImageSize.textContent = `РСЃС‚РѕС‡РЅРёРє: РѕС€РёР±РєР° (${error.message})`;
     }
   });
 }
@@ -2643,7 +2702,7 @@ window.addEventListener("keydown", (event) => {
   state.imageTool.aspectLocked = true;
   setTargetResolution(100, 100);
   renderResolutionUi();
-  setCfgStatus("CFG: не выбран (нажми \"Выбрать CFG\")");
+  setCfgStatus("CFG: РЅРµ РІС‹Р±СЂР°РЅ (РЅР°Р¶РјРё \"Р’С‹Р±СЂР°С‚СЊ CFG\")");
   resizeCanvas();
   renderPerfOverlay(performance.now(), true);
 
@@ -2651,9 +2710,10 @@ window.addEventListener("keydown", (event) => {
     await loadMaps();
   } catch (error) {
     console.error(error);
-    mapStats.textContent = `Ошибка загрузки: ${error.message}`;
+    mapStats.textContent = `РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё: ${error.message}`;
   }
 })();
+
 
 
 
