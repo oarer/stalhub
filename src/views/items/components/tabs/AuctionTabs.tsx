@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 
 import { Tabs } from '@/components/ui/Tabs'
+import { cn } from '@/lib/cn'
 import type { BarterResponse } from '@/types/barter.type'
 import type { Lot, LotHistory } from '@/types/item.type'
 import AuctionCurrent from './AuctionCurrent'
@@ -12,10 +13,13 @@ import Barter from './Barter'
 type Props = {
 	auctionHistory: LotHistory[]
 	auctionCurrent: Lot[]
-	barter: BarterResponse
+	barter: BarterResponse | null
 }
 
-//! TODO исправить невидимый блок (мб компонент аукциона его возвращает)
+// исправить невидимый блок (мб компонент аукциона его возвращает)
+// а я ебу кто его возвращает
+// оно само пофиксилось
+// нихуя не пофиксилось
 export default function ItemTabs({
 	auctionHistory,
 	auctionCurrent,
@@ -23,7 +27,12 @@ export default function ItemTabs({
 }: Props) {
 	return (
 		<Tabs.Root className="w-full" defaultValue="aucHistory">
-			<Tabs.List className="grid w-full grid-cols-3">
+			<Tabs.List
+				className={cn(
+					'grid w-full gap-2',
+					!barter ? 'grid-cols-2' : 'grid-cols-3'
+				)}
+			>
 				<Tabs.Trigger value="aucHistory">
 					<Icon className="text-lg" icon="lucide:book-open-text" />
 					История продаж
@@ -32,10 +41,12 @@ export default function ItemTabs({
 					<Icon className="text-lg" icon="lucide:landmark" />
 					Текущие лоты
 				</Tabs.Trigger>
-				<Tabs.Trigger value="barter">
-					<Icon className="text-lg" icon="lucide:landmark" />
-					Бартер
-				</Tabs.Trigger>
+				{barter && (
+					<Tabs.Trigger value="barter">
+						<Icon className="text-lg" icon="lucide:landmark" />
+						Бартер
+					</Tabs.Trigger>
+				)}
 			</Tabs.List>
 			<Tabs.Content value="aucHistory">
 				<AuctionHistory data={auctionHistory} />
@@ -44,7 +55,7 @@ export default function ItemTabs({
 				<AuctionCurrent data={auctionCurrent} />
 			</Tabs.Content>
 			<Tabs.Content value="barter">
-				<Barter data={barter} />
+				{barter && <Barter data={barter} />}
 			</Tabs.Content>
 		</Tabs.Root>
 	)

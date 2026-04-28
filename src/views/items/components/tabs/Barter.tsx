@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -10,37 +11,28 @@ import { InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
 type Props = {
-	data?: BarterResponse
+	data: BarterResponse
 }
 
-//! TODO add i18n, refactoring
 export default function Barter({ data }: Props) {
+	const t = useTranslations()
+
 	const locale = getLocale()
 	const [selectedRecipe, setSelectedRecipe] = useState(0)
-
-	if (!data) {
-		return (
-			<Card.Root className="p-4">
-				<div className="text-neutral-500 text-sm">
-					Нет данных для отображения
-				</div>
-			</Card.Root>
-		)
-	}
 
 	const recipes = data.recipes ?? []
 	const hasMultipleRecipes = recipes.length > 1
 
 	return (
-		<Card.Root className="space-y-6 p-4">
+		<Card.Root className="space-y-3">
 			<Card.Header className="flex gap-2">
 				<Card.Title>
-					Необходимый уровень базы: {data.settlement_required_level}
+					{t('barter.lvl_req')}: {data.settlement_required_level}
 				</Card.Title>
-				<Divider />
+				<Divider className="my-2" />
 				<Card.Description className="flex flex-col justify-start gap-2">
 					<h1 className={`font-semibold text-md`}>
-						Базы для бартера:
+						{t('barter.base')}:
 					</h1>
 					<div className="flex flex-wrap">
 						{data.settlement_titles.map((title, index) => (
@@ -61,33 +53,42 @@ export default function Barter({ data }: Props) {
 				</Card.Description>
 			</Card.Header>
 			<Divider />
-			<Card.Content>
+			<Card.Content className="flex flex-col gap-4">
 				{data.recipes?.length > 0 && (
-					<div className="space-y-4">
-						{hasMultipleRecipes && (
-							<div className="flex items-center gap-2">
-								<div className="w-32">
-									<Combobox
-										onValueChange={(value) =>
-											setSelectedRecipe(Number(value))
-										}
-										options={recipes.map((_, index) => ({
-											label: `Рецепт ${index + 1}`,
-											value: String(index),
-										}))}
-										placeholder="Рецепт"
-										value={String(selectedRecipe)}
-									/>
-								</div>
-							</div>
-						)}
+					<section className="flex flex-col gap-3">
 						{recipes.length > 0 && (
 							<div
+								className="flex flex-col gap-3"
 								key={`${recipes[selectedRecipe].money}-${selectedRecipe}`}
 							>
-								<div className="mb-4 flex items-center justify-between gap-3">
-									<p className="font-semibold text-sm">
-										Стоимость:{' '}
+								<div className="flex items-center justify-between gap-3">
+									{hasMultipleRecipes && (
+										<div className="w-32">
+											<Combobox
+												onValueChange={(value) =>
+													setSelectedRecipe(
+														Number(value)
+													)
+												}
+												options={recipes.map(
+													(_, index) => ({
+														label: t(
+															'barter.recipe',
+															{
+																number:
+																	index + 1,
+															}
+														),
+														value: String(index),
+													})
+												)}
+												placeholder="barter.recipe"
+												value={String(selectedRecipe)}
+											/>
+										</div>
+									)}
+									<p className="font-mono font-semibold text-sm">
+										{t('barter.money')}:{' '}
 										{Number(
 											recipes[selectedRecipe]?.money ?? 0
 										).toLocaleString('en-US', {
@@ -102,7 +103,7 @@ export default function Barter({ data }: Props) {
 									{recipes[selectedRecipe].items.map(
 										(item, itemIndex) => (
 											<Link
-												className="flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
+												className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
 												href={`/items${item.category}`}
 												key={`${item.category}-${itemIndex}`}
 											>
@@ -111,6 +112,8 @@ export default function Barter({ data }: Props) {
 														item.lines,
 														locale
 													)}
+													// пиздец анимки смешные
+													className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
 													height={52}
 													src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
 													width={52}
@@ -134,34 +137,36 @@ export default function Barter({ data }: Props) {
 								</div>
 							</div>
 						)}
-					</div>
+					</section>
 				)}
 				{data.used_in?.length > 0 && (
-					<section>
-						<h2 className="mb-3 font-semibold text-sm">
-							Используется в
-						</h2>
+					<>
+						<Divider />
+						<section className="flex flex-col gap-3">
+							<h2 className="font-semibold text-sm">
+								{t('barter.used_in')}:
+							</h2>
 
-						<div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-							{data.used_in.map((item) => (
-								<Card.Link
-									className="flex items-center gap-3 p-3"
-									href={`/items${item.category}`}
-									key={item.item_id}
-								>
-									<Image
-										alt={messageToString(
-											item.lines,
-											locale
-										)}
-										height={32}
-										src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
-										width={32}
-									/>
+							<div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
+								{data.used_in.map((item) => (
+									<Link
+										className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
+										href={`/items${item.category}`}
+										key={`${item.item_id}`}
+									>
+										<Image
+											alt={messageToString(
+												item.lines,
+												locale
+											)}
+											className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
+											height={52}
+											src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
+											width={52}
+										/>
 
-									<div className="min-w-0">
 										<p
-											className="truncate font-semibold text-sm"
+											className="max-w-24 truncate font-semibold text-sm"
 											style={{
 												color:
 													infoColorMap[
@@ -174,11 +179,11 @@ export default function Barter({ data }: Props) {
 												locale
 											)}
 										</p>
-									</div>
-								</Card.Link>
-							))}
-						</div>
-					</section>
+									</Link>
+								))}
+							</div>
+						</section>
+					</>
 				)}
 			</Card.Content>
 		</Card.Root>

@@ -49,7 +49,7 @@ export default async function ItemsPage({ params }: PageProps) {
 
 	const queryClient = new QueryClient()
 
-	await Promise.all([
+	await Promise.allSettled([
 		queryClient.prefetchQuery(itemQueries.byGithubUrl(githubUrl)),
 		queryClient.prefetchQuery(itemQueries.barter(id)),
 

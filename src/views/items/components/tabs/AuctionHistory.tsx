@@ -9,11 +9,10 @@ import {
 	LinearScale,
 	PointElement,
 } from 'chart.js'
-
+import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Scatter } from 'react-chartjs-2'
-
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
 import type { LotHistory } from '@/types/item.type'
@@ -36,6 +35,8 @@ type ChartPoint = {
 }
 
 export default function AuctionHistory({ data }: Props) {
+	const t = useTranslations()
+
 	const { resolvedTheme } = useTheme()
 	const isDark = resolvedTheme === 'dark'
 
@@ -120,7 +121,15 @@ export default function AuctionHistory({ data }: Props) {
 	}))
 
 	if (chartData.length === 0) {
-		return null
+		return (
+			<Card.Root>
+				<Card.Header>
+					<Card.Title className="justify-center">
+						{t('modals.builds.no_data')}
+					</Card.Title>
+				</Card.Header>
+			</Card.Root>
+		)
 	}
 
 	const points: ChartPoint[] = chartData.map((d) => ({

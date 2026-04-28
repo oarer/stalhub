@@ -9,16 +9,18 @@ class ItemQueries {
 		return queryOptions<Item>({
 			queryKey: ['item', githubUrl],
 			queryFn: () => itemService.getByGithubUrl(githubUrl),
+			retry: false,
 			placeholderData: undefined,
 			staleTime: 1000 * 60 * 5,
 		})
 	}
 
 	barter(id: string) {
-		return queryOptions<BarterResponse>({
-			queryKey: ['item', id],
+		return queryOptions<BarterResponse | null>({
+			queryKey: ['barter', id],
 			queryFn: () => itemService.getBarter(id),
 			placeholderData: undefined,
+			retry: false,
 			staleTime: 1000 * 60 * 5,
 		})
 	}

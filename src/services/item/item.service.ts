@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { type AxiosError } from 'axios'
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import type { BarterResponse } from '@/types/barter.type'
 import type { Item } from '@/types/item.type'
@@ -13,10 +13,20 @@ class ItemService {
 	}
 
 	async getBarter(id: string) {
-		const { data } = await apiClient.get<BarterResponse>(
-			`/api/barter/${id}`
-		)
-		return data
+		try {
+			const { data } = await apiClient.get<BarterResponse>(
+				`/api/barter/${id}`
+			)
+			return data
+		} catch (e) {
+			const err = e as AxiosError
+
+			if (err.response?.status === 404) {
+				return null
+			}
+
+			throw e
+		}
 	}
 }
 
