@@ -10,10 +10,12 @@ export default function ZoomControl() {
 
 	useEffect(() => {
 		const div = L.DomUtil.create('div')
-		const control = L.Control.extend({
+
+		const Control = L.Control.extend({
 			onAdd: () => div,
 		})
-		const customControl = new control({ position: 'topright' })
+
+		const customControl = new Control({ position: 'topright' })
 		map.addControl(customControl)
 		setContainer(div)
 
@@ -23,8 +25,18 @@ export default function ZoomControl() {
 			parent.style.right = '10px'
 		}
 
+		if (map.attributionControl) {
+			map.attributionControl.remove()
+		}
+
+		const attribution = L.control.attribution({
+			prefix: '<a href="https://leafletjs.com" target="_blank">Leaflet</a>',
+		})
+		attribution.addTo(map)
+
 		return () => {
 			map.removeControl(customControl)
+			map.removeControl(attribution)
 		}
 	}, [map])
 
@@ -38,6 +50,7 @@ export default function ZoomControl() {
 			>
 				<Icon height={20} icon="mdi:plus" width={20} />
 			</button>
+
 			<button
 				className="cursor-pointer rounded-xl bg-neutral-300/60 p-3 transition-colors duration-400 hover:bg-neutral-300/30 active:opacity-50 dark:bg-neutral-900/70 hover:dark:bg-neutral-700/50"
 				onClick={() => map.zoomOut()}

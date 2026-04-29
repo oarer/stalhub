@@ -1,16 +1,16 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { CustomToast } from '@/components/ui/Toast'
 import { useMaps } from '@/hooks/useMaps'
-import { useTranslations } from 'next-intl'
 
 export default function MapsView() {
 	const { maps, error } = useMaps()
-	const t  = useTranslations()
+	const t = useTranslations()
 
 	// ! TODO SUSPENSE QUERIES
 
