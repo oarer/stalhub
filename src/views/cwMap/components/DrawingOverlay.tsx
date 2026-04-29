@@ -156,7 +156,7 @@ export function DrawingOverlay({
 				ctx.stroke()
 			}
 		}
-	}, [map, drawArrowHead, elements, currentElement])
+	}, [map, drawArrowHead])
 
 	useEffect(() => {
 		const container = map.getContainer()

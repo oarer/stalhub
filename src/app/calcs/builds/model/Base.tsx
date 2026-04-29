@@ -67,7 +67,9 @@ export function BaseModel({
 					t.wrapS = THREE.RepeatWrapping
 					t.offset.x = -1
 					mat.map = t
-				} catch {}
+				} catch {
+					// Intentionally empty - texture loading failure ignored
+				}
 			}
 			if (textures.emi) {
 				try {
@@ -75,14 +77,18 @@ export function BaseModel({
 					mat.emissiveMap = t
 					mat.emissive = new THREE.Color(0xffffff)
 					mat.emissiveIntensity = 1
-				} catch {}
+				} catch {
+					// Intentionally empty - texture loading failure ignored
+				}
 			}
 			if (textures.nrm) {
 				try {
 					const t = ddsLoader.load(textures.nrm)
 					t.colorSpace = THREE.NoColorSpace
 					mat.normalMap = t
-				} catch {}
+				} catch {
+					// Intentionally empty - texture loading failure ignored
+				}
 			}
 			mat.metalness = 0.1
 			mat.needsUpdate = true

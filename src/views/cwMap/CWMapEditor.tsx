@@ -155,7 +155,9 @@ export default function CWMapEditor() {
 				setSelectedMapKey(parsed.map)
 				setMapKey((k) => k + 1)
 			}
-		} catch {}
+		} catch {
+			// Intentionally empty - failed load silently ignored
+		}
 	}, [])
 
 	useKeyboardShortcuts({ undo, saveToLocal })
