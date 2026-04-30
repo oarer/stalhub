@@ -175,7 +175,7 @@ export function ArtifactStatsPanel({
 					</div>
 					<Input
 						className="min-w-30"
-						label="Уровень"
+						label="modals.builds.potential"
 						max={15}
 						min={0}
 						onChange={(e) =>

@@ -291,6 +291,7 @@
 			"pick": "Выбрать",
 			"no_data": "Нет данных",
 			"quality": "Качество",
+			"potential": "Уровень",
 			"armor": {
 				"toaster_success": "Броня изменена!",
 				"header": "Выберите броню"
