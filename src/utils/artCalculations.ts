@@ -3,7 +3,7 @@ import {
 	qualityPercentRanges,
 } from '@/utils/artUtils'
 
-export function roundNumber(v: number): number {
+export const roundNumber = (v: number): number => {
 	return Number.isInteger(v) ? v : Number(v.toFixed(2))
 }
 

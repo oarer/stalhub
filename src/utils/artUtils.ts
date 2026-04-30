@@ -1,6 +1,6 @@
 import { formatDate } from '@/lib/date'
 import type { ArtQuality, LotsResponse } from '@/types/item.type'
-import { InfoColor } from '@/types/item.type'
+import { InfoColor, infoColorMap } from '@/types/item.type'
 
 export type ArtifactAdditional = {
 	ndmg?: number
@@ -103,24 +103,8 @@ export const getQualityName = (qlt?: number): string => {
 }
 
 export const getArtifactColor = (qlt: number): string => {
-	switch (qlt) {
-		case 0:
-			return '#FFFFFF'
-		case 1:
-			return '#9DEB9D'
-		case 2:
-			return '#9F9FED'
-		case 3:
-			return '#BF5BAD'
-		case 4:
-			return '#EA9D9E'
-		case 5:
-			return '#FFD700'
-		case 6:
-			return '#FFD700'
-		default:
-			return '#fff'
-	}
+	const quality = qualityIndexToArtQuality[qlt]
+	return infoColorMap[quality] ?? '#FFFFFF'
 }
 
 export const getArtifactColorWithAlpha = (qlt: number, alpha = 0.3): string => {

@@ -13,6 +13,10 @@ export type Formatted = {
 	valueColor?: string
 }
 
+export const roundNumber = (n: number): string => {
+	return Number.isInteger(n) ? String(n) : n.toFixed(2)
+}
+
 export const isPriceElement = (
 	el: InfoElement
 ): el is Extract<InfoElement, { type: 'price' }> => el.type === 'price'
@@ -68,10 +72,6 @@ export const messageToString = (
 	}
 
 	return ''
-}
-
-export const roundNumber = (n: number): string => {
-	return Number.isInteger(n) ? String(n) : n.toFixed(2)
 }
 
 export const humanizeCategory = (cat?: string) => {

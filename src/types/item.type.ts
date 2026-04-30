@@ -70,6 +70,7 @@ export type ArtQuality =
 export type Locale = 'ru' | 'en' | 'es' | 'fr' | 'ko'
 export type ItemName = Partial<Record<Locale, string>>
 export const LOCALE = ['ru', 'en', 'es', 'fr', 'ko'] as const
+export const VALID_LOCALES = new Set<string>(LOCALE)
 
 export type LocalizedString = {
 	[K in Locale]?: string

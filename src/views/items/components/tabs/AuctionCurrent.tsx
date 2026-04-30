@@ -1,32 +1,24 @@
 'use client'
 
-import type { ChartOptions } from 'chart.js'
-import {
-	CategoryScale,
-	Chart as ChartJS,
-	Tooltip as ChartTooltip,
-	Legend,
-	LinearScale,
-	PointElement,
-} from 'chart.js'
+import type { TooltipItem } from 'chart.js'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
-import { useMemo } from 'react'
 import { Scatter } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
 import type { Lot } from '@/types/item.type'
 import { calcArtifactPercent, getArtifactColor } from '@/utils/artUtils'
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, ChartTooltip, Legend)
+import {
+	type BaseChartPoint,
+	createAuctionDataset,
+	formatPrice,
+	useAuctionChartOptions,
+} from './AuctionChart'
 
 type Props = {
 	data?: Lot[]
 }
 
-type ChartPoint = {
-	x: string
-	y: number
+type CurrentPoint = BaseChartPoint & {
 	time: string
 	endTime: string
 	amount: number
@@ -42,112 +34,63 @@ type ChartPoint = {
 export default function AuctionCurrent({ data }: Props) {
 	const t = useTranslations()
 
-	const { resolvedTheme } = useTheme()
-	const isDark = resolvedTheme === 'dark'
+	const tooltipCallbacks = {
+		title: (items: TooltipItem<'scatter'>[]) => {
+			const raw = items?.[0]?.raw as CurrentPoint | undefined
+			return raw ? `Дата выставления: ${raw.time}` : ''
+		},
+		label: (context: TooltipItem<'scatter'>) => {
+			const raw = context.raw as CurrentPoint
+			const lines: string[] = [
+				`Окончание торгов: ${raw.endTime}`,
+				`Начальная ставка: ${formatPrice(raw.startPrice)}`,
+				`Текущая ставка: ${
+					raw.currentPrice != null
+						? formatPrice(raw.currentPrice)
+						: '—'
+				}`,
+			]
 
-	const options = useMemo<ChartOptions<'scatter'>>(
-		() => ({
-			responsive: true,
-			maintainAspectRatio: false,
-			scales: {
-				x: {
-					reverse: true,
-					type: 'category',
-					ticks: {
-						color: isDark ? '#aaa' : '#333',
-						font: { weight: 'bold', size: 12 },
-					},
-					grid: { color: isDark ? '#44464c' : '#ccc' },
-				},
-				y: {
-					type: 'linear',
-					ticks: {
-						color: isDark ? '#aaa' : '#333',
-						font: { weight: 'bold', size: 12 },
-					},
-					grid: { color: isDark ? '#44464c' : '#ccc' },
-				},
-			},
-			plugins: {
-				legend: { display: false },
-				tooltip: {
-					mode: 'nearest',
-					intersect: false,
-					backgroundColor: isDark ? '#080808' : '#fff',
-					titleColor: isDark ? '#fbfbfe' : '#171717',
-					bodyColor: isDark ? '#d4d4d4' : '#525252',
-					borderColor: isDark ? '#3d4a52' : '#badbeb',
-					borderWidth: 2,
-					padding: 12,
-					displayColors: false,
-					titleFont: { size: 13, weight: 'bold' },
-					bodyFont: { size: 12, weight: 'bold' },
-					callbacks: {
-						title: (items) => {
-							const raw = items?.[0]?.raw as
-								| ChartPoint
-								| undefined
-							return raw ? `Дата выставления: ${raw.time}` : ''
-						},
-						label: (context) => {
-							const raw = context.raw as ChartPoint
-							const lines: string[] = []
+			if (raw.buyoutPrice != null) {
+				lines.push(`Выкуп: ${formatPrice(raw.buyoutPrice)}`)
+			}
 
-							lines.push(`Окончание торгов: ${raw.endTime}`)
+			if (raw.amount > 1) lines.push(`Кол-во: ${raw.amount}`)
+			if (raw.artPercent > 0)
+				lines.push(`Процент: ${raw.artPercent.toFixed(2)}%`)
+			if (raw.ptn > 0) lines.push(`Потенциал: ${raw.ptn}`)
 
-							lines.push(
-								`Начальная ставка: ${Intl.NumberFormat('ru-RU').format(raw.startPrice)}`
-							)
-							lines.push(
-								`Текущая ставка: ${
-									raw.currentPrice != null
-										? Intl.NumberFormat('ru-RU').format(
-												raw.currentPrice
-											)
-										: '—'
-								}`
-							)
-							if (raw.buyoutPrice != null) {
-								lines.push(
-									`Выкуп: ${Intl.NumberFormat('ru-RU').format(raw.buyoutPrice)}`
-								)
-							}
+			return lines
+		},
+	}
 
-							if (raw.amount > 1)
-								lines.push(`Кол-во: ${raw.amount}`)
-							if (raw.artPercent > 0)
-								lines.push(
-									`Процент: ${raw.artPercent.toFixed(2)}%`
-								)
-							if (raw.ptn > 0) lines.push(`Потенциал: ${raw.ptn}`)
-
-							return lines
-						},
-					},
-				},
-			},
-			elements: {
-				point: { hoverRadius: 7 },
-			},
-		}),
-		[isDark]
-	)
+	const options = useAuctionChartOptions(tooltipCallbacks)
 
 	const safeData = Array.isArray(data) ? data : []
 
-	const chartData = safeData.map((item) => ({
-		startTime: formatDate(item.startTime),
-		endTime: formatDate(item.endTime),
-		amount: item.amount,
-		buyoutPrice: item.buyoutPrice ?? null,
-		startPrice: item.startPrice,
-		currentPrice: item.currentPrice,
-		artPercent: item.additional ? calcArtifactPercent(item.additional) : 0,
-		ptn: item.additional?.ptn ?? 0,
-		qlt: item.additional?.qlt ?? 0,
-	}))
+	const points: CurrentPoint[] = safeData.map((item) => {
+		const useBuyout = item.buyoutPrice != null
+		const startTime = formatDate(item.startTime)
+		const endTime = formatDate(item.endTime)
+		return {
+			x: startTime,
+			y: useBuyout ? (item.buyoutPrice as number) : item.startPrice,
+			time: startTime,
+			endTime: endTime,
+			amount: item.amount,
+			artPercent: item.additional
+				? calcArtifactPercent(item.additional)
+				: 0,
+			ptn: item.additional?.ptn ?? 0,
+			qlt: item.additional?.qlt ?? 0,
+			startPrice: item.startPrice,
+			currentPrice: item.currentPrice,
+			buyoutPrice: item.buyoutPrice ?? null,
+			isBuyout: useBuyout,
+		}
+	})
 
-	if (chartData.length === 0) {
+	if (points.length === 0) {
 		return (
 			<Card.Root>
 				<Card.Header>
@@ -159,40 +102,16 @@ export default function AuctionCurrent({ data }: Props) {
 		)
 	}
 
-	const points: ChartPoint[] = chartData.map((d) => {
-		const useBuyout = d.buyoutPrice != null
-		const yValue = useBuyout ? (d.buyoutPrice as number) : d.startPrice
-		return {
-			x: d.startTime,
-			y: yValue,
-			time: d.startTime,
-			endTime: d.endTime,
-			amount: d.amount,
-			artPercent: d.artPercent,
-			qlt: d.qlt ?? 0,
-			ptn: d.ptn ?? 0,
-			startPrice: d.startPrice,
-			currentPrice: d.currentPrice,
-			buyoutPrice: d.buyoutPrice,
-			isBuyout: useBuyout,
-		}
-	})
-
-	const dataForChart = {
-		labels: chartData.map((d) => d.startTime),
-		datasets: [
+	const dataForChart = createAuctionDataset(
+		[
 			{
 				label: 'Текущие лоты',
 				data: points,
-				pointBackgroundColor: points.map((p) =>
-					getArtifactColor(p.qlt)
-				),
-				pointBorderColor: isDark ? '#fff' : '#000',
-				pointRadius: 5,
-				showLine: false,
+				pointColorFn: (p) => getArtifactColor((p as CurrentPoint).qlt),
 			},
 		],
-	}
+		options.scales?.x?.ticks?.color === '#aaa'
+	)
 
 	return (
 		<Card.Root>

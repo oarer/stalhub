@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
+import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useItemStore } from '@/stores/items.store'
 import type { ItemListing } from '@/types/api.type'
 
-const RAW_URL =
-	'https://raw.githubusercontent.com/oarer/sc-db/main/merged/listing.json'
+const LISTING_URL = `${GITHUB_RAW_BASE}/listing.json`
 const COMMITS_API =
 	'https://api.github.com/repos/oarer/sc-db/commits?path=merged/listing.json&page=1&per_page=1'
 
@@ -47,7 +47,7 @@ export function useSearchItem() {
 					return
 				}
 
-				const freshRaw = await fetch(RAW_URL)
+				const freshRaw = await fetch(LISTING_URL)
 				const freshItems = (await freshRaw.json()) as ItemListing[]
 
 				setItems(freshItems)

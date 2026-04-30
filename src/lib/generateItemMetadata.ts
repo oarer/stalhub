@@ -1,5 +1,18 @@
+import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import type { ItemListing } from '@/types/api.type'
 import type { Locale } from '@/types/item.type'
+
+const DESCRIPTIONS: Record<Locale, (name: string) => string> = {
+	ru: (name: string) =>
+		`Информация о предмете ${name}: описание, характеристики, аукцион`,
+	en: (name: string) =>
+		`Information about item ${name}: description, stats, auction`,
+	es: (name: string) =>
+		`Información sobre el objeto ${name}: descripción, características, subasta`,
+	fr: (name: string) =>
+		`Informations sur l'objet ${name} : description, caractéristiques, enchères`,
+	ko: (name: string) => `${name} 아이템 정보: 설명, 특징, 경매`,
+}
 
 type ItemData = {
 	name: string
@@ -15,10 +28,9 @@ export async function generateItemMetadata(
 		? `/items/${slug.join('/')}.json`
 		: `/items/${slug}.json`
 
-	const res = await fetch(
-		'https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/listing.json',
-		{ next: { revalidate: 60 } }
-	)
+	const res = await fetch(`${GITHUB_RAW_BASE}/listing.json`, {
+		next: { revalidate: 60 },
+	})
 	const listing: ItemListing[] = await res.json()
 
 	const item = listing.find((i) => i.data === githubUrl)
@@ -27,14 +39,7 @@ export async function generateItemMetadata(
 	const name = item.name[locale] || item.name.en || item.name.ru
 	if (!name) return null
 
-	const descriptions: Record<Locale, string> = {
-		ru: `Информация о предмете ${name}: описание, характеристики, аукцион`,
-		en: `Information about item ${name}: description, stats, auction`,
-		es: `Información sobre el objeto ${name}: descripción, características, subasta`,
-		fr: `Informations sur l'objet ${name} : description, caractéristiques, enchères`,
-		ko: `${name} 아이템 정보: 설명, 특징, 경매`,
-	}
-	const description = descriptions[locale] || descriptions.ru
+	const description = DESCRIPTIONS[locale]?.(name) ?? DESCRIPTIONS.ru(name)
 
 	return { name, description, icon: item.icon }
 }

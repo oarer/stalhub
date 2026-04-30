@@ -14,30 +14,32 @@ import {
 	messageToString,
 } from '@/utils/itemUtils'
 
-export function parseItemStats(item: Item, locale: Locale): ParsedItem {
+function createEmptyParsedItem(): ParsedItem {
+	return {
+		statRanges: {},
+		baseStats: {},
+		addStats: {},
+		displayNames: {},
+		localizedToKey: {},
+	}
+}
+
+type StatPushers = ReturnType<typeof createStatPushers>
+
+function createStatPushers() {
 	const statRanges: ParsedItem['statRanges'] = {}
 	const baseStats: ParsedItem['baseStats'] = {}
 	const addStats: ParsedItem['addStats'] = {}
 	const displayNames: ParsedItem['displayNames'] = {}
 	const localizedToKey: ParsedItem['localizedToKey'] = {}
 
-	if (!item?.infoBlocks || !Array.isArray(item.infoBlocks)) {
-		return {
-			statRanges,
-			baseStats,
-			addStats,
-			displayNames,
-			localizedToKey,
-		}
-	}
-
-	const pushRange = (
+	function pushRange(
 		key: string,
 		v0: number,
 		v100: number,
 		display?: string,
 		color?: string
-	) => {
+	) {
 		if (!key) return
 		statRanges[key] = { v0, v100, color: color ?? 'inherit' }
 		if (display) {
@@ -46,7 +48,7 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 		}
 	}
 
-	const pushBase = (key: string, val: number, display?: string) => {
+	function pushBase(key: string, val: number, display?: string) {
 		if (!key) return
 		if (key in statRanges) return
 		baseStats[key] = (baseStats[key] ?? 0) + val
@@ -56,13 +58,13 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 		}
 	}
 
-	const pushAddRange = (
+	function pushAddRange(
 		key: string,
 		v0: number,
 		v100: number,
 		color: string,
 		display?: string
-	) => {
+	) {
 		if (!key) return
 
 		const prev = addStats[key]
@@ -83,29 +85,102 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 		}
 	}
 
-	function pushCtAddStatKey(el: InfoElement): string | null {
-		if (!isRangeElement(el)) return null
-		if (isNumericElement(el)) return null
-
-		return el.name.type === 'translation' && el.name.key.length > 0
-			? el.name.key
-			: null
+	function toResult(): ParsedItem {
+		return { statRanges, baseStats, addStats, displayNames, localizedToKey }
 	}
 
-	function getDisplayFromElement(
-		el: InfoElement,
-		key: string,
-		locale: Locale
-	): string {
-		if (!isRangeElement(el)) return key
+	return { pushRange, pushBase, pushAddRange, toResult }
+}
 
-		try {
-			const s = messageToString(el.name, locale)
-			return s && s.trim().length > 0 ? s : key
-		} catch {
-			return key
+function extractStatKey(el: InfoElement): string | null {
+	if (!isRangeElement(el)) return null
+	if (isNumericElement(el)) return null
+
+	return el.name.type === 'translation' && el.name.key.length > 0
+		? el.name.key
+		: null
+}
+
+function resolveDisplayName(
+	el: InfoElement,
+	key: string,
+	locale: Locale
+): string {
+	if (!isRangeElement(el)) return key
+
+	try {
+		const s = messageToString(el.name, locale)
+		return s && s.trim().length > 0 ? s : key
+	} catch {
+		return key
+	}
+}
+
+function processAddStatBlock(
+	block: AddStatBlock,
+	locale: Locale,
+	pushers: StatPushers
+) {
+	for (const el of block.elements) {
+		if (!el) continue
+
+		const key = extractStatKey(el)
+		if (!key) continue
+
+		const display = resolveDisplayName(el, key, locale)
+
+		const colorRaw = el.formatted?.valueColor as string | undefined
+		const color = colorRaw?.replace(/^#/, '') ?? ''
+
+		if (el.type === 'numeric') {
+			const v = Number(el.value ?? 0)
+			if (Number.isFinite(v)) {
+				pushers.pushAddRange(key, v, v, color, display)
+			}
+		} else if (el.type === 'range') {
+			const v0 = Number(el.min ?? 0)
+			const v100 = Number(el.max ?? 0)
+			if (!Number.isNaN(v0) && !Number.isNaN(v100)) {
+				pushers.pushAddRange(key, v0, v100, color, display)
+			}
 		}
 	}
+}
+
+function processListBlock(
+	block: ElementListBlock,
+	locale: Locale,
+	pushers: StatPushers
+) {
+	for (const el of block.elements) {
+		if (!el) continue
+
+		if (el.type === 'numeric' && 'name' in el) {
+			const key = extractStatKey(el)
+			if (!key) continue
+			const display = resolveDisplayName(el, key, locale)
+			const v = Number((el as NumericElement).value ?? 0)
+			if (Number.isFinite(v)) pushers.pushBase(key, v, display)
+		} else if (el.type === 'range' && 'name' in el) {
+			const color = el.formatted?.valueColor
+
+			const key = extractStatKey(el)
+			if (!key) continue
+			const display = resolveDisplayName(el, key, locale)
+			const v0 = Number((el as NumericRangeElement).min ?? 0)
+			const v100 = Number((el as NumericRangeElement).max ?? 0)
+			if (!Number.isNaN(v0) && !Number.isNaN(v100))
+				pushers.pushRange(key, v0, v100, display, color)
+		}
+	}
+}
+
+export function parseItemStats(item: Item, locale: Locale): ParsedItem {
+	if (!item?.infoBlocks || !Array.isArray(item.infoBlocks)) {
+		return createEmptyParsedItem()
+	}
+
+	const pushers = createStatPushers()
 
 	for (const block of item.infoBlocks) {
 		if (
@@ -115,58 +190,13 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 			continue
 
 		if (block.type === 'addStat') {
-			for (const el of block.elements) {
-				if (!el) continue
-
-				const key = pushCtAddStatKey(el)
-				if (!key) continue
-
-				const display = getDisplayFromElement(el, key, locale)
-
-				const colorRaw = el.formatted?.valueColor as string | undefined
-				const color = colorRaw?.replace(/^#/, '') ?? ''
-
-				if (el.type === 'numeric') {
-					const v = Number(el.value ?? 0)
-
-					if (Number.isFinite(v)) {
-						pushAddRange(key, v, v, color, display)
-					}
-				} else if (el.type === 'range') {
-					const v0 = Number(el.min ?? 0)
-					const v100 = Number(el.max ?? 0)
-
-					if (!Number.isNaN(v0) && !Number.isNaN(v100)) {
-						pushAddRange(key, v0, v100, color, display)
-					}
-				}
-			}
+			processAddStatBlock(block as AddStatBlock, locale, pushers)
 		}
 
 		if (block.type === 'list') {
-			for (const el of block.elements) {
-				if (!el) continue
-
-				if (el.type === 'numeric' && 'name' in el) {
-					const key = pushCtAddStatKey(el)
-					if (!key) continue
-					const display = getDisplayFromElement(el, key, locale)
-					const v = Number((el as NumericElement).value ?? 0)
-					if (Number.isFinite(v)) pushBase(key, v, display)
-				} else if (el.type === 'range' && 'name' in el) {
-					const color = el.formatted?.valueColor
-
-					const key = pushCtAddStatKey(el)
-					if (!key) continue
-					const display = getDisplayFromElement(el, key, locale)
-					const v0 = Number((el as NumericRangeElement).min ?? 0)
-					const v100 = Number((el as NumericRangeElement).max ?? 0)
-					if (!Number.isNaN(v0) && !Number.isNaN(v100))
-						pushRange(key, v0, v100, display, color)
-				}
-			}
+			processListBlock(block as ElementListBlock, locale, pushers)
 		}
 	}
 
-	return { statRanges, baseStats, addStats, displayNames, localizedToKey }
+	return pushers.toResult()
 }

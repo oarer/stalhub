@@ -8,13 +8,13 @@ import { useEffect, useRef, useState } from 'react'
 import useClickOutside from '@/hooks/useClickOutside'
 import { getLocale } from '@/lib/getLocale'
 
-interface Locale {
+interface LocaleConfig {
 	code: string
 	title: string
 	iconName: string
 }
 
-const locales: Locale[] = [
+const locales: LocaleConfig[] = [
 	{ code: 'ru', title: 'Русский', iconName: 'twemoji:flag-russia' },
 	{ code: 'en', title: 'English', iconName: 'twemoji:flag-united-kingdom' },
 	{ code: 'es', title: 'Español', iconName: 'twemoji:flag-spain' },
