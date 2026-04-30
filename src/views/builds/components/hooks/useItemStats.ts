@@ -34,6 +34,33 @@ export const HIDDEN_STAT_KEYS = new Set([
 	'stalker.tooltip.backpack.info.size',
 ])
 
+type RelevantBlock = ElementListBlock | AddStatBlock
+
+const isRelevantBlock = (
+	block: NonNullable<Item['infoBlocks']>[number]
+): block is RelevantBlock => {
+	return block.type === 'list' || block.type === 'addStat'
+}
+
+const getBlockElements = (block: RelevantBlock): InfoElement[] => {
+	return Array.isArray(block.elements) ? block.elements : []
+}
+
+const findElementByKey = (item: Item, key: string): InfoElement | null => {
+	if (!item.infoBlocks) return null
+
+	for (const block of item.infoBlocks) {
+		if (!isRelevantBlock(block)) continue
+
+		for (const el of getBlockElements(block)) {
+			if (!el) continue
+			if (getElementKey(el) === key) return el
+		}
+	}
+
+	return null
+}
+
 export function isNumericEl(el: InfoElement): el is NumericElement {
 	return el.type === 'numeric'
 }
@@ -60,59 +87,41 @@ export function getItemKeys(item: Item): Set<string> {
 	if (!item.infoBlocks) return keys
 
 	for (const block of item.infoBlocks) {
-		if (block.type !== 'list' && block.type !== 'addStat') continue
-		const elements = (block as ElementListBlock | AddStatBlock).elements
-		if (!Array.isArray(elements)) continue
+		if (!isRelevantBlock(block)) continue
 
-		for (const el of elements) {
+		for (const el of getBlockElements(block)) {
 			if (!el) continue
 			const key = getElementKey(el)
 			if (key) keys.add(key)
 		}
 	}
+
 	return keys
 }
 
 export function getNumericValue(
 	item: Item,
 	key: string,
-	locale: Locale,
 	numericVariants: number = 0
 ): number {
-	if (!item.infoBlocks) return 0
+	const el = findElementByKey(item, key)
+	if (!el) return 0
 
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list' && block.type !== 'addStat') continue
-		const elements = (block as ElementListBlock | AddStatBlock).elements
-		if (!Array.isArray(elements)) continue
+	if (isNumericEl(el)) {
+		return Number(el.value ?? 0)
+	}
 
-		for (const el of elements) {
-			if (!el) continue
+	if (isRangeEl(el)) {
+		const min = Number(el.min ?? 0)
+		const max = Number(el.max ?? 0)
+		const percent = numericVariants / 15
+		return min + (max - min) * percent
+	}
 
-			const elKey = getElementKey(el)
-			if (elKey !== key) continue
-
-			if (isNumericEl(el)) {
-				return Number(el.value ?? 0)
-			}
-
-			if (isRangeEl(el)) {
-				const v0 = Number(el.min ?? 0)
-				const v100 = Number(el.max ?? 0)
-
-				const percent = numericVariants / 15
-				return v0 + (v100 - v0) * percent
-			}
-
-			if (isNumericVariantsEl(el)) {
-				const values = el.value ?? []
-				const index = Math.min(
-					Math.max(numericVariants, 0),
-					values.length - 1
-				)
-				return Number(values[index] ?? 0)
-			}
-		}
+	if (isNumericVariantsEl(el)) {
+		const values = el.value ?? []
+		const index = Math.min(Math.max(numericVariants, 0), values.length - 1)
+		return Number(values[index] ?? 0)
 	}
 
 	return 0
@@ -123,23 +132,11 @@ export function getDisplayName(
 	key: string,
 	locale: Locale
 ): string {
-	if (!item.infoBlocks) return key
+	const el = findElementByKey(item, key)
+	if (!el) return key
 
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list' && block.type !== 'addStat') continue
-		const elements = (block as ElementListBlock | AddStatBlock).elements
-		if (!Array.isArray(elements)) continue
-
-		for (const el of elements) {
-			if (!el) continue
-
-			const elKey = getElementKey(el)
-			if (elKey !== key) continue
-
-			if ('name' in el) {
-				return messageToString(el.name, locale)
-			}
-		}
+	if ('name' in el) {
+		return messageToString(el.name, locale)
 	}
 
 	return key
