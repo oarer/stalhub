@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Scene from '@/app/calcs/builds/model/Scene'
 import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
@@ -73,6 +73,46 @@ export default function BuildsView() {
 
 	const armorModel = armorModelQuery.data?.model
 	const containerModel = containerModelQuery.data?.model
+
+	const sceneArmor = useMemo(
+		() => ({
+			glb: armorModel?.model
+				? `https://cdn.stalhub.tech/${armorModel.model}`
+				: 'https://cdn.stalhub.tech/models/armor/hound/hound.glb',
+			textures: {
+				diff: armorModel?.diff
+					? `https://cdn.stalhub.tech/${armorModel.diff}`
+					: 'https://cdn.stalhub.tech/models/armor/hound/hound_diff.dds',
+				emi: armorModel?.emi
+					? `https://cdn.stalhub.tech/${armorModel.emi}`
+					: undefined,
+				nrm: armorModel?.nrm
+					? `https://cdn.stalhub.tech/${armorModel.nrm}`
+					: 'https://cdn.stalhub.tech/models/armor/hound/hound_nrm.dds',
+			},
+		}),
+		[armorModel]
+	)
+
+	const sceneCont = useMemo(
+		() => ({
+			glb: containerModel?.model
+				? `https://cdn.stalhub.tech/${containerModel.model}`
+				: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6.glb',
+			textures: {
+				diff: containerModel?.diff
+					? `https://cdn.stalhub.tech/${containerModel.diff}`
+					: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6_diff.dds',
+				emi: containerModel?.emi
+					? `https://cdn.stalhub.tech/${containerModel.emi}`
+					: undefined,
+				nrm: containerModel?.nrm
+					? `https://cdn.stalhub.tech/${containerModel.nrm}`
+					: undefined,
+			},
+		}),
+		[containerModel]
+	)
 
 	useEffect(() => {
 		if (imported) return
@@ -239,40 +279,7 @@ export default function BuildsView() {
 					<StatsTabs />
 				</div>
 				<div className="flex min-h-180 w-full items-center justify-center">
-					<Scene
-						armor={{
-							glb: armorModel?.model
-								? `https://cdn.stalhub.tech/${armorModel.model}`
-								: 'https://cdn.stalhub.tech/models/armor/hound/hound.glb',
-							textures: {
-								diff: armorModel?.diff
-									? `https://cdn.stalhub.tech/${armorModel.diff}`
-									: 'https://cdn.stalhub.tech/models/armor/hound/hound_diff.dds',
-								emi: armorModel?.emi
-									? `https://cdn.stalhub.tech/${armorModel.emi}`
-									: undefined,
-								nrm: armorModel?.nrm
-									? `https://cdn.stalhub.tech/${armorModel.nrm}`
-									: 'https://cdn.stalhub.tech/models/armor/hound/hound_nrm.dds',
-							},
-						}}
-						cont={{
-							glb: containerModel?.model
-								? `https://cdn.stalhub.tech/${containerModel.model}`
-								: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6.glb',
-							textures: {
-								diff: containerModel?.diff
-									? `https://cdn.stalhub.tech/${containerModel.diff}`
-									: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6_diff.dds',
-								emi: containerModel?.emi
-									? `https://cdn.stalhub.tech/${containerModel.emi}`
-									: undefined,
-								nrm: containerModel?.nrm
-									? `https://cdn.stalhub.tech/${containerModel.nrm}`
-									: undefined,
-							},
-						}}
-					/>
+					<Scene armor={sceneArmor} cont={sceneCont} />
 				</div>
 			</div>
 		</main>
