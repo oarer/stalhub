@@ -51,14 +51,12 @@ function getContainerModifiers(
 		effectiveness:
 			getNumericValue(
 				containerItem,
-				'stalker.tooltip.backpack.stat_name.effectiveness',
-				locale
+				'stalker.tooltip.backpack.stat_name.effectiveness'
 			) / 100,
 		innerProtection:
 			getNumericValue(
 				containerItem,
-				'stalker.tooltip.backpack.stat_name.inner_protection',
-				locale
+				'stalker.tooltip.backpack.stat_name.inner_protection'
 			) / 100,
 	}
 }
@@ -89,14 +87,13 @@ function applyContainerModifiers(
 function getStatsFromItem(
 	item: Item | undefined,
 	allStatKeys: string[],
-	locale: Locale,
 	level: number = 0
 ): BuildStats {
 	const result: BuildStats = {}
 	if (!item) return result
 
 	for (const key of allStatKeys) {
-		const val = getNumericValue(item, key, locale, level)
+		const val = getNumericValue(item, key, level)
 		if (val !== 0) {
 			result[key] = val
 		}
@@ -197,23 +194,14 @@ export function useBuildStats() {
 		const armorItem = armors.find((a) => a.id === build.armor?.id)
 		if (armorItem && build.armor) {
 			const level = build.armor.level ?? 0
-			const armorStats = getStatsFromItem(
-				armorItem,
-				allStatKeys,
-				locale,
-				level
-			)
+			const armorStats = getStatsFromItem(armorItem, allStatKeys, level)
 			for (const [key, val] of Object.entries(armorStats)) {
 				result[key] = (result[key] ?? 0) + val
 			}
 		}
 
 		if (containerItem) {
-			const containerStats = getStatsFromItem(
-				containerItem,
-				allStatKeys,
-				locale
-			)
+			const containerStats = getStatsFromItem(containerItem, allStatKeys)
 			for (const [key, val] of Object.entries(containerStats)) {
 				result[key] = (result[key] ?? 0) + val
 			}
@@ -237,11 +225,7 @@ export function useBuildStats() {
 		for (const boostId of Object.values(build.boost).filter(Boolean)) {
 			const boostItem = consumables.find((c) => c.id === boostId)
 			if (boostItem) {
-				const boostStats = getStatsFromItem(
-					boostItem,
-					allStatKeys,
-					locale
-				)
+				const boostStats = getStatsFromItem(boostItem, allStatKeys)
 				for (const [key, val] of Object.entries(boostStats)) {
 					if (val !== 0) {
 						withBoosts[key] = (withBoosts[key] ?? 0) + val
@@ -267,11 +251,7 @@ export function useBuildStats() {
 
 		if (!containerItem) return result
 
-		const containerOnlyStats = getStatsFromItem(
-			containerItem,
-			allStatKeys,
-			locale
-		)
+		const containerOnlyStats = getStatsFromItem(containerItem, allStatKeys)
 		for (const [key, val] of Object.entries(containerOnlyStats)) {
 			result[key] = val
 		}
