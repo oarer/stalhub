@@ -58,7 +58,7 @@ const Sidebar: React.FC<Props> = ({
 
 			<motion.button
 				animate={{
-					left: isOpen ? `${sidebarWidth + 32}px` : '20px',
+					left: isOpen ? `${sidebarWidth + 45}px` : '20px',
 					opacity: 1,
 					scale: 1,
 				}}
