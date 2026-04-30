@@ -9,7 +9,8 @@ import Sidebar from '@/components/ui/sideBar/SideBar'
 
 import '@/shared/styles/map.css'
 import { CheckBox } from '@/components/ui/CheckBox'
-import { DrawingOverlay, FitBounds, MarkerLayer } from './components'
+import SetImageBounds from '@/views/maps/map/components/SetImageBounds'
+import { DrawingOverlay, MarkerLayer } from './components'
 import { useKeyboardShortcuts } from './components/hooks'
 import {
 	ActionButtons,
@@ -265,10 +266,12 @@ export default function CWMapEditor() {
 						url={tileUrl}
 					/>
 
-					<FitBounds
+					<SetImageBounds
 						fullMaxLevel={selectedMap.fullMaxLevel}
 						imageHeight={selectedMap.imageHeight}
 						imageWidth={selectedMap.imageWidth}
+						padding={0.1}
+						viscosity={0.8}
 					/>
 
 					<DrawingOverlay

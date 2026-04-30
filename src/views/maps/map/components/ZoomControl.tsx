@@ -21,7 +21,7 @@ export default function ZoomControl() {
 
 		const parent = div.parentElement
 		if (parent) {
-			parent.style.top = '10px'
+			parent.style.top = '30px'
 			parent.style.right = '10px'
 		}
 

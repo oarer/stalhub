@@ -1,10 +1,12 @@
 import type { Locale } from './item.type'
 
+export type LatLng = { lat: number; lng: number }
+
 export type LocalizedString = Partial<Record<Locale, string>>
 
 export type MarkerPoint = {
 	id?: number
-	coordinates: { lat: number; lng: number }
+	coordinates: LatLng
 	description?: LocalizedString
 	popup?: string
 }
@@ -43,4 +45,17 @@ export type MapConfig = {
 	preview_image: string
 	image: { width: number; height: number; maxZoom: number }
 	markers: string
+}
+
+export const isPixelCoord = (
+	coords: LatLng,
+	imageWidth: number,
+	imageHeight: number
+): boolean => {
+	return (
+		coords.lat >= 0 &&
+		coords.lng >= 0 &&
+		coords.lat <= imageHeight &&
+		coords.lng <= imageWidth
+	)
 }

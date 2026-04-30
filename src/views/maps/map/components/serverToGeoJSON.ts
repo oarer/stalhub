@@ -1,4 +1,4 @@
-import type { MarkersFile } from '@/types/map.type'
+import { isPixelCoord, type MarkersFile } from '@/types/map.type'
 
 export function serverMarkersToGeoJSON(
 	markersFile: MarkersFile | null,
@@ -13,11 +13,7 @@ export function serverMarkersToGeoJSON(
 		for (const group of cluster.markers) {
 			for (const point of group.markers) {
 				const coords = point.coordinates
-				const isPixelCoord =
-					coords.lat >= 0 &&
-					coords.lng >= 0 &&
-					coords.lat <= imageHeight &&
-					coords.lng <= imageWidth
+				const isPixel = isPixelCoord(coords, imageWidth, imageHeight)
 
 				const geometry: GeoJSON.Point = {
 					type: 'Point',
@@ -34,7 +30,7 @@ export function serverMarkersToGeoJSON(
 						groupName: group.name,
 						settings: group.settings,
 						description: point.description,
-						isPixelCoord,
+						isPixelCoord: isPixel,
 					},
 					geometry,
 				})

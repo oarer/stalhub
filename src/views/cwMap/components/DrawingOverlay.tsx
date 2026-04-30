@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef } from 'react'
 import { useMap } from 'react-leaflet'
 
 import type { DrawElement, LatLng, Tool } from '../types'
-import { toLeaflet, toPlain } from '../utils'
+import { genId, toLeaflet, toPlain } from '../utils'
 
 interface DrawingOverlayProps {
 	tool: Tool
@@ -306,8 +306,4 @@ export function DrawingOverlay({
 	}, [tool, map])
 
 	return null
-}
-
-function genId(): string {
-	return Math.random().toString(36).slice(2, 10)
 }

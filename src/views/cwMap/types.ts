@@ -1,4 +1,6 @@
-export type LatLng = { lat: number; lng: number }
+export type { LatLng } from '@/types/map.type'
+
+import type { LatLng } from '@/types/map.type'
 
 export type HistoryEntry =
 	| { type: 'add_element'; element: DrawElement }

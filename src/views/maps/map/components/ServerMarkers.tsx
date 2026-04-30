@@ -6,6 +6,7 @@ import { Marker, Popup, useMap } from 'react-leaflet'
 import { getLocale } from '@/lib/getLocale'
 import type { Locale } from '@/types/item.type'
 import type { MarkersFile } from '@/types/map.type'
+import { isPixelCoord } from '@/types/map.type'
 
 type Props = {
 	markersFile: MarkersFile | null
@@ -48,15 +49,12 @@ export default function ServerMarkers({
 
 			for (const p of group.markers) {
 				const coords = p.coordinates
-				const isPixelCoord =
+				const isPixel =
 					typeof imageWidth === 'number' &&
 					typeof imageHeight === 'number' &&
-					coords.lat >= 0 &&
-					coords.lng >= 0 &&
-					coords.lat <= imageHeight &&
-					coords.lng <= imageWidth
+					isPixelCoord(coords, imageWidth, imageHeight)
 
-				const pos: L.LatLngExpression = isPixelCoord
+				const pos: L.LatLngExpression = isPixel
 					? map.unproject([coords.lng, coords.lat], fullMaxLevel)
 					: L.latLng(coords.lat, coords.lng)
 

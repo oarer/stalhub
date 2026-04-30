@@ -9,6 +9,8 @@ type Props = {
 	imageHeight: number
 	fullMaxLevel: number
 	fit?: boolean
+	viscosity?: number
+	padding?: number
 }
 
 export default function SetImageBounds({
@@ -16,6 +18,8 @@ export default function SetImageBounds({
 	imageHeight,
 	fullMaxLevel,
 	fit = true,
+	viscosity = 1.0,
+	padding = 0,
 }: Props) {
 	const map = useMap()
 
@@ -27,8 +31,8 @@ export default function SetImageBounds({
 		)
 		const bounds = L.latLngBounds(topLeft, bottomRight)
 
-		map.setMaxBounds(bounds)
-		map.options.maxBoundsViscosity = 1.0
+		map.setMaxBounds(padding > 0 ? bounds.pad(padding) : bounds)
+		map.options.maxBoundsViscosity = viscosity
 
 		if (fit) {
 			map.fitBounds(bounds, { maxZoom: fullMaxLevel })
@@ -37,7 +41,7 @@ export default function SetImageBounds({
 		return () => {
 			map.setMaxBounds(null as unknown as L.LatLngBounds)
 		}
-	}, [map, imageWidth, imageHeight, fullMaxLevel, fit])
+	}, [map, imageWidth, imageHeight, fullMaxLevel, fit, viscosity, padding])
 
 	return null
 }

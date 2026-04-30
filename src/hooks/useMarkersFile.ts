@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react'
 
 import type { MarkersFile } from '@/types/map.type'
 
+const getAllVisibleKeys = (data: MarkersFile | null) => {
+	const cids = new Set<number>()
+	const gkeys = new Set<string>()
+	data?.markers_clusters?.forEach((c) => {
+		cids.add(c.id)
+		c.markers.forEach((g) => gkeys.add(`${c.id}_${g.id}`))
+	})
+	return { cids, gkeys }
+}
+
 export function useMarkersFile(markersUrl?: string) {
 	const [markersFile, setMarkersFile] = useState<MarkersFile | null>(null)
 	const [visibleClusterIds, setVisibleClusterIds] = useState<Set<number>>(
@@ -22,12 +32,7 @@ export function useMarkersFile(markersUrl?: string) {
 			.then((data: MarkersFile) => {
 				if (!mounted) return
 				setMarkersFile(data)
-				const cids = new Set<number>()
-				const gkeys = new Set<string>()
-				data?.markers_clusters?.forEach((c) => {
-					cids.add(c.id)
-					c.markers.forEach((g) => gkeys.add(`${c.id}_${g.id}`))
-				})
+				const { cids, gkeys } = getAllVisibleKeys(data)
 				setVisibleClusterIds(cids)
 				setVisibleGroupKeys(gkeys)
 			})
@@ -60,12 +65,7 @@ export function useMarkersFile(markersUrl?: string) {
 	}
 
 	const showAll = () => {
-		const cids = new Set<number>()
-		const gkeys = new Set<string>()
-		markersFile?.markers_clusters?.forEach((c) => {
-			cids.add(c.id)
-			c.markers.forEach((g) => gkeys.add(`${c.id}_${g.id}`))
-		})
+		const { cids, gkeys } = getAllVisibleKeys(markersFile)
 		setVisibleClusterIds(cids)
 		setVisibleGroupKeys(gkeys)
 	}
