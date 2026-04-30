@@ -2,8 +2,8 @@
 
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -63,6 +63,7 @@ export default function ArmorModal({ onClose }: ModalProps) {
 				</Card.Header>
 
 				<ItemsList
+					className="max-h-127"
 					favoriteType="armor"
 					items={visibleItems}
 					locale={locale}
@@ -80,9 +81,19 @@ export default function ArmorModal({ onClose }: ModalProps) {
 								] || InfoColor.DEFAULT,
 						}}
 					>
-						{selectedItem
-							? `| ${messageToString(selectedItem.name, locale)}`
-							: `| ${t('modals.builds.armor.header')}`}
+						<p
+							className="max-w-67 truncate"
+							style={{
+								color:
+									infoColorMap[
+										selectedItem?.color as InfoColor
+									] || InfoColor.DEFAULT,
+							}}
+						>
+							{selectedItem
+								? `| ${messageToString(selectedItem.name, locale)}`
+								: `| ${t('modals.builds.armor.header')}`}
+						</p>
 					</Card.Title>
 					<Button
 						aria-label="Close modal"

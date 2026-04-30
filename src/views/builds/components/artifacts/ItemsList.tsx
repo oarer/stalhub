@@ -100,7 +100,6 @@ const Row = ({
 		</div>
 	)
 }
-
 export function ItemsList({
 	items,
 	locale,
@@ -133,7 +132,7 @@ export function ItemsList({
 		}
 
 		return sorted
-	}, [items, showFavorites, favoriteType, isFavorite, favorites, locale])
+	}, [items, showFavorites, favoriteType, isFavorite, favorites])
 
 	const virtualizer = useVirtualizer({
 		count: sortedItems.length,
@@ -143,9 +142,9 @@ export function ItemsList({
 	})
 
 	return (
-		<div className={cn('max-h-130 max-w-80', className)}>
+		<div className={cn('h-full min-h-0 w-full max-w-80', className)}>
 			<div
-				className="mask-y-from-97% mask-y-to-100% h-130 w-full overflow-auto"
+				className="mask-y-from-97% mask-y-to-100% h-full w-full overflow-auto"
 				ref={parentRef}
 			>
 				<div

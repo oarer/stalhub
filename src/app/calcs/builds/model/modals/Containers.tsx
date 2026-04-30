@@ -2,8 +2,8 @@
 
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'

@@ -86,7 +86,7 @@ export function ArtifactStatsPanel({
 		<>
 			<div className="flex w-full items-center justify-between">
 				<p
-					className="font-semibold transition-colors"
+					className="max-w-67 truncate font-semibold transition-colors"
 					style={{
 						color:
 							infoColorMap[color as ArtQuality] ||

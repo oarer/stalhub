@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import Scene from '@/app/calcs/builds/model/Scene'
@@ -34,8 +34,10 @@ export default function BuildsView() {
 
 	const currentBuild = savedBuilds.find((b) => b.id === currentBuildId)
 
-	const armorsQuery = useQuery(itemsQueries.get({ type: 'armor' }))
-	const containersQuery = useQuery(itemsQueries.get({ type: 'containers' }))
+	const armorsQuery = useSuspenseQuery(itemsQueries.get({ type: 'armor' }))
+	const containersQuery = useSuspenseQuery(
+		itemsQueries.get({ type: 'containers' })
+	)
 
 	const armors = armorsQuery.data ?? []
 	const containers = containersQuery.data ?? []

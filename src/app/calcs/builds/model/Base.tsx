@@ -1,6 +1,7 @@
 import { Html, useGLTF } from '@react-three/drei'
 import type { ThreeEvent } from '@react-three/fiber'
 import { useFrame } from '@react-three/fiber'
+import { NextIntlClientProvider, useLocale, useMessages } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { DDSLoader } from 'three-stdlib'
@@ -37,6 +38,9 @@ export function BaseModel({
 	attachToBone,
 	attachObjects,
 }: BaseModelProps) {
+	const locale = useLocale()
+	const messages = useMessages()
+
 	const { scene } = useGLTF(glb)
 	const mixerRef = useRef<THREE.AnimationMixer | null>(null)
 	//! TODO я надеюсь смогу вернуть эту шляпу, ебаная залупа в виде анимки сломала всё
@@ -224,15 +228,17 @@ export function BaseModel({
 		return (
 			<Html position={htmlPos} zIndexRange={[1000, 1000]}>
 				<QueryProvider>
-					<ModalManager
-						clickType={modalOpen.clickType}
-						onClose={() => setModalOpen(null)}
-						type={modalOpen.type}
-					/>
+					<NextIntlClientProvider locale={locale} messages={messages}>
+						<ModalManager
+							clickType={modalOpen.clickType}
+							onClose={() => setModalOpen(null)}
+							type={modalOpen.type}
+						/>
+					</NextIntlClientProvider>
 				</QueryProvider>
 			</Html>
 		)
-	}, [modalOpen, modalPos])
+	}, [modalOpen, modalPos, messages])
 
 	useEffect(() => {
 		if (animations && animations.length > 0) {
