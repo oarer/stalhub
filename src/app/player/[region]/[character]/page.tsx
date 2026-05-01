@@ -1,9 +1,5 @@
-import {
-	dehydrate,
-	HydrationBoundary,
-	QueryClient,
-} from '@tanstack/react-query'
-
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { playerQueries } from '@/queries/player/player.queries'
 import type { Regions } from '@/types/api.type'
 import PlayerView from '@/views/player'
@@ -15,7 +11,7 @@ export default async function PlayerPage({
 }) {
 	const { region, character } = await params
 
-	const queryClient = new QueryClient()
+	const queryClient = getQueryClient()
 
 	await queryClient.prefetchQuery(
 		playerQueries.get({ region: region as Regions, character })

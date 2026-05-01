@@ -1,11 +1,8 @@
-import {
-	dehydrate,
-	HydrationBoundary,
-	QueryClient,
-} from '@tanstack/react-query'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { generateItemMetadata } from '@/lib/generateItemMetadata'
 import { getLocaleServer } from '@/lib/getLocaleServer'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
 import ItemsView from '@/views/items'
@@ -47,7 +44,7 @@ export default async function ItemsPage({ params }: PageProps) {
 	const id = slug[slug.length - 1]
 	const githubUrl = `${path.join('/')}.json`
 
-	const queryClient = new QueryClient()
+	const queryClient = getQueryClient()
 
 	await Promise.allSettled([
 		queryClient.prefetchQuery(itemQueries.byGithubUrl(githubUrl)),
