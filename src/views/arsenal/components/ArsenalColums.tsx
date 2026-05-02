@@ -25,7 +25,7 @@ export function getArsenalColumns(
 			accessorKey: 'drop',
 			header: t('arsenal.table.drop.title'),
 			cell: ({ getValue }) =>
-				getValue<boolean>() ? (
+				!getValue<boolean>() ? (
 					<span className="text-green-400 text-xs">
 						{t('arsenal.table.drop.false')}
 					</span>
