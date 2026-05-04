@@ -98,7 +98,7 @@ export default function ArmorModal({ onClose }: ModalProps) {
 					<Button
 						aria-label="Close modal"
 						className="absolute top-2.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"
-						onClick={close}
+						onClick={onClose}
 						variant={'ghost'}
 					>
 						<Icon className="text-lg" icon="lucide:x" />

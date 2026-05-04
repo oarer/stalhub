@@ -11,7 +11,7 @@ interface SidebarActionsProps {
 }
 
 export default function SidebarActions({ onExport }: SidebarActionsProps) {
-	const t  = useTranslations()
+	const t = useTranslations()
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' })

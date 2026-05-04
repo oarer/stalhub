@@ -238,7 +238,7 @@ export function BaseModel({
 				</QueryProvider>
 			</Html>
 		)
-	}, [modalOpen, modalPos, messages])
+	}, [modalOpen, modalPos, messages, locale])
 
 	useEffect(() => {
 		if (animations && animations.length > 0) {

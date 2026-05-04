@@ -60,6 +60,7 @@ function BoostSelectModal({
 	const selectedItem = categoryItems.find((i) => i.id === previewId)
 	const selectedItemData = items.find((i) => i.id === selectedBoostId)
 	const [filter, setFilter] = useState('')
+	const [open, setOpen] = useState(false)
 
 	const visibleItems = useMemo(() => {
 		const q = filter.trim().toLowerCase()
@@ -76,7 +77,7 @@ function BoostSelectModal({
 	}, [selectedBoostId])
 
 	return (
-		<Modal.Root>
+		<Modal.Root onOpenChange={setOpen} open={open}>
 			<Modal.Trigger
 				asChild
 				className="size-14 cursor-pointer justify-center rounded-xl bg-white/60 p-2 shadow-sm hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
@@ -96,7 +97,7 @@ function BoostSelectModal({
 								width={42}
 							/>
 						</HoverCard.Trigger>
-						<HoverCard.Content className="min-w-67" side="top">
+						<HoverCard.Content className="min-w-80" side="top">
 							<div className="relative gap-2">
 								<p
 									className="mb-4"
@@ -239,7 +240,10 @@ function BoostSelectModal({
 								<Button
 									className="justify-center"
 									disabled={!previewId}
-									onClick={() => onSelect(previewId!)}
+									onClick={() => {
+										onSelect(previewId!)
+										setOpen(false)
+									}}
 									variant="bordered"
 								>
 									Выбрать
@@ -277,7 +281,7 @@ export default function ConsumablesModal({ onClose }: ModalProps) {
 					<Button
 						aria-label="Close modal"
 						className="absolute top-2.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"
-						onClick={close}
+						onClick={onClose}
 						variant={'ghost'}
 					>
 						<Icon className="text-lg" icon="lucide:x" />

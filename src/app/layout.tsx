@@ -12,7 +12,6 @@ import meta from '@/constants/meta.json'
 import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
-import InDevNav from '@/shared/layouts/nav/InDevNav'
 import Nav from '@/shared/layouts/nav/Nav'
 
 // thx AndcoolSystems <3
@@ -64,7 +63,6 @@ export default async function RootLayout({
 					>
 						<NextIntlClientProvider messages={messages}>
 							<Providers>
-								<InDevNav />
 								<Nav />
 								<main className="min-h-screen">{children}</main>
 								<Footer />

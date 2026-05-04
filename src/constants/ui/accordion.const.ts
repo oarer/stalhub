@@ -12,8 +12,7 @@ export const accordionVariants = cva(
 				danger: 'border-red-500 bg-red-50 text-red-700 dark:bg-red-900/10 dark:text-red-300 hover:bg-red-100/70',
 				success:
 					'border-green-500 bg-green-50 text-green-700 dark:bg-green-900/10 dark:text-green-300 hover:bg-green-100/70',
-				ghost:
-					'dark:bg-neutral-800/20 dark:hover:bg-neutral-800/50 hover:bg-neutral-200/50 border-transparent',
+				ghost: 'dark:bg-neutral-800/20 dark:hover:bg-neutral-800/50 hover:bg-neutral-200/50 border-transparent',
 			},
 			size: {
 				sm: 'text-sm px-2 py-1',
@@ -37,7 +36,7 @@ export const accordionIndicatorVariants = cva(
 				warning: 'text-yellow-600 dark:text-yellow-400',
 				danger: 'text-red-600 dark:text-red-400',
 				success: 'text-green-600 dark:text-green-400',
-				ghost: ''
+				ghost: '',
 			},
 			size: {
 				sm: 'w-4 h-4',

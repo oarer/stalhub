@@ -421,5 +421,43 @@
 		"recipe": "Рецепт {number}",
 		"money": "Стоимость",
 		"used_in": "Используется в"
+	},
+	"about": {
+		"contacts_title": "Контакты",
+		"thanks_title": "Отдельная благодарность",
+		"developer_role": "Главный разработчик",
+		"designer_role": "Дизайнер",
+		"contact_us": "Связь с нами",
+		"useful_links": "Полезные ссылки",
+		"contact_links": {
+			"support": {
+				"label": "Техническая поддержка",
+				"description": "Если случилась проблема с сайтом"
+			},
+			"cooperation": {
+				"label": "Сотрудничество",
+				"description": "Спонсорство, вклад в проект"
+			},
+			"advertising": {
+				"label": "Реклама",
+				"description": "Реклама на сайте или в соц.сетях"
+			}
+		},
+		"support_links": {
+			"donate": {
+				"label": "Поддержать проект",
+				"description": "Финансовая поддержка развития проекта"
+			},
+			"telegram": {
+				"label": "Telegram канал",
+				"description": "Новости, обновления и анонсы"
+			},
+			"github": {
+				"label": "GitHub репозиторий",
+				"description": "Исходный код и баг-репорты"
+			}
+		},
+		"andcool_description": "Snippet`ы кода",
+		"rashing_description": "советы по улучшению<br></br>UI/UX"
 	}
 }
