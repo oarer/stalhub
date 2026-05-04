@@ -43,7 +43,7 @@ export default function AboutView() {
 				</GradientText>
 			</motion.div>
 
-			<ul className="flex justify-center gap-12">
+			<ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
 				{thanks.map((item) => (
 					<ThanksCard key={item.name} {...item} />
 				))}
@@ -55,7 +55,7 @@ export default function AboutView() {
 					supportLinks={supportLinks}
 				/>
 				<p className="mt-2 font-bold text-background text-xs">
-					Rashing was here <span>ебал рот айсана</span>
+					ебал рот айсана
 				</p>
 			</motion.div>
 		</section>
