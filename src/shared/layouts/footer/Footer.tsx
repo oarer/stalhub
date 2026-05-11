@@ -116,11 +116,11 @@ const Footer = () => {
 						. {t('footer.project.license')}
 						<Link
 							className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
-							href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+							href="https://www.gnu.org/licenses/gpl-3.0.html"
 							rel="noopener noreferrer"
 							target="_blank"
 						>
-							CC BY-NC-SA 4.0
+							GPL-3.0
 						</Link>
 						.
 					</p>

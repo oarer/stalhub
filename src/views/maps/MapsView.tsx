@@ -12,8 +12,6 @@ export default function MapsView() {
 	const { maps, error } = useMaps()
 	const t = useTranslations()
 
-	// ! TODO SUSPENSE QUERIES
-
 	useEffect(() => {
 		if (error) {
 			CustomToast('Произошла ошибка при загрузке списка карт.', 'error')

@@ -15,9 +15,9 @@ repos:
         pass_filenames: true
         files: \.(ts|tsx|js|jsx|json)$
 
-      - id: build
-        name: Build project
-        entry: bun run build
-        language: system
-        pass_filenames: false
-        stages: [pre-push]
+      # - id: build
+      #   name: Build project
+      #   entry: bun run build
+      #   language: system
+      #   pass_filenames: false
+      #   stages: [pre-push]

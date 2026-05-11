@@ -5,8 +5,6 @@ import { useTranslations } from 'next-intl'
 import { useMaps } from '@/hooks/useMaps'
 import type { MapConfig } from '@/types/map.type'
 
-// ! TODO SUSPENSE QUERIES
-
 function Loading() {
 	const t = useTranslations()
 	return (
