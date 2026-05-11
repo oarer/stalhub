@@ -64,24 +64,16 @@ const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.calculators.items.ttk.description',
 			},
 			{
-				key: 'barter',
-				icon: 'lucide:coins',
-				href: '/test',
-				labelKey: 'nav.groups.calculators.items.barter.label',
-				descriptionKey:
-					'nav.groups.calculators.items.barter.description',
-			},
-			{
 				key: 'bp',
 				icon: 'lucide:ticket',
-				href: '/test',
+				href: '/calcs/bp',
 				labelKey: 'nav.groups.calculators.items.bp.label',
 				descriptionKey: 'nav.groups.calculators.items.bp.description',
 			},
 			{
 				key: 'dpi',
 				icon: 'lucide:mouse',
-				href: '/test',
+				href: '/calcs/dpi',
 				labelKey: 'nav.groups.calculators.items.dpi.label',
 				descriptionKey: 'nav.groups.calculators.items.dpi.description',
 			},
@@ -95,7 +87,7 @@ const NAV_STRUCTURE: NavGroup[] = [
 			{
 				key: 'clanMaps',
 				icon: 'lucide:map-pinned',
-				href: '/test',
+				href: '/maps/cw',
 				labelKey: 'nav.groups.clans.items.clanMaps.label',
 				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
 			},
@@ -117,25 +109,19 @@ const NAV_STRUCTURE: NavGroup[] = [
 			{
 				key: 'maps',
 				icon: 'lucide:map',
-				href: '/test',
+				href: '/maps',
 				labelKey: 'nav.groups.other.items.maps.label',
-			},
-			{
-				key: 'auction',
-				icon: 'lucide:landmark',
-				href: '/test',
-				labelKey: 'nav.groups.other.items.auction.label',
 			},
 			{
 				key: 'players',
 				icon: 'lucide:user-round-search',
-				href: '/test',
+				href: '/player',
 				labelKey: 'nav.groups.other.items.players.label',
 			},
 			{
 				key: 'models',
 				icon: 'lucide:box',
-				href: '/test',
+				href: '',
 				labelKey: 'nav.groups.other.items.models.label',
 				descriptionKey: 'nav.groups.other.items.models.description',
 				disabled: true,
@@ -155,9 +141,8 @@ export const DropDownLinks = (): DropdownMenuGroup[] => {
 			key: item.key,
 			content: (
 				<CLink
-					className={`flex w-full items-center justify-start gap-2 rounded-lg px-3 py-1 ${
-						item.disabled ? 'cursor-not-allowed opacity-50' : ''
-					}`}
+					className="flex w-full items-center justify-start gap-2 rounded-lg px-3 py-1"
+					disabled={item.disabled}
 					href={item.href ?? '#'}
 				>
 					<Icon className="text-xl" icon={item.icon} />
