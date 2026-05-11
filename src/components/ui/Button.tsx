@@ -10,6 +10,7 @@ interface IButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof buttonVariants> {
 	loading?: boolean
+	disabled?: boolean
 }
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
@@ -17,9 +18,12 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 		return (
 			<button
 				className={cn(
-					buttonVariants({ variant, size }),
-					className,
-					loading && 'cursor-not-allowed opacity-75'
+					buttonVariants({
+						variant,
+						size,
+						disabled: loading || props.disabled,
+					}),
+					className
 				)}
 				disabled={loading || props.disabled}
 				ref={ref}

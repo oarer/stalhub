@@ -1,6 +1,6 @@
 import type { VariantProps } from 'class-variance-authority'
 import type { badgeVariants } from '@/components/ui/Badge'
-import { PlayerRole } from './player.type'
+import { Role } from './player.type'
 
 export type RoleMeta = {
 	title: string
@@ -8,23 +8,23 @@ export type RoleMeta = {
 	icon: string
 }
 
-export const ROLE_META: Record<PlayerRole, RoleMeta> = {
-	[PlayerRole.EXBO]: {
+export const ROLE_META: Record<Role, RoleMeta> = {
+	[Role.EXBO]: {
 		title: 'player.note.exbo',
 		variant: 'exbo',
 		icon: 'lucide:shield-check',
 	},
-	[PlayerRole.SCAMMER]: {
+	[Role.SCAMMER]: {
 		title: 'player.note.scammer',
 		variant: 'danger',
 		icon: 'lucide:ban',
 	},
-	[PlayerRole.MEDIA]: {
+	[Role.MEDIA]: {
 		title: 'player.note.media',
 		variant: 'media',
 		icon: 'lucide:radio',
 	},
-	[PlayerRole.STALHUB]: {
+	[Role.STALHUB]: {
 		title: 'player.note.stalhub',
 		variant: 'stalhub',
 		icon: 'lucide:shield-half',

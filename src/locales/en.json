@@ -133,6 +133,14 @@
 			"top": "Top"
 		}
 	},
+	"playerSearch": {
+		"title": "Player Search",
+		"description": "Find a player by username and view their stats",
+		"region": "Region",
+		"nickname": "Nickname",
+		"nicknamePlaceholder": "Enter player nickname",
+		"search": "Search"
+	},
 	"player": {
 		"rank": {
 			"LEADER": "Leader",

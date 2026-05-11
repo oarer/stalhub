@@ -133,6 +133,14 @@
 			"top": "Наверх"
 		}
 	},
+	"playerSearch": {
+		"title": "플레이어 검색",
+		"description": "사용자 이름으로 플레이어를 찾고 통계를 확인하세요",
+		"region": "지역",
+		"nickname": "닉네임",
+		"nicknamePlaceholder": "플레이어 닉네임 입력",
+		"search": "검색"
+	},
 	"player": {
 		"rank": {
 			"LEADER": "Лидер",

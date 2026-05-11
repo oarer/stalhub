@@ -134,6 +134,17 @@
 			"top": "Наверх"
 		}
 	},
+	"playerSearch": {
+		"title": "Поиск игроков",
+		"description": "Найдите игрока по нику и посмотрите его статистику",
+		"region": "Регион",
+		"nickname": "Никнейм",
+		"nicknamePlaceholder": "Введите никнейм игрока",
+		"search": "Поиск",
+		"popular_title": "Популярные игроки",
+		"recent_title": "Недавно просмотренные",
+		"recent_tooltip": "Общая статистика, берётся с сервера"
+	},
 	"player": {
 		"hero": {
 			"ach": "Достижения",
@@ -459,5 +470,12 @@
 		},
 		"andcool_description": "Snippet`ы кода",
 		"rashing_description": "советы по улучшению<br></br>UI/UX"
+	},
+	"region": {
+		"RU": "RU",
+		"EU": "EU",
+		"NA": "NA",
+		"SEA": "SEA",
+		"NEA": "NEA"
 	}
 }

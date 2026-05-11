@@ -20,8 +20,8 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 					/>
 					<Image
 						alt="client error"
+						className="rounded-lg bg-neutral-200 p-3 dark:bg-transparent"
 						height={400}
-						quality={95}
 						src="/images/errors/client.png"
 						width={400}
 					/>

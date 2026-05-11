@@ -7,21 +7,24 @@ import { Badge } from '@/components/ui/Badge'
 import { Modal } from '@/components/ui/Modal'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { cn } from '@/lib/cn'
-import type { PlayerResponse, PlayerRole } from '@/types/player.type'
+import type { PlayerRole } from '@/types/player.type'
 import { ROLE_META } from '@/types/playerNote.type'
 
-export default function PlayerNote({ data }: { data: PlayerResponse }) {
+export default function PlayerNote({
+	data,
+	username,
+}: {
+	data: PlayerRole
+	username: string
+}) {
 	const t = useTranslations()
 
-	const role = data?.role?.role as PlayerRole | undefined
+	if (!data.role || !(data.role in ROLE_META)) return null
 
-	if (!role || !(role in ROLE_META)) return null
+	const meta = ROLE_META[data.role]
+	const description = `player.note.${data.role.toLowerCase()}_desc`
 
-	const meta = ROLE_META[role]
-	const hasDescription = !!data.role?.description
-	const description = `player.note.${role.toLowerCase()}_desc`
-
-	if (!hasDescription) {
+	if (data?.description) {
 		return (
 			<Tooltip.Root position="top">
 				<Tooltip.Trigger underline={false}>
@@ -64,17 +67,17 @@ export default function PlayerNote({ data }: { data: PlayerResponse }) {
 				<Modal.Header>
 					<Modal.Title
 						className={cn(
-							data.role?.role === 'SCAMMER' && 'text-red-500'
+							data?.role === 'SCAMMER' && 'text-red-500'
 						)}
 					>
-						{data.username}
+						{username}
 					</Modal.Title>
 					<Modal.Description className="font-semibold">
 						{t('player.note.more')}
 					</Modal.Description>
 				</Modal.Header>
 				<Modal.Body className="mb-4 py-0 font-semibold">
-					{data.role?.description}
+					{data?.description}
 				</Modal.Body>
 			</Modal.Content>
 		</Modal.Root>

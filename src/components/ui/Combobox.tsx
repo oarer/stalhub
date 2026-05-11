@@ -243,8 +243,8 @@ export function Combobox(props: ComboboxProps) {
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
 				className={cn(
-					'flex w-full cursor-pointer items-center justify-between rounded-md border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm',
-					isMultiple ? 'min-h-10' : 'h-10'
+					'flex w-full cursor-pointer items-center justify-between rounded-lg border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm',
+					isMultiple ? 'min-h-10' : 'h-11.5'
 				)}
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
@@ -293,7 +293,7 @@ export function Combobox(props: ComboboxProps) {
 				{open && (
 					<motion.div
 						animate="visible"
-						className="absolute z-99 mt-2 w-full rounded-md border-2 border-border/40 bg-background shadow-md"
+						className="absolute top-full left-1/2 z-99 mt-2 min-w-30 -translate-x-1/2 rounded-lg border-2 border-border/40 bg-background shadow-md"
 						exit="hidden"
 						initial="hidden"
 						variants={dropdownVariants}
@@ -301,7 +301,7 @@ export function Combobox(props: ComboboxProps) {
 						<div className="flex items-center gap-2 border-border/40 border-b-2 px-3 py-2">
 							<Icon icon="lucide:search" />
 							<input
-								className="w-full bg-transparent outline-none"
+								className="w-full bg-transparent font-bold outline-none"
 								onChange={(e) => setSearch(e.target.value)}
 								onKeyDown={handleKeyDown}
 								placeholder={t(searchPlaceholder)}
@@ -335,7 +335,7 @@ export function Combobox(props: ComboboxProps) {
 									return (
 										<motion.li
 											className={cn(
-												'flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm transition-colors hover:bg-neutral-800/50',
+												'flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-neutral-800/50',
 												optionDisabled &&
 													'cursor-not-allowed opacity-50 dark:text-neutral-500'
 											)}
@@ -346,17 +346,16 @@ export function Combobox(props: ComboboxProps) {
 											}}
 											variants={itemVariants}
 										>
-											<span
+											<Icon
 												className={cn(
 													'h-4 w-4',
 													!isSelected && 'invisible'
 												)}
-											>
-												<Icon icon="lucide:check" />
-											</span>
+												icon="lucide:check"
+											/>
 
 											<span className="truncate">
-												{option.label}
+												{t(option.label)}
 											</span>
 										</motion.li>
 									)

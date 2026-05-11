@@ -133,6 +133,14 @@
 			"top": "Наверх"
 		}
 	},
+	"playerSearch": {
+		"title": "Búsqueda de jugadores",
+		"description": "Encuentra un jugador por nombre de usuario y mira sus estadísticas",
+		"region": "Región",
+		"nickname": "Nombre de usuario",
+		"nicknamePlaceholder": "Introduce el nombre del jugador",
+		"search": "Buscar"
+	},
 	"player": {
 		"rank": {
 			"LEADER": "Лидер",

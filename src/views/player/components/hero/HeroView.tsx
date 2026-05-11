@@ -31,7 +31,12 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 						</span>
 						<span>|</span>
 						<span>{data.username}</span>
-						<PlayerNote data={data} />
+						{data?.role && (
+							<PlayerNote
+								data={data.role}
+								username={data.username}
+							/>
+						)}
 					</Card.Title>
 					<Card.Description className="flex items-center gap-2">
 						<Icon

@@ -1,6 +1,6 @@
 import { Icon, type IconifyIcon } from '@iconify/react'
 import { useRouter } from 'next/navigation'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 
 type ErrorContentProps = {
@@ -36,7 +36,9 @@ export default function ErrorContent({
 				variant="outline"
 			>
 				<Icon icon={buttonIcon} />
-				<span>{buttonLabel}</span>
+				<span className={`${montserrat.className} font-semibold`}>
+					{buttonLabel}
+				</span>
 			</Button>
 		</div>
 	)

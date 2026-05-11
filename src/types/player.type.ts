@@ -1,6 +1,11 @@
 import type { Regions } from './api.type'
 import type { Message } from './item.type'
 
+export interface PlayerRole {
+	role: Role
+	description: string | null
+}
+
 export interface PlayerResponse {
 	username: string
 	uuid: string
@@ -10,10 +15,7 @@ export interface PlayerResponse {
 	displayedAchievements: Achievements[]
 	clan: Clan
 	stats: Stat[]
-	role?: {
-		role: PlayerRole
-		description: string | null
-	}
+	role?: PlayerRole
 }
 export interface PlayerParams {
 	region: Regions
@@ -71,7 +73,7 @@ export interface Clan {
 	member: ClanMember
 }
 
-export enum PlayerRole {
+export enum Role {
 	EXBO = 'EXBO',
 	SCAMMER = 'SCAMMER',
 	MEDIA = 'MEDIA',
@@ -79,7 +81,7 @@ export enum PlayerRole {
 }
 
 export const PLAYER_ROLE_META = {
-	[PlayerRole.EXBO]: {
+	[Role.EXBO]: {
 		label: 'команда проекта',
 		description: 'Этот игрок связан с командой проекта.',
 		gradient: 'from-sky-500 via-indigo-500 to-rose-500',
@@ -87,7 +89,7 @@ export const PLAYER_ROLE_META = {
 		border: 'border-sky-500/20',
 		bg: 'bg-sky-500/10',
 	},
-	[PlayerRole.SCAMMER]: {
+	[Role.SCAMMER]: {
 		label: 'мошенник',
 		description: 'Этот игрок замечен за мошенническими действиями.',
 		gradient: 'from-red-500 via-rose-500 to-orange-500',
@@ -95,7 +97,7 @@ export const PLAYER_ROLE_META = {
 		border: 'border-red-500/20',
 		bg: 'bg-red-500/10',
 	},
-	[PlayerRole.MEDIA]: {
+	[Role.MEDIA]: {
 		label: 'медийка',
 		description: 'Этот игрок относится к медийным личностям проекта.',
 		gradient: 'from-red-500 via-fuchsia-500 to-violet-500',
@@ -103,7 +105,7 @@ export const PLAYER_ROLE_META = {
 		border: 'border-fuchsia-500/20',
 		bg: 'bg-fuchsia-500/10',
 	},
-	[PlayerRole.STALHUB]: {
+	[Role.STALHUB]: {
 		label: 'команда игры',
 		description: 'Этот игрок связан с командой игры.',
 		gradient: 'from-sky-600 via-cyan-500 to-blue-500',
@@ -112,6 +114,15 @@ export const PLAYER_ROLE_META = {
 		bg: 'bg-sky-500/10',
 	},
 } as const
+
+export interface PlayerStatsResponse {
+	uuid: string
+	username: string
+	alliance: string
+	region: Regions
+	role?: Role
+	views?: number
+}
 
 // Static json with keys from db
 export interface DBStats {

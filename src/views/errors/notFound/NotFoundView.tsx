@@ -19,8 +19,8 @@ export default function NotFoundView({ path }: NotFoundProps) {
 				/>
 				<Image
 					alt="not found"
+					className="rounded-lg bg-neutral-200 p-3 dark:bg-transparent"
 					height={400}
-					quality={95}
 					src="/images/errors/404.png"
 					width={400}
 				/>
