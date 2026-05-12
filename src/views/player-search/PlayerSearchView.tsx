@@ -39,10 +39,10 @@ export default function PlayerSearchView() {
 	}
 
 	return (
-		<section className="mx-auto flex max-w-4xl flex-col items-center space-y-6 px-4 pt-42 pb-12 sm:px-6">
+		<section className="mx-auto flex max-w-3xl flex-col gap-10 px-4 pt-32 lg:pt-36">
 			<div className="text-center">
 				<h1
-					className={`${unbounded.className} mb-2 font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('playerSearch.title')}
 				</h1>

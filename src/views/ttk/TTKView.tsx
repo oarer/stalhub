@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
@@ -29,7 +30,7 @@ import {
 	getNumericStat,
 	getReloadTime,
 } from './utils/weaponStats'
-import { useTranslations } from 'next-intl'
+
 // это пиздец
 
 const mkSlot = (): WeaponSlot => ({
@@ -259,7 +260,7 @@ export function TTKView() {
 	}, [activeSlots, weaponMap])
 
 	return (
-		<section className="mx-auto max-w-7xl space-y-6 px-4 pt-42 pb-12 sm:px-6">
+		<section className="mx-auto flex max-w-7xl flex-col gap-10 px-4 pt-32 pb-12 lg:pt-36">
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
 				<MannequinControls prime={prime} />
 

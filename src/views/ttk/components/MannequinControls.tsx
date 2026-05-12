@@ -43,7 +43,7 @@ export function MannequinControls({ prime }: { prime: number }) {
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg" icon="lucide:person-standing" />
-				<p className={`${unbounded.className} font-semibold text-lg`}>
+				<p className={`${unbounded.className} font-semibold text-xl`}>
 					{t('ttk.page.mannequin')}
 				</p>
 			</div>

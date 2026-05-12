@@ -134,7 +134,11 @@ export function TTKChart({
 
 	return (
 		<div className="h-full w-full">
-			<ResponsiveContainer height="100%" width="100%">
+			<ResponsiveContainer
+				className="outline-none"
+				height="100%"
+				width="100%"
+			>
 				<ComposedChart
 					data={chartData}
 					margin={{ top: 16, right: 16, bottom: 24, left: 8 }}

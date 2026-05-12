@@ -1,21 +1,31 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import type { VariantProps } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
+import { copyButtonVariants } from '@/constants/ui/copyButton.const'
 import { cn } from '@/lib/cn'
 
-interface CopyButtonProps {
-	text: string
-	className?: string
+interface ICopyButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		VariantProps<typeof copyButtonVariants> {
+	disabled?: boolean
+	text: string | number
 }
 
-export function CopyButton({ text, className }: CopyButtonProps) {
+export function CopyButton({
+	text,
+	className,
+	disabled,
+	variant,
+	size,
+}: ICopyButtonProps) {
 	const [copied, setCopied] = useState(false)
 
 	const handleCopy = async () => {
 		if (copied) return
-		await navigator.clipboard.writeText(text)
+		await navigator.clipboard.writeText(String(text))
 		setCopied(true)
 		setTimeout(() => setCopied(false), 2000)
 	}
@@ -24,7 +34,11 @@ export function CopyButton({ text, className }: CopyButtonProps) {
 		<motion.button
 			aria-label={copied ? 'Copied!' : 'Copy to clipboard'}
 			className={cn(
-				'relative inline-flex cursor-pointer items-center gap-2 rounded-lg bg-background p-4 shadow-sm ring-2 ring-border/60 transition-colors hover:bg-background focus-visible:outline-none',
+				copyButtonVariants({
+					variant,
+					size,
+					disabled: disabled,
+				}),
 				copied &&
 					'bg-green-500/10 text-green-600 ring-green-500/40 hover:bg-green-500/15 hover:text-green-600 dark:text-green-400',
 				className

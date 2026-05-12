@@ -1,6 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -49,16 +50,6 @@ const dropdownVariants = {
 	},
 }
 
-const listVariants = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1, transition: { staggerChildren: 0.02 } },
-}
-
-const itemVariants = {
-	hidden: { opacity: 0, y: -6 },
-	visible: { opacity: 1, y: 0 },
-}
-
 export function Combobox(props: ComboboxProps) {
 	const {
 		options,
@@ -87,7 +78,6 @@ export function Combobox(props: ComboboxProps) {
 	const [highlightedIndex, setHighlightedIndex] = useState(0)
 
 	const triggerRef = useRef<HTMLButtonElement>(null)
-	const listboxRef = useRef<HTMLUListElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
 	const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -228,13 +218,14 @@ export function Combobox(props: ComboboxProps) {
 			[open, filtered, highlightedIndex, select]
 		)
 
-	useEffect(() => {
-		if (!open || !listboxRef.current) return
-		const item = listboxRef.current.children[highlightedIndex] as
-			| HTMLElement
-			| undefined
-		item?.scrollIntoView({ block: 'nearest' })
-	}, [highlightedIndex, open])
+	const parentRef = useRef<HTMLDivElement>(null)
+
+	const rowVirtualizer = useVirtualizer({
+		count: filtered.length,
+		getScrollElement: () => parentRef.current,
+		estimateSize: () => 36,
+		overscan: 2,
+	})
 
 	const selectedLabels = options.filter((o) => selectedSet.has(o.value))
 	const hasSelection = selectedLabels.length > 0
@@ -244,7 +235,8 @@ export function Combobox(props: ComboboxProps) {
 			<button
 				className={cn(
 					'flex w-full cursor-pointer items-center justify-between rounded-lg border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm',
-					isMultiple ? 'min-h-10' : 'h-11.5'
+					isMultiple ? 'min-h-10' : 'h-11.5',
+					className
 				)}
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
@@ -293,7 +285,7 @@ export function Combobox(props: ComboboxProps) {
 				{open && (
 					<motion.div
 						animate="visible"
-						className="absolute top-full left-1/2 z-99 mt-2 min-w-30 -translate-x-1/2 rounded-lg border-2 border-border/40 bg-background shadow-md"
+						className="absolute top-full left-1/2 z-99 mt-2 min-w-60 -translate-x-1/2 rounded-lg border-2 border-border/40 bg-background shadow-md"
 						exit="hidden"
 						initial="hidden"
 						variants={dropdownVariants}
@@ -315,52 +307,67 @@ export function Combobox(props: ComboboxProps) {
 								{t(emptyText)}
 							</div>
 						) : (
-							<motion.ul
-								animate="visible"
-								className="max-h-60 overflow-y-auto p-1"
-								exit="hidden"
-								initial="hidden"
-								ref={listboxRef}
-								variants={listVariants}
+							<div
+								className="max-h-60 overflow-y-auto"
+								ref={parentRef}
 							>
-								{filtered.map((option) => {
-									const isSelected = selectedSet.has(
-										option.value
-									)
+								<div
+									style={{
+										height: `${rowVirtualizer.getTotalSize()}px`,
+										width: '100%',
+										position: 'relative',
+									}}
+								>
+									{rowVirtualizer
+										.getVirtualItems()
+										.map((virtualItem) => {
+											const option =
+												filtered[virtualItem.index]
+											const isSelected = selectedSet.has(
+												option.value
+											)
 
-									const optionDisabled =
-										option.disabled ||
-										(maxReached && !isSelected)
+											const optionDisabled =
+												option.disabled ||
+												(maxReached && !isSelected)
 
-									return (
-										<motion.li
-											className={cn(
-												'flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-neutral-800/50',
-												optionDisabled &&
-													'cursor-not-allowed opacity-50 dark:text-neutral-500'
-											)}
-											key={option.value}
-											onClick={() => {
-												if (!optionDisabled)
-													select(option.value)
-											}}
-											variants={itemVariants}
-										>
-											<Icon
-												className={cn(
-													'h-4 w-4',
-													!isSelected && 'invisible'
-												)}
-												icon="lucide:check"
-											/>
+											return (
+												<div
+													className={cn(
+														'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-neutral-800/50',
+														optionDisabled &&
+															'cursor-not-allowed opacity-50 dark:text-neutral-500',
+														highlightedIndex ===
+															virtualItem.index &&
+															'bg-neutral-800/50'
+													)}
+													key={option.value}
+													onClick={() => {
+														if (!optionDisabled)
+															select(option.value)
+													}}
+													style={{
+														height: `${virtualItem.size}px`,
+														transform: `translateY(${virtualItem.start}px)`,
+													}}
+												>
+													<Icon
+														className={cn(
+															'h-4 w-4',
+															!isSelected &&
+																'invisible'
+														)}
+														icon="lucide:check"
+													/>
 
-											<span className="truncate">
-												{t(option.label)}
-											</span>
-										</motion.li>
-									)
-								})}
-							</motion.ul>
+													<span className="truncate text-left">
+														{t(option.label)}
+													</span>
+												</div>
+											)
+										})}
+								</div>
+							</div>
 						)}
 					</motion.div>
 				)}
