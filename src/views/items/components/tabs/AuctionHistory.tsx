@@ -62,9 +62,9 @@ export default function AuctionHistory({ data }: Props) {
 
 	if (points.length === 0) {
 		return (
-			<Card.Root>
+			<Card.Root className="py-2">
 				<Card.Header>
-					<Card.Title className="justify-center">
+					<Card.Title className="justify-center text-md text-text-accent">
 						{t('modals.builds.no_data')}
 					</Card.Title>
 				</Card.Header>

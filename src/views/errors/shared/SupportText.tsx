@@ -30,7 +30,7 @@ export default function SupportText({
 			<br /> При обращении укажите {identifierPrefix.toLowerCase()} <br />
 			{identifierValue ? (
 				<button
-					className="cursor-pointer text-neutral-300 uppercase tracking-widest"
+					className="cursor-pointer text-neutral-500 uppercase tracking-widest"
 					onClick={() =>
 						navigator.clipboard.writeText(identifierValue)
 					}

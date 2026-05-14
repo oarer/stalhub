@@ -48,8 +48,8 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	const categoryLabel = getCategoryLabel(data, locale)
 
 	return (
-		<section className="mx-auto grid max-w-360 grid-cols-1 flex-col gap-12 px-4 pt-42 pb-12 sm:px-6 md:px-8 lg:grid-cols-12">
-			<div className="space-y-4 lg:col-span-7">
+		<section className="mx-auto grid max-w-360 grid-cols-1 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 lg:grid-cols-[60%_40%] lg:pt-36">
+			<div className="space-y-4">
 				<Card.Root>
 					<Card.Header className="space-y-4">
 						<Card.Title className="mx-auto">
@@ -114,41 +114,39 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 				</div>
 			</div>
 
-			<div className="lg:col-span-5">
-				<div className="space-y-3">
-					{data.infoBlocks
-						.filter(
-							(b): b is ElementListBlock =>
-								b.type === 'list' &&
-								Array.isArray(b.elements) &&
-								b.elements.length > 0
-						)
-						.map((block, idx) =>
-							block.elements.some(isNumericVariantsBlock) ? (
-								<NumericVariantsCard
-									key={idx}
-									numericVariants={numericVariants}
-									onChange={setNumericVariants}
-								/>
-							) : null
-						)}
-
-					{data.infoBlocks
-						.filter(
-							(b): b is AddStatBlock | ElementListBlock =>
-								(b.type === 'list' || b.type === 'addStat') &&
-								Array.isArray(b.elements) &&
-								b.elements.length > 0
-						)
-						.map((block, idx) => (
-							<ListBlock
-								block={block}
+			<div className="space-y-4">
+				{data.infoBlocks
+					.filter(
+						(b): b is ElementListBlock =>
+							b.type === 'list' &&
+							Array.isArray(b.elements) &&
+							b.elements.length > 0
+					)
+					.map((block, idx) =>
+						block.elements.some(isNumericVariantsBlock) ? (
+							<NumericVariantsCard
 								key={idx}
-								locale={locale}
 								numericVariants={numericVariants}
+								onChange={setNumericVariants}
 							/>
-						))}
-				</div>
+						) : null
+					)}
+
+				{data.infoBlocks
+					.filter(
+						(b): b is AddStatBlock | ElementListBlock =>
+							(b.type === 'list' || b.type === 'addStat') &&
+							Array.isArray(b.elements) &&
+							b.elements.length > 0
+					)
+					.map((block, idx) => (
+						<ListBlock
+							block={block}
+							key={idx}
+							locale={locale}
+							numericVariants={numericVariants}
+						/>
+					))}
 			</div>
 		</section>
 	)

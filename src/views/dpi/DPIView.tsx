@@ -1,11 +1,11 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { DPIForm } from './components/DPIForm'
 import { convertSens } from './utils/conversion'
 import { games } from './utils/dpi.const'
-import { useTranslations } from 'next-intl'
 
 export function DPIView() {
 	const t = useTranslations()

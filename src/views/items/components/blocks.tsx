@@ -73,7 +73,11 @@ export const NumericVariantsCard: React.FC<{
 		</div>
 	)
 
-	return withCard ? <Card.Root>{content}</Card.Root> : content
+	return withCard ? (
+		<Card.Root className="py-1">{content}</Card.Root>
+	) : (
+		content
+	)
 }
 
 const getElementKeys = (el: InfoElement): string[] => {

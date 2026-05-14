@@ -29,20 +29,25 @@ export default function ItemTabs({
 		<Tabs.Root className="w-full" defaultValue="aucHistory">
 			<Tabs.List
 				className={cn(
-					'grid w-full gap-2',
-					!barter ? 'grid-cols-2' : 'grid-cols-3'
+					'grid w-full grid-cols-2 gap-2',
+					barter && 'sm:grid-cols-3'
 				)}
 			>
 				<Tabs.Trigger value="aucHistory">
 					<Icon className="text-lg" icon="lucide:book-open-text" />
 					История продаж
 				</Tabs.Trigger>
+
 				<Tabs.Trigger value="aucCurrent">
 					<Icon className="text-lg" icon="lucide:landmark" />
 					Текущие лоты
 				</Tabs.Trigger>
+
 				{barter && (
-					<Tabs.Trigger value="barter">
+					<Tabs.Trigger
+						className="col-span-2 sm:col-span-1"
+						value="barter"
+					>
 						<Icon className="text-lg" icon="lucide:landmark" />
 						Бартер
 					</Tabs.Trigger>

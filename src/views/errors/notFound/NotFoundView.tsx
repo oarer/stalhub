@@ -10,7 +10,7 @@ type NotFoundProps = {
 
 export default function NotFoundView({ path }: NotFoundProps) {
 	return (
-		<div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 pt-12">
+		<div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6">
 			<div className="grid items-center gap-16 md:flex">
 				<ErrorContent
 					buttonIcon="lucide:home"

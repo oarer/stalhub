@@ -10,7 +10,7 @@ type GlobalErrorProps = {
 export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 	return (
 		<html>
-			<body className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 pt-12">
+			<body className="flex min-h-screen flex-col items-center justify-center gap-4 px-6">
 				<div className="grid items-center gap-16 md:flex">
 					<ErrorContent
 						buttonIcon="lucide:rotate-ccw"
@@ -20,7 +20,7 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 					/>
 					<Image
 						alt="client error"
-						className="rounded-lg bg-neutral-200 p-3 dark:bg-transparent"
+						className="rounded-lg bg-neutral-400 p-3 dark:bg-transparent"
 						height={400}
 						src="/images/errors/client.png"
 						width={400}
