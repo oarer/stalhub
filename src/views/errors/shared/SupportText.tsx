@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/Skeleton'
 
 type SupportTextProps = {
 	identifierLabel: string
-	identifierValue: string | null
+	identifierValue?: string | null
 	identifierPrefix: string
 }
 

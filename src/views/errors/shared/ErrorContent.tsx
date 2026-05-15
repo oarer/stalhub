@@ -22,11 +22,13 @@ export default function ErrorContent({
 
 	return (
 		<div className="flex max-w-md flex-col gap-2">
-			<h1 className={`${unbounded.className} font-semibold text-4xl`}>
+			<h1
+				className={`${unbounded.className} font-semibold text-3xl uppercase tracking-widest`}
+			>
 				{title}
 			</h1>
 			<p
-				className={`${unbounded.className} font-semibold text-2xl dark:text-neutral-100/90`}
+				className={`${unbounded.className} font-semibold text-xl dark:text-neutral-100/90`}
 			>
 				{description}
 			</p>
