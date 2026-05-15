@@ -1,5 +1,6 @@
 import FloatingIcons from './sections/FloatingIcons'
 import Hero from './sections/Hero'
+import Roadmap from './sections/Roadmap'
 import Tools from './sections/Tools'
 
 export default function LandingView() {
@@ -8,6 +9,7 @@ export default function LandingView() {
 			<FloatingIcons />
 			<Hero />
 			<Tools />
+			<Roadmap />
 		</section>
 	)
 }
