@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
+import GradientText from '@/components/ui/GradientText'
 import { CLink } from '@/components/ui/Link'
 import { featuresHero } from '@/constants/landing.const'
 import { useUwuStore } from '@/stores/useUwu.store'
@@ -16,7 +17,7 @@ export default function Hero() {
 
 	return (
 		<section
-			className="mx-auto flex flex-col items-center justify-center gap-6 text-center xl:px-0 xl:py-42.5"
+			className="mx-auto flex min-h-screen flex-col items-center gap-6 text-center xl:px-0 xl:pt-42.5"
 			id="hero"
 		>
 			<motion.div
@@ -45,25 +46,17 @@ export default function Hero() {
 
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${unbounded.className} text-balance text-center font-bold text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-7xl`}
+				className={`${unbounded.className} font-bold text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-7xl`}
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>
-				<motion.span
-					animate={{
-						backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-					}}
-					className="bg-linear-to-r from-sky-600 via-sky-400 to-sky-600 bg-clip-text text-transparent dark:from-sky-400 dark:via-sky-200 dark:to-sky-400"
-					style={{ backgroundSize: '200% 200%' }}
-					transition={{
-						duration: 3,
-						repeat: Number.POSITIVE_INFINITY,
-						ease: 'linear',
-					}}
+				<GradientText
+					className="py-0"
+					colors={['#21c0ff', '#afe3ff']}
+					yoyo={false}
 				>
 					{t('landing.tools_for')}
-				</motion.span>
-				<br />
+				</GradientText>
 				<span className="dark:text-neutral-100">StalCraft</span>
 			</motion.h1>
 
