@@ -54,10 +54,34 @@
 	},
 	"/calcs/builds": {
 		"title": "Калькулятор сборок · StalHub",
-		"description": "Калькулятор сборок · StalHub",
+		"description": "Создавайте сборки под свои нужды",
 		"openGraph": {
-			"title": "Калькулятор Арсенала · StalHub",
+			"title": "Калькулятор сборок · StalHub",
 			"description": "Создавайте сборки под свои нужды"
+		}
+	},
+	"/calcs/bp": {
+		"title": "Калькулятор пропуска · StalHub",
+		"description": "Рассчитайте необходимое кол.во дней и задач для определённого уровня",
+		"openGraph": {
+			"title": "Калькулятор пропуска · StalHub",
+			"description": "Рассчитайте необходимое кол.во дней и задач для определённого уровня"
+		}
+	},
+	"/calcs/ttk": {
+		"title": "Калькулятор ТТК · StalHub",
+		"description": "Рассчитайте ТТК для любого оружия",
+		"openGraph": {
+			"title": "Калькулятор ТТК · StalHub",
+			"description": "Рассчитайте ТТК для любого оружия"
+		}
+	},
+	"/calcs/dpi": {
+		"title": "Калькулятор DPI · StalHub",
+		"description": "Переведите чувствительность в нужную вам игру",
+		"openGraph": {
+			"title": "Калькулятор DPI · StalHub",
+			"description": "Переведите чувствительность в нужную вам игру"
 		}
 	},
 	"notFound": {
