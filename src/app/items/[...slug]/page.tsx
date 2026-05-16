@@ -20,19 +20,19 @@ export async function generateMetadata({
 	const itemData = await generateItemMetadata(slug, locale)
 	if (!itemData) {
 		return {
-			title: 'Item not found',
+			title: 'Item not found · StalHub',
 			robots: { index: false, follow: true },
 		}
 	}
 
 	return {
-		title: `${itemData.name} — StalHub`,
+		title: `${itemData.name} · StalHub`,
 		description: itemData.description,
 		openGraph: {
-			title: itemData.name,
+			title: `${itemData.name} · StalHub`,
 			description: itemData.description,
 			images: [
-				`https://raw.githubusercontent.com/oarer/sc-db/main${itemData.icon}`,
+				`https://raw.githubusercontent.com/oarer/sc-db/main/merged${itemData.icon}`,
 			],
 		},
 	}
