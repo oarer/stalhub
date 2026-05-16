@@ -35,6 +35,13 @@ export async function generateMetadata({
 				`https://raw.githubusercontent.com/oarer/sc-db/main/merged${itemData.icon}`,
 			],
 		},
+		twitter: {
+			title: `${itemData.name} · StalHub`,
+			description: itemData.description,
+			images: [
+				`https://raw.githubusercontent.com/oarer/sc-db/main/merged${itemData.icon}`,
+			],
+		},
 	}
 }
 export default async function ItemsPage({ params }: PageProps) {
