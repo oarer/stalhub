@@ -13,11 +13,7 @@ import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
-import {
-	BoostButtons,
-	type BoostCategory,
-	type ModalProps,
-} from '@/types/build.type'
+import { BoostButtons, type BoostCategory } from '@/types/build.type'
 import {
 	type AddStatBlock,
 	type ElementListBlock,
@@ -257,11 +253,10 @@ function BoostSelectModal({
 	)
 }
 
-export default function ConsumablesModal({ onClose }: ModalProps) {
+export default function ConsumablesModalLite() {
 	const { data: items } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
-	const t = useTranslations()
 
 	const boost = useBuildStore((s) => s.build.boost)
 	const setBoost = useBuildStore((s) => s.setBoost)
@@ -272,37 +267,17 @@ export default function ConsumablesModal({ onClose }: ModalProps) {
 	}
 
 	return (
-		<div className="flex gap-4 text-nowrap">
-			<Card.Root className="min-w-80">
-				<Card.Header>
-					<Card.Title>
-						{t('modals.builds.consumables.title')}
-					</Card.Title>
-					<Button
-						aria-label="Close modal"
-						className="absolute top-2.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"
-						onClick={onClose}
-						variant={'ghost'}
-					>
-						<Icon className="text-lg" icon="lucide:x" />
-					</Button>
-				</Card.Header>
-
-				<Card.Content className="flex flex-col justify-between gap-2">
-					<div className="grid grid-cols-3 gap-2">
-						{CATEGORIES.map((category) => (
-							<BoostSelectModal
-								category={category}
-								items={items}
-								key={category}
-								onRemove={() => removeBoost(category)}
-								onSelect={handleSelect(category)}
-								selectedBoostId={boost[category]}
-							/>
-						))}
-					</div>
-				</Card.Content>
-			</Card.Root>
+		<div className="grid w-full grid-cols-3 justify-items-center gap-4">
+			{CATEGORIES.map((category) => (
+				<BoostSelectModal
+					category={category}
+					items={items}
+					key={category}
+					onRemove={() => removeBoost(category)}
+					onSelect={handleSelect(category)}
+					selectedBoostId={boost[category]}
+				/>
+			))}
 		</div>
 	)
 }

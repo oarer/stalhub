@@ -3,11 +3,11 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Tabs } from '@/components/ui/Tabs'
-import { useBuildStats } from '@/views/builds/components/hooks/useBuildStats'
+import { useBuildStats } from '@/views/builds/model/components/hooks/useBuildStats'
 import {
 	AllStatsTabContent,
 	StatsTabContent,
-} from '@/views/builds/components/stats'
+} from '@/views/builds/model/components/stats'
 
 export default function StatsTabs() {
 	const {

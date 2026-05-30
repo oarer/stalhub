@@ -1,13 +1,13 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useCallback, useMemo, useState } from 'react'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import type { Item } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/builds/components/artifacts'
+import { ItemsList } from '@/views/builds/model/components/artifacts'
 
 interface Props {
 	items: Item[]

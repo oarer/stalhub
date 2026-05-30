@@ -12,8 +12,8 @@ import { Modal } from '@/components/ui/Modal'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import StatsTabs from '@/views/builds/components/StatsTabs'
-import BuildSelector from './components/BuildSelector'
-import DefaultsSettings from './components/DefaultsSettings'
+import BuildSelector from '../components/BuildSelector'
+import DefaultsSettings from '../components/DefaultsSettings'
 
 export default function BuildsView() {
 	const {

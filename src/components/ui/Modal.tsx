@@ -85,6 +85,7 @@ interface Props {
 	children: ReactNode
 	className?: string
 	variant?: VariantProps<typeof buttonVariants>['variant']
+	fullScreen?: boolean
 }
 
 export function ModalTrigger({
@@ -107,7 +108,11 @@ export function ModalTrigger({
 	)
 }
 
-export function ModalContent({ children, className = '' }: Props) {
+export function ModalContent({
+	children,
+	className = '',
+	fullScreen = true,
+}: Props) {
 	const { isOpen, close } = useModal()
 
 	useEffect(() => {
@@ -135,7 +140,7 @@ export function ModalContent({ children, className = '' }: Props) {
 			{isOpen && (
 				<div
 					aria-hidden={!isOpen}
-					className="fixed inset-0 z-9999999 flex items-center justify-center"
+					className="fixed inset-0 z-9999999 flex items-center justify-center px-2"
 				>
 					<motion.div
 						animate="animate"
@@ -151,7 +156,10 @@ export function ModalContent({ children, className = '' }: Props) {
 						animate="animate"
 						aria-modal="true"
 						className={cn(
-							'relative z-10 mx-4 w-full max-w-lg rounded-xl border-2 border-border-secondary bg-neutral-900/95 px-6 shadow-2xl',
+							'relative z-10 border-border-secondary bg-neutral-900/95 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
+							fullScreen
+								? 'h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none sm:border-border-secondary'
+								: 'w-full max-w-lg rounded-xl border-2 px-6 shadow-2xl',
 							className
 						)}
 						exit="exit"
@@ -167,7 +175,7 @@ export function ModalContent({ children, className = '' }: Props) {
 						{children}
 						<Button
 							aria-label="Close modal"
-							className="absolute top-2.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"
+							className="absolute top-4.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"
 							onClick={close}
 							variant={'ghost'}
 						>

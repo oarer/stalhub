@@ -1,9 +1,9 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { BuildsView } from '@/views/builds/model'
+import BuildsLiteView from '@/views/builds/lite/BuildsLite'
 
-export default async function BuildsPage() {
+export default async function BuildsLitePage() {
 	const queryClient = getQueryClient()
 
 	await queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' }))
@@ -11,7 +11,7 @@ export default async function BuildsPage() {
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
-			<BuildsView />
+			<BuildsLiteView />
 		</HydrationBoundary>
 	)
 }

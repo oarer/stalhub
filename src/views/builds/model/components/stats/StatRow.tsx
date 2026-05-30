@@ -3,12 +3,14 @@
 import { roundNumber } from '../hooks/useBuildStats'
 
 interface StatRowProps {
+	keyName: string
 	name: string
 	value: number
 }
 
-export function StatRow({ name, value }: StatRowProps) {
-	const isAccumulation = name.includes('accumulation')
+export function StatRow({ keyName, name, value }: StatRowProps) {
+	const isAccumulation = keyName.toLowerCase().includes('accumulation')
+
 	const valueColor = isAccumulation
 		? value <= 0
 			? '#53C353'

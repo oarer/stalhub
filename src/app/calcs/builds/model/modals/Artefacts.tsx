@@ -18,7 +18,7 @@ import {
 	ArtifactSlots,
 	ArtifactStatsPanel,
 	ItemsList,
-} from '@/views/builds/components/artifacts'
+} from '@/views/builds/model/components/artifacts'
 
 export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
@@ -245,7 +245,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 					</Card.Header>
 
 					<ItemsList
-						className="max-h-90"
+						className="max-h-90 overflow-y-auto"
 						favoriteType="artefact"
 						items={visibleItems}
 						locale={locale}

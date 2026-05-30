@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
-import { CustomToast } from '@/components/ui/Toast'
+import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -20,7 +20,7 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { findContSizeInBlocks, messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/builds/components/artifacts'
+import { ItemsList } from '@/views/builds/model/components/artifacts'
 import { ListBlock } from '@/views/items/components/blocks'
 
 type Slot = string | null
@@ -64,7 +64,7 @@ export default function ContModal({ onClose }: ModalProps) {
 		}
 
 		setContainer(previewId, newCount)
-		CustomToast(t('modals.builds.container.toaster_success'), 'success')
+		toast.success(t('modals.builds.container.toaster_success'))
 	}
 
 	const visibleItems = items.filter((it) =>
@@ -197,9 +197,8 @@ export default function ContModal({ onClose }: ModalProps) {
 									pending.previewId,
 									pending.newCount
 								)
-								CustomToast(
-									`${t('modals.builds.container.warn_modal.success_toast')} ${pending.lostItems.filter(Boolean).length} ${t('modals.builds.container.warn_modal.slots.slots')}`,
-									'success'
+								toast.success(
+									`${t('modals.builds.container.warn_modal.success_toast')} ${pending.lostItems.filter(Boolean).length} ${t('modals.builds.container.warn_modal.slots.slots')}`
 								)
 								setPending(null)
 								setShowConfirm(false)

@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
-import { CustomToast } from '@/components/ui/Toast'
+import { toast } from '@/components/ui/Toast'
 import { useMaps } from '@/hooks/useMaps'
 
 export default function MapsView() {
@@ -14,7 +14,7 @@ export default function MapsView() {
 
 	useEffect(() => {
 		if (error) {
-			CustomToast('Произошла ошибка при загрузке списка карт.', 'error')
+			toast.error('Произошла ошибка при загрузке списка карт.')
 		}
 	}, [error])
 

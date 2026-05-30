@@ -13,6 +13,8 @@ import type { Item, Locale } from '@/types/item.type'
 import { colorPriority, InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
+//! TODO декомпозиция + кинуть в shared
+
 type ItemsListProps = {
 	items: Item[]
 	locale: Locale
@@ -142,9 +144,12 @@ export function ItemsList({
 	})
 
 	return (
-		<div className={cn('h-full min-h-0 w-full max-w-80', className)}>
+		<div className={cn('h-full min-h-0 w-full', className)}>
 			<div
-				className="mask-y-from-97% mask-y-to-100% h-full w-full overflow-auto"
+				className={cn(
+					'mask-y-from-97% mask-y-to-100% w-full overflow-auto',
+					className
+				)}
 				ref={parentRef}
 			>
 				<div

@@ -1,9 +1,15 @@
 import { Icon } from '@iconify/react'
-import { toast } from 'sonner'
+import { toast as sonnerToast } from 'sonner'
 
 import { cn } from '@/lib/cn'
 
 type ToastType = 'success' | 'error' | 'info' | 'loading'
+
+type ToastOptions = {
+	duration?: number
+	id?: string
+	showClose?: boolean
+}
 
 const icons = {
 	success: (
@@ -48,12 +54,14 @@ const toastStyles: Record<ToastType, string> = {
 	),
 }
 
-export function CustomToast(
+const showToast = (
 	message: string,
-	type: ToastType = 'info',
-	duration: number = 3000
-) {
-	toast.custom(
+	type: ToastType,
+	options?: ToastOptions
+) => {
+	const showCloseButton = options?.showClose !== false && type !== 'loading'
+
+	return sonnerToast.custom(
 		(id) => (
 			<div
 				className={cn(
@@ -63,21 +71,42 @@ export function CustomToast(
 			>
 				<div className="flex min-w-0 flex-1 items-center gap-3">
 					<div className="shrink-0 text-lg">{icons[type]}</div>
-					<p className="wrap-break-wor min-w-0 font-semibold text-gray-900 text-sm dark:text-gray-100">
+
+					<p className="wrap-break-word min-w-0 font-semibold text-gray-900 text-sm dark:text-gray-100">
 						{message}
 					</p>
 				</div>
 
-				{type !== 'loading' && (
+				{showCloseButton && (
 					<button
 						className="ml-4 shrink-0 cursor-pointer rounded-md font-medium text-neutral-500 text-sm hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
-						onClick={() => toast.dismiss(id)}
+						onClick={() => sonnerToast.dismiss(id)}
+						type="button"
 					>
 						<Icon className="text-lg" icon="lucide:x" />
 					</button>
 				)}
 			</div>
 		),
-		{ duration }
+		{
+			id: options?.id,
+			duration: options?.duration ?? 3000,
+		}
 	)
+}
+
+export const toast = {
+	success: (message: string, options?: ToastOptions) =>
+		showToast(message, 'success', options),
+
+	error: (message: string, options?: ToastOptions) =>
+		showToast(message, 'error', options),
+
+	info: (message: string, options?: ToastOptions) =>
+		showToast(message, 'info', options),
+
+	loading: (message: string, options?: ToastOptions) =>
+		showToast(message, 'loading', options),
+
+	dismiss: (id?: string | number) => sonnerToast.dismiss(id),
 }

@@ -29,6 +29,7 @@ export function StatsTabContent({
 					stats.map(([key, val]) => (
 						<StatRow
 							key={key}
+							keyName={key}
 							name={displayNamesMap[key] ?? key}
 							value={val}
 						/>
@@ -74,6 +75,7 @@ export function AllStatsTabContent({
 						sortedStats.map(([key, val]) => (
 							<StatRow
 								key={key}
+								keyName={key}
 								name={displayNamesMap[key] ?? key}
 								value={val}
 							/>

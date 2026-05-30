@@ -1,4 +1,5 @@
 'use client'
+
 import { useTranslations } from 'next-intl'
 import { Alert } from '@/components/ui/Alert'
 import Input from '@/components/ui/Input'

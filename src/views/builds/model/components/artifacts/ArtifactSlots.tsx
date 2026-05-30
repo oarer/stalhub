@@ -3,12 +3,12 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { inter } from '@/app/fonts'
+import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 import type { Art } from '@/types/build.type'
 import type { Item, Locale } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
-import { Button } from '../../../../components/ui/Button'
 
 type ArtifactSlotsProps = {
 	slots: (string | null)[]

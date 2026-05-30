@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
-import { CustomToast } from '@/components/ui/Toast'
+import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { statusQueries } from '@/queries/status/status.queries'
 import type { Service } from '@/types/status.type'
@@ -34,9 +34,8 @@ export const StatusWidget = () => {
 		)
 
 		if (newProblems.length > 0) {
-			CustomToast(
-				`${t('status_widget.services_down')} ${newProblems.join(', ')}`,
-				'error'
+			toast.error(
+				`${t('status_widget.services_down')} ${newProblems.join(', ')}`
 			)
 		}
 
@@ -45,9 +44,8 @@ export const StatusWidget = () => {
 		)
 
 		if (recovered.length > 0) {
-			CustomToast(
-				`${t('status_widget.services_up')} ${recovered.join(', ')}`,
-				'success'
+			toast.success(
+				`${t('status_widget.services_up')} ${recovered.join(', ')}`
 			)
 		}
 
