@@ -67,7 +67,7 @@ export const tools = [
 		icon: 'lucide:package',
 		title: 'landing.tools.tool_list.builds.title',
 		desc: 'landing.tools.tool_list.builds.desc',
-		link: '/calcs/builds',
+		link: '/calcs/builds/lite',
 	},
 	{
 		id: 'bp',

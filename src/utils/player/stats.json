@@ -182,7 +182,7 @@
 				"en": "Suicides",
 				"es": "Suicidios",
 				"fr": "Suicides",
-				"ko": "자살 횟수"
+				"ko": "포기 횟수"
 			}
 		}
 	},
@@ -267,7 +267,7 @@
 				"en": "Damage dealt to players with explosions",
 				"es": "Daño infligido a jugadores con explosiones",
 				"fr": "Dégâts infligés aux joueurs par des explosions",
-				"ko": "폭발로 플레이어에게 입힌 피해량"
+				"ko": "플레이어에게 입힌 폭발 피해량"
 			}
 		}
 	},
@@ -667,7 +667,7 @@
 				"en": "Anomalous Blizzards survived",
 				"es": "Ventiscas anómalas sobrevividas",
 				"fr": "Blizzards anormaux auxquels vous avez survécu",
-				"ko": "생존한 이상 눈보라 횟수"
+				"ko": "이상 눈보라에서 생존한 횟수"
 			}
 		}
 	},
@@ -731,7 +731,7 @@
 			"key": "general.stats.stat.big-cleanup-completed-ops",
 			"args": {},
 			"lines": {
-				"ru": "Операций \"Большая Уборка\" пройдено",
+				"ru": "Операций «Большая уборка» пройдено",
 				"en": "The Big Clean Up Operations Completed",
 				"es": "Operaciones Gran Limpieza completadas",
 				"fr": "Opérations Grand Nettoyage terminées",
@@ -748,11 +748,28 @@
 			"key": "general.stats.stat.focus-completed-ops",
 			"args": {},
 			"lines": {
-				"ru": "Операций \"Фокусировка\" пройдено",
+				"ru": "Операций «Фокусировка» пройдено",
 				"en": "Focus Operations Completed",
 				"es": "Operaciones Enfoque completadas",
 				"fr": "Opérations Focalisation terminées",
 				"ko": "집중 작전 완료"
+			}
+		}
+	},
+	{
+		"id": "sea-anienation-completed-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sea-anienation-completed-ops",
+			"args": {},
+			"lines": {
+				"ru": "Операций «Море отчуждения» пройдено",
+				"en": "Sea of Exclusion Operations Completed",
+				"es": "Operación Mar de Exclusión",
+				"fr": "Opérations Mer d\u0027exclusion terminées",
+				"ko": "격리의 바다 작전 완료 수"
 			}
 		}
 	},
@@ -782,7 +799,7 @@
 			"key": "general.stats.stat.big-cleanup-max-key-ops",
 			"args": {},
 			"lines": {
-				"ru": "Максимальный пройденный допуск Операции \"Большая Уборка\"",
+				"ru": "Максимальный пройденный допуск Операции «Большая Уборка»",
 				"en": "Highest Clearance level reached in the Big Clean Up Operation",
 				"es": "Máximo nivel del acceso superado en la Operación Gran Limpieza",
 				"fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Grand Nettoyage",
@@ -799,11 +816,28 @@
 			"key": "general.stats.stat.focus-max-key-ops",
 			"args": {},
 			"lines": {
-				"ru": "Максимальный пройденный допуск Операции \"Фокусировка\"",
+				"ru": "Максимальный пройденный допуск Операции «Фокусировка»",
 				"en": "Highest Clearance level reached in Focus Operation",
 				"es": "Máximo nivel del acceso superado en la Operación Enfoque",
 				"fr": "Niveau maximum d\u0027Accès atteint dans l\u0027Opération Focalisation",
 				"ko": "집중 작전에서 달성한 가장 높은 클리어 등급"
+			}
+		}
+	},
+	{
+		"id": "sea-alienation-max-key-ops",
+		"category": "SESSION_MODES",
+		"type": "INTEGER",
+		"name": {
+			"type": "translation",
+			"key": "general.stats.stat.sea-alienation-max-key-ops",
+			"args": {},
+			"lines": {
+				"ru": "Максимальный пройденный допуск Операции «Море Отчуждения»",
+				"en": "Highest Clearance level reached in the Sea of Exclusion Operation",
+				"es": "Máximo nivel del acceso superado en la Operación Mar de Exclusión",
+				"fr": "Niveau d\u0027Accès maximum atteint pour l\u0027opération Mer d\u0027exclusion",
+				"ko": "격리의 바다 작전 최대 클리어 등급"
 			}
 		}
 	},
@@ -816,7 +850,7 @@
 			"key": "general.stats.stat.scout-powerful-shot-damage-ops",
 			"args": {},
 			"lines": {
-				"ru": "Нанесено урона способностью \"Мощный выстрел\"",
+				"ru": "Нанесено урона способностью «Мощный выстрел»",
 				"en": "Damage Dealt with Powerful Shot Ability",
 				"es": "Daño infligido por la habilidad Disparo poderoso",
 				"fr": "Dégâts infligés avec la compétence Tir puissant",
@@ -833,7 +867,7 @@
 			"key": "general.stats.stat.scout-powerful-shot-max-damage-ops",
 			"args": {},
 			"lines": {
-				"ru": "Максимальный урон способностью \"Мощный выстрел\"",
+				"ru": "Максимальный урон способностью «Мощный выстрел»",
 				"en": "Maximum damage dealt with Powerful Shot ability",
 				"es": "Daño máximo por la habilidad Disparo poderoso",
 				"fr": "Dégâts maximum infligés avec la compétence Tir puissant",
@@ -850,7 +884,7 @@
 			"key": "general.stats.stat.support-healed-ops",
 			"args": {},
 			"lines": {
-				"ru": "Исцелено урона способностью \"Лечебные патроны\"",
+				"ru": "Исцелено урона способностью «Лечебные патроны»",
 				"en": "Damage Healed with Healing Rounds Ability",
 				"es": "Daño sanado por la habilidad Cartuchos curativos",
 				"fr": "Soins prodigués avec la compétence Cartouches curatives",
@@ -867,7 +901,7 @@
 			"key": "general.stats.stat.support-grenades-used-ops",
 			"args": {},
 			"lines": {
-				"ru": "Использований способности \"Лечебный состав\"",
+				"ru": "Использований способности «Лечебный состав»",
 				"en": "Uses of Healing Compound Ability",
 				"es": "Utilizaciones de la habilidad Composición curativa",
 				"fr": "Utilisations de la compétence Composé médical",
@@ -884,7 +918,7 @@
 			"key": "general.stats.stat.tank-damage-delayed-ops",
 			"args": {},
 			"lines": {
-				"ru": "Урона отложено способностью \"Отложенный урон\"",
+				"ru": "Урона отложено способностью «Отложенный урон»",
 				"en": "Damage Delayed with Delayed Damage Ability",
 				"es": "Daño pospuesto por la habilidad Daño pospuesto",
 				"fr": "Dégâts différés par la compétence Dégâts différés",
@@ -901,7 +935,7 @@
 			"key": "general.stats.stat.tank-ultimate-max-damage-ops",
 			"args": {},
 			"lines": {
-				"ru": "Максимальный урон способностью \"Тремор\"",
+				"ru": "Максимальный урон способностью «Тремор»",
 				"en": "Maximum damage dealt with Tremor ability",
 				"es": "Daño máximo  por la habilidad Temblores",
 				"fr": "Dégâts maximum infligés avec la compétence Trémor",
@@ -1279,7 +1313,7 @@
 				"en": "Monetary resources spent on item creation",
 				"es": "Recursos invertidos en la creación de productos en términos monetarios",
 				"fr": "Ressources monétaires dépensées dans la création d\u0027objets",
-				"ko": "아이템 제작에 사용된 재화 금액"
+				"ko": "아이템 제작에 사용된 금액"
 			}
 		}
 	},
@@ -1483,7 +1517,7 @@
 				"en": "Time spent in a squad",
 				"es": "Tiempo pasado en un escuadrón",
 				"fr": "Temps passé dans une équipe",
-				"ko": "분대에서 지낸 시간"
+				"ko": "분대로 활동한 시간"
 			}
 		}
 	},
@@ -1619,7 +1653,7 @@
 				"en": "Grenades thrown",
 				"es": "Granadas lanzadas",
 				"fr": "Grenades lancées",
-				"ko": "던진 수류탄 개수"
+				"ko": "수류탄 던진 횟수"
 			}
 		}
 	},
@@ -1919,7 +1953,7 @@
 				"en": "Won on bets",
 				"es": "Ganado en apuestas",
 				"fr": "Gains des paris",
-				"ko": "투기장 베팅 승리 횟수"
+				"ko": "투기장 베팅 성공 횟수"
 			}
 		}
 	},
@@ -2191,7 +2225,7 @@
 				"en": "Money found",
 				"es": "Dinero encontrado",
 				"fr": "Argent trouvé",
-				"ko": "총 취득 금액"
+				"ko": "총 획득 금액"
 			}
 		}
 	}

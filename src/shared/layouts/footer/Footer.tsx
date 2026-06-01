@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { montserrat } from '@/app/fonts'
+import { CLink } from '@/components/ui/Link'
 import { footerLinks } from '@/constants/footer.const'
 import { useUwuStore } from '@/stores/useUwu.store'
 import { StatusWidget } from './Status'
@@ -76,26 +77,25 @@ const Footer = () => {
 						</p>
 					</section>
 
-					<nav className="flex flex-col items-start gap-3 md:items-end">
-						<ul className="flex flex-col gap-3">
+					<nav className="flex flex-col gap-3 md:items-end">
+						<ul className="flex flex-col items-start gap-3">
 							{footerLinks.map((link) => (
 								<li key={link.href}>
-									<Link
+									<CLink
 										className="group flex items-center gap-2 rounded px-1 py-0.5"
 										href={link.href}
-										rel="noopener noreferrer"
-										target="_blank"
-										title={link.title}
+										title={t(link.title)}
+										variant={'none'}
 									>
 										<Icon
 											aria-hidden
-											className="h-5 w-5 text-neutral-500 transition-colors duration-500 group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-50"
+											className="h-5 w-5"
 											icon={link.icon}
 										/>
 										<span className="text-left text-neutral-700 text-sm duration-500 dark:text-white dark:group-hover:text-neutral-50">
 											{t(link.title)}
 										</span>
-									</Link>
+									</CLink>
 								</li>
 							))}
 						</ul>

@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { CLink } from '@/components/ui/Link'
 import type { AccordionItem } from '@/types/ui/accordion.type'
-import type { DropdownMenuGroup } from '@/types/ui/dropdown.type'
+import type { DropdownItem, DropdownMenuGroup } from '@/types/ui/dropdown.type'
 
 export const Links = [
 	{
@@ -34,6 +34,7 @@ type NavItem = {
 	labelKey: string
 	descriptionKey?: string
 	disabled?: boolean
+	submenu?: NavItem[]
 }
 
 type NavGroup = {
@@ -52,9 +53,27 @@ const NAV_STRUCTURE: NavGroup[] = [
 			{
 				key: 'art',
 				icon: 'lucide:package',
-				href: '/calcs/builds',
+				href: '/calcs/builds/lite',
 				labelKey: 'nav.groups.calculators.items.art.label',
 				descriptionKey: 'nav.groups.calculators.items.art.description',
+				submenu: [
+					{
+						key: 'art_lite',
+						icon: 'lucide:panel-top',
+						href: '/calcs/builds/lite',
+						labelKey:
+							'nav.groups.calculators.items.art.sub_menu.lite',
+					},
+					{
+						key: 'art_3d',
+						icon: 'lucide:box',
+						href: '/calcs/builds',
+						labelKey:
+							'nav.groups.calculators.items.art.sub_menu.3d',
+						descriptionKey:
+							'nav.groups.calculators.items.art.sub_menu.3d_description',
+					},
+				],
 			},
 			{
 				key: 'TTK',
@@ -130,6 +149,37 @@ const NAV_STRUCTURE: NavGroup[] = [
 	},
 ]
 
+const mapNavItem = (
+	item: NavItem,
+	t: ReturnType<typeof useTranslations>
+): DropdownItem => ({
+	key: item.key,
+	disabled: item.disabled,
+
+	content: (
+		<CLink
+			className="flex w-full items-center justify-start gap-2 rounded-lg px-3 py-1"
+			disabled={item.disabled}
+			href={item.href ?? '#'}
+		>
+			<Icon className="text-xl" icon={item.icon} />
+			<div className="flex flex-col">
+				<p className="font-semibold text-neutral-700 dark:text-neutral-100">
+					{t(item.labelKey)}
+				</p>
+
+				{item.descriptionKey && (
+					<span className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
+						{t(item.descriptionKey)}
+					</span>
+				)}
+			</div>
+		</CLink>
+	),
+
+	submenu: item.submenu?.map((subItem) => mapNavItem(subItem, t)),
+})
+
 export const DropDownLinks = (): DropdownMenuGroup[] => {
 	const t = useTranslations()
 
@@ -137,29 +187,7 @@ export const DropDownLinks = (): DropdownMenuGroup[] => {
 		key: group.key,
 		title: group.titleKey,
 		icon: group.icon,
-		items: group.items.map((item) => ({
-			key: item.key,
-			content: (
-				<CLink
-					className="flex w-full items-center justify-start gap-2 rounded-lg px-3 py-1"
-					disabled={item.disabled}
-					href={item.href ?? '#'}
-				>
-					<Icon className="text-xl" icon={item.icon} />
-					<div className="flex flex-col">
-						<p className="font-semibold text-neutral-700 dark:text-neutral-100">
-							{t(item.labelKey)}
-						</p>
-						{item.descriptionKey && (
-							<span className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
-								{t(item.descriptionKey)}
-							</span>
-						)}
-					</div>
-				</CLink>
-			),
-			disabled: item.disabled,
-		})),
+		items: group.items.map((item) => mapNavItem(item, t)),
 	}))
 }
 

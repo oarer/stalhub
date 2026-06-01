@@ -141,6 +141,7 @@ function DropdownMenuItem({
 				{hasSubmenu && (
 					<motion.div
 						animate={{ rotate: showSubmenu ? 90 : 0 }}
+						className="cursor-pointer"
 						transition={{ duration: 0.2, ease: 'easeInOut' }}
 					>
 						<Icon

@@ -122,7 +122,7 @@
 				"en": "A Finger in Every Pie",
 				"es": "En todos los charcos",
 				"fr": "Indiscret",
-				"ko": "한입만"
+				"ko": "참견쟁이"
 			}
 		},
 		"description": {
@@ -162,7 +162,7 @@
 				"en": "Join Frontier, Rise, Covenant, or Mercenaries",
 				"es": "Únete a Frontera, Rebelión, el Pacto o a los Mercenarios",
 				"fr": "Rejoindre la Frontière, l\u0027Ascension, l\u0027Alliance ou les mercenaires",
-				"ko": "프론티어, 라이즈, 성약, 용병단 중 1개에 가입했다."
+				"ko": "프론티어, 라이즈, 커버넌트, 용병단 중 1곳에 가입했다."
 			}
 		},
 		"points": 10
@@ -438,11 +438,11 @@
 			"key": "general.achievement.id.armor_veteran_equip.desc",
 			"args": {},
 			"lines": {
-				"ru": "Экипировать броню Ранга Ветеран",
-				"en": "Get Veteran-ranked armor",
-				"es": "Consigue armadura de rango veterano",
-				"fr": "Obtenir une armure de niveau vétéran",
-				"ko": "베테랑 등급의 방어구를 획득했다."
+				"ru": "Экипировать броню ранга Ветеран",
+				"en": "Equip Veteran-rank armor",
+				"es": "Equipar armadura de rango Veterano",
+				"fr": "Équiper une armure de niveau Vétéran",
+				"ko": "베테랑 등급 방어구 장착"
 			}
 		},
 		"points": 10
@@ -750,7 +750,7 @@
 				"en": "Visit the Drunken Geiger Bar",
 				"es": "Visita el Bar Geiger Borracho",
 				"fr": "Visiter le Bar du Geiger Ivre",
-				"ko": "술취한 가이거 술집에 방문했다"
+				"ko": "술 취한 가이거 술집에 방문했다"
 			}
 		},
 		"points": 20
@@ -1170,7 +1170,7 @@
 				"en": "Win in the Rat Races",
 				"es": "Gana en las carreras de ratas",
 				"fr": "Gagner dans la course aux rats",
-				"ko": "돌연변이 쥐 경주에서 승리했다"
+				"ko": "쥐 경주에서 승리하기"
 			}
 		},
 		"points": 20
@@ -1242,7 +1242,7 @@
 				"en": "Toxic",
 				"es": "Tóxico",
 				"fr": "Toxique",
-				"ko": "독한 놈"
+				"ko": "유독성"
 			}
 		},
 		"description": {
@@ -1522,7 +1522,7 @@
 				"en": "Heretic",
 				"es": "Hereje",
 				"fr": "Hérétique",
-				"ko": "이단자"
+				"ko": "불신자"
 			}
 		},
 		"description": {
@@ -1562,7 +1562,7 @@
 				"en": "Complete 5 Installation Protection events.",
 				"es": "Completa 5 eventos de protección de instalación",
 				"fr": "Terminer 5 événements de protection de l\u0027installation.",
-				"ko": "5개의 설치 방어 이벤트를 완료했다."
+				"ko": "5개의 설치물 방어 이벤트를 완료했다."
 			}
 		},
 		"points": 20
@@ -1674,7 +1674,7 @@
 				"en": "Drink 1,000 bottles of vodka",
 				"es": "Bebe 1000 botellas de vodka",
 				"fr": "Boire 1000 bouteilles de vodka",
-				"ko": "보드카 1,000병을 마셨다."
+				"ko": "증류주 1,000병을 마셨다."
 			}
 		},
 		"points": 10
@@ -1730,7 +1730,7 @@
 				"en": "Get your ticket to the Zone by helping Sail",
 				"es": "Consigue tu entrada a la Zona ayudando a Vela",
 				"fr": "Obtiens votre ticket pour la Zone en aidant Sail",
-				"ko": "세일을 도와 구역으로 가는 티켓을 획득했다"
+				"ko": "세일을 도와 구역으로 가는 티켓을 획득했다."
 			}
 		},
 		"points": 20
@@ -1758,7 +1758,7 @@
 				"en": "Influence the refueller for Sail",
 				"es": "Influye en el repostaje para Vela",
 				"fr": "Influencer le ravitailleur pour Sail",
-				"ko": "세일을 위해 주유 담당자에게 영향력을 행사했다"
+				"ko": "세일을 위해 급유원을 회유했다."
 			}
 		},
 		"points": 20
@@ -1786,7 +1786,7 @@
 				"en": "Seize the obshchak of the local gang for Sail",
 				"es": "Hazte con el alijo de la banda local para Vela",
 				"fr": "S\u0027emparer de l\u0027obshchak du gang local pour Sail",
-				"ko": "세일을 위해 현지 갱단의 오브샤크를 탈취했다"
+				"ko": "세일을 위해 현지 갱단의 옵샤크를 탈취했다."
 			}
 		},
 		"points": 20
@@ -2290,7 +2290,7 @@
 				"en": "Survive after standing in Kettle for more than 10 seconds",
 				"es": "Sobrevive tras permanecer en Tetera más de 10 segundos",
 				"fr": "Survivre dans le Geyser pendant plus de 10 secondes",
-				"ko": "10초 이상 케틀 안에서 살아남기"
+				"ko": "케틀 안에서 10초 이상 살아남았다."
 			}
 		},
 		"points": 10
@@ -2514,7 +2514,7 @@
 				"en": "Deal 1,000,000 damage to players",
 				"es": "Inflige 1 000 000 de daño a los jugadores",
 				"fr": "infliger 1000000 de dégâts aux joueurs",
-				"ko": "플레이어에게 1000000의 피해를 줬다."
+				"ko": "플레이어에게 1,000,000의 피해를 줬다."
 			}
 		},
 		"points": 20
@@ -2530,7 +2530,7 @@
 				"en": "Don’t Go Where You’re Not Wanted",
 				"es": "No vayas donde no te llaman",
 				"fr": "Ne vas pas où tu n\u0027es pas désiré",
-				"ko": "원치 않는 곳에 가지 마라"
+				"ko": "부르지 않은 곳에는 얼씬도 하지 마십시오."
 			}
 		},
 		"description": {
@@ -3170,23 +3170,23 @@
 			"key": "general.achievement.id.exbo_friend.title",
 			"args": {},
 			"lines": {
-				"ru": "Друг EXBO",
-				"en": "EXBO Friend",
-				"es": "Amigo de EXBO",
-				"fr": "Ami EXBO",
-				"ko": "EXBO 친구"
+				"ru": "Острый глаз",
+				"en": "Sharp Eye",
+				"es": "Ojo de lince",
+				"fr": "Œil de lynx",
+				"ko": "매의 눈"
 			}
 		},
 		"description": {
 			"type": "translation",
-			"key": "",
+			"key": "general.achievement.id.exbo_friend.desc",
 			"args": {},
 			"lines": {
-				"ru": "",
-				"en": "",
-				"es": "",
-				"fr": "",
-				"ko": ""
+				"ru": "За предоставление информации по программе поиска багов",
+				"en": "For providing information on the bug bounty program",
+				"es": "Por proporcionar información sobre el rastreador de errores",
+				"fr": "Pour informations dans le cadre du programme de chasse aux bugs",
+				"ko": "버그 탐색 프로그램 정보 제공"
 			}
 		},
 		"points": 20
@@ -3482,7 +3482,7 @@
 				"en": "All for one",
 				"es": "Todos para uno",
 				"fr": "Un pour tous",
-				"ko": "하나를 위한 모두"
+				"ko": "모두는 하나를 위해"
 			}
 		},
 		"description": {
@@ -3550,7 +3550,7 @@
 				"en": "Kill more than 40 creatures with 1 missile salvo.",
 				"es": "Mata a más de 40 criaturas con una salva de misiles.",
 				"fr": "Tuer plus de 40 entités d\u0027une seule salve de roquettes",
-				"ko": "1개의 미사일 살보로 생물을 40마리 이상 처치합니다."
+				"ko": "단 1회의 미사일 일제 사격으로 40마리 이상의 적을 처치했다."
 			}
 		},
 		"points": 10
@@ -3606,7 +3606,7 @@
 				"en": "Kill the behemoth from an RPG.",
 				"es": "Mata al mastodonte con RPG.",
 				"fr": "Tuer un béhémoth avec un RPG.",
-				"ko": "RPG로 베히모스를 처치합니다."
+				"ko": "RPG로 베히모스를 처치."
 			}
 		},
 		"points": 10
@@ -3622,7 +3622,7 @@
 				"en": "No one to lose",
 				"es": "No hay nadie que perder",
 				"fr": "Plus personne à perdre",
-				"ko": "한 명도 잃을 수 없다"
+				"ko": "더 이상 잃을 이는 없다"
 			}
 		},
 		"description": {
@@ -3634,7 +3634,7 @@
 				"en": "Evacuate the only one in the session",
 				"es": "Ser el único que evacuó en la sesión",
 				"fr": "Être le seul survivant évacué de la session",
-				"ko": "잃어서는 안 될 이는 없다"
+				"ko": "세션에서 유일하게 탈출에 성공하십시오."
 			}
 		},
 		"points": 10
@@ -3662,7 +3662,7 @@
 				"en": "Distinguished resident of the toxic cave of our beautiful Jungle",
 				"es": "Distinguido residente de la cueva tóxica de nuestra hermosa selva",
 				"fr": "L\u0027habitant le plus distingué de la grotte toxique de notre magnifique Jungle",
-				"ko": "아름다운 정글 내 유독 동굴에서 두각을 보이는 거주자가 됐다."
+				"ko": "아름다운 정글의 유독 동굴에 거주하는 저명한 주민"
 			}
 		},
 		"points": 0
@@ -3762,7 +3762,7 @@
 				"en": "Zone Researcher",
 				"es": "Investigador de la Zona",
 				"fr": "Chercheur de Zone",
-				"ko": "구역 연구원"
+				"ko": "구역 탐험가"
 			}
 		},
 		"description": {
@@ -3814,23 +3814,23 @@
 			"key": "general.achievement.id.helper.title",
 			"args": {},
 			"lines": {
-				"ru": "Помощник администратора",
-				"en": "Administrator’s Assistant",
-				"es": "Ayudante del administrador",
-				"fr": "Assistant de l\u0027administrateur",
-				"ko": "관리자의 조수"
+				"ru": "Багхантер",
+				"en": "Bug Hunter",
+				"es": "Cazador de errores",
+				"fr": "Chasseur de bugs",
+				"ko": "버그헌터"
 			}
 		},
 		"description": {
 			"type": "translation",
-			"key": "",
+			"key": "general.achievement.id.helper.desc",
 			"args": {},
 			"lines": {
-				"ru": "",
-				"en": "",
-				"es": "",
-				"fr": "",
-				"ko": ""
+				"ru": "За предоставление информации по программе поиска багов",
+				"en": "For providing information on the bug bounty program",
+				"es": "Por proporcionar información sobre el rastreador de errores",
+				"fr": "Pour informations dans le cadre du programme de chasse aux bugs",
+				"ko": "버그 탐색 프로그램 정보 제공"
 			}
 		},
 		"points": 20
@@ -4151,10 +4151,10 @@
 			"args": {},
 			"lines": {
 				"ru": "Плюшкин",
-				"en": "Storage space",
-				"es": "Espacio de almacenamiento",
-				"fr": "Espace de stockage",
-				"ko": "창고 공간"
+				"en": "Pack Rat",
+				"es": "Harpagón",
+				"fr": "L\u0027Écureuil",
+				"ko": "고물상 스타일"
 			}
 		},
 		"description": {
@@ -4278,7 +4278,7 @@
 				"en": "Kill 100 psy-hounds",
 				"es": "Mata a 100 sabuesos psy",
 				"fr": "Tuer 100 molosses psys",
-				"ko": "100마리의 사이킥 하운드를 처치했다."
+				"ko": "100마리의 사이 하운드를 처치했다."
 			}
 		},
 		"points": 15
@@ -4418,7 +4418,7 @@
 				"en": "Upgrade Artillery branch to level 10.",
 				"es": "Alcanza el área de artillería hasta el nivel 10.",
 				"fr": "Améliorer le secteur Artillerie au niveau 10.",
-				"ko": "포병대를 레벨 10까지 업그레이드하기."
+				"ko": "포병 분야를 레벨 10까지 업그레이드하기."
 			}
 		},
 		"points": 10
@@ -4446,7 +4446,7 @@
 				"en": "Upgrade Artillery branch to level 20.",
 				"es": "Alcanza el área de artillería hasta el nivel 20.",
 				"fr": "Améliorer le secteur Artillerie au niveau 20.",
-				"ko": "포병대를 레벨 20까지 업그레이드하기."
+				"ko": "포병 분야를 레벨 20까지 업그레이드하기."
 			}
 		},
 		"points": 15
@@ -4474,7 +4474,7 @@
 				"en": "Upgrade Artillery branch to level 30.",
 				"es": "Alcanza el área de artillería hasta el nivel 30.",
 				"fr": "Améliorer le secteur Artillerie au niveau 30.",
-				"ko": "포병대를 레벨 30까지 업그레이드하기."
+				"ko": "포병 분야를 레벨 30까지 업그레이드하기."
 			}
 		},
 		"points": 20
@@ -4490,7 +4490,7 @@
 				"en": "A bird is known by its flight",
 				"es": "Por el canto se conoce el pájaro",
 				"fr": "On reconnaît l\u0027oiseau à son vol",
-				"ko": "새는 비행할 때 비로소 알아볼 수 있지"
+				"ko": "날갯짓만 봐도 어떤 새인지 알 수 있는 법."
 			}
 		},
 		"description": {
@@ -4502,7 +4502,7 @@
 				"en": "Upgrade Aviation branch to level 10.",
 				"es": "Alcanza el área de aviación hasta el nivel 10.",
 				"fr": "Améliorer le secteur Aviation au niveau 10.",
-				"ko": "항공 지사를 레벨 10까지 업그레이드하기."
+				"ko": "항공 분야를 레벨 10까지 업그레이드하기."
 			}
 		},
 		"points": 10
@@ -4530,7 +4530,7 @@
 				"en": "Upgrade Aviation branch to level 20.",
 				"es": "Alcanza el área de aviación hasta el nivel 20.",
 				"fr": "Améliorer le secteur Aviation au niveau 20.",
-				"ko": "항공 지사를 레벨 20까지 업그레이드하기."
+				"ko": "항공 분야를 레벨 20까지 업그레이드하기."
 			}
 		},
 		"points": 15
@@ -4546,7 +4546,7 @@
 				"en": "FAB will forgive",
 				"es": "FAB perdona",
 				"fr": "La FAB pardonne",
-				"ko": "FAB는 용서해줄 거야"
+				"ko": "FAB는 모든 것을 용서한다."
 			}
 		},
 		"description": {
@@ -4558,7 +4558,7 @@
 				"en": "Upgrade Aviation branch to level 30.",
 				"es": "Alcanza el área de aviación hasta el nivel 30.",
 				"fr": "Améliorer le secteur Aviation au niveau 30.",
-				"ko": "항공대를 레벨 30까지 업그레이드하기."
+				"ko": "항공 분야를 레벨 30까지 업그레이드하기."
 			}
 		},
 		"points": 20
@@ -4586,7 +4586,7 @@
 				"en": "Upgrade logistics branch to level 10.",
 				"es": "Alcanza el área de logística hasta el nivel 10.",
 				"fr": "Améliorer le secteur Logistique au niveau 10.",
-				"ko": "물류 지사를 레벨 10까지 업그레이드하기."
+				"ko": "물류 분야를 레벨 10까지 업그레이드하기."
 			}
 		},
 		"points": 10
@@ -4602,7 +4602,7 @@
 				"en": "Logistics — the lifeblood of war",
 				"es": "Logística es la sangre de la guerra",
 				"fr": "Logistique – le sang de la guerre",
-				"ko": "물류는 전쟁의 생명선이지"
+				"ko": "보급이야말로 전쟁의 생명선이지"
 			}
 		},
 		"description": {
@@ -4614,7 +4614,7 @@
 				"en": "Upgrade logistics branch to level 20.",
 				"es": "Alcanza el área de logística hasta el nivel 20.",
 				"fr": "Améliorer le secteur Logistique au niveau 20.",
-				"ko": "물류 지사를 레벨 20까지 업그레이드하기."
+				"ko": "물류 분야를 레벨 20까지 업그레이드하기."
 			}
 		},
 		"points": 15
@@ -4630,7 +4630,7 @@
 				"en": "War in comfort",
 				"es": "Guerra en comodidad",
 				"fr": "La guerre version confort",
-				"ko": "안락하게 전쟁을 하세요"
+				"ko": "안락한 전쟁"
 			}
 		},
 		"description": {
@@ -4642,7 +4642,7 @@
 				"en": "Upgrade logistics branch to level 30.",
 				"es": "Alcanza el área de logística hasta el nivel 30.",
 				"fr": "Améliorer le secteur Logistique au niveau 30.",
-				"ko": "물류 지사를 레벨 30까지 업그레이드하기."
+				"ko": "물류 분야를 레벨 30까지 업그레이드하기."
 			}
 		},
 		"points": 20
@@ -4670,7 +4670,7 @@
 				"en": "Upgrade Scouting branch to level 10.",
 				"es": "Alcanza el área de reconocimiento hasta el nivel 10.",
 				"fr": "Améliorer le secteur Reconnaissance au niveau 10.",
-				"ko": "정찰대를 레벨 10까지 업그레이드하기."
+				"ko": "정찰 분야를 레벨 10까지 업그레이드하기."
 			}
 		},
 		"points": 10
@@ -4698,7 +4698,7 @@
 				"en": "Upgrade Scouting branch to level 20.",
 				"es": "Alcanza el área de reconocimiento hasta el nivel 20.",
 				"fr": "Améliorer le secteur Reconnaissance au niveau 20.",
-				"ko": "정찰대를 레벨 20까지 업그레이드하기."
+				"ko": "정찰 분야를 레벨 20까지 업그레이드하기."
 			}
 		},
 		"points": 15
@@ -4726,7 +4726,7 @@
 				"en": "Upgrade Scouting branch to level 30.",
 				"es": "Alcanza el área de reconocimiento hasta el nivel 30.",
 				"fr": "Améliorer le secteur Reconnaissance au niveau 30.",
-				"ko": "정찰대를 레벨 30까지 업그레이드하기."
+				"ko": "정찰 분야를 레벨 30까지 업그레이드하기."
 			}
 		},
 		"points": 20
@@ -4826,7 +4826,7 @@
 				"en": "A Hard Man to Find",
 				"es": "Un hombre difícil de encontrar",
 				"fr": "Un homme difficile à trouver",
-				"ko": "찾기 어려운 자"
+				"ko": "찾을 수 없는 자"
 			}
 		},
 		"description": {
@@ -5146,7 +5146,7 @@
 				"en": "Kill 10,000 entities in mode using mines.",
 				"es": "Matar a 10.000 criaturas en el modo con minas.",
 				"fr": "Tuer 10 000 entités en mode avec des mines.",
-				"ko": "탄광을 사용하는 모드에서 10,000개체를 처치하세요."
+				"ko": "지뢰를 사용하여 10,000개체를 처치하세요."
 			}
 		},
 		"points": 20
@@ -5442,7 +5442,7 @@
 				"en": "And you claim there is no hitreg!",
 				"es": "¡Y dices que no funciona!",
 				"fr": "Et tu dis que ça ne marche pas !",
-				"ko": "그리고 넌 히트레그가 없다고 주장하지!"
+				"ko": "타격 판정이 안 뜬다며!"
 			}
 		},
 		"description": {
@@ -5470,7 +5470,7 @@
 				"en": "Do-it-yourself meta",
 				"es": "Meta de uno mismo",
 				"fr": "Toi-même, le M3ta",
-				"ko": "직접 하기 메타"
+				"ko": "DIY 메타"
 			}
 		},
 		"description": {
@@ -5610,7 +5610,7 @@
 				"en": "Germans are Coming",
 				"es": "Llegan los alemanes",
 				"fr": "Les Allemands arrivent",
-				"ko": "독일군이 오고 있다"
+				"ko": "모스크바 앞의 독일군"
 			}
 		},
 		"description": {
@@ -5706,7 +5706,7 @@
 				"en": "Set the red folder on fire.",
 				"es": "Prende fuego a la carpeta roja.",
 				"fr": "Mettre le feu au dossier rouge.",
-				"ko": "빨간 폴더에 불을 질렀다."
+				"ko": "빨간 폴더를 불태웠다."
 			}
 		},
 		"points": 0
@@ -5750,7 +5750,7 @@
 				"en": "Rest in Peace",
 				"es": "Descanse en paz",
 				"fr": "Repose en paix",
-				"ko": "삼가 고인의 명복을 빕니다"
+				"ko": "편히 잠들기를"
 			}
 		},
 		"description": {
@@ -5778,7 +5778,7 @@
 				"en": "New House",
 				"es": "Casa nueva",
 				"fr": "Nouvelle maison",
-				"ko": "신규 집"
+				"ko": "새 집"
 			}
 		},
 		"description": {
@@ -5790,7 +5790,7 @@
 				"en": "Help Murmur stay in the bar.",
 				"es": "Ayuda a Susurro a permanecer en el bar.",
 				"fr": "Aider Murmure à rester dans le bar.",
-				"ko": "속삭임이 술집에서 지낼 수 있도록 도왔다."
+				"ko": "속삭임이 술집에서 머물 수 있도록 돕기."
 			}
 		},
 		"points": 0
@@ -5818,7 +5818,7 @@
 				"en": "Kick Murmur out of the bar.",
 				"es": "Echa a Susurro del bar.",
 				"fr": "Expulser Murmure du bar.",
-				"ko": "속삭임을 술집에서 쫓아냈다."
+				"ko": "속삭임을 술집에서 쫓아내기."
 			}
 		},
 		"points": 0
@@ -7638,7 +7638,7 @@
 				"en": "Complete the Halloween 2021 questline",
 				"es": "Completa las misiones de Halloween 2021",
 				"fr": "Terminer la quête d\u0027Halloween 2021",
-				"ko": "2021년 할로윈 퀘스트 라인을 완료했다."
+				"ko": "2021년 할로윈 퀘스트 라인을 완료하기"
 			}
 		},
 		"points": 20
@@ -7682,7 +7682,7 @@
 				"en": "Winter’s Tale",
 				"es": "Cuento de invierno",
 				"fr": "Conte d\u0027hiver",
-				"ko": "겨울의 이야기"
+				"ko": "겨울 이야기"
 			}
 		},
 		"description": {
@@ -7946,7 +7946,7 @@
 				"en": "Win a battle in the Arena in which your Sphere loses less than 20% of its durability (battle length: 20+ rounds)",
 				"es": "Gana una batalla en la Arena en la que tu Esfera pierda menos del 20 % de su durabilidad (duración de la batalla: más de 20 rondas)",
 				"fr": "Remporte un combat dans l\u0027Arène au cours duquel ta sphère perd moins de 20 % de sa durabilité (durée du combat : plus de 20 rounds).",
-				"ko": "스피어의 내구도가 20% 미만으로 감소하지 않은 채로 투기장에서 전투 승리했다. (전투 길이: 20+ 라운드)"
+				"ko": "스피어의 내구도가 20% 미만으로 감소하지 않은 채로 투기장에서 승리했다. (전투 길이: 20+ 라운드)"
 			}
 		},
 		"points": 10
@@ -8214,7 +8214,7 @@
 				"en": "Pockmarked Lands",
 				"es": "Tierras picadas",
 				"fr": "Terres marquées",
-				"ko": "흉터진 땅"
+				"ko": "천공의 땅"
 			}
 		},
 		"description": {
@@ -8270,7 +8270,7 @@
 				"en": "Snowdrop",
 				"es": "Campanilla de invierno",
 				"fr": "Perce-neige",
-				"ko": "설화"
+				"ko": "설강화"
 			}
 		},
 		"description": {
@@ -8298,7 +8298,7 @@
 				"en": "Pockmarked Lands",
 				"es": "Tierras picadas",
 				"fr": "Terres marquées",
-				"ko": "흉터진 땅"
+				"ko": "천공의 땅"
 			}
 		},
 		"description": {
@@ -8422,7 +8422,7 @@
 				"en": "Granted to squads of seekers whose theories proved correct.",
 				"es": "Se concede a escuadrones de buscadores cuyas teorías resultaron ser correctas.",
 				"fr": "Accordés à des équipes de chercheurs dont les théories se sont révélées exactes.",
-				"ko": "이론이 정확한 수색 분대에게 수여됐다."
+				"ko": "자신들의 가설이 옳았음을 증명해 낸 탐색대원들에게 수여된 보상입니다."
 			}
 		},
 		"points": 15
@@ -8466,7 +8466,7 @@
 				"en": "Dandy from the Roadside",
 				"es": "Dandi desde la Cuneta",
 				"fr": "Le dandy de la Bordure",
-				"ko": "로드사이드에서 온 댄디"
+				"ko": "로드사이드의 멋쟁이"
 			}
 		},
 		"description": {
@@ -8522,7 +8522,7 @@
 				"en": "The Master of the Zone envies my T-shirt",
 				"es": "Maestro de la Zona envidia mi camiseta",
 				"fr": "Maître de la Zone, jaloux de mon t-shirt",
-				"ko": "구역의 마스터가 내 티셔츠를 탐내"
+				"ko": "구역의 주인\u0027조차 탐내는 티셔츠"
 			}
 		},
 		"description": {
@@ -8578,7 +8578,7 @@
 				"en": "Fence",
 				"es": "Perista",
 				"fr": "Receleur",
-				"ko": "브로커"
+				"ko": "암거래상"
 			}
 		},
 		"description": {
@@ -8618,7 +8618,7 @@
 				"en": "Paint 1 item",
 				"es": "Pinta 1 objeto",
 				"fr": "Peindre 1 article",
-				"ko": "아이템 1개 도색하기"
+				"ko": "아이템을 1개 도색했다."
 			}
 		},
 		"points": 10
@@ -8898,7 +8898,7 @@
 				"en": "Finish the Call storyline",
 				"es": "Termina la historia de la Llamada",
 				"fr": "Terminer le scénario de l\u0027appel",
-				"ko": "\u0027부름\u0027 스토리 라인을 완료했다."
+				"ko": "호출\u0027 스토리 라인을 완료했다."
 			}
 		},
 		"points": 0
@@ -9122,7 +9122,7 @@
 				"en": "Execute Linden.",
 				"es": "Ejecuta a Linden.",
 				"fr": "Exécuter Linden.",
-				"ko": "린덴을 처형했다."
+				"ko": "린든을 처치했다."
 			}
 		},
 		"points": 0
@@ -9262,7 +9262,7 @@
 				"en": "Save Linden.",
 				"es": "Salva a Linden.",
 				"fr": "Sauver Linden.",
-				"ko": "린덴을 구조했다."
+				"ko": "린든을 구조했다."
 			}
 		},
 		"points": 0
@@ -9486,7 +9486,7 @@
 				"en": "Execute Linden.",
 				"es": "Ejecuta a Linden.",
 				"fr": "Exécuter Linden.",
-				"ko": "린덴을 처형했다."
+				"ko": "린든을 처치했다."
 			}
 		},
 		"points": 0
@@ -9626,7 +9626,7 @@
 				"en": "Save Linden.",
 				"es": "Salva a Linden.",
 				"fr": "Sauver Linden.",
-				"ko": "린덴을 구조했다."
+				"ko": "린든을 구조했다."
 			}
 		},
 		"points": 0
@@ -9794,7 +9794,7 @@
 				"en": "For completing the Vagant quest for Covenant.",
 				"es": "Por completar la misión Juglar para el Pacto.",
 				"fr": "Pour avoir terminé la quête Vagant pour l\u0027Alliance.",
-				"ko": "성약 바간트 퀘스트를 완료했다."
+				"ko": "커버넌트 바간트 퀘스트를 완료했다."
 			}
 		},
 		"points": 0
@@ -9950,7 +9950,7 @@
 				"en": "Seeker",
 				"es": "Buscador",
 				"fr": "Chercheur",
-				"ko": "시커"
+				"ko": "탐색자"
 			}
 		},
 		"description": {
@@ -10046,7 +10046,7 @@
 				"en": "Deal with Colonel Vlasov.",
 				"es": "Trata con el coronel Vlasov.",
 				"fr": "S\u0027occuper du colonel Vlasov.",
-				"ko": "대령 블라소프와 거래했다."
+				"ko": "블라소프 대령과 거래했다."
 			}
 		},
 		"points": 0
@@ -10074,7 +10074,7 @@
 				"en": "Deal with Colonel Vlasov.",
 				"es": "Trata con el coronel Vlasov.",
 				"fr": "S\u0027occuper du colonel Vlasov.",
-				"ko": "대령 블라소프와 거래했다."
+				"ko": "블라소프 대령과 거래했다."
 			}
 		},
 		"points": 0
@@ -10102,7 +10102,7 @@
 				"en": "Drive Vlasov to suicide.",
 				"es": "Empuja a Vlasov al suicidio.",
 				"fr": "Conduire Vlasov au suicide.",
-				"ko": "블라소프를 자살로 몰아넣었다."
+				"ko": "블라소프를 죽음으로 몰아넣었다."
 			}
 		},
 		"points": 10
@@ -10130,7 +10130,7 @@
 				"en": "Drive Vlasov to suicide.",
 				"es": "Empuja a Vlasov al suicidio.",
 				"fr": "Conduire Vlasov au suicide.",
-				"ko": "블라소프를 자살로 몰아넣었다."
+				"ko": "블라소프를 죽음으로 몰아넣었다."
 			}
 		},
 		"points": 10
@@ -10347,14 +10347,14 @@
 		},
 		"description": {
 			"type": "translation",
-			"key": "",
+			"key": "general.achievement.id.tester.desc",
 			"args": {},
 			"lines": {
-				"ru": "",
-				"en": "",
-				"es": "",
-				"fr": "",
-				"ko": ""
+				"ru": "За предоставление информации по программе поиска багов",
+				"en": "For providing information on the bug bounty program",
+				"es": "Por proporcionar información sobre el rastreador de errores",
+				"fr": "Pour informations dans le cadre du programme de chasse aux bugs",
+				"ko": "버그 탐색 프로그램 정보 제공"
 			}
 		},
 		"points": 20
@@ -10426,7 +10426,7 @@
 				"en": "Through the Entire CEZ",
 				"es": "Por toda la Zona de Exclusión de Chernóbil",
 				"fr": "À travers l\u0027ensemble de la ZET",
-				"ko": "전체 체르노빌 불입 구역을 통과했다."
+				"ko": "체르노빌 금지 구역을 통과했다."
 			}
 		},
 		"description": {
@@ -11302,11 +11302,11 @@
 			"key": "general.achievement.id.yanov_explored.desc",
 			"args": {},
 			"lines": {
-				"ru": "Посетить Шахты",
-				"en": "Visit the Mines",
-				"es": "Visita las minas",
-				"fr": "Visiter les Mines",
-				"ko": "광산에 방문했다"
+				"ru": "Посетить комбинат «Уран»",
+				"en": "Visit Uranus Mill",
+				"es": "Visitar el complejo Urano",
+				"fr": "Découvrir l\u0027Usine Uranus",
+				"ko": "우라누스 단지 방문하기"
 			}
 		},
 		"points": 20
@@ -11854,7 +11854,7 @@
 				"en": "Caravan Robber",
 				"es": "Asaltante de caravanas",
 				"fr": "Brigand de caravane",
-				"ko": "캐러밴 강도"
+				"ko": "호송대 강도"
 			}
 		},
 		"description": {
@@ -12647,7 +12647,7 @@
 			"args": {},
 			"lines": {
 				"ru": "За наибольшее количество завершенных уровней сезонного пропуска за год",
-				"en": "For the most seasonal pass levels completed over the year",
+				"en": "For the most season pass levels completed over the year",
 				"es": "Por el mayor número de niveles completados del pase de temporada durante el año",
 				"fr": "Pour avoir complété le plus de niveaux du Passe Saisonnier cette année",
 				"ko": "한 해 동안 시즌 패스 레벨 최다 완료"
@@ -12846,7 +12846,7 @@
 				"en": "For the fastest Master of the Zone kill over the year",
 				"es": "Por el asesinato más rápido del Maestro de la Zona en un año",
 				"fr": "Pour avoir vaincu le Maître de la Zone le plus rapidement cette année",
-				"ko": "한 해 동안 구역의 마스터 최단 처치 기록"
+				"ko": "한 해 동안 \u0027구역의 주인\u0027 최단 처치 기록"
 			}
 		},
 		"points": 20
@@ -13102,5 +13102,1685 @@
 			}
 		},
 		"points": 15
+	},
+	{
+		"id": "dmz_2026_at_home",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_at_home.title",
+			"args": {},
+			"lines": {
+				"ru": "Как дома",
+				"en": "Feels Like Home",
+				"es": "Como en casa",
+				"fr": "Comme un poisson dans l’eau",
+				"ko": "집에 있는 것처럼"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_at_home.desc",
+			"args": {},
+			"lines": {
+				"ru": "Принять участие в 25 играх в рамках события \"Морозный десант\"",
+				"en": "Participate in 25 games within the Frost Troopers event",
+				"es": "Participar en 25 partidas dentro del evento Paracaidistas helados",
+				"fr": "Participer à 25 matchs lors de l\u0027événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 25회 게임 참여하기"
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "dmz_2026_batman",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_batman.title",
+			"args": {},
+			"lines": {
+				"ru": "Бетмен",
+				"en": "Batman",
+				"es": "Batman",
+				"fr": "Batman",
+				"ko": "배트맨"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_batman.desc",
+			"args": {},
+			"lines": {
+				"ru": "Прокачать крюк-кошку до максимального уровня в рамках события \"Морозный десант\"",
+				"en": "Upgrade the grappling hook to the maximum level within the Frost Troopers event",
+				"es": "Mejorar el gancho al máximo nivel en el evento Paracaidistas helados",
+				"fr": "Graisser le grappin jusqu\u0027au niveau max lors de l\u0027événement Paras du froid",
+				"ko": "혹한의 공수 이벤트에서 갈고리-갈퀴를 최대 레벨까지 강화하기"
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "dmz_2026_most_fabulous",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_most_fabulous.title",
+			"args": {},
+			"lines": {
+				"ru": "Самый модный в роте",
+				"en": "Most Stylish in the Squad",
+				"es": "El más guay del pelotón",
+				"fr": "Trop la classe",
+				"ko": "중대에서 가장 스타일리시한 사람"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_most_fabulous.desc",
+			"args": {},
+			"lines": {
+				"ru": "Прокачать снаряжение до максимального уровня в рамках события \"Морозный десант\"",
+				"en": "Upgrade gear to the maximum level within the Frost Troopers event",
+				"es": "Mejorar tu equipamiento al máximo nivel en el evento Paracaidistas helados",
+				"fr": "Pousser l\u0027équipement au niveau max lors de l’événement Paras du froid",
+				"ko": "혹한의 공수 이벤트에서 장비를 최대 레벨까지 강화하기"
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "dmz_2026_popular",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_popular.title",
+			"args": {},
+			"lines": {
+				"ru": "Известный",
+				"en": "Famous",
+				"es": "Famoso",
+				"fr": "Star des tranchées",
+				"ko": "명성인"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_popular.desc",
+			"args": {},
+			"lines": {
+				"ru": "Прокачать известность до максимального уровня в рамках события \"Морозный десант\"",
+				"en": "Upgrade fame to the maximum level within the Frost Troopers event",
+				"es": "Aumentar la popularidad al máximo nivel en el evento Paracaidistas helados",
+				"fr": "Améliorer la notoriété au niveau maximum lors de l’événement Paras du froid",
+				"ko": "혹한의 공수 이벤트에서 명성을 최대 레벨까지 강화하기"
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "dmz_2026_crafter",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_crafter.title",
+			"args": {},
+			"lines": {
+				"ru": "Приспособленец",
+				"en": "Opportunist",
+				"es": "Adaptador",
+				"fr": "Caméléon des glaces",
+				"ko": "적응형 생존자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_crafter.desc",
+			"args": {},
+			"lines": {
+				"ru": "Прокачать адаптацию до максимального уровня в рамках события \"Морозный десант\"",
+				"en": "Upgrade adaptation to the maximum level within the Frost Troopers event",
+				"es": "Aumentar la adaptación al máximo nivel en el evento Paracaidistas helados",
+				"fr": "Pousser l\u0027adaptation au niveau max lors de l’événement Paras du froid",
+				"ko": "혹한의 공수 이벤트에서 적응력을 최대 레벨까지 강화하기"
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "dmz_2026_alive_and_well",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_alive_and_well.title",
+			"args": {},
+			"lines": {
+				"ru": "Жив-цел-орел",
+				"en": "Alive and Kicking",
+				"es": "Sano y salvo",
+				"fr": "Sain et sauf… et fier !",
+				"ko": "살아남은 독수리"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_alive_and_well.desc",
+			"args": {},
+			"lines": {
+				"ru": "Не умереть в сессии ни разу и эвакуироваться в рамках события \"Морозный десант\"",
+				"en": "Survive without dying once in a session and evacuate within the Frost Troopers event",
+				"es": "No morir ni una sola vez durante la sesión y evacuar en el evento Paracaidistas helados",
+				"fr": "Terminer une session sans mourir et évacuer lors de l\u0027événement Paras du froid",
+				"ko": "세션에서 한 번도 죽지 않고, 이벤트  혹한의 공수 동안 안전하게 탈출하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "dmz_2026_delta_force",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_delta_force.title",
+			"args": {},
+			"lines": {
+				"ru": "Дельта-форс",
+				"en": "Delta Force",
+				"es": "Delta Force",
+				"fr": "Force Delta",
+				"ko": "델타 포스"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_delta_force.desc",
+			"args": {},
+			"lines": {
+				"ru": "Успешно эвакуироваться отрядом, где никто из членов отряда не умер за игру в рамках события \"Морозный десант\"",
+				"en": "Successfully evacuate with a squad where no squad members die in a game within the Frost Troopers event",
+				"es": "Evacuar con éxito al escuadrón sin que muera ningún miembro durante la partida en el evento Paracaidistas helados",
+				"fr": "Évacuer en équipe sans un seul mort lors de l\u0027événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 팀원 중 누구도 죽지 않고 부대 전체를 성공적으로 탈출하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "dmz_2026_carpet_seller",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_carpet_seller.title",
+			"args": {},
+			"lines": {
+				"ru": "Продавец ковров",
+				"en": "Carpet Seller",
+				"es": "Vendedor de alfombras",
+				"fr": "Vendeur de tapis volants",
+				"ko": "카펫 판매자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_carpet_seller.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить с помощью тактической поддержки 100 игроков в рамках события \"Морозный десант\"",
+				"en": "Kill 100 players with one of tactical supports within the Frost Troopers event",
+				"es": "Matar a 100 jugadores con apoyo tactico en el evento Paracaidistas helados",
+				"fr": "Éliminer 100 joueurs à l\u0027aide d\u0027un soutien tactique lors de l\u0027événement Paras du froid",
+				"ko": "혹한의 공수 이벤트에서 전술 지원을 사용하여 플레이어 100명을 처치하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "dmz_2026_lazarus",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_lazarus.title",
+			"args": {},
+			"lines": {
+				"ru": "Лазарь",
+				"en": "Lazarus",
+				"es": "Lázaro",
+				"fr": "Lazare",
+				"ko": "라자루스"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_lazarus.desc",
+			"args": {},
+			"lines": {
+				"ru": "Возродиться за игру 10 раз в рамках события \"Морозный десант\"",
+				"en": "Revive 10 times in a game within the Frost Troopers event",
+				"es": "Reaparecer 10 veces durante el evento Paracaidistas helados",
+				"fr": "Ressusciter 10 fois lors de l\u0027événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 한 게임 동안 10회 부활하기"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "dmz_2026_bullseye",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_bullseye.title",
+			"args": {},
+			"lines": {
+				"ru": "Триумфатор!",
+				"en": "Veni Vidi Vici",
+				"es": "¡Veni Vidi Vici!",
+				"fr": "Veni Vidi Vici",
+				"ko": "Veni Vidi Vici"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_bullseye.desc",
+			"args": {},
+			"lines": {
+				"ru": "Выиграть 7 игр подряд без единого поражения в рамках события \"Морозный десант\"",
+				"en": "Win 7 consecutive games without a single defeat within the Frost Troopers event",
+				"es": "Ganar 7 partidas consecutivas sin una sola derrota en el evento Paracaidistas Helados",
+				"fr": "Gagner 7 parties d\u0027affilée sans une seule défaite lors de l\u0027événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 단 한 번도 패배 없이 7연승 달성하기"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "dmz_2026_greedy",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_greedy.title",
+			"args": {},
+			"lines": {
+				"ru": "Жадный",
+				"en": "Greedy",
+				"es": "Codicioso",
+				"fr": "Picsou",
+				"ko": "욕심쟁이"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_greedy.desc",
+			"args": {},
+			"lines": {
+				"ru": "Накопить 10000 очков за одну игру в рамках события \"Морозный десант\"",
+				"en": "Score 10000 points in one game within the Frost Troopers event",
+				"es": "Acumular 10000 puntos en una partida en el evento Paracaidistas helados",
+				"fr": "Amasser 10 000 points en une seule partie lors de l’événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 한 게임 동안 1000 점 획득하기"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "dmz_2026_we_succeeded",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_we_succeeded.title",
+			"args": {},
+			"lines": {
+				"ru": "Мы справились?",
+				"en": "Did We Make It?",
+				"es": "¿Lo hemos conseguido?",
+				"fr": "Mission… Accomplie ?",
+				"ko": "우리가 해냈어?"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_we_succeeded.desc",
+			"args": {},
+			"lines": {
+				"ru": "Не выполнить основную задачу и быть единственным успешно эвакуировавшимся отрядом в рамках события \"Морозный десант\"",
+				"en": "Fail the main task and be the only successfully evacuated squad within the Frost Troopers event",
+				"es": "No cumplir la tarea principal y ser el único escuadrón que logró evacuar con éxito en el evento Paracaidistas helados",
+				"fr": "Ne pas remplir l\u0027objectif principal et être la seule équipe à évacuer avec succès lors de l’événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 주 임무를 실패했지만 팀에서 유일하게 안전하게 탈출하기"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "dmz_2026_dunkirk",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_dunkirk.title",
+			"args": {},
+			"lines": {
+				"ru": "Дюнкерк",
+				"en": "Dunkirk",
+				"es": "Dunkerque",
+				"fr": "Dunkerque",
+				"ko": "덩케르크"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_dunkirk.desc",
+			"args": {},
+			"lines": {
+				"ru": "Эвакуироваться в последние 3 секунды игры в рамках события \"Морозный десант\"",
+				"en": "Evacuate in the last 3 seconds of the game within the Frost Troopers event",
+				"es": "Evacuar en los últimos 3 segundos del juego como parte del evento Paracaidistas helados",
+				"fr": "Évacuer dans les 3 dernières secondes de la partie lors de l’événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 게임 종료 3초 전 탈출하기"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "dmz_2026_80s_hero",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_80s_hero.title",
+			"args": {},
+			"lines": {
+				"ru": "Герой 80х",
+				"en": "Hero of the 80s",
+				"es": "Héroe de los años 80",
+				"fr": "Héros à l’ancienne",
+				"ko": "80년대 영웅"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_80s_hero.desc",
+			"args": {},
+			"lines": {
+				"ru": "Ваш отряд должен ликвидировать все другие отряды за игру в рамках события \"Морозный десант\"",
+				"en": "Your squad must eliminate all other squads in a game within the Frost Troopers event",
+				"es": "Tu escuadrón debe eliminar a otros escuadrones durante el juego en el evento Paracaidistas helados",
+				"fr": "Votre équipe doit éliminer toutes les autres équipes pendant la partie lors de l’événement Paras du froid",
+				"ko": "이벤트 혹한의 공수에서 한 게임 동안 다른 부대들을 섬멸하기"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "dmz_2026_quest",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_quest.title",
+			"args": {},
+			"lines": {
+				"ru": "Днище",
+				"en": "Bottom",
+				"es": "Suelo",
+				"fr": "Fond",
+				"ko": "선저"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_quest.desc",
+			"args": {},
+			"lines": {
+				"ru": "Поздравляю! Ты нашел уникального «Шепчущего», обитающего в морской среде! Как он туда попал..?",
+				"en": "Congratulations! You found a unique murmurer residing in a marine environment! How did it get there..?",
+				"es": "¡Felicidades! ¡Has encontrado al único Susurrador que vive en el mar! ¿Cómo llegó allí…?",
+				"fr": "Bravo ! Tu as découvert un Murmurant unique, habitant les fonds marins ! Mais qu\u0027est-ce qu\u0027il fout là ?..",
+				"ko": "축하합니다! 당신은 바다 환경에 서식하는 유일무이한 속삭임을 찾았습니다! 거기엔 어떻게 왔을까요..?"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "dmz_2026_tankWatch",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_quest.tankiWatch.title",
+			"args": {},
+			"lines": {
+				"ru": "40 тонн",
+				"en": "40 tons",
+				"es": "40 toneladas",
+				"fr": "40 tonnes",
+				"ko": "40톤"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.dmz_2026_quest.tankiWatch.desc",
+			"args": {},
+			"lines": {
+				"ru": "Найти все танки на Борали",
+				"en": "Find all tanks on Boral",
+				"es": "Encontrar todos los tanques en Boral",
+				"fr": "Trouver tous les chars sur Boral",
+				"ko": "보랄에서 모든 전차를 찾기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "operations_sea_alienation_15",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_sea_alienation_15.title",
+			"args": {},
+			"lines": {
+				"ru": "Гуманитарий",
+				"en": "Humanist",
+				"es": "Humanista",
+				"fr": "Littéraire",
+				"ko": "인도주의자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_sea_alienation_15.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить Технаря на 15 допуске или выше и завершить Операцию «Море отчуждения»",
+				"en": "Kill Tech at Clearance 15 or higher and complete the Sea of Exclusion Operation",
+				"es": "Matar a Ingeniero en el nivel 15 o superior y completar la Operación Mar de Exclusión",
+				"fr": "Éliminer le Technomancien au niveau d\u0027Accès 15 ou supérieur et terminer l\u0027opération Mer d\u0027exclusion",
+				"ko": "15 등급 이상에서 기술자를 처치하고 격리의 바다 작전을 완료하기"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "operations_blind_luck",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.blind_luck.title",
+			"args": {},
+			"lines": {
+				"ru": "Слепая удача",
+				"en": "Blind Luck",
+				"es": "Suerte ciega",
+				"fr": "Chance aveugle",
+				"ko": "맹목적인 행운"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.blind_luck.desc",
+			"args": {},
+			"lines": {
+				"ru": "На этапе «Морской бой» в Операции «Море отчуждения» попасть в цель без использования Радара на 9 допуске или выше",
+				"en": "During the Battleship phase of the Sea of Exclusion Operation, hit the target without using the Radar at Clearance Level 9 or higher",
+				"es": "En la fase Batalla naval durante la Operación Mar de Exclusión, alcanzar el objetivo sin usar el Radar con un acceso de nivel 9 o superior",
+				"fr": "Lors de l\u0027étape Bataille navale dans l\u0027Opération Mer d\u0027exclusion, toucher la cible sans utiliser le radar au niveau d\u0027Accès 9 ou supérieur",
+				"ko": "격리의 바다 작전의 해상 전투 단계에서는 9등급 이상에서 레이더를 사용하지 않고 목표를 명중시킬 것"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "operations_under_pressure",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.under_pressure.title",
+			"args": {},
+			"lines": {
+				"ru": "Под давлением",
+				"en": "Under Pressure",
+				"es": "Bajo presión",
+				"fr": "Sous pression",
+				"ko": "압박 속에서"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.under_pressure.desc",
+			"args": {},
+			"lines": {
+				"ru": "На этапе «Контроль Давления» в Операции «Море отчуждения» иметь все контроллеры в зеленом состоянии на 9 допуске или выше",
+				"en": "During the Pressure Control phase of the Sea of Exclusion Operation, have all controllers in the green state at Clearance Level 9 or higher",
+				"es": "En la fase Control de presión durante la Operación Mar de Exclusión, tener todos los controladores en estado verde con un acceso de nivel 9 o superior",
+				"fr": "Lors de l\u0027étape Régulateur de pression dans l\u0027opération Mer d\u0027exclusion, maintenir tous les contrôleurs dans la zone verte au niveau d\u0027Accès 9 ou supérieur",
+				"ko": "격리의 바다 작전의 압력 제어 단계에서는 9등급 이상에서 모든 컨트롤러를 초록 상태로 유지할 것"
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "operations_electrician",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.electrician.title",
+			"args": {},
+			"lines": {
+				"ru": "Электрик 9го разряда",
+				"en": "Grade 9 Electrician",
+				"es": "Electricista de 9ª categoría",
+				"fr": "Électricien hors classe",
+				"ko": "9급 전기기사"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.electrician.desc",
+			"args": {},
+			"lines": {
+				"ru": "В битве с Технарем в Операции «Море отчуждения» не отключать способность «Тесла-Протокол» ни разу на 9 допуске или выше",
+				"en": "During the battle with Tech in the Sea of Exclusion Operation, do not disable the Tesla Protocol ability even once at Clearance Level 9 or higher",
+				"es": "En la batalla contra Ingeniero durante la Operación Mar de Exclusión, no desactives la habilidad Protocolo Tesla ni una sola vez en el acceso de nivel 9 o superior",
+				"fr": "Lors du combat contre le Technomancien dans l\u0027opération Mer d\u0027exclusion, ne jamais interrompre la capacité Protocole Tesla au niveau d\u0027Accès 9 ou supérieur",
+				"ko": "격리의 바다 작전에서 기술병과의 전투 중에는 9등급 이상에서 테슬라-프로토콜 능력을 단 한 번도 비활성화하지 말 것."
+			}
+		},
+		"points": 15
+	},
+	{
+		"id": "unnamed_deep_bro",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.unnamed_deep_bro.title",
+			"args": {},
+			"lines": {
+				"ru": "Бро",
+				"en": "Bro",
+				"es": "Bro",
+				"fr": "Bro",
+				"ko": "브로"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.unnamed_deep_bro.desc",
+			"args": {},
+			"lines": {
+				"ru": "Стукнуть кулачком Мауса",
+				"en": "To give Mouse a fist bump",
+				"es": "Golpear con el puño de Maus",
+				"fr": "Faire un check du poing avec Maus",
+				"ko": "마우스를 주먹으로 치기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "unnamed_deep_no_bro",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.unnamed_deep_no_bro.title",
+			"args": {},
+			"lines": {
+				"ru": "Не Бро",
+				"en": "Not Bro",
+				"es": "No Bro",
+				"fr": "Pas un bro",
+				"ko": "브로 아님"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.unnamed_deep_no_bro.desc",
+			"args": {},
+			"lines": {
+				"ru": "Проигронировать желание Мауса стукаться кулачками",
+				"en": "To ignore Mouse\u0027s desire to fist bump",
+				"es": "Ignorar el deseo de Maus de golpear con los puños",
+				"fr": "Ignorer l\u0027envie de Maus de se taper le poing",
+				"ko": "마우스의 주먹질 욕망을 무시하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "leviathan_pray",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.leviathan_pray.title",
+			"args": {},
+			"lines": {
+				"ru": "Правоверный",
+				"en": "Righteous",
+				"es": "Ortodoxo",
+				"fr": "Croyant",
+				"ko": "정통 신도"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.leviathan_pray.desc",
+			"args": {},
+			"lines": {
+				"ru": "В любой непонятной ситуации - молись",
+				"en": "When in doubt, pray",
+				"es": "En cualquier situación incomprensible, reza",
+				"fr": "Dans toute situation incompréhensible, prie.",
+				"ko": "모든 난관에 처했을 때는 – 기도하라"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "leviathan_disk",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.leviathan_disk.title",
+			"args": {},
+			"lines": {
+				"ru": "Тормозок",
+				"en": "Slow One",
+				"es": "Freno",
+				"fr": "Freinou",
+				"ko": "느림보"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.leviathan_disk.desc",
+			"args": {},
+			"lines": {
+				"ru": "У тебя была задача забрать жёсткие диски, но похоже ты и до этого не допер.",
+				"en": "You were supposed to pick up the hard drives, but apparently you still haven\u0027t figured that out.",
+				"es": "Tenías la tarea de recoger los discos duros, pero parece que ni siquiera te diste cuenta.",
+				"fr": "T\u0027avais la mission de récupérer les disques durs, mais on dirait que t\u0027as même pas capté avant.",
+				"ko": "하드 드라이브를 가져오라는 임무가 있었는데, 보아하니 그 전에도 이해를 못 했던 것 같군."
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "april_fools_2026",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.april_fools_2026.title",
+			"args": {},
+			"lines": {
+				"ru": "Большое достоинство",
+				"en": "Well-Endowed",
+				"es": "Gran paquete",
+				"fr": "Un grand mérite",
+				"ko": "큰 장점"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.april_fools_2026.desc",
+			"args": {},
+			"lines": {
+				"ru": "Не верьте тем, кто говорит, что размер не важен. Они просто комплексуют.",
+				"en": "Don’t believe those who say size doesn’t matter. They’re Just Insecure.",
+				"es": "No creas a quienes dicen que el tamaño no importa. Simplemente tienen complejos.",
+				"fr": "Ne croyez pas ceux qui disent que la taille n\u0027a pas d\u0027importance. Ils ont juste des complexes.",
+				"ko": "크기는 중요하지 않다고 말하는 놈들, 믿지 마라. 그건 그냥 열등감 때문이야."
+			}
+		},
+		"points": 0
+	},
+	{
+		"id": "base_sanitar_1_voyeur",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.base_sanitar_1_voyeur.title",
+			"args": {},
+			"lines": {
+				"ru": "Вуайерист",
+				"en": "Voyeur",
+				"es": "Voyeur",
+				"fr": "Voyeur",
+				"ko": "관음증자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.base_sanitar_1_voyeur.desc",
+			"args": {},
+			"lines": {
+				"ru": "Подглядывать не хорошо! Даже если очень хочется, даже одним глазком. Даже если на вражеской базе",
+				"en": "It’s not nice to peek! Even if you really want to, even just a little. Even if it’s on an enemy base.",
+				"es": "¡No está bien espiar! Aunque tengas muchas ganas, aunque sea solo un vistazo. Incluso si es en la base enemiga",
+				"fr": "Il ne faut pas espionner ! Même si on en a très envie, même d\u0027un petit coup d\u0027œil. Même sur une base ennemie.",
+				"ko": "엿보는 건 좋지 않습니다! 아무리 보고 싶어도, 한쪽 눈만 살짝이라도 안 됩니다. 적 기지라도 마찬가지입니다."
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "base_sanitar_1_wrong_door",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.base_sanitar_1_wrong_door.title",
+			"args": {},
+			"lines": {
+				"ru": "Ошибся дверью",
+				"en": "Wrong Door",
+				"es": "Puerta equivocada",
+				"fr": "Je me suis trompé de porte.",
+				"ko": "잘못된 문으로 들어왔습니다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.base_sanitar_1_wrong_door.desc",
+			"args": {},
+			"lines": {
+				"ru": "У каждого сталкера в жизни наступает момент, когда он может зайти не в ту дверь. Благо в бункере РЛС эта дверь оказалась заперта",
+				"en": "Every stalker has a moment in life when they walk up to the wrong door. Luckily, in the Radar Station Bunker, that door turned out to be locked.",
+				"es": "A todo acechador le llega un momento en la vida en el que puede entrar por la puerta equivocada. Por suerte, en la Estación de Radar esta puerta estaba cerrada",
+				"fr": "Chaque stalker dans sa vie arrive à un moment où il peut entrer par la mauvaise porte. Heureusement, dans le bunker du radar, cette porte était verrouillée.",
+				"ko": "모든 스토커에게는 잘못된 문으로 들어갈 순간이 옵니다. 다행히 레이더 기지에서는 이 문이 잠겨 있었습니다."
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "operations_precious_cargo",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_precious_cargo.title",
+			"args": {},
+			"lines": {
+				"ru": "Хрупкий груз",
+				"en": "Fragile Cargo",
+				"es": "Carga frágil",
+				"fr": "Charge fragile",
+				"ko": "취급 주의 화물"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_precious_cargo.desc",
+			"args": {},
+			"lines": {
+				"ru": "В задаче “Питание фотонных генераторов” в Операции “Большая уборка” не ронять аномальную батарею на землю после подбора ни разу на 9 допуске или выше",
+				"en": "In the Photon Generator Power Supply task during the Big Clean Up Operation, do not drop the anomalous battery on the ground even once after picking it up at Clearance Level 9 or higher",
+				"es": "En la misión Alimentación de los Generadores de fotones de la Operación Gran limpieza, no dejar caer la batería anómala al suelo tras recogerla ni una sola vez con un acceso de nivel 9 o superior",
+				"fr": "Dans la mission Alimentation des Générateurs Photoniques de l\u0027Opération Grand ménage, ne jamais laisser tomber la batterie anormale au sol après l\u0027avoir ramassée, au moins une fois au niveau d\u0027Accès 9 ou supérieur",
+				"ko": "대규모 소탕 작전의 광자력 발전 전원 공급 장치 임무에서는 9등급 이상에서 이상 배터리를 집은 후 단 한 번도 바닥에 떨어뜨리지 말 것"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "operations_laser_show",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_laser_show.title",
+			"args": {},
+			"lines": {
+				"ru": "Лазер-шоу",
+				"en": "Laser Show",
+				"es": "Espectáculo de láser",
+				"fr": "Spectacle laser",
+				"ko": "레이저 쇼"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.operations_laser_show.desc",
+			"args": {},
+			"lines": {
+				"ru": "В задаче “Лазерный надрез” в Операции “Фокусировка” иметь активированными все зеркала хотя бы раз на каждой из арен на 9 допуске или выше",
+				"en": "In the Laser Incision task during the Focus Operation, have all mirrors activated at least once in each arena at Clearance Level 9 or higher",
+				"es": "En la misión Incisión láser de la Operación Enfoque, todos los espejos deben estar activados al menos una vez en cada un acceso de nivel 9 o superior",
+				"fr": "Dans la tâche Découpe laser de l\u0027Opération Focalisation, avoir activé tous les miroirs au moins une fois sur chacune des arènes avec une tolérance de 9 ou plus.",
+				"ko": "“집중” 작전의 “레이저 절개” 임무에서는 9등급 이상에서 각 아레나마다 모든 거울을 최소 한 번씩 활성화 상태로 만들 것"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "ops_rating_patient_zero",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.ops_rating_patient_zero.title",
+			"args": {},
+			"lines": {
+				"ru": "Нулевой Пациент",
+				"en": "Patient Zero",
+				"es": "Paciente Cero",
+				"fr": "Patient Zéro",
+				"ko": "제로 환자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.ops_rating_patient_zero.desc",
+			"args": {},
+			"lines": {
+				"ru": "Занять лигу «Абсолютное единство» по окончанию рейтингового сезона Операций",
+				"en": "Reach the Absolute Unity league by the end of the ranked Operations season",
+				"es": "Conseguir la liga Unidad absoluta al finalizar la temporada de clasificación de Operaciones",
+				"fr": "Prendre la ligue Unité Absolue à la fin de la saison de classement des Opérations",
+				"ko": "리그 절대적 일체에 랭킹 시즌 종료 시 진입할 것"
+			}
+		},
+		"points": 20
+	},
+	{
+		"id": "reichstag_infantry_level10",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_infantry_level10.title",
+			"args": {},
+			"lines": {
+				"ru": "На амбразуру!",
+				"en": "Take the Hit!",
+				"es": "¡A la tronera!",
+				"fr": "À l\u0027embrasure !",
+				"ko": "포대로 돌격!"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_infantry_level10.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 10 уровня прокачки класса «Штурмовик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 10 with the Assaulter class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 10 de progreso de la clase Asaltante en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 10 de progression de la classe Assaillant en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 돌격 병사 클래스 숙련도 10레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_infantry_level20",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_infantry_level20.title",
+			"args": {},
+			"lines": {
+				"ru": "После нас только пустошь",
+				"en": "After Us, the Wasteland",
+				"es": "Después de nosotros, solo queda el desierto",
+				"fr": "Après nous, ce sera le vide",
+				"ko": "우리 뒤에는 황무지만 남는다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_infantry_level20.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 20 уровня прокачки класса «Штурмовик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 20 with the Assaulter class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 20 de progreso de la clase Asaltante en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 20 de progression de la classe Assaillant en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 돌격 병사 클래스 숙련도 20레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_scout_level10",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_level10.title",
+			"args": {},
+			"lines": {
+				"ru": "Ночевала тучка золотая",
+				"en": "I Wandered Lonely as a Cloud",
+				"es": "Una nubecilla dorada pasó la noche",
+				"fr": "La petite nuée dorée a passé la nuit",
+				"ko": "금빛 구름이 밤을 지새웠다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_level10.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 10 уровня прокачки класса «Разведчик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 10 with the Scout class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 10 de progreso de la clase Explorador en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 10 de progression de la classe Éclaireur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 정찰병 클래스 숙련도 10레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_scout_level20",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_level20.title",
+			"args": {},
+			"lines": {
+				"ru": "А зори здесь тихие",
+				"en": "Dawn was Theirs",
+				"es": "Y aquí los amaneceres son tranquilos",
+				"fr": "Et les aurores ici sont calmes",
+				"ko": "여기에는 고요한 새벽이 있다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_level20.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 20 уровня прокачки класса «Разведчик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 20 with the Scout class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 20 de progreso de la clase Explorador en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 20 de progression de la classe Éclaireur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 정찰병 클래스 숙련도 20레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_engineer_level10",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_engineer_level10.title",
+			"args": {},
+			"lines": {
+				"ru": "Работает - не трогай",
+				"en": "If It Ain’t Broke, Don’t Fix It",
+				"es": "Si funciona, no lo toques",
+				"fr": "Ça marche, y touche pas.",
+				"ko": "고장 나지 않으면 건드리지 마라"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_engineer_level10.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 10 уровня прокачки класса «Инженер» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 10 with the Engineer class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 10 de progreso de la clase Ingeniero en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 10 de progression de la classe Ingénieur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 공병 클래스 숙련도 10레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_engineer_level20",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_engineer_level20.title",
+			"args": {},
+			"lines": {
+				"ru": "Огоньку?",
+				"en": "Got Fire?",
+				"es": "¿Un poco de fuego?",
+				"fr": "Un petit feu ?",
+				"ko": "불 좀 줄까?"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_engineer_level20.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 20 уровня прокачки класса «Инженер» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 20 with the Engineer class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 20 de progreso de la clase Ingeniero en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 20 de progression de la classe Ingénieur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 공병 클래스 숙련도 20레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_machinegunner_level10",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_machinegunner_level10.title",
+			"args": {},
+			"lines": {
+				"ru": "Ленточный червь",
+				"en": "Tapeworm",
+				"es": "Tenia",
+				"fr": "Le ténia",
+				"ko": "촌충"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_machinegunner_level10.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 10 уровня прокачки класса «Пулеметчик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 10 with the Machine Gunner class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 10 de progreso de la clase Ametrallador en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 10 de progression de la classe Canonnier mitrailleur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 기관총 사수 클래스 숙련도 10레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_machinegunner_level20",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_machinegunner_level20.title",
+			"args": {},
+			"lines": {
+				"ru": "От щедрот",
+				"en": "Out of Generosity",
+				"es": "Por pura generosidad",
+				"fr": "Par générosité",
+				"ko": "후하게 베풀어 준 것"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_machinegunner_level20.desc",
+			"args": {},
+			"lines": {
+				"ru": "Достичь 20 уровня прокачки класса «Пулеметчик» в режиме «Штурм Рейхстага»",
+				"en": "Reach class level 20 with the Machine Gunner class in the Assault on the Reichstag mode",
+				"es": "Alcanza el nivel 20 de progreso de la clase Ametrallador en el modo Asalto al Reichstag",
+				"fr": "Atteindre le niveau 20 de progression de la classe Canonnier mitrailleur en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 기관총 사수 클래스 숙련도 20레벨 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_10_games",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_games.title",
+			"args": {},
+			"lines": {
+				"ru": "В списках не значится",
+				"en": "Not on the Roster",
+				"es": "No figura en las listas",
+				"fr": "Il ne figure pas sur les listes.",
+				"ko": "명단에 없다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_games.desc",
+			"args": {},
+			"lines": {
+				"ru": "Сыграть 10 игр в режиме «Штурм Рейхстага»",
+				"en": "Play 10 matches in the Assault on the Reichstag mode.",
+				"es": "Juega 10 partidas en el modo Asalto al Reichstag",
+				"fr": "Jouer 10 parties en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 10판 플레이하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_25_games",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_25_games.title",
+			"args": {},
+			"lines": {
+				"ru": "В списках значится",
+				"en": "On the Roster",
+				"es": "Figura en las listas",
+				"fr": "Il est inscrit dans les listes",
+				"ko": "명단에 포함되어 있다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_25_games.desc",
+			"args": {},
+			"lines": {
+				"ru": "Сыграть 25 игр в режиме «Штурм Рейхстага»",
+				"en": "Play 25 matches in the Assault on the Reichstag mode",
+				"es": "Juega 25 partidas en el modo Asalto al Reichstag",
+				"fr": "Jouer 25 parties en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 25판 플레이하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_100_games",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_100_games.title",
+			"args": {},
+			"lines": {
+				"ru": "Представлен к награде",
+				"en": "Recommended for Award",
+				"es": "Propuesto para condecoración",
+				"fr": "Proposé pour une récompense",
+				"ko": "훈장 수여 대상자로 추천됨"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_100_games.desc",
+			"args": {},
+			"lines": {
+				"ru": "Сыграть 100 игр в режиме «Штурм Рейхстага»",
+				"en": "Play 100 matches in the Assault on the Reichstag mode",
+				"es": "Juega 100 partidas en el modo Asalto al Reichstag",
+				"fr": "Jouer 100 parties en mode Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 100판 플레이하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "radioman",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.radioman.title",
+			"args": {},
+			"lines": {
+				"ru": "Радист",
+				"en": "Radio Operator",
+				"es": "Radioperador",
+				"fr": "Radio opérateur",
+				"ko": "무전병"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.radioman.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить одним использованием тактической поддержки 5 противников",
+				"en": "Kill 5 enemies with a single use of tactical support.",
+				"es": "Matar a 5 enemigos con un solo uso de apoyo táctico",
+				"fr": "Tuer 5 ennemis en une seule utilisation du soutien tactique",
+				"ko": "전술 지원을 사용해 5명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "wind_correction",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.wind_correction.title",
+			"args": {},
+			"lines": {
+				"ru": "Корректировка по ветру",
+				"en": "Wind Correction",
+				"es": "Corrección por el viento",
+				"fr": "Correction en fonction du vent",
+				"ko": "풍향 보정"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.wind_correction.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить одним использованием тактической поддержки 10 противников",
+				"en": "Kill 10 enemies with a single use of tactical support.",
+				"es": "Matar a 10 enemigos con un solo uso de apoyo táctico",
+				"fr": "Tuer 10 ennemis en une seule utilisation du soutien tactique",
+				"ko": "전술 지원을 사용해 10명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "last_stand",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.last_stand.title",
+			"args": {},
+			"lines": {
+				"ru": "Из последних сил",
+				"en": "With the Last of My Strength",
+				"es": "Con las últimas fuerzas",
+				"fr": "De toutes ses forces",
+				"ko": "마지막 힘을 짜내어"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.last_stand.desc",
+			"args": {},
+			"lines": {
+				"ru": "Захватить Рейхстаг во время «Последнего Шанса», играя за РККА",
+				"en": "Capture the Reichstag as the Red Army during Last Chance",
+				"es": "Captura el Reichstag por el Ejército Rojo durante Última Oportunidad",
+				"fr": "Prendre le Reichstag pendant le Dernier Chance en jouant pour l\u0027Armée rouge",
+				"ko": "마지막 기회 동안 소련군 군대로 라이히슈타크를 점령하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "no_capitulation",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.no_capitulation.title",
+			"args": {},
+			"lines": {
+				"ru": "Капитуляция не сегодня",
+				"en": "No Capitulation Now",
+				"es": "Capitulación no es hoy",
+				"fr": "La capitulation, ce n\u0027est pas pour aujourd\u0027hui",
+				"ko": "오늘은 항복하지 않는다"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.no_capitulation.desc",
+			"args": {},
+			"lines": {
+				"ru": "Не дать РККА захватить мост, играя за Вермахт",
+				"en": "As the Wehrmacht, prevent the bridge from being captured",
+				"es": "Como la Wehrmacht, no dejes que el Ejército Rojo capture el puente",
+				"fr": "Ne pas laisser l\u0027Armée rouge prendre le pont en jouant pour la Wehrmacht",
+				"ko": "독일군으로 플레이하여 소련군 군대가 다리를 점령하지 못하도록 저지하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "scattered",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.scattered.title",
+			"args": {},
+			"lines": {
+				"ru": "Вразброс",
+				"en": "Scattershot",
+				"es": "A lo disperso",
+				"fr": "En désordre",
+				"ko": "산개 사격"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.scattered.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить одной гранатой 3 противников, играя за класс «Штурмовик»",
+				"en": "Kill 3 enemies with a single grenade while playing the Assaulter class",
+				"es": "Completación de la Operación jugando como clase Soldado de asalto",
+				"fr": "Tuer 3 ennemis avec une seule grenade en jouant la classe d\u0027Assaut",
+				"ko": "돌격 병사 클래스로 플레이하여 수류탄 한 발로 3명의 적을 처치하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_7_killstreak",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_7_killstreak.title",
+			"args": {},
+			"lines": {
+				"ru": "Семицветик",
+				"en": "Seven-Petal Clover",
+				"es": "Flor de siete colores",
+				"fr": "La fleur aux sept couleurs",
+				"ko": "일곱빛 꽃"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_7_killstreak.desc",
+			"args": {},
+			"lines": {
+				"ru": "Добить серию убийств до 7, играя за любой класс",
+				"en": "Reach a killstreak of 7 with any class",
+				"es": "Conseguir una racha de 7 bajas con cualquier clase",
+				"fr": "Obtenez une série de 7 éliminations en jouant avec n\u0027importe quelle classe",
+				"ko": "어떤 클래스든 사용하여 연속 제거 수를 7까지 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_10_killstreak",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_killstreak.title",
+			"args": {},
+			"lines": {
+				"ru": "Десять по цене одного",
+				"en": "Ten for the Price of One",
+				"es": "Diez por el precio de uno",
+				"fr": "Dix pour le prix d\u0027un",
+				"ko": "하나 가격으로 열 개"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_killstreak.desc",
+			"args": {},
+			"lines": {
+				"ru": "Добить серию убийств до 10, играя за любой класс",
+				"en": "Reach a killstreak of 10 with any class",
+				"es": "Conseguir una racha de 10 bajas con cualquier clase",
+				"fr": "Terminer une série de 10 éliminations en jouant avec n\u0027importe quelle classe",
+				"ko": "어떤 클래스든 사용하여 연속 제거 수를 10까지 달성하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_scout_5_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_5_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Пятачок",
+				"en": "The Five",
+				"es": "Una de 5",
+				"fr": "Cochonnet",
+				"ko": "동전"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_scout_5_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 5 противников без смертей, играя за класс «Разведчик»",
+				"en": "Kill 5 enemies without dying while playing as the Scout class",
+				"es": "Mata a 5 personas sin morir jugando con la clase Explorador",
+				"fr": "Tuer 5 ennemis sans mourir en jouant la classe Éclaireur",
+				"ko": "정찰병 클래스로 사망 없이 5명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_gunner_5_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_gunner_5_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Высадка на Рейне",
+				"en": "Rhine Landing",
+				"es": "Desembarco en el Rin",
+				"fr": "Débarquement sur le Rhin",
+				"ko": "라인 강 상륙 작전"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_gunner_5_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 5 противников без смертей, играя за класс «Пулеметчик»",
+				"en": "Kill 5 enemies without dying while playing as the Machine Gunner class",
+				"es": "Mata a 5 personas sin morir jugando con la clase Ametrallador",
+				"fr": "Tuer 5 ennemis sans mourir en jouant la classe Canonnier mitrailleur",
+				"ko": "기관총 사수 클래스로 사망 없이 5명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_faust",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_faust.title",
+			"args": {},
+			"lines": {
+				"ru": "Гётте",
+				"en": "Goethe",
+				"es": "Goethe",
+				"fr": "Goethe",
+				"ko": "괴테"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_faust.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 3 противников одним выстрелом из Panzerfaust",
+				"en": "Kill 3 enemies with a single Panzerfaust shot",
+				"es": "Matar a 3 enemigos de un solo disparo con un Panzerfaust",
+				"fr": "Tuer 3 ennemis d\u0027un seul tir avec un Panzerfaust",
+				"ko": "Panzerfaust 한 발로 3명의 적을 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_ptrd_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_ptrd_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Танкобой",
+				"en": "Tank Boy",
+				"es": "Cazatanques",
+				"fr": "Antichar",
+				"ko": "대전차"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_ptrd_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 100 человек из ПТРД-М в режиме «Штурм Рейхстага»",
+				"en": "Kill 100 enemies with PTRD-M in the Assault on the Reichstag mode",
+				"es": "Mata a 100 personas con el PTRD-M en el modo Asalto al Reichstag",
+				"fr": "Tuer 100 personnes avec le PTRD-M en mode d\u0027Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 PTRD-M으로 100명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_pzb_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_pzb_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Tankwagen",
+				"en": "Tankwagen",
+				"es": "Tankwagen",
+				"fr": "Tankwagen",
+				"ko": "Tankwagen"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_pzb_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 100 человек из Pzb-38 в режиме «Штурм Рейхстага»",
+				"en": "Kill 100 enemies with Pzb-38 in the Assault on the Reichstag mode",
+				"es": "Mata a 100 personas con el Pzb-38 en el modo Asalto al Reichstag",
+				"fr": "Tuer 100 personnes avec le Pzb-38 en mode d\u0027Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 Pzb-38으로 100명 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_destroy_tank",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_destroy_tank.title",
+			"args": {},
+			"lines": {
+				"ru": "Демонтажник",
+				"en": "Dismantler",
+				"es": "Desmontador",
+				"fr": "Démanteleur",
+				"ko": "분해자"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_destroy_tank.desc",
+			"args": {},
+			"lines": {
+				"ru": "Уничтожить танк",
+				"en": "Destroy a Tank",
+				"es": "Destruye un tanque",
+				"fr": "Détruire le char",
+				"ko": "전차 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_flamethrower_5_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_flamethrower_5_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Дезинсекция",
+				"en": "Extermination",
+				"es": "Desinsectación",
+				"fr": "Désinsectisation",
+				"ko": "해충 구제"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_flamethrower_5_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 5 человек за одну жизнь, используя огнемет",
+				"en": "Kill 5 enemies for one life with flamethrowner",
+				"es": "Mata a 5 personas en una sola vida jugando como Lanzallamador",
+				"fr": "Tuer 5 personnes en une seule vie en utilisant un lance-flammes",
+				"ko": "화염방사기를 사용하여 한 생존 동안 5명의 적을 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_capture_30_points",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_capture_30_points.title",
+			"args": {},
+			"lines": {
+				"ru": "От Волги до Шпрее",
+				"en": "From the Volga to the Spree",
+				"es": "Desde el Volga hasta el Spree",
+				"fr": "De la Volga à la Spree",
+				"ko": "볼가에서 슈프레까지"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_capture_30_points.desc",
+			"args": {},
+			"lines": {
+				"ru": "Захватить 30 точек, играя за РККА, в режиме «Штурм Рейхстага»",
+				"en": "Capture 30 points for the Red Army side in the Assault on the Reichstag mode",
+				"es": "Captura 30 puntos con el bando del Ejército Rojo en el modo Asalto al Reichstag",
+				"fr": "Capturer 30 points en jouant pour l\u0027Armée rouge dans le mode de l\u0027Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 소련군 진영으로 30개 거점을 점령하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_10_wins",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_wins.title",
+			"args": {},
+			"lines": {
+				"ru": "День Победы",
+				"en": "Victory Day",
+				"es": "Día de la Victoria",
+				"fr": "Jour de la Victoire",
+				"ko": "승리의 날"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_10_wins.desc",
+			"args": {},
+			"lines": {
+				"ru": "Одержать победу в режиме «Штурм Рейхстага» 10 раз",
+				"en": "Win 10 matches in the Assault on the Reichstag mode",
+				"es": "Consigue 10 victorias en el modo Asalto al Reichstag",
+				"fr": "Remporter la victoire 10 fois en mode d\u0027Assaut sur le Reichstag",
+				"ko": "라이히슈타크 습격 모드에서 10회 승리하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_heavy_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_heavy_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Противотанковый шквал",
+				"en": "Anti-Tank Barrage",
+				"es": "Ráfaga antitanque",
+				"fr": "Salve antichar",
+				"ko": "대전차 포격 세례"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_heavy_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 50 противников из противотанковых винтовок или Panzerfaust",
+				"en": "Kill 50 enemies with anti-tank rifles or a Panzerfaust",
+				"es": "Mata a 50 enemigos con fusiles antitanque o faustpatrone",
+				"fr": "Tuer 50 ennemis avec des fusils antichars ou un Panzerfaust",
+				"ko": "대전차 소총 또는 Panzerfaust를 사용하여 50명의 적을 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_grenade_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_grenade_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Огненный вал",
+				"en": "Wall of Fire",
+				"es": "Ola de fuego",
+				"fr": "Vague de feu",
+				"ko": "화염의 장벽"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_grenade_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 25 противников, используя гранаты, растяжки и тактическую поддержку",
+				"en": "Kill 25 enemies using grenades, trip wires, and tactical support",
+				"es": "Matar a 25 enemigos usando granadas, minas trampa y apoyo táctico",
+				"fr": "Tuer 25 ennemis en utilisant des grenades, des pièges et un soutien tactique",
+				"ko": "수류탄, 와이어 트립, 전술 지원을 사용하여 25명의 적을 제거하기"
+			}
+		},
+		"points": 10
+	},
+	{
+		"id": "reichstag_kills",
+		"title": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_kills.title",
+			"args": {},
+			"lines": {
+				"ru": "Красный туман над Рейхстагом",
+				"en": "Red Mist Over the Reichstag",
+				"es": "Niebla roja sobre el Reichstag",
+				"fr": "Le brouillard rouge au-dessus du Reichstag",
+				"ko": "라이히슈타크 위에 드리운 붉은 안개"
+			}
+		},
+		"description": {
+			"type": "translation",
+			"key": "general.achievement.id.reichstag_kills.desc",
+			"args": {},
+			"lines": {
+				"ru": "Убить 150 противников в режиме «Штурм Рейхстага»",
+				"en": "Kill 150 enemies in Assault on the Reichstag mode",
+				"es": "Matar a 150 enemigos en el modo Asalto al Reichstag",
+				"fr": "Tuer 150 ennemis en mode d\u0027Assaut sur le Reichstag",
+				"ko": "라이히슈타크 돌격 모드에서 적 150명을 제거하기"
+			}
+		},
+		"points": 10
 	}
 ]

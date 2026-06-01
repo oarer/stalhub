@@ -46,8 +46,10 @@
 		"and": " и ",
 		"links": {
 			"bug_report": "Сообщить о баге на GitHub",
-			"telegram": "Новостной канал",
-			"discord": "Наш Discord"
+			"telegram": "Telegram канал",
+			"discord": "Наш Discord",
+			"about": "О нас",
+			"status": "Статус страница"
 		},
 		"project": {
 			"with": "Проект с ",
@@ -63,7 +65,12 @@
 				"items": {
 					"art": {
 						"label": "Сборки",
-						"description": "Создайте сборку"
+						"description": "Создайте сборку",
+						"sub_menu": {
+							"lite": "Лайт версия",
+							"3d": "3D версия",
+							"3d_description": "Экспериментальная функция"
+						}
 					},
 					"ttk": {
 						"label": "ТТК",
