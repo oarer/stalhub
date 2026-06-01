@@ -18,7 +18,7 @@ export function PlayersList({ data }: { data: PlayerStatsResponse[] }) {
 				<Fragment key={p.uuid}>
 					<Link
 						className="flex items-center gap-3 px-2 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg hover:bg-border/20"
-						href={`${p.region}/${p.username}`}
+						href={`/player/${p.region}/${p.username}`}
 					>
 						<Badge
 							className={`${unbounded.className} font-semibold text-[10px] uppercase leading-relaxed tracking-widest`}
