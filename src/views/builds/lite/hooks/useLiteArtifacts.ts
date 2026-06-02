@@ -171,14 +171,32 @@ export function useLiteArtifacts({
 
 	const handlePotentialChange = useCallback(
 		(value: number) => {
+			const oldPotential = selectedStatsData?.art.potential ?? 0
+
+			const oldStatsCount = Math.floor(oldPotential / 5)
+			const newStatsCount = Math.floor(value / 5)
+
+			if (
+				selectedStatsData?.instanceId &&
+				newStatsCount < oldStatsCount
+			) {
+				updateArt(selectedStatsData.instanceId, {
+					selectedStats: selectedStatsData.art.selectedStats.slice(
+						0,
+						newStatsCount
+					),
+				})
+			}
+
 			setPotentialState(value)
+
 			sendUpdate({
 				instanceId: selectedStatsData?.instanceId,
 				type: 'potential',
 				value,
 			})
 		},
-		[selectedStatsData?.instanceId, sendUpdate]
+		[selectedStatsData, updateArt, sendUpdate]
 	)
 
 	const handleQualitySelect = useCallback(

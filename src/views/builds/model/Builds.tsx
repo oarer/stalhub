@@ -139,7 +139,10 @@ export default function BuildsView() {
 
 	return (
 		<main className="mx-auto max-w-360 space-y-6 px-4 pt-42 pb-12 sm:px-6 md:px-8">
-			<div className="grid grid-cols-1 gap-8 lg:grid-cols-[28%_60%]">
+			<div
+				className="grid grid-cols-1 gap-8 lg:grid-cols-[28%_60%]"
+				id="builds_card"
+			>
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-2">
 						<h1
