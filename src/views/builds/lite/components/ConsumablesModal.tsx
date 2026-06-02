@@ -6,10 +6,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
-import { Card } from '@/components/ui/Card'
 import { HoverCard } from '@/components/ui/HoverCard'
-import Input from '@/components/ui/Input'
-import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -22,8 +19,8 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/builds/model/components/artifacts'
 import { ListBlock } from '@/views/items/components/blocks'
+import { ItemPickerModal } from './ItemPickerModal'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
 
@@ -48,51 +45,52 @@ function BoostSelectModal({
 	onRemove: () => void
 }) {
 	const locale = getLocale()
-	const [previewId, setPreviewId] = useState<string | null>(selectedBoostId)
-
 	const t = useTranslations()
 
-	const categoryItems = getBoostsByCategory(items, category)
-	const selectedItem = categoryItems.find((i) => i.id === previewId)
-	const selectedItemData = items.find((i) => i.id === selectedBoostId)
-	const [filter, setFilter] = useState('')
-	const [open, setOpen] = useState(false)
+	const [showModal, setShowModal] = useState(false)
+	const [previewId, setPreviewId] = useState<string | null>(selectedBoostId)
 
-	const visibleItems = useMemo(() => {
-		const q = filter.trim().toLowerCase()
+	const categoryItems = useMemo(
+		() => getBoostsByCategory(items, category),
+		[items, category]
+	)
 
-		if (!q) return categoryItems
-
-		return categoryItems.filter((it) =>
-			messageToString(it.name, locale).toLowerCase().includes(q)
-		)
-	}, [categoryItems, filter, locale])
+	const selectedItem = categoryItems.find((i) => i.id === previewId) ?? null
+	const selectedItemData =
+		categoryItems.find((i) => i.id === selectedBoostId) ?? null
 
 	useEffect(() => {
 		setPreviewId(selectedBoostId)
 	}, [selectedBoostId])
 
+	const handleConfirm = () => {
+		if (!previewId) return
+		onSelect(previewId)
+		setShowModal(false)
+	}
+
 	return (
-		<Modal.Root onOpenChange={setOpen} open={open}>
-			<Modal.Trigger
-				asChild
-				className="size-14 cursor-pointer justify-center rounded-xl bg-white/60 p-2 shadow-sm hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
-				variant={'secondary'}
+		<>
+			<button
+				className="flex size-14 cursor-pointer items-center justify-center rounded-xl bg-white/60 p-2 shadow-sm transition hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
+				onClick={() => setShowModal(true)}
+				type="button"
 			>
 				{selectedBoostId && selectedItemData ? (
 					<HoverCard.Root>
-						<HoverCard.Trigger>
+						<HoverCard.Trigger className="flex items-center">
 							<Image
 								alt={messageToString(
 									selectedItemData.name,
 									locale
 								)}
-								className="h-10 w-10 object-contain"
+								className="size-12 object-contain"
 								height={42}
 								src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${selectedItemData.category}/${selectedItemData.id}.png`}
 								width={42}
 							/>
 						</HoverCard.Trigger>
+
 						<HoverCard.Content className="min-w-80" side="top">
 							<div className="relative gap-2">
 								<p
@@ -109,7 +107,8 @@ function BoostSelectModal({
 										locale
 									)}
 								</p>
-								{selectedItem?.infoBlocks
+
+								{selectedItemData?.infoBlocks
 									.filter(
 										(
 											b
@@ -135,13 +134,14 @@ function BoostSelectModal({
 											withCard={false}
 										/>
 									))}
+
 								<Button
 									className="absolute -top-1 -right-1 flex size-7 items-center justify-center rounded-full p-0 ring-transparent"
 									onClick={(e) => {
-										onRemove()
 										e.stopPropagation()
+										onRemove()
 									}}
-									variant={'danger'}
+									variant="danger"
 								>
 									<Icon
 										className="text-lg"
@@ -154,102 +154,27 @@ function BoostSelectModal({
 				) : (
 					<Icon className="size-7" icon={BoostButtons[category]} />
 				)}
-			</Modal.Trigger>
-			<Modal.Content className="max-w-206">
-				<Modal.Header>
-					<Modal.Title>
-						{t('modals.builds.consumables.pick_boost')}{' '}
-						<span className="text-border">
-							{t(`boost.${category.split('.').pop()!}`)}
-						</span>
-					</Modal.Title>
-				</Modal.Header>
+			</button>
 
-				<Modal.Body>
-					<div className="flex gap-4">
-						<Card.Root className="min-w-95 ring-border/20">
-							<Card.Header>
-								<Input
-									className="px-2 text-[14px]"
-									label="ui.input_label"
-									onChange={(e) => setFilter(e.target.value)}
-									value={filter}
-								/>
-							</Card.Header>
-
-							<ItemsList
-								className="max-h-90 max-w-90"
-								favoriteType="boost"
-								items={visibleItems}
-								locale={locale}
-								onSelectItem={(id) => setPreviewId(id)}
-								selectedItemId={previewId}
-							/>
-						</Card.Root>
-						<Card.Root className="min-w-95 ring-border/20">
-							<Card.Header>
-								<Card.Title
-									style={{
-										color:
-											infoColorMap[
-												selectedItem?.color as InfoColor
-											] || InfoColor.DEFAULT,
-									}}
-								>
-									{selectedItem
-										? `| ${messageToString(selectedItem.name, locale)}`
-										: `| ${t('modals.builds.consumables.header')}`}
-								</Card.Title>
-							</Card.Header>
-
-							<Card.Content className="flex h-full flex-col justify-between">
-								<div className="flex flex-col gap-3">
-									{selectedItem?.infoBlocks
-										.filter(
-											(
-												b
-											): b is
-												| AddStatBlock
-												| ElementListBlock =>
-												(b.type === 'list' ||
-													b.type === 'addStat') &&
-												Array.isArray(b.elements) &&
-												b.elements.length > 0
-										)
-										.filter(
-											(_, idx) =>
-												idx !== 0 &&
-												idx !== 5 &&
-												idx !== 1
-										)
-										.map((block, idx) => (
-											<ListBlock
-												block={block}
-												key={idx}
-												locale={locale}
-												numericVariants={0}
-												withCard={false}
-											/>
-										))}
-								</div>
-
-								<Button
-									className="justify-center"
-									disabled={!previewId}
-									onClick={() => {
-										onSelect(previewId!)
-										setOpen(false)
-									}}
-									variant="bordered"
-								>
-									Выбрать
-								</Button>
-							</Card.Content>
-						</Card.Root>
-					</div>
-				</Modal.Body>
-			</Modal.Content>
-		</Modal.Root>
+			<ItemPickerModal
+				emptyTitle={t('modals.builds.consumables.header')}
+				favoriteType="boost"
+				items={categoryItems}
+				locale={locale}
+				onConfirm={handleConfirm}
+				previewId={previewId}
+				selectedItem={selectedItem}
+				setPreviewId={setPreviewId}
+				setShowModal={(open) => {
+					setShowModal(open)
+					if (!open) setPreviewId(selectedBoostId)
+				}}
+				showModal={showModal}
+				title={`${t('modals.builds.consumables.pick_boost')} ${t(
+					`boost.${category.split('.').pop()!}`
+				)}`}
+			/>
+		</>
 	)
 }
 
