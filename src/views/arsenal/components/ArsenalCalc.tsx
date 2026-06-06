@@ -41,15 +41,17 @@ export function buildArsenalRows(
 	locale: Locale
 ): ArsenalRow[] {
 	const counts = calculateNeededItems(items, targetReputation, locale)
+return items.map((item) => {
+  const neededCount = counts[getItemKey(item, locale)] ?? 0
 
-	return items.map((item) => {
-		const neededCount = counts[getItemKey(item, locale)] ?? 0
-
-		return {
-			...item,
-			neededCount,
-			totalPrice: neededCount * item.currentPrice,
-			totalWeight: neededCount * item.weight,
-		}
-	})
+  return {
+    ...item,
+    currentPrice: Number(item.currentPrice ?? 0),
+    reputation: Number(item.reputation ?? 0),
+    weight: Number(item.weight ?? 0),
+    neededCount,
+    totalPrice: neededCount * Number(item.currentPrice ?? 0),
+    totalWeight: neededCount * Number(item.weight ?? 0),
+  }
+})
 }
