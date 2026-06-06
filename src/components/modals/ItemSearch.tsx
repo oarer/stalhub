@@ -22,7 +22,7 @@ const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
 	const iconPath = `https://raw.githubusercontent.com/oarer/sc-db/main/merged${item.icon}`
 
 	return (
-		<Card.Link href={item.data.replace(/\.json$/, '')}>
+		<Card.Link className="py-2" href={item.data.replace(/\.json$/, '')}>
 			<Card.Header className="flex flex-row items-center gap-4">
 				<Card.Title>
 					<Image
@@ -75,7 +75,7 @@ export default function ItemSearchModal() {
 				<Icon className="text-lg" icon="lucide:search" />
 			</Modal.Trigger>
 
-			<Modal.Content>
+			<Modal.Content className="max-w-2xl">
 				<Modal.Header>
 					<Modal.Title>Поиск предмета</Modal.Title>
 				</Modal.Header>
