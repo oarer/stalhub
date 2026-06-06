@@ -55,7 +55,6 @@ function BoostSelectModal({
 		[items, category]
 	)
 
-	const selectedItem = categoryItems.find((i) => i.id === previewId) ?? null
 	const selectedItemData =
 		categoryItems.find((i) => i.id === selectedBoostId) ?? null
 
@@ -157,13 +156,12 @@ function BoostSelectModal({
 			</button>
 
 			<ItemPickerModal
-				emptyTitle={t('modals.builds.consumables.header')}
+				emptyTitle="modals.builds.consumables.header"
 				favoriteType="boost"
 				items={categoryItems}
 				locale={locale}
 				onConfirm={handleConfirm}
 				previewId={previewId}
-				selectedItem={selectedItem}
 				setPreviewId={setPreviewId}
 				setShowModal={(open) => {
 					setShowModal(open)

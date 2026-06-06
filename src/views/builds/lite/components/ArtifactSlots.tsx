@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
@@ -48,15 +49,14 @@ export function ArtifactSlotsLite({
 	copyMode,
 	onSelectItem,
 }: ArtifactSlotsProps) {
+	const t = useTranslations()
+
 	const [showModal, setShowModal] = useState(false)
 	const [previewId, setPreviewId] = useState<string | null>(null)
 	const [showContainerModal, setShowContainerModal] = useState(false)
 	const [containerPreviewId, setContainerPreviewId] = useState<string | null>(
 		currentContainerId
 	)
-	const selectedItem = previewId
-		? (items.find((it) => it.id === previewId) ?? null)
-		: null
 	const selectedContainer = containerPreviewId
 		? (containers.find((it) => it.id === containerPreviewId) ?? null)
 		: null
@@ -126,12 +126,12 @@ export function ArtifactSlotsLite({
 					<p className="font-semibold text-md">
 						{currentContainer
 							? messageToString(currentContainer.name, locale)
-							: 'Выбрать контейнер'}
+							: t('build.needed_cont')}
 					</p>
 				</Button>
 			</div>
 			<ItemPickerModal
-				emptyTitle="Выберите артефакт"
+				emptyTitle="build.labels.art"
 				favoriteType="artefact"
 				items={items}
 				locale={locale}
@@ -141,11 +141,10 @@ export function ArtifactSlotsLite({
 					setPreviewId(null)
 				}}
 				previewId={previewId}
-				selectedItem={selectedItem}
 				setPreviewId={setPreviewId}
 				setShowModal={setShowModal}
 				showModal={showModal}
-				title="Выбор артефакта"
+				title="build.labels.art_title"
 			/>
 			<ContainerPickerModal
 				currentSlots={slots}

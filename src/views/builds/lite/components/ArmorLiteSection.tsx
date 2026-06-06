@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -31,6 +32,8 @@ export function ArmorLiteSection({
 	onRemoveArmor,
 	onOpenPicker,
 }: ArmorLiteSectionProps) {
+	const t = useTranslations()
+
 	const armorItem = armor
 		? (armorItems.find((item) => item.id === armor.id) ?? null)
 		: null
@@ -47,12 +50,12 @@ export function ArmorLiteSection({
 					/>
 				</div>
 				<div className="flex flex-col justify-center gap-10">
-					<h2 className="text-text-accent">Броня не выбрана</h2>
+					<h2 className="text-text-accent">{t('build.no_armor')}</h2>
 					<Button
 						onClick={() => onOpenPicker(null)}
 						variant="secondary"
 					>
-						Выбрать броню
+						{t('build.pick_armor')}
 					</Button>
 				</div>
 			</div>

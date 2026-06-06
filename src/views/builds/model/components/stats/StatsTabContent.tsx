@@ -41,8 +41,8 @@ export function StatsTabContent({
 }
 
 interface AllStatsTabContentProps {
-	prime: string
-	hps: string
+	prime?: string
+	hps?: string
 	sortedStats: [string, number][]
 	displayNamesMap: Record<string, string>
 }
@@ -58,14 +58,18 @@ export function AllStatsTabContent({
 	return (
 		<Card.Root>
 			<Card.Content className="flex flex-col gap-2 text-sm">
-				<p className="flex justify-between">
-					<span>{t('build.stats.prime')}</span>
-					<span className="text-yellow-400">{prime}</span>
-				</p>
-				<p className="flex justify-between">
-					<span>{t('build.stats.regen')}</span>
-					<span className="text-yellow-400">{hps}%</span>
-				</p>
+				{prime && (
+					<p className="flex justify-between">
+						<span>{t('build.stats.prime')}</span>
+						<span className="text-yellow-400">{prime}</span>
+					</p>
+				)}
+				{hps && (
+					<p className="flex justify-between">
+						<span>{t('build.stats.regen')}</span>
+						<span className="text-yellow-400">{hps}%</span>
+					</p>
+				)}
 				<div className="flex flex-col gap-2 border-neutral-700 border-t pt-2">
 					{sortedStats.length === 0 ? (
 						<p className="text-neutral-500">

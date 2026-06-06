@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
@@ -25,8 +26,6 @@ type ArtifactSlotRowProps = {
 	setCopyMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-//! TODO на мобилках урезать макс ширину + truncate
-
 export function ArtifactSlotRow({
 	index,
 	instanceId,
@@ -40,6 +39,8 @@ export function ArtifactSlotRow({
 	onRemove,
 	setCopyMode,
 }: ArtifactSlotRowProps) {
+	const t = useTranslations()
+
 	const qualityClass = art?.qualityClass
 	const colorHex =
 		qualityClass !== undefined
@@ -81,7 +82,7 @@ export function ArtifactSlotRow({
 								width={32}
 							/>
 							<p
-								className="text-center font-semibold text-sm transition-colors"
+								className="truncate text-center font-semibold text-sm transition-colors"
 								style={{ color: colorHex }}
 							>
 								{messageToString(item.name, locale)}
@@ -122,13 +123,13 @@ export function ArtifactSlotRow({
 
 									onSelectSlot(index)
 									setCopyMode(true)
-									toast.info('Режим копирования активен', {
+									toast.info(t('build.toast_copy'), {
 										id: 'copy-mode',
 										duration: Infinity,
 										showClose: false,
 									})
 								}}
-								title="Копировать"
+								title={t('build.labels.copy')}
 								type="button"
 								variant="ghost"
 							>
@@ -142,7 +143,7 @@ export function ArtifactSlotRow({
 									onSelectSlot(index)
 									onOpenModal()
 								}}
-								title="Заменить"
+								title={t('build.labels.swap')}
 								type="button"
 								variant="ghost"
 							>
@@ -155,7 +156,7 @@ export function ArtifactSlotRow({
 									e.stopPropagation()
 									onRemove?.(instanceId!)
 								}}
-								title="Удалить"
+								title={t('build.labels.delete')}
 								type="button"
 								variant="danger"
 							>
@@ -169,7 +170,7 @@ export function ArtifactSlotRow({
 				) : (
 					<div className="flex flex-col items-center py-1.5">
 						<h2 className="font-bold text-sm text-text-accent/70">
-							Пустая ячейка
+							{t('build.empty_slot')}
 						</h2>
 					</div>
 				)}

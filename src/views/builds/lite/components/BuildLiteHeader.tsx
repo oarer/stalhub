@@ -16,7 +16,9 @@ type BuildLiteHeaderProps = {
 	currentBuildId: string | null
 	onRename: (buildId: string, name: string) => void
 	onExport: (name: string) => Promise<string | null>
+	onSavePng: () => void
 	onReset: () => void
+	savingPng: boolean
 	t: ReturnType<typeof useTranslations>
 }
 
@@ -25,7 +27,9 @@ export function BuildLiteHeader({
 	currentBuildId,
 	onRename,
 	onExport,
+	onSavePng,
 	onReset,
+	savingPng,
 	t,
 }: BuildLiteHeaderProps) {
 	const [showRenameModal, setShowRenameModal] = useState(false)
@@ -56,7 +60,10 @@ export function BuildLiteHeader({
 			<h1 className={`${unbounded.className} text-3xl text-red-500`}>
 				| {currentBuild ? currentBuild.name : t('build.new_build')}
 			</h1>
-			<div className="flex flex-wrap items-center gap-2">
+			<div
+				className="flex flex-wrap items-center gap-2"
+				data-png-exclude="true"
+			>
 				<BuildSelector />
 				<div className="flex gap-2">
 					{currentBuild && (
@@ -117,6 +124,14 @@ export function BuildLiteHeader({
 							className="text-xl"
 							icon={shareCopied ? 'lucide:check' : 'lucide:share'}
 						/>
+					</Button>
+					<Button
+						className="flex gap-2 rounded-lg p-2"
+						loading={savingPng}
+						onClick={onSavePng}
+						variant="secondary"
+					>
+						<Icon className="text-xl" icon="lucide:image-down" />
 					</Button>
 					<Modal.Root>
 						<Modal.Trigger className="p-2" variant="secondary">

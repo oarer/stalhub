@@ -9,25 +9,36 @@ import { statusQueries } from '@/queries/status/status.queries'
 import type { Service } from '@/types/status.type'
 
 export const StatusWidget = () => {
-	const { data } = useQuery(statusQueries.get())
+	const { data, isError } = useQuery(statusQueries.get())
 	const t = useTranslations()
 
 	const services: Service[] = data?.data ? Object.values(data.data) : []
-
 	const problemServices = services.filter((s) => s.currentStatus !== 'UP')
+
+	const lastGoodProblemsRef = useRef<string[]>([])
+	const prevProblemsRef = useRef<string[]>([])
+
+	const currentProblems = problemServices.map((s) => s.name)
+	const displayedProblems =
+		isError && lastGoodProblemsRef.current.length > 0
+			? lastGoodProblemsRef.current
+			: currentProblems
 
 	let indicatorColor = 'bg-green-400'
 
-	if (problemServices.some((s) => s.currentStatus === 'DEGRADED')) {
+	if (isError || !data?.data) {
+		indicatorColor = 'bg-red-400'
+	} else if (problemServices.some((s) => s.currentStatus === 'DEGRADED')) {
 		indicatorColor = 'bg-amber-400'
 	} else if (problemServices.length > 0) {
 		indicatorColor = 'bg-red-400'
 	}
 
-	const prevProblemsRef = useRef<string[]>([])
-
 	useEffect(() => {
-		const currentProblems = problemServices.map((s) => s.name)
+		if (isError) {
+			toast.error(t('status_widget.services_down'))
+			return
+		}
 
 		const newProblems = currentProblems.filter(
 			(name) => !prevProblemsRef.current.includes(name)
@@ -50,7 +61,8 @@ export const StatusWidget = () => {
 		}
 
 		prevProblemsRef.current = currentProblems
-	}, [problemServices, t])
+		lastGoodProblemsRef.current = currentProblems
+	}, [currentProblems, isError, t])
 
 	return (
 		<div className="flex items-center gap-2">
@@ -64,7 +76,11 @@ export const StatusWidget = () => {
 			</div>
 
 			<div>
-				{problemServices.length === 0 ? (
+				{isError || !data?.data ? (
+					<p className="text-red-400 text-sm">
+						{t('status_widget.services_error')}
+					</p>
+				) : displayedProblems.length === 0 ? (
 					<p className="text-neutral-400 text-sm">
 						{t('status_widget.services_ok')}
 					</p>
@@ -74,9 +90,9 @@ export const StatusWidget = () => {
 							{t('status_widget.services_problem')}
 						</Tooltip.Trigger>
 						<Tooltip.Content>
-							{problemServices.map((s) => (
-								<span className="text-xs" key={s.name}>
-									{s.name}
+							{displayedProblems.map((name) => (
+								<span className="text-xs" key={name}>
+									{name}
 								</span>
 							))}
 						</Tooltip.Content>

@@ -1,11 +1,14 @@
 import axios from 'axios'
-
 import type { StatusResponse } from '@/types/status.type'
 
 class StatusService {
-	async get() {
-		const { data } = await axios.get<StatusResponse>(`/api/status`)
-		return data
+	async get(): Promise<StatusResponse> {
+		try {
+			const res = await axios.get('/api/status')
+			return res.data
+		} catch {
+			throw new Error('STATUS_API_FAILED')
+		}
 	}
 }
 

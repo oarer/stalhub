@@ -28,6 +28,7 @@
 		"fuse.js": "^7.3.0",
 		"github-slugger": "^2.0.0",
 		"gray-matter": "^4.0.3",
+		"html-to-image": "^1.11.13",
 		"js-cookie": "^3.0.5",
 		"leaflet": "^1.9.4",
 		"motion": "^12.38.0",

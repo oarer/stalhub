@@ -61,20 +61,19 @@ export function ContainerPickerModal({
 	return (
 		<>
 			<ItemPickerModal
-				emptyTitle="Выберите контейнер"
+				emptyTitle="build.labels.cont"
 				favoriteType="container"
 				items={items}
 				locale={locale}
 				onConfirm={handleSelect}
 				previewId={previewId}
-				selectedItem={selectedItem}
 				setPreviewId={setPreviewId}
 				setShowModal={(open) => {
 					setShowModal(open)
 					if (!open) setShowConfirm(false)
 				}}
 				showModal={showModal}
-				title="Выбор контейнера"
+				title="build.labels.cont_title"
 			/>
 			<Modal.Root onOpenChange={setShowConfirm} open={showConfirm}>
 				<Modal.Content className="max-w-md">
