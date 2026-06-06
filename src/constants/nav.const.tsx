@@ -83,6 +83,14 @@ const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.calculators.items.ttk.description',
 			},
 			{
+				key: 'arsen',
+				icon: 'lucide:table-properties',
+				href: '/calcs/arsenal',
+				labelKey: 'nav.groups.calculators.items.arsenal.label',
+				descriptionKey:
+					'nav.groups.calculators.items.arsenal.description',
+			},
+			{
 				key: 'bp',
 				icon: 'lucide:ticket',
 				href: '/calcs/bp',
