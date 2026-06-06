@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-// import ItemSearchModal from '@/components/modals/ItemSearch'
+import ItemSearchModal from '@/components/modals/ItemSearch'
 import DropdownMenu from '@/components/ui/DropDown'
 import { CLink } from '@/components/ui/Link'
 import { DropDownLinks } from '@/constants/nav.const'
@@ -76,7 +76,7 @@ export default function Nav() {
 								{t('nav.wiki')}
 							</p>
 						</CLink>
-						{/* мне крч гитхаб рейтлимит ебанул <ItemSearchModal /> */}
+						<ItemSearchModal />
 					</div>
 					<div className="relative flex items-center justify-end gap-3">
 						<ChangeLang />
