@@ -23,6 +23,7 @@
 
 - Our main [website](https://stalhub.tech)
 - Backend source code: [StalHub Backend](https://github.com/oarer/stalhub_backend)
+- Fork Stalcraft-database: [sc-db](https://github.com/oarer/sc-db)
 - Telegram channel: [t.me/st4lhub](https://t.me/st4lhub)
 - Contact the owner: [t.me/oarer_yml](https://t.me/oarer_yml)
 
