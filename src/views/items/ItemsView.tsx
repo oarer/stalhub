@@ -22,7 +22,7 @@ import {
 	isNumericVariantsBlock,
 	messageToString,
 } from '@/utils/itemUtils'
-import { DamageChart } from '../ttk/components/DamageChart'
+import { DamageChart } from '../calcs/ttk/components/DamageChart'
 import { ListBlock, NumericVariantsCard, TextBlock } from './components/blocks'
 import ItemTabs from './components/tabs/AuctionTabs'
 

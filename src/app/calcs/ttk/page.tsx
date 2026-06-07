@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { TTKView } from '@/views/ttk/TTKView'
+import { TTKView } from '@/views/calcs/ttk/TTKView'
 
 export default async function TTKPage() {
 	const queryClient = getQueryClient()

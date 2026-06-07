@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { BuildsView } from '@/views/builds/model'
+import { BuildsView } from '@/views/calcs/builds/model'
 
 export default async function BuildsPage() {
 	const queryClient = getQueryClient()

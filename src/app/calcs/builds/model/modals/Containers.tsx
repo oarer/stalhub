@@ -20,7 +20,7 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { findContSizeInBlocks, messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/builds/model/components/artifacts'
+import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 import { ListBlock } from '@/views/items/components/blocks'
 
 type Slot = string | null

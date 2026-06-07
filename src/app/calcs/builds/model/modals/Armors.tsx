@@ -19,7 +19,7 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { isNumericVariantsBlock, messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/builds/model/components/artifacts'
+import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 import { ListBlock, NumericVariantsCard } from '@/views/items/components/blocks'
 
 export default function ArmorModal({ onClose }: ModalProps) {

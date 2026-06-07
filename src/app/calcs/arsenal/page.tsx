@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { arsenalQueries } from '@/queries/calcs/arsenal.queries'
-import { ArsenalView } from '@/views/arsenal/ArsenalView'
+import { ArsenalView } from '@/views/calcs/arsenal/ArsenalView'
 
 export default async function ArsenalPage() {
 	const queryClient = getQueryClient()

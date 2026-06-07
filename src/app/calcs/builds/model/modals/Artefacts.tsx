@@ -11,14 +11,14 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art, ModalProps } from '@/types/build.type'
 import type { ArtQuality, Item } from '@/types/item.type'
-import { computeArtifactStatsFromParsed } from '@/utils/computeArtifactStats'
 import { messageToString } from '@/utils/itemUtils'
-import { parseItemStats } from '@/utils/parseArtifact'
 import {
 	ArtifactSlots,
 	ArtifactStatsPanel,
 	ItemsList,
-} from '@/views/builds/model/components/artifacts'
+} from '@/views/calcs/builds/model/components/artifacts'
+import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
+import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
 
 export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()

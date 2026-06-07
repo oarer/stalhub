@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import BuildsLiteView from '@/views/builds/lite/BuildsLite'
+import BuildsLiteView from '@/views/calcs/builds/lite/BuildsLite'
 
 export default async function BuildsLitePage() {
 	const queryClient = getQueryClient()
