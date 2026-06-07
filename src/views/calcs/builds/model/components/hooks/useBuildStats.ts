@@ -31,7 +31,7 @@ export function useBuildStats() {
 		[containers, build.container?.id]
 	)
 
-	const containerModifiers = useContainerModifiers(containerItem, locale)
+	const containerModifiers = useContainerModifiers(containerItem)
 
 	const allStatKeys = useMemo(() => {
 		return buildAllStatKeys(
