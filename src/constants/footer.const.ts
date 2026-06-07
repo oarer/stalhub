@@ -1,6 +1,6 @@
 export const footerLinks = [
 	{
-		href: 'https://github.com/oarer/stalhub',
+		href: 'https://st4lhub.t.me/?direct',
 		title: 'footer.links.bug_report',
 		icon: 'lucide:bug',
 	},
