@@ -30,8 +30,9 @@ export const StalcraftText: React.FC<StalcraftTextProps> = ({
 }) => {
 	const regex = /§(#([0-9A-Fa-f]{6})|[0-9A-Fa-fr])/g
 
-	const trimmedText = text.replace(/^\n+/, '')
-	const lines = trimmedText.split('\n').map((line) => {
+	const normalizedText = text.replace(/\n{4,}/g, '\n\n\n').replace(/^\n+/, '')
+
+	const lines = normalizedText.split('\n').map((line) => {
 		const spans: { color: string; text: string }[] = []
 
 		let lastIndex = 0

@@ -26,18 +26,6 @@
         scroll-padding-top: 100px;
     }
 
-    *,
-    *::before,
-    *::after {
-        font-synthesis-weight: none;
-        font-synthesis-style: none;
-        scrollbar-width: none;
-    }
-
-    *::-webkit-scrollbar {
-        display: none;
-    }
-
     body {
         background-size: cover;
         background-position: center;

@@ -1,6 +1,6 @@
+import { useTranslations } from 'next-intl'
 import type { Stat } from '@/types/player.type'
 import { getStatValue } from '@/utils/player/StatParse'
-import { useTranslations } from 'next-intl'
 export default function HeroCombat({ data }: { data: Stat[] }) {
 	const t = useTranslations()
 
@@ -22,7 +22,7 @@ export default function HeroCombat({ data }: { data: Stat[] }) {
 					<p>Смертей: {Number(getStatValue(data, 'bul-dea') ?? 0)}</p>
 				</div>
 				<p>
-					{t('player.combat.deaths')}{' '}
+					{t('player.combat.kil_ser')}{' '}
 					{Number(getStatValue(data, 'max-kil-ser') ?? 0)}
 				</p>
 			</div>

@@ -94,6 +94,7 @@ function TooltipTrigger({
 		<span
 			className={cn(underline && 'underline')}
 			onBlur={() => setOpen(false)}
+			onClick={() => setOpen(true)}
 			onFocus={() => setOpen(true)}
 			onPointerEnter={() => setOpen(true)}
 			onPointerLeave={() => setOpen(false)}

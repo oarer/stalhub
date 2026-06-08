@@ -25,7 +25,7 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 			/>
 			<Card.Root className="z-10 w-full">
 				<Card.Header className="space-y-2">
-					<Card.Title className="flex flex-wrap items-center gap-4 font-bold text-3xl">
+					<Card.Title className="flex flex-wrap items-center gap-4 font-bold text-xl md:text-3xl">
 						<span className={allianceColors[data.alliance]}>
 							{t(`player.alliance.${data.alliance}`)}
 						</span>
@@ -38,12 +38,14 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 							/>
 						)}
 					</Card.Title>
-					<Card.Description className="flex items-center gap-2">
+					<Card.Description className="flex items-center gap-2 overflow-x-auto">
 						<Icon
-							className="text-white text-xl"
+							className="shrink-0 text-white text-xl"
 							icon="lucide:info"
 						/>
-						<StalcraftText text={data.status} />
+						<div className="min-w-0">
+							<StalcraftText text={data.status} />
+						</div>
 					</Card.Description>
 				</Card.Header>
 
