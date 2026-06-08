@@ -35,15 +35,16 @@ export function PlayersList({ data }: { data: PlayerStatsResponse[] }) {
 
 						{p.role && (
 							<Badge
-								className="shadow-transparent"
+								className="flex items-center gap-1 shadow-transparent"
 								variant={ROLE_META[p.role].variant}
 							>
 								<Icon
 									className="size-4"
 									icon={ROLE_META[p.role].icon}
 								/>
+
 								<span
-									className={`${unbounded.className} font-semibold text-[10px] uppercase leading-relaxed tracking-widest`}
+									className={`${unbounded.className} hidden font-semibold text-[10px] uppercase leading-relaxed tracking-widest sm:block`}
 								>
 									{t(ROLE_META[p.role].title)}
 								</span>
