@@ -1,11 +1,11 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 
 interface UwuState {
-	uwuMode: boolean
-	setUwuMode: (enabled: boolean) => void
-	toggleUwu: () => void
+  uwuMode: boolean
+  setUwuMode: (enabled: boolean) => void
+  toggleUwu: () => void
 }
+
 
 export const useUwuStore = create<UwuState>()(
 	persist(
