@@ -187,7 +187,10 @@ export function ArtifactStatsPanel({
 				</div>
 
 				<Combobox
-					maxSelected={getMaxaddsFromPotential(art.potential)}
+					maxSelected={
+						getMaxaddsFromPotential(art.potential) +
+						(addOptions.length > 3 ? 1 : 0)
+					}
 					multiple
 					onValuesChange={onSelectedStatsChange}
 					options={addOptions}

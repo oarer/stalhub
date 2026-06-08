@@ -303,11 +303,11 @@ export function Combobox(props: ComboboxProps) {
 				type="button"
 			>
 				{isMultiple ? (
-					<div className="flex w-full gap-1">
+					<div className="flex w-0 flex-1 gap-1 overflow-hidden">
 						{hasSelection ? (
 							selectedLabels.map((opt) => (
 								<div
-									className="flex max-w-32 flex-1 items-center gap-1 rounded bg-neutral-600/40 px-1.5 py-0.5 text-xs"
+									className="flex min-w-0 shrink items-center gap-1 rounded bg-neutral-600/40 px-1.5 py-0.5 text-xs"
 									key={opt.value}
 								>
 									<p className="min-w-0 flex-1 truncate">
@@ -338,7 +338,10 @@ export function Combobox(props: ComboboxProps) {
 				)}
 
 				<Icon
-					className={cn('transition-transform', open && 'rotate-90')}
+					className={cn(
+						'ml-1 transition-transform',
+						open && 'rotate-90'
+					)}
 					icon="lucide:chevron-right"
 				/>
 			</button>

@@ -61,7 +61,8 @@ export function computeArtifactStatsFromParsed(
 		resolvedSelected.push(s)
 	}
 
-	const maxadds = getMaxaddsFromPotential(K)
+	const addStatsCount = Object.keys(parsedItem.addStats ?? {}).length
+	const maxadds = getMaxaddsFromPotential(K) + (addStatsCount > 3 ? 1 : 0)
 	const selectedLimited = resolvedSelected.slice(0, maxadds)
 
 	const keys = new Set<string>()
