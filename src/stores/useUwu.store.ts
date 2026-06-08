@@ -6,8 +6,16 @@ interface UwuState {
   toggleUwu: () => void
 }
 
-export const useUwuStore = create<UwuState>((set) => ({
-  uwuMode: false,
-  setUwuMode: (enabled) => set({ uwuMode: enabled }),
-  toggleUwu: () => set((state) => ({ uwuMode: !state.uwuMode })),
-}))
+
+export const useUwuStore = create<UwuState>()(
+	persist(
+		(set) => ({
+			uwuMode: false,
+			setUwuMode: (enabled) => set({ uwuMode: enabled }),
+			toggleUwu: () => set((state) => ({ uwuMode: !state.uwuMode })),
+		}),
+		{
+			name: 'uwu-mode',
+		}
+	)
+)
