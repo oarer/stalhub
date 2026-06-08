@@ -25,7 +25,7 @@ export default function HeroStats({ data }: { data: PlayerResponse }) {
 			</div>
 			<div className="flex items-center gap-2">
 				<Icon className="text-xl" icon="lucide:clock" />
-				<span>{t('player.stats.reg')}</span>
+				<span>{t('player.stats.hours')}</span>
 				<Tooltip.Root>
 					<Tooltip.Trigger>
 						{(
