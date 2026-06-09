@@ -1,5 +1,6 @@
 'use client'
 
+import { montserrat } from '@/app/fonts'
 import { roundNumber } from '../hooks/useBuildStats'
 
 interface StatRowProps {
@@ -23,7 +24,10 @@ export function StatRow({ keyName, name, value, isPercent }: StatRowProps) {
 	return (
 		<p className="flex justify-between">
 			<span>{name}</span>
-			<span className="font-medium" style={{ color: valueColor }}>
+			<span
+				className={`${montserrat.className} font-semibold`}
+				style={{ color: valueColor }}
+			>
 				{value >= 0 ? '+' : ''}
 				{roundNumber(value)}
 				{isPercent ? '%' : ''}

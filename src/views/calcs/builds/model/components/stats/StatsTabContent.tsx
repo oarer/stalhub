@@ -80,11 +80,11 @@ export function StatsTabContent({
 				) : (
 					stats.map(([key, val]) => (
 						<StatRow
+							isPercent={isPercentMap?.[key]}
 							key={key}
 							keyName={key}
 							name={displayNamesMap[key] ?? key}
 							value={val}
-							isPercent={isPercentMap?.[key]}
 						/>
 					))
 				)}
@@ -139,11 +139,11 @@ export function AllStatsTabContent({
 					) : (
 						sortedStats.map(([key, val]) => (
 							<StatRow
+								isPercent={isPercentMap?.[key]}
 								key={key}
 								keyName={key}
 								name={displayNamesMap[key] ?? key}
 								value={val}
-								isPercent={isPercentMap?.[key]}
 							/>
 						))
 					)}

@@ -17,16 +17,14 @@ export function useDerivedStats(stats: BuildStats) {
 	const hps = useMemo(() => {
 		const artefaktHeal =
 			stats['stalker.artefact_properties.factor.artefakt_heal'] ?? 0
-		const healingEfficiency =
-			stats['stalker.artefact_properties.factor.healing_efficiency'] ?? 0
+		const heal_efficiency =
+			stats['stalker.artefact_properties.factor.heal_efficiency'] ?? 0
 		const regenerationBonus =
 			stats['stalker.artefact_properties.factor.regeneration_bonus'] ?? 0
-		const healthBonus =
-			stats['stalker.artefact_properties.factor.health_bonus'] ?? 0
 
 		return (
-			(artefaktHeal + healingEfficiency + (regenerationBonus + 2.5) / 5) *
-			(1 + healthBonus / 100)
+			artefaktHeal * (1 + heal_efficiency / 100) +
+			regenerationBonus / 5
 		).toFixed(2)
 	}, [stats])
 
