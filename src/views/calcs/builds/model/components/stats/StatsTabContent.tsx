@@ -51,6 +51,7 @@ interface StatsTabContentProps {
 	stats: [string, number][]
 	statsMap: BuildStats
 	displayNamesMap: Record<string, string>
+	isPercentMap?: Record<string, boolean>
 	hasContainer?: boolean
 }
 
@@ -58,6 +59,7 @@ export function StatsTabContent({
 	stats,
 	statsMap,
 	displayNamesMap,
+	isPercentMap,
 	hasContainer = true,
 }: StatsTabContentProps) {
 	const t = useTranslations()
@@ -82,6 +84,7 @@ export function StatsTabContent({
 							keyName={key}
 							name={displayNamesMap[key] ?? key}
 							value={val}
+							isPercent={isPercentMap?.[key]}
 						/>
 					))
 				)}
@@ -96,6 +99,7 @@ interface AllStatsTabContentProps {
 	sortedStats: [string, number][]
 	statsMap: BuildStats
 	displayNamesMap: Record<string, string>
+	isPercentMap?: Record<string, boolean>
 }
 
 export function AllStatsTabContent({
@@ -104,6 +108,7 @@ export function AllStatsTabContent({
 	sortedStats,
 	statsMap,
 	displayNamesMap,
+	isPercentMap,
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
 
@@ -138,6 +143,7 @@ export function AllStatsTabContent({
 								keyName={key}
 								name={displayNamesMap[key] ?? key}
 								value={val}
+								isPercent={isPercentMap?.[key]}
 							/>
 						))
 					)}

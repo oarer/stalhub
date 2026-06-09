@@ -79,7 +79,6 @@ export function calcXfromVPRClamped(
 
 		let v = V
 		let p = P
-		const t = (r - 85) / 15
 
 		if (
 			keyOrColor?.color?.toUpperCase() === '53C353' &&
@@ -88,6 +87,9 @@ export function calcXfromVPRClamped(
 			;[v, p] = [p, v]
 		}
 
+		if (r > 100) return p * (r / 100)
+
+		const t = (r - 85) / 15
 		return v + (p - v) * t
 	}
 

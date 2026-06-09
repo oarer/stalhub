@@ -38,10 +38,11 @@ function createStatPushers() {
 		v0: number,
 		v100: number,
 		display?: string,
-		color?: string
+		color?: string,
+		isPercent?: boolean
 	) {
 		if (!key) return
-		statRanges[key] = { v0, v100, color: color ?? 'inherit' }
+		statRanges[key] = { v0, v100, color: color ?? 'inherit', isPercent }
 		if (display) {
 			displayNames[key] = display
 			localizedToKey[display.trim().toLowerCase()] = key
@@ -63,19 +64,21 @@ function createStatPushers() {
 		v0: number,
 		v100: number,
 		color: string,
-		display?: string
+		display?: string,
+		isPercent?: boolean
 	) {
 		if (!key) return
 
 		const prev = addStats[key]
 
 		if (!prev) {
-			addStats[key] = { v0, v100, color }
+			addStats[key] = { v0, v100, color, isPercent }
 		} else {
 			addStats[key] = {
 				v0: prev.v0 + v0,
 				v100: prev.v100 + v100,
 				color: prev.color || color,
+				isPercent: prev.isPercent ?? isPercent,
 			}
 		}
 
@@ -131,17 +134,23 @@ function processAddStatBlock(
 
 		const colorRaw = el.formatted?.valueColor as string | undefined
 		const color = colorRaw?.replace(/^#/, '') ?? ''
+		const formattedVal = el.formatted?.value as
+			| Record<string, string>
+			| undefined
+		const isPercent = Object.values(formattedVal ?? {}).some((s) =>
+			s.includes('%')
+		)
 
 		if (el.type === 'numeric') {
 			const v = Number(el.value ?? 0)
 			if (Number.isFinite(v)) {
-				pushers.pushAddRange(key, v, v, color, display)
+				pushers.pushAddRange(key, v, v, color, display, isPercent)
 			}
 		} else if (el.type === 'range') {
 			const v0 = Number(el.min ?? 0)
 			const v100 = Number(el.max ?? 0)
 			if (!Number.isNaN(v0) && !Number.isNaN(v100)) {
-				pushers.pushAddRange(key, v0, v100, color, display)
+				pushers.pushAddRange(key, v0, v100, color, display, isPercent)
 			}
 		}
 	}
@@ -163,6 +172,12 @@ function processListBlock(
 			if (Number.isFinite(v)) pushers.pushBase(key, v, display)
 		} else if (el.type === 'range' && 'name' in el) {
 			const color = el.formatted?.valueColor
+			const formattedVal = el.formatted?.value as
+				| Record<string, string>
+				| undefined
+			const isPercent = Object.values(formattedVal ?? {}).some((s) =>
+				s.includes('%')
+			)
 
 			const key = extractStatKey(el)
 			if (!key) continue
@@ -170,7 +185,7 @@ function processListBlock(
 			const v0 = Number((el as NumericRangeElement).min ?? 0)
 			const v100 = Number((el as NumericRangeElement).max ?? 0)
 			if (!Number.isNaN(v0) && !Number.isNaN(v100))
-				pushers.pushRange(key, v0, v100, display, color)
+				pushers.pushRange(key, v0, v100, display, color, isPercent)
 		}
 	}
 }

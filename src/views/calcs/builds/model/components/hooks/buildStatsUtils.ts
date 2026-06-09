@@ -34,6 +34,29 @@ export function computeArtifactStats(
 	return result
 }
 
+export function computeIsPercentMap(
+	arts: Art[],
+	artefacts: Item[],
+	locale: Locale
+): Record<string, boolean> {
+	const map: Record<string, boolean> = {}
+	for (const art of arts) {
+		const item = artefacts.find((i) => i.id === art.itemId)
+		if (!item) continue
+		const parsed = parseItemStats(item, locale)
+		const stats = computeArtifactStatsFromParsed(
+			art,
+			parsed,
+			art.selectedStats
+		)
+		for (const [key, stat] of Object.entries(stats)) {
+			const cleanKey = key.startsWith('add:') ? key.slice(4) : key
+			if (stat.isPercent) map[cleanKey] = true
+		}
+	}
+	return map
+}
+
 export function getContainerModifiers(containerItem: Item | undefined) {
 	if (!containerItem) {
 		return { effectiveness: 1, innerProtection: 0 }

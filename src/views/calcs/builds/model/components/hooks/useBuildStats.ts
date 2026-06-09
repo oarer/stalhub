@@ -9,6 +9,7 @@ import {
 	buildAllStatKeys,
 	buildDisplayNamesMap,
 	computeArtifactStats,
+	computeIsPercentMap,
 	getStatsFromItem,
 } from './buildStatsUtils'
 import { useBuildItems } from './useBuildItems'
@@ -169,10 +170,16 @@ export function useBuildStats() {
 			})
 	}, [containerStats, displayNamesMap])
 
+	const isPercentMap = useMemo(
+		() => computeIsPercentMap(build.arts, artefacts, locale),
+		[build.arts, artefacts, locale]
+	)
+
 	return {
 		stats,
 		containerStats,
 		displayNamesMap,
+		isPercentMap,
 		sortedStats,
 		sortedContainerStats,
 		prime,

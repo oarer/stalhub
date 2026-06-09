@@ -14,6 +14,7 @@ export default function StatsTabs() {
 		sortedStats,
 		sortedContainerStats,
 		displayNamesMap,
+		isPercentMap,
 		prime,
 		hps,
 		hasContainer,
@@ -39,6 +40,7 @@ export default function StatsTabs() {
 				<AllStatsTabContent
 					displayNamesMap={displayNamesMap}
 					hps={hps}
+					isPercentMap={isPercentMap}
 					prime={prime}
 					sortedStats={sortedStats}
 					statsMap={stats}
@@ -48,6 +50,7 @@ export default function StatsTabs() {
 				<StatsTabContent
 					displayNamesMap={displayNamesMap}
 					hasContainer={hasContainer}
+					isPercentMap={isPercentMap}
 					stats={sortedContainerStats}
 					statsMap={containerStats}
 				/>

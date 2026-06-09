@@ -6,9 +6,10 @@ interface StatRowProps {
 	keyName: string
 	name: string
 	value: number
+	isPercent?: boolean
 }
 
-export function StatRow({ keyName, name, value }: StatRowProps) {
+export function StatRow({ keyName, name, value, isPercent }: StatRowProps) {
 	const isAccumulation = keyName.toLowerCase().includes('accumulation')
 
 	const valueColor = isAccumulation
@@ -25,6 +26,7 @@ export function StatRow({ keyName, name, value }: StatRowProps) {
 			<span className="font-medium" style={{ color: valueColor }}>
 				{value >= 0 ? '+' : ''}
 				{roundNumber(value)}
+				{isPercent ? '%' : ''}
 			</span>
 		</p>
 	)

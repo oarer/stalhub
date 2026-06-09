@@ -96,6 +96,9 @@ export function computeArtifactStatsFromParsed(
 		const color =
 			parsedItem.statRanges[key]?.color ??
 			parsedItem.addStats?.[key]?.color
+		const isPercent =
+			parsedItem.statRanges[key]?.isPercent ??
+			parsedItem.addStats?.[key]?.isPercent
 
 		const debuff = isDebuffColor(color)
 
@@ -139,6 +142,7 @@ export function computeArtifactStatsFromParsed(
 			addFromSelected: roundNumber(addTotal),
 			final: roundNumber(final),
 			color,
+			isPercent,
 		}
 	}
 
