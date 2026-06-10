@@ -17,24 +17,33 @@ const Sidebar: React.FC<Props> = ({
 	defaultOpen = true,
 }) => {
 	const [isOpen, setIsOpen] = useState(defaultOpen)
-	const [sidebarWidth, setSidebarWidth] = useState(0)
+	const containerRef = useRef<HTMLDivElement | null>(null)
 	const sidebarRef = useRef<HTMLElement | null>(null)
 
 	useEffect(() => {
-		const updateWidth = () => {
-			if (sidebarRef.current) {
-				setSidebarWidth(sidebarRef.current.offsetWidth)
-			}
+		if (!isOpen) return
+		if (!containerRef.current || !sidebarRef.current) return
+
+		const container = containerRef.current
+		const sidebar = sidebarRef.current
+
+		const update = () => {
+			container.style.setProperty(
+				'--sidebar-width',
+				`${sidebar.offsetWidth + 16}px`
+			)
 		}
 
-		updateWidth()
-		window.addEventListener('resize', updateWidth)
+		update()
 
-		return () => window.removeEventListener('resize', updateWidth)
-	}, [])
+		const observer = new ResizeObserver(update)
+		observer.observe(sidebar)
+
+		return () => observer.disconnect()
+	}, [isOpen])
 
 	return (
-		<>
+		<div ref={containerRef}>
 			<AnimatePresence>
 				{isOpen && (
 					<motion.aside
@@ -46,10 +55,7 @@ const Sidebar: React.FC<Props> = ({
 						exit={{ opacity: 0, x: -20 }}
 						initial={{ opacity: 0, x: -20 }}
 						ref={sidebarRef}
-						transition={{
-							duration: 0.4,
-							ease: 'easeInOut',
-						}}
+						transition={{ duration: 0.4, ease: 'easeInOut' }}
 					>
 						{children}
 					</motion.aside>
@@ -58,7 +64,9 @@ const Sidebar: React.FC<Props> = ({
 
 			<motion.button
 				animate={{
-					left: isOpen ? `${sidebarWidth + 45}px` : '20px',
+					left: isOpen
+						? 'calc(var(--sidebar-width, 0px) + 24px)'
+						: '20px',
 					opacity: 1,
 					scale: 1,
 				}}
@@ -94,7 +102,7 @@ const Sidebar: React.FC<Props> = ({
 					</motion.span>
 				</AnimatePresence>
 			</motion.button>
-		</>
+		</div>
 	)
 }
 

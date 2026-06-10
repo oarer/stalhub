@@ -150,9 +150,17 @@ export function getCompatibleAmmo(
 ): Item[] {
 	const prefixes = AMMO_TYPE_MAP[ammoTypeKey]
 	if (!prefixes) return []
+
 	return ammoItems.filter((a) => {
 		const nameKey = a.name?.type === 'translation' ? a.name.key : ''
-		return prefixes.some((p) => nameKey.startsWith(p))
+		if (!nameKey.startsWith('item.amm.')) return false
+
+		const normalized = nameKey.replace(/\.name$/, '')
+
+		const itemCaliber = normalized.split('.')[2]?.match(/^\d+/)?.[0]
+		if (!itemCaliber) return false
+
+		return prefixes.some((p) => p === `item.amm.${itemCaliber}`)
 	})
 }
 

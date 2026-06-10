@@ -91,6 +91,14 @@ const NAV_STRUCTURE: NavGroup[] = [
 					'nav.groups.calculators.items.arsenal.description',
 			},
 			{
+				key: 'hideout',
+				icon: 'lucide:house',
+				href: '/calcs/hideout',
+				labelKey: 'nav.groups.calculators.items.hideout.label',
+				descriptionKey:
+					'nav.groups.calculators.items.hideout.description',
+			},
+			{
 				key: 'bp',
 				icon: 'lucide:ticket',
 				href: '/calcs/bp',
