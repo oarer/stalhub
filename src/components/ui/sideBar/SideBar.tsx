@@ -9,29 +9,34 @@ type Props = {
 	children: ReactNode
 	className?: string
 	defaultOpen?: boolean
+	side?: 'left' | 'right'
 }
 
-const Sidebar: React.FC<Props> = ({
+const Sidebar = ({
 	children,
 	className,
 	defaultOpen = true,
-}) => {
+	side = 'left',
+}: Props) => {
 	const [isOpen, setIsOpen] = useState(defaultOpen)
-	const containerRef = useRef<HTMLDivElement | null>(null)
+	const [sidebarWidth, setSidebarWidth] = useState(0)
 	const sidebarRef = useRef<HTMLElement | null>(null)
+
+	const isLeft = side === 'left'
+	const sidebarSideClass = isLeft ? 'left-4' : 'right-4'
+	const sidebarTranslate = isLeft ? -20 : 20
+	const buttonSideClass = isLeft ? 'left-5' : 'right-5'
+	const openIcon = isLeft ? 'lucide:chevron-left' : 'lucide:chevron-right'
+	const closedIcon = isLeft ? 'lucide:chevron-right' : 'lucide:chevron-left'
 
 	useEffect(() => {
 		if (!isOpen) return
-		if (!containerRef.current || !sidebarRef.current) return
+		if (!sidebarRef.current) return
 
-		const container = containerRef.current
 		const sidebar = sidebarRef.current
 
 		const update = () => {
-			container.style.setProperty(
-				'--sidebar-width',
-				`${sidebar.offsetWidth + 16}px`
-			)
+			setSidebarWidth(sidebar.offsetWidth + 16)
 		}
 
 		update()
@@ -43,17 +48,18 @@ const Sidebar: React.FC<Props> = ({
 	}, [isOpen])
 
 	return (
-		<div ref={containerRef}>
+		<>
 			<AnimatePresence>
 				{isOpen && (
 					<motion.aside
 						animate={{ opacity: 1, x: 0 }}
 						className={cn(
-							'fixed top-1/2 left-4 z-999 flex max-h-[70vh] min-w-70 -translate-y-1/2 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-background/60 p-2 shadow-lg ring-2 ring-border/60 backdrop-blur-md',
+							'fixed top-1/2 z-999 flex max-h-[70vh] min-w-70 -translate-y-1/2 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-background/60 p-2 shadow-lg ring-2 ring-border/60 backdrop-blur-md',
+							sidebarSideClass,
 							className
 						)}
-						exit={{ opacity: 0, x: -20 }}
-						initial={{ opacity: 0, x: -20 }}
+						exit={{ opacity: 0, x: sidebarTranslate }}
+						initial={{ opacity: 0, x: sidebarTranslate }}
 						ref={sidebarRef}
 						transition={{ duration: 0.4, ease: 'easeInOut' }}
 					>
@@ -64,24 +70,26 @@ const Sidebar: React.FC<Props> = ({
 
 			<motion.button
 				animate={{
-					left: isOpen
-						? 'calc(var(--sidebar-width, 0px) + 24px)'
-						: '20px',
 					opacity: 1,
 					scale: 1,
+					x: isOpen
+						? isLeft
+							? sidebarWidth + 4
+							: -(sidebarWidth + 4)
+						: 0,
 				}}
-				className="fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl bg-background/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-neutral-300/30 hover:dark:bg-neutral-800/60"
-				initial={{ opacity: 0, scale: 1 }}
+				aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
+				className={cn(
+					'fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl bg-background/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-neutral-300/30 hover:dark:bg-neutral-800/60',
+					buttonSideClass
+				)}
+				initial={{ opacity: 0, scale: 1, x: 0 }}
 				onClick={() => setIsOpen(!isOpen)}
 				transition={{
 					ease: 'easeInOut',
-					duration: 0.2,
-					left: {
-						duration: isOpen ? 0.3 : 0.45,
-						delay: isOpen ? 0 : 0.2,
-						ease: 'easeInOut',
-					},
+					duration: 0.25,
 				}}
+				type="button"
 			>
 				<AnimatePresence initial={false} mode="wait">
 					<motion.span
@@ -89,20 +97,16 @@ const Sidebar: React.FC<Props> = ({
 						exit={{ opacity: 0, scale: 1 }}
 						initial={{ opacity: 0, scale: 1 }}
 						key={isOpen ? 'close' : 'chevron'}
-						transition={{ duration: 0.3, ease: 'easeInOut' }}
+						transition={{ duration: 0.2, ease: 'easeInOut' }}
 					>
 						<Icon
 							className="text-lg"
-							icon={
-								isOpen
-									? 'lucide:chevron-left'
-									: 'lucide:chevron-right'
-							}
+							icon={isOpen ? openIcon : closedIcon}
 						/>
 					</motion.span>
 				</AnimatePresence>
 			</motion.button>
-		</div>
+		</>
 	)
 }
 

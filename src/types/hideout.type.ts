@@ -1,6 +1,6 @@
 import type { Message } from './item.type'
 
-export interface Root {
+export interface Hideout {
 	perks: Perk[]
 	recipes: Recipe[]
 }
@@ -48,11 +48,13 @@ export interface Subcategory {
 export interface Result {
 	item: string
 	amount: number
+	price: number | null
 }
 
 export interface Ingredient {
 	item: string
 	amount: number
+	price: number | null
 }
 
 export interface Requirements {
