@@ -171,7 +171,8 @@ function processListBlock(
 			const v = Number((el as NumericElement).value ?? 0)
 			if (Number.isFinite(v)) pushers.pushBase(key, v, display)
 		} else if (el.type === 'range' && 'name' in el) {
-			const color = el.formatted?.valueColor
+			const colorRaw = el.formatted?.valueColor
+			const color = colorRaw?.replace(/^#/, '') ?? ''
 			const formattedVal = el.formatted?.value as
 				| Record<string, string>
 				| undefined

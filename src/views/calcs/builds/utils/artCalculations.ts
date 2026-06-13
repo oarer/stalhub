@@ -94,7 +94,8 @@ export function calcXfromVPRClamped(
 	}
 
 	const qIdx = resolveQualityIndex(qualityClass)
-	return calcDebuffValueForQuality(V, P, R, qIdx)
+	const [v, p] = keyOrColor?.key?.includes('accumulation') ? [V, P] : [P, V]
+	return calcDebuffValueForQuality(v, p, R, qIdx)
 }
 
 export function applyPotential(x: number, K = 0): number {
