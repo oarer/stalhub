@@ -142,7 +142,8 @@ export default function FooterLayout() {
 	}, [])
 	if (!mounted) return null
 
-	if (pathname.startsWith('/map')) return null
+	if (pathname.startsWith('/map') || pathname.startsWith('/calcs/hideout'))
+		return null
 
 	return <Footer />
 }
