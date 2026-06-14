@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import type { Art } from '@/types/build.type'
@@ -15,6 +15,9 @@ import {
 import { messageToString } from '@/utils/itemUtils'
 import { ArtifactSlotRow } from '@/views/calcs/builds/lite/components/ArtifactSlotRow'
 import { ContainerPickerModal } from '@/views/calcs/builds/lite/components/ContainerPickerModal'
+import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
+import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
+import type { StatFilterGroup } from './ItemPickerModal'
 import { ItemPickerModal } from './ItemPickerModal'
 
 type ArtifactSlotsProps = {
@@ -63,6 +66,113 @@ export function ArtifactSlotsLite({
 	const currentContainer = currentContainerId
 		? (containers.find((it) => it.id === currentContainerId) ?? null)
 		: null
+
+	const parsedItemsMap = useMemo(() => {
+		const map = new Map<string, ReturnType<typeof parseItemStats>>()
+		for (const item of items) {
+			map.set(item.id, parseItemStats(item, locale))
+		}
+		return map
+	}, [items, locale])
+
+	const { positiveOptions, negativeOptions } = useMemo(() => {
+		const posMap = new Map<string, string>()
+		const negMap = new Map<string, string>()
+
+		for (const parsed of parsedItemsMap.values()) {
+			const allStats = { ...parsed.statRanges, ...parsed.addStats }
+			for (const [key, val] of Object.entries(allStats)) {
+				const display = parsed.displayNames[key] ?? key
+				if (isDebuffColor(val.color)) {
+					negMap.set(key, display)
+				} else {
+					posMap.set(key, display)
+				}
+			}
+		}
+
+		return {
+			positiveOptions: Array.from(posMap.entries()).map(
+				([value, label]) => ({ value, label })
+			),
+			negativeOptions: Array.from(negMap.entries()).map(
+				([value, label]) => ({ value, label })
+			),
+		}
+	}, [parsedItemsMap])
+
+	const [selectedPositiveStats, setSelectedPositiveStats] = useState<
+		string[]
+	>([])
+	const [selectedNegativeStats, setSelectedNegativeStats] = useState<
+		string[]
+	>([])
+
+	const statFilteredItems = useMemo(() => {
+		if (
+			selectedPositiveStats.length === 0 &&
+			selectedNegativeStats.length === 0
+		)
+			return items
+
+		return items.filter((item) => {
+			const parsed = parsedItemsMap.get(item.id)
+			if (!parsed) return true
+
+			const allStats = { ...parsed.statRanges, ...parsed.addStats }
+
+			if (selectedPositiveStats.length > 0) {
+				const hasPositive = selectedPositiveStats.every(
+					(key) =>
+						key in allStats && !isDebuffColor(allStats[key].color)
+				)
+				if (!hasPositive) return false
+			}
+
+			if (selectedNegativeStats.length > 0) {
+				const hasNegative = selectedNegativeStats.every(
+					(key) =>
+						key in allStats && isDebuffColor(allStats[key].color)
+				)
+				if (!hasNegative) return false
+			}
+
+			return true
+		})
+	}, [items, parsedItemsMap, selectedPositiveStats, selectedNegativeStats])
+
+	const statFilters: StatFilterGroup[] = [
+		...(positiveOptions.length > 0
+			? [
+					{
+						label: 'build.labels.positive_stats',
+						options: positiveOptions,
+						values: selectedPositiveStats,
+						onValuesChange: setSelectedPositiveStats,
+					},
+				]
+			: []),
+		...(negativeOptions.length > 0
+			? [
+					{
+						label: 'build.labels.negative_stats',
+						options: negativeOptions,
+						values: selectedNegativeStats,
+						onValuesChange: setSelectedNegativeStats,
+					},
+				]
+			: []),
+	]
+
+	const resetFilters = () => {
+		setSelectedPositiveStats([])
+		setSelectedNegativeStats([])
+	}
+
+	const handleModalOpenChange = (open: boolean) => {
+		setShowModal(open)
+		if (!open) resetFilters()
+	}
 
 	return (
 		<>
@@ -133,7 +243,7 @@ export function ArtifactSlotsLite({
 			<ItemPickerModal
 				emptyTitle="build.labels.art"
 				favoriteType="artefact"
-				items={items}
+				items={statFilteredItems}
 				locale={locale}
 				onConfirm={(itemId) => {
 					onSelectItem?.(itemId)
@@ -142,8 +252,9 @@ export function ArtifactSlotsLite({
 				}}
 				previewId={previewId}
 				setPreviewId={setPreviewId}
-				setShowModal={setShowModal}
+				setShowModal={handleModalOpenChange}
 				showModal={showModal}
+				statFilters={statFilters}
 				title="build.labels.art_title"
 			/>
 			<ContainerPickerModal

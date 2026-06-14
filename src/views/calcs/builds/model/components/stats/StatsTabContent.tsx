@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { Card } from '@/components/ui/Card'
 import type { BuildStats } from '../hooks/buildStatsUtils'
+import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
 import { StatRow } from './StatRow'
 
 // у холода лимит выше
@@ -78,15 +79,27 @@ export function StatsTabContent({
 							: t('build.stats.no_container')}
 					</p>
 				) : (
-					stats.map(([key, val]) => (
-						<StatRow
-							isPercent={isPercentMap?.[key]}
-							key={key}
-							keyName={key}
-							name={displayNamesMap[key] ?? key}
-							value={val}
-						/>
-					))
+					(() => {
+						const colored: [string, number][] = []
+						const nonColored: [string, number][] = []
+						for (const entry of stats) {
+							if (BUILD_STAT_COLORS[entry[0]]) {
+								colored.push(entry)
+							} else {
+								nonColored.push(entry)
+							}
+						}
+						return [...nonColored, ...colored].map(([key, val]) => (
+							<StatRow
+								color={BUILD_STAT_COLORS[key]}
+								isPercent={isPercentMap?.[key]}
+								key={key}
+								keyName={key}
+								name={displayNamesMap[key] ?? key}
+								value={val}
+							/>
+						))
+					})()
 				)}
 			</Card.Content>
 		</Card.Root>
@@ -137,15 +150,29 @@ export function AllStatsTabContent({
 							{t('build.stats.no_stats')}
 						</p>
 					) : (
-						sortedStats.map(([key, val]) => (
-							<StatRow
-								isPercent={isPercentMap?.[key]}
-								key={key}
-								keyName={key}
-								name={displayNamesMap[key] ?? key}
-								value={val}
-							/>
-						))
+						(() => {
+							const colored: [string, number][] = []
+							const nonColored: [string, number][] = []
+							for (const entry of sortedStats) {
+								if (BUILD_STAT_COLORS[entry[0]]) {
+									colored.push(entry)
+								} else {
+									nonColored.push(entry)
+								}
+							}
+							return [...nonColored, ...colored].map(
+								([key, val]) => (
+									<StatRow
+										color={BUILD_STAT_COLORS[key]}
+										isPercent={isPercentMap?.[key]}
+										key={key}
+										keyName={key}
+										name={displayNamesMap[key] ?? key}
+										value={val}
+									/>
+								)
+							)
+						})()
 					)}
 				</div>
 			</Card.Content>

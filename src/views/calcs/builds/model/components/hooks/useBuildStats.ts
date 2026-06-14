@@ -12,6 +12,7 @@ import {
 	computeIsPercentMap,
 	getStatsFromItem,
 } from './buildStatsUtils'
+import { BUILD_HIDDEN_STAT_KEYS } from './itemStatsUtils'
 import { useBuildItems } from './useBuildItems'
 import { useContainerModifiers } from './useContainerModifiers'
 import { useDerivedStats } from './useDerivedStats'
@@ -49,7 +50,7 @@ export function useBuildStats() {
 	}, [allItems, allStatKeys, locale])
 
 	const stats = useMemo<BuildStats>(() => {
-		// Статы брони и контейнера — без модификаторов
+		// статы армора и контейнера - без модификаторов
 		const baseResult: BuildStats = {}
 
 		const armorItem = armors.find((a) => a.id === build.armor?.id)
@@ -68,7 +69,7 @@ export function useBuildStats() {
 			}
 		}
 
-		// Статы артефактов — применяем модификаторы контейнера
+		// статы артефактов - применяем модификаторы контейнера
 		const artResult: BuildStats = {}
 		for (const art of build.arts) {
 			const artStats = computeArtifactStats(art, artefacts, locale)
@@ -85,7 +86,7 @@ export function useBuildStats() {
 			containerModifiers.innerProtection
 		)
 
-		// Объединяем: база + артефакты с модификаторами
+		// объединяем: база + артефакты с модификаторами
 		const result: BuildStats = { ...baseResult }
 		for (const [key, val] of Object.entries(artWithModifiers)) {
 			result[key] = (result[key] ?? 0) + val
@@ -152,7 +153,9 @@ export function useBuildStats() {
 
 	const sortedStats = useMemo(() => {
 		return Object.entries(stats)
-			.filter(([, val]) => val !== 0)
+			.filter(
+				([key, val]) => val !== 0 && !BUILD_HIDDEN_STAT_KEYS.has(key)
+			)
 			.sort(([keyA], [keyB]) => {
 				const nameA = displayNamesMap[keyA] ?? keyA
 				const nameB = displayNamesMap[keyB] ?? keyB
@@ -162,7 +165,9 @@ export function useBuildStats() {
 
 	const sortedContainerStats = useMemo(() => {
 		return Object.entries(containerStats)
-			.filter(([, val]) => val !== 0)
+			.filter(
+				([key, val]) => val !== 0 && !BUILD_HIDDEN_STAT_KEYS.has(key)
+			)
 			.sort(([keyA], [keyB]) => {
 				const nameA = displayNamesMap[keyA] ?? keyA
 				const nameB = displayNamesMap[keyB] ?? keyB

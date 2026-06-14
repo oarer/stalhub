@@ -29,6 +29,7 @@ interface ComboboxBaseProps {
 	emptyText?: string
 	className?: string
 	disabled?: boolean
+	zIndex?: number
 }
 
 interface ComboboxSingleProps extends ComboboxBaseProps {
@@ -133,7 +134,7 @@ export function Combobox(props: ComboboxProps) {
 			top: triggerRect.bottom + 8,
 			left: wrapperRect.left + wrapperRect.width / 2 - width / 2,
 			width,
-			zIndex: 99999,
+			zIndex: 9999999,
 			maxHeight: `calc(100vh - ${Math.round(triggerRect.bottom + 24)}px)`,
 		})
 	}, [])

@@ -15,6 +15,7 @@ import {
 	getArtQualityCandidates,
 	getMaxaddsFromPotential,
 } from '@/views/calcs/builds/utils/artCalculations'
+import { BUILD_HIDDEN_STAT_KEYS } from '../hooks/itemStatsUtils'
 
 type ArtifactStatsPanelProps = {
 	art: {
@@ -108,7 +109,11 @@ export function ArtifactStatsPanel({
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col gap-1">
 					{Object.values(stats)
-						.filter((s) => Number(s.final) !== 0)
+						.filter(
+							(s) =>
+								Number(s.final) !== 0 &&
+								!BUILD_HIDDEN_STAT_KEYS.has(s.key)
+						)
 						.map((s) => {
 							const label = parsed?.displayNames?.[s.key] ?? s.key
 							return (

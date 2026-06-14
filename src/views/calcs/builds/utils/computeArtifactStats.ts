@@ -73,6 +73,23 @@ export function computeArtifactStatsFromParsed(
 	if (parsedItem.addStats)
 		Object.keys(parsedItem.addStats).forEach((k) => keys.add(k))
 
+	function maybeSwapVP(
+		V: number,
+		P: number,
+		color?: string,
+		key?: string
+	): { V: number; P: number } {
+		if (key?.includes('accumulation') && V > P) {
+			return { V: P, P: V }
+		}
+
+		if (color?.toUpperCase() === 'C15252' && Math.abs(V) < Math.abs(P)) {
+			return { V: P, P: V }
+		}
+
+		return { V, P }
+	}
+
 	const result: Record<string, StatBreakdown> = {}
 
 	function resolveVPForKeyParsed(
@@ -92,7 +109,7 @@ export function computeArtifactStatsFromParsed(
 	const defaultQualityClass = art && art.qualityClass
 
 	for (const key of Array.from(keys).sort()) {
-		const { V, P } = resolveVPForKeyParsed(parsedItem, key)
+		let { V, P } = resolveVPForKeyParsed(parsedItem, key)
 		const color =
 			parsedItem.statRanges[key]?.color ??
 			parsedItem.addStats?.[key]?.color
@@ -104,11 +121,11 @@ export function computeArtifactStatsFromParsed(
 
 		const qualityArg = defaultQualityClass
 
-		// прокидываем key и color в calcXfromVPRClamped
-		const X_before = calcXfromVPRClamped(V, P, R, debuff, qualityArg, {
-			color: color,
-			key,
-		})
+		const swapped = maybeSwapVP(V, P, color, key)
+		V = swapped.V
+		P = swapped.P
+
+		const X_before = calcXfromVPRClamped(V, P, R, debuff, qualityArg)
 		const X_after = debuff ? X_before : applyPotential(X_before, K)
 
 		let addTotal = 0
@@ -118,13 +135,18 @@ export function computeArtifactStatsFromParsed(
 				if (typeof ex === 'number') {
 					addTotal = debuff ? ex : applyPotential(ex, K)
 				} else {
+					let addV = ex.v0 ?? 0
+					let addP = ex.v100 ?? 0
+					const addColor = ex.color ?? color
+					const addSwapped = maybeSwapVP(addV, addP, addColor, key)
+					addV = addSwapped.V
+					addP = addSwapped.P
 					const x = calcXfromVPRClamped(
-						ex.v0 ?? 0,
-						ex.v100 ?? 0,
+						addV,
+						addP,
 						R,
 						debuff,
-						qualityArg,
-						{ color: ex.color ?? color, key }
+						qualityArg
 					)
 					addTotal = debuff ? x : applyPotential(x, K)
 				}
@@ -157,15 +179,14 @@ export function computeArtifactStatsFromParsed(
 
 		const ex = parsedItem.addStats?.[selKey]
 		if (ex === undefined || ex === null) {
-			const { V, P } = resolveVPForKeyParsed(parsedItem, selKey)
+			let { V, P } = resolveVPForKeyParsed(parsedItem, selKey)
 			if (V === 0 && P === 0) continue
 
 			const qualityArg = defaultQualityClass
-			// прокидываем метаданные и сюда
-			const X_before = calcXfromVPRClamped(V, P, R, debuff, qualityArg, {
-				color,
-				key: selKey,
-			})
+			const swapped = maybeSwapVP(V, P, color, selKey)
+			V = swapped.V
+			P = swapped.P
+			const X_before = calcXfromVPRClamped(V, P, R, debuff, qualityArg)
 			const X_after = debuff ? X_before : applyPotential(X_before, K)
 
 			const syntheticKey = `add:${selKey}`
@@ -188,14 +209,13 @@ export function computeArtifactStatsFromParsed(
 			addTotal += debuff ? ex : applyPotential(ex, K)
 		} else {
 			const qualityArg = defaultQualityClass
-			const x = calcXfromVPRClamped(
-				ex.v0 ?? 0,
-				ex.v100 ?? 0,
-				R,
-				debuff,
-				qualityArg,
-				{ color: ex.color ?? color, key: selKey }
-			)
+			let addV = ex.v0 ?? 0
+			let addP = ex.v100 ?? 0
+			const addColor = ex.color ?? color
+			const addSwapped = maybeSwapVP(addV, addP, addColor, selKey)
+			addV = addSwapped.V
+			addP = addSwapped.P
+			const x = calcXfromVPRClamped(addV, addP, R, debuff, qualityArg)
 			addTotal += debuff ? x : applyPotential(x, K)
 		}
 

@@ -20,6 +20,7 @@ import {
 } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
+import type { StatFilterGroup } from './ItemPickerModal'
 import { ItemPickerModal } from './ItemPickerModal'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
@@ -55,6 +56,71 @@ function BoostSelectModal({
 		[items, category]
 	)
 
+	const [selectedEffects, setSelectedEffects] = useState<string[]>([])
+
+	const effectOptions = useMemo(() => {
+		const map = new Map<string, string>()
+		for (const item of categoryItems) {
+			for (const block of item.infoBlocks) {
+				if (block.type !== 'list' && block.type !== 'addStat') continue
+				for (const el of block.elements) {
+					if (el.type !== 'numeric') continue
+					const name = el.name
+					const key =
+						name.type === 'translation' && name.key
+							? name.key
+							: name.type === 'text' && name.text
+								? name.text
+								: null
+					if (!key || map.has(key)) continue
+					map.set(key, messageToString(name, locale))
+				}
+			}
+		}
+		return Array.from(map.entries()).map(([value, label]) => ({
+			value,
+			label,
+		}))
+	}, [categoryItems, locale])
+
+	const statFilteredItems = useMemo(() => {
+		if (selectedEffects.length === 0) return categoryItems
+		return categoryItems.filter((item) => {
+			const itemKeys = new Set<string>()
+			for (const block of item.infoBlocks) {
+				if (block.type !== 'list' && block.type !== 'addStat') continue
+				for (const el of block.elements) {
+					if (el.type !== 'numeric') continue
+					const name = (
+						el as {
+							name: { type: string; key?: string; text?: string }
+						}
+					).name
+					const key =
+						name.type === 'translation' && name.key
+							? name.key
+							: name.type === 'text' && name.text
+								? name.text
+								: null
+					if (key) itemKeys.add(key)
+				}
+			}
+			return selectedEffects.every((k) => itemKeys.has(k))
+		})
+	}, [categoryItems, selectedEffects])
+
+	const statFilters: StatFilterGroup[] | undefined =
+		effectOptions.length > 0
+			? [
+					{
+						label: 'build.labels.effects',
+						options: effectOptions,
+						values: selectedEffects,
+						onValuesChange: setSelectedEffects,
+					},
+				]
+			: undefined
+
 	const selectedItemData =
 		categoryItems.find((i) => i.id === selectedBoostId) ?? null
 
@@ -66,6 +132,14 @@ function BoostSelectModal({
 		if (!previewId) return
 		onSelect(previewId)
 		setShowModal(false)
+	}
+
+	const handleModalOpenChange = (open: boolean) => {
+		setShowModal(open)
+		if (!open) {
+			setPreviewId(selectedBoostId)
+			setSelectedEffects([])
+		}
 	}
 
 	return (
@@ -158,16 +232,14 @@ function BoostSelectModal({
 			<ItemPickerModal
 				emptyTitle="modals.builds.consumables.header"
 				favoriteType="boost"
-				items={categoryItems}
+				items={statFilteredItems}
 				locale={locale}
 				onConfirm={handleConfirm}
 				previewId={previewId}
 				setPreviewId={setPreviewId}
-				setShowModal={(open) => {
-					setShowModal(open)
-					if (!open) setPreviewId(selectedBoostId)
-				}}
+				setShowModal={handleModalOpenChange}
 				showModal={showModal}
+				statFilters={statFilters}
 				title={`${t('modals.builds.consumables.pick_boost')} ${t(
 					`boost.${category.split('.').pop()!}`
 				)}`}

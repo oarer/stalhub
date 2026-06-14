@@ -8,18 +8,27 @@ interface StatRowProps {
 	name: string
 	value: number
 	isPercent?: boolean
+	color?: string
 }
 
-export function StatRow({ keyName, name, value, isPercent }: StatRowProps) {
+export function StatRow({
+	keyName,
+	name,
+	value,
+	isPercent,
+	color,
+}: StatRowProps) {
 	const isAccumulation = keyName.toLowerCase().includes('accumulation')
 
-	const valueColor = isAccumulation
-		? value <= 0
-			? '#53C353'
-			: '#C15252'
-		: value >= 0
-			? '#53C353'
-			: '#C15252'
+	const valueColor =
+		color ??
+		(isAccumulation
+			? value <= 0
+				? '#53C353'
+				: '#C15252'
+			: value >= 0
+				? '#53C353'
+				: '#C15252')
 
 	return (
 		<p className="flex justify-between">
@@ -28,7 +37,7 @@ export function StatRow({ keyName, name, value, isPercent }: StatRowProps) {
 				className={`${montserrat.className} font-semibold`}
 				style={{ color: valueColor }}
 			>
-				{value >= 0 ? '+' : ''}
+				{value >= 0 && !color ? '+' : ''}
 				{roundNumber(value)}
 				{isPercent ? '%' : ''}
 			</span>

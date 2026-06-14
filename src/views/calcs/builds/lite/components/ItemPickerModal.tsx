@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import type { ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
@@ -21,6 +22,13 @@ import { messageToString } from '@/utils/itemUtils'
 import { ItemsList } from '@/views/calcs/builds/model/components/artifacts/ItemsList'
 import { ListBlock } from '@/views/items/components/blocks'
 
+export type StatFilterGroup = {
+	label: string
+	options: ComboboxOption[]
+	values: string[]
+	onValuesChange: (values: string[]) => void
+}
+
 type ItemPickerModalProps = {
 	showModal: boolean
 	setShowModal: (open: boolean) => void
@@ -35,6 +43,7 @@ type ItemPickerModalProps = {
 	actionLabel?: string
 	onConfirm?: (itemId: string) => void
 	children?: ReactNode
+	statFilters?: StatFilterGroup[]
 }
 
 export function ItemPickerModal({
@@ -51,6 +60,7 @@ export function ItemPickerModal({
 	actionLabel = 'Выбрать',
 	onConfirm,
 	children,
+	statFilters,
 }: ItemPickerModalProps) {
 	const t = useTranslations()
 
@@ -96,16 +106,41 @@ export function ItemPickerModal({
 						value={filter}
 					/>
 
+					{statFilters && statFilters.length > 0 && (
+						<div className="flex flex-wrap gap-2">
+							{statFilters.map((group, i) => (
+								<div className="min-w-40 flex-1" key={i}>
+									<Combobox
+										multiple
+										onValuesChange={group.onValuesChange}
+										options={group.options}
+										placeholder={group.label}
+										values={group.values}
+										zIndex={99999999}
+									/>
+								</div>
+							))}
+						</div>
+					)}
+
 					<div className="relative grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[50%_50%]">
 						<div className="flex w-full flex-col gap-2">
-							<ItemsList
-								className="max-h-screen sm:max-h-91"
-								favoriteType={favoriteType}
-								items={visibleItems}
-								locale={locale}
-								onSelectItem={(itemId) => setPreviewId(itemId)}
-								selectedItemId={previewId}
-							/>
+							{visibleItems.length > 0 ? (
+								<ItemsList
+									className="max-h-screen sm:h-91"
+									favoriteType={favoriteType}
+									items={visibleItems}
+									locale={locale}
+									onSelectItem={(itemId) =>
+										setPreviewId(itemId)
+									}
+									selectedItemId={previewId}
+								/>
+							) : (
+								<p className="flex h-full items-center justify-center font-semibold text-text-accent">
+									{t('build.labels.not_found')}
+								</p>
+							)}
 						</div>
 
 						<div

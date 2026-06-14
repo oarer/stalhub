@@ -17,12 +17,7 @@ function getElementKey(el: InfoElement): string | null {
 	return null
 }
 
-function getNumericValue(
-	item: Item,
-	key: string,
-	locale: Locale,
-	numericVariants = 0
-): number {
+function getNumericValue(item: Item, key: string, numericVariants = 0): number {
 	for (const block of item.infoBlocks) {
 		if (block.type !== 'list' && block.type !== 'addStat') continue
 		const elements = (block as ElementListBlock | AddStatBlock).elements
@@ -70,36 +65,23 @@ export function computePrimeFromBuild(
 	const effectiveness = containerItem
 		? getNumericValue(
 				containerItem,
-				'stalker.tooltip.backpack.stat_name.effectiveness',
-				locale
+				'stalker.tooltip.backpack.stat_name.effectiveness'
 			) / 100
 		: 1
-	const _innerProtection = containerItem
-		? getNumericValue(
-				containerItem,
-				'stalker.tooltip.backpack.stat_name.inner_protection',
-				locale
-			) / 100
-		: 0
 
 	const KEYS = [BULLET_KEY, HEALTH_KEY]
 
 	const armorItem = armors.find((a) => a.id === build.armor?.id)
 	if (armorItem && build.armor) {
 		for (const key of KEYS) {
-			const val = getNumericValue(
-				armorItem,
-				key,
-				locale,
-				build.armor.level ?? 0
-			)
+			const val = getNumericValue(armorItem, key, build.armor.level ?? 0)
 			if (val !== 0) result[key] = (result[key] ?? 0) + val
 		}
 	}
 
 	if (containerItem) {
 		for (const key of KEYS) {
-			const val = getNumericValue(containerItem, key, locale)
+			const val = getNumericValue(containerItem, key)
 			if (val !== 0) result[key] = (result[key] ?? 0) + val
 		}
 	}
@@ -130,7 +112,7 @@ export function computePrimeFromBuild(
 		const boostItem = consumables.find((c) => c.id === boostId)
 		if (!boostItem) continue
 		for (const key of KEYS) {
-			const val = getNumericValue(boostItem, key, locale)
+			const val = getNumericValue(boostItem, key)
 			if (val !== 0) result[key] = (result[key] ?? 0) + val
 		}
 	}

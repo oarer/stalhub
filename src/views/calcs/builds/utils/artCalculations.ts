@@ -69,32 +69,24 @@ export function calcXfromVPRClamped(
 	P: number,
 	R: number,
 	isDebuff: boolean,
-	qualityClass?: number | string,
-	keyOrColor?: { key?: string; color?: string }
+	qualityClass?: number | string
 ): number {
 	if (!isDebuff) {
 		const r = normalizePercent(R)
 
-		if (r <= 85) return V
-
-		let v = V
-		let p = P
-
-		if (
-			keyOrColor?.color?.toUpperCase() === '53C353' &&
-			keyOrColor?.key?.includes('accumulation')
-		) {
-			;[v, p] = [p, v]
+		if (P >= V) {
+			if (r <= 85) return V
+			if (r > 100) return P * (r / 100)
+			const t = (r - 85) / 15
+			return V + (P - V) * t
 		}
 
-		if (r > 100) return p * (r / 100)
-
-		const t = (r - 85) / 15
-		return v + (p - v) * t
+		const t = Math.min(r, 115) / 115
+		return V + (P - V) * t
 	}
 
 	const qIdx = resolveQualityIndex(qualityClass)
-	const [v, p] = keyOrColor?.key?.includes('accumulation') ? [V, P] : [P, V]
+	const [v, p] = [P, V]
 	return calcDebuffValueForQuality(v, p, R, qIdx)
 }
 

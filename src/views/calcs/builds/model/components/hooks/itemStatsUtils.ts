@@ -12,6 +12,16 @@ import type {
 } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
+export const BUILD_HIDDEN_STAT_KEYS = new Set<string>([
+	'stalker.tooltip.item.lifesaver_sniper.info.trigger_damage',
+])
+
+export const BUILD_STAT_COLORS: Record<string, string> = {
+	'stalker.tooltip.item.lifesaver_sniper.info.blocking_damage': '#EEEEEE',
+	'stalker.tooltip.item.lifesaver.info.recharge': '#EEEEEE',
+	'stalker.tooltip.item.lifesaver.info.cost': '#EEEEEE',
+}
+
 export const HIDDEN_STAT_KEYS = new Set([
 	'core.tooltip.info.weight',
 	'core.tooltip.info.durability',
