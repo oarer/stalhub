@@ -182,13 +182,27 @@ export default function ArtModal({ onClose }: ModalProps) {
 		[selectedStatsData?.instanceId, sendUpdate]
 	)
 
+	const setAllAddStats = useCallback(
+		(instanceId: string | undefined) => {
+			if (!instanceId || !selectedStatsData?.parsed) return
+			const addStatKeys = Object.keys(
+				selectedStatsData.parsed.addStats ?? {}
+			)
+			if (addStatKeys.length <= 3) {
+				updateArt(instanceId, { selectedStats: addStatKeys })
+			}
+		},
+		[selectedStatsData?.parsed, updateArt]
+	)
+
 	const handlePotentialClick = useCallback(
 		(value: number) => {
 			setPotentialState(value)
 			const instanceId = selectedStatsData?.instanceId
 			sendUpdate({ instanceId, type: 'potential', value })
+			if (value >= 15) setAllAddStats(instanceId)
 		},
-		[selectedStatsData?.instanceId, sendUpdate]
+		[selectedStatsData?.instanceId, sendUpdate, setAllAddStats]
 	)
 
 	const handlePotentialInputChange = useCallback(
@@ -196,8 +210,9 @@ export default function ArtModal({ onClose }: ModalProps) {
 			setPotentialState(value)
 			const instanceId = selectedStatsData?.instanceId
 			sendUpdate({ instanceId, type: 'potential', value })
+			if (value >= 15) setAllAddStats(instanceId)
 		},
-		[selectedStatsData?.instanceId, sendUpdate]
+		[selectedStatsData?.instanceId, sendUpdate, setAllAddStats]
 	)
 
 	const handleQualitySelect = useCallback(

@@ -189,6 +189,15 @@ export function useLiteArtifacts({
 				})
 			}
 
+			if (value >= 15) {
+				const addStatKeys = Object.keys(
+					selectedStatsData?.parsed?.addStats ?? {}
+				)
+				if (addStatKeys.length <= 3 && instanceId) {
+					updateArt(instanceId, { selectedStats: addStatKeys })
+				}
+			}
+
 			sendUpdate({
 				instanceId,
 				type: 'potential',
