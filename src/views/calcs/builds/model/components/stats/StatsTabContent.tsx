@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { memo, useMemo } from 'react'
 import { Card } from '@/components/ui/Card'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
@@ -56,7 +57,7 @@ interface StatsTabContentProps {
 	hasContainer?: boolean
 }
 
-export function StatsTabContent({
+export const StatsTabContent = memo(function StatsTabContent({
 	stats,
 	statsMap,
 	displayNamesMap,
@@ -64,6 +65,28 @@ export function StatsTabContent({
 	hasContainer = true,
 }: StatsTabContentProps) {
 	const t = useTranslations()
+
+	const rows = useMemo(() => {
+		const colored: [string, number][] = []
+		const nonColored: [string, number][] = []
+		for (const entry of stats) {
+			if (BUILD_STAT_COLORS[entry[0]]) {
+				colored.push(entry)
+			} else {
+				nonColored.push(entry)
+			}
+		}
+		return [...nonColored, ...colored].map(([key, val]) => (
+			<StatRow
+				color={BUILD_STAT_COLORS[key]}
+				isPercent={isPercentMap?.[key]}
+				key={key}
+				keyName={key}
+				name={displayNamesMap[key] ?? key}
+				value={val}
+			/>
+		))
+	}, [stats, displayNamesMap, isPercentMap])
 
 	return (
 		<Card.Root>
@@ -79,32 +102,12 @@ export function StatsTabContent({
 							: t('build.stats.no_container')}
 					</p>
 				) : (
-					(() => {
-						const colored: [string, number][] = []
-						const nonColored: [string, number][] = []
-						for (const entry of stats) {
-							if (BUILD_STAT_COLORS[entry[0]]) {
-								colored.push(entry)
-							} else {
-								nonColored.push(entry)
-							}
-						}
-						return [...nonColored, ...colored].map(([key, val]) => (
-							<StatRow
-								color={BUILD_STAT_COLORS[key]}
-								isPercent={isPercentMap?.[key]}
-								key={key}
-								keyName={key}
-								name={displayNamesMap[key] ?? key}
-								value={val}
-							/>
-						))
-					})()
+					rows
 				)}
 			</Card.Content>
 		</Card.Root>
 	)
-}
+})
 
 interface AllStatsTabContentProps {
 	prime?: string
@@ -115,7 +118,7 @@ interface AllStatsTabContentProps {
 	isPercentMap?: Record<string, boolean>
 }
 
-export function AllStatsTabContent({
+export const AllStatsTabContent = memo(function AllStatsTabContent({
 	prime,
 	hps,
 	sortedStats,
@@ -124,6 +127,28 @@ export function AllStatsTabContent({
 	isPercentMap,
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
+
+	const rows = useMemo(() => {
+		const colored: [string, number][] = []
+		const nonColored: [string, number][] = []
+		for (const entry of sortedStats) {
+			if (BUILD_STAT_COLORS[entry[0]]) {
+				colored.push(entry)
+			} else {
+				nonColored.push(entry)
+			}
+		}
+		return [...nonColored, ...colored].map(([key, val]) => (
+			<StatRow
+				color={BUILD_STAT_COLORS[key]}
+				isPercent={isPercentMap?.[key]}
+				key={key}
+				keyName={key}
+				name={displayNamesMap[key] ?? key}
+				value={val}
+			/>
+		))
+	}, [sortedStats, displayNamesMap, isPercentMap])
 
 	return (
 		<Card.Root>
@@ -150,32 +175,10 @@ export function AllStatsTabContent({
 							{t('build.stats.no_stats')}
 						</p>
 					) : (
-						(() => {
-							const colored: [string, number][] = []
-							const nonColored: [string, number][] = []
-							for (const entry of sortedStats) {
-								if (BUILD_STAT_COLORS[entry[0]]) {
-									colored.push(entry)
-								} else {
-									nonColored.push(entry)
-								}
-							}
-							return [...nonColored, ...colored].map(
-								([key, val]) => (
-									<StatRow
-										color={BUILD_STAT_COLORS[key]}
-										isPercent={isPercentMap?.[key]}
-										key={key}
-										keyName={key}
-										name={displayNamesMap[key] ?? key}
-										value={val}
-									/>
-								)
-							)
-						})()
+						rows
 					)}
 				</div>
 			</Card.Content>
 		</Card.Root>
 	)
-}
+})

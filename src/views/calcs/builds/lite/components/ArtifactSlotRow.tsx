@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
@@ -26,7 +27,7 @@ type ArtifactSlotRowProps = {
 	setCopyMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function ArtifactSlotRow({
+const ArtifactSlotRow = memo(function ArtifactSlotRow({
 	index,
 	instanceId,
 	art,
@@ -188,4 +189,6 @@ export function ArtifactSlotRow({
 			)}
 		</button>
 	)
-}
+})
+
+export { ArtifactSlotRow }

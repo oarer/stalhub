@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { roundNumber } from '../hooks/useBuildStats'
 
@@ -11,7 +12,7 @@ interface StatRowProps {
 	color?: string
 }
 
-export function StatRow({
+export const StatRow = memo(function StatRow({
 	keyName,
 	name,
 	value,
@@ -43,4 +44,4 @@ export function StatRow({
 			</span>
 		</p>
 	)
-}
+})

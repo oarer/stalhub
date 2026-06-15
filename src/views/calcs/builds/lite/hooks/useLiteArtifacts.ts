@@ -106,12 +106,7 @@ export function useLiteArtifacts({
 
 		setPercentState(selectedStatsData.art.percent ?? 100)
 		setPotentialState(selectedStatsData.art.potential ?? 0)
-	}, [
-		selectedStatsData?.art,
-		selectedStatsData?.art?.instanceId,
-		selectedStatsData?.art?.percent,
-		selectedStatsData?.art?.potential,
-	])
+	}, [selectedStatsData?.art])
 
 	const handleAdd = (itemId: string) => {
 		if (copyMode) return
@@ -160,38 +155,42 @@ export function useLiteArtifacts({
 	const handlePercentChange = useCallback(
 		(value: number) => {
 			setPercentState(value)
+			if (selectedStatsData?.art?.percent === value) return
 			sendUpdate({
 				instanceId: selectedStatsData?.instanceId,
 				type: 'percent',
 				value,
 			})
 		},
-		[selectedStatsData?.instanceId, sendUpdate]
+		[
+			selectedStatsData?.instanceId,
+			selectedStatsData?.art?.percent,
+			sendUpdate,
+		]
 	)
 
 	const handlePotentialChange = useCallback(
 		(value: number) => {
-			const oldPotential = selectedStatsData?.art.potential ?? 0
+			const instanceId = selectedStatsData?.instanceId
+			const art = selectedStatsData?.art
+
+			const oldPotential = art?.potential ?? 0
+
+			setPotentialState(value)
+
+			if (oldPotential === value) return
 
 			const oldStatsCount = Math.floor(oldPotential / 5)
 			const newStatsCount = Math.floor(value / 5)
 
-			if (
-				selectedStatsData?.instanceId &&
-				newStatsCount < oldStatsCount
-			) {
-				updateArt(selectedStatsData.instanceId, {
-					selectedStats: selectedStatsData.art.selectedStats.slice(
-						0,
-						newStatsCount
-					),
+			if (instanceId && newStatsCount < oldStatsCount) {
+				updateArt(instanceId, {
+					selectedStats: art?.selectedStats.slice(0, newStatsCount),
 				})
 			}
 
-			setPotentialState(value)
-
 			sendUpdate({
-				instanceId: selectedStatsData?.instanceId,
+				instanceId,
 				type: 'potential',
 				value,
 			})

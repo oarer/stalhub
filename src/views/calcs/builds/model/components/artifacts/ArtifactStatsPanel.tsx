@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { memo } from 'react'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import DropdownMenu from '@/components/ui/DropDown'
 import Input from '@/components/ui/Input'
@@ -46,7 +47,7 @@ type ArtifactStatsPanelProps = {
 	container: string | null
 }
 
-export function ArtifactStatsPanel({
+export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 	art,
 	stats,
 	parsed,
@@ -207,7 +208,7 @@ export function ArtifactStatsPanel({
 			</div>
 		</>
 	)
-}
+})
 
 function QualityDropdown({
 	art,
