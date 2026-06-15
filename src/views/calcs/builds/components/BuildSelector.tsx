@@ -17,6 +17,8 @@ export default function BuildSelector() {
 		build,
 		defaults,
 		saveBuild,
+		currentBuildId,
+		autoSave,
 	} = useBuildStore()
 
 	const t = useTranslations()
@@ -34,14 +36,18 @@ export default function BuildSelector() {
 		(key: string) => {
 			if (key === 'new') {
 				if (hasChanges) {
-					saveBuild('Новая сборка')
+					if (currentBuildId) {
+						autoSave()
+					} else {
+						saveBuild('Новая сборка')
+					}
 				}
 				resetBuild()
 			} else {
 				loadBuild(key)
 			}
 		},
-		[hasChanges, saveBuild, resetBuild, loadBuild]
+		[hasChanges, saveBuild, resetBuild, loadBuild, currentBuildId, autoSave]
 	)
 
 	const items = useMemo<DropdownItem[]>(
@@ -50,7 +56,7 @@ export default function BuildSelector() {
 				key: saved.id,
 				content: (
 					<div
-						className="flex w-full items-center justify-between"
+						className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-transparent px-2 py-1 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 						onClick={() => handleSelect(saved.id)}
 					>
 						<p className="truncate font-semibold">{saved.name}</p>
@@ -83,11 +89,11 @@ export default function BuildSelector() {
 				key: 'new',
 				content: (
 					<div
-						className="flex w-full items-center gap-2"
+						className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-transparent px-2 py-1 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 						onClick={() => handleSelect('new')}
 					>
-						<Icon className="size-4" icon="lucide:plus" />
 						<p className="font-semibold">{t('build.new_build')}</p>
+						<Icon className="size-4" icon="lucide:plus" />
 					</div>
 				),
 			},

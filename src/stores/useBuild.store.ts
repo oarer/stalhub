@@ -94,7 +94,24 @@ const doAutoSave = (
 	get: () => BuildState
 ) => {
 	const { build, defaults, savedBuilds, currentBuildId } = get()
-	if (!currentBuildId) return
+
+	if (!currentBuildId) {
+		const now = Date.now()
+		const id = crypto.randomUUID()
+		const newBuild: SavedBuild = {
+			id,
+			name: 'Новая сборка',
+			build: JSON.parse(JSON.stringify(build)),
+			defaults: JSON.parse(JSON.stringify(defaults)),
+			createdAt: now,
+			updatedAt: now,
+		}
+		set({
+			savedBuilds: [...savedBuilds, newBuild],
+			currentBuildId: id,
+		})
+		return
+	}
 
 	const index = savedBuilds.findIndex((b) => b.id === currentBuildId)
 	if (index === -1) return
