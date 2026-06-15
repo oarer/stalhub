@@ -1,3 +1,3 @@
-export { ItemsList } from './ItemsList'
+export { ArtifactStatsPanel } from '../../../components/ArtifactStatsPanel'
 export { ArtifactSlots } from './ArtifactSlots'
-export { ArtifactStatsPanel } from './ArtifactStatsPanel'
+export { ItemsList } from './ItemsList'

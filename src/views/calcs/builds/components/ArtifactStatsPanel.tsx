@@ -16,7 +16,8 @@ import {
 	getArtQualityCandidates,
 	getMaxaddsFromPotential,
 } from '@/views/calcs/builds/utils/artCalculations'
-import { BUILD_HIDDEN_STAT_KEYS } from '../hooks/itemStatsUtils'
+import { roundNumber } from '../model/components/hooks/buildStatsUtils'
+import { BUILD_HIDDEN_STAT_KEYS } from '../model/components/hooks/itemStatsUtils'
 
 type ArtifactStatsPanelProps = {
 	art: {
@@ -133,7 +134,8 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 												: undefined
 										}
 									>
-										{s.final}
+										{roundNumber(s.final)}
+										{s.isPercent ? '%' : ''}
 									</p>
 								</div>
 							)

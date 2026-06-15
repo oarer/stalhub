@@ -24,6 +24,7 @@ function AccumulationWarnings({
 	displayNamesMap: Record<string, string>
 }) {
 	const warnings: { name: string; value: number }[] = []
+	const t = useTranslations()
 
 	for (const [key, val] of Object.entries(statsMap)) {
 		if (!key.includes('accumulation')) continue
@@ -42,7 +43,7 @@ function AccumulationWarnings({
 		<div className="flex flex-col gap-1 border-border-secondary border-b pb-2 text-red-400">
 			{warnings.map(({ name }) => (
 				<p className="text-sm" key={name}>
-					{name} — будет наносить урон персонажу
+					{name} — {t('build.damaged')}
 				</p>
 			))}
 		</div>
