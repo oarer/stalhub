@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { memo } from 'react'
 import { Tabs } from '@/components/ui/Tabs'
 import { useBuildStats } from '@/views/calcs/builds/model/components/hooks/useBuildStats'
 import {
@@ -9,7 +10,7 @@ import {
 	StatsTabContent,
 } from '@/views/calcs/builds/model/components/stats'
 
-export default function StatsTabs() {
+export default memo(function StatsTabs() {
 	const {
 		sortedStats,
 		sortedContainerStats,
@@ -57,4 +58,4 @@ export default function StatsTabs() {
 			</Tabs.Content>
 		</Tabs.Root>
 	)
-}
+})

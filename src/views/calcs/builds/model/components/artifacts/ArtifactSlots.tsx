@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useMemo } from 'react'
 import { inter } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
@@ -35,16 +36,23 @@ export function ArtifactSlots({
 	setCopyMode,
 	copyMode,
 }: ArtifactSlotsProps) {
+	const artsMap = useMemo(
+		() => new Map(arts.map((a) => [a.instanceId, a])),
+		[arts]
+	)
+	const itemsMap = useMemo(
+		() => new Map(items.map((i) => [i.id, i])),
+		[items]
+	)
+
 	return (
 		<div className="z-1 flex w-full justify-between">
 			{slots.map((_, i) => {
 				const instanceId = slots[i]
 				const art = instanceId
-					? (arts.find((a) => a.instanceId === instanceId) ?? null)
+					? (artsMap.get(instanceId) ?? null)
 					: null
-				const item = art
-					? (items.find((it) => it.id === art.itemId) ?? null)
-					: null
+				const item = art ? (itemsMap.get(art.itemId) ?? null) : null
 
 				const isSelected = selectedSlot === i
 				const qualityClass = art?.qualityClass

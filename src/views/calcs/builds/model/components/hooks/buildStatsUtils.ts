@@ -166,16 +166,25 @@ export function buildAllStatKeys(
 		.sort()
 }
 
+function buildKeyToItemMap(allItems: Item[]): Map<string, Item> {
+	const map = new Map<string, Item>()
+	for (const item of allItems) {
+		for (const key of getItemKeys(item)) {
+			if (!map.has(key)) map.set(key, item)
+		}
+	}
+	return map
+}
+
 export function buildDisplayNamesMap(
 	allStatKeys: string[],
 	allItems: Item[],
 	locale: Locale
 ): Record<string, string> {
+	const keyToItem = buildKeyToItemMap(allItems)
 	const map: Record<string, string> = {}
 	for (const key of allStatKeys) {
-		const itemWithKey = allItems.find((item) => {
-			return getItemKeys(item).has(key)
-		})
+		const itemWithKey = keyToItem.get(key)
 		if (itemWithKey) {
 			map[key] = getDisplayName(itemWithKey, key, locale)
 		}

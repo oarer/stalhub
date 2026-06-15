@@ -1,52 +1,8 @@
 import type { Build } from '@/types/build.type'
-import type {
-	AddStatBlock,
-	ElementListBlock,
-	InfoElement,
-	Item,
-	Locale,
-	NumericElement,
-	NumericRangeElement,
-	NumericVariantsElement,
-} from '@/types/item.type'
-import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
-import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
-
-function getElementKey(el: InfoElement): string | null {
-	if ('name' in el && el.name?.type === 'translation') return el.name.key
-	return null
-}
-
-function getNumericValue(item: Item, key: string, numericVariants = 0): number {
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list' && block.type !== 'addStat') continue
-		const elements = (block as ElementListBlock | AddStatBlock).elements
-		if (!Array.isArray(elements)) continue
-		for (const el of elements) {
-			if (!el) continue
-			if (getElementKey(el) !== key) continue
-			if (el.type === 'numeric')
-				return Number((el as NumericElement).value ?? 0)
-			if (el.type === 'range') {
-				const r = el as NumericRangeElement
-				return (
-					Number(r.min ?? 0) +
-					(Number(r.max ?? 0) - Number(r.min ?? 0)) *
-						(numericVariants / 15)
-				)
-			}
-			if (el.type === 'numericVariants') {
-				const vals = (el as NumericVariantsElement).value ?? []
-				return Number(
-					vals[
-						Math.min(Math.max(numericVariants, 0), vals.length - 1)
-					] ?? 0
-				)
-			}
-		}
-	}
-	return 0
-}
+import type { Item, Locale } from '@/types/item.type'
+import { getNumericValue } from '../model/components/hooks'
+import { parseItemStats } from './parseArtifact'
+import { computeArtifactStatsFromParsed } from './computeArtifactStats'
 
 const BULLET_KEY = 'stalker.artefact_properties.factor.bullet_dmg_factor'
 const HEALTH_KEY = 'stalker.artefact_properties.factor.health_bonus'

@@ -60,12 +60,25 @@ export function ArtifactSlotsLite({
 	const [containerPreviewId, setContainerPreviewId] = useState<string | null>(
 		currentContainerId
 	)
+	const containersMap = useMemo(
+		() => new Map(containers.map((it) => [it.id, it])),
+		[containers]
+	)
 	const selectedContainer = containerPreviewId
-		? (containers.find((it) => it.id === containerPreviewId) ?? null)
+		? (containersMap.get(containerPreviewId) ?? null)
 		: null
 	const currentContainer = currentContainerId
-		? (containers.find((it) => it.id === currentContainerId) ?? null)
+		? (containersMap.get(currentContainerId) ?? null)
 		: null
+
+	const artsMap = useMemo(
+		() => new Map(arts.map((a) => [a.instanceId, a])),
+		[arts]
+	)
+	const itemsMap = useMemo(
+		() => new Map(items.map((i) => [i.id, i])),
+		[items]
+	)
 
 	const parsedItemsMap = useMemo(() => {
 		const map = new Map<string, ReturnType<typeof parseItemStats>>()
@@ -179,12 +192,9 @@ export function ArtifactSlotsLite({
 			<div className="flex flex-col gap-2">
 				{slots.map((instanceId, i) => {
 					const art = instanceId
-						? (arts.find((a) => a.instanceId === instanceId) ??
-							null)
+						? (artsMap.get(instanceId) ?? null)
 						: null
-					const item = art
-						? (items.find((it) => it.id === art.itemId) ?? null)
-						: null
+					const item = art ? (itemsMap.get(art.itemId) ?? null) : null
 					return (
 						<ArtifactSlotRow
 							art={art}

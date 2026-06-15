@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { useCallback, useMemo } from 'react'
 import { Button } from '@/components/ui/Button'
 import DropdownMenu from '@/components/ui/DropDown'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -29,64 +30,70 @@ export default function BuildSelector() {
 		defaults.art.potential !== 0 ||
 		defaults.armor.level !== 0
 
-	const handleSelect = (key: string) => {
-		if (key === 'new') {
-			if (hasChanges) {
-				saveBuild('Новая сборка')
+	const handleSelect = useCallback(
+		(key: string) => {
+			if (key === 'new') {
+				if (hasChanges) {
+					saveBuild('Новая сборка')
+				}
+				resetBuild()
+			} else {
+				loadBuild(key)
 			}
-			resetBuild()
-		} else {
-			loadBuild(key)
-		}
-	}
-
-	const items: DropdownItem[] = [
-		...savedBuilds.map((saved) => ({
-			key: saved.id,
-			content: (
-				<div
-					className="flex w-full items-center justify-between"
-					onClick={() => handleSelect(saved.id)}
-				>
-					<p className="truncate font-semibold">{saved.name}</p>
-
-					<Button
-						className="rounded p-1 ring-transparent"
-						onClick={(e) => {
-							e.stopPropagation()
-							deleteBuild(saved.id)
-						}}
-						variant={'danger'}
-					>
-						<Icon className="size-4" icon="lucide:trash-2" />
-					</Button>
-				</div>
-			),
-		})),
-
-		...(savedBuilds.length
-			? [
-					{
-						key: 'divider',
-						divider: true,
-						content: null,
-					},
-				]
-			: []),
-
-		{
-			key: 'new',
-			content: (
-				<div
-					className="flex w-full items-center gap-2"
-					onClick={() => handleSelect('new')}
-				>
-					<Icon className="size-4" icon="lucide:plus" />
-					<p className="font-semibold">{t('build.new_build')}</p>
-				</div>
-			),
 		},
-	]
+		[hasChanges, saveBuild, resetBuild, loadBuild]
+	)
+
+	const items = useMemo<DropdownItem[]>(
+		() => [
+			...savedBuilds.map((saved) => ({
+				key: saved.id,
+				content: (
+					<div
+						className="flex w-full items-center justify-between"
+						onClick={() => handleSelect(saved.id)}
+					>
+						<p className="truncate font-semibold">{saved.name}</p>
+
+						<Button
+							className="rounded p-1 ring-transparent"
+							onClick={(e) => {
+								e.stopPropagation()
+								deleteBuild(saved.id)
+							}}
+							variant={'danger'}
+						>
+							<Icon className="size-4" icon="lucide:trash-2" />
+						</Button>
+					</div>
+				),
+			})),
+
+			...(savedBuilds.length
+				? [
+						{
+							key: 'divider',
+							divider: true,
+							content: null,
+						},
+					]
+				: []),
+
+			{
+				key: 'new',
+				content: (
+					<div
+						className="flex w-full items-center gap-2"
+						onClick={() => handleSelect('new')}
+					>
+						<Icon className="size-4" icon="lucide:plus" />
+						<p className="font-semibold">{t('build.new_build')}</p>
+					</div>
+				),
+			},
+		],
+		[savedBuilds, handleSelect, t, deleteBuild]
+	)
 
 	return (
 		<DropdownMenu

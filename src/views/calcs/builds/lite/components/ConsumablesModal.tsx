@@ -26,9 +26,12 @@ import { ItemPickerModal } from './ItemPickerModal'
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
 
 function getBoostsByCategory(items: Item[], category: BoostCategory): Item[] {
+	const catLower = category.toLowerCase()
 	return items.filter((item) => {
-		const searchIn = JSON.stringify(item.infoBlocks).toLowerCase()
-		return searchIn.includes(category.toLowerCase())
+		if (!item.infoBlocks) return false
+		return item.infoBlocks.some((block) =>
+			JSON.stringify(block).toLowerCase().includes(catLower)
+		)
 	})
 }
 

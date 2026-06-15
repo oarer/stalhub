@@ -33,16 +33,17 @@ export function getArtQualityCandidates(percent: number): string[] {
 const DEBUFF_MIN_PERCENT = 85
 const DEBUFF_CYCLE = 15
 
+const ART_QUALITY_TO_INDEX = Object.fromEntries(
+	Object.entries(qualityIndexToArtQuality).map(([k, v]) => [v, Number(k)])
+) as Record<string, number>
+
 export function resolveQualityIndex(q?: number | string): number {
 	if (q === undefined || q === null) return 0
 	if (typeof q === 'number') {
 		if (qualityPercentRanges[q]) return q
 		return 0
 	}
-	const artQualityToIndex = Object.fromEntries(
-		Object.entries(qualityIndexToArtQuality).map(([k, v]) => [v, Number(k)])
-	) as Record<string, number>
-	const idx = artQualityToIndex[q]
+	const idx = ART_QUALITY_TO_INDEX[q]
 	return typeof idx === 'number' ? idx : 0
 }
 

@@ -116,24 +116,18 @@ export function ItemsList({
 
 	// biome-ignore lint: useExhaustiveDependencies
 	const sortedItems = useMemo(() => {
-		let sorted = [...items].sort((a, b) => {
-			const aPriority = colorPriority[a.color as InfoColor] ?? 0
-			const bPriority = colorPriority[b.color as InfoColor] ?? 0
-
-			return bPriority - aPriority
-		})
-
-		if (showFavorites && favoriteType) {
-			sorted = sorted.sort((a, b) => {
+		return [...items].sort((a, b) => {
+			if (showFavorites && favoriteType) {
 				const aFav = isFavorite(favoriteType, a.id)
 				const bFav = isFavorite(favoriteType, b.id)
 				if (aFav && !bFav) return -1
 				if (!aFav && bFav) return 1
-				return 0
-			})
-		}
+			}
 
-		return sorted
+			const aPriority = colorPriority[a.color as InfoColor] ?? 0
+			const bPriority = colorPriority[b.color as InfoColor] ?? 0
+			return bPriority - aPriority
+		})
 	}, [items, showFavorites, favoriteType, isFavorite, favorites])
 
 	const virtualizer = useVirtualizer({

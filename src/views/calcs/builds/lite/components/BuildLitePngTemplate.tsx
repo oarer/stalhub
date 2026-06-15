@@ -1,7 +1,7 @@
 'use client'
 
 import type { useTranslations } from 'next-intl'
-import { forwardRef } from 'react'
+import { forwardRef, useMemo } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import {
@@ -51,6 +51,15 @@ export const BuildLitePngTemplate = forwardRef<
 	ref
 ) {
 	const { displayNamesMap, hps, prime, sortedStats } = useBuildStats()
+
+	const artsMap = useMemo(
+		() => new Map(build.arts.map((a) => [a.instanceId, a])),
+		[build.arts]
+	)
+	const itemsMap = useMemo(
+		() => new Map(items.map((i) => [i.id, i])),
+		[items]
+	)
 
 	const armorItem = build.armor
 		? (armorItems.find((item) => item.id === build.armor?.id) ?? null)
@@ -129,15 +138,10 @@ export const BuildLitePngTemplate = forwardRef<
 							{(build.container?.slots ?? []).map(
 								(instanceId, index) => {
 									const art = instanceId
-										? (build.arts.find(
-												(a) =>
-													a.instanceId === instanceId
-											) ?? null)
+										? (artsMap.get(instanceId) ?? null)
 										: null
 									const item = art
-										? (items.find(
-												(i) => i.id === art.itemId
-											) ?? null)
+										? (itemsMap.get(art.itemId) ?? null)
 										: null
 									const color =
 										art?.qualityClass !== undefined
