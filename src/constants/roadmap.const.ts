@@ -23,14 +23,14 @@ export const RoadmapItems: RoadmapItem[] = [
 		status: 'done',
 	},
 	{
-		date: '2026.05',
+		date: '2026.06',
 		title: 'ОБТ',
 		description:
 			'Открытое бета-тестирование. Подготовка к релизу, фикс багов, обновление инфраструктуры.',
 		status: 'in-progress',
 	},
 	{
-		date: '2026.06',
+		date: '2026.07',
 		title: 'Релиз проекта',
 		description:
 			'Полноценный запуск проекта и дальнейшая поддержка проекта.',

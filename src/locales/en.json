@@ -215,6 +215,18 @@
 		"ART_QUALITY_LEGENDARY": "Legendary",
 		"ART_QUALITY_UNIQUE": "Unique"
 	},
+	"barter": {
+		"currency": "Currency",
+		"discount": "Discount",
+		"currency_options": {
+			"barter": "Barter",
+			"barter_coins": "Barter Coins",
+			"crimson_shell": "Crimson Shell"
+		},
+		"discount_options": {
+			"none": "No discount"
+		}
+	},
 	"ui": {
 		"combobox": {
 			"default": {

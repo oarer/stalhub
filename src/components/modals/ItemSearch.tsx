@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -46,15 +47,16 @@ const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
 })
 
 export default function ItemSearchModal() {
+	const t = useTranslations()
+
 	const [query, setQuery] = useState('')
 	const [visibleCount, setVisibleCount] = useState(PAGE_STEP)
 
 	const debouncedQuery = useDebounce(query, 150)
 	const locale = getLocale()
-	const { filteredItems, loading, error } = usePreparedSearch(
-		debouncedQuery,
-		{ locale }
-	)
+	const { filteredItems, loading } = usePreparedSearch(debouncedQuery, {
+		locale,
+	})
 
 	const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)
@@ -67,7 +69,6 @@ export default function ItemSearchModal() {
 	)
 
 	if (loading) return <Skeleton className="size-8" />
-	if (error) return <div className="p-4">Ошибка: {String(error)}</div>
 
 	return (
 		<Modal.Root>
@@ -77,21 +78,21 @@ export default function ItemSearchModal() {
 
 			<Modal.Content className="max-w-2xl">
 				<Modal.Header>
-					<Modal.Title>Поиск предмета</Modal.Title>
+					<Modal.Title>{t('modals.search.title')}</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body className="grid gap-4">
 					<Input
 						className="p-2"
+						label="modals.search.label"
 						onChange={onChange}
-						placeholder="Введите название предмета"
 						type="text"
 						value={query}
 					/>
 
 					{displayed.length === 0 && (
-						<p className="text-center text-gray-500">
-							Ничего не найдено
+						<p className="text-center font-semibold text-text-accent">
+							{t('modals.search.not_found')}
 						</p>
 					)}
 
@@ -109,7 +110,9 @@ export default function ItemSearchModal() {
 							}
 							variant={'ghost'}
 						>
-							<p className="font-semibold">Показать ещё</p>
+							<p className="font-semibold">
+								{t('modals.search.more')}
+							</p>
 						</Button>
 					)}
 				</Modal.Body>

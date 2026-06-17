@@ -37,7 +37,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	const { data } = useSuspenseQuery(itemQueries.byGithubUrl(githubUrl))
 
 	const { data: auctionHistory } = useSuspenseQuery(
-		auctionQueries.history({ id, limit: 20 })
+		auctionQueries.history({ id, limit: 75 })
 	)
 	const { data: auctionCurrent } = useSuspenseQuery(
 		auctionQueries.lots({ id, limit: 50 })

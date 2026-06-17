@@ -356,6 +356,12 @@
 				"percent": "Процент",
 				"potential": "Потенциал"
 			}
+		},
+		"search": {
+			"title": "Поиск предмета",
+			"label": "Введите название предмета",
+			"not_found": "Ничего не найдено",
+			"more": "Показать ещё"
 		}
 	},
 	"boost": {
@@ -482,7 +488,17 @@
 		"base": "Базы для бартера",
 		"recipe": "Рецепт {number}",
 		"money": "Стоимость",
-		"used_in": "Используется в"
+		"used_in": "Используется в",
+		"currency": "Валюта",
+		"discount": "Скидка",
+		"currency_options": {
+			"barter": "Бартер",
+			"barter_coins": "Обменные монеты",
+			"crimson_shell": "Гильзы"
+		},
+		"discount_options": {
+			"none": "Без скидки"
+		}
 	},
 	"about": {
 		"contacts_title": "Контакты",

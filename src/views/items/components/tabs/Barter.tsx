@@ -5,8 +5,9 @@ import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
 import { Divider } from '@/components/ui/Divider'
+import { BarterCoins, CrimsonShell } from '@/constants/barter.const'
 import { getLocale } from '@/lib/getLocale'
-import type { BarterResponse } from '@/types/barter.type'
+import type { BarterItemResult, BarterResponse } from '@/types/barter.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
@@ -14,14 +15,53 @@ type Props = {
 	data: BarterResponse
 }
 
+type CurrencyType = 'barter' | 'barter_coins' | 'crimson_shell'
+
+const DISCOUNTS = [0, 10, 15, 20, 25, 50, 75, 99]
+
 export default function Barter({ data }: Props) {
 	const t = useTranslations()
 
 	const locale = getLocale()
 	const [selectedRecipe, setSelectedRecipe] = useState(0)
+	const [selectedCurrency, setSelectedCurrency] =
+		useState<CurrencyType>('barter')
+	const [selectedDiscount, setSelectedDiscount] = useState(0)
 
 	const recipes = data.recipes ?? []
 	const hasMultipleRecipes = recipes.length > 1
+
+	const currencyOptions: { label: string; value: CurrencyType }[] = [
+		{ label: 'barter.currency_options.barter', value: 'barter' },
+		{
+			label: 'barter.currency_options.barter_coins',
+			value: 'barter_coins',
+		},
+		{
+			label: 'barter.currency_options.crimson_shell',
+			value: 'crimson_shell',
+		},
+	]
+
+	const discountOptions = DISCOUNTS.map((d) => ({
+		label: d === 0 ? 'barter.discount_options.none' : `${d}%`,
+		value: String(d),
+	}))
+
+	const getAmount = (item: BarterItemResult) => {
+		const itemId = item.category.split('/').pop() ?? ''
+		let amount = item.amount
+		if (selectedCurrency === 'barter_coins') {
+			amount *= BarterCoins[itemId] ?? 1
+		} else if (selectedCurrency === 'crimson_shell') {
+			amount *= CrimsonShell[itemId] ?? 1
+		}
+		if (selectedDiscount > 0) {
+			amount *= (100 - selectedDiscount) / 100
+			amount = Math.ceil(amount)
+		}
+		return amount
+	}
 
 	return (
 		<Card.Root className="space-y-3">
@@ -90,7 +130,12 @@ export default function Barter({ data }: Props) {
 									<p className="font-mono font-semibold text-sm">
 										{t('barter.money')}:{' '}
 										{Number(
-											recipes[selectedRecipe]?.money ?? 0
+											Math.ceil(
+												(recipes[selectedRecipe]
+													?.money ?? 0) *
+													((100 - selectedDiscount) /
+														100)
+											)
 										).toLocaleString('en-US', {
 											minimumFractionDigits: 0,
 											maximumFractionDigits: 2,
@@ -99,40 +144,97 @@ export default function Barter({ data }: Props) {
 									</p>
 								</div>
 
+								<div className="flex flex-wrap items-center gap-3">
+									<div className="w-40">
+										<Combobox
+											onValueChange={(value) =>
+												setSelectedCurrency(
+													value as CurrencyType
+												)
+											}
+											options={currencyOptions}
+											placeholder="barter.currency"
+											value={selectedCurrency}
+										/>
+									</div>
+									<div className="w-32">
+										<Combobox
+											onValueChange={(value) =>
+												setSelectedDiscount(
+													Number(value)
+												)
+											}
+											options={discountOptions}
+											placeholder="barter.discount"
+											value={String(selectedDiscount)}
+										/>
+									</div>
+								</div>
+
 								<div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
 									{recipes[selectedRecipe].items.map(
-										(item, itemIndex) => (
-											<Link
-												className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
-												href={`/items${item.category}`}
-												key={`${item.category}-${itemIndex}`}
-											>
-												<Image
-													alt={messageToString(
-														item.lines,
-														locale
-													)}
-													// пиздец анимки смешные
-													className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
-													height={52}
-													src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
-													width={52}
-												/>
-												<Divider />
-												<p
-													className="font-mono text-xs"
-													style={{
-														color:
-															infoColorMap[
-																item?.color as InfoColor
-															] ||
-															InfoColor.DEFAULT,
-													}}
+										(item, itemIndex) => {
+											const amount = getAmount(item)
+											return (
+												<Link
+													className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
+													href={`/items${item.category}`}
+													key={`${item.category}-${itemIndex}`}
 												>
-													{item.amount}x
-												</p>
-											</Link>
-										)
+													<Image
+														alt={messageToString(
+															item.lines,
+															locale
+														)}
+														className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
+														height={52}
+														src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
+														width={52}
+													/>
+													<Divider />
+													{item.amount > 1 ||
+													amount !== item.amount ? (
+														<p
+															className="font-mono text-xs"
+															style={{
+																color:
+																	infoColorMap[
+																		item?.color as InfoColor
+																	] ||
+																	InfoColor.DEFAULT,
+															}}
+														>
+															{Number(
+																amount
+															).toLocaleString(
+																'en-US',
+																{
+																	minimumFractionDigits: 0,
+																	maximumFractionDigits: 2,
+																}
+															)}
+															x
+														</p>
+													) : (
+														<p
+															className="truncate font-mono text-xs"
+															style={{
+																color:
+																	infoColorMap[
+																		item?.color as InfoColor
+																	] ||
+																	InfoColor.DEFAULT,
+															}}
+														>
+															{messageToString(
+																item.lines,
+																locale
+															)}
+														</p>
+													)}
+												</Link>
+											)
+										}
 									)}
 								</div>
 							</div>
