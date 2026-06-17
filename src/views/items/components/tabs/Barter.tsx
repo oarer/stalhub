@@ -11,6 +11,8 @@ import type { BarterItemResult, BarterResponse } from '@/types/barter.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
+// ! TODO REWRITE
+
 type Props = {
 	data: BarterResponse
 }
