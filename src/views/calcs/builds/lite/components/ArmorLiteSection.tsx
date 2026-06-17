@@ -46,6 +46,8 @@ export function ArmorLiteSection({
 						alt="armor placeholder"
 						className="object-contain"
 						fill
+      priority
+      fetchPriority="high"
 						src="/images/other/armor_placeholder.png"
 					/>
 				</div>
