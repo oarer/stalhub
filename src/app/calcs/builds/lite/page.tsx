@@ -6,8 +6,10 @@ import BuildsLiteView from '@/views/calcs/builds/lite/BuildsLite'
 export default async function BuildsLitePage() {
 	const queryClient = getQueryClient()
 
-	await queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' }))
-	await queryClient.prefetchQuery(itemsQueries.get({ type: 'containers' }))
+	await Promise.all([
+  queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' })),
+  queryClient.prefetchQuery(itemsQueries.get({ type: 'containers' })),
+])
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
