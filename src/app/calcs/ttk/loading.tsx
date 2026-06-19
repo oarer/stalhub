@@ -8,36 +8,38 @@ export default function TTKLoading() {
 	return (
 		<section className="mx-auto max-w-7xl space-y-6 px-4 pt-42 pb-12 sm:px-6">
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-				<Card.Root>
-					<Card.Content className="flex flex-col gap-4">
-						<div className="flex items-center gap-2">
-							<Icon
-								className="text-lg"
-								icon="lucide:person-standing"
-							/>
-							<Skeleton className="h-6 w-24" />
-						</div>
-						<div className="flex flex-col gap-3">
-							<div className="flex flex-col gap-1.5">
-								<Skeleton className="h-4 w-20" />
+				<div className='flex flex-col gap-4'>
+					<div className="flex items-center gap-2">
+						<Icon
+							className="text-lg"
+							icon="lucide:person-standing"
+						/>
+						<Skeleton className="h-6 w-24" />
+					</div>
+					<Card.Root>
+						<Card.Content className="flex flex-col gap-4">
+							<div className="flex flex-col gap-3">
+								<div className="flex flex-col gap-1.5">
+									<Skeleton className="h-4 w-20" />
+									<Skeleton className="h-10 w-full" />
+								</div>
+								<div className="flex flex-col gap-1.5">
+									<Skeleton className="h-4 w-16" />
+									<Skeleton className="h-10 w-full" />
+								</div>
+								<div className="flex flex-col gap-1.5">
+									<Skeleton className="h-4 w-12" />
+									<Skeleton className="h-10 w-full" />
+								</div>
+								<div className="flex flex-col gap-1.5">
+									<Skeleton className="h-4 w-16" />
+									<Skeleton className="h-10 w-full" />
+								</div>
 								<Skeleton className="h-10 w-full" />
 							</div>
-							<div className="flex flex-col gap-1.5">
-								<Skeleton className="h-4 w-16" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-							<div className="flex flex-col gap-1.5">
-								<Skeleton className="h-4 w-12" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-							<div className="flex flex-col gap-1.5">
-								<Skeleton className="h-4 w-16" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-							<Skeleton className="h-10 w-full" />
-						</div>
-					</Card.Content>
-				</Card.Root>
+						</Card.Content>
+					</Card.Root>
+				</div>
 
 				<div className="flex flex-col gap-4">
 					<div className="flex items-center gap-2">
