@@ -101,7 +101,10 @@ export function TTKView() {
 	const getCompatibleAmmoCached = (typeKey: string) =>
 		ammoByType.get(typeKey) ?? []
 
-	const selectedPlate = platesQuery.data.find((p) => p.id === plateId) ?? null
+	const selectedPlate = useMemo(
+		() => platesQuery.data.find((p) => p.id === plateId) ?? null,
+		[platesQuery.data, plateId]
+	)
 
 	const prime = useMemo(() => {
 		if (buildId) {
@@ -132,17 +135,25 @@ export function TTKView() {
 	const updateSlot = (id: string, patch: Partial<WeaponSlot>) =>
 		setSlots(slots.map((s) => (s.id === id ? { ...s, ...patch } : s)))
 
-	const activeSlots = slots.filter((s) => s.weaponId)
-	const focusedSlot =
-		slots.find((s) => s.id === focusedSlotId && s.weaponId) ??
-		activeSlots[0] ??
-		null
-	const focusedWeapon = focusedSlot
-		? (weaponMap.get(focusedSlot.weaponId) ?? null)
-		: null
-	const focusedAmmo = focusedSlot
-		? (ammoMap.get(focusedSlot.ammoId) ?? null)
-		: null
+	const activeSlots = useMemo(
+		() => slots.filter((s) => s.weaponId),
+		[slots]
+	)
+	const focusedSlot = useMemo(
+		() =>
+			slots.find((s) => s.id === focusedSlotId && s.weaponId) ??
+			activeSlots[0] ??
+			null,
+		[slots, focusedSlotId, activeSlots]
+	)
+	const focusedWeapon = useMemo(
+		() => (focusedSlot ? (weaponMap.get(focusedSlot.weaponId) ?? null) : null),
+		[focusedSlot, weaponMap]
+	)
+	const focusedAmmo = useMemo(
+		() => (focusedSlot ? (ammoMap.get(focusedSlot.ammoId) ?? null) : null),
+		[focusedSlot, ammoMap]
+	)
 	const weaponOptions = useMemo(
 		() => weapons.filter((w) => getDamageBlock(w) !== null),
 		[weapons]
@@ -151,7 +162,10 @@ export function TTKView() {
 	const focusedItemColor =
 		infoColorMap[focusedWeapon?.color as InfoColor] || InfoColor.DEFAULT
 
-	const plate = hitZone === 'body' ? selectedPlate : null
+	const plate = useMemo(
+		() => (hitZone === 'body' ? selectedPlate : null),
+		[hitZone, selectedPlate]
+	)
 
 	const ttkSeries: TTKSeries[] = useMemo(
 		() =>

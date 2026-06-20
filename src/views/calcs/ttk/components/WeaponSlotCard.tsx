@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { type CSSProperties, useState } from 'react'
+import { type CSSProperties, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -50,18 +50,32 @@ export function WeaponSlotCard({
 	const [showAmmoModal, setShowAmmoModal] = useState(false)
 	const [ammoPreviewId, setAmmoPreviewId] = useState<string | null>(null)
 
-	const ammoTypeKey = weapon ? getAmmoType(weapon) : ''
-	const compatibleAmmo = weapon ? getCompatibleAmmo(allAmmo, ammoTypeKey) : []
+	const ammoTypeKey = useMemo(
+		() => (weapon ? getAmmoType(weapon) : ''),
+		[weapon]
+	)
+	const compatibleAmmo = useMemo(
+		() => (weapon ? getCompatibleAmmo(allAmmo, ammoTypeKey) : []),
+		[weapon, allAmmo, ammoTypeKey]
+	)
 
 	const locale = getLocale()
 	const t = useTranslations()
 
-	const weaponIconUrl = weapon
-		? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${weapon.category}/${weapon.id}.png`
-		: null
-	const ammoIconUrl = ammo
-		? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/bullet/${ammo.id}.png`
-		: null
+	const weaponIconUrl = useMemo(
+		() =>
+			weapon
+				? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${weapon.category}/${weapon.id}.png`
+				: null,
+		[weapon]
+	)
+	const ammoIconUrl = useMemo(
+		() =>
+			ammo
+				? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/bullet/${ammo.id}.png`
+				: null,
+		[ammo]
+	)
 
 	return (
 		<>

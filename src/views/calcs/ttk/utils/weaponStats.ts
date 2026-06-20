@@ -7,7 +7,21 @@ import type {
 import type { TTKSeries } from '../components/TTKChart'
 import { CUSTOM_ROF_MAP, HitZone } from '../constants/ttk'
 
+const _dmgBlockCache = new Map<string, DamageDistanceInfoBlock | null>()
+const _dmgVariantCache = new Map<string, number[]>()
+const _dmgModsCache = new Map<string, { head: number; limbs: number }>()
+const _numericCache = new Map<string, number>()
+const _ammoTypeCache = new Map<string, string>()
+const _ammoDmgCache = new Map<string, number>()
+const _ammoPenCache = new Map<string, number>()
+const _plateAbsorbCache = new Map<string, number>()
+const _plateMaxDurCache = new Map<string, number>()
+
 export function getNumericStat(item: Item, key: string): number {
+	const ck = `${item.id}:${key}`
+	const cached = _numericCache.get(ck)
+	if (cached !== undefined) return cached
+
 	for (const block of item.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -17,34 +31,45 @@ export function getNumericStat(item: Item, key: string): number {
 				el.name?.type === 'translation' &&
 				el.name.key === key
 			) {
-				return el.value ?? 0
+				const v = el.value ?? 0
+				_numericCache.set(ck, v)
+				return v
 			}
 		}
 	}
 
+	_numericCache.set(ck, 0)
 	return 0
 }
 
 export function getDamageVariant(item: Item, variantIndex: number): number {
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
+	let values = _dmgVariantCache.get(item.id)
+	if (values === undefined) {
+		for (const block of item.infoBlocks) {
+			if (block.type !== 'list') continue
 
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'numericVariants' &&
-				el.name?.type === 'translation' &&
-				el.name.key === 'core.tooltip.stat_name.damage_type.direct'
-			) {
-				const values = el.value ?? []
-				if (!values.length) return 0
-
-				const idx = Math.min(Math.max(variantIndex, 0), values.length - 1)
-				return values[idx] ?? 0
+			for (const el of (block as ElementListBlock).elements ?? []) {
+				if (
+					el.type === 'numericVariants' &&
+					el.name?.type === 'translation' &&
+					el.name.key === 'core.tooltip.stat_name.damage_type.direct'
+				) {
+					values = el.value ?? []
+					_dmgVariantCache.set(item.id, values)
+					break
+				}
 			}
+			if (values !== undefined) break
+		}
+		if (values === undefined) {
+			values = []
+			_dmgVariantCache.set(item.id, values)
 		}
 	}
 
-	return 0
+	if (!values.length) return 0
+	const idx = Math.min(Math.max(variantIndex, 0), values.length - 1)
+	return values[idx] ?? 0
 }
 
 export function getDamageBlock(
@@ -52,10 +77,18 @@ export function getDamageBlock(
 ): DamageDistanceInfoBlock | null {
 	if (!item) return null
 
+	const cached = _dmgBlockCache.get(item.id)
+	if (cached !== undefined) return cached
+
 	for (const block of item.infoBlocks) {
-		if (block.type === 'damage') return block as DamageDistanceInfoBlock
+		if (block.type === 'damage') {
+			const r = block as DamageDistanceInfoBlock
+			_dmgBlockCache.set(item.id, r)
+			return r
+		}
 	}
 
+	_dmgBlockCache.set(item.id, null)
 	return null
 }
 
@@ -63,6 +96,9 @@ export function getDamageModifiers(item: Item): {
 	head: number
 	limbs: number
 } {
+	const cached = _dmgModsCache.get(item.id)
+	if (cached !== undefined) return cached
+
 	for (const block of item.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -90,14 +126,21 @@ export function getDamageModifiers(item: Item): {
 				}
 			}
 
-			return { head, limbs }
+			const r = { head, limbs }
+			_dmgModsCache.set(item.id, r)
+			return r
 		}
 	}
 
-	return { head: 1.4, limbs: 0.8 }
+	const r = { head: 1.4, limbs: 0.8 }
+	_dmgModsCache.set(item.id, r)
+	return r
 }
 
 export function getAmmoType(item: Item): string {
+	const cached = _ammoTypeCache.get(item.id)
+	if (cached !== undefined) return cached
+
 	for (const block of item.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -107,15 +150,21 @@ export function getAmmoType(item: Item): string {
 				el.key?.type === 'translation' &&
 				el.key.key === 'weapon.tooltip.weapon.info.ammo_type'
 			) {
-				return el.value?.type === 'translation' ? el.value.key : ''
+				const v = el.value?.type === 'translation' ? el.value.key : ''
+				_ammoTypeCache.set(item.id, v)
+				return v
 			}
 		}
 	}
 
+	_ammoTypeCache.set(item.id, '')
 	return ''
 }
 
 export function getAmmoDamageBonus(ammo: Item): number {
+	const cached = _ammoDmgCache.get(ammo.id)
+	if (cached !== undefined) return cached
+
 	for (const block of ammo.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -125,11 +174,14 @@ export function getAmmoDamageBonus(ammo: Item): number {
 				el.name?.type === 'translation' &&
 				el.name.key === 'weapon.tooltip.bullet.stat_name.damage'
 			) {
-				return el.value ?? 0
+				const v = el.value ?? 0
+				_ammoDmgCache.set(ammo.id, v)
+				return v
 			}
 		}
 	}
 
+	_ammoDmgCache.set(ammo.id, 0)
 	return 0
 }
 
@@ -186,6 +238,9 @@ export function getCompatibleAmmo(
 }
 
 export function getAmmoPenetration(ammo: Item): number {
+	const cached = _ammoPenCache.get(ammo.id)
+	if (cached !== undefined) return cached
+
 	for (const block of ammo.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -195,15 +250,21 @@ export function getAmmoPenetration(ammo: Item): number {
 				el.name?.type === 'translation' &&
 				el.name.key === 'weapon.tooltip.bullet.stat_name.armor_penetration'
 			) {
-				return el.value ?? 0
+				const v = el.value ?? 0
+				_ammoPenCache.set(ammo.id, v)
+				return v
 			}
 		}
 	}
 
+	_ammoPenCache.set(ammo.id, 0)
 	return 0
 }
 
 export function getPlateDamageAbsorption(plate: Item): number {
+	const cached = _plateAbsorbCache.get(plate.id)
+	if (cached !== undefined) return cached
+
 	for (const block of plate.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -213,15 +274,21 @@ export function getPlateDamageAbsorption(plate: Item): number {
 				el.name?.type === 'translation' &&
 				el.name.key === 'stalker.tooltip.armor_plate.stat_name.damage_absorption'
 			) {
-				return el.value ?? 0
+				const v = el.value ?? 0
+				_plateAbsorbCache.set(plate.id, v)
+				return v
 			}
 		}
 	}
 
+	_plateAbsorbCache.set(plate.id, 0)
 	return 0
 }
 
 export function getPlateMaxDurability(plate: Item): number {
+	const cached = _plateMaxDurCache.get(plate.id)
+	if (cached !== undefined) return cached
+
 	for (const block of plate.infoBlocks) {
 		if (block.type !== 'list') continue
 
@@ -231,11 +298,14 @@ export function getPlateMaxDurability(plate: Item): number {
 				el.name?.type === 'translation' &&
 				el.name.key === 'stalker.tooltip.armor_plate.stat_name.armor'
 			) {
-				return el.value ?? 0
+				const v = el.value ?? 0
+				_plateMaxDurCache.set(plate.id, v)
+				return v
 			}
 		}
 	}
 
+	_plateMaxDurCache.set(plate.id, 0)
 	return 0
 }
 
@@ -298,6 +368,28 @@ export function getReloadTime(weapon: Item, shots: number): number {
 	return reloads * reloadTime
 }
 
+function getShotsToKillWithPlate(
+	hp: number,
+	dmgPlated: number,
+	dmgNaked: number,
+	drainPerShot: number,
+	durability: number,
+): number {
+	if (dmgPlated <= 0) return 0
+
+	const shotsToBreak = durability > 0 ? Math.ceil(durability / drainPerShot) : 0
+	const dmgBeforeBreak = shotsToBreak * dmgPlated
+
+	if (dmgBeforeBreak >= hp) {
+		return Math.ceil(hp / dmgPlated)
+	}
+
+	if (dmgNaked <= 0) return 0
+
+	const remaining = hp - dmgBeforeBreak
+	return shotsToBreak + Math.ceil(remaining / dmgNaked)
+}
+
 export function calcTTKAtDist(
 	weapon: Item,
 	ammo: Item | null,
@@ -338,20 +430,9 @@ export function calcTTKAtDist(
 
 	const absorption = getPlateDamageAbsorption(plate)
 	const drainPerShot = dmgNaked * (absorption / 100)
+	const durability = plateDurability ?? getPlateMaxDurability(plate)
 
-	let durability = plateDurability ?? getPlateMaxDurability(plate)
-	let remainingHp = hp
-	let shots = 0
-
-	while (remainingHp > 0) {
-		const dmg = durability > 0 ? dmgPlated : dmgNaked
-
-		remainingHp -= dmg
-		durability -= drainPerShot
-		shots++
-
-		if (shots > 10000) break
-	}
+	const shots = getShotsToKillWithPlate(hp, dmgPlated, dmgNaked, drainPerShot, durability)
 
 	return (shots - 1) * shotInterval + getReloadTime(weapon, shots)
 }

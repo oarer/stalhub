@@ -30,19 +30,20 @@ function interpolateY(
 ): number | null {
 	if (points.length === 0) return null
 
-	const sorted = [...points].sort((a, b) => a.x - b.x)
+	const first = points[0]
+	const last = points[points.length - 1]
 
-	if (targetX < sorted[0].x || targetX > sorted[sorted.length - 1].x) {
+	if (targetX < first.x || targetX > last.x) {
 		return null
 	}
 
-	const exact = sorted.find((p) => p.x === targetX)
-	if (exact) return exact.y
+	if (first.x === targetX) return first.y
+	if (last.x === targetX) return last.y
 
-	for (let i = 0; i < sorted.length - 1; i++) {
-		if (sorted[i].x <= targetX && sorted[i + 1].x >= targetX) {
-			const lower = sorted[i]
-			const upper = sorted[i + 1]
+	for (let i = 0; i < points.length - 1; i++) {
+		if (points[i].x <= targetX && points[i + 1].x >= targetX) {
+			const lower = points[i]
+			const upper = points[i + 1]
 			const ratio = (targetX - lower.x) / (upper.x - lower.x)
 			return lower.y + ratio * (upper.y - lower.y)
 		}
@@ -103,24 +104,36 @@ export function TTKChart({
 	maxDist: number
 }) {
 	const chartData = useMemo(() => {
+		if (!series.length) return []
+
 		const allXValues = new Set<number>()
-		series.forEach((s) => s.points.forEach((p) => allXValues.add(p.x)))
+		for (const s of series) {
+			for (const p of s.points) {
+				allXValues.add(p.x)
+			}
+		}
 		const sortedX = Array.from(allXValues).sort((a, b) => a - b)
+
+		const bounds = series.map((s) => {
+			const pts = s.points
+			return {
+				minX: pts.length > 0 ? pts[0].x : 0,
+				maxX: pts.length > 0 ? pts[pts.length - 1].x : 0,
+			}
+		})
 
 		return sortedX.map((x) => {
 			const point: Record<string, number | undefined> = { x }
-			series.forEach((s) => {
-				const sorted = [...s.points].sort((a, b) => a.x - b.x)
-				const minX = sorted[0]?.x ?? 0
-				const maxX = sorted[sorted.length - 1]?.x ?? 0
-
-				if (x >= minX && x <= maxX) {
+			for (let i = 0; i < series.length; i++) {
+				const s = series[i]
+				const b = bounds[i]
+				if (x >= b.minX && x <= b.maxX) {
 					const value = interpolateY(s.points, x)
 					if (value !== null) {
 						point[s.label] = value
 					}
 				}
-			})
+			}
 			return point
 		})
 	}, [series])
