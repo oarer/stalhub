@@ -21,7 +21,7 @@ import { TTKChart } from './components/TTKChart'
 import { TTKSummaryTable } from './components/TTKSummaryTable'
 import { WeaponSlotCard } from './components/WeaponSlotCard'
 import { WeaponStatsPanel } from './components/WeaponStatsPanel'
-import { COLORS, HIT_ZONES } from './constants/ttk'
+import { COLORS, CUSTOM_ROF_MAP, HIT_ZONES } from './constants/ttk'
 import {
 	buildSeries,
 	getAmmoType,
@@ -199,7 +199,6 @@ export function TTKView() {
 						0,
 						s.variantIndex,
 						plate,
-						plateDurability
 					)
 					const block = getDamageBlock(weapon)
 					const dmgMax = block
@@ -210,10 +209,9 @@ export function TTKView() {
 								block.maxDistance,
 								s.variantIndex,
 								plate,
-								plateDurability
 							)
 						: dmg0
-					const rofVal = getNumericStat(
+					const rofVal = CUSTOM_ROF_MAP[weapon.id] ?? getNumericStat(
 						weapon,
 						'weapon.tooltip.weapon.info.rate_of_fire'
 					)

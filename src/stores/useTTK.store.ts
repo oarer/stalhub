@@ -1,3 +1,4 @@
+import { HitZone } from '@/views/calcs/ttk/constants/ttk'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -12,7 +13,7 @@ interface TTKState {
 	slots: WeaponSlot[]
 	bulletRes: number
 	vitality: number
-	hitZone: 'body' | 'head' | 'limbs'
+	hitZone: HitZone
 	focusedSlotId: string | null
 	plateId: string
 	plateDurability: number
@@ -21,7 +22,7 @@ interface TTKState {
 	setSlots: (slots: WeaponSlot[]) => void
 	setBulletRes: (v: number) => void
 	setVitality: (v: number) => void
-	setHitZone: (v: 'body' | 'head' | 'limbs') => void
+	setHitZone: (v: HitZone) => void
 	setFocusedSlotId: (id: string | null) => void
 	setPlateId: (id: string) => void
 	setPlateDurability: (v: number) => void

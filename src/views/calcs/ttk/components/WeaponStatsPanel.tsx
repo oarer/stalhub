@@ -4,7 +4,7 @@ import { Divider } from '@/components/ui/Divider'
 import { getLocale } from '@/lib/getLocale'
 import type { AddStatBlock, ElementListBlock, Item } from '@/types/item.type'
 import { ListBlock } from '@/views/items/components/blocks'
-import { getWeaponStats, type HitZone } from '../constants/ttk'
+import { CUSTOM_ROF_MAP, getWeaponStats, type HitZone } from '../constants/ttk'
 import { getDmgPerShot, getNumericStat } from '../utils/weaponStats'
 
 interface WeaponStatsPanelProps {
@@ -23,7 +23,7 @@ export function WeaponStatsPanel({
 	prime,
 }: WeaponStatsPanelProps) {
 	const dmg0 = getDmgPerShot(weapon, ammo, hitZone, 0, variantIndex)
-	const rof = getNumericStat(
+	const rof = CUSTOM_ROF_MAP[weapon.id] ?? getNumericStat(
 		weapon,
 		'weapon.tooltip.weapon.info.rate_of_fire'
 	)

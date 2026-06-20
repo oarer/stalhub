@@ -11,6 +11,12 @@ export const COLORS = [
 
 export type HitZone = 'body' | 'head' | 'limbs'
 
+export const CUSTOM_ROF_MAP: Record<string, number> = {
+	'y37kw': 1200,
+	'96mn0': 1200,
+	'3grwz': 1200
+}
+
 export const HIT_ZONES: { value: HitZone; label: string }[] = [
 	{ value: 'head', label: 'Голова' },
 	{ value: 'body', label: 'Тело' },

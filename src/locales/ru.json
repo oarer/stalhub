@@ -449,7 +449,7 @@
 			"prime": "Приведёнка",
 			"combobox": {
 				"build": {
-					"placeholder": "— вручную —",
+					"placeholder": "— не выбрано —",
 					"search_placeholder": "Поиск сборки..."
 				},
 				"plate": {
