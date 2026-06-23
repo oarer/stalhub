@@ -208,7 +208,8 @@ export const DropDownLinks = (): DropdownMenuGroup[] => {
 }
 
 export const DropDownMobile = (
-	t: ReturnType<typeof useTranslations>
+	t: ReturnType<typeof useTranslations>,
+	onNavigate?: () => void
 ): AccordionItem[] =>
 	NAV_STRUCTURE.map((group) => ({
 		key: group.key,
@@ -221,6 +222,7 @@ export const DropDownMobile = (
 						className="flex items-center justify-start gap-3 px-2 py-1"
 						href={item.href ?? '#'}
 						key={item.key}
+						onClick={onNavigate}
 					>
 						<Icon className="text-xl" icon={item.icon} />
 						<p>{t(item.labelKey)}</p>

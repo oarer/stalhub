@@ -22,7 +22,10 @@ export default function NavMobile() {
 
 	const t = useTranslations()
 
-	const dropdownItems = useMemo(() => DropDownMobile(t), [t])
+	const dropdownItems = useMemo(
+		() => DropDownMobile(t, () => setIsMenuOpen(false)),
+		[t]
+	)
 
 	useClickOutside(menuRef, () => setIsMenuOpen(false), buttonRef)
 
@@ -115,9 +118,8 @@ export default function NavMobile() {
 				type="button"
 			>
 				<div
-					className={`absolute transition-opacity duration-300 ${
-						isMenuOpen ? 'opacity-0' : 'opacity-100'
-					}`}
+					className={`absolute transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
+						}`}
 				>
 					<Icon
 						className="text-2xl text-black dark:text-white"
@@ -126,9 +128,8 @@ export default function NavMobile() {
 				</div>
 
 				<div
-					className={`absolute transition-opacity duration-300 ${
-						isMenuOpen ? 'opacity-100' : 'opacity-0'
-					}`}
+					className={`absolute transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0'
+						}`}
 				>
 					<Icon
 						className="text-3xl text-black dark:text-white"
