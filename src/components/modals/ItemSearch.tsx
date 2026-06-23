@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { JSX, useCallback, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -17,13 +17,13 @@ import { Skeleton } from '../ui/Skeleton'
 
 const PAGE_STEP = 15
 
-const ItemCard = React.memo(function ItemCard({ item }: { item: ItemListing }) {
+const ItemCard = React.memo(function ItemCard({ item, close }: { item: ItemListing, close: () => void }) {
 	const locale = getLocale()
 	const name = item.name?.[locale] ?? item.data ?? '—'
 	const iconPath = `https://raw.githubusercontent.com/oarer/sc-db/main/merged${item.icon}`
 
 	return (
-		<Card.Link className="py-2" href={item.data.replace(/\.json$/, '')}>
+		<Card.Link onClick={close} className="py-2" href={item.data.replace(/\.json$/, '')}>
 			<Card.Header className="flex flex-row items-center gap-4">
 				<Card.Title>
 					<Image
@@ -50,6 +50,7 @@ export default function ItemSearchModal() {
 	const t = useTranslations()
 
 	const [query, setQuery] = useState('')
+	const [open, setOpen] = useState(false)
 	const [visibleCount, setVisibleCount] = useState(PAGE_STEP)
 
 	const debouncedQuery = useDebounce(query, 150)
@@ -63,6 +64,10 @@ export default function ItemSearchModal() {
 		setVisibleCount(PAGE_STEP)
 	}, [])
 
+	const handleClose = useCallback(() => {
+		setOpen(false)
+	}, [])
+
 	const displayed = useMemo(
 		() => filteredItems.slice(0, visibleCount),
 		[filteredItems, visibleCount]
@@ -71,7 +76,7 @@ export default function ItemSearchModal() {
 	if (loading) return <Skeleton className="size-8" />
 
 	return (
-		<Modal.Root>
+		<Modal.Root onOpenChange={setOpen} open={open}>
 			<Modal.Trigger className="rounded-full p-2" variant={'ghost'}>
 				<Icon className="text-lg" icon="lucide:search" />
 			</Modal.Trigger>
@@ -98,7 +103,7 @@ export default function ItemSearchModal() {
 
 					<ul className="mask-y-from-95% mask-y-to-100% flex max-h-96 flex-col gap-3 overflow-y-auto p-0.5">
 						{displayed.map((item) => (
-							<ItemCard item={item} key={item.key} />
+							<ItemCard close={handleClose} item={item} key={item.key} />
 						))}
 					</ul>
 
