@@ -57,7 +57,7 @@ export default function Hero() {
 				>
 					{t('landing.tools_for')}
 				</GradientText>
-				<span className="dark:text-neutral-100">StalCraft</span>
+				<span className="dark:text-neutral-100">StalZone</span>
 			</motion.h1>
 
 			<motion.p
@@ -66,7 +66,7 @@ export default function Hero() {
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.4 }}
 			>
-				{t('landing.need')} StalCraft
+				{t('landing.need')} StalZone
 			</motion.p>
 
 			<motion.div

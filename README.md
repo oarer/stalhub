@@ -23,7 +23,7 @@
 
 - Наш основной [сайт](https://stalhub.tech)
 - Backend исходники: [StalHub Backend](https://github.com/oarer/stalhub_backend)
-- Форк Stalcraft-database: [sc-db](https://github.com/oarer/sc-db)
+- Форк stalzone-database: [sc-db](https://github.com/oarer/sc-db)
 - Telegram-канал: [t.me/st4lhub](https://t.me/st4lhub)
 - Связь с владельцем: [t.me/oarer_yml](https://t.me/oarer_yml)
 

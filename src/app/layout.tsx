@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import '@/shared/styles/index.css'
@@ -8,25 +7,17 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { raleway } from '@/app/fonts'
-import meta from '@/constants/meta.json'
+import { getMetadataByPath } from '@/constants/meta'
 import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
 import Nav from '@/shared/layouts/nav/Nav'
 
-// thx AndcoolSystems <3
-export const generateMetadata = async (): Promise<Metadata | undefined> => {
+export const generateMetadata = async () => {
 	const headersList = await headers()
 	const path = headersList.get('X-Path')?.split('?')[0]
-	const object = meta as { [key: string]: unknown }
-	const base = meta.base
 
-	if (!path) return base
-
-	return {
-		...base,
-		...(object[path] as object),
-	}
+	return getMetadataByPath(path)
 }
 
 export default async function RootLayout({

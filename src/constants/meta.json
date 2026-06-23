@@ -1,88 +1,100 @@
 {
 	"base": {
-		"title": "StalHub — калькулятор TTK, сборки и гайды для Stalcraft",
-		"description": "Все необходимое для StalCraft в одном месте! Калькуляторы TTK и сборок, Арсенала и многое другое",
-		"icons": {
-			"icon": "/svg/dark/logo.svg",
-			"shortcut": "/svg/dark/logo.svg",
-			"apple": "/svg/dark/logo.svg"
-		},
-		"creator": "oarer",
-		"other": {
-			"darkreader-lock": "darkreader-lock"
-		},
-		"openGraph": {
-			"title": "StalHub — калькулятор TTK, сборки и гайды для Stalcraft",
-			"description": "Все необходимое для StalCraft в одном месте! Калькуляторы TTK и сборок, Арсенала и многое другое",
-			"images": [
-				{
-					"url": "https://stalhub.tech/images/og/banner.png",
-					"width": 1280,
-					"height": 620,
-					"alt": "Stalhub Banner"
-				}
-			],
-			"siteName": "stalhub.tech"
-		},
-		"twitter": {
-			"images": [
-				{
-					"url": "https://stalhub.tech/images/og/banner.png",
-					"width": 1280,
-					"height": 620,
-					"alt": "StalHub Banner"
-				}
-			],
-			"card": "summary_large_image"
-		}
+		"title": "StalHub — калькуляторы, сборки и гайды для StalZone",
+		"description": "Инструменты для StalZone (Stalcraft): калькуляторы TTK, сборок, Арсенала, оружия и полезные гайды.",
+		"keywords": [
+			"stalcraft",
+			"сталкрафт",
+			"stalzone",
+			"сталзон",
+			"сталкрафт калькулятор",
+			"stalcraft calculator",
+			"калькуляторы сталкрафт",
+			"stalcraft tools",
+			"сталкрафт гайды",
+			"stalcraft guide",
+			"сталкрафт сборки",
+			"stalcraft builds",
+			"stalcraft оружие",
+			"stalcraft оружие характеристики"
+		]
 	},
 	"/calcs": {
 		"title": "Калькуляторы · StalHub",
-		"description": "Страница с калькуляторами",
-		"openGraph": {
-			"title": "Калькуляторы · StalHub",
-			"description": "Страница с калькуляторами"
-		}
+		"description": "Калькуляторы для StalZone: TTK, сборки, Арсенал и другие игровые расчёты.",
+		"keywords": [
+			"сталкрафт калькулятор",
+			"stalcraft calculator",
+			"stalcraft calculators",
+			"калькуляторы stalzone",
+			"сталкрафт инструменты",
+			"stalcraft tools",
+			"игровые калькуляторы сталкрафт"
+		]
 	},
 	"/calcs/arsenal": {
 		"title": "Калькулятор Арсенала · StalHub",
-		"description": "Подсчитайте стоимость репутации Арсенала",
-		"openGraph": {
-			"title": "Калькулятор Арсенала · StalHub",
-			"description": "Подсчитайте стоимость репутации Арсенала"
-		}
+		"description": "Расчёт репутации и прогресса Арсенала в StalZone.",
+		"keywords": [
+			"сталкрафт арсенал",
+			"stalcraft arsenal",
+			"калькулятор арсенала сталкрафт",
+			"stalcraft arsenal calculator",
+			"репутация арсенала сталкрафт",
+			"арсенал сталзон"
+		]
 	},
 	"/calcs/builds": {
 		"title": "Калькулятор сборок · StalHub",
-		"description": "Создавайте сборки под свои нужды",
-		"openGraph": {
-			"title": "Калькулятор сборок · StalHub",
-			"description": "Создавайте сборки под свои нужды"
-		}
+		"description": "Создание и сравнение сборок персонажа для StalZone.",
+		"keywords": [
+			"сталкрафт сборки",
+			"stalcraft builds",
+			"сталкрафт билд",
+			"сталкрафт лучшие сборки",
+			"stalcraft build calculator",
+			"сборка сталкрафт"
+		]
 	},
 	"/calcs/bp": {
 		"title": "Калькулятор пропуска · StalHub",
-		"description": "Рассчитайте необходимое кол.во дней и задач для определённого уровня",
-		"openGraph": {
-			"title": "Калькулятор пропуска · StalHub",
-			"description": "Рассчитайте необходимое кол.во дней и задач для определённого уровня"
-		}
+		"description": "Расчёт заданий и дней для получения уровня пропуска в StalZone.",
+		"keywords": [
+			"сталкрафт пропуск",
+			"stalcraft battle pass",
+			"калькулятор пропуска сталкрафт",
+			"сталкрафт боевой пропуск",
+			"stalzone battle pass"
+		]
 	},
 	"/calcs/ttk": {
 		"title": "Калькулятор ТТК · StalHub",
-		"description": "Рассчитайте ТТК для любого оружия",
-		"openGraph": {
-			"title": "Калькулятор ТТК · StalHub",
-			"description": "Рассчитайте ТТК для любого оружия"
-		}
+		"description": "Расчёт времени убийства оружия в StalZone.",
+		"keywords": [
+			"сталкрафт ttk",
+			"stalcraft ttk",
+			"ttk calculator",
+			"сталкрафт калькулятор урона",
+			"сталкрафт оружие",
+			"сталкрафт оружие ttk",
+			"stalcraft weapon calculator"
+		]
 	},
 	"/calcs/dpi": {
 		"title": "Калькулятор DPI · StalHub",
-		"description": "Переведите чувствительность в нужную вам игру",
-		"openGraph": {
-			"title": "Калькулятор DPI · StalHub",
-			"description": "Переведите чувствительность в нужную вам игру"
-		}
+		"description": "Конвертер чувствительности мыши между играми.",
+		"keywords": [
+			"dpi calculator",
+			"калькулятор dpi",
+			"конвертер dpi",
+			"sensitivity converter",
+			"mouse sensitivity calculator",
+			"чувствительность мыши"
+		]
+	},
+	"/about": {
+		"title": "О нас · StalHub",
+		"description": "Информация о проекте и его участниках"
 	},
 	"notFound": {
 		"title": "Страница не найдена · StalHub",
