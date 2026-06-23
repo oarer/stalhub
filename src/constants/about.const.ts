@@ -1,4 +1,5 @@
-import type { AboutMember, LinkItem } from './components/about.types'
+import { AboutMember, LinkItem } from '@/views/about/components/about.types'
+
 
 export const contacts: AboutMember[] = [
 	{
@@ -75,6 +76,16 @@ export const thanks: AboutMember[] = [
 				href: 'https://github.com/RashingPro',
 				icon: 'mdi:github',
 			},
+		],
+	},
+	{
+		name: 'flacee',
+		description: 'about.flacee_description',
+		links: [
+			{
+				href: 'https://t.me/flacee',
+				icon: 'basil:telegram-outline',
+			}
 		],
 	},
 ]

@@ -541,7 +541,8 @@
 			}
 		},
 		"andcool_description": "Snippet`ы кода",
-		"rashing_description": "советы по улучшению<br></br>UI/UX"
+		"rashing_description": "советы по улучшению<br></br>UI/UX",
+		"flacee_description": "помощь с формулами"
 	},
 	"region": {
 		"RU": "RU",

@@ -6,7 +6,7 @@ export interface SocialLink {
 export interface AboutMember {
 	name: string
 	description: string
-	links: SocialLink[]
+	links?: SocialLink[]
 }
 
 export interface LinkItem {

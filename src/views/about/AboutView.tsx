@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import GradientText from '@/components/ui/GradientText'
-import { contactLinks, contacts, supportLinks, thanks } from './about.const'
+import { contactLinks, contacts, supportLinks, thanks } from '@/constants/about.const'
 import { view } from './components/about.types'
 import { ContactCard } from './components/ContactCard'
 import { LinksSection } from './components/LinksSection'
@@ -43,7 +43,7 @@ export default function AboutView() {
 				</GradientText>
 			</motion.div>
 
-			<ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
+			<ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
 				{thanks.map((item) => (
 					<ThanksCard key={item.name} {...item} />
 				))}
