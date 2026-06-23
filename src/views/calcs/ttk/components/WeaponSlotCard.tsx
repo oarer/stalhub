@@ -3,16 +3,19 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { type CSSProperties, useMemo, useState } from 'react'
+import { type CSSProperties, useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
 import type { WeaponSlot } from '@/stores/useTTK.store'
-import type { Item } from '@/types/item.type'
+import { InfoColor, infoColorMap, type Item } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { ItemPickerModal } from '@/views/calcs/builds/lite/components/ItemPickerModal'
-import { getAmmoType, getCompatibleAmmo } from '../utils/weaponStats'
+import { CUSTOM_ROF_MAP } from '../constants/ttk'
+import { getAmmoType, getCompatibleAmmo } from '../utils'
+import { montserrat } from '@/app/fonts'
+import { cn } from '@/lib/cn'
 
 interface WeaponSlotCardProps {
 	slot: WeaponSlot
@@ -22,10 +25,12 @@ interface WeaponSlotCardProps {
 	weaponOptions: Item[]
 	color: string
 	isFocused: boolean
+	autoOpenWeaponModal?: boolean
 	onFocus: () => void
 	onWeaponSelect: (weaponId: string) => void
 	onAmmoSelect: (ammoId: string) => void
 	onVariantChange: (variantIndex: number) => void
+	onBurstRofToggle: () => void
 	onRemove: () => void
 	showRemove: boolean
 }
@@ -38,10 +43,12 @@ export function WeaponSlotCard({
 	weaponOptions,
 	color,
 	isFocused,
+	autoOpenWeaponModal,
 	onFocus,
 	onWeaponSelect,
 	onAmmoSelect,
 	onVariantChange,
+	onBurstRofToggle,
 	onRemove,
 	showRemove,
 }: WeaponSlotCardProps) {
@@ -62,6 +69,13 @@ export function WeaponSlotCard({
 	const locale = getLocale()
 	const t = useTranslations()
 
+	useEffect(() => {
+		if (autoOpenWeaponModal) {
+			setWeaponPreviewId(slot.weaponId || null)
+			setShowWeaponModal(true)
+		}
+	}, [autoOpenWeaponModal, slot.weaponId])
+
 	const weaponIconUrl = useMemo(
 		() =>
 			weapon
@@ -80,141 +94,186 @@ export function WeaponSlotCard({
 	return (
 		<>
 			<Card.Root
-				className={`flex flex-col gap-4 rounded-xl p-3 transition-all`}
+				className="p-3 transition-all"
 				onClick={onFocus}
 				style={
 					isFocused
 						? ({
-								'--tw-ring-color': color + '80',
-							} as CSSProperties)
+							'--tw-ring-color': color + '80',
+						} as CSSProperties)
 						: {}
 				}
 			>
-				<Card.Header className="flex flex-row items-center gap-2">
-					<Button
-						className="flex flex-1 items-center gap-2 rounded-lg px-2 py-1.5"
-						onClick={() => {
-							setWeaponPreviewId(slot.weaponId || null)
-							setShowWeaponModal(true)
-							if (slot.weaponId) onFocus()
-						}}
-						type="button"
-						variant={'outline'}
-					>
-						{weapon && weaponIconUrl ? (
+				<Card.Content className="flex min-w-0 gap-3">
+					{weapon && weaponIconUrl && (
+						<div className="flex h-21.5 w-21.5 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-background">
 							<Image
-								alt=""
-								className="shrink-0 object-contain"
-								height={24}
-								onError={(e) => {
-									;(
-										e.target as HTMLImageElement
-									).style.display = 'none'
-								}}
+								alt={messageToString(weapon.name, locale)}
+								className="h-full w-full object-contain p-2"
+								height={68}
 								src={weaponIconUrl}
-								width={24}
+								width={68}
 							/>
-						) : (
-							<Icon
-								className="shrink-0 text-neutral-500 text-sm"
-								icon="lucide:crosshair"
-							/>
-						)}
-						<p className="truncate font-semibold text-sm">
-							{weapon
-								? messageToString(weapon.name, locale)
-								: t('ttk.page.weapon_pick')}
-						</p>
-						<Icon
-							className="ml-auto shrink-0 text-neutral-500 text-xs"
-							icon="lucide:chevron-down"
-						/>
-					</Button>
-
-					{showRemove && (
-						<Button
-							className="p-1 ring-transparent"
-							onClick={onRemove}
-							type="button"
-							variant={'danger'}
-						>
-							<Icon className="text-lg" icon="lucide:x" />
-						</Button>
+						</div>
 					)}
-				</Card.Header>
 
-				{weapon && (
-					<Card.Content className="flex flex-col gap-2">
-						{compatibleAmmo.length === 1 ? (
-							<div className="flex items-center gap-2 rounded-lg border-2 border-border/40 bg-background px-2 py-1.5 text-xs">
-								<Icon
-									className="shrink-0 text-neutral-500"
-									icon="lucide:zap"
-								/>
-								<span className="truncate font-medium">
-									{messageToString(
-										compatibleAmmo[0].name,
-										locale
-									)}
-								</span>
-							</div>
-						) : (
-							<div className="flex gap-2">
-								<Button
-									className="flex flex-1 items-center gap-2 rounded-lg px-2 py-1.5"
-									onClick={() => {
-										setAmmoPreviewId(slot.ammoId || null)
-										setShowAmmoModal(true)
+					<div className="min-w-0 flex-1 space-y-2">
+						<div className="flex min-w-0 gap-2">
+							<Button
+								className="min-w-0 flex-1 justify-between gap-2 rounded-lg px-2 py-1.5"
+								onClick={() => {
+									setWeaponPreviewId(slot.weaponId || null)
+									setShowWeaponModal(true)
+									if (slot.weaponId) onFocus()
+								}}
+
+								variant="outline"
+							>
+								<span
+									className={`${montserrat.className} min-w-0 truncate font-semibold text-sm`}
+									style={{
+										color: infoColorMap[
+											weapon?.color as InfoColor
+										],
 									}}
-									type="button"
-									variant={'outline'}
 								>
-									{ammoIconUrl && ammo ? (
-										<Image
-											alt=""
-											className="shrink-0 object-contain"
-											height={24}
-											onError={(e) => {
-												;(
-													e.target as HTMLImageElement
-												).style.display = 'none'
-											}}
-											src={ammoIconUrl}
-											width={24}
-										/>
-									) : (
-										<Icon
-											className="shrink-0 text-neutral-500"
-											icon="lucide:zap"
-										/>
-									)}
-									<span
-										className={`truncate text-sm ${!ammo && 'text-neutral-500'}`}
-									>
-										{ammo
-											? messageToString(ammo.name, locale)
-											: t('ttk.page.default_ammo')}
-									</span>
-									<Icon
-										className="ml-auto shrink-0 text-neutral-500"
-										icon="lucide:chevron-down"
-									/>
-								</Button>
-								<Input
-									className="min-w-20 rounded-lg border-border-secondary px-2 py-2"
-									label="ui.input_sharpening"
-									max={15}
-									min={0}
-									onChange={(e) =>
-										onVariantChange(Number(e.target.value))
-									}
-									type="number"
-									value={slot.variantIndex}
+									{weapon
+										? messageToString(weapon.name, locale)
+										: t('ttk.page.weapon_pick')}
+								</span>
+
+								<Icon
+									className="shrink-0 text-text-accent text-xs"
+									icon="lucide:chevron-down"
 								/>
+							</Button>
+
+							{showRemove && (
+								<Button
+									className="p-2 ring-transparent"
+									onClick={(e) => {
+										e.stopPropagation()
+										onRemove()
+									}}
+									variant="danger"
+								>
+									<Icon className="text-lg" icon="lucide:x" />
+								</Button>
+							)}
+						</div>
+
+						{weapon && CUSTOM_ROF_MAP[weapon.id] && (
+							<div className="flex items-center gap-1 rounded-lg ring-2 ring-border-secondary p-1">
+								<Button
+									onClick={() => {
+										if (slot.useBurstRof) onBurstRofToggle()
+									}}
+									className={cn(
+										'font-semibold text-sm w-full',
+										!slot.useBurstRof
+											? 'bg-border/40 dark:text-neutral-200'
+											: 'hover:text-neutral-200'
+									)}
+									variant="ghost"
+								>
+									{t('ttk.page.fire.auto')}
+								</Button>
+
+								<Button
+									onClick={() => {
+										if (!slot.useBurstRof) onBurstRofToggle()
+									}}
+									className={cn(
+										'font-semibold text-sm w-full',
+										slot.useBurstRof
+											? 'bg-border/40 dark:text-neutral-200'
+											: 'hover:text-neutral-200'
+									)}
+									variant="ghost"
+								>
+									{t('ttk.page.fire.burst')}
+								</Button>
 							</div>
 						)}
-					</Card.Content>
-				)}
+
+						{weapon &&
+							(compatibleAmmo.length === 1 ? (
+								<div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-border/40 bg-background px-2 py-1.5 text-xs">
+									<Icon
+										className="shrink-0 text-text-accent"
+										icon="lucide:zap"
+									/>
+									<span className="min-w-0 truncate font-semibold">
+										{messageToString(
+											compatibleAmmo[0].name,
+											locale
+										)}
+									</span>
+								</div>
+							) : (
+								<div className="flex min-w-0 gap-2">
+									<Button
+										className="min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-1.5"
+										onClick={() => {
+											setAmmoPreviewId(
+												slot.ammoId || null
+											)
+											setShowAmmoModal(true)
+										}}
+										variant="outline"
+									>
+										<div className="flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-md">
+											{ammoIconUrl && ammo ? (
+												<Image
+													alt=""
+													className="h-full w-full object-contain"
+													height={24}
+													src={ammoIconUrl}
+													width={24}
+												/>
+											) : (
+												<Icon
+													className="text-text-accent"
+													icon="lucide:zap"
+												/>
+											)}
+										</div>
+
+										<span
+											className={`min-w-0 truncate text-sm font-semibold ${!ammo ? 'text-text-accent' : ''
+												}`}
+										>
+											{ammo
+												? messageToString(
+													ammo.name,
+													locale
+												)
+												: t('ttk.page.default_ammo')}
+										</span>
+
+										<Icon
+											className="shrink-0 text-text-accent"
+											icon="lucide:chevron-down"
+										/>
+									</Button>
+
+									<Input
+										className="w-20 shrink-0 rounded-lg border-border-secondary"
+										label="ui.input_sharpening"
+										max={15}
+										min={0}
+										onChange={(e) =>
+											onVariantChange(
+												Number(e.target.value)
+											)
+										}
+										type="number"
+										value={slot.variantIndex}
+									/>
+								</div>
+							))}
+					</div>
+				</Card.Content>
 			</Card.Root>
 
 			<ItemPickerModal

@@ -11,10 +11,16 @@ export const COLORS = [
 
 export type HitZone = 'body' | 'head' | 'limbs'
 
-export const CUSTOM_ROF_MAP: Record<string, number> = {
-	'y37kw': 1200,
-	'96mn0': 1200,
-	'3grwz': 1200
+export interface CustomRof {
+	rof: number
+	burstSize?: number
+	burstDelay?: number
+}
+
+export const CUSTOM_ROF_MAP: Record<string, CustomRof> = {
+	y37kw: { rof: 1200 },
+	'96mn0': { rof: 1200 },
+	'3grwz': { rof: 1200 },
 }
 
 export const HIT_ZONES: { value: HitZone; label: string }[] = [
@@ -23,7 +29,7 @@ export const HIT_ZONES: { value: HitZone; label: string }[] = [
 	{ value: 'limbs', label: 'Конечности' },
 ]
 
-export const getWeaponStats = (dmg0: number, rof: number, prime: number) => [
+export const getWeaponStats = (dmg0: number, rof: number) => [
 	{
 		label: 'Урон/выстрел',
 		value: dmg0.toFixed(1),
@@ -33,11 +39,5 @@ export const getWeaponStats = (dmg0: number, rof: number, prime: number) => [
 		label: 'DPS',
 		value: ((dmg0 * rof) / 60).toFixed(1),
 		color: 'text-green-400',
-	},
-	{
-		label: 'Выстрелов',
-		value: prime / dmg0 > 0 ? Math.ceil(prime / dmg0).toFixed(0) : '0',
-		color: 'text-blue-400',
-		className: 'col-span-2',
 	},
 ]

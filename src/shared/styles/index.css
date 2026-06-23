@@ -31,10 +31,4 @@
         background-position: center;
         background-attachment: fixed;
     }
-
-    .recharts-wrapper *:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border: none !important;
-    }
 }

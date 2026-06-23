@@ -7,6 +7,7 @@ export interface WeaponSlot {
 	weaponId: string
 	ammoId: string
 	variantIndex: number
+	useBurstRof: boolean
 }
 
 interface TTKState {
@@ -32,7 +33,15 @@ interface TTKState {
 export const useTTKStore = create<TTKState>()(
 	persist(
 		(set) => ({
-			slots: [{ id: '1', weaponId: '', ammoId: '', variantIndex: 15 }],
+			slots: [
+				{
+					id: '1',
+					weaponId: '',
+					ammoId: '',
+					variantIndex: 15,
+					useBurstRof: false,
+				},
+			],
 			bulletRes: 0,
 			vitality: 0,
 			hitZone: 'body',

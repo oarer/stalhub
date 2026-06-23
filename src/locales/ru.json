@@ -447,6 +447,10 @@
 			"build": "Сборка",
 			"plate": "Пластина",
 			"prime": "Приведёнка",
+			"fire": {
+				"auto": "Авто",
+				"burst": "Отсечки"
+			},
 			"combobox": {
 				"build": {
 					"placeholder": "— не выбрано —",
@@ -461,7 +465,8 @@
 				"distance": "Дистанция:",
 				"damage": "Урон",
 				"dist_meter": "Дистанция (м):",
-				"dist_damage": "Урон на дистанции"
+				"dist_damage": "Урон на дистанции",
+				"shots": "выстр"
 			},
 			"table": {
 				"ttk": "ТТК",

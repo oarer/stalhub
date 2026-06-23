@@ -8,7 +8,7 @@ export default function TTKLoading() {
 	return (
 		<section className="mx-auto max-w-7xl space-y-6 px-4 pt-42 pb-12 sm:px-6">
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-				<div className='flex flex-col gap-4'>
+				<div className="flex flex-col gap-4">
 					<div className="flex items-center gap-2">
 						<Icon
 							className="text-lg"

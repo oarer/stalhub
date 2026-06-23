@@ -7,9 +7,9 @@ export default async function BuildsLitePage() {
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-  queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' })),
-  queryClient.prefetchQuery(itemsQueries.get({ type: 'containers' })),
-])
+		queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' })),
+		queryClient.prefetchQuery(itemsQueries.get({ type: 'containers' })),
+	])
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

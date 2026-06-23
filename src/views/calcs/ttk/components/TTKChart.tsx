@@ -1,31 +1,44 @@
 'use client'
 
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
+
+import { Line } from 'react-chartjs-2'
+
+import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import {
-	Area,
-	CartesianGrid,
-	ComposedChart,
+	type ChartData,
+	type ChartOptions,
+	type TooltipItem,
+	Chart as ChartJS,
+	Filler,
 	Legend,
-	ResponsiveContainer,
+	LinearScale,
+	LineElement,
+	PointElement,
 	Tooltip,
-	type TooltipContentProps,
-	XAxis,
-	YAxis,
-} from 'recharts'
-import type {
-	NameType,
-	ValueType,
-} from 'recharts/types/component/DefaultTooltipContent'
-import { Card } from '@/components/ui/Card'
+} from 'chart.js'
+
+import { montserrat } from '@/app/fonts'
+
+ChartJS.register(
+	LinearScale,
+	PointElement,
+	LineElement,
+	Tooltip,
+	Legend,
+	Filler
+)
 
 export interface TTKSeries {
 	label: string
 	color: string
-	points: { x: number; y: number }[]
+	labelColor: string
+	points: { x: number; y: number; shots: number }[]
 }
 
 function interpolateY(
-	points: { x: number; y: number }[],
+	points: { x: number; y: number; shots: number }[],
 	targetX: number
 ): number | null {
 	if (points.length === 0) return null
@@ -52,48 +65,33 @@ function interpolateY(
 	return null
 }
 
-type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
-	series: TTKSeries[]
-}
+function interpolateShots(
+	points: { x: number; y: number; shots: number }[],
+	targetX: number
+): number | null {
+	if (points.length === 0) return null
 
-function CustomTooltip({ active, payload, series }: CustomTooltipProps) {
-	if (!active || !payload?.length) return null
+	const first = points[0]
+	const last = points[points.length - 1]
 
-	const x = payload[0]?.payload?.x
-	if (typeof x !== 'number') return null
+	if (targetX < first.x || targetX > last.x) {
+		return null
+	}
 
-	const tooltipData = series
-		.map((s) => ({
-			label: s.label,
-			color: s.color,
-			value: interpolateY(s.points, x),
-		}))
-		.filter((d) => d.value !== null)
+	if (first.x === targetX) return first.shots
+	if (last.x === targetX) return last.shots
 
-	if (tooltipData.length === 0) return null
+	for (let i = 0; i < points.length - 1; i++) {
+		if (points[i].x <= targetX && points[i + 1].x >= targetX) {
+			const lower = points[i]
+			const upper = points[i + 1]
+			const ratio = (targetX - lower.x) / (upper.x - lower.x)
+			const delta = upper.shots - lower.shots
+			return Math.round(lower.shots + ratio * delta)
+		}
+	}
 
-	return (
-		<Card.Root>
-			<Card.Header className="text-sm">{Math.round(x)} м</Card.Header>
-			<Card.Content className="space-y-1">
-				{tooltipData.map((entry, index) => (
-					<div
-						className="flex items-center gap-2 font-semibold text-xs"
-						key={index}
-					>
-						<span
-							className="h-2.5 w-2.5 rounded-full"
-							style={{ backgroundColor: entry.color }}
-						/>
-						<span>{entry.label}:</span>
-						<span className="font-mono">
-							{entry.value!.toFixed(2)}с
-						</span>
-					</div>
-				))}
-			</Card.Content>
-		</Card.Root>
-	)
+	return null
 }
 
 export function TTKChart({
@@ -103,8 +101,12 @@ export function TTKChart({
 	series: TTKSeries[]
 	maxDist: number
 }) {
-	const chartData = useMemo(() => {
-		if (!series.length) return []
+	const { resolvedTheme } = useTheme()
+	const isDark = resolvedTheme === 'dark'
+	const t = useTranslations()
+
+	const chartData = useMemo((): ChartData<'line'> => {
+		if (!series.length) return { datasets: [] }
 
 		const allXValues = new Set<number>()
 		for (const s of series) {
@@ -122,93 +124,127 @@ export function TTKChart({
 			}
 		})
 
-		return sortedX.map((x) => {
-			const point: Record<string, number | undefined> = { x }
-			for (let i = 0; i < series.length; i++) {
-				const s = series[i]
-				const b = bounds[i]
-				if (x >= b.minX && x <= b.maxX) {
-					const value = interpolateY(s.points, x)
-					if (value !== null) {
-						point[s.label] = value
-					}
-				}
+		const datasets = series.map((s, i) => {
+			const b = bounds[i]
+			const data = sortedX
+				.filter((x) => x >= b.minX && x <= b.maxX)
+				.map((x) => {
+					const y = interpolateY(s.points, x)!
+					const shots = interpolateShots(s.points, x)!
+					return { x, y, shots }
+				})
+
+			return {
+				label: s.label,
+				labelColor: s.labelColor,
+				data,
+				borderColor: s.color,
+				backgroundColor: s.color,
+				borderWidth: 2.5,
+				pointStyle: 'rectRounded',
+				pointRadius: 0,
+				pointHitRadius: 5,
+				pointHoverRadius: 5,
+				parsing: false,
+				tension: 0.15,
+				fill: false,
 			}
-			return point
 		})
+
+		return { datasets } as ChartData<'line'>
 	}, [series])
 
-	const renderTooltip = useCallback(
-		(props: TooltipContentProps<ValueType, NameType>) => (
-			<CustomTooltip {...props} series={series} />
-		),
-		[series]
+	const options: ChartOptions<'line'> = useMemo(
+		() => ({
+			maintainAspectRatio: false,
+			responsive: true,
+			interaction: {
+				mode: 'index',
+				intersect: false,
+			},
+			plugins: {
+				legend: {
+					display: true,
+					position: 'bottom',
+					labels: {
+						usePointStyle: true,
+						pointStyle: 'rectRounded',
+						boxWidth: 10,
+						boxHeight: 10,
+						padding: 12,
+						color: isDark ? '#c2c2c2' : '#404040',
+						font: {
+							size: 12,
+							weight: 'bold',
+							family: montserrat.style.fontFamily,
+						},
+					},
+				},
+				tooltip: {
+					backgroundColor: isDark ? '#171717' : '#fff',
+					titleColor: isDark ? '#fbfbfe' : '#171717',
+					borderColor: isDark ? '#3d4a52' : '#e5e7eb',
+					usePointStyle: true,
+					borderWidth: 2,
+					padding: 12,
+					titleFont: { size: 15, weight: 'bold' },
+					bodyFont: { size: 13, weight: 'bold' },
+					callbacks: {
+						title: (items: TooltipItem<'line'>[]) => {
+							if (!items.length) return ''
+							const x = items[0].parsed.x ?? 0
+							return `${Math.round(x)} м`
+						},
+						label: (ctx: TooltipItem<'line'>) => {
+							const value = ctx.parsed.y ?? 0
+							const shots =
+								(ctx.raw as { shots?: number }).shots ?? 0
+							return [
+								` ${ctx.dataset.label} : ${shots} • ${value.toFixed(2)}с`,
+							]
+						},
+					},
+				},
+			},
+			scales: {
+				x: {
+					type: 'linear',
+					min: 0,
+					max: maxDist,
+					grid: { display: false },
+					border: {
+						color: isDark ? '#3d4a52' : '#e5e7eb',
+						width: 2,
+					},
+					ticks: {
+						stepSize: 10,
+						color: isDark ? '#c2c2c2' : '#404040',
+						font: { size: 11, weight: 'bold' },
+					},
+				},
+				y: {
+					grid: { display: false },
+					border: {
+						color: isDark ? '#3d4a52' : '#e5e7eb',
+						width: 2,
+					},
+					ticks: {
+						color: isDark ? '#c2c2c2' : '#404040',
+						font: { size: 11, weight: 'bold' },
+						callback: (value) => {
+							if (typeof value !== 'number') return value
+							return (value as number).toFixed(2)
+						},
+					},
+				},
+			},
+		}),
+		[isDark, maxDist, t]
 	)
 
 	return (
 		<div className="h-full w-full">
-			<ResponsiveContainer
-				className="outline-none"
-				height="100%"
-				width="100%"
-			>
-				<ComposedChart
-					data={chartData}
-					margin={{ top: 16, right: 16, bottom: 24, left: 8 }}
-				>
-					<CartesianGrid horizontal={false} vertical={false} />
-
-					<XAxis
-						axisLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
-						dataKey="x"
-						domain={[0, maxDist]}
-						tick={{ fontSize: 11 }}
-						tickFormatter={(value) => `${value}`}
-						tickLine={false}
-						ticks={Array.from(
-							{ length: Math.floor(maxDist / 10) + 1 },
-							(_, i) => i * 10
-						)}
-						type="number"
-					/>
-
-					<YAxis
-						axisLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
-						domain={[
-							(dataMin: number) =>
-								Number((dataMin - 0.1).toFixed(2)),
-							'auto',
-						]}
-						tick={{ fontSize: 11 }}
-						tickFormatter={(value) => (value as number).toFixed(1)}
-						tickLine={false}
-						width={36}
-					/>
-
-					<Tooltip content={renderTooltip} />
-
-					{series.map((s) => (
-						<Area
-							activeDot={{
-								r: 5,
-								stroke: s.color,
-								strokeWidth: 2,
-								fill: 'var(--background)',
-							}}
-							connectNulls={false}
-							dataKey={s.label}
-							dot={false}
-							fill="none"
-							isAnimationActive={false}
-							key={s.label}
-							stroke={s.color}
-							strokeWidth={2.5}
-							type="monotone"
-						/>
-					))}
-					<Legend height={24} verticalAlign="bottom" />
-				</ComposedChart>
-			</ResponsiveContainer>
+			<Line data={chartData} options={options} />
 		</div>
 	)
 }

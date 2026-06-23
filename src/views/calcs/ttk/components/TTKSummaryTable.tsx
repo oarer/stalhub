@@ -1,11 +1,14 @@
 'use client'
 
+import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Table } from '@/components/ui/Table'
+import { InfoColor, infoColorMap } from '@/types/item.type'
 import { useTranslations } from 'next-intl'
 interface TTKSummaryRow {
 	label: string
 	color: string
+	weaponColor: string
 	ttk0: number
 	ttkMax: number
 	shots0: number
@@ -54,7 +57,16 @@ export function TTKSummaryTable({ rows, maxDist }: TTKSummaryTableProps) {
 										className="h-2 w-2 shrink-0 rounded-full"
 										style={{ background: row.color }}
 									/>
-									<span>{row.label}</span>
+									<span
+										className={montserrat.className}
+										style={{
+											color: infoColorMap[
+												row.weaponColor as InfoColor
+											],
+										}}
+									>
+										{row.label}
+									</span>
 								</span>
 							</Table.Cell>
 

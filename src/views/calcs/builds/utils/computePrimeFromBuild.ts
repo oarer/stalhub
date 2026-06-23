@@ -14,7 +14,7 @@ export function computePrimeFromBuild(
 	artefacts: Item[],
 	consumables: Item[],
 	locale: Locale
-): number {
+): { bulletRes: number; vitality: number; prime: number } {
 	const result: Record<string, number> = {}
 
 	const containerItem = containers.find((c) => c.id === build.container?.id)
@@ -75,5 +75,6 @@ export function computePrimeFromBuild(
 
 	const bulletRes = result[BULLET_KEY] ?? 0
 	const vitality = result[HEALTH_KEY] ?? 0
-	return ((100 + bulletRes) * (vitality + 100)) / 100
+	const prime = ((100 + bulletRes) * (vitality + 100)) / 100
+	return { bulletRes, vitality, prime }
 }
