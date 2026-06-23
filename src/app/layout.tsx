@@ -12,6 +12,7 @@ import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
 import Nav from '@/shared/layouts/nav/Nav'
+import PageTransitionEffect from '@/shared/transitionEffects/PageTransitionEffect'
 
 export const generateMetadata = async () => {
 	const headersList = await headers()
@@ -55,8 +56,10 @@ export default async function RootLayout({
 						<NextIntlClientProvider messages={messages}>
 							<Providers>
 								<Nav />
-								<main className="min-h-screen">{children}</main>
-								<Footer />
+								<PageTransitionEffect>
+									<main className="min-h-screen">{children}</main>
+									<Footer />
+								</PageTransitionEffect>
 							</Providers>
 						</NextIntlClientProvider>
 					</ThemeProvider>

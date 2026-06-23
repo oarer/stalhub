@@ -1,12 +1,12 @@
 'use client'
 
-import { AnimatePresence, easeOut, motion } from 'motion/react'
+import { AnimatePresence, cubicBezier, motion } from 'motion/react'
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { usePathname } from 'next/navigation'
 import { useContext, useRef } from 'react'
 
 function FrozenRouter({ children }: { children: React.ReactNode }) {
-	const context = useContext(LayoutRouterContext ?? null)
+	const context = useContext(LayoutRouterContext)
 	const frozen = useRef(context).current
 
 	return (
@@ -17,54 +17,64 @@ function FrozenRouter({ children }: { children: React.ReactNode }) {
 }
 
 const variants = {
-	hidden: { opacity: 0, y: -30 },
-	enter: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: 30 },
+	hidden: {
+		opacity: 0,
+		y: 12,
+		scale: 0.992,
+		filter: 'blur(6px)',
+	},
+	enter: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+		filter: 'blur(0px)',
+	},
+	exit: {
+		opacity: 0,
+		y: -12,
+		scale: 1.004,
+		filter: 'blur(6px)',
+	},
 }
 
-const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
-	const pathname = usePathname()
-	const isDashboardPage =
-		pathname.startsWith('/dashboard') || pathname.startsWith('/admin')
-	const key = isDashboardPage ? 'dashboard' : pathname
+const transition = {
+	duration: 0.7,
+	ease: cubicBezier(0.22, 1, 0.36, 1),
+}
 
-	const animationProps = !isDashboardPage
-		? {
-				initial: 'hidden',
-				animate: 'enter',
-				exit: 'exit',
-				variants: variants,
-				transition: {
-					opacity: { duration: 0.8, delay: 0.1, ease: easeOut },
-					y: { duration: 1.0, delay: 0.1, ease: easeOut },
-				},
-			}
-		: {
-				initial: 'hidden',
-				animate: 'enter',
-				exit: 'exit',
-				variants: variants,
-				transition: {
-					opacity: { duration: 0.8, delay: 0.1, ease: easeOut },
-					y: { duration: 1.0, delay: 0.1, ease: easeOut },
-				},
-			}
+export default function PageTransitionEffect({
+	children,
+}: {
+	children: React.ReactNode
+}) {
+	const pathname = usePathname()
 
 	return (
-		<AnimatePresence mode="popLayout">
-			<motion.div
-				key={key}
-				style={{ position: 'relative', width: '100%', height: '100%' }}
-				{...animationProps}
-			>
-				{!isDashboardPage ? (
+		<div
+			style={{
+				display: 'grid',
+				width: '100%',
+				overflow: 'visible',
+			}}
+		>
+			<AnimatePresence mode="sync" initial>
+				<motion.div
+					key={pathname}
+					style={{
+						gridArea: '1 / 1',
+						position: 'relative',
+						width: '100%',
+						willChange: 'transform, opacity, filter',
+					}}
+					variants={variants}
+					initial="hidden"
+					animate="enter"
+					exit="exit"
+					transition={transition}
+				>
 					<FrozenRouter>{children}</FrozenRouter>
-				) : (
-					children
-				)}
-			</motion.div>
-		</AnimatePresence>
+				</motion.div>
+			</AnimatePresence>
+		</div>
 	)
 }
-
-export default PageTransitionEffect
