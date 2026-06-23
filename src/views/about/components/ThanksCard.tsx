@@ -42,21 +42,19 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 					})}
 				</h2>
 			</motion.div>
-			{links &&
-				<motion.div className="flex items-center gap-3" {...view}>
-					{links.map(({ href, icon }, index) => (
-						<CLink
-							className="p-2"
-							externalIcon={false}
-							href={href}
-							key={index}
-							variant="outline"
-						>
-							<Icon className="text-xl" icon={icon} />
-						</CLink>
-					))}
-				</motion.div>
-			}
+			<motion.div className="flex items-center gap-3" {...view}>
+				{links.map(({ href, icon }, index) => (
+					<CLink
+						className="p-2"
+						externalIcon={false}
+						href={href}
+						key={index}
+						variant="outline"
+					>
+						<Icon className="text-xl" icon={icon} />
+					</CLink>
+				))}
+			</motion.div>
 		</motion.li>
 	)
 }
