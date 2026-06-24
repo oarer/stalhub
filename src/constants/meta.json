@@ -2,6 +2,11 @@
 	"base": {
 		"title": "StalHub — калькуляторы, сборки и гайды для StalZone",
 		"description": "Инструменты для StalZone (Stalcraft): калькуляторы TTK, сборок, Арсенала, оружия и полезные гайды.",
+		"url": "https://stalhub.tech",
+		"type": "website",
+		"alternateName": [
+			"сталхаб"
+		],
 		"keywords": [
 			"stalcraft",
 			"сталкрафт",
