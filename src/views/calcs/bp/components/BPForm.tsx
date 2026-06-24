@@ -65,6 +65,7 @@ export function BPForm({
 				<Input
 					label="bp.task_day"
 					min={0}
+					max={300}
 					onChange={(e) => onTasksChange(Number(e.target.value))}
 					type="number"
 					value={tasks}
@@ -82,6 +83,7 @@ export function BPForm({
 				<Input
 					label="bp.current_level"
 					min={0}
+					max={3000}
 					onChange={(e) =>
 						onCurrentLevelChange(Number(e.target.value))
 					}
