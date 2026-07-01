@@ -15,7 +15,7 @@ class ItemService {
 	async getBarter(id: string) {
 		try {
 			const { data } = await apiClient.get<BarterResponse>(
-				`/api/barter/${id}`
+				`/api/v1/barter/${id}`
 			)
 			return data
 		} catch (e) {

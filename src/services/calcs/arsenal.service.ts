@@ -3,7 +3,7 @@ import type { ArsenalResponse } from '@/types/arsenal.type'
 
 class ArsenalService {
 	async get() {
-		const { data } = await apiClient.get<ArsenalResponse>(`/api/arsenal`)
+		const { data } = await apiClient.get<ArsenalResponse>(`/api/v1/arsenal`)
 		return data
 	}
 }

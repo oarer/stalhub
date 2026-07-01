@@ -10,7 +10,7 @@ class AuctionService {
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsResponse> {
 		const { data } = await apiClient.get<LotsResponse>(
-			`/api/auction/${region}/${id}/lots`,
+			`/api/v1/auction/${region}/${id}/lots`,
 			{
 				params: { limit, additional },
 			}
@@ -25,7 +25,7 @@ class AuctionService {
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsHistoryResponse> {
 		const { data } = await apiClient.get<LotsHistoryResponse>(
-			`/api/auction/${region}/${id}/history`,
+			`/api/v1/auction/${region}/${id}/history`,
 			{
 				params: { limit, additional },
 			}

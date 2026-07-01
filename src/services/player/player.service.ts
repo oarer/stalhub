@@ -8,7 +8,7 @@ import type {
 class PlayerService {
 	async get({ region, character }: PlayerParams): Promise<PlayerResponse> {
 		const { data } = await apiClient.get<PlayerResponse>(
-			`/api/player/${region}/${character}`
+			`/api/v1/player/${region}/${character}`
 		)
 		return data
 	}
@@ -19,7 +19,7 @@ class PlayerService {
 		limit: number
 	}): Promise<PlayerStatsResponse[]> {
 		const { data } = await apiClient.get<PlayerStatsResponse[]>(
-			`/api/player/popular`,
+			`/api/v1/player/popular`,
 			{ params: { limit: limit } }
 		)
 		return data
@@ -31,7 +31,7 @@ class PlayerService {
 		limit: number
 	}): Promise<PlayerStatsResponse[]> {
 		const { data } = await apiClient.get<PlayerStatsResponse[]>(
-			`/api/player/recent`,
+			`/api/v1/player/recent`,
 			{ params: { limit: limit } }
 		)
 		return data
