@@ -14,6 +14,8 @@ import useSvg from '@/hooks/useSvg'
 import ChangeLang from './ChangeLang'
 import ChangeTheme from './ChangeTheme'
 import NavMobile from './NavMobile'
+import { Button } from '@/components/ui/Button'
+import { unbounded } from '@/app/fonts'
 
 export default function Nav() {
 	const svgPath = useSvg()
@@ -31,11 +33,10 @@ export default function Nav() {
 				paddingTop: isScrolled ? '1rem' : '2rem',
 				paddingBottom: isScrolled ? '1rem' : '2rem',
 			}}
-			className={`fixed top-0 z-90 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${
-				isScrolled
-					? 'outline-2 outline-border/40'
-					: 'outline-2 outline-border/2'
-			}`}
+			className={`fixed top-0 z-90 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${isScrolled
+				? 'outline-2 outline-border/40'
+				: 'outline-2 outline-border/2'
+				}`}
 			initial={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
 			transition={{ duration: 0.7 }}
 		>
@@ -81,6 +82,10 @@ export default function Nav() {
 					<div className="relative flex items-center justify-end gap-3">
 						<ChangeLang />
 						<ChangeTheme />
+						<CLink variant={'primary'} href='/auth' className='gap-2 rounded-xl bg/20'>
+							<Icon icon="lucide:log-in" className='text-lg' />
+							<p className={`${unbounded.className} text-md`}>Авторизация</p>
+						</CLink>
 					</div>
 				</div>
 			</nav>

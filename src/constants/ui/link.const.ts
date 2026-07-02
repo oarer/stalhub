@@ -6,7 +6,7 @@ export const linkVariants = cva(
 		variants: {
 			variant: {
 				primary:
-					'bg-sky-400 text-white dark:bg-sky-600/70 shadow-md hover:bg-sky-500 dark:hover:opacity-100',
+					'bg-sky-400 text-white dark:bg-sky-600/70 shadow-md hover:brightness-120',
 				secondary:
 					'bg-white/60 text-neutral-900 dark:bg-neutral-800/50 dark:text-neutral-100 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800',
 				outline:
