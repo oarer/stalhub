@@ -115,28 +115,6 @@ const NAV_STRUCTURE: NavGroup[] = [
 		],
 	},
 	{
-		key: 'clans',
-		titleKey: 'nav.groups.clans.title',
-		icon: 'lucide:shield-half',
-		items: [
-			{
-				key: 'clanMaps',
-				icon: 'lucide:map-pinned',
-				href: '/maps/cw',
-				labelKey: 'nav.groups.clans.items.clanMaps.label',
-				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
-			},
-			{
-				key: 'squads',
-				icon: 'lucide:radio-tower',
-				href: '/test',
-				labelKey: 'nav.groups.clans.items.squads.label',
-				descriptionKey: 'nav.groups.clans.items.squads.description',
-				disabled: true,
-			},
-		],
-	},
-	{
 		key: 'other',
 		titleKey: 'nav.groups.other.title',
 		icon: 'lucide:more-horizontal',
@@ -152,6 +130,13 @@ const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:user-round-search',
 				href: '/player',
 				labelKey: 'nav.groups.other.items.players.label',
+			},
+			{
+				key: 'clanMaps',
+				icon: 'lucide:map-pinned',
+				href: '/maps/cw',
+				labelKey: 'nav.groups.clans.items.clanMaps.label',
+				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
 			},
 			{
 				key: 'models',
