@@ -15,7 +15,7 @@ import ChangeLang from './ChangeLang'
 import ChangeTheme from './ChangeTheme'
 import NavMobile from './NavMobile'
 import { Button } from '@/components/ui/Button'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 
 export default function Nav() {
 	const svgPath = useSvg()
@@ -82,9 +82,9 @@ export default function Nav() {
 					<div className="relative flex items-center justify-end gap-3">
 						<ChangeLang />
 						<ChangeTheme />
-						<CLink variant={'primary'} href='/auth' className='gap-2 rounded-xl bg/20'>
+						<CLink variant={'primary'} href='/auth' className='gap-2 rounded-xl'>
 							<Icon icon="lucide:log-in" className='text-lg' />
-							<p className={`${unbounded.className} text-md`}>Авторизация</p>
+							<p className={`${montserrat.className} font-semibold text-md`}>Авторизация</p>
 						</CLink>
 					</div>
 				</div>
