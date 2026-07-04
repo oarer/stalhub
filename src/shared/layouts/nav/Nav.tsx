@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { montserrat } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import DropdownMenu from '@/components/ui/DropDown'
 import { CLink } from '@/components/ui/Link'
@@ -14,8 +15,6 @@ import useSvg from '@/hooks/useSvg'
 import ChangeLang from './ChangeLang'
 import ChangeTheme from './ChangeTheme'
 import NavMobile from './NavMobile'
-import { Button } from '@/components/ui/Button'
-import { montserrat, unbounded } from '@/app/fonts'
 
 export default function Nav() {
 	const svgPath = useSvg()
@@ -33,15 +32,16 @@ export default function Nav() {
 				paddingTop: isScrolled ? '1rem' : '2rem',
 				paddingBottom: isScrolled ? '1rem' : '2rem',
 			}}
-			className={`fixed top-0 z-90 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${isScrolled
-				? 'outline-2 outline-border/40'
-				: 'outline-2 outline-border/2'
-				}`}
+			className={`fixed top-0 z-90 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${
+				isScrolled
+					? 'outline-2 outline-border/40'
+					: 'outline-2 outline-border/2'
+			}`}
 			initial={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
 			transition={{ duration: 0.7 }}
 		>
 			<nav className="mx-auto xl:max-w-360">
-				<div className="container mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-6">
+				<div className="mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-10">
 					<div className="lg:hidden">
 						<NavMobile />
 					</div>
@@ -79,12 +79,22 @@ export default function Nav() {
 						</CLink>
 						<ItemSearchModal />
 					</div>
-					<div className="relative flex items-center justify-end gap-3">
-						<ChangeLang />
-						<ChangeTheme />
-						<CLink variant={'primary'} href='/auth' className='gap-2 rounded-xl'>
-							<Icon icon="lucide:log-in" className='text-lg' />
-							<p className={`${montserrat.className} font-semibold text-md`}>Авторизация</p>
+					<div className="relative flex items-center justify-end gap-4">
+						<div className="hidden items-center gap-2 lg:flex">
+							<ChangeLang />
+							<ChangeTheme />
+						</div>
+						<CLink
+							className="gap-2 rounded-xl p-2.5"
+							href="/auth"
+							variant={'primary'}
+						>
+							<Icon className="text-xl" icon="lucide:log-in" />
+							<p
+								className={`${montserrat.className} hidden font-semibold text-md md:block`}
+							>
+								Авторизация
+							</p>
 						</CLink>
 					</div>
 				</div>

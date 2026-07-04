@@ -6,7 +6,7 @@ export const alertVariants = cva(
 		variants: {
 			variant: {
 				default: 'bg-background ring-border/50',
-				info: 'bg-blue-50 text-blue-900 ring-blue-200 dark:bg-blue-950/40 dark:text-blue-200 dark:ring-blue-800 [--alert-icon:theme(colors.blue.500)]',
+				info: 'bg-blue-50 text-blue-900 ring-blue-200 dark:bg-blue-950/80 dark:text-blue-200 dark:ring-blue-800 [--alert-icon:theme(colors.blue.500)]',
 				success:
 					'bg-green-50 text-green-900 ring-green-200 dark:bg-green-950/40 dark:text-green-200 dark:ring-green-800 [--alert-icon:theme(colors.green.500)]',
 				warning:

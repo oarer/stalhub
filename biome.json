@@ -192,7 +192,10 @@
 					"correctness": {
 						"noChildrenProp": "error",
 						"noUnusedImports": "error",
-						"useExhaustiveDependencies": "warn",
+						"useExhaustiveDependencies": {
+							"level": "warn",
+							"fix": "safe"
+						},
 						"useHookAtTopLevel": "error",
 						"useJsxKeyInIterable": "error"
 					},
@@ -205,7 +208,10 @@
 						"noEmptyBlockStatements": "warn"
 					},
 					"nursery": {
-						"useSortedClasses": "error"
+						"useSortedClasses": {
+							"level": "error",
+							"fix": "safe"
+						}
 					}
 				}
 			}
