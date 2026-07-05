@@ -1,12 +1,39 @@
+'use client'
+
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { discordAuthService } from '@/services/auth/discord/discord.service'
+import { exboAuthService } from '@/services/auth/exbo/auth.service'
+import { telegramAuthService } from '@/services/auth/telegram/telegram.service'
 import { montserrat, unbounded } from '../fonts'
 
+type Provider = 'discord' | 'telegram' | 'exbo'
+
 export default function Page() {
+	const [loading, setLoading] = useState<Provider | null>(null)
+	const router = useRouter()
+
+	const handleLogin = async (provider: Provider) => {
+		setLoading(provider)
+		try {
+			const services = {
+				discord: discordAuthService,
+				telegram: telegramAuthService,
+				exbo: exboAuthService,
+			}
+			const url = await services[provider].getLoginUrl()
+			router.push(url)
+		} catch {
+			setLoading(null)
+		}
+	}
+
 	return (
 		<section className="mx-auto flex min-h-screen max-w-sm flex-col items-center justify-center gap-4 px-3">
 			<Card.Root className="w-full">
@@ -21,7 +48,12 @@ export default function Page() {
 					</Card.Title>
 				</Card.Header>
 				<Card.Content className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-					<Button className="gap-2" variant={'secondary'}>
+					<Button
+						className="gap-2"
+						disabled={loading === 'discord'}
+						onClick={() => handleLogin('discord')}
+						variant={'secondary'}
+					>
 						<Image
 							alt="discord auth"
 							height={20}
@@ -30,7 +62,12 @@ export default function Page() {
 						/>
 						<p className="font-semibold">Discord</p>
 					</Button>
-					<Button className="gap-2" variant={'secondary'}>
+					<Button
+						className="gap-2"
+						loading={loading === 'telegram'}
+						onClick={() => handleLogin('telegram')}
+						variant={'secondary'}
+					>
 						<Image
 							alt="telegram auth"
 							height={20}
@@ -39,7 +76,11 @@ export default function Page() {
 						/>
 						<p className="font-semibold">Telegram</p>
 					</Button>
-					<Button className="gap-2 bg-purple-600 ring-2 ring-purple-900 md:col-span-2 dark:bg-purple-700/40 dark:ring-purple-700">
+					<Button
+						className="gap-2 bg-purple-600 ring-2 ring-purple-900 md:col-span-2 dark:bg-purple-700/40 dark:ring-purple-700"
+						loading={loading === 'exbo'}
+						onClick={() => handleLogin('exbo')}
+					>
 						<Image
 							alt="exbo auth"
 							height={20}

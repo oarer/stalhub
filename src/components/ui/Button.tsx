@@ -21,7 +21,8 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 					buttonVariants({
 						variant,
 						size,
-						disabled: loading || props.disabled,
+						disabled: props.disabled,
+						loading: loading,
 					}),
 					className
 				)}
@@ -29,10 +30,14 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 				ref={ref}
 				{...props}
 			>
-				{loading && (
-					<Icon className="text-xl" icon="lucide:loader-circle" />
+				{loading ? (
+					<Icon
+						className="animate-spin text-xl"
+						icon="lucide:loader-circle"
+					/>
+				) : (
+					children
 				)}
-				{children}
 			</button>
 		)
 	}

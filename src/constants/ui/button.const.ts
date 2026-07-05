@@ -8,7 +8,7 @@ export const buttonVariants = cva(
 				primary:
 					'bg-sky-400 text-white dark:bg-sky-600/70 shadow-md hover:brightness-120',
 				secondary:
-					'bg-white/60 text-neutral-900 dark:bg-neutral-800/50 dark:text-neutral-100 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800',
+					'bg-white/60 text-neutral-900 dark:bg-neutral-800/50 dark:text-neutral-100 shadow-sm hover:brightness-120',
 				outline:
 					'ring-2 ring-border-secondary dark:ring-neutral-700 bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-800 bg-neutral-100 dark:bg-neutral-950',
 				bordered:
@@ -19,7 +19,7 @@ export const buttonVariants = cva(
 				none: 'hover:text-neutral-900 dark:hover:text-neutral-400',
 			},
 			disabled: {
-				true: 'cursor-not-allowed text-accent bg-background dark:bg-background hover:bg-background dark:hover:bg-background brightness-50',
+				true: 'cursor-not-allowed text-accent bg-background dark:bg-background hover:bg-background dark:hover:bg-background brightness-80',
 			},
 			size: {
 				sm: 'px-3 py-1.5 text-sm',
@@ -28,7 +28,7 @@ export const buttonVariants = cva(
 				xl: 'px-6 py-3 text-xl',
 			},
 			loading: {
-				true: 'opacity-50 pointer-events-none flex items-center justify-center gap-2 animate-pulse',
+				true: 'cursor-not-allowed hover:brightness-80 brightness-80 flex items-center justify-center',
 			},
 		},
 		defaultVariants: {
