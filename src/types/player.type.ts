@@ -12,7 +12,7 @@ export interface PlayerResponse {
 	status: string
 	alliance: Alliance
 	lastLogin: Date
-	displayedAchievements: Achievements[]
+	displayedAchievements?: Achievements[]
 	clan: Clan
 	stats: Stat[]
 	role?: PlayerRole

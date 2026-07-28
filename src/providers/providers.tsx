@@ -2,7 +2,11 @@
 
 import { type ReactNode, useEffect, useState } from 'react'
 import { Toaster } from 'sonner'
+import { useBanStore } from '@/stores/useBan.store'
+import { useAuthStore } from '@/stores/useAuth.store'
+import { userService } from '@/services/user/user.service'
 import { UwuProvider } from '@/providers/uwuProvider'
+import BannedView from '@/views/errors/banned/BannedView'
 import QueryProvider from './QueryProvider'
 
 interface Props {
@@ -11,9 +15,13 @@ interface Props {
 
 export default function Providers({ children }: Props) {
 	const [mounted, setMounted] = useState(false)
+	const isBanned = useBanStore((s) => s.isBanned)
+	const setUser = useAuthStore((s) => s.setUser)
 
 	useEffect(() => {
 		setMounted(true)
+
+		userService.getMe().then(setUser).catch(() => setUser(null))
 
 		console.log(
 			`%cЧувак, ты думал тут что-то будет?\n` +
@@ -24,6 +32,17 @@ export default function Providers({ children }: Props) {
 	}, [])
 
 	if (!mounted) return null
+
+	if (isBanned) {
+		return (
+			<QueryProvider>
+				<UwuProvider>
+					<Toaster position="bottom-right" />
+					<BannedView />
+				</UwuProvider>
+			</QueryProvider>
+		)
+	}
 
 	return (
 		<QueryProvider>

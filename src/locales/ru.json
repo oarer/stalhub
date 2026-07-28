@@ -472,6 +472,14 @@
 				"ttk": "ТТК",
 				"hits": "Попаданий"
 			}
+		},
+		"hitZones": {
+			"head": "Голова",
+			"body": "Тело",
+			"limbs": "Конечности"
+		},
+		"weaponStats": {
+			"damagePerShot": "Урон/выстрел"
 		}
 	},
 	"bp": {
@@ -559,5 +567,195 @@
 		"pick_game": "Выберите игру",
 		"sens": "Чувствительность",
 		"result": "Результат"
+	},
+	"cwMap": {
+		"loading": "Загрузка редактора...",
+		"actions": {
+			"undo": "Ctrl+Z — отмена",
+			"save": "Ctrl+Shift+S — сохранить"
+		},
+		"style": {
+			"thickness": "Толщина:"
+		},
+		"accordion": {
+			"basePoints": "Базовые точки",
+			"tools": "Инструменты",
+			"markers": "Метки",
+			"style": "Стиль"
+		}
+	},
+	"admin": {
+		"permissions": {
+			"title": "Разрешения",
+			"total": "всего",
+			"create": "Создать разрешение",
+			"name": "Название",
+			"description": "Описание",
+			"createBtn": "Создать",
+			"edit": "Редактировать разрешение",
+			"deleteTitle": "Удалить разрешение?",
+			"deleteDescription": "Разрешение <strong>{name}</strong> будет удалено навсегда.",
+			"deleteConfirm": "Удалить",
+			"cancel": "Отмена",
+			"save": "Сохранить",
+			"toast": {
+				"created": "Разрешение создано",
+				"createError": "Ошибка создания",
+				"updated": "Разрешение обновлено",
+				"updateError": "Ошибка обновления",
+				"deleted": "Разрешение удалено",
+				"deleteError": "Ошибка удаления"
+			}
+		},
+		"users": {
+			"title": "Пользователи",
+			"total": "всего",
+			"search": "Поиск...",
+			"table": {
+				"username": "Имя пользователя",
+				"name": "Имя",
+				"roles": "Роли",
+				"status": "Статус"
+			},
+			"status": {
+				"banned": "Забанен",
+				"active": "Активен"
+			},
+			"deleteTitle": "Удалить пользователя?",
+			"deleteDescription": "Пользователь <strong>{name}</strong> будет удалён навсегда.",
+			"deleteConfirm": "Удалить",
+			"cancel": "Отмена",
+			"toast": {
+				"deleted": "Пользователь удалён",
+				"deleteError": "Ошибка при удалении"
+			}
+		},
+		"userDetail": {
+			"tabs": {
+				"info": "Информация",
+				"sessions": "Сессии",
+				"roles": "Роли",
+				"badges": "Бейджи"
+			},
+			"editing": "Редактирование",
+			"username": "Имя пользователя",
+			"name": "Имя",
+			"save": "Сохранить",
+			"ban": {
+				"title": "Бан",
+				"banned": "Пользователь забанен",
+				"unban": "Снять бан",
+				"reason": "Причина бана",
+				"duration": "Длительность (часы)",
+				"confirm": "Забанить"
+			},
+			"delete": {
+				"title": "Удаление",
+				"trigger": "Удалить пользователя",
+				"confirmTitle": "Удалить пользователя?",
+				"description": "Пользователь <strong>{name}</strong> будет удалён навсегда. Это действие нельзя отменить.",
+				"confirm": "Удалить"
+			},
+			"sessions": {
+				"device": "Устройство",
+				"created": "Создана",
+				"active": "Активна",
+				"revokeTitle": "Отозвать сессию?",
+				"revokeConfirm": "Отозвать"
+			},
+			"roles": {
+				"title": "Роли пользователя",
+				"add": "Добавить роль",
+				"removeTitle": "Снять роль?",
+				"removeDescription": "Роль <strong>{name}</strong> будет снята с пользователя.",
+				"removeConfirm": "Снять",
+				"empty": "Нет назначенных ролей"
+			},
+			"badges": {
+				"title": "Бейджи пользователя",
+				"add": "Добавить бейдж",
+				"removeTitle": "Снять бейдж?",
+				"removeDescription": "Бейдж <strong>{name}</strong> будет снят с пользователя.",
+				"removeConfirm": "Снять",
+				"empty": "Нет назначенных бейджей"
+			},
+			"toast": {
+				"updated": "Пользователь обновлён",
+				"updateError": "Ошибка обновления",
+				"banned": "Пользователь забанен",
+				"banError": "Ошибка бана",
+				"unbanned": "Бан снят",
+				"unbanError": "Ошибка снятия бана",
+				"sessionRevoked": "Сессия отозвана",
+				"sessionRevokeError": "Ошибка отзыва сессии",
+				"roleAssigned": "Роль назначена",
+				"roleAssignError": "Ошибка назначения роли",
+				"roleRemoved": "Роль снята",
+				"roleRemoveError": "Ошибка снятия роли",
+				"badgeAssigned": "Бейдж назначен",
+				"badgeAssignError": "Ошибка назначения бейджа",
+				"badgeRemoved": "Бейдж снят",
+				"badgeRemoveError": "Ошибка снятия бейджа",
+				"deleted": "Пользователь удалён",
+				"deleteError": "Ошибка удаления"
+			},
+			"cancel": "Отмена",
+			"close": "Закрыть"
+		}
+	},
+	"errors": {
+		"oops": "Упсс...",
+		"support": {
+			"thenContact": "то обратитесь в",
+			"techSupport": "тех. поддержку",
+			"whenContacting": "При обращении укажите"
+		},
+		"playerNotFound": {
+			"buttonLabel": "Вернутся обратно",
+			"description": "Игрок не найден"
+		},
+		"banned": {
+			"account": "Аккаунт",
+			"blocked": "заблокирован",
+			"reasonPrefix": "Причина:",
+			"blockedMessage": "Ваш аккаунт был заблокирован",
+			"remaining": "Осталось:",
+			"ifMistake": "Если вы считаете, что блокировка выдана ошибочно,",
+			"reasonLabel": "Причину",
+			"reasonValuePrefix": "Причина"
+		},
+		"notFound": {
+			"buttonLabel": "На главную",
+			"description": "Страница не найдена",
+			"ifUrlCorrect": "Если вы считаете, что URL введён верно,"
+		},
+		"globalError": {
+			"buttonLabel": "Попробовать снова",
+			"description": "Произошла клиентская ошибка",
+			"ifProblemPersists": "Если проблема остаётся, обратитесь в"
+		}
+	},
+	"articles": {
+		"title": "Статьи",
+		"allArticles": "← Все статьи",
+		"publishedCount": "{count} опубликованных статей",
+		"empty": "Нет опубликованных статей",
+		"loading": "Загрузка...",
+		"loadError": "Ошибка загрузки статьи",
+		"comments": {
+			"title": "Комментарии ({count})",
+			"placeholder": "Написать комментарий...",
+			"empty": "Нет комментариев",
+			"reply": "Ответить",
+			"deleteTitle": "Удалить комментарий?",
+			"cancel": "Отмена",
+			"deleteConfirm": "Удалить",
+			"toast": {
+				"added": "Комментарий добавлен",
+				"addError": "Ошибка добавления комментария",
+				"deleted": "Комментарий удалён",
+				"deleteError": "Ошибка удаления комментария"
+			}
+		}
 	}
 }

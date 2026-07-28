@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import ErrorContent from '../shared/ErrorContent'
 import SupportText from '../shared/SupportText'
 
@@ -8,14 +9,16 @@ type GlobalErrorProps = {
 }
 
 export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
+	const t = useTranslations()
+
 	return (
 		<html>
 			<body className="flex min-h-screen flex-col items-center justify-center gap-4 px-6">
 				<div className="grid items-center gap-16 md:flex">
 					<ErrorContent
 						buttonIcon="lucide:rotate-ccw"
-						buttonLabel="Попробовать снова"
-						description="Произошла клиентская ошибка"
+						buttonLabel={t('errors.globalError.buttonLabel')}
+						description={t('errors.globalError.description')}
 						onButtonClick={reset}
 					/>
 					<Image
@@ -28,7 +31,9 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 				</div>
 				<div className="flex flex-col items-center gap-2">
 					<SupportText
-						identifierLabel="Если проблема остаётся, обратитесь в"
+						identifierLabel={t(
+							'errors.globalError.ifProblemPersists'
+						)}
 						identifierPrefix="Error id"
 						identifierValue={errorId}
 					/>

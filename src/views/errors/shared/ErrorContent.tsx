@@ -1,5 +1,6 @@
 import { Icon, type IconifyIcon } from '@iconify/react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 
@@ -12,12 +13,13 @@ type ErrorContentProps = {
 }
 
 export default function ErrorContent({
-	title = 'Упсс...',
+	title,
 	description,
 	buttonIcon,
 	buttonLabel,
 	onButtonClick,
 }: ErrorContentProps) {
+	const t = useTranslations()
 	const router = useRouter()
 
 	return (
@@ -25,7 +27,7 @@ export default function ErrorContent({
 			<h1
 				className={`${unbounded.className} font-semibold text-3xl uppercase tracking-widest`}
 			>
-				{title}
+				{title ?? t('errors.oops')}
 			</h1>
 			<p
 				className={`${unbounded.className} font-semibold text-xl dark:text-neutral-100/90`}

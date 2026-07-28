@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/Button'
 
@@ -15,6 +16,8 @@ export function ActionButtons({
 	onSave,
 	onLoad,
 }: ActionButtonsProps) {
+	const t = useTranslations()
+
 	return (
 		<>
 			<div className="flex flex-col gap-2">
@@ -55,8 +58,8 @@ export function ActionButtons({
 			</div>
 
 			<div className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
-				<p>Ctrl+Z — отмена</p>
-				<p>Ctrl+Shift+S — сохранить</p>
+				<p>{t('cwMap.actions.undo')}</p>
+				<p>{t('cwMap.actions.save')}</p>
 			</div>
 		</>
 	)

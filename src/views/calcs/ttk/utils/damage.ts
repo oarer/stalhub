@@ -1,7 +1,11 @@
 import type { DamageDistanceInfoBlock, Item } from '@/types/item.type'
-import { type HitZone } from '../constants/ttk'
+import type { HitZone } from '../constants/ttk'
 import { getAmmoDamageBonus } from './ammo'
-import { getDamageBlock, getDamageModifiers, getDamageVariant } from './itemStats'
+import {
+	getDamageBlock,
+	getDamageModifiers,
+	getDamageVariant,
+} from './itemStats'
 import { getPlateDamageAbsorption } from './plate'
 
 export function getDamageAt(

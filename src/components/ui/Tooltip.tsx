@@ -7,10 +7,13 @@ import {
 	useCallback,
 	useContext,
 	useEffect,
+	useLayoutEffect,
 	useRef,
 	useState,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { cn } from '@/lib/cn'
+import { Slot } from '@radix-ui/react-slot'
 
 type Position = 'top' | 'bottom' | 'left' | 'right'
 
@@ -18,6 +21,7 @@ type TooltipContextValue = {
 	open: boolean
 	setOpen: (open: boolean) => void
 	position: Position
+	triggerRef: React.RefObject<HTMLDivElement | null>
 }
 
 const TooltipContext = createContext<TooltipContextValue | undefined>(undefined)
@@ -35,6 +39,7 @@ function TooltipRoot({
 }) {
 	const [open, setOpenState] = useState(false)
 	const timeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const triggerRef = useRef<HTMLDivElement>(null)
 
 	const handleOpen = useCallback(
 		(value: boolean) => {
@@ -66,9 +71,11 @@ function TooltipRoot({
 
 	return (
 		<TooltipContext.Provider
-			value={{ open, setOpen: handleOpen, position }}
+			value={{ open, setOpen: handleOpen, position, triggerRef }}
 		>
-			<div className="relative inline-flex">{children}</div>
+			<div className="inline-flex" ref={triggerRef}>
+				{children}
+			</div>
 		</TooltipContext.Provider>
 	)
 }
@@ -84,15 +91,22 @@ function useTooltip() {
 function TooltipTrigger({
 	children,
 	underline = true,
+	asChild = false,
 }: {
 	children: ReactNode
 	underline?: boolean
+	asChild?: boolean
 }) {
 	const { setOpen } = useTooltip()
 
+	const Comp = asChild ? Slot : 'span'
+
 	return (
-		<span
-			className={cn(underline && 'underline')}
+		<Comp
+			className={cn(
+				!asChild && underline && 'underline',
+				'cursor-pointer'
+			)}
 			onBlur={() => setOpen(false)}
 			onClick={() => setOpen(true)}
 			onFocus={() => setOpen(true)}
@@ -101,19 +115,85 @@ function TooltipTrigger({
 			tabIndex={0}
 		>
 			{children}
-		</span>
+		</Comp>
 	)
 }
-
 function TooltipContent({ children }: { children: ReactNode }) {
-	const { open, position, setOpen } = useTooltip()
+	const { open, position, setOpen, triggerRef } = useTooltip()
+	const tooltipRef = useRef<HTMLDivElement>(null)
+	const [coords, setCoords] = useState<{ top: number; left: number } | null>(
+		null
+	)
 
-	const positionClass = {
-		top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
-		bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
-		left: 'right-full top-1/2 -translate-y-1/2 mr-2',
-		right: 'left-full top-1/2 -translate-y-1/2 ml-2',
-	}[position]
+	const updatePosition = useCallback(() => {
+		const trigger = triggerRef.current
+		const tooltip = tooltipRef.current
+		if (!trigger || !tooltip) return
+
+		const triggerRect = trigger.getBoundingClientRect()
+		const tooltipWidth = tooltip.offsetWidth
+		const tooltipHeight = tooltip.offsetHeight
+		const gap = 8
+
+		switch (position) {
+			case 'top':
+				setCoords({
+					top: triggerRect.top - gap - tooltipHeight,
+					left:
+						triggerRect.left +
+						triggerRect.width / 2 -
+						tooltipWidth / 2,
+				})
+				break
+			case 'bottom':
+				setCoords({
+					top: triggerRect.bottom + gap,
+					left:
+						triggerRect.left +
+						triggerRect.width / 2 -
+						tooltipWidth / 2,
+				})
+				break
+			case 'left':
+				setCoords({
+					top:
+						triggerRect.top +
+						triggerRect.height / 2 -
+						tooltipHeight / 2,
+					left: triggerRect.left - gap - tooltipWidth,
+				})
+				break
+			case 'right':
+				setCoords({
+					top:
+						triggerRect.top +
+						triggerRect.height / 2 -
+						tooltipHeight / 2,
+					left: triggerRect.right + gap,
+				})
+				break
+		}
+	}, [position, triggerRef])
+
+	useLayoutEffect(() => {
+		if (open) {
+			updatePosition()
+		} else {
+			setCoords(null)
+		}
+	}, [open, updatePosition])
+
+	useEffect(() => {
+		if (!open) return
+
+		window.addEventListener('scroll', updatePosition, true)
+		window.addEventListener('resize', updatePosition)
+
+		return () => {
+			window.removeEventListener('scroll', updatePosition, true)
+			window.removeEventListener('resize', updatePosition)
+		}
+	}, [open, updatePosition])
 
 	const arrowClass = {
 		top: 'top-full left-1/2 -translate-x-1/2  border-t-neutral-800 border-x-transparent border-b-transparent',
@@ -129,31 +209,36 @@ function TooltipContent({ children }: { children: ReactNode }) {
 		right: { x: -4 },
 	}[position]
 
-	return (
+	return createPortal(
 		<AnimatePresence>
 			{open && (
 				<motion.div
 					animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
 					aria-hidden={!open}
-					className={`absolute z-50 ${positionClass}`}
 					exit={{ opacity: 0, scale: 0.95, ...motion$ }}
 					initial={{ opacity: 0, scale: 0.95, ...motion$ }}
 					onPointerEnter={() => setOpen(true)}
 					onPointerLeave={() => setOpen(false)}
+					ref={tooltipRef}
 					role="tooltip"
+					style={{
+						position: 'fixed',
+						top: coords?.top ?? 0,
+						left: coords?.left ?? 0,
+						zIndex: 99999,
+					}}
 					transition={{ duration: 0.15 }}
 				>
-					<div className="pointer-events-auto relative rounded-lg bg-white px-3 py-2 backdrop-blur-md dark:bg-neutral-800">
-						<p className="whitespace-nowrap font-semibold text-sm">
-							{children}
-						</p>
+					<div className="wrap-break-word relative max-w-sm rounded-lg bg-white px-3 py-2 backdrop-blur-md dark:bg-neutral-800">
+						<p className="font-semibold text-sm">{children}</p>
 						<span
 							className={`absolute h-0 w-0 border-8 ${arrowClass}`}
 						/>
 					</div>
 				</motion.div>
 			)}
-		</AnimatePresence>
+		</AnimatePresence>,
+		document.body
 	)
 }
 

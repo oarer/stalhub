@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
 import { Divider } from '@/components/ui/Divider'
 import { getLocale } from '@/lib/getLocale'
@@ -7,8 +8,8 @@ import type { AddStatBlock, ElementListBlock, Item } from '@/types/item.type'
 import { ListBlock } from '@/views/items/components/blocks'
 import {
 	CUSTOM_ROF_MAP,
-	getWeaponStats,
 	type CustomRof,
+	getWeaponStats,
 	type HitZone,
 } from '../constants/ttk'
 import { getDmgPerShot, getNumericStat } from '../utils'
@@ -28,6 +29,7 @@ const WeaponStatsPanel = memo(function Wsp({
 	variantIndex,
 	useBurstRof,
 }: WeaponStatsPanelProps) {
+	const t = useTranslations()
 	const dmg0 = useMemo(
 		() => getDmgPerShot(weapon, ammo, hitZone, 0, variantIndex),
 		[weapon, ammo, hitZone, variantIndex]
@@ -66,13 +68,13 @@ const WeaponStatsPanel = memo(function Wsp({
 	return (
 		<div className="flex flex-col gap-3 text-sm">
 			<div className="grid grid-cols-2 gap-2">
-				{statsList.map(({ label, value, color }) => (
+				{statsList.map(({ labelKey, value, color }) => (
 					<div
 						className="flex flex-col items-center rounded-lg bg-neutral-800/50 py-2"
-						key={label}
+						key={labelKey}
 					>
 						<span className="text-neutral-500 text-xs">
-							{label}
+							{t(labelKey)}
 						</span>
 						<span className={`font-bold text-lg ${color}`}>
 							{value}

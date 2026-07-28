@@ -30,7 +30,12 @@ export default async function RootLayout({
 	const messages = await getMessages()
 
 	return (
-		<html className="dark" lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
+		<html
+			className="dark"
+			data-scroll-behavior="smooth"
+			lang={locale}
+			suppressHydrationWarning
+		>
 			<body
 				className={`${raleway.className} bg-neutral-100 transition-colors duration-500 ease-in-out dark:bg-neutral-950`}
 			>
@@ -57,8 +62,8 @@ export default async function RootLayout({
 							<Providers>
 								<Nav />
 								{/* <PageTransitionEffect> */}
-									<main className="min-h-screen">{children}</main>
-									<Footer />
+								<main className="min-h-screen">{children}</main>
+								<Footer />
 								{/* </PageTransitionEffect> */}
 							</Providers>
 						</NextIntlClientProvider>

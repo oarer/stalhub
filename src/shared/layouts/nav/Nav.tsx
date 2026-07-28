@@ -6,14 +6,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import DropdownMenu from '@/components/ui/DropDown'
 import { CLink } from '@/components/ui/Link'
 import { DropDownLinks } from '@/constants/nav.const'
 import useSvg from '@/hooks/useSvg'
-import ChangeLang from './ChangeLang'
-import ChangeTheme from './ChangeTheme'
+import ChangeLang from './components/ChangeLang'
+import ChangeTheme from './components/ChangeTheme'
+import NavMe from './components/NavMe'
 import NavMobile from './NavMobile'
 
 export default function Nav() {
@@ -84,18 +84,7 @@ export default function Nav() {
 							<ChangeLang />
 							<ChangeTheme />
 						</div>
-						<CLink
-							className="gap-2 rounded-xl p-2.5"
-							href="/auth"
-							variant={'primary'}
-						>
-							<Icon className="text-xl" icon="lucide:log-in" />
-							<p
-								className={`${montserrat.className} hidden font-semibold text-md md:block`}
-							>
-								Авторизация
-							</p>
-						</CLink>
+						<NavMe />
 					</div>
 				</div>
 			</nav>

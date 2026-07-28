@@ -94,7 +94,7 @@ export const BuildLitePngTemplate = forwardRef<
 	return (
 		<div className="w-7xl bg-background p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-border text-sm uppercase tracking-[3]`}
+				className={`${unbounded.className} font-bold text-2xl text-border uppercase tracking-[3]`}
 			>
 				stalhub.tech
 			</h1>

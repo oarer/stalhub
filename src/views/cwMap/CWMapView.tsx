@@ -1,14 +1,18 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 
 const CWMapEditor = dynamic(() => import('./CWMapEditor'), {
 	ssr: false,
-	loading: () => (
-		<div className="flex h-[70vh] items-center justify-center text-neutral-500">
-			Загрузка редактора...
-		</div>
-	),
+	loading: () => {
+		const t = useTranslations()
+		return (
+			<div className="flex h-[70vh] items-center justify-center text-neutral-500">
+				{t('cwMap.loading')}
+			</div>
+		)
+	},
 })
 
 export default function CWMapView() {

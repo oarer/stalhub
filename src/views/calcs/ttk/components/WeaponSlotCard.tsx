@@ -4,18 +4,18 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { type CSSProperties, useEffect, useMemo, useState } from 'react'
+import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import type { WeaponSlot } from '@/stores/useTTK.store'
-import { InfoColor, infoColorMap, type Item } from '@/types/item.type'
+import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { ItemPickerModal } from '@/views/calcs/builds/lite/components/ItemPickerModal'
 import { CUSTOM_ROF_MAP } from '../constants/ttk'
 import { getAmmoType, getCompatibleAmmo } from '../utils'
-import { montserrat } from '@/app/fonts'
-import { cn } from '@/lib/cn'
 
 interface WeaponSlotCardProps {
 	slot: WeaponSlot
@@ -99,8 +99,8 @@ export function WeaponSlotCard({
 				style={
 					isFocused
 						? ({
-							'--tw-ring-color': color + '80',
-						} as CSSProperties)
+								'--tw-ring-color': color + '80',
+							} as CSSProperties)
 						: {}
 				}
 			>
@@ -126,7 +126,6 @@ export function WeaponSlotCard({
 									setShowWeaponModal(true)
 									if (slot.weaponId) onFocus()
 								}}
-
 								variant="outline"
 							>
 								<span
@@ -163,32 +162,33 @@ export function WeaponSlotCard({
 						</div>
 
 						{weapon && CUSTOM_ROF_MAP[weapon.id] && (
-							<div className="flex items-center gap-1 rounded-lg ring-2 ring-border-secondary p-1">
+							<div className="flex items-center gap-1 rounded-lg p-1 ring-2 ring-border-secondary">
 								<Button
-									onClick={() => {
-										if (slot.useBurstRof) onBurstRofToggle()
-									}}
 									className={cn(
-										'font-semibold text-sm w-full',
+										'w-full font-semibold text-sm',
 										!slot.useBurstRof
 											? 'bg-border/40 dark:text-neutral-200'
 											: 'hover:text-neutral-200'
 									)}
+									onClick={() => {
+										if (slot.useBurstRof) onBurstRofToggle()
+									}}
 									variant="ghost"
 								>
 									{t('ttk.page.fire.auto')}
 								</Button>
 
 								<Button
-									onClick={() => {
-										if (!slot.useBurstRof) onBurstRofToggle()
-									}}
 									className={cn(
-										'font-semibold text-sm w-full',
+										'w-full font-semibold text-sm',
 										slot.useBurstRof
 											? 'bg-border/40 dark:text-neutral-200'
 											: 'hover:text-neutral-200'
 									)}
+									onClick={() => {
+										if (!slot.useBurstRof)
+											onBurstRofToggle()
+									}}
 									variant="ghost"
 								>
 									{t('ttk.page.fire.burst')}
@@ -240,14 +240,15 @@ export function WeaponSlotCard({
 										</div>
 
 										<span
-											className={`min-w-0 truncate text-sm font-semibold ${!ammo ? 'text-text-accent' : ''
-												}`}
+											className={`min-w-0 truncate font-semibold text-sm ${
+												!ammo ? 'text-text-accent' : ''
+											}`}
 										>
 											{ammo
 												? messageToString(
-													ammo.name,
-													locale
-												)
+														ammo.name,
+														locale
+													)
 												: t('ttk.page.default_ammo')}
 										</span>
 

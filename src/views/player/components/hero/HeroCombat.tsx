@@ -19,7 +19,10 @@ export default function HeroCombat({ data }: { data: Stat[] }) {
 						{t('player.combat.kills')}{' '}
 						{Number(getStatValue(data, 'kil') ?? 0)}
 					</p>
-					<p>Смертей: {Number(getStatValue(data, 'bul-dea') ?? 0)}</p>
+					<p>
+						{t('player.combat.deaths')}{' '}
+						{Number(getStatValue(data, 'bul-dea') ?? 0)}
+					</p>
 				</div>
 				<p>
 					{t('player.combat.kil_ser')}{' '}

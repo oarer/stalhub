@@ -86,6 +86,7 @@ interface Props {
 	className?: string
 	variant?: VariantProps<typeof buttonVariants>['variant']
 	fullScreen?: boolean
+	background?: string
 }
 
 export function ModalTrigger({
@@ -112,6 +113,7 @@ export function ModalContent({
 	children,
 	className = '',
 	fullScreen = true,
+	background = '',
 }: Props) {
 	const { isOpen, close } = useModal()
 
@@ -144,7 +146,10 @@ export function ModalContent({
 				>
 					<motion.div
 						animate="animate"
-						className="absolute inset-0 bg-background/20 backdrop-blur-sm"
+						className={cn(
+							'absolute inset-0 bg-background/20 backdrop-blur-sm',
+							background
+						)}
 						exit="exit"
 						initial="initial"
 						onClick={close}
@@ -210,7 +215,7 @@ export function ModalDescription({ children, className = '' }: Props) {
 }
 
 export function ModalBody({ children, className = '' }: Props) {
-	return <div className={cn('py-4', className)}>{children}</div>
+	return <div className={cn('pb-4', className)}>{children}</div>
 }
 
 export function ModalFooter({ children, className = '' }: Props) {

@@ -1,13 +1,19 @@
 'use client'
 
+import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { toPng } from 'html-to-image'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
+import { Modal } from '@/components/ui/Modal'
+import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art } from '@/types/build.type'
 import type { Item } from '@/types/item.type'
@@ -84,18 +90,22 @@ export default function BuildsLiteView() {
 		updateBuild,
 		exportBuild,
 		importBuild,
+		loadFromApi,
 		build,
 	} = useBuildStore()
 
 	const t = useTranslations()
 	const locale = getLocale()
 	const [imported, setImported] = useState(false)
+	const [loadedFromApi, setLoadedFromApi] = useState(false)
 	const [isSavingPng, setIsSavingPng] = useState(false)
 	const [pngImageSources, setPngImageSources] = useState<
 		Record<string, string>
 	>({})
 	const [showArmorModal, setShowArmorModal] = useState(false)
 	const [armorPreviewId, setArmorPreviewId] = useState<string | null>(null)
+	const [pngPreviewUrl, setPngPreviewUrl] = useState<string | null>(null)
+	const [showPngModal, setShowPngModal] = useState(false)
 	const pngTemplateRef = useRef<HTMLDivElement | null>(null)
 
 	const currentBuild = savedBuilds.find((b) => b.id === currentBuildId)
@@ -152,6 +162,23 @@ export default function BuildsLiteView() {
 			})
 		}, 100)
 	}, [importBuild, imported])
+
+	useEffect(() => {
+		if (loadedFromApi) return
+
+		const params = new URLSearchParams(window.location.search)
+		const buildId = params.get('build')
+		if (!buildId) return
+
+		setLoadedFromApi(true)
+		buildApiService.get(buildId).then((apiBuild) => {
+			loadFromApi(apiBuild.id, apiBuild.title, apiBuild.data)
+			window.history.replaceState({}, '', '/calcs/builds/lite')
+		}).catch(() => {
+			toast.error('Сборка не найдена')
+			window.history.replaceState({}, '', '/calcs/builds/lite')
+		})
+	}, [loadFromApi, loadedFromApi])
 
 	const handleSavePng = useCallback(async () => {
 		if (!pngTemplateRef.current || isSavingPng) return
@@ -220,17 +247,8 @@ export default function BuildsLiteView() {
 				15000
 			)
 
-			const link = document.createElement('a')
-			const name = currentBuild?.name || t('build.new_build')
-			const safeName = name
-				.trim()
-				.replace(/[\\/:*?"<>|]+/g, '-')
-				.replace(/\s+/g, '-')
-				.toLowerCase()
-
-			link.download = `${safeName || 'build'}.png`
-			link.href = dataUrl
-			link.click()
+			setPngPreviewUrl(dataUrl)
+			setShowPngModal(true)
 		} finally {
 			setIsSavingPng(false)
 		}
@@ -239,11 +257,37 @@ export default function BuildsLiteView() {
 		build,
 		containers,
 		consumables,
-		currentBuild?.name,
 		isSavingPng,
 		items,
-		t,
 	])
+
+	const handleDownloadPng = useCallback(() => {
+		if (!pngPreviewUrl) return
+		const link = document.createElement('a')
+		const name = currentBuild?.name || t('build.new_build')
+		const safeName = name
+			.trim()
+			.replace(/[\\/:*?"<>|]+/g, '-')
+			.replace(/\s+/g, '-')
+			.toLowerCase()
+		link.download = `${safeName || 'build'}.png`
+		link.href = pngPreviewUrl
+		link.click()
+	}, [currentBuild?.name, pngPreviewUrl, t])
+
+	const handleCopyPng = useCallback(async () => {
+		if (!pngPreviewUrl) return
+		try {
+			const res = await fetch(pngPreviewUrl)
+			const blob = await res.blob()
+			await navigator.clipboard.write([
+				new ClipboardItem({ 'image/png': blob }),
+			])
+			toast.success('Изображение скопировано')
+		} catch {
+			toast.error('Не удалось скопировать')
+		}
+	}, [pngPreviewUrl])
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
@@ -256,6 +300,7 @@ export default function BuildsLiteView() {
 						onRename={(id, name) => updateBuild(id, { name })}
 						onReset={resetBuild}
 						onSavePng={handleSavePng}
+						onUpdateBuild={(id, data) => updateBuild(id, data)}
 						savingPng={isSavingPng}
 						t={t}
 					/>
@@ -360,6 +405,52 @@ export default function BuildsLiteView() {
 					t={t}
 				/>
 			</div>
+			<Modal.Root
+				onOpenChange={setShowPngModal}
+				open={showPngModal}
+			>
+				<Modal.Content fullScreen={false}>
+					<Modal.Header>
+						<Modal.Title className="flex items-center gap-2">
+							<Icon icon="lucide:image" />
+							Предпросмотр сборки
+						</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						{pngPreviewUrl && (
+							<div className="flex justify-center rounded-lg bg-neutral-900 p-2">
+								<Image
+									alt="Build preview"
+									className="h-auto w-full rounded-md"
+									height={600}
+									priority
+									src={pngPreviewUrl}
+									width={900}
+								/>
+							</div>
+						)}
+					</Modal.Body>
+					<Modal.Footer>
+						<Modal.Close>Закрыть</Modal.Close>
+						<Button
+							className="flex items-center gap-2"
+							onClick={handleCopyPng}
+							variant="secondary"
+						>
+							<Icon icon="lucide:copy" />
+							Копировать
+						</Button>
+						<Button
+							className="flex items-center gap-2"
+							onClick={handleDownloadPng}
+							variant="primary"
+						>
+							<Icon icon="lucide:download" />
+							Скачать
+						</Button>
+					</Modal.Footer>
+				</Modal.Content>
+			</Modal.Root>
 		</section>
 	)
 }

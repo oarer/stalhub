@@ -79,11 +79,15 @@ export default function Input({
 				let normalized = String(Number(raw))
 
 				if (min !== undefined) {
-					normalized = String(Math.max(Number(normalized), Number(min)))
+					normalized = String(
+						Math.max(Number(normalized), Number(min))
+					)
 				}
 
 				if (max !== undefined) {
-					normalized = String(Math.min(Number(normalized), Number(max)))
+					normalized = String(
+						Math.min(Number(normalized), Number(max))
+					)
 				}
 
 				setDraftValue(normalized)
@@ -141,23 +145,23 @@ export default function Input({
 		<div className="relative">
 			<input
 				{...rest}
-				ref={inputRef}
-				id={id}
-				type={type === 'password' && showPassword ? 'text' : type}
-				value={draftValue}
-				step={step}
-				min={min}
-				max={max}
-				placeholder={computedPlaceholder}
-				onChange={handleChange}
-				onBlur={handleBlur}
-				onKeyDown={handleKeyDown}
 				className={cn(
 					`peer w-full rounded-lg border-2 border-border-secondary bg-background px-2.5 py-1 font-semibold text-neutral-900 outline-none transition-all duration-500 ease-in-out placeholder:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-100 dark:placeholder:text-neutral-400`,
 					label && 'pt-3',
 					type === 'number' && `${montserrat.className} text-sm`,
 					className
 				)}
+				id={id}
+				max={max}
+				min={min}
+				onBlur={handleBlur}
+				onChange={handleChange}
+				onKeyDown={handleKeyDown}
+				placeholder={computedPlaceholder}
+				ref={inputRef}
+				step={step}
+				type={type === 'password' && showPassword ? 'text' : type}
+				value={draftValue}
 			/>
 
 			{label && (
@@ -172,19 +176,19 @@ export default function Input({
 			{type === 'number' && (
 				<div className="absolute top-1/2 right-2 flex -translate-y-1/2 flex-col">
 					<button
-						type="button"
 						aria-label="increase"
-						onClick={() => handleStep('up')}
 						className="flex cursor-pointer items-center justify-center text-neutral-500 duration-500 hover:text-black dark:text-neutral-400 dark:hover:text-white"
+						onClick={() => handleStep('up')}
+						type="button"
 					>
 						<Icon icon="lucide:chevron-up" />
 					</button>
 
 					<button
-						type="button"
 						aria-label="decrease"
-						onClick={() => handleStep('down')}
 						className="flex cursor-pointer items-center justify-center text-neutral-500 duration-500 hover:text-black dark:text-neutral-400 dark:hover:text-white"
+						onClick={() => handleStep('down')}
+						type="button"
 					>
 						<Icon icon="lucide:chevron-down" />
 					</button>
@@ -193,20 +197,22 @@ export default function Input({
 
 			{type === 'password' && (
 				<button
-					type="button"
-					onClick={togglePassword}
 					className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-neutral-500 hover:text-black dark:text-neutral-300 dark:hover:text-white"
+					onClick={togglePassword}
+					type="button"
 				>
 					<div className="relative h-5 w-5">
 						<Icon
+							className={`absolute inset-0 transition-opacity duration-300 ${
+								showPassword ? 'opacity-0' : 'opacity-100'
+							}`}
 							icon="lucide:eye"
-							className={`absolute inset-0 transition-opacity duration-300 ${showPassword ? 'opacity-0' : 'opacity-100'
-								}`}
 						/>
 						<Icon
+							className={`absolute inset-0 transition-opacity duration-300 ${
+								showPassword ? 'opacity-100' : 'opacity-0'
+							}`}
 							icon="lucide:eye-off"
-							className={`absolute inset-0 transition-opacity duration-300 ${showPassword ? 'opacity-100' : 'opacity-0'
-								}`}
 						/>
 					</div>
 				</button>

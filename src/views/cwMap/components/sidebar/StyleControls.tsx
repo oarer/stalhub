@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/cn'
 import { PRESET_COLORS } from '../../types'
 
@@ -15,6 +16,8 @@ export function StyleControls({
 	onColorChange,
 	onLineWidthChange,
 }: StyleControlsProps) {
+	const t = useTranslations()
+
 	return (
 		<>
 			<div className="flex gap-1.5">
@@ -45,7 +48,7 @@ export function StyleControls({
 				</label>
 			</div>
 			<p className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
-				Толщина: {lineWidth}px
+				{t('cwMap.style.thickness')} {lineWidth}px
 			</p>
 			<input
 				className="w-full cursor-pointer accent-sky-500"

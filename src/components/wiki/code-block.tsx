@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface CodeBlockProps {
-	children: string
+	children: React.ReactNode
 	className?: string
 }
 
@@ -26,7 +26,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 			style={atomDark}
 			wrapLines
 		>
-			{children}
+			{String(children)}
 		</SyntaxHighlighter>
 	)
 }

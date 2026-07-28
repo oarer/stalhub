@@ -1,10 +1,11 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Table } from '@/components/ui/Table'
-import { InfoColor, infoColorMap } from '@/types/item.type'
-import { useTranslations } from 'next-intl'
+import { type InfoColor, infoColorMap } from '@/types/item.type'
+
 interface TTKSummaryRow {
 	label: string
 	color: string

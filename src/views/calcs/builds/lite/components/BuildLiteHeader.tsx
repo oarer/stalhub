@@ -1,12 +1,15 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import type { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { toast } from '@/components/ui/Toast'
+import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import BuildSelector from '../../components/BuildSelector'
 import DefaultsSettings from '../../components/DefaultsSettings'
@@ -18,6 +21,10 @@ type BuildLiteHeaderProps = {
 	onExport: (name: string) => Promise<string | null>
 	onSavePng: () => void
 	onReset: () => void
+	onUpdateBuild: (
+		id: string,
+		data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId'>>
+	) => void
 	savingPng: boolean
 	t: ReturnType<typeof useTranslations>
 }
@@ -29,12 +36,48 @@ export function BuildLiteHeader({
 	onExport,
 	onSavePng,
 	onReset,
+	onUpdateBuild,
 	savingPng,
 	t,
 }: BuildLiteHeaderProps) {
 	const [showRenameModal, setShowRenameModal] = useState(false)
 	const [buildName, setBuildName] = useState('')
-	const [shareCopied, setShareCopied] = useState(false)
+	const queryClient = useQueryClient()
+
+	const isPublished = Boolean(currentBuild?.apiBuildId)
+
+	const publishMutation = useMutation({
+		mutationFn: () => {
+			const name = currentBuild?.name || 'Build'
+			return buildApiService.create({
+				title: name,
+				data: currentBuild!.build,
+			})
+		},
+		onSuccess: (result) => {
+			if (currentBuildId && result.id) {
+				onUpdateBuild(currentBuildId, { apiBuildId: result.id })
+			}
+			toast.success('Сборка опубликована')
+			queryClient.invalidateQueries({ queryKey: ['builds'] })
+		},
+		onError: () => toast.error('Ошибка публикации'),
+	})
+
+	const updateMutation = useMutation({
+		mutationFn: () => {
+			if (!currentBuild?.apiBuildId) return Promise.reject()
+			return buildApiService.update(currentBuild.apiBuildId, {
+				title: currentBuild.name,
+				data: currentBuild.build,
+			})
+		},
+		onSuccess: () => {
+			toast.success('Сборка обновлена')
+			queryClient.invalidateQueries({ queryKey: ['builds'] })
+		},
+		onError: () => toast.error('Ошибка обновления'),
+	})
 
 	const handleRename = () => {
 		if (!buildName.trim() || !currentBuildId) return
@@ -44,15 +87,21 @@ export function BuildLiteHeader({
 		setShowRenameModal(false)
 	}
 
-	const handleShare = async () => {
+	const handleCopyLink = () => {
+		if (!currentBuild?.apiBuildId) return
+		const url = `${window.location.origin}/calcs/builds/lite?build=${currentBuild.apiBuildId}`
+		navigator.clipboard.writeText(url)
+		toast.success('Ссылка скопирована')
+	}
+
+	const handleCopyShare = async () => {
 		const name = currentBuild?.name || t('build.new_build')
 		const encoded = await onExport(name)
 		if (!encoded) return
 
 		const url = `${window.location.origin}/calcs/builds/lite?share=${encodeURIComponent(encoded)}`
 		navigator.clipboard.writeText(url)
-		setShareCopied(true)
-		setTimeout(() => setShareCopied(false), 2000)
+		toast.success('Ссылка скопирована')
 	}
 
 	return (
@@ -115,16 +164,80 @@ export function BuildLiteHeader({
 						</Modal.Root>
 					)}
 
-					<Button
-						className="flex gap-2 rounded-lg p-2"
-						onClick={handleShare}
-						variant={shareCopied ? 'primary' : 'secondary'}
-					>
-						<Icon
-							className="text-xl"
-							icon={shareCopied ? 'lucide:check' : 'lucide:share'}
-						/>
-					</Button>
+					{currentBuild && (
+						<Modal.Root>
+							<Modal.Trigger asChild>
+								<Button
+									className="flex gap-2 rounded-lg p-2"
+									variant="secondary"
+								>
+									<Icon
+										className="text-xl"
+										icon="lucide:share"
+									/>
+								</Button>
+							</Modal.Trigger>
+							<Modal.Content fullScreen={false}>
+								<Modal.Header>
+									<Modal.Title className="flex items-center gap-2">
+										<Icon icon="lucide:link" />
+										Поделиться сборкой
+									</Modal.Title>
+								</Modal.Header>
+								<Modal.Body>
+									<div className="flex flex-col gap-2">
+										{isPublished && (
+											<Button
+												className="flex w-full items-center gap-2 font-semibold"
+												onClick={handleCopyLink}
+												variant="secondary"
+											>
+												<Icon icon="lucide:link" />
+												Копировать публичную ссылку
+											</Button>
+										)}
+										<Button
+											className="flex w-full items-center gap-2 font-semibold"
+											onClick={handleCopyShare}
+											variant="secondary"
+										>
+											<Icon icon="lucide:copy" />
+											Копировать код сборки
+										</Button>
+										{isPublished ? (
+											<Button
+												className="flex w-full items-center gap-2 font-bold"
+												loading={
+													updateMutation.isPending
+												}
+												onClick={() =>
+													updateMutation.mutate()
+												}
+												variant="primary"
+											>
+												<Icon icon="lucide:refresh-cw" />
+												Обновить на сервере
+											</Button>
+										) : (
+											<Button
+												className="flex w-full items-center gap-2"
+												loading={
+													publishMutation.isPending
+												}
+												onClick={() =>
+													publishMutation.mutate()
+												}
+												variant="primary"
+											>
+												<Icon icon="lucide:upload" />
+												Опубликовать
+											</Button>
+										)}
+									</div>
+								</Modal.Body>
+							</Modal.Content>
+						</Modal.Root>
+					)}
 					<Button
 						className="flex gap-2 rounded-lg p-2"
 						loading={savingPng}
@@ -139,7 +252,10 @@ export function BuildLiteHeader({
 						</Modal.Trigger>
 						<Modal.Content className="max-w-md" fullScreen={false}>
 							<Modal.Header className="py-2 pt-6">
-								<Modal.Title>Настройки</Modal.Title>
+								<Modal.Title className="flex items-center gap-2">
+									<Icon icon="lucide:settings" />
+									Настройки
+								</Modal.Title>
 							</Modal.Header>
 
 							<Modal.Body className="py-2 pb-6">

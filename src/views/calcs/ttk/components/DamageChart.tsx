@@ -10,10 +10,10 @@ import {
 	Title,
 	Tooltip,
 } from 'chart.js'
+import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import React from 'react'
 import { Line } from 'react-chartjs-2'
-import { useTranslations } from 'next-intl'
 import { Card } from '@/components/ui/Card'
 
 ChartJS.register(

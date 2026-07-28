@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import ErrorContent from '@/views/errors/shared/ErrorContent'
 
 export default function PlayerNotFoundView() {
+	const t = useTranslations()
 	const router = useRouter()
 
 	return (
@@ -12,8 +14,8 @@ export default function PlayerNotFoundView() {
 			<div className="grid items-center gap-16 md:flex">
 				<ErrorContent
 					buttonIcon="lucide:home"
-					buttonLabel="Вернутся обратно"
-					description="Игрок не найден"
+					buttonLabel={t('errors.playerNotFound.buttonLabel')}
+					description={t('errors.playerNotFound.description')}
 					onButtonClick={() => router.push('/player')}
 				/>
 				<Image

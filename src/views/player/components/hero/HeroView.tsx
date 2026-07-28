@@ -54,7 +54,7 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 					<div className="border-border/60 border-t" />
 					<HeroCombat data={data.stats} />
 					<div className="border-border/60 border-t" />
-					{data.displayedAchievements.length > 0 && (
+					{data.displayedAchievements && (
 						<div className="space-y-3">
 							<div className="flex items-center gap-2">
 								<Icon

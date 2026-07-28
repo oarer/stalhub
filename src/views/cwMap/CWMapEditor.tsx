@@ -1,6 +1,7 @@
 'use client'
 
 import L from 'leaflet'
+import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
@@ -32,6 +33,7 @@ import {
 import { genId } from './utils'
 
 export default function CWMapEditor() {
+	const t = useTranslations()
 	const [selectedMapKey, setSelectedMapKey] = useState(MAPS[0].key)
 	const [tool, setTool] = useState<Tool>('pen')
 	const [color, setColor] = useState('#ef4444')
@@ -178,7 +180,7 @@ export default function CWMapEditor() {
 						<CheckBox
 							checked={showLetterMarkers}
 							id="showLetters"
-							label="Базовые точки"
+							label={t('cwMap.accordion.basePoints')}
 							onCheckedChange={(checked) =>
 								setShowLetterMarkers(checked)
 							}
@@ -189,13 +191,13 @@ export default function CWMapEditor() {
 		},
 		{
 			key: 'tools',
-			title: 'Инструменты',
+			title: t('cwMap.accordion.tools'),
 			icon: 'lucide:wrench',
 			content: <ToolPalette onSelect={setTool} selectedTool={tool} />,
 		},
 		{
 			key: 'markers',
-			title: 'Метки',
+			title: t('cwMap.accordion.markers'),
 			icon: 'lucide:map-pin',
 			content: (
 				<MarkerSelector
@@ -207,7 +209,7 @@ export default function CWMapEditor() {
 		},
 		{
 			key: 'style',
-			title: 'Стиль',
+			title: t('cwMap.accordion.style'),
 			icon: 'lucide:palette',
 			content: (
 				<StyleControls

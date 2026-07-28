@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/cn'
 
-type CalloutType = 'info' | 'warn' | 'danger' | 'success'
+type CalloutType = 'info' | 'warning' | 'danger' | 'success' | 'tip'
 
 interface CalloutProps {
 	type?: CalloutType
@@ -21,11 +21,17 @@ const calloutConfig: Record<
 			'border-blue-500/50 bg-blue-500/10 text-blue-700 dark:text-blue-300',
 		defaultTitle: 'Info',
 	},
-	warn: {
+	warning: {
 		icon: 'lucide:alert-triangle',
 		className:
 			'border-yellow-500/50 bg-yellow-500/10 text-yellow-700 dark:text-yellow-300',
 		defaultTitle: 'Warning',
+	},
+	tip: {
+		icon: 'lucide:lightbulb',
+		className:
+			'border-green-500/50 bg-green-500/10 text-green-700 dark:text-green-300',
+		defaultTitle: 'Tip',
 	},
 	danger: {
 		icon: 'lucide:alert-circle',

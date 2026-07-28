@@ -1,9 +1,10 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { HIT_ZONES } from '../constants/ttk'
 import type { HitZone } from '../constants/ttk'
+import { HIT_ZONES } from '../constants/ttk'
 
 interface HitZoneButtonsProps {
 	hitZone: HitZone
@@ -11,6 +12,8 @@ interface HitZoneButtonsProps {
 }
 
 export function HitZoneButtons({ hitZone, onChange }: HitZoneButtonsProps) {
+	const t = useTranslations()
+
 	return (
 		<Card.Header className="flex flex-row items-center gap-4">
 			{HIT_ZONES.map((z) => (
@@ -21,7 +24,7 @@ export function HitZoneButtons({ hitZone, onChange }: HitZoneButtonsProps) {
 					type="button"
 					variant={'outline'}
 				>
-					{z.label}
+					{t(z.labelKey)}
 				</Button>
 			))}
 		</Card.Header>

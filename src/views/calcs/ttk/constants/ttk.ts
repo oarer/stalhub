@@ -23,20 +23,20 @@ export const CUSTOM_ROF_MAP: Record<string, CustomRof> = {
 	'3grwz': { rof: 1200 },
 }
 
-export const HIT_ZONES: { value: HitZone; label: string }[] = [
-	{ value: 'head', label: 'Голова' },
-	{ value: 'body', label: 'Тело' },
-	{ value: 'limbs', label: 'Конечности' },
+export const HIT_ZONES: { value: HitZone; labelKey: string }[] = [
+	{ value: 'head', labelKey: 'ttk.hitZones.head' },
+	{ value: 'body', labelKey: 'ttk.hitZones.body' },
+	{ value: 'limbs', labelKey: 'ttk.hitZones.limbs' },
 ]
 
 export const getWeaponStats = (dmg0: number, rof: number) => [
 	{
-		label: 'Урон/выстрел',
+		labelKey: 'ttk.weaponStats.damagePerShot',
 		value: dmg0.toFixed(1),
 		color: 'text-red-400',
 	},
 	{
-		label: 'DPS',
+		labelKey: 'DPS',
 		value: ((dmg0 * rof) / 60).toFixed(1),
 		color: 'text-green-400',
 	},

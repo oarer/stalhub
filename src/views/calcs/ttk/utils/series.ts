@@ -1,6 +1,6 @@
 import type { Item } from '@/types/item.type'
 import type { TTKSeries } from '../components/TTKChart'
-import { type HitZone } from '../constants/ttk'
+import type { HitZone } from '../constants/ttk'
 import { getDamageBlock } from './itemStats'
 import { calcTTKAtDist } from './ttk'
 

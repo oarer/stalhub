@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import type { Item } from '@/types/item.type'
 import type { WeaponSlot } from '@/stores/useTTK.store'
 import { useTTKStore } from '@/stores/useTTK.store'
+import type { Item } from '@/types/item.type'
 import { getAmmoType } from '../utils'
 
 const mkSlot = (): WeaponSlot => ({

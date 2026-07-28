@@ -1,7 +1,11 @@
 import type { Item } from '@/types/item.type'
 import { CUSTOM_ROF_MAP, type CustomRof, type HitZone } from '../constants/ttk'
 import { getAmmoPenetration } from './ammo'
-import { getDmgPerShot, getShotsToKill, getShotsToKillWithPlate } from './damage'
+import {
+	getDmgPerShot,
+	getShotsToKill,
+	getShotsToKillWithPlate,
+} from './damage'
 import { getNumericStat } from './itemStats'
 import { getPlateDamageAbsorption, getPlateMaxDurability } from './plate'
 

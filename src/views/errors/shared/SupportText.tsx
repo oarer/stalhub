@@ -1,10 +1,12 @@
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { Skeleton } from '@/components/ui/Skeleton'
 
 type SupportTextProps = {
 	identifierLabel: string
 	identifierValue?: string | null
 	identifierPrefix: string
+	identifierValuePrefix?: string
 }
 
 const LINK_CLASSES =
@@ -13,21 +15,25 @@ const LINK_CLASSES =
 export default function SupportText({
 	identifierLabel,
 	identifierValue,
+	identifierValuePrefix,
 	identifierPrefix,
 }: SupportTextProps) {
+	const t = useTranslations()
+
 	return (
 		<p className="text-center font-bold text-xs uppercase tracking-widest dark:text-neutral-400">
 			{identifierLabel} <br />
-			то обратитесь в{' '}
+			{t('errors.support.thenContact')}{' '}
 			<Link
 				className={LINK_CLASSES}
 				href="https://t.me/oarer_yml"
 				rel="noopener noreferrer"
 				target="_blank"
 			>
-				тех. поддержку
+				{t('errors.support.techSupport')}
 			</Link>
-			<br /> При обращении укажите {identifierPrefix.toLowerCase()} <br />
+			<br /> {t('errors.support.whenContacting')}{' '}
+			{identifierPrefix.toLowerCase()} <br />
 			{identifierValue ? (
 				<button
 					className="cursor-pointer text-neutral-500 uppercase tracking-widest"
@@ -35,7 +41,8 @@ export default function SupportText({
 						navigator.clipboard.writeText(identifierValue)
 					}
 				>
-					{identifierPrefix}: {identifierValue}
+					{identifierValuePrefix || identifierPrefix}:{' '}
+					{identifierValue}
 				</button>
 			) : (
 				<span className="inline-flex w-full justify-center">

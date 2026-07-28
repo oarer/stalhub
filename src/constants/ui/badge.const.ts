@@ -8,7 +8,7 @@ export const badgeVariants = cva(
 				primary: 'ring-transparent bg-white dark:bg-neutral-800',
 				secondary: 'bg-transparent',
 				danger: 'ring-red-400 text-red-600 font-bold dark:text-red-200 hover:bg-red-200 dark:hover:bg-red-800/60 dark:bg-neutral-800/50 bg-white/60',
-
+				success: 'ring-green-400 text-green-600 font-bold dark:text-green-200 hover:bg-green-200 dark:hover:bg-green-800/60 dark:bg-neutral-800/50 bg-white/60',
 				exbo: 'ring-blue-700 dark:ring-blue-800 text-blue-500 dark:text-blue-200',
 				media: 'ring-violet-700 dark:ring-violet-500 text-violet-500 dark:text-violet-300',
 				stalhub:

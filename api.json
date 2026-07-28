@@ -1,0 +1,4504 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "StalHub Documentation",
+    "description": "Development documentation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "operationId": "getApiV1Health",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/arsenal": {
+      "get": {
+        "operationId": "getApiV1Arsenal",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auction/{region}/{id}/lots": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "RU",
+                  "type": "string"
+                },
+                {
+                  "const": "EU",
+                  "type": "string"
+                },
+                {
+                  "const": "NA",
+                  "type": "string"
+                },
+                {
+                  "const": "SEA",
+                  "type": "string"
+                },
+                {
+                  "const": "NEA",
+                  "type": "string"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "region",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "additional",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1AuctionByRegionByIdLots",
+        "tags": [
+          "Auction"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auction/{region}/{id}/history": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "RU",
+                  "type": "string"
+                },
+                {
+                  "const": "EU",
+                  "type": "string"
+                },
+                {
+                  "const": "NA",
+                  "type": "string"
+                },
+                {
+                  "const": "SEA",
+                  "type": "string"
+                },
+                {
+                  "const": "NEA",
+                  "type": "string"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "region",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "additional",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1AuctionByRegionByIdHistory",
+        "tags": [
+          "Auction"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/discord/login": {
+      "get": {
+        "operationId": "getApiV1AuthDiscordLogin",
+        "tags": [
+          "Auth: Discord"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/discord/callback": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "state",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1AuthDiscordCallback",
+        "tags": [
+          "Auth: Discord"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/discord/link": {
+      "get": {
+        "operationId": "getApiV1AuthDiscordLink",
+        "tags": [
+          "Auth: Discord"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "operationId": "deleteApiV1AuthDiscordLink",
+        "tags": [
+          "Auth: Discord"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/telegram/login": {
+      "get": {
+        "operationId": "getApiV1AuthTelegramLogin",
+        "tags": [
+          "Auth: Telegram"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/telegram/callback": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "state",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AuthTelegramCallback",
+        "tags": [
+          "Auth: Telegram"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1AuthTelegramCallback",
+        "tags": [
+          "Auth: Telegram"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id_token"
+                ],
+                "properties": {
+                  "id_token": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id_token"
+                ],
+                "properties": {
+                  "id_token": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id_token"
+                ],
+                "properties": {
+                  "id_token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/telegram/link": {
+      "get": {
+        "operationId": "getApiV1AuthTelegramLink",
+        "tags": [
+          "Auth: Telegram"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "operationId": "deleteApiV1AuthTelegramLink",
+        "tags": [
+          "Auth: Telegram"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/exbo/login": {
+      "get": {
+        "operationId": "getApiV1AuthExboLogin",
+        "tags": [
+          "Auth: Exbo"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/exbo/callback": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "state",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AuthExboCallback",
+        "tags": [
+          "Auth: Exbo"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/exbo/link": {
+      "get": {
+        "operationId": "getApiV1AuthExboLink",
+        "tags": [
+          "Auth: Exbo"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "operationId": "deleteApiV1AuthExboLink",
+        "tags": [
+          "Auth: Exbo"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "postApiV1AuthRefresh",
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player/popular": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1PlayerPopular",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player/recent": {
+      "get": {
+        "operationId": "getApiV1PlayerRecent",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player/blacklist": {
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1PlayerBlacklist",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "get": {
+        "operationId": "getApiV1PlayerBlacklist",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [],
+        "operationId": "deleteApiV1PlayerBlacklist",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player/{region}/{character}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "RU",
+                  "type": "string"
+                },
+                {
+                  "const": "EU",
+                  "type": "string"
+                },
+                {
+                  "const": "NA",
+                  "type": "string"
+                },
+                {
+                  "const": "SEA",
+                  "type": "string"
+                },
+                {
+                  "const": "NEA",
+                  "type": "string"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "region",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "character",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1PlayerByRegionByCharacter",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player/all": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "error": "Property role is missing",
+              "anyOf": [
+                {
+                  "const": "EXBO",
+                  "type": "string"
+                },
+                {
+                  "const": "SCAMMER",
+                  "type": "string"
+                },
+                {
+                  "const": "MEDIA",
+                  "type": "string"
+                },
+                {
+                  "const": "STALHUB",
+                  "type": "string"
+                },
+                {
+                  "const": "SPONSOR",
+                  "type": "string"
+                },
+                {
+                  "const": "HELPER",
+                  "type": "string"
+                },
+                {
+                  "const": "BUGBOUNTY",
+                  "type": "string"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "role",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1PlayerAll",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/player": {
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1Player",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid",
+                  "description",
+                  "role"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "error": "Property description is missing",
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid",
+                  "description",
+                  "role"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "error": "Property description is missing",
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid",
+                  "description",
+                  "role"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "error": "Property description is missing",
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [],
+        "operationId": "patchApiV1Player",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "error": "Property role is missing",
+                    "anyOf": [
+                      {
+                        "const": "EXBO",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SCAMMER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "MEDIA",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      },
+                      {
+                        "const": "SPONSOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "HELPER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BUGBOUNTY",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [],
+        "operationId": "deleteApiV1Player",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "uuid"
+                ],
+                "properties": {
+                  "uuid": {
+                    "error": "Property uuid is missing",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/barter/{itemId}": {
+      "get": {
+        "operationId": "getApiV1BarterByItemId",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "itemId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/hideout": {
+      "get": {
+        "operationId": "getApiV1Hideout",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/metrics": {
+      "get": {
+        "operationId": "getApiV1Metrics",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/avatar/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "discord",
+                  "type": "string"
+                },
+                {
+                  "const": "telegram",
+                  "type": "string"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "provider",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1UsersAvatarById",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me": {
+      "get": {
+        "operationId": "getApiV1Users@me",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [],
+        "operationId": "patchApiV1Users@me",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "public_profile": {
+                    "type": "boolean"
+                  },
+                  "avatar": {
+                    "anyOf": [
+                      {
+                        "const": "DISCORD",
+                        "type": "string"
+                      },
+                      {
+                        "const": "TELEGRAM",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "bg_variant": {
+                    "anyOf": [
+                      {
+                        "const": "COLOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "AVATAR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "NONE",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "bg_color": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "public_profile": {
+                    "type": "boolean"
+                  },
+                  "avatar": {
+                    "anyOf": [
+                      {
+                        "const": "DISCORD",
+                        "type": "string"
+                      },
+                      {
+                        "const": "TELEGRAM",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "bg_variant": {
+                    "anyOf": [
+                      {
+                        "const": "COLOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "AVATAR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "NONE",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "bg_color": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "public_profile": {
+                    "type": "boolean"
+                  },
+                  "avatar": {
+                    "anyOf": [
+                      {
+                        "const": "DISCORD",
+                        "type": "string"
+                      },
+                      {
+                        "const": "TELEGRAM",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "bg_variant": {
+                    "anyOf": [
+                      {
+                        "const": "COLOR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "AVATAR",
+                        "type": "string"
+                      },
+                      {
+                        "const": "NONE",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "bg_color": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "operationId": "deleteApiV1Users@me",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/delete": {
+      "delete": {
+        "operationId": "deleteApiV1Users@meDelete",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/sessions": {
+      "get": {
+        "operationId": "getApiV1Users@meSessions",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/sessions/all": {
+      "delete": {
+        "operationId": "deleteApiV1Users@meSessionsAll",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/sessions/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1Users@meSessionsById",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/settings": {
+      "get": {
+        "operationId": "getApiV1Users@meSettings",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/stars": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1Users@meStars",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/@me/notifications": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1Users@meNotifications",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/{username}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "username",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1UsersByUsername",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/builds": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1Builds",
+        "tags": [
+          "Builds"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1Builds",
+        "tags": [
+          "Builds"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "data"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "data"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "data"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/builds/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1BuildsById",
+        "tags": [
+          "Builds"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1BuildsById",
+        "tags": [
+          "Builds"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "data": {},
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1BuildsById",
+        "tags": [
+          "Builds"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/builds/{id}/star": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1BuildsByIdStar",
+        "tags": [
+          "Builds"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1BuildsByIdStar",
+        "tags": [
+          "Builds"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1Articles",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1Articles",
+        "tags": [
+          "Articles"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "content"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "content"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "content"
+                ],
+                "properties": {
+                  "title": {
+                    "error": "title is required",
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1ArticlesById",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1ArticlesById",
+        "tags": [
+          "Articles"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "content": {
+                    "maxLength": 50000,
+                    "type": "string"
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "const": "QUEST",
+                        "type": "string"
+                      },
+                      {
+                        "const": "GUIDE",
+                        "type": "string"
+                      },
+                      {
+                        "const": "OTHER",
+                        "type": "string"
+                      },
+                      {
+                        "const": "STALHUB",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "rewards": {
+                    "type": "object",
+                    "required": [
+                      "money",
+                      "items"
+                    ],
+                    "properties": {
+                      "money": {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "flags": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1ArticlesById",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/status": {
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1ArticlesByIdStatus",
+        "tags": [
+          "Articles"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "status"
+                ],
+                "properties": {
+                  "status": {
+                    "anyOf": [
+                      {
+                        "const": "PENDING",
+                        "type": "string"
+                      },
+                      {
+                        "const": "APPROVED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "REVIEW",
+                        "type": "string"
+                      },
+                      {
+                        "const": "DENIED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BANNED",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "status"
+                ],
+                "properties": {
+                  "status": {
+                    "anyOf": [
+                      {
+                        "const": "PENDING",
+                        "type": "string"
+                      },
+                      {
+                        "const": "APPROVED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "REVIEW",
+                        "type": "string"
+                      },
+                      {
+                        "const": "DENIED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BANNED",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "status"
+                ],
+                "properties": {
+                  "status": {
+                    "anyOf": [
+                      {
+                        "const": "PENDING",
+                        "type": "string"
+                      },
+                      {
+                        "const": "APPROVED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "REVIEW",
+                        "type": "string"
+                      },
+                      {
+                        "const": "DENIED",
+                        "type": "string"
+                      },
+                      {
+                        "const": "BANNED",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/submit": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1ArticlesByIdSubmit",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/versions": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1ArticlesByIdVersions",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/versions/{versionId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "versionId",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1ArticlesByIdVersionsByVersionId",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/star": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1ArticlesByIdStar",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1ArticlesByIdStar",
+        "tags": [
+          "Articles"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/comments": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1ArticlesByIdComments",
+        "tags": [
+          "Article Comments"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1ArticlesByIdComments",
+        "tags": [
+          "Article Comments"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "content"
+                ],
+                "properties": {
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 5000,
+                    "type": "string"
+                  },
+                  "parentId": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "content"
+                ],
+                "properties": {
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 5000,
+                    "type": "string"
+                  },
+                  "parentId": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "content"
+                ],
+                "properties": {
+                  "content": {
+                    "error": "content is required",
+                    "maxLength": 5000,
+                    "type": "string"
+                  },
+                  "parentId": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/articles/{id}/comments/{commentId}": {
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "commentId",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1ArticlesByIdCommentsByCommentId",
+        "tags": [
+          "Article Comments"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/exbo/{region}/characters": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "error": "region is required"
+            },
+            "in": "path",
+            "name": "region",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1ExboByRegionCharacters",
+        "tags": [
+          "EXBO"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/permissions": {
+      "get": {
+        "operationId": "getApiV1AdminPermissions",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1AdminPermissions",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/permissions/{id}": {
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1AdminPermissionsById",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "nullable": true,
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "nullable": true,
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "nullable": true,
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "format": "numeric",
+                            "default": 0,
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminPermissionsById",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/roles": {
+      "get": {
+        "operationId": "getApiV1AdminRoles",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1AdminRoles",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/roles/{id}": {
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1AdminRolesById",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "rank": {
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminRolesById",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/roles/{id}/permissions": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1AdminRolesByIdPermissions",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminRolesByIdPermissions",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "permissionIds"
+                ],
+                "properties": {
+                  "permissionIds": {
+                    "error": "permissionIds is required",
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "format": "numeric",
+                          "default": 0,
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "take",
+            "required": false
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "query",
+            "name": "page",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "search",
+            "required": false
+          }
+        ],
+        "operationId": "getApiV1AdminUsers",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AdminUsersByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1AdminUsersByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminUsersByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/sessions": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AdminUsersByUserIdSessions",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/sessions/{sessionId}/revoke": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "sessionId",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1AdminUsersByUserIdSessionsBySessionIdRevoke",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/roles": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AdminUsersByUserIdRoles",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1AdminUsersByUserIdRoles",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "roleId"
+                ],
+                "properties": {
+                  "roleId": {
+                    "error": "roleId is required",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "error": "roleId is required",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "roleId"
+                ],
+                "properties": {
+                  "roleId": {
+                    "error": "roleId is required",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "error": "roleId is required",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "roleId"
+                ],
+                "properties": {
+                  "roleId": {
+                    "error": "roleId is required",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "error": "roleId is required",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/roles/{roleId}": {
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "roleId",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminUsersByUserIdRolesByRoleId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/ban": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1AdminUsersByUserIdBan",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "expires_in": {
+                    "description": "Ban duration in seconds",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "description": "Ban duration in seconds",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "expires_in": {
+                    "description": "Ban duration in seconds",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "description": "Ban duration in seconds",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "expires_in": {
+                    "description": "Ban duration in seconds",
+                    "anyOf": [
+                      {
+                        "format": "numeric",
+                        "default": 0,
+                        "type": "string"
+                      },
+                      {
+                        "description": "Ban duration in seconds",
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminUsersByUserIdBan",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/badges": {
+      "get": {
+        "operationId": "getApiV1AdminBadges",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "post": {
+        "parameters": [],
+        "operationId": "postApiV1AdminBadges",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/badges/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AdminBadgesById",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "patch": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "patchApiV1AdminBadgesById",
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "error": "name is required",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminBadgesById",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/badges/{id}/users/{userId}": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "postApiV1AdminBadgesByIdUsersByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "deleteApiV1AdminBadgesByIdUsersByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/admin/badges/user/{userId}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "numeric",
+                  "default": 0,
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "in": "path",
+            "name": "userId",
+            "required": true
+          }
+        ],
+        "operationId": "getApiV1AdminBadgesUserByUserId",
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "operationId": "getIndex",
+        "responses": {
+          "200": {}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

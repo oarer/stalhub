@@ -1,0 +1,278 @@
+import { Icon } from '@iconify/react'
+import { useMemo, useState } from 'react'
+import { montserrat } from '@/app/fonts'
+import { Button } from '@/components/ui/Button'
+import { Divider } from '@/components/ui/Divider'
+import { Modal } from '@/components/ui/Modal'
+import {
+	TOOLBAR_ACTION_CONFIGS,
+	type ToolbarAction,
+} from '@/constants/article-editor.const'
+import { applyEdit, insertAtLineStart, wrapSelection } from './editor-utils'
+
+const HOTKEYS = [
+	{ shortcut: 'Ctrl+B', label: 'Полужирный' },
+	{ shortcut: 'Ctrl+I', label: 'Курсив' },
+	{ shortcut: 'Ctrl+Shift+X', label: 'Зачёркнутый' },
+	{ shortcut: 'Ctrl+Shift+H', label: 'Заголовок' },
+	{ shortcut: 'Ctrl+Shift+.', label: 'Цитата' },
+	{ shortcut: 'Ctrl+E', label: 'Строчный код' },
+	{ shortcut: 'Ctrl+Shift+E', label: 'Блок кода' },
+	{ shortcut: 'Ctrl+K', label: 'Ссылка' },
+	{ shortcut: 'Ctrl+Shift+I', label: 'Изображение' },
+	{ shortcut: 'Ctrl+Shift+8', label: 'Маркированный список' },
+	{ shortcut: 'Ctrl+Shift+9', label: 'Нумерованный список' },
+	{ shortcut: 'Ctrl+Shift+7', label: 'Горизонтальная линия' },
+	{ shortcut: 'Ctrl+Shift+T', label: 'Вставка таблицы' },
+	{ shortcut: 'Ctrl+Shift+M', label: 'MDX-компоненты' },
+	{ shortcut: 'Ctrl+S', label: 'Сохранить' },
+] as const
+
+interface EditorToolbarProps {
+	textareaRef: React.RefObject<HTMLTextAreaElement | null>
+	setContent: (v: string) => void
+	setTableModalOpen: (v: boolean) => void
+	setComponentsModalOpen: (v: boolean) => void
+	setTagsModalOpen: (v: boolean) => void
+	setImageModalOpen: (v: boolean) => void
+	isDirty: boolean
+	isSaving: boolean
+	save: () => void
+	handleSubmit: () => void
+	isSubmitPending: boolean
+	showSubmit: boolean
+}
+
+export function EditorToolbar({
+	textareaRef,
+	setContent,
+	setTableModalOpen,
+	setComponentsModalOpen,
+	setTagsModalOpen,
+	setImageModalOpen,
+	isDirty,
+	isSaving,
+	save,
+	handleSubmit,
+	isSubmitPending,
+	showSubmit,
+}: EditorToolbarProps) {
+	const [hotkeysOpen, setHotkeysOpen] = useState(false)
+
+	const toolbarActions = useMemo<ToolbarAction[]>(() => {
+		const mapped = TOOLBAR_ACTION_CONFIGS.map((config) => {
+			if ('separator' in config) {
+				return {
+					icon: '',
+					label: '',
+					action: () => {},
+					separator: true,
+				}
+			}
+
+			switch (config.type) {
+				case 'wrap':
+					return {
+						icon: config.icon,
+						label: config.label,
+						shortcut: config.shortcut,
+						action(ta: HTMLTextAreaElement) {
+							applyEdit(
+								ta,
+								setContent,
+								wrapSelection(
+									ta,
+									config.prefix,
+									config.suffix,
+									config.placeholder
+								)
+							)
+						},
+					}
+				case 'line':
+					return {
+						icon: config.icon,
+						label: config.label,
+						shortcut: config.shortcut,
+						action(ta: HTMLTextAreaElement) {
+							applyEdit(
+								ta,
+								setContent,
+								insertAtLineStart(
+									ta,
+									config.prefix,
+									config.placeholder
+								)
+							)
+						},
+					}
+				case 'code-block':
+					return {
+						icon: config.icon,
+						label: config.label,
+						shortcut: config.shortcut,
+						action(ta: HTMLTextAreaElement) {
+							const start = ta.selectionStart
+							const end = ta.selectionEnd
+							const selected = ta.value.slice(start, end)
+							const block = `\`\`\`\n${selected || 'code'}\n\`\`\``
+							const next =
+								ta.value.slice(0, start) +
+								block +
+								ta.value.slice(end)
+							const newStart = start + 4
+							const newEnd =
+								newStart + (selected || 'code').length
+							applyEdit(ta, setContent, {
+								next,
+								newStart,
+								newEnd,
+							})
+						},
+					}
+				case 'modal':
+					return {
+						icon: config.icon,
+						label: config.label,
+						shortcut: config.shortcut,
+						action() {
+							if (config.modal === 'table')
+								setTableModalOpen(true)
+							if (config.modal === 'components')
+								setComponentsModalOpen(true)
+						},
+					}
+			}
+		})
+
+		return [
+			...mapped,
+			{
+				icon: '',
+				label: '',
+				action: () => {},
+				separator: true,
+			},
+			{
+				icon: 'lucide:keyboard',
+				label: 'Горячие клавиши',
+				action: () => {
+					setHotkeysOpen(true)
+				},
+			},
+		]
+	}, [setContent, setTableModalOpen, setComponentsModalOpen])
+
+	return (
+		<div className="flex items-center justify-between px-2">
+			<div className="flex items-center gap-2 rounded-lg bg-background p-1 px-2">
+				{toolbarActions.map((action, i) =>
+					action.separator ? (
+						<Divider
+							className="my-1"
+							key={`sep-${i}`}
+							orientation={'vertical'}
+						/>
+					) : (
+						<button
+							className="flex size-8 cursor-pointer items-center justify-center rounded-md text-text-accent transition-colors hover:bg-accent/50 hover:text-text"
+							key={action.label}
+							onClick={() => {
+								const ta = textareaRef.current
+								if (ta) action.action(ta)
+							}}
+							title={`${action.label}${action.shortcut ? ` (${action.shortcut})` : ''}`}
+							type="button"
+						>
+							<Icon className="size-4.5" icon={action.icon} />
+						</button>
+					)
+				)}
+			</div>
+			<div className="flex items-center gap-2 rounded-lg bg-background p-1 px-2">
+				<Button
+					className="p-2"
+					onClick={() => setTagsModalOpen(true)}
+					size="sm"
+					title="Теги"
+					variant="secondary"
+				>
+					<Icon className="size-4.5" icon="lucide:tag" />
+				</Button>
+
+				<Button
+					className="p-2"
+					onClick={() => setImageModalOpen(true)}
+					size="sm"
+					title="Обложка"
+					variant="secondary"
+				>
+					<Icon className="size-4.5" icon="lucide:image" />
+				</Button>
+
+				<Button
+					className="gap-1.5"
+					disabled={!isDirty || isSaving}
+					onClick={save}
+					size="sm"
+					variant="secondary"
+				>
+					{isSaving ? (
+						<Icon
+							className="size-4.5 animate-spin"
+							icon="lucide:loader-circle"
+						/>
+					) : (
+						<Icon className="size-4.5" icon="lucide:save" />
+					)}
+					<span className="hidden font-semibold md:inline">
+						Сохранить
+					</span>
+				</Button>
+
+				{showSubmit && (
+					<Button
+						className="gap-1.5 font-semibold"
+						disabled={isSubmitPending}
+						onClick={handleSubmit}
+						size="sm"
+					>
+						<Icon className="size-4.5" icon="lucide:send" />
+						<span className="hidden md:inline">
+							{isSubmitPending
+								? 'Отправка...'
+								: 'На рассмотрение'}
+						</span>
+					</Button>
+				)}
+			</div>
+
+			<Modal.Root onOpenChange={setHotkeysOpen} open={hotkeysOpen}>
+				<Modal.Content className="max-w-md" fullScreen={false}>
+					<Modal.Header>
+						<Modal.Title>Горячие клавиши</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<div className="flex flex-col gap-1.5">
+							{HOTKEYS.map((h) => (
+								<div
+									className="flex items-center justify-between rounded-md px-0.5 py-1.5 transition-colors hover:bg-accent/30"
+									key={h.shortcut}
+								>
+									<span className="font-semibold text-sm">
+										{h.label}
+									</span>
+									<kbd
+										className={`${montserrat.className} rounded-md border border-border-secondary bg-background px-2 py-0.5 font-semibold text-text-accent text-xs`}
+									>
+										{h.shortcut}
+									</kbd>
+								</div>
+							))}
+						</div>
+					</Modal.Body>
+				</Modal.Content>
+			</Modal.Root>
+		</div>
+	)
+}

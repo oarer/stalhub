@@ -13,6 +13,7 @@ export type SavedBuild = {
 	name: string
 	build: Build
 	defaults: BuildDefaults
+	apiBuildId?: string
 	createdAt: number
 	updatedAt: number
 }
@@ -51,8 +52,9 @@ type BuildState = {
 
 	saveBuild: (name: string) => void
 	loadBuild: (id: string) => void
+	loadFromApi: (apiBuildId: string, name: string, buildData: Build) => void
 	deleteBuild: (id: string) => void
-	updateBuild: (id: string, data: Partial<Pick<SavedBuild, 'name'>>) => void
+	updateBuild: (id: string, data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId'>>) => void
 	autoSave: () => void
 
 	exportBuild: (name?: string) => Promise<string | null>
@@ -517,6 +519,38 @@ export const useBuildStore = create<BuildState>()(
 				set({
 					build: JSON.parse(JSON.stringify(saved.build)),
 					defaults: JSON.parse(JSON.stringify(saved.defaults)),
+					currentBuildId: id,
+				})
+			},
+
+			loadFromApi: (apiBuildId, name, buildData) => {
+				const { savedBuilds } = get()
+
+				const existing = savedBuilds.find(
+					(b) => b.apiBuildId === apiBuildId
+				)
+				if (existing) {
+					set({
+						build: JSON.parse(JSON.stringify(existing.build)),
+						defaults: JSON.parse(JSON.stringify(existing.defaults)),
+						currentBuildId: existing.id,
+					})
+					return
+				}
+
+				const now = Date.now()
+				const id = crypto.randomUUID()
+				const newBuild: SavedBuild = {
+					id,
+					name,
+					build: JSON.parse(JSON.stringify(buildData)),
+					defaults: JSON.parse(JSON.stringify(initialDefaults)),
+					apiBuildId,
+					createdAt: now,
+					updatedAt: now,
+				}
+				set({
+					savedBuilds: [...savedBuilds, newBuild],
 					currentBuildId: id,
 				})
 			},

@@ -1,8 +1,13 @@
+'use client'
+
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import { createContext, useContext } from 'react'
 import { cn } from '@/lib/cn'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
+
+const PreCodeContext = createContext(false)
 
 function slugify(text: string): string {
 	return text
@@ -11,6 +16,31 @@ function slugify(text: string): string {
 		.replace(/[\p{M}]/gu, '')
 		.replace(/[^\p{L}\p{N}\s-]/gu, '')
 		.replace(/\s+/g, '-')
+}
+
+function MdxCode({ children, className, ...props }: React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }) {
+	const inPre = useContext(PreCodeContext)
+	const isInline = !className && !inPre
+
+	if (isInline) {
+		return (
+			<code
+				className={cn(
+					'relative rounded bg-neutral-600/50 px-[0.3rem] py-[0.2rem] font-mono text-sm',
+					className
+				)}
+				{...props}
+			>
+				{children}
+			</code>
+		)
+	}
+
+	return <CodeBlock className={className}>{children}</CodeBlock>
+}
+
+function MdxPre({ children }: React.HTMLAttributes<HTMLPreElement>) {
+	return <PreCodeContext value>{children}</PreCodeContext>
 }
 
 export function useMDXComponents(): MDXComponents {
@@ -108,28 +138,8 @@ export function useMDXComponents(): MDXComponents {
 				{children}
 			</blockquote>
 		),
-		code: ({ children, className, ...props }) => {
-			const isInline = !className
-
-			if (isInline) {
-				return (
-					<code
-						className={cn(
-							'relative rounded bg-background px-[0.3rem] py-[0.2rem] font-mono text-sm',
-							className
-						)}
-						{...props}
-					>
-						{children}
-					</code>
-				)
-			}
-
-			return <CodeBlock className={className}>{children}</CodeBlock>
-		},
-		pre: ({ children, ...props }) => {
-			return <>{children}</>
-		},
+		code: MdxCode,
+		pre: MdxPre,
 		hr: () => <hr className="my-8 border-border" />,
 		table: ({ children, ...props }) => (
 			<div

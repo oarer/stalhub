@@ -11,6 +11,18 @@
     }
 }
 
+section:has(> div > section[data-editor]) {
+    grid-template-columns: 1fr !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+section:has(> div > section[data-editor]) > :first-child {
+    display: none !important;
+}
+
 @layer base {
     @import './browser.css';
 

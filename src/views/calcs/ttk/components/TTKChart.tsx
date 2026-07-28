@@ -1,23 +1,21 @@
 'use client'
 
-import { useMemo } from 'react'
-
-import { Line } from 'react-chartjs-2'
-
-import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
 import {
 	type ChartData,
-	type ChartOptions,
-	type TooltipItem,
 	Chart as ChartJS,
+	type ChartOptions,
 	Filler,
 	Legend,
 	LinearScale,
 	LineElement,
 	PointElement,
 	Tooltip,
+	type TooltipItem,
 } from 'chart.js'
+import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
+import { useMemo } from 'react'
+import { Line } from 'react-chartjs-2'
 
 import { montserrat } from '@/app/fonts'
 
@@ -103,7 +101,7 @@ export function TTKChart({
 }) {
 	const { resolvedTheme } = useTheme()
 	const isDark = resolvedTheme === 'dark'
-	const t = useTranslations()
+	const _t = useTranslations()
 
 	const chartData = useMemo((): ChartData<'line'> => {
 		if (!series.length) return { datasets: [] }
@@ -239,7 +237,7 @@ export function TTKChart({
 				},
 			},
 		}),
-		[isDark, maxDist, t]
+		[isDark, maxDist]
 	)
 
 	return (
