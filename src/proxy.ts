@@ -21,25 +21,9 @@ export function proxy(req: NextRequest) {
 		})
 	}
 
-	const response = NextResponse.next({
+	return NextResponse.next({
 		request: {
 			headers: requestHeaders,
 		},
 	})
-
-	const hasRefreshToken = req.cookies.has('refresh_token')
-
-	if (hasRefreshToken) {
-		response.cookies.set('has_session', 'true', {
-			path: '/',
-			maxAge: 60 * 60 * 24,
-			sameSite: 'lax',
-			httpOnly: false,
-			secure: process.env.NODE_ENV === 'production',
-		})
-	} else {
-		response.cookies.set('has_session', '', { path: '/', maxAge: 0 })
-	}
-
-	return response
 }
