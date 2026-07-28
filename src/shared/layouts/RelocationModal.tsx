@@ -2,12 +2,12 @@
 
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
+import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
 import { Modal } from '@/components/ui/Modal'
-import { unbounded } from '@/app/fonts'
 
 const linkClass =
 	'href= relative text-border duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:hover:text-sky-400'
@@ -30,22 +30,32 @@ export default function RelocationModal() {
 					<Modal.Header>
 						<Modal.Title className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:cloud" />
-							<p className={`${unbounded.className} `}>{t('test.title')}</p>
+							<p className={`${unbounded.className} `}>
+								{t('test.title')}
+							</p>
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
 						<p className="font-semibold">
 							{t.rich('test.message', {
 								unavailable: (chunks) => (
-									<span className="text-red-400">{chunks}</span>
+									<span className="text-red-400">
+										{chunks}
+									</span>
 								),
 								domain: (chunks) => (
-									<Link className={linkClass} href="https://stalhub.dev">
+									<Link
+										className={linkClass}
+										href="https://stalhub.dev"
+									>
 										{chunks}
 									</Link>
 								),
 								channel: (chunks) => (
-									<Link className={linkClass} href="https://t.me/st4lhub">
+									<Link
+										className={linkClass}
+										href="https://t.me/st4lhub"
+									>
 										{chunks}
 									</Link>
 								),
@@ -53,9 +63,13 @@ export default function RelocationModal() {
 						</p>
 					</Modal.Body>
 					<div className="flex justify-end gap-2">
-						<Modal.Action variant={'ghost'}>{t('test.cancel')}</Modal.Action>
+						<Modal.Close variant={'ghost'}>
+							{t('test.cancel')}
+						</Modal.Close>
 						<Modal.Action asChild>
-							<CLink href="https://stalhub.dev">{t('test.go')}</CLink>
+							<CLink href="https://stalhub.dev">
+								{t('test.go')}
+							</CLink>
 						</Modal.Action>
 					</div>
 				</Modal.Content>
