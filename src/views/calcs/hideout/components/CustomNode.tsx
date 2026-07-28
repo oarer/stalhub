@@ -134,7 +134,7 @@ const CustomNode = memo(
 					<Divider className={data.isRoot ? 'bg-border/40' : ''} />
 				)}
 
-				{data.isExpanded && data.energyPerCraft && (
+				{data.energyPerCraft && (
 					<div className="flex items-center justify-between font-semibold text-sm">
 						<p>Энергия</p>
 						<span className={montserrat.className}>
