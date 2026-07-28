@@ -70,11 +70,11 @@ export default function Nav() {
 						))}
 						<CLink
 							className="flex items-center gap-4 rounded-full px-6 py-2"
-							href="/wiki"
+							href="/articles"
 						>
 							<Icon className="text-xl" icon="lucide:book-open" />
 							<p className="font-semibold text-md">
-								{t('nav.wiki')}
+								{t('nav.articles')}
 							</p>
 						</CLink>
 						<ItemSearchModal />
