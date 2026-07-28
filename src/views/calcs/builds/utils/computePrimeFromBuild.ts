@@ -1,8 +1,8 @@
 import type { Build } from '@/types/build.type'
 import type { Item, Locale } from '@/types/item.type'
 import { getNumericValue } from '../model/components/hooks'
-import { parseItemStats } from './parseArtifact'
 import { computeArtifactStatsFromParsed } from './computeArtifactStats'
+import { parseItemStats } from './parseArtifact'
 
 const BULLET_KEY = 'stalker.artefact_properties.factor.bullet_dmg_factor'
 const HEALTH_KEY = 'stalker.artefact_properties.factor.health_bonus'

@@ -79,7 +79,7 @@ export function computeArtifactStatsFromParsed(
 		color?: string,
 		key?: string
 	): { V: number; P: number } {
-		if (key?.includes('accumulation') && V > P) {
+		if (key?.includes('accumulation') && V < P) {
 			return { V: P, P: V }
 		}
 
