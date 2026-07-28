@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useBanStore } from '@/stores/useBan.store'
 
 export const apiClient = axios.create({
-	baseURL: 'http://localhost:3001',
+	baseURL: process.env.NEXT_PUBLIC_API,
 	timeout: 10_000,
 	headers: { 'Content-Type': 'application/json' },
 	withCredentials: true,
