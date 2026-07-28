@@ -161,7 +161,7 @@ export function ModalContent({
 						animate="animate"
 						aria-modal="true"
 						className={cn(
-							'relative z-10 border-border-secondary bg-neutral-900/95 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
+							'relative z-10 border-border-secondary bg-neutral-900/95 pb-4 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
 							fullScreen
 								? 'h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none sm:border-border-secondary'
 								: 'w-full max-w-lg rounded-xl border-2 px-6 shadow-2xl',
@@ -238,13 +238,16 @@ export function ModalAction({
 	onClick,
 	disabled = false,
 	closeOnClick,
+	asChild = false,
 }: Props & {
 	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 	closeOnClick?: boolean
 	disabled?: boolean
+	asChild?: boolean
 }) {
 	const { close } = useModal()
 	const [loading, setLoading] = useState(false)
+	const Comp = asChild ? Slot : Button
 
 	const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (!onClick) return
@@ -258,7 +261,7 @@ export function ModalAction({
 		}
 	}
 	return (
-		<Button
+		<Comp
 			className={cn('px-4 py-2', className)}
 			disabled={disabled}
 			loading={loading}
@@ -266,7 +269,7 @@ export function ModalAction({
 			variant={variant}
 		>
 			{children}
-		</Button>
+		</Comp>
 	)
 }
 

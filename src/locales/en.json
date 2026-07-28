@@ -227,6 +227,12 @@
 			"none": "No discount"
 		}
 	},
+	"test": {
+		"title": "Relocation",
+		"message": "Soon <unavailable>stalhub.tech will be unavailable</unavailable>, our new domain is <domain>stalhub.dev</domain>. We will announce the domain suspension in advance on our <channel>Telegram channel</channel>.",
+		"cancel": "Cancel",
+		"go": "Go"
+	},
 	"ui": {
 		"combobox": {
 			"default": {

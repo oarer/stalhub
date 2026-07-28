@@ -12,6 +12,7 @@ import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
 import Nav from '@/shared/layouts/nav/Nav'
+import RelocationModal from '@/shared/layouts/RelocationModal'
 /* import PageTransitionEffect from '@/shared/transitionEffects/PageTransitionEffect' */
 
 export const generateMetadata = async () => {
@@ -65,6 +66,7 @@ export default async function RootLayout({
 								<main className="min-h-screen">{children}</main>
 								<Footer />
 								{/* </PageTransitionEffect> */}
+								<RelocationModal />
 							</Providers>
 						</NextIntlClientProvider>
 					</ThemeProvider>

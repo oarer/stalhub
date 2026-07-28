@@ -703,6 +703,12 @@
 			"close": "Закрыть"
 		}
 	},
+	"test": {
+		"title": "Переезд",
+		"message": "В скором времени <unavailable>stalhub.tech будет недоступен</unavailable>, наш новый домен <domain>stalhub.dev</domain>. О приостановке поддержки домена мы сообщим заранее в нашем <channel>Telegram канале</channel>.",
+		"cancel": "Отмена",
+		"go": "Перейти"
+	},
 	"errors": {
 		"oops": "Упсс...",
 		"support": {
