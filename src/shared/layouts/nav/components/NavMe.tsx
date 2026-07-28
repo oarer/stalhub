@@ -1,12 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQuery,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,8 +20,8 @@ const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
 }
 
 export default function NavMe() {
-	const { data: user } = useSuspenseQuery(userQueries.getMe())
-	const { data: unreadCount } = useSuspenseQuery(userQueries.getUnreadCount())
+	const { data: user } = useQuery(userQueries.getMe())
+	const { data: unreadCount } = useQuery(userQueries.getUnreadCount())
 	const [open, setOpen] = useState(false)
 	const menuRef = useRef<HTMLDivElement>(null)
 	const queryClient = useQueryClient()
@@ -52,7 +47,7 @@ export default function NavMe() {
 
 	const notifications = notifData?.data ?? []
 
-	return user.id ? (
+	return user ? (
 		<div className="relative flex items-center gap-2" ref={menuRef}>
 			<button
 				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-neutral-300/60 hover:opacity-100 active:opacity-50 hover:dark:bg-neutral-700/30"
@@ -201,6 +196,7 @@ export default function NavMe() {
 			href="/auth"
 			variant="primary"
 		>
+			<Icon className="text-xl" icon="lucide:log-in" />
 			<p
 				className={`${montserrat.className} hidden font-semibold text-md md:block`}
 			>

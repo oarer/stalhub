@@ -25,6 +25,12 @@ const processQueue = (error: unknown) => {
 	failedQueue = []
 }
 
+function hasSessionCookie(): boolean {
+	return document.cookie
+		.split(';')
+		.some((cookie) => cookie.trim() === 'has_session=true')
+}
+
 apiClient.interceptors.response.use(
 	(response) => response,
 	async (error) => {
@@ -51,6 +57,10 @@ apiClient.interceptors.response.use(
 				})
 					.then(() => apiClient(originalRequest))
 					.catch((err) => Promise.reject(err))
+			}
+
+			if (!hasSessionCookie()) {
+				return Promise.reject(error)
 			}
 
 			originalRequest._retry = true
