@@ -21,24 +21,32 @@ const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
 
 export default function NavMe() {
 	const { data: user } = useQuery(userQueries.getMe())
-	const { data: unreadCount } = useQuery(userQueries.getUnreadCount())
+
+	const { data: unreadCount } = useQuery({
+		...userQueries.getUnreadCount(),
+		enabled: !!user,
+	})
+
 	const [open, setOpen] = useState(false)
-	const menuRef = useRef<HTMLDivElement>(null)
+	const menuRef = useRef(null)
+
 	const queryClient = useQueryClient()
 
 	useClickOutside(menuRef, () => setOpen(false))
 
 	const { data: notifData } = useQuery({
 		...userQueries.getNotifications({ take: 10 }),
-		enabled: open,
+		enabled: !!user && open,
 	})
 
 	const markReadMutation = useMutation({
 		mutationFn: (id: number) => userService.markRead(id),
+
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['user', 'notifications'],
 			})
+
 			queryClient.invalidateQueries({
 				queryKey: ['user', 'notifications', 'unread'],
 			})
