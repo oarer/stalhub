@@ -1,7 +1,11 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import {
+	useMutation,
+	useQuery,
+	useSuspenseQuery,
+} from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import Scene from '@/app/calcs/builds/model/Scene'
@@ -10,6 +14,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -33,7 +38,7 @@ export default function BuildsView() {
 	const [shareCopied, setShareCopied] = useState(false)
 	const [imported, setImported] = useState(false)
 	const t = useTranslations()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const currentBuild = savedBuilds.find((b) => b.id === currentBuildId)
 
@@ -230,46 +235,49 @@ export default function BuildsView() {
 									</Modal.Root>
 								)}
 
-							<Button
-								className="flex gap-2 rounded-lg p-2"
-								onClick={async () => {
-									const name =
-										currentBuild?.name ||
-										t('build.new_build')
-									const encoded = await exportBuild(name)
-									if (encoded) {
-										const url = `${window.location.origin}/calcs/builds?share=${encodeURIComponent(encoded)}`
-										navigator.clipboard.writeText(url)
-										setShareCopied(true)
-										setTimeout(
-											() => setShareCopied(false),
-											2000
-										)
-									}
-								}}
-								variant={
-									shareCopied ? 'primary' : 'secondary'
-								}
-							>
-								<Icon
-									className="text-xl"
-									icon={
-										shareCopied
-											? 'lucide:check'
-											: 'lucide:share'
-									}
-								/>
-							</Button>
-							{currentBuild && (
 								<Button
 									className="flex gap-2 rounded-lg p-2"
-									loading={publishMutation.isPending}
-									onClick={() => publishMutation.mutate()}
-									variant="primary"
+									onClick={async () => {
+										const name =
+											currentBuild?.name ||
+											t('build.new_build')
+										const encoded = await exportBuild(name)
+										if (encoded) {
+											const url = `${window.location.origin}/calcs/builds?share=${encodeURIComponent(encoded)}`
+											navigator.clipboard.writeText(url)
+											setShareCopied(true)
+											setTimeout(
+												() => setShareCopied(false),
+												2000
+											)
+										}
+									}}
+									variant={
+										shareCopied ? 'primary' : 'secondary'
+									}
 								>
-									<Icon className="text-xl" icon="lucide:upload" />
+									<Icon
+										className="text-xl"
+										icon={
+											shareCopied
+												? 'lucide:check'
+												: 'lucide:share'
+										}
+									/>
 								</Button>
-							)}
+								{currentBuild && (
+									<Button
+										className="flex gap-2 rounded-lg p-2"
+										loading={publishMutation.isPending}
+										onClick={() => publishMutation.mutate()}
+										variant="primary"
+									>
+										<Icon
+											className="text-xl"
+											icon="lucide:upload"
+										/>
+									</Button>
+								)}
 								<Modal.Root>
 									<Modal.Trigger
 										className="p-2"

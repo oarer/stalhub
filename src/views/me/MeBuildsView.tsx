@@ -1,20 +1,17 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { CLink } from '@/components/ui/Link'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { BuildCard } from './components/BuildCard'
 
 export default function MeBuildsView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const { data: builds } = useSuspenseQuery(
 		buildApiQueries.list({ take: 50 })

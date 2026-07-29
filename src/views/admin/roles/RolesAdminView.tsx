@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -14,14 +10,14 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminPermissionQueries } from '@/queries/admin/permission.queries'
 import { adminRoleQueries } from '@/queries/admin/role.queries'
 import { adminRoleService } from '@/services/admin/role.service'
 import type { AdminRole } from '@/types/admin.type'
 
 export default function RolesAdminView() {
-	const queryClient = useQueryClient()
-
+	const queryClient = getQueryClient()
 	const { data: roles } = useSuspenseQuery(adminRoleQueries.list())
 	const { data: permissions } = useSuspenseQuery(
 		adminPermissionQueries.list()

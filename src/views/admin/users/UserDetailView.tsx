@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -17,6 +13,7 @@ import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { Tabs } from '@/components/ui/Tabs'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminBadgeQueries } from '@/queries/admin/badge.queries'
 import { adminRoleQueries } from '@/queries/admin/role.queries'
 import { adminUserQueries } from '@/queries/admin/user.queries'
@@ -29,7 +26,7 @@ interface Props {
 
 export default function UserDetailView({ userId }: Props) {
 	const t = useTranslations()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const { data: user } = useSuspenseQuery(adminUserQueries.get(userId))
 	const { data: sessions } = useSuspenseQuery(

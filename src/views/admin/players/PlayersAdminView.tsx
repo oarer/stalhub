@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import {
 	useMutation,
-	useQueryClient,
 	useSuspenseQuery,
 } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -13,6 +12,7 @@ import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminPlayerService } from '@/services/admin/player.service'
 
 const PLAYER_ROLES = [
@@ -28,7 +28,7 @@ const PLAYER_ROLES = [
 type PlayerRoleValue = (typeof PLAYER_ROLES)[number]['value']
 
 export default function PlayersAdminView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const [selectedRole, setSelectedRole] = useState<PlayerRoleValue>('STALHUB')
 

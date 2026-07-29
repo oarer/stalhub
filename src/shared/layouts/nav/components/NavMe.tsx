@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { montserrat } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import useClickOutside from '@/hooks/useClickOutside'
 import { formatDate } from '@/lib/date'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 
@@ -30,7 +31,7 @@ export default function NavMe() {
 	const [open, setOpen] = useState(false)
 	const menuRef = useRef(null)
 
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	useClickOutside(menuRef, () => setOpen(false))
 

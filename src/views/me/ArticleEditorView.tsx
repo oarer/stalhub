@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -19,6 +15,7 @@ import {
 } from '@/constants/article-editor.const'
 import { compileMdx } from '@/lib/actions/mdx'
 import { cn } from '@/lib/cn'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import {
@@ -48,7 +45,7 @@ interface ArticleEditorProps {
 
 export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 	const router = useRouter()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const textareaRef = useRef<HTMLTextAreaElement>(null)
 	const previewRef = useRef<HTMLDivElement>(null)
 	const scrollingFrom = useRef<'editor' | 'preview' | null>(null)

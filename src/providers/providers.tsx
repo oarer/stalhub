@@ -2,10 +2,10 @@
 
 import { type ReactNode, useEffect, useState } from 'react'
 import { Toaster } from 'sonner'
-import { useBanStore } from '@/stores/useBan.store'
-import { useAuthStore } from '@/stores/useAuth.store'
-import { userService } from '@/services/user/user.service'
 import { UwuProvider } from '@/providers/uwuProvider'
+import { userService } from '@/services/user/user.service'
+import { useAuthStore } from '@/stores/useAuth.store'
+import { useBanStore } from '@/stores/useBan.store'
 import BannedView from '@/views/errors/banned/BannedView'
 import QueryProvider from './QueryProvider'
 
@@ -21,7 +21,10 @@ export default function Providers({ children }: Props) {
 	useEffect(() => {
 		setMounted(true)
 
-		userService.getMe().then(setUser).catch(() => setUser(null))
+		userService
+			.getMe()
+			.then(setUser)
+			.catch(() => setUser(null))
 
 		console.log(
 			`%cЧувак, ты думал тут что-то будет?\n` +
@@ -29,7 +32,7 @@ export default function Providers({ children }: Props) {
 			'font-size: 1.5rem; color: #EA9D9E; font-weight: bold;',
 			'font-size: 1.2rem; color: #4caf50; font-style: italic;'
 		)
-	}, [])
+	}, [setUser])
 
 	if (!mounted) return null
 

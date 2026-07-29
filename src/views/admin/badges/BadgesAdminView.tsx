@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import {
 	useMutation,
-	useQueryClient,
 	useSuspenseQuery,
 } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -18,6 +17,7 @@ import { Tooltip } from '@/components/ui/Tooltip'
 import { adminBadgeQueries } from '@/queries/admin/badge.queries'
 import { adminBadgeService } from '@/services/admin/badge.service'
 import type { AdminBadge } from '@/types/admin.type'
+import { getQueryClient } from '@/providers/QueryProvider'
 
 type BadgeMode = 'icon' | 'image'
 
@@ -62,7 +62,7 @@ function BadgePreview({
 }
 
 export default function BadgesAdminView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const { data: badges } = useSuspenseQuery(adminBadgeQueries.list())
 

@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -14,13 +10,14 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminPermissionQueries } from '@/queries/admin/permission.queries'
 import { adminPermissionService } from '@/services/admin/permission.service'
 import type { AdminPermission } from '@/types/admin.type'
 
 export default function PermissionsAdminView() {
 	const t = useTranslations()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const { data: permissions } = useSuspenseQuery(
 		adminPermissionQueries.list()

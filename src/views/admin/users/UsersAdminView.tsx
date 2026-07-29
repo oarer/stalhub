@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -15,12 +11,13 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminUserService } from '@/services/admin/user.service'
 
 export default function UsersAdminView() {
 	const t = useTranslations()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const take = 20

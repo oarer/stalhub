@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { montserrat } from '@/app/fonts'
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import type { BuildApi } from '@/types/build-api.type'
@@ -37,7 +38,7 @@ export function BuildCard({
 }: BuildCardProps) {
 	const locale = getLocale()
 	const user = useAuthStore((s) => s.user)
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const starMutation = useMutation({
 		mutationFn: () =>

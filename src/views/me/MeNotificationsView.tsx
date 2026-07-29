@@ -1,17 +1,14 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useState } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
 import { formatDate } from '@/lib/date'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 
@@ -22,7 +19,7 @@ const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
 }
 
 export default function MeNotificationsView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 
 	const { data } = useSuspenseQuery(

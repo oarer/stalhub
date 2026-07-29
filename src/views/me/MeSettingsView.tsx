@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -19,11 +15,12 @@ import { Tooltip } from '@/components/ui/Tooltip'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
 import { dateSince } from '@/lib/time'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 
 export default function MeSettingsView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: settings } = useSuspenseQuery(userQueries.getSettings())
 	const { data: sessions } = useSuspenseQuery(userQueries.getSessions())
@@ -194,7 +191,7 @@ export default function MeSettingsView() {
 					)}
 				</div>
 
-				<div className="grid grid-cols-3 gap-2">
+				<div className="grid grid-cols-1 gap-2 md:grid-cols-3">
 					{sessions?.map((session) => (
 						<div
 							className={cn(

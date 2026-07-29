@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -16,6 +12,7 @@ import { Button } from '@/components/ui/Button'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
 import { compileMdx } from '@/lib/actions/mdx'
 import { formatDate } from '@/lib/date'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import { useAuthStore } from '@/stores/useAuth.store'
@@ -34,7 +31,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 	const components = useMDXComponents()
 	const [compiledSource, setCompiledSource] = useState<string | null>(null)
 	const [compileError, setCompileError] = useState(false)
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const user = useAuthStore((s) => s.user)
 
 	const starMutation = useMutation({

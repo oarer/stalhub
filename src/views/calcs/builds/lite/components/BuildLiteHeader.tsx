@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import type { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { unbounded } from '@/app/fonts'
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import BuildSelector from '../../components/BuildSelector'
@@ -42,7 +43,7 @@ export function BuildLiteHeader({
 }: BuildLiteHeaderProps) {
 	const [showRenameModal, setShowRenameModal] = useState(false)
 	const [buildName, setBuildName] = useState('')
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 
 	const isPublished = Boolean(currentBuild?.apiBuildId)
 

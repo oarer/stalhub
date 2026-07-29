@@ -2,11 +2,11 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { montserrat, unbounded } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
-import type { BgVariant, UserBadge } from '@/types/user.type'
+import type { UserCardProps } from '@/types/me.types'
+import type { UserBadge } from '@/types/user.type'
 import { BgVariantSelector } from '@/views/me/components/BgSelector'
-import { montserrat, unbounded } from '../../../app/fonts'
-import type { UserCardProps } from '../../../types/me.types'
 
 export default function UserCard({
 	user,

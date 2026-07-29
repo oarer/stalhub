@@ -1,16 +1,13 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
@@ -21,10 +18,11 @@ const STATUSES: ArticleStatus[] = [
 	ArticleStatus.REVIEW,
 	ArticleStatus.DENIED,
 	ArticleStatus.BANNED,
+	ArticleStatus.APPROVED,
 ]
 
 export default function MeArticlesView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [filter, setFilter] = useState<ArticleStatus | 'ALL'>('ALL')
 
 	const { data: articles } = useSuspenseQuery(

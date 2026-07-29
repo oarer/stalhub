@@ -1,31 +1,28 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import useSvg from '@/hooks/useSvg'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 import type { BgVariant } from '@/types/user.type'
 import NavTabs from '@/views/me/components/NavTabs'
 import UserCard from '@/views/me/components/UserCard'
-import { unbounded } from '../../app/fonts'
 
 export default function MobileMeNav() {
 	const [isOpen, setIsOpen] = useState(false)
 	const pathname = usePathname()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: unreadCount } = useSuspenseQuery(userQueries.getUnreadCount())
 

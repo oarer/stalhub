@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
@@ -14,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import { formatDate } from '@/lib/date'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleCommentQueries } from '@/queries/article/comment.queries'
 import { articleCommentService } from '@/services/article/comment.service'
 import { useAuthStore } from '@/stores/useAuth.store'
@@ -43,7 +40,7 @@ function renderContent(text: string) {
 
 export default function ArticleComments({ articleId }: ArticleCommentsProps) {
 	const t = useTranslations()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const user = useAuthStore((s) => s.user)
 	const isAdmin = user?.roles?.some(
 		(r) => r.name === 'admin' || r.name === 'ADMIN'

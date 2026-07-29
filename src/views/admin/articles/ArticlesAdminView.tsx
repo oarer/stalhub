@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -13,6 +9,7 @@ import { Card } from '@/components/ui/Card'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
 
@@ -25,7 +22,7 @@ const STATUS_OPTIONS = [
 ]
 
 export default function ArticlesAdminView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const [statusFilter, setStatusFilter] = useState<ArticleStatus | ''>('')
 	const take = 20

@@ -1,21 +1,18 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 
 export default function BuildsAdminView() {
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const take = 20
 

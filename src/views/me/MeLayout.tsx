@@ -1,11 +1,8 @@
 'use client'
 
-import {
-	useMutation,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { usePathname } from 'next/navigation'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 import type { BgVariant } from '@/types/user.type'
@@ -14,7 +11,7 @@ import UserCard from '@/views/me/components/UserCard'
 
 export default function MeSection() {
 	const pathname = usePathname()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: unreadCount } = useSuspenseQuery(userQueries.getUnreadCount())
 

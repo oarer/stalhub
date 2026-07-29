@@ -1,12 +1,13 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { ArticleType } from '@/types/article.type'
@@ -24,7 +25,7 @@ const ADMIN_TYPES = [
 
 export default function NewArticleView() {
 	const router = useRouter()
-	const queryClient = useQueryClient()
+	const queryClient = getQueryClient()
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArticleType>(ArticleType.OTHER)
 	const user = useAuthStore((s) => s.user)
@@ -33,8 +34,11 @@ export default function NewArticleView() {
 	const types = isAdmin ? ADMIN_TYPES : ARTICLE_TYPES
 
 	const createMutation = useMutation({
-		mutationFn: (data: { title: string; content: string; type: ArticleType }) =>
-			articleService.create(data),
+		mutationFn: (data: {
+			title: string
+			content: string
+			type: ArticleType
+		}) => articleService.create(data),
 		onSuccess: (article) => {
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
 			toast.success('Статья создана')
@@ -85,9 +89,9 @@ export default function NewArticleView() {
 				</div>
 
 				<div className="flex flex-col gap-2">
-					<label className="font-semibold text-md text-text-accent">
+					<span className="font-semibold text-md text-text-accent">
 						Тип статьи
-					</label>
+					</span>
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
 						{types.map((t) => (
 							<button
