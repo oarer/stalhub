@@ -146,7 +146,7 @@ function BoostSelectModal({
 	}
 
 	return (
-		<>
+		<div className="relative size-14">
 			<button
 				className="flex size-14 cursor-pointer items-center justify-center rounded-xl bg-white/60 p-2 shadow-sm transition hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
 				onClick={() => setShowModal(true)}
@@ -210,27 +210,26 @@ function BoostSelectModal({
 											withCard={false}
 										/>
 									))}
-
-								<Button
-									className="absolute -top-1 -right-1 flex size-7 items-center justify-center rounded-full p-0 ring-transparent"
-									onClick={(e) => {
-										e.stopPropagation()
-										onRemove()
-									}}
-									variant="danger"
-								>
-									<Icon
-										className="text-lg"
-										icon="lucide:trash"
-									/>
-								</Button>
-							</div>
+								</div>
 						</HoverCard.Content>
 					</HoverCard.Root>
 				) : (
 					<Icon className="size-7" icon={BoostButtons[category]} />
 				)}
 			</button>
+
+			{selectedBoostId && selectedItemData && (
+				<Button
+					aria-label={t('build.labels.delete')}
+					className="absolute -top-1 -right-1 z-10 flex size-7 items-center justify-center rounded-full p-0 ring-transparent"
+					onClick={onRemove}
+					title={t('build.labels.delete')}
+					type="button"
+					variant="danger"
+				>
+					<Icon className="text-lg" icon="lucide:trash" />
+				</Button>
+			)}
 
 			<ItemPickerModal
 				emptyTitle="modals.builds.consumables.header"
@@ -247,7 +246,7 @@ function BoostSelectModal({
 					`boost.${category.split('.').pop()!}`
 				)}`}
 			/>
-		</>
+		</div>
 	)
 }
 
