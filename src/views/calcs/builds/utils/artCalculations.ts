@@ -75,14 +75,9 @@ export function calcXfromVPRClamped(
 	if (!isDebuff) {
 		const r = normalizePercent(R)
 
-		if (P >= V) {
-			if (r <= 85) return V
-			if (r > 100) return P * (r / 100)
-			const t = (r - 85) / 15
-			return V + (P - V) * t
-		}
-
-		const t = Math.min(r, 115) / 115
+		if (r <= 85) return V
+		if (r > 100) return P * (r / 100)
+		const t = (r - 85) / 15
 		return V + (P - V) * t
 	}
 
