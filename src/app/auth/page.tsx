@@ -102,6 +102,14 @@ export default function Page() {
 					</Link>
 				</p>
 			</Card.Root>
+			<Alert.Root variant={'destructive'}>
+				<Alert.Title>EXBO</Alert.Title>
+				<Alert.Description>
+					При авторизации через EXBO необходимо сначала зайти на{' '}
+					<Link href={'https://exbo.net'}>exbo.net</Link>, после этого
+					вернутся на сайт и нажать на кнопку для авторизации!
+				</Alert.Description>
+			</Alert.Root>
 			<Alert.Root variant={'info'}>
 				<Alert.Title>Рекомендация</Alert.Title>
 				<Alert.Description>
