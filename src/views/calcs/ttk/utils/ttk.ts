@@ -60,6 +60,13 @@ export function calcTTKAtDist(
 	const rofConfig = getWeaponRofConfig(weapon, useBurstRof)
 	if (rofConfig.rof <= 0) return { ttk: 0, shots: 0 }
 
+	const isBurst = useBurstRof && !!CUSTOM_ROF_MAP[weapon.id]
+	const computeTtk = (shots: number) =>
+		(isBurst
+			? calcBurstTTK(shots, rofConfig)
+			: (shots - 1) * (60 / rofConfig.rof)) +
+		getReloadTime(weapon, shots)
+
 	const penetration = ammo ? getAmmoPenetration(ammo) : 0
 
 	const effectiveHp =
@@ -70,20 +77,7 @@ export function calcTTKAtDist(
 		const shots = getShotsToKill(effectiveHp, dmg)
 		if (shots <= 0) return { ttk: 0, shots: 0 }
 
-		if (rofConfig.rof) {
-			return {
-				ttk:
-					calcBurstTTK(shots, rofConfig) +
-					getReloadTime(weapon, shots),
-				shots,
-			}
-		}
-
-		const shotInterval = 60 / rofConfig.rof
-		return {
-			ttk: (shots - 1) * shotInterval + getReloadTime(weapon, shots),
-			shots,
-		}
+		return { ttk: computeTtk(shots), shots }
 	}
 
 	const dmgNaked = getDmgPerShot(weapon, ammo, hitZone, dist, variantIndex)
@@ -110,16 +104,5 @@ export function calcTTKAtDist(
 		durability
 	)
 
-	if (rofConfig.rof) {
-		return {
-			ttk: calcBurstTTK(shots, rofConfig) + getReloadTime(weapon, shots),
-			shots,
-		}
-	}
-
-	const shotInterval = 60 / rofConfig.rof
-	return {
-		ttk: (shots - 1) * shotInterval + getReloadTime(weapon, shots),
-		shots,
-	}
+	return { ttk: computeTtk(shots), shots }
 }
