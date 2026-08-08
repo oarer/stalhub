@@ -19,6 +19,7 @@ interface TTKState {
 	plateId: string
 	plateDurability: number
 	buildId: string | null
+	modulesEnabled: boolean
 
 	setSlots: (slots: WeaponSlot[]) => void
 	setBulletRes: (v: number) => void
@@ -28,6 +29,7 @@ interface TTKState {
 	setPlateId: (id: string) => void
 	setPlateDurability: (v: number) => void
 	setBuildId: (id: string | null) => void
+	setModulesEnabled: (v: boolean) => void
 }
 
 export const useTTKStore = create<TTKState>()(
@@ -49,6 +51,7 @@ export const useTTKStore = create<TTKState>()(
 			plateId: '',
 			plateDurability: 100,
 			buildId: null,
+			modulesEnabled: false,
 
 			setSlots: (slots) => set({ slots }),
 			setBulletRes: (bulletRes) => set({ bulletRes }),
@@ -58,6 +61,7 @@ export const useTTKStore = create<TTKState>()(
 			setPlateId: (plateId) => set({ plateId }),
 			setPlateDurability: (plateDurability) => set({ plateDurability }),
 			setBuildId: (buildId) => set({ buildId }),
+			setModulesEnabled: (modulesEnabled) => set({ modulesEnabled }),
 		}),
 		{
 			name: 'ttk-storage',
@@ -68,6 +72,7 @@ export const useTTKStore = create<TTKState>()(
 				hitZone: s.hitZone,
 				plateId: s.plateId,
 				buildId: s.buildId,
+				modulesEnabled: s.modulesEnabled,
 			}),
 		}
 	)

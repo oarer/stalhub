@@ -5,6 +5,7 @@ import {
 	getDmgPerShot,
 	getShotsToKill,
 	getShotsToKillWithPlate,
+	type ModuleDamageMods,
 } from './damage'
 import { getNumericStat } from './itemStats'
 import { getPlateDamageAbsorption, getPlateMaxDurability } from './plate'
@@ -55,7 +56,8 @@ export function calcTTKAtDist(
 	variantIndex: number,
 	useBurstRof: boolean,
 	plate?: Item | null,
-	plateDurability?: number
+	plateDurability?: number,
+	moduleMods?: ModuleDamageMods
 ): { ttk: number; shots: number } {
 	const rofConfig = getWeaponRofConfig(weapon, useBurstRof)
 	if (rofConfig.rof <= 0) return { ttk: 0, shots: 0 }
@@ -73,14 +75,30 @@ export function calcTTKAtDist(
 		((100 + bulletRes * (1 - penetration / 100)) * (vitality + 100)) / 100
 
 	if (!plate || hitZone !== 'body') {
-		const dmg = getDmgPerShot(weapon, ammo, hitZone, dist, variantIndex)
+		const dmg = getDmgPerShot(
+			weapon,
+			ammo,
+			hitZone,
+			dist,
+			variantIndex,
+			undefined,
+			moduleMods
+		)
 		const shots = getShotsToKill(effectiveHp, dmg)
 		if (shots <= 0) return { ttk: 0, shots: 0 }
 
 		return { ttk: computeTtk(shots), shots }
 	}
 
-	const dmgNaked = getDmgPerShot(weapon, ammo, hitZone, dist, variantIndex)
+	const dmgNaked = getDmgPerShot(
+		weapon,
+		ammo,
+		hitZone,
+		dist,
+		variantIndex,
+		undefined,
+		moduleMods
+	)
 	if (dmgNaked <= 0) return { ttk: 0, shots: 0 }
 
 	const dmgPlated = getDmgPerShot(
@@ -89,7 +107,8 @@ export function calcTTKAtDist(
 		hitZone,
 		dist,
 		variantIndex,
-		plate
+		plate,
+		moduleMods
 	)
 
 	const absorption = getPlateDamageAbsorption(plate)

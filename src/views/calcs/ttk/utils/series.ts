@@ -1,6 +1,7 @@
 import type { Item } from '@/types/item.type'
 import type { TTKSeries } from '../components/TTKChart'
 import type { HitZone } from '../constants/ttk'
+import type { ModuleDamageMods } from './damage'
 import { getDamageBlock } from './itemStats'
 import { calcTTKAtDist } from './ttk'
 
@@ -13,7 +14,8 @@ export function buildSeries(
 	variantIndex: number,
 	useBurstRof: boolean,
 	plate?: Item | null,
-	plateDurability?: number
+	plateDurability?: number,
+	moduleMods?: ModuleDamageMods
 ): TTKSeries {
 	const block = getDamageBlock(weapon)
 	const label =
@@ -35,7 +37,8 @@ export function buildSeries(
 			variantIndex,
 			useBurstRof,
 			plate,
-			plateDurability
+			plateDurability,
+			moduleMods
 		)
 		points.push({
 			x: d,
@@ -55,7 +58,8 @@ export function buildSeries(
 			variantIndex,
 			useBurstRof,
 			plate,
-			plateDurability
+			plateDurability,
+			moduleMods
 		)
 		points.push({
 			x: block.maxDistance,

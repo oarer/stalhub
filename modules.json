@@ -1,0 +1,1190 @@
+{
+    "qualityRarities": [
+        {
+            "quality": 0,
+            "rarity": "common"
+        },
+        {
+            "quality": 18.72,
+            "rarity": "uncommon"
+        },
+        {
+            "quality": 40.25,
+            "rarity": "special"
+        },
+        {
+            "quality": 64.58,
+            "rarity": "rare"
+        },
+        {
+            "quality": 91.72,
+            "rarity": "exclusive"
+        },
+        {
+            "quality": 121.67,
+            "rarity": "legendary"
+        },
+        {
+            "quality": 154.43,
+            "rarity": "unique"
+        }
+    ],
+    "groups": [
+        {
+            "key": "add-on",
+            "lines": {
+                "ru": "Группа надстроек"
+            },
+            "modules": [
+                {
+                    "key": "ergonomics_pre",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Комфортный"
+                    },
+                    "stats": [
+                        {
+                            "key": "reload_modifier",
+                            "lines": {
+                                "ru": "Время перезарядки"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -4.362,
+                                "max": -17.45
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "draw_time_pre",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Мгновенный"
+                    },
+                    "stats": [
+                        {
+                            "key": "draw_time",
+                            "lines": {
+                                "ru": "Время доставания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.635,
+                                "max": -14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aiming_speed_modifier_pre",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Фокусный"
+                    },
+                    "stats": [
+                        {
+                            "key": "aiming_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость прицеливания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 1.454,
+                                "max": 5.817
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "equipped_speed_modifier_pre",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Подвижный"
+                    },
+                    "stats": [
+                        {
+                            "key": "equipped_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость с оружием"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 0.582,
+                                "max": 2.327
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aim_switch_time_pre",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Бдительный"
+                    },
+                    "stats": [
+                        {
+                            "key": "aim_switch_time",
+                            "lines": {
+                                "ru": "Время прицеливания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.635,
+                                "max": -14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_pre",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Вертикальный"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil",
+                            "lines": {
+                                "ru": "Отдача"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.272,
+                                "max": -13.087
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "horizontal_recoil_pre",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Горизонтальный"
+                    },
+                    "stats": [
+                        {
+                            "key": "horizontal_recoil",
+                            "lines": {
+                                "ru": "Гориз. отдача"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.272,
+                                "max": -13.087
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "shoot_factor_decrement_pre",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Стабильный"
+                    },
+                    "stats": [
+                        {
+                            "key": "shoot_factor_decrement",
+                            "lines": {
+                                "ru": "Стабилизация"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 0.05817,
+                                "max": 0.23266
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "wiggle_pre",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Гармоничный"
+                    },
+                    "stats": [
+                        {
+                            "key": "wiggle",
+                            "lines": {
+                                "ru": "Покачивание"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -5.453,
+                                "max": -21.812
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "hip_spread_pre",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Устойчивый"
+                    },
+                    "stats": [
+                        {
+                            "key": "hip_spread",
+                            "lines": {
+                                "ru": "Разброс от бедра"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -2.727,
+                                "max": -10.906
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_gain_pre",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Плавный"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil_gain",
+                            "lines": {
+                                "ru": "Нарастание отдачи"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -4.362,
+                                "max": -17.45
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "spread_pre",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Суммирующий"
+                    },
+                    "stats": [
+                        {
+                            "key": "spread",
+                            "lines": {
+                                "ru": "Разброс"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -2.727,
+                                "max": -10.906
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "deviation",
+            "lines": {
+                "ru": "Группа отклонения"
+            },
+            "modules": [
+                {
+                    "key": "ergonomics_suf",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Дискомфортный"
+                    },
+                    "stats": [
+                        {
+                            "key": "reload_modifier",
+                            "lines": {
+                                "ru": "Время перезарядки"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 17.45,
+                                "max": 4.362
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "draw_time_suf",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Инертный"
+                    },
+                    "stats": [
+                        {
+                            "key": "draw_time",
+                            "lines": {
+                                "ru": "Время доставания"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 14.542,
+                                "max": 3.635
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aiming_speed_modifier_suf",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Медлительный"
+                    },
+                    "stats": [
+                        {
+                            "key": "aiming_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость прицеливания"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -5.817,
+                                "max": -1.454
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "equipped_speed_modifier_suf",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Заторможенный"
+                    },
+                    "stats": [
+                        {
+                            "key": "equipped_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость с оружием"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -2.327,
+                                "max": -0.582
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aim_switch_time_suf",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Дрожащий"
+                    },
+                    "stats": [
+                        {
+                            "key": "aim_switch_time",
+                            "lines": {
+                                "ru": "Время прицеливания"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 14.542,
+                                "max": 3.635
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_suf",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Уходящий"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil",
+                            "lines": {
+                                "ru": "Отдача"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 13.087,
+                                "max": 3.272
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "horizontal_recoil_suf",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Сдвигающий"
+                    },
+                    "stats": [
+                        {
+                            "key": "horizontal_recoil",
+                            "lines": {
+                                "ru": "Гориз. отдача"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 13.087,
+                                "max": 3.272
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "shoot_factor_decrement_suf",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Нестабильный"
+                    },
+                    "stats": [
+                        {
+                            "key": "shoot_factor_decrement",
+                            "lines": {
+                                "ru": "Стабилизация"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -0.23266,
+                                "max": -0.05817
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "wiggle_suf",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Люфтящий"
+                    },
+                    "stats": [
+                        {
+                            "key": "wiggle",
+                            "lines": {
+                                "ru": "Покачивание"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 43.625,
+                                "max": 10.906
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "hip_spread_suf",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Неустойчивый"
+                    },
+                    "stats": [
+                        {
+                            "key": "hip_spread",
+                            "lines": {
+                                "ru": "Разброс от бедра"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 10.906,
+                                "max": 2.727
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_gain_suf",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Резкий"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil_gain",
+                            "lines": {
+                                "ru": "Нарастание отдачи"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 17.45,
+                                "max": 4.362
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "spread_suf",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Отрицающий"
+                    },
+                    "stats": [
+                        {
+                            "key": "spread",
+                            "lines": {
+                                "ru": "Разброс"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 10.906,
+                                "max": 2.727
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "concept",
+            "lines": {
+                "ru": "Группа концепта"
+            },
+            "modules": [
+                {
+                    "key": "inside",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Компрессор»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает максимальный урон взамен на минимальный"
+                    },
+                    "stats": [
+                        {
+                            "key": "damage",
+                            "lines": {
+                                "ru": "Урон"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 1.227,
+                                "max": 4.908
+                            }
+                        },
+                        {
+                            "key": "damage_distant",
+                            "lines": {
+                                "ru": "Урон вдали"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -1.227,
+                                "max": -4.908
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "inside2",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Декомпрессор»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает минимальный урон взамен на максимальный"
+                    },
+                    "stats": [
+                        {
+                            "key": "damage_distant",
+                            "lines": {
+                                "ru": "Урон вдали"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 1.227,
+                                "max": 4.908
+                            }
+                        },
+                        {
+                            "key": "damage",
+                            "lines": {
+                                "ru": "Урон"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -1.227,
+                                "max": -4.908
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "equalizer_op",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Палач»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает урон по конечностям"
+                    },
+                    "stats": [
+                        {
+                            "key": "limbs_damage_modifier",
+                            "lines": {
+                                "ru": "Модификатор урона по конечностям"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 6.18,
+                                "max": 24.721
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "surge",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Пробойник»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает скорость передвижения после убийства врага"
+                    },
+                    "behaviour": {
+                        "type": "artefakt_factor_buff_on_kill",
+                        "duration": "PT15S"
+                    },
+                    "stats": [
+                        {
+                            "key": "speed_modifier",
+                            "lines": {
+                                "ru": "Скорость передвижения"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": 3.49,
+                                "max": 13.96
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "berserk",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Агрессор»"
+                    },
+                    "description": {
+                        "ru": "Усиливает лечение после убийства врага"
+                    },
+                    "behaviour": {
+                        "type": "artefakt_factor_buff_on_kill",
+                        "duration": "PT15S"
+                    },
+                    "stats": [
+                        {
+                            "key": "regeneration_bonus",
+                            "lines": {
+                                "ru": "Лечение"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": 3.635,
+                                "max": 14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "concentration",
+                    "moduleType": "anomaly",
+                    "lines": {
+                        "ru": "«Губитель»"
+                    },
+                    "description": {
+                        "ru": "Уменьшает отдачу и время перезарядки после убийства врага"
+                    },
+                    "behaviour": {
+                        "type": "artefakt_factor_buff_on_kill",
+                        "duration": "PT15S"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil_bonus",
+                            "lines": {
+                                "ru": "Отдача"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": -10.906,
+                                "max": -43.625
+                            }
+                        },
+                        {
+                            "key": "reload_bonus",
+                            "lines": {
+                                "ru": "Время перезарядки"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": -3.635,
+                                "max": -14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "sadist",
+                    "moduleType": "concept",
+                    "lines": {
+                        "ru": "«Охотник»"
+                    },
+                    "description": {
+                        "ru": "Наносит дополнительный урон за каждый отсутствующий % здоровья цели"
+                    },
+                    "behaviour": {
+                        "type": "bonus_damage_per_missing_health_percent"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil",
+                            "lines": {
+                                "ru": "Отдача"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 2.181,
+                                "max": 8.725
+                            }
+                        },
+                        {
+                            "key": "horizontal_recoil",
+                            "lines": {
+                                "ru": "Гориз. отдача"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": 2.181,
+                                "max": 8.725
+                            }
+                        },
+                        {
+                            "key": "per_missing_hp",
+                            "lines": {
+                                "ru": "Урон за каждый отсутствующий % здоровья"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": 0.032,
+                                "max": 0.127
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "sledgehammer",
+                    "moduleType": "concept",
+                    "lines": {
+                        "ru": "«Перфоратор»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает урон по пластинам"
+                    },
+                    "stats": [
+                        {
+                            "key": "armor_plate_damage",
+                            "lines": {
+                                "ru": "Урон по прочности пластин"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 18.177,
+                                "max": 72.708
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "marksman",
+                    "moduleType": "concept",
+                    "lines": {
+                        "ru": "«Снайпер»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает урон в голову и конечности взамен на снижение урона по пластинам"
+                    },
+                    "stats": [
+                        {
+                            "key": "armor_plate_damage",
+                            "lines": {
+                                "ru": "Урон по прочности пластин"
+                            },
+                            "type": "negative",
+                            "value": {
+                                "min": -18.177,
+                                "max": -72.708
+                            }
+                        },
+                        {
+                            "key": "limbs_damage_modifier",
+                            "lines": {
+                                "ru": "Модификатор урона по конечностям"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 6.18,
+                                "max": 24.721
+                            }
+                        },
+                        {
+                            "key": "head_damage_modifier",
+                            "lines": {
+                                "ru": "Модификатор урона в голову"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 1.227,
+                                "max": 4.908
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "gyroscope",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "«Регулятор»"
+                    },
+                    "description": {
+                        "ru": "Значительно уменьшает нарастание отдачи вплоть до смены вектора отдачи"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil_gain",
+                            "lines": {
+                                "ru": "Нарастание отдачи"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -16.359,
+                                "max": -65.437
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "acceleration",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "«Термос»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает урон первых 5 выстрелов магазина"
+                    },
+                    "behaviour": {
+                        "type": "bonus_for_first_n_shots_in_clip",
+                        "bonusShots": 5
+                    },
+                    "stats": [
+                        {
+                            "key": "first5_damage_bonus",
+                            "lines": {
+                                "ru": "Урон первых 5 выстрелов"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": 1.472,
+                                "max": 5.889
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "finish",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "«Завершитель»"
+                    },
+                    "description": {
+                        "ru": "Увеличивает урон последних 5 выстрелов магазина"
+                    },
+                    "behaviour": {
+                        "type": "bonus_for_last_n_shots_in_clip",
+                        "bonusShots": 5
+                    },
+                    "stats": [
+                        {
+                            "key": "last5_damage_bonus",
+                            "lines": {
+                                "ru": "Урон последних 5 выстрелов"
+                            },
+                            "type": "special",
+                            "value": {
+                                "min": 1.472,
+                                "max": 5.889
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "ergonomics_aff",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Биостабилизатор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает время перезарядки"
+                    },
+                    "stats": [
+                        {
+                            "key": "reload_modifier",
+                            "lines": {
+                                "ru": "Время перезарядки"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -4.362,
+                                "max": -17.45
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "draw_time_aff",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Экстрактор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает время доставания"
+                    },
+                    "stats": [
+                        {
+                            "key": "draw_time",
+                            "lines": {
+                                "ru": "Время доставания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.635,
+                                "max": -14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aiming_speed_modifier_aff",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Оператор"
+                    },
+                    "description": {
+                        "ru": "Увеличивает скорость прицеливания"
+                    },
+                    "stats": [
+                        {
+                            "key": "aiming_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость прицеливания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 1.454,
+                                "max": 5.817
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "equipped_speed_modifier_aff",
+                    "moduleType": "speed",
+                    "lines": {
+                        "ru": "Слайдер"
+                    },
+                    "description": {
+                        "ru": "Увеличивает скорость с оружием в руках"
+                    },
+                    "stats": [
+                        {
+                            "key": "equipped_speed_modifier",
+                            "lines": {
+                                "ru": "Скорость с оружием"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 0.582,
+                                "max": 2.327
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "aim_switch_time_aff",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Стрелок"
+                    },
+                    "description": {
+                        "ru": "Уменьшает время прицеливания"
+                    },
+                    "stats": [
+                        {
+                            "key": "aim_switch_time",
+                            "lines": {
+                                "ru": "Время прицеливания"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.635,
+                                "max": -14.542
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_aff",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Держатель"
+                    },
+                    "description": {
+                        "ru": "Уменьшает отдачу"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil",
+                            "lines": {
+                                "ru": "Отдача"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.272,
+                                "max": -13.087
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "horizontal_recoil_aff",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Фиксатор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает горизонтальную отдачу"
+                    },
+                    "stats": [
+                        {
+                            "key": "horizontal_recoil",
+                            "lines": {
+                                "ru": "Гориз. отдача"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -3.272,
+                                "max": -13.087
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "shoot_factor_decrement_aff",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Гаситель"
+                    },
+                    "description": {
+                        "ru": "Увеличивает стабилизацию"
+                    },
+                    "stats": [
+                        {
+                            "key": "shoot_factor_decrement",
+                            "lines": {
+                                "ru": "Стабилизация"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": 0.05817,
+                                "max": 0.23266
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "wiggle_aff",
+                    "moduleType": "convenience",
+                    "lines": {
+                        "ru": "Вариатор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает покачивание"
+                    },
+                    "stats": [
+                        {
+                            "key": "wiggle",
+                            "lines": {
+                                "ru": "Покачивание"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -5.453,
+                                "max": -21.812
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "hip_spread_aff",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Проектор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает разброс от бедра"
+                    },
+                    "stats": [
+                        {
+                            "key": "hip_spread",
+                            "lines": {
+                                "ru": "Разброс от бедра"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -2.727,
+                                "max": -10.906
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "recoil_gain_aff",
+                    "moduleType": "control",
+                    "lines": {
+                        "ru": "Седатор"
+                    },
+                    "description": {
+                        "ru": "Уменьшает нарастание отдачи"
+                    },
+                    "stats": [
+                        {
+                            "key": "recoil_gain",
+                            "lines": {
+                                "ru": "Нарастание отдачи"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -4.362,
+                                "max": -17.45
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "spread_aff",
+                    "moduleType": "accuracy",
+                    "lines": {
+                        "ru": "Контролер"
+                    },
+                    "description": {
+                        "ru": "Уменьшает разброс"
+                    },
+                    "stats": [
+                        {
+                            "key": "spread",
+                            "lines": {
+                                "ru": "Разброс"
+                            },
+                            "type": "positive",
+                            "value": {
+                                "min": -2.727,
+                                "max": -10.906
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -2,11 +2,13 @@
 
 import { useMemo } from 'react'
 import { useBuildStore } from '@/stores/useBuild.store'
+import { useModulesStore } from '@/stores/useModules.store'
 import { useTTKStore } from '@/stores/useTTK.store'
 import type { InfoColor } from '@/types/item.type'
 import { infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { computePrimeFromBuild } from '@/views/calcs/builds/utils/computePrimeFromBuild'
+import { getModuleDamageModifiers } from '@/views/calcs/modules/utils/moduleCalc'
 import type { TTKSeries } from '../components/TTKChart'
 import { COLORS } from '../constants/ttk'
 import {
@@ -30,6 +32,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 	} = data
 
 	const { savedBuilds } = useBuildStore()
+	const modulesSlots = useModulesStore((s) => s.slots)
 	const {
 		slots,
 		focusedSlotId,
@@ -39,6 +42,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 		plateId,
 		plateDurability,
 		buildId,
+		modulesEnabled,
 	} = useTTKStore()
 
 	const weaponMap = useMemo(
@@ -99,6 +103,11 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 
 	const activeSlots = useMemo(() => slots.filter((s) => s.weaponId), [slots])
 
+	const moduleMods = useMemo(
+		() => (modulesEnabled ? getModuleDamageModifiers(modulesSlots) : undefined),
+		[modulesEnabled, modulesSlots]
+	)
+
 	const focusedSlot = useMemo(
 		() =>
 			slots.find((s) => s.id === focusedSlotId && s.weaponId) ??
@@ -147,7 +156,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 							s.variantIndex,
 							s.useBurstRof,
 							plate,
-							plateDurability
+							plateDurability,
+							moduleMods
 						),
 						color: COLORS[i % COLORS.length],
 						labelColor: infoColorMap[weapon.color as InfoColor],
@@ -163,6 +173,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 			activeSlots,
 			plate,
 			plateDurability,
+			moduleMods,
 		]
 	)
 
@@ -185,7 +196,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 						s.variantIndex,
 						s.useBurstRof,
 						plate,
-						plateDurability
+						plateDurability,
+						moduleMods
 					)
 					const resultMax = block
 						? calcTTKAtDist(
@@ -198,7 +210,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 								s.variantIndex,
 								s.useBurstRof,
 								plate,
-								plateDurability
+								plateDurability,
+								moduleMods
 							)
 						: result0
 
@@ -224,6 +237,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 			locale,
 			plate,
 			plateDurability,
+			moduleMods,
 		]
 	)
 

@@ -56,13 +56,19 @@ export function getShotsToKillWithPlate(
 	return shotsToBreak + Math.ceil(remaining / dmgNaked)
 }
 
+export interface ModuleDamageMods {
+	startMult: number
+	endMult: number
+}
+
 export function getDmgPerShot(
 	weapon: Item,
 	ammo: Item | null,
 	hitZone: HitZone,
 	dist: number,
 	variantIndex: number,
-	plate?: Item | null
+	plate?: Item | null,
+	moduleMods?: ModuleDamageMods
 ): number {
 	const block = getDamageBlock(weapon)
 	if (!block) return 0
@@ -72,7 +78,16 @@ export function getDmgPerShot(
 	const baseRatio =
 		block.startDamage > 0 ? startDamage / block.startDamage : 1
 
-	let dmg = getDamageAt(block, dist) * baseRatio
+	const startMult = moduleMods?.startMult ?? 1
+	const endMult = moduleMods?.endMult ?? 1
+
+	let dmg =
+		getDamageAt(
+			block,
+			dist,
+			block.startDamage * startMult,
+			block.endDamage * endMult
+		) * baseRatio
 
 	const ammoDmgBonus = ammo ? getAmmoDamageBonus(ammo) : 0
 	dmg *= 1 + ammoDmgBonus / 100

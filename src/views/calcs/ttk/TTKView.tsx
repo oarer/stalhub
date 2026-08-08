@@ -1,9 +1,11 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useEffect } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { useModulesStore } from '@/stores/useModules.store'
 import { useTTKStore } from '@/stores/useTTK.store'
 import { messageToString } from '@/utils/itemUtils'
 import { HitZoneButtons } from './components/HitZoneButtons'
@@ -19,6 +21,7 @@ import { useTTKWeaponSlots } from './hooks/useTTKWeaponSlots'
 
 export function TTKView() {
 	const ttkData = useTTKData()
+	const modulesLoad = useModulesStore((s) => s.load)
 	const { locale, t, allAmmo } = ttkData
 	const {
 		weaponMap,
@@ -45,6 +48,10 @@ export function TTKView() {
 		removeSlot,
 		setFocusedSlotId,
 	} = useTTKWeaponSlots(weaponMap, ammoByType)
+
+	useEffect(() => {
+		modulesLoad()
+	}, [modulesLoad])
 
 	return (
 		<section className="mx-auto flex max-w-7xl flex-col gap-10 px-4 pt-32 pb-12 lg:pt-36">

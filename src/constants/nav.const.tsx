@@ -112,6 +112,13 @@ const NAV_STRUCTURE: NavGroup[] = [
 				labelKey: 'nav.groups.calculators.items.dpi.label',
 				descriptionKey: 'nav.groups.calculators.items.dpi.description',
 			},
+			{
+				key: 'modules',
+				icon: 'lucide:box',
+				href: '/calcs/modules',
+				labelKey: 'nav.groups.calculators.items.modules.label',
+				descriptionKey: 'nav.groups.calculators.items.modules.description',
+			},
 		],
 	},
 	{
