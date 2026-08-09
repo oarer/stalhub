@@ -54,6 +54,10 @@ apiClient.interceptors.response.use(
 			return Promise.reject(error)
 		}
 
+		if (originalRequest.url?.includes('/api/v1/auth/refresh')) {
+			return Promise.reject(error)
+		}
+
 		if (originalRequest._retry) {
 			return Promise.reject(error)
 		}
@@ -79,6 +83,8 @@ apiClient.interceptors.response.use(
 			return apiClient(originalRequest)
 		} catch (refreshError) {
 			processQueue(refreshError)
+
+			window.location.href = '/auth'
 
 			return Promise.reject(refreshError)
 		} finally {

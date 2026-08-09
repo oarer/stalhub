@@ -1,7 +1,8 @@
 'use client'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 import { unbounded } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
 import { discordAuthService } from '@/services/auth/discord/discord.service'
@@ -14,7 +15,7 @@ export default function CallbackPage() {
 	const router = useRouter()
 	const params = useParams()
 	const searchParams = useSearchParams()
-	const [error, setError] = useState<string | null>(null)
+	const t = useTranslations()
 
 	const called = useRef(false)
 
@@ -42,7 +43,7 @@ export default function CallbackPage() {
 				case 'telegram':
 				case 'exbo':
 					if (!state) {
-						setError('Ошибка авторизации')
+						toast.error(t('auth.error'), { id: 'auth-error' })
 						return
 					}
 					await (provider === 'telegram'
@@ -55,20 +56,16 @@ export default function CallbackPage() {
 		}
 
 		handle().catch(() => {
-			setError('Ошибка авторизации')
+			toast.error(t('auth.error'), { id: 'auth-error' })
 		})
-	}, [router, params, searchParams])
-
-	if (error) {
-		toast.error(error)
-	}
+	}, [router, params, searchParams, t])
 
 	return (
 		<section className="mx-auto flex min-h-screen items-center justify-center gap-4 px-3">
 			<h1
 				className={`${unbounded.className} animate-pulse font-bold text-2xl uppercase tracking-widest`}
 			>
-				Авторизация
+				{t('auth.title')}
 			</h1>
 		</section>
 	)
