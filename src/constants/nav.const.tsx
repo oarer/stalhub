@@ -27,7 +27,7 @@ export const MobileLinks = [
 	},
 ]
 
-type NavItem = {
+export type NavItem = {
 	key: string
 	icon: string
 	href?: string
@@ -37,14 +37,14 @@ type NavItem = {
 	submenu?: NavItem[]
 }
 
-type NavGroup = {
+export type NavGroup = {
 	key: string
 	titleKey: string
 	icon: string
 	items: NavItem[]
 }
 
-const NAV_STRUCTURE: NavGroup[] = [
+export const NAV_STRUCTURE: NavGroup[] = [
 	{
 		key: 'calculators',
 		titleKey: 'nav.groups.calculators.title',

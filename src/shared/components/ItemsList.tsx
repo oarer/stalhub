@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import Image from 'next/image'
 import { useMemo, useRef } from 'react'
+import { useFuseSearch } from '@/hooks/useFuseSearch'
 import { cn } from '@/lib/cn'
 import {
 	type FavoriteType,
@@ -13,16 +14,17 @@ import type { Item, Locale } from '@/types/item.type'
 import { colorPriority, InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 
-//! TODO декомпозиция + кинуть в shared
-
 type ItemsListProps = {
 	items: Item[]
 	locale: Locale
+	query?: string
 	onSelectItem?: (itemId: string) => void
 	selectedItemId?: string | null
 	className?: string
 	favoriteType?: FavoriteType
 	showFavorites?: boolean
+	minLength?: number
+	emptyText?: string
 }
 
 type RowProps = {
@@ -105,18 +107,42 @@ const Row = ({
 export function ItemsList({
 	items,
 	locale,
+	query,
 	onSelectItem,
 	selectedItemId,
 	className,
 	favoriteType,
 	showFavorites = true,
+	minLength = 2,
+	emptyText,
 }: ItemsListProps) {
 	const parentRef = useRef<HTMLDivElement>(null)
 	const { isFavorite, toggleFavorite, favorites } = useFavoritesStore()
 
+	const { filteredEntries } = useFuseSearch<Item>(items, query ?? '', {
+		getName: (item) => messageToString(item.name, locale),
+		getKey: (item) => `${item.category}/${item.id}`,
+		locale,
+		minLength,
+	})
+
+	const searchedItems = useMemo(() => {
+		const q = (query ?? '').trim()
+		if (!q) return items
+
+		if (q.length < minLength) {
+			const qLower = q.toLowerCase()
+			return items.filter((it) =>
+				messageToString(it.name, locale).toLowerCase().includes(qLower)
+			)
+		}
+
+		return filteredEntries
+	}, [query, items, filteredEntries, locale, minLength])
+
 	// biome-ignore lint: useExhaustiveDependencies
 	const sortedItems = useMemo(() => {
-		return [...items].sort((a, b) => {
+		return [...searchedItems].sort((a, b) => {
 			if (showFavorites && favoriteType) {
 				const aFav = isFavorite(favoriteType, a.id)
 				const bFav = isFavorite(favoriteType, b.id)
@@ -128,7 +154,7 @@ export function ItemsList({
 			const bPriority = colorPriority[b.color as InfoColor] ?? 0
 			return bPriority - aPriority
 		})
-	}, [items, showFavorites, favoriteType, isFavorite, favorites])
+	}, [searchedItems, showFavorites, favoriteType, isFavorite, favorites])
 
 	const virtualizer = useVirtualizer({
 		count: sortedItems.length,
@@ -139,50 +165,56 @@ export function ItemsList({
 
 	return (
 		<div className={cn('h-full min-h-0 w-full', className)}>
-			<div
-				className={cn(
-					'mask-y-from-97% mask-y-to-100% w-full overflow-auto',
-					className
-				)}
-				ref={parentRef}
-			>
+			{emptyText && sortedItems.length === 0 ? (
+				<p className="flex h-full items-center justify-center font-semibold text-text-accent">
+					{emptyText}
+				</p>
+			) : (
 				<div
-					style={{
-						height: `${virtualizer.getTotalSize()}px`,
-						width: '100%',
-						position: 'relative',
-					}}
+					className={cn(
+						'mask-y-from-97% mask-y-to-100% w-full overflow-auto',
+						className
+					)}
+					ref={parentRef}
 				>
-					{virtualizer.getVirtualItems().map((virtualRow) => {
-						const item = sortedItems[virtualRow.index]
+					<div
+						style={{
+							height: `${virtualizer.getTotalSize()}px`,
+							width: '100%',
+							position: 'relative',
+						}}
+					>
+						{virtualizer.getVirtualItems().map((virtualRow) => {
+							const item = sortedItems[virtualRow.index]
 
-						return (
-							<div
-								data-index={virtualRow.index}
-								key={item.id}
-								ref={virtualizer.measureElement}
-								style={{
-									position: 'absolute',
-									top: 0,
-									left: 0,
-									width: '100%',
-									transform: `translateY(${virtualRow.start}px)`,
-								}}
-							>
-								<Row
-									favoriteType={favoriteType}
-									isFavorite={isFavorite}
-									item={item}
-									locale={locale}
-									onSelectItem={onSelectItem}
-									selectedItemId={selectedItemId}
-									toggleFavorite={toggleFavorite}
-								/>
-							</div>
-						)
-					})}
+							return (
+								<div
+									data-index={virtualRow.index}
+									key={item.id}
+									ref={virtualizer.measureElement}
+									style={{
+										position: 'absolute',
+										top: 0,
+										left: 0,
+										width: '100%',
+										transform: `translateY(${virtualRow.start}px)`,
+									}}
+								>
+									<Row
+										favoriteType={favoriteType}
+										isFavorite={isFavorite}
+										item={item}
+										locale={locale}
+										onSelectItem={onSelectItem}
+										selectedItemId={selectedItemId}
+										toggleFavorite={toggleFavorite}
+									/>
+								</div>
+							)
+						})}
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	)
 }

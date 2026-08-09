@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { HoverCard } from '@/components/ui/HoverCard'
@@ -12,6 +12,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import {
 	BoostButtons,
@@ -26,7 +27,6 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 import { ListBlock } from '@/views/items/components/blocks'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
@@ -61,16 +61,6 @@ function BoostSelectModal({
 	const selectedItemData = items.find((i) => i.id === selectedBoostId)
 	const [filter, setFilter] = useState('')
 	const [open, setOpen] = useState(false)
-
-	const visibleItems = useMemo(() => {
-		const q = filter.trim().toLowerCase()
-
-		if (!q) return categoryItems
-
-		return categoryItems.filter((it) =>
-			messageToString(it.name, locale).toLowerCase().includes(q)
-		)
-	}, [categoryItems, filter, locale])
 
 	useEffect(() => {
 		setPreviewId(selectedBoostId)
@@ -184,9 +174,10 @@ function BoostSelectModal({
 							<ItemsList
 								className="max-h-90 max-w-90"
 								favoriteType="boost"
-								items={visibleItems}
+								items={categoryItems}
 								locale={locale}
 								onSelectItem={(id) => setPreviewId(id)}
+								query={filter}
 								selectedItemId={previewId}
 							/>
 						</Card.Root>
@@ -246,7 +237,7 @@ function BoostSelectModal({
 									}}
 									variant="bordered"
 								>
-									Выбрать
+									{t('modals.builds.pick')}
 								</Button>
 							</Card.Content>
 						</Card.Root>

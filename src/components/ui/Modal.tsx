@@ -114,7 +114,8 @@ export function ModalContent({
 	className = '',
 	fullScreen = true,
 	background = '',
-}: Props) {
+	align = 'center',
+}: Props & { align?: 'center' | 'top' }) {
 	const { isOpen, close } = useModal()
 
 	useEffect(() => {
@@ -142,7 +143,12 @@ export function ModalContent({
 			{isOpen && (
 				<div
 					aria-hidden={!isOpen}
-					className="fixed inset-0 z-9999999 flex items-center justify-center px-2"
+					className={cn(
+						'fixed inset-0 z-9999999 flex justify-center px-2',
+						align === 'top'
+							? 'items-start pt-16 sm:pt-20'
+							: 'items-center'
+					)}
 				>
 					<motion.div
 						animate="animate"

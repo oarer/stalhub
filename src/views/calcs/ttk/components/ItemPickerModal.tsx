@@ -1,13 +1,12 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
+import { ItemsList } from '@/shared/components/ItemsList'
 import type { Item } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 
 interface Props {
 	items: Item[]
@@ -23,15 +22,6 @@ export function ItemPickerModal({ items, onSelect, title, trigger }: Props) {
 
 	const locale = getLocale()
 	const t = useTranslations()
-
-	const filtered = useMemo(() => {
-		const q = query.toLowerCase()
-		return q
-			? items.filter((i) =>
-					messageToString(i.name, locale).toLowerCase().includes(q)
-				)
-			: items
-	}, [items, query, locale])
 
 	const handleSelect = useCallback(
 		(id: string) => {
@@ -59,9 +49,10 @@ export function ItemPickerModal({ items, onSelect, title, trigger }: Props) {
 					<ItemsList
 						className="max-w-full"
 						favoriteType="weapon"
-						items={filtered}
+						items={items}
 						locale={locale}
 						onSelectItem={handleSelect}
+						query={query}
 					/>
 				</Modal.Body>
 			</Modal.Content>

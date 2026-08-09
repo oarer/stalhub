@@ -10,6 +10,7 @@ import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
+import { ItemsList } from '@/shared/components/ItemsList'
 import type { FavoriteType } from '@/stores/useFavorites.store'
 import type {
 	AddStatBlock,
@@ -19,7 +20,6 @@ import type {
 } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/calcs/builds/model/components/artifacts/ItemsList'
 import { ListBlock } from '@/views/items/components/blocks'
 
 export type StatFilterGroup = {
@@ -57,7 +57,7 @@ export function ItemPickerModal({
 	emptyTitle,
 	favoriteType,
 	searchLabel = 'build.labels.default',
-	actionLabel = 'Выбрать',
+	actionLabel = 'modals.builds.pick',
 	onConfirm,
 	children,
 	statFilters,
@@ -69,15 +69,6 @@ export function ItemPickerModal({
 	const selectedItem = useMemo(() => {
 		return items.find((i) => i.id === previewId) ?? null
 	}, [items, previewId])
-
-	const visibleItems = useMemo(() => {
-		const query = filter.trim().toLowerCase()
-		if (!query) return items
-
-		return items.filter((it) =>
-			messageToString(it.name, locale).toLowerCase().includes(query)
-		)
-	}, [filter, items, locale])
 
 	const reset = () => {
 		setPreviewId(null)
@@ -125,22 +116,16 @@ export function ItemPickerModal({
 
 					<div className="relative grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[50%_50%]">
 						<div className="flex w-full flex-col gap-2">
-							{visibleItems.length > 0 ? (
-								<ItemsList
-									className="max-h-screen sm:h-91"
-									favoriteType={favoriteType}
-									items={visibleItems}
-									locale={locale}
-									onSelectItem={(itemId) =>
-										setPreviewId(itemId)
-									}
-									selectedItemId={previewId}
-								/>
-							) : (
-								<p className="flex h-full items-center justify-center font-semibold text-text-accent">
-									{t('build.labels.not_found')}
-								</p>
-							)}
+							<ItemsList
+								className="max-h-screen sm:h-91"
+								emptyText={t('build.labels.not_found')}
+								favoriteType={favoriteType}
+								items={items}
+								locale={locale}
+								onSelectItem={(itemId) => setPreviewId(itemId)}
+								query={filter}
+								selectedItemId={previewId}
+							/>
 						</div>
 
 						<div
@@ -243,7 +228,7 @@ export function ItemPickerModal({
 									}
 									variant="bordered"
 								>
-									{actionLabel}
+									{t(actionLabel)}
 								</Button>
 							)}
 						</div>

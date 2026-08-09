@@ -8,15 +8,12 @@ import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art, ModalProps } from '@/types/build.type'
 import type { ArtQuality, Item } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
-import {
-	ArtifactSlots,
-	ArtifactStatsPanel,
-	ItemsList,
-} from '@/views/calcs/builds/model/components/artifacts'
+import { ArtifactStatsPanel } from '@/views/calcs/builds/components/ArtifactStatsPanel'
+import { ArtifactSlots } from '@/views/calcs/builds/model/components/artifacts/ArtifactSlots'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
 
@@ -240,12 +237,6 @@ export default function ArtModal({ onClose }: ModalProps) {
 		[selectedStatsData?.instanceId, updateArt]
 	)
 
-	const visibleItems = items.filter((it) =>
-		messageToString(it.name, locale)
-			.toLowerCase()
-			.includes(filter.toLowerCase())
-	)
-
 	return (
 		<div className="flex flex-col gap-4 text-nowrap">
 			<div className="z-999 flex gap-4">
@@ -262,9 +253,10 @@ export default function ArtModal({ onClose }: ModalProps) {
 					<ItemsList
 						className="max-h-90 overflow-y-auto"
 						favoriteType="artefact"
-						items={visibleItems}
+						items={items}
 						locale={locale}
 						onSelectItem={handleAdd}
+						query={filter}
 					/>
 				</Card.Root>
 

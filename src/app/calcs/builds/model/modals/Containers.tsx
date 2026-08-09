@@ -11,6 +11,7 @@ import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
 import {
@@ -20,7 +21,6 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { findContSizeInBlocks, messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 import { ListBlock } from '@/views/items/components/blocks'
 
 type Slot = string | null
@@ -67,12 +67,6 @@ export default function ContModal({ onClose }: ModalProps) {
 		toast.success(t('modals.builds.container.toaster_success'))
 	}
 
-	const visibleItems = items.filter((it) =>
-		messageToString(it.name, locale)
-			.toLowerCase()
-			.includes(filter.toLowerCase())
-	)
-
 	return (
 		<>
 			<div className="flex gap-4 text-nowrap">
@@ -89,9 +83,10 @@ export default function ContModal({ onClose }: ModalProps) {
 					<ItemsList
 						className="max-h-90"
 						favoriteType="container"
-						items={visibleItems}
+						items={items}
 						locale={locale}
 						onSelectItem={(id) => setPreviewId(id)}
+						query={filter}
 					/>
 				</Card.Root>
 

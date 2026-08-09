@@ -10,6 +10,7 @@ import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
 import {
@@ -19,7 +20,6 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { isNumericVariantsBlock, messageToString } from '@/utils/itemUtils'
-import { ItemsList } from '@/views/calcs/builds/model/components/artifacts'
 import { ListBlock, NumericVariantsCard } from '@/views/items/components/blocks'
 
 export default function ArmorModal({ onClose }: ModalProps) {
@@ -44,12 +44,6 @@ export default function ArmorModal({ onClose }: ModalProps) {
 		toast.success(t('modals.builds.armor.toaster_success'))
 	}
 
-	const visibleItems = items.filter((it) =>
-		messageToString(it.name, locale)
-			.toLowerCase()
-			.includes(filter.toLowerCase())
-	)
-
 	return (
 		<div className="flex gap-4 text-nowrap">
 			<Card.Root className="min-w-75">
@@ -65,9 +59,10 @@ export default function ArmorModal({ onClose }: ModalProps) {
 				<ItemsList
 					className="max-h-127"
 					favoriteType="armor"
-					items={visibleItems}
+					items={items}
 					locale={locale}
 					onSelectItem={(id) => setPreviewId(id)}
+					query={filter}
 				/>
 			</Card.Root>
 
