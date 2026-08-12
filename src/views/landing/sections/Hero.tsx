@@ -106,7 +106,7 @@ export default function Hero() {
 				>
 					<CLink
 						className="gap-2 rounded-xl"
-						href="#"
+						href="/calcs"
 						size="lg"
 						variant="primary"
 					>
