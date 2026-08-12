@@ -266,7 +266,8 @@ export const BuildLitePngTemplate = forwardRef<
 											{armorName}
 										</p>
 										<p className="font-semibold text-sm text-text-accent">
-											Заточка: +{build.armor.level}
+											{t('build.sharpening')}: +
+											{build.armor.level}
 										</p>
 									</div>
 								</>

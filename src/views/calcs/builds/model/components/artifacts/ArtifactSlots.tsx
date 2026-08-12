@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { inter } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
@@ -36,6 +37,8 @@ export function ArtifactSlots({
 	setCopyMode,
 	copyMode,
 }: ArtifactSlotsProps) {
+	const t = useTranslations()
+
 	const artsMap = useMemo(
 		() => new Map(arts.map((a) => [a.instanceId, a])),
 		[arts]
@@ -122,7 +125,7 @@ export function ArtifactSlots({
 											e.stopPropagation()
 											setCopyMode((prev) => !prev)
 										}}
-										title="Копировать"
+										title={t('build.copy')}
 										type="button"
 										variant={'ghost'}
 									>
@@ -139,7 +142,7 @@ export function ArtifactSlots({
 											e.stopPropagation()
 											onRemove?.(instanceId!)
 										}}
-										title="Удалить"
+										title={t('build.labels.delete')}
 										type="button"
 										variant={'danger'}
 									>

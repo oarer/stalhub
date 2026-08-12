@@ -91,10 +91,10 @@ export default function BuildsView() {
 			})
 		},
 		onSuccess: () => {
-			toast.success('Сборка опубликована')
+			toast.success(t('build.toast_published'))
 			queryClient.invalidateQueries({ queryKey: ['builds'] })
 		},
-		onError: () => toast.error('Ошибка публикации'),
+		onError: () => toast.error(t('build.toast_publish_error')),
 	})
 
 	const sceneArmor = useMemo(
@@ -290,7 +290,9 @@ export default function BuildsView() {
 									</Modal.Trigger>
 									<Modal.Content className="max-w-md">
 										<Modal.Header className="py-2 pt-6">
-											<Modal.Title>Настройки</Modal.Title>
+											<Modal.Title>
+												{t('modals.builds.settings.title')}
+											</Modal.Title>
 										</Modal.Header>
 
 										<Modal.Body className="py-2 pb-6">

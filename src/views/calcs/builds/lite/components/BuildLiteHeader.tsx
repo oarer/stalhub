@@ -14,10 +14,13 @@ import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import BuildSelector from '../../components/BuildSelector'
 import DefaultsSettings from '../../components/DefaultsSettings'
+import { CompareBuildSelector } from './CompareBuildSelector'
 
 type BuildLiteHeaderProps = {
+	compareBuildId: string | null
 	currentBuild: SavedBuild | undefined
 	currentBuildId: string | null
+	onCompareSelect: (buildId: string | null) => void
 	onRename: (buildId: string, name: string) => void
 	onExport: (name: string) => Promise<string | null>
 	onSavePng: () => void
@@ -26,18 +29,22 @@ type BuildLiteHeaderProps = {
 		id: string,
 		data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId'>>
 	) => void
+	savedBuilds: SavedBuild[]
 	savingPng: boolean
 	t: ReturnType<typeof useTranslations>
 }
 
 export function BuildLiteHeader({
+	compareBuildId,
 	currentBuild,
 	currentBuildId,
+	onCompareSelect,
 	onRename,
 	onExport,
 	onSavePng,
 	onReset,
 	onUpdateBuild,
+	savedBuilds,
 	savingPng,
 	t,
 }: BuildLiteHeaderProps) {
@@ -59,10 +66,10 @@ export function BuildLiteHeader({
 			if (currentBuildId && result.id) {
 				onUpdateBuild(currentBuildId, { apiBuildId: result.id })
 			}
-			toast.success('Сборка опубликована')
+			toast.success(t('build.toast_published'))
 			queryClient.invalidateQueries({ queryKey: ['builds'] })
 		},
-		onError: () => toast.error('Ошибка публикации'),
+		onError: () => toast.error(t('build.toast_publish_error')),
 	})
 
 	const updateMutation = useMutation({
@@ -74,10 +81,10 @@ export function BuildLiteHeader({
 			})
 		},
 		onSuccess: () => {
-			toast.success('Сборка обновлена')
+			toast.success(t('buildsLite.updated'))
 			queryClient.invalidateQueries({ queryKey: ['builds'] })
 		},
-		onError: () => toast.error('Ошибка обновления'),
+		onError: () => toast.error(t('buildsLite.updateError')),
 	})
 
 	const handleRename = () => {
@@ -92,7 +99,7 @@ export function BuildLiteHeader({
 		if (!currentBuild?.apiBuildId) return
 		const url = `${window.location.origin}/calcs/builds/lite?build=${currentBuild.apiBuildId}`
 		navigator.clipboard.writeText(url)
-		toast.success('Ссылка скопирована')
+		toast.success(t('buildsLite.linkCopied'))
 	}
 
 	const handleCopyShare = async () => {
@@ -102,7 +109,7 @@ export function BuildLiteHeader({
 
 		const url = `${window.location.origin}/calcs/builds/lite?share=${encodeURIComponent(encoded)}`
 		navigator.clipboard.writeText(url)
-		toast.success('Ссылка скопирована')
+		toast.success(t('buildsLite.linkCopied'))
 	}
 
 	return (
@@ -126,7 +133,7 @@ export function BuildLiteHeader({
 						>
 							<Modal.Trigger asChild className="flex gap-2">
 								<Button
-									className="flex gap-2 rounded-lg p-2"
+									className="flex gap-2 rounded-lg p-2.5"
 									variant="secondary"
 								>
 									<Icon
@@ -169,7 +176,7 @@ export function BuildLiteHeader({
 						<Modal.Root>
 							<Modal.Trigger asChild>
 								<Button
-									className="flex gap-2 rounded-lg p-2"
+									className="flex gap-2 rounded-lg p-2.5"
 									variant="secondary"
 								>
 									<Icon
@@ -182,7 +189,7 @@ export function BuildLiteHeader({
 								<Modal.Header>
 									<Modal.Title className="flex items-center gap-2">
 										<Icon icon="lucide:link" />
-										Поделиться сборкой
+										{t('buildsLite.shareTitle')}
 									</Modal.Title>
 								</Modal.Header>
 								<Modal.Body>
@@ -194,7 +201,7 @@ export function BuildLiteHeader({
 												variant="secondary"
 											>
 												<Icon icon="lucide:link" />
-												Копировать публичную ссылку
+												{t('buildsLite.copyPublicLink')}
 											</Button>
 										)}
 										<Button
@@ -203,7 +210,7 @@ export function BuildLiteHeader({
 											variant="secondary"
 										>
 											<Icon icon="lucide:copy" />
-											Копировать код сборки
+											{t('buildsLite.copyBuildCode')}
 										</Button>
 										{isPublished ? (
 											<Button
@@ -217,7 +224,7 @@ export function BuildLiteHeader({
 												variant="primary"
 											>
 												<Icon icon="lucide:refresh-cw" />
-												Обновить на сервере
+												{t('buildsLite.updateServer')}
 											</Button>
 										) : (
 											<Button
@@ -231,7 +238,7 @@ export function BuildLiteHeader({
 												variant="primary"
 											>
 												<Icon icon="lucide:upload" />
-												Опубликовать
+												{t('buildsLite.publish')}
 											</Button>
 										)}
 									</div>
@@ -240,7 +247,7 @@ export function BuildLiteHeader({
 						</Modal.Root>
 					)}
 					<Button
-						className="flex gap-2 rounded-lg p-2"
+						className="flex gap-2 rounded-lg p-2.5"
 						loading={savingPng}
 						onClick={onSavePng}
 						variant="secondary"
@@ -248,14 +255,14 @@ export function BuildLiteHeader({
 						<Icon className="text-xl" icon="lucide:image-down" />
 					</Button>
 					<Modal.Root>
-						<Modal.Trigger className="p-2" variant="secondary">
+						<Modal.Trigger className="p-2.5" variant="secondary">
 							<Icon className="text-xl" icon="lucide:settings" />
 						</Modal.Trigger>
 						<Modal.Content className="max-w-md" fullScreen={false}>
 							<Modal.Header className="py-2 pt-6">
 								<Modal.Title className="flex items-center gap-2">
 									<Icon icon="lucide:settings" />
-									Настройки
+									{t('modals.builds.settings.title')}
 								</Modal.Title>
 							</Modal.Header>
 
@@ -265,12 +272,18 @@ export function BuildLiteHeader({
 						</Modal.Content>
 					</Modal.Root>
 					<Button
-						className="flex gap-2 rounded-lg p-2 ring-transparent"
+						className="flex gap-2 rounded-lg p-2.5 ring-transparent"
 						onClick={onReset}
 						variant="danger"
 					>
 						<Icon className="text-xl" icon="lucide:rotate-ccw" />
 					</Button>
+					<CompareBuildSelector
+						compareBuildId={compareBuildId}
+						currentBuildId={currentBuildId}
+						onSelect={onCompareSelect}
+						savedBuilds={savedBuilds}
+					/>
 				</div>
 			</div>
 		</div>

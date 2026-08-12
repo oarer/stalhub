@@ -18,6 +18,7 @@ export default memo(function StatsTabs() {
 		isPercentMap,
 		prime,
 		hps,
+		stopping,
 		hasContainer,
 		stats,
 		containerStats,
@@ -45,15 +46,18 @@ export default memo(function StatsTabs() {
 					prime={prime}
 					sortedStats={sortedStats}
 					statsMap={stats}
+					stopping={stopping}
 				/>
 			</Tabs.Content>
 			<Tabs.Content value="statsCont">
 				<StatsTabContent
 					displayNamesMap={displayNamesMap}
 					hasContainer={hasContainer}
+					hps={hps}
 					isPercentMap={isPercentMap}
 					stats={sortedContainerStats}
 					statsMap={containerStats}
+					stopping={stopping}
 				/>
 			</Tabs.Content>
 		</Tabs.Root>

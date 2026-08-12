@@ -3,6 +3,7 @@
 import { useMemo } from 'react'
 import { getLocale } from '@/lib/getLocale'
 import { useBuildStore } from '@/stores/useBuild.store'
+import type { Build } from '@/types/build.type'
 import type { BuildStats } from './buildStatsUtils'
 import {
 	applyContainerModifiers,
@@ -22,8 +23,9 @@ export { useBuildItems } from './useBuildItems'
 export { useContainerModifiers } from './useContainerModifiers'
 export { useDerivedStats } from './useDerivedStats'
 
-export function useBuildStats() {
-	const build = useBuildStore((s) => s.build)
+export function useBuildStats(buildOverride?: Build) {
+	const storeBuild = useBuildStore((s) => s.build)
+	const build = buildOverride ?? storeBuild
 	const locale = getLocale()
 	const { armors, containers, artefacts, consumables, allItems } =
 		useBuildItems()
@@ -149,7 +151,7 @@ export function useBuildStats() {
 		containerModifiers,
 	])
 
-	const { prime, hps } = useDerivedStats(stats)
+	const { prime, hps, stopping } = useDerivedStats(stats)
 
 	const sortedStats = useMemo(() => {
 		return Object.entries(stats)
@@ -189,6 +191,7 @@ export function useBuildStats() {
 		sortedContainerStats,
 		prime,
 		hps,
+		stopping,
 		hasContainer: !!build.container,
 	}
 }

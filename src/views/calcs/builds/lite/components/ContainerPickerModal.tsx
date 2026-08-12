@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { Modal } from '@/components/ui/Modal'
 import type { Item, Locale } from '@/types/item.type'
@@ -30,6 +31,7 @@ export function ContainerPickerModal({
 	onSelectItem,
 }: ContainerPickerModalProps) {
 	const [showConfirm, setShowConfirm] = useState(false)
+	const t = useTranslations()
 
 	const selectedSlotsCount = findContSizeInBlocks(selectedItem?.infoBlocks)
 	const lostSlots = useMemo(
@@ -78,15 +80,14 @@ export function ContainerPickerModal({
 			<Modal.Root onOpenChange={setShowConfirm} open={showConfirm}>
 				<Modal.Content className="max-w-md">
 					<Modal.Header>
-						<Modal.Title>Контейнер меньше текущего</Modal.Title>
+						<Modal.Title>{t('buildsLite.containerWarnTitle')}</Modal.Title>
 						<Modal.Description className="font-semibold">
-							Артефакты в удаляемых слотах будут отвязаны от
-							контейнера.
+							{t('buildsLite.containerWarnDesc')}
 						</Modal.Description>
 					</Modal.Header>
 					<Modal.Body>
 						<p className="font-semibold">
-							Будет потеряно занятых слотов: {lostSlots}
+							{t('buildsLite.lostSlots', { count: lostSlots })}
 						</p>
 					</Modal.Body>
 					<Modal.Footer className="flex justify-end gap-2">
@@ -94,13 +95,13 @@ export function ContainerPickerModal({
 							onClick={() => setShowConfirm(false)}
 							variant="ghost"
 						>
-							Отмена
+							{t('build.cancel')}
 						</Modal.Action>
 						<Modal.Action
 							onClick={selectContainer}
 							variant="danger"
 						>
-							Подтвердить
+							{t('buildsLite.confirm')}
 						</Modal.Action>
 					</Modal.Footer>
 				</Modal.Content>

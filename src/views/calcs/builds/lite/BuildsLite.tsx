@@ -3,8 +3,8 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { toPng } from 'html-to-image'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -23,8 +23,10 @@ import { ArmorLiteSection } from './components/ArmorLiteSection'
 import { ArtifactSlotsLite } from './components/ArtifactSlots'
 import { BuildLiteHeader } from './components/BuildLiteHeader'
 import { BuildLitePngTemplate } from './components/BuildLitePngTemplate'
+import { CompareSlots } from './components/CompareSlots'
 import ConsumablesModalLite from './components/ConsumablesModal'
 import { ItemPickerModal } from './components/ItemPickerModal'
+import { StatsCompare } from './components/StatsCompare'
 import { useLiteArtifacts } from './hooks/useLiteArtifacts'
 
 const imagePlaceholder =
@@ -82,7 +84,13 @@ async function imageToDataUrl(url: string, timeoutMs = 4000) {
 	}
 }
 
-export default function BuildsLiteView() {
+type BuildsLiteViewProps = {
+	variant?: 'page' | 'widget'
+}
+
+export default function BuildsLiteView({
+	variant = 'page',
+}: BuildsLiteViewProps) {
 	const {
 		savedBuilds,
 		currentBuildId,
@@ -106,9 +114,14 @@ export default function BuildsLiteView() {
 	const [armorPreviewId, setArmorPreviewId] = useState<string | null>(null)
 	const [pngPreviewUrl, setPngPreviewUrl] = useState<string | null>(null)
 	const [showPngModal, setShowPngModal] = useState(false)
+	const [compareBuildId, setCompareBuildId] = useState<string | null>(null)
 	const pngTemplateRef = useRef<HTMLDivElement | null>(null)
 
 	const currentBuild = savedBuilds.find((b) => b.id === currentBuildId)
+
+	const compareBuild = compareBuildId
+		? (savedBuilds.find((b) => b.id === compareBuildId) ?? null)
+		: null
 
 	const { data: artifactsData } = useSuspenseQuery(
 		itemsQueries.get({ type: 'artefact' })
@@ -171,14 +184,17 @@ export default function BuildsLiteView() {
 		if (!buildId) return
 
 		setLoadedFromApi(true)
-		buildApiService.get(buildId).then((apiBuild) => {
-			loadFromApi(apiBuild.id, apiBuild.title, apiBuild.data)
-			window.history.replaceState({}, '', '/calcs/builds/lite')
-		}).catch(() => {
-			toast.error('Сборка не найдена')
-			window.history.replaceState({}, '', '/calcs/builds/lite')
-		})
-	}, [loadFromApi, loadedFromApi])
+		buildApiService
+			.get(buildId)
+			.then((apiBuild) => {
+				loadFromApi(apiBuild.id, apiBuild.title, apiBuild.data)
+				window.history.replaceState({}, '', '/calcs/builds/lite')
+			})
+			.catch(() => {
+				toast.error(t('buildsLite.notFound'))
+				window.history.replaceState({}, '', '/calcs/builds/lite')
+			})
+	}, [loadFromApi, loadedFromApi, t])
 
 	const handleSavePng = useCallback(async () => {
 		if (!pngTemplateRef.current || isSavingPng) return
@@ -252,14 +268,7 @@ export default function BuildsLiteView() {
 		} finally {
 			setIsSavingPng(false)
 		}
-	}, [
-		armor,
-		build,
-		containers,
-		consumables,
-		isSavingPng,
-		items,
-	])
+	}, [armor, build, containers, consumables, isSavingPng, items])
 
 	const handleDownloadPng = useCallback(() => {
 		if (!pngPreviewUrl) return
@@ -283,70 +292,150 @@ export default function BuildsLiteView() {
 			await navigator.clipboard.write([
 				new ClipboardItem({ 'image/png': blob }),
 			])
-			toast.success('Изображение скопировано')
+			toast.success(t('buildsLite.pngCopied'))
 		} catch {
-			toast.error('Не удалось скопировать')
+			toast.error(t('buildsLite.copyError'))
 		}
-	}, [pngPreviewUrl])
+	}, [pngPreviewUrl, t])
 
 	return (
-		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
+		<section
+			className={
+				variant === 'widget'
+					? 'flex max-w-280 flex-col gap-4'
+					: 'mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6'
+			}
+		>
 			<div className="grid grid-cols-1 gap-8 lg:grid-cols-[70%_30%]">
 				<div className="flex flex-col gap-4">
 					<BuildLiteHeader
+						compareBuildId={compareBuildId}
 						currentBuild={currentBuild}
 						currentBuildId={currentBuildId}
+						onCompareSelect={setCompareBuildId}
 						onExport={exportBuild}
 						onRename={(id, name) => updateBuild(id, { name })}
 						onReset={resetBuild}
 						onSavePng={handleSavePng}
 						onUpdateBuild={(id, data) => updateBuild(id, data)}
+						savedBuilds={savedBuilds}
 						savingPng={isSavingPng}
 						t={t}
 					/>
-					<div className="flex w-full flex-col gap-4 lg:flex-row">
-						<Card.Root className="w-full">
-							<ArtifactSlotsLite
-								arts={build.arts as Art[]}
-								containers={containers}
-								copyMode={copyMode}
-								currentContainerId={build.container?.id ?? null}
-								items={items}
-								locale={locale}
-								onCancelCopyMode={() => setCopyMode(false)}
-								onCreateContainer={handleCreateContainer}
-								onRemove={removeArt}
-								onSelectItem={handleAdd}
-								onSelectSlot={handleSelectSlot}
-								selectedSlot={selectedSlot}
-								setCopyMode={setCopyMode}
-								slots={build.container?.slots ?? []}
-							/>
-						</Card.Root>
-						<Card.Root className="w-full">
-							<ArtifactStatsPanel
-								addOptions={addOptions}
-								art={selectedStatsData?.art ?? null}
-								color={selectedStatsData?.color}
-								container={build?.container?.id ?? null}
-								itemName={selectedStatsData?.itemName}
-								locale={locale}
-								onPercentChange={handlePercentChange}
-								onPercentInputChange={handlePercentChange}
-								onPotentialChange={handlePotentialChange}
-								onPotentialInputChange={handlePotentialChange}
-								onQualitySelect={handleQualitySelect}
-								onSelectedStatsChange={
-									handleSelectedStatsChange
-								}
-								parsed={selectedStatsData?.parsed ?? null}
-								percentState={percentState}
-								potentialState={potentialState}
-								qualityOverrides={qualityOverrides}
-								stats={selectedStatsData?.stats ?? null}
-							/>
-						</Card.Root>
-					</div>
+					{compareBuild ? (
+						<div className="flex w-full flex-col gap-4 lg:flex-row">
+							<Card.Root className="w-full">
+								<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-[1fr_auto]">
+									<ArtifactSlotsLite
+										arts={build.arts as Art[]}
+										containers={containers}
+										copyMode={copyMode}
+										currentContainerId={
+											build.container?.id ?? null
+										}
+										items={items}
+										locale={locale}
+										onCancelCopyMode={() =>
+											setCopyMode(false)
+										}
+										onCreateContainer={
+											handleCreateContainer
+										}
+										onRemove={removeArt}
+										onSelectItem={handleAdd}
+										onSelectSlot={handleSelectSlot}
+										selectedSlot={selectedSlot}
+										setCopyMode={setCopyMode}
+										slots={build.container?.slots ?? []}
+										title={
+											currentBuild?.name ??
+											t('build.new_build')
+										}
+									/>
+									<CompareSlots
+										build={compareBuild.build}
+										containers={containers}
+										items={items}
+										locale={locale}
+										name={compareBuild.name}
+									/>
+								</div>
+							</Card.Root>
+							<Card.Root className="w-full">
+								<ArtifactStatsPanel
+									addOptions={addOptions}
+									art={selectedStatsData?.art ?? null}
+									color={selectedStatsData?.color}
+									container={build?.container?.id ?? null}
+									itemName={selectedStatsData?.itemName}
+									locale={locale}
+									onPercentChange={handlePercentChange}
+									onPercentInputChange={handlePercentChange}
+									onPotentialChange={handlePotentialChange}
+									onPotentialInputChange={
+										handlePotentialChange
+									}
+									onQualitySelect={handleQualitySelect}
+									onSelectedStatsChange={
+										handleSelectedStatsChange
+									}
+									parsed={selectedStatsData?.parsed ?? null}
+									percentState={percentState}
+									potentialState={potentialState}
+									qualityOverrides={qualityOverrides}
+									stats={selectedStatsData?.stats ?? null}
+								/>
+							</Card.Root>
+						</div>
+					) : (
+						<div className="flex w-full flex-col gap-4 lg:flex-row">
+							<Card.Root className="w-full">
+								<ArtifactSlotsLite
+									arts={build.arts as Art[]}
+									containers={containers}
+									copyMode={copyMode}
+									currentContainerId={
+										build.container?.id ?? null
+									}
+									items={items}
+									locale={locale}
+									onCancelCopyMode={() => setCopyMode(false)}
+									onCreateContainer={handleCreateContainer}
+									onRemove={removeArt}
+									onSelectItem={handleAdd}
+									onSelectSlot={handleSelectSlot}
+									selectedSlot={selectedSlot}
+									setCopyMode={setCopyMode}
+									slots={build.container?.slots ?? []}
+								/>
+							</Card.Root>
+							<Card.Root className="w-full">
+								<ArtifactStatsPanel
+									addOptions={addOptions}
+									art={selectedStatsData?.art ?? null}
+									color={selectedStatsData?.color}
+									container={build?.container?.id ?? null}
+									itemName={selectedStatsData?.itemName}
+									locale={locale}
+									onPercentChange={handlePercentChange}
+									onPercentInputChange={handlePercentChange}
+									onPotentialChange={handlePotentialChange}
+									onPotentialInputChange={
+										handlePotentialChange
+									}
+									onQualitySelect={handleQualitySelect}
+									onSelectedStatsChange={
+										handleSelectedStatsChange
+									}
+									parsed={selectedStatsData?.parsed ?? null}
+									percentState={percentState}
+									potentialState={potentialState}
+									qualityOverrides={qualityOverrides}
+									stats={selectedStatsData?.stats ?? null}
+								/>
+							</Card.Root>
+						</div>
+					)}
 					<Card.Root className="w-full">
 						<Card.Content className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
 							<ArmorLiteSection
@@ -369,7 +458,16 @@ export default function BuildsLiteView() {
 					</Card.Root>
 				</div>
 				<div className="pt-0 lg:pt-7.75">
-					<StatsTabs />
+					{compareBuild ? (
+						<StatsCompare
+							buildA={build}
+							buildB={compareBuild.build}
+							nameA={currentBuild?.name ?? t('build.new_build')}
+							nameB={compareBuild.name}
+						/>
+					) : (
+						<StatsTabs />
+					)}
 				</div>
 			</div>
 			<ItemPickerModal
@@ -405,15 +503,12 @@ export default function BuildsLiteView() {
 					t={t}
 				/>
 			</div>
-			<Modal.Root
-				onOpenChange={setShowPngModal}
-				open={showPngModal}
-			>
+			<Modal.Root onOpenChange={setShowPngModal} open={showPngModal}>
 				<Modal.Content fullScreen={false}>
 					<Modal.Header>
 						<Modal.Title className="flex items-center gap-2">
 							<Icon icon="lucide:image" />
-							Предпросмотр сборки
+							{t('buildsLite.pngPreview')}
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
@@ -431,14 +526,14 @@ export default function BuildsLiteView() {
 						)}
 					</Modal.Body>
 					<Modal.Footer>
-						<Modal.Close>Закрыть</Modal.Close>
+						<Modal.Close>{t('buildsLite.close')}</Modal.Close>
 						<Button
 							className="flex items-center gap-2"
 							onClick={handleCopyPng}
 							variant="secondary"
 						>
 							<Icon icon="lucide:copy" />
-							Копировать
+							{t('build.copy')}
 						</Button>
 						<Button
 							className="flex items-center gap-2"
@@ -446,7 +541,7 @@ export default function BuildsLiteView() {
 							variant="primary"
 						>
 							<Icon icon="lucide:download" />
-							Скачать
+							{t('buildsLite.download')}
 						</Button>
 					</Modal.Footer>
 				</Modal.Content>

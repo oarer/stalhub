@@ -2,7 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
+import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
+import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
 import { StatRow } from './StatRow'
@@ -56,6 +58,8 @@ interface StatsTabContentProps {
 	displayNamesMap: Record<string, string>
 	isPercentMap?: Record<string, boolean>
 	hasContainer?: boolean
+	hps?: number
+	stopping?: number
 }
 
 export const StatsTabContent = memo(function StatsTabContent({
@@ -64,6 +68,8 @@ export const StatsTabContent = memo(function StatsTabContent({
 	displayNamesMap,
 	isPercentMap,
 	hasContainer = true,
+	hps,
+	stopping,
 }: StatsTabContentProps) {
 	const t = useTranslations()
 
@@ -96,6 +102,25 @@ export const StatsTabContent = memo(function StatsTabContent({
 					displayNamesMap={displayNamesMap}
 					statsMap={statsMap}
 				/>
+				{hps && (
+					<Tooltip.Root>
+						<Tooltip.Trigger asChild>
+							<div className="flex w-full justify-between">
+								<span>{t('build.stats.regen')}</span>
+								<span className="text-yellow-400">{hps}%</span>
+							</div>
+						</Tooltip.Trigger>
+						<Tooltip.Content>
+							{t('build.stats.hp')}:
+						</Tooltip.Content>
+					</Tooltip.Root>
+				)}
+				{stopping && (
+					<p className="flex justify-between">
+						<span>{t('build.stats.stopping')}</span>
+						<span className="text-yellow-400">{stopping}%</span>
+					</p>
+				)}
 				{stats.length === 0 ? (
 					<p className="text-neutral-500">
 						{hasContainer
@@ -111,8 +136,9 @@ export const StatsTabContent = memo(function StatsTabContent({
 })
 
 interface AllStatsTabContentProps {
-	prime?: string
-	hps?: string
+	prime?: number
+	hps?: number
+	stopping?: number
 	sortedStats: [string, number][]
 	statsMap: BuildStats
 	displayNamesMap: Record<string, string>
@@ -120,8 +146,9 @@ interface AllStatsTabContentProps {
 }
 
 export const AllStatsTabContent = memo(function AllStatsTabContent({
-	prime,
+	prime = 100,
 	hps,
+	stopping,
 	sortedStats,
 	statsMap,
 	displayNamesMap,
@@ -161,13 +188,37 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				{prime && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.prime')}</span>
-						<span className="text-yellow-400">{prime}</span>
+						<span className={`${montserrat.className} text-border`}>
+							{prime}
+						</span>
 					</p>
 				)}
 				{hps && (
+					<Tooltip.Root>
+						<Tooltip.Trigger asChild>
+							<div className="flex w-full justify-between">
+								<span>{t('build.stats.regen')}</span>
+								<span
+									className={`${montserrat.className} text-border`}
+								>
+									{hps}%
+								</span>
+							</div>
+						</Tooltip.Trigger>
+						<Tooltip.Content>
+							{t('build.stats.hps')}:{' '}
+							<span className={`${montserrat.className}`}>
+								{(prime * (hps / 100)).toFixed(2)}
+							</span>
+						</Tooltip.Content>
+					</Tooltip.Root>
+				)}
+				{stopping && (
 					<p className="flex justify-between">
-						<span>{t('build.stats.regen')}</span>
-						<span className="text-yellow-400">{hps}%</span>
+						<span>{t('build.stats.stopping')}</span>
+						<span className={`${montserrat.className} text-border`}>
+							{stopping}%
+						</span>
 					</p>
 				)}
 				<div className="flex flex-col gap-2 border-neutral-700 border-t pt-2">

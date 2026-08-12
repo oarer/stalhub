@@ -35,6 +35,7 @@ type ArtifactSlotsProps = {
 	onCancelCopyMode?: () => void
 	copyMode?: boolean
 	onSelectItem?: (itemId: string) => void
+	title?: string
 }
 
 export function ArtifactSlotsLite({
@@ -51,6 +52,7 @@ export function ArtifactSlotsLite({
 	setCopyMode,
 	copyMode,
 	onSelectItem,
+	title,
 }: ArtifactSlotsProps) {
 	const t = useTranslations()
 
@@ -190,6 +192,11 @@ export function ArtifactSlotsLite({
 	return (
 		<>
 			<div className="flex flex-col gap-2">
+				{title && (
+					<p className="truncate border-border-secondary border-b pb-2 text-center font-bold">
+						{title}
+					</p>
+				)}
 				{slots.map((instanceId, i) => {
 					const art = instanceId
 						? (artsMap.get(instanceId) ?? null)

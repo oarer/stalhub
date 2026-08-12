@@ -39,7 +39,7 @@ export default function BuildSelector() {
 					if (currentBuildId) {
 						autoSave()
 					} else {
-						saveBuild('Новая сборка')
+						saveBuild(t('build.new_build'))
 					}
 				}
 				resetBuild()
@@ -47,7 +47,7 @@ export default function BuildSelector() {
 				loadBuild(key)
 			}
 		},
-		[hasChanges, saveBuild, resetBuild, loadBuild, currentBuildId, autoSave]
+		[hasChanges, saveBuild, resetBuild, loadBuild, currentBuildId, autoSave, t]
 	)
 
 	const items = useMemo<DropdownItem[]>(

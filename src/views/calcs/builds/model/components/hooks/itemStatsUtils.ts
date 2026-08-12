@@ -42,6 +42,8 @@ export const HIDDEN_STAT_KEYS = new Set([
 	'stalker.tooltip.backpack.stat_name.inner_protection',
 	'stalker.tooltip.backpack.stat_name.effectiveness',
 	'stalker.tooltip.backpack.info.size',
+	'stalker.tooltip.medicine.info.cooldown',
+	'core.tooltip.info.base_price',
 ])
 
 type RelevantBlock = ElementListBlock | AddStatBlock
