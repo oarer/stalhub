@@ -73,21 +73,21 @@ const findElementByKey = (item: Item, key: string): InfoElement | null => {
 	return null
 }
 
-export function isNumericEl(el: InfoElement): el is NumericElement {
+function isNumericEl(el: InfoElement): el is NumericElement {
 	return el.type === 'numeric'
 }
 
-export function isRangeEl(el: InfoElement): el is NumericRangeElement {
+function isRangeEl(el: InfoElement): el is NumericRangeElement {
 	return el.type === 'range'
 }
 
-export function isNumericVariantsEl(
+function isNumericVariantsEl(
 	el: InfoElement
 ): el is NumericVariantsElement {
 	return el.type === 'numericVariants'
 }
 
-export function getElementKey(el: InfoElement): string | null {
+function getElementKey(el: InfoElement): string | null {
 	if ('name' in el && el.name?.type === 'translation') {
 		return el.name.key
 	}

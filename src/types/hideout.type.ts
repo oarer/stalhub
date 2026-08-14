@@ -5,19 +5,19 @@ export interface Hideout {
 	recipes: Recipe[]
 }
 
-export interface Perk {
+interface Perk {
 	id: string
 	name: Name
 	desc: Desc
 }
 
-export interface Name {
+interface Name {
 	type: string
 	key: string
 	lines: Message
 }
 
-export interface Desc {
+interface Desc {
 	type: string
 	key: string
 	lines: Message
@@ -33,36 +33,36 @@ export interface Recipe {
 	requirements: Requirements
 }
 
-export interface Category {
+interface Category {
 	type: string
 	key: string
 	lines: Message
 }
 
-export interface Subcategory {
+interface Subcategory {
 	type: string
 	key: string
 	lines: Message
 }
 
-export interface Result {
+interface Result {
 	item: string
 	amount: number
 	price: number | null
 }
 
-export interface Ingredient {
+interface Ingredient {
 	item: string
 	amount: number
 	price: number | null
 }
 
-export interface Requirements {
+interface Requirements {
 	perks: Perks
 	features: string[]
 }
 
-export interface Perks {
+interface Perks {
 	ammunition?: number
 	armorer?: number
 	pyrotechnics?: number

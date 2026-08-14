@@ -31,7 +31,7 @@ const SLOT_ORDER = [
 	'accessory',
 ]
 
-export const getSlotKey = (category: string): string =>
+const getSlotKey = (category: string): string =>
 	category.replace(/^attachment\//, '')
 
 const getSlotOrder = (slotKey: string): number => {
@@ -110,7 +110,7 @@ interface AttachmentsBuilderProps {
 	onSelect: (category: string, attachmentId: string) => void
 }
 
-export const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
+const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 	attachments,
 	selected,
 	onSelect,

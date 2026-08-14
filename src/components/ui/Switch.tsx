@@ -132,4 +132,4 @@ const Switch = forwardRef<HTMLButtonElement, ISwitchProps>(
 	}
 )
 
-export { Switch, switchThumbVariants, switchTrackVariants }
+export { Switch }

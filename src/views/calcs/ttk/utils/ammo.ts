@@ -54,7 +54,7 @@ export function getAmmoPenetration(ammo: Item): number {
 	return 0
 }
 
-export const AMMO_TYPE_MAP: Record<string, string[]> = {
+const AMMO_TYPE_MAP: Record<string, string[]> = {
 	'item.wpn.display_ammo_types.556mm': ['item.amm.556'],
 	'item.wpn.display_ammo_types.545mm': ['item.amm.545'],
 	'item.wpn.display_ammo_types.762mm': ['item.amm.762'],

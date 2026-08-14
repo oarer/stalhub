@@ -41,7 +41,7 @@ interface RootProps {
 	onOpenChange?: (open: boolean) => void
 }
 
-export function LightBoxRoot({
+function LightBoxRoot({
 	children,
 	defaultOpen = false,
 	open: controlledOpen,
@@ -79,7 +79,7 @@ interface TriggerProps {
 	asChild?: boolean
 }
 
-export function LightBoxTrigger({
+function LightBoxTrigger({
 	children,
 	className,
 	variant = 'outline',
@@ -107,7 +107,7 @@ interface ContentProps {
 	closeOnBackdrop?: boolean
 }
 
-export function LightBoxContent({
+function LightBoxContent({
 	src,
 	alt = '',
 	className,

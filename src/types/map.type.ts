@@ -2,16 +2,16 @@ import type { Locale } from './item.type'
 
 export type LatLng = { lat: number; lng: number }
 
-export type LocalizedString = Partial<Record<Locale, string>>
+type LocalizedString = Partial<Record<Locale, string>>
 
-export type MarkerPoint = {
+type MarkerPoint = {
 	id?: number
 	coordinates: LatLng
 	description?: LocalizedString
 	popup?: string
 }
 
-export type MarkerGroup = {
+type MarkerGroup = {
 	id: number
 	slug: string
 	name: LocalizedString

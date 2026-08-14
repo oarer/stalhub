@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { findFreePosition } from '@/views/dashboard/layouts/layoutUtils'
 
-export type DashboardItem = {
+type DashboardItem = {
 	id: string
 	widgetId: string
 	x: number

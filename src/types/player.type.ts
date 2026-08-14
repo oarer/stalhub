@@ -42,7 +42,7 @@ export interface Stat {
 	value: StatValue
 }
 
-export type ClanMemberRank =
+type ClanMemberRank =
 	| 'RECRUIT'
 	| 'COMMONER'
 	| 'SOLDIER'
@@ -51,13 +51,13 @@ export type ClanMemberRank =
 	| 'COLONEL'
 	| 'LEADER'
 
-export interface ClanMember {
+interface ClanMember {
 	name: string
 	rank: ClanMemberRank
 	joinTime: Date
 }
 
-export interface ClanInfo {
+interface ClanInfo {
 	id: string
 	name: string
 	tag: string
@@ -82,40 +82,6 @@ export enum Role {
 	STALHUB = 'STALHUB',
 }
 
-export const PLAYER_ROLE_META = {
-	[Role.EXBO]: {
-		label: 'команда проекта',
-		description: 'Этот игрок связан с командой проекта.',
-		gradient: 'from-sky-500 via-indigo-500 to-rose-500',
-		accent: 'text-sky-500',
-		border: 'border-sky-500/20',
-		bg: 'bg-sky-500/10',
-	},
-	[Role.SCAMMER]: {
-		label: 'мошенник',
-		description: 'Этот игрок замечен за мошенническими действиями.',
-		gradient: 'from-red-500 via-rose-500 to-orange-500',
-		accent: 'text-red-500',
-		border: 'border-red-500/20',
-		bg: 'bg-red-500/10',
-	},
-	[Role.MEDIA]: {
-		label: 'медийка',
-		description: 'Этот игрок относится к медийным личностям проекта.',
-		gradient: 'from-red-500 via-fuchsia-500 to-violet-500',
-		accent: 'text-fuchsia-500',
-		border: 'border-fuchsia-500/20',
-		bg: 'bg-fuchsia-500/10',
-	},
-	[Role.STALHUB]: {
-		label: 'команда игры',
-		description: 'Этот игрок связан с командой игры.',
-		gradient: 'from-sky-600 via-cyan-500 to-blue-500',
-		accent: 'text-sky-400',
-		border: 'border-sky-500/20',
-		bg: 'bg-sky-500/10',
-	},
-} as const
 
 export interface PlayerStatsResponse {
 	uuid: string

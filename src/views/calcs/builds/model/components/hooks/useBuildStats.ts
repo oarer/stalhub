@@ -19,9 +19,6 @@ import { useContainerModifiers } from './useContainerModifiers'
 import { useDerivedStats } from './useDerivedStats'
 
 export { type BuildStats, roundNumber } from './buildStatsUtils'
-export { useBuildItems } from './useBuildItems'
-export { useContainerModifiers } from './useContainerModifiers'
-export { useDerivedStats } from './useDerivedStats'
 
 export function useBuildStats(buildOverride?: Build) {
 	const storeBuild = useBuildStore((s) => s.build)

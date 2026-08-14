@@ -33,7 +33,7 @@ const ICON_PATHS: Record<string, string> = {
 		'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
 }
 
-export function getIconPath(icon: string): string {
+function getIconPath(icon: string): string {
 	return ICON_PATHS[icon] ?? ICON_PATHS['lucide:info']
 }
 
@@ -60,20 +60,3 @@ export function makeMarkerIcon(preset: MarkerPreset): L.DivIcon {
 	})
 }
 
-export function pixelToLatLng(
-	pixelX: number,
-	pixelY: number,
-	imageWidth: number,
-	imageHeight: number,
-	fullMaxLevel: number
-): LatLng {
-	const scale = Math.pow(2, fullMaxLevel)
-	const x = pixelX * scale
-	const y = (imageHeight - pixelY - 1) * scale
-	const worldSize = imageWidth * scale
-	const nw = L.latLng(worldSize, 0)
-	const se = L.latLng(0, worldSize)
-	const lat = nw.lat - (y / worldSize) * (nw.lat - se.lat)
-	const lng = (x / worldSize) * (se.lng - nw.lng) + nw.lng
-	return { lat, lng }
-}

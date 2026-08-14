@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 export const linkVariants = cva(
 	'inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-400 ease-in-out cursor-pointer',
@@ -36,6 +36,3 @@ export const linkVariants = cva(
 		},
 	}
 )
-
-export type LinkVariants = VariantProps<typeof linkVariants>
-export type LinkVariant = LinkVariants['variant']

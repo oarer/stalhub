@@ -13,7 +13,7 @@ import { WidgetContent } from '../widgets/WidgetContent'
 
 export type DashboardNodeType = Node<{ widgetId: string }, 'dashboard'>
 
-export const DashboardNodeView = memo(function DashboardNodeView({
+const DashboardNodeView = memo(function DashboardNodeView({
 	id,
 	data,
 }: NodeProps<DashboardNodeType>) {

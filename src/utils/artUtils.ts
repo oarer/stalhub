@@ -1,5 +1,4 @@
-import { formatDate } from '@/lib/date'
-import type { ArtQuality, LotsResponse } from '@/types/item.type'
+import type { ArtQuality } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 
 export type ArtifactAdditional = {
@@ -65,7 +64,7 @@ export const calcArtifactPercent = (additional: ArtifactAdditional): number => {
 	return Math.max(range.min, Math.min(range.max, percent))
 }
 
-export const getQualityIndexByPercent = (percent: number): number => {
+const getQualityIndexByPercent = (percent: number): number => {
 	const entry = Object.entries(qualityPercentRanges).find(
 		([, range]) => percent >= range.min && percent <= range.max
 	)
@@ -84,68 +83,12 @@ export const getQualityByPercent = (percent: number): ArtQuality => {
 	return qualityIndexToArtQuality[idx] ?? InfoColor.ART_QUALITY_UNCOMMON
 }
 
-export const getQualityFromAdditional = (
-	additional: ArtifactAdditional
-): ArtQuality => {
-	const percent = calcArtifactPercent(additional)
-	return getQualityByPercent(percent)
-}
 
-export const getQualityName = (qlt?: number): string => {
-	switch (qlt) {
-		case 0:
-			return 'Обычный'
-		case 1:
-			return 'Необычный'
-		case 2:
-			return 'Особый'
-		case 3:
-			return 'Редкий'
-		case 4:
-			return 'Исключительный'
-		case 5:
-			return 'Легендарный'
-		case 6:
-			return 'Уникальный'
-		default:
-			return 'Неизвестно'
-	}
-}
 
 export const getArtifactColor = (qlt: number): string => {
 	const quality = qualityIndexToArtQuality[qlt]
 	return infoColorMap[quality] ?? '#FFFFFF'
 }
 
-export const getArtifactColorWithAlpha = (qlt: number, alpha = 0.3): string => {
-	const color = getArtifactColor(qlt).replace('#', '')
-	const r = parseInt(color.substring(0, 2), 16)
-	const g = parseInt(color.substring(2, 4), 16)
-	const b = parseInt(color.substring(4, 6), 16)
-	return `rgba(${r}, ${g}, ${b}, ${alpha})`
-}
 
-export const sortArtifactsByPercent = <
-	T extends { additional: ArtifactAdditional },
->(
-	lots: T[]
-): T[] => {
-	return [...lots].sort(
-		(a, b) =>
-			calcArtifactPercent(b.additional) -
-			calcArtifactPercent(a.additional)
-	)
-}
 
-export const normalizeLotsData = (data: LotsResponse) => {
-	const sorted = [...data.lots].sort(
-		(a, b) => new Date(a.endTime).getTime() - new Date(b.endTime).getTime()
-	)
-
-	return sorted.map((lot) => ({
-		name: formatDate(lot.endTime, 'time'),
-		startPrice: lot.startPrice,
-		currentPrice: lot.currentPrice,
-		buyoutPrice: lot.buyoutPrice,
-	}))
-}

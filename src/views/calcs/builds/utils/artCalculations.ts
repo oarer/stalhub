@@ -7,7 +7,7 @@ export const roundNumber = (v: number): number => {
 	return Number.isInteger(v) ? v : Number(v.toFixed(2))
 }
 
-export function normalizePercent(R: number): number {
+function normalizePercent(R: number): number {
 	if (!Number.isFinite(R)) return 100
 	if (R <= 2) return R * 100
 	return R
@@ -37,7 +37,7 @@ const ART_QUALITY_TO_INDEX = Object.fromEntries(
 	Object.entries(qualityIndexToArtQuality).map(([k, v]) => [v, Number(k)])
 ) as Record<string, number>
 
-export function resolveQualityIndex(q?: number | string): number {
+function resolveQualityIndex(q?: number | string): number {
 	if (q === undefined || q === null) return 0
 	if (typeof q === 'number') {
 		if (qualityPercentRanges[q]) return q
@@ -47,7 +47,7 @@ export function resolveQualityIndex(q?: number | string): number {
 	return typeof idx === 'number' ? idx : 0
 }
 
-export function calcDebuffValueForQuality(
+function calcDebuffValueForQuality(
 	V: number,
 	P: number,
 	R: number,

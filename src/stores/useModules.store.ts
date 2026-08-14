@@ -10,7 +10,7 @@ import raw from '../../modules.json'
 
 export const MODULE_GROUP_KEYS: ModuleGroupKey[] = ['add-on', 'deviation', 'concept']
 
-export type ModulesStatus = 'idle' | 'loading' | 'success' | 'error'
+type ModulesStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const defaultSlots = (): Record<ModuleGroupKey, ModuleSlotConfig> => ({
 	'add-on': { moduleKey: '', quality: 0 },

@@ -27,4 +27,3 @@ export const alertIcons = {
 	destructive: 'lucide:circle-x',
 } as const
 
-export type AlertVariant = keyof typeof alertIcons

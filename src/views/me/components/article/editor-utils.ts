@@ -1,7 +1,4 @@
-export {
-	type EditorTab,
-	type ToolbarAction,
-} from '@/constants/article-editor.const'
+export { type EditorTab } from '@/constants/article-editor.const'
 
 export const parseTags = (raw: string): string[] =>
 	raw

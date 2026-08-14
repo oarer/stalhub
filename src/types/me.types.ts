@@ -1,7 +1,7 @@
 import type { LinkTab } from '@/components/ui/LinkTabs'
 import type { CardBackground, PublicUser, User } from '@/types/user.type'
 
-export interface Tab {
+interface Tab {
 	title: string
 	href: string
 	icon: string
@@ -103,7 +103,6 @@ export const tabGroups: TabGroup[] = [
 	},
 ]
 
-export const tabs: Tab[] = tabGroups.flatMap((g) => g.items)
 
 export const getNavTabs = (
 	unreadCount: number | null | undefined,

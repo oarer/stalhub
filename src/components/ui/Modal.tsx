@@ -51,7 +51,7 @@ interface RootProps {
 	onOpenChange?: (open: boolean) => void
 }
 
-export function ModalRoot({
+function ModalRoot({
 	children,
 	defaultOpen = false,
 	open: controlledOpen,
@@ -89,7 +89,7 @@ interface Props {
 	background?: string
 }
 
-export function ModalTrigger({
+function ModalTrigger({
 	children,
 	className,
 	variant = 'outline',
@@ -109,7 +109,7 @@ export function ModalTrigger({
 	)
 }
 
-export function ModalContent({
+function ModalContent({
 	children,
 	className = '',
 	fullScreen = true,
@@ -200,7 +200,7 @@ export function ModalContent({
 	)
 }
 
-export function ModalHeader({ children, className = '' }: Props) {
+function ModalHeader({ children, className = '' }: Props) {
 	return (
 		<div
 			className={cn('flex items-center justify-between py-4', className)}
@@ -210,21 +210,21 @@ export function ModalHeader({ children, className = '' }: Props) {
 	)
 }
 
-export function ModalTitle({ children, className = '' }: Props) {
+function ModalTitle({ children, className = '' }: Props) {
 	return (
 		<h1 className={cn('font-semibold text-xl', className)}>{children}</h1>
 	)
 }
 
-export function ModalDescription({ children, className = '' }: Props) {
+function ModalDescription({ children, className = '' }: Props) {
 	return <p className={cn('mt-1 text-sm', className)}>{children}</p>
 }
 
-export function ModalBody({ children, className = '' }: Props) {
+function ModalBody({ children, className = '' }: Props) {
 	return <div className={cn('pb-4', className)}>{children}</div>
 }
 
-export function ModalFooter({ children, className = '' }: Props) {
+function ModalFooter({ children, className = '' }: Props) {
 	return (
 		<div
 			className={cn(
@@ -237,7 +237,7 @@ export function ModalFooter({ children, className = '' }: Props) {
 	)
 }
 
-export function ModalAction({
+function ModalAction({
 	children,
 	className,
 	variant = 'primary',
@@ -279,7 +279,7 @@ export function ModalAction({
 	)
 }
 
-export function ModalClose({ children, className = '' }: Props) {
+function ModalClose({ children, className = '' }: Props) {
 	const { close } = useModal()
 	return (
 		<Button

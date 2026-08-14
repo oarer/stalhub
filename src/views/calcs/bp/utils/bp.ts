@@ -1,4 +1,4 @@
-export const getDailyXP = (tasks: number, overloads: number) => {
+const getDailyXP = (tasks: number, overloads: number) => {
 	let xp = 0
 	const effectiveOverloads = Math.min(overloads, 15)
 
@@ -16,7 +16,7 @@ export const getDailyXP = (tasks: number, overloads: number) => {
 	return xp
 }
 
-export const getWeeklyXP = (tasks: number) => {
+const getWeeklyXP = (tasks: number) => {
 	let xp = 0
 
 	if (tasks >= 15) xp += 3000

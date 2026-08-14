@@ -17,9 +17,6 @@ export const roundNumber = (n: number): string => {
 	return Number.isInteger(n) ? String(n) : n.toFixed(2)
 }
 
-export const isPriceElement = (
-	el: InfoElement
-): el is Extract<InfoElement, { type: 'price' }> => el.type === 'price'
 
 export const isNumericVariantsBlock = (
 	el: InfoElement
@@ -74,7 +71,7 @@ export const messageToString = (
 	return ''
 }
 
-export const humanizeCategory = (cat?: string) => {
+const humanizeCategory = (cat?: string) => {
 	if (!cat) return ''
 	return cat
 		.split('/')
@@ -84,7 +81,7 @@ export const humanizeCategory = (cat?: string) => {
 		.join(' › ')
 }
 
-export const findCategoryInBlocks = (
+const findCategoryInBlocks = (
 	infoBlocks: InfoBlock[],
 	locale?: Locale
 ) => {

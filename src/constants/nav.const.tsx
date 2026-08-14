@@ -6,13 +6,6 @@ import { CLink } from '@/components/ui/Link'
 import type { AccordionItem } from '@/types/ui/accordion.type'
 import type { DropdownItem, DropdownMenuGroup } from '@/types/ui/dropdown.type'
 
-export const Links = [
-	{
-		title: '',
-		href: '/discord',
-		iconName: 'ic:baseline-discord',
-	},
-]
 
 export const MobileLinks = [
 	{

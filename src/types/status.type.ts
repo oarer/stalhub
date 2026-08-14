@@ -1,6 +1,6 @@
-export type ServiceStatus = 'UP' | 'DOWN' | 'DEGRADED' | 'MAINTENANCE'
+type ServiceStatus = 'UP' | 'DOWN' | 'DEGRADED' | 'MAINTENANCE'
 
-export type UptimePoint = {
+type UptimePoint = {
 	ts: number
 	countOfUp: number
 	countOfDown: number

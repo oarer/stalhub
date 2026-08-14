@@ -198,4 +198,3 @@ export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 	)
 }
 
-export default DamageChart

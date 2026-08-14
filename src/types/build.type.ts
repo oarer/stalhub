@@ -27,7 +27,7 @@ export type Armor = {
 	level: number
 }
 
-export type Container = {
+type Container = {
 	id: string
 	slots: (string | null)[]
 }
@@ -50,10 +50,6 @@ export const BoostButtons: Record<BoostCategory, string> = {
 	[BoostCategory.PROTECTION]: 'lucide:shield',
 }
 
-export type Boost = {
-	id: string
-	category: string
-}
 
 export type Build = {
 	arts: Art[]

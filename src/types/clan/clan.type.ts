@@ -1,7 +1,7 @@
 import type { Alliance } from '../player.type'
 
-export type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
-export type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
+type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
+type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
 export type SquadMap = 'SMALL_BERDOVKA' | 'KHVOUINOY' | 'NIZINA'
 export type GoldDropStatus = 'PENDING' | 'CLAIMED'
 export type AbsenceEventType =
@@ -9,8 +9,8 @@ export type AbsenceEventType =
 	| 'BRAWL'
 	| 'BASE_CAPTURE'
 	| 'GOLD_DROP'
-export type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED'
-export type AttendanceSource = 'ai' | 'manual'
+type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED'
+type AttendanceSource = 'ai' | 'manual'
 
 export interface ClanSchedule {
 	brawlsPerWeek: number
@@ -19,10 +19,6 @@ export interface ClanSchedule {
 
 export const TOURNAMENT_DAYS = 3
 
-export const DEFAULT_SCHEDULE: ClanSchedule = {
-	brawlsPerWeek: 4,
-	brawlsMandatory: false,
-}
 
 export interface ClanInfo {
 	id: string
@@ -150,7 +146,7 @@ export interface StageSessionDetail extends StageSession {
 	aiSummary: StageSummary | null
 }
 
-export interface StageSummaryPlayer {
+interface StageSummaryPlayer {
 	name: string
 	role: string | null
 	kills: number
@@ -176,7 +172,7 @@ export interface StageSummary {
 	generatedAt: string
 }
 
-export interface ClanStatsPlayer {
+interface ClanStatsPlayer {
 	name: string
 	kills: number
 	deaths: number
@@ -184,7 +180,7 @@ export interface ClanStatsPlayer {
 	score: number
 }
 
-export interface ClanStatsScreenshot {
+interface ClanStatsScreenshot {
 	id: number
 	victory: boolean | null
 	players: ClanStatsPlayer[]
@@ -261,7 +257,7 @@ export interface ClanSquad {
 	updated_at: string
 }
 
-export interface GoldDropAttendee {
+interface GoldDropAttendee {
 	id: number
 	dropId: number
 	memberId: number
@@ -277,7 +273,7 @@ export interface GoldDrop {
 	attendees: GoldDropAttendee[]
 }
 
-export interface AbsenceEvent {
+interface AbsenceEvent {
 	eventType: AbsenceEventType
 	stages?: number[]
 }
@@ -294,12 +290,12 @@ export interface Absence {
 	updated_at: string
 }
 
-export interface GrenadeStageMember {
+interface GrenadeStageMember {
 	name: string
 	grenades: number
 }
 
-export interface GrenadeStage {
+interface GrenadeStage {
 	stage: number
 	checkpoints: [string, string]
 	members: GrenadeStageMember[]

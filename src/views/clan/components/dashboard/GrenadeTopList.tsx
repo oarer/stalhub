@@ -5,7 +5,7 @@ import { montserrat } from '@/app/fonts'
 import type { GrenadeStageEvent } from '@/types/clan/clan.type'
 import { Section } from '../../../me/components/Section'
 
-export interface GrenadeTopEntry {
+interface GrenadeTopEntry {
 	character: string
 	total: number
 }

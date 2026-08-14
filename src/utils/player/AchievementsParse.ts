@@ -28,4 +28,3 @@ export const ACHIEVEMENTS_MAP = dbAchievements.reduce(
 	>
 )
 
-export type AchievementKey = keyof typeof ACHIEVEMENTS_MAP

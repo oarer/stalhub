@@ -20,12 +20,12 @@ export function normalizeText(s: string) {
 		.trim()
 }
 
-export function transliterateRuToLat(s: string) {
+function transliterateRuToLat(s: string) {
 	if (!s) return ''
 	return translit.transform(normalizeText(s), '').trim()
 }
 
-export function foldHomoglyphsToLatin(s: string) {
+function foldHomoglyphsToLatin(s: string) {
 	if (!s) return ''
 	const map: Record<string, string> = {
 		а: 'a',

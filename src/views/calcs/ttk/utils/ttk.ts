@@ -31,7 +31,7 @@ function calcBurstTTK(shots: number, rofConfig: CustomRof): number {
 	return (queueDelay + inBurstDelay) / 1000
 }
 
-export function getReloadTime(weapon: Item, shots: number): number {
+function getReloadTime(weapon: Item, shots: number): number {
 	if (shots <= 0) return 0
 
 	const mag = getNumericStat(weapon, 'weapon.tooltip.weapon.info.clip_size')

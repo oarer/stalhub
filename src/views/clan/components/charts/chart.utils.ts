@@ -13,7 +13,7 @@ export const ATTENDANCE_THRESHOLD = 0.5
 export const ABSENCE_RATE_THRESHOLD = 0.25
 export const KD_REF = 3
 export const ABSENCE_LOOKBACK_DAYS = 30
-export const WEEKS_PER_MONTH = 4
+const WEEKS_PER_MONTH = 4
 
 export const METRICS = [
 	{ value: 'kd', label: 'clan.metrics.kd', color: '#0092D1' },

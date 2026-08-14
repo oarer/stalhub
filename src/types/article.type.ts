@@ -56,7 +56,7 @@ export interface Article {
 	updated_at: string
 }
 
-export interface ArticleAuthor {
+interface ArticleAuthor {
 	id: number
 	username: string
 	avatar: string | null
@@ -97,7 +97,7 @@ export interface ArticleComment {
 	created_at: string
 }
 
-export interface ArticleCommentAuthor {
+interface ArticleCommentAuthor {
 	id: number
 	username: string
 	avatar: string | null

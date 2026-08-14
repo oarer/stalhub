@@ -1,10 +1,6 @@
 'use client'
 
-import {
-	normalizeText,
-	type PreparedEntry,
-	useFuseSearch,
-} from '@/hooks/useFuseSearch'
+import { normalizeText, useFuseSearch } from '@/hooks/useFuseSearch'
 import { useSearchArticles } from '@/hooks/useSearchArticles'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { type SitePage, useSearchSitePages } from '@/hooks/useSearchSitePages'
@@ -12,9 +8,6 @@ import type { ItemListing } from '@/types/api.type'
 import type { Article } from '@/types/article.type'
 import type { ItemName, Locale } from '@/types/item.type'
 
-export type PreparedItem = PreparedEntry<ItemListing>
-export type PreparedPage = PreparedEntry<SitePage>
-export type PreparedArticle = PreparedEntry<Article>
 
 interface UsePreparedSearchOptions {
 	locale?: Locale

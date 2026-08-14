@@ -25,7 +25,7 @@ export interface User {
 	customization: UserCustomization
 }
 
-export interface UserCustomization {
+interface UserCustomization {
 	layout: string
 	bannerMode: BannerMode
 	bannerType: BannerType
@@ -40,7 +40,7 @@ export type Layout = 'CLASSIC' | 'MODERN' | 'COMPACT'
 export type BannerMode = 'COLOR' | 'IMAGE' | 'NONE'
 export type BannerType = 'BACKGROUND' | 'HEADER'
 export type CardBackground = 'COLOR' | 'AVATAR' | 'NONE'
-export type AvatarSource = 'DISCORD' | 'TELEGRAM'
+type AvatarSource = 'DISCORD' | 'TELEGRAM'
 
 //! TODO LEGACY
 export interface UserSettings {
@@ -64,25 +64,25 @@ export interface UserBadge {
 	color: string
 }
 
-export interface UserRole {
+interface UserRole {
 	id: number
 	name: string
 	description: string | null
 }
 
-export interface DiscordProvider {
+interface DiscordProvider {
 	id: string
 	name: string
 	username: string
 }
 
-export interface TelegramProvider {
+interface TelegramProvider {
 	id: string
 	name: string
 	username: string
 }
 
-export interface ExboProvider {
+interface ExboProvider {
 	id: string
 	login: string
 	username: string

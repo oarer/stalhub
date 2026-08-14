@@ -152,4 +152,4 @@ function CheckBox({
 	return checkboxElement
 }
 
-export { CheckBox, checkboxVariants }
+export { CheckBox }

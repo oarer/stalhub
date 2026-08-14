@@ -14,7 +14,7 @@ function getItemKey(item: Item, locale: Locale) {
 	return `${messageToString(item.name, locale)}-${item.currentPrice}`
 }
 
-export function calculateNeededItems(
+function calculateNeededItems(
 	items: Item[],
 	targetReputation: number,
 	locale: Locale

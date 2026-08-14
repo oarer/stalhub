@@ -1,6 +1,6 @@
 export type ModuleGroupKey = 'add-on' | 'deviation' | 'concept'
 
-export type ModuleStatType = 'positive' | 'negative' | 'special'
+type ModuleStatType = 'positive' | 'negative' | 'special'
 
 export type ModuleRarity =
 	| 'common'
@@ -21,7 +21,7 @@ export interface ModuleStat {
 	}
 }
 
-export interface ModuleBehaviour {
+interface ModuleBehaviour {
 	type: string
 	duration?: string
 	bonusShots?: number
@@ -36,7 +36,7 @@ export interface WeaponModule {
 	stats: ModuleStat[]
 }
 
-export interface ModuleGroup {
+interface ModuleGroup {
 	key: ModuleGroupKey
 	lines: { ru: string }
 	modules: WeaponModule[]
@@ -49,7 +49,7 @@ export interface RarityCostMultiplier {
 	restore: number
 }
 
-export interface QualityRarityThreshold {
+interface QualityRarityThreshold {
 	quality: number
 	rarity: ModuleRarity
 }

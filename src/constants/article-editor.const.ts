@@ -68,7 +68,7 @@ export const MDX_COMPONENT_SNIPPET = (
 	content: string
 ) => `:::${type} ${heading}\n${content}\n:::\n`
 
-export const HORIZONTAL_RULE = '\n---\n'
+const HORIZONTAL_RULE = '\n---\n'
 
 export const TOOLBAR_ACTION_CONFIGS: ToolbarActionConfig[] = [
 	{

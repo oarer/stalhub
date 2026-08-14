@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 export const copyButtonVariants = cva(
 	'relative inline-flex cursor-pointer items-center rounded-lg transition-all duration-400 ease-in-out cursor-pointer',
@@ -25,6 +25,3 @@ export const copyButtonVariants = cva(
 		},
 	}
 )
-
-export type CopyButtonVariants = VariantProps<typeof copyButtonVariants>
-export type CopyButtonVariant = CopyButtonVariants['variant']

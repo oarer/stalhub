@@ -21,7 +21,7 @@ export const numbersTxt = (
 	return `${num} ${text}`
 }
 
-export const stringTimeDelta = (delta: number, t: TFunction) => {
+const stringTimeDelta = (delta: number, t: TFunction) => {
 	if (delta < 60) {
 		return numbersTxt(Math.round(delta), [
 			t('time.second.one'),

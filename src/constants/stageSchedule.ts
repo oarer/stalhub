@@ -1,4 +1,4 @@
-export interface StageWindow {
+interface StageWindow {
 	stage: number
 	start: [number, number]
 	end: [number, number]

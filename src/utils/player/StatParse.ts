@@ -9,14 +9,6 @@ const dbStats: DBStats[] = dbStatsJson.map((s) => ({
 	name: s.name as Message,
 }))
 
-export const STATS_MAP = dbStats.reduce(
-	(acc, s) => {
-		acc[s.id] = s.name
-		return acc
-	},
-	{} as Record<DBStats['id'], Message>
-)
-
 export const DB_STATS_BY_ID = dbStats.reduce(
 	(acc, s) => {
 		acc[s.id] = s
@@ -37,4 +29,3 @@ export function getStatValue(
 	return stat?.value ?? 0
 }
 
-export type StatKey = keyof typeof STATS_MAP

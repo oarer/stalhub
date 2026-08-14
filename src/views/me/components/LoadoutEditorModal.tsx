@@ -22,7 +22,7 @@ import {
 import { messageToString } from '@/utils/itemUtils'
 import { ItemPickerModal } from '@/views/calcs/builds/lite/components/ItemPickerModal'
 
-export const MAIN_WEAPON_CATEGORIES = [
+const MAIN_WEAPON_CATEGORIES = [
 	'weapon/assault_rifle',
 	'weapon/sniper_rifle',
 	'weapon/shotgun_rifle',
@@ -34,19 +34,19 @@ export const MAIN_WEAPON_CATEGORIES = [
 const ARMOR_CATEGORIES = ['armor/combat', 'armor/combined']
 const BIO_ARMOR_CATEGORIES = ['armor/combined']
 
-export function filterMainWeapons(weapons: Item[]) {
+function filterMainWeapons(weapons: Item[]) {
 	return weapons.filter((w) => MAIN_WEAPON_CATEGORIES.includes(w.category))
 }
 
-export function filterPistols(weapons: Item[]) {
+function filterPistols(weapons: Item[]) {
 	return weapons.filter((w) => w.category === 'weapon/pistol')
 }
 
-export function filterArmor(armors: Item[]) {
+function filterArmor(armors: Item[]) {
 	return armors.filter((a) => ARMOR_CATEGORIES.includes(a.category))
 }
 
-export function filterBioArmor(armors: Item[]) {
+function filterBioArmor(armors: Item[]) {
 	return armors.filter((a) => BIO_ARMOR_CATEGORIES.includes(a.category))
 }
 

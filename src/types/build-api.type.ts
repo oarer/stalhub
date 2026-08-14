@@ -13,7 +13,7 @@ export interface BuildApi {
 	updated_at: string
 }
 
-export interface BuildApiAuthor {
+interface BuildApiAuthor {
 	id: number
 	username: string
 	avatar: string | null

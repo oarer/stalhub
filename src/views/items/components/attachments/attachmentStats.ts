@@ -5,9 +5,9 @@ import type {
 	NumericElement,
 } from '@/types/item.type'
 
-export const WEIGHT_KEY = 'core.tooltip.info.weight'
-export const CLIP_SIZE_KEY = 'weapon.tooltip.weapon.info.clip_size'
-export const SPEED_MODIFIER_KEY =
+const WEIGHT_KEY = 'core.tooltip.info.weight'
+const CLIP_SIZE_KEY = 'weapon.tooltip.weapon.info.clip_size'
+const SPEED_MODIFIER_KEY =
 	'stalker.artefact_properties.factor.speed_modifier'
 
 const FACTOR_MAP: Record<string, string> = {
@@ -74,7 +74,7 @@ const getNumericElements = (
 	return result
 }
 
-export const getWeaponBaseStats = (
+const getWeaponBaseStats = (
 	weapon: Item
 ): Map<string, { base: number; element: NumericElement }> => {
 	const map = new Map<string, { base: number; element: NumericElement }>()

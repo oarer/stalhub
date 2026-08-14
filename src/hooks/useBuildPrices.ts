@@ -52,15 +52,3 @@ export const formatArtPrice = (price: number | null): string | null => {
 	return new Intl.NumberFormat('ru-RU').format(price)
 }
 
-export const formatArtPriceCompact = (price: number | null): string | null => {
-	if (price == null) return null
-	if (price >= 1_000_000) {
-		const value = price / 1_000_000
-		return `${value >= 10 ? Math.round(value) : value.toFixed(1).replace('.', ',')}M`
-	}
-	if (price >= 1_000) {
-		const value = price / 1_000
-		return `${value >= 10 ? Math.round(value) : value.toFixed(1).replace('.', ',')}K`
-	}
-	return String(price)
-}

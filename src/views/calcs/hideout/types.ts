@@ -1,4 +1,4 @@
-export interface IngredientInfo {
+interface IngredientInfo {
 	name: string
 	icon: string
 	total: number
@@ -20,10 +20,6 @@ export interface CustomNodeData {
 	ingredients?: IngredientInfo[]
 }
 
-export interface CenterTarget {
-	x: number
-	y: number
-}
 
 export interface IngredientRows {
 	id: string

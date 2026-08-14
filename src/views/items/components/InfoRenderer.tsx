@@ -24,7 +24,7 @@ import {
 	UsageElement,
 } from './elements'
 
-export const InfoElementRenderer: React.FC<{
+const InfoElementRenderer: React.FC<{
 	numericVariants: number
 	el: InfoElement
 	locale: Locale

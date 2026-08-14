@@ -43,7 +43,7 @@ type RootProps = React.HTMLAttributes<HTMLDivElement> & {
 	closeDelay?: number
 }
 
-export const HoverCardRoot = forwardRef<HTMLDivElement, RootProps>(
+const HoverCardRoot = forwardRef<HTMLDivElement, RootProps>(
 	function HoverCardRoot(
 		{
 			defaultOpen = false,
@@ -115,7 +115,7 @@ type TriggerProps = React.HTMLAttributes<HTMLDivElement> & {
 	asChild?: boolean
 }
 
-export const HoverCardTrigger = forwardRef<HTMLDivElement, TriggerProps>(
+const HoverCardTrigger = forwardRef<HTMLDivElement, TriggerProps>(
 	function HoverCardTrigger({ asChild = false, className, ...props }, ref) {
 		const Comp = asChild ? Slot : 'div'
 		return (
@@ -181,7 +181,7 @@ type ContentProps = Omit<HTMLMotionProps<'div'>, 'ref'> & {
 	sideOffset?: number
 }
 
-export const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
+const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 	function HoverCardContent(
 		{
 			className,

@@ -8,7 +8,7 @@ import {
 } from './itemStats'
 import { getPlateDamageAbsorption } from './plate'
 
-export function getDamageAt(
+function getDamageAt(
 	block: DamageDistanceInfoBlock,
 	dist: number,
 	startOverride?: number,

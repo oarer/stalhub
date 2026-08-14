@@ -72,11 +72,11 @@ export type ItemName = Partial<Record<Locale, string>>
 export const LOCALE = ['ru', 'en', 'es', 'fr', 'ko'] as const
 export const VALID_LOCALES = new Set<string>(LOCALE)
 
-export type LocalizedString = {
+type LocalizedString = {
 	[K in Locale]?: string
 }
 
-export type MessageText = {
+type MessageText = {
 	type: 'text'
 	text: string
 }
@@ -90,13 +90,8 @@ export type MessageTranslation = {
 
 export type Message = MessageText | MessageTranslation
 
-export interface ItemEntry {
-	data: string
-	icon: string
-	name: Message
-}
 
-export enum BindState {
+enum BindState {
 	NONE = 'NONE',
 	NON_DROP = 'NON_DROP',
 	PERSONAL_ON_USE = 'PERSONAL_ON_USE',
@@ -107,7 +102,7 @@ export enum BindState {
 	PERSONAL_DROP = 'PERSONAL_DROP',
 }
 
-export type FormattedBlock = {
+type FormattedBlock = {
 	formatted?: {
 		value?: LocalizedString
 		nameColor?: string
@@ -133,23 +128,23 @@ export type AddStatBlock = {
 	elements: InfoElement[]
 }
 
-export type PriceElement = {
+type PriceElement = {
 	type: 'price'
 	currency: string
 	amount: number
 } & FormattedBlock
 
-export type ItemElement = {
+type ItemElement = {
 	type: 'item'
 	name: Message
 } & FormattedBlock
 
-export type TextElement = {
+type TextElement = {
 	type: 'text'
 	text: Message
 } & FormattedBlock
 
-export type StringKVElement = {
+type StringKVElement = {
 	type: 'key-value'
 	key: Message
 	value: Message
@@ -169,7 +164,7 @@ export type NumericRangeElement = {
 	max: number
 } & FormattedBlock
 
-export type Usage = {
+type Usage = {
 	type: 'usage'
 	name: Message
 	value: number
@@ -209,7 +204,7 @@ export type InfoBlock =
 	| NumericVariantsElement
 	| AddStatBlock
 
-export interface Model {
+interface Model {
 	model?: string
 	diff?: string
 	emi?: string

@@ -6,7 +6,7 @@ import { Table } from '@/components/ui/Table'
 import { Section } from '../../../me/components/Section'
 import { formatKd, kdClass } from '../../clan.utils'
 
-export interface TopPlayer {
+interface TopPlayer {
 	name: string
 	kills: number
 	deaths: number

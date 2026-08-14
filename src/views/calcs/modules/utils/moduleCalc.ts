@@ -53,7 +53,7 @@ export function getRarityByQuality(quality: number): ModuleRarity {
 	return rarity
 }
 
-export function getRarityIndex(rarity: ModuleRarity): number {
+function getRarityIndex(rarity: ModuleRarity): number {
 	return RARITY_INDEX[rarity] ?? 1
 }
 
@@ -161,7 +161,7 @@ function parseAtom(p: ExprParser): number {
 	return parseFloat(token)
 }
 
-export function evalModuleExpression(
+function evalModuleExpression(
 	expression: string,
 	{ k, N }: { k: number; N: number }
 ): number {
@@ -226,11 +226,6 @@ export function getGroupModules(groupKey: ModuleGroupKey): WeaponModule[] {
 	return group?.modules ?? []
 }
 
-export function getModuleGroupLabel(groupKey: ModuleGroupKey): string {
-	const data = getModulesData()
-	const group = data.groups.find((g) => g.key === groupKey)
-	return group?.lines.ru ?? groupKey
-}
 
 export interface ModuleDamageModifiers {
 	startMult: number

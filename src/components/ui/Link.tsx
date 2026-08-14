@@ -68,4 +68,4 @@ const CLink = forwardRef<HTMLAnchorElement, CLinkProps>(
 
 CLink.displayName = 'UI.CLink'
 
-export { CLink, linkVariants }
+export { CLink }

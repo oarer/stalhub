@@ -41,9 +41,6 @@ export interface AdminUser {
 	banned: boolean
 }
 
-export interface AdminUserDetail extends AdminUser {
-	sessions: AdminSession[]
-}
 
 export interface AdminSession {
 	id: number
@@ -68,9 +65,6 @@ export interface AdminAssignPermissions {
 	permissionIds: number[]
 }
 
-export interface AdminAssignRoleToUser {
-	roleId: number
-}
 
 export interface AdminBadge {
 	id: number

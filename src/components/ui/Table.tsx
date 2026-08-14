@@ -181,4 +181,4 @@ export const Table = {
 }
 
 export { flexRender, useTableSort }
-export type { SortingState, ColumnDef }
+export { ColumnDef }

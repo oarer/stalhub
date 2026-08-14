@@ -18,7 +18,7 @@ interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
 	onValueChange?: (value: string) => void
 }
 
-export function TabsRoot({
+function TabsRoot({
 	defaultValue,
 	value,
 	onValueChange,
@@ -54,7 +54,7 @@ export function TabsRoot({
 
 type TabsListProps = React.HTMLAttributes<HTMLDivElement>
 
-export function TabsList({ className, children, ...props }: TabsListProps) {
+function TabsList({ className, children, ...props }: TabsListProps) {
 	return (
 		<div
 			className={cn(
@@ -78,7 +78,7 @@ interface TabsTriggerProps
 	value: string
 }
 
-export function TabsTrigger({
+function TabsTrigger({
 	className,
 	value,
 	children,
@@ -127,7 +127,7 @@ interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
 	value: string
 }
 
-export function TabsContent({
+function TabsContent({
 	className,
 	value,
 	children,

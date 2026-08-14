@@ -11,7 +11,7 @@ import type { UpdateUserSettingsDto } from '@/types/user.type'
 
 export type ProviderName = 'discord' | 'telegram' | 'exbo'
 
-export const getApiError = (err: unknown): string | undefined =>
+const getApiError = (err: unknown): string | undefined =>
 	(err as { response?: { data?: { error?: string } } })?.response?.data?.error
 
 export function useSettingsMutations(

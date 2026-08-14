@@ -11,7 +11,7 @@ export type FavoriteType =
 	| 'weapon'
 	| 'ammo'
 
-export type FavoriteItem = {
+type FavoriteItem = {
 	id: string
 	type: FavoriteType
 	itemId: string
