@@ -1,15 +1,14 @@
-# https://bun.report/1.3.14/Bn10d9b296i2HqwogC4664tE+++Pw9jypDA2Agr+E
-FROM oven/bun:1.3.13 AS dependencies
+FROM oven/bun:1.3.14 AS dependencies
 
 WORKDIR /app
 
 COPY package.json bun.lock* ./
 
 RUN --mount=type=cache,target=/root/.bun/install/cache \
-    bun install --no-save --frozen-lockfile
+    bun install --frozen-lockfile
 
 
-FROM oven/bun:1.3.13 AS builder
+FROM node:22-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -18,27 +17,23 @@ COPY . .
 
 ENV NODE_ENV=production
 
-RUN bun run build
+RUN node_modules/.bin/next build
 
 
-FROM oven/bun:1.3.13 AS runner
+FROM node:22-bookworm-slim AS runner
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
+ENV HOSTNAME=0.0.0.0
 
-COPY --from=builder --chown=bun:bun /app/public ./public
+COPY --from=builder --chown=node:node /app/public ./public
+COPY --from=builder --chown=node:node /app/.next/standalone ./
+COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 
-RUN mkdir .next
-RUN chown bun:bun .next
-
-COPY --from=builder --chown=bun:bun /app/.next/standalone ./
-COPY --from=builder --chown=bun:bun /app/.next/static ./.next/static
-
-USER bun
+USER node
 
 EXPOSE 3000
 
-CMD ["bun", "server.js"]
+CMD ["node", "server.js"]
