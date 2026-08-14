@@ -179,6 +179,11 @@ export function DrawingOverlay({
 		}
 	}, [map, redraw])
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: redraw reads state via refs
+	useEffect(() => {
+		redraw()
+	}, [redraw, elements, currentElement])
+
 	useEffect(() => {
 		const container = map.getContainer()
 

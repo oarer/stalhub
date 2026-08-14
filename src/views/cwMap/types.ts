@@ -75,8 +75,9 @@ export const MAPS: MapDef[] = [
 		imageWidth: 1536,
 		imageHeight: 1024,
 		letterMarkers: [
-			{ letter: 'A', lat: 512, lng: 768 },
-			{ letter: 'B', lat: 512, lng: 256 },
+			{ letter: 'A', lat: -0.237, lng: 0.2655 },
+			{ letter: 'B', lat: -0.237, lng: 0.388 },
+			{ letter: 'C', lat: -0.237, lng: 0.52 },
 		],
 	},
 	{
@@ -100,9 +101,9 @@ export const MAPS: MapDef[] = [
 		imageWidth: 2048,
 		imageHeight: 2048,
 		letterMarkers: [
-			{ letter: 'A', lat: 1024, lng: 1024 },
-			{ letter: 'B', lat: 1024, lng: 512 },
-			{ letter: 'C', lat: 512, lng: 512 },
+			{ letter: 'A', lat: -0.552, lng: 0.48 },
+			{ letter: 'B', lat: -0.64, lng: 0.48 },
+			{ letter: 'C', lat: -0.7, lng: 0.48 },
 		],
 	},
 	{

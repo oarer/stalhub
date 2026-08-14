@@ -176,16 +176,14 @@ export default function CWMapEditor() {
 						onSelect={switchMap}
 						selectedMapKey={selectedMapKey}
 					/>
-					<div className="mt-2 flex items-center gap-2 px-2">
-						<CheckBox
-							checked={showLetterMarkers}
-							id="showLetters"
-							label={t('cwMap.accordion.basePoints')}
-							onCheckedChange={(checked) =>
-								setShowLetterMarkers(checked)
-							}
-						/>
-					</div>
+					<CheckBox
+						checked={showLetterMarkers}
+						id="showLetters"
+						label={t('cwMap.accordion.basePoints')}
+						onCheckedChange={(checked) =>
+							setShowLetterMarkers(checked)
+						}
+					/>
 				</>
 			),
 		},
