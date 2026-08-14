@@ -24,12 +24,12 @@ export const RoadmapItems: RoadmapItem[] = [
 		date: '2026.06',
 		title: 'roadmap.obt.title',
 		description: 'roadmap.obt.description',
-		status: 'in-progress',
+		status: 'done',
 	},
 	{
-		date: '2026.07',
+		date: '2026.08',
 		title: 'roadmap.release.title',
 		description: 'roadmap.release.description',
-		status: 'planned',
+		status: 'done',
 	},
 ]
