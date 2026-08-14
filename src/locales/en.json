@@ -1,1 +1,1970 @@
-{}
+{
+	"landing": {
+		"overview": "Everything in one place",
+		"tools_for": "Tools for",
+		"need": "Everything you need for",
+		"features": {
+			"items": "Items",
+			"tools": "Tools",
+			"uptime": "Uptime"
+		},
+		"start": "Start",
+		"more_details": "More details",
+		"tools": {
+			"title": "Tools",
+			"description": "A comprehensive collection of tools",
+			"tool_list": {
+				"builds": {
+					"title": "Builds Calculator",
+					"desc": "Create and save artifact builds, experiment with combinations and compare the effectiveness of different setups with the ability to view models"
+				},
+				"builds_lite": {
+					"title": "Builds Calculator Lite",
+					"desc": "Create and save artifact builds, experiment with combinations and compare the effectiveness of different setups"
+				},
+				"bp": {
+					"title": "Battle Pass Calculator",
+					"desc": "A convenient tool for calculating battle pass progress"
+				},
+				"ttk": {
+					"title": "TTK Calculator",
+					"desc": "Evaluate the TTK for any weapon and armor. Compare weapons and armor to find the optimal choice"
+				},
+				"modules": {
+					"title": "Modules Calculator",
+					"desc": "Assemble weapon modules and see the resulting bonuses and cost"
+				},
+				"dashboard": {
+					"title": "Convenient work with tools",
+					"desc": "Instead of regular pages, we made all the tools into widgets"
+				},
+				"map": {
+					"title": "Interactive map",
+					"desc": "Explore the world with a convenient interactive map: guides for various quests, spots, hideout and much more"
+				},
+				"player_search": {
+					"title": "Player search",
+					"desc": "Find a player by nickname and view their statistics"
+				},
+				"arsenal": {
+					"title": "Arsenal",
+					"desc": "Calculate the required number of items for arsenal reputation"
+				}
+			}
+		}
+	},
+	"footer": {
+		"made_by": "Site made by ",
+		"and": " and ",
+		"links": {
+			"bug_report": "Report a bug on GitHub",
+			"telegram": "Telegram channel",
+			"discord": "Our Discord",
+			"about": "About us",
+			"status": "Status page"
+		},
+		"project": {
+			"with": "Project with ",
+			"open_source": "open source",
+			"license": "License "
+		}
+	},
+	"nav": {
+		"articles": "Articles",
+		"groups": {
+			"calculators": {
+				"title": "Calculators",
+				"items": {
+					"art": {
+						"label": "Builds",
+						"description": "Create a build",
+						"sub_menu": {
+							"lite": "Lite version",
+							"3d": "3D version",
+							"3d_description": "Experimental feature"
+						}
+					},
+					"ttk": {
+						"label": "TTK",
+						"description": "Weapon efficiency"
+					},
+					"arsenal": {
+						"label": "Arsenal",
+						"description": "Arsenal reputation"
+					},
+					"hideout": {
+						"label": "Hideout",
+						"description": "Hideout resource calculation"
+					},
+					"barter": {
+						"label": "Barter coins",
+						"description": "Barter for barter coins"
+					},
+					"bp": {
+						"label": "Season pass",
+						"description": "Level calculation"
+					},
+					"dpi": {
+						"label": "Sensitivity",
+						"description": "DPI settings"
+					},
+					"modules": {
+						"label": "Modules",
+						"description": "Weapon modules calculator"
+					}
+				}
+			},
+			"clans": {
+				"title": "Clans",
+				"items": {
+					"clanMaps": {
+						"label": "Clan wars maps",
+						"description": "Maps for clan wars"
+					},
+					"clans": {
+						"label": "Clan list"
+					}
+				}
+			},
+			"other": {
+				"title": "Other",
+				"items": {
+					"dashboard": {
+						"label": "Dashboard",
+						"description": "Those very widgets"
+					},
+					"maps": {
+						"label": "Interactive map"
+					},
+					"auction": {
+						"label": "Auction"
+					},
+					"items": {
+						"label": "Item search"
+					},
+					"players": {
+						"label": "Player search"
+					},
+					"models": {
+						"label": "Model viewer",
+						"description": "Soon..."
+					}
+				}
+			}
+		}
+	},
+	"map": {
+		"title": "Map list",
+		"loading": "Loading map",
+		"notFound": "Map not found",
+		"category": "Category:",
+		"noMarkers": "No markers",
+		"loadError": "An error occurred while loading the map list.",
+		"sideBar": {
+			"showAll": "Show all",
+			"hideAll": "Show all",
+			"export": "Export",
+			"top": "Top"
+		}
+	},
+	"playerSearch": {
+		"title": "Player search",
+		"description": "Find a player by nickname and view their statistics",
+		"region": "Region",
+		"nickname": "Nickname",
+		"nicknamePlaceholder": "Enter player nickname",
+		"search": "Search",
+		"popular_title": "Popular players",
+		"recent_title": "Recently viewed",
+		"recent_tooltip": "Overall statistics, taken from the server"
+	},
+	"player": {
+		"hero": {
+			"ach": "Achievements",
+			"ach_points": "Achievement points:"
+		},
+		"stats": {
+			"title": "Statistics",
+			"reg": "In zone:",
+			"hours": "In game:",
+			"last_login": "Last login:"
+		},
+		"rank": {
+			"LEADER": "Leader",
+			"COLONEL": "Colonel",
+			"OFFICER": "Officer",
+			"SERGEANT": "Sergeant",
+			"SOLDIER": "Soldier",
+			"COMMONER": "Reserve",
+			"RECRUIT": "Recruit"
+		},
+		"alliance": {
+			"merc": "Mercenary",
+			"covenant": "Covenant",
+			"freedom": "Dawn",
+			"duty": "Duty",
+			"bandits": "Bandit",
+			"stalkers": "Stalker"
+		},
+		"category": {
+			"EXPLORATION": "Exploration",
+			"SURVIVAL": "Survival",
+			"HIDEOUT": "Hideout",
+			"SESSION_MODES": "Session modes",
+			"ECONOMY": "Economy",
+			"COMBAT": "Combat"
+		},
+		"clan": {
+			"title": "Clan",
+			"name": "Clan name",
+			"rank": "Rank",
+			"level": "Clan level",
+			"members": "Members",
+			"leader": "Leader",
+			"join_at": "Joined"
+		},
+		"combat": {
+			"kd": "K/D:",
+			"deaths": "Deaths:",
+			"kills": "Kills:",
+			"kil_ser": "Max kill streak:",
+			"accuracy": "Accuracy:",
+			"shots": "Shots:",
+			"hits": "Hits:",
+			"accuracy_head": "Headshot accuracy:"
+		},
+		"note": {
+			"stalhub": "STALHUB",
+			"stalhub_desc": "Player is part of the STALHUB project team",
+			"exbo": "EXBO",
+			"exbo_desc": "Player is part of the EXBO EAST (STALZONE) team",
+			"media": "Media partner",
+			"media_desc": "Player is a media personality of the Stalzone project",
+			"scammer": "Scammer",
+			"scammer_desc": "This player is a scammer",
+			"more": "More detailed description"
+		},
+		"clanHistory": {
+			"title": "Clan history"
+		}
+	},
+	"time": {
+		"second": {
+			"one": "second",
+			"few": "seconds",
+			"many": "seconds"
+		},
+		"minute": {
+			"one": "minute",
+			"few": "minutes",
+			"many": "minutes"
+		},
+		"hour": {
+			"one": "hour",
+			"few": "hours",
+			"many": "hours"
+		},
+		"day": {
+			"one": "day",
+			"few": "days",
+			"many": "days"
+		},
+		"month": {
+			"one": "month",
+			"few": "months",
+			"many": "months"
+		},
+		"year": {
+			"one": "year",
+			"few": "years",
+			"many": "years"
+		},
+		"and": "and",
+		"back": "ago"
+	},
+	"unit": {
+		"km": "km",
+		"kg": "kg",
+		"unit": "u",
+		"meter": "m",
+		"second": "s"
+	},
+	"arts": {
+		"ART_QUALITY_COMMON": "Common",
+		"ART_QUALITY_UNCOMMON": "Uncommon",
+		"ART_QUALITY_SPECIAL": "Special",
+		"ART_QUALITY_RARE": "Rare",
+		"ART_QUALITY_EXCLUSIVE": "Exclusive",
+		"ART_QUALITY_LEGENDARY": "Legendary",
+		"ART_QUALITY_UNIQUE": "Unique"
+	},
+	"ui": {
+		"combobox": {
+			"default": {
+				"placeholder": "Select",
+				"search": {
+					"button": "Search",
+					"notFound": "Nothing found"
+				}
+			},
+			"addStats": {
+				"placeholder": "Additional stats"
+			}
+		},
+		"input_label": "Enter item name",
+		"input_sharpening": "Sharpening"
+	},
+	"arsenal": {
+		"title": "Arsenal reputation calculator",
+		"sub_title": "Calculate the cost of arsenal reputation",
+		"input_label": "Reputation",
+		"alert": "Item prices are updated twice a day — at 00:00 and 12:00 MSK. Compare prices in game!",
+		"table": {
+			"item": "Item",
+			"drop": {
+				"title": "Drops",
+				"true": "Yes",
+				"false": "No"
+			},
+			"reputation": "Reputation",
+			"weight": "Weight",
+			"currentPrice": "Price",
+			"limit": "Limit",
+			"neededCount": "Count",
+			"totalWeight": "Total weight",
+			"totalPrice": "Total",
+			"maxPerDay": "maximum per day",
+			"days": {
+				"one": "day",
+				"few": "days",
+				"many": "days"
+			}
+		},
+		"summary": {
+			"covered": "Goal is achievable: items with a limit give up to",
+			"coveredEnd": "reputation per day.",
+			"limited": "Items with a limit give a maximum of",
+			"limitedEnd": "reputation per day.",
+			"rest": "Not enough for the goal",
+			"restEnd": "reputation.",
+			"unlimited": "Make up the rest with items without a limit."
+		}
+	},
+	"modals": {
+		"builds": {
+			"pick": "Select",
+			"no_data": "No data",
+			"quality": "Quality",
+			"potential": "Level",
+			"armor": {
+				"toaster_success": "Armor changed!",
+				"header": "Select armor"
+			},
+			"container": {
+				"toaster_success": "Container changed!",
+				"header": "Select a container",
+				"warn_modal": {
+					"warn": "Warning",
+					"new_small": "The new container is smaller than the current one.",
+					"cancel": "Cancel",
+					"confirm": "Continue",
+					"del_count": "Will be removed",
+					"success_toast": "Container changed. Removed",
+					"slots": {
+						"slot": "slot",
+						"slots": "slots"
+					}
+				}
+			},
+			"consumables": {
+				"title": "Boost selection",
+				"header": "Select a boost",
+				"pick_boost": "Select"
+			},
+			"settings": {
+				"title": "Settings",
+				"auto_save": "Saving happens automatically",
+				"percent": "Percent",
+				"potential": "Potential"
+			}
+		},
+		"search": {
+			"title": "Site search",
+			"label": "Enter a query",
+			"not_found": "Nothing found",
+			"pages": "Pages",
+			"articles": "Articles"
+		}
+	},
+	"boost": {
+		"long_time_medicine": "Long-term boost",
+		"short_time_medicine": "Short-term boost",
+		"mobility": "Mobility",
+		"accumulation": "Radiation removal",
+		"healing": "Healing",
+		"protection": "Protection"
+	},
+	"wiki": {
+		"title": "Wiki",
+		"description": "Welcome to our StalZone wiki. Here you will find detailed guides on the game's mechanics and quests.",
+		"total_pages": "Total articles:",
+		"recently_updated": "Recently updated",
+		"navTitle": "Wiki",
+		"edit": "Edit",
+		"page": {
+			"page_section": "Pages in this section",
+			"update_at": "Updated:",
+			"authors": "Article authors"
+		}
+	},
+	"status_widget": {
+		"services_down": "Services are down",
+		"services_up": "Services are restored",
+		"services_ok": "All services are operational",
+		"services_error": "Connection problems",
+		"services_problem": "Service problems"
+	},
+	"build": {
+		"new_build": "New build",
+		"rename": "Rename build",
+		"build_name": "Build name",
+		"cancel": "Cancel",
+		"save": "Save",
+		"builds": "Builds",
+		"needed_cont": "Select a container",
+		"empty_slot": "Empty slot",
+		"artifacts": "Artifacts",
+		"pick_armor": "Select armor",
+		"armor": "Armor",
+		"no_armor": "No armor selected",
+		"sharpening": "Sharpening",
+		"consumables": "Consumables",
+		"toast_copy": "Copy mode is active",
+		"damaged": "will damage the character",
+		"toast_published": "Build published",
+		"toast_publish_error": "Publish error",
+		"copy": "Copy",
+		"labels": {
+			"default": "Search by name",
+			"armor": "Select armor",
+			"armor_title": "Armor selection",
+			"art": "Select an artifact",
+			"art_title": "Artifact selection",
+			"cont": "Select a container",
+			"cont_title": "Container selection",
+			"positive_stats": "Positive",
+			"negative_stats": "Negative",
+			"effects": "Effects",
+			"copy": "Copy",
+			"swap": "Swap",
+			"delete": "Delete",
+			"not_found": "Nothing found",
+			"effect": "Effects"
+		},
+		"stats": {
+			"title": "Stats",
+			"prime": "Prime",
+			"regen": "Healing per second",
+			"hps": "Prime per second",
+			"stopping": "Stamina",
+			"all": "Total",
+			"container": "Container",
+			"no_stats": "No stats",
+			"no_container": "No container selected",
+			"categories": {
+				"core": "Core stats",
+				"protection": "Protection stats",
+				"contaminationProtection": "Contamination protection",
+				"accumulation": "Contamination",
+				"effects": "Other effects",
+				"misc": "Misc"
+			}
+		},
+		"price": "Price",
+		"price_total": "Build cost",
+		"price_market": "market",
+		"price_estimate": "approximately",
+		"price_estimate_hint": "There are no exact market lots — the price is calculated approximately",
+		"price_unavailable": "Prices are temporarily unavailable",
+		"price_empty": "Add artifacts to calculate the cost",
+		"price_updated": "Updated:"
+	},
+	"ttk": {
+		"page": {
+			"weapon": "Weapon",
+			"weapon_add": "Add weapon",
+			"weapon_pick": "Select a weapon",
+			"ammo_pick": "Select ammo",
+			"default_ammo": "Standard ammo",
+			"mannequin": "Mannequin",
+			"bullet_resistance": "Bullet resistance",
+			"vitality": "Vitality",
+			"build": "Build",
+			"plate": "Plate",
+			"prime": "Prime",
+			"modules": "Modules",
+			"modules_open": "Configure modules →",
+			"fire": {
+				"auto": "Auto",
+				"burst": "Burst"
+			},
+			"combobox": {
+				"build": {
+					"placeholder": "— not selected —",
+					"search_placeholder": "Search build..."
+				},
+				"plate": {
+					"placeholder": "— no plate —",
+					"search_placeholder": "Search plate..."
+				}
+			},
+			"charts": {
+				"distance": "Distance:",
+				"damage": "Damage",
+				"dist_meter": "Distance (m):",
+				"dist_damage": "Damage at distance",
+				"shots": "shots"
+			},
+			"table": {
+				"ttk": "TTK",
+				"hits": "Hits"
+			}
+		},
+		"hitZones": {
+			"head": "Head",
+			"body": "Body",
+			"limbs": "Limbs"
+		},
+		"weaponStats": {
+			"damagePerShot": "Damage/shot"
+		}
+	},
+	"bp": {
+		"title": "Battle Pass Calculator",
+		"sub_title": "Calculate the number of levels for the whole season",
+		"total_days": "Total days",
+		"play_days": "Play days",
+		"task_day": "Tasks per day",
+		"overloads": "Overloads",
+		"current_level": "Current level",
+		"data": "Data",
+		"result": "Results",
+		"no_overloads": "Without overloads",
+		"with_overloads": "With overloads",
+		"difference": "Difference"
+	},
+	"barter": {
+		"lvl_req": "Required base level",
+		"base": "Bases for barter",
+		"recipe": "Recipe {number}",
+		"money": "Cost",
+		"used_in": "Used in",
+		"currency": "Currency",
+		"discount": "Discount",
+		"currency_options": {
+			"barter": "Barter",
+			"barter_coins": "Barter coins",
+			"crimson_shell": "Shells"
+		},
+		"discount_options": {
+			"none": "No discount"
+		}
+	},
+	"attachments": {
+		"title": "Attachments",
+		"suitable": "Compatible attachments",
+		"none": "There are no compatible attachments for this weapon",
+		"summary": "Final modifiers",
+		"total_weight": "Total weight",
+		"remove": "Remove",
+		"empty_slot": "Not selected",
+		"select": "Select",
+		"select_prompt": "Select an attachment",
+		"slot": {
+			"barrel": "Barrel",
+			"mag": "Magazine",
+			"collimator_sights": "Sight",
+			"forend": "Handguard",
+			"other": "Other",
+			"accessory": "Accessory",
+			"pistol_handle": "Grip"
+		}
+	},
+	"about": {
+		"contacts_title": "Contacts",
+		"thanks_title": "Special thanks",
+		"developer_role": "Lead developer",
+		"designer_role": "Designer",
+		"contact_us": "Contact us",
+		"useful_links": "Useful links",
+		"contact_links": {
+			"support": {
+				"label": "Technical support",
+				"description": "If you have a problem with the site"
+			},
+			"cooperation": {
+				"label": "Cooperation",
+				"description": "Sponsorship, contribution to the project"
+			},
+			"advertising": {
+				"label": "Advertising",
+				"description": "Advertising on the site or on social media"
+			}
+		},
+		"support_links": {
+			"donate": {
+				"label": "Support the project",
+				"description": "Financial support for the project's development"
+			},
+			"telegram": {
+				"label": "Telegram channel",
+				"description": "News, updates and announcements"
+			},
+			"github": {
+				"label": "GitHub repository",
+				"description": "Source code and bug reports"
+			}
+		},
+		"andcool_description": "Code snippets",
+		"rashing_description": "UI/UX improvement<br></br>tips",
+		"flacee_description": "help with formulas",
+		"insideJoke": "ебал рот айсана"
+	},
+	"region": {
+		"RU": "RU",
+		"EU": "EU",
+		"NA": "NA",
+		"SEA": "SEA",
+		"NEA": "NEA"
+	},
+	"dpi": {
+		"title": "Sensitivity calculator",
+		"sub_title": "Convert sensitivity from one game to another",
+		"from_game": "From game",
+		"to_game": "To game",
+		"pick_game": "Select a game",
+		"sens": "Sensitivity",
+		"result": "Result"
+	},
+	"modules": {
+		"title": "Modules Calculator",
+		"sub_title": "Assemble weapon modules and see the resulting bonuses and cost",
+		"picker_placeholder": "Select a module",
+		"picker_search": "Search module...",
+		"picker_empty": "Module not found",
+		"quality": "Quality",
+		"not_selected": "No module selected",
+		"fetch_error": "Could not fetch up-to-date module data. Showing cached data.",
+		"groupAddOn": "Add-on group",
+		"groupDeviation": "Deviation group",
+		"groupConcept": "Concept group",
+		"reset": "Reset",
+		"reroll": "Reroll",
+		"disassemble": "Disassemble",
+		"restore": "Restore",
+		"category": "Category",
+		"summary": "Summary",
+		"summaryEmpty": "Select modules in each group",
+		"rerollCost": "Reroll cost",
+		"disassembleCost": "Disassemble cost",
+		"restoreCost": "Restore cost",
+		"categoryCost": "Category cost"
+	},
+	"cwMap": {
+		"loading": "Loading editor...",
+		"actions": {
+			"undo": "Ctrl+Z — undo",
+			"save": "Ctrl+Shift+S — save"
+		},
+		"style": {
+			"thickness": "Thickness:"
+		},
+		"accordion": {
+			"basePoints": "Base points",
+			"tools": "Tools",
+			"markers": "Markers",
+			"style": "Style"
+		},
+		"maps": {
+			"berda": "Berda",
+			"hvoiniy": "Khvoinyi",
+			"kvartals": "Kvartaly",
+			"nizina": "Nizina",
+			"rozeWise": "Roza vetrov"
+		},
+		"markers": {
+			"position": "Position",
+			"base": "Base",
+			"danger": "Danger",
+			"loot": "Loot",
+			"spawn": "Spawn",
+			"extract": "Extract",
+			"sniper": "Sniper",
+			"info": "Info"
+		},
+		"tools": {
+			"pan": "Hand",
+			"pen": "Pen",
+			"line": "Line",
+			"arrow": "Arrow",
+			"rect": "Rect",
+			"circle": "Circle",
+			"eraser": "Eraser",
+			"marker": "Marker"
+		}
+	},
+	"admin": {
+		"permissions": {
+			"title": "Permissions",
+			"total": "total",
+			"create": "Create permission",
+			"name": "Name",
+			"description": "Description",
+			"createBtn": "Create",
+			"edit": "Edit permission",
+			"deleteTitle": "Delete permission?",
+			"deleteDescription": "Permission <strong>{name}</strong> will be deleted forever.",
+			"deleteConfirm": "Delete",
+			"cancel": "Cancel",
+			"save": "Save",
+			"toast": {
+				"created": "Permission created",
+				"createError": "Creation error",
+				"updated": "Permission updated",
+				"updateError": "Update error",
+				"deleted": "Permission deleted",
+				"deleteError": "Delete error"
+			}
+		},
+		"users": {
+			"title": "Users",
+			"total": "total",
+			"search": "Search...",
+			"table": {
+				"username": "Username",
+				"name": "Name",
+				"roles": "Roles",
+				"status": "Status"
+			},
+			"status": {
+				"banned": "Banned",
+				"active": "Active"
+			},
+			"deleteTitle": "Delete user?",
+			"deleteDescription": "User <strong>{name}</strong> will be deleted forever.",
+			"deleteConfirm": "Delete",
+			"cancel": "Cancel",
+			"toast": {
+				"deleted": "User deleted",
+				"deleteError": "Delete error"
+			}
+		},
+		"userDetail": {
+			"tabs": {
+				"info": "Info",
+				"sessions": "Sessions",
+				"roles": "Roles",
+				"badges": "Badges",
+				"banner": "Banner"
+			},
+			"editing": "Editing",
+			"username": "Username",
+			"name": "Name",
+			"save": "Save",
+			"ban": {
+				"title": "Ban",
+				"banned": "User is banned",
+				"unban": "Unban",
+				"reason": "Ban reason",
+				"duration": "Duration (hours)",
+				"confirm": "Ban"
+			},
+			"delete": {
+				"title": "Delete",
+				"trigger": "Delete user",
+				"confirmTitle": "Delete user?",
+				"description": "User <strong>{name}</strong> will be deleted forever. This action cannot be undone.",
+				"confirm": "Delete"
+			},
+			"sessions": {
+				"device": "Device",
+				"created": "Created",
+				"active": "Active",
+				"revokeTitle": "Revoke session?",
+				"revokeConfirm": "Revoke"
+			},
+			"roles": {
+				"title": "User roles",
+				"add": "Add role",
+				"removeTitle": "Remove role?",
+				"removeDescription": "Role <strong>{name}</strong> will be removed from the user.",
+				"removeConfirm": "Remove",
+				"empty": "No assigned roles"
+			},
+			"badges": {
+				"title": "User badges",
+				"add": "Add badge",
+				"removeTitle": "Remove badge?",
+				"removeDescription": "Badge <strong>{name}</strong> will be removed from the user.",
+				"removeConfirm": "Remove",
+				"empty": "No assigned badges"
+			},
+			"banner": {
+				"title": "Profile banner",
+				"noBanner": "Banner disabled",
+				"mode": "Mode",
+				"modeNone": "Disabled",
+				"modeColor": "Color",
+				"modeImage": "Image",
+				"type": "Placement",
+				"typeHeader": "Header",
+				"typeBackground": "Background",
+				"color": "Banner color",
+				"imageUrl": "Image URL",
+				"upload": "Upload file",
+				"save": "Save"
+			},
+			"toast": {
+				"updated": "User updated",
+				"updateError": "Update error",
+				"banned": "User banned",
+				"banError": "Ban error",
+				"unbanned": "Ban lifted",
+				"unbanError": "Unban error",
+				"sessionRevoked": "Session revoked",
+				"sessionRevokeError": "Session revoke error",
+				"roleAssigned": "Role assigned",
+				"roleAssignError": "Role assign error",
+				"roleRemoved": "Role removed",
+				"roleRemoveError": "Role remove error",
+				"badgeAssigned": "Badge assigned",
+				"badgeAssignError": "Badge assign error",
+				"badgeRemoved": "Badge removed",
+				"badgeRemoveError": "Badge remove error",
+				"bannerUpdated": "Banner updated",
+				"bannerUpdateError": "Banner update error",
+				"bannerUploaded": "Banner uploaded",
+				"bannerUploadError": "Banner upload error",
+				"deleted": "User deleted",
+				"deleteError": "Delete error"
+			},
+			"cancel": "Cancel",
+			"close": "Close"
+		},
+		"sidebar": {
+			"users": "Users",
+			"roles": "Roles",
+			"permissions": "Permissions",
+			"badges": "Badges",
+			"clans": "Clans",
+			"notifications": "Notifications",
+			"players": "Players",
+			"articles": "Articles",
+			"builds": "Builds"
+		},
+		"roles": {
+			"title": "Roles",
+			"create": "Create role",
+			"edit": "Edit role",
+			"permissions": "Permissions",
+			"permissionsTitle": "Permissions — {name}",
+			"deleteTitle": "Delete role?",
+			"deleteDescription": "Role <strong>{name}</strong> will be deleted forever.",
+			"toast": {
+				"created": "Role created",
+				"updated": "Role updated",
+				"deleted": "Role deleted",
+				"permissionsUpdated": "Permissions updated",
+				"permissionsUpdateError": "Permissions update error"
+			}
+		},
+		"badges": {
+			"title": "Badges",
+			"create": "Create badge",
+			"edit": "Edit badge",
+			"type": "Type",
+			"icon": "Icon",
+			"image": "Image",
+			"imageUrl": "Image URL",
+			"color": "Color",
+			"preview": "Preview:",
+			"defaultName": "Badge",
+			"deleteTitle": "Delete badge?",
+			"deleteDescription": "Badge <strong>{name}</strong> will be deleted forever.",
+			"empty": "No badges",
+			"toast": {
+				"created": "Badge created",
+				"updated": "Badge updated",
+				"deleted": "Badge deleted"
+			}
+		},
+		"clans": {
+			"title": "Clans",
+			"total": "total",
+			"search": "Search...",
+			"table": {
+				"name": "Name",
+				"tag": "Tag",
+				"alliance": "Alliance",
+				"members": "Members",
+				"status": "Status",
+				"public": "Public"
+			},
+			"status": {
+				"active": "Active",
+				"frozen": "Frozen",
+				"blocked": "Blocked"
+			},
+			"detail": {
+				"tabs": {
+					"info": "Info",
+					"members": "Members",
+					"stages": "Stages"
+				},
+				"editTitle": "Editing",
+				"name": "Name",
+				"tag": "Tag",
+				"region": "Region",
+				"description": "Description",
+				"status": "Status",
+				"isPublic": "Public in catalog",
+				"recruiting": "Recruiting members",
+				"brawlsPerWeek": "Brawl/week",
+				"brawlsMandatory": "Brawls are mandatory",
+				"level": "Level",
+				"levelPoints": "Level points",
+				"leader": "Leader",
+				"alliance": "Alliance",
+				"save": "Save",
+				"sync": "Synchronize",
+				"block": {
+					"title": "Block",
+					"reasonLabel": "Block reason",
+					"reason": "Reason",
+					"confirm": "Block",
+					"unblock": "Unblock"
+				},
+				"delete": {
+					"title": "Delete",
+					"trigger": "Delete clan",
+					"confirmTitle": "Delete clan?",
+					"description": "Clan <strong>{name}</strong> will be deleted forever. This action cannot be undone.",
+					"confirm": "Delete"
+				},
+				"members": {
+					"name": "Name",
+					"rank": "Rank",
+					"joined": "Joined",
+					"user": "User"
+				},
+				"cancel": "Cancel"
+			},
+			"toast": {
+				"updated": "Clan updated",
+				"updateError": "Update error",
+				"synced": "Clan synchronized: {count} members",
+				"syncError": "Synchronization error",
+				"blocked": "Clan blocked",
+				"blockError": "Block error",
+				"unblocked": "Block lifted",
+				"unblockError": "Unblock error",
+				"deleted": "Clan deleted",
+				"deleteError": "Delete error"
+			},
+			"stages": {
+				"title": "Stages",
+				"empty": "The clan has no stages",
+				"table": {
+					"id": "ID",
+					"map": "Map",
+					"type": "Type",
+					"stage": "Stage",
+					"date": "Date",
+					"endDate": "End",
+					"screenshots": "Screenshots",
+					"attendance": "Attendance",
+					"actions": ""
+				},
+				"edit": "Edit",
+				"editTitle": "Edit stage #{id}",
+				"mapName": "Map name",
+				"stageNumber": "Stage number",
+				"startedAt": "Start date",
+				"endedAt": "End date (optional)",
+				"save": "Save",
+				"cancel": "Cancel",
+				"deleteTitle": "Delete stage?",
+				"deleteDescription": "Stage <strong>{map} · {date}</strong> and all its screenshots will be permanently deleted.",
+				"delete": "Delete",
+				"type": {
+					"TOURNAMENT": "Tournament",
+					"BRAWL": "Brawl",
+					"BASE_CAPTURE": "Base capture"
+				},
+				"toast": {
+					"updated": "Stage updated",
+					"updateError": "Stage update error",
+					"deleted": "Stage deleted",
+					"deleteError": "Stage delete error"
+				}
+			}
+		},
+		"players": {
+			"title": "Player management",
+			"add": "Add player",
+			"addBtn": "Add",
+			"role": "Role",
+			"rolesTitle": "Player roles",
+			"blacklist": "Blacklist",
+			"empty": "No players",
+			"toast": {
+				"added": "Player added",
+				"addError": "Add error",
+				"blacklisted": "Player added to blacklist",
+				"blacklistAddError": "Blacklist add error",
+				"blacklistRemoved": "Player removed from blacklist",
+				"blacklistRemoveError": "Blacklist remove error"
+			}
+		},
+		"articles": {
+			"title": "Articles",
+			"all": "All",
+			"author": "Author",
+			"stars": "Stars",
+			"created": "Created",
+			"statusTitle": "Status — {title}",
+			"deleteTitle": "Delete article?",
+			"deleteDescription": "Article <strong>{title}</strong> will be deleted forever.",
+			"empty": "No articles",
+			"toast": {
+				"statusUpdated": "Status updated",
+				"statusUpdateError": "Status update error",
+				"deleted": "Article deleted"
+			}
+		},
+		"builds": {
+			"title": "Builds",
+			"deleteTitle": "Delete build?",
+			"deleteDescription": "Build <strong>{title}</strong> will be deleted forever.",
+			"empty": "No builds",
+			"toast": {
+				"deleted": "Build deleted"
+			}
+		},
+		"notifications": {
+			"title": "Notifications",
+			"sendTitle": "Send notification",
+			"broadcast": "To all users",
+			"toUser": "To a specific user",
+			"searchUser": "Search user",
+			"notFound": "Not found",
+			"change": "Change",
+			"titleLabel": "Title",
+			"contentLabel": "Message",
+			"contentPlaceholder": "Notification text...",
+			"linkLabel": "Link (optional)",
+			"sendAll": "Send to all",
+			"sendToUser": "Send to user",
+			"toast": {
+				"broadcastSent": "Notification sent to {count, plural, one {# user} few {# users} many {# users} other {# users}}",
+				"sent": "Notification sent",
+				"sendError": "Send error"
+			}
+		}
+	},
+	"test": {
+		"title": "Domain move",
+		"message": "Soon <unavailable>stalhub.dev will be unavailable</unavailable>, our new domain is <domain>stalhub.dev</domain>. We will announce the domain support suspension in advance in our <channel>Telegram channel</channel>.",
+		"cancel": "Cancel",
+		"go": "Go"
+	},
+	"errors": {
+		"oops": "Oops...",
+		"support": {
+			"thenContact": "then contact",
+			"techSupport": "tech support",
+			"whenContacting": "When contacting, provide"
+		},
+		"playerNotFound": {
+			"buttonLabel": "Go back",
+			"description": "Player not found"
+		},
+		"banned": {
+			"account": "Account",
+			"blocked": "blocked",
+			"reasonPrefix": "Reason:",
+			"blockedMessage": "Your account has been blocked",
+			"remaining": "Remaining:",
+			"ifMistake": "If you believe the block was issued by mistake,",
+			"reasonLabel": "the reason",
+			"reasonValuePrefix": "Reason"
+		},
+		"notFound": {
+			"buttonLabel": "Go home",
+			"description": "Page not found",
+			"ifUrlCorrect": "If you believe the URL was entered correctly,"
+		},
+		"globalError": {
+			"buttonLabel": "Try again",
+			"description": "A client error occurred",
+			"ifProblemPersists": "If the problem persists, contact"
+		}
+	},
+	"articles": {
+		"title": "Articles",
+		"allArticles": "← All articles",
+		"publishedCount": "{count} published articles",
+		"empty": "No published articles",
+		"loading": "Loading...",
+		"loadError": "Error loading article",
+		"metaTitle": "Articles · StalHub",
+		"metaDescription": "Public articles of the StalHub community",
+		"byAuthor": "Article by {author}",
+		"notFound": "Article not found",
+		"comments": {
+			"title": "Comments ({count})",
+			"placeholder": "Write a comment...",
+			"empty": "No comments",
+			"reply": "Reply",
+			"deleteTitle": "Delete comment?",
+			"cancel": "Cancel",
+			"deleteConfirm": "Delete",
+			"toast": {
+				"added": "Comment added",
+				"addError": "Error adding comment",
+				"deleted": "Comment deleted",
+				"deleteError": "Error deleting comment"
+			}
+		},
+		"status": {
+			"PENDING": "Draft",
+			"REVIEW": "Under review",
+			"DENIED": "Denied",
+			"BANNED": "Banned",
+			"APPROVED": "Approved"
+		}
+	},
+	"clan": {
+		"common": {
+			"player": "Player",
+			"killsShort": "K",
+			"deathsShort": "D",
+			"assistsShort": "A",
+			"pointsShort": "P",
+			"scoreShort": "S",
+			"kda": "KDA",
+			"kd": "K/D",
+			"grenadesShort": "Gr",
+			"victory": "Victory",
+			"defeat": "Defeat",
+			"save": "Save",
+			"cancel": "Cancel",
+			"close": "Close",
+			"delete": "Delete",
+			"create": "Create",
+			"copy": "Copy",
+			"download": "Download",
+			"upload": "Upload",
+			"members": "Members",
+			"games": "Games",
+			"wins": "Wins",
+			"losses": "Losses",
+			"noGames": "No games yet"
+		},
+		"stage": {
+			"TOURNAMENT": "Tournament",
+			"BRAWL": "Brawl",
+			"BASE_CAPTURE": "Base capture",
+			"SKIRMISH": "Brawl"
+		},
+		"maps": {
+			"SMALL_BERDOVKA": "Malaia Berdovka",
+			"KHVOUINOY": "Khvoinyi",
+			"NIZINA": "Nizina"
+		},
+		"events": {
+			"TOURNAMENT": "Tournament",
+			"BRAWL": "Brawl",
+			"BASE_CAPTURE": "Base capture",
+			"GOLD_DROP": "Gold drop"
+		},
+		"metrics": {
+			"kd": "KD",
+			"kda": "KDA",
+			"kills": "Kills",
+			"grenades": "Grenades"
+		},
+		"filters": {
+			"TOURNAMENT": "Tournaments",
+			"BRAWL": "Brawls",
+			"ALL": "All"
+		},
+		"screenshotStatus": {
+			"pending": "Queued",
+			"processing": "Analyzing...",
+			"done": "Done",
+			"error": "Error"
+		},
+		"layout": {
+			"activated": "Clan activated",
+			"activateError": "Could not activate clan",
+			"notLinked": {
+				"title": "Clan not linked",
+				"desc": "Link your EXBO account in settings and join the clan to manage it",
+				"settings": "Settings"
+			},
+			"notFound": {
+				"title": "Clan not found",
+				"desc": "No clan found in your profile.\nMake sure you are the clan leader"
+			},
+			"blocked": {
+				"title": "Clan blocked",
+				"desc": "This clan has been blocked by the administration.\nIf you believe the block is a mistake, contact technical support.",
+				"reason": "Reason"
+			},
+			"frozen": {
+				"title": "You are the leader of clan <span>[{tag}] {name}</span>",
+				"desc": "Your clan is currently frozen, management features are unavailable.\nTo get access, click the button below.",
+				"activate": "Activate",
+				"titleMember": "Clan <span>[{tag}] {name}</span> is frozen",
+				"descMember": "Your clan is currently frozen, management features are unavailable."
+			}
+		},
+		"dashboard": {
+			"notAllRegistered": "Not all players are registered on the site. Grenade and absence tracking is unavailable for them.",
+			"recentGames": "Recent games",
+			"screenshotUploaded": "Screenshot uploaded, analysis started",
+			"screenshotUploadError": "Error uploading screenshot",
+			"grenadesTitle": "Grenades by stages ({total})",
+			"grenadesLine": "{label} · {date} · {count, plural, one {# stage} few {# stages} many {# stages} other {# stages}}",
+			"noGrenades": "No grenade data",
+			"topPlayers": {
+				"title": "Top players (K/D)",
+				"empty": "Upload stage screenshots to see players' K/D"
+			}
+		},
+		"members": {
+			"title": "Members",
+			"more": "+{count} members",
+			"squad": "Squad"
+		},
+		"stats": {
+			"title": "Statistics",
+			"clanKd": "Clan KD",
+			"emptyTitle": "No statistics yet",
+			"emptyDesc": "Upload stage screenshots and player statistics will appear here",
+			"stageCount": "{count, plural, one {# stage} few {# stages} many {# stages} other {# stages}}",
+			"stageRow": "{kills} K. · {deaths} D. | {kd}"
+		},
+		"squads": {
+			"title": "Squads",
+			"noSquadsTitle": "No squads on this map",
+			"exportPngTitle": "Export squads to PNG",
+			"create": "Create squad",
+			"new": "New squad",
+			"namePlaceholder": "Squad name",
+			"map": "Map",
+			"leaderTitle": "Leader of squad «{name}»",
+			"noMembers": "No members in the squad yet",
+			"removeLeader": "Remove leader",
+			"assignSlotTitle": "Assign to slot {slot}",
+			"noFreeMembers": "No free members",
+			"mapTitle": "Map of squad «{name}»",
+			"mapChangeTitle": "Change map",
+			"assignLeaderTitle": "Assign leader",
+			"requestPending": "Squad join request is pending",
+			"joinRequests": "Join requests",
+			"slot": "Slot {slot}",
+			"emptySlot": "Empty",
+			"loadoutTitle": "Loadout",
+			"editLoadout": "Edit loadout",
+			"loadoutHeaders": {
+				"player": "Player",
+				"primary": "Primary",
+				"secondary": "Secondary",
+				"pistol": "Pistol",
+				"fatBuild": "Build «fat»",
+				"speedBuild": "Build «speed»",
+				"armor": "Armor",
+				"bioArmor": "Bio armor"
+			},
+			"myLoadout": "My loadout",
+			"loadoutFields": {
+				"primaryWeapon": "Primary weapon",
+				"secondaryWeapon": "Secondary weapon",
+				"pistol": "Pistol",
+				"armor": "Armor",
+				"bioArmor": "Bio armor",
+				"fatBuild": "Build «fat»",
+				"speedBuild": "Build «speed»"
+			},
+			"noBuilds": "No builds",
+			"search": "Search",
+			"noSquadsHere": "No squads on this map yet",
+			"createFirstHint": "Create your first squad by clicking «Create squad»",
+			"png": {
+				"previewTitle": "Squads preview",
+				"title": "Squads · {map}",
+				"squadCount": "Squads",
+				"leader": "Leader",
+				"absent": "Absent",
+				"empty": "Empty"
+			},
+			"toasts": {
+				"createError": "Could not create squad",
+				"requestSent": "Request sent",
+				"requestError": "Could not submit request",
+				"approved": "Request approved",
+				"approveError": "Could not approve request",
+				"rejected": "Request rejected",
+				"rejectError": "Could not reject request",
+				"mapError": "Could not change map",
+				"loadoutSaved": "Loadout saved",
+				"loadoutError": "Error saving loadout",
+				"moveError": "Could not move member",
+				"pngError": "Could not save image",
+				"pngCopied": "Image copied",
+				"copyError": "Could not copy"
+			}
+		},
+		"sessions": {
+			"title": "Clan wars",
+			"noGamesDesc": "Upload screenshots for analysis",
+			"scorePoints": "{score} points",
+			"analyzing": "Analyzing",
+			"screenshots": "Screenshots",
+			"attendance": "Attendance",
+			"presentOf": "{present} of {total}",
+			"absent": " · absent",
+			"deleteTitle": "Delete stage?",
+			"deleteBody": "Stage <span>{name} for {date}</span> and all its screenshots <danger>will be permanently deleted</danger>",
+			"stageName": "{name} · stage {stage}",
+			"deleteConfirm": "Delete",
+			"summary": "Summary",
+			"stageScore": "Points for the stage: {score}",
+			"opponentsOne": "Opponent points: {names}",
+			"opponentsMany": "Opponents: {names}",
+			"killsShort": "K",
+			"deathsShort": "D",
+			"assistsShort": "A",
+			"kd": "K/D",
+			"scoreShort": "S",
+			"uploadTitle": "Upload screenshot",
+			"upload": "Upload",
+			"detected": "Detected: <strong>{label} · stage {stage}</strong>",
+			"stageType": "Stage type",
+			"stage": "Stage",
+			"stageDate": "Stage date (optional)",
+			"screenshotLabel": "Screenshot",
+			"fileSelected": "Selected: {name}",
+			"selectFile": "Select file",
+			"screenshotId": "Screenshot #{id}",
+			"toasts": {
+				"retrySuccess": "Analysis restarted",
+				"retryError": "Could not restart analysis",
+				"deleted": "Stage deleted",
+				"deleteError": "Could not delete stage",
+				"uploaded": "Screenshots uploaded, analysis started",
+				"uploadError": "Error uploading screenshots"
+			}
+		},
+		"absence": {
+			"title": "Absences",
+			"desc": "One absence per day. An absence for today is available only until {hour}:00 MSK, for other days — at any time the day before.",
+			"myAbsence": "My absence",
+			"stage": "Stage {stage}",
+			"notePlaceholder": "Comment (optional)",
+			"listTitle": "Absences for {date}",
+			"empty": "No absences for this date",
+			"now": "Now <b>{time} MSK</b>.",
+			"canLeave": " You can leave an absence for today until <b>{deadline}:00 MSK</b>.",
+			"pastDeadline": " Today's deadline ({deadline}:00 MSK) has already passed — you can leave an absence for another day.",
+			"toasts": {
+				"saved": "Absence saved",
+				"saveError": "Could not save absence",
+				"deleted": "Absence deleted",
+				"deleteError": "Could not delete absence"
+			}
+		},
+		"gold": {
+			"title": "Gold drops",
+			"desc": "Daily at 10:00, 13:00, 16:00, 19:00 and 22:00 (MSK). Officers mark attendees and set the «claimed» status.",
+			"empty": "No drops yet",
+			"claimed": "Claimed",
+			"waiting": "Waiting",
+			"attendeesCount": "{count} att.",
+			"mark": "Mark",
+			"attendeesTitle": "Drop attendees {date}",
+			"alreadyMarked": "Already marked in other drops: {count}",
+			"toasts": {
+				"attendeesError": "Could not save attendees",
+				"statusError": "Could not update status"
+			}
+		},
+		"grenades": {
+			"emptyTitle": "No grenade data",
+			"emptyDesc": "Grenade data will appear after synchronizing the clan roster",
+			"noData": "No data by stages",
+			"player": "Player",
+			"stage": "Stage {stage}",
+			"total": "Total",
+			"stageCount": "{count, plural, one {# stage} few {# stages} many {# stages} other {# stages}}"
+		},
+		"charts": {
+			"topCount": "Top {n}",
+			"topAll": "Top all",
+			"testFeatureTitle": "Test feature ",
+			"testFeatureDesc": "This feature is being tested, problems and inaccurate data are possible",
+			"kickTitle": "Players at risk of kick",
+			"scheduleTooltip": "Schedule: {tournament} tournaments per week (mandatory) and {brawl} brawls, brawls are {mandatory, select, yes {mandatory} other {optional}}.",
+			"kickCriteria": "Kick candidate: attendance below {attendance}% or absences from {absences}% of mandatory games.",
+			"kickChanceHint": "Kick chance increases with low KD (below {kd}): 65% — attendance, 20% — absences, 15% — KD.",
+			"attendanceHint": "Attendance is calculated for the selected game type: tournaments, brawls, or both.",
+			"noCandidates": "No candidates",
+			"kdBadge": "KD: {value}",
+			"attendanceBadge": "Attendance: {value}",
+			"absenceBadge": "Absences: {value}",
+			"kickChanceLabel": "Kick chance",
+			"topPlayersTitle": "Top players by {metric} · top {n}",
+			"topPlayersTitleAll": "Top players by {metric} · top all",
+			"noPlayers": "No player data",
+			"victoriesByGames": "Wins by games",
+			"victories": "Wins",
+			"defeats": "Defeats",
+			"noGames": "No game data",
+			"topSquadsKd": "Top squads by KD",
+			"noSquads": "No squads",
+			"kdShort": "KD",
+			"kdaShort": "KDA"
+		},
+		"settings": {
+			"publicTitle": "Public clan profile",
+			"publicDesc": "A public clan is shown in the catalog and on the profile pages of its members.",
+			"publicToggle": "Show clan publicly",
+			"publicToggleHint": "The clan will appear in the catalog and on member profiles",
+			"recruitingTitle": "Clan recruiting",
+			"acceptRequests": "Accept requests",
+			"acceptRequestsHint": "A badge will appear in the clan list",
+			"scheduleTitle": "Clan wars schedule",
+			"scheduleDesc": "The clan must play 3 tournaments per week. The brawls setting shows the schedule publicly and is used in the kick chance calculation.",
+			"tournamentFixedLabel": "Tournaments (mandatory)",
+			"tournamentFixedHint": "{count} tournaments per week — cannot be changed",
+			"brawlsMandatoryLabel": "Brawls are mandatory",
+			"brawlsMandatoryHint": "If disabled — brawls are not counted in the kick chance calculation",
+			"scheduleFields": {
+				"brawlsPerWeek": "Brawls per week"
+			},
+			"scheduleTotal": "Total: {tournament} tournaments + {brawl} brawls per week · brawls are {mandatory, select, yes {mandatory} other {optional}}",
+			"saveSchedule": "Save schedule",
+			"syncTitle": "Synchronization",
+			"syncDesc": "Update the clan roster using EXBO data: new members will be added, departed ones will be marked.",
+			"syncButton": "Synchronize",
+			"botTitle": "Discord bot",
+			"botDesc": "Link the bot to your Discord server to publish squads and accept absences.",
+			"botCommandLabel": "Run the command on the server:",
+			"botTokenExpires": "The token is valid for {minutes} min. First run the command, then re-link the bot if needed.",
+			"botLinkLabel": "Link Discord bot",
+			"botLinkHint": "Generate a token and run the /setup command on the server",
+			"botLinkButton": "Generate token",
+			"botGuildsTitle": "Linked servers",
+			"botNoGuilds": "No linked servers yet",
+			"botUnlink": "Unlink",
+			"freezeTitle": "Clan freeze",
+			"freezeLabel": "Freeze clan",
+			"freezeDesc": "Freezing stops clan management. Data is preserved, activation will restore access.",
+			"freezeButton": "Freeze",
+			"freezeConfirmTitle": "Freeze clan?",
+			"freezeConfirmBody": "Clan management will be stopped. You can unfreeze by activating on the freeze screen.",
+			"freezeConfirm": "Freeze",
+			"toasts": {
+				"saved": "Settings saved",
+				"saveError": "Could not save settings",
+				"recruitingUpdated": "Recruiting updated",
+				"recruitingError": "Could not change recruiting",
+				"scheduleSaved": "Schedule saved",
+				"scheduleError": "Could not save schedule",
+				"synced": "Roster updated: {count} members",
+				"syncError": "Could not synchronize roster",
+				"botTokenCreated": "Token created. Run the command on the Discord server",
+				"botTokenError": "Could not generate token",
+				"botUnlinked": "Server unlinked",
+				"botUnlinkError": "Could not unlink server",
+				"frozen": "Clan frozen",
+				"freezeError": "Could not freeze clan"
+			}
+		}
+	},
+	"me": {
+		"nav": {
+			"home": "Home",
+			"clan": "Clan",
+			"dashboard": "Dashboard",
+			"members": "Members",
+			"sessions": "Games",
+			"stats": "Statistics",
+			"grenades": "Grenades",
+			"squads": "Squads",
+			"gold": "Gold drops",
+			"absences": "Absences",
+			"settings": "Settings",
+			"content": "Content",
+			"articles": "Articles",
+			"builds": "Builds",
+			"stars": "Favorites",
+			"system": "System",
+			"notifications": "Notifications"
+		},
+		"menu": "Menu",
+		"home": {
+			"builds": "Builds",
+			"allBuilds": "All builds",
+			"noBuilds": "No builds",
+			"publishedArticles": "Published articles",
+			"allArticles": "All articles",
+			"underReview": "Under review",
+			"characters": "Characters"
+		},
+		"articles": {
+			"title": "Articles",
+			"create": "Create",
+			"all": "All",
+			"noArticles": "No articles",
+			"createFirst": "Create your first article",
+			"toastDeleted": "Article deleted",
+			"toastDeleteError": "Delete error"
+		},
+		"builds": {
+			"title": "Builds",
+			"create": "Create",
+			"noBuilds": "No builds",
+			"toastDeleted": "Build deleted",
+			"toastDeleteError": "Delete error"
+		},
+		"notifications": {
+			"title": "Notifications",
+			"markAllRead": "Mark all as read",
+			"toastAllRead": "All notifications marked as read",
+			"empty": "No notifications"
+		},
+		"stars": {
+			"title": "Favorites",
+			"empty": "No favorite articles/builds",
+			"build": "Build",
+			"article": "Article"
+		},
+		"newArticle": {
+			"title": "New article",
+			"name": "Name",
+			"namePlaceholder": "Enter article title",
+			"type": "Article type",
+			"quest": "Quest",
+			"guide": "Guide",
+			"other": "Other",
+			"stalhub": "StalHub",
+			"create": "Create and open editor",
+			"toastCreated": "Article created",
+			"toastCreateError": "Create error"
+		},
+		"settings": {
+			"account": "Account",
+			"name": "Name",
+			"username": "Nickname",
+			"nameCooldown": "You can change your name in",
+			"usernameCooldown": "You can change your nickname in",
+			"usernameInvalid": "Nickname: 3-32 characters, Latin letters, digits and _ only",
+			"toastProfileSaved": "Profile updated",
+			"toastProfileSaveError": "Error saving profile",
+			"personalization": "Personalization",
+			"publicProfile": "Public profile",
+			"publicProfileDesc": "Other users will be able to see your profile",
+			"showLoadout": "Show loadout",
+			"showLoadoutDesc": "Other users will be able to see your loadout",
+			"editLoadout": "Edit loadout",
+			"editLoadoutDesc": "Primary weapon, armor and builds. The loadout will be shown in clan squads",
+			"profileLayout": "Profile layout",
+			"profileLayoutDesc": "Element layout in the profile. Changes also apply to the public profile",
+			"banner": "Banner settings",
+			"bannerDesc": "Configure the banner type and its placement in the profile",
+			"layoutClassic": "Classic",
+			"layoutModern": "Modern",
+			"layoutCompact": "Compact",
+			"bannerModeNone": "No banner",
+			"bannerModeColor": "Color",
+			"bannerModeImage": "Image",
+			"bannerTypeBackground": "Background",
+			"bannerTypeHeader": "Header",
+			"linkAccounts": "Linked accounts",
+			"sessions": "Sessions",
+			"endAll": "End all",
+			"dangerZone": "Danger zone",
+			"deleteAccount": "Delete account",
+			"deleteAccountDesc": "This action cannot be undone",
+			"delete": "Delete",
+			"bannerEditorTitle": "Banner editor",
+			"bannerPlacement": "Banner placement",
+			"bannerType": "Banner type",
+			"bannerColor": "Banner color",
+			"bannerImage": "Banner image",
+			"cardColor": "Card color",
+			"region": "Region",
+			"regionDesc": "Region of your EXBO game account. Used to find your character and clan.",
+			"regionLabel": "Current region",
+			"regionButton": "Apply",
+			"toastRegionSaved": "Region updated",
+			"toastRegionSaveError": "Error updating region",
+			"deleteConfirmTitle": "Delete account?",
+			"deleteConfirmDesc": "This action cannot be undone. All your data will be deleted. Enter your nickname <bold>{username}</bold> to confirm.",
+			"deletePlaceholder": "Enter here",
+			"cancel": "Cancel",
+			"deleteConfirm": "Delete account",
+			"ago": "ago",
+			"toastSaved": "Settings saved",
+			"toastSaveError": "Error saving",
+			"toastBannerSaved": "Banner settings saved",
+			"toastBannerSaveError": "Error saving banner settings",
+			"toastLayoutSaved": "Layout settings updated",
+			"toastLayoutSaveError": "Error saving layout",
+			"toastBannerUploaded": "Banner uploaded",
+			"toastBannerUploadError": "Error uploading banner",
+			"toastLoadoutSaved": "Loadout saved",
+			"toastLoadoutSaveError": "Error saving loadout",
+			"toastDisplaySaved": "Display settings saved",
+			"toastDisplayError": "Error saving settings",
+			"toastSessionDeleted": "Session deleted",
+			"toastSessionDeleteError": "Error deleting session",
+			"toastSessionsDeleted": "All sessions deleted",
+			"toastSessionsDeleteError": "Error deleting sessions",
+			"toastLinkError": "Link error",
+			"toastUnlinked": "Account unlinked",
+			"toastUnlinkError": "Unlink error",
+			"toastAccountDeleted": "Account deleted",
+			"toastAccountDeleteError": "Error deleting account"
+		},
+		"buildCard": {
+			"toastError": "Error",
+			"toastLinkCopied": "Link copied",
+			"toastLoginToStar": "Log in to add to favorites",
+			"noArmor": "No armor",
+			"noContainer": "No container",
+			"noArtifacts": "No artifacts"
+		},
+		"articleEditor": {
+			"title": "Article title",
+			"notSaved": "Not saved",
+			"saved": "Saved",
+			"edit": "Editing",
+			"preview": "Preview",
+			"save": "Save",
+			"submitting": "Submitting...",
+			"submit": "Submit for review",
+			"hotkeys": {
+				"text": "text",
+				"code": "code",
+				"heading": "Heading",
+				"quote": "Quote",
+				"item": "Item",
+				"alt": "alt"
+			},
+			"tags": "Tags",
+			"cover": "Cover",
+			"table": "Table",
+			"components": "Components",
+			"tagsTitle": "Tags",
+			"tagsLabel": "Tags separated by commas",
+			"cancel": "Cancel",
+			"saveBtn": "Save",
+			"coverTitle": "Article cover",
+			"imageUrl": "Image URL",
+			"delete": "Delete",
+			"chooseSize": "Choose size",
+			"placeholder": "Start writing in Markdown format...",
+			"compiling": "Compiling...",
+			"previewHere": "Preview will appear here",
+			"mdxError": "Error in MDX — fix the syntax",
+			"toastSaveError": "Error saving",
+			"toastSubmitted": "Article submitted for review",
+			"toastSubmitError": "Submit error",
+			"toolbar": {
+				"bold": "Bold",
+				"italic": "Italic",
+				"strikethrough": "Strikethrough",
+				"heading": "Heading",
+				"quote": "Quote",
+				"inlineCode": "Inline code",
+				"codeBlock": "Code block",
+				"link": "Link",
+				"image": "Image",
+				"bulletList": "Bullet list",
+				"orderedList": "Ordered list",
+				"horizontalRule": "Horizontal rule",
+				"table": "Insert table",
+				"components": "MDX components",
+				"save": "Save"
+			},
+			"hotkeysTitle": "Hotkeys",
+			"mdxContent": "Content"
+		},
+		"bg": {
+			"avatar": "Avatar",
+			"color": "Color",
+			"none": "None"
+		}
+	},
+	"onboarding": {
+		"title": "Profile setup",
+		"stepOf": "Step {current} of {total}",
+		"next": "Next",
+		"back": "Back",
+		"finish": "Finish",
+		"uploading": "Uploading banner...",
+		"uploadError": "Error uploading banner",
+		"toastSuccess": "Profile configured!",
+		"toastError": "Error saving",
+		"welcome": {
+			"title": "Welcome!",
+			"subtitle": "Let's set everything up for you",
+			"start": "Start setup"
+		},
+		"step": {
+			"name": {
+				"title": "Your name",
+				"desc": "How other users will see you"
+			},
+			"username": {
+				"title": "Nickname",
+				"desc": "Latin letters, digits and underscore (3-32 characters)"
+			},
+			"region": {
+				"title": "Region",
+				"placeholder": "Select a region",
+				"desc": "The region is used to synchronize the clan and characters"
+			},
+			"layout": {
+				"title": "Profile layout",
+				"desc": "Choose how your profile will look"
+			},
+			"banner": {
+				"title": "Banner",
+				"desc": "Configure your profile banner"
+			},
+			"card": {
+				"title": "Profile card",
+				"desc": "Choose the card design"
+			},
+			"finish": {
+				"title": "Done!",
+				"desc": "Check the entered data and complete the setup"
+			}
+		}
+	},
+	"hideout": {
+		"item": "Item",
+		"perCraft": "Per craft",
+		"total": "Total",
+		"pricePerUnit": "Price/unit",
+		"totalPrice": "Total",
+		"energy": "Energy",
+		"cost": "Cost",
+		"search": "Search..."
+	},
+	"builds": {
+		"tags": {
+			"fat": "Fat",
+			"speed": "Speed",
+			"weight": "Weight",
+			"combo": "Combo"
+		}
+	},
+	"buildsLite": {
+		"notFound": "Build not found",
+		"pngCopied": "Image copied",
+		"copyError": "Could not copy",
+		"pngPreview": "Build preview",
+		"close": "Close",
+		"download": "Download",
+		"updated": "Build updated",
+		"updateError": "Update error",
+		"linkCopied": "Link copied",
+		"shareTitle": "Share build",
+		"copyPublicLink": "Copy public link",
+		"copyBuildCode": "Copy build code",
+		"updateServer": "Update on server",
+		"publish": "Publish",
+		"tagsLabel": "Tags",
+		"containerWarnTitle": "Container is smaller than the current one",
+		"containerWarnDesc": "Artifacts in the removed slots will be detached from the container.",
+		"lostSlots": "Occupied slots to be lost: {count}",
+		"confirm": "Confirm",
+		"compare": "Compare",
+		"compareStop": "Exit comparison"
+	},
+	"items": {
+		"auction": {
+			"history": "Sales history",
+			"current": "Current lots",
+			"lotHistory": "Lot history",
+			"date": "Date",
+			"listDate": "List date",
+			"endDate": "Auction end",
+			"startPrice": "Starting bid",
+			"currentPrice": "Current bid",
+			"buyout": "Buyout",
+			"amount": "Amount"
+		}
+	},
+	"users": {
+		"notFound": "User not found",
+		"profileDescription": "Profile of user {username}",
+		"secondaryWeapon": "Secondary weapon",
+		"bioArmor": "Bio armor",
+		"fatBuild": "Heavy build",
+		"speedBuild": "Fast build"
+	},
+	"auth": {
+		"title": "Authorization",
+		"error": "Authorization error",
+		"terms": "By registering on the site, you agree to these",
+		"termsLink": "terms of use",
+		"recommendationTitle": "Recommendation",
+		"recommendationDesc": "Use EXBO to get more functionality"
+	},
+	"tech": {
+		"title": "Technical work in progress"
+	},
+	"roadmap": {
+		"genesis": {
+			"title": "Project inception",
+			"description": "The start of development and formation of the core idea. Creating the first concepts and structure."
+		},
+		"cbt": {
+			"title": "CBT",
+			"description": "Closed beta testing. Checking the functionality of the site, collecting bug reports."
+		},
+		"obt": {
+			"title": "OBT",
+			"description": "Open beta testing. Preparing for release, fixing bugs, updating infrastructure."
+		},
+		"release": {
+			"title": "Project release",
+			"description": "Full launch of the project and further support."
+		}
+	},
+	"themes": {
+		"system": "System",
+		"dark": "Dark",
+		"light": "Light"
+	},
+	"clans": {
+		"title": "Clans",
+		"searchLabel": "Name or tag",
+		"recruiting": "Recruiting",
+		"empty": "No public clans",
+		"faction": "Faction",
+		"schedule": "Schedule:",
+		"brawls": "Brawls:",
+		"brawlsMandatory": "mandatory",
+		"brawlsOptional": "optional"
+	},
+	"buildsPublic": {
+		"title": "Builds",
+		"total": "{count} total",
+		"tagsPlaceholder": "Select tags",
+		"price": "Price",
+		"priceFrom": "From",
+		"priceTo": "To",
+		"sort": "Sort",
+		"sort_newest": "Newest",
+		"sort_stars": "Stars",
+		"sort_price": "Price"
+	},
+	"toolsList": {
+		"title": "Tools",
+		"subtitle": "Choose the tools you need"
+	},
+	"dashboard": {
+		"title": "Dashboard",
+		"subtitle": "Create a dashboard for yourself from calculators",
+		"addWidget": "Add widget",
+		"addWidgetSubtitle": "Select a widget and it will appear on your dashboard",
+		"search": "Search widget...",
+		"categories": {
+			"calculators": "Calculators",
+			"account": "Personal area"
+		},
+		"customize": "Customize",
+		"done": "Done",
+		"resetView": "To widgets",
+		"reset": "Reset",
+		"resetConfirm": "Remove all widgets from the board?",
+		"emptyTitle": "The dashboard is still empty",
+		"emptySubtitle": "Add the calculators and tabs you use most often",
+		"addFirstWidget": "Add the first widget",
+		"openFull": "Open full version",
+		"removeWidget": "Remove widget",
+		"loginRequired": "Log in to your account to use this widget",
+		"signIn": "Sign in",
+		"widgetError": "Could not load widget",
+		"widgets": {
+			"buildsLite": {
+				"title": "Builds Lite"
+			},
+			"ttk": {
+				"title": "TTK Calculator"
+			},
+			"arsenal": {
+				"title": "Arsenal"
+			},
+			"modules": {
+				"title": "Modules"
+			},
+			"hideout": {
+				"title": "Hideout"
+			},
+			"bp": {
+				"title": "Battle Pass"
+			},
+			"dpi": {
+				"title": "DPI Converter"
+			},
+			"meHome": {
+				"title": "Personal area — Home"
+			},
+			"meBuilds": {
+				"title": "Personal area — Builds"
+			},
+			"meArticles": {
+				"title": "Personal area — Articles"
+			},
+			"meNotifications": {
+				"title": "Personal area — Notifications"
+			},
+			"meStars": {
+				"title": "Personal area — Favorites"
+			},
+			"clan": {
+				"title": "Clan — Summary"
+			},
+			"clanMembers": {
+				"title": "Clan — Members"
+			},
+			"clanSessions": {
+				"title": "Clan — Sessions"
+			},
+			"clanAbsences": {
+				"title": "Clan — Absences"
+			},
+			"clanGold": {
+				"title": "Clan — Gold drops"
+			},
+			"clanGrenades": {
+				"title": "Clan — Grenades"
+			},
+			"clanSquads": {
+				"title": "Clan — Squads"
+			},
+			"clanStats": {
+				"title": "Clan — Statistics"
+			}
+		}
+	}
+}
