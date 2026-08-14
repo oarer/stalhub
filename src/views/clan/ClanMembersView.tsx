@@ -3,6 +3,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { useMemo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -25,6 +26,17 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 	const { data: members, isLoading } = useSuspenseQuery(
 		clanQueries.getMembers(clanId)
 	)
+	const { data: squads } = useSuspenseQuery(clanQueries.getSquads(clanId))
+
+	const squadByMemberId = useMemo(() => {
+		const map = new Map<number, string>()
+		for (const squad of squads ?? []) {
+			for (const m of squad.members) {
+				map.set(m.memberId, squad.name)
+			}
+		}
+		return map
+	}, [squads])
 
 	if (isLoading) {
 		return (
@@ -79,12 +91,23 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 								)}
 							</div>
 						</div>
-						<Badge
-							className={RANK_COLORS[member.rank] ?? ''}
-							variant="secondary"
-						>
-							{t(`player.rank.${member.rank}`)}
-						</Badge>
+						<div className="flex items-center gap-2">
+							{squadByMemberId.has(member.id) && (
+								<Badge
+									className={montserrat.className}
+									title={t('clan.members.squad')}
+									variant="secondary"
+								>
+									{squadByMemberId.get(member.id)}
+								</Badge>
+							)}
+							<Badge
+								className={RANK_COLORS[member.rank] ?? ''}
+								variant="secondary"
+							>
+								{t(`player.rank.${member.rank}`)}
+							</Badge>
+						</div>
 					</div>
 				))}
 			</div>
