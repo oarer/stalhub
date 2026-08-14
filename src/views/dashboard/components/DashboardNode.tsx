@@ -35,7 +35,7 @@ export const DashboardNodeView = memo(function DashboardNodeView({
 				<div className="flex shrink-0 cursor-move touch-none select-none items-center justify-between gap-2 border-border-secondary border-b px-3 py-2">
 					<div className="flex min-w-0 items-center gap-2">
 						<Icon
-							className="shrink-0 text-cyan-500 text-lg"
+							className="shrink-0 text-border text-lg"
 							icon={def.icon}
 						/>
 						<p className="truncate font-semibold text-sm">

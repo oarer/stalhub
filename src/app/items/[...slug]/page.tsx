@@ -5,6 +5,7 @@ import { getLocaleServer } from '@/lib/getLocaleServer'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
+import type { Item } from '@/types/item.type'
 import ItemsView from '@/views/items'
 
 type PageProps = {
@@ -60,6 +61,16 @@ export default async function ItemsPage({ params }: PageProps) {
 		queryClient.prefetchQuery(auctionQueries.lots({ id })),
 		queryClient.prefetchQuery(auctionQueries.history({ id })),
 	])
+
+	const item = queryClient.getQueryData<Item>(
+		itemQueries.byGithubUrl(githubUrl).queryKey
+	)
+
+	if (item?.category.startsWith('weapon/')) {
+		await Promise.allSettled([
+			queryClient.prefetchQuery(itemQueries.attachments(id)),
+		])
+	}
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

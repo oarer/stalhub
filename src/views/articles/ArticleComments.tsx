@@ -9,6 +9,7 @@ import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { formatDate } from '@/lib/date'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleCommentQueries } from '@/queries/article/comment.queries'
@@ -26,12 +27,13 @@ function renderContent(text: string) {
 	return parts.map((part, i) => {
 		if (part.match(mentionRegex)) {
 			return (
-				<span
-					className={`${montserrat.className} font-semibold text-sky-400`}
-					key={i}
-				>
-					{part}
-				</span>
+				<HoverUserCard key={i} username={part.slice(1)}>
+					<span
+						className={`${montserrat.className} font-semibold text-border`}
+					>
+						{part}
+					</span>
+				</HoverUserCard>
 			)
 		}
 		return part
@@ -145,7 +147,7 @@ export default function ArticleComments({ articleId }: ArticleCommentsProps) {
 						admin={!!isAdmin}
 						articleId={articleId}
 						comment={comment}
-						currentUserId={user?.id}
+						currentUserId={user ? String(user.id) : undefined}
 						key={comment.id}
 						onDelete={(id) => deleteMutation.mutate(id)}
 						onReply={handleReply}
@@ -154,7 +156,7 @@ export default function ArticleComments({ articleId }: ArticleCommentsProps) {
 				))}
 
 				{topLevel.length === 0 && (
-					<p className="py-4 text-center text-neutral-400 text-sm">
+					<p className="py-4 text-center font-semibold text-sm text-text-accent">
 						{t('articles.comments.empty')}
 					</p>
 				)}
@@ -196,11 +198,13 @@ function CommentItem({
 							unoptimized
 							width={42}
 						/>
-						<span
-							className={`${montserrat.className} font-semibold text-xs`}
-						>
-							{comment.author.username}
-						</span>
+						<HoverUserCard id={comment.author.id}>
+							<span
+								className={`${montserrat.className} font-semibold text-xs`}
+							>
+								{comment.author.username}
+							</span>
+						</HoverUserCard>
 						<span
 							className={`${montserrat.className} font-semibold text-text-accent text-xs`}
 						>

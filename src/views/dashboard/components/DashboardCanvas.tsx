@@ -53,27 +53,28 @@ export function DashboardCanvas() {
 
 		for (const item of items) {
 			const cached = cache.get(item.id)
-			const base: DashboardNodeType = cached ?? {
-				id: item.id,
-				type: 'dashboard',
-				data: { widgetId: item.widgetId },
-				position: { x: item.x, y: item.y },
-				deletable: false,
-				selectable: false,
-			}
-			const node: DashboardNodeType =
+			const unchanged =
 				cached &&
 				cached.position?.x === item.x &&
 				cached.position?.y === item.y &&
 				cached.width === item.w &&
 				cached.height === item.h
-					? cached
-					: {
-							...base,
-							position: { x: item.x, y: item.y },
-							width: item.w,
-							height: item.h,
-						}
+
+			const node: DashboardNodeType = unchanged
+				? cached
+				: {
+						id: item.id,
+						type: 'dashboard',
+						data: { widgetId: item.widgetId },
+						position: { x: item.x, y: item.y },
+						width: item.w,
+						height: item.h,
+						deletable: false,
+						selectable: false,
+						measured:
+							cached?.measured ?? { width: item.w, height: item.h },
+					}
+
 			cache.set(item.id, node)
 			result.push(node)
 		}
@@ -99,6 +100,12 @@ export function DashboardCanvas() {
 						change.dimensions.width,
 						change.dimensions.height
 					)
+					const cached = nodesCache.current.get(change.id)
+					if (cached) {
+						cached.measured = { ...change.dimensions }
+						cached.width = change.dimensions.width
+						cached.height = change.dimensions.height
+					}
 				}
 			}
 		},

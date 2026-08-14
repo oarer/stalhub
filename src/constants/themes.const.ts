@@ -5,7 +5,11 @@ export interface Theme {
 }
 
 export const themes: Theme[] = [
-	{ name: 'system', title: 'Системная', iconName: 'lucide:laptop-minimal' },
-	{ name: 'dark', title: 'Тёмная', iconName: 'lucide:moon-star' },
-	{ name: 'light', title: 'Светлая', iconName: 'lucide:sun' },
+	{
+		name: 'system',
+		title: 'themes.system',
+		iconName: 'lucide:laptop-minimal',
+	},
+	{ name: 'dark', title: 'themes.dark', iconName: 'lucide:moon-star' },
+	{ name: 'light', title: 'themes.light', iconName: 'lucide:sun' },
 ]

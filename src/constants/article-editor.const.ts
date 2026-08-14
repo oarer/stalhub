@@ -60,112 +60,115 @@ export const STATUS_VARIANT: Record<
 }
 
 export const TABLE_MAX = 8
-export const TABLE_HEADER_PLACEHOLDER = 'Заголовок'
+export const TABLE_HEADER_PLACEHOLDER = 'me.articleEditor.hotkeys.heading'
 
-export const MDX_COMPONENT_SNIPPET = (type: string) =>
-	`:::${type} Заголовок\nКонтент\n:::\n`
+export const MDX_COMPONENT_SNIPPET = (
+	type: string,
+	heading: string,
+	content: string
+) => `:::${type} ${heading}\n${content}\n:::\n`
 
 export const HORIZONTAL_RULE = '\n---\n'
 
 export const TOOLBAR_ACTION_CONFIGS: ToolbarActionConfig[] = [
 	{
 		icon: 'lucide:bold',
-		label: 'Bold',
+		label: 'me.articleEditor.toolbar.bold',
 		shortcut: 'Ctrl+B',
 		type: 'wrap',
 		prefix: '**',
 		suffix: '**',
-		placeholder: 'текст',
+		placeholder: 'me.articleEditor.hotkeys.text',
 	},
 	{
 		icon: 'lucide:italic',
-		label: 'Italic',
+		label: 'me.articleEditor.toolbar.italic',
 		shortcut: 'Ctrl+I',
 		type: 'wrap',
 		prefix: '*',
 		suffix: '*',
-		placeholder: 'текст',
+		placeholder: 'me.articleEditor.hotkeys.text',
 	},
 	{
 		icon: 'lucide:strikethrough',
-		label: 'Strikethrough',
+		label: 'me.articleEditor.toolbar.strikethrough',
 		shortcut: 'Ctrl+Shift+X',
 		type: 'wrap',
 		prefix: '~~',
 		suffix: '~~',
-		placeholder: 'текст',
+		placeholder: 'me.articleEditor.hotkeys.text',
 	},
 	{ icon: '', label: '', separator: true },
 	{
 		icon: 'lucide:heading',
-		label: 'Heading',
+		label: 'me.articleEditor.toolbar.heading',
 		shortcut: 'Ctrl+Shift+H',
 		type: 'line',
 		prefix: '## ',
-		placeholder: 'Заголовок',
+		placeholder: 'me.articleEditor.hotkeys.heading',
 	},
 	{
 		icon: 'lucide:quote',
-		label: 'Quote',
+		label: 'me.articleEditor.toolbar.quote',
 		shortcut: 'Ctrl+Shift+.',
 		type: 'line',
 		prefix: '> ',
-		placeholder: 'Цитата',
+		placeholder: 'me.articleEditor.hotkeys.quote',
 	},
 	{
 		icon: 'lucide:code',
-		label: 'Code',
+		label: 'me.articleEditor.toolbar.inlineCode',
 		shortcut: 'Ctrl+E',
 		type: 'wrap',
 		prefix: '`',
 		suffix: '`',
-		placeholder: 'code',
+		placeholder: 'me.articleEditor.hotkeys.code',
 	},
 	{
 		icon: 'lucide:file-code',
-		label: 'Code block',
+		label: 'me.articleEditor.toolbar.codeBlock',
 		shortcut: 'Ctrl+Shift+E',
 		type: 'code-block',
 	},
 	{ icon: '', label: '', separator: true },
 	{
 		icon: 'lucide:link',
-		label: 'Link',
+		label: 'me.articleEditor.toolbar.link',
 		shortcut: 'Ctrl+K',
 		type: 'wrap',
 		prefix: '[',
 		suffix: '](url)',
-		placeholder: 'текст',
+		placeholder: 'me.articleEditor.hotkeys.text',
 	},
 	{
 		icon: 'lucide:image',
-		label: 'Image',
+		label: 'me.articleEditor.toolbar.image',
 		shortcut: 'Ctrl+Shift+I',
 		type: 'wrap',
 		prefix: '![',
 		suffix: '](url)',
-		placeholder: 'alt',
+		placeholder: 'me.articleEditor.hotkeys.alt',
 	},
 	{ icon: '', label: '', separator: true },
 	{
 		icon: 'lucide:list',
-		label: 'Unordered list',
+		label: 'me.articleEditor.toolbar.bulletList',
 		shortcut: 'Ctrl+Shift+8',
 		type: 'line',
 		prefix: '- ',
-		placeholder: 'Пункт',
+		placeholder: 'me.articleEditor.hotkeys.item',
 	},
 	{
 		icon: 'lucide:list-ordered',
-		label: 'Ordered list',
+		label: 'me.articleEditor.toolbar.orderedList',
 		shortcut: 'Ctrl+Shift+9',
 		type: 'line',
 		prefix: '1. ',
-		placeholder: 'Пункт',
+		placeholder: 'me.articleEditor.hotkeys.item',
 	},
 	{
 		icon: 'lucide:minus',
-		label: 'Horizontal rule',
+		label: 'me.articleEditor.toolbar.horizontalRule',
 		shortcut: 'Ctrl+Shift+7',
 		type: 'line',
 		prefix: HORIZONTAL_RULE,
@@ -174,14 +177,14 @@ export const TOOLBAR_ACTION_CONFIGS: ToolbarActionConfig[] = [
 	{ icon: '', label: '', separator: true },
 	{
 		icon: 'lucide:table',
-		label: 'Table',
+		label: 'me.articleEditor.toolbar.table',
 		shortcut: 'Ctrl+Shift+T',
 		type: 'modal',
 		modal: 'table',
 	},
 	{
 		icon: 'lucide:puzzle',
-		label: 'Components',
+		label: 'me.articleEditor.toolbar.components',
 		shortcut: 'Ctrl+Shift+M',
 		type: 'modal',
 		modal: 'components',

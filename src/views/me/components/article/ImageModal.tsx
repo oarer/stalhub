@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 
@@ -16,6 +17,7 @@ export function ImageModal({
 	onSave,
 }: ImageModalProps) {
 	const [draft, setDraft] = useState(initialUrl)
+	const t = useTranslations()
 
 	const handleSave = () => {
 		onSave(draft)
@@ -31,13 +33,15 @@ export function ImageModal({
 		<Modal.Root onOpenChange={handleOpenChange} open={open}>
 			<Modal.Content className="max-w-md" fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>Обложка статьи</Modal.Title>
+					<Modal.Title>
+						{t('me.articleEditor.coverTitle')}
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						<Input
 							autoFocus
-							label="URL изображения"
+							label="me.articleEditor.imageUrl"
 							onChange={(e) => setDraft(e.target.value)}
 							value={draft}
 						/>
@@ -60,10 +64,12 @@ export function ImageModal({
 						}}
 						variant="danger"
 					>
-						Удалить
+						{t('me.articleEditor.delete')}
 					</Modal.Action>
-					<Modal.Close>Отмена</Modal.Close>
-					<Modal.Action onClick={handleSave}>Сохранить</Modal.Action>
+					<Modal.Close>{t('me.articleEditor.cancel')}</Modal.Close>
+					<Modal.Action onClick={handleSave}>
+						{t('me.articleEditor.saveBtn')}
+					</Modal.Action>
 				</Modal.Footer>
 			</Modal.Content>
 		</Modal.Root>

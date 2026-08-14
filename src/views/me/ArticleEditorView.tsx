@@ -3,17 +3,13 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Tabs } from '@/components/ui/Tabs'
 import { toast } from '@/components/ui/Toast'
-import {
-	AUTOSAVE_DELAY,
-	type EditorTab,
-	PREVIEW_DEBOUNCE,
-} from '@/constants/article-editor.const'
-import { compileMdx } from '@/lib/actions/mdx'
+import type { EditorTab } from '@/constants/article-editor.const'
 import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
@@ -26,31 +22,26 @@ import {
 import { ComponentsModal } from './components/article/ComponentsModal'
 import { EditorPane } from './components/article/EditorPane'
 import { EditorToolbar } from './components/article/EditorToolbar'
-import {
-	applyEdit,
-	insertAtLineStart,
-	parseTags,
-	wrapSelection,
-} from './components/article/editor-utils'
+import { parseTags } from './components/article/editor-utils'
 import { ImageModal } from './components/article/ImageModal'
 import { PreviewPane } from './components/article/PreviewPane'
 import { TableModal } from './components/article/TableModal'
 import { TagsModal } from './components/article/TagsModal'
+import { useArticleHotkeys } from './hooks/useArticleHotkeys'
+import { useAutosave } from './hooks/useAutosave'
+import { useCompiledPreview } from './hooks/useCompiledPreview'
+import { useSyncedScroll } from './hooks/useSyncedScroll'
 
 interface ArticleEditorProps {
 	articleId: string
 }
 
-//! TODO ADD i18n
-
 export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 	const router = useRouter()
 	const queryClient = getQueryClient()
+	const t = useTranslations()
 	const textareaRef = useRef<HTMLTextAreaElement>(null)
 	const previewRef = useRef<HTMLDivElement>(null)
-	const scrollingFrom = useRef<'editor' | 'preview' | null>(null)
-	const autosaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-	const previewTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
 	const { data: article } = useSuspenseQuery(articleQueries.get(articleId))
 
@@ -61,8 +52,6 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 	const [mobileTab, setMobileTab] = useState<EditorTab>('write')
 	const [isSaving, setIsSaving] = useState(false)
 	const [lastSaved, setLastSaved] = useState<Date | null>(null)
-	const [compiledSource, setCompiledSource] = useState<string>('')
-	const [compileError, setCompileError] = useState(false)
 	const [tagsModalOpen, setTagsModalOpen] = useState(false)
 	const [componentsModalOpen, setComponentsModalOpen] = useState(false)
 	const [tableModalOpen, setTableModalOpen] = useState(false)
@@ -85,7 +74,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		},
 		onError: () => {
 			setIsSaving(false)
-			toast.error('Ошибка при сохранении')
+			toast.error(t('me.articleEditor.toastSaveError'))
 		},
 	})
 
@@ -94,11 +83,11 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['article', articleId] })
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
-			toast.success('Статья отправлена на рассмотрение')
+			toast.success(t('me.articleEditor.toastSubmitted'))
 			router.push('/me/articles')
 		},
 		onError: () => {
-			toast.error('Ошибка при отправке')
+			toast.error(t('me.articleEditor.toastSubmitError'))
 		},
 	})
 
@@ -121,214 +110,29 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		setTags(newTags)
 	}
 
-	useEffect(() => {
-		const handleKeyDown = (e: KeyboardEvent) => {
-			const mod = e.ctrlKey || e.metaKey
-			if (!mod) return
+	const { handleEditorScroll, handlePreviewScroll } = useSyncedScroll(
+		textareaRef,
+		previewRef
+	)
 
-			const ta = textareaRef.current
-			if (!ta) return
+	useArticleHotkeys({
+		isDirty,
+		onSave: save,
+		openComponents: () => setComponentsModalOpen(true),
+		openTable: () => setTableModalOpen(true),
+		setContent,
+		textareaRef,
+	})
 
-			const code = e.code
+	useAutosave({ isDirty, onSave: save })
 
-			if (code === 'KeyS') {
-				e.preventDefault()
-				if (isDirty) save()
-				return
-			}
-
-			if (code === 'KeyB') {
-				e.preventDefault()
-				applyEdit(
-					ta,
-					setContent,
-					wrapSelection(ta, '**', '**', 'текст')
-				)
-				return
-			}
-			if (code === 'KeyI' && !e.shiftKey) {
-				e.preventDefault()
-				applyEdit(ta, setContent, wrapSelection(ta, '*', '*', 'текст'))
-				return
-			}
-			if (code === 'KeyE' && !e.shiftKey) {
-				e.preventDefault()
-				applyEdit(ta, setContent, wrapSelection(ta, '`', '`', 'code'))
-				return
-			}
-			if (code === 'KeyK' && !e.shiftKey) {
-				e.preventDefault()
-				applyEdit(
-					ta,
-					setContent,
-					wrapSelection(ta, '[', '](url)', 'текст')
-				)
-				return
-			}
-
-			if (e.shiftKey) {
-				if (code === 'KeyX') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						wrapSelection(ta, '~~', '~~', 'текст')
-					)
-					return
-				}
-				if (code === 'KeyH') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						insertAtLineStart(ta, '## ', 'Заголовок')
-					)
-					return
-				}
-				if (code === 'Period') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						insertAtLineStart(ta, '> ', 'Цитата')
-					)
-					return
-				}
-				if (code === 'KeyE') {
-					e.preventDefault()
-					const start = ta.selectionStart
-					const end = ta.selectionEnd
-					const selected = ta.value.slice(start, end)
-					const block = `\`\`\`\n${selected || 'code'}\n\`\`\``
-					const next =
-						ta.value.slice(0, start) + block + ta.value.slice(end)
-					applyEdit(ta, setContent, {
-						next,
-						newStart: start + 4,
-						newEnd: start + 4 + (selected || 'code').length,
-					})
-					return
-				}
-				if (code === 'KeyI') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						wrapSelection(ta, '![', '](url)', 'alt')
-					)
-					return
-				}
-				if (code === 'Digit8') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						insertAtLineStart(ta, '- ', 'Пункт')
-					)
-					return
-				}
-				if (code === 'Digit9') {
-					e.preventDefault()
-					applyEdit(
-						ta,
-						setContent,
-						insertAtLineStart(ta, '1. ', 'Пункт')
-					)
-					return
-				}
-				if (code === 'Digit7') {
-					e.preventDefault()
-					const start = ta.selectionStart
-					const next =
-						ta.value.slice(0, start) +
-						'\n---\n' +
-						ta.value.slice(start)
-					applyEdit(ta, setContent, {
-						next,
-						newStart: start + 5,
-						newEnd: start + 5,
-					})
-					return
-				}
-				if (code === 'KeyM') {
-					e.preventDefault()
-					setComponentsModalOpen(true)
-					return
-				}
-				if (code === 'KeyT') {
-					e.preventDefault()
-					setTableModalOpen(true)
-					return
-				}
-			}
-		}
-		window.addEventListener('keydown', handleKeyDown)
-		return () => window.removeEventListener('keydown', handleKeyDown)
-	}, [isDirty, save])
-
-	useEffect(() => {
-		if (!isDirty) return
-		if (autosaveTimerRef.current) clearTimeout(autosaveTimerRef.current)
-		autosaveTimerRef.current = setTimeout(() => {
-			save()
-		}, AUTOSAVE_DELAY)
-		return () => {
-			if (autosaveTimerRef.current) clearTimeout(autosaveTimerRef.current)
-		}
-	}, [isDirty, save])
-
-	useEffect(() => {
-		if (!content.trim()) {
-			setCompiledSource('')
-			setCompileError(false)
-			return
-		}
-		if (previewTimerRef.current) clearTimeout(previewTimerRef.current)
-		previewTimerRef.current = setTimeout(async () => {
-			try {
-				const result = await compileMdx(content)
-				setCompiledSource(result.compiledSource)
-				setCompileError(false)
-			} catch {
-				setCompileError(true)
-			}
-		}, PREVIEW_DEBOUNCE)
-		return () => {
-			if (previewTimerRef.current) clearTimeout(previewTimerRef.current)
-		}
-	}, [content])
+	const { compiledSource, compileError } = useCompiledPreview(content)
 
 	useEffect(() => {
 		if (mobileTab === 'write') {
 			textareaRef.current?.focus()
 		}
 	}, [mobileTab])
-
-	const handleEditorScroll = useCallback(() => {
-		if (scrollingFrom.current && scrollingFrom.current !== 'editor') return
-		const ta = textareaRef.current
-		const pv = previewRef.current
-		if (!ta || !pv) return
-		scrollingFrom.current = 'editor'
-		const ratio = ta.scrollTop / (ta.scrollHeight - ta.clientHeight || 1)
-		pv.scrollTop = ratio * (pv.scrollHeight - pv.clientHeight)
-		requestAnimationFrame(() => {
-			scrollingFrom.current = null
-		})
-	}, [])
-
-	const handlePreviewScroll = useCallback(() => {
-		if (scrollingFrom.current && scrollingFrom.current !== 'preview') return
-		const ta = textareaRef.current
-		const pv = previewRef.current
-		if (!ta || !pv) return
-		scrollingFrom.current = 'preview'
-		const ratio = pv.scrollTop / (pv.scrollHeight - pv.clientHeight || 1)
-		ta.scrollTop = ratio * (ta.scrollHeight - ta.clientHeight)
-		requestAnimationFrame(() => {
-			scrollingFrom.current = null
-		})
-	}, [])
 
 	return (
 		<section className="flex h-full flex-col gap-2">
@@ -343,7 +147,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 					</Button>
 					<Input
 						className="flex-1 border-0"
-						label="Название статьи"
+						label="me.articleEditor.title"
 						onChange={(e) => setTitle(e.target.value)}
 						value={title}
 					/>
@@ -356,18 +160,18 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 							ARTICLE_STATUS_META[article.status].color
 						)}
 					>
-						{ARTICLE_STATUS_META[article.status].label}
+						{t(`articles.status.${article.status}`)}
 					</span>
 
 					{isDirty && (
 						<span className="hidden font-semibold text-text-accent text-xs sm:inline-block">
-							Не сохранено
+							{t('me.articleEditor.notSaved')}
 						</span>
 					)}
 
 					{lastSaved && !isDirty && (
 						<span className="hidden font-semibold text-text-accent text-xs sm:inline-block">
-							Сохранено
+							{t('me.articleEditor.saved')}
 						</span>
 					)}
 				</div>
@@ -396,10 +200,10 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				>
 					<Tabs.List className="w-full">
 						<Tabs.Trigger className="flex-1" value="write">
-							Редактирование
+							{t('me.articleEditor.edit')}
 						</Tabs.Trigger>
 						<Tabs.Trigger className="flex-1" value="preview">
-							Просмотр
+							{t('me.articleEditor.preview')}
 						</Tabs.Trigger>
 					</Tabs.List>
 				</Tabs.Root>

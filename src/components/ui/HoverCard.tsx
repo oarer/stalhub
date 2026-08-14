@@ -1,10 +1,14 @@
 'use client'
 
+import { Slot } from '@radix-ui/react-slot'
 import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react'
 import type React from 'react'
 import {
+	Children,
+	cloneElement,
 	createContext,
 	forwardRef,
+	isValidElement,
 	useCallback,
 	useContext,
 	useEffect,
@@ -107,13 +111,16 @@ export const HoverCardRoot = forwardRef<HTMLDivElement, RootProps>(
 	}
 )
 
-type TriggerProps = React.HTMLAttributes<HTMLDivElement>
+type TriggerProps = React.HTMLAttributes<HTMLDivElement> & {
+	asChild?: boolean
+}
 
 export const HoverCardTrigger = forwardRef<HTMLDivElement, TriggerProps>(
-	function HoverCardTrigger({ className, ...props }, ref) {
+	function HoverCardTrigger({ asChild = false, className, ...props }, ref) {
+		const Comp = asChild ? Slot : 'div'
 		return (
-			<div
-				className={cn('inline-block', className)}
+			<Comp
+				className={cn(!asChild && 'inline-block cursor-pointer', className)}
 				data-slot="hover-card-trigger"
 				ref={ref}
 				{...props}
@@ -122,11 +129,54 @@ export const HoverCardTrigger = forwardRef<HTMLDivElement, TriggerProps>(
 	}
 )
 
-type Side = 'top' | 'bottom' | 'left' | 'right'
+export type HoverCardSide = 'top' | 'bottom' | 'left' | 'right'
 type Align = 'start' | 'center' | 'end'
 
+function setRef(ref: React.Ref<unknown> | undefined, node: unknown) {
+	if (typeof ref === 'function') ref(node)
+	else if (ref != null) (ref as React.RefObject<unknown>).current = node
+}
+
+function getChildRef(child: React.ReactElement) {
+	return (
+		(child as React.ReactElement & { ref?: React.Ref<unknown> }).ref ??
+		(child.props as { ref?: React.Ref<unknown> }).ref ??
+		null
+	)
+}
+
+const StableSlot = forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+	function StableSlot({ children, ...props }, forwardedRef) {
+		const child = Children.toArray(children)[0]
+
+		const refs = useRef({
+			forwarded: forwardedRef,
+			child: isValidElement(child) ? getChildRef(child) : null,
+		})
+		refs.current.forwarded = forwardedRef
+		if (isValidElement(child)) refs.current.child = getChildRef(child)
+
+		const ref = useRef((node: unknown) => {
+			setRef(refs.current.forwarded, node)
+			setRef(refs.current.child, node)
+		})
+
+		if (!isValidElement(child)) return null
+
+		return cloneElement(child, {
+			...props,
+			ref: ref.current,
+		} as React.HTMLAttributes<HTMLElement> & {
+			ref: React.Ref<unknown>
+		})
+	}
+)
+
+const MotionSlot = motion.create(StableSlot)
+
 type ContentProps = Omit<HTMLMotionProps<'div'>, 'ref'> & {
-	side?: Side
+	asChild?: boolean
+	side?: HoverCardSide
 	align?: Align
 	sideOffset?: number
 }
@@ -135,6 +185,7 @@ export const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 	function HoverCardContent(
 		{
 			className,
+			asChild = false,
 			side = 'bottom',
 			align = 'center',
 			sideOffset = 8,
@@ -171,39 +222,69 @@ export const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 						? 'bottom-0'
 						: 'top-1/2 -translate-y-1/2'
 
+		const motionProps = {
+			animate: {
+				opacity: 1,
+				scale: 1,
+				[axis]: 0,
+			},
+			initial: {
+				opacity: 0,
+				scale: 0.95,
+				[axis]: 4 * sign,
+			},
+			exit: {
+				opacity: 0,
+				scale: 0.95,
+				[axis]: 4 * sign,
+				pointerEvents: 'none' as const,
+			},
+			transition: {
+				type: 'spring' as const,
+				stiffness: 500,
+				damping: 30,
+				mass: 0.8,
+			},
+		}
+
+		const contentProps = {
+			...props,
+			className: cn(
+				'absolute z-50',
+				alignClass,
+				'w-64 rounded-lg border-2 border-border/60 bg-background p-4 shadow-md',
+				className
+			),
+			id: `hover-card-content-${id}`,
+			role: 'dialog',
+			style: {
+				...sideStyle,
+				...props.style,
+			},
+			ref,
+		}
+
 		return (
 			<AnimatePresence>
-				{open && (
-					<motion.div
-						animate={{ opacity: 1, scale: 1, [axis]: 0 }}
-						className={cn(
-							'absolute z-50',
-							alignClass,
-							'w-64 rounded-lg border-2 border-border/60 bg-background p-4 shadow-md',
-							className
-						)}
-						exit={{
-							opacity: 0,
-							scale: 0.95,
-							[axis]: 4 * sign,
-							pointerEvents: 'none',
-						}}
-						id={`hover-card-content-${id}`}
-						initial={{ opacity: 0, scale: 0.95, [axis]: 4 * sign }}
-						ref={ref}
-						role="dialog"
-						style={sideStyle}
-						transition={{
-							type: 'spring',
-							stiffness: 500,
-							damping: 30,
-							mass: 0.8,
-						}}
-						{...props}
-					>
-						{children}
-					</motion.div>
-				)}
+				{open ? (
+					asChild ? (
+						<MotionSlot
+							key="content"
+							{...motionProps}
+							{...contentProps}
+						>
+							{children}
+						</MotionSlot>
+					) : (
+						<motion.div
+							key="content"
+							{...motionProps}
+							{...contentProps}
+						>
+							{children}
+						</motion.div>
+					)
+				) : null}
 			</AnimatePresence>
 		)
 	}

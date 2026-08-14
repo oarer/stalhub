@@ -3,6 +3,17 @@ import type { Locale, Message } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import type { ArsenalRow } from './ArsenalCalc'
 
+function getDaysLabel(days: number, t: (key: string) => string) {
+	const mod10 = days % 10
+	const mod100 = days % 100
+
+	if (mod10 === 1 && mod100 !== 11)
+		return `${days} ${t('arsenal.table.days.one')}`
+	if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14))
+		return `${days} ${t('arsenal.table.days.few')}`
+	return `${days} ${t('arsenal.table.days.many')}`
+}
+
 export function getArsenalColumns(
 	locale: Locale,
 	t: (key: string) => string
@@ -63,22 +74,45 @@ export function getArsenalColumns(
 			),
 		},
 		{
+			accessorKey: 'limit',
+			header: t('arsenal.table.limit'),
+			cell: ({ getValue }) => {
+				const limit = getValue<number | undefined>()
+
+				return limit && limit > 0 ? (
+					<span className="font-mono text-amber-400">×{limit}</span>
+				) : (
+					<span className="font-mono text-neutral-500">∞</span>
+				)
+			},
+		},
+		{
 			accessorKey: 'neededCount',
 			header: t('arsenal.table.neededCount'),
 			enableSorting: true,
-			cell: ({ getValue }) => {
+			cell: ({ getValue, row }) => {
 				const count = getValue<number>()
 
+				if (count <= 0) {
+					return (
+						<span className="font-mono text-neutral-500">-</span>
+					)
+				}
+
+				if (!row.original.limitExceeded) {
+					return <span className="font-mono text-blue-400">×{count}</span>
+				}
+
 				return (
-					<span
-						className={
-							count > 0
-								? 'font-mono text-blue-400'
-								: 'font-mono text-neutral-500'
-						}
-					>
-						{count > 0 ? `×${count}` : '-'}
-					</span>
+					<div className="flex flex-col gap-0.5">
+						<span className="font-mono text-blue-400">
+							×{row.original.limit}
+						</span>
+						<span className="text-amber-400 text-xs">
+							{t('arsenal.table.maxPerDay')} ·{' '}
+							{getDaysLabel(row.original.days, t)}
+						</span>
+					</div>
 				)
 			},
 		},

@@ -2,7 +2,7 @@
 	"base": {
 		"title": "StalHub — калькуляторы, сборки и гайды для StalZone",
 		"description": "Инструменты для StalZone (Stalcraft): калькуляторы TTK, сборок, Арсенала, оружия и полезные гайды.",
-		"url": "https://stalhub.tech",
+		"url": "https://stalhub.dev",
 		"type": "website",
 		"alternateName": [
 			"сталхаб"
@@ -111,6 +111,20 @@
 		"openGraph": {
 			"title": "Страница не найдена · StalHub",
 			"description": "Запрашиваемая страница не найдена"
+		}
+	},
+	"/dashboard": {
+		"title": "Дашборд · StalHub",
+		"description": "Личный дашборд StalHub: соберите калькуляторы и вкладки личного кабинета в удобном порядке.",
+		"keywords": [
+			"сталхаб дашборд",
+			"stalhub dashboard",
+			"сталкрафт калькуляторы",
+			"stalcraft calculators"
+		],
+		"openGraph": {
+			"title": "Дашборд · StalHub",
+			"description": "Личный дашборд StalHub: соберите калькуляторы и вкладки личного кабинета в удобном порядке."
 		}
 	}
 }

@@ -1,11 +1,9 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -14,10 +12,10 @@ import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
+import { getQueryClient } from '@/providers/QueryProvider'
 import { adminBadgeQueries } from '@/queries/admin/badge.queries'
 import { adminBadgeService } from '@/services/admin/badge.service'
 import type { AdminBadge } from '@/types/admin.type'
-import { getQueryClient } from '@/providers/QueryProvider'
 
 type BadgeMode = 'icon' | 'image'
 
@@ -34,6 +32,8 @@ function BadgePreview({
 	icon: string
 	image: string
 }) {
+	const t = useTranslations()
+
 	return (
 		<Tooltip.Root>
 			<Tooltip.Trigger asChild>
@@ -56,12 +56,15 @@ function BadgePreview({
 					) : null}
 				</button>
 			</Tooltip.Trigger>
-			<Tooltip.Content>{name || 'Бейдж'}</Tooltip.Content>
+			<Tooltip.Content>
+				{name || t('admin.badges.defaultName')}
+			</Tooltip.Content>
 		</Tooltip.Root>
 	)
 }
 
 export default function BadgesAdminView() {
+	const t = useTranslations()
 	const queryClient = getQueryClient()
 
 	const { data: badges } = useSuspenseQuery(adminBadgeQueries.list())
@@ -88,7 +91,7 @@ export default function BadgesAdminView() {
 				color: createColor || undefined,
 			}),
 		onSuccess: () => {
-			toast.success('Бейдж создан')
+			toast.success(t('admin.badges.toast.created'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'badges'] })
 			setCreateName('')
 			setCreateMode('icon')
@@ -96,7 +99,7 @@ export default function BadgesAdminView() {
 			setCreateImage('')
 			setCreateColor('#0ea5e9')
 		},
-		onError: () => toast.error('Ошибка создания'),
+		onError: () => toast.error(t('admin.permissions.toast.createError')),
 	})
 
 	const updateMutation = useMutation({
@@ -113,20 +116,20 @@ export default function BadgesAdminView() {
 				color: editColor || undefined,
 			}),
 		onSuccess: () => {
-			toast.success('Бейдж обновлён')
+			toast.success(t('admin.badges.toast.updated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'badges'] })
 			setEditBadge(null)
 		},
-		onError: () => toast.error('Ошибка обновления'),
+		onError: () => toast.error(t('admin.permissions.toast.updateError')),
 	})
 
 	const deleteMutation = useMutation({
 		mutationFn: (id: number) => adminBadgeService.delete(id),
 		onSuccess: () => {
-			toast.success('Бейдж удалён')
+			toast.success(t('admin.badges.toast.deleted'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'badges'] })
 		},
-		onError: () => toast.error('Ошибка удаления'),
+		onError: () => toast.error(t('admin.permissions.toast.deleteError')),
 	})
 
 	const openEdit = (badge: AdminBadge) => {
@@ -141,9 +144,11 @@ export default function BadgesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">Бейджи</h1>
+				<h1 className="font-semibold text-2xl">
+					{t('admin.badges.title')}
+				</h1>
 				<span className="text-neutral-400 text-sm">
-					{badges?.length ?? 0} всего
+					{badges?.length ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -151,7 +156,7 @@ export default function BadgesAdminView() {
 				<Card.Header>
 					<Card.Title>
 						<Icon icon="lucide:plus" />
-						Создать бейдж
+						{t('admin.badges.create')}
 					</Card.Title>
 				</Card.Header>
 				<Card.Content>
@@ -159,7 +164,7 @@ export default function BadgesAdminView() {
 						<div className="flex items-end gap-3">
 							<div className="max-w-60">
 								<Input
-									label="Название"
+									label="admin.permissions.name"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setCreateName(e.target.value)}
@@ -169,7 +174,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex flex-col gap-1.5">
 								<p className="font-semibold text-text-accent text-xs">
-									Тип
+									{t('admin.badges.type')}
 								</p>
 								<div className="flex gap-1">
 									<button
@@ -185,7 +190,7 @@ export default function BadgesAdminView() {
 											className="size-3.5"
 											icon="lucide:sparkles"
 										/>
-										Иконка
+										{t('admin.badges.icon')}
 									</button>
 									<button
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
@@ -200,7 +205,7 @@ export default function BadgesAdminView() {
 											className="size-3.5"
 											icon="lucide:image"
 										/>
-										Картинка
+										{t('admin.badges.image')}
 									</button>
 								</div>
 							</div>
@@ -208,7 +213,7 @@ export default function BadgesAdminView() {
 							{createMode === 'icon' ? (
 								<div className="max-w-60">
 									<Input
-										label="Иконка"
+										label="admin.badges.icon"
 										onChange={(
 											e: React.ChangeEvent<HTMLInputElement>
 										) => setCreateIcon(e.target.value)}
@@ -218,7 +223,7 @@ export default function BadgesAdminView() {
 							) : (
 								<div className="max-w-80">
 									<Input
-										label="URL картинки"
+										label="admin.badges.imageUrl"
 										onChange={(
 											e: React.ChangeEvent<HTMLInputElement>
 										) => setCreateImage(e.target.value)}
@@ -237,7 +242,7 @@ export default function BadgesAdminView() {
 									value={createColor}
 								/>
 								<Input
-									label="Цвет"
+									label="admin.badges.imageUrl"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setCreateColor(e.target.value)}
@@ -250,12 +255,14 @@ export default function BadgesAdminView() {
 								loading={createMutation.isPending}
 								onClick={() => createMutation.mutate()}
 							>
-								Создать
+								{t('clan.common.create')}
 							</Button>
 						</div>
 
 						<div className="flex items-center gap-2 rounded-lg bg-background px-3 py-2 text-sm">
-							<span className="text-text-accent">Превью:</span>
+							<span className="text-text-accent">
+								{t('admin.badges.preview')}
+							</span>
 							<BadgePreview
 								color={createColor}
 								icon={createIcon}
@@ -273,9 +280,11 @@ export default function BadgesAdminView() {
 					<Table.Header>
 						<Table.Row>
 							<Table.Head>ID</Table.Head>
-							<Table.Head>Название</Table.Head>
-							<Table.Head>Тип</Table.Head>
-							<Table.Head>Цвет</Table.Head>
+							<Table.Head>
+								{t('admin.permissions.name')}
+							</Table.Head>
+							<Table.Head>{t('admin.badges.type')}</Table.Head>
+							<Table.Head>{t('admin.badges.color')}</Table.Head>
 							<Table.Head />
 						</Table.Row>
 					</Table.Header>
@@ -304,7 +313,7 @@ export default function BadgesAdminView() {
 													className="size-3"
 													icon="lucide:image"
 												/>
-												Картинка
+												{t('admin.badges.image')}
 											</span>
 										) : (
 											<span className="flex items-center gap-1">
@@ -349,19 +358,31 @@ export default function BadgesAdminView() {
 											<Modal.Content fullScreen={false}>
 												<Modal.Header>
 													<Modal.Title>
-														Удалить бейдж?
+														{t(
+															'admin.badges.deleteTitle'
+														)}
 													</Modal.Title>
 													<Modal.Description>
-														Бейдж{' '}
-														<strong>
-															{badge.name}
-														</strong>{' '}
-														будет удалён навсегда.
+														{t.rich(
+															'admin.badges.deleteDescription',
+															{
+																name: badge.name,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
+															}
+														)}
 													</Modal.Description>
 												</Modal.Header>
 												<Modal.Footer>
 													<Modal.Close>
-														Отмена
+														{t(
+															'clan.common.cancel'
+														)}
 													</Modal.Close>
 													<Modal.Action
 														closeOnClick
@@ -372,7 +393,9 @@ export default function BadgesAdminView() {
 														}
 														variant="danger"
 													>
-														Удалить
+														{t(
+															'clan.common.delete'
+														)}
 													</Modal.Action>
 												</Modal.Footer>
 											</Modal.Content>
@@ -385,7 +408,7 @@ export default function BadgesAdminView() {
 							<Table.Row>
 								<Table.Cell>
 									<span className="text-neutral-400 text-sm">
-										Нет бейджей
+										{t('admin.badges.empty')}
 									</span>
 								</Table.Cell>
 								<Table.Cell />
@@ -406,12 +429,12 @@ export default function BadgesAdminView() {
 			>
 				<Modal.Content fullScreen={false}>
 					<Modal.Header>
-						<Modal.Title>Редактировать бейдж</Modal.Title>
+						<Modal.Title>{t('admin.badges.edit')}</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
 						<div className="flex flex-col gap-3">
 							<Input
-								label="Название"
+								label="admin.permissions.name"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEditName(e.target.value)}
@@ -420,7 +443,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex flex-col gap-1.5">
 								<span className="font-semibold text-text-accent text-xs">
-									Тип
+									{t('admin.badges.type')}
 								</span>
 								<div className="flex gap-1">
 									<button
@@ -436,7 +459,7 @@ export default function BadgesAdminView() {
 											className="size-3.5"
 											icon="lucide:sparkles"
 										/>
-										Иконка
+										{t('admin.badges.icon')}
 									</button>
 									<button
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
@@ -451,14 +474,14 @@ export default function BadgesAdminView() {
 											className="size-3.5"
 											icon="lucide:image"
 										/>
-										Картинка
+										{t('admin.badges.image')}
 									</button>
 								</div>
 							</div>
 
 							{editMode === 'icon' ? (
 								<Input
-									label="Иконка"
+									label="admin.badges.icon"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setEditIcon(e.target.value)}
@@ -466,7 +489,7 @@ export default function BadgesAdminView() {
 								/>
 							) : (
 								<Input
-									label="URL картинки"
+									label="admin.badges.imageUrl"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setEditImage(e.target.value)}
@@ -484,7 +507,7 @@ export default function BadgesAdminView() {
 									value={editColor}
 								/>
 								<Input
-									label="Цвет"
+									label="admin.badges.color"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setEditColor(e.target.value)}
@@ -494,7 +517,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex items-center gap-2 rounded-lg bg-background px-3 py-2 text-sm">
 								<span className="text-text-accent">
-									Превью:
+									{t('admin.badges.preview')}
 								</span>
 								<BadgePreview
 									color={editColor}
@@ -507,12 +530,12 @@ export default function BadgesAdminView() {
 						</div>
 					</Modal.Body>
 					<Modal.Footer>
-						<Modal.Close>Отмена</Modal.Close>
+						<Modal.Close>{t('clan.common.cancel')}</Modal.Close>
 						<Modal.Action
 							closeOnClick
 							onClick={() => updateMutation.mutate()}
 						>
-							Сохранить
+							{t('clan.common.save')}
 						</Modal.Action>
 					</Modal.Footer>
 				</Modal.Content>

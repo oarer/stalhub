@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -17,6 +18,7 @@ import { adminRoleService } from '@/services/admin/role.service'
 import type { AdminRole } from '@/types/admin.type'
 
 export default function RolesAdminView() {
+	const t = useTranslations()
 	const queryClient = getQueryClient()
 	const { data: roles } = useSuspenseQuery(adminRoleQueries.list())
 	const { data: permissions } = useSuspenseQuery(
@@ -40,12 +42,12 @@ export default function RolesAdminView() {
 				description: createDescription || undefined,
 			}),
 		onSuccess: () => {
-			toast.success('Роль создана')
+			toast.success(t('admin.roles.toast.created'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })
 			setCreateName('')
 			setCreateDescription('')
 		},
-		onError: () => toast.error('Ошибка создания'),
+		onError: () => toast.error(t('admin.permissions.toast.createError')),
 	})
 
 	const updateMutation = useMutation({
@@ -55,20 +57,20 @@ export default function RolesAdminView() {
 				description: editDescription || undefined,
 			}),
 		onSuccess: () => {
-			toast.success('Роль обновлена')
+			toast.success(t('admin.roles.toast.updated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })
 			setEditRole(null)
 		},
-		onError: () => toast.error('Ошибка обновления'),
+		onError: () => toast.error(t('admin.permissions.toast.updateError')),
 	})
 
 	const deleteMutation = useMutation({
 		mutationFn: (id: number) => adminRoleService.delete(id),
 		onSuccess: () => {
-			toast.success('Роль удалена')
+			toast.success(t('admin.roles.toast.deleted'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })
 		},
-		onError: () => toast.error('Ошибка удаления'),
+		onError: () => toast.error(t('admin.permissions.toast.deleteError')),
 	})
 
 	const assignPermissionsMutation = useMutation({
@@ -77,11 +79,12 @@ export default function RolesAdminView() {
 				permissionIds: selectedPermissions,
 			}),
 		onSuccess: () => {
-			toast.success('Разрешения обновлены')
+			toast.success(t('admin.roles.toast.permissionsUpdated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })
 			setPermissionsRole(null)
 		},
-		onError: () => toast.error('Ошибка обновления разрешений'),
+		onError: () =>
+			toast.error(t('admin.roles.toast.permissionsUpdateError')),
 	})
 
 	const openEdit = (role: AdminRole) => {
@@ -98,9 +101,11 @@ export default function RolesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">Роли</h1>
+				<h1 className="font-semibold text-2xl">
+					{t('admin.roles.title')}
+				</h1>
 				<span className="text-neutral-400 text-sm">
-					{roles?.length ?? 0} всего
+					{roles?.length ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -108,14 +113,14 @@ export default function RolesAdminView() {
 				<Card.Header>
 					<Card.Title>
 						<Icon icon="lucide:plus" />
-						Создать роль
+						{t('admin.roles.create')}
 					</Card.Title>
 				</Card.Header>
 				<Card.Content>
 					<div className="flex items-end gap-3">
 						<div className="flex-1">
 							<Input
-								label="Название"
+								label="admin.permissions.name"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setCreateName(e.target.value)}
@@ -124,7 +129,7 @@ export default function RolesAdminView() {
 						</div>
 						<div className="flex-1">
 							<Input
-								label="Описание"
+								label="admin.permissions.description"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setCreateDescription(e.target.value)}
@@ -136,7 +141,7 @@ export default function RolesAdminView() {
 							loading={createMutation.isPending}
 							onClick={() => createMutation.mutate()}
 						>
-							Создать
+							{t('clan.common.create')}
 						</Button>
 					</div>
 				</Card.Content>
@@ -147,9 +152,15 @@ export default function RolesAdminView() {
 					<Table.Header>
 						<Table.Row>
 							<Table.Head>ID</Table.Head>
-							<Table.Head>Название</Table.Head>
-							<Table.Head>Описание</Table.Head>
-							<Table.Head>Разрешения</Table.Head>
+							<Table.Head>
+								{t('admin.permissions.name')}
+							</Table.Head>
+							<Table.Head>
+								{t('admin.permissions.description')}
+							</Table.Head>
+							<Table.Head>
+								{t('admin.roles.permissions')}
+							</Table.Head>
 							<Table.Head />
 						</Table.Row>
 					</Table.Header>
@@ -204,19 +215,31 @@ export default function RolesAdminView() {
 											<Modal.Content fullScreen={false}>
 												<Modal.Header>
 													<Modal.Title>
-														Удалить роль?
+														{t(
+															'admin.roles.deleteTitle'
+														)}
 													</Modal.Title>
 													<Modal.Description>
-														Роль{' '}
-														<strong>
-															{role.name}
-														</strong>{' '}
-														будет удалена навсегда.
+														{t.rich(
+															'admin.roles.deleteDescription',
+															{
+																name: role.name,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
+															}
+														)}
 													</Modal.Description>
 												</Modal.Header>
 												<Modal.Footer>
 													<Modal.Close>
-														Отмена
+														{t(
+															'clan.common.cancel'
+														)}
 													</Modal.Close>
 													<Modal.Action
 														closeOnClick
@@ -227,7 +250,9 @@ export default function RolesAdminView() {
 														}
 														variant="danger"
 													>
-														Удалить
+														{t(
+															'clan.common.delete'
+														)}
 													</Modal.Action>
 												</Modal.Footer>
 											</Modal.Content>
@@ -248,19 +273,19 @@ export default function RolesAdminView() {
 			>
 				<Modal.Content fullScreen={false}>
 					<Modal.Header>
-						<Modal.Title>Редактировать роль</Modal.Title>
+						<Modal.Title>{t('admin.roles.edit')}</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
 						<div className="flex flex-col gap-4">
 							<Input
-								label="Название"
+								label="admin.permissions.name"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEditName(e.target.value)}
 								value={editName}
 							/>
 							<Input
-								label="Описание"
+								label="admin.permissions.description"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEditDescription(e.target.value)}
@@ -269,12 +294,12 @@ export default function RolesAdminView() {
 						</div>
 					</Modal.Body>
 					<Modal.Footer>
-						<Modal.Close>Отмена</Modal.Close>
+						<Modal.Close>{t('clan.common.cancel')}</Modal.Close>
 						<Modal.Action
 							closeOnClick
 							onClick={() => updateMutation.mutate()}
 						>
-							Сохранить
+							{t('clan.common.save')}
 						</Modal.Action>
 					</Modal.Footer>
 				</Modal.Content>
@@ -289,7 +314,9 @@ export default function RolesAdminView() {
 				<Modal.Content fullScreen={false}>
 					<Modal.Header>
 						<Modal.Title>
-							Разрешения — {permissionsRole?.name}
+							{t('admin.roles.permissionsTitle', {
+								name: permissionsRole?.name ?? '',
+							})}
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
@@ -316,12 +343,12 @@ export default function RolesAdminView() {
 						</div>
 					</Modal.Body>
 					<Modal.Footer>
-						<Modal.Close>Отмена</Modal.Close>
+						<Modal.Close>{t('clan.common.cancel')}</Modal.Close>
 						<Modal.Action
 							closeOnClick
 							onClick={() => assignPermissionsMutation.mutate()}
 						>
-							Сохранить
+							{t('clan.common.save')}
 						</Modal.Action>
 					</Modal.Footer>
 				</Modal.Content>

@@ -144,7 +144,7 @@ export function ModalContent({
 				<div
 					aria-hidden={!isOpen}
 					className={cn(
-						'fixed inset-0 z-9999999 flex justify-center px-2',
+						'fixed inset-0 z-9999 flex justify-center px-2',
 						align === 'top'
 							? 'items-start pt-16 sm:pt-20'
 							: 'items-center'

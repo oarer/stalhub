@@ -10,30 +10,26 @@ export interface RoadmapItem {
 export const RoadmapItems: RoadmapItem[] = [
 	{
 		date: '2025.08',
-		title: 'Зарождение проекта',
-		description:
-			'Начало разработки и формирование основной идеи. Создание первых концептов и структуры.',
+		title: 'roadmap.genesis.title',
+		description: 'roadmap.genesis.description',
 		status: 'done',
 	},
 	{
 		date: '2026.02',
-		title: 'ЗБТ',
-		description:
-			'Закрытое бета-тестирование. Проверка работоспособности функционала сайта, сбор баг-репортов.',
+		title: 'roadmap.cbt.title',
+		description: 'roadmap.cbt.description',
 		status: 'done',
 	},
 	{
 		date: '2026.06',
-		title: 'ОБТ',
-		description:
-			'Открытое бета-тестирование. Подготовка к релизу, фикс багов, обновление инфраструктуры.',
+		title: 'roadmap.obt.title',
+		description: 'roadmap.obt.description',
 		status: 'in-progress',
 	},
 	{
 		date: '2026.07',
-		title: 'Релиз проекта',
-		description:
-			'Полноценный запуск проекта и дальнейшая поддержка проекта.',
+		title: 'roadmap.release.title',
+		description: 'roadmap.release.description',
 		status: 'planned',
 	},
 ]

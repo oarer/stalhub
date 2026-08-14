@@ -32,16 +32,20 @@ export default function AuctionHistory({ data }: Props) {
 	const tooltipCallbacks = {
 		title: (items: TooltipItem<'scatter'>[]) => {
 			const raw = items?.[0]?.raw as HistoryPoint | undefined
-			return raw ? `Дата: ${raw.time}` : ''
+			return raw ? `${t('items.auction.date')}: ${raw.time}` : ''
 		},
 		label: (context: TooltipItem<'scatter'>) => {
 			const raw = context.raw as HistoryPoint
-			return buildTooltipLines(raw.y, {
-				...(raw.amount > 1 && { 'Кол-во': raw.amount }),
-				...(raw.artPercent > 0 && {
-					Процент: `${raw.artPercent.toFixed(2)}%`,
+			return buildTooltipLines(t('arsenal.table.currentPrice'), raw.y, {
+				...(raw.amount > 1 && {
+					[t('items.auction.amount')]: raw.amount,
 				}),
-				...(raw.ptn > 0 && { Потенциал: raw.ptn }),
+				...(raw.artPercent > 0 && {
+					[t('modals.builds.settings.percent')]: `${raw.artPercent.toFixed(2)}%`,
+				}),
+				...(raw.ptn > 0 && {
+					[t('modals.builds.settings.potential')]: raw.ptn,
+				}),
 			})
 		},
 	}
@@ -75,7 +79,7 @@ export default function AuctionHistory({ data }: Props) {
 	const dataForChart = createAuctionDataset(
 		[
 			{
-				label: 'История лотов',
+				label: t('items.auction.lotHistory'),
 				data: points,
 				pointColorFn: (p) => getArtifactColor((p as HistoryPoint).qlt),
 			},

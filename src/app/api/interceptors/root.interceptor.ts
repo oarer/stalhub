@@ -84,8 +84,6 @@ apiClient.interceptors.response.use(
 		} catch (refreshError) {
 			processQueue(refreshError)
 
-			window.location.href = '/auth'
-
 			return Promise.reject(refreshError)
 		} finally {
 			isRefreshing = false

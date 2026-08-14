@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
 import { Modal } from '@/components/ui/Modal'
 import {
 	MDX_COMPONENT_SNIPPET,
@@ -20,10 +21,15 @@ export function ComponentsModal({
 	textareaRef,
 	setContent,
 }: ComponentsModalProps) {
+	const t = useTranslations()
 	const handleInsert = (type: string) => {
 		const ta = textareaRef.current
 		if (!ta) return
-		const snippet = MDX_COMPONENT_SNIPPET(type)
+		const snippet = MDX_COMPONENT_SNIPPET(
+			type,
+			t('me.articleEditor.hotkeys.heading'),
+			t('me.articleEditor.mdxContent')
+		)
 		const start = ta.selectionStart
 		const next = ta.value.slice(0, start) + snippet + ta.value.slice(start)
 		applyEdit(ta, setContent, {
@@ -38,7 +44,9 @@ export function ComponentsModal({
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
 			<Modal.Content className="max-w-lg" fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>Компоненты</Modal.Title>
+					<Modal.Title>
+						{t('me.articleEditor.components')}
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="grid grid-cols-2 gap-2">

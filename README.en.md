@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://stalhub.tech">
+  <a href="https://stalhub.dev">
     <picture>
       <img alt="StalHub logo" src="public/svg/dark/logo.svg" height="128" />
     </picture>
@@ -21,7 +21,7 @@
 
 ## Getting Started
 
-- Our main [website](https://stalhub.tech)
+- Our main [website](https://stalhub.dev)
 - Backend source code: [StalHub Backend](https://github.com/oarer/stalhub_backend)
 - Fork stalzone-database: [sc-db](https://github.com/oarer/sc-db)
 - Telegram channel: [t.me/st4lhub](https://t.me/st4lhub)

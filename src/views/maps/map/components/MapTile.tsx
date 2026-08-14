@@ -1,6 +1,7 @@
 'use client'
 
 import L from 'leaflet'
+import { useTranslations } from 'next-intl'
 import { useMemo, useRef } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import Sidebar from '@/components/ui/sideBar/SideBar'
@@ -46,6 +47,7 @@ export default function MapTile({
 		hideAll,
 	} = useMarkersFile(markersUrl)
 
+	const t = useTranslations()
 	const featureGroupRef = useRef<L.FeatureGroup | null>(null)
 
 	const handleExport = () => {
@@ -127,7 +129,7 @@ export default function MapTile({
 					</div>
 				) : (
 					<div className="flex items-center gap-2 py-4 text-sm">
-						Нет меток
+						{t('map.noMarkers')}
 					</div>
 				)}
 

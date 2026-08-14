@@ -4,6 +4,7 @@ import { ReactFlow } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { montserrat } from '@/app/fonts'
 import Sidebar from '@/components/ui/sideBar/SideBar'
@@ -21,9 +22,12 @@ import { useHideoutGraph } from './hooks/useHideoutGraph'
 import type { IngredientRows } from './types'
 import { normalizeItemId } from './utils/hideoutUtils'
 
-//! TODO add i18n
+type HideoutViewProps = {
+	variant?: 'page' | 'widget'
+}
 
-export function HideoutView() {
+export function HideoutView({ variant = 'page' }: HideoutViewProps) {
+	const t = useTranslations()
 	const { data: hideoutData } = useSuspenseQuery(hideoutQueries.get())
 	const { items } = useSearchItem()
 	const locale = getLocale()
@@ -131,7 +135,7 @@ export function HideoutView() {
 		() => [
 			{
 				accessorKey: 'name',
-				header: 'Предмет',
+				header: t('hideout.item'),
 				cell: ({ row }) => (
 					<div className="flex items-center gap-2">
 						{row.original.icon && (
@@ -151,7 +155,7 @@ export function HideoutView() {
 			},
 			{
 				accessorKey: 'perCraft',
-				header: 'За крафт',
+				header: t('hideout.perCraft'),
 				cell: ({ row }) => (
 					<span className={montserrat.className}>
 						{row.original.perCraft}
@@ -160,7 +164,7 @@ export function HideoutView() {
 			},
 			{
 				accessorKey: 'total',
-				header: 'Всего',
+				header: t('hideout.total'),
 				cell: ({ row }) => (
 					<span className={montserrat.className}>
 						{row.original.total}
@@ -169,7 +173,7 @@ export function HideoutView() {
 			},
 			{
 				accessorKey: 'price',
-				header: 'Цена/ед',
+				header: t('hideout.pricePerUnit'),
 				cell: ({ row }) => (
 					<span className={montserrat.className}>
 						{row.original.price.toLocaleString()}₽
@@ -178,7 +182,7 @@ export function HideoutView() {
 			},
 			{
 				accessorKey: 'totalPrice',
-				header: 'Итого',
+				header: t('hideout.totalPrice'),
 				cell: ({ row }) => (
 					<span className={montserrat.className}>
 						{row.original.totalPrice.toLocaleString()}₽
@@ -187,7 +191,7 @@ export function HideoutView() {
 			},
 			{
 				accessorKey: 'totalEnergy',
-				header: 'Энергия',
+				header: t('hideout.energy'),
 				cell: ({ row }) => (
 					<span className={montserrat.className}>
 						{row.original.energy.toLocaleString()}
@@ -195,13 +199,17 @@ export function HideoutView() {
 				),
 			},
 		],
-		[]
+		[t]
 	)
 
 	const { table } = useTableSort(ingredients, columns)
 
 	return (
-		<div className="h-screen w-full pt-24">
+		<div
+			className={
+				variant === 'widget' ? 'h-full w-full' : 'h-screen w-full pt-24'
+			}
+		>
 			<ReactFlow
 				defaultEdgeOptions={{
 					style: {

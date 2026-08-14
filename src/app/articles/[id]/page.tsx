@@ -1,6 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
@@ -14,6 +15,7 @@ export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
 	const { id } = await params
+	const t = await getTranslations()
 
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 	const ogImageUrl = `${baseUrl}/api/og/${id}`
@@ -31,12 +33,16 @@ export async function generateMetadata({
 					},
 				]
 
+		const description = t('articles.byAuthor', {
+			author: article.author.username,
+		})
+
 		return {
 			title: `${article.title} · StalHub`,
-			description: `Статья от ${article.author.username}`,
+			description,
 			openGraph: {
 				title: `${article.title} · StalHub`,
-				description: `Статья от ${article.author.username}`,
+				description,
 				type: 'article',
 				publishedTime: article.created_at,
 				modifiedTime: article.updated_at,
@@ -47,7 +53,7 @@ export async function generateMetadata({
 		}
 	} catch {
 		return {
-			title: 'Статья не найдена · StalHub',
+			title: `${t('articles.notFound')} · StalHub`,
 			robots: { index: false, follow: true },
 		}
 	}

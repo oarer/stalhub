@@ -11,18 +11,6 @@
     }
 }
 
-section:has(> div > section[data-editor]) {
-    grid-template-columns: 1fr !important;
-    max-width: none !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-section:has(> div > section[data-editor]) > :first-child {
-    display: none !important;
-}
-
 @layer base {
     @import './browser.css';
 
@@ -43,4 +31,73 @@ section:has(> div > section[data-editor]) > :first-child {
         background-position: center;
         background-attachment: fixed;
     }
+}
+
+.react-flow__controls {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-secondary);
+    box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.4);
+}
+
+.react-flow__controls-button {
+    background: var(--background);
+    border-bottom: 1px solid var(--border-secondary);
+    color: var(--foreground);
+    width: 36px;
+    height: 36px;
+}
+
+.react-flow__controls-button:last-child {
+    border-bottom: none;
+}
+
+.react-flow__controls-button:hover {
+    background: var(--background-accent);
+    color: var(--foreground);
+}
+
+.react-flow__controls-button svg {
+    fill: currentColor;
+}
+
+.react-flow {
+    --xy-resize-background-color: var(--color-border, #06b6d4);
+}
+
+.react-flow .react-flow__resize-control.handle {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--background);
+    border-radius: 4px;
+    background-color: var(--xy-resize-background-color, #06b6d4);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+}
+
+.react-flow .react-flow__resize-control.line {
+    background-color: var(--xy-resize-background-color, #06b6d4);
+    opacity: 0.7;
+}
+
+.react-flow .react-flow__resize-control.line.left,
+.react-flow .react-flow__resize-control.line.right {
+    width: 3px;
+    border-width: 0;
+}
+
+.react-flow .react-flow__resize-control.line.top,
+.react-flow .react-flow__resize-control.line.bottom {
+    height: 3px;
+    border-width: 0;
+}
+
+.react-flow .react-flow__node .react-flow__resize-control {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+}
+
+.react-flow .react-flow__node:hover .react-flow__resize-control {
+    opacity: 1;
+    pointer-events: auto;
 }

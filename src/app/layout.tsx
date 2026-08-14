@@ -50,7 +50,7 @@ export default async function RootLayout({
 				<Script
 					data-website-id="47f7941c-8d8d-4976-8cf0-690dfe79f522"
 					defer
-					src="https://umami.stalhub.tech/script.js"
+					src="https://umami.stalhub.dev/script.js"
 				/>
 				<Suspense fallback={<div />}>
 					<ThemeProvider

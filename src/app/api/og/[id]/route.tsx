@@ -33,9 +33,12 @@ function truncate(str: string, max: number): string {
 
 async function fetchAvatarDataUri(userId: number): Promise<string | null> {
 	try {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${userId}`, {
-			headers: { Accept: 'image/*' },
-		})
+		const res = await fetch(
+			`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${userId}`,
+			{
+				headers: { Accept: 'image/*' },
+			}
+		)
 
 		if (!res.ok) return null
 
@@ -195,7 +198,7 @@ function svgFallback(): string {
 		font-family="Arial, sans-serif"
 		font-size="22"
 		text-anchor="middle"
-	>stalhub.tech</text>
+	>stalhub.dev</text>
 </svg>`
 }
 

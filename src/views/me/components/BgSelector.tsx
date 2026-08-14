@@ -1,14 +1,19 @@
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import useClickOutside from '@/hooks/useClickOutside'
 import { cn } from '@/lib/cn'
-import type { BgVariant } from '@/types/user.type'
+import type {
+	BgVariant,
+	CardBackground,
+	UpdateUserSettingsDto,
+} from '@/types/user.type'
 
 const bgVariantConfig: Record<BgVariant, { icon: string; label: string }> = {
-	AVATAR: { icon: 'lucide:image', label: 'Аватар' },
-	COLOR: { icon: 'lucide:palette', label: 'Цвет' },
-	NONE: { icon: 'lucide:x', label: 'Нет' },
+	AVATAR: { icon: 'lucide:image', label: 'me.bg.avatar' },
+	COLOR: { icon: 'lucide:palette', label: 'me.bg.color' },
+	NONE: { icon: 'lucide:x', label: 'me.bg.none' },
 }
 
 export function BgVariantSelector({
@@ -16,10 +21,11 @@ export function BgVariantSelector({
 	color,
 	mutate,
 }: {
-	variant: BgVariant
+	variant: CardBackground
 	color: string
-	mutate: (data: { bg_variant?: BgVariant; bg_color?: string }) => void
+	mutate: (data: UpdateUserSettingsDto) => void
 }) {
+	const t = useTranslations()
 	const [expanded, setExpanded] = useState(false)
 	const [displayVariant, setDisplayVariant] = useState(variant)
 	const [opacity, setOpacity] = useState(1)
@@ -35,7 +41,7 @@ export function BgVariantSelector({
 		if (next === variant) return setExpanded(false)
 		if (timeoutRef.current) clearTimeout(timeoutRef.current)
 		setOpacity(0)
-		mutate({ bg_variant: next })
+		mutate({ cardBackground: next })
 
 		timeoutRef.current = setTimeout(() => {
 			setDisplayVariant(next)
@@ -48,7 +54,7 @@ export function BgVariantSelector({
 	}
 
 	const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		mutate({ bg_color: e.target.value })
+		mutate({ cardColor: e.target.value })
 	}
 
 	return (
@@ -102,7 +108,7 @@ export function BgVariantSelector({
 											: 'text-text-accent hover:bg-background'
 									)}
 									onClick={() => handleVariantChange(key)}
-									title={cfg.label}
+									title={t(cfg.label)}
 								>
 									<Icon className="size-4" icon={cfg.icon} />
 								</button>

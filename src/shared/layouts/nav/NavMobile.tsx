@@ -10,6 +10,7 @@ import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { unbounded } from '@/app/fonts'
+import ItemSearchModal from '@/components/modals/ItemSearch'
 import { Accordion } from '@/components/ui/Accordion'
 import { DropDownMobile, MobileLinks } from '@/constants/nav.const'
 import { themes } from '@/constants/themes.const'
@@ -79,7 +80,7 @@ export default function NavMobile() {
 			},
 			{
 				key: 'theme',
-				title: `${currentThemeData?.title ?? 'Системная'}`,
+				title: t(currentThemeData?.title ?? 'themes.system'),
 				icon: currentThemeData?.iconName ?? 'lucide:laptop-minimal',
 				content: (
 					<>
@@ -95,14 +96,14 @@ export default function NavMobile() {
 								}}
 							>
 								<Icon className="text-xl" icon={th.iconName} />
-								<p className="font-semibold">{th.title}</p>
+								<p className="font-semibold">{t(th.title)}</p>
 							</button>
 						))}
 					</>
 				),
 			},
 		]
-	}, [handleLocaleChange, theme, setTheme, currentLocale])
+	}, [handleLocaleChange, theme, setTheme, currentLocale, t])
 
 	const dropdownItems = useMemo(
 		() => DropDownMobile(t, () => setIsMenuOpen(false)),
@@ -132,7 +133,7 @@ export default function NavMobile() {
 						ref={menuRef}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
-						<div className="rounded-xl bg-background p-6 shadow-lg ring-2 ring-border/50">
+						<div className="flex flex-col gap-4 rounded-xl bg-background p-6 shadow-lg ring-2 ring-border/50">
 							<Link
 								className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
 								href="/"
@@ -161,6 +162,25 @@ export default function NavMobile() {
 							/>
 						</div>
 						<div className="flex flex-col gap-4 rounded-xl bg-background p-4 shadow-lg ring-2 ring-border/50">
+							<ItemSearchModal
+								trigger={
+									<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-border/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
+										<span className="flex items-center gap-3">
+											<Icon
+												className="text-xl"
+												icon="lucide:search"
+											/>
+											<span className="font-semibold">
+												{t('modals.search.title')}
+											</span>
+										</span>
+										<Icon
+											className="text-lg text-text-accent"
+											icon="lucide:corner-down-left"
+										/>
+									</button>
+								}
+							/>
 							<Accordion
 								className="flex flex-col gap-4"
 								items={settingsAccordionItems}

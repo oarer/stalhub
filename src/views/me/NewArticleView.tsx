@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -13,19 +14,36 @@ import { useAuthStore } from '@/stores/useAuth.store'
 import { ArticleType } from '@/types/article.type'
 
 const ARTICLE_TYPES = [
-	{ value: ArticleType.QUEST, label: 'Квест', icon: 'lucide:map' },
-	{ value: ArticleType.GUIDE, label: 'Гайд', icon: 'lucide:book-open' },
-	{ value: ArticleType.OTHER, label: 'Другое', icon: 'lucide:file-text' },
+	{
+		value: ArticleType.QUEST,
+		label: 'me.newArticle.quest',
+		icon: 'lucide:map',
+	},
+	{
+		value: ArticleType.GUIDE,
+		label: 'me.newArticle.guide',
+		icon: 'lucide:book-open',
+	},
+	{
+		value: ArticleType.OTHER,
+		label: 'me.newArticle.other',
+		icon: 'lucide:file-text',
+	},
 ]
 
 const ADMIN_TYPES = [
 	...ARTICLE_TYPES,
-	{ value: ArticleType.STALHUB, label: 'StalHub', icon: 'lucide:star' },
+	{
+		value: ArticleType.STALHUB,
+		label: 'me.newArticle.stalhub',
+		icon: 'lucide:star',
+	},
 ]
 
 export default function NewArticleView() {
 	const router = useRouter()
 	const queryClient = getQueryClient()
+	const t = useTranslations()
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArticleType>(ArticleType.OTHER)
 	const user = useAuthStore((s) => s.user)
@@ -41,11 +59,11 @@ export default function NewArticleView() {
 		}) => articleService.create(data),
 		onSuccess: (article) => {
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
-			toast.success('Статья создана')
+			toast.success(t('me.newArticle.toastCreated'))
 			router.push(`/me/articles/${article.id}/edit`)
 		},
 		onError: () => {
-			toast.error('Ошибка при создании')
+			toast.error(t('me.newArticle.toastCreateError'))
 		},
 	})
 
@@ -64,7 +82,9 @@ export default function NewArticleView() {
 				>
 					<Icon className="size-5" icon="lucide:arrow-left" />
 				</Button>
-				<h1 className="font-semibold text-lg">Новая статья</h1>
+				<h1 className="font-semibold text-lg">
+					{t('me.newArticle.title')}
+				</h1>
 			</div>
 
 			<div className="flex flex-col gap-4">
@@ -73,12 +93,12 @@ export default function NewArticleView() {
 						className="font-semibold text-md text-text-accent"
 						htmlFor="article-title"
 					>
-						Название
+						{t('me.newArticle.name')}
 					</label>
 					<Input
 						autoFocus
 						id="article-title"
-						label="Введите название статьи"
+						label="me.newArticle.namePlaceholder"
 						onChange={(e) => setTitle(e.target.value)}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter' && title.trim())
@@ -90,23 +110,26 @@ export default function NewArticleView() {
 
 				<div className="flex flex-col gap-2">
 					<span className="font-semibold text-md text-text-accent">
-						Тип статьи
+						{t('me.newArticle.type')}
 					</span>
-					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-						{types.map((t) => (
-							<button
-								className={`flex items-center gap-2 rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors ${
-									type === t.value
-										? 'border-sky-500 bg-sky-500/10 text-sky-400'
-										: 'border-border-secondary bg-background hover:border-sky-500/30'
+					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+						{types.map((articleType) => (
+							<Button
+								className={`gap-2 ${
+									type === articleType.value &&
+									'ring-2 ring-border/80'
 								}`}
-								key={t.value}
-								onClick={() => setType(t.value)}
+								key={articleType.value}
+								onClick={() => setType(articleType.value)}
 								type="button"
+								variant={'secondary'}
 							>
-								<Icon className="size-4" icon={t.icon} />
-								{t.label}
-							</button>
+								<Icon
+									className="size-4"
+									icon={articleType.icon}
+								/>
+								{t(articleType.label)}
+							</Button>
 						))}
 					</div>
 				</div>
@@ -116,7 +139,7 @@ export default function NewArticleView() {
 					loading={createMutation.isPending}
 					onClick={handleCreate}
 				>
-					Создать и открыть редактор
+					{t('me.newArticle.create')}
 				</Button>
 			</div>
 		</div>

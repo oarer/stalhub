@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/cn'
 import type { TOCItem, WikiAuthor } from '@/types/wiki.type'
@@ -20,6 +21,7 @@ export function TOC({ items, authors, slug }: TOCProps) {
 		height: 0,
 		visible: false,
 	})
+	const t = useTranslations()
 
 	const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({})
 
@@ -107,7 +109,7 @@ export function TOC({ items, authors, slug }: TOCProps) {
 				href={`https://github.com/oarer/stalhub/wiki/${slug}.mdx`}
 			>
 				<Icon icon="meteor-icons:github" />
-				<p className="font-semibold">Редактировать</p>
+				<p className="font-semibold">{t('wiki.edit')}</p>
 			</Link>
 		</nav>
 	)

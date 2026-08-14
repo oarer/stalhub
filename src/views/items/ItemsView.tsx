@@ -1,8 +1,8 @@
 'use client'
 
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { getLocale } from '@/lib/getLocale'
@@ -23,6 +23,11 @@ import {
 	messageToString,
 } from '@/utils/itemUtils'
 import { DamageChart } from '../calcs/ttk/components/DamageChart'
+import AttachmentsBuilder from './components/attachments/AttachmentsBuilder'
+import {
+	computeStatOverrides,
+	type StatOverride,
+} from './components/attachments/attachmentStats'
 import { ListBlock, NumericVariantsCard, TextBlock } from './components/blocks'
 import ItemTabs from './components/tabs/AuctionTabs'
 
@@ -30,6 +35,7 @@ type ItemsViewProps = { path: string[]; id: string; githubUrl: string }
 
 export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	const [numericVariants, setNumericVariants] = useState<number>(0)
+	const [selected, setSelected] = useState<Record<string, string>>({})
 	const locale = getLocale()
 
 	const iconUrl = `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${path.join('/')}.png`
@@ -44,6 +50,41 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	)
 
 	const { data: barter } = useSuspenseQuery(itemQueries.barter(id))
+
+	const isWeapon = data.category.startsWith('weapon/')
+
+	const { data: attachmentsData } = useQuery({
+		...itemQueries.attachments(id),
+		enabled: isWeapon,
+	})
+
+	const attachments = attachmentsData?.attachments ?? []
+
+	const selectedAttachments = useMemo(
+		() =>
+			Object.values(selected)
+				.map((selectedId) =>
+					attachments.find((a) => a.id === selectedId)
+				)
+				.filter((a): a is NonNullable<typeof a> => a !== undefined),
+		[selected, attachments]
+	)
+
+	const statOverrides = useMemo<Map<string, StatOverride>>(
+		() => computeStatOverrides(data, selectedAttachments),
+		[data, selectedAttachments]
+	)
+
+	const handleSelect = (category: string, attachmentId: string) => {
+		setSelected((prev) => {
+			if (prev[category] === attachmentId) {
+				const { [category]: _, ...rest } = prev
+				return rest
+			}
+
+			return { ...prev, [category]: attachmentId }
+		})
+	}
 
 	const categoryLabel = getCategoryLabel(data, locale)
 
@@ -115,6 +156,14 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 			</div>
 
 			<div className="space-y-4">
+				{isWeapon && (
+					<AttachmentsBuilder
+						attachments={attachments}
+						onSelect={handleSelect}
+						selected={selected}
+					/>
+				)}
+
 				{data.infoBlocks
 					.filter(
 						(b): b is ElementListBlock =>
@@ -145,6 +194,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 							key={idx}
 							locale={locale}
 							numericVariants={numericVariants}
+							statOverrides={statOverrides}
 						/>
 					))}
 			</div>

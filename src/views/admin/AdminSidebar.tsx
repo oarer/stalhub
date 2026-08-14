@@ -3,46 +3,47 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/cn'
 
 const tabs = [
 	{
-		title: 'Пользователи',
+		title: 'admin.sidebar.users',
 		href: '/admin/users',
 		icon: 'lucide:users',
 	},
 	{
-		title: 'Роли',
+		title: 'admin.sidebar.roles',
 		href: '/admin/roles',
 		icon: 'lucide:shield',
 	},
 	{
-		title: 'Разрешения',
+		title: 'admin.sidebar.permissions',
 		href: '/admin/permissions',
 		icon: 'lucide:key',
 	},
 	{
-		title: 'Бейджи',
+		title: 'admin.sidebar.badges',
 		href: '/admin/badges',
 		icon: 'lucide:award',
 	},
 	{
-		title: 'Уведомления',
+		title: 'admin.sidebar.notifications',
 		href: '/admin/notifications',
 		icon: 'lucide:bell',
 	},
 	{
-		title: 'Игроки',
+		title: 'admin.sidebar.players',
 		href: '/admin/players',
 		icon: 'lucide:gamepad-2',
 	},
 	{
-		title: 'Статьи',
+		title: 'admin.sidebar.articles',
 		href: '/admin/articles',
 		icon: 'lucide:book-open',
 	},
 	{
-		title: 'Сборки',
+		title: 'admin.sidebar.builds',
 		href: '/admin/builds',
 		icon: 'lucide:box',
 	},
@@ -50,6 +51,7 @@ const tabs = [
 
 export default function AdminSidebar() {
 	const pathname = usePathname()
+	const t = useTranslations()
 
 	return (
 		<div className="flex h-fit flex-col gap-2 rounded-lg bg-background px-4 py-3">
@@ -64,7 +66,7 @@ export default function AdminSidebar() {
 					key={tab.href}
 				>
 					<Icon className="text-xl" icon={tab.icon} />
-					<p className="font-semibold text-md">{tab.title}</p>
+					<p className="font-semibold text-md">{t(tab.title)}</p>
 				</Link>
 			))}
 		</div>

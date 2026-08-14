@@ -1,6 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { CopyButton } from '@/components/ui/CopyButton'
@@ -23,6 +24,7 @@ interface ModuleSummaryProps {
 }
 
 export function ModuleSummary({ slots }: ModuleSummaryProps) {
+	const t = useTranslations()
 	const stats = new Map<
 		string,
 		{
@@ -84,12 +86,12 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 			<Card.Header>
 				<Card.Title className="justify-start">
 					<Icon className="text-lg" icon="lucide:layers" />
-					<p className="font-semibold text-lg">Итог</p>
+					<p className="font-semibold text-lg">{t('modules.summary')}</p>
 				</Card.Title>
 			</Card.Header>
 			{!hasModules ? (
 				<p className="py-2 text-center font-semibold text-sm">
-					Выберите модули в каждой группе
+					{t('modules.summaryEmpty')}
 				</p>
 			) : (
 				<>
@@ -144,7 +146,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 					<div className="flex flex-col gap-1 border-border/40 border-t pt-2 text-sm">
 						<div className="flex justify-between">
 							<span className="font-semibold">
-								Стоимость реролла
+								{t('modules.rerollCost')}
 							</span>
 							<span
 								className={`${montserrat.className} font-semibold`}
@@ -154,7 +156,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold">
-								Стоимость разбора
+								{t('modules.disassembleCost')}
 							</span>
 							<span
 								className={`${montserrat.className} font-semibold`}
@@ -164,7 +166,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold">
-								Стоимость восстановления
+								{t('modules.restoreCost')}
 							</span>
 							<span
 								className={`${montserrat.className} font-semibold`}
@@ -174,7 +176,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold">
-								Стоимость категории
+								{t('modules.categoryCost')}
 							</span>
 							<span
 								className={`${montserrat.className} font-semibold`}

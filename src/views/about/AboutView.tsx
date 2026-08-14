@@ -55,7 +55,7 @@ export default function AboutView() {
 					supportLinks={supportLinks}
 				/>
 				<p className="mt-2 font-bold text-background text-xs">
-					ебал рот айсана
+					{t('about.insideJoke')}
 				</p>
 			</motion.div>
 		</section>

@@ -1,4 +1,5 @@
 import type { Regions } from './api.type'
+import type { ClanHistoryEntry } from './clan/clan.type'
 import type { Message } from './item.type'
 
 export interface PlayerRole {
@@ -16,6 +17,7 @@ export interface PlayerResponse {
 	clan: Clan
 	stats: Stat[]
 	role?: PlayerRole
+	clan_history?: ClanHistoryEntry[]
 }
 export interface PlayerParams {
 	region: Regions

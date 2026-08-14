@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
+import { LightBox } from '@/components/ui/LightBox'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
@@ -282,6 +283,7 @@ export default function BuildsLiteView({
 		link.download = `${safeName || 'build'}.png`
 		link.href = pngPreviewUrl
 		link.click()
+		setShowPngModal(false)
 	}, [currentBuild?.name, pngPreviewUrl, t])
 
 	const handleCopyPng = useCallback(async () => {
@@ -293,6 +295,7 @@ export default function BuildsLiteView({
 				new ClipboardItem({ 'image/png': blob }),
 			])
 			toast.success(t('buildsLite.pngCopied'))
+			setShowPngModal(false)
 		} catch {
 			toast.error(t('buildsLite.copyError'))
 		}
@@ -513,16 +516,19 @@ export default function BuildsLiteView({
 					</Modal.Header>
 					<Modal.Body>
 						{pngPreviewUrl && (
-							<div className="flex justify-center rounded-lg bg-neutral-900 p-2">
-								<Image
-									alt="Build preview"
-									className="h-auto w-full rounded-md"
-									height={600}
-									priority
-									src={pngPreviewUrl}
-									width={900}
-								/>
-							</div>
+							<LightBox.Root>
+								<LightBox.Trigger asChild>
+									<Image
+										alt="Build preview"
+										className='rounded-lg'
+										height={600}
+										priority
+										src={pngPreviewUrl}
+										width={900}
+									/>
+								</LightBox.Trigger>
+								<LightBox.Content src={pngPreviewUrl} />
+							</LightBox.Root>
 						)}
 					</Modal.Body>
 					<Modal.Footer>

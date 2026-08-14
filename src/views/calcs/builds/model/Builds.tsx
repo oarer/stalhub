@@ -1,11 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useQuery,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import Scene from '@/app/calcs/builds/model/Scene'
@@ -19,6 +15,7 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
 import StatsTabs from '@/views/calcs/builds/components/StatsTabs'
+import BuildPriceModal from '../components/BuildPriceModal'
 import BuildSelector from '../components/BuildSelector'
 import DefaultsSettings from '../components/DefaultsSettings'
 
@@ -100,18 +97,18 @@ export default function BuildsView() {
 	const sceneArmor = useMemo(
 		() => ({
 			glb: armorModel?.model
-				? `https://cdn.stalhub.tech/${armorModel.model}`
-				: 'https://cdn.stalhub.tech/models/armor/hound/hound.glb',
+				? `https://cdn.stalhub.dev/${armorModel.model}`
+				: 'https://cdn.stalhub.dev/models/armor/hound/hound.glb',
 			textures: {
 				diff: armorModel?.diff
-					? `https://cdn.stalhub.tech/${armorModel.diff}`
-					: 'https://cdn.stalhub.tech/models/armor/hound/hound_diff.dds',
+					? `https://cdn.stalhub.dev/${armorModel.diff}`
+					: 'https://cdn.stalhub.dev/models/armor/hound/hound_diff.dds',
 				emi: armorModel?.emi
-					? `https://cdn.stalhub.tech/${armorModel.emi}`
+					? `https://cdn.stalhub.dev/${armorModel.emi}`
 					: undefined,
 				nrm: armorModel?.nrm
-					? `https://cdn.stalhub.tech/${armorModel.nrm}`
-					: 'https://cdn.stalhub.tech/models/armor/hound/hound_nrm.dds',
+					? `https://cdn.stalhub.dev/${armorModel.nrm}`
+					: 'https://cdn.stalhub.dev/models/armor/hound/hound_nrm.dds',
 			},
 		}),
 		[armorModel]
@@ -120,17 +117,17 @@ export default function BuildsView() {
 	const sceneCont = useMemo(
 		() => ({
 			glb: containerModel?.model
-				? `https://cdn.stalhub.tech/${containerModel.model}`
-				: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6.glb',
+				? `https://cdn.stalhub.dev/${containerModel.model}`
+				: 'https://cdn.stalhub.dev/models/backpacks/cont_bear/bear6.glb',
 			textures: {
 				diff: containerModel?.diff
-					? `https://cdn.stalhub.tech/${containerModel.diff}`
-					: 'https://cdn.stalhub.tech/models/backpacks/cont_bear/bear6_diff.dds',
+					? `https://cdn.stalhub.dev/${containerModel.diff}`
+					: 'https://cdn.stalhub.dev/models/backpacks/cont_bear/bear6_diff.dds',
 				emi: containerModel?.emi
-					? `https://cdn.stalhub.tech/${containerModel.emi}`
+					? `https://cdn.stalhub.dev/${containerModel.emi}`
 					: undefined,
 				nrm: containerModel?.nrm
-					? `https://cdn.stalhub.tech/${containerModel.nrm}`
+					? `https://cdn.stalhub.dev/${containerModel.nrm}`
 					: undefined,
 			},
 		}),
@@ -278,6 +275,7 @@ export default function BuildsView() {
 										/>
 									</Button>
 								)}
+								<BuildPriceModal />
 								<Modal.Root>
 									<Modal.Trigger
 										className="p-2"
@@ -291,7 +289,9 @@ export default function BuildsView() {
 									<Modal.Content className="max-w-md">
 										<Modal.Header className="py-2 pt-6">
 											<Modal.Title>
-												{t('modals.builds.settings.title')}
+												{t(
+													'modals.builds.settings.title'
+												)}
 											</Modal.Title>
 										</Modal.Header>
 

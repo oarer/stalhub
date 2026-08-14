@@ -142,7 +142,7 @@ export default function FooterLayout() {
 	}, [])
 	if (!mounted) return null
 
-	if (pathname.startsWith('/map') || pathname.startsWith('/calcs/hideout'))
+	if (pathname.startsWith('/map') || pathname.startsWith('/calcs/hideout') || pathname.startsWith('/dashboard') || pathname.startsWith('/me/onboarding'))
 		return null
 
 	return <Footer />

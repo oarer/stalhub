@@ -1,6 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
 
 import { Tabs } from '@/components/ui/Tabs'
 import { cn } from '@/lib/cn'
@@ -25,6 +26,8 @@ export default function ItemTabs({
 	auctionCurrent,
 	barter,
 }: Props) {
+	const t = useTranslations()
+
 	return (
 		<Tabs.Root className="w-full" defaultValue="aucHistory">
 			<Tabs.List
@@ -35,12 +38,12 @@ export default function ItemTabs({
 			>
 				<Tabs.Trigger value="aucHistory">
 					<Icon className="text-lg" icon="lucide:book-open-text" />
-					История продаж
+					{t('items.auction.history')}
 				</Tabs.Trigger>
 
 				<Tabs.Trigger value="aucCurrent">
 					<Icon className="text-lg" icon="lucide:landmark" />
-					Текущие лоты
+					{t('items.auction.current')}
 				</Tabs.Trigger>
 
 				{barter && (
@@ -49,7 +52,7 @@ export default function ItemTabs({
 						value="barter"
 					>
 						<Icon className="text-lg" icon="lucide:landmark" />
-						Бартер
+						{t('barter.currency_options.barter')}
 					</Tabs.Trigger>
 				)}
 			</Tabs.List>

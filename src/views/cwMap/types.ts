@@ -32,7 +32,7 @@ export type Tool =
 
 export type MapDef = {
 	key: string
-	name: string
+	nameKey: string
 	fullMaxLevel: number
 	maxZoom: number
 	imageWidth: number
@@ -42,7 +42,8 @@ export type MapDef = {
 
 export type MarkerPreset = {
 	key: string
-	label: string
+	labelKey?: string
+	label?: string
 	color: string
 	icon: string
 	letter?: string
@@ -51,7 +52,7 @@ export type MarkerPreset = {
 export const MAPS: MapDef[] = [
 	{
 		key: 'berda',
-		name: 'Берда',
+		nameKey: 'cwMap.maps.berda',
 		fullMaxLevel: 11,
 		maxZoom: 13,
 		imageWidth: 1536,
@@ -67,7 +68,7 @@ export const MAPS: MapDef[] = [
 	},
 	{
 		key: 'hvoiniy',
-		name: 'Хвойный',
+		nameKey: 'cwMap.maps.hvoiniy',
 		fullMaxLevel: 11,
 		maxZoom: 13,
 		imageWidth: 1536,
@@ -79,7 +80,7 @@ export const MAPS: MapDef[] = [
 	},
 	{
 		key: 'kvartals',
-		name: 'Кварталы',
+		nameKey: 'cwMap.maps.kvartals',
 		fullMaxLevel: 10,
 		maxZoom: 13,
 		imageWidth: 1024,
@@ -92,7 +93,7 @@ export const MAPS: MapDef[] = [
 	},
 	{
 		key: 'nizina',
-		name: 'Низина',
+		nameKey: 'cwMap.maps.nizina',
 		fullMaxLevel: 11,
 		maxZoom: 13,
 		imageWidth: 2048,
@@ -105,7 +106,7 @@ export const MAPS: MapDef[] = [
 	},
 	{
 		key: 'roze_wise',
-		name: 'Роза ветров',
+		nameKey: 'cwMap.maps.rozeWise',
 		fullMaxLevel: 12,
 		maxZoom: 13,
 		imageWidth: 2560,
@@ -130,32 +131,47 @@ export const PRESET_COLORS = [
 export const MARKER_PRESETS: MarkerPreset[] = [
 	{
 		key: 'position',
-		label: 'Позиция',
+		labelKey: 'cwMap.markers.position',
 		color: '#3b82f6',
 		icon: 'lucide:crosshair',
 	},
-	{ key: 'base', label: 'База', color: '#22c55e', icon: 'lucide:home' },
+	{
+		key: 'base',
+		labelKey: 'cwMap.markers.base',
+		color: '#22c55e',
+		icon: 'lucide:home',
+	},
 	{
 		key: 'danger',
-		label: 'Опасность',
+		labelKey: 'cwMap.markers.danger',
 		color: '#ef4444',
 		icon: 'lucide:alert-triangle',
 	},
-	{ key: 'loot', label: 'Лут', color: '#eab308', icon: 'lucide:package' },
-	{ key: 'spawn', label: 'Спавн', color: '#8b5cf6', icon: 'lucide:user' },
+	{
+		key: 'loot',
+		labelKey: 'cwMap.markers.loot',
+		color: '#eab308',
+		icon: 'lucide:package',
+	},
+	{
+		key: 'spawn',
+		labelKey: 'cwMap.markers.spawn',
+		color: '#8b5cf6',
+		icon: 'lucide:user',
+	},
 	{
 		key: 'extract',
-		label: 'Выход',
+		labelKey: 'cwMap.markers.extract',
 		color: '#22d3ee',
 		icon: 'lucide:door-open',
 	},
 	{
 		key: 'sniper',
-		label: 'Снайпер',
+		labelKey: 'cwMap.markers.sniper',
 		color: '#f97316',
 		icon: 'lucide:target',
 	},
-	{ key: 'info', label: 'Инфо', color: '#a3a3a3', icon: 'lucide:info' },
+	{ key: 'info', labelKey: 'cwMap.markers.info', color: '#a3a3a3', icon: 'lucide:info' },
 	{ key: 'point_a', label: 'A', color: '#222222', icon: '', letter: 'A' },
 	{ key: 'point_b', label: 'B', color: '#222222', icon: '', letter: 'B' },
 	{ key: 'point_c', label: 'C', color: '#222222', icon: '', letter: 'C' },
@@ -166,13 +182,13 @@ export const MARKER_PRESETS: MarkerPreset[] = [
 	{ key: 'point_h', label: 'H', color: '#222222', icon: '', letter: 'H' },
 ]
 
-export const DRAW_TOOLS: { key: Tool; icon: string; label: string }[] = [
-	{ key: 'pan', icon: 'lucide:hand', label: 'Рука' },
-	{ key: 'pen', icon: 'lucide:pencil', label: 'Карандаш' },
-	{ key: 'line', icon: 'lucide:minus', label: 'Линия' },
-	{ key: 'arrow', icon: 'lucide:move-right', label: 'Стрелка' },
-	{ key: 'rect', icon: 'lucide:square', label: 'Прямоуг.' },
-	{ key: 'circle', icon: 'lucide:circle', label: 'Круг' },
-	{ key: 'eraser', icon: 'lucide:eraser', label: 'Ластик' },
-	{ key: 'marker', icon: 'lucide:map-pin', label: 'Метка' },
+export const DRAW_TOOLS: { key: Tool; icon: string; labelKey: string }[] = [
+	{ key: 'pan', icon: 'lucide:hand', labelKey: 'cwMap.tools.pan' },
+	{ key: 'pen', icon: 'lucide:pencil', labelKey: 'cwMap.tools.pen' },
+	{ key: 'line', icon: 'lucide:minus', labelKey: 'cwMap.tools.line' },
+	{ key: 'arrow', icon: 'lucide:move-right', labelKey: 'cwMap.tools.arrow' },
+	{ key: 'rect', icon: 'lucide:square', labelKey: 'cwMap.tools.rect' },
+	{ key: 'circle', icon: 'lucide:circle', labelKey: 'cwMap.tools.circle' },
+	{ key: 'eraser', icon: 'lucide:eraser', labelKey: 'cwMap.tools.eraser' },
+	{ key: 'marker', icon: 'lucide:map-pin', labelKey: 'cwMap.tools.marker' },
 ]

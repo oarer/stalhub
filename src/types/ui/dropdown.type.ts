@@ -18,6 +18,8 @@ export interface DropdownProps {
 	className?: string
 	variant?: ButtonVariant
 	blur?: boolean
+	compact?: boolean
+	onlyIcon?: boolean
 }
 
 export interface DropdownMenuItemProps {

@@ -117,7 +117,28 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:box',
 				href: '/calcs/modules',
 				labelKey: 'nav.groups.calculators.items.modules.label',
-				descriptionKey: 'nav.groups.calculators.items.modules.description',
+				descriptionKey:
+					'nav.groups.calculators.items.modules.description',
+			},
+		],
+	},
+	{
+		key: 'clans',
+		titleKey: 'nav.groups.clans.title',
+		icon: 'lucide:users',
+		items: [
+			{
+				key: 'clans',
+				icon: 'lucide:users',
+				href: '/clans',
+				labelKey: 'nav.groups.clans.items.clans.label',
+			},
+			{
+				key: 'clanMaps',
+				icon: 'lucide:map-pinned',
+				href: '/maps/cw',
+				labelKey: 'nav.groups.clans.items.clanMaps.label',
+				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
 			},
 		],
 	},
@@ -126,6 +147,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 		titleKey: 'nav.groups.other.title',
 		icon: 'lucide:more-horizontal',
 		items: [
+			{
+				key: 'dashboard',
+				icon: 'lucide:layout-grid',
+				href: '/dashboard',
+				labelKey: 'nav.groups.other.items.dashboard.label',
+				descriptionKey: 'nav.groups.other.items.dashboard.description',
+			},
 			{
 				key: 'maps',
 				icon: 'lucide:map',
@@ -137,13 +165,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:user-round-search',
 				href: '/player',
 				labelKey: 'nav.groups.other.items.players.label',
-			},
-			{
-				key: 'clanMaps',
-				icon: 'lucide:map-pinned',
-				href: '/maps/cw',
-				labelKey: 'nav.groups.clans.items.clanMaps.label',
-				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
 			},
 			{
 				key: 'models',

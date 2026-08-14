@@ -2,38 +2,63 @@
 
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Divider } from '@/components/ui/Divider'
 import { cn } from '@/lib/cn'
-import type { NavTabsProps } from '../../../types/me.types'
-import { tabs } from '../../../types/me.types'
+import type { NavTabsProps } from '@/types/me.types'
+import { tabGroups } from '@/types/me.types'
 
 export default function NavTabs({
 	pathname,
 	unreadCount,
 	onTabClick,
 }: NavTabsProps) {
+	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-2 rounded-lg bg-background px-4 py-3">
-			{tabs.map((tab) => (
-				<Link
-					className={cn(
-						'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 transition-all duration-500 hover:bg-accent',
-						pathname === tab.href &&
-							'bg-accent hover:brightness-125'
+		<div className="flex flex-col rounded-lg bg-background px-4 py-3">
+			{tabGroups.map((group, gi) => (
+				<div key={gi}>
+					{gi > 0 && <Divider className="my-2" />}
+					{group.label && (
+						<p className="mb-1 px-2 font-semibold text-[11px] text-neutral-500 uppercase tracking-wider">
+							{t(group.label)}
+						</p>
 					)}
-					href={tab.href}
-					key={tab.title}
-					onClick={onTabClick}
-				>
-					<Icon className="text-xl" icon={tab.icon} />
-					<p className="font-semibold text-md">{tab.title}</p>
-					{tab.href === '/me/notifications' &&
-						unreadCount != null &&
-						unreadCount > 0 && (
-							<span className="ml-auto rounded-full bg-sky-500 px-1.5 py-0.5 font-semibold text-white text-xs leading-none">
-								{unreadCount > 99 ? '99+' : unreadCount}
-							</span>
-						)}
-				</Link>
+					<div className="flex flex-col gap-1">
+						{group.items.map((tab) => {
+							const isActive =
+								tab.href === '/me'
+									? pathname === '/me'
+									: pathname.startsWith(tab.href)
+							return (
+								<Link
+									className={cn(
+										'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500 hover:bg-accent',
+										isActive &&
+											'bg-accent hover:brightness-125'
+									)}
+									href={tab.href}
+									key={tab.href}
+									onClick={onTabClick}
+								>
+									<Icon className="text-xl" icon={tab.icon} />
+									<p className="font-semibold text-sm">
+										{t(tab.title)}
+									</p>
+									{tab.href === '/me/notifications' &&
+										unreadCount != null &&
+										unreadCount > 0 && (
+											<span className="ml-auto rounded-full bg-sky-500 px-1.5 py-0.5 font-semibold text-white text-xs leading-none">
+												{unreadCount > 99
+													? '99+'
+													: unreadCount}
+											</span>
+										)}
+								</Link>
+							)
+						})}
+					</div>
+				</div>
 			))}
 		</div>
 	)

@@ -14,9 +14,9 @@ export default function MapsView() {
 
 	useEffect(() => {
 		if (error) {
-			toast.error('Произошла ошибка при загрузке списка карт.')
+			toast.error(t('map.loadError'))
 		}
-	}, [error])
+	}, [error, t])
 
 	return (
 		<main className="mx-auto flex max-w-360 flex-col gap-12 px-4 pt-32 sm:px-6 md:px-8">

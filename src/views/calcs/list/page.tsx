@@ -17,10 +17,10 @@ export default function ToolsListView() {
 				<h1
 					className={`${unbounded.className} mb-2 font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
 				>
-					Инструменты
+					{t('toolsList.title')}
 				</h1>
 				<p className="font-semibold text-[16px] text-text-accent">
-					Выберите необходимые вам инструменты
+					{t('toolsList.subtitle')}
 				</p>
 			</div>
 			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-border/30 md:grid-cols-2 lg:grid-cols-3">
@@ -42,9 +42,9 @@ export default function ToolsListView() {
 							href={tool.link}
 						>
 							<div className="flex items-center gap-2">
-								<div className="rounded-lg bg-cyan-500/10 p-2">
+								<div className="rounded-lg bg-0/10 p-2">
 									<Icon
-										className="text-3xl text-cyan-500"
+										className="text-3xl text-border"
 										icon={tool.icon}
 									/>
 								</div>

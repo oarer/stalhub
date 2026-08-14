@@ -3,6 +3,11 @@
 import type { useTranslations } from 'next-intl'
 import { forwardRef, useMemo } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
+import {
+	artPriceKey,
+	formatArtPrice,
+	useBuildPrices,
+} from '@/hooks/useBuildPrices'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import {
 	BoostButtons,
@@ -15,6 +20,7 @@ import {
 	infoColorMap,
 	type Locale,
 } from '@/types/item.type'
+import { artQualityToQualityIndex } from '@/utils/artUtils'
 import { messageToString } from '@/utils/itemUtils'
 import { useBuildStats } from '@/views/calcs/builds/model/components/hooks/useBuildStats'
 import { StatRow } from '../../model/components/stats'
@@ -51,6 +57,7 @@ export const BuildLitePngTemplate = forwardRef<
 	ref
 ) {
 	const { displayNamesMap, hps, prime, sortedStats } = useBuildStats()
+	const { priceMap } = useBuildPrices()
 
 	const artsMap = useMemo(
 		() => new Map(build.arts.map((a) => [a.instanceId, a])),
@@ -91,12 +98,28 @@ export const BuildLitePngTemplate = forwardRef<
 		return [{ category, boostItem }]
 	})
 
+	const totalPrice = useMemo(
+		() =>
+			build.arts.reduce((sum, art) => {
+				const price =
+					priceMap[
+						artPriceKey(
+							art.itemId,
+							artQualityToQualityIndex[art.qualityClass] ?? 0,
+							art.potential ?? 0
+						)
+					]
+				return price?.price != null ? sum + price.price : sum
+			}, 0),
+		[build.arts, priceMap]
+	)
+
 	return (
 		<div className="w-7xl bg-background p-8 text-white" ref={ref}>
 			<h1
 				className={`${unbounded.className} font-bold text-2xl text-border uppercase tracking-[3]`}
 			>
-				stalhub.tech
+				stalhub.dev
 			</h1>
 			<header className="mb-4 flex items-center justify-between gap-8">
 				<h2
@@ -150,6 +173,17 @@ export const BuildLitePngTemplate = forwardRef<
 									const itemName = item
 										? messageToString(item.name, locale)
 										: ''
+									const price = art
+										? priceMap[
+												artPriceKey(
+													art.itemId,
+													artQualityToQualityIndex[
+														art.qualityClass
+													] ?? 0,
+													art.potential ?? 0
+												)
+											]
+										: undefined
 
 									return (
 										<div
@@ -188,6 +222,17 @@ export const BuildLitePngTemplate = forwardRef<
 															? `+${art.potential} `
 															: ''}
 														{art?.percent}%
+													</p>
+													<p
+														className={`${montserrat.className} ml-auto font-bold text-border text-sm`}
+													>
+														{price?.source ===
+														'estimate'
+															? '≈ '
+															: ''}
+														{formatArtPrice(
+															price?.price ?? null
+														)}
 													</p>
 												</>
 											) : (
@@ -236,6 +281,18 @@ export const BuildLitePngTemplate = forwardRef<
 							<p className="text-neutral-400 text-sm">
 								{t('build.stats.no_container')}
 							</p>
+						)}
+						{totalPrice > 0 && (
+							<div className="flex items-center justify-between rounded-lg bg-black/25 px-4 py-1">
+								<p className="font-semibold text-text-accent text-xs">
+									{t('build.price_total')}
+								</p>
+								<p
+									className={`${montserrat.className} font-bold text-border text-lg`}
+								>
+									{formatArtPrice(totalPrice)}
+								</p>
+							</div>
 						)}
 					</section>
 

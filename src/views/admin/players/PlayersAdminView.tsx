@@ -1,10 +1,8 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import {
-	useMutation,
-	useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -28,6 +26,7 @@ const PLAYER_ROLES = [
 type PlayerRoleValue = (typeof PLAYER_ROLES)[number]['value']
 
 export default function PlayersAdminView() {
+	const t = useTranslations()
 	const queryClient = getQueryClient()
 
 	const [selectedRole, setSelectedRole] = useState<PlayerRoleValue>('STALHUB')
@@ -55,49 +54,52 @@ export default function PlayersAdminView() {
 				role: addRole,
 			}),
 		onSuccess: () => {
-			toast.success('Игрок добавлен')
+			toast.success(t('admin.players.toast.added'))
 			queryClient.invalidateQueries({
 				queryKey: ['admin', 'players'],
 			})
 			setAddUuid('')
 			setAddDescription('')
 		},
-		onError: () => toast.error('Ошибка добавления'),
+		onError: () => toast.error(t('admin.players.toast.addError')),
 	})
 
 	const blacklistAddMutation = useMutation({
 		mutationFn: (uuid: string) => adminPlayerService.addToBlacklist(uuid),
 		onSuccess: () => {
-			toast.success('Игрок добавлен в чёрный список')
+			toast.success(t('admin.players.toast.blacklisted'))
 			queryClient.invalidateQueries({
 				queryKey: ['admin', 'players', 'blacklist'],
 			})
 			setBlacklistUuid('')
 		},
-		onError: () => toast.error('Ошибка добавления в чёрный список'),
+		onError: () => toast.error(t('admin.players.toast.blacklistAddError')),
 	})
 
 	const blacklistRemoveMutation = useMutation({
 		mutationFn: (uuid: string) =>
 			adminPlayerService.removeFromBlacklist(uuid),
 		onSuccess: () => {
-			toast.success('Игрок удалён из чёрного списка')
+			toast.success(t('admin.players.toast.blacklistRemoved'))
 			queryClient.invalidateQueries({
 				queryKey: ['admin', 'players', 'blacklist'],
 			})
 		},
-		onError: () => toast.error('Ошибка удаления из чёрного списка'),
+		onError: () =>
+			toast.error(t('admin.players.toast.blacklistRemoveError')),
 	})
 
 	return (
 		<div className="flex flex-col gap-6">
-			<h1 className="font-semibold text-2xl">Управление игроками</h1>
+			<h1 className="font-semibold text-2xl">
+				{t('admin.players.title')}
+			</h1>
 
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>
 						<Icon icon="lucide:plus" />
-						Добавить игрока
+						{t('admin.players.add')}
 					</Card.Title>
 				</Card.Header>
 				<Card.Content>
@@ -121,7 +123,7 @@ export default function PlayersAdminView() {
 										value: r.value,
 										label: r.label,
 									}))}
-									placeholder="Роль"
+									placeholder={t('admin.players.role')}
 									value={addRole}
 								/>
 							</div>
@@ -129,7 +131,7 @@ export default function PlayersAdminView() {
 						<div className="flex items-end gap-3">
 							<div className="flex-1">
 								<Input
-									label="Описание"
+									label="admin.permissions.description"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setAddDescription(e.target.value)}
@@ -141,7 +143,7 @@ export default function PlayersAdminView() {
 								loading={addMutation.isPending}
 								onClick={() => addMutation.mutate()}
 							>
-								Добавить
+								{t('admin.players.addBtn')}
 							</Button>
 						</div>
 					</div>
@@ -150,7 +152,9 @@ export default function PlayersAdminView() {
 
 			<div>
 				<div className="mb-4 flex items-center gap-3">
-					<h2 className="font-semibold text-lg">Роли игроков</h2>
+					<h2 className="font-semibold text-lg">
+						{t('admin.players.rolesTitle')}
+					</h2>
 					<Combobox
 						className="w-48"
 						onValueChange={(v) =>
@@ -160,7 +164,7 @@ export default function PlayersAdminView() {
 							value: r.value,
 							label: r.label,
 						}))}
-						placeholder="Роль"
+						placeholder={t('admin.players.role')}
 						value={selectedRole}
 					/>
 				</div>
@@ -170,8 +174,12 @@ export default function PlayersAdminView() {
 						<Table.Header>
 							<Table.Row>
 								<Table.Head>UUID</Table.Head>
-								<Table.Head>Роль</Table.Head>
-								<Table.Head>Описание</Table.Head>
+								<Table.Head>
+									{t('admin.players.role')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.description')}
+								</Table.Head>
 							</Table.Row>
 						</Table.Header>
 						<Table.Body>
@@ -199,7 +207,7 @@ export default function PlayersAdminView() {
 								<Table.Row>
 									<Table.Cell>
 										<span className="text-neutral-400 text-sm">
-											Нет игроков
+											{t('admin.players.empty')}
 										</span>
 									</Table.Cell>
 									<Table.Cell />
@@ -212,7 +220,9 @@ export default function PlayersAdminView() {
 			</div>
 
 			<div>
-				<h2 className="mb-4 font-semibold text-lg">Чёрный список</h2>
+				<h2 className="mb-4 font-semibold text-lg">
+					{t('admin.players.blacklist')}
+				</h2>
 
 				<Card.Root>
 					<Card.Content>
@@ -234,7 +244,7 @@ export default function PlayersAdminView() {
 								}
 								variant="danger"
 							>
-								Добавить
+								{t('admin.players.addBtn')}
 							</Button>
 						</div>
 					</Card.Content>

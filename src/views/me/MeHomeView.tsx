@@ -1,18 +1,20 @@
 'use client'
 
 import { useSuspenseQuery } from '@tanstack/react-query'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { articleQueries } from '@/queries/article/article.queries'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
-import { itemsQueries } from '@/queries/calcs/items.queries'
 import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { userQueries } from '@/queries/user/user.queries'
 import { Regions } from '@/types/api.type'
 import { ArticleCard } from './components/article/ArticleCard'
 import { BuildCard } from './components/BuildCard'
 import { CharacterCard } from './components/CharacterCard'
+import { HomeSection } from './components/HomeSection'
+import { useItemsData } from './hooks/useItemsData'
 
 export default function MeHomeView() {
+	const t = useTranslations()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: builds } = useSuspenseQuery(
 		buildApiQueries.list({ take: 10 })
@@ -20,15 +22,7 @@ export default function MeHomeView() {
 	const { data: articles } = useSuspenseQuery(
 		articleQueries.list({ take: 10 })
 	)
-	const { data: artifacts } = useSuspenseQuery(
-		itemsQueries.get({ type: 'artefact' })
-	)
-	const { data: armorItems } = useSuspenseQuery(
-		itemsQueries.get({ type: 'armor' })
-	)
-	const { data: containers } = useSuspenseQuery(
-		itemsQueries.get({ type: 'containers' })
-	)
+	const { artifacts, armorItems, containers } = useItemsData()
 
 	const hasExbo = Boolean(user.providers?.exbo)
 
@@ -41,20 +35,14 @@ export default function MeHomeView() {
 		<div className="flex flex-col gap-6">
 			{hasExbo && <ExboSection />}
 
-			<section className="flex flex-col gap-3">
-				<div className="flex items-center justify-between">
-					<h2 className="font-semibold text-xl">Сборки</h2>
-					<Link
-						className="font-semibold text-sm text-text-accent hover:underline"
-						href="/me/builds"
-					>
-						Все сборки
-					</Link>
-				</div>
-
+			<HomeSection
+				actionHref="/me/builds"
+				actionLabel={t('me.home.allBuilds')}
+				title={t('me.home.builds')}
+			>
 				{builds?.data.length === 0 ? (
 					<p className="font-semibold text-sm text-text-accent">
-						Нет сборок
+						{t('me.home.noBuilds')}
 					</p>
 				) : (
 					<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -69,56 +57,42 @@ export default function MeHomeView() {
 						))}
 					</div>
 				)}
-			</section>
+			</HomeSection>
 
 			{publishedArticles.length > 0 && (
-				<section className="flex flex-col gap-3">
-					<div className="flex items-center justify-between">
-						<h2 className="font-semibold text-xl">
-							Опубликованные статьи
-						</h2>
-						<Link
-							className="font-semibold text-sm text-text-accent hover:underline"
-							href="/me/articles"
-						>
-							Все статьи
-						</Link>
-					</div>
-
+				<HomeSection
+					actionHref="/me/articles"
+					actionLabel={t('me.home.allArticles')}
+					title={t('me.home.publishedArticles')}
+				>
 					<div className="grid grid-cols-1 gap-2">
 						{publishedArticles.map((article) => (
 							<ArticleCard article={article} key={article.id} />
 						))}
 					</div>
-				</section>
+				</HomeSection>
 			)}
 
 			{reviewArticles.length > 0 && (
-				<section className="flex flex-col gap-3">
-					<div className="flex items-center justify-between">
-						<h2 className="font-semibold text-lg">
-							На рассмотрении
-						</h2>
-						<Link
-							className="font-semibold text-sm text-text-accent hover:underline"
-							href="/me/articles"
-						>
-							Все статьи
-						</Link>
-					</div>
-
+				<HomeSection
+					actionHref="/me/articles"
+					actionLabel={t('me.home.allArticles')}
+					title={t('me.home.underReview')}
+					titleClassName="text-lg"
+				>
 					<div className="grid grid-cols-1 gap-2">
 						{reviewArticles.map((article) => (
 							<ArticleCard article={article} key={article.id} />
 						))}
 					</div>
-				</section>
+				</HomeSection>
 			)}
 		</div>
 	)
 }
 
 function ExboSection() {
+	const t = useTranslations()
 	const { data: characters } = useSuspenseQuery(
 		exboQueries.getCharacters(Regions.RU)
 	)
@@ -126,14 +100,12 @@ function ExboSection() {
 	if (!characters || characters.length === 0) return null
 
 	return (
-		<section className="flex flex-col gap-3">
-			<h2 className="font-semibold text-xl">Персонажи</h2>
-
+		<HomeSection title={t('me.home.characters')}>
 			<div className="flex flex-col gap-2">
 				{characters.map((character) => (
 					<CharacterCard character={character} key={character.uuid} />
 				))}
 			</div>
-		</section>
+		</HomeSection>
 	)
 }

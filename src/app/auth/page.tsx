@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
@@ -18,6 +19,7 @@ type Provider = 'discord' | 'telegram' | 'exbo'
 export default function Page() {
 	const [loading, setLoading] = useState<Provider | null>(null)
 	const router = useRouter()
+	const t = useTranslations()
 
 	const handleLogin = async (provider: Provider) => {
 		setLoading(provider)
@@ -43,7 +45,7 @@ export default function Page() {
 						<h1
 							className={`${unbounded.className} font-bold text-[16px] uppercase tracking-widest`}
 						>
-							Авторизация
+							{t('auth.title')}
 						</h1>
 					</Card.Title>
 				</Card.Header>
@@ -93,27 +95,19 @@ export default function Page() {
 				<p
 					className={`${montserrat.className} font-semibold text-sm text-text-accent`}
 				>
-					Регистрируясь на сайте, вы соглашаетесь с настоящими{' '}
+					{t('auth.terms')}{' '}
 					<Link
 						className="underline underline-offset-2"
 						href="/wiki/legal/tos"
 					>
-						условиями пользования
+						{t('auth.termsLink')}
 					</Link>
 				</p>
 			</Card.Root>
-			<Alert.Root variant={'destructive'}>
-				<Alert.Title>EXBO</Alert.Title>
-				<Alert.Description>
-					При авторизации через EXBO необходимо сначала зайти на{' '}
-					<Link href={'https://exbo.net'}>exbo.net</Link>, после этого
-					вернутся на сайт и нажать на кнопку для авторизации!
-				</Alert.Description>
-			</Alert.Root>
 			<Alert.Root variant={'info'}>
-				<Alert.Title>Рекомендация</Alert.Title>
+				<Alert.Title>{t('auth.recommendationTitle')}</Alert.Title>
 				<Alert.Description>
-					Используйте EXBO для получения большего функционала
+					{t('auth.recommendationDesc')}
 				</Alert.Description>
 			</Alert.Root>
 		</section>

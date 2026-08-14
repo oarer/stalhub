@@ -41,7 +41,7 @@ export default function Nav() {
 			transition={{ duration: 0.7 }}
 		>
 			<nav className="mx-auto xl:max-w-360">
-				<div className="mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-10">
+				<div className="mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-10 lg:gap-3 lg:px-6 xl:gap-5 xl:px-10">
 					<div className="lg:hidden">
 						<NavMobile />
 					</div>
@@ -58,9 +58,10 @@ export default function Nav() {
 							/>
 						</Link>
 					</div>
-					<div className="hidden items-center gap-8 lg:flex">
+					<div className="hidden items-center gap-4 lg:flex xl:gap-6 2xl:gap-4">
 						{DropDownLinks().map((menu, index) => (
 							<DropdownMenu
+								compact
 								icon={menu?.icon}
 								items={menu.items}
 								key={index}
@@ -69,11 +70,12 @@ export default function Nav() {
 							/>
 						))}
 						<CLink
-							className="flex items-center gap-4 rounded-full px-6 py-2"
+							className="flex items-center gap-2 rounded-full px-3.5 py-2 xl:gap-4 xl:px-6"
 							href="/articles"
+							variant={'ghost'}
 						>
 							<Icon className="text-xl" icon="lucide:book-open" />
-							<p className="font-semibold text-md">
+							<p className="hidden font-semibold text-md xl:block">
 								{t('nav.articles')}
 							</p>
 						</CLink>

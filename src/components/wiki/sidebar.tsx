@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/cn'
 import type { WikiSection } from '@/types/wiki.type'
@@ -14,6 +15,7 @@ interface WikiSidebarProps {
 
 export function WikiSidebar({ sections }: WikiSidebarProps) {
 	const pathname = usePathname()
+	const t = useTranslations()
 
 	return (
 		<aside className="w-80">
@@ -28,7 +30,7 @@ export function WikiSidebar({ sections }: WikiSidebarProps) {
 						href="/wiki"
 					>
 						<Icon className="text-xl" icon="lucide:book-open" />
-						<h1 className="text-lg">Вики</h1>
+						<h1 className="text-lg">{t('wiki.navTitle')}</h1>
 					</Link>
 				</motion.div>
 

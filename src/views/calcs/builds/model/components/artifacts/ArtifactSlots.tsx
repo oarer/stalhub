@@ -76,7 +76,7 @@ export function ArtifactSlots({
 					<div className="relative" key={i}>
 						<button
 							className={cn(
-								'flex h-22 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-border/40 bg-background/25 p-1 backdrop-blur-sm transition-colors',
+								'flex h-24 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-border/40 bg-background/25 p-1 backdrop-blur-sm transition-colors',
 								borderColor
 							)}
 							onClick={() => onSelectSlot(i)}

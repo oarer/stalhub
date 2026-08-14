@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -11,6 +12,7 @@ import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminNotificationService } from '@/services/admin/notification.service'
 
 export default function NotificationsAdminView() {
+	const t = useTranslations()
 	const [mode, setMode] = useState<'broadcast' | 'user'>('broadcast')
 	const [title, setTitle] = useState('')
 	const [content, setContent] = useState('')
@@ -33,12 +35,16 @@ export default function NotificationsAdminView() {
 				link: link || undefined,
 			}),
 		onSuccess: (res) => {
-			toast.success(`Уведомление отправлено ${res.sent} пользователям`)
+			toast.success(
+				t('admin.notifications.toast.broadcastSent', {
+					count: res.sent,
+				})
+			)
 			setTitle('')
 			setContent('')
 			setLink('')
 		},
-		onError: () => toast.error('Ошибка отправки'),
+		onError: () => toast.error(t('admin.notifications.toast.sendError')),
 	})
 
 	const sendToUserMutation = useMutation({
@@ -51,14 +57,14 @@ export default function NotificationsAdminView() {
 			})
 		},
 		onSuccess: () => {
-			toast.success('Уведомление отправлено')
+			toast.success(t('admin.notifications.toast.sent'))
 			setTitle('')
 			setContent('')
 			setLink('')
 			setSelectedUserId(null)
 			setUserSearch('')
 		},
-		onError: () => toast.error('Ошибка отправки'),
+		onError: () => toast.error(t('admin.notifications.toast.sendError')),
 	})
 
 	const handleSend = () => {
@@ -78,14 +84,16 @@ export default function NotificationsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">Уведомления</h1>
+				<h1 className="font-semibold text-2xl">
+					{t('admin.notifications.title')}
+				</h1>
 			</div>
 
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>
 						<Icon icon="lucide:send" />
-						Отправить уведомление
+						{t('admin.notifications.sendTitle')}
 					</Card.Title>
 				</Card.Header>
 				<Card.Content>
@@ -101,7 +109,7 @@ export default function NotificationsAdminView() {
 								type="button"
 							>
 								<Icon className="size-4" icon="lucide:globe" />
-								Всем пользователям
+								{t('admin.notifications.broadcast')}
 							</button>
 							<button
 								className={`flex items-center gap-2 rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors ${
@@ -113,14 +121,14 @@ export default function NotificationsAdminView() {
 								type="button"
 							>
 								<Icon className="size-4" icon="lucide:user" />
-								Конкретному пользователю
+								{t('admin.notifications.toUser')}
 							</button>
 						</div>
 
 						{mode === 'user' && (
 							<div className="flex flex-col gap-2">
 								<Input
-									label="Поиск пользователя"
+									label="admin.notifications.searchUser"
 									onChange={(e) => {
 										setUserSearch(e.target.value)
 										setSelectedUserId(null)
@@ -185,7 +193,9 @@ export default function NotificationsAdminView() {
 														))
 										).length === 0 && (
 											<p className="px-2 py-1 text-sm text-text-accent">
-												Не найдено
+												{t(
+													'admin.notifications.notFound'
+												)}
 											</p>
 										)}
 									</div>
@@ -207,7 +217,7 @@ export default function NotificationsAdminView() {
 											}}
 											type="button"
 										>
-											Сменить
+											{t('admin.notifications.change')}
 										</button>
 									</div>
 								)}
@@ -215,25 +225,27 @@ export default function NotificationsAdminView() {
 						)}
 
 						<Input
-							label="Заголовок"
+							label="admin.notifications.titleLabel"
 							onChange={(e) => setTitle(e.target.value)}
 							value={title}
 						/>
 
 						<div className="flex flex-col gap-1">
-							<label className="font-semibold text-sm text-text-accent">
-								Сообщение
-							</label>
+							<span className="font-semibold text-sm text-text-accent">
+								{t('admin.notifications.contentLabel')}
+							</span>
 							<textarea
 								className="min-h-20 resize-none rounded-lg border-2 border-border-secondary bg-background px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-sky-400/50"
 								onChange={(e) => setContent(e.target.value)}
-								placeholder="Текст уведомления..."
+								placeholder={t(
+									'admin.notifications.contentPlaceholder'
+								)}
 								value={content}
 							/>
 						</div>
 
 						<Input
-							label="Ссылка (необязательно)"
+							label="admin.notifications.linkLabel"
 							onChange={(e) => setLink(e.target.value)}
 							placeholder="/articles/1"
 							value={link}
@@ -251,8 +263,8 @@ export default function NotificationsAdminView() {
 						>
 							<Icon className="size-4" icon="lucide:send" />
 							{mode === 'broadcast'
-								? 'Отправить всем'
-								: 'Отправить пользователю'}
+								? t('admin.notifications.sendAll')
+								: t('admin.notifications.sendToUser')}
 						</Button>
 					</div>
 				</Card.Content>

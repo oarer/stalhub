@@ -210,7 +210,7 @@ function BoostSelectModal({
 											withCard={false}
 										/>
 									))}
-								</div>
+							</div>
 						</HoverCard.Content>
 					</HoverCard.Root>
 				) : (

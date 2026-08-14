@@ -3,12 +3,10 @@
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
-import { Switch } from '@/components/ui/Switch'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -30,8 +28,6 @@ export function MannequinControls({ prime }: { prime: number }) {
 		setPlateId,
 		buildId,
 		setBuildId,
-		modulesEnabled,
-		setModulesEnabled,
 	} = useTTKStore()
 
 	const plateOptions = plates.map((p) => ({
@@ -117,22 +113,6 @@ export function MannequinControls({ prime }: { prime: number }) {
 							{prime.toFixed(1)}
 						</span>
 					</div>
-					<div className="flex items-center justify-between rounded-lg bg-neutral-800/50 px-3 py-2">
-						<span className="text-neutral-400 text-sm">
-							{t('ttk.page.modules')}
-						</span>
-						<Switch
-							checked={modulesEnabled}
-							onCheckedChange={setModulesEnabled}
-							size="sm"
-						/>
-					</div>
-					<Link
-						className="text-center text-sm font-semibold text-sky-400 transition-colors hover:text-sky-300"
-						href="/calcs/modules"
-					>
-						{t('ttk.page.modules_open')}
-					</Link>
 				</Card.Content>
 			</Card.Root>
 		</div>

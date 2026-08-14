@@ -54,10 +54,10 @@ export function ModuleGroupCard({
 
 	const label =
 		group === 'add-on'
-			? 'Группа надстроек'
+			? t('modules.groupAddOn')
 			: group === 'deviation'
-				? 'Группа отклонения'
-				: 'Группа концепта'
+				? t('modules.groupDeviation')
+				: t('modules.groupConcept')
 
 	return (
 		<Card.Root>
@@ -70,7 +70,7 @@ export function ModuleGroupCard({
 						className="p-2 ring-0"
 						onClick={onReset}
 						size={'sm'}
-						title="Сбросить"
+						title={t('modules.reset')}
 						variant={'danger'}
 					>
 						<Icon icon="lucide:x" />
@@ -172,7 +172,7 @@ export function ModuleGroupCard({
 					<div className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
 						<div className="flex justify-between">
 							<span className="font-semibold text-text-accent">
-								Реролл
+								{t('modules.reroll')}
 							</span>
 							<span
 								className={`${montserrat.className} font-bold`}
@@ -182,7 +182,7 @@ export function ModuleGroupCard({
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold text-text-accent">
-								Разбор
+								{t('modules.disassemble')}
 							</span>
 							<span
 								className={`${montserrat.className} font-bold`}
@@ -192,7 +192,7 @@ export function ModuleGroupCard({
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold text-text-accent">
-								Восстановление
+								{t('modules.restore')}
 							</span>
 							<span
 								className={`${montserrat.className} font-bold`}
@@ -202,7 +202,7 @@ export function ModuleGroupCard({
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold text-text-accent">
-								Категория
+								{t('modules.category')}
 							</span>
 							<span
 								className={`${montserrat.className} font-bold`}

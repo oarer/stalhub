@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { Handle, Position } from '@xyflow/react'
 import { motion } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
@@ -19,6 +20,7 @@ type Props = {
 
 const CustomNode = memo(
 	({ id, data }: Props) => {
+		const t = useTranslations()
 		return (
 			<motion.div
 				animate={{ opacity: 1, scale: 1 }}
@@ -136,7 +138,7 @@ const CustomNode = memo(
 
 				{data.energyPerCraft && (
 					<div className="flex items-center justify-between font-semibold text-sm">
-						<p>Энергия</p>
+						<p>{t('hideout.energy')}</p>
 						<span className={montserrat.className}>
 							{data.energyPerCraft *
 								Math.ceil(
@@ -148,7 +150,7 @@ const CustomNode = memo(
 
 				{data.price != null && (
 					<div className="flex items-center justify-between font-semibold text-sm">
-						<p>Стоимость</p>
+						<p>{t('hideout.cost')}</p>
 						<span className={montserrat.className}>
 							{(
 								data?.price * (data?.quantity ?? 0)

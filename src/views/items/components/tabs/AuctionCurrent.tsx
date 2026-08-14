@@ -37,14 +37,14 @@ export default function AuctionCurrent({ data }: Props) {
 	const tooltipCallbacks = {
 		title: (items: TooltipItem<'scatter'>[]) => {
 			const raw = items?.[0]?.raw as CurrentPoint | undefined
-			return raw ? `Дата выставления: ${raw.time}` : ''
+			return raw ? `${t('items.auction.listDate')}: ${raw.time}` : ''
 		},
 		label: (context: TooltipItem<'scatter'>) => {
 			const raw = context.raw as CurrentPoint
 			const lines: string[] = [
-				`Окончание торгов: ${raw.endTime}`,
-				`Начальная ставка: ${formatPrice(raw.startPrice)}`,
-				`Текущая ставка: ${
+				`${t('items.auction.endDate')}: ${raw.endTime}`,
+				`${t('items.auction.startPrice')}: ${formatPrice(raw.startPrice)}`,
+				`${t('items.auction.currentPrice')}: ${
 					raw.currentPrice != null
 						? formatPrice(raw.currentPrice)
 						: '—'
@@ -52,13 +52,21 @@ export default function AuctionCurrent({ data }: Props) {
 			]
 
 			if (raw.buyoutPrice != null) {
-				lines.push(`Выкуп: ${formatPrice(raw.buyoutPrice)}`)
+				lines.push(
+					`${t('items.auction.buyout')}: ${formatPrice(raw.buyoutPrice)}`
+				)
 			}
 
-			if (raw.amount > 1) lines.push(`Кол-во: ${raw.amount}`)
+			if (raw.amount > 1)
+				lines.push(`${t('items.auction.amount')}: ${raw.amount}`)
 			if (raw.artPercent > 0)
-				lines.push(`Процент: ${raw.artPercent.toFixed(2)}%`)
-			if (raw.ptn > 0) lines.push(`Потенциал: ${raw.ptn}`)
+				lines.push(
+					`${t('modals.builds.settings.percent')}: ${raw.artPercent.toFixed(2)}%`
+				)
+			if (raw.ptn > 0)
+				lines.push(
+					`${t('modals.builds.settings.potential')}: ${raw.ptn}`
+				)
 
 			return lines
 		},
@@ -105,7 +113,7 @@ export default function AuctionCurrent({ data }: Props) {
 	const dataForChart = createAuctionDataset(
 		[
 			{
-				label: 'Текущие лоты',
+				label: t('items.auction.current'),
 				data: points,
 				pointColorFn: (p) => getArtifactColor((p as CurrentPoint).qlt),
 			},

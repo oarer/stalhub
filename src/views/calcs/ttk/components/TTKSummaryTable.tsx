@@ -72,7 +72,8 @@ export function TTKSummaryTable({ rows, maxDist }: TTKSummaryTableProps) {
 							</Table.Cell>
 
 							<Table.Cell className="py-2 pr-4 font-mono text-yellow-400">
-								{row.ttk0.toFixed(3)}с
+								{row.ttk0.toFixed(3)}
+								{t('unit.second')}
 							</Table.Cell>
 
 							<Table.Cell className="py-2 pr-4 font-mono text-blue-400">
@@ -80,7 +81,8 @@ export function TTKSummaryTable({ rows, maxDist }: TTKSummaryTableProps) {
 							</Table.Cell>
 
 							<Table.Cell className="py-2 pr-4 font-mono text-yellow-400">
-								{row.ttkMax.toFixed(3)}с
+								{row.ttkMax.toFixed(3)}
+								{t('unit.second')}
 							</Table.Cell>
 
 							<Table.Cell className="py-2 font-mono text-blue-400">

@@ -37,6 +37,16 @@ export const qualityIndexToArtQuality: Record<number, ArtQuality> = {
 	6: InfoColor.ART_QUALITY_UNIQUE,
 }
 
+export const artQualityToQualityIndex: Record<ArtQuality, number> = {
+	[InfoColor.ART_QUALITY_COMMON]: 0,
+	[InfoColor.ART_QUALITY_UNCOMMON]: 1,
+	[InfoColor.ART_QUALITY_SPECIAL]: 2,
+	[InfoColor.ART_QUALITY_RARE]: 3,
+	[InfoColor.ART_QUALITY_EXCLUSIVE]: 4,
+	[InfoColor.ART_QUALITY_LEGENDARY]: 5,
+	[InfoColor.ART_QUALITY_UNIQUE]: 6,
+}
+
 export const calcArtifactPercent = (additional: ArtifactAdditional): number => {
 	if (additional.qlt === undefined) return 0
 

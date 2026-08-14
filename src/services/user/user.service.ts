@@ -2,8 +2,10 @@ import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import type {
 	Notification,
 	PaginatedResponse,
+	PublicUser,
 	Session,
 	StarredItem,
+	UpdateUserSettingsDto,
 	User,
 	UserSettings,
 } from '@/types/user.type'
@@ -14,14 +16,19 @@ class UserService {
 		return data
 	}
 
-	async patchMe(update: {
-		public_profile?: boolean
-		avatar?: string
-		bg_variant?: 'COLOR' | 'AVATAR' | 'NONE'
-		bg_color?: string
-	}): Promise<User> {
+	async patchMe(update: UpdateUserSettingsDto): Promise<User> {
 		const { data } = await apiClient.patch<User>(
 			'/api/v1/users/@me',
+			update
+		)
+		return data
+	}
+
+	async completeOnboarding(
+		update: UpdateUserSettingsDto
+	): Promise<User> {
+		const { data } = await apiClient.post<User>(
+			'/api/v1/users/@me/onboarding',
 			update
 		)
 		return data
@@ -34,6 +41,17 @@ class UserService {
 	async getSettings(): Promise<UserSettings> {
 		const { data } = await apiClient.get<UserSettings>(
 			'/api/v1/users/@me/settings'
+		)
+		return data
+	}
+
+	async uploadBanner(file: File): Promise<{ banner_image: string }> {
+		const formData = new FormData()
+		formData.append('file', file)
+		const { data } = await apiClient.post<{ banner_image: string }>(
+			'/api/v1/users/@me/banner',
+			formData,
+			{ headers: { 'Content-Type': 'multipart/form-data' } }
 		)
 		return data
 	}
@@ -94,7 +112,7 @@ class UserService {
 		>('/api/v1/users/@me/notifications', {
 			params: { take, page: page - 1 },
 		})
-		return { ...data, total: data.totalCount ?? (data as any).total }
+		return { ...data, total: data.totalCount ?? data.total }
 	}
 
 	async getUnreadCount(): Promise<number> {
@@ -114,6 +132,20 @@ class UserService {
 
 	async deleteNotification(id: number): Promise<void> {
 		await apiClient.delete(`/api/v1/users/@me/notifications/${id}`)
+	}
+
+	async getUser(id: number): Promise<PublicUser> {
+		const { data } = await apiClient.get<PublicUser>(
+			`/api/v1/users/id/${id}`
+		)
+		return data
+	}
+
+	async getUserByUsername(username: string): Promise<PublicUser> {
+		const { data } = await apiClient.get<PublicUser>(
+			`/api/v1/users/${username}`
+		)
+		return data
 	}
 }
 

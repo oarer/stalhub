@@ -1,10 +1,16 @@
+import type { Article } from './article.type'
+import type { BuildApi } from './build-api.type'
+import type { ClanHistoryEntry, PublicClan } from './clan/clan.type'
 import { Alliance } from './player.type'
 
 export interface User {
-	id: string
+	id: number
 	username: string
 	name: string | null
 	joined_at: string
+	name_changed_at: string | null
+	username_changed_at: string | null
+	onboarded: boolean
 
 	settings: UserSettings | null
 	badges: UserBadge[]
@@ -15,16 +21,39 @@ export interface User {
 		telegram: TelegramProvider | null
 		exbo: ExboProvider | null
 	}
+
+	customization: UserCustomization
 }
 
+export interface UserCustomization {
+	layout: string
+	bannerMode: BannerMode
+	bannerType: BannerType
+	bannerColor: string
+	bannerImage: string
+	cardBackground: CardBackground
+	cardColor: string
+	avatar: string | null
+}
+
+export type Layout = 'CLASSIC' | 'MODERN' | 'COMPACT'
+export type BannerMode = 'COLOR' | 'IMAGE' | 'NONE'
+export type BannerType = 'BACKGROUND' | 'HEADER'
+export type CardBackground = 'COLOR' | 'AVATAR' | 'NONE'
+export type AvatarSource = 'DISCORD' | 'TELEGRAM'
+
+//! TODO LEGACY
 export interface UserSettings {
 	id: string
 	public_profile: boolean
 	avatar: string | null
 	bg_variant: BgVariant
 	bg_color: string | null
+	region?: string | null
+	region_changed_at?: string | null
 }
 
+//! TODO LEGACY
 export type BgVariant = 'COLOR' | 'AVATAR' | 'NONE'
 
 export interface UserBadge {
@@ -89,11 +118,58 @@ export interface StarredItem {
 	created_at: string
 }
 
+export type PublicUser = Pick<
+	User,
+	'id' | 'username' | 'name' | 'joined_at' | 'badges' | 'customization'
+> & {
+	stars_count: number
+
+	builds: PublicUserBuild[]
+	articles: PublicUserArticle[]
+
+	clan: PublicClan | null
+	clan_history: ClanHistoryEntry[]
+}
+
+export type PublicUserBuild = Pick<
+	BuildApi,
+	'id' | 'title' | 'tags' | 'created_at' | 'data'
+> & {
+	tags: string
+}
+
+export type PublicUserArticle = Pick<
+	Article,
+	'id' | 'type' | 'title' | 'image_url' | 'created_at' | 'stars'
+> & {
+	tags: string
+}
+
 export interface PaginatedResponse<T> {
 	data: T[]
 	total: number
 	page: number
 	take: number
+}
+
+export interface UpdateUserSettingsDto {
+	public_profile?: boolean
+
+	name?: string
+	username?: string
+	region?: string
+
+	layout?: Layout
+
+	bannerMode?: BannerMode
+	bannerType?: BannerType
+	bannerColor?: string
+	bannerImage?: string
+
+	cardBackground?: CardBackground
+	cardColor?: string
+
+	avatar?: AvatarSource
 }
 
 export const allianceBackground: Record<Alliance, string> = {

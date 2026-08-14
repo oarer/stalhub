@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
@@ -16,6 +17,7 @@ export function TagsModal({
 	onSave,
 }: TagsModalProps) {
 	const [draft, setDraft] = useState(initialTags)
+	const t = useTranslations()
 
 	const handleSave = () => {
 		onSave(draft)
@@ -31,20 +33,20 @@ export function TagsModal({
 		<Modal.Root onOpenChange={handleOpenChange} open={open}>
 			<Modal.Content className="max-w-md" fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>Теги</Modal.Title>
+					<Modal.Title>{t('me.articleEditor.tagsTitle')}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Input
 						autoFocus
-						label="Теги через запятую"
+						label="me.articleEditor.tagsLabel"
 						onChange={(e) => setDraft(e.target.value)}
 						value={draft}
 					/>
 				</Modal.Body>
 				<Modal.Footer>
-					<Modal.Close>Отмена</Modal.Close>
+					<Modal.Close>{t('me.articleEditor.cancel')}</Modal.Close>
 					<Modal.Action onClick={handleSave}>
-						Сохранить
+						{t('me.articleEditor.saveBtn')}
 					</Modal.Action>
 				</Modal.Footer>
 			</Modal.Content>

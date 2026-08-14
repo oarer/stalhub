@@ -168,7 +168,7 @@ export default function CWMapEditor() {
 	const accordionItems = [
 		{
 			key: 'map',
-			title: selectedMap.name,
+			title: t(selectedMap.nameKey),
 			icon: 'lucide:map',
 			content: (
 				<>

@@ -101,7 +101,7 @@ export default function PermissionsAdminView() {
 					<div className="flex items-end gap-3">
 						<div className="flex-1">
 							<Input
-								label={t('admin.permissions.name')}
+								label="admin.permissions.name"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setCreateName(e.target.value)}
@@ -110,7 +110,7 @@ export default function PermissionsAdminView() {
 						</div>
 						<div className="flex-1">
 							<Input
-								label={t('admin.permissions.description')}
+								label="admin.permissions.description"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setCreateDescription(e.target.value)}
@@ -233,14 +233,14 @@ export default function PermissionsAdminView() {
 					<Modal.Body>
 						<div className="flex flex-col gap-4">
 							<Input
-								label={t('admin.permissions.name')}
+								label="admin.permissions.name"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEditName(e.target.value)}
 								value={editName}
 							/>
 							<Input
-								label={t('admin.permissions.description')}
+								label="admin.permissions.description"
 								onChange={(
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEditDescription(e.target.value)}

@@ -1,5 +1,6 @@
 'use client'
 
+import { Slot } from '@radix-ui/react-slot'
 import { AnimatePresence, motion } from 'motion/react'
 import {
 	createContext,
@@ -13,7 +14,6 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { cn } from '@/lib/cn'
-import { Slot } from '@radix-ui/react-slot'
 
 type Position = 'top' | 'bottom' | 'left' | 'right'
 
@@ -31,11 +31,13 @@ function TooltipRoot({
 	position = 'top',
 	delay = 200,
 	closeDelay = 100,
+	className,
 }: {
 	children: ReactNode
 	position?: Position
 	delay?: number
 	closeDelay?: number
+	className?: string
 }) {
 	const [open, setOpenState] = useState(false)
 	const timeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -73,7 +75,7 @@ function TooltipRoot({
 		<TooltipContext.Provider
 			value={{ open, setOpen: handleOpen, position, triggerRef }}
 		>
-			<div className="inline-flex" ref={triggerRef}>
+			<div className={cn('inline-flex', className)} ref={triggerRef}>
 				{children}
 			</div>
 		</TooltipContext.Provider>
@@ -225,7 +227,7 @@ function TooltipContent({ children }: { children: ReactNode }) {
 						position: 'fixed',
 						top: coords?.top ?? 0,
 						left: coords?.left ?? 0,
-						zIndex: 99999,
+						zIndex: 999999,
 					}}
 					transition={{ duration: 0.15 }}
 				>

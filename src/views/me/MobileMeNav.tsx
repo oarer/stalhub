@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,17 +12,17 @@ import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import useSvg from '@/hooks/useSvg'
-import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
-import { userService } from '@/services/user/user.service'
 import type { BgVariant } from '@/types/user.type'
+import { useTranslations } from 'next-intl'
 import NavTabs from '@/views/me/components/NavTabs'
 import UserCard from '@/views/me/components/UserCard'
+import { usePatchMe } from '@/views/me/hooks/usePatchMe'
 
 export default function MobileMeNav() {
 	const [isOpen, setIsOpen] = useState(false)
 	const pathname = usePathname()
-	const queryClient = getQueryClient()
+	const t = useTranslations()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: unreadCount } = useSuspenseQuery(userQueries.getUnreadCount())
 
@@ -31,13 +31,7 @@ export default function MobileMeNav() {
 	const bgVariant = (user.settings?.bg_variant ?? 'NONE') as BgVariant
 	const bgColor = user.settings?.bg_color ?? '#000000'
 
-	const bgUpdateMutation = useMutation({
-		mutationFn: (data: { bg_variant?: BgVariant; bg_color?: string }) =>
-			userService.patchMe(data),
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['user'] })
-		},
-	})
+	const bgUpdateMutation = usePatchMe()
 
 	useEffect(() => {
 		if (!isOpen) return
@@ -69,7 +63,7 @@ export default function MobileMeNav() {
 				whileTap={{ scale: 0.9 }}
 			>
 				<Icon className="text-lg" icon="lucide:menu" />
-				<p className="font-semibold">Меню</p>
+				<p className="font-semibold">{t('me.menu')}</p>
 			</motion.button>
 
 			{typeof document !== 'undefined' &&
@@ -88,7 +82,7 @@ export default function MobileMeNav() {
 
 								<motion.aside
 									animate={{ x: 0 }}
-									className="absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 overflow-y-auto bg-background px-4 py-6 shadow-xl"
+									className="absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 bg-background px-4 py-6 shadow-xl"
 									exit={{ x: '-100%' }}
 									initial={{ x: '-100%' }}
 									transition={{
@@ -127,17 +121,19 @@ export default function MobileMeNav() {
 										</Button>
 									</div>
 									<UserCard
-										bgColor={bgColor}
-										bgVariant={bgVariant}
-										onBgChange={bgUpdateMutation.mutate}
+										cardBackground={bgVariant}
+										cardColor={bgColor}
+										onCardChange={bgUpdateMutation.mutate}
 										user={user}
 									/>
 									<Divider />
-									<NavTabs
-										onTabClick={close}
-										pathname={pathname}
-										unreadCount={unreadCount}
-									/>
+									<div className="mask-y-from-97% mask-y-to-100% min-h-0 flex-1 overflow-y-auto">
+										<NavTabs
+											onTabClick={close}
+											pathname={pathname}
+											unreadCount={unreadCount}
+										/>
+									</div>
 								</motion.aside>
 							</div>
 						)}

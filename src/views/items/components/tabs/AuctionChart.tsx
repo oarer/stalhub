@@ -104,10 +104,11 @@ export function formatPrice(value: number): string {
 }
 
 export function buildTooltipLines(
+	priceLabel: string,
 	basePrice: number,
 	extra: Record<string, number | string | undefined>
 ): string[] {
-	const lines = [`Цена: ${formatPrice(basePrice)}`]
+	const lines = [`${priceLabel}: ${formatPrice(basePrice)}`]
 
 	for (const [key, value] of Object.entries(extra)) {
 		if (value !== undefined && value !== '' && value !== 0) {

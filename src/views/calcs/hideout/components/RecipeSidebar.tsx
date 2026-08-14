@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { memo, useMemo, useState } from 'react'
 import { Accordion } from '@/components/ui/Accordion'
 import Input from '@/components/ui/Input'
@@ -27,6 +28,7 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 	selectedItem,
 	onItemChange,
 }: RecipeSidebarProps) {
+	const t = useTranslations()
 	const [searchQuery, setSearchQuery] = useState('')
 
 	const categorizedRecipes = useMemo(() => {
@@ -148,7 +150,7 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 			<div className="flex flex-col gap-3">
 				<Input
 					onChange={(e) => setSearchQuery(e.target.value)}
-					placeholder="Поиск..."
+					placeholder={t('hideout.search')}
 					value={searchQuery}
 				/>
 

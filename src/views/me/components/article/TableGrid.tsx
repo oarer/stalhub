@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { TABLE_MAX } from '@/constants/article-editor.const'
 import { cn } from '@/lib/cn'
@@ -9,6 +10,7 @@ interface TableGridProps {
 
 export function TableGrid({ onInsert }: TableGridProps) {
 	const [hover, setHover] = useState<[number, number]>([0, 0])
+	const t = useTranslations()
 
 	return (
 		<div className="flex flex-col gap-3">
@@ -17,7 +19,7 @@ export function TableGrid({ onInsert }: TableGridProps) {
 			>
 				{hover[0] > 0 && hover[1] > 0
 					? `${hover[0]} × ${hover[1]}`
-					: 'Выберите размер'}
+					: t('me.articleEditor.chooseSize')}
 			</p>
 			<div className="flex flex-col gap-2">
 				{Array.from({ length: TABLE_MAX }, (_, r) => (

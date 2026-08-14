@@ -53,7 +53,7 @@ export default function UsersAdminView() {
 			<div className="flex items-center gap-3">
 				<div className="w-80">
 					<Input
-						label={t('admin.users.search')}
+						label="admin.users.search"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							setSearch(e.target.value)
 							setPage(1)

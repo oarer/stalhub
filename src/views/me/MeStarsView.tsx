@@ -3,19 +3,21 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { formatDate } from '@/lib/date'
 import { userQueries } from '@/queries/user/user.queries'
 
 export default function MeStarsView() {
+	const t = useTranslations()
 	const { data: stars } = useSuspenseQuery(userQueries.getStars({ take: 50 }))
 
 	return (
 		<div className="flex flex-col gap-4">
-			<h1 className="font-semibold text-xl">Избранное</h1>
+			<h1 className="font-semibold text-xl">{t('me.stars.title')}</h1>
 
 			{stars?.data.length === 0 ? (
 				<p className="font-semibold text-sm text-text-accent">
-					Нет избранных статей/сборок
+					{t('me.stars.empty')}
 				</p>
 			) : (
 				<div className="flex flex-col gap-2">
@@ -51,8 +53,8 @@ export default function MeStarsView() {
 								</p>
 								<p className="text-text-accent text-xs">
 									{item.type === 'build'
-										? 'Сборка'
-										: 'Статья'}{' '}
+										? t('me.stars.build')
+										: t('me.stars.article')}{' '}
 									· {formatDate(item.created_at, 'date')}
 								</p>
 							</div>

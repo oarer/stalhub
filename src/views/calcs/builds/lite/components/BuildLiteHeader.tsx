@@ -12,6 +12,7 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
+import BuildPriceModal from '../../components/BuildPriceModal'
 import BuildSelector from '../../components/BuildSelector'
 import DefaultsSettings from '../../components/DefaultsSettings'
 import { CompareBuildSelector } from './CompareBuildSelector'
@@ -246,6 +247,7 @@ export function BuildLiteHeader({
 							</Modal.Content>
 						</Modal.Root>
 					)}
+					<BuildPriceModal />
 					<Button
 						className="flex gap-2 rounded-lg p-2.5"
 						loading={savingPng}

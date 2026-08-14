@@ -1,5 +1,7 @@
 'use client'
-import { useTranslations } from 'next-intl'
+
+import { montserrat } from '@/app/fonts'
+import { cn } from '@/lib/cn'
 import type {
 	InfoElement,
 	Locale,
@@ -11,6 +13,7 @@ import {
 	messageToString,
 	roundNumber,
 } from '@/utils/itemUtils'
+import type { StatOverride } from './attachments/attachmentStats'
 
 function normalizeColor(raw?: string): string | undefined {
 	if (!raw) return undefined
@@ -26,7 +29,6 @@ export const ItemElement: React.FC<{
 }> = ({ el, locale }) => {
 	const name = messageToString(el.name, locale)
 	const nameColor = normalizeColor(el.formatted?.nameColor)
-	const valueColor = normalizeColor(el.formatted?.valueColor)
 	return (
 		<div className="flex justify-between">
 			<p
@@ -34,12 +36,6 @@ export const ItemElement: React.FC<{
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
-			</p>
-			<p
-				className="text-sm"
-				style={valueColor ? { color: valueColor } : undefined}
-			>
-				item
 			</p>
 		</div>
 	)
@@ -77,7 +73,7 @@ export const KeyValueElement: React.FC<{
 		<div className="flex justify-between font-semibold">
 			<p style={nameColor ? { color: nameColor } : undefined}>{key}</p>
 			<p
-				className="text-nowrap"
+				className={`${montserrat.className} text-nowrap text-[15px]`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{value}
@@ -89,7 +85,8 @@ export const KeyValueElement: React.FC<{
 export const NumericElement: React.FC<{
 	el: Extract<InfoElement, { type: 'numeric' }>
 	locale: Locale
-}> = ({ el, locale }) => {
+	override?: StatOverride
+}> = ({ el, locale, override }) => {
 	const name = messageToString(el.name, locale)
 	const nameColor = normalizeColor(el.formatted?.nameColor)
 
@@ -99,19 +96,47 @@ export const NumericElement: React.FC<{
 			: roundNumber(el.value)
 
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between gap-2">
 			<p
 				className="font-semibold"
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
 			</p>
-			<p
-				className="font-medium"
-				style={nameColor ? { color: nameColor } : undefined}
-			>
-				{display}
-			</p>
+			{override ? (
+				<div className="flex items-center gap-1 text-nowrap">
+					<span
+						className={`${montserrat.className} font-medium text-sm text-text-accent line-through`}
+					>
+						{roundNumber(override.base)}
+					</span>
+					<span aria-hidden="true">→</span>
+					<span
+						className={`${montserrat.className} font-semibold text-sm`}
+					>
+						{roundNumber(override.modified)}
+					</span>
+					<span
+						className={cn(
+							montserrat.className,
+							'font-semibold text-sm',
+							override.improved
+								? 'text-emerald-500'
+								: 'text-red-500'
+						)}
+					>
+						({override.deltaPct > 0 ? '+' : ''}
+						{roundNumber(override.deltaPct)}%)
+					</span>
+				</div>
+			) : (
+				<p
+					className={`${montserrat.className} font-medium text-sm`}
+					style={nameColor ? { color: nameColor } : undefined}
+				>
+					{display}
+				</p>
+			)}
 		</div>
 	)
 }
@@ -138,7 +163,7 @@ export const RangeElement: React.FC<{
 				{name}
 			</p>
 			<p
-				className="font-medium"
+				className={`${montserrat.className} font-font-semibold text-sm`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{display}
@@ -156,7 +181,7 @@ export const UsageElement: React.FC<{
 
 	return (
 		<p
-			className="font-semibold"
+			className={`${montserrat.className} font-medium text-sm`}
 			style={valueColor ? { color: valueColor } : undefined}
 		>
 			{name}
@@ -183,8 +208,6 @@ export const NumericVariantsElementRenderer: React.FC<{
 	const values = Array.isArray(el.value) ? el.value : []
 	const maxIdx = Math.max(0, values.length - 1)
 
-	const t = useTranslations()
-
 	const safePoint = Math.min(numericVariants, maxIdx)
 
 	const nameColor = normalizeColor(el.formatted?.nameColor)
@@ -196,28 +219,18 @@ export const NumericVariantsElementRenderer: React.FC<{
 
 	return (
 		<div className="flex items-center justify-between py-1">
-			<div className="flex items-center gap-4">
-				<div>
-					<div
-						className="truncate font-semibold"
-						style={nameColor ? { color: nameColor } : undefined}
-					>
-						{name}
-					</div>
-					<div className="font-semibold text-neutral-400 text-xs">
-						{t('ui.input_sharpening')} {numericVariants} (0—{maxIdx}
-						)
-					</div>
-				</div>
-			</div>
-			<div className="flex items-center gap-3">
-				<div
-					className="font-medium text-lg"
-					style={valueColor ? { color: valueColor } : undefined}
-				>
-					{current !== null ? format(current) : '—'}
-				</div>
-			</div>
+			<p
+				className="truncate font-semibold"
+				style={nameColor ? { color: nameColor } : undefined}
+			>
+				{name}
+			</p>
+			<p
+				className={`${montserrat.className} font-medium text-md`}
+				style={valueColor ? { color: valueColor } : undefined}
+			>
+				{!current ? format(current) : '—'}
+			</p>
 		</div>
 	)
 }

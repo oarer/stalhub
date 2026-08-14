@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useTheme } from 'next-themes'
+import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { themes } from '@/constants/themes.const'
 import useClickOutside from '@/hooks/useClickOutside'
@@ -9,6 +10,7 @@ export default function ChangeTheme() {
 	const { theme, setTheme } = useTheme()
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 	const menuRef = useRef<HTMLDivElement>(null)
+	const t = useTranslations()
 
 	useClickOutside(menuRef, () => setIsMenuOpen(false))
 
@@ -67,7 +69,9 @@ export default function ChangeTheme() {
 									className="text-2xl"
 									icon={theme.iconName}
 								/>
-								<p className="font-semibold">{theme.title}</p>
+								<p className="font-semibold">
+									{t(theme.title)}
+								</p>
 							</button>
 						))}
 					</motion.div>

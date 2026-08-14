@@ -1,6 +1,7 @@
 'use client'
 
 import L from 'leaflet'
+import { useTranslations } from 'next-intl'
 import type { JSX } from 'react'
 import { Marker, Popup, useMap } from 'react-leaflet'
 import { getLocale } from '@/lib/getLocale'
@@ -35,6 +36,7 @@ export default function ServerMarkers({
 }: Props) {
 	const map = useMap()
 	const lang = getLocale()
+	const t = useTranslations()
 
 	if (!markersFile?.markers_clusters) return null
 
@@ -83,7 +85,7 @@ export default function ServerMarkers({
 							{desc}
 							<hr />
 							<small>
-								Категория:{' '}
+								{t('map.category')}{' '}
 								{getLocalized(cluster.name, lang) ?? cluster.id}{' '}
 								→ {getLocalized(group.name, lang) ?? group.slug}
 							</small>

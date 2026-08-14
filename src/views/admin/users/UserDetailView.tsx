@@ -219,14 +219,14 @@ export default function UserDetailView({ userId }: Props) {
 							<div className="flex flex-col gap-4">
 								<div className="grid grid-cols-2 gap-3">
 									<Input
-										label={t('admin.userDetail.username')}
+										label="admin.userDetail.username"
 										onChange={(
 											e: React.ChangeEvent<HTMLInputElement>
 										) => setEditUsername(e.target.value)}
 										value={editUsername}
 									/>
 									<Input
-										label={t('admin.userDetail.name')}
+										label="admin.userDetail.name"
 										onChange={(
 											e: React.ChangeEvent<HTMLInputElement>
 										) => setEditName(e.target.value)}
@@ -273,18 +273,14 @@ export default function UserDetailView({ userId }: Props) {
 								<div className="flex flex-col gap-4">
 									<div className="grid grid-cols-2 gap-3">
 										<Input
-											label={t(
-												'admin.userDetail.ban.reason'
-											)}
+											label="admin.userDetail.ban.reason"
 											onChange={(
 												e: React.ChangeEvent<HTMLInputElement>
 											) => setBanReason(e.target.value)}
 											value={banReason}
 										/>
 										<Input
-											label={t(
-												'admin.userDetail.ban.duration'
-											)}
+											label="admin.userDetail.ban.duration"
 											onChange={(
 												e: React.ChangeEvent<HTMLInputElement>
 											) => setBanDuration(e.target.value)}

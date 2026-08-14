@@ -7,7 +7,11 @@ import { BPForm } from './components/BPForm'
 import { BPResults } from './components/BPResults'
 import { simulateXP } from './utils/bp'
 
-export function BPView() {
+type BPViewProps = {
+	variant?: 'page' | 'widget'
+}
+
+export function BPView({ variant = 'page' }: BPViewProps) {
 	const t = useTranslations()
 
 	const [days, setDays] = useState(90)
@@ -29,17 +33,25 @@ export function BPView() {
 	const difference = levelWith - levelWithout
 
 	return (
-		<section className="mx-auto flex max-w-4xl flex-col gap-10 px-4 pt-32 lg:pt-36">
-			<div className="text-center">
-				<h1
-					className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
-				>
-					{t('bp.title')}
-				</h1>
-				<p className="font-semibold text-sm text-text-accent">
-					{t('bp.sub_title')}
-				</p>
-			</div>
+		<section
+			className={
+				variant === 'widget'
+					? 'flex flex-col gap-4'
+					: 'mx-auto flex max-w-4xl flex-col gap-10 px-4 pt-32 lg:pt-36'
+			}
+		>
+			{variant === 'page' && (
+				<div className="text-center">
+					<h1
+						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+					>
+						{t('bp.title')}
+					</h1>
+					<p className="font-semibold text-sm text-text-accent">
+						{t('bp.sub_title')}
+					</p>
+				</div>
+			)}
 			<div className="grid gap-6 md:grid-cols-2">
 				<BPForm
 					currentLevel={currentLevel}

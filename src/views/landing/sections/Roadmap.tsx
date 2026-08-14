@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import { type RoadmapItem, RoadmapItems } from '@/constants/roadmap.const'
 import { cn } from '@/lib/cn'
@@ -11,6 +12,8 @@ function RoadmapContent({
 	item: RoadmapItem
 	align: 'left' | 'right'
 }) {
+	const t = useTranslations()
+
 	return (
 		<div
 			className={cn(
@@ -36,12 +39,12 @@ function RoadmapContent({
 					'font-bold text-[16px] uppercase tracking-widest dark:text-white'
 				)}
 			>
-				{item.title}
+				{t(item.title)}
 			</h3>
 
 			{item.description && (
 				<p className="font-semibold text-[13px] text-text-accent leading-relaxed">
-					{item.description}
+					{t(item.description)}
 				</p>
 			)}
 		</div>

@@ -84,11 +84,11 @@ export const tools = [
 		link: '/calcs/ttk',
 	},
 	{
-		id: 'workspace',
+		id: 'dashboard',
 		icon: 'lucide:grid-3x3',
-		title: 'landing.tools.tool_list.workspace.title',
-		desc: 'landing.tools.tool_list.workspace.desc',
-		link: '#',
+		title: 'landing.tools.tool_list.dashboard.title',
+		desc: 'landing.tools.tool_list.dashboard.desc',
+		link: '/dashboard',
 	},
 	{
 		id: 'map',

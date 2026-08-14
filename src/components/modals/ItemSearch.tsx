@@ -146,7 +146,11 @@ const ArticleCard = React.memo(function ArticleCard({
 	)
 })
 
-export default function ItemSearchModal() {
+export default function ItemSearchModal({
+	trigger,
+}: {
+	trigger?: React.ReactNode
+}) {
 	const t = useTranslations()
 
 	const [query, setQuery] = useState('')
@@ -202,9 +206,15 @@ export default function ItemSearchModal() {
 
 	return (
 		<Modal.Root onOpenChange={setOpen} open={open}>
-			<Modal.Trigger className="rounded-full p-2" variant={'ghost'}>
-				<Icon className="text-lg" icon="lucide:search" />
-			</Modal.Trigger>
+			{trigger ? (
+				<Modal.Trigger asChild variant={'ghost'}>
+					{trigger}
+				</Modal.Trigger>
+			) : (
+				<Modal.Trigger className="rounded-full p-2" variant={'ghost'}>
+					<Icon className="text-lg" icon="lucide:search" />
+				</Modal.Trigger>
+			)}
 
 			<Modal.Content align="top" className="max-w-3xl">
 				<Modal.Header>

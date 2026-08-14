@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import { MDXRemote } from 'next-mdx-remote'
+import { useTranslations } from 'next-intl'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
 import { cn } from '@/lib/cn'
 import type { EditorTab } from './editor-utils'
@@ -25,6 +26,7 @@ export function PreviewPane({
 	mobileTab,
 }: PreviewPaneProps) {
 	const components = useMDXComponents()
+	const t = useTranslations()
 
 	return (
 		<div
@@ -38,12 +40,12 @@ export function PreviewPane({
 			<div className="w-full p-4">
 				{compiledSource ? (
 					<div className="prose prose-neutral dark:prose-invert max-w-none">
-					<MDXRemote
-						compiledSource={compiledSource}
-						components={components}
-						frontmatter={EMPTY_FRONTMATTER}
-						scope={EMPTY_SCOPE}
-					/>
+						<MDXRemote
+							compiledSource={compiledSource}
+							components={components}
+							frontmatter={EMPTY_FRONTMATTER}
+							scope={EMPTY_SCOPE}
+						/>
 					</div>
 				) : content.trim() ? (
 					<div className="flex items-center justify-center gap-2 py-16">
@@ -52,7 +54,7 @@ export function PreviewPane({
 							icon="lucide:loader-circle"
 						/>
 						<p className="font-semibold text-md text-text-accent">
-							Компиляция...
+							{t('me.articleEditor.compiling')}
 						</p>
 					</div>
 				) : (
@@ -62,7 +64,7 @@ export function PreviewPane({
 							icon="lucide:file-text"
 						/>
 						<p className="font-semibold text-md text-text-accent">
-							Предпросмотр появится здесь
+							{t('me.articleEditor.previewHere')}
 						</p>
 					</div>
 				)}
@@ -70,7 +72,7 @@ export function PreviewPane({
 					<div className="flex items-center gap-2 border-red-500/20 border-t bg-red-500/5 px-4 py-2 text-red-400 text-xs">
 						<Icon className="size-4" icon="lucide:alert-triangle" />
 						<p className="font-semibold">
-							Ошибка в MDX — исправьте синтаксис
+							{t('me.articleEditor.mdxError')}
 						</p>
 					</div>
 				)}

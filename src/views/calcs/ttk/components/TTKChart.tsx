@@ -191,14 +191,14 @@ export function TTKChart({
 						title: (items: TooltipItem<'line'>[]) => {
 							if (!items.length) return ''
 							const x = items[0].parsed.x ?? 0
-							return `${Math.round(x)} м`
+							return `${Math.round(x)} ${_t('unit.meter')}`
 						},
 						label: (ctx: TooltipItem<'line'>) => {
 							const value = ctx.parsed.y ?? 0
 							const shots =
 								(ctx.raw as { shots?: number }).shots ?? 0
 							return [
-								` ${ctx.dataset.label} : ${shots} • ${value.toFixed(2)}с`,
+								` ${ctx.dataset.label} : ${shots} • ${value.toFixed(2)}${_t('unit.second')}`,
 							]
 						},
 					},
@@ -237,7 +237,7 @@ export function TTKChart({
 				},
 			},
 		}),
-		[isDark, maxDist]
+		[isDark, maxDist, _t]
 	)
 
 	return (

@@ -1,5 +1,7 @@
 import type { Message, MessageTranslation } from './item.type'
 
+export type CurrencyType = 'barter' | 'barter_coins' | 'crimson_shell'
+
 export type BarterResponse = {
 	settlement_required_level: string
 	settlement_titles: Message[]

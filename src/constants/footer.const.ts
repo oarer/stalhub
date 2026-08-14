@@ -10,7 +10,7 @@ export const footerLinks = [
 		icon: 'basil:telegram-outline',
 	},
 	{
-		href: 'https://status.stalhub.tech',
+		href: 'https://status.stalhub.dev',
 		title: 'footer.links.status',
 		icon: 'lucide:chart-no-axes-column',
 	},

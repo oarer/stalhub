@@ -11,8 +11,8 @@ export const checkboxVariants = cva(
 				lg: 'h-6 w-6',
 			},
 			variant: {
-				default: 'hover:border-black/50 dark:hover:border-white/80',
-				outline: 'hover:bg-black/10 dark:hover:bg-black/80',
+				default: 'hover:border/50 dark:hover:border-border/80',
+				outline: 'hover:bg-border/10 dark:hover:bg-border/80',
 			},
 		},
 		defaultVariants: {

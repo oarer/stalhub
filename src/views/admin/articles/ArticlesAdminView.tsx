@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -22,6 +23,7 @@ const STATUS_OPTIONS = [
 ]
 
 export default function ArticlesAdminView() {
+	const t = useTranslations()
 	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const [statusFilter, setStatusFilter] = useState<ArticleStatus | ''>('')
@@ -44,19 +46,19 @@ export default function ArticlesAdminView() {
 			reason?: string
 		}) => articleService.setStatus(id, status, reason),
 		onSuccess: () => {
-			toast.success('Статус обновлён')
+			toast.success(t('admin.articles.toast.statusUpdated'))
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
 		},
-		onError: () => toast.error('Ошибка обновления статуса'),
+		onError: () => toast.error(t('admin.articles.toast.statusUpdateError')),
 	})
 
 	const deleteMutation = useMutation({
 		mutationFn: (id: string) => articleService.delete(id),
 		onSuccess: () => {
-			toast.success('Статья удалена')
+			toast.success(t('admin.articles.toast.deleted'))
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
 		},
-		onError: () => toast.error('Ошибка удаления'),
+		onError: () => toast.error(t('admin.permissions.toast.deleteError')),
 	})
 
 	const articles = data?.data ?? []
@@ -68,9 +70,11 @@ export default function ArticlesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">Статьи</h1>
+				<h1 className="font-semibold text-2xl">
+					{t('admin.articles.title')}
+				</h1>
 				<span className="text-neutral-400 text-sm">
-					{data?.total ?? 0} всего
+					{data?.total ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -80,7 +84,7 @@ export default function ArticlesAdminView() {
 					size="sm"
 					variant={statusFilter === '' ? 'primary' : 'outline'}
 				>
-					Все
+					{t('admin.articles.all')}
 				</Button>
 				{STATUS_OPTIONS.map((status) => (
 					<Button
@@ -91,7 +95,7 @@ export default function ArticlesAdminView() {
 							statusFilter === status ? 'primary' : 'outline'
 						}
 					>
-						{ARTICLE_STATUS_META[status].label}
+						{t(`articles.status.${status}`)}
 					</Button>
 				))}
 			</div>
@@ -101,11 +105,19 @@ export default function ArticlesAdminView() {
 					<Table.Header>
 						<Table.Row>
 							<Table.Head>ID</Table.Head>
-							<Table.Head>Название</Table.Head>
-							<Table.Head>Автор</Table.Head>
-							<Table.Head>Статус</Table.Head>
-							<Table.Head>Звёзды</Table.Head>
-							<Table.Head>Создана</Table.Head>
+							<Table.Head>
+								{t('admin.permissions.name')}
+							</Table.Head>
+							<Table.Head>
+								{t('admin.articles.author')}
+							</Table.Head>
+							<Table.Head>
+								{t('admin.users.table.status')}
+							</Table.Head>
+							<Table.Head>{t('admin.articles.stars')}</Table.Head>
+							<Table.Head>
+								{t('admin.articles.created')}
+							</Table.Head>
 							<Table.Head />
 						</Table.Row>
 					</Table.Header>
@@ -135,10 +147,7 @@ export default function ArticlesAdminView() {
 									<span
 										className={`rounded-full px-2 py-0.5 font-semibold text-xs ${ARTICLE_STATUS_META[article.status].color}`}
 									>
-										{
-											ARTICLE_STATUS_META[article.status]
-												.label
-										}
+										{t(`articles.status.${article.status}`)}
 									</span>
 								</Table.Cell>
 								<Table.Cell>
@@ -162,7 +171,12 @@ export default function ArticlesAdminView() {
 											<Modal.Content fullScreen={false}>
 												<Modal.Header>
 													<Modal.Title>
-														Статус — {article.title}
+														{t(
+															'admin.articles.statusTitle',
+															{
+																title: article.title,
+															}
+														)}
 													</Modal.Title>
 												</Modal.Header>
 												<Modal.Body>
@@ -190,12 +204,9 @@ export default function ArticlesAdminView() {
 																	<span
 																		className={`rounded-full px-2 py-0.5 text-xs ${ARTICLE_STATUS_META[status].color}`}
 																	>
-																		{
-																			ARTICLE_STATUS_META[
-																				status
-																			]
-																				.label
-																		}
+																		{t(
+																			`articles.status.${status}`
+																		)}
 																	</span>
 																</Button>
 															)
@@ -204,7 +215,7 @@ export default function ArticlesAdminView() {
 												</Modal.Body>
 												<Modal.Footer>
 													<Modal.Close>
-														Закрыть
+														{t('clan.common.close')}
 													</Modal.Close>
 												</Modal.Footer>
 											</Modal.Content>
@@ -220,19 +231,31 @@ export default function ArticlesAdminView() {
 											<Modal.Content fullScreen={false}>
 												<Modal.Header>
 													<Modal.Title>
-														Удалить статью?
+														{t(
+															'admin.articles.deleteTitle'
+														)}
 													</Modal.Title>
 													<Modal.Description>
-														Статья{' '}
-														<strong>
-															{article.title}
-														</strong>{' '}
-														будет удалена навсегда.
+														{t.rich(
+															'admin.articles.deleteDescription',
+															{
+																title: article.title,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
+															}
+														)}
 													</Modal.Description>
 												</Modal.Header>
 												<Modal.Footer>
 													<Modal.Close>
-														Отмена
+														{t(
+															'clan.common.cancel'
+														)}
 													</Modal.Close>
 													<Modal.Action
 														closeOnClick
@@ -243,7 +266,9 @@ export default function ArticlesAdminView() {
 														}
 														variant="danger"
 													>
-														Удалить
+														{t(
+															'clan.common.delete'
+														)}
 													</Modal.Action>
 												</Modal.Footer>
 											</Modal.Content>
@@ -256,7 +281,7 @@ export default function ArticlesAdminView() {
 							<Table.Row>
 								<Table.Cell>
 									<span className="text-neutral-400 text-sm">
-										Нет статей
+										{t('admin.articles.empty')}
 									</span>
 								</Table.Cell>
 								<Table.Cell />

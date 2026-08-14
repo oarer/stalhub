@@ -9,6 +9,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { useEffect, useState } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
 import { compileMdx } from '@/lib/actions/mdx'
 import { formatDate } from '@/lib/date'
@@ -97,11 +98,13 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 							unoptimized
 							width={42}
 						/>
-						<span
-							className={`${montserrat.className} font-semibold text-xs`}
-						>
-							{article.author.username}
-						</span>
+						<HoverUserCard id={article.author.id}>
+							<span
+								className={`${montserrat.className} font-semibold text-xs`}
+							>
+								{article.author.username}
+							</span>
+						</HoverUserCard>
 					</div>
 
 					<div className="flex items-center gap-1 text-text-accent">

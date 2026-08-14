@@ -80,7 +80,9 @@ export function ContainerPickerModal({
 			<Modal.Root onOpenChange={setShowConfirm} open={showConfirm}>
 				<Modal.Content className="max-w-md">
 					<Modal.Header>
-						<Modal.Title>{t('buildsLite.containerWarnTitle')}</Modal.Title>
+						<Modal.Title>
+							{t('buildsLite.containerWarnTitle')}
+						</Modal.Title>
 						<Modal.Description className="font-semibold">
 							{t('buildsLite.containerWarnDesc')}
 						</Modal.Description>

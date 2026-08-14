@@ -1,6 +1,7 @@
 import axios, { type AxiosError } from 'axios'
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import type { WeaponAttachmentsResponse } from '@/types/attachments.type'
 import type { BarterResponse } from '@/types/barter.type'
 import type { Item } from '@/types/item.type'
 
@@ -16,6 +17,23 @@ class ItemService {
 		try {
 			const { data } = await apiClient.get<BarterResponse>(
 				`/api/v1/barter/${id}`
+			)
+			return data
+		} catch (e) {
+			const err = e as AxiosError
+
+			if (err.response?.status === 404) {
+				return null
+			}
+
+			throw e
+		}
+	}
+
+	async getAttachments(id: string) {
+		try {
+			const { data } = await apiClient.get<WeaponAttachmentsResponse>(
+				`/api/v1/attachments/${id}`
 			)
 			return data
 		} catch (e) {

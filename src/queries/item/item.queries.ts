@@ -1,6 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
 import { itemService } from '@/services/item/item.service'
+import type { WeaponAttachmentsResponse } from '@/types/attachments.type'
 import type { BarterResponse } from '@/types/barter.type'
 import type { Item } from '@/types/item.type'
 
@@ -22,6 +23,16 @@ class ItemQueries {
 			placeholderData: undefined,
 			retry: false,
 			staleTime: 1000 * 60 * 5,
+		})
+	}
+
+	attachments(id: string) {
+		return queryOptions<WeaponAttachmentsResponse | null>({
+			queryKey: ['item-attachments', id],
+			queryFn: () => itemService.getAttachments(id),
+			placeholderData: undefined,
+			retry: false,
+			staleTime: 1000 * 60 * 60,
 		})
 	}
 }

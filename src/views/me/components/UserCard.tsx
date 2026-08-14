@@ -2,28 +2,38 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { forwardRef } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
+import Avatar from '@/components/ui/user/Avatar'
+import { cn } from '@/lib/cn'
 import type { UserCardProps } from '@/types/me.types'
 import type { UserBadge } from '@/types/user.type'
 import { BgVariantSelector } from '@/views/me/components/BgSelector'
 
-export default function UserCard({
-	user,
-	bgVariant,
-	bgColor,
-	onBgChange,
-}: UserCardProps) {
+export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
+	{ user, cardBackground, cardColor, onCardChange, className, ...props },
+	ref
+) {
 	return (
-		<div className="relative flex flex-col gap-2 overflow-hidden rounded-lg bg-background px-4 py-6">
-			<div className="absolute top-2.5 right-5 z-20">
-				<BgVariantSelector
-					color={bgColor}
-					mutate={onBgChange}
-					variant={bgVariant}
-				/>
-			</div>
-			{bgVariant === 'AVATAR' && (
+		<div
+			{...props}
+			className={cn(
+				'relative flex flex-col gap-2 overflow-hidden rounded-lg bg-background px-4 py-6',
+				className
+			)}
+			ref={ref}
+		>
+			{onCardChange && (
+				<div className="absolute top-2.5 right-5 z-20">
+					<BgVariantSelector
+						color={cardColor}
+						mutate={onCardChange}
+						variant={cardBackground}
+					/>
+				</div>
+			)}
+			{cardBackground === 'AVATAR' && (
 				<>
 					<Image
 						alt={user.name ?? ''}
@@ -35,23 +45,17 @@ export default function UserCard({
 					<div className="absolute inset-0 bg-black/40" />
 				</>
 			)}
-			{bgVariant === 'COLOR' && (
+			{cardBackground === 'COLOR' && (
 				<div
 					className="absolute inset-0"
-					style={{ backgroundColor: bgColor }}
+					style={{ backgroundColor: cardColor }}
 				/>
 			)}
 
 			<div className="relative z-10 flex flex-col gap-4">
 				<div className="flex flex-col gap-1.5">
 					<div className="relative size-26">
-						<Image
-							alt={user.username}
-							className="rounded-full bg-border/10 object-contain"
-							fill
-							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
-							unoptimized
-						/>
+						<Avatar fill id={user.id} username={user.username} />
 					</div>
 
 					<h2
@@ -109,4 +113,4 @@ export default function UserCard({
 			</div>
 		</div>
 	)
-}
+})

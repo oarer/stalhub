@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
@@ -15,10 +16,11 @@ import { useAuthStore } from '@/stores/useAuth.store'
 import type { BuildApi } from '@/types/build-api.type'
 import type { Item } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
+import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
 
 interface BuildCardProps {
-	build: BuildApi
+	build: BuildApi | PublicUserBuild
 	artifacts?: Item[]
 	armorItems?: Item[]
 	containers?: Item[]
@@ -37,19 +39,20 @@ export function BuildCard({
 	onDelete,
 }: BuildCardProps) {
 	const locale = getLocale()
+	const t = useTranslations()
 	const user = useAuthStore((s) => s.user)
 	const queryClient = getQueryClient()
 
 	const starMutation = useMutation({
 		mutationFn: () =>
-			build.starred
+			starred
 				? buildApiService.unstar(build.id)
 				: buildApiService.star(build.id),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['builds'] })
 		},
 		onError: () => {
-			toast.error('Ошибка')
+			toast.error(t('me.buildCard.toastError'))
 		},
 	})
 
@@ -59,21 +62,26 @@ export function BuildCard({
 		onDelete?.(build.id)
 	}
 
-	const isOwner = user && String(user.id) === String(build.author.id)
+	const starred = 'starred' in build ? build.starred : false
+	const author = 'author' in build ? build.author : null
+	const stars = 'stars' in build ? build.stars : 0
+
+	const isOwner =
+		user && author !== null && String(user.id) === String(author.id)
 
 	const handleCopyLink = (e: React.MouseEvent) => {
 		e.preventDefault()
 		e.stopPropagation()
 		const url = `${window.location.origin}/calcs/builds/lite?build=${build.id}`
 		navigator.clipboard.writeText(url)
-		toast.success('Ссылка скопирована')
+		toast.success(t('me.buildCard.toastLinkCopied'))
 	}
 
 	const handleStar = (e: React.MouseEvent) => {
 		e.preventDefault()
 		e.stopPropagation()
 		if (!user) {
-			toast.error('Войдите, чтобы добавить в избранное')
+			toast.error(t('me.buildCard.toastLoginToStar'))
 			return
 		}
 		starMutation.mutate()
@@ -153,16 +161,18 @@ export function BuildCard({
 							icon="lucide:link"
 						/>
 					</Button>
-					<Button
-						className="p-2"
-						onClick={handleStar}
-						variant={'ghost'}
-					>
-						<Icon
-							className={`size-3.5 ${build.starred ? 'text-yellow-400' : 'text-text-accent'}`}
-							icon="lucide:star"
-						/>
-					</Button>
+					{'starred' in build && (
+						<Button
+							className="p-2"
+							onClick={handleStar}
+							variant={'ghost'}
+						>
+							<Icon
+								className={`size-3.5 ${starred ? 'text-yellow-400' : 'text-text-accent'}`}
+								icon="lucide:star"
+							/>
+						</Button>
+					)}
 					{isOwner && onDelete && (
 						<Button
 							className="p-2 ring-0"
@@ -213,7 +223,7 @@ export function BuildCard({
 								</span>
 							) : (
 								<span className="text-text-accent/50">
-									Нет брони
+									{t('me.buildCard.noArmor')}
 								</span>
 							)}
 						</div>
@@ -233,15 +243,15 @@ export function BuildCard({
 								</span>
 							) : (
 								<span className="text-text-accent/50">
-									Нет контейнера
+									{t('me.buildCard.noContainer')}
 								</span>
 							)}
 						</div>
 						{artifactEntries.length > 0 ? (
-							artifactEntries.map((entry) => (
+							artifactEntries.map((entry, i) => (
 								<div
 									className="flex items-center gap-1"
-									key={entry.name}
+									key={entry.name + i}
 								>
 									<p
 										className="min-w-0 flex-1 truncate font-semibold text-sm transition-colors"
@@ -267,7 +277,7 @@ export function BuildCard({
 							))
 						) : (
 							<span className="text-text-accent/50">
-								Нет артефактов
+								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
 					</div>
@@ -275,15 +285,17 @@ export function BuildCard({
 			)}
 
 			<div className="flex items-center gap-2 text-text-accent text-xs">
-				{build.stars > 0 && (
+				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
-						{build.stars}
+						{stars}
 					</div>
 				)}
-				<p className={`${montserrat.className} font-semibold`}>
-					{build.author.username}
-				</p>
+				{author && (
+					<p className={`${montserrat.className} font-semibold`}>
+						{author.username}
+					</p>
+				)}
 			</div>
 
 			{build.tags.length > 0 && (

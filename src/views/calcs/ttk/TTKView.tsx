@@ -19,7 +19,11 @@ import { useTTKComputations } from './hooks/useTTKComputations'
 import { useTTKData } from './hooks/useTTKData'
 import { useTTKWeaponSlots } from './hooks/useTTKWeaponSlots'
 
-export function TTKView() {
+type TTKViewProps = {
+	variant?: 'page' | 'widget'
+}
+
+export function TTKView({ variant = 'page' }: TTKViewProps) {
 	const ttkData = useTTKData()
 	const modulesLoad = useModulesStore((s) => s.load)
 	const { locale, t, allAmmo } = ttkData
@@ -54,7 +58,13 @@ export function TTKView() {
 	}, [modulesLoad])
 
 	return (
-		<section className="mx-auto flex max-w-7xl flex-col gap-10 px-4 pt-32 pb-12 lg:pt-36">
+		<section
+			className={
+				variant === 'widget'
+					? 'flex flex-col gap-4'
+					: 'mx-auto flex max-w-7xl flex-col gap-10 px-4 pt-32 pb-12 lg:pt-36'
+			}
+		>
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
 				<MannequinControls prime={prime} />
 

@@ -47,7 +47,15 @@ export default function BuildSelector() {
 				loadBuild(key)
 			}
 		},
-		[hasChanges, saveBuild, resetBuild, loadBuild, currentBuildId, autoSave, t]
+		[
+			hasChanges,
+			saveBuild,
+			resetBuild,
+			loadBuild,
+			currentBuildId,
+			autoSave,
+			t,
+		]
 	)
 
 	const items = useMemo<DropdownItem[]>(

@@ -57,7 +57,7 @@ export default function Tools() {
 							<div className="flex items-center gap-2">
 								<div className="rounded-lg bg-cyan-500/10 p-2">
 									<Icon
-										className="text-3xl text-cyan-500"
+										className="text-3xl text-border"
 										icon={tool.icon}
 									/>
 								</div>

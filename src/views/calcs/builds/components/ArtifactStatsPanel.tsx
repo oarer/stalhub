@@ -22,6 +22,7 @@ import { BUILD_HIDDEN_STAT_KEYS } from '../model/components/hooks/itemStatsUtils
 type ArtifactStatsPanelProps = {
 	art: {
 		instanceId: string
+		itemId: string
 		percent: number
 		potential: number
 		selectedStats: (string | null)[]
@@ -109,6 +110,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 			</div>
 
 			<div className="flex flex-col gap-4">
+
 				<div className="flex flex-col gap-1">
 					{Object.values(stats)
 						.filter(

@@ -12,4 +12,5 @@ export interface Item {
 	reputation: number
 	weight: number
 	currentPrice: number
+	limit?: number
 }

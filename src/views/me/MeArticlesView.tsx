@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
@@ -10,8 +10,9 @@ import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
-import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
+import { ArticleStatus } from '@/types/article.type'
 import { ArticleCard } from './components/article/ArticleCard'
+import { CreateArticleButton } from './components/CreateArticleButton'
 
 const STATUSES: ArticleStatus[] = [
 	ArticleStatus.PENDING,
@@ -23,6 +24,7 @@ const STATUSES: ArticleStatus[] = [
 
 export default function MeArticlesView() {
 	const queryClient = getQueryClient()
+	const t = useTranslations()
 	const [filter, setFilter] = useState<ArticleStatus | 'ALL'>('ALL')
 
 	const { data: articles } = useSuspenseQuery(
@@ -38,10 +40,10 @@ export default function MeArticlesView() {
 		mutationFn: (id: string) => articleService.delete(id),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
-			toast.success('Статья удалена')
+			toast.success(t('me.articles.toastDeleted'))
 		},
 		onError: () => {
-			toast.error('Ошибка при удалении')
+			toast.error(t('me.articles.toastDeleteError'))
 		},
 	})
 
@@ -49,23 +51,16 @@ export default function MeArticlesView() {
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-3">
-					<h1 className="font-semibold text-xl">Статьи</h1>
+					<h1 className="font-semibold text-xl">
+						{t('me.articles.title')}
+					</h1>
 					{articles?.total != null && (
 						<span className="text-sm text-text-accent">
 							{articles.total}
 						</span>
 					)}
 				</div>
-				<Link
-					className={cn(
-						'inline-flex items-center gap-1.5',
-						'rounded-lg bg-sky-400 px-4 py-2 font-medium text-sm text-white shadow-md transition-all hover:brightness-120 dark:bg-sky-600/70'
-					)}
-					href="/me/articles/new"
-				>
-					<Icon className="size-4" icon="lucide:plus" />
-					<p className="font-semibold">Создать</p>
-				</Link>
+				<CreateArticleButton />
 			</div>
 
 			<div className="flex flex-wrap gap-1.5">
@@ -78,7 +73,7 @@ export default function MeArticlesView() {
 					size={'sm'}
 					variant={'ghost'}
 				>
-					Все
+					{t('me.articles.all')}
 				</Button>
 				{STATUSES.map((status) => (
 					<Button
@@ -91,7 +86,7 @@ export default function MeArticlesView() {
 						size={'sm'}
 						variant={'ghost'}
 					>
-						{ARTICLE_STATUS_META[status].label}
+						{t(`articles.status.${status}`)}
 					</Button>
 				))}
 			</div>
@@ -103,18 +98,9 @@ export default function MeArticlesView() {
 						icon="lucide:file-text"
 					/>
 					<p className="font-semibold text-sm text-text-accent">
-						Нет статей
+						{t('me.articles.noArticles')}
 					</p>
-					<Link
-						className={cn(
-							'inline-flex items-center gap-1.5',
-							'rounded-lg bg-sky-400 px-4 py-2 font-medium text-sm text-white shadow-md transition-all hover:brightness-120 dark:bg-sky-600/70'
-						)}
-						href="/me/articles/new"
-					>
-						<Icon className="size-4" icon="lucide:plus" />
-						<p className="font-semibold">Создать первую статью</p>
-					</Link>
+					<CreateArticleButton label={t('me.articles.createFirst')} />
 				</div>
 			) : (
 				<div className="grid grid-cols-1 gap-2">
@@ -130,7 +116,7 @@ export default function MeArticlesView() {
 								variant={'danger'}
 							>
 								<Icon
-									className="size-4 text-red-400"
+									className="size-4"
 									icon="lucide:trash-2"
 								/>
 							</Button>

@@ -4,6 +4,7 @@ import { userService } from '@/services/user/user.service'
 import type {
 	Notification,
 	PaginatedResponse,
+	PublicUser,
 	Session,
 	StarredItem,
 	User,
@@ -56,6 +57,24 @@ class UserQueries {
 		return queryOptions<number>({
 			queryKey: ['user', 'notifications', 'unread'],
 			queryFn: () => userService.getUnreadCount(),
+			staleTime: 1000 * 15,
+			refetchInterval: 1000 * 30,
+		})
+	}
+
+	getUser(id: number) {
+		return queryOptions<PublicUser>({
+			queryKey: ['user', 'by_id', id],
+			queryFn: () => userService.getUser(id),
+			staleTime: 1000 * 15,
+			refetchInterval: 1000 * 30,
+		})
+	}
+
+	getUserByUsername(username: string) {
+		return queryOptions<PublicUser>({
+			queryKey: ['user', 'by_username', username],
+			queryFn: () => userService.getUserByUsername(username),
 			staleTime: 1000 * 15,
 			refetchInterval: 1000 * 30,
 		})

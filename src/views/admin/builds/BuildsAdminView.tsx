@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -12,6 +13,7 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 
 export default function BuildsAdminView() {
+	const t = useTranslations()
 	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const take = 20
@@ -25,10 +27,10 @@ export default function BuildsAdminView() {
 	const deleteMutation = useMutation({
 		mutationFn: (id: string) => buildApiService.delete(id),
 		onSuccess: () => {
-			toast.success('Сборка удалена')
+			toast.success(t('admin.builds.toast.deleted'))
 			queryClient.invalidateQueries({ queryKey: ['builds'] })
 		},
-		onError: () => toast.error('Ошибка удаления'),
+		onError: () => toast.error(t('admin.permissions.toast.deleteError')),
 	})
 
 	const builds = data?.data ?? []
@@ -37,9 +39,11 @@ export default function BuildsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">Сборки</h1>
+				<h1 className="font-semibold text-2xl">
+					{t('admin.builds.title')}
+				</h1>
 				<span className="text-neutral-400 text-sm">
-					{data?.total ?? 0} всего
+					{data?.total ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -48,10 +52,16 @@ export default function BuildsAdminView() {
 					<Table.Header>
 						<Table.Row>
 							<Table.Head>ID</Table.Head>
-							<Table.Head>Название</Table.Head>
-							<Table.Head>Автор</Table.Head>
-							<Table.Head>Звёзды</Table.Head>
-							<Table.Head>Создана</Table.Head>
+							<Table.Head>
+								{t('admin.permissions.name')}
+							</Table.Head>
+							<Table.Head>
+								{t('admin.articles.author')}
+							</Table.Head>
+							<Table.Head>{t('admin.articles.stars')}</Table.Head>
+							<Table.Head>
+								{t('admin.articles.created')}
+							</Table.Head>
 							<Table.Head />
 						</Table.Row>
 					</Table.Header>
@@ -97,19 +107,31 @@ export default function BuildsAdminView() {
 											<Modal.Content fullScreen={false}>
 												<Modal.Header>
 													<Modal.Title>
-														Удалить сборку?
+														{t(
+															'admin.builds.deleteTitle'
+														)}
 													</Modal.Title>
 													<Modal.Description>
-														Сборка{' '}
-														<strong>
-															{build.title}
-														</strong>{' '}
-														будет удалена навсегда.
+														{t.rich(
+															'admin.builds.deleteDescription',
+															{
+																title: build.title,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
+															}
+														)}
 													</Modal.Description>
 												</Modal.Header>
 												<Modal.Footer>
 													<Modal.Close>
-														Отмена
+														{t(
+															'clan.common.cancel'
+														)}
 													</Modal.Close>
 													<Modal.Action
 														closeOnClick
@@ -120,7 +142,9 @@ export default function BuildsAdminView() {
 														}
 														variant="danger"
 													>
-														Удалить
+														{t(
+															'clan.common.delete'
+														)}
 													</Modal.Action>
 												</Modal.Footer>
 											</Modal.Content>
@@ -133,7 +157,7 @@ export default function BuildsAdminView() {
 							<Table.Row>
 								<Table.Cell>
 									<span className="text-neutral-400 text-sm">
-										Нет сборок
+										{t('admin.builds.empty')}
 									</span>
 								</Table.Cell>
 								<Table.Cell />

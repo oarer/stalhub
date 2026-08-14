@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
@@ -11,21 +12,27 @@ import {
 import { applyEdit, insertAtLineStart, wrapSelection } from './editor-utils'
 
 const HOTKEYS = [
-	{ shortcut: 'Ctrl+B', label: 'Полужирный' },
-	{ shortcut: 'Ctrl+I', label: 'Курсив' },
-	{ shortcut: 'Ctrl+Shift+X', label: 'Зачёркнутый' },
-	{ shortcut: 'Ctrl+Shift+H', label: 'Заголовок' },
-	{ shortcut: 'Ctrl+Shift+.', label: 'Цитата' },
-	{ shortcut: 'Ctrl+E', label: 'Строчный код' },
-	{ shortcut: 'Ctrl+Shift+E', label: 'Блок кода' },
-	{ shortcut: 'Ctrl+K', label: 'Ссылка' },
-	{ shortcut: 'Ctrl+Shift+I', label: 'Изображение' },
-	{ shortcut: 'Ctrl+Shift+8', label: 'Маркированный список' },
-	{ shortcut: 'Ctrl+Shift+9', label: 'Нумерованный список' },
-	{ shortcut: 'Ctrl+Shift+7', label: 'Горизонтальная линия' },
-	{ shortcut: 'Ctrl+Shift+T', label: 'Вставка таблицы' },
-	{ shortcut: 'Ctrl+Shift+M', label: 'MDX-компоненты' },
-	{ shortcut: 'Ctrl+S', label: 'Сохранить' },
+	{ shortcut: 'Ctrl+B', label: 'me.articleEditor.toolbar.bold' },
+	{ shortcut: 'Ctrl+I', label: 'me.articleEditor.toolbar.italic' },
+	{
+		shortcut: 'Ctrl+Shift+X',
+		label: 'me.articleEditor.toolbar.strikethrough',
+	},
+	{ shortcut: 'Ctrl+Shift+H', label: 'me.articleEditor.toolbar.heading' },
+	{ shortcut: 'Ctrl+Shift+.', label: 'me.articleEditor.toolbar.quote' },
+	{ shortcut: 'Ctrl+E', label: 'me.articleEditor.toolbar.inlineCode' },
+	{ shortcut: 'Ctrl+Shift+E', label: 'me.articleEditor.toolbar.codeBlock' },
+	{ shortcut: 'Ctrl+K', label: 'me.articleEditor.toolbar.link' },
+	{ shortcut: 'Ctrl+Shift+I', label: 'me.articleEditor.toolbar.image' },
+	{ shortcut: 'Ctrl+Shift+8', label: 'me.articleEditor.toolbar.bulletList' },
+	{ shortcut: 'Ctrl+Shift+9', label: 'me.articleEditor.toolbar.orderedList' },
+	{
+		shortcut: 'Ctrl+Shift+7',
+		label: 'me.articleEditor.toolbar.horizontalRule',
+	},
+	{ shortcut: 'Ctrl+Shift+T', label: 'me.articleEditor.toolbar.table' },
+	{ shortcut: 'Ctrl+Shift+M', label: 'me.articleEditor.toolbar.components' },
+	{ shortcut: 'Ctrl+S', label: 'me.articleEditor.toolbar.save' },
 ] as const
 
 interface EditorToolbarProps {
@@ -58,6 +65,7 @@ export function EditorToolbar({
 	showSubmit,
 }: EditorToolbarProps) {
 	const [hotkeysOpen, setHotkeysOpen] = useState(false)
+	const t = useTranslations()
 
 	const toolbarActions = useMemo<ToolbarAction[]>(() => {
 		const mapped = TOOLBAR_ACTION_CONFIGS.map((config) => {
@@ -74,7 +82,7 @@ export function EditorToolbar({
 				case 'wrap':
 					return {
 						icon: config.icon,
-						label: config.label,
+						label: t(config.label),
 						shortcut: config.shortcut,
 						action(ta: HTMLTextAreaElement) {
 							applyEdit(
@@ -85,6 +93,8 @@ export function EditorToolbar({
 									config.prefix,
 									config.suffix,
 									config.placeholder
+										? t(config.placeholder)
+										: ''
 								)
 							)
 						},
@@ -92,7 +102,7 @@ export function EditorToolbar({
 				case 'line':
 					return {
 						icon: config.icon,
-						label: config.label,
+						label: t(config.label),
 						shortcut: config.shortcut,
 						action(ta: HTMLTextAreaElement) {
 							applyEdit(
@@ -102,6 +112,8 @@ export function EditorToolbar({
 									ta,
 									config.prefix,
 									config.placeholder
+										? t(config.placeholder)
+										: ''
 								)
 							)
 						},
@@ -109,20 +121,22 @@ export function EditorToolbar({
 				case 'code-block':
 					return {
 						icon: config.icon,
-						label: config.label,
+						label: t(config.label),
 						shortcut: config.shortcut,
 						action(ta: HTMLTextAreaElement) {
 							const start = ta.selectionStart
 							const end = ta.selectionEnd
 							const selected = ta.value.slice(start, end)
-							const block = `\`\`\`\n${selected || 'code'}\n\`\`\``
+							const block = `\`\`\`\n${selected || t('me.articleEditor.hotkeys.code')}\n\`\`\``
 							const next =
 								ta.value.slice(0, start) +
 								block +
 								ta.value.slice(end)
 							const newStart = start + 4
 							const newEnd =
-								newStart + (selected || 'code').length
+								newStart +
+								(selected || t('me.articleEditor.hotkeys.code'))
+									.length
 							applyEdit(ta, setContent, {
 								next,
 								newStart,
@@ -133,7 +147,7 @@ export function EditorToolbar({
 				case 'modal':
 					return {
 						icon: config.icon,
-						label: config.label,
+						label: t(config.label),
 						shortcut: config.shortcut,
 						action() {
 							if (config.modal === 'table')
@@ -155,13 +169,13 @@ export function EditorToolbar({
 			},
 			{
 				icon: 'lucide:keyboard',
-				label: 'Горячие клавиши',
+				label: t('me.articleEditor.hotkeysTitle'),
 				action: () => {
 					setHotkeysOpen(true)
 				},
 			},
 		]
-	}, [setContent, setTableModalOpen, setComponentsModalOpen])
+	}, [setContent, setTableModalOpen, setComponentsModalOpen, t])
 
 	return (
 		<div className="flex items-center justify-between px-2">
@@ -194,7 +208,7 @@ export function EditorToolbar({
 					className="p-2"
 					onClick={() => setTagsModalOpen(true)}
 					size="sm"
-					title="Теги"
+					title={t('me.articleEditor.tags')}
 					variant="secondary"
 				>
 					<Icon className="size-4.5" icon="lucide:tag" />
@@ -204,7 +218,7 @@ export function EditorToolbar({
 					className="p-2"
 					onClick={() => setImageModalOpen(true)}
 					size="sm"
-					title="Обложка"
+					title={t('me.articleEditor.cover')}
 					variant="secondary"
 				>
 					<Icon className="size-4.5" icon="lucide:image" />
@@ -226,7 +240,7 @@ export function EditorToolbar({
 						<Icon className="size-4.5" icon="lucide:save" />
 					)}
 					<span className="hidden font-semibold md:inline">
-						Сохранить
+						{t('me.articleEditor.save')}
 					</span>
 				</Button>
 
@@ -240,8 +254,8 @@ export function EditorToolbar({
 						<Icon className="size-4.5" icon="lucide:send" />
 						<span className="hidden md:inline">
 							{isSubmitPending
-								? 'Отправка...'
-								: 'На рассмотрение'}
+								? t('me.articleEditor.submitting')
+								: t('me.articleEditor.submit')}
 						</span>
 					</Button>
 				)}
@@ -250,7 +264,9 @@ export function EditorToolbar({
 			<Modal.Root onOpenChange={setHotkeysOpen} open={hotkeysOpen}>
 				<Modal.Content className="max-w-md" fullScreen={false}>
 					<Modal.Header>
-						<Modal.Title>Горячие клавиши</Modal.Title>
+						<Modal.Title>
+							{t('me.articleEditor.hotkeysTitle')}
+						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
 						<div className="flex flex-col gap-1.5">
@@ -260,7 +276,7 @@ export function EditorToolbar({
 									key={h.shortcut}
 								>
 									<span className="font-semibold text-sm">
-										{h.label}
+										{t(h.label)}
 									</span>
 									<kbd
 										className={`${montserrat.className} rounded-md border border-border-secondary bg-background px-2 py-0.5 font-semibold text-text-accent text-xs`}

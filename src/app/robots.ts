@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        host: 'https://stalhub.tech',
-        sitemap: 'https://stalhub.tech/sitemap.xml',
+        host: 'https://stalhub.dev',
+        sitemap: 'https://stalhub.dev/sitemap.xml',
     }
 }

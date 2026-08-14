@@ -298,6 +298,8 @@ export default function DropdownMenu({
 	className,
 	variant = 'ghost',
 	blur = true,
+	compact = false,
+	onlyIcon = false,
 }: DropdownProps) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [openSubmenus, setOpenSubmenus] = useState<Set<string>>(new Set())
@@ -345,13 +347,18 @@ export default function DropdownMenu({
 	}, [placement])
 
 	return (
-		<div className={cn('relative')} ref={dropdownRef}>
+		<div className={cn('group relative')} ref={dropdownRef}>
 			<Button
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
-				className={`flex items-center gap-4 rounded-full px-6 py-2 outline-none ${className} ${
-					isOpen ? 'bg-background' : ''
-				}`}
+				aria-label={onlyIcon ? t(title) : undefined}
+				className={`flex items-center justify-center rounded-full outline-none transition-all duration-300 ${
+					onlyIcon
+						? 'h-10 px-2.5'
+						: compact
+							? 'gap-2 px-3.5 py-2 xl:gap-4 xl:px-6'
+							: 'gap-4 px-6 py-2'
+				} ${className} ${isOpen ? 'bg-background' : ''}`}
 				onClick={toggleDropdown}
 				ref={triggerRef}
 				role="button"
@@ -359,17 +366,27 @@ export default function DropdownMenu({
 				variant={variant}
 			>
 				{icon && <Icon className="text-xl" icon={icon} />}
-				<p className="font-semibold text-md">{t(title)}</p>
-				<motion.div
-					animate={{ rotate: isOpen ? 90 : 0 }}
-					transition={{ duration: 0.2, ease: 'easeInOut' }}
-				>
-					<Icon
-						aria-hidden="true"
-						className="text-lg"
-						icon="lucide:chevron-right"
-					/>
-				</motion.div>
+				{onlyIcon ? (
+					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:max-w-45 group-hover:opacity-100">
+						<span className="font-semibold text-md">
+							{t(title)}
+						</span>
+					</span>
+				) : (
+					<>
+						<p className="font-semibold text-md">{t(title)}</p>
+						<motion.div
+							animate={{ rotate: isOpen ? 90 : 0 }}
+							transition={{ duration: 0.2, ease: 'easeInOut' }}
+						>
+							<Icon
+								aria-hidden="true"
+								className="text-lg"
+								icon="lucide:chevron-right"
+							/>
+						</motion.div>
+					</>
+				)}
 			</Button>
 
 			<AnimatePresence>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import React from 'react'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -13,6 +14,7 @@ import type {
 	TextInfoBlock,
 } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
+import type { StatOverride } from './attachments/attachmentStats'
 import InfoElementRenderer from './InfoRenderer'
 
 const HIDDEN_KEYS = new Set([
@@ -27,6 +29,9 @@ const HIDDEN_KEYS = new Set([
 	'general.armor.compatibility.containers.bulky',
 	'item.att.temp_model_armor.additional_stats_tip',
 	'core.tooltip.stat_name.damage_type.direct',
+	'weapon.lore.attachment.all_suitable_targets',
+	'core.tooltip.info.durability',
+	'core.tooltip.info.max_durability',
 ])
 
 export const TextBlock: React.FC<{ block: TextInfoBlock; locale: Locale }> = ({
@@ -59,9 +64,11 @@ export const NumericVariantsCard: React.FC<{
 	onChange: (v: number) => void
 	withCard?: boolean
 }> = ({ numericVariants, onChange, withCard = true }) => {
+	const t = useTranslations()
+
 	const content = (
 		<div className="flex items-center justify-between">
-			<p className="font-semibold text-lg">Заточка</p>
+			<p className="font-semibold text-lg">{t('ui.input_sharpening')}</p>
 			<Input
 				className="m-1 w-fit px-2 py-2"
 				max={15}
@@ -102,10 +109,21 @@ export const ListBlock: React.FC<{
 	numericVariants: number
 	block: Block
 	locale: Locale
+	statOverrides?: Map<string, StatOverride>
 	withCard?: boolean
 	className?: string
-}> = ({ block, locale, numericVariants, withCard = true, className }) => {
+}> = ({
+	block,
+	locale,
+	numericVariants,
+	statOverrides,
+	withCard = true,
+	className,
+}) => {
 	if (!Array.isArray(block.elements) || block.elements.length === 0)
+		return null
+
+	if (block.title?.type === 'translation' && HIDDEN_KEYS.has(block.title.key))
 		return null
 
 	const visible = block.elements.filter((el) => {
@@ -130,6 +148,7 @@ export const ListBlock: React.FC<{
 						key={i}
 						locale={locale}
 						numericVariants={numericVariants}
+						statOverrides={statOverrides}
 					/>
 				))}
 			</div>

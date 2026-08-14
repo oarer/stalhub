@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { montserrat } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
@@ -22,6 +23,7 @@ const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
 
 export default function NavMe() {
 	const { data: user } = useQuery(userQueries.getMe())
+	const t = useTranslations()
 
 	const { data: unreadCount } = useQuery({
 		...userQueries.getUnreadCount(),
@@ -94,21 +96,21 @@ export default function NavMe() {
 					>
 						<div className="flex items-center justify-between border-border-secondary border-b px-4 py-3">
 							<span className="font-semibold text-sm">
-								Уведомления
+								{t('me.nav.notifications')}
 							</span>
 							<Link
 								className="font-bold text-border/90 text-xs hover:underline"
 								href="/me/notifications"
 								onClick={() => setOpen(false)}
 							>
-								Все
+								{t('me.articles.all')}
 							</Link>
 						</div>
 
 						<div className="max-h-80 overflow-y-auto">
 							{notifications.length === 0 ? (
-								<p className="px-4 py-6 text-center text-sm text-text-accent">
-									Нет уведомлений
+								<p className="px-4 py-6 text-center font-semibold text-sm text-text-accent">
+									{t('me.notifications.empty')}
 								</p>
 							) : (
 								notifications.map((n) => {
@@ -191,7 +193,7 @@ export default function NavMe() {
 			<CLink href="/me" variant={'none'}>
 				<Image
 					alt={user.name || 'avatar'}
-					className="rounded-lg border-2 border-border/60 transition-all duration-500 hover:scale-105 active:scale-95"
+					className="rounded-lg border-2 border-border/60 transition-all duration-300 hover:scale-110 active:scale-95"
 					height={46}
 					src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
 					unoptimized
@@ -209,7 +211,7 @@ export default function NavMe() {
 			<p
 				className={`${montserrat.className} hidden font-semibold text-md md:block`}
 			>
-				Авторизация
+				{t('auth.title')}
 			</p>
 		</CLink>
 	)
