@@ -66,7 +66,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<header className="flex flex-col gap-4 border-border-secondary border-b pb-6">
 				<Link
-					className="font-semibold text-sm text-text-accent transition-colors hover:text-sky-400"
+					className="font-semibold text-sm text-text-accent transition-colors hover:text-border"
 					href="/articles"
 				>
 					{t('articles.allArticles')}
