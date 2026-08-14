@@ -41,9 +41,7 @@ class AdminBadgeService {
 	}
 
 	async assignUser(badgeId: number, userId: number): Promise<void> {
-		await apiClient.post(
-			`/api/v1/admin/badges/${badgeId}/users/${userId}`
-		)
+		await apiClient.post(`/api/v1/admin/badges/${badgeId}/users/${userId}`)
 	}
 
 	async removeUser(badgeId: number, userId: number): Promise<void> {

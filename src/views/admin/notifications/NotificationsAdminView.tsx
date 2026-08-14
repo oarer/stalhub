@@ -99,30 +99,28 @@ export default function NotificationsAdminView() {
 				<Card.Content>
 					<div className="flex flex-col gap-4">
 						<div className="flex gap-2">
-							<button
-								className={`flex items-center gap-2 rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors ${
-									mode === 'broadcast'
-										? 'border-sky-500 bg-sky-500/10 text-sky-400'
-										: 'border-border-secondary hover:border-sky-500/30'
+							<Button
+								className={`gap-2 ${
+									mode === 'broadcast' &&
+									'border-sky-500 bg-sky-500/10 text-sky-400'
 								}`}
 								onClick={() => setMode('broadcast')}
 								type="button"
 							>
 								<Icon className="size-4" icon="lucide:globe" />
 								{t('admin.notifications.broadcast')}
-							</button>
-							<button
-								className={`flex items-center gap-2 rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors ${
-									mode === 'user'
-										? 'border-sky-500 bg-sky-500/10 text-sky-400'
-										: 'border-border-secondary hover:border-sky-500/30'
+							</Button>
+							<Button
+								className={`gap-2 ${
+									mode === 'user' &&
+									'border-sky-500 bg-sky-500/10 text-sky-400'
 								}`}
 								onClick={() => setMode('user')}
 								type="button"
 							>
 								<Icon className="size-4" icon="lucide:user" />
 								{t('admin.notifications.toUser')}
-							</button>
+							</Button>
 						</div>
 
 						{mode === 'user' && (
@@ -247,7 +245,6 @@ export default function NotificationsAdminView() {
 						<Input
 							label="admin.notifications.linkLabel"
 							onChange={(e) => setLink(e.target.value)}
-							placeholder="/articles/1"
 							value={link}
 						/>
 

@@ -7,7 +7,7 @@ export default async function AdminLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<section className="mx-auto grid max-w-285 grid-cols-[27%_70%] gap-8 pt-28 pb-0 lg:pb-12 xl:pt-36">
+		<section className="mx-auto grid max-w-285 grid-cols-[27%_70%] gap-8 pt-28 pb-0 lg:pb-12 xl:pt-42">
 			<Suspense
 				fallback={
 					<div className="animate-pulse rounded-lg bg-background px-4 py-6">

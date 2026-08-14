@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
@@ -45,6 +46,19 @@ export default function UserDetailView({ userId }: Props) {
 	const [editUsername, setEditUsername] = useState(user.username)
 	const [banReason, setBanReason] = useState('')
 	const [banDuration, setBanDuration] = useState('')
+
+	const [bannerMode, setBannerMode] = useState<'COLOR' | 'IMAGE' | 'NONE'>(
+		user.customization?.bannerMode ?? 'NONE'
+	)
+	const [bannerType, setBannerType] = useState<'BACKGROUND' | 'HEADER'>(
+		user.customization?.bannerType ?? 'HEADER'
+	)
+	const [bannerColor, setBannerColor] = useState(
+		user.customization?.bannerColor ?? '#171717'
+	)
+	const [bannerImage, setBannerImage] = useState(
+		user.customization?.bannerImage ?? ''
+	)
 
 	const updateMutation = useMutation({
 		mutationFn: () =>
@@ -161,6 +175,38 @@ export default function UserDetailView({ userId }: Props) {
 		onError: () => toast.error(t('admin.userDetail.toast.deleteError')),
 	})
 
+	const bannerMutation = useMutation({
+		mutationFn: () =>
+			adminUserService.updateCustomization(userId, {
+				bannerMode,
+				bannerType,
+				bannerColor,
+				bannerImage: bannerImage || null,
+			}),
+		onSuccess: () => {
+			toast.success(t('admin.userDetail.toast.bannerUpdated'))
+			queryClient.invalidateQueries({
+				queryKey: ['admin', 'user', userId],
+			})
+		},
+		onError: () =>
+			toast.error(t('admin.userDetail.toast.bannerUpdateError')),
+	})
+
+	const uploadBannerMutation = useMutation({
+		mutationFn: (file: File) => adminUserService.uploadBanner(userId, file),
+		onSuccess: (res) => {
+			toast.success(t('admin.userDetail.toast.bannerUploaded'))
+			setBannerImage(res.banner_image)
+			setBannerMode('IMAGE')
+			queryClient.invalidateQueries({
+				queryKey: ['admin', 'user', userId],
+			})
+		},
+		onError: () =>
+			toast.error(t('admin.userDetail.toast.bannerUploadError')),
+	})
+
 	const userRoleIds = new Set(userRoles?.map((r) => r.id) ?? [])
 	const availableRoles = allRoles?.filter((r) => !userRoleIds.has(r.id)) ?? []
 
@@ -204,6 +250,10 @@ export default function UserDetailView({ userId }: Props) {
 						<Icon icon="lucide:award" />
 						{t('admin.userDetail.tabs.badges')} (
 						{userBadges?.length ?? 0})
+					</Tabs.Trigger>
+					<Tabs.Trigger value="banner">
+						<Icon icon="lucide:image" />
+						{t('admin.userDetail.tabs.banner')}
 					</Tabs.Trigger>
 				</Tabs.List>
 
@@ -754,6 +804,158 @@ export default function UserDetailView({ userId }: Props) {
 									{t('admin.userDetail.badges.empty')}
 								</p>
 							)}
+						</Card.Content>
+					</Card.Root>
+				</Tabs.Content>
+				<Tabs.Content value="banner">
+					<Card.Root>
+						<Card.Header>
+							<Card.Title>
+								<Icon icon="lucide:image" />
+								{t('admin.userDetail.banner.title')}
+							</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<div className="flex flex-col gap-4">
+								<div className="relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border-2 border-border-secondary">
+									{bannerMode === 'COLOR' && (
+										<div
+											className="h-full w-full"
+											style={{
+												backgroundColor: bannerColor,
+											}}
+										/>
+									)}
+									{bannerMode === 'IMAGE' && bannerImage && (
+										<Image
+											alt="banner"
+											className="h-full w-full object-cover"
+											height={128}
+											src={`${process.env.NEXT_PUBLIC_API}${bannerImage}`}
+											unoptimized
+											width={512}
+										/>
+									)}
+									{bannerMode === 'NONE' ||
+										(bannerMode === 'IMAGE' &&
+											!bannerImage && (
+												<span className="text-neutral-400 text-sm">
+													{t(
+														'admin.userDetail.banner.noBanner'
+													)}
+												</span>
+											))}
+								</div>
+
+								<div className="grid grid-cols-2 gap-3">
+									<Combobox
+										onValueChange={(v) =>
+											setBannerMode(
+												v as 'COLOR' | 'IMAGE' | 'NONE'
+											)
+										}
+										options={[
+											{
+												value: 'NONE',
+												label: 'admin.userDetail.banner.modeNone',
+											},
+											{
+												value: 'COLOR',
+												label: 'admin.userDetail.banner.modeColor',
+											},
+											{
+												value: 'IMAGE',
+												label: 'admin.userDetail.banner.modeImage',
+											},
+										]}
+										placeholder="admin.userDetail.banner.mode"
+										value={bannerMode}
+									/>
+									<Combobox
+										onValueChange={(v) =>
+											setBannerType(
+												v as 'BACKGROUND' | 'HEADER'
+											)
+										}
+										options={[
+											{
+												value: 'HEADER',
+												label: 'admin.userDetail.banner.typeHeader',
+											},
+											{
+												value: 'BACKGROUND',
+												label: 'admin.userDetail.banner.typeBackground',
+											},
+										]}
+										placeholder="admin.userDetail.banner.type"
+										value={bannerType}
+									/>
+								</div>
+
+								{bannerMode === 'COLOR' && (
+									<div className="flex items-center gap-3">
+										<input
+											className="h-9 w-16 cursor-pointer rounded border-2 border-border-secondary bg-background"
+											onChange={(e) =>
+												setBannerColor(e.target.value)
+											}
+											type="color"
+											value={bannerColor}
+										/>
+										<Input
+											label="admin.userDetail.banner.color"
+											onChange={(e) =>
+												setBannerColor(e.target.value)
+											}
+											value={bannerColor}
+										/>
+									</div>
+								)}
+
+								{bannerMode === 'IMAGE' && (
+									<div className="flex flex-col gap-3">
+										<Input
+											label="admin.userDetail.banner.imageUrl"
+											onChange={(e) =>
+												setBannerImage(e.target.value)
+											}
+											value={bannerImage}
+										/>
+										<label className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-2 border-border-secondary px-4 py-2 font-semibold text-sm transition-colors duration-300 hover:bg-accent">
+											<Icon icon="lucide:upload" />
+											{t(
+												'admin.userDetail.banner.upload'
+											)}
+											<input
+												accept="image/png,image/jpeg,image/webp"
+												className="hidden"
+												disabled={
+													uploadBannerMutation.isPending
+												}
+												onChange={(e) => {
+													const file =
+														e.target.files?.[0]
+													if (file) {
+														uploadBannerMutation.mutate(
+															file
+														)
+													}
+												}}
+												type="file"
+											/>
+										</label>
+									</div>
+								)}
+
+								<div className="flex items-center gap-3">
+									<Button
+										loading={bannerMutation.isPending}
+										onClick={() => bannerMutation.mutate()}
+									>
+										{t('admin.userDetail.banner.save')}
+									</Button>
+								</div>
+							</div>
 						</Card.Content>
 					</Card.Root>
 				</Tabs.Content>

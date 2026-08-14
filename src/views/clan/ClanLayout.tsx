@@ -82,6 +82,36 @@ export default function ClanLayout({
 		)
 	}
 
+	if (profile.clan.blocked) {
+		return (
+			<div className="flex flex-col items-center gap-2 rounded-xl bg-background p-8 text-center">
+				<Icon
+					className="text-4xl text-red-400"
+					icon="lucide:shield-ban"
+				/>
+
+				<h1
+					className={`${unbounded.className} font-semibold text-red-400 text-xl`}
+				>
+					{t('clan.layout.blocked.title')}
+				</h1>
+
+				<p className="whitespace-pre font-semibold">
+					{t('clan.layout.blocked.desc')}
+				</p>
+
+				{profile.clan.block_reason && (
+					<p
+						className={`${unbounded.className} font-semibold text-sm uppercase tracking-widest`}
+					>
+						{t('clan.layout.blocked.reason')}:{' '}
+						{profile.clan.block_reason}
+					</p>
+				)}
+			</div>
+		)
+	}
+
 	if (profile.clan.status === 'FROZEN') {
 		const isLeader =
 			profile.clan.leader.toLowerCase() ===
@@ -91,7 +121,9 @@ export default function ClanLayout({
 			return (
 				<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:snowflake" />
-					<h1 className={`${unbounded.className} font-semibold text-xl`}>
+					<h1
+						className={`${unbounded.className} font-semibold text-xl`}
+					>
 						{t.rich('clan.layout.frozen.titleMember', {
 							name: profile.clan.name,
 							span: (chunks) => (

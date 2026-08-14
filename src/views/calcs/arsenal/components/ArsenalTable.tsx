@@ -1,12 +1,12 @@
 'use client'
 
-import { flexRender, type Table as TanstackTable } from '@tanstack/react-table'
+import { flexRender, type ReactTable } from '@tanstack/react-table'
 import { Card } from '@/components/ui/Card'
-import { Table } from '@/components/ui/Table'
+import { Table, type TableFeatures } from '@/components/ui/Table'
 import type { ArsenalRow } from './ArsenalCalc'
 
 type Props = {
-	table: TanstackTable<ArsenalRow>
+	table: ReactTable<TableFeatures, ArsenalRow>
 }
 
 export function ArsenalTable({ table }: Props) {

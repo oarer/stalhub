@@ -4,6 +4,7 @@ import type {
 	AdminRole,
 	AdminSession,
 	AdminUser,
+	AdminUserDetail,
 	AdminUserListParams,
 } from '@/types/admin.type'
 import type { PaginatedResponse } from '@/types/user.type'
@@ -21,8 +22,8 @@ class AdminUserService {
 		return data
 	}
 
-	async get(userId: number): Promise<AdminUser> {
-		const { data } = await apiClient.get<AdminUser>(
+	async get(userId: number): Promise<AdminUserDetail> {
+		const { data } = await apiClient.get<AdminUserDetail>(
 			`/api/v1/admin/users/${userId}`
 		)
 		return data
@@ -70,9 +71,7 @@ class AdminUserService {
 	}
 
 	async removeRole(userId: number, roleId: number): Promise<void> {
-		await apiClient.delete(
-			`/api/v1/admin/users/${userId}/roles/${roleId}`
-		)
+		await apiClient.delete(`/api/v1/admin/users/${userId}/roles/${roleId}`)
 	}
 
 	async ban(userId: number, ban: AdminBanUser): Promise<void> {
@@ -81,6 +80,35 @@ class AdminUserService {
 
 	async unban(userId: number): Promise<void> {
 		await apiClient.delete(`/api/v1/admin/users/${userId}/ban`)
+	}
+
+	async updateCustomization(
+		userId: number,
+		update: {
+			bannerMode?: 'COLOR' | 'IMAGE' | 'NONE'
+			bannerType?: 'BACKGROUND' | 'HEADER'
+			bannerColor?: string
+			bannerImage?: string | null
+		}
+	): Promise<void> {
+		await apiClient.patch(
+			`/api/v1/admin/users/${userId}/customization`,
+			update
+		)
+	}
+
+	async uploadBanner(
+		userId: number,
+		file: File
+	): Promise<{ banner_image: string }> {
+		const formData = new FormData()
+		formData.append('file', file)
+		const { data } = await apiClient.post<{ banner_image: string }>(
+			`/api/v1/admin/users/${userId}/banner`,
+			formData,
+			{ headers: { 'Content-Type': 'multipart/form-data' } }
+		)
+		return data
 	}
 }
 

@@ -1,4 +1,4 @@
-import type { ColumnDef } from '@tanstack/react-table'
+import type { ColumnDef } from '@/components/ui/Table'
 import type { Locale, Message } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import type { ArsenalRow } from './ArsenalCalc'

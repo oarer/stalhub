@@ -2,15 +2,37 @@
 
 import { Icon } from '@iconify/react'
 import {
-	type ColumnDef,
+	type CellData,
+	type Column as CoreColumn,
+	type ColumnDef as CoreColumnDef,
+	columnVisibilityFeature,
+	createSortedRowModel,
 	flexRender,
-	getCoreRowModel,
-	getSortedRowModel,
+	type RowData,
+	rowSortingFeature,
 	type SortingState,
-	useReactTable,
+	tableFeatures,
+	useTable,
 } from '@tanstack/react-table'
 import { useMemo, useState } from 'react'
 import { cn } from '@/lib/cn'
+
+const features = tableFeatures({
+	columnVisibilityFeature,
+	rowSortingFeature,
+	sortedRowModel: createSortedRowModel(),
+})
+
+export type TableFeatures = typeof features
+
+export type ColumnDef<TData extends RowData, TValue extends CellData = CellData> =
+	CoreColumnDef<TableFeatures, TData, TValue>
+
+type Column<TData extends RowData, TValue extends CellData = CellData> = CoreColumn<
+	TableFeatures,
+	TData,
+	TValue
+>
 
 function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
 	return (
@@ -112,13 +134,13 @@ function TableCaption({
 	)
 }
 
-function SortableHeader<TData>({
+function SortableHeader<TData extends RowData>({
 	column,
 	className,
 	children,
 	...props
 }: {
-	column: ReturnType<ReturnType<typeof useReactTable<TData>>['getColumn']>
+	column: Column<TData>
 	children?: React.ReactNode
 } & React.ComponentProps<'th'>) {
 	if (!column || !column.getCanSort()) return null
@@ -148,20 +170,19 @@ function SortableHeader<TData>({
 	)
 }
 
-function useTableSort<TData>(
+function useTableSort<TData extends RowData>(
 	data: TData[],
 	columns: ColumnDef<TData>[],
 	initialSorting?: SortingState
 ) {
 	const [sorting, setSorting] = useState<SortingState>(initialSorting ?? [])
 
-	const table = useReactTable({
+	const table = useTable({
+		features,
 		data,
 		columns,
 		state: useMemo(() => ({ sorting }), [sorting]),
 		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getSortedRowModel: getSortedRowModel(),
 	})
 
 	return { table, sorting, setSorting }
@@ -181,4 +202,3 @@ export const Table = {
 }
 
 export { flexRender, useTableSort }
-export { ColumnDef }

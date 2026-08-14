@@ -32,6 +32,8 @@ export interface ClanInfo {
 	memberCount: number
 	region: string
 	status: ClanStatus
+	blocked: boolean
+	block_reason?: string
 	syncedAt: string
 	createdAt: string
 	is_public?: boolean

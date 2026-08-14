@@ -28,6 +28,11 @@ const tabs = [
 		icon: 'lucide:award',
 	},
 	{
+		title: 'admin.sidebar.clans',
+		href: '/admin/clans',
+		icon: 'lucide:flag',
+	},
+	{
 		title: 'admin.sidebar.notifications',
 		href: '/admin/notifications',
 		icon: 'lucide:bell',

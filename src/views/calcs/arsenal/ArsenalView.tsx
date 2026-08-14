@@ -1,17 +1,12 @@
 'use client'
 
 import { useSuspenseQuery } from '@tanstack/react-query'
-import {
-	getCoreRowModel,
-	getSortedRowModel,
-	type SortingState,
-	useReactTable,
-} from '@tanstack/react-table'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import Input from '@/components/ui/Input'
+import { useTableSort } from '@/components/ui/Table'
 import { getLocale } from '@/lib/getLocale'
 import { arsenalQueries } from '@/queries/calcs/arsenal.queries'
 import {
@@ -28,7 +23,6 @@ type ArsenalViewProps = {
 export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 	const { data } = useSuspenseQuery(arsenalQueries.get())
 	const [targetReputation, setTargetReputation] = useState(0)
-	const [sorting, setSorting] = useState<SortingState>([])
 	const t = useTranslations()
 
 	const locale = getLocale()
@@ -45,14 +39,7 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 
 	const columns = useMemo(() => getArsenalColumns(locale, t), [t, locale])
 
-	const table = useReactTable({
-		data: tableData,
-		columns,
-		state: { sorting },
-		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-	})
+	const { table } = useTableSort(tableData, columns)
 
 	return (
 		<section

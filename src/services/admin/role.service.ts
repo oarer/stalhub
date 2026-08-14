@@ -8,9 +8,7 @@ import type {
 
 class AdminRoleService {
 	async list(): Promise<AdminRole[]> {
-		const { data } = await apiClient.get<AdminRole[]>(
-			'/api/v1/admin/roles'
-		)
+		const { data } = await apiClient.get<AdminRole[]>('/api/v1/admin/roles')
 		return data
 	}
 
@@ -38,20 +36,16 @@ class AdminRoleService {
 		id: number,
 		payload: AdminAssignPermissions
 	): Promise<void> {
-		await apiClient.post(
-			`/api/v1/admin/roles/${id}/permissions`,
-			payload
-		)
+		await apiClient.post(`/api/v1/admin/roles/${id}/permissions`, payload)
 	}
 
 	async removePermissions(
 		id: number,
 		payload: AdminAssignPermissions
 	): Promise<void> {
-		await apiClient.delete(
-			`/api/v1/admin/roles/${id}/permissions`,
-			{ data: payload }
-		)
+		await apiClient.delete(`/api/v1/admin/roles/${id}/permissions`, {
+			data: payload,
+		})
 	}
 }
 
