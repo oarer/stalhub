@@ -24,6 +24,7 @@ import { artQualityToQualityIndex } from '@/utils/artUtils'
 import { messageToString } from '@/utils/itemUtils'
 import { useBuildStats } from '@/views/calcs/builds/model/components/hooks/useBuildStats'
 import { StatRow } from '../../model/components/stats'
+import { groupStatsByCategory } from '../../model/components/stats/statsCategories'
 
 type BuildLitePngTemplateProps = {
 	armorItems: Item[]
@@ -58,6 +59,11 @@ export const BuildLitePngTemplate = forwardRef<
 ) {
 	const { displayNamesMap, hps, prime, sortedStats } = useBuildStats()
 	const { priceMap } = useBuildPrices()
+
+	const statGroups = useMemo(
+		() => groupStatsByCategory(sortedStats),
+		[sortedStats]
+	)
 
 	const artsMap = useMemo(
 		() => new Map(build.arts.map((a) => [a.instanceId, a])),
@@ -378,13 +384,25 @@ export const BuildLitePngTemplate = forwardRef<
 								{t('build.stats.no_stats')}
 							</p>
 						) : (
-							sortedStats.map(([key, val]) => (
-								<StatRow
-									key={key}
-									keyName={key}
-									name={displayNamesMap[key] ?? key}
-									value={val}
-								/>
+							statGroups.map((group) => (
+								<div
+									className="flex flex-col gap-1"
+									key={group.key}
+								>
+									<p className="border-border-secondary border-b pb-1 font-semibold text-neutral-500 text-xs uppercase tracking-wider">
+										{t(
+											`build.stats.categories.${group.key}`
+										)}
+									</p>
+									{group.rows.map(([key, val]) => (
+										<StatRow
+											key={key}
+											keyName={key}
+											name={displayNamesMap[key] ?? key}
+											value={val}
+										/>
+									))}
+								</div>
 							))
 						)}
 					</div>

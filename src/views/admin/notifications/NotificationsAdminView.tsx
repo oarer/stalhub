@@ -102,10 +102,10 @@ export default function NotificationsAdminView() {
 							<Button
 								className={`gap-2 ${
 									mode === 'broadcast' &&
-									'border-sky-500 bg-sky-500/10 text-sky-400'
+									'dark:bg-border/20'
 								}`}
 								onClick={() => setMode('broadcast')}
-								type="button"
+								variant={'secondary'}
 							>
 								<Icon className="size-4" icon="lucide:globe" />
 								{t('admin.notifications.broadcast')}
@@ -113,10 +113,10 @@ export default function NotificationsAdminView() {
 							<Button
 								className={`gap-2 ${
 									mode === 'user' &&
-									'border-sky-500 bg-sky-500/10 text-sky-400'
+									'dark:bg-border/20'
 								}`}
 								onClick={() => setMode('user')}
-								type="button"
+								variant={'secondary'}
 							>
 								<Icon className="size-4" icon="lucide:user" />
 								{t('admin.notifications.toUser')}

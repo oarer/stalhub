@@ -3,12 +3,15 @@
 import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import type { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import { CheckBox } from '@/components/ui/CheckBox'
+import { Divider } from '@/components/ui/Divider'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { BUILD_TAGS } from '@/constants/builds.const'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
@@ -28,7 +31,7 @@ type BuildLiteHeaderProps = {
 	onReset: () => void
 	onUpdateBuild: (
 		id: string,
-		data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId'>>
+		data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId' | 'tags'>>
 	) => void
 	savedBuilds: SavedBuild[]
 	savingPng: boolean
@@ -51,9 +54,28 @@ export function BuildLiteHeader({
 }: BuildLiteHeaderProps) {
 	const [showRenameModal, setShowRenameModal] = useState(false)
 	const [buildName, setBuildName] = useState('')
+	const [selectedTags, setSelectedTags] = useState<string[]>(
+		currentBuild?.tags ?? []
+	)
 	const queryClient = getQueryClient()
 
 	const isPublished = Boolean(currentBuild?.apiBuildId)
+
+	useEffect(() => {
+		setSelectedTags(currentBuild?.tags ?? [])
+	}, [currentBuild?.tags])
+
+	const handleToggleTag = (tag: string) => {
+		setSelectedTags((prev) => {
+			const next = prev.includes(tag)
+				? prev.filter((t) => t !== tag)
+				: [...prev, tag]
+			if (currentBuildId) {
+				onUpdateBuild(currentBuildId, { tags: next })
+			}
+			return next
+		})
+	}
 
 	const publishMutation = useMutation({
 		mutationFn: () => {
@@ -61,6 +83,7 @@ export function BuildLiteHeader({
 			return buildApiService.create({
 				title: name,
 				data: currentBuild!.build,
+				tags: selectedTags,
 			})
 		},
 		onSuccess: (result) => {
@@ -79,6 +102,7 @@ export function BuildLiteHeader({
 			return buildApiService.update(currentBuild.apiBuildId, {
 				title: currentBuild.name,
 				data: currentBuild.build,
+				tags: selectedTags,
 			})
 		},
 		onSuccess: () => {
@@ -242,6 +266,28 @@ export function BuildLiteHeader({
 												{t('buildsLite.publish')}
 											</Button>
 										)}
+									</div>
+									<Divider className="my-1" />
+									<div className="flex flex-col gap-2">
+										<p className="font-semibold text-sm text-text-accent">
+											{t('buildsLite.tagsLabel')}
+										</p>
+										<div className="flex flex-wrap gap-2">
+											{BUILD_TAGS.map((tag) => (
+												<CheckBox
+													checked={selectedTags.includes(
+														tag
+													)}
+													key={tag}
+													label={t(
+														`builds.tags.${tag}`
+													)}
+													onCheckedChange={() =>
+														handleToggleTag(tag)
+													}
+												/>
+											))}
+										</div>
 									</div>
 								</Modal.Body>
 							</Modal.Content>

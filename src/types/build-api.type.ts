@@ -6,6 +6,7 @@ export interface BuildApi {
 	data: Build
 	flags: number | null
 	tags: string[]
+	price?: number | null
 	author: BuildApiAuthor
 	stars: number
 	starred: boolean

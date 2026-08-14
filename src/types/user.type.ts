@@ -133,7 +133,7 @@ export type PublicUser = Pick<
 
 export type PublicUserBuild = Pick<
 	BuildApi,
-	'id' | 'title' | 'tags' | 'created_at' | 'data'
+	'id' | 'title' | 'tags' | 'created_at' | 'data' | 'price'
 > & {
 	tags: string
 }

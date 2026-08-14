@@ -470,7 +470,15 @@
 			"all": "Общее",
 			"container": "Контейнер",
 			"no_stats": "Нет статов",
-			"no_container": "Контейнер не выбран"
+			"no_container": "Контейнер не выбран",
+			"categories": {
+				"core": "Основные характеристики",
+				"protection": "Защитные характеристики",
+				"contaminationProtection": "Защита от заражений",
+				"accumulation": "Заражения",
+				"effects": "Прочие эффекты",
+				"misc": "Прочее"
+			}
 		},
 		"price": "Цена",
 		"price_total": "Стоимость сборки",
@@ -1759,6 +1767,14 @@
 		"cost": "Стоимость",
 		"search": "Поиск..."
 	},
+	"builds": {
+		"tags": {
+			"fat": "Жир",
+			"speed": "Скорость",
+			"weight": "Вес",
+			"combo": "Комба"
+		}
+	},
 	"buildsLite": {
 		"notFound": "Сборка не найдена",
 		"pngCopied": "Изображение скопировано",
@@ -1774,6 +1790,7 @@
 		"copyBuildCode": "Копировать код сборки",
 		"updateServer": "Обновить на сервере",
 		"publish": "Опубликовать",
+		"tagsLabel": "Теги",
 		"containerWarnTitle": "Контейнер меньше текущего",
 		"containerWarnDesc": "Артефакты в удаляемых слотах будут отвязаны от контейнера.",
 		"lostSlots": "Будет потеряно занятых слотов: {count}",
@@ -1850,7 +1867,15 @@
 	},
 	"buildsPublic": {
 		"title": "Сборки",
-		"total": "{count} всего"
+		"total": "{count} всего",
+		"tagsPlaceholder": "Выбрать теги",
+		"price": "Цена",
+		"priceFrom": "От",
+		"priceTo": "До",
+		"sort": "Сортировка",
+		"sort_newest": "Новые",
+		"sort_stars": "Звёзды",
+		"sort_price": "Цена"
 	},
 	"toolsList": {
 		"title": "Инструменты",

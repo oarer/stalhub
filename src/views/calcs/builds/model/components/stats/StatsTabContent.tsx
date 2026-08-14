@@ -3,11 +3,16 @@
 import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
 import { montserrat } from '@/app/fonts'
+import { Accordion } from '@/components/ui/Accordion'
 import { Card } from '@/components/ui/Card'
 import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
 import { StatRow } from './StatRow'
+import {
+	groupStatsByCategory,
+	type StatCategoryGroup,
+} from './statsCategories'
 
 // у холода лимит выше
 const ACCUMULATION_THRESHOLDS: { key: string; threshold: number }[] = [
@@ -17,6 +22,56 @@ const ACCUMULATION_THRESHOLDS: { key: string; threshold: number }[] = [
 	},
 ]
 const DEFAULT_ACCUMULATION_THRESHOLD = 0.5
+
+interface StatCategoryListProps {
+	groups: StatCategoryGroup[]
+	displayNamesMap: Record<string, string>
+	isPercentMap?: Record<string, boolean>
+}
+
+const StatCategoryList = memo(function StatCategoryList({
+	groups,
+	displayNamesMap,
+	isPercentMap,
+}: StatCategoryListProps) {
+	const t = useTranslations()
+
+	const items = useMemo(
+		() =>
+			groups.map((group) => ({
+				key: group.key,
+				title: t(`build.stats.categories.${group.key}`),
+				content: group.rows.map(([key, val]) => (
+					<StatRow
+						color={BUILD_STAT_COLORS[key]}
+						isPercent={isPercentMap?.[key]}
+						key={key}
+						keyName={key}
+						name={displayNamesMap[key] ?? key}
+						value={val}
+					/>
+				)),
+			})),
+		[groups, displayNamesMap, isPercentMap, t]
+	)
+
+	const defaultExpandedKeys = useMemo(
+		() => groups.map((group) => group.key),
+		[groups]
+	)
+
+	return (
+		<Accordion
+			className="flex flex-col gap-1"
+			defaultExpandedKeys={defaultExpandedKeys}
+			items={items}
+			selectionMode="multiple"
+			size="sm"
+			titleClass="px-0 py-0"
+			variant={'ghost'}
+		/>
+	)
+})
 
 function AccumulationWarnings({
 	statsMap,
@@ -73,27 +128,7 @@ export const StatsTabContent = memo(function StatsTabContent({
 }: StatsTabContentProps) {
 	const t = useTranslations()
 
-	const rows = useMemo(() => {
-		const colored: [string, number][] = []
-		const nonColored: [string, number][] = []
-		for (const entry of stats) {
-			if (BUILD_STAT_COLORS[entry[0]]) {
-				colored.push(entry)
-			} else {
-				nonColored.push(entry)
-			}
-		}
-		return [...nonColored, ...colored].map(([key, val]) => (
-			<StatRow
-				color={BUILD_STAT_COLORS[key]}
-				isPercent={isPercentMap?.[key]}
-				key={key}
-				keyName={key}
-				name={displayNamesMap[key] ?? key}
-				value={val}
-			/>
-		))
-	}, [stats, displayNamesMap, isPercentMap])
+	const groups = useMemo(() => groupStatsByCategory(stats), [stats])
 
 	return (
 		<Card.Root>
@@ -128,7 +163,11 @@ export const StatsTabContent = memo(function StatsTabContent({
 							: t('build.stats.no_container')}
 					</p>
 				) : (
-					rows
+					<StatCategoryList
+						displayNamesMap={displayNamesMap}
+						groups={groups}
+						isPercentMap={isPercentMap}
+					/>
 				)}
 			</Card.Content>
 		</Card.Root>
@@ -156,27 +195,10 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
 
-	const rows = useMemo(() => {
-		const colored: [string, number][] = []
-		const nonColored: [string, number][] = []
-		for (const entry of sortedStats) {
-			if (BUILD_STAT_COLORS[entry[0]]) {
-				colored.push(entry)
-			} else {
-				nonColored.push(entry)
-			}
-		}
-		return [...nonColored, ...colored].map(([key, val]) => (
-			<StatRow
-				color={BUILD_STAT_COLORS[key]}
-				isPercent={isPercentMap?.[key]}
-				key={key}
-				keyName={key}
-				name={displayNamesMap[key] ?? key}
-				value={val}
-			/>
-		))
-	}, [sortedStats, displayNamesMap, isPercentMap])
+	const groups = useMemo(
+		() => groupStatsByCategory(sortedStats),
+		[sortedStats]
+	)
 
 	return (
 		<Card.Root>
@@ -227,7 +249,11 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 							{t('build.stats.no_stats')}
 						</p>
 					) : (
-						rows
+						<StatCategoryList
+							displayNamesMap={displayNamesMap}
+							groups={groups}
+							isPercentMap={isPercentMap}
+						/>
 					)}
 				</div>
 			</Card.Content>

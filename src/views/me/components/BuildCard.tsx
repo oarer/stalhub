@@ -9,6 +9,8 @@ import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
+import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import { formatArtPrice } from '@/hooks/useBuildPrices'
 import { getLocale } from '@/lib/getLocale'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
@@ -142,7 +144,13 @@ export function BuildCard({
 	const hasPreview = armorItems && containers && artifacts
 
 	return (
-		<div className="group relative flex flex-col gap-2 rounded-lg bg-background p-3 transition-colors hover:bg-accent">
+		<div
+			className={`group relative flex flex-col gap-2 rounded-lg bg-background p-3 transition-colors hover:bg-accent ${
+				isOwner
+					? 'border-2 border-border/40'
+					: 'border border-transparent'
+			}`}
+		>
 			<div className="flex items-center justify-between gap-2">
 				<Link
 					className="w-fit truncate rounded-lg px-2 py-1 font-semibold text-border text-md transition-colors hover:bg-text-accent/20"
@@ -291,10 +299,22 @@ export function BuildCard({
 						{stars}
 					</div>
 				)}
+				{build.price && (
+					<div className="flex items-center gap-1">
+						<Icon className="text-lg" icon="lucide:coins" />
+						<p className={`${montserrat.className} font-semibold`}>
+							{formatArtPrice(build.price)}₽
+						</p>
+					</div>
+				)}
 				{author && (
-					<p className={`${montserrat.className} font-semibold`}>
-						{author.username}
-					</p>
+					<HoverUserCard id={author.id}>
+						<p
+							className={`${montserrat.className} font-semibold text-border`}
+						>
+							{author.username}
+						</p>
+					</HoverUserCard>
 				)}
 			</div>
 
@@ -305,7 +325,7 @@ export function BuildCard({
 							className="rounded bg-border-secondary px-1.5 py-0.5 text-text-accent text-xs"
 							key={tag}
 						>
-							{tag}
+							{t(`builds.tags.${tag}`)}
 						</span>
 					))}
 				</div>

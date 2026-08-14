@@ -14,6 +14,7 @@ export type SavedBuild = {
 	build: Build
 	defaults: BuildDefaults
 	apiBuildId?: string
+	tags?: string[]
 	createdAt: number
 	updatedAt: number
 }
@@ -52,9 +53,17 @@ type BuildState = {
 
 	saveBuild: (name: string) => void
 	loadBuild: (id: string) => void
-	loadFromApi: (apiBuildId: string, name: string, buildData: Build) => void
+	loadFromApi: (
+		apiBuildId: string,
+		name: string,
+		buildData: Build,
+		tags?: string[]
+	) => void
 	deleteBuild: (id: string) => void
-	updateBuild: (id: string, data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId'>>) => void
+	updateBuild: (
+		id: string,
+		data: Partial<Pick<SavedBuild, 'name' | 'apiBuildId' | 'tags'>>
+	) => void
 	autoSave: () => void
 
 	exportBuild: (name?: string) => Promise<string | null>
@@ -523,7 +532,7 @@ export const useBuildStore = create<BuildState>()(
 				})
 			},
 
-			loadFromApi: (apiBuildId, name, buildData) => {
+			loadFromApi: (apiBuildId, name, buildData, tags) => {
 				const { savedBuilds } = get()
 
 				const existing = savedBuilds.find(
@@ -546,6 +555,7 @@ export const useBuildStore = create<BuildState>()(
 					build: JSON.parse(JSON.stringify(buildData)),
 					defaults: JSON.parse(JSON.stringify(initialDefaults)),
 					apiBuildId,
+					tags,
 					createdAt: now,
 					updatedAt: now,
 				}

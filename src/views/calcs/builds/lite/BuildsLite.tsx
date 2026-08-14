@@ -188,7 +188,12 @@ export default function BuildsLiteView({
 		buildApiService
 			.get(buildId)
 			.then((apiBuild) => {
-				loadFromApi(apiBuild.id, apiBuild.title, apiBuild.data)
+				loadFromApi(
+					apiBuild.id,
+					apiBuild.title,
+					apiBuild.data,
+					apiBuild.tags
+				)
 				window.history.replaceState({}, '', '/calcs/builds/lite')
 			})
 			.catch(() => {
@@ -520,7 +525,7 @@ export default function BuildsLiteView({
 								<LightBox.Trigger asChild>
 									<Image
 										alt="Build preview"
-										className='rounded-lg'
+										className="rounded-lg"
 										height={600}
 										priority
 										src={pngPreviewUrl}

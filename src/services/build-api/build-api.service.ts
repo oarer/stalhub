@@ -1,4 +1,5 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
+import type { BuildSort } from '@/constants/builds.const'
 import type {
 	BuildApi,
 	BuildApiCreate,
@@ -10,14 +11,31 @@ class BuildApiService {
 	async list({
 		take = 20,
 		page = 1,
-	}: { take?: number; page?: number } = {}): Promise<
-		PaginatedResponse<BuildApi>
-	> {
-		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>(
-			'/api/v1/builds',
-			{ params: { take, page } }
-		)
-		return data
+		tags,
+		sort,
+		priceMin,
+		priceMax,
+	}: {
+		take?: number
+		page?: number
+		tags?: string[]
+		sort?: BuildSort
+		priceMin?: number
+		priceMax?: number
+	} = {}): Promise<PaginatedResponse<BuildApi>> {
+		const { data } = await apiClient.get<
+			PaginatedResponse<BuildApi> & { totalCount: number }
+		>('/api/v1/builds', {
+			params: {
+				take,
+				page,
+				...(tags && tags.length > 0 && { tags: tags.join(',') }),
+				...(sort && sort !== 'newest' && { sort }),
+				...(priceMin != null && { priceMin }),
+				...(priceMax != null && { priceMax }),
+			},
+		})
+		return { ...data, total: data.totalCount ?? data.total }
 	}
 
 	async get(id: string): Promise<BuildApi> {
