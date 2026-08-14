@@ -46,6 +46,7 @@ export type MarkerPreset = {
 	label?: string
 	color: string
 	icon: string
+	image?: string
 	letter?: string
 }
 
@@ -171,7 +172,40 @@ export const MARKER_PRESETS: MarkerPreset[] = [
 		color: '#f97316',
 		icon: 'lucide:target',
 	},
-	{ key: 'info', labelKey: 'cwMap.markers.info', color: '#a3a3a3', icon: 'lucide:info' },
+	{
+		key: 'info',
+		labelKey: 'cwMap.markers.info',
+		color: '#a3a3a3',
+		icon: 'lucide:info',
+	},
+	{
+		key: 'gabion',
+		labelKey: 'cwMap.markers.custom',
+		color: '#ffffff',
+		icon: 'lucide:image',
+		image: '/images/map/cw/gabion.png',
+	},
+	{
+		key: 'bar',
+		labelKey: 'cwMap.markers.custom',
+		color: '#ffffff',
+		icon: 'lucide:image',
+		image: '/images/map/cw/b.png',
+	},
+	{
+		key: 'bar_mil',
+		labelKey: 'cwMap.markers.custom',
+		color: '#ffffff',
+		icon: 'lucide:image',
+		image: '/images/map/cw/b_m.png',
+	},
+	{
+		key: 'bar_mil_open',
+		labelKey: 'cwMap.markers.custom',
+		color: '#ffffff',
+		icon: 'lucide:image',
+		image: '/images/map/cw/b_m_open.png',
+	},
 	{ key: 'point_a', label: 'A', color: '#222222', icon: '', letter: 'A' },
 	{ key: 'point_b', label: 'B', color: '#222222', icon: '', letter: 'B' },
 	{ key: 'point_c', label: 'C', color: '#222222', icon: '', letter: 'C' },

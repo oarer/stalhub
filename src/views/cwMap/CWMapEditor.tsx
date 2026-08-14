@@ -52,7 +52,7 @@ export default function CWMapEditor() {
 
 	const selectedMap: MapDef =
 		MAPS.find((m) => m.key === selectedMapKey) ?? MAPS[0]
-	const tileUrl = `http://localhost:3000/maps/cw/${selectedMap.key}/tiles/{z}/{x}/{y}.png`
+	const tileUrl = `https://cdn.stalhub.dev/maps/cw/${selectedMap.key}/tiles/{z}/{x}/{y}.png`
 
 	useEffect(() => {
 		if (showLetterMarkers && selectedMap.letterMarkers) {

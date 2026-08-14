@@ -14,7 +14,7 @@ export const MarkerSelector = ({
 	onToolChange,
 }: MarkerSelectorProps) => {
 	return (
-		<div className="grid grid-cols-4 gap-2">
+		<div className="grid grid-cols-3 gap-2">
 			{MARKER_PRESETS.map((p) => {
 				const isActive = selectedPreset === p.key
 
@@ -29,11 +29,19 @@ export const MarkerSelector = ({
 						size="sm"
 						variant={'ghost'}
 					>
-						<Icon
-							className="h-5 w-5"
-							icon={p.icon}
-							style={{ color: p.color }}
-						/>
+						{p.image ? (
+							<img
+								alt={p.label ?? p.key}
+								className="h-8 w-8 object-contain"
+								src={p.image}
+							/>
+						) : (
+							<Icon
+								className="h-7 w-7"
+								icon={p.icon}
+								style={{ color: p.color }}
+							/>
+						)}
 					</Button>
 				)
 			})}

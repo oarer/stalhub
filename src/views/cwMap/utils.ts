@@ -48,6 +48,16 @@ export function makeMarkerIcon(preset: MarkerPreset): L.DivIcon {
 			</div>`,
 		})
 	}
+	if (preset.image) {
+		return L.divIcon({
+			className: '',
+			iconSize: [36, 36],
+			iconAnchor: [18, 18],
+			html: `<div style="width:36px;height:36px;border-radius:6px;overflow:hidden;background:rgba(22,22,22,0.6);border:2px solid rgba(255,255,255,.9);box-shadow:0 2px 6px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center">
+				<img src="${preset.image}" style="width:100%;height:100%;object-fit:cover" alt="${preset.label ?? preset.key}" />
+			</div>`,
+		})
+	}
 	return L.divIcon({
 		className: '',
 		iconSize: [28, 28],
