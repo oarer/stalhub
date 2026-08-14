@@ -1,4 +1,5 @@
-FROM oven/bun:1 AS dependencies
+# https://bun.report/1.3.14/Bn10d9b296i2HqwogC4664tE+++Pw9jypDA2Agr+E
+FROM oven/bun:1.3.13 AS dependencies
 
 WORKDIR /app
 
@@ -7,19 +8,20 @@ COPY package.json bun.lock* ./
 RUN --mount=type=cache,target=/root/.bun/install/cache \
     bun install --no-save --frozen-lockfile
 
-FROM oven/bun:1 AS builder
+
+FROM oven/bun:1.3.13 AS builder
 
 WORKDIR /app
 
 COPY --from=dependencies /app/node_modules ./node_modules
-
 COPY . .
 
 ENV NODE_ENV=production
 
 RUN bun run build
 
-FROM oven/bun:1 AS runner
+
+FROM oven/bun:1.3.13 AS runner
 
 WORKDIR /app
 
