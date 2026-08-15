@@ -20,6 +20,7 @@ export function useLiteArtifacts({
 	locale,
 }: UseLiteArtifactsParams) {
 	const addArt = useBuildStore((s) => s.addArt)
+	const defaults = useBuildStore((s) => s.defaults)
 	const setContainer = useBuildStore((s) => s.setContainer)
 	const updateArt = useBuildStore((s) => s.updateArt)
 	const removeArt = useBuildStore((s) => s.removeArt)
@@ -110,7 +111,18 @@ export function useLiteArtifacts({
 
 	const handleAdd = (itemId: string) => {
 		if (copyMode) return
-		addArt(itemId, undefined, selectedSlot)
+		const item = items.find((it) => it.id === itemId)
+		const parsed = item ? parseItemStats(item, locale) : null
+		const addStatKeys = parsed
+			? Object.keys(parsed.addStats ?? {})
+			: []
+		const data: Partial<Art> | undefined =
+			(defaults.art.potential ?? 0) >= 15 &&
+			addStatKeys.length > 0 &&
+			addStatKeys.length <= 3
+				? { selectedStats: addStatKeys }
+				: undefined
+		addArt(itemId, data, selectedSlot)
 	}
 
 	const handleCreateContainer = (itemId: string, slotsCount: number) => {
