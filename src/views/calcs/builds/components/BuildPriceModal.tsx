@@ -182,7 +182,9 @@ export default function BuildPriceModal() {
 								</p>
 							</div>
 							{updatedAt && (
-								<p className="font-semibold text-text-accent text-xs">
+								<p
+									className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+								>
 									{t('build.price_updated')}{' '}
 									{formatDate(updatedAt, 'datetime')}
 								</p>
