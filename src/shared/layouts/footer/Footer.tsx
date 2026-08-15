@@ -13,11 +13,11 @@ import { StatusWidget } from './Status'
 
 // HUGE thanks to KryptonFox (GitHub: @kryptonFox) for this code snippet <3
 const BuildHash = () => (
-	<span className="flex items-center gap-1 text-neutral-600 text-xs dark:text-neutral-400">
+	<span className="flex items-center text-text-accent">
 		<Icon className="h-4 w-4" icon="mdi:code-tags" />
 		build@
 		<Link
-			className="text-sky-600 transition-colors hover:underline dark:text-sky-400"
+			className="text-border transition-colors hover:underline"
 			href={`https://github.com/oarer/stalhub/tree/${process.env.NEXT_PUBLIC_GIT_COMMIT_SHA}`}
 			rel="noopener noreferrer"
 			target="_blank"
