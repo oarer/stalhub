@@ -49,7 +49,7 @@ export default function ArticlesView() {
 							href={`/articles/${article.id}`}
 							key={article.id}
 						>
-							<h2 className="font-semibold text-lg transition-colors group-hover:text-sky-400">
+							<h2 className="font-semibold text-lg transition-colors group-hover:text-border">
 								{article.title}
 							</h2>
 

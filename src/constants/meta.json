@@ -104,7 +104,7 @@
 	},
 	"/calcs/modules": {
 		"title": "Калькулятор модулей · StalHub",
-		"description": "Конвертер чувствительности мыши между играми.",
+		"description": "Подбор идеальный модулей для оружия.",
 		"keywords": [
 			"module calculator",
 			"калькулятор модулей",
@@ -115,6 +115,16 @@
 	"/about": {
 		"title": "О нас · StalHub",
 		"description": "Информация о проекте и его участниках"
+	},
+	"/articles": {
+		"title": "Статьи · StalHub",
+		"description": "Статьи по прохождению сюжетных и вторичных квестов и другая информация",
+		"keywords": [
+			"guides calculator",
+			"гайды сталкрафт",
+			"quests stalcraft",
+			"квесты сталкрафт"
+		]
 	},
 	"notFound": {
 		"title": "Страница не найдена · StalHub",
