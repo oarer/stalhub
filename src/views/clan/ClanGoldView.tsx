@@ -10,37 +10,28 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
 import type { GoldDropStatus } from '@/types/clan/clan.type'
-import { OFFICER_RANKS } from './clan.const'
 import { AttendeesModal } from './components/gold/AttendeesModal'
 import { GoldDropCard } from './components/gold/GoldDropCard'
+import { useClanRoles } from './hooks/useClanRoles'
 
 export default function ClanGoldView() {
 	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
 	const clanId = profile?.clan?.id
 	if (!clanId) return null
 
-	return <ClanGoldContent clanId={clanId} currentUserId={profile?.userId} />
+	return <ClanGoldContent clanId={clanId} />
 }
 
-function ClanGoldContent({
-	clanId,
-	currentUserId,
-}: {
-	clanId: string
-	currentUserId?: number
-}) {
+function ClanGoldContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
 	const queryClient = getQueryClient()
+	const { members, isOfficer } = useClanRoles()
 	const { data: drops, isLoading } = useSuspenseQuery(
 		clanQueries.getGoldDrops(clanId)
 	)
-	const { data: members } = useSuspenseQuery(clanQueries.getMembers(clanId))
 
 	const [editDropId, setEditDropId] = useState<number | null>(null)
 	const [selectedIds, setSelectedIds] = useState<number[]>([])
-
-	const myMember = members?.find((m) => m.userId === currentUserId)
-	const isOfficer = myMember != null && OFFICER_RANKS.has(myMember.rank)
 
 	const editDrop = drops?.find((d) => d.id === editDropId) ?? null
 

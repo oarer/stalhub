@@ -8,22 +8,15 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
 import type { BotLinkToken, ClanSchedule } from '@/types/clan/clan.type'
-import { OFFICER_RANKS } from '../clan.const'
+import { useClanRoles } from './useClanRoles'
 
 export function useClanSettings() {
 	const t = useTranslations()
 	const queryClient = getQueryClient()
-	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
-	const { data: members } = useSuspenseQuery(
-		clanQueries.getMembers(profile!.clanId!)
-	)
+	const { profile, isLeader, isOfficer } = useClanRoles()
 	const { data: settings } = useSuspenseQuery(clanQueries.getSettings())
 	const { data: guilds } = useSuspenseQuery(clanQueries.getBotGuilds())
 	const clan = profile!.clan!
-
-	const myMember = members?.find((m) => m.userId === profile!.userId)
-	const isLeader = myMember?.rank === 'LEADER'
-	const isOfficer = myMember != null && OFFICER_RANKS.has(myMember.rank)
 
 	const [isPublic, setIsPublic] = useState(clan.is_public ?? false)
 	const [recruiting, setRecruiting] = useState(clan.recruiting ?? false)
