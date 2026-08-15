@@ -16,6 +16,7 @@ export interface AccordionProps {
 	defaultExpandedKeys?: string[]
 	className?: string
 	titleClass?: string
+	accordionClass?: string
 	size?: 'sm' | 'md' | 'lg'
 	onSelectionChange?: (keys: string[]) => void
 }

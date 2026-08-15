@@ -1,1978 +1,1983 @@
 {
-	"landing": {
-		"overview": "Всё в одном месте",
-		"tools_for": "Инструменты для",
-		"need": "Всё необходимое для",
-		"features": {
-			"items": "Предметов",
-			"tools": "Инструментов",
-			"uptime": "Доступность"
-		},
-		"start": "Начать",
-		"more_details": "Подробнее",
-		"tools": {
-			"title": "Инструменты",
-			"description": "Обширная коллекция инструментов",
-			"tool_list": {
-				"builds": {
-					"title": "Калькулятор сборок",
-					"desc": "Создавайте и сохраняйте сборки артефактов, экспериментируйте с комбинациями и сравнивайте эффективность разных сетапов с возможностью просматривать модели"
-				},
-				"builds_lite": {
-					"title": "Калькулятор сборок Lite",
-					"desc": "Создавайте и сохраняйте сборки артефактов, экспериментируйте с комбинациями и сравнивайте эффективность разных сетапов"
-				},
-				"bp": {
-					"title": "Калькулятор Боевого Пропуска",
-					"desc": "Удобный инструмент для подсчёта прогресса боевого пропуска"
-				},
-				"ttk": {
-					"title": "Калькулятор ТТК",
-					"desc": "Оцените ТТК для любого оружия и брони. Сравнивайте оружие и броню, чтобы подобрать оптимальный вариант"
-				},
-				"modules": {
-					"title": "Калькулятор модулей",
-					"desc": "Собирайте модули оружия и смотрите итоговые бонусы и стоимость"
-				},
-				"dashboard": {
-					"title": "Удобная работа с инструментами",
-					"desc": "Вместо обычных страниц мы сделали все инструменты в виде виджетов"
-				},
-				"map": {
-					"title": "Интерактивная карта",
-					"desc": "Просматривайте мир с помощью удобной интерактивной карты: гайд по разным квестам, споты, схрон и многое другое"
-				},
-				"player_search": {
-					"title": "Поиск игроков",
-					"desc": "Найдите игрока по нику и посмотрите его статистику"
-				},
-				"arsenal": {
-					"title": "Арсенал",
-					"desc": "Подсчитайте необходимое количество предметов для репутации арсенала"
-				}
-			}
-		}
-	},
-	"footer": {
-		"made_by": "Сайт сделан ",
-		"and": " и ",
-		"links": {
-			"bug_report": "Сообщить о баге на GitHub",
-			"telegram": "Telegram канал",
-			"discord": "Наш Discord",
-			"about": "О нас",
-			"status": "Статус страница"
-		},
-		"project": {
-			"with": "Проект с ",
-			"open_source": "открытым исходным кодом",
-			"license": "Лицензия "
-		}
-	},
-	"nav": {
-		"articles": "Статьи",
-		"groups": {
-			"calculators": {
-				"title": "Калькуляторы",
-				"items": {
-					"art": {
-						"label": "Сборки",
-						"description": "Создайте сборку",
-						"sub_menu": {
-							"lite": "Лайт версия",
-							"3d": "3D версия",
-							"3d_description": "Экспериментальная функция"
-						}
-					},
-					"ttk": {
-						"label": "ТТК",
-						"description": "Эффективность оружия"
-					},
-					"arsenal": {
-						"label": "Арсенал",
-						"description": "Репутация Арсенала"
-					},
-					"hideout": {
-						"label": "Убежище",
-						"description": "Подсчёт ресурсов убежища"
-					},
-					"barter": {
-						"label": "Обменные монеты",
-						"description": "Бартер в обменные монеты"
-					},
-					"bp": {
-						"label": "Сезонный пропуск",
-						"description": "Расчёт уровней"
-					},
-					"dpi": {
-						"label": "Чувствительность",
-						"description": "Настройка DPI"
-					},
-					"modules": {
-						"label": "Модули",
-						"description": "Калькулятор модулей оружия"
-					}
-				}
-			},
-			"clans": {
-				"title": "Кланы",
-				"items": {
-					"clanMaps": {
-						"label": "КВ карты",
-						"description": "Карты для колов"
-					},
-					"clans": {
-						"label": "Список кланов"
-					}
-				}
-			},
-			"other": {
-				"title": "Прочее",
-				"items": {
-					"dashboard": {
-						"label": "Дашборд",
-						"description": "Те самые виджеты"
-					},
-					"maps": {
-						"label": "Интерактивная карта"
-					},
-					"auction": {
-						"label": "Аукцион"
-					},
-					"items": {
-						"label": "Поиск предметов"
-					},
-					"players": {
-						"label": "Поиск игроков"
-					},
-					"models": {
-						"label": "Просмотр моделей",
-						"description": "Скоро..."
-					}
-				}
-			}
-		}
-	},
-	"map": {
-		"title": "Список карт",
-		"loading": "Загрузка карты",
-		"notFound": "Карта не найдена",
-		"category": "Категория:",
-		"noMarkers": "Нет меток",
-		"loadError": "Произошла ошибка при загрузке списка карт.",
-		"sideBar": {
-			"showAll": "Показать все",
-			"hideAll": "Показать все",
-			"export": "Экспорт",
-			"top": "Наверх"
-		}
-	},
-	"playerSearch": {
-		"title": "Поиск игроков",
-		"description": "Найдите игрока по нику и посмотрите его статистику",
-		"region": "Регион",
-		"nickname": "Никнейм",
-		"nicknamePlaceholder": "Введите никнейм игрока",
-		"search": "Поиск",
-		"popular_title": "Популярные игроки",
-		"recent_title": "Недавно просмотренные",
-		"recent_tooltip": "Общая статистика, берётся с сервера"
-	},
-	"player": {
-		"hero": {
-			"ach": "Достижения",
-			"ach_points": "Очков достижений:"
-		},
-		"stats": {
-			"title": "Статистика",
-			"reg": "В зоне:",
-			"hours": "В игре:",
-			"last_login": "Последний вход:"
-		},
-		"rank": {
-			"LEADER": "Лидер",
-			"COLONEL": "Полковник",
-			"OFFICER": "Офицер",
-			"SERGEANT": "Сержант",
-			"SOLDIER": "Боец",
-			"COMMONER": "Запасной",
-			"RECRUIT": "Рядовой"
-		},
-		"alliance": {
-			"merc": "Наёмник",
-			"covenant": "Завет",
-			"freedom": "Заря",
-			"duty": "Долг",
-			"bandits": "Бандит",
-			"stalkers": "Сталкер"
-		},
-		"category": {
-			"EXPLORATION": "Исследование",
-			"SURVIVAL": "Выживание",
-			"HIDEOUT": "Убежище",
-			"SESSION_MODES": "Сессионные режимы",
-			"ECONOMY": "Экономика",
-			"COMBAT": "Бой"
-		},
-		"clan": {
-			"title": "Клан",
-			"name": "Название клана",
-			"rank": "Ранг",
-			"level": "Уровень клана",
-			"members": "Участников",
-			"leader": "Лидер",
-			"join_at": "Вступил"
-		},
-		"combat": {
-			"kd": "К/Д:",
-			"deaths": "Смертей:",
-			"kills": "Убийства:",
-			"kil_ser": "Максимальная серия Убийств:",
-			"accuracy": "Точность:",
-			"shots": "Выстрелов:",
-			"hits": "Попаданий:",
-			"accuracy_head": "Точность в голову:"
-		},
-		"note": {
-			"stalhub": "STALHUB",
-			"stalhub_desc": "Игрок относится к команде проекта STALHUB",
-			"exbo": "EXBO",
-			"exbo_desc": "Игрок относится к команде EXBO EAST (STALZONE)",
-			"media": "Медиа партнёр",
-			"media_desc": "Игрок является медийной личностью проекта Stalzone",
-			"scammer": "Мошенник",
-			"scammer_desc": "Данный игрок является мошенником",
-			"more": "Более подробное описание"
-		},
-		"clanHistory": {
-			"title": "История кланов"
-		}
-	},
-	"time": {
-		"second": {
-			"one": "секунду",
-			"few": "секунды",
-			"many": "секунд"
-		},
-		"minute": {
-			"one": "минуту",
-			"few": "минуты",
-			"many": "минут"
-		},
-		"hour": {
-			"one": "час",
-			"few": "часа",
-			"many": "часов"
-		},
-		"day": {
-			"one": "день",
-			"few": "дня",
-			"many": "дней"
-		},
-		"month": {
-			"one": "месяц",
-			"few": "месяца",
-			"many": "месяцев"
-		},
-		"year": {
-			"one": "год",
-			"few": "года",
-			"many": "лет"
-		},
-		"and": "и",
-		"back": "назад"
-	},
-	"unit": {
-		"km": "км",
-		"kg": "кг",
-		"unit": "ед",
-		"meter": "м",
-		"second": "с"
-	},
-	"arts": {
-		"ART_QUALITY_COMMON": "Обычный",
-		"ART_QUALITY_UNCOMMON": "Необычный",
-		"ART_QUALITY_SPECIAL": "Особый",
-		"ART_QUALITY_RARE": "Редкий",
-		"ART_QUALITY_EXCLUSIVE": "Исключительный",
-		"ART_QUALITY_LEGENDARY": "Легендарный",
-		"ART_QUALITY_UNIQUE": "Уникальный"
-	},
-	"ui": {
-		"combobox": {
-			"default": {
-				"placeholder": "Выберите",
-				"search": {
-					"button": "Поиск",
-					"notFound": "Ничего не найдено"
-				}
-			},
-			"addStats": {
-				"placeholder": "Дополнительные свойства"
-			}
-		},
-		"input_label": "Введите название предмета",
-		"input_sharpening": "Заточка"
-	},
-	"arsenal": {
-		"title": "Калькулятор репутации Арсенала",
-		"sub_title": "Посчитайте стоимость репутации арсенала",
-		"input_label": "Репутация",
-		"alert": "Цены на предметы обновляются дважды в сутки — в 00:00 и в 12:00 по МСК. Сравнивайте цены в игре!",
-		"table": {
-			"item": "Предмет",
-			"drop": {
-				"title": "Выпадает",
-				"true": "Да",
-				"false": "Нет"
-			},
-			"reputation": "Репутация",
-			"weight": "Вес",
-			"currentPrice": "Цена",
-			"limit": "Лимит",
-			"neededCount": "Кол.во",
-			"totalWeight": "Итого вес",
-			"totalPrice": "Итого",
-			"maxPerDay": "максимум за сутки",
-			"days": {
-				"one": "день",
-				"few": "дня",
-				"many": "дней"
-			}
-		},
-		"summary": {
-			"covered": "Цель достижима: предметы с лимитом дают до",
-			"coveredEnd": "репутации в сутки.",
-			"limited": "Предметы с лимитом дадут максимум",
-			"limitedEnd": "репутации в сутки.",
-			"rest": "Для цели не хватает",
-			"restEnd": "репутации.",
-			"unlimited": "Добирайте предметами без лимита."
-		}
-	},
-	"modals": {
-		"builds": {
-			"pick": "Выбрать",
-			"no_data": "Нет данных",
-			"quality": "Качество",
-			"potential": "Уровень",
-			"armor": {
-				"toaster_success": "Броня изменена!",
-				"header": "Выберите броню"
-			},
-			"container": {
-				"toaster_success": "Контейнер изменён!",
-				"header": "Выберите контейнер",
-				"warn_modal": {
-					"warn": "Предупреждение",
-					"new_small": "Новый контейнер меньше текущего.",
-					"cancel": "Отмена",
-					"confirm": "Продолжить",
-					"del_count": "Будет удалено",
-					"success_toast": "Контейнер изменён. Удалено",
-					"slots": {
-						"slot": "слот",
-						"slots": "слотов"
-					}
-				}
-			},
-			"consumables": {
-				"title": "Выбор усилений",
-				"header": "Выберите усиление",
-				"pick_boost": "Выбор"
-			},
-			"settings": {
-				"title": "Настройки",
-				"auto_save": "Сохранение происходит автоматический",
-				"percent": "Процент",
-				"potential": "Потенциал"
-			}
-		},
-		"search": {
-			"title": "Поиск по сайту",
-			"label": "Введите запрос",
-			"not_found": "Ничего не найдено",
-			"pages": "Страницы",
-			"articles": "Статьи"
-		}
-	},
-	"boost": {
-		"long_time_medicine": "Длительного усиления",
-		"short_time_medicine": "Кратковременного усиления",
-		"mobility": "Подвижность",
-		"accumulation": "Вывод",
-		"healing": "Лечение",
-		"protection": "Защита"
-	},
-	"wiki": {
-		"title": "Википедия",
-		"description": "Добро пожаловать в нашу википедию по StalZone. Тут вы найдёте подробные гайды на механики и квесты игры.",
-		"total_pages": "Всего статей:",
-		"recently_updated": "Недавно обновлено",
-		"navTitle": "Вики",
-		"edit": "Редактировать",
-		"page": {
-			"page_section": "Страницы в этой секции",
-			"update_at": "Обновлено:",
-			"authors": "Авторы статьи"
-		}
-	},
-	"status_widget": {
-		"services_down": "Упали сервисы",
-		"services_up": "Сервисы восстановлены",
-		"services_ok": "Все сервисы в порядке",
-		"services_error": "Проблемы с подключением",
-		"services_problem": "Проблемы с сервисами"
-	},
-	"build": {
-		"new_build": "Новая сборка",
-		"rename": "Переименовать сборку",
-		"build_name": "Название сборки",
-		"cancel": "Отмена",
-		"save": "Сохранить",
-		"builds": "Сборки",
-		"needed_cont": "Выберите контейнер",
-		"empty_slot": "Пустая ячейка",
-		"artifacts": "Артефакты",
-		"pick_armor": "Выбрать броню",
-		"armor": "Броня",
-		"no_armor": "Броня не выбрана",
-		"sharpening": "Заточка",
-		"consumables": "Расходники",
-		"toast_copy": "Режим копирования активен",
-		"damaged": "будет наносить урон персонажу",
-		"toast_published": "Сборка опубликована",
-		"toast_publish_error": "Ошибка публикации",
-		"copy": "Копировать",
-		"labels": {
-			"default": "Поиск по названию",
-			"armor": "Выберите броню",
-			"armor_title": "Выбор брони",
-			"art": "Выберите артефакт",
-			"art_title": "Выбор артефакта",
-			"cont": "Выберите контейнер",
-			"cont_title": "Выбор контейнера",
-			"positive_stats": "Положительные",
-			"negative_stats": "Отрицательные",
-			"effects": "Эффекты",
-			"copy": "Скопировать",
-			"swap": "Заменить",
-			"delete": "Удалить",
-			"not_found": "Ничего не найдено",
-			"effect": "Эффекты"
-		},
-		"stats": {
-			"title": "Характеристики",
-			"prime": "Приведёнка",
-			"regen": "Лечение в секунду",
-			"hps": "Приведёнки в секунду",
-			"stopping": "Стойкость",
-			"all": "Общее",
-			"container": "Контейнер",
-			"no_stats": "Нет статов",
-			"no_container": "Контейнер не выбран",
-			"categories": {
-				"core": "Основные характеристики",
-				"protection": "Защитные характеристики",
-				"contaminationProtection": "Защита от заражений",
-				"accumulation": "Заражения",
-				"effects": "Прочие эффекты",
-				"misc": "Прочее"
-			}
-		},
-		"price": "Цена",
-		"price_total": "Стоимость сборки",
-		"price_market": "рынок",
-		"price_estimate": "примерно",
-		"price_estimate_hint": "Точных лотов на рынке нет — цена рассчитана примерно",
-		"price_unavailable": "Цены временно недоступны",
-		"price_empty": "Добавьте артефакты, чтобы посчитать стоимость",
-		"price_updated": "Обновлено:"
-	},
-	"ttk": {
-		"page": {
-			"weapon": "Оружие",
-			"weapon_add": "Добавить оружие",
-			"weapon_pick": "Выберите оружие",
-			"ammo_pick": "Выберите патрон",
-			"default_ammo": "Стандартный патрон",
-			"mannequin": "Манекен",
-			"bullet_resistance": "Пулестойкость",
-			"vitality": "Живучесть",
-			"build": "Сборка",
-			"plate": "Пластина",
-			"prime": "Приведёнка",
-			"modules": "Модули",
-			"modules_open": "Настроить модули →",
-			"fire": {
-				"auto": "Авто",
-				"burst": "Отсечки"
-			},
-			"combobox": {
-				"build": {
-					"placeholder": "— не выбрано —",
-					"search_placeholder": "Поиск сборки..."
-				},
-				"plate": {
-					"placeholder": "— без пластины —",
-					"search_placeholder": "Поиск пластины..."
-				}
-			},
-			"charts": {
-				"distance": "Дистанция:",
-				"damage": "Урон",
-				"dist_meter": "Дистанция (м):",
-				"dist_damage": "Урон на дистанции",
-				"shots": "выстр"
-			},
-			"table": {
-				"ttk": "ТТК",
-				"hits": "Попаданий"
-			}
-		},
-		"hitZones": {
-			"head": "Голова",
-			"body": "Тело",
-			"limbs": "Конечности"
-		},
-		"weaponStats": {
-			"damagePerShot": "Урон/выстрел"
-		}
-	},
-	"bp": {
-		"title": "Калькулятор Боевого Пропуска",
-		"sub_title": "Рассчитайте кол.во кол.во уровней за весь сезон",
-		"total_days": "Всего дней",
-		"play_days": "Игровые дни",
-		"task_day": "Задач за день",
-		"overloads": "Перегрузки",
-		"current_level": "Текущий уровень",
-		"data": "Данные",
-		"result": "Результаты",
-		"no_overloads": "Без перегрузок",
-		"with_overloads": "С перегрузками",
-		"difference": "Разница"
-	},
-	"barter": {
-		"lvl_req": "Необходимый уровень базы",
-		"base": "Базы для бартера",
-		"recipe": "Рецепт {number}",
-		"money": "Стоимость",
-		"used_in": "Используется в",
-		"currency": "Валюта",
-		"discount": "Скидка",
-		"currency_options": {
-			"barter": "Бартер",
-			"barter_coins": "Обменные монеты",
-			"crimson_shell": "Гильзы"
-		},
-		"discount_options": {
-			"none": "Без скидки"
-		}
-	},
-	"attachments": {
-		"title": "Обвесы",
-		"suitable": "Совместимые обвесы",
-		"none": "Для этого оружия нет совместимых обвесов",
-		"summary": "Итоговые модификаторы",
-		"total_weight": "Общий вес",
-		"remove": "Снять",
-		"empty_slot": "Не выбран",
-		"select": "Выбрать",
-		"select_prompt": "Выберите обвес",
-		"slot": {
-			"barrel": "Ствол",
-			"mag": "Магазин",
-			"collimator_sights": "Прицел",
-			"forend": "Цевьё",
-			"other": "Прочее",
-			"accessory": "Аксессуар",
-			"pistol_handle": "Рукоять"
-		}
-	},
-	"about": {
-		"contacts_title": "Контакты",
-		"thanks_title": "Отдельная благодарность",
-		"developer_role": "Главный разработчик",
-		"designer_role": "Дизайнер",
-		"contact_us": "Связь с нами",
-		"useful_links": "Полезные ссылки",
-		"contact_links": {
-			"support": {
-				"label": "Техническая поддержка",
-				"description": "Если случилась проблема с сайтом"
-			},
-			"cooperation": {
-				"label": "Сотрудничество",
-				"description": "Спонсорство, вклад в проект"
-			},
-			"advertising": {
-				"label": "Реклама",
-				"description": "Реклама на сайте или в соц.сетях"
-			}
-		},
-		"support_links": {
-			"donate": {
-				"label": "Поддержать проект",
-				"description": "Финансовая поддержка развития проекта"
-			},
-			"telegram": {
-				"label": "Telegram канал",
-				"description": "Новости, обновления и анонсы"
-			},
-			"github": {
-				"label": "GitHub репозиторий",
-				"description": "Исходный код и баг-репорты"
-			}
-		},
-		"andcool_description": "Snippet`ы кода",
-		"rashing_description": "советы по улучшению<br></br>UI/UX",
-		"flacee_description": "помощь с формулами",
-		"insideJoke": "ебал рот айсана"
-	},
-	"region": {
-		"RU": "RU",
-		"EU": "EU",
-		"NA": "NA",
-		"SEA": "SEA",
-		"NEA": "NEA"
-	},
-	"dpi": {
-		"title": "Калькулятор чувствительности",
-		"sub_title": "Конвертируйте чувствительность из одной игры в другую",
-		"from_game": "Из игры",
-		"to_game": "В игру",
-		"pick_game": "Выберите игру",
-		"sens": "Чувствительность",
-		"result": "Результат"
-	},
-	"modules": {
-		"title": "Калькулятор модулей",
-		"sub_title": "Собирайте модули оружия и смотрите итоговые бонусы и стоимость",
-		"picker_placeholder": "Выберите модуль",
-		"picker_search": "Поиск модуля...",
-		"picker_empty": "Модуль не найден",
-		"quality": "Качество",
-		"not_selected": "Модуль не выбран",
-		"fetch_error": "Не удалось получить актуальные данные модулей. Показаны данные из кэша.",
-		"groupAddOn": "Группа надстроек",
-		"groupDeviation": "Группа отклонения",
-		"groupConcept": "Группа концепта",
-		"reset": "Сбросить",
-		"reroll": "Реролл",
-		"disassemble": "Разбор",
-		"restore": "Восстановление",
-		"category": "Категория",
-		"summary": "Итог",
-		"summaryEmpty": "Выберите модули в каждой группе",
-		"rerollCost": "Стоимость реролла",
-		"disassembleCost": "Стоимость разбора",
-		"restoreCost": "Стоимость восстановления",
-		"categoryCost": "Стоимость категории"
-	},
-	"cwMap": {
-		"loading": "Загрузка редактора...",
-		"actions": {
-			"undo": "Ctrl+Z — отмена",
-			"save": "Ctrl+Shift+S — сохранить"
-		},
-		"style": {
-			"thickness": "Толщина:"
-		},
-		"accordion": {
-			"basePoints": "Базовые точки",
-			"tools": "Инструменты",
-			"markers": "Метки",
-			"style": "Стиль"
-		},
-		"maps": {
-			"berda": "Берда",
-			"hvoiniy": "Хвойный",
-			"kvartals": "Кварталы",
-			"nizina": "Низина",
-			"rozeWise": "Роза ветров"
-		},
-		"markers": {
-			"position": "Позиция",
-			"base": "База",
-			"danger": "Опасность",
-			"loot": "Лут",
-			"spawn": "Спавн",
-			"extract": "Выход",
-			"sniper": "Снайпер",
-			"info": "Инфо"
-		},
-		"tools": {
-			"pan": "Рука",
-			"pen": "Карандаш",
-			"line": "Линия",
-			"arrow": "Стрелка",
-			"rect": "Прямоуг.",
-			"circle": "Круг",
-			"eraser": "Ластик",
-			"marker": "Метка"
-		}
-	},
-	"admin": {
-		"permissions": {
-			"title": "Разрешения",
-			"total": "всего",
-			"create": "Создать разрешение",
-			"name": "Название",
-			"description": "Описание",
-			"createBtn": "Создать",
-			"edit": "Редактировать разрешение",
-			"deleteTitle": "Удалить разрешение?",
-			"deleteDescription": "Разрешение <strong>{name}</strong> будет удалено навсегда.",
-			"deleteConfirm": "Удалить",
-			"cancel": "Отмена",
-			"save": "Сохранить",
-			"toast": {
-				"created": "Разрешение создано",
-				"createError": "Ошибка создания",
-				"updated": "Разрешение обновлено",
-				"updateError": "Ошибка обновления",
-				"deleted": "Разрешение удалено",
-				"deleteError": "Ошибка удаления"
-			}
-		},
-		"users": {
-			"title": "Пользователи",
-			"total": "всего",
-			"search": "Поиск...",
-			"table": {
-				"username": "Имя пользователя",
-				"name": "Имя",
-				"roles": "Роли",
-				"status": "Статус"
-			},
-			"status": {
-				"banned": "Забанен",
-				"active": "Активен"
-			},
-			"deleteTitle": "Удалить пользователя?",
-			"deleteDescription": "Пользователь <strong>{name}</strong> будет удалён навсегда.",
-			"deleteConfirm": "Удалить",
-			"cancel": "Отмена",
-			"toast": {
-				"deleted": "Пользователь удалён",
-				"deleteError": "Ошибка при удалении"
-			}
-		},
-		"userDetail": {
-			"tabs": {
-				"info": "Информация",
-				"sessions": "Сессии",
-				"roles": "Роли",
-				"badges": "Бейджи",
-				"banner": "Баннер"
-			},
-			"editing": "Редактирование",
-			"username": "Имя пользователя",
-			"name": "Имя",
-			"save": "Сохранить",
-			"ban": {
-				"title": "Бан",
-				"banned": "Пользователь забанен",
-				"unban": "Снять бан",
-				"reason": "Причина бана",
-				"duration": "Длительность (часы)",
-				"confirm": "Забанить"
-			},
-			"delete": {
-				"title": "Удаление",
-				"trigger": "Удалить пользователя",
-				"confirmTitle": "Удалить пользователя?",
-				"description": "Пользователь <strong>{name}</strong> будет удалён навсегда. Это действие нельзя отменить.",
-				"confirm": "Удалить"
-			},
-			"sessions": {
-				"device": "Устройство",
-				"created": "Создана",
-				"active": "Активна",
-				"revokeTitle": "Отозвать сессию?",
-				"revokeConfirm": "Отозвать"
-			},
-			"roles": {
-				"title": "Роли пользователя",
-				"add": "Добавить роль",
-				"removeTitle": "Снять роль?",
-				"removeDescription": "Роль <strong>{name}</strong> будет снята с пользователя.",
-				"removeConfirm": "Снять",
-				"empty": "Нет назначенных ролей"
-			},
-			"badges": {
-				"title": "Бейджи пользователя",
-				"add": "Добавить бейдж",
-				"removeTitle": "Снять бейдж?",
-				"removeDescription": "Бейдж <strong>{name}</strong> будет снят с пользователя.",
-				"removeConfirm": "Снять",
-				"empty": "Нет назначенных бейджей"
-			},
-			"banner": {
-				"title": "Баннер профиля",
-				"noBanner": "Баннер отключён",
-				"mode": "Режим",
-				"modeNone": "Отключён",
-				"modeColor": "Цвет",
-				"modeImage": "Картинка",
-				"type": "Расположение",
-				"typeHeader": "Шапка",
-				"typeBackground": "Фон",
-				"color": "Цвет баннера",
-				"imageUrl": "URL картинки",
-				"upload": "Загрузить файл",
-				"save": "Сохранить"
-			},
-			"toast": {
-				"updated": "Пользователь обновлён",
-				"updateError": "Ошибка обновления",
-				"banned": "Пользователь забанен",
-				"banError": "Ошибка бана",
-				"unbanned": "Бан снят",
-				"unbanError": "Ошибка снятия бана",
-				"sessionRevoked": "Сессия отозвана",
-				"sessionRevokeError": "Ошибка отзыва сессии",
-				"roleAssigned": "Роль назначена",
-				"roleAssignError": "Ошибка назначения роли",
-				"roleRemoved": "Роль снята",
-				"roleRemoveError": "Ошибка снятия роли",
-				"badgeAssigned": "Бейдж назначен",
-				"badgeAssignError": "Ошибка назначения бейджа",
-				"badgeRemoved": "Бейдж снят",
-				"badgeRemoveError": "Ошибка снятия бейджа",
-				"bannerUpdated": "Баннер обновлён",
-				"bannerUpdateError": "Ошибка обновления баннера",
-				"bannerUploaded": "Баннер загружен",
-				"bannerUploadError": "Ошибка загрузки баннера",
-				"deleted": "Пользователь удалён",
-				"deleteError": "Ошибка удаления"
-			},
-			"cancel": "Отмена",
-			"close": "Закрыть"
-		},
-		"sidebar": {
-			"users": "Пользователи",
-			"roles": "Роли",
-			"permissions": "Разрешения",
-			"badges": "Бейджи",
-			"clans": "Кланы",
-			"notifications": "Уведомления",
-			"players": "Игроки",
-			"articles": "Статьи",
-			"builds": "Сборки"
-		},
-		"roles": {
-			"title": "Роли",
-			"create": "Создать роль",
-			"edit": "Редактировать роль",
-			"permissions": "Разрешения",
-			"permissionsTitle": "Разрешения — {name}",
-			"deleteTitle": "Удалить роль?",
-			"deleteDescription": "Роль <strong>{name}</strong> будет удалена навсегда.",
-			"toast": {
-				"created": "Роль создана",
-				"updated": "Роль обновлена",
-				"deleted": "Роль удалена",
-				"permissionsUpdated": "Разрешения обновлены",
-				"permissionsUpdateError": "Ошибка обновления разрешений"
-			}
-		},
-		"badges": {
-			"title": "Бейджи",
-			"create": "Создать бейдж",
-			"edit": "Редактировать бейдж",
-			"type": "Тип",
-			"icon": "Иконка",
-			"image": "Картинка",
-			"imageUrl": "URL картинки",
-			"color": "Цвет",
-			"preview": "Превью:",
-			"defaultName": "Бейдж",
-			"deleteTitle": "Удалить бейдж?",
-			"deleteDescription": "Бейдж <strong>{name}</strong> будет удалён навсегда.",
-			"empty": "Нет бейджей",
-			"toast": {
-				"created": "Бейдж создан",
-				"updated": "Бейдж обновлён",
-				"deleted": "Бейдж удалён"
-			}
-		},
-		"clans": {
-			"title": "Кланы",
-			"total": "всего",
-			"search": "Поиск...",
-			"table": {
-				"name": "Название",
-				"tag": "Тег",
-				"alliance": "Фракция",
-				"members": "Участники",
-				"status": "Статус",
-				"public": "Публичный"
-			},
-			"status": {
-				"active": "Активен",
-				"frozen": "Заморожен",
-				"blocked": "Заблокирован"
-			},
-			"detail": {
-				"tabs": {
-					"info": "Информация",
-					"members": "Участники",
-					"stages": "Этапы"
-				},
-				"editTitle": "Редактирование",
-				"name": "Название",
-				"tag": "Тег",
-				"region": "Регион",
-				"description": "Описание",
-				"status": "Статус",
-				"isPublic": "Публичный в каталоге",
-				"recruiting": "Набор участников",
-				"brawlsPerWeek": "Потасовка/неделя",
-				"brawlsMandatory": "Потасовки обязательны",
-				"level": "Уровень",
-				"levelPoints": "Очки уровня",
-				"leader": "Лидер",
-				"alliance": "Фракция",
-				"save": "Сохранить",
-				"sync": "Синхронизировать",
-				"block": {
-					"title": "Блокировка",
-					"reasonLabel": "Причина блокировки",
-					"reason": "Причина",
-					"confirm": "Заблокировать",
-					"unblock": "Разблокировать"
-				},
-				"delete": {
-					"title": "Удаление",
-					"trigger": "Удалить клан",
-					"confirmTitle": "Удалить клан?",
-					"description": "Клан <strong>{name}</strong> будет удалён навсегда. Это действие нельзя отменить.",
-					"confirm": "Удалить"
-				},
-				"members": {
-					"name": "Имя",
-					"rank": "Ранг",
-					"joined": "Вступил",
-					"user": "Пользователь"
-				},
-				"cancel": "Отмена"
-			},
-			"toast": {
-				"updated": "Клан обновлён",
-				"updateError": "Ошибка обновления",
-				"synced": "Клан синхронизирован: {count} участников",
-				"syncError": "Ошибка синхронизации",
-				"blocked": "Клан заблокирован",
-				"blockError": "Ошибка блокировки",
-				"unblocked": "Блокировка снята",
-				"unblockError": "Ошибка снятия блокировки",
-				"deleted": "Клан удалён",
-				"deleteError": "Ошибка удаления"
-			},
-			"stages": {
-				"title": "Этапы",
-				"empty": "У клана нет этапов",
-				"table": {
-					"id": "ID",
-					"map": "Карта",
-					"type": "Тип",
-					"stage": "Этап",
-					"date": "Дата",
-					"endDate": "Конец",
-					"screenshots": "Скриншоты",
-					"attendance": "Посещаемость",
-					"actions": ""
-				},
-				"edit": "Редактировать",
-				"editTitle": "Редактировать этап #{id}",
-				"mapName": "Название карты",
-				"stageNumber": "Номер этапа",
-				"startedAt": "Дата начала",
-				"endedAt": "Дата окончания (необязательно)",
-				"save": "Сохранить",
-				"cancel": "Отмена",
-				"deleteTitle": "Удалить этап?",
-				"deleteDescription": "Этап <strong>{map} · {date}</strong> и все его скриншоты будут удалены безвозвратно.",
-				"delete": "Удалить",
-				"type": {
-					"TOURNAMENT": "Турнир",
-					"BRAWL": "Потасовка",
-					"BASE_CAPTURE": "Захват базы"
-				},
-				"toast": {
-					"updated": "Этап обновлён",
-					"updateError": "Ошибка обновления этапа",
-					"deleted": "Этап удалён",
-					"deleteError": "Ошибка удаления этапа"
-				}
-			}
-		},
-		"players": {
-			"title": "Управление игроками",
-			"add": "Добавить игрока",
-			"addBtn": "Добавить",
-			"role": "Роль",
-			"rolesTitle": "Роли игроков",
-			"blacklist": "Чёрный список",
-			"empty": "Нет игроков",
-			"toast": {
-				"added": "Игрок добавлен",
-				"addError": "Ошибка добавления",
-				"blacklisted": "Игрок добавлен в чёрный список",
-				"blacklistAddError": "Ошибка добавления в чёрный список",
-				"blacklistRemoved": "Игрок удалён из чёрного списка",
-				"blacklistRemoveError": "Ошибка удаления из чёрного списка"
-			}
-		},
-		"articles": {
-			"title": "Статьи",
-			"all": "Все",
-			"author": "Автор",
-			"stars": "Звёзды",
-			"created": "Создана",
-			"statusTitle": "Статус — {title}",
-			"deleteTitle": "Удалить статью?",
-			"deleteDescription": "Статья <strong>{title}</strong> будет удалена навсегда.",
-			"empty": "Нет статей",
-			"toast": {
-				"statusUpdated": "Статус обновлён",
-				"statusUpdateError": "Ошибка обновления статуса",
-				"deleted": "Статья удалена"
-			}
-		},
-		"builds": {
-			"title": "Сборки",
-			"deleteTitle": "Удалить сборку?",
-			"deleteDescription": "Сборка <strong>{title}</strong> будет удалена навсегда.",
-			"empty": "Нет сборок",
-			"toast": {
-				"deleted": "Сборка удалена"
-			}
-		},
-		"notifications": {
-			"title": "Уведомления",
-			"sendTitle": "Отправить уведомление",
-			"broadcast": "Всем пользователям",
-			"toUser": "Конкретному пользователю",
-			"searchUser": "Поиск пользователя",
-			"notFound": "Не найдено",
-			"change": "Сменить",
-			"titleLabel": "Заголовок",
-			"contentLabel": "Сообщение",
-			"contentPlaceholder": "Текст уведомления...",
-			"linkLabel": "Ссылка (необязательно)",
-			"sendAll": "Отправить всем",
-			"sendToUser": "Отправить пользователю",
-			"toast": {
-				"broadcastSent": "Уведомление отправлено {count, plural, one {# пользователю} few {# пользователям} many {# пользователям} other {# пользователям}}",
-				"sent": "Уведомление отправлено",
-				"sendError": "Ошибка отправки"
-			}
-		}
-	},
-	"test": {
-		"title": "Переезд",
-		"message": "В скором времени <unavailable>stalhub.dev будет недоступен</unavailable>, наш новый домен <domain>stalhub.dev</domain>. О приостановке поддержки домена мы сообщим заранее в нашем <channel>Telegram канале</channel>.",
-		"cancel": "Отмена",
-		"go": "Перейти"
-	},
-	"errors": {
-		"oops": "Упсс...",
-		"support": {
-			"thenContact": "то обратитесь в",
-			"techSupport": "тех. поддержку",
-			"whenContacting": "При обращении укажите"
-		},
-		"playerNotFound": {
-			"buttonLabel": "Вернутся обратно",
-			"description": "Игрок не найден"
-		},
-		"banned": {
-			"account": "Аккаунт",
-			"blocked": "заблокирован",
-			"reasonPrefix": "Причина:",
-			"blockedMessage": "Ваш аккаунт был заблокирован",
-			"remaining": "Осталось:",
-			"ifMistake": "Если вы считаете, что блокировка выдана ошибочно,",
-			"reasonLabel": "Причину",
-			"reasonValuePrefix": "Причина"
-		},
-		"notFound": {
-			"buttonLabel": "На главную",
-			"description": "Страница не найдена",
-			"ifUrlCorrect": "Если вы считаете, что URL введён верно,"
-		},
-		"globalError": {
-			"buttonLabel": "Попробовать снова",
-			"description": "Произошла клиентская ошибка",
-			"ifProblemPersists": "Если проблема остаётся, обратитесь в"
-		}
-	},
-	"articles": {
-		"title": "Статьи",
-		"allArticles": "← Все статьи",
-		"publishedCount": "{count} опубликованных статей",
-		"empty": "Нет опубликованных статей",
-		"loading": "Загрузка...",
-		"loadError": "Ошибка загрузки статьи",
-		"metaTitle": "Статьи · StalHub",
-		"metaDescription": "Публичные статьи сообщества StalHub",
-		"byAuthor": "Статья от {author}",
-		"notFound": "Статья не найдена",
-		"comments": {
-			"title": "Комментарии ({count})",
-			"placeholder": "Написать комментарий...",
-			"empty": "Нет комментариев",
-			"reply": "Ответить",
-			"deleteTitle": "Удалить комментарий?",
-			"cancel": "Отмена",
-			"deleteConfirm": "Удалить",
-			"toast": {
-				"added": "Комментарий добавлен",
-				"addError": "Ошибка добавления комментария",
-				"deleted": "Комментарий удалён",
-				"deleteError": "Ошибка удаления комментария"
-			}
-		},
-		"status": {
-			"PENDING": "Черновик",
-			"REVIEW": "На рассмотрении",
-			"DENIED": "Отклонено",
-			"BANNED": "Заблокировано",
-			"APPROVED": "Одобрено"
-		}
-	},
-	"clan": {
-		"common": {
-			"player": "Игрок",
-			"killsShort": "У",
-			"deathsShort": "С",
-			"assistsShort": "А",
-			"pointsShort": "П",
-			"scoreShort": "О",
-			"kda": "KDA",
-			"kd": "K/D",
-			"grenadesShort": "Гр",
-			"victory": "Победа",
-			"defeat": "Поражение",
-			"save": "Сохранить",
-			"cancel": "Отмена",
-			"close": "Закрыть",
-			"delete": "Удалить",
-			"create": "Создать",
-			"copy": "Копировать",
-			"download": "Скачать",
-			"upload": "Загрузить",
-			"members": "Участников",
-			"games": "Игр",
-			"wins": "Побед",
-			"losses": "Поражений",
-			"noGames": "Игр пока нет"
-		},
-		"stage": {
-			"TOURNAMENT": "Турнир",
-			"BRAWL": "Потасовка",
-			"BASE_CAPTURE": "Захват базы",
-			"SKIRMISH": "Потасовка"
-		},
-		"maps": {
-			"SMALL_BERDOVKA": "Малая бердовка",
-			"KHVOUINOY": "Хвойный",
-			"NIZINA": "Низина"
-		},
-		"events": {
-			"TOURNAMENT": "Турнир",
-			"BRAWL": "Потасовка",
-			"BASE_CAPTURE": "Захват базы",
-			"GOLD_DROP": "Голд дроп"
-		},
-		"metrics": {
-			"kd": "КД",
-			"kda": "КДА",
-			"kills": "Убийства",
-			"grenades": "Гранаты"
-		},
-		"filters": {
-			"TOURNAMENT": "Турниры",
-			"BRAWL": "Потасовки",
-			"ALL": "Вместе"
-		},
-		"screenshotStatus": {
-			"pending": "В очереди",
-			"processing": "Анализ...",
-			"done": "Готово",
-			"error": "Ошибка"
-		},
-		"layout": {
-			"activated": "Клан активирован",
-			"activateError": "Не удалось активировать клан",
-			"notLinked": {
-				"title": "Клан не привязан",
-				"desc": "Привяжите аккаунт EXBO в настройках и войдите в клан, чтобы управлять им",
-				"settings": "Настройки"
-			},
-			"notFound": {
-				"title": "Клан не найден",
-				"desc": "Клан не обнаружен в вашем профиле.\nУбедитесь, что вы являетесь лидером клана"
-			},
-			"blocked": {
-				"title": "Клан заблокирован",
-				"desc": "Этот клан был заблокирован администрацией.\nЕсли вы считаете то, что блокировка ошибочная, обратитесь в техническую поддержку.",
-				"reason": "Причина"
-			},
-			"frozen": {
-				"title": "Вы лидер клана <span>[{tag}] {name}</span>",
-				"desc": "Сейчас ваш клан заморожен, функционал для управления недоступен.\nДля получения доступа нажмите кнопку ниже.",
-				"activate": "Активировать",
-				"titleMember": "Клан <span>[{tag}] {name}</span> заморожен",
-				"descMember": "Сейчас ваш клан заморожен, функционал для управления недоступен."
-			}
-		},
-		"dashboard": {
-			"notAllRegistered": "Не все игроки зарегистрированы на сайте. Подсчёт гранат, пропусков, недоступен для них.",
-			"recentGames": "Последние игры",
-			"screenshotUploaded": "Скриншот загружен, анализ запущен",
-			"screenshotUploadError": "Ошибка при загрузке скриншота",
-			"grenadesTitle": "Гранаты за этапы ({total})",
-			"grenadesLine": "{label} · {date} · {count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}",
-			"noGrenades": "Нет данных о гранатах",
-			"topPlayers": {
-				"title": "Лучшие игроки (К/Д)",
-				"empty": "Загрузите скриншоты этапов, чтобы увидеть К/Д игроков"
-			}
-		},
-		"members": {
-			"title": "Участники",
-			"more": "+{count} участников",
-			"squad": "Отряд"
-		},
-		"stats": {
-			"title": "Статистика",
-			"clanKd": "КД клана",
-			"emptyTitle": "Статистики пока нет",
-			"emptyDesc": "Загрузите скриншоты этапов, и здесь появятся статистика игроков",
-			"stageCount": "{count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}",
-			"stageRow": "{kills} У. · {deaths} С. | {kd}"
-		},
-		"squads": {
-			"title": "Отряды",
-			"noSquadsTitle": "Нет отрядов на этой карте",
-			"exportPngTitle": "Экспорт отрядов в PNG",
-			"create": "Создать отряд",
-			"new": "Новый отряд",
-			"namePlaceholder": "Название отряда",
-			"map": "Карта",
-			"leaderTitle": "Лидер отряда «{name}»",
-			"noMembers": "В отряде пока нет участников",
-			"removeLeader": "Снять лидера",
-			"assignSlotTitle": "Назначить в слот {slot}",
-			"noFreeMembers": "Нет свободных участников",
-			"mapTitle": "Карта отряда «{name}»",
-			"mapChangeTitle": "Изменить карту",
-			"assignLeaderTitle": "Назначить лидера",
-			"requestPending": "Заявка в отряд на рассмотрении",
-			"joinRequests": "Заявки на вступление",
-			"slot": "Слот {slot}",
-			"emptySlot": "Пусто",
-			"loadoutTitle": "Снаряжение",
-			"editLoadout": "Редактировать снаряжение",
-			"loadoutHeaders": {
-				"player": "Игрок",
-				"primary": "Основное",
-				"secondary": "Вторичное",
-				"pistol": "Пистолет",
-				"fatBuild": "Сборка «жир»",
-				"speedBuild": "Сборка «скорость»",
-				"armor": "Броня",
-				"bioArmor": "Био броня"
-			},
-			"myLoadout": "Моё снаряжение",
-			"loadoutFields": {
-				"primaryWeapon": "Основное оружие",
-				"secondaryWeapon": "Вторичное оружие",
-				"pistol": "Пистолет",
-				"armor": "Броня",
-				"bioArmor": "Био броня",
-				"fatBuild": "Сборка «жир»",
-				"speedBuild": "Сборка «скорость»"
-			},
-			"noBuilds": "Нет сборок",
-			"search": "Поиск",
-			"noSquadsHere": "На этой карте отрядов пока нет",
-			"createFirstHint": "Создайте первый отряд, нажав «Создать отряд»",
-			"png": {
-				"previewTitle": "Предпросмотр отрядов",
-				"title": "Отряды · {map}",
-				"squadCount": "Отрядов",
-				"leader": "Лидер",
-				"absent": "Отписка",
-				"empty": "Пусто"
-			},
-			"toasts": {
-				"createError": "Не удалось создать отряд",
-				"requestSent": "Заявка отправлена",
-				"requestError": "Не удалось подать заявку",
-				"approved": "Заявка одобрена",
-				"approveError": "Не удалось одобрить заявку",
-				"rejected": "Заявка отклонена",
-				"rejectError": "Не удалось отклонить заявку",
-				"mapError": "Не удалось изменить карту",
-				"loadoutSaved": "Шмот сохранён",
-				"loadoutError": "Ошибка при сохранении шмота",
-				"moveError": "Не удалось переместить участника",
-				"pngError": "Не удалось сохранить изображение",
-				"pngCopied": "Изображение скопировано",
-				"copyError": "Не удалось скопировать"
-			}
-		},
-		"sessions": {
-			"title": "Клановые войны",
-			"noGamesDesc": "Загрузите скриншоты для анализа",
-			"scorePoints": "{score} очков",
-			"analyzing": "Анализ",
-			"screenshots": "Скриншоты",
-			"attendance": "Посещаемость",
-			"presentOf": "{present} из {total}",
-			"absent": " · не был",
-			"deleteTitle": "Удалить этап?",
-			"deleteBody": "Этап <span>{name} за {date}</span> и все его скриншоты <danger>будут удалены безвозвратно</danger>",
-			"stageName": "{name} · этап {stage}",
-			"deleteConfirm": "Удалить",
-			"summary": "Итоги",
-			"stageScore": "Очки за этап: {score}",
-			"opponentsOne": "Очки противника: {names}",
-			"opponentsMany": "Противники: {names}",
-			"killsShort": "У",
-			"deathsShort": "С",
-			"assistsShort": "П",
-			"kd": "К/Д",
-			"scoreShort": "О",
-			"uploadTitle": "Загрузить скриншот",
-			"upload": "Загрузить",
-			"detected": "Определено: <strong>{label} · этап {stage}</strong>",
-			"stageType": "Тип этапа",
-			"stage": "Этап",
-			"stageDate": "Дата этапа (необязательно)",
-			"screenshotLabel": "Скриншот",
-			"fileSelected": "Выбрано: {name}",
-			"selectFile": "Выбрать файл",
-			"screenshotId": "Скриншот #{id}",
-			"toasts": {
-				"retrySuccess": "Анализ перезапущен",
-				"retryError": "Не удалось перезапустить анализ",
-				"deleted": "Этап удалён",
-				"deleteError": "Не удалось удалить этап",
-				"uploaded": "Скриншоты загружены, анализ запущен",
-				"uploadError": "Ошибка при загрузке скриншотов"
-			}
-		},
-		"absence": {
-			"title": "Отписки",
-			"desc": "Одна отписка на день. Отписка на сегодня доступна только до {hour}:00 МСК, на другие дни — в любое время накануне.",
-			"myAbsence": "Моя отписка",
-			"stage": "Этап {stage}",
-			"notePlaceholder": "Комментарий (необязательно)",
-			"listTitle": "Отписки на {date}",
-			"empty": "Отписок на эту дату нет",
-			"now": "Сейчас <b>{time} МСК</b>.",
-			"canLeave": " Отписку на сегодня можно оставить до <b>{deadline}:00 МСК</b>.",
-			"pastDeadline": " Дедлайн на сегодня ({deadline}:00 МСК) уже прошёл — можно оставить отписку на другой день.",
-			"toasts": {
-				"saved": "Отписка сохранена",
-				"saveError": "Не удалось сохранить отписку",
-				"deleted": "Отписка удалена",
-				"deleteError": "Не удалось удалить отписку"
-			}
-		},
-		"gold": {
-			"title": "Голд дропы",
-			"desc": "Ежедневно в 10:00, 13:00, 16:00, 19:00 и 22:00 (МСК). Офицеры отмечают участников и ставят статус «забрали».",
-			"empty": "Дропов пока нет",
-			"claimed": "Забрали",
-			"waiting": "Ожидание",
-			"attendeesCount": "{count} участ.",
-			"mark": "Отметить",
-			"attendeesTitle": "Участники дропа {date}",
-			"alreadyMarked": "Уже отмечены в других дропах: {count}",
-			"toasts": {
-				"attendeesError": "Не удалось сохранить участников",
-				"statusError": "Не удалось обновить статус"
-			}
-		},
-		"grenades": {
-			"emptyTitle": "Нет данных о гранатах",
-			"emptyDesc": "Данные о гранатах появятся после синхронизации состава клана",
-			"noData": "Нет данных по этапам",
-			"player": "Игрок",
-			"stage": "Этап {stage}",
-			"total": "Итого",
-			"stageCount": "{count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}"
-		},
-		"charts": {
-			"topCount": "Топ {n}",
-			"topAll": "Топ вся",
-			"testFeatureTitle": "Тестовая функция ",
-			"testFeatureDesc": "Данная функция находится в тестах, возможны проблемы и неточные данные",
-			"kickTitle": "Люди под кик",
-			"scheduleTooltip": "График: {tournament} турнира в неделю (обязательно) и {brawl} потасовок, потасовки {mandatory, select, yes {обязательные} other {необязательные}}.",
-			"kickCriteria": "Кандидат на кик: посещаемость ниже {attendance}% или отписки от {absences}% обязательных игр.",
-			"kickChanceHint": "Шанс на кик растёт при низком КД (ниже {kd}): 65% — посещаемость, 20% — отписки, 15% — КД.",
-			"attendanceHint": "Посещаемость считается по выбранному типу игр: турниры, потасовки или вместе.",
-			"noCandidates": "Кандидатов нет",
-			"kdBadge": "КД: {value}",
-			"attendanceBadge": "Посещаемость: {value}",
-			"absenceBadge": "Отписки: {value}",
-			"kickChanceLabel": "Шанс на кик",
-			"topPlayersTitle": "Топ игроков по {metric} · топ {n}",
-			"topPlayersTitleAll": "Топ игроков по {metric} · топ вся",
-			"noPlayers": "Нет данных по игрокам",
-			"victoriesByGames": "Победы по играм",
-			"victories": "Победы",
-			"defeats": "Поражения",
-			"noGames": "Нет данных по играм",
-			"topSquadsKd": "Топ отрядов по КД",
-			"noSquads": "Нет отрядов",
-			"kdShort": "КД",
-			"kdaShort": "КДА"
-		},
-		"settings": {
-			"publicTitle": "Публичный профиль клана",
-			"publicDesc": "Публичный клан отображается в каталоге и на страницах профилей его участников.",
-			"publicToggle": "Показывать клан публично",
-			"publicToggleHint": "Клан появится в каталоге и на профилях участников",
-			"recruitingTitle": "Набор в клан",
-			"acceptRequests": "Принимать заявки",
-			"acceptRequestsHint": "В списке кланов появится бейджик",
-			"scheduleTitle": "Расписание КВ",
-			"scheduleDesc": "Клан обязательно играет 3 турнира в неделю. Настройка потасовок показывает расписание публично и используется в расчёте шанса на кик.",
-			"tournamentFixedLabel": "Турниры (обязательно)",
-			"tournamentFixedHint": "{count} турнира в неделю — изменить нельзя",
-			"brawlsMandatoryLabel": "Потасовки обязательны",
-			"brawlsMandatoryHint": "Если выключено — потасовки не считаются при расчёте шанса на кик",
-			"scheduleFields": {
-				"brawlsPerWeek": "Потасовок в неделю"
-			},
-			"scheduleTotal": "Итого: {tournament} турнира + {brawl} потасовок в неделю · потасовки {mandatory, select, yes {обязательные} other {необязательные}}",
-			"saveSchedule": "Сохранить расписание",
-			"syncTitle": "Синхронизация",
-			"syncDesc": "Обновить состав клана по данным EXBO: новые участники будут добавлены, покинувшие — отмечены.",
-			"syncButton": "Синхронизировать",
-			"botTitle": "Discord бот",
-			"botDesc": "Привяжите бота к своему Discord-серверу, чтобы публиковать отряды и принимать отписки.",
-			"botCommandLabel": "Выполните команду на сервере:",
-			"botTokenExpires": "Токен действует {minutes} мин. Сначала выполните команду, затем повторно привяжите бота при необходимости.",
-			"botLinkLabel": "Привязать Discord бота",
-			"botLinkHint": "Сгенерируйте токен и выполните команду /setup на сервере",
-			"botLinkButton": "Сгенерировать токен",
-			"botGuildsTitle": "Привязанные серверы",
-			"botNoGuilds": "Пока нет привязанных серверов",
-			"botUnlink": "Отвязать",
-			"freezeTitle": "Заморозка клана",
-			"freezeLabel": "Заморозить клан",
-			"freezeDesc": "Заморозка останавливает управление кланом. Данные сохраняются, активация вернёт доступ.",
-			"freezeButton": "Заморозить",
-			"freezeConfirmTitle": "Заморозить клан?",
-			"freezeConfirmBody": "Управление кланом будет остановлено. Разморозить можно будет активацией на экране заморозки.",
-			"freezeConfirm": "Заморозить",
-			"toasts": {
-				"saved": "Настройки сохранены",
-				"saveError": "Не удалось сохранить настройки",
-				"recruitingUpdated": "Набор обновлён",
-				"recruitingError": "Не удалось изменить набор",
-				"scheduleSaved": "Расписание сохранено",
-				"scheduleError": "Не удалось сохранить расписание",
-				"synced": "Состав обновлён: {count} участников",
-				"syncError": "Не удалось синхронизировать состав",
-				"botTokenCreated": "Токен создан. Выполните команду на Discord-сервере",
-				"botTokenError": "Не удалось сгенерировать токен",
-				"botUnlinked": "Сервер отвязан",
-				"botUnlinkError": "Не удалось отвязать сервер",
-				"frozen": "Клан заморожен",
-				"freezeError": "Не удалось заморозить клан"
-			}
-		}
-	},
-	"me": {
-		"nav": {
-			"home": "Главная",
-			"clan": "Клан",
-			"dashboard": "Панель",
-			"members": "Участники",
-			"sessions": "Игры",
-			"stats": "Статистика",
-			"grenades": "Гранаты",
-			"squads": "Отряды",
-			"gold": "Голд дропы",
-			"absences": "Отписки",
-			"settings": "Настройки",
-			"content": "Контент",
-			"articles": "Статьи",
-			"builds": "Сборки",
-			"stars": "Избранное",
-			"system": "Система",
-			"notifications": "Уведомления"
-		},
-		"menu": "Меню",
-		"home": {
-			"builds": "Сборки",
-			"allBuilds": "Все сборки",
-			"noBuilds": "Нет сборок",
-			"publishedArticles": "Опубликованные статьи",
-			"allArticles": "Все статьи",
-			"underReview": "На рассмотрении",
-			"characters": "Персонажи"
-		},
-		"articles": {
-			"title": "Статьи",
-			"create": "Создать",
-			"all": "Все",
-			"noArticles": "Нет статей",
-			"createFirst": "Создать первую статью",
-			"toastDeleted": "Статья удалена",
-			"toastDeleteError": "Ошибка при удалении"
-		},
-		"builds": {
-			"title": "Сборки",
-			"create": "Создать",
-			"noBuilds": "Нет сборок",
-			"toastDeleted": "Сборка удалена",
-			"toastDeleteError": "Ошибка при удалении"
-		},
-		"notifications": {
-			"title": "Уведомления",
-			"markAllRead": "Прочитать все",
-			"toastAllRead": "Все уведомления прочитаны",
-			"empty": "Нет уведомлений"
-		},
-		"stars": {
-			"title": "Избранное",
-			"empty": "Нет избранных статей/сборок",
-			"build": "Сборка",
-			"article": "Статья"
-		},
-		"newArticle": {
-			"title": "Новая статья",
-			"name": "Название",
-			"namePlaceholder": "Введите название статьи",
-			"type": "Тип статьи",
-			"quest": "Квест",
-			"guide": "Гайд",
-			"other": "Другое",
-			"stalhub": "StalHub",
-			"create": "Создать и открыть редактор",
-			"toastCreated": "Статья создана",
-			"toastCreateError": "Ошибка при создании"
-		},
-		"settings": {
-			"account": "Аккаунт",
-			"name": "Имя",
-			"username": "Никнейм",
-			"nameCooldown": "Сменить имя можно через",
-			"usernameCooldown": "Сменить никнейм можно через",
-			"usernameInvalid": "Никнейм: 3-32 символа, только латиница, цифры и _",
-			"toastProfileSaved": "Профиль обновлён",
-			"toastProfileSaveError": "Ошибка при сохранении профиля",
-			"personalization": "Персонализация",
-			"publicProfile": "Публичный профиль",
-			"publicProfileDesc": "Другие пользователи смогут видеть ваш профиль",
-			"showLoadout": "Показывать снаряжение",
-			"showLoadoutDesc": "Другие пользователи смогут видеть ваше снаряжение",
-			"editLoadout": "Редактировать снаряжение",
-			"editLoadoutDesc": "Основное оружие, броня и сборки. Снаряжение будет отображаться в отрядах клана",
-			"profileLayout": "Вид профиля",
-			"profileLayoutDesc": "Расположение элементов в профиле. Изменения также применяются к публичному профилю",
-			"banner": "Настройка баннера",
-			"bannerDesc": "Настройка типа баннера и его расположения в профиле",
-			"layoutClassic": "Классический",
-			"layoutModern": "Модерн",
-			"layoutCompact": "Компактный",
-			"bannerModeNone": "Без баннера",
-			"bannerModeColor": "Цвет",
-			"bannerModeImage": "Изображение",
-			"bannerTypeBackground": "Фон",
-			"bannerTypeHeader": "Шапка",
-			"linkAccounts": "Привязка аккаунтов",
-			"sessions": "Сессии",
-			"endAll": "Завершить все",
-			"dangerZone": "Опасная зона",
-			"deleteAccount": "Удалить аккаунт",
-			"deleteAccountDesc": "Это действие нельзя отменить",
-			"delete": "Удалить",
-			"bannerEditorTitle": "Редактирование баннера",
-			"bannerPlacement": "Расположение баннера",
-			"bannerType": "Тип баннера",
-			"bannerColor": "Цвет баннера",
-			"bannerImage": "Изображение баннера",
-			"cardColor": "Цвет карточки",
-			"region": "Регион",
-			"regionDesc": "Регион вашего игрового аккаунта EXBO. Используется для поиска персонажа и клана.",
-			"regionLabel": "Текущий регион",
-			"regionButton": "Применить",
-			"toastRegionSaved": "Регион обновлён",
-			"toastRegionSaveError": "Ошибка при обновлении региона",
-			"deleteConfirmTitle": "Удалить аккаунт?",
-			"deleteConfirmDesc": "Это действие нельзя отменить. Все ваши данные будут удалены. Введите ваш ник <bold>{username}</bold> для подтверждения.",
-			"deletePlaceholder": "Ведите сюда",
-			"cancel": "Отмена",
-			"deleteConfirm": "Удалить аккаунт",
-			"ago": "назад",
-			"toastSaved": "Настройки сохранены",
-			"toastSaveError": "Ошибка при сохранении",
-			"toastBannerSaved": "Настройки баннера сохранены",
-			"toastBannerSaveError": "Ошибка при сохранении настроек баннера",
-			"toastLayoutSaved": "Настройки расположения обновлены",
-			"toastLayoutSaveError": "Ошибка при сохранении расположения",
-			"toastBannerUploaded": "Баннер загружен",
-			"toastBannerUploadError": "Ошибка при загрузке баннера",
-			"toastLoadoutSaved": "Снаряжение сохранено",
-			"toastLoadoutSaveError": "Ошибка при сохранении снаряжения",
-			"toastDisplaySaved": "Настройки отображения сохранены",
-			"toastDisplayError": "Ошибка при сохранении настроек",
-			"toastSessionDeleted": "Сессия удалена",
-			"toastSessionDeleteError": "Ошибка при удалении сессии",
-			"toastSessionsDeleted": "Все сессии удалены",
-			"toastSessionsDeleteError": "Ошибка при удалении сессий",
-			"toastLinkError": "Ошибка при привязке",
-			"toastUnlinked": "Аккаунт отвязан",
-			"toastUnlinkError": "Ошибка при отвязке",
-			"toastAccountDeleted": "Аккаунт удалён",
-			"toastAccountDeleteError": "Ошибка при удалении аккаунта"
-		},
-		"buildCard": {
-			"toastError": "Ошибка",
-			"toastLinkCopied": "Ссылка скопирована",
-			"toastLoginToStar": "Войдите, чтобы добавить в избранное",
-			"noArmor": "Нет брони",
-			"noContainer": "Нет контейнера",
-			"noArtifacts": "Нет артефактов"
-		},
-		"articleEditor": {
-			"title": "Название статьи",
-			"notSaved": "Не сохранено",
-			"saved": "Сохранено",
-			"edit": "Редактирование",
-			"preview": "Просмотр",
-			"save": "Сохранить",
-			"submitting": "Отправка...",
-			"submit": "На рассмотрение",
-			"hotkeys": {
-				"text": "текст",
-				"code": "code",
-				"heading": "Заголовок",
-				"quote": "Цитата",
-				"item": "Пункт",
-				"alt": "alt"
-			},
-			"tags": "Теги",
-			"cover": "Обложка",
-			"table": "Таблица",
-			"components": "Компоненты",
-			"tagsTitle": "Теги",
-			"tagsLabel": "Теги через запятую",
-			"cancel": "Отмена",
-			"saveBtn": "Сохранить",
-			"coverTitle": "Обложка статьи",
-			"imageUrl": "URL изображения",
-			"delete": "Удалить",
-			"chooseSize": "Выберите размер",
-			"placeholder": "Начните писать в формате Markdown...",
-			"compiling": "Компиляция...",
-			"previewHere": "Предпросмотр появится здесь",
-			"mdxError": "Ошибка в MDX — исправьте синтаксис",
-			"toastSaveError": "Ошибка при сохранении",
-			"toastSubmitted": "Статья отправлена на рассмотрение",
-			"toastSubmitError": "Ошибка при отправке",
-			"toolbar": {
-				"bold": "Полужирный",
-				"italic": "Курсив",
-				"strikethrough": "Зачёркнутый",
-				"heading": "Заголовок",
-				"quote": "Цитата",
-				"inlineCode": "Строчный код",
-				"codeBlock": "Блок кода",
-				"link": "Ссылка",
-				"image": "Изображение",
-				"bulletList": "Маркированный список",
-				"orderedList": "Нумерованный список",
-				"horizontalRule": "Горизонтальная линия",
-				"table": "Вставка таблицы",
-				"components": "MDX-компоненты",
-				"save": "Сохранить"
-			},
-			"hotkeysTitle": "Горячие клавиши",
-			"mdxContent": "Контент"
-		},
-		"bg": {
-			"avatar": "Аватар",
-			"color": "Цвет",
-			"none": "Нет"
-		}
-	},
-	"onboarding": {
-		"title": "Настройка профиля",
-		"stepOf": "Шаг {current} из {total}",
-		"next": "Далее",
-		"back": "Назад",
-		"finish": "Завершить",
-		"uploading": "Загрузка баннера...",
-		"uploadError": "Ошибка при загрузке баннера",
-		"toastSuccess": "Профиль настроен!",
-		"toastError": "Ошибка при сохранении",
-		"welcome": {
-			"title": "Добро пожаловать!",
-			"subtitle": "Давайте настроим всё под вас",
-			"start": "Начать настройку"
-		},
-		"step": {
-			"name": {
-				"title": "Ваше имя",
-				"desc": "Как вас будут видеть другие пользователи"
-			},
-			"username": {
-				"title": "Никнейм",
-				"desc": "Латинские буквы, цифры и подчёркивание (3-32 символа)"
-			},
-			"region": {
-				"title": "Регион",
-				"placeholder": "Выберите регион",
-				"desc": "Регион используется для синхронизации клана и персонажей"
-			},
-			"layout": {
-				"title": "Вид профиля",
-				"desc": "Выберите, как будет выглядеть ваш профиль"
-			},
-			"banner": {
-				"title": "Баннер",
-				"desc": "Настройте баннер своего профиля"
-			},
-			"card": {
-				"title": "Карточка профиля",
-				"desc": "Выберите оформление карточки"
-			},
-			"finish": {
-				"title": "Готово!",
-				"desc": "Проверьте введённые данные и завершите настройку"
-			}
-		}
-	},
-	"hideout": {
-		"item": "Предмет",
-		"perCraft": "За крафт",
-		"total": "Всего",
-		"pricePerUnit": "Цена/ед",
-		"totalPrice": "Итого",
-		"energy": "Энергия",
-		"cost": "Стоимость",
-		"search": "Поиск..."
-	},
-	"builds": {
-		"tags": {
-			"fat": "Жир",
-			"speed": "Скорость",
-			"weight": "Вес",
-			"combo": "Комба"
-		}
-	},
-	"buildsLite": {
-		"notFound": "Сборка не найдена",
-		"pngCopied": "Изображение скопировано",
-		"copyError": "Не удалось скопировать",
-		"pngPreview": "Предпросмотр сборки",
-		"close": "Закрыть",
-		"download": "Скачать",
-		"updated": "Сборка обновлена",
-		"updateError": "Ошибка обновления",
-		"linkCopied": "Ссылка скопирована",
-		"shareTitle": "Поделиться сборкой",
-		"copyPublicLink": "Копировать публичную ссылку",
-		"copyBuildCode": "Копировать код сборки",
-		"updateServer": "Обновить на сервере",
-		"publish": "Опубликовать",
-		"tagsLabel": "Теги",
-		"containerWarnTitle": "Контейнер меньше текущего",
-		"containerWarnDesc": "Артефакты в удаляемых слотах будут отвязаны от контейнера.",
-		"lostSlots": "Будет потеряно занятых слотов: {count}",
-		"confirm": "Подтвердить",
-		"compare": "Сравнить",
-		"compareStop": "Выйти из сравнения"
-	},
-	"items": {
-		"auction": {
-			"history": "История продаж",
-			"current": "Текущие лоты",
-			"lotHistory": "История лотов",
-			"date": "Дата",
-			"listDate": "Дата выставления",
-			"endDate": "Окончание торгов",
-			"startPrice": "Начальная ставка",
-			"currentPrice": "Текущая ставка",
-			"buyout": "Выкуп",
-			"amount": "Кол-во",
-			"cards": "Карточки",
-			"charts": "Графики",
-			"sort": "Сортировка",
-			"sort_default": "По умолчанию",
-			"sort_price": "Цена",
-			"sort_rarity": "Редкость",
-			"range_from": "от",
-			"range_to": "до"
-		}
-	},
-	"users": {
-		"notFound": "Пользователь не найден",
-		"profileDescription": "Профиль пользователя {username}",
-		"secondaryWeapon": "Второстепенное оружие",
-		"bioArmor": "Био-броня",
-		"fatBuild": "Тяжёлая сборка",
-		"speedBuild": "Быстрая сборка"
-	},
-	"auth": {
-		"title": "Авторизация",
-		"error": "Ошибка авторизации",
-		"terms": "Регистрируясь на сайте, вы соглашаетесь с настоящими",
-		"termsLink": "условиями пользования",
-		"recommendationTitle": "Рекомендация",
-		"recommendationDesc": "Используйте EXBO для получения большего функционала"
-	},
-	"tech": {
-		"title": "Ведутся технические работы"
-	},
-	"roadmap": {
-		"genesis": {
-			"title": "Зарождение проекта",
-			"description": "Начало разработки и формирование основной идеи. Создание первых концептов и структуры."
-		},
-		"cbt": {
-			"title": "ЗБТ",
-			"description": "Закрытое бета-тестирование. Проверка работоспособности функционала сайта, сбор баг-репортов."
-		},
-		"obt": {
-			"title": "ОБТ",
-			"description": "Открытое бета-тестирование. Подготовка к релизу, фикс багов, обновление инфраструктуры."
-		},
-		"release": {
-			"title": "Релиз проекта",
-			"description": "Полноценный запуск проекта и дальнейшая поддержка проекта."
-		}
-	},
-	"themes": {
-		"system": "Системная",
-		"dark": "Тёмная",
-		"light": "Светлая"
-	},
-	"clans": {
-		"title": "Кланы",
-		"searchLabel": "Название или тег",
-		"recruiting": "Набор",
-		"empty": "Публичных кланов нет",
-		"faction": "Фракция",
-		"schedule": "Расписание:",
-		"brawls": "Потасовки:",
-		"brawlsMandatory": "обязательные",
-		"brawlsOptional": "необязательные"
-	},
-	"buildsPublic": {
-		"title": "Сборки",
-		"total": "{count} всего",
-		"tagsPlaceholder": "Выбрать теги",
-		"price": "Цена",
-		"priceFrom": "От",
-		"priceTo": "До",
-		"sort": "Сортировка",
-		"sort_newest": "Новые",
-		"sort_stars": "Звёзды",
-		"sort_price": "Цена"
-	},
-	"toolsList": {
-		"title": "Инструменты",
-		"subtitle": "Выберите необходимые вам инструменты"
-	},
-	"dashboard": {
-		"title": "Дашборд",
-		"subtitle": "Создайте дашборд под себя из калькуляторов",
-		"addWidget": "Добавить виджет",
-		"addWidgetSubtitle": "Выберите виджет, и он появится на вашем дашборде",
-		"search": "Поиск виджета...",
-		"categories": {
-			"calculators": "Калькуляторы",
-			"account": "Личный кабинет"
-		},
-		"customize": "Настроить",
-		"done": "Готово",
-		"resetView": "К виджетам",
-		"reset": "Сбросить",
-		"resetConfirm": "Удалить все виджеты с доски?",
-		"emptyTitle": "Дашборд пока пуст",
-		"emptySubtitle": "Добавьте калькуляторы и вкладки, которыми пользуетесь чаще всего",
-		"addFirstWidget": "Добавить первый виджет",
-		"openFull": "Открыть полную версию",
-		"removeWidget": "Удалить виджет",
-		"loginRequired": "Войдите в аккаунт, чтобы использовать этот виджет",
-		"signIn": "Войти",
-		"widgetError": "Не удалось загрузить виджет",
-		"widgets": {
-			"buildsLite": {
-				"title": "Сборки Lite"
-			},
-			"ttk": {
-				"title": "Калькулятор ТТК"
-			},
-			"arsenal": {
-				"title": "Арсенал"
-			},
-			"modules": {
-				"title": "Модули"
-			},
-			"hideout": {
-				"title": "Схрон"
-			},
-			"bp": {
-				"title": "Боевой пропуск"
-			},
-			"dpi": {
-				"title": "Конвертер DPI"
-			},
-			"meHome": {
-				"title": "ЛК — Главная"
-			},
-			"meBuilds": {
-				"title": "ЛК — Сборки"
-			},
-			"meArticles": {
-				"title": "ЛК — Статьи"
-			},
-			"meNotifications": {
-				"title": "ЛК — Уведомления"
-			},
-			"meStars": {
-				"title": "ЛК — Избранное"
-			},
-			"clan": {
-				"title": "Клан — Сводка"
-			},
-			"clanMembers": {
-				"title": "Клан — Участники"
-			},
-			"clanSessions": {
-				"title": "Клан — Сессии"
-			},
-			"clanAbsences": {
-				"title": "Клан — Отписки"
-			},
-			"clanGold": {
-				"title": "Клан — Голд дропы"
-			},
-			"clanGrenades": {
-				"title": "Клан — Гранаты"
-			},
-			"clanSquads": {
-				"title": "Клан — Отряды"
-			},
-			"clanStats": {
-				"title": "Клан — Статистика"
-			}
-		}
-	}
+  "landing": {
+    "overview": "Всё в одном месте",
+    "tools_for": "Инструменты для",
+    "need": "Всё необходимое для",
+    "features": {
+      "items": "Предметов",
+      "tools": "Инструментов",
+      "uptime": "Доступность"
+    },
+    "start": "Начать",
+    "more_details": "Подробнее",
+    "tools": {
+      "title": "Инструменты",
+      "description": "Обширная коллекция инструментов",
+      "tool_list": {
+        "builds": {
+          "title": "Калькулятор сборок",
+          "desc": "Создавайте и сохраняйте сборки артефактов, экспериментируйте с комбинациями и сравнивайте эффективность разных сетапов с возможностью просматривать модели"
+        },
+        "builds_lite": {
+          "title": "Калькулятор сборок Lite",
+          "desc": "Создавайте и сохраняйте сборки артефактов, экспериментируйте с комбинациями и сравнивайте эффективность разных сетапов"
+        },
+        "bp": {
+          "title": "Калькулятор Боевого Пропуска",
+          "desc": "Удобный инструмент для подсчёта прогресса боевого пропуска"
+        },
+        "ttk": {
+          "title": "Калькулятор ТТК",
+          "desc": "Оцените ТТК для любого оружия и брони. Сравнивайте оружие и броню, чтобы подобрать оптимальный вариант"
+        },
+        "modules": {
+          "title": "Калькулятор модулей",
+          "desc": "Собирайте модули оружия и смотрите итоговые бонусы и стоимость"
+        },
+        "dashboard": {
+          "title": "Удобная работа с инструментами",
+          "desc": "Вместо обычных страниц мы сделали все инструменты в виде виджетов"
+        },
+        "map": {
+          "title": "Интерактивная карта",
+          "desc": "Просматривайте мир с помощью удобной интерактивной карты: гайд по разным квестам, споты, схрон и многое другое"
+        },
+        "player_search": {
+          "title": "Поиск игроков",
+          "desc": "Найдите игрока по нику и посмотрите его статистику"
+        },
+        "arsenal": {
+          "title": "Арсенал",
+          "desc": "Подсчитайте необходимое количество предметов для репутации арсенала"
+        }
+      }
+    }
+  },
+  "footer": {
+    "made_by": "Сайт сделан ",
+    "and": " и ",
+    "links": {
+      "bug_report": "Сообщить о баге на GitHub",
+      "telegram": "Telegram канал",
+      "discord": "Наш Discord",
+      "about": "О нас",
+      "status": "Статус страница"
+    },
+    "project": {
+      "with": "Проект с ",
+      "open_source": "открытым исходным кодом",
+      "license": "Лицензия "
+    }
+  },
+  "nav": {
+    "articles": "Статьи",
+    "groups": {
+      "calculators": {
+        "title": "Калькуляторы",
+        "items": {
+          "art": {
+            "label": "Сборки",
+            "description": "Создайте сборку",
+            "sub_menu": {
+              "lite": "Лайт версия",
+              "3d": "3D версия",
+              "3d_description": "Экспериментальная функция"
+            }
+          },
+          "ttk": {
+            "label": "ТТК",
+            "description": "Эффективность оружия"
+          },
+          "arsenal": {
+            "label": "Арсенал",
+            "description": "Репутация Арсенала"
+          },
+          "hideout": {
+            "label": "Убежище",
+            "description": "Подсчёт ресурсов убежища"
+          },
+          "barter": {
+            "label": "Обменные монеты",
+            "description": "Бартер в обменные монеты"
+          },
+          "bp": {
+            "label": "Сезонный пропуск",
+            "description": "Расчёт уровней"
+          },
+          "dpi": {
+            "label": "Чувствительность",
+            "description": "Настройка DPI"
+          },
+          "modules": {
+            "label": "Модули",
+            "description": "Калькулятор модулей оружия"
+          }
+        }
+      },
+      "clans": {
+        "title": "Кланы",
+        "items": {
+          "clanMaps": {
+            "label": "КВ карты",
+            "description": "Карты для колов"
+          },
+          "clans": {
+            "label": "Список кланов"
+          }
+        }
+      },
+      "other": {
+        "title": "Прочее",
+        "items": {
+          "dashboard": {
+            "label": "Дашборд",
+            "description": "Те самые виджеты"
+          },
+          "maps": {
+            "label": "Интерактивная карта"
+          },
+          "auction": {
+            "label": "Аукцион"
+          },
+          "items": {
+            "label": "Поиск предметов"
+          },
+          "players": {
+            "label": "Поиск игроков"
+          },
+          "models": {
+            "label": "Просмотр моделей",
+            "description": "Скоро..."
+          }
+        }
+      }
+    }
+  },
+  "map": {
+    "title": "Список карт",
+    "loading": "Загрузка карты",
+    "notFound": "Карта не найдена",
+    "category": "Категория:",
+    "noMarkers": "Нет меток",
+    "loadError": "Произошла ошибка при загрузке списка карт.",
+    "sideBar": {
+      "showAll": "Показать все",
+      "hideAll": "Показать все",
+      "export": "Экспорт",
+      "top": "Наверх"
+    }
+  },
+  "playerSearch": {
+    "title": "Поиск игроков",
+    "description": "Найдите игрока по нику и посмотрите его статистику",
+    "region": "Регион",
+    "nickname": "Никнейм",
+    "nicknamePlaceholder": "Введите никнейм игрока",
+    "search": "Поиск",
+    "popular_title": "Популярные игроки",
+    "recent_title": "Недавно просмотренные",
+    "recent_tooltip": "Общая статистика, берётся с сервера"
+  },
+  "player": {
+    "hero": {
+      "ach": "Достижения",
+      "ach_points": "Очков достижений:"
+    },
+    "stats": {
+      "title": "Статистика",
+      "reg": "В зоне:",
+      "hours": "В игре:",
+      "last_login": "Последний вход:"
+    },
+    "rank": {
+      "LEADER": "Лидер",
+      "COLONEL": "Полковник",
+      "OFFICER": "Офицер",
+      "SERGEANT": "Сержант",
+      "SOLDIER": "Боец",
+      "COMMONER": "Запасной",
+      "RECRUIT": "Рядовой"
+    },
+    "alliance": {
+      "merc": "Наёмник",
+      "covenant": "Завет",
+      "freedom": "Заря",
+      "duty": "Долг",
+      "bandits": "Бандит",
+      "stalkers": "Сталкер"
+    },
+    "category": {
+      "EXPLORATION": "Исследование",
+      "SURVIVAL": "Выживание",
+      "HIDEOUT": "Убежище",
+      "SESSION_MODES": "Сессионные режимы",
+      "ECONOMY": "Экономика",
+      "COMBAT": "Бой"
+    },
+    "clan": {
+      "title": "Клан",
+      "name": "Название клана",
+      "rank": "Ранг",
+      "level": "Уровень клана",
+      "members": "Участников",
+      "leader": "Лидер",
+      "join_at": "Вступил"
+    },
+    "combat": {
+      "kd": "К/Д:",
+      "deaths": "Смертей:",
+      "kills": "Убийства:",
+      "kil_ser": "Максимальная серия Убийств:",
+      "accuracy": "Точность:",
+      "shots": "Выстрелов:",
+      "hits": "Попаданий:",
+      "accuracy_head": "Точность в голову:"
+    },
+    "note": {
+      "stalhub": "STALHUB",
+      "stalhub_desc": "Игрок относится к команде проекта STALHUB",
+      "exbo": "EXBO",
+      "exbo_desc": "Игрок относится к команде EXBO EAST (STALZONE)",
+      "media": "Медиа партнёр",
+      "media_desc": "Игрок является медийной личностью проекта Stalzone",
+      "scammer": "Мошенник",
+      "scammer_desc": "Данный игрок является мошенником",
+      "more": "Более подробное описание"
+    },
+    "clanHistory": {
+      "title": "История кланов"
+    }
+  },
+  "time": {
+    "second": {
+      "one": "секунду",
+      "few": "секунды",
+      "many": "секунд"
+    },
+    "minute": {
+      "one": "минуту",
+      "few": "минуты",
+      "many": "минут"
+    },
+    "hour": {
+      "one": "час",
+      "few": "часа",
+      "many": "часов"
+    },
+    "day": {
+      "one": "день",
+      "few": "дня",
+      "many": "дней"
+    },
+    "month": {
+      "one": "месяц",
+      "few": "месяца",
+      "many": "месяцев"
+    },
+    "year": {
+      "one": "год",
+      "few": "года",
+      "many": "лет"
+    },
+    "and": "и",
+    "back": "назад"
+  },
+  "unit": {
+    "km": "км",
+    "kg": "кг",
+    "unit": "ед",
+    "meter": "м",
+    "second": "с"
+  },
+  "arts": {
+    "ART_QUALITY_COMMON": "Обычный",
+    "ART_QUALITY_UNCOMMON": "Необычный",
+    "ART_QUALITY_SPECIAL": "Особый",
+    "ART_QUALITY_RARE": "Редкий",
+    "ART_QUALITY_EXCLUSIVE": "Исключительный",
+    "ART_QUALITY_LEGENDARY": "Легендарный",
+    "ART_QUALITY_UNIQUE": "Уникальный",
+    "title": "Творчество",
+    "total": "всего",
+    "search": "Поиск по тегам",
+    "byAuthor": "Работа художника: ",
+    "description": "Описание"
+  },
+  "ui": {
+    "combobox": {
+      "default": {
+        "placeholder": "Выберите",
+        "search": {
+          "button": "Поиск",
+          "notFound": "Ничего не найдено"
+        }
+      },
+      "addStats": {
+        "placeholder": "Дополнительные свойства"
+      }
+    },
+    "input_label": "Введите название предмета",
+    "input_sharpening": "Заточка"
+  },
+  "arsenal": {
+    "title": "Калькулятор репутации Арсенала",
+    "sub_title": "Посчитайте стоимость репутации арсенала",
+    "input_label": "Репутация",
+    "alert": "Цены на предметы обновляются дважды в сутки — в 00:00 и в 12:00 по МСК. Сравнивайте цены в игре!",
+    "table": {
+      "item": "Предмет",
+      "drop": {
+        "title": "Выпадает",
+        "true": "Да",
+        "false": "Нет"
+      },
+      "reputation": "Репутация",
+      "weight": "Вес",
+      "currentPrice": "Цена",
+      "limit": "Лимит",
+      "neededCount": "Кол.во",
+      "totalWeight": "Итого вес",
+      "totalPrice": "Итого",
+      "maxPerDay": "максимум за сутки",
+      "days": {
+        "one": "день",
+        "few": "дня",
+        "many": "дней"
+      }
+    },
+    "summary": {
+      "covered": "Цель достижима: предметы с лимитом дают до",
+      "coveredEnd": "репутации в сутки.",
+      "limited": "Предметы с лимитом дадут максимум",
+      "limitedEnd": "репутации в сутки.",
+      "rest": "Для цели не хватает",
+      "restEnd": "репутации.",
+      "unlimited": "Добирайте предметами без лимита."
+    }
+  },
+  "modals": {
+    "builds": {
+      "pick": "Выбрать",
+      "no_data": "Нет данных",
+      "quality": "Качество",
+      "potential": "Уровень",
+      "armor": {
+        "toaster_success": "Броня изменена!",
+        "header": "Выберите броню"
+      },
+      "container": {
+        "toaster_success": "Контейнер изменён!",
+        "header": "Выберите контейнер",
+        "warn_modal": {
+          "warn": "Предупреждение",
+          "new_small": "Новый контейнер меньше текущего.",
+          "cancel": "Отмена",
+          "confirm": "Продолжить",
+          "del_count": "Будет удалено",
+          "success_toast": "Контейнер изменён. Удалено",
+          "slots": {
+            "slot": "слот",
+            "slots": "слотов"
+          }
+        }
+      },
+      "consumables": {
+        "title": "Выбор усилений",
+        "header": "Выберите усиление",
+        "pick_boost": "Выбор"
+      },
+      "settings": {
+        "title": "Настройки",
+        "auto_save": "Сохранение происходит автоматический",
+        "percent": "Процент",
+        "potential": "Потенциал"
+      }
+    },
+    "search": {
+      "title": "Поиск по сайту",
+      "label": "Введите запрос",
+      "not_found": "Ничего не найдено",
+      "pages": "Страницы",
+      "articles": "Статьи"
+    }
+  },
+  "boost": {
+    "long_time_medicine": "Длительного усиления",
+    "short_time_medicine": "Кратковременного усиления",
+    "mobility": "Подвижность",
+    "accumulation": "Вывод",
+    "healing": "Лечение",
+    "protection": "Защита"
+  },
+  "wiki": {
+    "title": "Википедия",
+    "description": "Добро пожаловать в нашу википедию по StalZone. Тут вы найдёте подробные гайды на механики и квесты игры.",
+    "total_pages": "Всего статей:",
+    "recently_updated": "Недавно обновлено",
+    "navTitle": "Вики",
+    "edit": "Редактировать",
+    "page": {
+      "page_section": "Страницы в этой секции",
+      "update_at": "Обновлено:",
+      "authors": "Авторы статьи"
+    }
+  },
+  "status_widget": {
+    "services_down": "Упали сервисы",
+    "services_up": "Сервисы восстановлены",
+    "services_ok": "Все сервисы в порядке",
+    "services_error": "Проблемы с подключением",
+    "services_problem": "Проблемы с сервисами"
+  },
+  "build": {
+    "new_build": "Новая сборка",
+    "rename": "Переименовать сборку",
+    "build_name": "Название сборки",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "builds": "Сборки",
+    "needed_cont": "Выберите контейнер",
+    "empty_slot": "Пустая ячейка",
+    "artifacts": "Артефакты",
+    "pick_armor": "Выбрать броню",
+    "armor": "Броня",
+    "no_armor": "Броня не выбрана",
+    "sharpening": "Заточка",
+    "consumables": "Расходники",
+    "toast_copy": "Режим копирования активен",
+    "damaged": "будет наносить урон персонажу",
+    "toast_published": "Сборка опубликована",
+    "toast_publish_error": "Ошибка публикации",
+    "copy": "Копировать",
+    "labels": {
+      "default": "Поиск по названию",
+      "armor": "Выберите броню",
+      "armor_title": "Выбор брони",
+      "art": "Выберите артефакт",
+      "art_title": "Выбор артефакта",
+      "cont": "Выберите контейнер",
+      "cont_title": "Выбор контейнера",
+      "positive_stats": "Положительные",
+      "negative_stats": "Отрицательные",
+      "effects": "Эффекты",
+      "copy": "Скопировать",
+      "swap": "Заменить",
+      "delete": "Удалить",
+      "not_found": "Ничего не найдено",
+      "effect": "Эффекты"
+    },
+    "stats": {
+      "title": "Характеристики",
+      "prime": "Приведёнка",
+      "regen": "Лечение в секунду",
+      "hps": "Приведёнки в секунду",
+      "stopping": "Стойкость",
+      "all": "Общее",
+      "container": "Контейнер",
+      "no_stats": "Нет статов",
+      "no_container": "Контейнер не выбран",
+      "categories": {
+        "core": "Основные характеристики",
+        "protection": "Защитные характеристики",
+        "contaminationProtection": "Защита от заражений",
+        "accumulation": "Заражения",
+        "effects": "Прочие эффекты",
+        "misc": "Прочее"
+      }
+    },
+    "price": "Цена",
+    "price_total": "Стоимость сборки",
+    "price_market": "рынок",
+    "price_estimate": "примерно",
+    "price_estimate_hint": "Точных лотов на рынке нет — цена рассчитана примерно",
+    "price_unavailable": "Цены временно недоступны",
+    "price_empty": "Добавьте артефакты, чтобы посчитать стоимость",
+    "price_updated": "Обновлено:"
+  },
+  "ttk": {
+    "page": {
+      "weapon": "Оружие",
+      "weapon_add": "Добавить оружие",
+      "weapon_pick": "Выберите оружие",
+      "ammo_pick": "Выберите патрон",
+      "default_ammo": "Стандартный патрон",
+      "mannequin": "Манекен",
+      "bullet_resistance": "Пулестойкость",
+      "vitality": "Живучесть",
+      "build": "Сборка",
+      "plate": "Пластина",
+      "prime": "Приведёнка",
+      "modules": "Модули",
+      "modules_open": "Настроить модули →",
+      "fire": {
+        "auto": "Авто",
+        "burst": "Отсечки"
+      },
+      "combobox": {
+        "build": {
+          "placeholder": "— не выбрано —",
+          "search_placeholder": "Поиск сборки..."
+        },
+        "plate": {
+          "placeholder": "— без пластины —",
+          "search_placeholder": "Поиск пластины..."
+        }
+      },
+      "charts": {
+        "distance": "Дистанция:",
+        "damage": "Урон",
+        "dist_meter": "Дистанция (м):",
+        "dist_damage": "Урон на дистанции",
+        "shots": "выстр"
+      },
+      "table": {
+        "ttk": "ТТК",
+        "hits": "Попаданий"
+      }
+    },
+    "hitZones": {
+      "head": "Голова",
+      "body": "Тело",
+      "limbs": "Конечности"
+    },
+    "weaponStats": {
+      "damagePerShot": "Урон/выстрел"
+    }
+  },
+  "bp": {
+    "title": "Калькулятор Боевого Пропуска",
+    "sub_title": "Рассчитайте кол.во кол.во уровней за весь сезон",
+    "total_days": "Всего дней",
+    "play_days": "Игровые дни",
+    "task_day": "Задач за день",
+    "overloads": "Перегрузки",
+    "current_level": "Текущий уровень",
+    "data": "Данные",
+    "result": "Результаты",
+    "no_overloads": "Без перегрузок",
+    "with_overloads": "С перегрузками",
+    "difference": "Разница"
+  },
+  "barter": {
+    "lvl_req": "Необходимый уровень базы",
+    "base": "Базы для бартера",
+    "recipe": "Рецепт {number}",
+    "money": "Стоимость",
+    "used_in": "Используется в",
+    "currency": "Валюта",
+    "discount": "Скидка",
+    "currency_options": {
+      "barter": "Бартер",
+      "barter_coins": "Обменные монеты",
+      "crimson_shell": "Гильзы"
+    },
+    "discount_options": {
+      "none": "Без скидки"
+    }
+  },
+  "attachments": {
+    "title": "Обвесы",
+    "suitable": "Совместимые обвесы",
+    "none": "Для этого оружия нет совместимых обвесов",
+    "summary": "Итоговые модификаторы",
+    "total_weight": "Общий вес",
+    "remove": "Снять",
+    "empty_slot": "Не выбран",
+    "select": "Выбрать",
+    "select_prompt": "Выберите обвес",
+    "slot": {
+      "barrel": "Ствол",
+      "mag": "Магазин",
+      "collimator_sights": "Прицел",
+      "forend": "Цевьё",
+      "other": "Прочее",
+      "accessory": "Аксессуар",
+      "pistol_handle": "Рукоять"
+    }
+  },
+  "about": {
+    "contacts_title": "Контакты",
+    "thanks_title": "Отдельная благодарность",
+    "developer_role": "Главный разработчик",
+    "designer_role": "Дизайнер",
+    "contact_us": "Связь с нами",
+    "useful_links": "Полезные ссылки",
+    "contact_links": {
+      "support": {
+        "label": "Техническая поддержка",
+        "description": "Если случилась проблема с сайтом"
+      },
+      "cooperation": {
+        "label": "Сотрудничество",
+        "description": "Спонсорство, вклад в проект"
+      },
+      "advertising": {
+        "label": "Реклама",
+        "description": "Реклама на сайте или в соц.сетях"
+      }
+    },
+    "support_links": {
+      "donate": {
+        "label": "Поддержать проект",
+        "description": "Финансовая поддержка развития проекта"
+      },
+      "telegram": {
+        "label": "Telegram канал",
+        "description": "Новости, обновления и анонсы"
+      },
+      "github": {
+        "label": "GitHub репозиторий",
+        "description": "Исходный код и баг-репорты"
+      }
+    },
+    "andcool_description": "Snippet`ы кода",
+    "rashing_description": "советы по улучшению<br></br>UI/UX",
+    "flacee_description": "помощь с формулами",
+    "insideJoke": "ебал рот айсана"
+  },
+  "region": {
+    "RU": "RU",
+    "EU": "EU",
+    "NA": "NA",
+    "SEA": "SEA",
+    "NEA": "NEA"
+  },
+  "dpi": {
+    "title": "Калькулятор чувствительности",
+    "sub_title": "Конвертируйте чувствительность из одной игры в другую",
+    "from_game": "Из игры",
+    "to_game": "В игру",
+    "pick_game": "Выберите игру",
+    "sens": "Чувствительность",
+    "result": "Результат"
+  },
+  "modules": {
+    "title": "Калькулятор модулей",
+    "sub_title": "Собирайте модули оружия и смотрите итоговые бонусы и стоимость",
+    "picker_placeholder": "Выберите модуль",
+    "picker_search": "Поиск модуля...",
+    "picker_empty": "Модуль не найден",
+    "quality": "Качество",
+    "not_selected": "Модуль не выбран",
+    "fetch_error": "Не удалось получить актуальные данные модулей. Показаны данные из кэша.",
+    "groupAddOn": "Группа надстроек",
+    "groupDeviation": "Группа отклонения",
+    "groupConcept": "Группа концепта",
+    "reset": "Сбросить",
+    "reroll": "Реролл",
+    "disassemble": "Разбор",
+    "restore": "Восстановление",
+    "category": "Категория",
+    "summary": "Итог",
+    "summaryEmpty": "Выберите модули в каждой группе",
+    "rerollCost": "Стоимость реролла",
+    "disassembleCost": "Стоимость разбора",
+    "restoreCost": "Стоимость восстановления",
+    "categoryCost": "Стоимость категории"
+  },
+  "cwMap": {
+    "loading": "Загрузка редактора...",
+    "actions": {
+      "undo": "Ctrl+Z — отмена",
+      "save": "Ctrl+Shift+S — сохранить"
+    },
+    "style": {
+      "thickness": "Толщина:"
+    },
+    "accordion": {
+      "basePoints": "Базовые точки",
+      "tools": "Инструменты",
+      "markers": "Метки",
+      "style": "Стиль"
+    },
+    "maps": {
+      "berda": "Берда",
+      "hvoiniy": "Хвойный",
+      "kvartals": "Кварталы",
+      "nizina": "Низина",
+      "rozeWise": "Роза ветров"
+    },
+    "markers": {
+      "position": "Позиция",
+      "base": "База",
+      "danger": "Опасность",
+      "loot": "Лут",
+      "spawn": "Спавн",
+      "extract": "Выход",
+      "sniper": "Снайпер",
+      "info": "Инфо"
+    },
+    "tools": {
+      "pan": "Рука",
+      "pen": "Карандаш",
+      "line": "Линия",
+      "arrow": "Стрелка",
+      "rect": "Прямоуг.",
+      "circle": "Круг",
+      "eraser": "Ластик",
+      "marker": "Метка"
+    }
+  },
+  "admin": {
+    "permissions": {
+      "title": "Разрешения",
+      "total": "всего",
+      "create": "Создать разрешение",
+      "name": "Название",
+      "description": "Описание",
+      "createBtn": "Создать",
+      "edit": "Редактировать разрешение",
+      "deleteTitle": "Удалить разрешение?",
+      "deleteDescription": "Разрешение <strong>{name}</strong> будет удалено навсегда.",
+      "deleteConfirm": "Удалить",
+      "cancel": "Отмена",
+      "save": "Сохранить",
+      "toast": {
+        "created": "Разрешение создано",
+        "createError": "Ошибка создания",
+        "updated": "Разрешение обновлено",
+        "updateError": "Ошибка обновления",
+        "deleted": "Разрешение удалено",
+        "deleteError": "Ошибка удаления"
+      }
+    },
+    "users": {
+      "title": "Пользователи",
+      "total": "всего",
+      "search": "Поиск...",
+      "table": {
+        "username": "Имя пользователя",
+        "name": "Имя",
+        "roles": "Роли",
+        "status": "Статус"
+      },
+      "status": {
+        "banned": "Забанен",
+        "active": "Активен"
+      },
+      "deleteTitle": "Удалить пользователя?",
+      "deleteDescription": "Пользователь <strong>{name}</strong> будет удалён навсегда.",
+      "deleteConfirm": "Удалить",
+      "cancel": "Отмена",
+      "toast": {
+        "deleted": "Пользователь удалён",
+        "deleteError": "Ошибка при удалении"
+      }
+    },
+    "userDetail": {
+      "tabs": {
+        "info": "Информация",
+        "sessions": "Сессии",
+        "roles": "Роли",
+        "badges": "Бейджи",
+        "banner": "Баннер"
+      },
+      "editing": "Редактирование",
+      "username": "Имя пользователя",
+      "name": "Имя",
+      "save": "Сохранить",
+      "ban": {
+        "title": "Бан",
+        "banned": "Пользователь забанен",
+        "unban": "Снять бан",
+        "reason": "Причина бана",
+        "duration": "Длительность (часы)",
+        "confirm": "Забанить"
+      },
+      "delete": {
+        "title": "Удаление",
+        "trigger": "Удалить пользователя",
+        "confirmTitle": "Удалить пользователя?",
+        "description": "Пользователь <strong>{name}</strong> будет удалён навсегда. Это действие нельзя отменить.",
+        "confirm": "Удалить"
+      },
+      "sessions": {
+        "device": "Устройство",
+        "created": "Создана",
+        "active": "Активна",
+        "revokeTitle": "Отозвать сессию?",
+        "revokeConfirm": "Отозвать"
+      },
+      "roles": {
+        "title": "Роли пользователя",
+        "add": "Добавить роль",
+        "removeTitle": "Снять роль?",
+        "removeDescription": "Роль <strong>{name}</strong> будет снята с пользователя.",
+        "removeConfirm": "Снять",
+        "empty": "Нет назначенных ролей"
+      },
+      "badges": {
+        "title": "Бейджи пользователя",
+        "add": "Добавить бейдж",
+        "removeTitle": "Снять бейдж?",
+        "removeDescription": "Бейдж <strong>{name}</strong> будет снят с пользователя.",
+        "removeConfirm": "Снять",
+        "empty": "Нет назначенных бейджей"
+      },
+      "banner": {
+        "title": "Баннер профиля",
+        "noBanner": "Баннер отключён",
+        "mode": "Режим",
+        "modeNone": "Отключён",
+        "modeColor": "Цвет",
+        "modeImage": "Картинка",
+        "type": "Расположение",
+        "typeHeader": "Шапка",
+        "typeBackground": "Фон",
+        "color": "Цвет баннера",
+        "imageUrl": "URL картинки",
+        "upload": "Загрузить файл",
+        "save": "Сохранить"
+      },
+      "toast": {
+        "updated": "Пользователь обновлён",
+        "updateError": "Ошибка обновления",
+        "banned": "Пользователь забанен",
+        "banError": "Ошибка бана",
+        "unbanned": "Бан снят",
+        "unbanError": "Ошибка снятия бана",
+        "sessionRevoked": "Сессия отозвана",
+        "sessionRevokeError": "Ошибка отзыва сессии",
+        "roleAssigned": "Роль назначена",
+        "roleAssignError": "Ошибка назначения роли",
+        "roleRemoved": "Роль снята",
+        "roleRemoveError": "Ошибка снятия роли",
+        "badgeAssigned": "Бейдж назначен",
+        "badgeAssignError": "Ошибка назначения бейджа",
+        "badgeRemoved": "Бейдж снят",
+        "badgeRemoveError": "Ошибка снятия бейджа",
+        "bannerUpdated": "Баннер обновлён",
+        "bannerUpdateError": "Ошибка обновления баннера",
+        "bannerUploaded": "Баннер загружен",
+        "bannerUploadError": "Ошибка загрузки баннера",
+        "deleted": "Пользователь удалён",
+        "deleteError": "Ошибка удаления"
+      },
+      "cancel": "Отмена",
+      "close": "Закрыть"
+    },
+    "sidebar": {
+      "users": "Пользователи",
+      "roles": "Роли",
+      "permissions": "Разрешения",
+      "badges": "Бейджи",
+      "clans": "Кланы",
+      "notifications": "Уведомления",
+      "players": "Игроки",
+      "articles": "Статьи",
+      "builds": "Сборки"
+    },
+    "roles": {
+      "title": "Роли",
+      "create": "Создать роль",
+      "edit": "Редактировать роль",
+      "permissions": "Разрешения",
+      "permissionsTitle": "Разрешения — {name}",
+      "deleteTitle": "Удалить роль?",
+      "deleteDescription": "Роль <strong>{name}</strong> будет удалена навсегда.",
+      "toast": {
+        "created": "Роль создана",
+        "updated": "Роль обновлена",
+        "deleted": "Роль удалена",
+        "permissionsUpdated": "Разрешения обновлены",
+        "permissionsUpdateError": "Ошибка обновления разрешений"
+      }
+    },
+    "badges": {
+      "title": "Бейджи",
+      "create": "Создать бейдж",
+      "edit": "Редактировать бейдж",
+      "type": "Тип",
+      "icon": "Иконка",
+      "image": "Картинка",
+      "imageUrl": "URL картинки",
+      "color": "Цвет",
+      "preview": "Превью:",
+      "defaultName": "Бейдж",
+      "deleteTitle": "Удалить бейдж?",
+      "deleteDescription": "Бейдж <strong>{name}</strong> будет удалён навсегда.",
+      "empty": "Нет бейджей",
+      "toast": {
+        "created": "Бейдж создан",
+        "updated": "Бейдж обновлён",
+        "deleted": "Бейдж удалён"
+      }
+    },
+    "clans": {
+      "title": "Кланы",
+      "total": "всего",
+      "search": "Поиск...",
+      "table": {
+        "name": "Название",
+        "tag": "Тег",
+        "alliance": "Фракция",
+        "members": "Участники",
+        "status": "Статус",
+        "public": "Публичный"
+      },
+      "status": {
+        "active": "Активен",
+        "frozen": "Заморожен",
+        "blocked": "Заблокирован"
+      },
+      "detail": {
+        "tabs": {
+          "info": "Информация",
+          "members": "Участники",
+          "stages": "Этапы"
+        },
+        "editTitle": "Редактирование",
+        "name": "Название",
+        "tag": "Тег",
+        "region": "Регион",
+        "description": "Описание",
+        "status": "Статус",
+        "isPublic": "Публичный в каталоге",
+        "recruiting": "Набор участников",
+        "brawlsPerWeek": "Потасовка/неделя",
+        "brawlsMandatory": "Потасовки обязательны",
+        "level": "Уровень",
+        "levelPoints": "Очки уровня",
+        "leader": "Лидер",
+        "alliance": "Фракция",
+        "save": "Сохранить",
+        "sync": "Синхронизировать",
+        "block": {
+          "title": "Блокировка",
+          "reasonLabel": "Причина блокировки",
+          "reason": "Причина",
+          "confirm": "Заблокировать",
+          "unblock": "Разблокировать"
+        },
+        "delete": {
+          "title": "Удаление",
+          "trigger": "Удалить клан",
+          "confirmTitle": "Удалить клан?",
+          "description": "Клан <strong>{name}</strong> будет удалён навсегда. Это действие нельзя отменить.",
+          "confirm": "Удалить"
+        },
+        "members": {
+          "name": "Имя",
+          "rank": "Ранг",
+          "joined": "Вступил",
+          "user": "Пользователь"
+        },
+        "cancel": "Отмена"
+      },
+      "toast": {
+        "updated": "Клан обновлён",
+        "updateError": "Ошибка обновления",
+        "synced": "Клан синхронизирован: {count} участников",
+        "syncError": "Ошибка синхронизации",
+        "blocked": "Клан заблокирован",
+        "blockError": "Ошибка блокировки",
+        "unblocked": "Блокировка снята",
+        "unblockError": "Ошибка снятия блокировки",
+        "deleted": "Клан удалён",
+        "deleteError": "Ошибка удаления"
+      },
+      "stages": {
+        "title": "Этапы",
+        "empty": "У клана нет этапов",
+        "table": {
+          "id": "ID",
+          "map": "Карта",
+          "type": "Тип",
+          "stage": "Этап",
+          "date": "Дата",
+          "endDate": "Конец",
+          "screenshots": "Скриншоты",
+          "attendance": "Посещаемость",
+          "actions": ""
+        },
+        "edit": "Редактировать",
+        "editTitle": "Редактировать этап #{id}",
+        "mapName": "Название карты",
+        "stageNumber": "Номер этапа",
+        "startedAt": "Дата начала",
+        "endedAt": "Дата окончания (необязательно)",
+        "save": "Сохранить",
+        "cancel": "Отмена",
+        "deleteTitle": "Удалить этап?",
+        "deleteDescription": "Этап <strong>{map} · {date}</strong> и все его скриншоты будут удалены безвозвратно.",
+        "delete": "Удалить",
+        "type": {
+          "TOURNAMENT": "Турнир",
+          "BRAWL": "Потасовка",
+          "BASE_CAPTURE": "Захват базы"
+        },
+        "toast": {
+          "updated": "Этап обновлён",
+          "updateError": "Ошибка обновления этапа",
+          "deleted": "Этап удалён",
+          "deleteError": "Ошибка удаления этапа"
+        }
+      }
+    },
+    "players": {
+      "title": "Управление игроками",
+      "add": "Добавить игрока",
+      "addBtn": "Добавить",
+      "role": "Роль",
+      "rolesTitle": "Роли игроков",
+      "blacklist": "Чёрный список",
+      "empty": "Нет игроков",
+      "toast": {
+        "added": "Игрок добавлен",
+        "addError": "Ошибка добавления",
+        "blacklisted": "Игрок добавлен в чёрный список",
+        "blacklistAddError": "Ошибка добавления в чёрный список",
+        "blacklistRemoved": "Игрок удалён из чёрного списка",
+        "blacklistRemoveError": "Ошибка удаления из чёрного списка"
+      }
+    },
+    "articles": {
+      "title": "Статьи",
+      "all": "Все",
+      "author": "Автор",
+      "stars": "Звёзды",
+      "created": "Создана",
+      "statusTitle": "Статус — {title}",
+      "deleteTitle": "Удалить статью?",
+      "deleteDescription": "Статья <strong>{title}</strong> будет удалена навсегда.",
+      "empty": "Нет статей",
+      "toast": {
+        "statusUpdated": "Статус обновлён",
+        "statusUpdateError": "Ошибка обновления статуса",
+        "deleted": "Статья удалена"
+      }
+    },
+    "builds": {
+      "title": "Сборки",
+      "deleteTitle": "Удалить сборку?",
+      "deleteDescription": "Сборка <strong>{title}</strong> будет удалена навсегда.",
+      "empty": "Нет сборок",
+      "toast": {
+        "deleted": "Сборка удалена"
+      }
+    },
+    "notifications": {
+      "title": "Уведомления",
+      "sendTitle": "Отправить уведомление",
+      "broadcast": "Всем пользователям",
+      "toUser": "Конкретному пользователю",
+      "searchUser": "Поиск пользователя",
+      "notFound": "Не найдено",
+      "change": "Сменить",
+      "titleLabel": "Заголовок",
+      "contentLabel": "Сообщение",
+      "contentPlaceholder": "Текст уведомления...",
+      "linkLabel": "Ссылка (необязательно)",
+      "sendAll": "Отправить всем",
+      "sendToUser": "Отправить пользователю",
+      "toast": {
+        "broadcastSent": "Уведомление отправлено {count, plural, one {# пользователю} few {# пользователям} many {# пользователям} other {# пользователям}}",
+        "sent": "Уведомление отправлено",
+        "sendError": "Ошибка отправки"
+      }
+    }
+  },
+  "test": {
+    "title": "Переезд",
+    "message": "В скором времени <unavailable>stalhub.dev будет недоступен</unavailable>, наш новый домен <domain>stalhub.dev</domain>. О приостановке поддержки домена мы сообщим заранее в нашем <channel>Telegram канале</channel>.",
+    "cancel": "Отмена",
+    "go": "Перейти"
+  },
+  "errors": {
+    "oops": "Упсс...",
+    "support": {
+      "thenContact": "то обратитесь в",
+      "techSupport": "тех. поддержку",
+      "whenContacting": "При обращении укажите"
+    },
+    "playerNotFound": {
+      "buttonLabel": "Вернутся обратно",
+      "description": "Игрок не найден"
+    },
+    "banned": {
+      "account": "Аккаунт",
+      "blocked": "заблокирован",
+      "reasonPrefix": "Причина:",
+      "blockedMessage": "Ваш аккаунт был заблокирован",
+      "remaining": "Осталось:",
+      "ifMistake": "Если вы считаете, что блокировка выдана ошибочно,",
+      "reasonLabel": "Причину",
+      "reasonValuePrefix": "Причина"
+    },
+    "notFound": {
+      "buttonLabel": "На главную",
+      "description": "Страница не найдена",
+      "ifUrlCorrect": "Если вы считаете, что URL введён верно,"
+    },
+    "globalError": {
+      "buttonLabel": "Попробовать снова",
+      "description": "Произошла клиентская ошибка",
+      "ifProblemPersists": "Если проблема остаётся, обратитесь в"
+    }
+  },
+  "articles": {
+    "title": "Статьи",
+    "allArticles": "← Все статьи",
+    "publishedCount": "{count} опубликованных статей",
+    "empty": "Нет опубликованных статей",
+    "loading": "Загрузка...",
+    "loadError": "Ошибка загрузки статьи",
+    "metaTitle": "Статьи · StalHub",
+    "metaDescription": "Публичные статьи сообщества StalHub",
+    "byAuthor": "Статья от {author}",
+    "notFound": "Статья не найдена",
+    "comments": {
+      "title": "Комментарии ({count})",
+      "placeholder": "Написать комментарий...",
+      "empty": "Нет комментариев",
+      "reply": "Ответить",
+      "deleteTitle": "Удалить комментарий?",
+      "cancel": "Отмена",
+      "deleteConfirm": "Удалить",
+      "toast": {
+        "added": "Комментарий добавлен",
+        "addError": "Ошибка добавления комментария",
+        "deleted": "Комментарий удалён",
+        "deleteError": "Ошибка удаления комментария"
+      }
+    },
+    "status": {
+      "PENDING": "Черновик",
+      "REVIEW": "На рассмотрении",
+      "DENIED": "Отклонено",
+      "BANNED": "Заблокировано",
+      "APPROVED": "Одобрено"
+    }
+  },
+  "clan": {
+    "common": {
+      "player": "Игрок",
+      "killsShort": "У",
+      "deathsShort": "С",
+      "assistsShort": "А",
+      "pointsShort": "П",
+      "scoreShort": "О",
+      "kda": "KDA",
+      "kd": "K/D",
+      "grenadesShort": "Гр",
+      "victory": "Победа",
+      "defeat": "Поражение",
+      "save": "Сохранить",
+      "cancel": "Отмена",
+      "close": "Закрыть",
+      "delete": "Удалить",
+      "create": "Создать",
+      "copy": "Копировать",
+      "download": "Скачать",
+      "upload": "Загрузить",
+      "members": "Участников",
+      "games": "Игр",
+      "wins": "Побед",
+      "losses": "Поражений",
+      "noGames": "Игр пока нет"
+    },
+    "stage": {
+      "TOURNAMENT": "Турнир",
+      "BRAWL": "Потасовка",
+      "BASE_CAPTURE": "Захват базы",
+      "SKIRMISH": "Потасовка"
+    },
+    "maps": {
+      "SMALL_BERDOVKA": "Малая бердовка",
+      "KHVOUINOY": "Хвойный",
+      "NIZINA": "Низина"
+    },
+    "events": {
+      "TOURNAMENT": "Турнир",
+      "BRAWL": "Потасовка",
+      "BASE_CAPTURE": "Захват базы",
+      "GOLD_DROP": "Голд дроп"
+    },
+    "metrics": {
+      "kd": "КД",
+      "kda": "КДА",
+      "kills": "Убийства",
+      "grenades": "Гранаты"
+    },
+    "filters": {
+      "TOURNAMENT": "Турниры",
+      "BRAWL": "Потасовки",
+      "ALL": "Вместе"
+    },
+    "screenshotStatus": {
+      "pending": "В очереди",
+      "processing": "Анализ...",
+      "done": "Готово",
+      "error": "Ошибка"
+    },
+    "layout": {
+      "activated": "Клан активирован",
+      "activateError": "Не удалось активировать клан",
+      "notLinked": {
+        "title": "Клан не привязан",
+        "desc": "Привяжите аккаунт EXBO в настройках и войдите в клан, чтобы управлять им",
+        "settings": "Настройки"
+      },
+      "notFound": {
+        "title": "Клан не найден",
+        "desc": "Клан не обнаружен в вашем профиле.\nУбедитесь, что вы являетесь лидером клана"
+      },
+      "blocked": {
+        "title": "Клан заблокирован",
+        "desc": "Этот клан был заблокирован администрацией.\nЕсли вы считаете то, что блокировка ошибочная, обратитесь в техническую поддержку.",
+        "reason": "Причина"
+      },
+      "frozen": {
+        "title": "Вы лидер клана <span>[{tag}] {name}</span>",
+        "desc": "Сейчас ваш клан заморожен, функционал для управления недоступен.\nДля получения доступа нажмите кнопку ниже.",
+        "activate": "Активировать",
+        "titleMember": "Клан <span>[{tag}] {name}</span> заморожен",
+        "descMember": "Сейчас ваш клан заморожен, функционал для управления недоступен."
+      }
+    },
+    "dashboard": {
+      "notAllRegistered": "Не все игроки зарегистрированы на сайте. Подсчёт гранат, пропусков, недоступен для них.",
+      "recentGames": "Последние игры",
+      "screenshotUploaded": "Скриншот загружен, анализ запущен",
+      "screenshotUploadError": "Ошибка при загрузке скриншота",
+      "grenadesTitle": "Гранаты за этапы ({total})",
+      "grenadesLine": "{label} · {date} · {count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}",
+      "noGrenades": "Нет данных о гранатах",
+      "topPlayers": {
+        "title": "Лучшие игроки (К/Д)",
+        "empty": "Загрузите скриншоты этапов, чтобы увидеть К/Д игроков"
+      }
+    },
+    "members": {
+      "title": "Участники",
+      "more": "+{count} участников",
+      "squad": "Отряд"
+    },
+    "stats": {
+      "title": "Статистика",
+      "clanKd": "КД клана",
+      "emptyTitle": "Статистики пока нет",
+      "emptyDesc": "Загрузите скриншоты этапов, и здесь появятся статистика игроков",
+      "stageCount": "{count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}",
+      "stageRow": "{kills} У. · {deaths} С. | {kd}"
+    },
+    "squads": {
+      "title": "Отряды",
+      "noSquadsTitle": "Нет отрядов на этой карте",
+      "exportPngTitle": "Экспорт отрядов в PNG",
+      "create": "Создать отряд",
+      "new": "Новый отряд",
+      "namePlaceholder": "Название отряда",
+      "map": "Карта",
+      "leaderTitle": "Лидер отряда «{name}»",
+      "noMembers": "В отряде пока нет участников",
+      "removeLeader": "Снять лидера",
+      "assignSlotTitle": "Назначить в слот {slot}",
+      "noFreeMembers": "Нет свободных участников",
+      "mapTitle": "Карта отряда «{name}»",
+      "mapChangeTitle": "Изменить карту",
+      "assignLeaderTitle": "Назначить лидера",
+      "requestPending": "Заявка в отряд на рассмотрении",
+      "joinRequests": "Заявки на вступление",
+      "slot": "Слот {slot}",
+      "emptySlot": "Пусто",
+      "loadoutTitle": "Снаряжение",
+      "editLoadout": "Редактировать снаряжение",
+      "loadoutHeaders": {
+        "player": "Игрок",
+        "primary": "Основное",
+        "secondary": "Вторичное",
+        "pistol": "Пистолет",
+        "fatBuild": "Сборка «жир»",
+        "speedBuild": "Сборка «скорость»",
+        "armor": "Броня",
+        "bioArmor": "Био броня"
+      },
+      "myLoadout": "Моё снаряжение",
+      "loadoutFields": {
+        "primaryWeapon": "Основное оружие",
+        "secondaryWeapon": "Вторичное оружие",
+        "pistol": "Пистолет",
+        "armor": "Броня",
+        "bioArmor": "Био броня",
+        "fatBuild": "Сборка «жир»",
+        "speedBuild": "Сборка «скорость»"
+      },
+      "noBuilds": "Нет сборок",
+      "search": "Поиск",
+      "noSquadsHere": "На этой карте отрядов пока нет",
+      "createFirstHint": "Создайте первый отряд, нажав «Создать отряд»",
+      "png": {
+        "previewTitle": "Предпросмотр отрядов",
+        "title": "Отряды · {map}",
+        "squadCount": "Отрядов",
+        "leader": "Лидер",
+        "absent": "Отписка",
+        "empty": "Пусто"
+      },
+      "toasts": {
+        "createError": "Не удалось создать отряд",
+        "requestSent": "Заявка отправлена",
+        "requestError": "Не удалось подать заявку",
+        "approved": "Заявка одобрена",
+        "approveError": "Не удалось одобрить заявку",
+        "rejected": "Заявка отклонена",
+        "rejectError": "Не удалось отклонить заявку",
+        "mapError": "Не удалось изменить карту",
+        "loadoutSaved": "Шмот сохранён",
+        "loadoutError": "Ошибка при сохранении шмота",
+        "moveError": "Не удалось переместить участника",
+        "pngError": "Не удалось сохранить изображение",
+        "pngCopied": "Изображение скопировано",
+        "copyError": "Не удалось скопировать"
+      }
+    },
+    "sessions": {
+      "title": "Клановые войны",
+      "noGamesDesc": "Загрузите скриншоты для анализа",
+      "scorePoints": "{score} очков",
+      "analyzing": "Анализ",
+      "screenshots": "Скриншоты",
+      "attendance": "Посещаемость",
+      "presentOf": "{present} из {total}",
+      "absent": " · не был",
+      "deleteTitle": "Удалить этап?",
+      "deleteBody": "Этап <span>{name} за {date}</span> и все его скриншоты <danger>будут удалены безвозвратно</danger>",
+      "stageName": "{name} · этап {stage}",
+      "deleteConfirm": "Удалить",
+      "summary": "Итоги",
+      "stageScore": "Очки за этап: {score}",
+      "opponentsOne": "Очки противника: {names}",
+      "opponentsMany": "Противники: {names}",
+      "killsShort": "У",
+      "deathsShort": "С",
+      "assistsShort": "П",
+      "kd": "К/Д",
+      "scoreShort": "О",
+      "uploadTitle": "Загрузить скриншот",
+      "upload": "Загрузить",
+      "detected": "Определено: <strong>{label} · этап {stage}</strong>",
+      "stageType": "Тип этапа",
+      "stage": "Этап",
+      "stageDate": "Дата этапа (необязательно)",
+      "screenshotLabel": "Скриншот",
+      "fileSelected": "Выбрано: {name}",
+      "selectFile": "Выбрать файл",
+      "screenshotId": "Скриншот #{id}",
+      "toasts": {
+        "retrySuccess": "Анализ перезапущен",
+        "retryError": "Не удалось перезапустить анализ",
+        "deleted": "Этап удалён",
+        "deleteError": "Не удалось удалить этап",
+        "uploaded": "Скриншоты загружены, анализ запущен",
+        "uploadError": "Ошибка при загрузке скриншотов"
+      }
+    },
+    "absence": {
+      "title": "Отписки",
+      "desc": "Одна отписка на день. Отписка на сегодня доступна только до {hour}:00 МСК, на другие дни — в любое время накануне.",
+      "myAbsence": "Моя отписка",
+      "stage": "Этап {stage}",
+      "notePlaceholder": "Комментарий (необязательно)",
+      "listTitle": "Отписки на {date}",
+      "empty": "Отписок на эту дату нет",
+      "now": "Сейчас <b>{time} МСК</b>.",
+      "canLeave": " Отписку на сегодня можно оставить до <b>{deadline}:00 МСК</b>.",
+      "pastDeadline": " Дедлайн на сегодня ({deadline}:00 МСК) уже прошёл — можно оставить отписку на другой день.",
+      "toasts": {
+        "saved": "Отписка сохранена",
+        "saveError": "Не удалось сохранить отписку",
+        "deleted": "Отписка удалена",
+        "deleteError": "Не удалось удалить отписку"
+      }
+    },
+    "gold": {
+      "title": "Голд дропы",
+      "desc": "Ежедневно в 10:00, 13:00, 16:00, 19:00 и 22:00 (МСК). Офицеры отмечают участников и ставят статус «забрали».",
+      "empty": "Дропов пока нет",
+      "claimed": "Забрали",
+      "waiting": "Ожидание",
+      "attendeesCount": "{count} участ.",
+      "mark": "Отметить",
+      "attendeesTitle": "Участники дропа {date}",
+      "alreadyMarked": "Уже отмечены в других дропах: {count}",
+      "toasts": {
+        "attendeesError": "Не удалось сохранить участников",
+        "statusError": "Не удалось обновить статус"
+      }
+    },
+    "grenades": {
+      "emptyTitle": "Нет данных о гранатах",
+      "emptyDesc": "Данные о гранатах появятся после синхронизации состава клана",
+      "noData": "Нет данных по этапам",
+      "player": "Игрок",
+      "stage": "Этап {stage}",
+      "total": "Итого",
+      "stageCount": "{count, plural, one {# этап} few {# этапа} many {# этапов} other {# этапов}}"
+    },
+    "charts": {
+      "topCount": "Топ {n}",
+      "topAll": "Топ вся",
+      "testFeatureTitle": "Тестовая функция ",
+      "testFeatureDesc": "Данная функция находится в тестах, возможны проблемы и неточные данные",
+      "kickTitle": "Люди под кик",
+      "scheduleTooltip": "График: {tournament} турнира в неделю (обязательно) и {brawl} потасовок, потасовки {mandatory, select, yes {обязательные} other {необязательные}}.",
+      "kickCriteria": "Кандидат на кик: посещаемость ниже {attendance}% или отписки от {absences}% обязательных игр.",
+      "kickChanceHint": "Шанс на кик растёт при низком КД (ниже {kd}): 65% — посещаемость, 20% — отписки, 15% — КД.",
+      "attendanceHint": "Посещаемость считается по выбранному типу игр: турниры, потасовки или вместе.",
+      "noCandidates": "Кандидатов нет",
+      "kdBadge": "КД: {value}",
+      "attendanceBadge": "Посещаемость: {value}",
+      "absenceBadge": "Отписки: {value}",
+      "kickChanceLabel": "Шанс на кик",
+      "topPlayersTitle": "Топ игроков по {metric} · топ {n}",
+      "topPlayersTitleAll": "Топ игроков по {metric} · топ вся",
+      "noPlayers": "Нет данных по игрокам",
+      "victoriesByGames": "Победы по играм",
+      "victories": "Победы",
+      "defeats": "Поражения",
+      "noGames": "Нет данных по играм",
+      "topSquadsKd": "Топ отрядов по КД",
+      "noSquads": "Нет отрядов",
+      "kdShort": "КД",
+      "kdaShort": "КДА"
+    },
+    "settings": {
+      "publicTitle": "Публичный профиль клана",
+      "publicDesc": "Публичный клан отображается в каталоге и на страницах профилей его участников.",
+      "publicToggle": "Показывать клан публично",
+      "publicToggleHint": "Клан появится в каталоге и на профилях участников",
+      "recruitingTitle": "Набор в клан",
+      "acceptRequests": "Принимать заявки",
+      "acceptRequestsHint": "В списке кланов появится бейджик",
+      "scheduleTitle": "Расписание КВ",
+      "scheduleDesc": "Клан обязательно играет 3 турнира в неделю. Настройка потасовок показывает расписание публично и используется в расчёте шанса на кик.",
+      "tournamentFixedLabel": "Турниры (обязательно)",
+      "tournamentFixedHint": "{count} турнира в неделю — изменить нельзя",
+      "brawlsMandatoryLabel": "Потасовки обязательны",
+      "brawlsMandatoryHint": "Если выключено — потасовки не считаются при расчёте шанса на кик",
+      "scheduleFields": {
+        "brawlsPerWeek": "Потасовок в неделю"
+      },
+      "scheduleTotal": "Итого: {tournament} турнира + {brawl} потасовок в неделю · потасовки {mandatory, select, yes {обязательные} other {необязательные}}",
+      "saveSchedule": "Сохранить расписание",
+      "syncTitle": "Синхронизация",
+      "syncDesc": "Обновить состав клана по данным EXBO: новые участники будут добавлены, покинувшие — отмечены.",
+      "syncButton": "Синхронизировать",
+      "botTitle": "Discord бот",
+      "botDesc": "Привяжите бота к своему Discord-серверу, чтобы публиковать отряды и принимать отписки.",
+      "botCommandLabel": "Выполните команду на сервере:",
+      "botTokenExpires": "Токен действует {minutes} мин. Сначала выполните команду, затем повторно привяжите бота при необходимости.",
+      "botLinkLabel": "Привязать Discord бота",
+      "botLinkHint": "Сгенерируйте токен и выполните команду /setup на сервере",
+      "botLinkButton": "Сгенерировать токен",
+      "botGuildsTitle": "Привязанные серверы",
+      "botNoGuilds": "Пока нет привязанных серверов",
+      "botUnlink": "Отвязать",
+      "freezeTitle": "Заморозка клана",
+      "freezeLabel": "Заморозить клан",
+      "freezeDesc": "Заморозка останавливает управление кланом. Данные сохраняются, активация вернёт доступ.",
+      "freezeButton": "Заморозить",
+      "freezeConfirmTitle": "Заморозить клан?",
+      "freezeConfirmBody": "Управление кланом будет остановлено. Разморозить можно будет активацией на экране заморозки.",
+      "freezeConfirm": "Заморозить",
+      "toasts": {
+        "saved": "Настройки сохранены",
+        "saveError": "Не удалось сохранить настройки",
+        "recruitingUpdated": "Набор обновлён",
+        "recruitingError": "Не удалось изменить набор",
+        "scheduleSaved": "Расписание сохранено",
+        "scheduleError": "Не удалось сохранить расписание",
+        "synced": "Состав обновлён: {count} участников",
+        "syncError": "Не удалось синхронизировать состав",
+        "botTokenCreated": "Токен создан. Выполните команду на Discord-сервере",
+        "botTokenError": "Не удалось сгенерировать токен",
+        "botUnlinked": "Сервер отвязан",
+        "botUnlinkError": "Не удалось отвязать сервер",
+        "frozen": "Клан заморожен",
+        "freezeError": "Не удалось заморозить клан"
+      }
+    }
+  },
+  "me": {
+    "nav": {
+      "home": "Главная",
+      "clan": "Клан",
+      "dashboard": "Панель",
+      "members": "Участники",
+      "sessions": "Игры",
+      "stats": "Статистика",
+      "grenades": "Гранаты",
+      "squads": "Отряды",
+      "gold": "Голд дропы",
+      "absences": "Отписки",
+      "settings": "Настройки",
+      "content": "Контент",
+      "articles": "Статьи",
+      "builds": "Сборки",
+      "stars": "Избранное",
+      "system": "Система",
+      "notifications": "Уведомления"
+    },
+    "menu": "Меню",
+    "home": {
+      "builds": "Сборки",
+      "allBuilds": "Все сборки",
+      "noBuilds": "Нет сборок",
+      "publishedArticles": "Опубликованные статьи",
+      "allArticles": "Все статьи",
+      "underReview": "На рассмотрении",
+      "characters": "Персонажи"
+    },
+    "articles": {
+      "title": "Статьи",
+      "create": "Создать",
+      "all": "Все",
+      "noArticles": "Нет статей",
+      "createFirst": "Создать первую статью",
+      "toastDeleted": "Статья удалена",
+      "toastDeleteError": "Ошибка при удалении"
+    },
+    "builds": {
+      "title": "Сборки",
+      "create": "Создать",
+      "noBuilds": "Нет сборок",
+      "toastDeleted": "Сборка удалена",
+      "toastDeleteError": "Ошибка при удалении"
+    },
+    "notifications": {
+      "title": "Уведомления",
+      "markAllRead": "Прочитать все",
+      "toastAllRead": "Все уведомления прочитаны",
+      "empty": "Нет уведомлений"
+    },
+    "stars": {
+      "title": "Избранное",
+      "empty": "Нет избранных статей/сборок",
+      "build": "Сборка",
+      "article": "Статья"
+    },
+    "newArticle": {
+      "title": "Новая статья",
+      "name": "Название",
+      "namePlaceholder": "Введите название статьи",
+      "type": "Тип статьи",
+      "quest": "Квест",
+      "guide": "Гайд",
+      "other": "Другое",
+      "stalhub": "StalHub",
+      "create": "Создать и открыть редактор",
+      "toastCreated": "Статья создана",
+      "toastCreateError": "Ошибка при создании"
+    },
+    "settings": {
+      "account": "Аккаунт",
+      "name": "Имя",
+      "username": "Никнейм",
+      "nameCooldown": "Сменить имя можно через",
+      "usernameCooldown": "Сменить никнейм можно через",
+      "usernameInvalid": "Никнейм: 3-32 символа, только латиница, цифры и _",
+      "toastProfileSaved": "Профиль обновлён",
+      "toastProfileSaveError": "Ошибка при сохранении профиля",
+      "personalization": "Персонализация",
+      "publicProfile": "Публичный профиль",
+      "publicProfileDesc": "Другие пользователи смогут видеть ваш профиль",
+      "showLoadout": "Показывать снаряжение",
+      "showLoadoutDesc": "Другие пользователи смогут видеть ваше снаряжение",
+      "editLoadout": "Редактировать снаряжение",
+      "editLoadoutDesc": "Основное оружие, броня и сборки. Снаряжение будет отображаться в отрядах клана",
+      "profileLayout": "Вид профиля",
+      "profileLayoutDesc": "Расположение элементов в профиле. Изменения также применяются к публичному профилю",
+      "banner": "Настройка баннера",
+      "bannerDesc": "Настройка типа баннера и его расположения в профиле",
+      "layoutClassic": "Классический",
+      "layoutModern": "Модерн",
+      "layoutCompact": "Компактный",
+      "bannerModeNone": "Без баннера",
+      "bannerModeColor": "Цвет",
+      "bannerModeImage": "Изображение",
+      "bannerTypeBackground": "Фон",
+      "bannerTypeHeader": "Шапка",
+      "linkAccounts": "Привязка аккаунтов",
+      "sessions": "Сессии",
+      "endAll": "Завершить все",
+      "dangerZone": "Опасная зона",
+      "deleteAccount": "Удалить аккаунт",
+      "deleteAccountDesc": "Это действие нельзя отменить",
+      "delete": "Удалить",
+      "bannerEditorTitle": "Редактирование баннера",
+      "bannerPlacement": "Расположение баннера",
+      "bannerType": "Тип баннера",
+      "bannerColor": "Цвет баннера",
+      "bannerImage": "Изображение баннера",
+      "cardColor": "Цвет карточки",
+      "region": "Регион",
+      "regionDesc": "Регион вашего игрового аккаунта EXBO. Используется для поиска персонажа и клана.",
+      "regionLabel": "Текущий регион",
+      "regionButton": "Применить",
+      "toastRegionSaved": "Регион обновлён",
+      "toastRegionSaveError": "Ошибка при обновлении региона",
+      "deleteConfirmTitle": "Удалить аккаунт?",
+      "deleteConfirmDesc": "Это действие нельзя отменить. Все ваши данные будут удалены. Введите ваш ник <bold>{username}</bold> для подтверждения.",
+      "deletePlaceholder": "Ведите сюда",
+      "cancel": "Отмена",
+      "deleteConfirm": "Удалить аккаунт",
+      "ago": "назад",
+      "toastSaved": "Настройки сохранены",
+      "toastSaveError": "Ошибка при сохранении",
+      "toastBannerSaved": "Настройки баннера сохранены",
+      "toastBannerSaveError": "Ошибка при сохранении настроек баннера",
+      "toastLayoutSaved": "Настройки расположения обновлены",
+      "toastLayoutSaveError": "Ошибка при сохранении расположения",
+      "toastBannerUploaded": "Баннер загружен",
+      "toastBannerUploadError": "Ошибка при загрузке баннера",
+      "toastLoadoutSaved": "Снаряжение сохранено",
+      "toastLoadoutSaveError": "Ошибка при сохранении снаряжения",
+      "toastDisplaySaved": "Настройки отображения сохранены",
+      "toastDisplayError": "Ошибка при сохранении настроек",
+      "toastSessionDeleted": "Сессия удалена",
+      "toastSessionDeleteError": "Ошибка при удалении сессии",
+      "toastSessionsDeleted": "Все сессии удалены",
+      "toastSessionsDeleteError": "Ошибка при удалении сессий",
+      "toastLinkError": "Ошибка при привязке",
+      "toastUnlinked": "Аккаунт отвязан",
+      "toastUnlinkError": "Ошибка при отвязке",
+      "toastAccountDeleted": "Аккаунт удалён",
+      "toastAccountDeleteError": "Ошибка при удалении аккаунта"
+    },
+    "buildCard": {
+      "toastError": "Ошибка",
+      "toastLinkCopied": "Ссылка скопирована",
+      "toastLoginToStar": "Войдите, чтобы добавить в избранное",
+      "noArmor": "Нет брони",
+      "noContainer": "Нет контейнера",
+      "noArtifacts": "Нет артефактов"
+    },
+    "articleEditor": {
+      "title": "Название статьи",
+      "notSaved": "Не сохранено",
+      "saved": "Сохранено",
+      "edit": "Редактирование",
+      "preview": "Просмотр",
+      "save": "Сохранить",
+      "submitting": "Отправка...",
+      "submit": "На рассмотрение",
+      "hotkeys": {
+        "text": "текст",
+        "code": "code",
+        "heading": "Заголовок",
+        "quote": "Цитата",
+        "item": "Пункт",
+        "alt": "alt"
+      },
+      "tags": "Теги",
+      "cover": "Обложка",
+      "table": "Таблица",
+      "components": "Компоненты",
+      "tagsTitle": "Теги",
+      "tagsLabel": "Теги через запятую",
+      "cancel": "Отмена",
+      "saveBtn": "Сохранить",
+      "coverTitle": "Обложка статьи",
+      "imageUrl": "URL изображения",
+      "delete": "Удалить",
+      "chooseSize": "Выберите размер",
+      "placeholder": "Начните писать в формате Markdown...",
+      "compiling": "Компиляция...",
+      "previewHere": "Предпросмотр появится здесь",
+      "mdxError": "Ошибка в MDX — исправьте синтаксис",
+      "toastSaveError": "Ошибка при сохранении",
+      "toastSubmitted": "Статья отправлена на рассмотрение",
+      "toastSubmitError": "Ошибка при отправке",
+      "toolbar": {
+        "bold": "Полужирный",
+        "italic": "Курсив",
+        "strikethrough": "Зачёркнутый",
+        "heading": "Заголовок",
+        "quote": "Цитата",
+        "inlineCode": "Строчный код",
+        "codeBlock": "Блок кода",
+        "link": "Ссылка",
+        "image": "Изображение",
+        "bulletList": "Маркированный список",
+        "orderedList": "Нумерованный список",
+        "horizontalRule": "Горизонтальная линия",
+        "table": "Вставка таблицы",
+        "components": "MDX-компоненты",
+        "save": "Сохранить"
+      },
+      "hotkeysTitle": "Горячие клавиши",
+      "mdxContent": "Контент"
+    },
+    "bg": {
+      "avatar": "Аватар",
+      "color": "Цвет",
+      "none": "Нет"
+    }
+  },
+  "onboarding": {
+    "title": "Настройка профиля",
+    "stepOf": "Шаг {current} из {total}",
+    "next": "Далее",
+    "back": "Назад",
+    "finish": "Завершить",
+    "uploading": "Загрузка баннера...",
+    "uploadError": "Ошибка при загрузке баннера",
+    "toastSuccess": "Профиль настроен!",
+    "toastError": "Ошибка при сохранении",
+    "welcome": {
+      "title": "Добро пожаловать!",
+      "subtitle": "Давайте настроим всё под вас",
+      "start": "Начать настройку"
+    },
+    "step": {
+      "name": {
+        "title": "Ваше имя",
+        "desc": "Как вас будут видеть другие пользователи"
+      },
+      "username": {
+        "title": "Никнейм",
+        "desc": "Латинские буквы, цифры и подчёркивание (3-32 символа)"
+      },
+      "region": {
+        "title": "Регион",
+        "placeholder": "Выберите регион",
+        "desc": "Регион используется для синхронизации клана и персонажей"
+      },
+      "layout": {
+        "title": "Вид профиля",
+        "desc": "Выберите, как будет выглядеть ваш профиль"
+      },
+      "banner": {
+        "title": "Баннер",
+        "desc": "Настройте баннер своего профиля"
+      },
+      "card": {
+        "title": "Карточка профиля",
+        "desc": "Выберите оформление карточки"
+      },
+      "finish": {
+        "title": "Готово!",
+        "desc": "Проверьте введённые данные и завершите настройку"
+      }
+    }
+  },
+  "hideout": {
+    "item": "Предмет",
+    "perCraft": "За крафт",
+    "total": "Всего",
+    "pricePerUnit": "Цена/ед",
+    "totalPrice": "Итого",
+    "energy": "Энергия",
+    "cost": "Стоимость",
+    "search": "Поиск..."
+  },
+  "builds": {
+    "tags": {
+      "fat": "Жир",
+      "speed": "Скорость",
+      "weight": "Вес",
+      "combo": "Комба"
+    }
+  },
+  "buildsLite": {
+    "notFound": "Сборка не найдена",
+    "pngCopied": "Изображение скопировано",
+    "copyError": "Не удалось скопировать",
+    "pngPreview": "Предпросмотр сборки",
+    "close": "Закрыть",
+    "download": "Скачать",
+    "updated": "Сборка обновлена",
+    "updateError": "Ошибка обновления",
+    "linkCopied": "Ссылка скопирована",
+    "shareTitle": "Поделиться сборкой",
+    "copyPublicLink": "Копировать публичную ссылку",
+    "copyBuildCode": "Копировать код сборки",
+    "updateServer": "Обновить на сервере",
+    "publish": "Опубликовать",
+    "tagsLabel": "Теги",
+    "containerWarnTitle": "Контейнер меньше текущего",
+    "containerWarnDesc": "Артефакты в удаляемых слотах будут отвязаны от контейнера.",
+    "lostSlots": "Будет потеряно занятых слотов: {count}",
+    "confirm": "Подтвердить",
+    "compare": "Сравнить",
+    "compareStop": "Выйти из сравнения"
+  },
+  "items": {
+    "auction": {
+      "history": "История продаж",
+      "current": "Текущие лоты",
+      "lotHistory": "История лотов",
+      "date": "Дата",
+      "listDate": "Дата выставления",
+      "endDate": "Окончание торгов",
+      "startPrice": "Начальная ставка",
+      "currentPrice": "Текущая ставка",
+      "buyout": "Выкуп",
+      "amount": "Кол-во",
+      "cards": "Карточки",
+      "charts": "Графики",
+      "sort": "Сортировка",
+      "sort_default": "По умолчанию",
+      "sort_price": "Цена",
+      "sort_rarity": "Редкость",
+      "range_from": "от",
+      "range_to": "до"
+    }
+  },
+  "users": {
+    "notFound": "Пользователь не найден",
+    "profileDescription": "Профиль пользователя {username}",
+    "secondaryWeapon": "Второстепенное оружие",
+    "bioArmor": "Био-броня",
+    "fatBuild": "Тяжёлая сборка",
+    "speedBuild": "Быстрая сборка"
+  },
+  "auth": {
+    "title": "Авторизация",
+    "error": "Ошибка авторизации",
+    "terms": "Регистрируясь на сайте, вы соглашаетесь с настоящими",
+    "termsLink": "условиями пользования",
+    "recommendationTitle": "Рекомендация",
+    "recommendationDesc": "Используйте EXBO для получения большего функционала"
+  },
+  "tech": {
+    "title": "Ведутся технические работы"
+  },
+  "roadmap": {
+    "genesis": {
+      "title": "Зарождение проекта",
+      "description": "Начало разработки и формирование основной идеи. Создание первых концептов и структуры."
+    },
+    "cbt": {
+      "title": "ЗБТ",
+      "description": "Закрытое бета-тестирование. Проверка работоспособности функционала сайта, сбор баг-репортов."
+    },
+    "obt": {
+      "title": "ОБТ",
+      "description": "Открытое бета-тестирование. Подготовка к релизу, фикс багов, обновление инфраструктуры."
+    },
+    "release": {
+      "title": "Релиз проекта",
+      "description": "Полноценный запуск проекта и дальнейшая поддержка проекта."
+    }
+  },
+  "themes": {
+    "system": "Системная",
+    "dark": "Тёмная",
+    "light": "Светлая"
+  },
+  "clans": {
+    "title": "Кланы",
+    "searchLabel": "Название или тег",
+    "recruiting": "Набор",
+    "empty": "Публичных кланов нет",
+    "faction": "Фракция",
+    "schedule": "Расписание:",
+    "brawls": "Потасовки:",
+    "brawlsMandatory": "обязательные",
+    "brawlsOptional": "необязательные"
+  },
+  "buildsPublic": {
+    "title": "Сборки",
+    "total": "{count} всего",
+    "tagsPlaceholder": "Выбрать теги",
+    "price": "Цена",
+    "priceFrom": "От",
+    "priceTo": "До",
+    "sort": "Сортировка",
+    "sort_newest": "Новые",
+    "sort_stars": "Звёзды",
+    "sort_price": "Цена"
+  },
+  "toolsList": {
+    "title": "Инструменты",
+    "subtitle": "Выберите необходимые вам инструменты"
+  },
+  "dashboard": {
+    "title": "Дашборд",
+    "subtitle": "Создайте дашборд под себя из калькуляторов",
+    "addWidget": "Добавить виджет",
+    "addWidgetSubtitle": "Выберите виджет, и он появится на вашем дашборде",
+    "search": "Поиск виджета...",
+    "categories": {
+      "calculators": "Калькуляторы",
+      "account": "Личный кабинет"
+    },
+    "customize": "Настроить",
+    "done": "Готово",
+    "resetView": "К виджетам",
+    "reset": "Сбросить",
+    "resetConfirm": "Удалить все виджеты с доски?",
+    "emptyTitle": "Дашборд пока пуст",
+    "emptySubtitle": "Добавьте калькуляторы и вкладки, которыми пользуетесь чаще всего",
+    "addFirstWidget": "Добавить первый виджет",
+    "openFull": "Открыть полную версию",
+    "removeWidget": "Удалить виджет",
+    "loginRequired": "Войдите в аккаунт, чтобы использовать этот виджет",
+    "signIn": "Войти",
+    "widgetError": "Не удалось загрузить виджет",
+    "widgets": {
+      "buildsLite": {
+        "title": "Сборки Lite"
+      },
+      "ttk": {
+        "title": "Калькулятор ТТК"
+      },
+      "arsenal": {
+        "title": "Арсенал"
+      },
+      "modules": {
+        "title": "Модули"
+      },
+      "hideout": {
+        "title": "Схрон"
+      },
+      "bp": {
+        "title": "Боевой пропуск"
+      },
+      "dpi": {
+        "title": "Конвертер DPI"
+      },
+      "meHome": {
+        "title": "ЛК — Главная"
+      },
+      "meBuilds": {
+        "title": "ЛК — Сборки"
+      },
+      "meArticles": {
+        "title": "ЛК — Статьи"
+      },
+      "meNotifications": {
+        "title": "ЛК — Уведомления"
+      },
+      "meStars": {
+        "title": "ЛК — Избранное"
+      },
+      "clan": {
+        "title": "Клан — Сводка"
+      },
+      "clanMembers": {
+        "title": "Клан — Участники"
+      },
+      "clanSessions": {
+        "title": "Клан — Сессии"
+      },
+      "clanAbsences": {
+        "title": "Клан — Отписки"
+      },
+      "clanGold": {
+        "title": "Клан — Голд дропы"
+      },
+      "clanGrenades": {
+        "title": "Клан — Гранаты"
+      },
+      "clanSquads": {
+        "title": "Клан — Отряды"
+      },
+      "clanStats": {
+        "title": "Клан — Статистика"
+      }
+    }
+  }
 }

@@ -20,6 +20,7 @@ export function Accordion({
 	defaultExpandedKeys = [],
 	className,
 	titleClass,
+	accordionClass,
 	onSelectionChange,
 }: AccordionProps) {
 	const [expandedKeys, setExpandedKeys] =
@@ -97,7 +98,8 @@ export function Accordion({
 						animate={{ opacity: 1, y: 0 }}
 						className={cn(
 							accordionVariants({ variant, size }),
-							item.disabled && 'cursor-not-allowed opacity-50'
+							item.disabled && 'cursor-not-allowed opacity-50',
+							accordionClass
 						)}
 						initial={{ opacity: 0, y: 10 }}
 						key={item.key}
