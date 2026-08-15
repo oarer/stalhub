@@ -52,7 +52,7 @@ export default function CallbackPage() {
 					).handleCallback(code, state)
 					break
 			}
-			router.replace('/me')
+			router.replace('/me/onboarding')
 		}
 
 		handle().catch(() => {
