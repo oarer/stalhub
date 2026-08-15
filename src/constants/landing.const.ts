@@ -95,7 +95,7 @@ export const tools = [
 		icon: 'lucide:map',
 		title: 'landing.tools.tool_list.map.title',
 		desc: 'landing.tools.tool_list.map.desc',
-		link: '/maps',
+		link: '#',
 	},
 	{
 		id: 'player_search',

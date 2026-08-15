@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
@@ -10,8 +10,9 @@ import { Skeleton } from '@/components/ui/Skeleton'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
-import { userQueries } from '@/queries/user/user.queries'
+import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { clanService } from '@/services/clan/clan.service'
+import { Regions } from '@/types/api.type'
 
 export default function ClanLayout({
 	children,
@@ -25,7 +26,12 @@ export default function ClanLayout({
 		isLoading,
 		error,
 	} = useSuspenseQuery(clanQueries.getMe())
-	const { data: user } = useSuspenseQuery(userQueries.getMe())
+	const { data: characters } = useQuery({
+		...exboQueries.getCharacters(
+			(profile?.clan?.region as Regions) ?? Regions.RU
+		),
+		enabled: Boolean(profile?.clan && profile.clan.status === 'FROZEN'),
+	})
 	const queryClient = getQueryClient()
 
 	const registerMutation = useMutation({
@@ -114,8 +120,11 @@ export default function ClanLayout({
 
 	if (profile.clan.status === 'FROZEN') {
 		const isLeader =
-			profile.clan.leader.toLowerCase() ===
-			user.providers.exbo?.username?.toLowerCase()
+			characters?.some(
+				(c) =>
+					c.username.toLowerCase() ===
+					profile.clan!.leader.toLowerCase()
+			) ?? false
 
 		if (!isLeader) {
 			return (
