@@ -98,7 +98,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 							width={32}
 						/>
 						<p
-							className="truncate text-center font-semibold text-sm transition-colors"
+							className="max-w-24 truncate text-center font-semibold text-sm transition-colors sm:max-w-sm"
 							style={{ color: colorHex }}
 						>
 							{messageToString(item.name, locale)}
