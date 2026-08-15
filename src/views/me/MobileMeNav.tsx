@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { unbounded } from '@/app/fonts'
@@ -13,8 +14,6 @@ import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import useSvg from '@/hooks/useSvg'
 import { userQueries } from '@/queries/user/user.queries'
-import type { BgVariant } from '@/types/user.type'
-import { useTranslations } from 'next-intl'
 import NavTabs from '@/views/me/components/NavTabs'
 import UserCard from '@/views/me/components/UserCard'
 import { usePatchMe } from '@/views/me/hooks/usePatchMe'
@@ -28,8 +27,8 @@ export default function MobileMeNav() {
 
 	const svgPath = useSvg()
 
-	const bgVariant = (user.settings?.bg_variant ?? 'NONE') as BgVariant
-	const bgColor = user.settings?.bg_color ?? '#000000'
+	const bgVariant = user.customization?.cardBackground ?? 'NONE'
+	const bgColor = user.customization?.cardColor ?? '#000000'
 
 	const bgUpdateMutation = usePatchMe()
 
