@@ -24,6 +24,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const items = (query.data as Item[] | undefined) ?? []
 
 	const addArt = useBuildStore((s) => s.addArt)
+	const defaults = useBuildStore((s) => s.defaults)
 	const setContainer = useBuildStore((s) => s.setContainer)
 	const build = useBuildStore((s) => s.build)
 	const updateArt = useBuildStore((s) => s.updateArt)
@@ -72,7 +73,18 @@ export default function ArtModal({ onClose }: ModalProps) {
 
 	const handleAdd = (itemId: string) => {
 		if (copyMode) return
-		addArt(itemId, undefined, selectedSlot)
+		const item = items.find((it) => it.id === itemId)
+		const parsed = item ? parseItemStats(item, locale) : null
+		const addStatKeys = parsed
+			? Object.keys(parsed.addStats ?? {})
+			: []
+		const data: Partial<Art> | undefined =
+			(defaults.art.potential ?? 0) >= 15 &&
+			addStatKeys.length > 0 &&
+			addStatKeys.length <= 3
+				? { selectedStats: addStatKeys }
+				: undefined
+		addArt(itemId, data, selectedSlot)
 	}
 
 	const handleCreateContainer = () => {
