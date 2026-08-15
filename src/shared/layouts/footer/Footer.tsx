@@ -18,12 +18,12 @@ const BuildHash = () => (
 		build@
 		<Link
 			className="text-sky-600 transition-colors hover:underline dark:text-sky-400"
-			href={`https://github.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}/tree/${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}`}
+			href={`https://github.com/oarer/stalhub/tree/${process.env.NEXT_PUBLIC_GIT_COMMIT_SHA}`}
 			rel="noopener noreferrer"
 			target="_blank"
-			title={process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
+			title={process.env.NEXT_PUBLIC_GIT_COMMIT_SHA}
 		>
-			{process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA?.slice(0, 7)}
+			{process.env.NEXT_PUBLIC_GIT_COMMIT_SHA?.slice(0, 7)}
 		</Link>
 	</span>
 )
@@ -142,7 +142,12 @@ export default function FooterLayout() {
 	}, [])
 	if (!mounted) return null
 
-	if (pathname.startsWith('/map') || pathname.startsWith('/calcs/hideout') || pathname.startsWith('/dashboard') || pathname.startsWith('/me/onboarding'))
+	if (
+		pathname.startsWith('/map') ||
+		pathname.startsWith('/calcs/hideout') ||
+		pathname.startsWith('/dashboard') ||
+		pathname.startsWith('/me/onboarding')
+	)
 		return null
 
 	return <Footer />

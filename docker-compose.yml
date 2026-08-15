@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        GIT_COMMIT_SHA: ${GIT_COMMIT_SHA}
     image: stalhub_frontend
     container_name: StalHub_Frontend
     environment:

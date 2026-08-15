@@ -17,5 +17,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/stalhub
-            git pull
+            git fetch origin main
+            git reset --hard origin/main
+
+            export GIT_COMMIT_SHA=$(git rev-parse HEAD)
+
             docker compose up -d --build
