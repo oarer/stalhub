@@ -25,7 +25,8 @@
 			"сталхаб",
 			"stalhub",
 			"сталхаб калькулятор",
-			"stalhub калькулятор"
+			"stalhub калькулятор",
+			"клановая аналитика"
 		]
 	},
 	"/calcs": {
@@ -99,6 +100,16 @@
 			"sensitivity converter",
 			"mouse sensitivity calculator",
 			"чувствительность мыши"
+		]
+	},
+	"/calcs/modules": {
+		"title": "Калькулятор модулей · StalHub",
+		"description": "Конвертер чувствительности мыши между играми.",
+		"keywords": [
+			"module calculator",
+			"калькулятор модулей",
+			"module stalcraft",
+			"сталкрафт модули"
 		]
 	},
 	"/about": {

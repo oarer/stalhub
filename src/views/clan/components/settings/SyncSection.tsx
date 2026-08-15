@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 
-//! TODO проверить бэк, падает при попытке (422)
 interface SyncSectionProps {
 	isPending: boolean
 	onSync: () => void

@@ -21,13 +21,6 @@ export const toolsList = [
 		link: '/calcs/ttk',
 	},
 	{
-		id: 'modules',
-		icon: 'lucide:box',
-		title: 'landing.tools.tool_list.modules.title',
-		desc: 'landing.tools.tool_list.modules.desc',
-		link: '/calcs/modules',
-	},
-	{
 		id: 'arsenal',
 		icon: 'lucide:table-properties',
 		title: 'landing.tools.tool_list.arsenal.title',

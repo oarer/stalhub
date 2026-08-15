@@ -6,7 +6,6 @@ import { CLink } from '@/components/ui/Link'
 import type { AccordionItem } from '@/types/ui/accordion.type'
 import type { DropdownItem, DropdownMenuGroup } from '@/types/ui/dropdown.type'
 
-
 export const MobileLinks = [
 	{
 		title: 'Discord',
@@ -147,12 +146,12 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				labelKey: 'nav.groups.other.items.dashboard.label',
 				descriptionKey: 'nav.groups.other.items.dashboard.description',
 			},
-			{
-				key: 'maps',
-				icon: 'lucide:map',
-				href: '/maps',
-				labelKey: 'nav.groups.other.items.maps.label',
-			},
+			// {
+			// 	key: 'maps',
+			// 	icon: 'lucide:map',
+			// 	href: '/maps',
+			// 	labelKey: 'nav.groups.other.items.maps.label',
+			// },
 			{
 				key: 'players',
 				icon: 'lucide:user-round-search',

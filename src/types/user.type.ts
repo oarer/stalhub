@@ -42,19 +42,12 @@ export type BannerType = 'BACKGROUND' | 'HEADER'
 export type CardBackground = 'COLOR' | 'AVATAR' | 'NONE'
 type AvatarSource = 'DISCORD' | 'TELEGRAM'
 
-//! TODO LEGACY
 export interface UserSettings {
 	id: string
 	public_profile: boolean
-	avatar: string | null
-	bg_variant: BgVariant
-	bg_color: string | null
 	region?: string | null
 	region_changed_at?: string | null
 }
-
-//! TODO LEGACY
-export type BgVariant = 'COLOR' | 'AVATAR' | 'NONE'
 
 export interface UserBadge {
 	id: string
