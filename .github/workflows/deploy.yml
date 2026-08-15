@@ -22,4 +22,5 @@ jobs:
 
             export GIT_COMMIT_SHA=$(git rev-parse HEAD)
 
-            docker compose up -d --build
+            docker build --build-arg GIT_COMMIT_SHA=$GIT_COMMIT_SHA -t stalhub_frontend:$GIT_COMMIT_SHA .
+            docker stack deploy -c docker-compose.yml stalhub

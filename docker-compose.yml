@@ -5,11 +5,28 @@ services:
       dockerfile: Dockerfile
       args:
         GIT_COMMIT_SHA: ${GIT_COMMIT_SHA}
-    image: stalhub_frontend
-    container_name: StalHub_Frontend
+    image: stalhub_frontend:${GIT_COMMIT_SHA:-latest}
     environment:
       NODE_ENV: production
       PORT: "3000"
     ports:
       - "3000:3000"
-    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+    deploy:
+      replicas: 2
+      update_config:
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
