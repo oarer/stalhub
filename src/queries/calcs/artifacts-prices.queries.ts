@@ -9,6 +9,7 @@ class ArtifactsPricesQueries {
 			queryFn: () => artifactsPricesService.getPrices(queries, region),
 			staleTime: 1000 * 60 * 30,
 			enabled: queries.length > 0,
+			retry: 1,
 			placeholderData: undefined,
 		})
 	}
