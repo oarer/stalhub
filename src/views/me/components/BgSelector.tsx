@@ -1,16 +1,12 @@
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRef, useState } from 'react'
 import useClickOutside from '@/hooks/useClickOutside'
 import { cn } from '@/lib/cn'
-import type {
-	BgVariant,
-	CardBackground,
-	UpdateUserSettingsDto,
-} from '@/types/user.type'
+import type { CardBackground, UpdateUserSettingsDto } from '@/types/user.type'
 
-const bgVariantConfig: Record<BgVariant, { icon: string; label: string }> = {
+const bgVariantConfig: Record<CardBackground, { icon: string; label: string }> = {
 	AVATAR: { icon: 'lucide:image', label: 'me.bg.avatar' },
 	COLOR: { icon: 'lucide:palette', label: 'me.bg.color' },
 	NONE: { icon: 'lucide:x', label: 'me.bg.none' },
@@ -37,7 +33,7 @@ export function BgVariantSelector({
 
 	const current = bgVariantConfig[displayVariant]
 
-	const handleVariantChange = (next: BgVariant) => {
+	const handleVariantChange = (next: CardBackground) => {
 		if (next === variant) return setExpanded(false)
 		if (timeoutRef.current) clearTimeout(timeoutRef.current)
 		setOpacity(0)
@@ -95,7 +91,7 @@ export function BgVariantSelector({
 					>
 						{(
 							Object.entries(bgVariantConfig) as [
-								BgVariant,
+								CardBackground,
 								{ icon: string; label: string },
 							][]
 						).map(([key, cfg]) => (
