@@ -20,6 +20,7 @@ export interface ComboboxOption {
 	value: string
 	label: string
 	disabled?: boolean
+	type?: 'option' | 'header'
 }
 
 interface ComboboxBaseProps {
@@ -243,25 +244,33 @@ export function Combobox(props: ComboboxProps) {
 			(e) => {
 				if (!open) return
 
+				const isSelectable = (option: ComboboxOption) =>
+					!option.disabled && option.type !== 'header'
+
+				const nextIndex = (from: number, dir: 1 | -1) => {
+					let i = from
+					for (let steps = 0; steps < filtered.length; steps++) {
+						i = (i + dir + filtered.length) % filtered.length
+						if (isSelectable(filtered[i])) return i
+					}
+					return from
+				}
+
 				switch (e.key) {
 					case 'ArrowDown':
 						e.preventDefault()
-						setHighlightedIndex((prev) =>
-							prev + 1 >= filtered.length ? 0 : prev + 1
-						)
+						setHighlightedIndex((prev) => nextIndex(prev, 1))
 						break
 
 					case 'ArrowUp':
 						e.preventDefault()
-						setHighlightedIndex((prev) =>
-							prev - 1 < 0 ? filtered.length - 1 : prev - 1
-						)
+						setHighlightedIndex((prev) => nextIndex(prev, -1))
 						break
 
 					case 'Enter': {
 						e.preventDefault()
 						const item = filtered[highlightedIndex]
-						if (item && !item.disabled) {
+						if (item && isSelectable(item)) {
 							select(item.value)
 						}
 						break
@@ -294,10 +303,7 @@ export function Combobox(props: ComboboxProps) {
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
-				className={cn(
-					'flex w-full cursor-pointer items-center justify-between rounded-lg border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm',
-					isMultiple ? 'min-h-10' : 'h-11.5'
-				)}
+				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm"
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
 				ref={triggerRef}
@@ -312,7 +318,7 @@ export function Combobox(props: ComboboxProps) {
 									key={opt.value}
 								>
 									<p className="min-w-0 flex-1 truncate">
-										{opt.label}
+										{t(opt.label)}
 									</p>
 
 									<span
@@ -374,7 +380,7 @@ export function Combobox(props: ComboboxProps) {
 								</div>
 
 								{filtered.length === 0 ? (
-									<div className="px-3 py-6 text-center text-sm">
+									<div className="px-3 py-6 text-center font-bold text-sm">
 										{t(emptyText)}
 									</div>
 								) : (
@@ -396,6 +402,28 @@ export function Combobox(props: ComboboxProps) {
 														filtered[
 															virtualItem.index
 														]
+
+													if (
+														option.type === 'header'
+													) {
+														return (
+															<div
+																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-bold text-neutral-500 text-xs uppercase tracking-wide"
+																key={
+																	option.value
+																}
+																style={{
+																	height: `${virtualItem.size}px`,
+																	transform: `translateY(${virtualItem.start}px)`,
+																}}
+															>
+																{t(
+																	option.label
+																)}
+															</div>
+														)
+													}
+
 													const isSelected =
 														selectedSet.has(
 															option.value

@@ -1809,7 +1809,15 @@
 			"startPrice": "Starting bid",
 			"currentPrice": "Current bid",
 			"buyout": "Buyout",
-			"amount": "Amount"
+			"amount": "Amount",
+			"cards": "Cards",
+			"charts": "Charts",
+			"sort": "Sort",
+			"sort_default": "Default",
+			"sort_price": "Price",
+			"sort_rarity": "Rarity",
+			"range_from": "from",
+			"range_to": "to"
 		}
 	},
 	"users": {

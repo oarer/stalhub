@@ -24,7 +24,7 @@ import {
 
 function formatStat(value: number, type: string): string {
 	const sign = value > 0 ? '+' : ''
-	return `${sign}${value.toFixed(2)}%`
+	return `${sign}${value.toFixed(3)}%`
 }
 
 interface ModuleGroupCardProps {

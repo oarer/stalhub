@@ -1809,7 +1809,15 @@
 			"startPrice": "시작 입찰가",
 			"currentPrice": "현재 입찰가",
 			"buyout": "즉시 구매",
-			"amount": "수량"
+			"amount": "수량",
+			"cards": "카드",
+			"charts": "그래프",
+			"sort": "정렬",
+			"sort_default": "기본",
+			"sort_price": "가격",
+			"sort_rarity": "희귀도",
+			"range_from": "부터",
+			"range_to": "까지"
 		}
 	},
 	"users": {

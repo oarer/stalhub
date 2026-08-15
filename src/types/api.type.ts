@@ -12,6 +12,7 @@ export interface AuctionParams {
 	region?: Regions
 	id: string
 	limit?: number
+	offset?: number
 	additional?: boolean
 }
 export interface ItemListing {

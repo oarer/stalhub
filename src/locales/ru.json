@@ -1809,7 +1809,15 @@
 			"startPrice": "Начальная ставка",
 			"currentPrice": "Текущая ставка",
 			"buyout": "Выкуп",
-			"amount": "Кол-во"
+			"amount": "Кол-во",
+			"cards": "Карточки",
+			"charts": "Графики",
+			"sort": "Сортировка",
+			"sort_default": "По умолчанию",
+			"sort_price": "Цена",
+			"sort_rarity": "Редкость",
+			"range_from": "от",
+			"range_to": "до"
 		}
 	},
 	"users": {

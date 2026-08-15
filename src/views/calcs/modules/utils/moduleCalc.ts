@@ -6,11 +6,52 @@ import type {
 	ModuleRarity,
 	ModuleSlotConfig,
 	ModuleStat,
+	ModulesData,
 	WeaponModule,
 } from '@/types/module.type'
 
 export const QUALITY_MIN = 0
 export const QUALITY_MAX = 200
+export const QM_BOUNDS = [0, 18.72, 40.25, 64.58, 91.72, 121.67, 154.43, 175]
+
+export interface ModuleAttr {
+	definitionId: string
+	quality?: number
+	statsRandom: number
+}
+
+export function calcModulePct({ quality, statsRandom }: ModuleAttr): number {
+	const q = quality ?? 0
+	const minBound = QM_BOUNDS[q] ?? 0
+	const maxBound = QM_BOUNDS[q + 1] ?? 175
+	const pct = minBound + (maxBound - minBound) * ((statsRandom + 2) / 4)
+	return +Math.min(maxBound, Math.max(minBound, pct)).toFixed(1)
+}
+
+export interface ModuleAttrStat {
+	label: string
+	value: number
+	sign: string
+}
+
+export function calcModuleAttrStats(attr: ModuleAttr): ModuleAttrStat[] {
+	const pct = calcModulePct(attr)
+	const module = getModuleByDefinitionId(attr.definitionId)
+	if (!module) return []
+
+	return module.stats.map((stat) => {
+		const value = getModuleStatValue(stat, pct)
+		return { label: stat.lines.ru, value, sign: value > 0 ? '+' : '' }
+	})
+}
+
+export function formatModuleAttrStat(stat: ModuleAttrStat): string {
+	return `${stat.sign}${stat.value.toFixed(3)} ${stat.label}`
+}
+
+export function buildModuleAttrLines(attr: ModuleAttr): string[] {
+	return calcModuleAttrStats(attr).map(formatModuleAttrStat)
+}
 
 export function getModuleStatValue(stat: ModuleStat, quality: number): number {
 	const q = Math.max(QUALITY_MIN, Math.min(QUALITY_MAX, quality))
@@ -41,6 +82,10 @@ function getModulesData() {
 	return useModulesStore.getState().data
 }
 
+export function useModulesData(): ModulesData {
+	return useModulesStore((s) => s.data)
+}
+
 export function getRarityByQuality(quality: number): ModuleRarity {
 	const data = getModulesData()
 	const q = Math.max(QUALITY_MIN, Math.min(QUALITY_MAX, quality))
@@ -53,7 +98,7 @@ export function getRarityByQuality(quality: number): ModuleRarity {
 	return rarity
 }
 
-function getRarityIndex(rarity: ModuleRarity): number {
+export function getRarityIndex(rarity: ModuleRarity): number {
 	return RARITY_INDEX[rarity] ?? 1
 }
 
@@ -226,6 +271,23 @@ export function getGroupModules(groupKey: ModuleGroupKey): WeaponModule[] {
 	return group?.modules ?? []
 }
 
+export function getModuleGroupByAttributeType(type?: number): ModuleGroupKey {
+	if (type === 2) return 'concept'
+	if (type === 1) return 'deviation'
+	return 'add-on'
+}
+
+export function getModuleByDefinitionId(
+	definitionId: string
+): WeaponModule | null {
+	const data = getModulesData()
+	for (const group of data.groups) {
+		const module = group.modules.find((m) => m.key === definitionId)
+		if (module) return module
+	}
+
+	return null
+}
 
 export interface ModuleDamageModifiers {
 	startMult: number

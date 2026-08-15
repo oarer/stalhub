@@ -1809,7 +1809,15 @@
 			"startPrice": "Puja inicial",
 			"currentPrice": "Puja actual",
 			"buyout": "Compra directa",
-			"amount": "Cant."
+			"amount": "Cant.",
+			"cards": "Tarjetas",
+			"charts": "Gráficos",
+			"sort": "Ordenar",
+			"sort_default": "Por defecto",
+			"sort_price": "Precio",
+			"sort_rarity": "Rareza",
+			"range_from": "de",
+			"range_to": "a"
 		}
 	},
 	"users": {

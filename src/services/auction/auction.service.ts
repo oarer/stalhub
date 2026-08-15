@@ -6,13 +6,14 @@ class AuctionService {
 	async getLots({
 		id,
 		limit = 10,
+		offset = 0,
 		additional = true,
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsResponse> {
 		const { data } = await apiClient.get<LotsResponse>(
 			`/api/v1/auction/${region}/${id}/lots`,
 			{
-				params: { limit, additional },
+				params: { limit, additional, offset },
 			}
 		)
 		return data
@@ -21,13 +22,14 @@ class AuctionService {
 	async getHistory({
 		id,
 		limit = 10,
+		offset = 0,
 		additional = true,
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsHistoryResponse> {
 		const { data } = await apiClient.get<LotsHistoryResponse>(
 			`/api/v1/auction/${region}/${id}/history`,
 			{
-				params: { limit, additional },
+				params: { limit, additional, offset },
 			}
 		)
 		return data

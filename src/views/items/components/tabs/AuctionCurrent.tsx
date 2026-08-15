@@ -6,13 +6,16 @@ import { Scatter } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
 import type { Lot } from '@/types/item.type'
+import type { ModuleAttribute } from '@/types/module.type'
 import { calcArtifactPercent, getArtifactColor } from '@/utils/artUtils'
+import { useModulesData } from '@/views/calcs/modules/utils/moduleCalc'
 import {
 	type BaseChartPoint,
 	createAuctionDataset,
 	formatPrice,
 	useAuctionChartOptions,
 } from './AuctionChart'
+import { buildModuleAttributeLines } from './LotDetails'
 
 type Props = {
 	data?: Lot[]
@@ -29,10 +32,12 @@ type CurrentPoint = BaseChartPoint & {
 	currentPrice?: number
 	buyoutPrice?: number | null
 	isBuyout: boolean
+	attributes: ModuleAttribute[]
 }
 
 export default function AuctionCurrent({ data }: Props) {
 	const t = useTranslations()
+	useModulesData()
 
 	const tooltipCallbacks = {
 		title: (items: TooltipItem<'scatter'>[]) => {
@@ -59,14 +64,19 @@ export default function AuctionCurrent({ data }: Props) {
 
 			if (raw.amount > 1)
 				lines.push(`${t('items.auction.amount')}: ${raw.amount}`)
-			if (raw.artPercent > 0)
-				lines.push(
-					`${t('modals.builds.settings.percent')}: ${raw.artPercent.toFixed(2)}%`
-				)
-			if (raw.ptn > 0)
-				lines.push(
-					`${t('modals.builds.settings.potential')}: ${raw.ptn}`
-				)
+
+			if (raw.attributes.length > 0) {
+				lines.push(...buildModuleAttributeLines(raw.attributes))
+			} else {
+				if (raw.artPercent > 0)
+					lines.push(
+						`${t('modals.builds.settings.percent')}: ${raw.artPercent.toFixed(2)}%`
+					)
+				if (raw.ptn > 0)
+					lines.push(
+						`${t('modals.builds.settings.potential')}: ${raw.ptn}`
+					)
+			}
 
 			return lines
 		},
@@ -95,6 +105,7 @@ export default function AuctionCurrent({ data }: Props) {
 			currentPrice: item.currentPrice,
 			buyoutPrice: item.buyoutPrice ?? null,
 			isBuyout: useBuyout,
+			attributes: item.additional?.attributes ?? [],
 		}
 	})
 

@@ -73,3 +73,10 @@ export interface ModuleSlotConfig {
 	moduleKey: string
 	quality: number
 }
+
+export interface ModuleAttribute {
+	type?: number
+	statsRandom: number
+	definitionId: string
+	quality: number
+}

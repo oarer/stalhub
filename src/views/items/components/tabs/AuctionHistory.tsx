@@ -6,13 +6,17 @@ import { Scatter } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
 import type { LotHistory } from '@/types/item.type'
+import type { ModuleAttribute } from '@/types/module.type'
 import { calcArtifactPercent, getArtifactColor } from '@/utils/artUtils'
+import { useModulesData } from '@/views/calcs/modules/utils/moduleCalc'
 import {
 	type BaseChartPoint,
 	buildTooltipLines,
 	createAuctionDataset,
+	formatPrice,
 	useAuctionChartOptions,
 } from './AuctionChart'
+import { buildModuleAttributeLines } from './LotDetails'
 
 type Props = {
 	data?: LotHistory[]
@@ -24,10 +28,12 @@ type HistoryPoint = BaseChartPoint & {
 	artPercent: number
 	qlt: number
 	ptn: number
+	attributes: ModuleAttribute[]
 }
 
 export default function AuctionHistory({ data }: Props) {
 	const t = useTranslations()
+	useModulesData()
 
 	const tooltipCallbacks = {
 		title: (items: TooltipItem<'scatter'>[]) => {
@@ -36,12 +42,23 @@ export default function AuctionHistory({ data }: Props) {
 		},
 		label: (context: TooltipItem<'scatter'>) => {
 			const raw = context.raw as HistoryPoint
+			if (raw.attributes.length > 0) {
+				return [
+					`${t('arsenal.table.currentPrice')}: ${formatPrice(raw.y)}`,
+					...(raw.amount > 1
+						? [`${t('items.auction.amount')}: ${raw.amount}`]
+						: []),
+					...buildModuleAttributeLines(raw.attributes),
+				]
+			}
+
 			return buildTooltipLines(t('arsenal.table.currentPrice'), raw.y, {
 				...(raw.amount > 1 && {
 					[t('items.auction.amount')]: raw.amount,
 				}),
 				...(raw.artPercent > 0 && {
-					[t('modals.builds.settings.percent')]: `${raw.artPercent.toFixed(2)}%`,
+					[t('modals.builds.settings.percent')]:
+						`${raw.artPercent.toFixed(2)}%`,
 				}),
 				...(raw.ptn > 0 && {
 					[t('modals.builds.settings.potential')]: raw.ptn,
@@ -62,6 +79,7 @@ export default function AuctionHistory({ data }: Props) {
 		artPercent: item.additional ? calcArtifactPercent(item.additional) : 0,
 		ptn: item.additional?.ptn ?? 0,
 		qlt: item.additional?.qlt ?? 0,
+		attributes: item.additional?.attributes ?? [],
 	}))
 
 	if (points.length === 0) {

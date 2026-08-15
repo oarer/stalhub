@@ -1,13 +1,18 @@
 'use client'
 
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import {
+	useQuery,
+	useSuspenseInfiniteQuery,
+	useSuspenseQuery,
+} from '@tanstack/react-query'
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { getLocale } from '@/lib/getLocale'
 import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
+import { useModulesStore } from '@/stores/useModules.store'
 import {
 	type AddStatBlock,
 	type DamageDistanceInfoBlock,
@@ -38,15 +43,34 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	const [selected, setSelected] = useState<Record<string, string>>({})
 	const locale = getLocale()
 
+	const modulesLoad = useModulesStore((s) => s.load)
+
+	useEffect(() => {
+		modulesLoad()
+	}, [modulesLoad])
+
 	const iconUrl = `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${path.join('/')}.png`
 
 	const { data } = useSuspenseQuery(itemQueries.byGithubUrl(githubUrl))
 
-	const { data: auctionHistory } = useSuspenseQuery(
-		auctionQueries.history({ id, limit: 75 })
+	const {
+		data: auctionHistoryInfinite,
+		hasNextPage: historyHasNextPage,
+		fetchNextPage: fetchHistoryNextPage,
+	} = useSuspenseInfiniteQuery(auctionQueries.historyInfinite({ id, limit: 50 }))
+	const {
+		data: auctionCurrentInfinite,
+		hasNextPage: currentHasNextPage,
+		fetchNextPage: fetchCurrentNextPage,
+	} = useSuspenseInfiniteQuery(auctionQueries.lotsInfinite({ id, limit: 50 }))
+
+	const auctionCurrent = useMemo(
+		() => auctionCurrentInfinite.pages.flatMap((page) => page.lots),
+		[auctionCurrentInfinite.pages]
 	)
-	const { data: auctionCurrent } = useSuspenseQuery(
-		auctionQueries.lots({ id, limit: 50 })
+	const auctionHistory = useMemo(
+		() => auctionHistoryInfinite.pages.flatMap((page) => page.prices),
+		[auctionHistoryInfinite.pages]
 	)
 
 	const { data: barter } = useSuspenseQuery(itemQueries.barter(id))
@@ -139,9 +163,13 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 				<div className="flex flex-col gap-4">
 					<ItemTabs
-						auctionCurrent={auctionCurrent.lots}
-						auctionHistory={auctionHistory.prices}
+						auctionCurrent={auctionCurrent}
+						auctionHistory={auctionHistory}
 						barter={barter}
+						currentHasMore={currentHasNextPage}
+						historyHasMore={historyHasNextPage}
+						onCurrentLoadMore={fetchCurrentNextPage}
+						onHistoryLoadMore={fetchHistoryNextPage}
 					/>
 
 					{data.infoBlocks

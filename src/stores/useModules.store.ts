@@ -6,7 +6,11 @@ import type {
 } from '@/types/module.type'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import raw from '../../modules.json'
+
+const EMPTY_MODULES_DATA: ModulesData = {
+	qualityRarities: [],
+	groups: [],
+}
 
 export const MODULE_GROUP_KEYS: ModuleGroupKey[] = ['add-on', 'deviation', 'concept']
 
@@ -31,7 +35,7 @@ interface ModulesState {
 export const useModulesStore = create<ModulesState>()(
 	persist(
 		(set, get) => ({
-			data: raw as ModulesData,
+			data: EMPTY_MODULES_DATA,
 			status: 'idle',
 
 			load: async () => {

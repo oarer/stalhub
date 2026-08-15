@@ -1,5 +1,6 @@
 import type { ArtQuality } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
+import type { ModuleAttribute } from '@/types/module.type'
 
 export type ArtifactAdditional = {
 	ndmg?: number
@@ -11,6 +12,7 @@ export type ArtifactAdditional = {
 	bonus_properties?: string[]
 	stats_random?: number
 	md_k?: string | number
+	attributes?: ModuleAttribute[]
 }
 
 export const qualityPercentRanges: Record<

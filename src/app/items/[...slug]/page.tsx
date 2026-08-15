@@ -58,8 +58,8 @@ export default async function ItemsPage({ params }: PageProps) {
 		queryClient.prefetchQuery(itemQueries.byGithubUrl(githubUrl)),
 		queryClient.prefetchQuery(itemQueries.barter(id)),
 
-		queryClient.prefetchQuery(auctionQueries.lots({ id })),
-		queryClient.prefetchQuery(auctionQueries.history({ id })),
+		queryClient.prefetchInfiniteQuery(auctionQueries.lotsInfinite({ id })),
+		queryClient.prefetchInfiniteQuery(auctionQueries.historyInfinite({ id })),
 	])
 
 	const item = queryClient.getQueryData<Item>(

@@ -1809,7 +1809,15 @@
 			"startPrice": "Mise de départ",
 			"currentPrice": "Mise actuelle",
 			"buyout": "Achat direct",
-			"amount": "Quantité"
+			"amount": "Quantité",
+			"cards": "Cartes",
+			"charts": "Graphiques",
+			"sort": "Trier",
+			"sort_default": "Par défaut",
+			"sort_price": "Prix",
+			"sort_rarity": "Rareté",
+			"range_from": "de",
+			"range_to": "à"
 		}
 	},
 	"users": {
