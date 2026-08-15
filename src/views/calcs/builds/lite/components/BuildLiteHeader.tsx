@@ -147,7 +147,7 @@ export function BuildLiteHeader({
 				data-png-exclude="true"
 			>
 				<BuildSelector />
-				<div className="flex gap-2">
+				<div className="flex w-full justify-between gap-2 sm:justify-start">
 					{currentBuild && (
 						<Modal.Root
 							onOpenChange={(open) => {
@@ -326,13 +326,23 @@ export function BuildLiteHeader({
 					>
 						<Icon className="text-xl" icon="lucide:rotate-ccw" />
 					</Button>
-					<CompareBuildSelector
-						compareBuildId={compareBuildId}
-						currentBuildId={currentBuildId}
-						onSelect={onCompareSelect}
-						savedBuilds={savedBuilds}
-					/>
+					<div className="hidden sm:block">
+						<CompareBuildSelector
+							compareBuildId={compareBuildId}
+							currentBuildId={currentBuildId}
+							onSelect={onCompareSelect}
+							savedBuilds={savedBuilds}
+						/>
+					</div>
 				</div>
+			</div>
+			<div className="block sm:hidden">
+				<CompareBuildSelector
+					compareBuildId={compareBuildId}
+					currentBuildId={currentBuildId}
+					onSelect={onCompareSelect}
+					savedBuilds={savedBuilds}
+				/>
 			</div>
 		</div>
 	)
