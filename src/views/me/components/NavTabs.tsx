@@ -6,17 +6,18 @@ import { useTranslations } from 'next-intl'
 import { Divider } from '@/components/ui/Divider'
 import { cn } from '@/lib/cn'
 import type { NavTabsProps } from '@/types/me.types'
-import { tabGroups } from '@/types/me.types'
+import { filterTabsByRoles, tabGroups } from '@/types/me.types'
 
 export default function NavTabs({
 	pathname,
 	unreadCount,
+	roles,
 	onTabClick,
 }: NavTabsProps) {
 	const t = useTranslations()
 	return (
 		<div className="flex flex-col rounded-lg bg-background px-4 py-3">
-			{tabGroups.map((group, gi) => (
+			{filterTabsByRoles(tabGroups, roles).map((group, gi) => (
 				<div key={gi}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (

@@ -7,6 +7,7 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
 import { userQueries } from '@/queries/user/user.queries'
 import type { Layout } from '@/types/user.type'
+import { LoadoutEditorModal } from './components/LoadoutEditorModal'
 import { AccountSection } from './components/settings/AccountSection'
 import { BannerEditorModal } from './components/settings/BannerEditorModal'
 import { DangerZoneSection } from './components/settings/DangerZoneSection'
@@ -15,7 +16,7 @@ import { LinkedAccountsSection } from './components/settings/LinkedAccountsSecti
 import { PersonalizationSection } from './components/settings/PersonalizationSection'
 import { RegionSection } from './components/settings/RegionSection'
 import { SessionsSection } from './components/settings/SessionsSection'
-import { LoadoutEditorModal } from './components/LoadoutEditorModal'
+import { SocialLinksSection } from './components/settings/SocialLinksSection'
 import { useSettingsMutations } from './hooks/useSettingsMutations'
 
 export default function MeSettingsView() {
@@ -30,7 +31,7 @@ export default function MeSettingsView() {
 		itemsQueries.get({ type: 'armor' })
 	)
 	const { data: builds } = useSuspenseQuery(
-		buildApiQueries.list({ take: 500 })
+		buildApiQueries.mine({ take: 500 })
 	)
 
 	const {
@@ -44,6 +45,7 @@ export default function MeSettingsView() {
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,
 		deleteAllSessionsMutation,
+		socialLinksMutation,
 		linkMutation,
 		unlinkMutation,
 		deleteAccountMutation,
@@ -98,6 +100,11 @@ export default function MeSettingsView() {
 				onUnlink={(provider) => unlinkMutation.mutate(provider)}
 				providers={user.providers}
 			/>
+			<SocialLinksSection
+				isPending={socialLinksMutation.isPending}
+				links={user.social_links}
+				onSave={(links) => socialLinksMutation.mutate(links)}
+			/>
 			<SessionsSection
 				onDelete={(id) => deleteSessionMutation.mutate(id)}
 				onDeleteAll={() => deleteAllSessionsMutation.mutate()}
@@ -135,9 +142,7 @@ export default function MeSettingsView() {
 			/>
 			<LoadoutEditorModal
 				armors={armors ?? []}
-				builds={(builds?.data ?? []).filter(
-					(b) => b.author.id === user.id
-				)}
+				builds={builds?.data ?? []}
 				isPending={saveLoadoutMutation.isPending}
 				loadout={loadout}
 				onOpenChange={setIsLoadoutEditorOpen}

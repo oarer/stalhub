@@ -71,6 +71,7 @@
 	},
 	"nav": {
 		"articles": "Artículos",
+		"arts": "Arte",
 		"groups": {
 			"calculators": {
 				"title": "Calculadoras",
@@ -296,7 +297,36 @@
 		"ART_QUALITY_RARE": "Raro",
 		"ART_QUALITY_EXCLUSIVE": "Exclusivo",
 		"ART_QUALITY_LEGENDARY": "Legendario",
-		"ART_QUALITY_UNIQUE": "Único"
+		"ART_QUALITY_UNIQUE": "Único",
+		"title": "Arte",
+		"total": "total",
+		"search": "Buscar por etiquetas",
+		"byAuthor": "Arte de: ",
+		"description": "Descripción",
+		"empty": "Aún no hay obras",
+		"type": "Tipo",
+		"all": "Todos",
+		"author": "Autor",
+		"stars": "Estrellas",
+		"comments": "Comentarios",
+		"publishedAt": "Publicado",
+		"readComments": "Comentarios",
+		"notFound": "Obra no encontrada",
+		"comments": {
+			"title": "Comentarios ({count})",
+			"placeholder": "Escribe un comentario...",
+			"empty": "Sin comentarios",
+			"reply": "Responder",
+			"deleteTitle": "¿Eliminar comentario?",
+			"cancel": "Cancelar",
+			"deleteConfirm": "Eliminar",
+			"toast": {
+				"added": "Comentario añadido",
+				"addError": "Error al añadir el comentario",
+				"deleted": "Comentario eliminado",
+				"deleteError": "Error al eliminar el comentario"
+			}
+		}
 	},
 	"ui": {
 		"combobox": {
@@ -860,7 +890,8 @@
 			"notifications": "Notificaciones",
 			"players": "Jugadores",
 			"articles": "Artículos",
-			"builds": "Builds"
+			"builds": "Builds",
+			"arts": "Arte"
 		},
 		"roles": {
 			"title": "Roles",
@@ -1049,6 +1080,43 @@
 			"empty": "No hay builds",
 			"toast": {
 				"deleted": "Build eliminada"
+			}
+		},
+		"arts": {
+			"title": "Arte",
+			"all": "Todos",
+			"type": "Tipo",
+			"stars": "Estrellas",
+			"comments": "Comentarios",
+			"created": "Creada",
+			"deleteTitle": "¿Eliminar obra?",
+			"deleteDescription": "La obra <strong>{title}</strong> se eliminará para siempre.",
+			"empty": "No hay obras",
+			"create": "Crear",
+			"createTitle": "Nueva obra",
+			"toast": {
+				"deleted": "Obra eliminada",
+				"deleteError": "Error al eliminar",
+				"created": "Obra publicada",
+				"createError": "Error al crear"
+			},
+			"form": {
+				"name": "Nombre",
+				"namePlaceholder": "Introduce el nombre de la obra",
+				"type": "Tipo de obra",
+				"default": "Normal",
+				"nsfw": "NSFW",
+				"image": "Imagen",
+				"tags": "Etiquetas",
+				"tagsPlaceholder": "Etiquetas separadas por comas",
+				"author": "Autor",
+				"authorGuest": "Fuera del sitio",
+				"authorUser": "Usuario del sitio",
+				"authorNamePlaceholder": "Nombre del autor",
+				"authorSearchPlaceholder": "Buscar usuario...",
+				"authorNotFound": "No se encontraron usuarios",
+				"socialUrlPlaceholder": "https://...",
+				"create": "Publicar"
 			}
 		},
 		"notifications": {
@@ -1510,6 +1578,7 @@
 			"content": "Contenido",
 			"articles": "Artículos",
 			"builds": "Builds",
+			"arts": "Arte",
 			"stars": "Favoritos",
 			"system": "Sistema",
 			"notifications": "Notificaciones"
@@ -1539,6 +1608,44 @@
 			"noBuilds": "No hay builds",
 			"toastDeleted": "Build eliminada",
 			"toastDeleteError": "Error al eliminar"
+		},
+		"arts": {
+			"title": "Mis obras",
+			"create": "Añadir",
+			"all": "Todos",
+			"noArts": "No hay obras",
+			"createFirst": "Añadir la primera obra",
+			"toastDeleted": "Obra eliminada",
+			"toastDeleteError": "Error al eliminar"
+		},
+		"newArt": {
+			"title": "Nueva obra",
+			"name": "Nombre",
+			"namePlaceholder": "Introduce el nombre de la obra",
+			"type": "Tipo de obra",
+			"default": "Normal",
+			"nsfw": "NSFW",
+			"image": "Imagen (enlace)",
+			"imagePlaceholder": "Pega el enlace de la imagen",
+			"upload": "Subir",
+			"imageInvalidType": "Solo se admiten PNG, JPG, WEBP y GIF",
+			"imageTooLarge": "El tamaño máximo del archivo es 10 MB",
+			"imageUploaded": "Imagen subida",
+			"imageUploadError": "Error al subir la imagen",
+			"tags": "Etiquetas",
+			"tagsPlaceholder": "Etiquetas separadas por comas",
+			"create": "Crear",
+			"toastCreated": "Obra creada",
+			"toastCreateError": "Error al crear",
+			"info": "Información",
+			"img": "Imagen"
+		},
+		"artEdit": {
+			"title": "Editar obra",
+			"save": "Guardar",
+			"back": "Volver a la lista",
+			"toastSaved": "Obra guardada",
+			"toastSaveError": "Error al guardar"
 		},
 		"notifications": {
 			"title": "Notificaciones",
@@ -1638,7 +1745,13 @@
 			"toastUnlinked": "Cuenta desvinculada",
 			"toastUnlinkError": "Error al desvincular",
 			"toastAccountDeleted": "Cuenta eliminada",
-			"toastAccountDeleteError": "Error al eliminar la cuenta"
+			"toastAccountDeleteError": "Error al eliminar la cuenta",
+			"socialLinks": "Redes sociales",
+			"socialLinksDesc": "Enlaces a tus redes sociales. Se mostrarán en las páginas de tus obras",
+			"socialLinksUrlPlaceholder": "https://...",
+			"socialLinksSave": "Guardar",
+			"socialLinksSaved": "Redes sociales guardadas",
+			"socialLinksSaveError": "Error al guardar las redes sociales"
 		},
 		"buildCard": {
 			"toastError": "Error",

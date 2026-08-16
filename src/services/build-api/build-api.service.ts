@@ -38,6 +38,21 @@ class BuildApiService {
 		return { ...data, total: data.totalCount ?? data.total }
 	}
 
+	async listMine({
+		take = 20,
+		page = 1,
+	}: {
+		take?: number
+		page?: number
+	} = {}): Promise<PaginatedResponse<BuildApi>> {
+		const { data } = await apiClient.get<
+			PaginatedResponse<BuildApi> & { totalCount: number }
+		>('/api/v1/users/@me/builds', {
+			params: { take, page },
+		})
+		return { ...data, total: data.totalCount ?? data.total }
+	}
+
 	async get(id: string): Promise<BuildApi> {
 		const { data } = await apiClient.get<BuildApi>(`/api/v1/builds/${id}`)
 		return data

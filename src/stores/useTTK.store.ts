@@ -1,4 +1,4 @@
-import { HitZone } from '@/views/calcs/ttk/constants/ttk'
+import type { HitZone } from '@/views/calcs/ttk/constants/ttk'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

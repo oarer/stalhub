@@ -71,6 +71,7 @@
   },
   "nav": {
     "articles": "Статьи",
+    "arts": "Творчество",
     "groups": {
       "calculators": {
         "title": "Калькуляторы",
@@ -148,6 +149,19 @@
           "models": {
             "label": "Просмотр моделей",
             "description": "Скоро..."
+          }
+        }
+      },
+      "creative": {
+        "title": "Творчество",
+        "items": {
+          "articles": {
+            "label": "Статьи",
+            "description": "Гайды на квесты от игроков"
+          },
+          "arts": {
+            "label": "Рисунки",
+            "description": "Рисунки от художников"
           }
         }
       }
@@ -298,10 +312,34 @@
     "ART_QUALITY_LEGENDARY": "Легендарный",
     "ART_QUALITY_UNIQUE": "Уникальный",
     "title": "Творчество",
-    "total": "всего",
+    "total": "всего: {count}",
     "search": "Поиск по тегам",
     "byAuthor": "Работа художника: ",
-    "description": "Описание"
+    "description": "Описание",
+    "empty": "Работ пока нет",
+    "type": "Тип",
+    "all": "Все",
+    "author": "Автор",
+    "stars": "Звёзд",
+    "comments": {
+      "title": "Комментарии ({count})",
+      "aside": "Комментариев",
+      "placeholder": "Написать комментарий...",
+      "empty": "Нет комментариев",
+      "reply": "Ответить",
+      "deleteTitle": "Удалить комментарий?",
+      "cancel": "Отмена",
+      "deleteConfirm": "Удалить",
+      "toast": {
+        "added": "Комментарий добавлен",
+        "addError": "Ошибка добавления комментария",
+        "deleted": "Комментарий удалён",
+        "deleteError": "Ошибка удаления комментария"
+      }
+    },
+    "publishedAt": "Дата публикации",
+    "readComments": "К комментариям",
+    "notFound": "Работа не найдена"
   },
   "ui": {
     "combobox": {
@@ -865,7 +903,8 @@
       "notifications": "Уведомления",
       "players": "Игроки",
       "articles": "Статьи",
-      "builds": "Сборки"
+      "builds": "Сборки",
+      "arts": "Творчество"
     },
     "roles": {
       "title": "Роли",
@@ -1054,6 +1093,43 @@
       "empty": "Нет сборок",
       "toast": {
         "deleted": "Сборка удалена"
+      }
+    },
+    "arts": {
+      "title": "Творчество",
+      "all": "Все",
+      "type": "Тип",
+      "stars": "Звёзды",
+      "comments": "Комментарии",
+      "created": "Создана",
+      "deleteTitle": "Удалить работу?",
+      "deleteDescription": "Работа <strong>{title}</strong> будет удалена навсегда.",
+      "empty": "Нет работ",
+      "create": "Создать",
+      "createTitle": "Новая работа",
+      "toast": {
+        "deleted": "Работа удалена",
+        "deleteError": "Ошибка удаления",
+        "created": "Работа опубликована",
+        "createError": "Ошибка при создании"
+      },
+      "form": {
+        "name": "Название",
+        "namePlaceholder": "Введите название работы",
+        "type": "Тип работы",
+        "default": "Обычная",
+        "nsfw": "NSFW",
+        "image": "Изображение",
+        "tags": "Теги",
+        "tagsPlaceholder": "Теги через запятую",
+        "author": "Автор",
+        "authorGuest": "Вне сайта",
+        "authorUser": "Пользователь сайта",
+        "authorNamePlaceholder": "Имя автора",
+        "authorSearchPlaceholder": "Поиск пользователя...",
+        "authorNotFound": "Пользователи не найдены",
+        "socialUrlPlaceholder": "https://...",
+        "create": "Опубликовать"
       }
     },
     "notifications": {
@@ -1515,6 +1591,7 @@
       "content": "Контент",
       "articles": "Статьи",
       "builds": "Сборки",
+      "arts": "Творчество",
       "stars": "Избранное",
       "system": "Система",
       "notifications": "Уведомления"
@@ -1544,6 +1621,44 @@
       "noBuilds": "Нет сборок",
       "toastDeleted": "Сборка удалена",
       "toastDeleteError": "Ошибка при удалении"
+    },
+    "arts": {
+      "title": "Мои работы",
+      "create": "Добавить",
+      "all": "Все",
+      "noArts": "Нет работ",
+      "createFirst": "Добавить первую работу",
+      "toastDeleted": "Работа удалена",
+      "toastDeleteError": "Ошибка при удалении"
+    },
+    "newArt": {
+      "title": "Новая работа",
+      "name": "Название",
+      "namePlaceholder": "Введите название работы",
+      "type": "Тип работы",
+      "default": "Обычная",
+      "nsfw": "NSFW",
+      "image": "Изображение (ссылка)",
+      "imagePlaceholder": "Вставьте ссылку на изображение",
+      "upload": "Загрузить",
+      "imageInvalidType": "Поддерживаются только PNG, JPG, WEBP и GIF",
+      "imageTooLarge": "Максимальный размер файла — 10 МБ",
+      "imageUploaded": "Изображение загружено",
+      "imageUploadError": "Ошибка при загрузке изображения",
+      "tags": "Теги",
+      "tagsPlaceholder": "Теги через запятую",
+      "create": "Создать",
+      "toastCreated": "Работа создана",
+      "toastCreateError": "Ошибка при создании",
+      "info": "Информация",
+      "img": "Изображение"
+    },
+    "artEdit": {
+      "title": "Редактирование работы",
+      "save": "Сохранить",
+      "back": "Назад к списку",
+      "toastSaved": "Работа сохранена",
+      "toastSaveError": "Ошибка при сохранении"
     },
     "notifications": {
       "title": "Уведомления",
@@ -1643,7 +1758,13 @@
       "toastUnlinked": "Аккаунт отвязан",
       "toastUnlinkError": "Ошибка при отвязке",
       "toastAccountDeleted": "Аккаунт удалён",
-      "toastAccountDeleteError": "Ошибка при удалении аккаунта"
+      "toastAccountDeleteError": "Ошибка при удалении аккаунта",
+      "socialLinks": "Соцсети",
+      "socialLinksDesc": "Ссылки на ваши соцсети. Они будут отображаться на страницах ваших работ",
+      "socialLinksUrlPlaceholder": "https://...",
+      "socialLinksSave": "Сохранить",
+      "socialLinksSaved": "Соцсети сохранены",
+      "socialLinksSaveError": "Ошибка при сохранении соцсетей"
     },
     "buildCard": {
       "toastError": "Ошибка",
@@ -1830,8 +1951,8 @@
     "profileDescription": "Профиль пользователя {username}",
     "secondaryWeapon": "Второстепенное оружие",
     "bioArmor": "Био-броня",
-    "fatBuild": "Тяжёлая сборка",
-    "speedBuild": "Быстрая сборка"
+    "fatBuild": "Сборка на жир",
+    "speedBuild": "Сборка на скорость"
   },
   "auth": {
     "title": "Авторизация",

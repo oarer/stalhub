@@ -11,6 +11,7 @@ export interface User {
 	name_changed_at: string | null
 	username_changed_at: string | null
 	onboarded: boolean
+	social_links: Record<string, string> | null
 
 	settings: UserSettings | null
 	badges: UserBadge[]
@@ -116,6 +117,7 @@ export type PublicUser = Pick<
 	'id' | 'username' | 'name' | 'joined_at' | 'badges' | 'customization'
 > & {
 	stars_count: number
+	social_links: Record<string, string> | null
 
 	builds: PublicUserBuild[]
 	articles: PublicUserArticle[]
@@ -161,6 +163,8 @@ export interface UpdateUserSettingsDto {
 
 	cardBackground?: CardBackground
 	cardColor?: string
+
+	social_links?: Record<string, string>
 
 	avatar?: AvatarSource
 }

@@ -16,7 +16,7 @@ export default function MeBuildsView() {
 	const t = useTranslations()
 
 	const { data: builds } = useSuspenseQuery(
-		buildApiQueries.list({ take: 50 })
+		buildApiQueries.mine({ take: 50 })
 	)
 	const { artifacts, armorItems, containers } = useItemsData()
 

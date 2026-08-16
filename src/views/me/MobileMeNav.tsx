@@ -130,6 +130,7 @@ export default function MobileMeNav() {
 										<NavTabs
 											onTabClick={close}
 											pathname={pathname}
+											roles={user.roles}
 											unreadCount={unreadCount}
 										/>
 									</div>

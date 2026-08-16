@@ -212,12 +212,10 @@ export function BuildCard({
 									width={120}
 								/>
 							) : (
-								<div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-border-secondary">
-									<Icon
-										className="size-16 text-text-accent"
-										icon="lucide:shield"
-									/>
-								</div>
+								<Icon
+									className="text-lg text-text-accent"
+									icon="lucide:shield"
+								/>
 							)}
 						</div>
 
@@ -230,7 +228,7 @@ export function BuildCard({
 									{messageToString(armorItem.name, locale)}
 								</span>
 							) : (
-								<span className="text-text-accent/50">
+								<span className="font-semibold text-text-accent/50">
 									{t('me.buildCard.noArmor')}
 								</span>
 							)}

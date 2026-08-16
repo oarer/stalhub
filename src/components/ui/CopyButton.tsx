@@ -4,12 +4,12 @@ import { Icon } from '@iconify/react'
 import type { VariantProps } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { copyButtonVariants } from '@/constants/ui/copyButton.const'
 import { cn } from '@/lib/cn'
+import { buttonVariants } from './Button'
 
 interface ICopyButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-		VariantProps<typeof copyButtonVariants> {
+		VariantProps<typeof buttonVariants> {
 	disabled?: boolean
 	text: string | number
 }
@@ -34,13 +34,14 @@ export function CopyButton({
 		<motion.button
 			aria-label={copied ? 'Copied!' : 'Copy to clipboard'}
 			className={cn(
-				copyButtonVariants({
+				buttonVariants({
 					variant,
 					size,
 					disabled: disabled,
 				}),
 				copied &&
 					'bg-green-500/10 text-green-600 ring-green-500/40 hover:bg-green-500/15 hover:text-green-600 dark:text-green-400',
+				'relative',
 				className
 			)}
 			onClick={handleCopy}

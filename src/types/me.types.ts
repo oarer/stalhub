@@ -80,6 +80,11 @@ export const tabGroups: TabGroup[] = [
 				icon: 'lucide:box',
 			},
 			{
+				title: 'me.nav.arts',
+				href: '/me/arts',
+				icon: 'lucide:palette',
+			},
+			{
 				title: 'me.nav.stars',
 				href: '/me/stars',
 				icon: 'lucide:star',
@@ -103,12 +108,30 @@ export const tabGroups: TabGroup[] = [
 	},
 ]
 
+export const canAccessArtTab = (roles: { name: string }[]) =>
+	roles.some((r) => r.name === 'author' || r.name === 'admin')
+
+export const filterTabsByRoles = (
+	groups: TabGroup[],
+	roles: { name: string }[]
+): TabGroup[] => {
+	const showArts = canAccessArtTab(roles)
+	return groups
+		.map((group) => ({
+			...group,
+			items: group.items.filter(
+				(tab) => !(tab.href === '/me/arts' && !showArts)
+			),
+		}))
+		.filter((group) => group.items.length > 0)
+}
 
 export const getNavTabs = (
 	unreadCount: number | null | undefined,
-	translate: (key: string) => string
+	translate: (key: string) => string,
+	roles: { name: string }[]
 ): LinkTab[] =>
-	tabGroups.map((group) => {
+	filterTabsByRoles(tabGroups, roles).map((group) => {
 		const items = group.items.map((tab) => ({
 			title: translate(tab.title),
 			href: tab.href,
@@ -136,6 +159,7 @@ export interface UserCardProps extends React.ComponentPropsWithoutRef<'div'> {
 export interface NavTabsProps {
 	pathname: string
 	unreadCount: number | null | undefined
+	roles: { name: string }[]
 	onTabClick?: () => void
 }
 export interface MeLayoutProps {

@@ -168,6 +168,27 @@ export const NAV_STRUCTURE: NavGroup[] = [
 			},
 		],
 	},
+	{
+		key: 'creative',
+		titleKey: 'nav.groups.creative.title',
+		icon: 'lucide:more-horizontal',
+		items: [
+			{
+				key: 'articles',
+				icon: 'lucide:book',
+				href: '/articles',
+				labelKey: 'nav.groups.creative.items.articles.label',
+				descriptionKey: 'nav.groups.creative.items.articles.description',
+			},
+			{
+				key: 'arts',
+				icon: 'lucide:palette',
+				href: '/arts',
+				labelKey: 'nav.groups.creative.items.arts.label',
+				descriptionKey: 'nav.groups.creative.items.arts.description',
+			},
+		],
+	},
 ]
 
 const mapNavItem = (

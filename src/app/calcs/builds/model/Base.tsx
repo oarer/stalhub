@@ -101,7 +101,7 @@ export function BaseModel({
 				mat.transparent = true
 			}
 		})
-	}, [scene, textures])
+	}, [scene, textures, transparentMeshes.some])
 
 	useEffect(() => {
 		if (onSceneReady) {

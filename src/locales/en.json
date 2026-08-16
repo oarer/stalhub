@@ -71,6 +71,7 @@
 	},
 	"nav": {
 		"articles": "Articles",
+		"arts": "Art",
 		"groups": {
 			"calculators": {
 				"title": "Calculators",
@@ -296,7 +297,36 @@
 		"ART_QUALITY_RARE": "Rare",
 		"ART_QUALITY_EXCLUSIVE": "Exclusive",
 		"ART_QUALITY_LEGENDARY": "Legendary",
-		"ART_QUALITY_UNIQUE": "Unique"
+		"ART_QUALITY_UNIQUE": "Unique",
+		"title": "Art",
+		"total": "total",
+		"search": "Search by tags",
+		"byAuthor": "Art by: ",
+		"description": "Description",
+		"empty": "No art yet",
+		"type": "Type",
+		"all": "All",
+		"author": "Author",
+		"stars": "Stars",
+		"comments": "Comments",
+		"publishedAt": "Published",
+		"readComments": "Comments",
+		"notFound": "Art not found",
+		"comments": {
+			"title": "Comments ({count})",
+			"placeholder": "Write a comment...",
+			"empty": "No comments",
+			"reply": "Reply",
+			"deleteTitle": "Delete comment?",
+			"cancel": "Cancel",
+			"deleteConfirm": "Delete",
+			"toast": {
+				"added": "Comment added",
+				"addError": "Comment add error",
+				"deleted": "Comment deleted",
+				"deleteError": "Comment delete error"
+			}
+		}
 	},
 	"ui": {
 		"combobox": {
@@ -860,7 +890,8 @@
 			"notifications": "Notifications",
 			"players": "Players",
 			"articles": "Articles",
-			"builds": "Builds"
+			"builds": "Builds",
+			"arts": "Art"
 		},
 		"roles": {
 			"title": "Roles",
@@ -1049,6 +1080,43 @@
 			"empty": "No builds",
 			"toast": {
 				"deleted": "Build deleted"
+			}
+		},
+		"arts": {
+			"title": "Art",
+			"all": "All",
+			"type": "Type",
+			"stars": "Stars",
+			"comments": "Comments",
+			"created": "Created",
+			"deleteTitle": "Delete art?",
+			"deleteDescription": "Art <strong>{title}</strong> will be deleted forever.",
+			"empty": "No art",
+			"create": "Create",
+			"createTitle": "New art",
+			"toast": {
+				"deleted": "Art deleted",
+				"deleteError": "Delete error",
+				"created": "Art published",
+				"createError": "Create error"
+			},
+			"form": {
+				"name": "Name",
+				"namePlaceholder": "Enter art title",
+				"type": "Art type",
+				"default": "Regular",
+				"nsfw": "NSFW",
+				"image": "Image",
+				"tags": "Tags",
+				"tagsPlaceholder": "Tags, comma separated",
+				"author": "Author",
+				"authorGuest": "Off-site",
+				"authorUser": "Site user",
+				"authorNamePlaceholder": "Author name",
+				"authorSearchPlaceholder": "Search user...",
+				"authorNotFound": "No users found",
+				"socialUrlPlaceholder": "https://...",
+				"create": "Publish"
 			}
 		},
 		"notifications": {
@@ -1510,6 +1578,7 @@
 			"content": "Content",
 			"articles": "Articles",
 			"builds": "Builds",
+			"arts": "Art",
 			"stars": "Favorites",
 			"system": "System",
 			"notifications": "Notifications"
@@ -1539,6 +1608,44 @@
 			"noBuilds": "No builds",
 			"toastDeleted": "Build deleted",
 			"toastDeleteError": "Delete error"
+		},
+		"arts": {
+			"title": "My art",
+			"create": "Add",
+			"all": "All",
+			"noArts": "No art",
+			"createFirst": "Add your first work",
+			"toastDeleted": "Art deleted",
+			"toastDeleteError": "Delete error"
+		},
+		"newArt": {
+			"title": "New work",
+			"name": "Name",
+			"namePlaceholder": "Enter work title",
+			"type": "Work type",
+			"default": "Regular",
+			"nsfw": "NSFW",
+			"image": "Image (URL)",
+			"imagePlaceholder": "Paste the image link",
+			"upload": "Upload",
+			"imageInvalidType": "Only PNG, JPG, WEBP and GIF are supported",
+			"imageTooLarge": "Maximum file size is 10 MB",
+			"imageUploaded": "Image uploaded",
+			"imageUploadError": "Error uploading image",
+			"tags": "Tags",
+			"tagsPlaceholder": "Tags, comma separated",
+			"create": "Create",
+			"toastCreated": "Work created",
+			"toastCreateError": "Create error",
+			"info": "Information",
+			"img": "Image"
+		},
+		"artEdit": {
+			"title": "Edit work",
+			"save": "Save",
+			"back": "Back to list",
+			"toastSaved": "Work saved",
+			"toastSaveError": "Save error"
 		},
 		"notifications": {
 			"title": "Notifications",
@@ -1638,7 +1745,13 @@
 			"toastUnlinked": "Account unlinked",
 			"toastUnlinkError": "Unlink error",
 			"toastAccountDeleted": "Account deleted",
-			"toastAccountDeleteError": "Error deleting account"
+			"toastAccountDeleteError": "Error deleting account",
+			"socialLinks": "Social links",
+			"socialLinksDesc": "Links to your social networks. They will be shown on your art pages",
+			"socialLinksUrlPlaceholder": "https://...",
+			"socialLinksSave": "Save",
+			"socialLinksSaved": "Social links saved",
+			"socialLinksSaveError": "Error saving social links"
 		},
 		"buildCard": {
 			"toastError": "Error",

@@ -31,7 +31,11 @@ export default function MeSidebar({
 					onCardChange={onCardChange}
 					user={user}
 				/>
-				<NavTabs pathname={pathname} unreadCount={unreadCount} />
+				<NavTabs
+					pathname={pathname}
+					roles={user.roles}
+					unreadCount={unreadCount}
+				/>
 			</div>
 		</div>
 	)

@@ -114,6 +114,18 @@ export function useSettingsMutations(
 		},
 	})
 
+	const socialLinksMutation = useMutation({
+		mutationFn: (links: Record<string, string>) =>
+			userService.patchMe({ social_links: links }),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user'] })
+			toast.success(t('me.settings.socialLinksSaved'))
+		},
+		onError: () => {
+			toast.error(t('me.settings.socialLinksSaveError'))
+		},
+	})
+
 	const deleteSessionMutation = useMutation({
 		mutationFn: (id: number) => userService.deleteSession(id),
 		onSuccess: () => {
@@ -181,6 +193,7 @@ export function useSettingsMutations(
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,
 		deleteAllSessionsMutation,
+		socialLinksMutation,
 		linkMutation,
 		unlinkMutation,
 		deleteAccountMutation,

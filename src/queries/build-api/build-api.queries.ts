@@ -52,6 +52,14 @@ class BuildApiQueries {
 		})
 	}
 
+	mine({ take = 20, page = 1 } = {}) {
+		return queryOptions<PaginatedResponse<BuildApi>>({
+			queryKey: ['builds', 'mine', { take, page }],
+			queryFn: () => buildApiService.listMine({ take, page }),
+			staleTime: 1000 * 30,
+		})
+	}
+
 	get(id: string) {
 		return queryOptions<BuildApi>({
 			queryKey: ['build', id],

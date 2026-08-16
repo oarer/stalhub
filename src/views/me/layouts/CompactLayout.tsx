@@ -28,7 +28,7 @@ export default function CompactLayout({
 						cardColor={customization.cardColor ?? '#000000'}
 						user={user}
 					/>
-					<LinkTabs tabs={getNavTabs(unreadCount, t)} />
+					<LinkTabs tabs={getNavTabs(unreadCount, t, user.roles)} />
 					<Divider />
 				</div>
 				<div className="py-6 lg:px-0 lg:py-0">{children}</div>

@@ -52,6 +52,11 @@ const tabs = [
 		href: '/admin/builds',
 		icon: 'lucide:box',
 	},
+	{
+		title: 'admin.sidebar.arts',
+		href: '/admin/arts',
+		icon: 'lucide:palette',
+	},
 ]
 
 export default function AdminSidebar() {

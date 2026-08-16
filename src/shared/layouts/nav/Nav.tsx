@@ -1,14 +1,11 @@
 'use client'
 
-import { Icon } from '@iconify/react'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import DropdownMenu from '@/components/ui/DropDown'
-import { CLink } from '@/components/ui/Link'
 import { DropDownLinks } from '@/constants/nav.const'
 import useSvg from '@/hooks/useSvg'
 import ChangeLang from './components/ChangeLang'
@@ -18,7 +15,6 @@ import NavMobile from './NavMobile'
 
 export default function Nav() {
 	const svgPath = useSvg()
-	const t = useTranslations()
 
 	const [isScrolled, setIsScrolled] = useState(false)
 	const { scrollY } = useScroll()
@@ -69,16 +65,6 @@ export default function Nav() {
 								title={menu.title}
 							/>
 						))}
-						<CLink
-							className="flex items-center gap-2 rounded-full px-3.5 py-2 xl:gap-4 xl:px-6"
-							href="/articles"
-							variant={'ghost'}
-						>
-							<Icon className="text-xl" icon="lucide:book-open" />
-							<p className="hidden font-semibold text-md xl:block">
-								{t('nav.articles')}
-							</p>
-						</CLink>
 						<ItemSearchModal />
 					</div>
 					<div className="relative flex items-center justify-end gap-4">

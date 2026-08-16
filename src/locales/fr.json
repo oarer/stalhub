@@ -71,6 +71,7 @@
 	},
 	"nav": {
 		"articles": "Articles",
+		"arts": "Art",
 		"groups": {
 			"calculators": {
 				"title": "Calculateurs",
@@ -296,7 +297,36 @@
 		"ART_QUALITY_RARE": "Rare",
 		"ART_QUALITY_EXCLUSIVE": "Exclusif",
 		"ART_QUALITY_LEGENDARY": "Légendaire",
-		"ART_QUALITY_UNIQUE": "Unique"
+		"ART_QUALITY_UNIQUE": "Unique",
+		"title": "Art",
+		"total": "total",
+		"search": "Rechercher par tags",
+		"byAuthor": "Œuvre de : ",
+		"description": "Description",
+		"empty": "Aucune œuvre pour le moment",
+		"type": "Type",
+		"all": "Tous",
+		"author": "Auteur",
+		"stars": "Étoiles",
+		"comments": "Commentaires",
+		"publishedAt": "Publié le",
+		"readComments": "Commentaires",
+		"notFound": "Œuvre introuvable",
+		"comments": {
+			"title": "Commentaires ({count})",
+			"placeholder": "Écrire un commentaire...",
+			"empty": "Aucun commentaire",
+			"reply": "Répondre",
+			"deleteTitle": "Supprimer le commentaire ?",
+			"cancel": "Annuler",
+			"deleteConfirm": "Supprimer",
+			"toast": {
+				"added": "Commentaire ajouté",
+				"addError": "Erreur lors de l'ajout du commentaire",
+				"deleted": "Commentaire supprimé",
+				"deleteError": "Erreur lors de la suppression du commentaire"
+			}
+		}
 	},
 	"ui": {
 		"combobox": {
@@ -860,7 +890,8 @@
 			"notifications": "Notifications",
 			"players": "Joueurs",
 			"articles": "Articles",
-			"builds": "Builds"
+			"builds": "Builds",
+			"arts": "Art"
 		},
 		"roles": {
 			"title": "Rôles",
@@ -1049,6 +1080,43 @@
 			"empty": "Aucune build",
 			"toast": {
 				"deleted": "Build supprimée"
+			}
+		},
+		"arts": {
+			"title": "Art",
+			"all": "Tous",
+			"type": "Type",
+			"stars": "Étoiles",
+			"comments": "Commentaires",
+			"created": "Créée",
+			"deleteTitle": "Supprimer l'œuvre ?",
+			"deleteDescription": "L'œuvre <strong>{title}</strong> sera supprimée définitivement.",
+			"empty": "Aucune œuvre",
+			"create": "Créer",
+			"createTitle": "Nouvelle œuvre",
+			"toast": {
+				"deleted": "Œuvre supprimée",
+				"deleteError": "Erreur lors de la suppression",
+				"created": "Œuvre publiée",
+				"createError": "Erreur lors de la création"
+			},
+			"form": {
+				"name": "Nom",
+				"namePlaceholder": "Saisissez le nom de l'œuvre",
+				"type": "Type d'œuvre",
+				"default": "Normale",
+				"nsfw": "NSFW",
+				"image": "Image",
+				"tags": "Tags",
+				"tagsPlaceholder": "Tags séparés par des virgules",
+				"author": "Auteur",
+				"authorGuest": "Hors site",
+				"authorUser": "Utilisateur du site",
+				"authorNamePlaceholder": "Nom de l'auteur",
+				"authorSearchPlaceholder": "Rechercher un utilisateur...",
+				"authorNotFound": "Aucun utilisateur trouvé",
+				"socialUrlPlaceholder": "https://...",
+				"create": "Publier"
 			}
 		},
 		"notifications": {
@@ -1510,6 +1578,7 @@
 			"content": "Contenu",
 			"articles": "Articles",
 			"builds": "Builds",
+			"arts": "Art",
 			"stars": "Favoris",
 			"system": "Système",
 			"notifications": "Notifications"
@@ -1539,6 +1608,44 @@
 			"noBuilds": "Aucune build",
 			"toastDeleted": "Build supprimée",
 			"toastDeleteError": "Erreur lors de la suppression"
+		},
+		"arts": {
+			"title": "Mes œuvres",
+			"create": "Ajouter",
+			"all": "Tous",
+			"noArts": "Aucune œuvre",
+			"createFirst": "Ajouter la première œuvre",
+			"toastDeleted": "Œuvre supprimée",
+			"toastDeleteError": "Erreur lors de la suppression"
+		},
+		"newArt": {
+			"title": "Nouvelle œuvre",
+			"name": "Nom",
+			"namePlaceholder": "Saisissez le nom de l'œuvre",
+			"type": "Type d'œuvre",
+			"default": "Normale",
+			"nsfw": "NSFW",
+			"image": "Image (lien)",
+			"imagePlaceholder": "Collez le lien de l'image",
+			"upload": "Importer",
+			"imageInvalidType": "Seuls PNG, JPG, WEBP et GIF sont pris en charge",
+			"imageTooLarge": "La taille maximale du fichier est de 10 Mo",
+			"imageUploaded": "Image importée",
+			"imageUploadError": "Erreur lors de l'importation de l'image",
+			"tags": "Tags",
+			"tagsPlaceholder": "Tags séparés par des virgules",
+			"create": "Créer",
+			"toastCreated": "Œuvre créée",
+			"toastCreateError": "Erreur lors de la création",
+			"info": "Informations",
+			"img": "Image"
+		},
+		"artEdit": {
+			"title": "Modifier l'œuvre",
+			"save": "Enregistrer",
+			"back": "Retour à la liste",
+			"toastSaved": "Œuvre enregistrée",
+			"toastSaveError": "Erreur lors de l'enregistrement"
 		},
 		"notifications": {
 			"title": "Notifications",
@@ -1638,7 +1745,13 @@
 			"toastUnlinked": "Compte dissocié",
 			"toastUnlinkError": "Erreur lors de la dissociation",
 			"toastAccountDeleted": "Compte supprimé",
-			"toastAccountDeleteError": "Erreur lors de la suppression du compte"
+			"toastAccountDeleteError": "Erreur lors de la suppression du compte",
+			"socialLinks": "Réseaux sociaux",
+			"socialLinksDesc": "Liens vers vos réseaux sociaux. Ils seront affichés sur les pages de vos œuvres",
+			"socialLinksUrlPlaceholder": "https://...",
+			"socialLinksSave": "Enregistrer",
+			"socialLinksSaved": "Réseaux sociaux enregistrés",
+			"socialLinksSaveError": "Erreur lors de l'enregistrement des réseaux sociaux"
 		},
 		"buildCard": {
 			"toastError": "Erreur",

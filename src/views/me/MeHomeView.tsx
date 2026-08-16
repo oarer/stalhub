@@ -17,7 +17,7 @@ export default function MeHomeView() {
 	const t = useTranslations()
 	const { data: user } = useSuspenseQuery(userQueries.getMe())
 	const { data: builds } = useSuspenseQuery(
-		buildApiQueries.list({ take: 10 })
+		buildApiQueries.mine({ take: 10 })
 	)
 	const { data: articles } = useSuspenseQuery(
 		articleQueries.list({ take: 10 })

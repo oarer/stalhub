@@ -71,6 +71,7 @@
 	},
 	"nav": {
 		"articles": "게시글",
+		"arts": "아트",
 		"groups": {
 			"calculators": {
 				"title": "계산기",
@@ -296,7 +297,36 @@
 		"ART_QUALITY_RARE": "희귀",
 		"ART_QUALITY_EXCLUSIVE": "독점",
 		"ART_QUALITY_LEGENDARY": "전설",
-		"ART_QUALITY_UNIQUE": "유니크"
+		"ART_QUALITY_UNIQUE": "유니크",
+		"title": "아트",
+		"total": "전체",
+		"search": "태그로 검색",
+		"byAuthor": "작가: ",
+		"description": "설명",
+		"empty": "아직 작품이 없습니다",
+		"type": "유형",
+		"all": "전체",
+		"author": "작가",
+		"stars": "별점",
+		"comments": "댓글",
+		"publishedAt": "게시일",
+		"readComments": "댓글",
+		"notFound": "작품을 찾을 수 없습니다",
+		"comments": {
+			"title": "댓글 ({count})",
+			"placeholder": "댓글 작성...",
+			"empty": "댓글 없음",
+			"reply": "답글",
+			"deleteTitle": "댓글을 삭제할까요?",
+			"cancel": "취소",
+			"deleteConfirm": "삭제",
+			"toast": {
+				"added": "댓글이 추가되었습니다",
+				"addError": "댓글 추가 오류",
+				"deleted": "댓글이 삭제되었습니다",
+				"deleteError": "댓글 삭제 오류"
+			}
+		}
 	},
 	"ui": {
 		"combobox": {
@@ -860,7 +890,8 @@
 			"notifications": "알림",
 			"players": "플레이어",
 			"articles": "게시글",
-			"builds": "빌드"
+			"builds": "빌드",
+			"arts": "아트"
 		},
 		"roles": {
 			"title": "역할",
@@ -1049,6 +1080,43 @@
 			"empty": "빌드 없음",
 			"toast": {
 				"deleted": "빌드가 삭제되었습니다"
+			}
+		},
+		"arts": {
+			"title": "아트",
+			"all": "전체",
+			"type": "유형",
+			"stars": "별점",
+			"comments": "댓글",
+			"created": "생성일",
+			"deleteTitle": "작품을 삭제할까요?",
+			"deleteDescription": "작품 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
+			"empty": "작품 없음",
+			"create": "만들기",
+			"createTitle": "새 작품",
+			"toast": {
+				"deleted": "작품이 삭제되었습니다",
+				"deleteError": "삭제 오류",
+				"created": "작품이 게시되었습니다",
+				"createError": "만들기 오류"
+			},
+			"form": {
+				"name": "이름",
+				"namePlaceholder": "작품 이름 입력",
+				"type": "작품 유형",
+				"default": "일반",
+				"nsfw": "NSFW",
+				"image": "이미지",
+				"tags": "태그",
+				"tagsPlaceholder": "태그는 쉼표로 구분",
+				"author": "작가",
+				"authorGuest": "사이트 외",
+				"authorUser": "사이트 사용자",
+				"authorNamePlaceholder": "작가 이름",
+				"authorSearchPlaceholder": "사용자 검색...",
+				"authorNotFound": "사용자를 찾을 수 없습니다",
+				"socialUrlPlaceholder": "https://...",
+				"create": "게시"
 			}
 		},
 		"notifications": {
@@ -1510,6 +1578,7 @@
 			"content": "콘텐츠",
 			"articles": "게시글",
 			"builds": "빌드",
+			"arts": "아트",
 			"stars": "즐겨찾기",
 			"system": "시스템",
 			"notifications": "알림"
@@ -1539,6 +1608,44 @@
 			"noBuilds": "빌드 없음",
 			"toastDeleted": "빌드가 삭제되었습니다",
 			"toastDeleteError": "삭제 중 오류"
+		},
+		"arts": {
+			"title": "내 작품",
+			"create": "추가",
+			"all": "전체",
+			"noArts": "작품 없음",
+			"createFirst": "첫 작품 추가",
+			"toastDeleted": "작품이 삭제되었습니다",
+			"toastDeleteError": "삭제 중 오류"
+		},
+		"newArt": {
+			"title": "새 작품",
+			"name": "이름",
+			"namePlaceholder": "작품 이름 입력",
+			"type": "작품 유형",
+			"default": "일반",
+			"nsfw": "NSFW",
+			"image": "이미지 (링크)",
+			"imagePlaceholder": "이미지 링크를 붙여넣으세요",
+			"upload": "업로드",
+			"imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
+			"imageTooLarge": "최대 파일 크기는 10MB입니다",
+			"imageUploaded": "이미지가 업로드되었습니다",
+			"imageUploadError": "이미지 업로드 중 오류",
+			"tags": "태그",
+			"tagsPlaceholder": "태그는 쉼표로 구분",
+			"create": "생성",
+			"toastCreated": "작품이 생성되었습니다",
+			"toastCreateError": "생성 중 오류",
+			"info": "정보",
+			"img": "이미지"
+		},
+		"artEdit": {
+			"title": "작품 수정",
+			"save": "저장",
+			"back": "목록으로 돌아가기",
+			"toastSaved": "작품이 저장되었습니다",
+			"toastSaveError": "저장 중 오류"
 		},
 		"notifications": {
 			"title": "알림",
@@ -1638,7 +1745,13 @@
 			"toastUnlinked": "계정 연결이 해제되었습니다",
 			"toastUnlinkError": "연결 해제 중 오류",
 			"toastAccountDeleted": "계정이 삭제되었습니다",
-			"toastAccountDeleteError": "계정 삭제 중 오류"
+			"toastAccountDeleteError": "계정 삭제 중 오류",
+			"socialLinks": "소셜 링크",
+			"socialLinksDesc": "소셜 네트워크 링크입니다. 작품 페이지에 표시됩니다",
+			"socialLinksUrlPlaceholder": "https://...",
+			"socialLinksSave": "저장",
+			"socialLinksSaved": "소셜 링크가 저장되었습니다",
+			"socialLinksSaveError": "소셜 링크 저장 중 오류"
 		},
 		"buildCard": {
 			"toastError": "오류",

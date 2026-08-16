@@ -1,5 +1,4 @@
-import { AboutMember, LinkItem } from '@/views/about/components/about.types'
-
+import type { AboutMember, LinkItem } from '@/views/about/components/about.types'
 
 export const contacts: AboutMember[] = [
 	{
