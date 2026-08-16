@@ -115,30 +115,31 @@ export const NAV_STRUCTURE: NavGroup[] = [
 		],
 	},
 	{
-		key: 'clans',
-		titleKey: 'nav.groups.clans.title',
-		icon: 'lucide:users',
-		items: [
-			{
-				key: 'clans',
-				icon: 'lucide:users',
-				href: '/clans',
-				labelKey: 'nav.groups.clans.items.clans.label',
-			},
-			{
-				key: 'clanMaps',
-				icon: 'lucide:map-pinned',
-				href: '/map/cw',
-				labelKey: 'nav.groups.clans.items.clanMaps.label',
-				descriptionKey: 'nav.groups.clans.items.clanMaps.description',
-			},
-		],
-	},
-	{
 		key: 'other',
 		titleKey: 'nav.groups.other.title',
 		icon: 'lucide:more-horizontal',
 		items: [
+			{
+				key: 'clans',
+				labelKey: 'nav.groups.clans.title',
+				icon: 'lucide:users',
+				submenu: [
+					{
+						key: 'clans',
+						icon: 'lucide:users',
+						href: '/clans',
+						labelKey: 'nav.groups.clans.items.clans.label',
+					},
+					{
+						key: 'clanMaps',
+						icon: 'lucide:map-pinned',
+						href: '/map/cw',
+						labelKey: 'nav.groups.clans.items.clanMaps.label',
+						descriptionKey:
+							'nav.groups.clans.items.clanMaps.description',
+					},
+				],
+			},
 			{
 				key: 'dashboard',
 				icon: 'lucide:layout-grid',
@@ -178,7 +179,16 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:book',
 				href: '/articles',
 				labelKey: 'nav.groups.creative.items.articles.label',
-				descriptionKey: 'nav.groups.creative.items.articles.description',
+				descriptionKey:
+					'nav.groups.creative.items.articles.description',
+			},
+			{
+				key: 'builds',
+				icon: 'lucide:box',
+				href: '/builds',
+				labelKey: 'nav.groups.creative.items.builds.label',
+				descriptionKey:
+					'nav.groups.creative.items.builds.description',
 			},
 			{
 				key: 'arts',
