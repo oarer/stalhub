@@ -72,7 +72,7 @@ export default function UserProfileView({
 						</h2>
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t(
 										'clan.squads.loadoutFields.primaryWeapon'
 									)}
@@ -80,31 +80,31 @@ export default function UserProfileView({
 								{renderItem(loadout.data.weapon_primary)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('users.secondaryWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('clan.squads.loadoutFields.pistol')}
 								</span>
 								{renderItem(loadout.data.weapon_pistol)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('users.bioArmor')}
 								</span>
 								{renderItem(loadout.data.bio_armor)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('users.fatBuild')}
 								</span>
 								<BuildCell
@@ -123,7 +123,7 @@ export default function UserProfileView({
 								/>
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
-								<span className="text-sm text-text-accent">
+								<span className="font-semibold text-sm text-text-accent">
 									{t('users.speedBuild')}
 								</span>
 								<BuildCell
