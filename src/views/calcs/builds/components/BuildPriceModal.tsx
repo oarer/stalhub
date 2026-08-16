@@ -152,6 +152,7 @@ export default function BuildPriceModal() {
 														{formatArtPrice(
 															price.price
 														)}
+														₽
 													</span>
 												</>
 											)}
@@ -178,7 +179,7 @@ export default function BuildPriceModal() {
 								<p
 									className={`${montserrat.className} font-bold text-border text-xl`}
 								>
-									{formatArtPrice(total)}
+									{formatArtPrice(total)}₽
 								</p>
 							</div>
 							{updatedAt && (
