@@ -18,6 +18,7 @@ export function Accordion({
 	size = 'md',
 	selectionMode = 'single',
 	defaultExpandedKeys = [],
+	disableEntranceAnimation = false,
 	className,
 	titleClass,
 	accordionClass,
@@ -101,9 +102,15 @@ export function Accordion({
 							item.disabled && 'cursor-not-allowed opacity-50',
 							accordionClass
 						)}
-						initial={{ opacity: 0, y: 10 }}
+						initial={
+							disableEntranceAnimation
+								? false
+								: { opacity: 0, y: 10 }
+						}
 						key={item.key}
-						transition={{ delay: index * 0.05 }}
+						transition={{
+							delay: disableEntranceAnimation ? 0 : index * 0.05,
+						}}
 					>
 						<button
 							aria-controls={contentId}
@@ -153,17 +160,20 @@ export function Accordion({
 							<motion.div
 								animate={{
 									height: expanded
-										? (heights[item.key] ?? 0)
+										? (heights[item.key] ?? 'auto')
 										: 0,
 									opacity: expanded ? 1 : 0,
 								}}
 								exit={{ height: 0, opacity: 0 }}
 								id={contentId}
-								initial={{ height: 0, opacity: 0 }}
+								initial={false}
 								role="region"
 								transition={{
 									height: {
-										duration: 0.28,
+										duration:
+											heights[item.key] === undefined
+												? 0
+												: 0.28,
 										ease: [0.04, 0.62, 0.23, 0.98],
 									},
 									opacity: {

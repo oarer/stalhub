@@ -57,7 +57,7 @@ export const BuildLitePngTemplate = forwardRef<
 	},
 	ref
 ) {
-	const { displayNamesMap, hps, prime, sortedStats } = useBuildStats()
+	const { displayNamesMap, hps, prime, sortedStats, stopping } = useBuildStats()
 	const { priceMap } = useBuildPrices()
 
 	const statGroups = useMemo(
@@ -134,23 +134,25 @@ export const BuildLitePngTemplate = forwardRef<
 					{buildName}
 				</h2>
 				<div
-					className={`${montserrat.className} grid grid-cols-2 gap-3 text-right`}
+					className={`${montserrat.className} flex gap-3 text-right`}
 				>
 					<div className="rounded-lg bg-black/25 px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.prime')}
 						</p>
-						<p className="font-bold text-lg text-yellow-300">
-							{prime}
-						</p>
+						<p className="font-bold text-border text-lg">{prime}</p>
 					</div>
 					<div className="rounded-lg bg-black/25 px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.regen')}
 						</p>
-						<p className="font-bold text-lg text-yellow-300">
-							{hps}%
+						<p className="font-bold text-border text-lg">{hps}%</p>
+					</div>
+					<div className="rounded-lg bg-black/25 px-4 py-1">
+						<p className="font-semibold text-text-accent text-xs">
+							{t('build.stats.stopping')}
 						</p>
+						<p className="font-bold text-border text-lg">{stopping}%</p>
 					</div>
 				</div>
 			</header>

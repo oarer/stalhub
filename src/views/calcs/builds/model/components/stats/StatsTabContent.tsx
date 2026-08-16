@@ -9,10 +9,7 @@ import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
 import { StatRow } from './StatRow'
-import {
-	groupStatsByCategory,
-	type StatCategoryGroup,
-} from './statsCategories'
+import { groupStatsByCategory, type StatCategoryGroup } from './statsCategories'
 
 // у холода лимит выше
 const ACCUMULATION_THRESHOLDS: { key: string; threshold: number }[] = [
@@ -64,6 +61,7 @@ const StatCategoryList = memo(function StatCategoryList({
 		<Accordion
 			className="flex flex-col gap-1"
 			defaultExpandedKeys={defaultExpandedKeys}
+			disableEntranceAnimation
 			items={items}
 			selectionMode="multiple"
 			size="sm"
@@ -137,38 +135,35 @@ export const StatsTabContent = memo(function StatsTabContent({
 					displayNamesMap={displayNamesMap}
 					statsMap={statsMap}
 				/>
-				{hps && (
-					<Tooltip.Root>
-						<Tooltip.Trigger asChild>
-							<div className="flex w-full justify-between">
-								<span>{t('build.stats.regen')}</span>
-								<span className="text-yellow-400">{hps}%</span>
-							</div>
-						</Tooltip.Trigger>
-						<Tooltip.Content>
-							{t('build.stats.hp')}:
-						</Tooltip.Content>
-					</Tooltip.Root>
-				)}
-				{stopping && (
+				<div className="flex w-full justify-between">
+					<span>{t('build.stats.regen')}</span>
+					<span className={`${montserrat.className} text-border`}>
+						{hps}%
+					</span>
+				</div>
+				{stopping !== null && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.stopping')}</span>
-						<span className="text-yellow-400">{stopping}%</span>
+						<span className={`${montserrat.className} text-border`}>
+							{stopping}%
+						</span>
 					</p>
 				)}
-				{stats.length === 0 ? (
-					<p className="text-neutral-500">
-						{hasContainer
-							? t('build.stats.no_stats')
-							: t('build.stats.no_container')}
-					</p>
-				) : (
-					<StatCategoryList
-						displayNamesMap={displayNamesMap}
-						groups={groups}
-						isPercentMap={isPercentMap}
-					/>
-				)}
+				<div className="flex flex-col gap-2 border-neutral-700 border-t pt-2">
+					{stats.length === 0 ? (
+						<p className="font-semibold text-text-accent">
+							{hasContainer
+								? t('build.stats.no_stats')
+								: t('build.stats.no_container')}
+						</p>
+					) : (
+						<StatCategoryList
+							displayNamesMap={displayNamesMap}
+							groups={groups}
+							isPercentMap={isPercentMap}
+						/>
+					)}
+				</div>
 			</Card.Content>
 		</Card.Root>
 	)
@@ -235,7 +230,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 						</Tooltip.Content>
 					</Tooltip.Root>
 				)}
-				{stopping && (
+				{stopping !== null && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.stopping')}</span>
 						<span className={`${montserrat.className} text-border`}>
@@ -245,7 +240,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				)}
 				<div className="flex flex-col gap-2 border-neutral-700 border-t pt-2">
 					{sortedStats.length === 0 ? (
-						<p className="text-neutral-500">
+						<p className="font-semibold text-text-accent">
 							{t('build.stats.no_stats')}
 						</p>
 					) : (

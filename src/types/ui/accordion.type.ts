@@ -18,5 +18,6 @@ export interface AccordionProps {
 	titleClass?: string
 	accordionClass?: string
 	size?: 'sm' | 'md' | 'lg'
+	disableEntranceAnimation?: boolean
 	onSelectionChange?: (keys: string[]) => void
 }
