@@ -22,7 +22,7 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			key: 'alliance',
 			label: 'clans.faction',
 			icon: 'lucide:flag',
-			value: clan.alliance,
+			value: t(`player.alliance.${clan.alliance}`),
 		},
 		{
 			key: 'leader',
