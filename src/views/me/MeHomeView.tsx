@@ -2,6 +2,7 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { Suspense } from 'react'
 import { articleQueries } from '@/queries/article/article.queries'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { exboQueries } from '@/queries/exbo/exbo.queries'
@@ -33,7 +34,11 @@ export default function MeHomeView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			{hasExbo && <ExboSection />}
+			{hasExbo && (
+				<Suspense fallback={<CharactersSkeleton />}>
+					<ExboSection />
+				</Suspense>
+			)}
 
 			<HomeSection
 				actionHref="/me/builds"
@@ -88,6 +93,28 @@ export default function MeHomeView() {
 				</HomeSection>
 			)}
 		</div>
+	)
+}
+
+function CharactersSkeleton() {
+	const t = useTranslations()
+	return (
+		<HomeSection title={t('me.home.characters')}>
+			<div className="flex flex-col gap-2">
+				{Array.from({ length: 2 }).map((_, i) => (
+					<div
+						className="flex animate-pulse items-center gap-3 rounded-lg bg-background p-3"
+						key={i}
+					>
+						<div className="size-9 rounded-lg bg-accent" />
+						<div className="flex flex-col gap-1.5">
+							<div className="h-3 w-32 rounded bg-accent" />
+							<div className="h-2.5 w-20 rounded bg-accent" />
+						</div>
+					</div>
+				))}
+			</div>
+		</HomeSection>
 	)
 }
 
