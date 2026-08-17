@@ -1,4 +1,5 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
+import type { OperationSessionListing } from '@/types/operations/operation.type'
 import type {
 	PlayerParams,
 	PlayerResponse,
@@ -10,6 +11,30 @@ class PlayerService {
 		const { data } = await apiClient.get<PlayerResponse>(
 			`/api/v1/player/${region}/${character}`,
 			{ params: { history: true } }
+		)
+		return data
+	}
+
+	async getOperations({
+		region,
+		username,
+		limit = 20,
+		offset = 0,
+	}: {
+		region: string
+		username?: string
+		limit?: number
+		offset?: number
+	}): Promise<OperationSessionListing> {
+		const { data } = await apiClient.get<OperationSessionListing>(
+			`/api/v1/player/${region}/operations/sessions`,
+			{
+				params: {
+					...(username ? { username } : {}),
+					limit,
+					offset,
+				},
+			}
 		)
 		return data
 	}

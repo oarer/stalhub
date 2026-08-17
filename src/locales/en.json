@@ -149,6 +149,10 @@
 					"models": {
 						"label": "Model viewer",
 						"description": "Soon..."
+					},
+					"operations": {
+						"label": "Operations",
+						"description": "Player operation history"
 					}
 				}
 			}
@@ -247,6 +251,13 @@
 		},
 		"clanHistory": {
 			"title": "Clan history"
+		},
+		"operations": {
+			"title": "Operations",
+			"difficulty": "Difficulty",
+			"participants": "Participants: {count}",
+			"empty": "No operations found",
+			"error": "Failed to load operations"
 		}
 	},
 	"time": {
@@ -308,10 +319,6 @@
 		"all": "All",
 		"author": "Author",
 		"stars": "Stars",
-		"comments": "Comments",
-		"publishedAt": "Published",
-		"readComments": "Comments",
-		"notFound": "Art not found",
 		"comments": {
 			"title": "Comments ({count})",
 			"placeholder": "Write a comment...",
@@ -326,7 +333,10 @@
 				"deleted": "Comment deleted",
 				"deleteError": "Comment delete error"
 			}
-		}
+		},
+		"publishedAt": "Published",
+		"readComments": "Comments",
+		"notFound": "Art not found"
 	},
 	"ui": {
 		"combobox": {
@@ -1560,6 +1570,35 @@
 				"frozen": "Clan frozen",
 				"freezeError": "Could not freeze clan"
 			}
+		},
+		"invites": {
+			"title": "Invites",
+			"desc": "Enter character nicknames from the clan member list. Each creates a guest account (login and password) instantly bound to the clan, plus a code to bind in Discord.",
+			"create": "Create",
+			"createError": "Failed to create invite",
+			"empty": "No invites yet",
+			"claimed": "Claimed",
+			"pending": "Pending",
+			"claimedBy": "Claimed by",
+			"copied": "Copied",
+			"revoked": "Invite revoked",
+			"revokeError": "Failed to revoke invite",
+			"kicked": "Guest removed",
+			"kickError": "Failed to remove guest",
+			"leaderOnly": "Available to clan leaders only",
+			"createdTitle": "Create invites",
+			"createdDesc": "Select the members who need guest access. Each one gets a guest account and a code to bind in Discord.",
+			"code": "Code",
+			"username": "Login",
+			"password": "Password",
+			"createBulk": "Create",
+			"resultsTitle": "Done",
+			"resultsDesc": "Created: {created}, failed: {failed}",
+			"close": "Close",
+			"noUnlinked": "All members are already linked",
+			"membersCount": "Unlinked members: {count}",
+			"selectAll": "Select all",
+			"selectedCount": "Selected: {count}"
 		}
 	},
 	"me": {
@@ -1581,7 +1620,8 @@
 			"arts": "Art",
 			"stars": "Favorites",
 			"system": "System",
-			"notifications": "Notifications"
+			"notifications": "Notifications",
+			"invites": "Invites"
 		},
 		"menu": "Menu",
 		"home": {
@@ -1751,7 +1791,20 @@
 			"socialLinksUrlPlaceholder": "https://...",
 			"socialLinksSave": "Save",
 			"socialLinksSaved": "Social links saved",
-			"socialLinksSaveError": "Error saving social links"
+			"socialLinksSaveError": "Error saving social links",
+			"avatar": "Avatar",
+			"avatarPreview": "Preview",
+			"avatarPreviewDesc": "How your avatar looks right now",
+			"avatarUpload": "Custom image",
+			"avatarUploadDesc": "Upload your own image (PNG, JPG, WEBP)",
+			"avatarSource": "Source",
+			"avatarSourceDesc": "Which avatar to show when you have no custom one",
+			"toastAvatarSaved": "Avatar source saved",
+			"toastAvatarSaveError": "Failed to save source",
+			"toastAvatarUploaded": "Avatar uploaded",
+			"toastAvatarUploadError": "Failed to upload avatar",
+			"toastAvatarRemoved": "Avatar removed",
+			"toastAvatarRemoveError": "Failed to remove avatar"
 		},
 		"buildCard": {
 			"toastError": "Error",
@@ -1947,7 +2000,14 @@
 		"terms": "By registering on the site, you agree to these",
 		"termsLink": "terms of use",
 		"recommendationTitle": "Recommendation",
-		"recommendationDesc": "Use EXBO to get more functionality"
+		"recommendationDesc": "Use EXBO to get more functionality",
+		"username": "Username",
+		"password": "Password",
+		"login": "Sign in",
+		"loginByPassword": "By password",
+		"loginError": "Failed to sign in",
+		"back": "Back",
+		"next": "Next"
 	},
 	"tech": {
 		"title": "Technical work in progress"
@@ -2087,5 +2147,13 @@
 				"title": "Clan — Statistics"
 			}
 		}
+	},
+	"operations": {
+		"title": "Operations",
+		"description": "Player operations in StalZone: map, difficulty, participants and rewards.",
+		"nickname": "Character nickname",
+		"search": "Show operations",
+		"prompt": "Pick a region and enter a character nickname to see its operations.",
+		"loadMore": "Load more"
 	}
 }

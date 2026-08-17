@@ -13,8 +13,7 @@ type Props = {
 }
 
 export function BarterItem({ item, amount, locale }: Props) {
-	const color =
-		infoColorMap[item?.color as InfoColor] || InfoColor.DEFAULT
+	const color = infoColorMap[item?.color as InfoColor] || InfoColor.DEFAULT
 
 	return (
 		<Link
@@ -25,7 +24,7 @@ export function BarterItem({ item, amount, locale }: Props) {
 				alt={messageToString(item.lines, locale)}
 				className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
 				height={52}
-				src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
+				src={`https://cdn.stalhub.dev/db/icons${item.category}.png`}
 				width={52}
 			/>
 			<Divider />
@@ -34,10 +33,7 @@ export function BarterItem({ item, amount, locale }: Props) {
 					{formatBarterAmount(amount)}x
 				</p>
 			) : (
-				<p
-					className="truncate font-mono text-xs"
-					style={{ color }}
-				>
+				<p className="truncate font-mono text-xs" style={{ color }}>
 					{messageToString(item.lines, locale)}
 				</p>
 			)}

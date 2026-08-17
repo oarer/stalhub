@@ -9,6 +9,7 @@ import { userQueries } from '@/queries/user/user.queries'
 import type { Layout } from '@/types/user.type'
 import { LoadoutEditorModal } from './components/LoadoutEditorModal'
 import { AccountSection } from './components/settings/AccountSection'
+import { AvatarSection } from './components/settings/AvatarSection'
 import { BannerEditorModal } from './components/settings/BannerEditorModal'
 import { DangerZoneSection } from './components/settings/DangerZoneSection'
 import { DeleteAccountModal } from './components/settings/DeleteAccountModal'
@@ -41,6 +42,9 @@ export default function MeSettingsView() {
 		layoutMutation,
 		regionMutation,
 		uploadBannerMutation,
+		avatarMutation,
+		uploadAvatarMutation,
+		deleteAvatarMutation,
 		saveLoadoutMutation,
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,
@@ -87,6 +91,18 @@ export default function MeSettingsView() {
 					profileMutation.mutate({ username })
 				}
 				user={user}
+			/>
+			<AvatarSection
+				available={settings.avatar?.available}
+				current={settings.avatar?.current}
+				hasCustomAvatar={Boolean(settings.avatar_image)}
+				isRemoving={deleteAvatarMutation.isPending}
+				isUploading={uploadAvatarMutation.isPending}
+				onRemove={() => deleteAvatarMutation.mutate()}
+				onSourceChange={(source) => avatarMutation.mutate(source)}
+				onUpload={(file) => uploadAvatarMutation.mutate(file)}
+				userId={user.id}
+				username={user.username}
 			/>
 			{user.providers.exbo && (
 				<RegionSection

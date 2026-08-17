@@ -246,7 +246,7 @@ export function ArtifactSlotsLite({
 						<Image
 							alt="Container icon"
 							height={34}
-							src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${currentContainer?.category}/${currentContainer?.id}.png`}
+							src={`https://cdn.stalhub.dev/db/icons/${currentContainer?.category}/${currentContainer?.id}.png`}
 							width={34}
 						/>
 					)}

@@ -162,7 +162,7 @@ function BoostSelectModal({
 								)}
 								className="size-12 object-contain"
 								height={42}
-								src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${selectedItemData.category}/${selectedItemData.id}.png`}
+								src={`https://cdn.stalhub.dev/db/icons/${selectedItemData.category}/${selectedItemData.id}.png`}
 								width={42}
 							/>
 						</HoverCard.Trigger>

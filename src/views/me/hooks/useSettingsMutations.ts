@@ -90,6 +90,40 @@ export function useSettingsMutations(
 		},
 	})
 
+	const avatarMutation = useMutation({
+		mutationFn: (source: 'discord' | 'telegram') =>
+			userService.patchMe({ avatar: source.toUpperCase() as never }),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user', 'settings'] })
+			toast.success(t('me.settings.toastAvatarSaved'))
+		},
+		onError: () => {
+			toast.error(t('me.settings.toastAvatarSaveError'))
+		},
+	})
+
+	const uploadAvatarMutation = useMutation({
+		mutationFn: (file: File) => userService.uploadAvatar(file),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user', 'settings'] })
+			toast.success(t('me.settings.toastAvatarUploaded'))
+		},
+		onError: () => {
+			toast.error(t('me.settings.toastAvatarUploadError'))
+		},
+	})
+
+	const deleteAvatarMutation = useMutation({
+		mutationFn: () => userService.deleteAvatar(),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user', 'settings'] })
+			toast.success(t('me.settings.toastAvatarRemoved'))
+		},
+		onError: () => {
+			toast.error(t('me.settings.toastAvatarRemoveError'))
+		},
+	})
+
 	const saveLoadoutMutation = useMutation({
 		mutationFn: (data: LoadoutData) =>
 			loadoutService.upsert(data, loadout?.is_public ?? false),
@@ -189,6 +223,9 @@ export function useSettingsMutations(
 		layoutMutation,
 		regionMutation,
 		uploadBannerMutation,
+		avatarMutation,
+		uploadAvatarMutation,
+		deleteAvatarMutation,
 		saveLoadoutMutation,
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,

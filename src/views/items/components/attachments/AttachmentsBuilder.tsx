@@ -40,7 +40,7 @@ const getSlotOrder = (slotKey: string): number => {
 }
 
 const getIconUrl = (category: string, id: string): string =>
-	`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${category}/${id}.png`
+	`https://cdn.stalhub.dev/db/icons/${category}/${id}.png`
 
 const getAttachmentWeight = (attachment: Item): number => {
 	for (const block of attachment.infoBlocks) {

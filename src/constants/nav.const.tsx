@@ -160,6 +160,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				labelKey: 'nav.groups.other.items.players.label',
 			},
 			{
+				key: 'operations',
+				icon: 'lucide:siren',
+				href: '/operations',
+				labelKey: 'nav.groups.other.items.operations.label',
+				descriptionKey:
+					'nav.groups.other.items.operations.description',
+			},
+			{
 				key: 'models',
 				icon: 'lucide:box',
 				href: '',

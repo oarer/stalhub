@@ -300,6 +300,7 @@ export function Combobox(props: ComboboxProps) {
 	const selectedLabels = options.filter((o) => selectedSet.has(o.value))
 	const hasSelection = selectedLabels.length > 0
 
+	// ну вот нахуй ты сюда классы въебал
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button

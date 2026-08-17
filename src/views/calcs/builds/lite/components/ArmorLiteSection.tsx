@@ -71,7 +71,7 @@ export function ArmorLiteSection({
 					alt="Armor"
 					className="object-contain"
 					fill
-					src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${armorItem.category}/${armor.id}.png`}
+					src={`https://cdn.stalhub.dev/db/icons/${armorItem.category}/${armor.id}.png`}
 				/>
 			</div>
 			<div className="flex flex-col gap-3">

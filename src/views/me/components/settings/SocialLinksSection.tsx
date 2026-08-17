@@ -7,20 +7,15 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Section } from '../Section'
 
-export const SOCIAL_NETWORKS = [
-	'telegram',
-	'youtube',
-	'twitch',
-	'boosty',
-	'x'
-]
+export const SOCIAL_NETWORKS = ['telegram', 'youtube', 'twitch', 'boosty', 'x']
 
 export const SOCIAL_ICONS: Record<string, string> = {
-	telegram: 'lucide:send',
+	telegram: 'mingcute:telegram-fill',
 	discord: 'lucide:message-circle',
 	youtube: 'lucide:youtube',
 	twitch: 'lucide:twitch',
-	x: 'lucide:twitter',
+	boosty: 'simple-icons:boosty',
+	x: 'prime:twitter',
 }
 
 export function SocialLinksSection({
@@ -93,7 +88,7 @@ export function SocialLinksSection({
 					))}
 				</div>
 				<Button
-					className="self-end"
+					className="gap-2 self-end"
 					disabled={!dirty}
 					loading={isPending}
 					onClick={handleSave}

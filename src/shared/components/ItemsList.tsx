@@ -69,7 +69,7 @@ const Row = ({
 						alt={messageToString(item.name, locale)}
 						className="h-8 w-8 object-contain"
 						height={32}
-						src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${item.category}/${item.id}.png`}
+						src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
 						width={32}
 					/>
 

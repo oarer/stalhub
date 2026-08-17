@@ -79,14 +79,14 @@ export function WeaponSlotCard({
 	const weaponIconUrl = useMemo(
 		() =>
 			weapon
-				? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${weapon.category}/${weapon.id}.png`
+				? `https://cdn.stalhub.dev/db/icons/${weapon.category}/${weapon.id}.png`
 				: null,
 		[weapon]
 	)
 	const ammoIconUrl = useMemo(
 		() =>
 			ammo
-				? `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/bullet/${ammo.id}.png`
+				? `https://cdn.stalhub.dev/db/icons/bullet/${ammo.id}.png`
 				: null,
 		[ammo]
 	)

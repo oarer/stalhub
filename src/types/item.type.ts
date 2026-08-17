@@ -16,7 +16,6 @@ export enum InfoColor {
 	ART_QUALITY_LEGENDARY = 'ART_QUALITY_LEGENDARY',
 	ART_QUALITY_UNIQUE = 'ART_QUALITY_UNIQUE',
 }
-
 export const infoColorMap: Record<InfoColor, string> = {
 	[InfoColor.DEFAULT]: '#FFFFFF',
 	[InfoColor.QUEST_ITEM]: '#ABF1F1',
@@ -25,11 +24,11 @@ export const infoColorMap: Record<InfoColor, string> = {
 	[InfoColor.RANK_VETERAN]: '#BF5BAD',
 	[InfoColor.RANK_MASTER]: '#EA9D9E',
 	[InfoColor.RANK_LEGEND]: '#FFD700',
-	[InfoColor.ART_QUALITY_COMMON]: '#FFFFFF',
-	[InfoColor.ART_QUALITY_UNCOMMON]: '#9DEB9D',
-	[InfoColor.ART_QUALITY_SPECIAL]: '#9F9FED',
+	[InfoColor.ART_QUALITY_COMMON]: '#B8BCC5',
+	[InfoColor.ART_QUALITY_UNCOMMON]: '#22C55E',
+	[InfoColor.ART_QUALITY_SPECIAL]: '#6366F1',
 	[InfoColor.ART_QUALITY_RARE]: '#BF5BAD',
-	[InfoColor.ART_QUALITY_EXCLUSIVE]: '#EA9D9E',
+	[InfoColor.ART_QUALITY_EXCLUSIVE]: '#F87171',
 	[InfoColor.ART_QUALITY_LEGENDARY]: '#FFD700',
 	[InfoColor.ART_QUALITY_UNIQUE]: '#FCB3CD',
 }
@@ -89,7 +88,6 @@ export type MessageTranslation = {
 }
 
 export type Message = MessageText | MessageTranslation
-
 
 enum BindState {
 	NONE = 'NONE',

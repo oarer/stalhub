@@ -55,7 +55,7 @@ export default function BuildsView() {
 		queryFn: async () => {
 			if (!build.armor?.id || !armorItem?.category) return null
 			const res = await fetch(
-				`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/items/${armorItem.category}/${build.armor.id}.json`
+				`https://cdn.stalhub.dev/db/items/${armorItem.category}/${build.armor.id}.json`
 			)
 			if (!res.ok) return null
 			return res.json()
@@ -68,7 +68,7 @@ export default function BuildsView() {
 		queryFn: async () => {
 			if (!build.container?.id || !containerItem?.category) return null
 			const res = await fetch(
-				`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/items/${containerItem.category}/${build.container.id}.json`
+				`https://cdn.stalhub.dev/db/items/${containerItem.category}/${build.container.id}.json`
 			)
 			if (!res.ok) return null
 			return res.json()

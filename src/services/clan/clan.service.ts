@@ -5,6 +5,7 @@ import type {
 	BotGuild,
 	BotLinkToken,
 	ClanInfo,
+	ClanInvite,
 	ClanMember,
 	ClanMemberUser,
 	ClanSchedule,
@@ -14,6 +15,8 @@ import type {
 	ClanSquadRequest,
 	ClanStats,
 	ClanStatsSession,
+	BulkInviteResult,
+	CreatedGuestInvite,
 	GoldDrop,
 	GoldDropStatus,
 	GrenadeAllTimeResponse,
@@ -430,6 +433,39 @@ class ClanService {
 		await apiClient.delete(
 			`/api/v1/clan/bot/guilds/${encodeURIComponent(guildId)}`
 		)
+	}
+
+	async getInvites(): Promise<ClanInvite[]> {
+		const { data } = await apiClient.get<ClanInvite[]>(
+			'/api/v1/clan/invites'
+		)
+		return data ?? []
+	}
+
+	async createInvite(nickname: string): Promise<CreatedGuestInvite> {
+		const { data } = await apiClient.post<CreatedGuestInvite>(
+			'/api/v1/clan/invites',
+			{ nickname }
+		)
+		return data
+	}
+
+	async createInvitesBulk(
+		nicknames: string[]
+	): Promise<BulkInviteResult[]> {
+		const { data } = await apiClient.post<BulkInviteResult[]>(
+			'/api/v1/clan/invites/bulk',
+			{ nicknames }
+		)
+		return data ?? []
+	}
+
+	async revokeInvite(inviteId: number): Promise<void> {
+		await apiClient.delete(`/api/v1/clan/invites/${inviteId}`)
+	}
+
+	async kickGuest(userId: number): Promise<void> {
+		await apiClient.delete(`/api/v1/clan/invites/guest/${userId}`)
 	}
 }
 

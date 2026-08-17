@@ -7,6 +7,7 @@ import type { Regions } from '@/types/api.type'
 import ClanHistoryView from './components/ClanHistoryView'
 import ClanView from './components/ClanView'
 import HeroView from './components/hero/HeroView'
+import OperationsSection from './components/OperationsSection'
 import StatsView from './components/StatsView'
 
 export default function PlayerView({
@@ -24,6 +25,7 @@ export default function PlayerView({
 			{data.clan && <ClanView data={data.clan} />}
 			<ClanHistoryView history={data.clan_history ?? []} />
 			<StatsView data={data.stats} />
+			<OperationsSection character={character} region={region} />
 		</main>
 	)
 }

@@ -32,16 +32,12 @@ export async function generateMetadata({
 		openGraph: {
 			title: `${itemData.name} · StalHub`,
 			description: itemData.description,
-			images: [
-				`https://raw.githubusercontent.com/oarer/sc-db/main/merged${itemData.icon}`,
-			],
+			images: [`https://cdn.stalhub.dev/db${itemData.icon}`],
 		},
 		twitter: {
 			title: `${itemData.name} · StalHub`,
 			description: itemData.description,
-			images: [
-				`https://raw.githubusercontent.com/oarer/sc-db/main/merged${itemData.icon}`,
-			],
+			images: [`https://cdn.stalhub.dev/db${itemData.icon}`],
 		},
 	}
 }
@@ -59,7 +55,9 @@ export default async function ItemsPage({ params }: PageProps) {
 		queryClient.prefetchQuery(itemQueries.barter(id)),
 
 		queryClient.prefetchInfiniteQuery(auctionQueries.lotsInfinite({ id })),
-		queryClient.prefetchInfiniteQuery(auctionQueries.historyInfinite({ id })),
+		queryClient.prefetchInfiniteQuery(
+			auctionQueries.historyInfinite({ id })
+		),
 	])
 
 	const item = queryClient.getQueryData<Item>(

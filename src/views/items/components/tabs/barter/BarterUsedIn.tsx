@@ -33,7 +33,7 @@ export function BarterUsedIn({ items, locale }: Props) {
 								alt={messageToString(item.lines, locale)}
 								className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
 								height={52}
-								src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons${item.category}.png`}
+								src={`https://cdn.stalhub.dev/db/icons${item.category}.png`}
 								width={52}
 							/>
 

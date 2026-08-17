@@ -6,6 +6,7 @@ import type {
 	AttendanceSummary,
 	BotGuild,
 	ClanInfo,
+	ClanInvite,
 	ClanMember,
 	ClanSchedule,
 	ClanSettings,
@@ -119,6 +120,14 @@ class ClanQueries {
 		return queryOptions<BotGuild[]>({
 			queryKey: ['clan', 'bot', 'guilds'],
 			queryFn: () => clanService.getBotGuilds(),
+			staleTime: 1000 * 30,
+		})
+	}
+
+	getInvites() {
+		return queryOptions<ClanInvite[]>({
+			queryKey: ['clan', 'invites'],
+			queryFn: () => clanService.getInvites(),
 			staleTime: 1000 * 30,
 		})
 	}

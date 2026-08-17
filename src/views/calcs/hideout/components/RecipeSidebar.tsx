@@ -54,7 +54,7 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 		const getIcon = (id: string) => {
 			const entry = itemMap.get(id)
 			if (!entry?.icon) return ''
-			return `https://raw.githubusercontent.com/oarer/sc-db/main/merged${entry.icon}`
+			return `https://cdn.stalhub.dev/db${entry.icon}`
 		}
 
 		const seen = new Set<string>()

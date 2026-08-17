@@ -164,7 +164,7 @@ export function ItemPickerModal({
 													locale
 												)}
 												height={48}
-												src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${selectedItem.category}/${selectedItem.id}.png`}
+												src={`https://cdn.stalhub.dev/db/icons/${selectedItem.category}/${selectedItem.id}.png`}
 												width={48}
 											/>
 

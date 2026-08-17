@@ -56,6 +56,21 @@ class UserService {
 		return data
 	}
 
+	async uploadAvatar(file: File): Promise<{ avatar_image: string }> {
+		const formData = new FormData()
+		formData.append('file', file)
+		const { data } = await apiClient.post<{ avatar_image: string }>(
+			'/api/v1/users/@me/avatar',
+			formData,
+			{ headers: { 'Content-Type': 'multipart/form-data' } }
+		)
+		return data
+	}
+
+	async deleteAvatar(): Promise<void> {
+		await apiClient.delete('/api/v1/users/@me/avatar')
+	}
+
 	async getSessions(): Promise<Session[]> {
 		const { data } = await apiClient.get<Session[]>(
 			'/api/v1/users/@me/sessions'

@@ -86,7 +86,7 @@ export function ArtifactSlots({
 									<Image
 										alt={messageToString(item.name, locale)}
 										height={44}
-										src={`https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${item.category}/${item.id}.png`}
+										src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
 										width={44}
 									/>
 									<div className="flex flex-col items-center">

@@ -126,6 +126,17 @@
 			"квесты сталкрафт"
 		]
 	},
+	"/operations": {
+		"title": "Операции · StalHub",
+		"description": "Просмотр операций игроков StalZone: карта, сложность, участники и награды.",
+		"keywords": [
+			"сталкрафт операции",
+			"stalcraft operations",
+			"сталзон операции",
+			"stalcraft sessions",
+			"операции сталкрафт"
+		]
+	},
 	"notFound": {
 		"title": "Страница не найдена · StalHub",
 		"description": "Запрашиваемая страница не найдена",

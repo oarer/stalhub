@@ -24,7 +24,7 @@ type CompareSlotsProps = {
 }
 
 function getIconUrl(item: Item) {
-	return `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${item.category}/${item.id}.png`
+	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
 }
 
 export function CompareSlots({

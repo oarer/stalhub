@@ -43,7 +43,7 @@ const ItemCard = React.memo(function ItemCard({
 }) {
 	const locale = getLocale()
 	const name = item.name?.[locale] ?? item.data ?? '—'
-	const iconPath = `https://raw.githubusercontent.com/oarer/sc-db/main/merged${item.icon}`
+	const iconPath = `https://cdn.stalhub.dev/db${item.icon}`
 
 	return (
 		<Card.Link

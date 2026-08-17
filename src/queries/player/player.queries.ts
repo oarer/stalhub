@@ -1,6 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
 import { playerService } from '@/services/player/player.service'
+import type { OperationSessionListing } from '@/types/operations/operation.type'
 import type {
 	PlayerParams,
 	PlayerResponse,
@@ -13,6 +14,21 @@ class PlayerQueries {
 			queryKey: ['player', region, character],
 			queryFn: () => playerService.get({ region, character }),
 			placeholderData: undefined,
+			staleTime: 1000 * 60,
+		})
+	}
+
+	getOperations({
+		region,
+		character,
+	}: {
+		region: string
+		character: string
+	}) {
+		return queryOptions<OperationSessionListing>({
+			queryKey: ['player', region, character, 'operations'],
+			queryFn: () =>
+				playerService.getOperations({ region, username: character }),
 			staleTime: 1000 * 60,
 		})
 	}

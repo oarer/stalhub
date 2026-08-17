@@ -70,7 +70,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 					Object.values(entry?.name ?? {})[0] ??
 					id,
 				icon: entry?.icon
-					? `https://raw.githubusercontent.com/oarer/sc-db/main/merged${entry.icon}`
+					? `https://cdn.stalhub.dev/db${entry.icon}`
 					: '',
 			}
 		}

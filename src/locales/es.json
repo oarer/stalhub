@@ -149,6 +149,10 @@
 					"models": {
 						"label": "Ver modelos",
 						"description": "Próximamente..."
+					},
+					"operations": {
+						"label": "Operaciones",
+						"description": "Historial de operaciones del jugador"
 					}
 				}
 			}
@@ -247,6 +251,13 @@
 		},
 		"clanHistory": {
 			"title": "Historial de clanes"
+		},
+		"operations": {
+			"title": "Operaciones",
+			"difficulty": "Dificultad",
+			"participants": "Participantes: {count}",
+			"empty": "No se encontraron operaciones",
+			"error": "No se pudieron cargar las operaciones"
 		}
 	},
 	"time": {
@@ -308,10 +319,6 @@
 		"all": "Todos",
 		"author": "Autor",
 		"stars": "Estrellas",
-		"comments": "Comentarios",
-		"publishedAt": "Publicado",
-		"readComments": "Comentarios",
-		"notFound": "Obra no encontrada",
 		"comments": {
 			"title": "Comentarios ({count})",
 			"placeholder": "Escribe un comentario...",
@@ -326,7 +333,10 @@
 				"deleted": "Comentario eliminado",
 				"deleteError": "Error al eliminar el comentario"
 			}
-		}
+		},
+		"publishedAt": "Publicado",
+		"readComments": "Comentarios",
+		"notFound": "Obra no encontrada"
 	},
 	"ui": {
 		"combobox": {
@@ -1560,6 +1570,35 @@
 				"frozen": "Clan congelado",
 				"freezeError": "No se pudo congelar el clan"
 			}
+		},
+		"invites": {
+			"title": "Invitaciones",
+			"desc": "Introduzca los apodos de los personajes de la lista de miembros del clan. Cada uno crea una cuenta de invitado (usuario y contraseña) vinculada al clan de inmediato, más un código para vincular en Discord.",
+			"create": "Crear",
+			"createError": "No se pudo crear la invitación",
+			"empty": "Aún no hay invitaciones",
+			"claimed": "Activada",
+			"pending": "Pendiente",
+			"claimedBy": "Activada por",
+			"copied": "Copiado",
+			"revoked": "Invitación revocada",
+			"revokeError": "No se pudo revocar la invitación",
+			"kicked": "Invitado eliminado",
+			"kickError": "No se pudo eliminar al invitado",
+			"leaderOnly": "Solo disponible para líderes del clan",
+			"createdTitle": "Crear invitaciones",
+			"createdDesc": "Seleccione los miembros que necesitan acceso de invitado. Cada uno recibe una cuenta de invitado y un código para vincular en Discord.",
+			"code": "Código",
+			"username": "Usuario",
+			"password": "Contraseña",
+			"createBulk": "Crear",
+			"resultsTitle": "Listo",
+			"resultsDesc": "Creados: {created}, errores: {failed}",
+			"close": "Cerrar",
+			"noUnlinked": "Todos los miembros ya están vinculados",
+			"membersCount": "Miembros sin vincular: {count}",
+			"selectAll": "Seleccionar todos",
+			"selectedCount": "Seleccionados: {count}"
 		}
 	},
 	"me": {
@@ -1581,7 +1620,8 @@
 			"arts": "Arte",
 			"stars": "Favoritos",
 			"system": "Sistema",
-			"notifications": "Notificaciones"
+			"notifications": "Notificaciones",
+			"invites": "Invitaciones"
 		},
 		"menu": "Menú",
 		"home": {
@@ -1751,7 +1791,20 @@
 			"socialLinksUrlPlaceholder": "https://...",
 			"socialLinksSave": "Guardar",
 			"socialLinksSaved": "Redes sociales guardadas",
-			"socialLinksSaveError": "Error al guardar las redes sociales"
+			"socialLinksSaveError": "Error al guardar las redes sociales",
+			"avatar": "Avatar",
+			"avatarPreview": "Vista previa",
+			"avatarPreviewDesc": "Cómo se ve tu avatar ahora",
+			"avatarUpload": "Imagen personalizada",
+			"avatarUploadDesc": "Sube tu propia imagen (PNG, JPG, WEBP)",
+			"avatarSource": "Fuente",
+			"avatarSourceDesc": "Qué avatar mostrar si no tienes uno propio",
+			"toastAvatarSaved": "Fuente del avatar guardada",
+			"toastAvatarSaveError": "No se pudo guardar la fuente",
+			"toastAvatarUploaded": "Avatar subido",
+			"toastAvatarUploadError": "No se pudo subir el avatar",
+			"toastAvatarRemoved": "Avatar eliminado",
+			"toastAvatarRemoveError": "No se pudo eliminar el avatar"
 		},
 		"buildCard": {
 			"toastError": "Error",
@@ -1947,7 +2000,14 @@
 		"terms": "Al registrarte en el sitio, aceptas los",
 		"termsLink": "términos de uso",
 		"recommendationTitle": "Recomendación",
-		"recommendationDesc": "Usa EXBO para obtener más funcionalidades"
+		"recommendationDesc": "Usa EXBO para obtener más funcionalidades",
+		"username": "Nombre de usuario",
+		"password": "Contraseña",
+		"login": "Iniciar sesión",
+		"loginByPassword": "Por contraseña",
+		"loginError": "Error al iniciar sesión",
+		"back": "Atrás",
+		"next": "Siguiente"
 	},
 	"tech": {
 		"title": "Trabajos técnicos en curso"
@@ -2087,5 +2147,13 @@
 				"title": "Clan — Estadísticas"
 			}
 		}
+	},
+	"operations": {
+		"title": "Operaciones",
+		"description": "Operaciones de jugadores en StalZone: mapa, dificultad, participantes y recompensas.",
+		"nickname": "Apodo del personaje",
+		"search": "Mostrar operaciones",
+		"prompt": "Elija una región e ingrese el apodo del personaje para ver sus operaciones.",
+		"loadMore": "Cargar más"
 	}
 }

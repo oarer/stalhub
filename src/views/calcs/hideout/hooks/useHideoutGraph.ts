@@ -93,9 +93,7 @@ export function useHideoutGraph(
 		(id: string) => {
 			const entry = itemMap.get(id)
 
-			return entry?.icon
-				? `https://raw.githubusercontent.com/oarer/sc-db/main/merged${entry.icon}`
-				: ''
+			return entry?.icon ? `https://cdn.stalhub.dev/db${entry.icon}` : ''
 		},
 		[itemMap]
 	)

@@ -49,7 +49,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 		modulesLoad()
 	}, [modulesLoad])
 
-	const iconUrl = `https://raw.githubusercontent.com/oarer/sc-db/refs/heads/main/merged/icons/${path.join('/')}.png`
+	const iconUrl = `https://cdn.stalhub.dev/db/icons/${path.join('/')}.png`
 
 	const { data } = useSuspenseQuery(itemQueries.byGithubUrl(githubUrl))
 
@@ -57,7 +57,9 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 		data: auctionHistoryInfinite,
 		hasNextPage: historyHasNextPage,
 		fetchNextPage: fetchHistoryNextPage,
-	} = useSuspenseInfiniteQuery(auctionQueries.historyInfinite({ id, limit: 50 }))
+	} = useSuspenseInfiniteQuery(
+		auctionQueries.historyInfinite({ id, limit: 50 })
+	)
 	const {
 		data: auctionCurrentInfinite,
 		hasNextPage: currentHasNextPage,
