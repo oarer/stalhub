@@ -156,6 +156,7 @@ export default function NavMobile() {
 						<div className="flex flex-col gap-4 rounded-xl bg-background p-4 shadow-lg ring-2 ring-border/50">
 							<Accordion
 								className="flex flex-col gap-4"
+								disableEntranceAnimation
 								items={dropdownItems}
 								selectionMode="single"
 								size="sm"
@@ -183,6 +184,7 @@ export default function NavMobile() {
 							/>
 							<Accordion
 								className="flex flex-col gap-4"
+								disableEntranceAnimation
 								items={settingsAccordionItems}
 								selectionMode="single"
 								size="sm"

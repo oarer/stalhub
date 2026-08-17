@@ -11,7 +11,8 @@ export default function useClickOutside(
 
 			if (
 				(ref.current && ref.current.contains(target)) ||
-				(ignoreRef?.current && ignoreRef.current.contains(target))
+				(ignoreRef?.current && ignoreRef.current.contains(target)) ||
+				target.closest?.('[role="dialog"]')
 			) {
 				return
 			}
