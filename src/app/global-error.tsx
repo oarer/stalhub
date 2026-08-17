@@ -1,8 +1,8 @@
 'use client'
 
 import axios from 'axios'
-import { NextIntlClientProvider } from 'next-intl'
 import { usePathname } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
 import { useEffect, useState } from 'react'
 import GlobalErrorView from '@/views/errors/globalError/GlobalErrorView'
 
@@ -31,10 +31,21 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 
 		const sendError = async () => {
 			try {
-				const content = `Page: ${path}\nMessage: ${error.message ?? 'No message'}`
-				const response = await axios.post('/api/error-report', {
-					content,
-				})
+		const parts = [`Page: ${path}`, `Message: ${error.message ?? 'No message'}`]
+
+			if (error.digest) parts.push(`Digest: ${error.digest}`)
+			if (error.stack) {
+				const trace = error.stack
+					.split('\n')
+					.slice(0, 5)
+					.join('\n')
+				parts.push(`Stack:\n${trace}`)
+			}
+
+			const content = parts.join('\n')
+			const response = await axios.post('/api/error-report', {
+				content,
+			})
 
 				setErrorId(response.data.errorId)
 				console.info('Reported error, ID:', response.data.errorId)

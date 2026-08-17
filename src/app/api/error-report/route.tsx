@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 		const errorId = randomUUID()
 		const ua = req.headers.get('user-agent') ?? 'Unknown agent'
 
-		console.error({ id: errorId, content: body.content, ua })
+		console.error(`[error-report] ${errorId} - ${body.content}`)
 
 		if (BOT_TOKEN && CHAT_ID) {
 			const text = `❌ Client received client-side error:\n💼 Error ID: ${errorId}\n 🔗${body.content}\n\n👤 User agent: ${ua}`
@@ -63,20 +63,15 @@ export async function POST(req: NextRequest) {
 			}
 
 			try {
-				const res = await axios.post<{ ok: boolean; result: unknown }>(
+				await axios.post(
 					`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
 					{ chat_id: CHAT_ID, text, entities },
 					{ timeout: 30000 }
 				)
-				console.log('Telegram response:', res.data)
-			} catch (err: unknown) {
-				if (axios.isAxiosError(err)) {
-					console.error('Telegram API error response')
-				} else if (err instanceof Error) {
-					console.error('Failed to send Telegram message')
-				} else {
-					console.error('Unknown error sending Telegram message')
-				}
+			} catch (_err: unknown) {
+				console.error(
+					`[error-report] Failed to send Telegram ${errorId}`
+				)
 			}
 		}
 
