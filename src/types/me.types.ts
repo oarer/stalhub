@@ -55,6 +55,11 @@ export const tabGroups: TabGroup[] = [
 				icon: 'lucide:coins',
 			},
 			{
+				title: 'me.nav.invites',
+				href: '/me/clan/invites',
+				icon: 'lucide:ticket',
+			},
+			{
 				title: 'me.nav.absences',
 				href: '/me/clan/absences',
 				icon: 'lucide:calendar-x',

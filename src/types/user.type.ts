@@ -48,6 +48,11 @@ export interface UserSettings {
 	public_profile: boolean
 	region?: string | null
 	region_changed_at?: string | null
+	avatar?: {
+		current: string
+		available: string[]
+	}
+	avatar_image?: string | null
 }
 
 export interface UserBadge {

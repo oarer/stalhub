@@ -66,6 +66,38 @@ export interface UserClanProfile {
 	updatedAt: string
 }
 
+export interface ClanInvite {
+	id: number
+	code: string
+	clan_id: string
+	userId: number
+	claimed_by: string | null
+	claimed_at: string | null
+	created_by: string
+	created_at: string
+	user: ClanMemberUser
+}
+
+export interface CreatedGuestInvite {
+	code: string
+	username: string
+	password: string
+	clan_id: string
+	user_id: number
+	nickname: string
+}
+
+export interface BulkInviteResult {
+	ok: boolean
+	nickname: string
+	error?: string
+	code?: string
+	username?: string
+	password?: string
+	clan_id?: string
+	user_id?: number
+}
+
 export interface PublicClan {
 	id: string
 	name: string
