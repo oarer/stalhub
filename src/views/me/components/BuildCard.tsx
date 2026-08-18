@@ -143,6 +143,11 @@ export function BuildCard({
 
 	const hasPreview = armorItems && containers && artifacts
 
+	console.log('BUILD:', build)
+	console.log('TAGS:', build.tags)
+	console.log('TAGS TYPE:', typeof build.tags)
+	console.log('IS ARRAY:', Array.isArray(build.tags))
+
 	return (
 		<div
 			className={`group relative flex flex-col gap-2 rounded-lg bg-background p-3 transition-colors hover:bg-accent ${
@@ -320,7 +325,7 @@ export function BuildCard({
 				<div className="flex flex-wrap gap-1">
 					{build.tags.slice(0, 3).map((tag) => (
 						<span
-							className="rounded bg-border-secondary px-1.5 py-0.5 text-text-accent text-xs"
+							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
 							key={tag}
 						>
 							{t(`builds.tags.${tag}`)}

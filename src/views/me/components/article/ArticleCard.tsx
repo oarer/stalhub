@@ -67,14 +67,14 @@ export function ArticleCard({ article }: ArticleCardProps) {
 				<div className="flex flex-wrap gap-1">
 					{tags.slice(0, MAX_VISIBLE_TAGS).map((tag) => (
 						<span
-							className="rounded-md bg-border-secondary px-1.5 py-0.5 text-text-accent text-xs"
+							className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
 							key={tag}
 						>
 							{tag}
 						</span>
 					))}
 					{tags.length > MAX_VISIBLE_TAGS && (
-						<span className="text-text-accent text-xs">
+						<span className="font-semibold text-text-accent text-xs">
 							+{tags.length - MAX_VISIBLE_TAGS}
 						</span>
 					)}
