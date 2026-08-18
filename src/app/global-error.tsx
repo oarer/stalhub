@@ -14,14 +14,16 @@ type GlobalErrorProps = {
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
 	const path = usePathname()
 	const [errorId, setErrorId] = useState<string | null>(null)
+	const [locale, setLocale] = useState<string>('ru')
 	const [messages, setMessages] = useState<Record<string, unknown> | null>(
 		null
 	)
 
 	useEffect(() => {
-		const locale =
-			document.cookie.match(/lang=(ru|en|es|fr|ko)/)?.[1] ?? 'ru'
-		import(`@/locales/${locale}.json`).then((mod) =>
+		const match = document.cookie.match(/lang=(ru|en|es|fr|ko)/)
+		const loc = match?.[1] ?? 'ru'
+		setLocale(loc)
+		import(`@/locales/${loc}.json`).then((mod) =>
 			setMessages(mod.default)
 		)
 	}, [])
@@ -60,7 +62,16 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 	if (!messages) return null
 
 	return (
-		<NextIntlClientProvider messages={messages}>
+		<NextIntlClientProvider
+			locale={locale}
+			messages={messages}
+			onError={(error) => {
+				if (error.code === 'MISSING_MESSAGE') return
+			}}
+			getMessageFallback={({ namespace, key }) =>
+				`${namespace ? `${namespace}.` : ''}${key}`
+			}
+		>
 			<GlobalErrorView errorId={errorId} reset={reset} />
 		</NextIntlClientProvider>
 	)

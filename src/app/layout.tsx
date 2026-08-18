@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import '@/shared/styles/index.css'
 import { headers } from 'next/headers'
 import Script from 'next/script'
-import { NextIntlClientProvider } from 'next-intl'
+import LocaleProvider from '@/providers/LocaleProvider'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { raleway } from '@/app/fonts'
@@ -58,7 +58,7 @@ export default async function RootLayout({
 						disableTransitionOnChange
 						enableSystem
 					>
-						<NextIntlClientProvider messages={messages}>
+						<LocaleProvider locale={locale} messages={messages}>
 							<Providers>
 								<Nav />
 								{/* <PageTransitionEffect> */}
@@ -66,7 +66,7 @@ export default async function RootLayout({
 								<Footer />
 								{/* </PageTransitionEffect> */}
 							</Providers>
-						</NextIntlClientProvider>
+						</LocaleProvider>
 					</ThemeProvider>
 				</Suspense>
 			</body>

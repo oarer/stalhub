@@ -228,7 +228,16 @@ export function BaseModel({
 		return (
 			<Html position={htmlPos} zIndexRange={[1000, 1000]}>
 				<QueryProvider>
-					<NextIntlClientProvider locale={locale} messages={messages}>
+					<NextIntlClientProvider
+						getMessageFallback={({ namespace, key }) =>
+							`${namespace ? `${namespace}.` : ''}${key}`
+						}
+						locale={locale}
+						messages={messages}
+						onError={(error) => {
+							if (error.code === 'MISSING_MESSAGE') return
+						}}
+					>
 						<ModalManager
 							clickType={modalOpen.clickType}
 							onClose={() => setModalOpen(null)}

@@ -65,7 +65,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 						: 'var(--border-secondary)'
 
 	return (
-		<button
+		<div
 			className={cn(
 				'flex w-full cursor-pointer items-center rounded-lg border-2 bg-background/25 px-2 py-1.5 backdrop-blur-sm transition-all duration-500 hover:bg-background'
 			)}
@@ -82,11 +82,18 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 				onSelectSlot(index)
 				if (!instanceId) onOpenModal()
 			}}
+			onKeyDown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault()
+					e.currentTarget.click()
+				}
+			}}
+			role="button"
 			style={{
 				backgroundColor: instanceId ? `${colorHex}22` : undefined,
 				borderColor: borderColor,
 			}}
-			type="button"
+			tabIndex={0}
 		>
 			{item ? (
 				<div className="flex w-full items-center justify-between gap-2">
@@ -187,7 +194,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 					</h2>
 				</div>
 			)}
-		</button>
+		</div>
 	)
 })
 
