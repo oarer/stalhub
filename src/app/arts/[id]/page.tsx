@@ -20,7 +20,13 @@ export async function generateMetadata({
 	try {
 		const art = await artService.get(id)
 		const images = art.image_url
-			? [{ url: art.image_url, width: 1200, height: 630 }]
+			? [
+					{
+						url: `https://api.stalhub.dev${art.image_url}`,
+						width: 1200,
+						height: 630,
+					},
+				]
 			: []
 
 		const description = t('arts.byAuthor', {
