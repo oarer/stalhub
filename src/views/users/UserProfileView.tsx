@@ -6,12 +6,12 @@ import ClanCard from '@/components/ui/clan/ClanCard'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
 import { userQueries } from '@/queries/user/user.queries'
-import type { BuildApi } from '@/types/build-api.type'
 import type { Item } from '@/types/item.type'
-import { BuildCell, ItemCell } from '@/views/clan/components/squads/ItemCell'
+import { ItemCell } from '@/views/clan/components/squads/ItemCell'
 import UserCard from '@/views/me/components/UserCard'
 import { ArticleCard } from '../me/components/article/ArticleCard'
 import { BuildCard } from '../me/components/BuildCard'
+import { HoverBuildCard } from '../me/components/HoverBuildCard'
 
 interface UserProfileViewProps {
 	id: number | null
@@ -107,40 +107,66 @@ export default function UserProfileView({
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.fatBuild')}
 								</span>
-								<BuildCell
-									title={
-										loadout.data.build_fat != null
-											? (
-													buildById.get(
-														String(
-															loadout.data
-																.build_fat
-														)
-													) as BuildApi | undefined
-												)?.title
-											: undefined
-									}
-								/>
+								{loadout.data.build_fat != null &&
+								buildById.get(
+									String(loadout.data.build_fat)
+								) ? (
+									<HoverBuildCard
+										armorItems={armorItems}
+										artifacts={artifacts}
+										build={
+											buildById.get(
+												String(loadout.data.build_fat)
+											)!
+										}
+										containers={containers}
+									>
+										<span className="cursor-pointer truncate font-semibold text-border transition-colors hover:text-text-accent">
+											{
+												buildById.get(
+													String(
+														loadout.data.build_fat
+													)
+												)!.title
+											}
+										</span>
+									</HoverBuildCard>
+								) : (
+									<span className="text-neutral-500">—</span>
+								)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-background p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.speedBuild')}
 								</span>
-								<BuildCell
-									title={
-										loadout.data.build_speed != null
-											? (
-													buildById.get(
-														String(
-															loadout.data
-																.build_speed
-														)
-													) as BuildApi | undefined
-												)?.title
-											: undefined
-									}
-								/>
-							</div>{' '}
+								{loadout.data.build_speed != null &&
+								buildById.get(
+									String(loadout.data.build_speed)
+								) ? (
+									<HoverBuildCard
+										armorItems={armorItems}
+										artifacts={artifacts}
+										build={
+											buildById.get(
+												String(loadout.data.build_speed)
+											)!
+										}
+										containers={containers}
+									>
+										<span className="cursor-pointer truncate font-semibold text-border transition-colors hover:text-text-accent">
+											{
+												buildById.get(
+													String(
+														loadout.data.build_speed
+													)
+												)!.title
+											}
+										</span>
+									</HoverBuildCard>
+								) : (
+									<span className="text-neutral-500">—</span>
+								)}
+							</div>
 						</div>
 					</section>
 				)}

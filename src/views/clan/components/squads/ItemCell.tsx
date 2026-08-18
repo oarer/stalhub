@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { montserrat } from '@/app/fonts'
 import { getLocale } from '@/lib/getLocale'
 import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
@@ -17,13 +18,22 @@ export function ItemCell({ item }: { item: Item | undefined }) {
 	)
 }
 
-export function BuildCell({ title }: { title: string | undefined }) {
+export function BuildCell({
+	title,
+	id,
+}: {
+	title: string | undefined
+	id?: string | number
+}) {
 	if (!title) {
 		return <span className="text-neutral-500">—</span>
 	}
 	return (
-		<span className="truncate font-semibold text-sky-600 dark:text-sky-400">
+		<Link
+			className="truncate font-semibold text-border"
+			href={`/calcs/builds/lite?build=${id}`}
+		>
 			{title}
-		</span>
+		</Link>
 	)
 }

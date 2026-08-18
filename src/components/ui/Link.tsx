@@ -12,6 +12,7 @@ interface CLinkProps
 		VariantProps<typeof linkVariants> {
 	disabled?: boolean
 	href: string
+	external?: boolean
 	externalIcon?: boolean
 	loading?: boolean
 }
@@ -25,13 +26,14 @@ const CLink = forwardRef<HTMLAnchorElement, CLinkProps>(
 			size,
 			disabled = false,
 			href,
+			external,
 			externalIcon = true,
 			loading = false,
 			...props
 		},
 		ref
 	) => {
-		const isExternal = /^https?:\/\//.test(href)
+		const isExternal = external ?? /^https?:\/\//.test(href)
 
 		return (
 			<Link
