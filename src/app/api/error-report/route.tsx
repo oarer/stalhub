@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 		}
 
 		const errorId = randomUUID()
-		const ua = req.headers.get('user-agent') ?? 'Unknown agent'
+		const ua = req.headers.get('user-agent') ?? 'Unknown UA'
 
 		console.error(`[error-report] ${errorId} - ${body.content}`)
 
