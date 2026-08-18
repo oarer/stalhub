@@ -14,7 +14,7 @@ export const MobileLinks = [
 	},
 	{
 		title: 'Telegram',
-		href: '/discord',
+		href: 'https://t.me/st4lhub',
 		iconName: 'basil:telegram-outline',
 	},
 ]
@@ -164,8 +164,7 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:siren',
 				href: '/operations',
 				labelKey: 'nav.groups.other.items.operations.label',
-				descriptionKey:
-					'nav.groups.other.items.operations.description',
+				descriptionKey: 'nav.groups.other.items.operations.description',
 			},
 			{
 				key: 'models',
@@ -195,8 +194,7 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:box',
 				href: '/builds',
 				labelKey: 'nav.groups.creative.items.builds.label',
-				descriptionKey:
-					'nav.groups.creative.items.builds.description',
+				descriptionKey: 'nav.groups.creative.items.builds.description',
 			},
 			{
 				key: 'arts',

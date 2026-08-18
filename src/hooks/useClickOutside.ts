@@ -7,12 +7,16 @@ export default function useClickOutside(
 ) {
 	useEffect(() => {
 		const listener = (event: MouseEvent | TouchEvent) => {
-			const target = event.target as Node
+			const target = event.target
+
+			if (!(target instanceof Element)) {
+				return
+			}
 
 			if (
 				(ref.current && ref.current.contains(target)) ||
 				(ignoreRef?.current && ignoreRef.current.contains(target)) ||
-				target.closest?.('[role="dialog"]')
+				target.closest('[role="dialog"]')
 			) {
 				return
 			}
