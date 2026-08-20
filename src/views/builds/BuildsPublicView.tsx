@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
+import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
@@ -67,7 +68,7 @@ export default function BuildsPublicView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">
+				<h1 className={`${unbounded.className} font-bold text-3xl`}>
 					{t('buildsPublic.title')}
 				</h1>
 				<span className="font-semibold text-sm text-text-accent">
