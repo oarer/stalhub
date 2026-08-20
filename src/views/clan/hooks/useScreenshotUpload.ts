@@ -57,7 +57,7 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 	}
 
 	const uploadMutation = useMutation({
-		mutationFn: async () => {
+		mutationFn: async (file: File) => {
 			const startTime = STAGE_SCHEDULE[uploadType]?.stages.find(
 				(s) => s.stage === uploadStage
 			)?.start
@@ -78,15 +78,13 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 				started_at,
 			})
 			const { default: axios } = await import('axios')
-			if (uploadFiles) {
-				const formData = new FormData()
-				formData.append('file', uploadFiles)
-				await axios.post(
-					`${process.env.NEXT_PUBLIC_API}/api/v1/clan/analytics/sessions/${session.id}/screenshots`,
-					formData,
-					{ withCredentials: true }
-				)
-			}
+			const formData = new FormData()
+			formData.append('file', file)
+			await axios.post(
+				`${process.env.NEXT_PUBLIC_API}/api/v1/clan/analytics/sessions/${session.id}/screenshots`,
+				formData,
+				{ withCredentials: true }
+			)
 		},
 		onMutate: () => setUploading(true),
 		onSuccess: () => {

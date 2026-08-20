@@ -68,7 +68,7 @@ function ClanSessionsContent({
 					onOpenChange={handleUploadOpenChange}
 					onStageChange={setUploadStage}
 					onTypeChange={handleTypeChange}
-					onUpload={() => uploadMutation.mutate()}
+					onUpload={() => uploadFiles && uploadMutation.mutate(uploadFiles)}
 					open={uploadOpen}
 					uploadDate={uploadDate}
 					uploadFiles={uploadFiles}
