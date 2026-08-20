@@ -154,7 +154,7 @@ class ClanService {
 	}): Promise<SyncResponse> {
 		const { data } = await apiClient.post<SyncResponse>(
 			'/api/v1/clan/sync',
-			body
+			body ?? {}
 		)
 		return data
 	}
