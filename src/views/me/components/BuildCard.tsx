@@ -20,6 +20,7 @@ import type { Item } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
+import { cn } from '@/lib/cn'
 
 interface BuildCardProps {
 	build: BuildApi | PublicUserBuild
@@ -47,7 +48,7 @@ export function BuildCard({
 
 	const starMutation = useMutation({
 		mutationFn: () =>
-			starred
+			build.is_starred
 				? buildApiService.unstar(build.id)
 				: buildApiService.star(build.id),
 		onSuccess: () => {
@@ -64,7 +65,6 @@ export function BuildCard({
 		onDelete?.(build.id)
 	}
 
-	const starred = 'starred' in build ? build.starred : false
 	const author = 'author' in build ? build.author : null
 	const stars = 'stars' in build ? build.stars : 0
 
@@ -143,11 +143,6 @@ export function BuildCard({
 
 	const hasPreview = armorItems && containers && artifacts
 
-	console.log('BUILD:', build)
-	console.log('TAGS:', build.tags)
-	console.log('TAGS TYPE:', typeof build.tags)
-	console.log('IS ARRAY:', Array.isArray(build.tags))
-
 	return (
 		<div
 			className={`group relative flex flex-col gap-2 rounded-lg bg-background p-3 transition-colors hover:bg-accent ${
@@ -174,14 +169,17 @@ export function BuildCard({
 							icon="lucide:link"
 						/>
 					</Button>
-					{'starred' in build && (
+					{user && (
 						<Button
 							className="p-2"
 							onClick={handleStar}
 							variant={'ghost'}
 						>
 							<Icon
-								className={`size-3.5 ${starred ? 'text-yellow-400' : 'text-text-accent'}`}
+								className={cn(
+									'text-xl',
+									build.is_starred && 'text-yellow-400'
+								)}
 								icon="lucide:star"
 							/>
 						</Button>

@@ -1127,11 +1127,14 @@
       "empty": "Нет работ",
       "create": "Создать",
       "createTitle": "Новая работа",
+      "editTitle": "Редактировать работу",
       "toast": {
         "deleted": "Работа удалена",
         "deleteError": "Ошибка удаления",
         "created": "Работа опубликована",
-        "createError": "Ошибка при создании"
+        "createError": "Ошибка при создании",
+        "updated": "Работа обновлена",
+        "updateError": "Ошибка при обновлении"
       },
       "form": {
         "name": "Название",
@@ -1149,7 +1152,8 @@
         "authorSearchPlaceholder": "Поиск пользователя...",
         "authorNotFound": "Пользователи не найдены",
         "socialUrlPlaceholder": "https://...",
-        "create": "Опубликовать"
+        "create": "Опубликовать",
+        "save": "Сохранить"
       }
     },
     "notifications": {

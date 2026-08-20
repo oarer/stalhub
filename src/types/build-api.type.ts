@@ -8,6 +8,7 @@ export interface BuildApi {
 	tags: string[]
 	price?: number | null
 	author: BuildApiAuthor
+	is_starred: boolean
 	stars: number
 	starred: boolean
 	created_at: string

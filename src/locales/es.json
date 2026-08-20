@@ -1104,11 +1104,14 @@
 			"empty": "No hay obras",
 			"create": "Crear",
 			"createTitle": "Nueva obra",
+			"editTitle": "Editar obra",
 			"toast": {
 				"deleted": "Obra eliminada",
 				"deleteError": "Error al eliminar",
 				"created": "Obra publicada",
-				"createError": "Error al crear"
+				"createError": "Error al crear",
+				"updated": "Obra actualizada",
+				"updateError": "Error al actualizar"
 			},
 			"form": {
 				"name": "Nombre",
@@ -1126,7 +1129,8 @@
 				"authorSearchPlaceholder": "Buscar usuario...",
 				"authorNotFound": "No se encontraron usuarios",
 				"socialUrlPlaceholder": "https://...",
-				"create": "Publicar"
+				"create": "Publicar",
+				"save": "Guardar"
 			}
 		},
 		"notifications": {

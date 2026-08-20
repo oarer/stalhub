@@ -134,11 +134,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 								className={
 									article.is_starred ? 'fill-yellow-400' : ''
 								}
-								icon={
-									article.is_starred
-										? 'lucide:star'
-										: 'lucide:star'
-								}
+								icon="lucide:star"
 							/>
 							<span>{article.stars}</span>
 						</Button>

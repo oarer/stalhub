@@ -1104,11 +1104,14 @@
 			"empty": "No art",
 			"create": "Create",
 			"createTitle": "New art",
+			"editTitle": "Edit art",
 			"toast": {
 				"deleted": "Art deleted",
 				"deleteError": "Delete error",
 				"created": "Art published",
-				"createError": "Create error"
+				"createError": "Create error",
+				"updated": "Art updated",
+				"updateError": "Update error"
 			},
 			"form": {
 				"name": "Name",
@@ -1126,7 +1129,8 @@
 				"authorSearchPlaceholder": "Search user...",
 				"authorNotFound": "No users found",
 				"socialUrlPlaceholder": "https://...",
-				"create": "Publish"
+				"create": "Publish",
+				"save": "Save"
 			}
 		},
 		"notifications": {

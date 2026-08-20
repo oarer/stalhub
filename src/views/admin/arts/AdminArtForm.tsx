@@ -32,13 +32,16 @@ export function AdminArtForm({
 	open,
 	onOpenChange,
 	onSaved,
+	art,
 }: {
 	open: boolean
 	onOpenChange: (open: boolean) => void
 	onSaved: (art: Art) => void
+	art?: Art
 }) {
 	const t = useTranslations()
 	const queryClient = getQueryClient()
+	const isEdit = !!art
 
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArtType>(ArtType.DEFAULT)
@@ -53,17 +56,40 @@ export function AdminArtForm({
 
 	useEffect(() => {
 		if (open) {
-			setTitle('')
-			setType(ArtType.DEFAULT)
-			setImageUrl('')
-			setTags('')
-			setAuthorMode('guest')
-			setGuestName('')
-			setSocials({})
-			setUserSearch('')
-			setSelectedUser(null)
+			if (art) {
+				setTitle(art.title)
+				setType(art.type)
+				setImageUrl(art.image_url ?? '')
+				setTags(art.tags.join(', '))
+				if (art.author.id !== null) {
+					setAuthorMode('user')
+					setSelectedUser({
+						id: art.author.id,
+						username: art.author.username,
+						name: art.author.name,
+					} as AdminUser)
+					setGuestName('')
+					setSocials({})
+				} else {
+					setAuthorMode('guest')
+					setGuestName(art.author.name)
+					setSocials(art.author.social_links ?? {})
+					setSelectedUser(null)
+				}
+				setUserSearch('')
+			} else {
+				setTitle('')
+				setType(ArtType.DEFAULT)
+				setImageUrl('')
+				setTags('')
+				setAuthorMode('guest')
+				setGuestName('')
+				setSocials({})
+				setUserSearch('')
+				setSelectedUser(null)
+			}
 		}
-	}, [open])
+	}, [open, art])
 
 	const { data: userResults } = useQuery({
 		...adminUserQueries.list({ search: userSearch, take: 8 }),
@@ -96,20 +122,53 @@ export function AdminArtForm({
 		onError: () => toast.error(t('admin.arts.toast.createError')),
 	})
 
+	const updateMutation = useMutation({
+		mutationFn: () =>
+			adminArtService.update(art!.id, {
+				title: title.trim(),
+				type,
+				image_url: imageUrl.trim() || null,
+				tags: parseTags(tags),
+				...(authorMode === 'user'
+					? { authorId: selectedUser?.id ?? null }
+					: {
+							author_name: guestName.trim() || null,
+							author_social_links:
+								Object.keys(socials).length > 0
+									? socials
+									: null,
+						}),
+			}),
+		onSuccess: (art) => {
+			toast.success(t('admin.arts.toast.updated'))
+			queryClient.invalidateQueries({ queryKey: ['admin', 'arts'] })
+			queryClient.invalidateQueries({ queryKey: ['arts', 'public'] })
+			onOpenChange(false)
+			onSaved(art)
+		},
+		onError: () => toast.error(t('admin.arts.toast.updateError')),
+	})
+
 	const canSubmit =
 		title.trim() !== '' &&
 		(authorMode === 'guest' ? guestName.trim() !== '' : !!selectedUser)
 
+	const isPending = createMutation.isPending || updateMutation.isPending
+
 	const handleSubmit = () => {
-		if (!canSubmit || createMutation.isPending) return
-		createMutation.mutate()
+		if (!canSubmit || isPending) return
+		if (isEdit) {
+			updateMutation.mutate()
+		} else {
+			createMutation.mutate()
+		}
 	}
 
 	return (
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
 			<Modal.Content fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>{t('admin.arts.createTitle')}</Modal.Title>
+					<Modal.Title>{isEdit ? t('admin.arts.editTitle') : t('admin.arts.createTitle')}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex max-h-105 flex-col gap-4 overflow-y-auto pr-1">
@@ -330,11 +389,11 @@ export function AdminArtForm({
 					<Modal.Close>{t('clan.common.cancel')}</Modal.Close>
 					<Button
 						disabled={!canSubmit}
-						loading={createMutation.isPending}
+						loading={isPending}
 						onClick={handleSubmit}
 						variant="primary"
 					>
-						{t('admin.arts.form.create')}
+						{isEdit ? t('admin.arts.form.save') : t('admin.arts.form.create')}
 					</Button>
 				</Modal.Footer>
 			</Modal.Content>

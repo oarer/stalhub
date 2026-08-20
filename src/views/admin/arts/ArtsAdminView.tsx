@@ -14,6 +14,7 @@ import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminArtQueries } from '@/queries/admin/art.queries'
 import { adminArtService } from '@/services/admin/art.service'
+import type { Art } from '@/types/art.type'
 import { ArtType } from '@/types/art.type'
 import { AdminArtForm } from './AdminArtForm'
 
@@ -23,6 +24,7 @@ export default function ArtsAdminView() {
 	const [page, setPage] = useState(1)
 	const [typeFilter, setTypeFilter] = useState<ArtType | ''>('')
 	const [isCreateOpen, setIsCreateOpen] = useState(false)
+	const [editArt, setEditArt] = useState<Art | null>(null)
 	const take = 20
 
 	const { data } = useSuspenseQuery(
@@ -156,6 +158,13 @@ export default function ArtsAdminView() {
 								</Table.Cell>
 								<Table.Cell>
 									<div className="flex items-center gap-1">
+										<Button
+											onClick={() => setEditArt(art)}
+											size="sm"
+											variant="ghost"
+										>
+											<Icon icon="lucide:pencil" />
+										</Button>
 										<Modal.Root>
 											<Modal.Trigger variant="ghost">
 												<Icon
@@ -267,6 +276,23 @@ export default function ArtsAdminView() {
 					})
 				}}
 				open={isCreateOpen}
+			/>
+
+			<AdminArtForm
+				art={editArt ?? undefined}
+				onOpenChange={(open) => {
+					if (!open) setEditArt(null)
+				}}
+				onSaved={() => {
+					queryClient.invalidateQueries({
+						queryKey: ['admin', 'arts'],
+					})
+					queryClient.invalidateQueries({
+						queryKey: ['arts', 'public'],
+					})
+					setEditArt(null)
+				}}
+				open={!!editArt}
 			/>
 		</div>
 	)
