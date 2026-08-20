@@ -74,7 +74,7 @@ const Row = ({
 					/>
 
 					<p
-						className="max-w-40 truncate font-semibold"
+						className="max-w-50 truncate font-semibold"
 						style={{ color: itemColor }}
 					>
 						{messageToString(item.name, locale)}
