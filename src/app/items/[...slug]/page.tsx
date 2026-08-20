@@ -1,5 +1,6 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { generateItemMetadata } from '@/lib/generateItemMetadata'
 import { getLocaleServer } from '@/lib/getLocaleServer'
 import { getQueryClient } from '@/providers/QueryProvider'
@@ -64,7 +65,11 @@ export default async function ItemsPage({ params }: PageProps) {
 		itemQueries.byGithubUrl(githubUrl).queryKey
 	)
 
-	if (item?.category.startsWith('weapon/')) {
+	if (!item) {
+		notFound()
+	}
+
+	if (item.category.startsWith('weapon/')) {
 		await Promise.allSettled([
 			queryClient.prefetchQuery(itemQueries.attachments(id)),
 		])

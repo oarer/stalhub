@@ -1186,6 +1186,9 @@
 			"buttonLabel": "Réessayer",
 			"description": "Une erreur client s'est produite",
 			"ifProblemPersists": "Si le problème persiste, contactez le"
+		},
+		"routeError": {
+			"description": "Une erreur s'est produite"
 		}
 	},
 	"articles": {

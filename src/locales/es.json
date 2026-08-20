@@ -1186,6 +1186,9 @@
 			"buttonLabel": "Intentar de nuevo",
 			"description": "Se produjo un error del cliente",
 			"ifProblemPersists": "Si el problema persiste, contacta con"
+		},
+		"routeError": {
+			"description": "Algo salió mal"
 		}
 	},
 	"articles": {

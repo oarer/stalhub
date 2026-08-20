@@ -262,11 +262,11 @@ export default function ItemSearchModal({
 										{t('modals.search.pages')}
 									</h3>
 									<ul className="mask-y-from-95% mask-y-to-100% flex max-h-66 flex-col gap-3 overflow-y-auto p-0.5">
-										{displayedPages.map((page) => (
+										{displayedPages.map((page, i) => (
 											<motion.li
 												animate="animate"
 												initial="initial"
-												key={page.key}
+												key={page.key + i}
 												layout
 												transition={{
 													duration: 0.2,

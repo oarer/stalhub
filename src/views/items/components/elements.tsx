@@ -229,7 +229,7 @@ export const NumericVariantsElementRenderer: React.FC<{
 				className={`${montserrat.className} font-medium text-md`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
-				{!current ? format(current) : '—'}
+				{current !== null ? format(current) : '—'}
 			</p>
 		</div>
 	)

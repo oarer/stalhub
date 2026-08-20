@@ -1203,12 +1203,17 @@
     "notFound": {
       "buttonLabel": "На главную",
       "description": "Страница не найдена",
-      "ifUrlCorrect": "Если вы считаете, что URL введён верно,"
+      "ifUrlCorrect": "Если вы считаете, что URL введён верно,",
+      "playerNotFound": "Пользователь не найден",
+      "userNotFound": "Пользователь не найден"
     },
     "globalError": {
       "buttonLabel": "Попробовать снова",
       "description": "Произошла клиентская ошибка",
       "ifProblemPersists": "Если проблема остаётся, обратитесь в"
+    },
+    "routeError": {
+      "description": "Произошла ошибка"
     }
   },
   "articles": {

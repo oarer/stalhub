@@ -1,6 +1,7 @@
 'use client'
 
 import { type ReactNode, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Toaster } from 'sonner'
 import { UwuProvider } from '@/providers/uwuProvider'
 import { userService } from '@/services/user/user.service'
@@ -15,11 +16,17 @@ interface Props {
 
 export default function Providers({ children }: Props) {
 	const [mounted, setMounted] = useState(false)
+	const pathname = usePathname()
 	const isBanned = useBanStore((s) => s.isBanned)
 	const setUser = useAuthStore((s) => s.setUser)
 
 	useEffect(() => {
 		setMounted(true)
+
+		if (pathname.startsWith('/auth/callback')) {
+			setUser(null)
+			return
+		}
 
 		userService
 			.getMe()

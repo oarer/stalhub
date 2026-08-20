@@ -1186,6 +1186,9 @@
 			"buttonLabel": "다시 시도",
 			"description": "클라이언트 오류가 발생했습니다",
 			"ifProblemPersists": "문제가 지속되면 문의해 주세요:"
+		},
+		"routeError": {
+			"description": "오류가 발생했습니다"
 		}
 	},
 	"articles": {

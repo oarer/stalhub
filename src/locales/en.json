@@ -1186,6 +1186,9 @@
 			"buttonLabel": "Try again",
 			"description": "A client error occurred",
 			"ifProblemPersists": "If the problem persists, contact"
+		},
+		"routeError": {
+			"description": "Something went wrong"
 		}
 	},
 	"articles": {

@@ -67,7 +67,8 @@ class UserQueries {
 			queryKey: ['user', 'by_id', id],
 			queryFn: () => userService.getUser(id),
 			staleTime: 1000 * 15,
-			refetchInterval: 1000 * 30,
+			refetchInterval: (query) =>
+				query.state.status === 'error' ? false : 1000 * 30,
 		})
 	}
 
@@ -76,7 +77,8 @@ class UserQueries {
 			queryKey: ['user', 'by_username', username],
 			queryFn: () => userService.getUserByUsername(username),
 			staleTime: 1000 * 15,
-			refetchInterval: 1000 * 30,
+			refetchInterval: (query) =>
+				query.state.status === 'error' ? false : 1000 * 30,
 		})
 	}
 }

@@ -1,3 +1,4 @@
+import type { AxiosError } from 'axios'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { playerQueries } from '@/queries/player/player.queries'
@@ -19,8 +20,12 @@ export default async function PlayerPage({
 	try {
 		const data = await playerService.get(playerParams)
 		queryClient.setQueryData(playerQueries.get(playerParams).queryKey, data)
-	} catch {
-		return <PlayerNotFoundView />
+	} catch (e) {
+		const status = (e as AxiosError).response?.status
+		if (status === 404) {
+			return <PlayerNotFoundView />
+		}
+		throw e
 	}
 
 	return (

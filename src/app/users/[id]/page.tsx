@@ -1,3 +1,4 @@
+import type { AxiosError } from 'axios'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -60,8 +61,12 @@ export default async function UserPage({ params }: PageProps) {
 		} else {
 			await queryClient.prefetchQuery(userQueries.getUserByUsername(id))
 		}
-	} catch {
-		notFound()
+	} catch (e) {
+		const status = (e as AxiosError).response?.status
+		if (status === 404) {
+			notFound()
+		}
+		throw e
 	}
 
 	return (

@@ -52,7 +52,6 @@ export default function CallbackPage() {
 					).handleCallback(code, state)
 					break
 			}
-			await new Promise((r) => setTimeout(r, 100))
 			router.replace('/me/onboarding')
 		}
 
