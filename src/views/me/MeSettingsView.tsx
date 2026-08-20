@@ -53,6 +53,7 @@ export default function MeSettingsView() {
 		linkMutation,
 		unlinkMutation,
 		deleteAccountMutation,
+		syncClansMutation,
 	} = useSettingsMutations(loadout)
 
 	const [isDeleteAccountOpen, setIsDeleteAccountOpen] = useState(false)
@@ -112,6 +113,9 @@ export default function MeSettingsView() {
 				/>
 			)}
 			<LinkedAccountsSection
+				exbo={user.providers.exbo?.id}
+				isClanSyncPending={syncClansMutation.isPending}
+				onClanSync={() => syncClansMutation.mutate()}
 				onLink={(provider) => linkMutation.mutate(provider)}
 				onUnlink={(provider) => unlinkMutation.mutate(provider)}
 				providers={user.providers}

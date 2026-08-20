@@ -216,6 +216,21 @@ export function useSettingsMutations(
 		},
 	})
 
+	const syncClansMutation = useMutation({
+		mutationFn: () => userService.syncClans(),
+		onSuccess: (res) => {
+			queryClient.invalidateQueries({ queryKey: ['clan'] })
+			queryClient.invalidateQueries({ queryKey: ['user'] })
+			const count = res.clans?.length ?? 0
+			toast.success(
+				t('me.settings.syncClansSuccess', { count })
+			)
+		},
+		onError: () => {
+			toast.error(t('me.settings.syncClansError'))
+		},
+	})
+
 	return {
 		updateMutation,
 		profileMutation,
@@ -234,5 +249,6 @@ export function useSettingsMutations(
 		linkMutation,
 		unlinkMutation,
 		deleteAccountMutation,
+		syncClansMutation,
 	}
 }

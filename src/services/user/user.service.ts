@@ -1,4 +1,5 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
+import type { MyClanProfile } from '@/types/clan/clan.type'
 import type {
 	Notification,
 	PaginatedResponse,
@@ -24,9 +25,7 @@ class UserService {
 		return data
 	}
 
-	async completeOnboarding(
-		update: UpdateUserSettingsDto
-	): Promise<User> {
+	async completeOnboarding(update: UpdateUserSettingsDto): Promise<User> {
 		const { data } = await apiClient.post<User>(
 			'/api/v1/users/@me/onboarding',
 			update
@@ -99,6 +98,13 @@ class UserService {
 		provider: 'discord' | 'telegram' | 'exbo'
 	): Promise<void> {
 		await apiClient.delete(`/api/v1/auth/${provider}/link`)
+	}
+
+	async syncClans(): Promise<{ clans: MyClanProfile[] }> {
+		const { data } = await apiClient.post<{ clans: MyClanProfile[] }>(
+			'/api/v1/users/@me/sync-clans'
+		)
+		return data
 	}
 
 	async getStars({

@@ -7,18 +7,27 @@ import { Button } from '@/components/ui/Button'
 import type { User } from '@/types/user.type'
 import type { ProviderName } from '@/views/me/hooks/useSettingsMutations'
 import { Section } from '../Section'
+import { SettingRow } from './SettingRow'
 
 const PROVIDERS: ProviderName[] = ['discord', 'telegram', 'exbo']
+
+interface Props {
+	providers: User['providers']
+	onLink: (provider: ProviderName) => void
+	onUnlink: (provider: ProviderName) => void
+	isClanSyncPending: boolean
+	onClanSync: () => void
+	exbo?: string
+}
 
 export function LinkedAccountsSection({
 	providers,
 	onLink,
 	onUnlink,
-}: {
-	providers: User['providers']
-	onLink: (provider: ProviderName) => void
-	onUnlink: (provider: ProviderName) => void
-}) {
+	isClanSyncPending,
+	onClanSync,
+	exbo,
+}: Props) {
 	const t = useTranslations()
 
 	return (
@@ -59,6 +68,25 @@ export function LinkedAccountsSection({
 						)}
 					</div>
 				))}
+				{exbo && (
+					<SettingRow
+						description={t('me.settings.syncClansDesc')}
+						title={t('me.settings.syncClansTitle')}
+					>
+						<Button
+							className="gap-2 self-start"
+							disabled={isClanSyncPending}
+							loading={isClanSyncPending}
+							onClick={onClanSync}
+							variant="secondary"
+						>
+							<Icon
+								className="text-base"
+								icon="lucide:refresh-cw"
+							/>
+						</Button>
+					</SettingRow>
+				)}
 			</div>
 		</Section>
 	)

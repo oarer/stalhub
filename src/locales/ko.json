@@ -1,2167 +1,2171 @@
 {
-	"landing": {
-		"overview": "모든 것을 한곳에서",
-		"tools_for": "도구:",
-		"need": "필요한 모든 것",
-		"features": {
-			"items": "아이템",
-			"tools": "도구",
-			"uptime": "가용성"
-		},
-		"start": "시작하기",
-		"more_details": "자세히",
-		"tools": {
-			"title": "도구",
-			"description": "방대한 도구 모음",
-			"tool_list": {
-				"builds": {
-					"title": "빌드 계산기",
-					"desc": "아티팩트 빌드를 만들고 저장하며, 조합을 실험하고 다양한 세팅의 효율을 비교하고 모델도 볼 수 있습니다"
-				},
-				"builds_lite": {
-					"title": "빌드 계산기 Lite",
-					"desc": "아티팩트 빌드를 만들고 저장하며, 조합을 실험하고 다양한 세팅의 효율을 비교할 수 있습니다"
-				},
-				"bp": {
-					"title": "배틀 패스 계산기",
-					"desc": "배틀 패스 진행도를 계산하는 편리한 도구"
-				},
-				"ttk": {
-					"title": "TTK 계산기",
-					"desc": "모든 무기와 방어구의 TTK를 확인하세요. 최적의 조합을 찾기 위해 무기와 방어구를 비교해 보세요"
-				},
-				"modules": {
-					"title": "모듈 계산기",
-					"desc": "무기 모듈을 조합하고 최종 보너스와 비용을 확인하세요"
-				},
-				"dashboard": {
-					"title": "편리한 도구 사용",
-					"desc": "일반 페이지 대신 모든 도구를 위젯 형태로 만들었습니다"
-				},
-				"map": {
-					"title": "인터랙티브 지도",
-					"desc": "편리한 인터랙티브 지도로 세계를 탐험하세요: 다양한 퀘스트 가이드, 스팟, 은신처 등"
-				},
-				"player_search": {
-					"title": "플레이어 검색",
-					"desc": "닉네임으로 플레이어를 찾고 통계를 확인하세요"
-				},
-				"arsenal": {
-					"title": "아스널",
-					"desc": "아스널 평판에 필요한 아이템 수량을 계산하세요"
-				}
-			}
-		}
-	},
-	"footer": {
-		"made_by": "사이트 제작: ",
-		"and": " · ",
-		"links": {
-			"bug_report": "GitHub에 버그 신고",
-			"telegram": "Telegram 채널",
-			"discord": "우리 Discord",
-			"about": "소개",
-			"status": "상태 페이지"
-		},
-		"project": {
-			"with": "프로젝트는 ",
-			"open_source": "오픈소스로 제공됩니다",
-			"license": "라이선스: "
-		}
-	},
-	"nav": {
-		"articles": "게시글",
-		"arts": "아트",
-		"groups": {
-			"calculators": {
-				"title": "계산기",
-				"items": {
-					"art": {
-						"label": "빌드",
-						"description": "빌드 만들기",
-						"sub_menu": {
-							"lite": "Lite 버전",
-							"3d": "3D 버전",
-							"3d_description": "실험 기능"
-						}
-					},
-					"ttk": {
-						"label": "TTK",
-						"description": "무기 효율"
-					},
-					"arsenal": {
-						"label": "아스널",
-						"description": "아스널 평판"
-					},
-					"hideout": {
-						"label": "은신처",
-						"description": "은신처 자원 계산"
-					},
-					"barter": {
-						"label": "교환 코인",
-						"description": "교환 코인으로 물물교환"
-					},
-					"bp": {
-						"label": "시즌 패스",
-						"description": "레벨 계산"
-					},
-					"dpi": {
-						"label": "감도",
-						"description": "DPI 설정"
-					},
-					"modules": {
-						"label": "모듈",
-						"description": "무기 모듈 계산기"
-					}
-				}
-			},
-			"clans": {
-				"title": "클랜",
-				"items": {
-					"clanMaps": {
-						"label": "CW 맵",
-						"description": "클랜전 맵"
-					},
-					"clans": {
-						"label": "클랜 목록"
-					}
-				}
-			},
-			"other": {
-				"title": "기타",
-				"items": {
-					"dashboard": {
-						"label": "대시보드",
-						"description": "바로 그 위젯들"
-					},
-					"maps": {
-						"label": "인터랙티브 지도"
-					},
-					"auction": {
-						"label": "경매장"
-					},
-					"items": {
-						"label": "아이템 검색"
-					},
-					"players": {
-						"label": "플레이어 검색"
-					},
-					"models": {
-						"label": "모델 보기",
-						"description": "곧..."
-					},
-					"operations": {
-						"label": "작전",
-						"description": "플레이어 작전 기록"
-					}
-				}
-			}
-		}
-	},
-	"map": {
-		"title": "맵 목록",
-		"loading": "지도 로딩 중",
-		"notFound": "지도를 찾을 수 없습니다",
-		"category": "카테고리:",
-		"noMarkers": "마커 없음",
-		"loadError": "맵 목록을 불러오는 중 오류가 발생했습니다.",
-		"sideBar": {
-			"showAll": "모두 표시",
-			"hideAll": "모두 표시",
-			"export": "내보내기",
-			"top": "맨 위로"
-		}
-	},
-	"playerSearch": {
-		"title": "플레이어 검색",
-		"description": "닉네임으로 플레이어를 찾고 통계를 확인하세요",
-		"region": "지역",
-		"nickname": "닉네임",
-		"nicknamePlaceholder": "플레이어 닉네임을 입력하세요",
-		"search": "검색",
-		"popular_title": "인기 플레이어",
-		"recent_title": "최근 본 항목",
-		"recent_tooltip": "전체 통계, 서버에서 가져옵니다"
-	},
-	"player": {
-		"hero": {
-			"ach": "업적",
-			"ach_points": "업적 포인트:"
-		},
-		"stats": {
-			"title": "통계",
-			"reg": "구역 내:",
-			"hours": "게임 시간:",
-			"last_login": "마지막 접속:"
-		},
-		"rank": {
-			"LEADER": "리더",
-			"COLONEL": "대령",
-			"OFFICER": "장교",
-			"SERGEANT": "하사",
-			"SOLDIER": "전사",
-			"COMMONER": "예비군",
-			"RECRUIT": "이등병"
-		},
-		"alliance": {
-			"merc": "용병",
-			"covenant": "서약",
-			"freedom": "새벽",
-			"duty": "의무",
-			"bandits": "도적",
-			"stalkers": "스토커"
-		},
-		"category": {
-			"EXPLORATION": "탐사",
-			"SURVIVAL": "생존",
-			"HIDEOUT": "은신처",
-			"SESSION_MODES": "세션 모드",
-			"ECONOMY": "경제",
-			"COMBAT": "전투"
-		},
-		"clan": {
-			"title": "클랜",
-			"name": "클랜 이름",
-			"rank": "등급",
-			"level": "클랜 레벨",
-			"members": "참가자",
-			"leader": "리더",
-			"join_at": "가입일"
-		},
-		"combat": {
-			"kd": "K/D:",
-			"deaths": "사망:",
-			"kills": "처치:",
-			"kil_ser": "최대 연속 처치:",
-			"accuracy": "정확도:",
-			"shots": "발사 수:",
-			"hits": "명중:",
-			"accuracy_head": "헤드샷 정확도:"
-		},
-		"note": {
-			"stalhub": "STALHUB",
-			"stalhub_desc": "STALHUB 프로젝트 팀 소속 플레이어",
-			"exbo": "EXBO",
-			"exbo_desc": "EXBO EAST (STALZONE) 팀 소속 플레이어",
-			"media": "미디어 파트너",
-			"media_desc": "Stalzone 프로젝트의 미디어 인물",
-			"scammer": "사기꾼",
-			"scammer_desc": "이 플레이어는 사기꾼입니다",
-			"more": "자세한 설명"
-		},
-		"clanHistory": {
-			"title": "클랜 이력"
-		},
-		"operations": {
-			"title": "작전",
-			"difficulty": "난이도",
-			"participants": "참가자: {count}",
-			"empty": "작전을 찾을 수 없습니다",
-			"error": "작전을 불러오지 못했습니다"
-		}
-	},
-	"time": {
-		"second": {
-			"one": "초",
-			"few": "초",
-			"many": "초"
-		},
-		"minute": {
-			"one": "분",
-			"few": "분",
-			"many": "분"
-		},
-		"hour": {
-			"one": "시간",
-			"few": "시간",
-			"many": "시간"
-		},
-		"day": {
-			"one": "일",
-			"few": "일",
-			"many": "일"
-		},
-		"month": {
-			"one": "개월",
-			"few": "개월",
-			"many": "개월"
-		},
-		"year": {
-			"one": "년",
-			"few": "년",
-			"many": "년"
-		},
-		"and": "그리고",
-		"back": "전"
-	},
-	"unit": {
-		"km": "km",
-		"kg": "kg",
-		"unit": "개",
-		"meter": "m",
-		"second": "초"
-	},
-	"arts": {
-		"ART_QUALITY_COMMON": "일반",
-		"ART_QUALITY_UNCOMMON": "고급",
-		"ART_QUALITY_SPECIAL": "특수",
-		"ART_QUALITY_RARE": "희귀",
-		"ART_QUALITY_EXCLUSIVE": "독점",
-		"ART_QUALITY_LEGENDARY": "전설",
-		"ART_QUALITY_UNIQUE": "유니크",
-		"title": "아트",
-		"total": "전체",
-		"search": "태그로 검색",
-		"byAuthor": "작가: ",
-		"description": "설명",
-		"empty": "아직 작품이 없습니다",
-		"type": "유형",
-		"all": "전체",
-		"author": "작가",
-		"stars": "별점",
-		"comments": {
-			"title": "댓글 ({count})",
-			"placeholder": "댓글 작성...",
-			"empty": "댓글 없음",
-			"reply": "답글",
-			"deleteTitle": "댓글을 삭제할까요?",
-			"cancel": "취소",
-			"deleteConfirm": "삭제",
-			"toast": {
-				"added": "댓글이 추가되었습니다",
-				"addError": "댓글 추가 오류",
-				"deleted": "댓글이 삭제되었습니다",
-				"deleteError": "댓글 삭제 오류"
-			}
-		},
-		"publishedAt": "게시일",
-		"readComments": "댓글",
-		"notFound": "작품을 찾을 수 없습니다"
-	},
-	"ui": {
-		"combobox": {
-			"default": {
-				"placeholder": "선택",
-				"search": {
-					"button": "검색",
-					"notFound": "결과 없음"
-				}
-			},
-			"addStats": {
-				"placeholder": "추가 속성"
-			}
-		},
-		"input_label": "아이템 이름을 입력하세요",
-		"input_sharpening": "강화"
-	},
-	"arsenal": {
-		"title": "아스널 평판 계산기",
-		"sub_title": "아스널 평판 비용을 계산하세요",
-		"input_label": "평판",
-		"alert": "아이템 가격은 하루 두 번(00:00, 12:00 MSK) 업데이트됩니다. 게임 내에서 가격을 비교해 보세요!",
-		"table": {
-			"item": "아이템",
-			"drop": {
-				"title": "드랍 여부",
-				"true": "예",
-				"false": "아니요"
-			},
-			"reputation": "평판",
-			"weight": "무게",
-			"currentPrice": "가격",
-			"limit": "한도",
-			"neededCount": "수량",
-			"totalWeight": "총 무게",
-			"totalPrice": "합계",
-			"maxPerDay": "하루 최대",
-			"days": {
-				"one": "일",
-				"few": "일",
-				"many": "일"
-			}
-		},
-		"summary": {
-			"covered": "목표 달성 가능: 한도가 있는 아이템은 하루 최대",
-			"coveredEnd": "평판을 제공합니다.",
-			"limited": "한도가 있는 아이템은 최대",
-			"limitedEnd": "평판을 제공합니다.",
-			"rest": "목표 달성에 부족한 평판:",
-			"restEnd": "",
-			"unlimited": "한도가 없는 아이템으로 채우세요."
-		}
-	},
-	"modals": {
-		"builds": {
-			"pick": "선택",
-			"no_data": "데이터 없음",
-			"quality": "품질",
-			"potential": "레벨",
-			"armor": {
-				"toaster_success": "방어구가 변경되었습니다!",
-				"header": "방어구 선택"
-			},
-			"container": {
-				"toaster_success": "컨테이너가 변경되었습니다!",
-				"header": "컨테이너 선택",
-				"warn_modal": {
-					"warn": "경고",
-					"new_small": "새 컨테이너가 현재 것보다 작습니다.",
-					"cancel": "취소",
-					"confirm": "계속",
-					"del_count": "삭제될 슬롯",
-					"success_toast": "컨테이너가 변경되었습니다. 삭제됨",
-					"slots": {
-						"slot": "슬롯",
-						"slots": "슬롯"
-					}
-				}
-			},
-			"consumables": {
-				"title": "버프 선택",
-				"header": "버프 선택",
-				"pick_boost": "선택"
-			},
-			"settings": {
-				"title": "설정",
-				"auto_save": "자동 저장됩니다",
-				"percent": "퍼센트",
-				"potential": "잠재력"
-			}
-		},
-		"search": {
-			"title": "사이트 검색",
-			"label": "검색어를 입력하세요",
-			"not_found": "결과 없음",
-			"pages": "페이지",
-			"articles": "게시글"
-		}
-	},
-	"boost": {
-		"long_time_medicine": "장기 버프",
-		"short_time_medicine": "단기 버프",
-		"mobility": "기동성",
-		"accumulation": "배출",
-		"healing": "치유",
-		"protection": "보호"
-	},
-	"wiki": {
-		"title": "위키",
-		"description": "StalZone 위키에 오신 것을 환영합니다. 게임의 메커니즘과 퀘스트에 대한 상세 가이드를 찾을 수 있습니다.",
-		"total_pages": "전체 게시글:",
-		"recently_updated": "최근 업데이트",
-		"navTitle": "위키",
-		"edit": "편집",
-		"page": {
-			"page_section": "이 섹션의 페이지",
-			"update_at": "업데이트:",
-			"authors": "게시글 작성자"
-		}
-	},
-	"status_widget": {
-		"services_down": "서비스 중단됨",
-		"services_up": "서비스 복구됨",
-		"services_ok": "모든 서비스 정상",
-		"services_error": "연결 문제",
-		"services_problem": "서비스에 문제가 있습니다"
-	},
-	"build": {
-		"new_build": "새 빌드",
-		"rename": "빌드 이름 변경",
-		"build_name": "빌드 이름",
-		"cancel": "취소",
-		"save": "저장",
-		"builds": "빌드",
-		"needed_cont": "컨테이너 선택",
-		"empty_slot": "빈 칸",
-		"artifacts": "아티팩트",
-		"pick_armor": "방어구 선택",
-		"armor": "방어구",
-		"no_armor": "방어구 선택 안 됨",
-		"sharpening": "강화",
-		"consumables": "소모품",
-		"toast_copy": "복사 모드 활성화",
-		"damaged": "캐릭터에게 피해를 입힙니다",
-		"toast_published": "빌드가 게시되었습니다",
-		"toast_publish_error": "게시 오류",
-		"copy": "복사",
-		"labels": {
-			"default": "이름으로 검색",
-			"armor": "방어구 선택",
-			"armor_title": "방어구 선택",
-			"art": "아티팩트 선택",
-			"art_title": "아티팩트 선택",
-			"cont": "컨테이너 선택",
-			"cont_title": "컨테이너 선택",
-			"positive_stats": "긍정적",
-			"negative_stats": "부정적",
-			"effects": "효과",
-			"copy": "복사",
-			"swap": "교체",
-			"delete": "삭제",
-			"not_found": "결과 없음",
-			"effect": "효과"
-		},
-		"stats": {
-			"title": "능력치",
-			"prime": "프라임",
-			"regen": "초당 치유",
-			"hps": "초당 프라임",
-			"stopping": "인내",
-			"all": "전체",
-			"container": "컨테이너",
-			"no_stats": "능력치 없음",
-			"no_container": "컨테이너 선택 안 됨",
-			"categories": {
-				"core": "기본 능력치",
-				"protection": "방어 능력치",
-				"contaminationProtection": "오염 방어",
-				"accumulation": "오염",
-				"effects": "기타 효과",
-				"misc": "기타"
-			}
-		},
-		"price": "가격",
-		"price_total": "빌드 비용",
-		"price_market": "시장",
-		"price_estimate": "약",
-		"price_estimate_hint": "시장에 정확한 매물이 없어 가격은 대략 계산되었습니다",
-		"price_unavailable": "가격을 일시적으로 사용할 수 없습니다",
-		"price_empty": "비용을 계산하려면 아티팩트를 추가하세요",
-		"price_updated": "업데이트:"
-	},
-	"ttk": {
-		"page": {
-			"weapon": "무기",
-			"weapon_add": "무기 추가",
-			"weapon_pick": "무기 선택",
-			"ammo_pick": "탄약 선택",
-			"default_ammo": "표준 탄약",
-			"mannequin": "마네킹",
-			"bullet_resistance": "탄환 저항",
-			"vitality": "생존력",
-			"build": "빌드",
-			"plate": "플레이트",
-			"prime": "프라임",
-			"modules": "모듈",
-			"modules_open": "모듈 설정 →",
-			"fire": {
-				"auto": "자동",
-				"burst": "점사"
-			},
-			"combobox": {
-				"build": {
-					"placeholder": "— 선택 안 됨 —",
-					"search_placeholder": "빌드 검색..."
-				},
-				"plate": {
-					"placeholder": "— 플레이트 없음 —",
-					"search_placeholder": "플레이트 검색..."
-				}
-			},
-			"charts": {
-				"distance": "거리:",
-				"damage": "피해",
-				"dist_meter": "거리 (m):",
-				"dist_damage": "거리별 피해",
-				"shots": "발"
-			},
-			"table": {
-				"ttk": "TTK",
-				"hits": "명중"
-			}
-		},
-		"hitZones": {
-			"head": "머리",
-			"body": "몸",
-			"limbs": "사지"
-		},
-		"weaponStats": {
-			"damagePerShot": "피해/발사"
-		}
-	},
-	"bp": {
-		"title": "배틀 패스 계산기",
-		"sub_title": "시즌 전체 레벨 수를 계산하세요",
-		"total_days": "총 일수",
-		"play_days": "게임 일수",
-		"task_day": "하루 과제 수",
-		"overloads": "과부하",
-		"current_level": "현재 레벨",
-		"data": "데이터",
-		"result": "결과",
-		"no_overloads": "과부하 없음",
-		"with_overloads": "과부하 포함",
-		"difference": "차이"
-	},
-	"barter": {
-		"lvl_req": "필요 기지 레벨",
-		"base": "물물교환 기지",
-		"recipe": "레시피 {number}",
-		"money": "비용",
-		"used_in": "사용처",
-		"currency": "화폐",
-		"discount": "할인",
-		"currency_options": {
-			"barter": "물물교환",
-			"barter_coins": "교환 코인",
-			"crimson_shell": "탄피"
-		},
-		"discount_options": {
-			"none": "할인 없음"
-		}
-	},
-	"attachments": {
-		"title": "부착물",
-		"suitable": "호환 부착물",
-		"none": "이 무기에 호환되는 부착물이 없습니다",
-		"summary": "최종 수정치",
-		"total_weight": "총 무게",
-		"remove": "제거",
-		"empty_slot": "선택 안 됨",
-		"select": "선택",
-		"select_prompt": "부착물 선택",
-		"slot": {
-			"barrel": "총열",
-			"mag": "탄창",
-			"collimator_sights": "조준기",
-			"forend": "핸드가드",
-			"other": "기타",
-			"accessory": "악세서리",
-			"pistol_handle": "손잡이"
-		}
-	},
-	"about": {
-		"contacts_title": "연락처",
-		"thanks_title": "특별 감사",
-		"developer_role": "메인 개발자",
-		"designer_role": "디자이너",
-		"contact_us": "문의하기",
-		"useful_links": "유용한 링크",
-		"contact_links": {
-			"support": {
-				"label": "기술 지원",
-				"description": "사이트에 문제가 발생한 경우"
-			},
-			"cooperation": {
-				"label": "협업",
-				"description": "스폰서십, 프로젝트 기여"
-			},
-			"advertising": {
-				"label": "광고",
-				"description": "사이트 또는 소셜 미디어 광고"
-			}
-		},
-		"support_links": {
-			"donate": {
-				"label": "프로젝트 후원",
-				"description": "프로젝트 개발을 위한 재정 지원"
-			},
-			"telegram": {
-				"label": "Telegram 채널",
-				"description": "뉴스, 업데이트 및 공지"
-			},
-			"github": {
-				"label": "GitHub 저장소",
-				"description": "소스 코드 및 버그 리포트"
-			}
-		},
-		"andcool_description": "코드 스니펫",
-		"rashing_description": "UI/UX 개선 조언<br></br>",
-		"flacee_description": "수식 지원",
-		"insideJoke": "ебал рот айсана"
-	},
-	"region": {
-		"RU": "RU",
-		"EU": "EU",
-		"NA": "NA",
-		"SEA": "SEA",
-		"NEA": "NEA"
-	},
-	"dpi": {
-		"title": "감도 계산기",
-		"sub_title": "한 게임에서 다른 게임으로 감도를 변환하세요",
-		"from_game": "시작 게임",
-		"to_game": "대상 게임",
-		"pick_game": "게임 선택",
-		"sens": "감도",
-		"result": "결과"
-	},
-	"modules": {
-		"title": "모듈 계산기",
-		"sub_title": "무기 모듈을 조합하고 최종 보너스와 비용을 확인하세요",
-		"picker_placeholder": "모듈 선택",
-		"picker_search": "모듈 검색...",
-		"picker_empty": "모듈을 찾을 수 없습니다",
-		"quality": "품질",
-		"not_selected": "모듈 선택 안 됨",
-		"fetch_error": "최신 모듈 데이터를 불러오지 못했습니다. 캐시 데이터를 표시합니다.",
-		"groupAddOn": "추가 장착 그룹",
-		"groupDeviation": "편차 그룹",
-		"groupConcept": "컨셉 그룹",
-		"reset": "초기화",
-		"reroll": "리롤",
-		"disassemble": "분해",
-		"restore": "복원",
-		"category": "카테고리",
-		"summary": "요약",
-		"summaryEmpty": "각 그룹에서 모듈을 선택하세요",
-		"rerollCost": "리롤 비용",
-		"disassembleCost": "분해 비용",
-		"restoreCost": "복원 비용",
-		"categoryCost": "카테고리 비용"
-	},
-	"cwMap": {
-		"loading": "에디터 로딩 중...",
-		"actions": {
-			"undo": "Ctrl+Z — 실행 취소",
-			"save": "Ctrl+Shift+S — 저장"
-		},
-		"style": {
-			"thickness": "굵기:"
-		},
-		"accordion": {
-			"basePoints": "기지 포인트",
-			"tools": "도구",
-			"markers": "마커",
-			"style": "스타일"
-		},
-		"maps": {
-			"berda": "Berda",
-			"hvoiniy": "Khvoinyi",
-			"kvartals": "Kvartaly",
-			"nizina": "Nizina",
-			"rozeWise": "Roza vetrov"
-		},
-		"markers": {
-			"position": "위치",
-			"base": "기지",
-			"danger": "위험",
-			"loot": "루트",
-			"spawn": "스폰",
-			"extract": "탈출",
-			"sniper": "스나이퍼",
-			"info": "정보"
-		},
-		"tools": {
-			"pan": "이동",
-			"pen": "연필",
-			"line": "선",
-			"arrow": "화살표",
-			"rect": "사각형",
-			"circle": "원",
-			"eraser": "지우개",
-			"marker": "마커"
-		}
-	},
-	"admin": {
-		"permissions": {
-			"title": "권한",
-			"total": "전체",
-			"create": "권한 생성",
-			"name": "이름",
-			"description": "설명",
-			"createBtn": "생성",
-			"edit": "권한 수정",
-			"deleteTitle": "권한을 삭제할까요?",
-			"deleteDescription": "권한 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
-			"deleteConfirm": "삭제",
-			"cancel": "취소",
-			"save": "저장",
-			"toast": {
-				"created": "권한이 생성되었습니다",
-				"createError": "생성 오류",
-				"updated": "권한이 업데이트되었습니다",
-				"updateError": "업데이트 오류",
-				"deleted": "권한이 삭제되었습니다",
-				"deleteError": "삭제 오류"
-			}
-		},
-		"users": {
-			"title": "사용자",
-			"total": "전체",
-			"search": "검색...",
-			"table": {
-				"username": "사용자 이름",
-				"name": "이름",
-				"roles": "역할",
-				"status": "상태"
-			},
-			"status": {
-				"banned": "차단됨",
-				"active": "활성"
-			},
-			"deleteTitle": "사용자를 삭제할까요?",
-			"deleteDescription": "사용자 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
-			"deleteConfirm": "삭제",
-			"cancel": "취소",
-			"toast": {
-				"deleted": "사용자가 삭제되었습니다",
-				"deleteError": "삭제 중 오류 발생"
-			}
-		},
-		"userDetail": {
-			"tabs": {
-				"info": "정보",
-				"sessions": "세션",
-				"roles": "역할",
-				"badges": "배지",
-				"banner": "배너"
-			},
-			"editing": "수정 중",
-			"username": "사용자 이름",
-			"name": "이름",
-			"save": "저장",
-			"ban": {
-				"title": "차단",
-				"banned": "사용자가 차단되었습니다",
-				"unban": "차단 해제",
-				"reason": "차단 사유",
-				"duration": "기간 (시간)",
-				"confirm": "차단"
-			},
-			"delete": {
-				"title": "삭제",
-				"trigger": "사용자 삭제",
-				"confirmTitle": "사용자를 삭제할까요?",
-				"description": "사용자 <strong>{name}</strong>이(가) 영구 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
-				"confirm": "삭제"
-			},
-			"sessions": {
-				"device": "기기",
-				"created": "생성일",
-				"active": "활성",
-				"revokeTitle": "세션을 해지할까요?",
-				"revokeConfirm": "해지"
-			},
-			"roles": {
-				"title": "사용자 역할",
-				"add": "역할 추가",
-				"removeTitle": "역할을 해제할까요?",
-				"removeDescription": "사용자에게서 역할 <strong>{name}</strong>이(가) 해제됩니다.",
-				"removeConfirm": "해제",
-				"empty": "지정된 역할 없음"
-			},
-			"badges": {
-				"title": "사용자 배지",
-				"add": "배지 추가",
-				"removeTitle": "배지를 해제할까요?",
-				"removeDescription": "사용자에게서 배지 <strong>{name}</strong>이(가) 해제됩니다.",
-				"removeConfirm": "해제",
-				"empty": "지정된 배지 없음"
-			},
-			"banner": {
-				"title": "프로필 배너",
-				"noBanner": "배너 비활성화",
-				"mode": "모드",
-				"modeNone": "비활성화",
-				"modeColor": "색상",
-				"modeImage": "이미지",
-				"type": "위치",
-				"typeHeader": "헤더",
-				"typeBackground": "배경",
-				"color": "배너 색상",
-				"imageUrl": "이미지 URL",
-				"upload": "파일 업로드",
-				"save": "저장"
-			},
-			"toast": {
-				"updated": "사용자가 업데이트되었습니다",
-				"updateError": "업데이트 오류",
-				"banned": "사용자가 차단되었습니다",
-				"banError": "차단 오류",
-				"unbanned": "차단이 해제되었습니다",
-				"unbanError": "차단 해제 오류",
-				"sessionRevoked": "세션이 해지되었습니다",
-				"sessionRevokeError": "세션 해지 오류",
-				"roleAssigned": "역할이 지정되었습니다",
-				"roleAssignError": "역할 지정 오류",
-				"roleRemoved": "역할이 해제되었습니다",
-				"roleRemoveError": "역할 해제 오류",
-				"badgeAssigned": "배지가 지정되었습니다",
-				"badgeAssignError": "배지 지정 오류",
-				"badgeRemoved": "배지가 해제되었습니다",
-				"badgeRemoveError": "배지 해제 오류",
-				"bannerUpdated": "배너가 업데이트되었습니다",
-				"bannerUpdateError": "배너 업데이트 오류",
-				"bannerUploaded": "배너가 업로드되었습니다",
-				"bannerUploadError": "배너 업로드 오류",
-				"deleted": "사용자가 삭제되었습니다",
-				"deleteError": "삭제 오류"
-			},
-			"cancel": "취소",
-			"close": "닫기"
-		},
-		"sidebar": {
-			"users": "사용자",
-			"roles": "역할",
-			"permissions": "권한",
-			"badges": "배지",
-			"clans": "클랜",
-			"notifications": "알림",
-			"players": "플레이어",
-			"articles": "게시글",
-			"builds": "빌드",
-			"arts": "아트"
-		},
-		"roles": {
-			"title": "역할",
-			"create": "역할 생성",
-			"edit": "역할 수정",
-			"permissions": "권한",
-			"permissionsTitle": "권한 — {name}",
-			"deleteTitle": "역할을 삭제할까요?",
-			"deleteDescription": "역할 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
-			"toast": {
-				"created": "역할이 생성되었습니다",
-				"updated": "역할이 업데이트되었습니다",
-				"deleted": "역할이 삭제되었습니다",
-				"permissionsUpdated": "권한이 업데이트되었습니다",
-				"permissionsUpdateError": "권한 업데이트 오류"
-			}
-		},
-		"badges": {
-			"title": "배지",
-			"create": "배지 생성",
-			"edit": "배지 수정",
-			"type": "유형",
-			"icon": "아이콘",
-			"image": "이미지",
-			"imageUrl": "이미지 URL",
-			"color": "색상",
-			"preview": "미리보기:",
-			"defaultName": "배지",
-			"deleteTitle": "배지를 삭제할까요?",
-			"deleteDescription": "배지 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
-			"empty": "배지 없음",
-			"toast": {
-				"created": "배지가 생성되었습니다",
-				"updated": "배지가 업데이트되었습니다",
-				"deleted": "배지가 삭제되었습니다"
-			}
-		},
-		"clans": {
-			"title": "클랜",
-			"total": "전체",
-			"search": "검색...",
-			"table": {
-				"name": "이름",
-				"tag": "태그",
-				"alliance": "진영",
-				"members": "참가자",
-				"status": "상태",
-				"public": "공개"
-			},
-			"status": {
-				"active": "활성",
-				"frozen": "동결",
-				"blocked": "차단됨"
-			},
-			"detail": {
-				"tabs": {
-					"info": "정보",
-					"members": "참가자",
-					"stages": "단계"
-				},
-				"editTitle": "수정",
-				"name": "이름",
-				"tag": "태그",
-				"region": "지역",
-				"description": "설명",
-				"status": "상태",
-				"isPublic": "카탈로그에 공개",
-				"recruiting": "모집 중",
-				"brawlsPerWeek": "주당 난투",
-				"brawlsMandatory": "난투 필수",
-				"level": "레벨",
-				"levelPoints": "레벨 포인트",
-				"leader": "리더",
-				"alliance": "진영",
-				"save": "저장",
-				"sync": "동기화",
-				"block": {
-					"title": "차단",
-					"reasonLabel": "차단 사유",
-					"reason": "사유",
-					"confirm": "차단",
-					"unblock": "차단 해제"
-				},
-				"delete": {
-					"title": "삭제",
-					"trigger": "클랜 삭제",
-					"confirmTitle": "클랜을 삭제할까요?",
-					"description": "클랜 <strong>{name}</strong>이(가) 영구 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
-					"confirm": "삭제"
-				},
-				"members": {
-					"name": "이름",
-					"rank": "등급",
-					"joined": "가입일",
-					"user": "사용자"
-				},
-				"cancel": "취소"
-			},
-			"toast": {
-				"updated": "클랜이 업데이트되었습니다",
-				"updateError": "업데이트 오류",
-				"synced": "클랜 동기화 완료: 참가자 {count}명",
-				"syncError": "동기화 오류",
-				"blocked": "클랜이 차단되었습니다",
-				"blockError": "차단 오류",
-				"unblocked": "차단이 해제되었습니다",
-				"unblockError": "차단 해제 오류",
-				"deleted": "클랜이 삭제되었습니다",
-				"deleteError": "삭제 오류"
-			},
-			"stages": {
-				"title": "단계",
-				"empty": "클랜에 단계가 없습니다",
-				"table": {
-					"id": "ID",
-					"map": "맵",
-					"type": "유형",
-					"stage": "단계",
-					"date": "날짜",
-					"endDate": "종료",
-					"screenshots": "스크린샷",
-					"attendance": "출석",
-					"actions": ""
-				},
-				"edit": "수정",
-				"editTitle": "단계 #{id} 수정",
-				"mapName": "맵 이름",
-				"stageNumber": "단계 번호",
-				"startedAt": "시작일",
-				"endedAt": "종료일 (선택 사항)",
-				"save": "저장",
-				"cancel": "취소",
-				"deleteTitle": "단계를 삭제할까요?",
-				"deleteDescription": "단계 <strong>{map} · {date}</strong>와(과) 모든 스크린샷이 영구 삭제됩니다.",
-				"delete": "삭제",
-				"type": {
-					"TOURNAMENT": "토너먼트",
-					"BRAWL": "난투",
-					"BASE_CAPTURE": "기지 점령"
-				},
-				"toast": {
-					"updated": "단계가 업데이트되었습니다",
-					"updateError": "단계 업데이트 오류",
-					"deleted": "단계가 삭제되었습니다",
-					"deleteError": "단계 삭제 오류"
-				}
-			}
-		},
-		"players": {
-			"title": "플레이어 관리",
-			"add": "플레이어 추가",
-			"addBtn": "추가",
-			"role": "역할",
-			"rolesTitle": "플레이어 역할",
-			"blacklist": "블랙리스트",
-			"empty": "플레이어 없음",
-			"toast": {
-				"added": "플레이어가 추가되었습니다",
-				"addError": "추가 오류",
-				"blacklisted": "플레이어가 블랙리스트에 추가되었습니다",
-				"blacklistAddError": "블랙리스트 추가 오류",
-				"blacklistRemoved": "플레이어가 블랙리스트에서 제거되었습니다",
-				"blacklistRemoveError": "블랙리스트 제거 오류"
-			}
-		},
-		"articles": {
-			"title": "게시글",
-			"all": "전체",
-			"author": "작성자",
-			"stars": "별",
-			"created": "작성일",
-			"statusTitle": "상태 — {title}",
-			"deleteTitle": "게시글을 삭제할까요?",
-			"deleteDescription": "게시글 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
-			"empty": "게시글 없음",
-			"toast": {
-				"statusUpdated": "상태가 업데이트되었습니다",
-				"statusUpdateError": "상태 업데이트 오류",
-				"deleted": "게시글이 삭제되었습니다"
-			}
-		},
-		"builds": {
-			"title": "빌드",
-			"deleteTitle": "빌드를 삭제할까요?",
-			"deleteDescription": "빌드 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
-			"empty": "빌드 없음",
-			"toast": {
-				"deleted": "빌드가 삭제되었습니다"
-			}
-		},
-		"arts": {
-			"title": "아트",
-			"all": "전체",
-			"type": "유형",
-			"stars": "별점",
-			"comments": "댓글",
-			"created": "생성일",
-			"deleteTitle": "작품을 삭제할까요?",
-			"deleteDescription": "작품 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
-			"empty": "작품 없음",
-			"create": "만들기",
-			"createTitle": "새 작품",
-			"editTitle": "작품 편집",
-			"toast": {
-				"deleted": "작품이 삭제되었습니다",
-				"deleteError": "삭제 오류",
-				"created": "작품이 게시되었습니다",
-				"createError": "만들기 오류",
-				"updated": "작품이 업데이트되었습니다",
-				"updateError": "업데이트 오류"
-			},
-			"form": {
-				"name": "이름",
-				"namePlaceholder": "작품 이름 입력",
-				"type": "작품 유형",
-				"default": "일반",
-				"nsfw": "NSFW",
-				"image": "이미지",
-				"tags": "태그",
-				"tagsPlaceholder": "태그는 쉼표로 구분",
-				"author": "작가",
-				"authorGuest": "사이트 외",
-				"authorUser": "사이트 사용자",
-				"authorNamePlaceholder": "작가 이름",
-				"authorSearchPlaceholder": "사용자 검색...",
-				"authorNotFound": "사용자를 찾을 수 없습니다",
-				"socialUrlPlaceholder": "https://...",
-				"create": "게시",
-				"save": "저장"
-			}
-		},
-		"notifications": {
-			"title": "알림",
-			"sendTitle": "알림 보내기",
-			"broadcast": "모든 사용자",
-			"toUser": "특정 사용자",
-			"searchUser": "사용자 검색",
-			"notFound": "찾을 수 없음",
-			"change": "변경",
-			"titleLabel": "제목",
-			"contentLabel": "내용",
-			"contentPlaceholder": "알림 내용...",
-			"linkLabel": "링크 (선택 사항)",
-			"sendAll": "모두에게 보내기",
-			"sendToUser": "사용자에게 보내기",
-			"toast": {
-				"broadcastSent": "{count, plural, one {사용자 #명에게} few {사용자 #명에게} many {사용자 #명에게} other {사용자 #명에게}}",
-				"sent": "알림이 전송되었습니다",
-				"sendError": "전송 오류"
-			}
-		}
-	},
-	"test": {
-		"title": "도메인 이전",
-		"message": "곧 <unavailable>stalhub.dev는 사용할 수 없게 됩니다</unavailable>, 우리의 새 도메인은 <domain>stalhub.dev</domain>입니다. 도메인 지원 중단에 대해 미리 <channel>Telegram 채널</channel>에서 알려드리겠습니다.",
-		"cancel": "취소",
-		"go": "이동"
-	},
-	"errors": {
-		"oops": "앗...",
-		"support": {
-			"thenContact": "문의해 주세요:",
-			"techSupport": "기술 지원",
-			"whenContacting": "문의 시 다음을 기재해 주세요"
-		},
-		"playerNotFound": {
-			"buttonLabel": "돌아가기",
-			"description": "플레이어를 찾을 수 없습니다"
-		},
-		"banned": {
-			"account": "계정",
-			"blocked": "차단되었습니다",
-			"reasonPrefix": "사유:",
-			"blockedMessage": "계정이 차단되었습니다",
-			"remaining": "남은 시간:",
-			"ifMistake": "차단이 잘못되었다고 생각하시면,",
-			"reasonLabel": "사유",
-			"reasonValuePrefix": "사유"
-		},
-		"notFound": {
-			"buttonLabel": "홈으로",
-			"description": "페이지를 찾을 수 없습니다",
-			"ifUrlCorrect": "URL이 올바르다고 생각하시면,"
-		},
-		"globalError": {
-			"buttonLabel": "다시 시도",
-			"description": "클라이언트 오류가 발생했습니다",
-			"ifProblemPersists": "문제가 지속되면 문의해 주세요:"
-		},
-		"routeError": {
-			"description": "오류가 발생했습니다"
-		}
-	},
-	"articles": {
-		"title": "게시글",
-		"allArticles": "← 전체 게시글",
-		"publishedCount": "게시글 {count}개",
-		"empty": "게시된 게시글이 없습니다",
-		"loading": "로딩 중...",
-		"loadError": "게시글 로딩 오류",
-		"metaTitle": "게시글 · StalHub",
-		"metaDescription": "StalHub 커뮤니티 공개 게시글",
-		"byAuthor": "{author}님의 게시글",
-		"notFound": "게시글을 찾을 수 없습니다",
-		"comments": {
-			"title": "댓글 ({count})",
-			"placeholder": "댓글 작성...",
-			"empty": "댓글 없음",
-			"reply": "답글",
-			"deleteTitle": "댓글을 삭제할까요?",
-			"cancel": "취소",
-			"deleteConfirm": "삭제",
-			"toast": {
-				"added": "댓글이 추가되었습니다",
-				"addError": "댓글 추가 오류",
-				"deleted": "댓글이 삭제되었습니다",
-				"deleteError": "댓글 삭제 오류"
-			}
-		},
-		"status": {
-			"PENDING": "초안",
-			"REVIEW": "검토 중",
-			"DENIED": "거부됨",
-			"BANNED": "차단됨",
-			"APPROVED": "승인됨"
-		}
-	},
-	"clan": {
-		"common": {
-			"player": "플레이어",
-			"killsShort": "처",
-			"deathsShort": "사",
-			"assistsShort": "도",
-			"pointsShort": "포",
-			"scoreShort": "점",
-			"kda": "KDA",
-			"kd": "K/D",
-			"grenadesShort": "수",
-			"victory": "승리",
-			"defeat": "패배",
-			"save": "저장",
-			"cancel": "취소",
-			"close": "닫기",
-			"delete": "삭제",
-			"create": "생성",
-			"copy": "복사",
-			"download": "다운로드",
-			"upload": "업로드",
-			"members": "참가자",
-			"games": "게임",
-			"wins": "승리",
-			"losses": "패배",
-			"noGames": "아직 게임 없음"
-		},
-		"stage": {
-			"TOURNAMENT": "토너먼트",
-			"BRAWL": "난투",
-			"BASE_CAPTURE": "기지 점령",
-			"SKIRMISH": "난투"
-		},
-		"maps": {
-			"SMALL_BERDOVKA": "Malaia Berdovka",
-			"KHVOUINOY": "Khvoinyi",
-			"NIZINA": "Nizina"
-		},
-		"events": {
-			"TOURNAMENT": "토너먼트",
-			"BRAWL": "난투",
-			"BASE_CAPTURE": "기지 점령",
-			"GOLD_DROP": "골드 드롭"
-		},
-		"metrics": {
-			"kd": "K/D",
-			"kda": "KDA",
-			"kills": "처치",
-			"grenades": "수류탄"
-		},
-		"filters": {
-			"TOURNAMENT": "토너먼트",
-			"BRAWL": "난투",
-			"ALL": "전체"
-		},
-		"screenshotStatus": {
-			"pending": "대기 중",
-			"processing": "분석 중...",
-			"done": "완료",
-			"error": "오류"
-		},
-		"layout": {
-			"activated": "클랜이 활성화되었습니다",
-			"activateError": "클랜을 활성화하지 못했습니다",
-			"switchError": "클랜을 전환하지 못했습니다",
-			"notLinked": {
-				"title": "클랜이 연결되지 않음",
-				"desc": "설정에서 EXBO 계정을 연결하고 클랜에 가입하여 관리하세요",
-				"settings": "설정"
-			},
-			"notFound": {
-				"title": "클랜을 찾을 수 없음",
-				"desc": "프로필에서 클랜을 찾을 수 없습니다.\n클랜 리더인지 확인해 주세요"
-			},
-			"blocked": {
-				"title": "클랜이 차단됨",
-				"desc": "이 클랜은 관리자에 의해 차단되었습니다.\n차단이 잘못되었다고 생각되면 기술 지원에 문의하세요.",
-				"reason": "사유"
-			},
-			"frozen": {
-				"title": "당신은 클랜 <span>[{tag}] {name}</span>의 리더입니다",
-				"desc": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다.\n액세스를 얻으려면 아래 버튼을 누르세요.",
-				"activate": "활성화",
-				"titleMember": "클랜 <span>[{tag}] {name}</span>이(가) 동결되었습니다",
-				"descMember": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다."
-			}
-		},
-		"dashboard": {
-			"notAllRegistered": "일부 플레이어가 사이트에 등록되어 있지 않습니다. 그들에 대한 수류탄, 불참 집계를 사용할 수 없습니다.",
-			"recentGames": "최근 게임",
-			"screenshotUploaded": "스크린샷 업로드 완료, 분석 시작됨",
-			"screenshotUploadError": "스크린샷 업로드 오류",
-			"grenadesTitle": "단계별 수류탄 ({total})",
-			"grenadesLine": "{label} · {date} · {count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}",
-			"noGrenades": "수류탄 데이터 없음",
-			"topPlayers": {
-				"title": "최고 플레이어 (K/D)",
-				"empty": "플레이어 K/D를 보려면 단계 스크린샷을 업로드하세요"
-			}
-		},
-		"members": {
-			"title": "참가자",
-			"more": "참가자 +{count}명",
-			"squad": "분대"
-		},
-		"stats": {
-			"title": "통계",
-			"clanKd": "클랜 K/D",
-			"emptyTitle": "아직 통계 없음",
-			"emptyDesc": "단계 스크린샷을 업로드하면 플레이어 통계가 표시됩니다",
-			"stageCount": "{count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}",
-			"stageRow": "처치 {kills} · 사망 {deaths} | {kd}"
-		},
-		"squads": {
-			"title": "분대",
-			"noSquadsTitle": "이 맵에 분대 없음",
-			"exportPngTitle": "분대 PNG 내보내기",
-			"create": "분대 생성",
-			"new": "새 분대",
-			"namePlaceholder": "분대 이름",
-			"map": "맵",
-			"leaderTitle": "분대 «{name}» 리더",
-			"noMembers": "분대에 아직 참가자 없음",
-			"removeLeader": "리더 해제",
-			"assignSlotTitle": "슬롯 {slot}에 배치",
-			"noFreeMembers": "빈 참가자 없음",
-			"mapTitle": "분대 «{name}» 맵",
-			"mapChangeTitle": "맵 변경",
-			"assignLeaderTitle": "리더 지정",
-			"requestPending": "분대 가입 신청 검토 중",
-			"joinRequests": "가입 신청",
-			"slot": "슬롯 {slot}",
-			"emptySlot": "비어 있음",
-			"loadoutTitle": "장비",
-			"editLoadout": "장비 수정",
-			"loadoutHeaders": {
-				"player": "플레이어",
-				"primary": "주무기",
-				"secondary": "보조무기",
-				"pistol": "권총",
-				"fatBuild": "탱커 빌드",
-				"speedBuild": "스피드 빌드",
-				"armor": "방어구",
-				"bioArmor": "바이오 방어구"
-			},
-			"myLoadout": "내 장비",
-			"loadoutFields": {
-				"primaryWeapon": "주무기",
-				"secondaryWeapon": "보조무기",
-				"pistol": "권총",
-				"armor": "방어구",
-				"bioArmor": "바이오 방어구",
-				"fatBuild": "탱커 빌드",
-				"speedBuild": "스피드 빌드"
-			},
-			"noBuilds": "빌드 없음",
-			"search": "검색",
-			"noSquadsHere": "이 맵에는 아직 분대가 없습니다",
-			"createFirstHint": "«분대 생성»을 눌러 첫 분대를 만들어 보세요",
-			"png": {
-				"previewTitle": "분대 미리보기",
-				"title": "분대 · {map}",
-				"squadCount": "분대",
-				"leader": "리더",
-				"absent": "불참",
-				"empty": "비어 있음"
-			},
-			"toasts": {
-				"createError": "분대를 만들지 못했습니다",
-				"requestSent": "신청이 전송되었습니다",
-				"requestError": "신청을 제출하지 못했습니다",
-				"approved": "신청이 승인되었습니다",
-				"approveError": "신청을 승인하지 못했습니다",
-				"rejected": "신청이 거부되었습니다",
-				"rejectError": "신청을 거부하지 못했습니다",
-				"mapError": "맵을 변경하지 못했습니다",
-				"loadoutSaved": "장비가 저장되었습니다",
-				"loadoutError": "장비 저장 중 오류",
-				"moveError": "참가자를 이동하지 못했습니다",
-				"pngError": "이미지를 저장하지 못했습니다",
-				"pngCopied": "이미지가 복사되었습니다",
-				"copyError": "복사하지 못했습니다"
-			}
-		},
-		"sessions": {
-			"title": "클랜전",
-			"noGamesDesc": "분석할 스크린샷을 업로드하세요",
-			"scorePoints": "{score}점",
-			"analyzing": "분석",
-			"screenshots": "스크린샷",
-			"attendance": "출석",
-			"presentOf": "{present}/{total}",
-			"absent": " · 불참",
-			"deleteTitle": "단계를 삭제할까요?",
-			"deleteBody": "단계 <span>{name} ({date})</span>와(과) 모든 스크린샷이 <danger>영구 삭제됩니다</danger>",
-			"stageName": "{name} · 단계 {stage}",
-			"deleteConfirm": "삭제",
-			"summary": "요약",
-			"stageScore": "단계 점수: {score}",
-			"opponentsOne": "상대 점수: {names}",
-			"opponentsMany": "상대: {names}",
-			"killsShort": "처",
-			"deathsShort": "사",
-			"assistsShort": "도",
-			"kd": "K/D",
-			"scoreShort": "점",
-			"uploadTitle": "스크린샷 업로드",
-			"upload": "업로드",
-			"detected": "감지됨: <strong>{label} · 단계 {stage}</strong>",
-			"stageType": "단계 유형",
-			"stage": "단계",
-			"stageDate": "단계 날짜 (선택 사항)",
-			"screenshotLabel": "스크린샷",
-			"fileSelected": "선택됨: {name}",
-			"selectFile": "파일 선택",
-			"screenshotId": "스크린샷 #{id}",
-			"toasts": {
-				"retrySuccess": "분석이 다시 시작되었습니다",
-				"retryError": "분석을 다시 시작하지 못했습니다",
-				"deleted": "단계가 삭제되었습니다",
-				"deleteError": "단계를 삭제하지 못했습니다",
-				"uploaded": "스크린샷 업로드 완료, 분석 시작됨",
-				"uploadError": "스크린샷 업로드 오류"
-			}
-		},
-		"absence": {
-			"title": "불참",
-			"desc": "하루에 불참 1회 가능합니다. 오늘의 불참은 {hour}:00 MSK까지만 가능하며, 다른 날짜는 전날 언제든 가능합니다.",
-			"myAbsence": "내 불참",
-			"stage": "단계 {stage}",
-			"notePlaceholder": "댓글 (선택 사항)",
-			"listTitle": "{date} 불참 목록",
-			"empty": "이 날짜의 불참 없음",
-			"now": "현재 <b>{time} MSK</b>.",
-			"canLeave": " 오늘의 불참은 <b>{deadline}:00 MSK</b>까지 남길 수 있습니다.",
-			"pastDeadline": " 오늘의 마감({deadline}:00 MSK)이 지났습니다 — 다른 날짜에 불참을 남길 수 있습니다.",
-			"toasts": {
-				"saved": "불참이 저장되었습니다",
-				"saveError": "불참을 저장하지 못했습니다",
-				"deleted": "불참이 삭제되었습니다",
-				"deleteError": "불참을 삭제하지 못했습니다"
-			}
-		},
-		"gold": {
-			"title": "골드 드롭",
-			"desc": "매일 10:00, 13:00, 16:00, 19:00, 22:00 (MSK)에 진행됩니다. 장교가 참가자를 체크하고 «받음» 상태로 설정합니다.",
-			"empty": "아직 드롭 없음",
-			"claimed": "받음",
-			"waiting": "대기 중",
-			"attendeesCount": "참가 {count}명",
-			"mark": "체크",
-			"attendeesTitle": "{date} 드롭 참가자",
-			"alreadyMarked": "다른 드롭에 이미 체크됨: {count}명",
-			"toasts": {
-				"attendeesError": "참가자를 저장하지 못했습니다",
-				"statusError": "상태를 업데이트하지 못했습니다"
-			}
-		},
-		"grenades": {
-			"emptyTitle": "수류탄 데이터 없음",
-			"emptyDesc": "클랜 구성원 동기화 후 수류탄 데이터가 표시됩니다",
-			"noData": "단계별 데이터 없음",
-			"player": "플레이어",
-			"stage": "단계 {stage}",
-			"total": "합계",
-			"stageCount": "{count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}"
-		},
-		"charts": {
-			"topCount": "톱 {n}",
-			"topAll": "톱 전체",
-			"testFeatureTitle": "테스트 기능 ",
-			"testFeatureDesc": "이 기능은 테스트 중이며 문제 및 부정확한 데이터가 있을 수 있습니다",
-			"kickTitle": "퇴출 대상",
-			"scheduleTooltip": "일정: 주당 토너먼트 {tournament}개 (필수) 및 난투 {brawl}개, 난투 {mandatory, select, yes {필수} other {선택}}.",
-			"kickCriteria": "퇴출 대상: 출석률 {attendance}% 미만 또는 필수 게임의 {absences}% 불참.",
-			"kickChanceHint": "K/D가 낮으면({kd} 미만) 퇴출 확률이 증가합니다: 65% — 출석, 20% — 불참, 15% — K/D.",
-			"attendanceHint": "출석률은 선택한 게임 유형(토너먼트, 난투, 또는 전체) 기준으로 계산됩니다.",
-			"noCandidates": "대상 없음",
-			"kdBadge": "K/D: {value}",
-			"attendanceBadge": "출석: {value}",
-			"absenceBadge": "불참: {value}",
-			"kickChanceLabel": "퇴출 확률",
-			"topPlayersTitle": "{metric} 기준 톱 플레이어 · 톱 {n}",
-			"topPlayersTitleAll": "{metric} 기준 톱 플레이어 · 톱 전체",
-			"noPlayers": "플레이어 데이터 없음",
-			"victoriesByGames": "게임별 승리",
-			"victories": "승리",
-			"defeats": "패배",
-			"noGames": "게임 데이터 없음",
-			"topSquadsKd": "K/D 기준 톱 분대",
-			"noSquads": "분대 없음",
-			"kdShort": "K/D",
-			"kdaShort": "KDA"
-		},
-		"settings": {
-			"publicTitle": "클랜 공개 프로필",
-			"publicDesc": "공개 클랜은 카탈로그와 참가자 프로필 페이지에 표시됩니다.",
-			"publicToggle": "클랜 공개 표시",
-			"publicToggleHint": "클랜이 카탈로그와 참가자 프로필에 표시됩니다",
-			"recruitingTitle": "클랜 모집",
-			"acceptRequests": "신청 수락",
-			"acceptRequestsHint": "클랜 목록에 배지가 표시됩니다",
-			"scheduleTitle": "클랜전 일정",
-			"scheduleDesc": "클랜은 주당 3개 토너먼트를 필수로 치릅니다. 난투 설정은 일정을 공개하며 퇴출 확률 계산에 사용됩니다.",
-			"tournamentFixedLabel": "토너먼트 (필수)",
-			"tournamentFixedHint": "주당 {count}개 토너먼트 — 변경 불가",
-			"brawlsMandatoryLabel": "난투 필수",
-			"brawlsMandatoryHint": "끄면 난투가 퇴출 확률 계산에 포함되지 않습니다",
-			"scheduleFields": {
-				"brawlsPerWeek": "주당 난투 수"
-			},
-			"scheduleTotal": "합계: 주당 토너먼트 {tournament}개 + 난투 {brawl}개 · 난투 {mandatory, select, yes {필수} other {선택}}",
-			"saveSchedule": "일정 저장",
-			"syncTitle": "동기화",
-			"syncDesc": "EXBO 데이터로 클랜 구성을 업데이트합니다: 새 참가자는 추가되고 탈퇴자는 표시됩니다.",
-			"syncButton": "동기화",
-			"botTitle": "Discord 봇",
-			"botDesc": "분대를 게시하고 불참을 받으려면 봇을 Discord 서버에 연결하세요.",
-			"botCommandLabel": "서버에서 명령어를 실행하세요:",
-			"botTokenExpires": "토큰은 {minutes}분간 유효합니다. 먼저 명령어를 실행한 후 필요 시 봇을 다시 연결하세요.",
-			"botLinkLabel": "Discord 봇 연결",
-			"botLinkHint": "토큰을 생성하고 서버에서 /setup 명령어를 실행하세요",
-			"botLinkButton": "토큰 생성",
-			"botGuildsTitle": "연결된 서버",
-			"botNoGuilds": "아직 연결된 서버 없음",
-			"botUnlink": "연결 해제",
-			"freezeTitle": "클랜 동결",
-			"freezeLabel": "클랜 동결",
-			"freezeDesc": "동결 시 클랜 관리가 중지됩니다. 데이터는 유지되며, 활성화하면 액세스가 복원됩니다.",
-			"freezeButton": "동결",
-			"freezeConfirmTitle": "클랜을 동결할까요?",
-			"freezeConfirmBody": "클랜 관리가 중지됩니다. 동결 화면에서 활성화하여 해제할 수 있습니다.",
-			"freezeConfirm": "동결",
-			"toasts": {
-				"saved": "설정이 저장되었습니다",
-				"saveError": "설정을 저장하지 못했습니다",
-				"recruitingUpdated": "모집이 업데이트되었습니다",
-				"recruitingError": "모집 설정을 변경하지 못했습니다",
-				"scheduleSaved": "일정이 저장되었습니다",
-				"scheduleError": "일정을 저장하지 못했습니다",
-				"synced": "구성이 업데이트되었습니다: 참가자 {count}명",
-				"syncError": "구성을 동기화하지 못했습니다",
-				"botTokenCreated": "토큰이 생성되었습니다. Discord 서버에서 명령어를 실행하세요",
-				"botTokenError": "토큰을 생성하지 못했습니다",
-				"botUnlinked": "서버 연결이 해제되었습니다",
-				"botUnlinkError": "서버 연결을 해제하지 못했습니다",
-				"frozen": "클랜이 동결되었습니다",
-				"freezeError": "클랜을 동결하지 못했습니다"
-			}
-		},
-		"invites": {
-			"title": "초대장",
-			"desc": "클랜 멤버 목록에서 캐릭터 닉네임을 입력하세요. 각 닉네임은 클랜에 즉시 연결된 게스트 계정(로그인, 비밀번호)과 Discord 연결용 코드를 생성합니다.",
-			"create": "만들기",
-			"createError": "초대장을 만들지 못했습니다",
-			"empty": "아직 초대장이 없습니다",
-			"claimed": "활성화됨",
-			"pending": "대기 중",
-			"claimedBy": "활성화한 사용자",
-			"copied": "복사됨",
-			"revoked": "초대장이 취소되었습니다",
-			"revokeError": "초대장을 취소하지 못했습니다",
-			"kicked": "게스트가 제거되었습니다",
-			"kickError": "게스트를 제거하지 못했습니다",
-			"leaderOnly": "클랜 리더만 사용할 수 있습니다",
-			"createdTitle": "초대 생성",
-			"createdDesc": "게스트 액세스가 필요한 멤버를 선택하세요. 각 멤버에게 게스트 계정과 Discord 연결용 코드가 생성됩니다.",
-			"code": "코드",
-			"username": "아이디",
-			"password": "비밀번호",
-			"createBulk": "생성",
-			"resultsTitle": "완료",
-			"resultsDesc": "생성: {created}, 실패: {failed}",
-			"close": "닫기",
-			"noUnlinked": "모든 멤버가 이미 연결되었습니다",
-			"membersCount": "연결 안 된 멤버: {count}",
-			"selectAll": "전체 선택",
-			"selectedCount": "선택됨: {count}"
-		}
-	},
-	"me": {
-		"nav": {
-			"home": "홈",
-			"clan": "클랜",
-			"dashboard": "패널",
-			"members": "참가자",
-			"sessions": "게임",
-			"stats": "통계",
-			"grenades": "수류탄",
-			"squads": "분대",
-			"gold": "골드 드롭",
-			"absences": "불참",
-			"settings": "설정",
-			"content": "콘텐츠",
-			"articles": "게시글",
-			"builds": "빌드",
-			"arts": "아트",
-			"stars": "즐겨찾기",
-			"system": "시스템",
-			"notifications": "알림",
-			"invites": "초대장"
-		},
-		"menu": "메뉴",
-		"home": {
-			"builds": "빌드",
-			"allBuilds": "모든 빌드",
-			"noBuilds": "빌드 없음",
-			"publishedArticles": "게시된 게시글",
-			"allArticles": "모든 게시글",
-			"underReview": "검토 중",
-			"characters": "캐릭터"
-		},
-		"articles": {
-			"title": "게시글",
-			"create": "생성",
-			"all": "전체",
-			"noArticles": "게시글 없음",
-			"createFirst": "첫 게시글 작성",
-			"toastDeleted": "게시글이 삭제되었습니다",
-			"toastDeleteError": "삭제 중 오류"
-		},
-		"builds": {
-			"title": "빌드",
-			"create": "생성",
-			"noBuilds": "빌드 없음",
-			"toastDeleted": "빌드가 삭제되었습니다",
-			"toastDeleteError": "삭제 중 오류"
-		},
-		"arts": {
-			"title": "내 작품",
-			"create": "추가",
-			"all": "전체",
-			"noArts": "작품 없음",
-			"createFirst": "첫 작품 추가",
-			"toastDeleted": "작품이 삭제되었습니다",
-			"toastDeleteError": "삭제 중 오류"
-		},
-		"newArt": {
-			"title": "새 작품",
-			"name": "이름",
-			"namePlaceholder": "작품 이름 입력",
-			"type": "작품 유형",
-			"default": "일반",
-			"nsfw": "NSFW",
-			"image": "이미지 (링크)",
-			"imagePlaceholder": "이미지 링크를 붙여넣으세요",
-			"upload": "업로드",
-			"imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
-			"imageTooLarge": "최대 파일 크기는 10MB입니다",
-			"imageUploaded": "이미지가 업로드되었습니다",
-			"imageUploadError": "이미지 업로드 중 오류",
-			"tags": "태그",
-			"tagsPlaceholder": "태그는 쉼표로 구분",
-			"create": "생성",
-			"toastCreated": "작품이 생성되었습니다",
-			"toastCreateError": "생성 중 오류",
-			"info": "정보",
-			"img": "이미지"
-		},
-		"artEdit": {
-			"title": "작품 수정",
-			"save": "저장",
-			"back": "목록으로 돌아가기",
-			"toastSaved": "작품이 저장되었습니다",
-			"toastSaveError": "저장 중 오류"
-		},
-		"notifications": {
-			"title": "알림",
-			"markAllRead": "모두 읽음",
-			"toastAllRead": "모든 알림을 읽었습니다",
-			"empty": "알림 없음"
-		},
-		"stars": {
-			"title": "즐겨찾기",
-			"empty": "즐겨찾는 게시글/빌드 없음",
-			"build": "빌드",
-			"article": "게시글"
-		},
-		"newArticle": {
-			"title": "새 게시글",
-			"name": "제목",
-			"namePlaceholder": "게시글 제목 입력",
-			"type": "게시글 유형",
-			"quest": "퀘스트",
-			"guide": "가이드",
-			"other": "기타",
-			"stalhub": "StalHub",
-			"create": "생성 후 에디터 열기",
-			"toastCreated": "게시글이 생성되었습니다",
-			"toastCreateError": "생성 중 오류"
-		},
-		"settings": {
-			"account": "계정",
-			"name": "이름",
-			"username": "닉네임",
-			"nameCooldown": "이름 변경 가능까지",
-			"usernameCooldown": "닉네임 변경 가능까지",
-			"usernameInvalid": "닉네임: 3-32자, 라틴 문자, 숫자, _만 가능",
-			"toastProfileSaved": "프로필이 업데이트되었습니다",
-			"toastProfileSaveError": "프로필 저장 중 오류",
-			"personalization": "개인화",
-			"publicProfile": "공개 프로필",
-			"publicProfileDesc": "다른 사용자가 내 프로필을 볼 수 있습니다",
-			"showLoadout": "장비 공개",
-			"showLoadoutDesc": "다른 사용자가 내 장비를 볼 수 있습니다",
-			"editLoadout": "장비 편집",
-			"editLoadoutDesc": "주무기, 방어구 및 빌드. 장비는 클랜 분대에 표시됩니다",
-			"profileLayout": "프로필 레이아웃",
-			"profileLayoutDesc": "프로필 요소 배치. 변경 사항은 공개 프로필에도 적용됩니다",
-			"banner": "배너 설정",
-			"bannerDesc": "배너 유형 및 프로필 내 배치 설정",
-			"layoutClassic": "클래식",
-			"layoutModern": "모던",
-			"layoutCompact": "컴팩트",
-			"bannerModeNone": "배너 없음",
-			"bannerModeColor": "색상",
-			"bannerModeImage": "이미지",
-			"bannerTypeBackground": "배경",
-			"bannerTypeHeader": "헤더",
-			"linkAccounts": "계정 연결",
-			"sessions": "세션",
-			"endAll": "모두 종료",
-			"dangerZone": "위험 구역",
-			"deleteAccount": "계정 삭제",
-			"deleteAccountDesc": "이 작업은 되돌릴 수 없습니다",
-			"delete": "삭제",
-			"bannerEditorTitle": "배너 편집",
-			"bannerPlacement": "배너 배치",
-			"bannerType": "배너 유형",
-			"bannerColor": "배너 색상",
-			"bannerImage": "배너 이미지",
-			"cardColor": "카드 색상",
-			"region": "지역",
-			"regionDesc": "EXBO 게임 계정의 지역. 캐릭터 및 클랜 검색에 사용됩니다.",
-			"regionLabel": "현재 지역",
-			"regionButton": "적용",
-			"toastRegionSaved": "지역이 업데이트되었습니다",
-			"toastRegionSaveError": "지역 업데이트 중 오류",
-			"deleteConfirmTitle": "계정을 삭제할까요?",
-			"deleteConfirmDesc": "이 작업은 되돌릴 수 없습니다. 모든 데이터가 삭제됩니다. 확인을 위해 닉네임 <bold>{username}</bold>을(를) 입력하세요.",
-			"deletePlaceholder": "여기에 입력",
-			"cancel": "취소",
-			"deleteConfirm": "계정 삭제",
-			"ago": "전",
-			"toastSaved": "설정이 저장되었습니다",
-			"toastSaveError": "저장 중 오류",
-			"toastBannerSaved": "배너 설정이 저장되었습니다",
-			"toastBannerSaveError": "배너 설정 저장 중 오류",
-			"toastLayoutSaved": "배치 설정이 업데이트되었습니다",
-			"toastLayoutSaveError": "배치 저장 중 오류",
-			"toastBannerUploaded": "배너가 업로드되었습니다",
-			"toastBannerUploadError": "배너 업로드 중 오류",
-			"toastLoadoutSaved": "장비가 저장되었습니다",
-			"toastLoadoutSaveError": "장비 저장 중 오류",
-			"toastDisplaySaved": "표시 설정이 저장되었습니다",
-			"toastDisplayError": "설정 저장 중 오류",
-			"toastSessionDeleted": "세션이 삭제되었습니다",
-			"toastSessionDeleteError": "세션 삭제 중 오류",
-			"toastSessionsDeleted": "모든 세션이 삭제되었습니다",
-			"toastSessionsDeleteError": "세션 삭제 중 오류",
-			"toastLinkError": "연결 중 오류",
-			"toastUnlinked": "계정 연결이 해제되었습니다",
-			"toastUnlinkError": "연결 해제 중 오류",
-			"toastAccountDeleted": "계정이 삭제되었습니다",
-			"toastAccountDeleteError": "계정 삭제 중 오류",
-			"socialLinks": "소셜 링크",
-			"socialLinksDesc": "소셜 네트워크 링크입니다. 작품 페이지에 표시됩니다",
-			"socialLinksUrlPlaceholder": "https://...",
-			"socialLinksSave": "저장",
-			"socialLinksSaved": "소셜 링크가 저장되었습니다",
-			"socialLinksSaveError": "소셜 링크 저장 중 오류",
-			"avatar": "아바타",
-			"avatarPreview": "미리보기",
-			"avatarPreviewDesc": "현재 아바타 모습",
-			"avatarUpload": "사용자 이미지",
-			"avatarUploadDesc": "자신의 이미지를 업로드하세요 (PNG, JPG, WEBP)",
-			"avatarSource": "출처",
-			"avatarSourceDesc": "자신의 이미지가 없을 때 표시할 아바타",
-			"toastAvatarSaved": "아바타 출처가 저장되었습니다",
-			"toastAvatarSaveError": "출처를 저장하지 못했습니다",
-			"toastAvatarUploaded": "아바타가 업로드되었습니다",
-			"toastAvatarUploadError": "아바타를 업로드하지 못했습니다",
-			"toastAvatarRemoved": "아바타가 삭제되었습니다",
-			"toastAvatarRemoveError": "아바타를 삭제하지 못했습니다"
-		},
-		"buildCard": {
-			"toastError": "오류",
-			"toastLinkCopied": "링크가 복사되었습니다",
-			"toastLoginToStar": "즐겨찾기에 추가하려면 로그인하세요",
-			"noArmor": "방어구 없음",
-			"noContainer": "컨테이너 없음",
-			"noArtifacts": "아티팩트 없음"
-		},
-		"articleEditor": {
-			"title": "게시글 제목",
-			"notSaved": "저장 안 됨",
-			"saved": "저장됨",
-			"edit": "편집",
-			"preview": "미리보기",
-			"save": "저장",
-			"submitting": "제출 중...",
-			"submit": "검토 요청",
-			"hotkeys": {
-				"text": "텍스트",
-				"code": "code",
-				"heading": "제목",
-				"quote": "인용",
-				"item": "항목",
-				"alt": "alt"
-			},
-			"tags": "태그",
-			"cover": "커버",
-			"table": "표",
-			"components": "컴포넌트",
-			"tagsTitle": "태그",
-			"tagsLabel": "태그를 쉼표로 구분",
-			"cancel": "취소",
-			"saveBtn": "저장",
-			"coverTitle": "게시글 커버",
-			"imageUrl": "이미지 URL",
-			"delete": "삭제",
-			"chooseSize": "크기 선택",
-			"placeholder": "Markdown 형식으로 작성하세요...",
-			"compiling": "컴파일 중...",
-			"previewHere": "미리보기가 여기에 표시됩니다",
-			"mdxError": "MDX 오류 — 구문을 수정하세요",
-			"toastSaveError": "저장 중 오류",
-			"toastSubmitted": "게시글이 검토 요청되었습니다",
-			"toastSubmitError": "제출 중 오류",
-			"toolbar": {
-				"bold": "굵게",
-				"italic": "기울임",
-				"strikethrough": "취소선",
-				"heading": "제목",
-				"quote": "인용",
-				"inlineCode": "인라인 코드",
-				"codeBlock": "코드 블록",
-				"link": "링크",
-				"image": "이미지",
-				"bulletList": "글머리 목록",
-				"orderedList": "번호 목록",
-				"horizontalRule": "수평선",
-				"table": "표 삽입",
-				"components": "MDX 컴포넌트",
-				"save": "저장"
-			},
-			"hotkeysTitle": "단축키",
-			"mdxContent": "콘텐츠"
-		},
-		"bg": {
-			"avatar": "아바타",
-			"color": "색상",
-			"none": "없음"
-		}
-	},
-	"onboarding": {
-		"title": "프로필 설정",
-		"stepOf": "{current}/{total}단계",
-		"next": "다음",
-		"back": "이전",
-		"finish": "완료",
-		"uploading": "배너 업로드 중...",
-		"uploadError": "배너 업로드 중 오류",
-		"toastSuccess": "프로필 설정 완료!",
-		"toastError": "저장 중 오류",
-		"welcome": {
-			"title": "환영합니다!",
-			"subtitle": "나에게 맞게 모두 설정해 보세요",
-			"start": "설정 시작"
-		},
-		"step": {
-			"name": {
-				"title": "이름",
-				"desc": "다른 사용자에게 표시될 이름"
-			},
-			"username": {
-				"title": "닉네임",
-				"desc": "라틴 문자, 숫자, 밑줄 (3-32자)"
-			},
-			"region": {
-				"title": "지역",
-				"placeholder": "지역 선택",
-				"desc": "지역은 클랜 및 캐릭터 동기화에 사용됩니다"
-			},
-			"layout": {
-				"title": "프로필 레이아웃",
-				"desc": "프로필 모양을 선택하세요"
-			},
-			"banner": {
-				"title": "배너",
-				"desc": "프로필 배너를 설정하세요"
-			},
-			"card": {
-				"title": "프로필 카드",
-				"desc": "카드 디자인을 선택하세요"
-			},
-			"finish": {
-				"title": "완료!",
-				"desc": "입력한 정보를 확인하고 설정을 완료하세요"
-			}
-		}
-	},
-	"hideout": {
-		"item": "아이템",
-		"perCraft": "제작당",
-		"total": "합계",
-		"pricePerUnit": "가격/개",
-		"totalPrice": "총액",
-		"energy": "에너지",
-		"cost": "비용",
-		"search": "검색..."
-	},
-	"builds": {
-		"tags": {
-			"fat": "탱커",
-			"speed": "스피드",
-			"weight": "무게",
-			"combo": "콤보"
-		}
-	},
-	"buildsLite": {
-		"notFound": "빌드를 찾을 수 없습니다",
-		"pngCopied": "이미지가 복사되었습니다",
-		"copyError": "복사하지 못했습니다",
-		"pngPreview": "빌드 미리보기",
-		"close": "닫기",
-		"download": "다운로드",
-		"updated": "빌드가 업데이트되었습니다",
-		"updateError": "업데이트 오류",
-		"linkCopied": "링크가 복사되었습니다",
-		"shareTitle": "빌드 공유",
-		"copyPublicLink": "공개 링크 복사",
-		"copyBuildCode": "빌드 코드 복사",
-		"updateServer": "서버에서 업데이트",
-		"publish": "게시",
-		"tagsLabel": "태그",
-		"containerWarnTitle": "컨테이너가 현재 것보다 작음",
-		"containerWarnDesc": "삭제되는 슬롯의 아티팩트는 컨테이너에서 분리됩니다.",
-		"lostSlots": "손실될 점유 슬롯: {count}개",
-		"confirm": "확인",
-		"compare": "비교",
-		"compareStop": "비교 종료"
-	},
-	"items": {
-		"auction": {
-			"history": "판매 기록",
-			"current": "현재 매물",
-			"lotHistory": "매물 기록",
-			"date": "날짜",
-			"listDate": "등록일",
-			"endDate": "경매 종료",
-			"startPrice": "시작 입찰가",
-			"currentPrice": "현재 입찰가",
-			"buyout": "즉시 구매",
-			"amount": "수량",
-			"cards": "카드",
-			"charts": "그래프",
-			"sort": "정렬",
-			"sort_default": "기본",
-			"sort_price": "가격",
-			"sort_rarity": "희귀도",
-			"range_from": "부터",
-			"range_to": "까지"
-		}
-	},
-	"users": {
-		"notFound": "사용자를 찾을 수 없습니다",
-		"profileDescription": "{username}님의 프로필",
-		"secondaryWeapon": "보조 무기",
-		"bioArmor": "바이오 방어구",
-		"fatBuild": "탱커 빌드",
-		"speedBuild": "스피드 빌드"
-	},
-	"auth": {
-		"title": "로그인",
-		"error": "로그인 오류",
-		"terms": "사이트에 가입하면 본",
-		"termsLink": "이용 약관에 동의하는 것으로 간주됩니다",
-		"recommendationTitle": "권장 사항",
-		"recommendationDesc": "더 많은 기능을 이용하려면 EXBO를 사용하세요",
-		"username": "사용자 이름",
-		"password": "비밀번호",
-		"login": "로그인",
-		"loginByPassword": "비밀번호로",
-		"loginError": "로그인 실패",
-		"back": "뒤로",
-		"next": "다음"
-	},
-	"tech": {
-		"title": "기술 점검 중입니다"
-	},
-	"roadmap": {
-		"genesis": {
-			"title": "프로젝트 탄생",
-			"description": "개발 시작과 핵심 아이디어 구상. 첫 컨셉과 구조 설계."
-		},
-		"cbt": {
-			"title": "CBT",
-			"description": "비공개 베타 테스트. 사이트 기능 점검 및 버그 리포트 수집."
-		},
-		"obt": {
-			"title": "OBT",
-			"description": "공개 베타 테스트. 릴리스 준비, 버그 수정, 인프라 업데이트."
-		},
-		"release": {
-			"title": "프로젝트 릴리스",
-			"description": "프로젝트 정식 출시 및 지속적인 지원."
-		}
-	},
-	"themes": {
-		"system": "시스템",
-		"dark": "다크",
-		"light": "라이트"
-	},
-	"clans": {
-		"title": "클랜",
-		"searchLabel": "이름 또는 태그",
-		"recruiting": "모집 중",
-		"empty": "공개 클랜 없음",
-		"faction": "진영",
-		"schedule": "일정:",
-		"brawls": "난투:",
-		"brawlsMandatory": "필수",
-		"brawlsOptional": "선택"
-	},
-	"buildsPublic": {
-		"title": "빌드",
-		"total": "총 {count}개",
-		"tagsPlaceholder": "태그 선택",
-		"price": "가격",
-		"priceFrom": "최소",
-		"priceTo": "최대",
-		"sort": "정렬",
-		"sort_newest": "최신순",
-		"sort_stars": "별점순",
-		"sort_price": "가격순"
-	},
-	"toolsList": {
-		"title": "도구",
-		"subtitle": "필요한 도구를 선택하세요"
-	},
-	"dashboard": {
-		"title": "대시보드",
-		"subtitle": "계산기로 나만의 대시보드를 만들어 보세요",
-		"addWidget": "위젯 추가",
-		"addWidgetSubtitle": "위젯을 선택하면 대시보드에 추가됩니다",
-		"search": "위젯 검색...",
-		"categories": {
-			"calculators": "계산기",
-			"account": "마이페이지"
-		},
-		"customize": "사용자 지정",
-		"done": "완료",
-		"resetView": "위젯 보기",
-		"reset": "초기화",
-		"resetConfirm": "보드에서 모든 위젯을 삭제할까요?",
-		"emptyTitle": "아직 대시보드가 비어 있습니다",
-		"emptySubtitle": "자주 사용하는 계산기와 탭을 추가하세요",
-		"addFirstWidget": "첫 위젯 추가",
-		"openFull": "전체 버전 열기",
-		"removeWidget": "위젯 삭제",
-		"loginRequired": "이 위젯을 사용하려면 로그인하세요",
-		"signIn": "로그인",
-		"widgetError": "위젯을 불러오지 못했습니다",
-		"widgets": {
-			"buildsLite": {
-				"title": "빌드 Lite"
-			},
-			"ttk": {
-				"title": "TTK 계산기"
-			},
-			"arsenal": {
-				"title": "아스널"
-			},
-			"modules": {
-				"title": "모듈"
-			},
-			"hideout": {
-				"title": "은신처"
-			},
-			"bp": {
-				"title": "배틀 패스"
-			},
-			"dpi": {
-				"title": "DPI 변환기"
-			},
-			"meHome": {
-				"title": "마이페이지 — 홈"
-			},
-			"meBuilds": {
-				"title": "마이페이지 — 빌드"
-			},
-			"meArticles": {
-				"title": "마이페이지 — 게시글"
-			},
-			"meNotifications": {
-				"title": "마이페이지 — 알림"
-			},
-			"meStars": {
-				"title": "마이페이지 — 즐겨찾기"
-			},
-			"clan": {
-				"title": "클랜 — 요약"
-			},
-			"clanMembers": {
-				"title": "클랜 — 참가자"
-			},
-			"clanSessions": {
-				"title": "클랜 — 게임"
-			},
-			"clanAbsences": {
-				"title": "클랜 — 불참"
-			},
-			"clanGold": {
-				"title": "클랜 — 골드 드롭"
-			},
-			"clanGrenades": {
-				"title": "클랜 — 수류탄"
-			},
-			"clanSquads": {
-				"title": "클랜 — 분대"
-			},
-			"clanStats": {
-				"title": "클랜 — 통계"
-			}
-		}
-	},
-	"operations": {
-		"title": "작전",
-		"description": "StalZone 플레이어의 작전: 지도, 난이도, 참가자, 보상.",
-		"nickname": "캐릭터 닉네임",
-		"search": "작전 보기",
-		"prompt": "지역을 선택하고 캐릭터 닉네임을 입력해 작전을 확인하세요.",
-		"loadMore": "더 불러오기"
-	}
+  "landing": {
+    "overview": "모든 것을 한곳에서",
+    "tools_for": "도구:",
+    "need": "필요한 모든 것",
+    "features": {
+      "items": "아이템",
+      "tools": "도구",
+      "uptime": "가용성"
+    },
+    "start": "시작하기",
+    "more_details": "자세히",
+    "tools": {
+      "title": "도구",
+      "description": "방대한 도구 모음",
+      "tool_list": {
+        "builds": {
+          "title": "빌드 계산기",
+          "desc": "아티팩트 빌드를 만들고 저장하며, 조합을 실험하고 다양한 세팅의 효율을 비교하고 모델도 볼 수 있습니다"
+        },
+        "builds_lite": {
+          "title": "빌드 계산기 Lite",
+          "desc": "아티팩트 빌드를 만들고 저장하며, 조합을 실험하고 다양한 세팅의 효율을 비교할 수 있습니다"
+        },
+        "bp": {
+          "title": "배틀 패스 계산기",
+          "desc": "배틀 패스 진행도를 계산하는 편리한 도구"
+        },
+        "ttk": {
+          "title": "TTK 계산기",
+          "desc": "모든 무기와 방어구의 TTK를 확인하세요. 최적의 조합을 찾기 위해 무기와 방어구를 비교해 보세요"
+        },
+        "modules": {
+          "title": "모듈 계산기",
+          "desc": "무기 모듈을 조합하고 최종 보너스와 비용을 확인하세요"
+        },
+        "dashboard": {
+          "title": "편리한 도구 사용",
+          "desc": "일반 페이지 대신 모든 도구를 위젯 형태로 만들었습니다"
+        },
+        "map": {
+          "title": "인터랙티브 지도",
+          "desc": "편리한 인터랙티브 지도로 세계를 탐험하세요: 다양한 퀘스트 가이드, 스팟, 은신처 등"
+        },
+        "player_search": {
+          "title": "플레이어 검색",
+          "desc": "닉네임으로 플레이어를 찾고 통계를 확인하세요"
+        },
+        "arsenal": {
+          "title": "아스널",
+          "desc": "아스널 평판에 필요한 아이템 수량을 계산하세요"
+        }
+      }
+    }
+  },
+  "footer": {
+    "made_by": "사이트 제작: ",
+    "and": " · ",
+    "links": {
+      "bug_report": "GitHub에 버그 신고",
+      "telegram": "Telegram 채널",
+      "discord": "우리 Discord",
+      "about": "소개",
+      "status": "상태 페이지"
+    },
+    "project": {
+      "with": "프로젝트는 ",
+      "open_source": "오픈소스로 제공됩니다",
+      "license": "라이선스: "
+    }
+  },
+  "nav": {
+    "articles": "게시글",
+    "arts": "아트",
+    "groups": {
+      "calculators": {
+        "title": "계산기",
+        "items": {
+          "art": {
+            "label": "빌드",
+            "description": "빌드 만들기",
+            "sub_menu": {
+              "lite": "Lite 버전",
+              "3d": "3D 버전",
+              "3d_description": "실험 기능"
+            }
+          },
+          "ttk": {
+            "label": "TTK",
+            "description": "무기 효율"
+          },
+          "arsenal": {
+            "label": "아스널",
+            "description": "아스널 평판"
+          },
+          "hideout": {
+            "label": "은신처",
+            "description": "은신처 자원 계산"
+          },
+          "barter": {
+            "label": "교환 코인",
+            "description": "교환 코인으로 물물교환"
+          },
+          "bp": {
+            "label": "시즌 패스",
+            "description": "레벨 계산"
+          },
+          "dpi": {
+            "label": "감도",
+            "description": "DPI 설정"
+          },
+          "modules": {
+            "label": "모듈",
+            "description": "무기 모듈 계산기"
+          }
+        }
+      },
+      "clans": {
+        "title": "클랜",
+        "items": {
+          "clanMaps": {
+            "label": "CW 맵",
+            "description": "클랜전 맵"
+          },
+          "clans": {
+            "label": "클랜 목록"
+          }
+        }
+      },
+      "other": {
+        "title": "기타",
+        "items": {
+          "dashboard": {
+            "label": "대시보드",
+            "description": "바로 그 위젯들"
+          },
+          "maps": {
+            "label": "인터랙티브 지도"
+          },
+          "auction": {
+            "label": "경매장"
+          },
+          "items": {
+            "label": "아이템 검색"
+          },
+          "players": {
+            "label": "플레이어 검색"
+          },
+          "models": {
+            "label": "모델 보기",
+            "description": "곧..."
+          },
+          "operations": {
+            "label": "작전",
+            "description": "플레이어 작전 기록"
+          }
+        }
+      }
+    }
+  },
+  "map": {
+    "title": "맵 목록",
+    "loading": "지도 로딩 중",
+    "notFound": "지도를 찾을 수 없습니다",
+    "category": "카테고리:",
+    "noMarkers": "마커 없음",
+    "loadError": "맵 목록을 불러오는 중 오류가 발생했습니다.",
+    "sideBar": {
+      "showAll": "모두 표시",
+      "hideAll": "모두 표시",
+      "export": "내보내기",
+      "top": "맨 위로"
+    }
+  },
+  "playerSearch": {
+    "title": "플레이어 검색",
+    "description": "닉네임으로 플레이어를 찾고 통계를 확인하세요",
+    "region": "지역",
+    "nickname": "닉네임",
+    "nicknamePlaceholder": "플레이어 닉네임을 입력하세요",
+    "search": "검색",
+    "popular_title": "인기 플레이어",
+    "recent_title": "최근 본 항목",
+    "recent_tooltip": "전체 통계, 서버에서 가져옵니다"
+  },
+  "player": {
+    "hero": {
+      "ach": "업적",
+      "ach_points": "업적 포인트:"
+    },
+    "stats": {
+      "title": "통계",
+      "reg": "구역 내:",
+      "hours": "게임 시간:",
+      "last_login": "마지막 접속:"
+    },
+    "rank": {
+      "LEADER": "리더",
+      "COLONEL": "대령",
+      "OFFICER": "장교",
+      "SERGEANT": "하사",
+      "SOLDIER": "전사",
+      "COMMONER": "예비군",
+      "RECRUIT": "이등병"
+    },
+    "alliance": {
+      "merc": "용병",
+      "covenant": "서약",
+      "freedom": "새벽",
+      "duty": "의무",
+      "bandits": "도적",
+      "stalkers": "스토커"
+    },
+    "category": {
+      "EXPLORATION": "탐사",
+      "SURVIVAL": "생존",
+      "HIDEOUT": "은신처",
+      "SESSION_MODES": "세션 모드",
+      "ECONOMY": "경제",
+      "COMBAT": "전투"
+    },
+    "clan": {
+      "title": "클랜",
+      "name": "클랜 이름",
+      "rank": "등급",
+      "level": "클랜 레벨",
+      "members": "참가자",
+      "leader": "리더",
+      "join_at": "가입일"
+    },
+    "combat": {
+      "kd": "K/D:",
+      "deaths": "사망:",
+      "kills": "처치:",
+      "kil_ser": "최대 연속 처치:",
+      "accuracy": "정확도:",
+      "shots": "발사 수:",
+      "hits": "명중:",
+      "accuracy_head": "헤드샷 정확도:"
+    },
+    "note": {
+      "stalhub": "STALHUB",
+      "stalhub_desc": "STALHUB 프로젝트 팀 소속 플레이어",
+      "exbo": "EXBO",
+      "exbo_desc": "EXBO EAST (STALZONE) 팀 소속 플레이어",
+      "media": "미디어 파트너",
+      "media_desc": "Stalzone 프로젝트의 미디어 인물",
+      "scammer": "사기꾼",
+      "scammer_desc": "이 플레이어는 사기꾼입니다",
+      "more": "자세한 설명"
+    },
+    "clanHistory": {
+      "title": "클랜 이력"
+    },
+    "operations": {
+      "title": "작전",
+      "difficulty": "난이도",
+      "participants": "참가자: {count}",
+      "empty": "작전을 찾을 수 없습니다",
+      "error": "작전을 불러오지 못했습니다"
+    }
+  },
+  "time": {
+    "second": {
+      "one": "초",
+      "few": "초",
+      "many": "초"
+    },
+    "minute": {
+      "one": "분",
+      "few": "분",
+      "many": "분"
+    },
+    "hour": {
+      "one": "시간",
+      "few": "시간",
+      "many": "시간"
+    },
+    "day": {
+      "one": "일",
+      "few": "일",
+      "many": "일"
+    },
+    "month": {
+      "one": "개월",
+      "few": "개월",
+      "many": "개월"
+    },
+    "year": {
+      "one": "년",
+      "few": "년",
+      "many": "년"
+    },
+    "and": "그리고",
+    "back": "전"
+  },
+  "unit": {
+    "km": "km",
+    "kg": "kg",
+    "unit": "개",
+    "meter": "m",
+    "second": "초"
+  },
+  "arts": {
+    "ART_QUALITY_COMMON": "일반",
+    "ART_QUALITY_UNCOMMON": "고급",
+    "ART_QUALITY_SPECIAL": "특수",
+    "ART_QUALITY_RARE": "희귀",
+    "ART_QUALITY_EXCLUSIVE": "독점",
+    "ART_QUALITY_LEGENDARY": "전설",
+    "ART_QUALITY_UNIQUE": "유니크",
+    "title": "아트",
+    "total": "전체",
+    "search": "태그로 검색",
+    "byAuthor": "작가: ",
+    "description": "설명",
+    "empty": "아직 작품이 없습니다",
+    "type": "유형",
+    "all": "전체",
+    "author": "작가",
+    "stars": "별점",
+    "comments": {
+      "title": "댓글 ({count})",
+      "placeholder": "댓글 작성...",
+      "empty": "댓글 없음",
+      "reply": "답글",
+      "deleteTitle": "댓글을 삭제할까요?",
+      "cancel": "취소",
+      "deleteConfirm": "삭제",
+      "toast": {
+        "added": "댓글이 추가되었습니다",
+        "addError": "댓글 추가 오류",
+        "deleted": "댓글이 삭제되었습니다",
+        "deleteError": "댓글 삭제 오류"
+      }
+    },
+    "publishedAt": "게시일",
+    "readComments": "댓글",
+    "notFound": "작품을 찾을 수 없습니다"
+  },
+  "ui": {
+    "combobox": {
+      "default": {
+        "placeholder": "선택",
+        "search": {
+          "button": "검색",
+          "notFound": "결과 없음"
+        }
+      },
+      "addStats": {
+        "placeholder": "추가 속성"
+      }
+    },
+    "input_label": "아이템 이름을 입력하세요",
+    "input_sharpening": "강화"
+  },
+  "arsenal": {
+    "title": "아스널 평판 계산기",
+    "sub_title": "아스널 평판 비용을 계산하세요",
+    "input_label": "평판",
+    "alert": "아이템 가격은 하루 두 번(00:00, 12:00 MSK) 업데이트됩니다. 게임 내에서 가격을 비교해 보세요!",
+    "table": {
+      "item": "아이템",
+      "drop": {
+        "title": "드랍 여부",
+        "true": "예",
+        "false": "아니요"
+      },
+      "reputation": "평판",
+      "weight": "무게",
+      "currentPrice": "가격",
+      "limit": "한도",
+      "neededCount": "수량",
+      "totalWeight": "총 무게",
+      "totalPrice": "합계",
+      "maxPerDay": "하루 최대",
+      "days": {
+        "one": "일",
+        "few": "일",
+        "many": "일"
+      }
+    },
+    "summary": {
+      "covered": "목표 달성 가능: 한도가 있는 아이템은 하루 최대",
+      "coveredEnd": "평판을 제공합니다.",
+      "limited": "한도가 있는 아이템은 최대",
+      "limitedEnd": "평판을 제공합니다.",
+      "rest": "목표 달성에 부족한 평판:",
+      "restEnd": "",
+      "unlimited": "한도가 없는 아이템으로 채우세요."
+    }
+  },
+  "modals": {
+    "builds": {
+      "pick": "선택",
+      "no_data": "데이터 없음",
+      "quality": "품질",
+      "potential": "레벨",
+      "armor": {
+        "toaster_success": "방어구가 변경되었습니다!",
+        "header": "방어구 선택"
+      },
+      "container": {
+        "toaster_success": "컨테이너가 변경되었습니다!",
+        "header": "컨테이너 선택",
+        "warn_modal": {
+          "warn": "경고",
+          "new_small": "새 컨테이너가 현재 것보다 작습니다.",
+          "cancel": "취소",
+          "confirm": "계속",
+          "del_count": "삭제될 슬롯",
+          "success_toast": "컨테이너가 변경되었습니다. 삭제됨",
+          "slots": {
+            "slot": "슬롯",
+            "slots": "슬롯"
+          }
+        }
+      },
+      "consumables": {
+        "title": "버프 선택",
+        "header": "버프 선택",
+        "pick_boost": "선택"
+      },
+      "settings": {
+        "title": "설정",
+        "auto_save": "자동 저장됩니다",
+        "percent": "퍼센트",
+        "potential": "잠재력"
+      }
+    },
+    "search": {
+      "title": "사이트 검색",
+      "label": "검색어를 입력하세요",
+      "not_found": "결과 없음",
+      "pages": "페이지",
+      "articles": "게시글"
+    }
+  },
+  "boost": {
+    "long_time_medicine": "장기 버프",
+    "short_time_medicine": "단기 버프",
+    "mobility": "기동성",
+    "accumulation": "배출",
+    "healing": "치유",
+    "protection": "보호"
+  },
+  "wiki": {
+    "title": "위키",
+    "description": "StalZone 위키에 오신 것을 환영합니다. 게임의 메커니즘과 퀘스트에 대한 상세 가이드를 찾을 수 있습니다.",
+    "total_pages": "전체 게시글:",
+    "recently_updated": "최근 업데이트",
+    "navTitle": "위키",
+    "edit": "편집",
+    "page": {
+      "page_section": "이 섹션의 페이지",
+      "update_at": "업데이트:",
+      "authors": "게시글 작성자"
+    }
+  },
+  "status_widget": {
+    "services_down": "서비스 중단됨",
+    "services_up": "서비스 복구됨",
+    "services_ok": "모든 서비스 정상",
+    "services_error": "연결 문제",
+    "services_problem": "서비스에 문제가 있습니다"
+  },
+  "build": {
+    "new_build": "새 빌드",
+    "rename": "빌드 이름 변경",
+    "build_name": "빌드 이름",
+    "cancel": "취소",
+    "save": "저장",
+    "builds": "빌드",
+    "needed_cont": "컨테이너 선택",
+    "empty_slot": "빈 칸",
+    "artifacts": "아티팩트",
+    "pick_armor": "방어구 선택",
+    "armor": "방어구",
+    "no_armor": "방어구 선택 안 됨",
+    "sharpening": "강화",
+    "consumables": "소모품",
+    "toast_copy": "복사 모드 활성화",
+    "damaged": "캐릭터에게 피해를 입힙니다",
+    "toast_published": "빌드가 게시되었습니다",
+    "toast_publish_error": "게시 오류",
+    "copy": "복사",
+    "labels": {
+      "default": "이름으로 검색",
+      "armor": "방어구 선택",
+      "armor_title": "방어구 선택",
+      "art": "아티팩트 선택",
+      "art_title": "아티팩트 선택",
+      "cont": "컨테이너 선택",
+      "cont_title": "컨테이너 선택",
+      "positive_stats": "긍정적",
+      "negative_stats": "부정적",
+      "effects": "효과",
+      "copy": "복사",
+      "swap": "교체",
+      "delete": "삭제",
+      "not_found": "결과 없음",
+      "effect": "효과"
+    },
+    "stats": {
+      "title": "능력치",
+      "prime": "프라임",
+      "regen": "초당 치유",
+      "hps": "초당 프라임",
+      "stopping": "인내",
+      "all": "전체",
+      "container": "컨테이너",
+      "no_stats": "능력치 없음",
+      "no_container": "컨테이너 선택 안 됨",
+      "categories": {
+        "core": "기본 능력치",
+        "protection": "방어 능력치",
+        "contaminationProtection": "오염 방어",
+        "accumulation": "오염",
+        "effects": "기타 효과",
+        "misc": "기타"
+      }
+    },
+    "price": "가격",
+    "price_total": "빌드 비용",
+    "price_market": "시장",
+    "price_estimate": "약",
+    "price_estimate_hint": "시장에 정확한 매물이 없어 가격은 대략 계산되었습니다",
+    "price_unavailable": "가격을 일시적으로 사용할 수 없습니다",
+    "price_empty": "비용을 계산하려면 아티팩트를 추가하세요",
+    "price_updated": "업데이트:"
+  },
+  "ttk": {
+    "page": {
+      "weapon": "무기",
+      "weapon_add": "무기 추가",
+      "weapon_pick": "무기 선택",
+      "ammo_pick": "탄약 선택",
+      "default_ammo": "표준 탄약",
+      "mannequin": "마네킹",
+      "bullet_resistance": "탄환 저항",
+      "vitality": "생존력",
+      "build": "빌드",
+      "plate": "플레이트",
+      "prime": "프라임",
+      "modules": "모듈",
+      "modules_open": "모듈 설정 →",
+      "fire": {
+        "auto": "자동",
+        "burst": "점사"
+      },
+      "combobox": {
+        "build": {
+          "placeholder": "— 선택 안 됨 —",
+          "search_placeholder": "빌드 검색..."
+        },
+        "plate": {
+          "placeholder": "— 플레이트 없음 —",
+          "search_placeholder": "플레이트 검색..."
+        }
+      },
+      "charts": {
+        "distance": "거리:",
+        "damage": "피해",
+        "dist_meter": "거리 (m):",
+        "dist_damage": "거리별 피해",
+        "shots": "발"
+      },
+      "table": {
+        "ttk": "TTK",
+        "hits": "명중"
+      }
+    },
+    "hitZones": {
+      "head": "머리",
+      "body": "몸",
+      "limbs": "사지"
+    },
+    "weaponStats": {
+      "damagePerShot": "피해/발사"
+    }
+  },
+  "bp": {
+    "title": "배틀 패스 계산기",
+    "sub_title": "시즌 전체 레벨 수를 계산하세요",
+    "total_days": "총 일수",
+    "play_days": "게임 일수",
+    "task_day": "하루 과제 수",
+    "overloads": "과부하",
+    "current_level": "현재 레벨",
+    "data": "데이터",
+    "result": "결과",
+    "no_overloads": "과부하 없음",
+    "with_overloads": "과부하 포함",
+    "difference": "차이"
+  },
+  "barter": {
+    "lvl_req": "필요 기지 레벨",
+    "base": "물물교환 기지",
+    "recipe": "레시피 {number}",
+    "money": "비용",
+    "used_in": "사용처",
+    "currency": "화폐",
+    "discount": "할인",
+    "currency_options": {
+      "barter": "물물교환",
+      "barter_coins": "교환 코인",
+      "crimson_shell": "탄피"
+    },
+    "discount_options": {
+      "none": "할인 없음"
+    }
+  },
+  "attachments": {
+    "title": "부착물",
+    "suitable": "호환 부착물",
+    "none": "이 무기에 호환되는 부착물이 없습니다",
+    "summary": "최종 수정치",
+    "total_weight": "총 무게",
+    "remove": "제거",
+    "empty_slot": "선택 안 됨",
+    "select": "선택",
+    "select_prompt": "부착물 선택",
+    "slot": {
+      "barrel": "총열",
+      "mag": "탄창",
+      "collimator_sights": "조준기",
+      "forend": "핸드가드",
+      "other": "기타",
+      "accessory": "악세서리",
+      "pistol_handle": "손잡이"
+    }
+  },
+  "about": {
+    "contacts_title": "연락처",
+    "thanks_title": "특별 감사",
+    "developer_role": "메인 개발자",
+    "designer_role": "디자이너",
+    "contact_us": "문의하기",
+    "useful_links": "유용한 링크",
+    "contact_links": {
+      "support": {
+        "label": "기술 지원",
+        "description": "사이트에 문제가 발생한 경우"
+      },
+      "cooperation": {
+        "label": "협업",
+        "description": "스폰서십, 프로젝트 기여"
+      },
+      "advertising": {
+        "label": "광고",
+        "description": "사이트 또는 소셜 미디어 광고"
+      }
+    },
+    "support_links": {
+      "donate": {
+        "label": "프로젝트 후원",
+        "description": "프로젝트 개발을 위한 재정 지원"
+      },
+      "telegram": {
+        "label": "Telegram 채널",
+        "description": "뉴스, 업데이트 및 공지"
+      },
+      "github": {
+        "label": "GitHub 저장소",
+        "description": "소스 코드 및 버그 리포트"
+      }
+    },
+    "andcool_description": "코드 스니펫",
+    "rashing_description": "UI/UX 개선 조언<br></br>",
+    "flacee_description": "수식 지원",
+    "insideJoke": "ебал рот айсана"
+  },
+  "region": {
+    "RU": "RU",
+    "EU": "EU",
+    "NA": "NA",
+    "SEA": "SEA",
+    "NEA": "NEA"
+  },
+  "dpi": {
+    "title": "감도 계산기",
+    "sub_title": "한 게임에서 다른 게임으로 감도를 변환하세요",
+    "from_game": "시작 게임",
+    "to_game": "대상 게임",
+    "pick_game": "게임 선택",
+    "sens": "감도",
+    "result": "결과"
+  },
+  "modules": {
+    "title": "모듈 계산기",
+    "sub_title": "무기 모듈을 조합하고 최종 보너스와 비용을 확인하세요",
+    "picker_placeholder": "모듈 선택",
+    "picker_search": "모듈 검색...",
+    "picker_empty": "모듈을 찾을 수 없습니다",
+    "quality": "품질",
+    "not_selected": "모듈 선택 안 됨",
+    "fetch_error": "최신 모듈 데이터를 불러오지 못했습니다. 캐시 데이터를 표시합니다.",
+    "groupAddOn": "추가 장착 그룹",
+    "groupDeviation": "편차 그룹",
+    "groupConcept": "컨셉 그룹",
+    "reset": "초기화",
+    "reroll": "리롤",
+    "disassemble": "분해",
+    "restore": "복원",
+    "category": "카테고리",
+    "summary": "요약",
+    "summaryEmpty": "각 그룹에서 모듈을 선택하세요",
+    "rerollCost": "리롤 비용",
+    "disassembleCost": "분해 비용",
+    "restoreCost": "복원 비용",
+    "categoryCost": "카테고리 비용"
+  },
+  "cwMap": {
+    "loading": "에디터 로딩 중...",
+    "actions": {
+      "undo": "Ctrl+Z — 실행 취소",
+      "save": "Ctrl+Shift+S — 저장"
+    },
+    "style": {
+      "thickness": "굵기:"
+    },
+    "accordion": {
+      "basePoints": "기지 포인트",
+      "tools": "도구",
+      "markers": "마커",
+      "style": "스타일"
+    },
+    "maps": {
+      "berda": "Berda",
+      "hvoiniy": "Khvoinyi",
+      "kvartals": "Kvartaly",
+      "nizina": "Nizina",
+      "rozeWise": "Roza vetrov"
+    },
+    "markers": {
+      "position": "위치",
+      "base": "기지",
+      "danger": "위험",
+      "loot": "루트",
+      "spawn": "스폰",
+      "extract": "탈출",
+      "sniper": "스나이퍼",
+      "info": "정보"
+    },
+    "tools": {
+      "pan": "이동",
+      "pen": "연필",
+      "line": "선",
+      "arrow": "화살표",
+      "rect": "사각형",
+      "circle": "원",
+      "eraser": "지우개",
+      "marker": "마커"
+    }
+  },
+  "admin": {
+    "permissions": {
+      "title": "권한",
+      "total": "전체",
+      "create": "권한 생성",
+      "name": "이름",
+      "description": "설명",
+      "createBtn": "생성",
+      "edit": "권한 수정",
+      "deleteTitle": "권한을 삭제할까요?",
+      "deleteDescription": "권한 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
+      "deleteConfirm": "삭제",
+      "cancel": "취소",
+      "save": "저장",
+      "toast": {
+        "created": "권한이 생성되었습니다",
+        "createError": "생성 오류",
+        "updated": "권한이 업데이트되었습니다",
+        "updateError": "업데이트 오류",
+        "deleted": "권한이 삭제되었습니다",
+        "deleteError": "삭제 오류"
+      }
+    },
+    "users": {
+      "title": "사용자",
+      "total": "전체",
+      "search": "검색...",
+      "table": {
+        "username": "사용자 이름",
+        "name": "이름",
+        "roles": "역할",
+        "status": "상태"
+      },
+      "status": {
+        "banned": "차단됨",
+        "active": "활성"
+      },
+      "deleteTitle": "사용자를 삭제할까요?",
+      "deleteDescription": "사용자 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
+      "deleteConfirm": "삭제",
+      "cancel": "취소",
+      "toast": {
+        "deleted": "사용자가 삭제되었습니다",
+        "deleteError": "삭제 중 오류 발생"
+      }
+    },
+    "userDetail": {
+      "tabs": {
+        "info": "정보",
+        "sessions": "세션",
+        "roles": "역할",
+        "badges": "배지",
+        "banner": "배너"
+      },
+      "editing": "수정 중",
+      "username": "사용자 이름",
+      "name": "이름",
+      "save": "저장",
+      "ban": {
+        "title": "차단",
+        "banned": "사용자가 차단되었습니다",
+        "unban": "차단 해제",
+        "reason": "차단 사유",
+        "duration": "기간 (시간)",
+        "confirm": "차단"
+      },
+      "delete": {
+        "title": "삭제",
+        "trigger": "사용자 삭제",
+        "confirmTitle": "사용자를 삭제할까요?",
+        "description": "사용자 <strong>{name}</strong>이(가) 영구 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+        "confirm": "삭제"
+      },
+      "sessions": {
+        "device": "기기",
+        "created": "생성일",
+        "active": "활성",
+        "revokeTitle": "세션을 해지할까요?",
+        "revokeConfirm": "해지"
+      },
+      "roles": {
+        "title": "사용자 역할",
+        "add": "역할 추가",
+        "removeTitle": "역할을 해제할까요?",
+        "removeDescription": "사용자에게서 역할 <strong>{name}</strong>이(가) 해제됩니다.",
+        "removeConfirm": "해제",
+        "empty": "지정된 역할 없음"
+      },
+      "badges": {
+        "title": "사용자 배지",
+        "add": "배지 추가",
+        "removeTitle": "배지를 해제할까요?",
+        "removeDescription": "사용자에게서 배지 <strong>{name}</strong>이(가) 해제됩니다.",
+        "removeConfirm": "해제",
+        "empty": "지정된 배지 없음"
+      },
+      "banner": {
+        "title": "프로필 배너",
+        "noBanner": "배너 비활성화",
+        "mode": "모드",
+        "modeNone": "비활성화",
+        "modeColor": "색상",
+        "modeImage": "이미지",
+        "type": "위치",
+        "typeHeader": "헤더",
+        "typeBackground": "배경",
+        "color": "배너 색상",
+        "imageUrl": "이미지 URL",
+        "upload": "파일 업로드",
+        "save": "저장"
+      },
+      "toast": {
+        "updated": "사용자가 업데이트되었습니다",
+        "updateError": "업데이트 오류",
+        "banned": "사용자가 차단되었습니다",
+        "banError": "차단 오류",
+        "unbanned": "차단이 해제되었습니다",
+        "unbanError": "차단 해제 오류",
+        "sessionRevoked": "세션이 해지되었습니다",
+        "sessionRevokeError": "세션 해지 오류",
+        "roleAssigned": "역할이 지정되었습니다",
+        "roleAssignError": "역할 지정 오류",
+        "roleRemoved": "역할이 해제되었습니다",
+        "roleRemoveError": "역할 해제 오류",
+        "badgeAssigned": "배지가 지정되었습니다",
+        "badgeAssignError": "배지 지정 오류",
+        "badgeRemoved": "배지가 해제되었습니다",
+        "badgeRemoveError": "배지 해제 오류",
+        "bannerUpdated": "배너가 업데이트되었습니다",
+        "bannerUpdateError": "배너 업데이트 오류",
+        "bannerUploaded": "배너가 업로드되었습니다",
+        "bannerUploadError": "배너 업로드 오류",
+        "deleted": "사용자가 삭제되었습니다",
+        "deleteError": "삭제 오류"
+      },
+      "cancel": "취소",
+      "close": "닫기"
+    },
+    "sidebar": {
+      "users": "사용자",
+      "roles": "역할",
+      "permissions": "권한",
+      "badges": "배지",
+      "clans": "클랜",
+      "notifications": "알림",
+      "players": "플레이어",
+      "articles": "게시글",
+      "builds": "빌드",
+      "arts": "아트"
+    },
+    "roles": {
+      "title": "역할",
+      "create": "역할 생성",
+      "edit": "역할 수정",
+      "permissions": "권한",
+      "permissionsTitle": "권한 — {name}",
+      "deleteTitle": "역할을 삭제할까요?",
+      "deleteDescription": "역할 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
+      "toast": {
+        "created": "역할이 생성되었습니다",
+        "updated": "역할이 업데이트되었습니다",
+        "deleted": "역할이 삭제되었습니다",
+        "permissionsUpdated": "권한이 업데이트되었습니다",
+        "permissionsUpdateError": "권한 업데이트 오류"
+      }
+    },
+    "badges": {
+      "title": "배지",
+      "create": "배지 생성",
+      "edit": "배지 수정",
+      "type": "유형",
+      "icon": "아이콘",
+      "image": "이미지",
+      "imageUrl": "이미지 URL",
+      "color": "색상",
+      "preview": "미리보기:",
+      "defaultName": "배지",
+      "deleteTitle": "배지를 삭제할까요?",
+      "deleteDescription": "배지 <strong>{name}</strong>이(가) 영구 삭제됩니다.",
+      "empty": "배지 없음",
+      "toast": {
+        "created": "배지가 생성되었습니다",
+        "updated": "배지가 업데이트되었습니다",
+        "deleted": "배지가 삭제되었습니다"
+      }
+    },
+    "clans": {
+      "title": "클랜",
+      "total": "전체",
+      "search": "검색...",
+      "table": {
+        "name": "이름",
+        "tag": "태그",
+        "alliance": "진영",
+        "members": "참가자",
+        "status": "상태",
+        "public": "공개"
+      },
+      "status": {
+        "active": "활성",
+        "frozen": "동결",
+        "blocked": "차단됨"
+      },
+      "detail": {
+        "tabs": {
+          "info": "정보",
+          "members": "참가자",
+          "stages": "단계"
+        },
+        "editTitle": "수정",
+        "name": "이름",
+        "tag": "태그",
+        "region": "지역",
+        "description": "설명",
+        "status": "상태",
+        "isPublic": "카탈로그에 공개",
+        "recruiting": "모집 중",
+        "brawlsPerWeek": "주당 난투",
+        "brawlsMandatory": "난투 필수",
+        "level": "레벨",
+        "levelPoints": "레벨 포인트",
+        "leader": "리더",
+        "alliance": "진영",
+        "save": "저장",
+        "sync": "동기화",
+        "block": {
+          "title": "차단",
+          "reasonLabel": "차단 사유",
+          "reason": "사유",
+          "confirm": "차단",
+          "unblock": "차단 해제"
+        },
+        "delete": {
+          "title": "삭제",
+          "trigger": "클랜 삭제",
+          "confirmTitle": "클랜을 삭제할까요?",
+          "description": "클랜 <strong>{name}</strong>이(가) 영구 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+          "confirm": "삭제"
+        },
+        "members": {
+          "name": "이름",
+          "rank": "등급",
+          "joined": "가입일",
+          "user": "사용자"
+        },
+        "cancel": "취소"
+      },
+      "toast": {
+        "updated": "클랜이 업데이트되었습니다",
+        "updateError": "업데이트 오류",
+        "synced": "클랜 동기화 완료: 참가자 {count}명",
+        "syncError": "동기화 오류",
+        "blocked": "클랜이 차단되었습니다",
+        "blockError": "차단 오류",
+        "unblocked": "차단이 해제되었습니다",
+        "unblockError": "차단 해제 오류",
+        "deleted": "클랜이 삭제되었습니다",
+        "deleteError": "삭제 오류"
+      },
+      "stages": {
+        "title": "단계",
+        "empty": "클랜에 단계가 없습니다",
+        "table": {
+          "id": "ID",
+          "map": "맵",
+          "type": "유형",
+          "stage": "단계",
+          "date": "날짜",
+          "endDate": "종료",
+          "screenshots": "스크린샷",
+          "attendance": "출석",
+          "actions": ""
+        },
+        "edit": "수정",
+        "editTitle": "단계 #{id} 수정",
+        "mapName": "맵 이름",
+        "stageNumber": "단계 번호",
+        "startedAt": "시작일",
+        "endedAt": "종료일 (선택 사항)",
+        "save": "저장",
+        "cancel": "취소",
+        "deleteTitle": "단계를 삭제할까요?",
+        "deleteDescription": "단계 <strong>{map} · {date}</strong>와(과) 모든 스크린샷이 영구 삭제됩니다.",
+        "delete": "삭제",
+        "type": {
+          "TOURNAMENT": "토너먼트",
+          "BRAWL": "난투",
+          "BASE_CAPTURE": "기지 점령"
+        },
+        "toast": {
+          "updated": "단계가 업데이트되었습니다",
+          "updateError": "단계 업데이트 오류",
+          "deleted": "단계가 삭제되었습니다",
+          "deleteError": "단계 삭제 오류"
+        }
+      }
+    },
+    "players": {
+      "title": "플레이어 관리",
+      "add": "플레이어 추가",
+      "addBtn": "추가",
+      "role": "역할",
+      "rolesTitle": "플레이어 역할",
+      "blacklist": "블랙리스트",
+      "empty": "플레이어 없음",
+      "toast": {
+        "added": "플레이어가 추가되었습니다",
+        "addError": "추가 오류",
+        "blacklisted": "플레이어가 블랙리스트에 추가되었습니다",
+        "blacklistAddError": "블랙리스트 추가 오류",
+        "blacklistRemoved": "플레이어가 블랙리스트에서 제거되었습니다",
+        "blacklistRemoveError": "블랙리스트 제거 오류"
+      }
+    },
+    "articles": {
+      "title": "게시글",
+      "all": "전체",
+      "author": "작성자",
+      "stars": "별",
+      "created": "작성일",
+      "statusTitle": "상태 — {title}",
+      "deleteTitle": "게시글을 삭제할까요?",
+      "deleteDescription": "게시글 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
+      "empty": "게시글 없음",
+      "toast": {
+        "statusUpdated": "상태가 업데이트되었습니다",
+        "statusUpdateError": "상태 업데이트 오류",
+        "deleted": "게시글이 삭제되었습니다"
+      }
+    },
+    "builds": {
+      "title": "빌드",
+      "deleteTitle": "빌드를 삭제할까요?",
+      "deleteDescription": "빌드 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
+      "empty": "빌드 없음",
+      "toast": {
+        "deleted": "빌드가 삭제되었습니다"
+      }
+    },
+    "arts": {
+      "title": "아트",
+      "all": "전체",
+      "type": "유형",
+      "stars": "별점",
+      "comments": "댓글",
+      "created": "생성일",
+      "deleteTitle": "작품을 삭제할까요?",
+      "deleteDescription": "작품 <strong>{title}</strong>이(가) 영구 삭제됩니다.",
+      "empty": "작품 없음",
+      "create": "만들기",
+      "createTitle": "새 작품",
+      "editTitle": "작품 편집",
+      "toast": {
+        "deleted": "작품이 삭제되었습니다",
+        "deleteError": "삭제 오류",
+        "created": "작품이 게시되었습니다",
+        "createError": "만들기 오류",
+        "updated": "작품이 업데이트되었습니다",
+        "updateError": "업데이트 오류"
+      },
+      "form": {
+        "name": "이름",
+        "namePlaceholder": "작품 이름 입력",
+        "type": "작품 유형",
+        "default": "일반",
+        "nsfw": "NSFW",
+        "image": "이미지",
+        "tags": "태그",
+        "tagsPlaceholder": "태그는 쉼표로 구분",
+        "author": "작가",
+        "authorGuest": "사이트 외",
+        "authorUser": "사이트 사용자",
+        "authorNamePlaceholder": "작가 이름",
+        "authorSearchPlaceholder": "사용자 검색...",
+        "authorNotFound": "사용자를 찾을 수 없습니다",
+        "socialUrlPlaceholder": "https://...",
+        "create": "게시",
+        "save": "저장"
+      }
+    },
+    "notifications": {
+      "title": "알림",
+      "sendTitle": "알림 보내기",
+      "broadcast": "모든 사용자",
+      "toUser": "특정 사용자",
+      "searchUser": "사용자 검색",
+      "notFound": "찾을 수 없음",
+      "change": "변경",
+      "titleLabel": "제목",
+      "contentLabel": "내용",
+      "contentPlaceholder": "알림 내용...",
+      "linkLabel": "링크 (선택 사항)",
+      "sendAll": "모두에게 보내기",
+      "sendToUser": "사용자에게 보내기",
+      "toast": {
+        "broadcastSent": "{count, plural, one {사용자 #명에게} few {사용자 #명에게} many {사용자 #명에게} other {사용자 #명에게}}",
+        "sent": "알림이 전송되었습니다",
+        "sendError": "전송 오류"
+      }
+    }
+  },
+  "test": {
+    "title": "도메인 이전",
+    "message": "곧 <unavailable>stalhub.dev는 사용할 수 없게 됩니다</unavailable>, 우리의 새 도메인은 <domain>stalhub.dev</domain>입니다. 도메인 지원 중단에 대해 미리 <channel>Telegram 채널</channel>에서 알려드리겠습니다.",
+    "cancel": "취소",
+    "go": "이동"
+  },
+  "errors": {
+    "oops": "앗...",
+    "support": {
+      "thenContact": "문의해 주세요:",
+      "techSupport": "기술 지원",
+      "whenContacting": "문의 시 다음을 기재해 주세요"
+    },
+    "playerNotFound": {
+      "buttonLabel": "돌아가기",
+      "description": "플레이어를 찾을 수 없습니다"
+    },
+    "banned": {
+      "account": "계정",
+      "blocked": "차단되었습니다",
+      "reasonPrefix": "사유:",
+      "blockedMessage": "계정이 차단되었습니다",
+      "remaining": "남은 시간:",
+      "ifMistake": "차단이 잘못되었다고 생각하시면,",
+      "reasonLabel": "사유",
+      "reasonValuePrefix": "사유"
+    },
+    "notFound": {
+      "buttonLabel": "홈으로",
+      "description": "페이지를 찾을 수 없습니다",
+      "ifUrlCorrect": "URL이 올바르다고 생각하시면,"
+    },
+    "globalError": {
+      "buttonLabel": "다시 시도",
+      "description": "클라이언트 오류가 발생했습니다",
+      "ifProblemPersists": "문제가 지속되면 문의해 주세요:"
+    },
+    "routeError": {
+      "description": "오류가 발생했습니다"
+    }
+  },
+  "articles": {
+    "title": "게시글",
+    "allArticles": "← 전체 게시글",
+    "publishedCount": "게시글 {count}개",
+    "empty": "게시된 게시글이 없습니다",
+    "loading": "로딩 중...",
+    "loadError": "게시글 로딩 오류",
+    "metaTitle": "게시글 · StalHub",
+    "metaDescription": "StalHub 커뮤니티 공개 게시글",
+    "byAuthor": "{author}님의 게시글",
+    "notFound": "게시글을 찾을 수 없습니다",
+    "comments": {
+      "title": "댓글 ({count})",
+      "placeholder": "댓글 작성...",
+      "empty": "댓글 없음",
+      "reply": "답글",
+      "deleteTitle": "댓글을 삭제할까요?",
+      "cancel": "취소",
+      "deleteConfirm": "삭제",
+      "toast": {
+        "added": "댓글이 추가되었습니다",
+        "addError": "댓글 추가 오류",
+        "deleted": "댓글이 삭제되었습니다",
+        "deleteError": "댓글 삭제 오류"
+      }
+    },
+    "status": {
+      "PENDING": "초안",
+      "REVIEW": "검토 중",
+      "DENIED": "거부됨",
+      "BANNED": "차단됨",
+      "APPROVED": "승인됨"
+    }
+  },
+  "clan": {
+    "common": {
+      "player": "플레이어",
+      "killsShort": "처",
+      "deathsShort": "사",
+      "assistsShort": "도",
+      "pointsShort": "포",
+      "scoreShort": "점",
+      "kda": "KDA",
+      "kd": "K/D",
+      "grenadesShort": "수",
+      "victory": "승리",
+      "defeat": "패배",
+      "save": "저장",
+      "cancel": "취소",
+      "close": "닫기",
+      "delete": "삭제",
+      "create": "생성",
+      "copy": "복사",
+      "download": "다운로드",
+      "upload": "업로드",
+      "members": "참가자",
+      "games": "게임",
+      "wins": "승리",
+      "losses": "패배",
+      "noGames": "아직 게임 없음"
+    },
+    "stage": {
+      "TOURNAMENT": "토너먼트",
+      "BRAWL": "난투",
+      "BASE_CAPTURE": "기지 점령",
+      "SKIRMISH": "난투"
+    },
+    "maps": {
+      "SMALL_BERDOVKA": "Malaia Berdovka",
+      "KHVOUINOY": "Khvoinyi",
+      "NIZINA": "Nizina"
+    },
+    "events": {
+      "TOURNAMENT": "토너먼트",
+      "BRAWL": "난투",
+      "BASE_CAPTURE": "기지 점령",
+      "GOLD_DROP": "골드 드롭"
+    },
+    "metrics": {
+      "kd": "K/D",
+      "kda": "KDA",
+      "kills": "처치",
+      "grenades": "수류탄"
+    },
+    "filters": {
+      "TOURNAMENT": "토너먼트",
+      "BRAWL": "난투",
+      "ALL": "전체"
+    },
+    "screenshotStatus": {
+      "pending": "대기 중",
+      "processing": "분석 중...",
+      "done": "완료",
+      "error": "오류"
+    },
+    "layout": {
+      "activated": "클랜이 활성화되었습니다",
+      "activateError": "클랜을 활성화하지 못했습니다",
+      "switchError": "클랜을 전환하지 못했습니다",
+      "notLinked": {
+        "title": "클랜이 연결되지 않음",
+        "desc": "설정에서 EXBO 계정을 연결하고 클랜에 가입하여 관리하세요",
+        "settings": "설정"
+      },
+      "notFound": {
+        "title": "클랜을 찾을 수 없음",
+        "desc": "프로필에서 클랜을 찾을 수 없습니다.\n클랜 리더인지 확인해 주세요"
+      },
+      "blocked": {
+        "title": "클랜이 차단됨",
+        "desc": "이 클랜은 관리자에 의해 차단되었습니다.\n차단이 잘못되었다고 생각되면 기술 지원에 문의하세요.",
+        "reason": "사유"
+      },
+      "frozen": {
+        "title": "당신은 클랜 <span>[{tag}] {name}</span>의 리더입니다",
+        "desc": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다.\n액세스를 얻으려면 아래 버튼을 누르세요.",
+        "activate": "활성화",
+        "titleMember": "클랜 <span>[{tag}] {name}</span>이(가) 동결되었습니다",
+        "descMember": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다."
+      }
+    },
+    "dashboard": {
+      "notAllRegistered": "일부 플레이어가 사이트에 등록되어 있지 않습니다. 그들에 대한 수류탄, 불참 집계를 사용할 수 없습니다.",
+      "recentGames": "최근 게임",
+      "screenshotUploaded": "스크린샷 업로드 완료, 분석 시작됨",
+      "screenshotUploadError": "스크린샷 업로드 오류",
+      "grenadesTitle": "단계별 수류탄 ({total})",
+      "grenadesLine": "{label} · {date} · {count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}",
+      "noGrenades": "수류탄 데이터 없음",
+      "topPlayers": {
+        "title": "최고 플레이어 (K/D)",
+        "empty": "플레이어 K/D를 보려면 단계 스크린샷을 업로드하세요"
+      }
+    },
+    "members": {
+      "title": "참가자",
+      "more": "참가자 +{count}명",
+      "squad": "분대"
+    },
+    "stats": {
+      "title": "통계",
+      "clanKd": "클랜 K/D",
+      "emptyTitle": "아직 통계 없음",
+      "emptyDesc": "단계 스크린샷을 업로드하면 플레이어 통계가 표시됩니다",
+      "stageCount": "{count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}",
+      "stageRow": "처치 {kills} · 사망 {deaths} | {kd}"
+    },
+    "squads": {
+      "title": "분대",
+      "noSquadsTitle": "이 맵에 분대 없음",
+      "exportPngTitle": "분대 PNG 내보내기",
+      "create": "분대 생성",
+      "new": "새 분대",
+      "namePlaceholder": "분대 이름",
+      "map": "맵",
+      "leaderTitle": "분대 «{name}» 리더",
+      "noMembers": "분대에 아직 참가자 없음",
+      "removeLeader": "리더 해제",
+      "assignSlotTitle": "슬롯 {slot}에 배치",
+      "noFreeMembers": "빈 참가자 없음",
+      "mapTitle": "분대 «{name}» 맵",
+      "mapChangeTitle": "맵 변경",
+      "assignLeaderTitle": "리더 지정",
+      "requestPending": "분대 가입 신청 검토 중",
+      "joinRequests": "가입 신청",
+      "slot": "슬롯 {slot}",
+      "emptySlot": "비어 있음",
+      "loadoutTitle": "장비",
+      "editLoadout": "장비 수정",
+      "loadoutHeaders": {
+        "player": "플레이어",
+        "primary": "주무기",
+        "secondary": "보조무기",
+        "pistol": "권총",
+        "fatBuild": "탱커 빌드",
+        "speedBuild": "스피드 빌드",
+        "armor": "방어구",
+        "bioArmor": "바이오 방어구"
+      },
+      "myLoadout": "내 장비",
+      "loadoutFields": {
+        "primaryWeapon": "주무기",
+        "secondaryWeapon": "보조무기",
+        "pistol": "권총",
+        "armor": "방어구",
+        "bioArmor": "바이오 방어구",
+        "fatBuild": "탱커 빌드",
+        "speedBuild": "스피드 빌드"
+      },
+      "noBuilds": "빌드 없음",
+      "search": "검색",
+      "noSquadsHere": "이 맵에는 아직 분대가 없습니다",
+      "createFirstHint": "«분대 생성»을 눌러 첫 분대를 만들어 보세요",
+      "png": {
+        "previewTitle": "분대 미리보기",
+        "title": "분대 · {map}",
+        "squadCount": "분대",
+        "leader": "리더",
+        "absent": "불참",
+        "empty": "비어 있음"
+      },
+      "toasts": {
+        "createError": "분대를 만들지 못했습니다",
+        "requestSent": "신청이 전송되었습니다",
+        "requestError": "신청을 제출하지 못했습니다",
+        "approved": "신청이 승인되었습니다",
+        "approveError": "신청을 승인하지 못했습니다",
+        "rejected": "신청이 거부되었습니다",
+        "rejectError": "신청을 거부하지 못했습니다",
+        "mapError": "맵을 변경하지 못했습니다",
+        "loadoutSaved": "장비가 저장되었습니다",
+        "loadoutError": "장비 저장 중 오류",
+        "moveError": "참가자를 이동하지 못했습니다",
+        "pngError": "이미지를 저장하지 못했습니다",
+        "pngCopied": "이미지가 복사되었습니다",
+        "copyError": "복사하지 못했습니다"
+      }
+    },
+    "sessions": {
+      "title": "클랜전",
+      "noGamesDesc": "분석할 스크린샷을 업로드하세요",
+      "scorePoints": "{score}점",
+      "analyzing": "분석",
+      "screenshots": "스크린샷",
+      "attendance": "출석",
+      "presentOf": "{present}/{total}",
+      "absent": " · 불참",
+      "deleteTitle": "단계를 삭제할까요?",
+      "deleteBody": "단계 <span>{name} ({date})</span>와(과) 모든 스크린샷이 <danger>영구 삭제됩니다</danger>",
+      "stageName": "{name} · 단계 {stage}",
+      "deleteConfirm": "삭제",
+      "summary": "요약",
+      "stageScore": "단계 점수: {score}",
+      "opponentsOne": "상대 점수: {names}",
+      "opponentsMany": "상대: {names}",
+      "killsShort": "처",
+      "deathsShort": "사",
+      "assistsShort": "도",
+      "kd": "K/D",
+      "scoreShort": "점",
+      "uploadTitle": "스크린샷 업로드",
+      "upload": "업로드",
+      "detected": "감지됨: <strong>{label} · 단계 {stage}</strong>",
+      "stageType": "단계 유형",
+      "stage": "단계",
+      "stageDate": "단계 날짜 (선택 사항)",
+      "screenshotLabel": "스크린샷",
+      "fileSelected": "선택됨: {name}",
+      "selectFile": "파일 선택",
+      "screenshotId": "스크린샷 #{id}",
+      "toasts": {
+        "retrySuccess": "분석이 다시 시작되었습니다",
+        "retryError": "분석을 다시 시작하지 못했습니다",
+        "deleted": "단계가 삭제되었습니다",
+        "deleteError": "단계를 삭제하지 못했습니다",
+        "uploaded": "스크린샷 업로드 완료, 분석 시작됨",
+        "uploadError": "스크린샷 업로드 오류"
+      }
+    },
+    "absence": {
+      "title": "불참",
+      "desc": "하루에 불참 1회 가능합니다. 오늘의 불참은 {hour}:00 MSK까지만 가능하며, 다른 날짜는 전날 언제든 가능합니다.",
+      "myAbsence": "내 불참",
+      "stage": "단계 {stage}",
+      "notePlaceholder": "댓글 (선택 사항)",
+      "listTitle": "{date} 불참 목록",
+      "empty": "이 날짜의 불참 없음",
+      "now": "현재 <b>{time} MSK</b>.",
+      "canLeave": " 오늘의 불참은 <b>{deadline}:00 MSK</b>까지 남길 수 있습니다.",
+      "pastDeadline": " 오늘의 마감({deadline}:00 MSK)이 지났습니다 — 다른 날짜에 불참을 남길 수 있습니다.",
+      "toasts": {
+        "saved": "불참이 저장되었습니다",
+        "saveError": "불참을 저장하지 못했습니다",
+        "deleted": "불참이 삭제되었습니다",
+        "deleteError": "불참을 삭제하지 못했습니다"
+      }
+    },
+    "gold": {
+      "title": "골드 드롭",
+      "desc": "매일 10:00, 13:00, 16:00, 19:00, 22:00 (MSK)에 진행됩니다. 장교가 참가자를 체크하고 «받음» 상태로 설정합니다.",
+      "empty": "아직 드롭 없음",
+      "claimed": "받음",
+      "waiting": "대기 중",
+      "attendeesCount": "참가 {count}명",
+      "mark": "체크",
+      "attendeesTitle": "{date} 드롭 참가자",
+      "alreadyMarked": "다른 드롭에 이미 체크됨: {count}명",
+      "toasts": {
+        "attendeesError": "참가자를 저장하지 못했습니다",
+        "statusError": "상태를 업데이트하지 못했습니다"
+      }
+    },
+    "grenades": {
+      "emptyTitle": "수류탄 데이터 없음",
+      "emptyDesc": "클랜 구성원 동기화 후 수류탄 데이터가 표시됩니다",
+      "noData": "단계별 데이터 없음",
+      "player": "플레이어",
+      "stage": "단계 {stage}",
+      "total": "합계",
+      "stageCount": "{count, plural, one {단계 #개} few {단계 #개} many {단계 #개} other {단계 #개}}"
+    },
+    "charts": {
+      "topCount": "톱 {n}",
+      "topAll": "톱 전체",
+      "testFeatureTitle": "테스트 기능 ",
+      "testFeatureDesc": "이 기능은 테스트 중이며 문제 및 부정확한 데이터가 있을 수 있습니다",
+      "kickTitle": "퇴출 대상",
+      "scheduleTooltip": "일정: 주당 토너먼트 {tournament}개 (필수) 및 난투 {brawl}개, 난투 {mandatory, select, yes {필수} other {선택}}.",
+      "kickCriteria": "퇴출 대상: 출석률 {attendance}% 미만 또는 필수 게임의 {absences}% 불참.",
+      "kickChanceHint": "K/D가 낮으면({kd} 미만) 퇴출 확률이 증가합니다: 65% — 출석, 20% — 불참, 15% — K/D.",
+      "attendanceHint": "출석률은 선택한 게임 유형(토너먼트, 난투, 또는 전체) 기준으로 계산됩니다.",
+      "noCandidates": "대상 없음",
+      "kdBadge": "K/D: {value}",
+      "attendanceBadge": "출석: {value}",
+      "absenceBadge": "불참: {value}",
+      "kickChanceLabel": "퇴출 확률",
+      "topPlayersTitle": "{metric} 기준 톱 플레이어 · 톱 {n}",
+      "topPlayersTitleAll": "{metric} 기준 톱 플레이어 · 톱 전체",
+      "noPlayers": "플레이어 데이터 없음",
+      "victoriesByGames": "게임별 승리",
+      "victories": "승리",
+      "defeats": "패배",
+      "noGames": "게임 데이터 없음",
+      "topSquadsKd": "K/D 기준 톱 분대",
+      "noSquads": "분대 없음",
+      "kdShort": "K/D",
+      "kdaShort": "KDA"
+    },
+    "settings": {
+      "publicTitle": "클랜 공개 프로필",
+      "publicDesc": "공개 클랜은 카탈로그와 참가자 프로필 페이지에 표시됩니다.",
+      "publicToggle": "클랜 공개 표시",
+      "publicToggleHint": "클랜이 카탈로그와 참가자 프로필에 표시됩니다",
+      "recruitingTitle": "클랜 모집",
+      "acceptRequests": "신청 수락",
+      "acceptRequestsHint": "클랜 목록에 배지가 표시됩니다",
+      "scheduleTitle": "클랜전 일정",
+      "scheduleDesc": "클랜은 주당 3개 토너먼트를 필수로 치릅니다. 난투 설정은 일정을 공개하며 퇴출 확률 계산에 사용됩니다.",
+      "tournamentFixedLabel": "토너먼트 (필수)",
+      "tournamentFixedHint": "주당 {count}개 토너먼트 — 변경 불가",
+      "brawlsMandatoryLabel": "난투 필수",
+      "brawlsMandatoryHint": "끄면 난투가 퇴출 확률 계산에 포함되지 않습니다",
+      "scheduleFields": {
+        "brawlsPerWeek": "주당 난투 수"
+      },
+      "scheduleTotal": "합계: 주당 토너먼트 {tournament}개 + 난투 {brawl}개 · 난투 {mandatory, select, yes {필수} other {선택}}",
+      "saveSchedule": "일정 저장",
+      "syncTitle": "동기화",
+      "syncDesc": "EXBO 데이터로 클랜 구성을 업데이트합니다: 새 참가자는 추가되고 탈퇴자는 표시됩니다.",
+      "syncButton": "동기화",
+      "botTitle": "Discord 봇",
+      "botDesc": "분대를 게시하고 불참을 받으려면 봇을 Discord 서버에 연결하세요.",
+      "botCommandLabel": "서버에서 명령어를 실행하세요:",
+      "botTokenExpires": "토큰은 {minutes}분간 유효합니다. 먼저 명령어를 실행한 후 필요 시 봇을 다시 연결하세요.",
+      "botLinkLabel": "Discord 봇 연결",
+      "botLinkHint": "토큰을 생성하고 서버에서 /setup 명령어를 실행하세요",
+      "botLinkButton": "토큰 생성",
+      "botGuildsTitle": "연결된 서버",
+      "botNoGuilds": "아직 연결된 서버 없음",
+      "botUnlink": "연결 해제",
+      "freezeTitle": "클랜 동결",
+      "freezeLabel": "클랜 동결",
+      "freezeDesc": "동결 시 클랜 관리가 중지됩니다. 데이터는 유지되며, 활성화하면 액세스가 복원됩니다.",
+      "freezeButton": "동결",
+      "freezeConfirmTitle": "클랜을 동결할까요?",
+      "freezeConfirmBody": "클랜 관리가 중지됩니다. 동결 화면에서 활성화하여 해제할 수 있습니다.",
+      "freezeConfirm": "동결",
+      "toasts": {
+        "saved": "설정이 저장되었습니다",
+        "saveError": "설정을 저장하지 못했습니다",
+        "recruitingUpdated": "모집이 업데이트되었습니다",
+        "recruitingError": "모집 설정을 변경하지 못했습니다",
+        "scheduleSaved": "일정이 저장되었습니다",
+        "scheduleError": "일정을 저장하지 못했습니다",
+        "synced": "구성이 업데이트되었습니다: 참가자 {count}명",
+        "syncError": "구성을 동기화하지 못했습니다",
+        "botTokenCreated": "토큰이 생성되었습니다. Discord 서버에서 명령어를 실행하세요",
+        "botTokenError": "토큰을 생성하지 못했습니다",
+        "botUnlinked": "서버 연결이 해제되었습니다",
+        "botUnlinkError": "서버 연결을 해제하지 못했습니다",
+        "frozen": "클랜이 동결되었습니다",
+        "freezeError": "클랜을 동결하지 못했습니다"
+      }
+    },
+    "invites": {
+      "title": "초대장",
+      "desc": "클랜 멤버 목록에서 캐릭터 닉네임을 입력하세요. 각 닉네임은 클랜에 즉시 연결된 게스트 계정(로그인, 비밀번호)과 Discord 연결용 코드를 생성합니다.",
+      "create": "만들기",
+      "createError": "초대장을 만들지 못했습니다",
+      "empty": "아직 초대장이 없습니다",
+      "claimed": "활성화됨",
+      "pending": "대기 중",
+      "claimedBy": "활성화한 사용자",
+      "copied": "복사됨",
+      "revoked": "초대장이 취소되었습니다",
+      "revokeError": "초대장을 취소하지 못했습니다",
+      "kicked": "게스트가 제거되었습니다",
+      "kickError": "게스트를 제거하지 못했습니다",
+      "leaderOnly": "클랜 리더만 사용할 수 있습니다",
+      "createdTitle": "초대 생성",
+      "createdDesc": "게스트 액세스가 필요한 멤버를 선택하세요. 각 멤버에게 게스트 계정과 Discord 연결용 코드가 생성됩니다.",
+      "code": "코드",
+      "username": "아이디",
+      "password": "비밀번호",
+      "createBulk": "생성",
+      "resultsTitle": "완료",
+      "resultsDesc": "생성: {created}, 실패: {failed}",
+      "close": "닫기",
+      "noUnlinked": "모든 멤버가 이미 연결되었습니다",
+      "membersCount": "연결 안 된 멤버: {count}",
+      "selectAll": "전체 선택",
+      "selectedCount": "선택됨: {count}"
+    }
+  },
+  "me": {
+    "nav": {
+      "home": "홈",
+      "clan": "클랜",
+      "dashboard": "패널",
+      "members": "참가자",
+      "sessions": "게임",
+      "stats": "통계",
+      "grenades": "수류탄",
+      "squads": "분대",
+      "gold": "골드 드롭",
+      "absences": "불참",
+      "settings": "설정",
+      "content": "콘텐츠",
+      "articles": "게시글",
+      "builds": "빌드",
+      "arts": "아트",
+      "stars": "즐겨찾기",
+      "system": "시스템",
+      "notifications": "알림",
+      "invites": "초대장"
+    },
+    "menu": "메뉴",
+    "home": {
+      "builds": "빌드",
+      "allBuilds": "모든 빌드",
+      "noBuilds": "빌드 없음",
+      "publishedArticles": "게시된 게시글",
+      "allArticles": "모든 게시글",
+      "underReview": "검토 중",
+      "characters": "캐릭터"
+    },
+    "articles": {
+      "title": "게시글",
+      "create": "생성",
+      "all": "전체",
+      "noArticles": "게시글 없음",
+      "createFirst": "첫 게시글 작성",
+      "toastDeleted": "게시글이 삭제되었습니다",
+      "toastDeleteError": "삭제 중 오류"
+    },
+    "builds": {
+      "title": "빌드",
+      "create": "생성",
+      "noBuilds": "빌드 없음",
+      "toastDeleted": "빌드가 삭제되었습니다",
+      "toastDeleteError": "삭제 중 오류"
+    },
+    "arts": {
+      "title": "내 작품",
+      "create": "추가",
+      "all": "전체",
+      "noArts": "작품 없음",
+      "createFirst": "첫 작품 추가",
+      "toastDeleted": "작품이 삭제되었습니다",
+      "toastDeleteError": "삭제 중 오류"
+    },
+    "newArt": {
+      "title": "새 작품",
+      "name": "이름",
+      "namePlaceholder": "작품 이름 입력",
+      "type": "작품 유형",
+      "default": "일반",
+      "nsfw": "NSFW",
+      "image": "이미지 (링크)",
+      "imagePlaceholder": "이미지 링크를 붙여넣으세요",
+      "upload": "업로드",
+      "imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
+      "imageTooLarge": "최대 파일 크기는 10MB입니다",
+      "imageUploaded": "이미지가 업로드되었습니다",
+      "imageUploadError": "이미지 업로드 중 오류",
+      "tags": "태그",
+      "tagsPlaceholder": "태그는 쉼표로 구분",
+      "create": "생성",
+      "toastCreated": "작품이 생성되었습니다",
+      "toastCreateError": "생성 중 오류",
+      "info": "정보",
+      "img": "이미지"
+    },
+    "artEdit": {
+      "title": "작품 수정",
+      "save": "저장",
+      "back": "목록으로 돌아가기",
+      "toastSaved": "작품이 저장되었습니다",
+      "toastSaveError": "저장 중 오류"
+    },
+    "notifications": {
+      "title": "알림",
+      "markAllRead": "모두 읽음",
+      "toastAllRead": "모든 알림을 읽었습니다",
+      "empty": "알림 없음"
+    },
+    "stars": {
+      "title": "즐겨찾기",
+      "empty": "즐겨찾는 게시글/빌드 없음",
+      "build": "빌드",
+      "article": "게시글"
+    },
+    "newArticle": {
+      "title": "새 게시글",
+      "name": "제목",
+      "namePlaceholder": "게시글 제목 입력",
+      "type": "게시글 유형",
+      "quest": "퀘스트",
+      "guide": "가이드",
+      "other": "기타",
+      "stalhub": "StalHub",
+      "create": "생성 후 에디터 열기",
+      "toastCreated": "게시글이 생성되었습니다",
+      "toastCreateError": "생성 중 오류"
+    },
+    "settings": {
+      "account": "계정",
+      "name": "이름",
+      "username": "닉네임",
+      "nameCooldown": "이름 변경 가능까지",
+      "usernameCooldown": "닉네임 변경 가능까지",
+      "usernameInvalid": "닉네임: 3-32자, 라틴 문자, 숫자, _만 가능",
+      "toastProfileSaved": "프로필이 업데이트되었습니다",
+      "toastProfileSaveError": "프로필 저장 중 오류",
+      "personalization": "개인화",
+      "publicProfile": "공개 프로필",
+      "publicProfileDesc": "다른 사용자가 내 프로필을 볼 수 있습니다",
+      "showLoadout": "장비 공개",
+      "showLoadoutDesc": "다른 사용자가 내 장비를 볼 수 있습니다",
+      "editLoadout": "장비 편집",
+      "editLoadoutDesc": "주무기, 방어구 및 빌드. 장비는 클랜 분대에 표시됩니다",
+      "profileLayout": "프로필 레이아웃",
+      "profileLayoutDesc": "프로필 요소 배치. 변경 사항은 공개 프로필에도 적용됩니다",
+      "banner": "배너 설정",
+      "bannerDesc": "배너 유형 및 프로필 내 배치 설정",
+      "layoutClassic": "클래식",
+      "layoutModern": "모던",
+      "layoutCompact": "컴팩트",
+      "bannerModeNone": "배너 없음",
+      "bannerModeColor": "색상",
+      "bannerModeImage": "이미지",
+      "bannerTypeBackground": "배경",
+      "bannerTypeHeader": "헤더",
+      "linkAccounts": "계정 연결",
+      "sessions": "세션",
+      "endAll": "모두 종료",
+      "dangerZone": "위험 구역",
+      "deleteAccount": "계정 삭제",
+      "deleteAccountDesc": "이 작업은 되돌릴 수 없습니다",
+      "delete": "삭제",
+      "bannerEditorTitle": "배너 편집",
+      "bannerPlacement": "배너 배치",
+      "bannerType": "배너 유형",
+      "bannerColor": "배너 색상",
+      "bannerImage": "배너 이미지",
+      "cardColor": "카드 색상",
+      "region": "지역",
+      "regionDesc": "EXBO 게임 계정의 지역. 캐릭터 및 클랜 검색에 사용됩니다.",
+      "regionLabel": "현재 지역",
+      "regionButton": "적용",
+      "toastRegionSaved": "지역이 업데이트되었습니다",
+      "toastRegionSaveError": "지역 업데이트 중 오류",
+      "deleteConfirmTitle": "계정을 삭제할까요?",
+      "deleteConfirmDesc": "이 작업은 되돌릴 수 없습니다. 모든 데이터가 삭제됩니다. 확인을 위해 닉네임 <bold>{username}</bold>을(를) 입력하세요.",
+      "deletePlaceholder": "여기에 입력",
+      "cancel": "취소",
+      "deleteConfirm": "계정 삭제",
+      "ago": "전",
+      "toastSaved": "설정이 저장되었습니다",
+      "toastSaveError": "저장 중 오류",
+      "toastBannerSaved": "배너 설정이 저장되었습니다",
+      "toastBannerSaveError": "배너 설정 저장 중 오류",
+      "toastLayoutSaved": "배치 설정이 업데이트되었습니다",
+      "toastLayoutSaveError": "배치 저장 중 오류",
+      "toastBannerUploaded": "배너가 업로드되었습니다",
+      "toastBannerUploadError": "배너 업로드 중 오류",
+      "toastLoadoutSaved": "장비가 저장되었습니다",
+      "toastLoadoutSaveError": "장비 저장 중 오류",
+      "toastDisplaySaved": "표시 설정이 저장되었습니다",
+      "toastDisplayError": "설정 저장 중 오류",
+      "toastSessionDeleted": "세션이 삭제되었습니다",
+      "toastSessionDeleteError": "세션 삭제 중 오류",
+      "toastSessionsDeleted": "모든 세션이 삭제되었습니다",
+      "toastSessionsDeleteError": "세션 삭제 중 오류",
+      "toastLinkError": "연결 중 오류",
+      "toastUnlinked": "계정 연결이 해제되었습니다",
+      "toastUnlinkError": "연결 해제 중 오류",
+      "toastAccountDeleted": "계정이 삭제되었습니다",
+      "toastAccountDeleteError": "계정 삭제 중 오류",
+      "socialLinks": "소셜 링크",
+      "socialLinksDesc": "소셜 네트워크 링크입니다. 작품 페이지에 표시됩니다",
+      "socialLinksUrlPlaceholder": "https://...",
+      "socialLinksSave": "저장",
+      "socialLinksSaved": "소셜 링크가 저장되었습니다",
+      "socialLinksSaveError": "소셜 링크 저장 중 오류",
+      "avatar": "아바타",
+      "avatarPreview": "미리보기",
+      "avatarPreviewDesc": "현재 아바타 모습",
+      "avatarUpload": "사용자 이미지",
+      "avatarUploadDesc": "자신의 이미지를 업로드하세요 (PNG, JPG, WEBP)",
+      "avatarSource": "출처",
+      "avatarSourceDesc": "자신의 이미지가 없을 때 표시할 아바타",
+      "toastAvatarSaved": "아바타 출처가 저장되었습니다",
+      "toastAvatarSaveError": "출처를 저장하지 못했습니다",
+      "toastAvatarUploaded": "아바타가 업로드되었습니다",
+      "toastAvatarUploadError": "아바타를 업로드하지 못했습니다",
+      "toastAvatarRemoved": "아바타가 삭제되었습니다",
+      "toastAvatarRemoveError": "아바타를 삭제하지 못했습니다",
+      "syncClansTitle": "클랜 동기화",
+      "syncClansDesc": "EXBO 데이터에서 클랜 목록을 업데이트합니다. 클랜이 감지되어 계정에 연결됩니다.",
+      "syncClansSuccess": "클랜 동기화 완료: {count}개 발견",
+      "syncClansError": "클랜 동기화 실패"
+    },
+    "buildCard": {
+      "toastError": "오류",
+      "toastLinkCopied": "링크가 복사되었습니다",
+      "toastLoginToStar": "즐겨찾기에 추가하려면 로그인하세요",
+      "noArmor": "방어구 없음",
+      "noContainer": "컨테이너 없음",
+      "noArtifacts": "아티팩트 없음"
+    },
+    "articleEditor": {
+      "title": "게시글 제목",
+      "notSaved": "저장 안 됨",
+      "saved": "저장됨",
+      "edit": "편집",
+      "preview": "미리보기",
+      "save": "저장",
+      "submitting": "제출 중...",
+      "submit": "검토 요청",
+      "hotkeys": {
+        "text": "텍스트",
+        "code": "code",
+        "heading": "제목",
+        "quote": "인용",
+        "item": "항목",
+        "alt": "alt"
+      },
+      "tags": "태그",
+      "cover": "커버",
+      "table": "표",
+      "components": "컴포넌트",
+      "tagsTitle": "태그",
+      "tagsLabel": "태그를 쉼표로 구분",
+      "cancel": "취소",
+      "saveBtn": "저장",
+      "coverTitle": "게시글 커버",
+      "imageUrl": "이미지 URL",
+      "delete": "삭제",
+      "chooseSize": "크기 선택",
+      "placeholder": "Markdown 형식으로 작성하세요...",
+      "compiling": "컴파일 중...",
+      "previewHere": "미리보기가 여기에 표시됩니다",
+      "mdxError": "MDX 오류 — 구문을 수정하세요",
+      "toastSaveError": "저장 중 오류",
+      "toastSubmitted": "게시글이 검토 요청되었습니다",
+      "toastSubmitError": "제출 중 오류",
+      "toolbar": {
+        "bold": "굵게",
+        "italic": "기울임",
+        "strikethrough": "취소선",
+        "heading": "제목",
+        "quote": "인용",
+        "inlineCode": "인라인 코드",
+        "codeBlock": "코드 블록",
+        "link": "링크",
+        "image": "이미지",
+        "bulletList": "글머리 목록",
+        "orderedList": "번호 목록",
+        "horizontalRule": "수평선",
+        "table": "표 삽입",
+        "components": "MDX 컴포넌트",
+        "save": "저장"
+      },
+      "hotkeysTitle": "단축키",
+      "mdxContent": "콘텐츠"
+    },
+    "bg": {
+      "avatar": "아바타",
+      "color": "색상",
+      "none": "없음"
+    }
+  },
+  "onboarding": {
+    "title": "프로필 설정",
+    "stepOf": "{current}/{total}단계",
+    "next": "다음",
+    "back": "이전",
+    "finish": "완료",
+    "uploading": "배너 업로드 중...",
+    "uploadError": "배너 업로드 중 오류",
+    "toastSuccess": "프로필 설정 완료!",
+    "toastError": "저장 중 오류",
+    "welcome": {
+      "title": "환영합니다!",
+      "subtitle": "나에게 맞게 모두 설정해 보세요",
+      "start": "설정 시작"
+    },
+    "step": {
+      "name": {
+        "title": "이름",
+        "desc": "다른 사용자에게 표시될 이름"
+      },
+      "username": {
+        "title": "닉네임",
+        "desc": "라틴 문자, 숫자, 밑줄 (3-32자)"
+      },
+      "region": {
+        "title": "지역",
+        "placeholder": "지역 선택",
+        "desc": "지역은 클랜 및 캐릭터 동기화에 사용됩니다"
+      },
+      "layout": {
+        "title": "프로필 레이아웃",
+        "desc": "프로필 모양을 선택하세요"
+      },
+      "banner": {
+        "title": "배너",
+        "desc": "프로필 배너를 설정하세요"
+      },
+      "card": {
+        "title": "프로필 카드",
+        "desc": "카드 디자인을 선택하세요"
+      },
+      "finish": {
+        "title": "완료!",
+        "desc": "입력한 정보를 확인하고 설정을 완료하세요"
+      }
+    }
+  },
+  "hideout": {
+    "item": "아이템",
+    "perCraft": "제작당",
+    "total": "합계",
+    "pricePerUnit": "가격/개",
+    "totalPrice": "총액",
+    "energy": "에너지",
+    "cost": "비용",
+    "search": "검색..."
+  },
+  "builds": {
+    "tags": {
+      "fat": "탱커",
+      "speed": "스피드",
+      "weight": "무게",
+      "combo": "콤보"
+    }
+  },
+  "buildsLite": {
+    "notFound": "빌드를 찾을 수 없습니다",
+    "pngCopied": "이미지가 복사되었습니다",
+    "copyError": "복사하지 못했습니다",
+    "pngPreview": "빌드 미리보기",
+    "close": "닫기",
+    "download": "다운로드",
+    "updated": "빌드가 업데이트되었습니다",
+    "updateError": "업데이트 오류",
+    "linkCopied": "링크가 복사되었습니다",
+    "shareTitle": "빌드 공유",
+    "copyPublicLink": "공개 링크 복사",
+    "copyBuildCode": "빌드 코드 복사",
+    "updateServer": "서버에서 업데이트",
+    "publish": "게시",
+    "tagsLabel": "태그",
+    "containerWarnTitle": "컨테이너가 현재 것보다 작음",
+    "containerWarnDesc": "삭제되는 슬롯의 아티팩트는 컨테이너에서 분리됩니다.",
+    "lostSlots": "손실될 점유 슬롯: {count}개",
+    "confirm": "확인",
+    "compare": "비교",
+    "compareStop": "비교 종료"
+  },
+  "items": {
+    "auction": {
+      "history": "판매 기록",
+      "current": "현재 매물",
+      "lotHistory": "매물 기록",
+      "date": "날짜",
+      "listDate": "등록일",
+      "endDate": "경매 종료",
+      "startPrice": "시작 입찰가",
+      "currentPrice": "현재 입찰가",
+      "buyout": "즉시 구매",
+      "amount": "수량",
+      "cards": "카드",
+      "charts": "그래프",
+      "sort": "정렬",
+      "sort_default": "기본",
+      "sort_price": "가격",
+      "sort_rarity": "희귀도",
+      "range_from": "부터",
+      "range_to": "까지"
+    }
+  },
+  "users": {
+    "notFound": "사용자를 찾을 수 없습니다",
+    "profileDescription": "{username}님의 프로필",
+    "secondaryWeapon": "보조 무기",
+    "bioArmor": "바이오 방어구",
+    "fatBuild": "탱커 빌드",
+    "speedBuild": "스피드 빌드"
+  },
+  "auth": {
+    "title": "로그인",
+    "error": "로그인 오류",
+    "terms": "사이트에 가입하면 본",
+    "termsLink": "이용 약관에 동의하는 것으로 간주됩니다",
+    "recommendationTitle": "권장 사항",
+    "recommendationDesc": "더 많은 기능을 이용하려면 EXBO를 사용하세요",
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "login": "로그인",
+    "loginByPassword": "비밀번호로",
+    "loginError": "로그인 실패",
+    "back": "뒤로",
+    "next": "다음"
+  },
+  "tech": {
+    "title": "기술 점검 중입니다"
+  },
+  "roadmap": {
+    "genesis": {
+      "title": "프로젝트 탄생",
+      "description": "개발 시작과 핵심 아이디어 구상. 첫 컨셉과 구조 설계."
+    },
+    "cbt": {
+      "title": "CBT",
+      "description": "비공개 베타 테스트. 사이트 기능 점검 및 버그 리포트 수집."
+    },
+    "obt": {
+      "title": "OBT",
+      "description": "공개 베타 테스트. 릴리스 준비, 버그 수정, 인프라 업데이트."
+    },
+    "release": {
+      "title": "프로젝트 릴리스",
+      "description": "프로젝트 정식 출시 및 지속적인 지원."
+    }
+  },
+  "themes": {
+    "system": "시스템",
+    "dark": "다크",
+    "light": "라이트"
+  },
+  "clans": {
+    "title": "클랜",
+    "searchLabel": "이름 또는 태그",
+    "recruiting": "모집 중",
+    "empty": "공개 클랜 없음",
+    "faction": "진영",
+    "schedule": "일정:",
+    "brawls": "난투:",
+    "brawlsMandatory": "필수",
+    "brawlsOptional": "선택"
+  },
+  "buildsPublic": {
+    "title": "빌드",
+    "total": "총 {count}개",
+    "tagsPlaceholder": "태그 선택",
+    "price": "가격",
+    "priceFrom": "최소",
+    "priceTo": "최대",
+    "sort": "정렬",
+    "sort_newest": "최신순",
+    "sort_stars": "별점순",
+    "sort_price": "가격순"
+  },
+  "toolsList": {
+    "title": "도구",
+    "subtitle": "필요한 도구를 선택하세요"
+  },
+  "dashboard": {
+    "title": "대시보드",
+    "subtitle": "계산기로 나만의 대시보드를 만들어 보세요",
+    "addWidget": "위젯 추가",
+    "addWidgetSubtitle": "위젯을 선택하면 대시보드에 추가됩니다",
+    "search": "위젯 검색...",
+    "categories": {
+      "calculators": "계산기",
+      "account": "마이페이지"
+    },
+    "customize": "사용자 지정",
+    "done": "완료",
+    "resetView": "위젯 보기",
+    "reset": "초기화",
+    "resetConfirm": "보드에서 모든 위젯을 삭제할까요?",
+    "emptyTitle": "아직 대시보드가 비어 있습니다",
+    "emptySubtitle": "자주 사용하는 계산기와 탭을 추가하세요",
+    "addFirstWidget": "첫 위젯 추가",
+    "openFull": "전체 버전 열기",
+    "removeWidget": "위젯 삭제",
+    "loginRequired": "이 위젯을 사용하려면 로그인하세요",
+    "signIn": "로그인",
+    "widgetError": "위젯을 불러오지 못했습니다",
+    "widgets": {
+      "buildsLite": {
+        "title": "빌드 Lite"
+      },
+      "ttk": {
+        "title": "TTK 계산기"
+      },
+      "arsenal": {
+        "title": "아스널"
+      },
+      "modules": {
+        "title": "모듈"
+      },
+      "hideout": {
+        "title": "은신처"
+      },
+      "bp": {
+        "title": "배틀 패스"
+      },
+      "dpi": {
+        "title": "DPI 변환기"
+      },
+      "meHome": {
+        "title": "마이페이지 — 홈"
+      },
+      "meBuilds": {
+        "title": "마이페이지 — 빌드"
+      },
+      "meArticles": {
+        "title": "마이페이지 — 게시글"
+      },
+      "meNotifications": {
+        "title": "마이페이지 — 알림"
+      },
+      "meStars": {
+        "title": "마이페이지 — 즐겨찾기"
+      },
+      "clan": {
+        "title": "클랜 — 요약"
+      },
+      "clanMembers": {
+        "title": "클랜 — 참가자"
+      },
+      "clanSessions": {
+        "title": "클랜 — 게임"
+      },
+      "clanAbsences": {
+        "title": "클랜 — 불참"
+      },
+      "clanGold": {
+        "title": "클랜 — 골드 드롭"
+      },
+      "clanGrenades": {
+        "title": "클랜 — 수류탄"
+      },
+      "clanSquads": {
+        "title": "클랜 — 분대"
+      },
+      "clanStats": {
+        "title": "클랜 — 통계"
+      }
+    }
+  },
+  "operations": {
+    "title": "작전",
+    "description": "StalZone 플레이어의 작전: 지도, 난이도, 참가자, 보상.",
+    "nickname": "캐릭터 닉네임",
+    "search": "작전 보기",
+    "prompt": "지역을 선택하고 캐릭터 닉네임을 입력해 작전을 확인하세요.",
+    "loadMore": "더 불러오기"
+  }
 }

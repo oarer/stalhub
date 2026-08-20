@@ -1900,7 +1900,11 @@
       "toastAvatarUploaded": "Аватарка загружена",
       "toastAvatarUploadError": "Не удалось загрузить аватарку",
       "toastAvatarRemoved": "Аватарка удалена",
-      "toastAvatarRemoveError": "Не удалось удалить аватарку"
+      "toastAvatarRemoveError": "Не удалось удалить аватарку",
+      "syncClansTitle": "Синхронизация кланов",
+      "syncClansDesc": "Обновить список ваших кланов по данным EXBO. Кланы будут обнаружены и связаны с вашим аккаунтом.",
+      "syncClansSuccess": "Кланы синхронизированы: найдено {count}",
+      "syncClansError": "Не удалось синхронизировать кланы"
     },
     "buildCard": {
       "toastError": "Ошибка",
