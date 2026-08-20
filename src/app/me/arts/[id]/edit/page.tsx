@@ -1,4 +1,4 @@
-import ArtEditView from '@/views/me/ArtEditView'
+import ArtEditView from '@/views/me/arts/ArtEditView'
 
 export default async function Page({
 	params,

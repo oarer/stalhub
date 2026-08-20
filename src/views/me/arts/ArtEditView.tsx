@@ -14,7 +14,7 @@ import { artService } from '@/services/art/art.service'
 import { ArtType, type ArtUpdate } from '@/types/art.type'
 import { ArtImageField } from '@/views/me/components/ArtImageField'
 import { parseTags } from '@/views/me/components/article/editor-utils'
-import { Section } from './components/Section'
+import { Section } from '../components/Section'
 
 interface ArtEditViewProps {
 	artId: string
