@@ -74,7 +74,7 @@ export default function ArticlesView() {
 								<div className="flex flex-wrap gap-1">
 									{article.tags.slice(0, 5).map((tag) => (
 										<span
-											className="rounded-md bg-border-secondary px-1.5 py-0.5 text-text-accent text-xs"
+											className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
 											key={tag}
 										>
 											{tag}

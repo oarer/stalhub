@@ -152,7 +152,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 					<div className="flex flex-wrap gap-1.5">
 						{article.tags.map((tag) => (
 							<span
-								className="rounded-md bg-border-secondary px-2 py-0.5 text-text-accent text-xs"
+								className="rounded-md bg-border-secondary px-2 py-0.5 font-semibold text-text-accent text-xs"
 								key={tag}
 							>
 								{tag}
