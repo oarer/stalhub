@@ -101,7 +101,11 @@ export default function MeArtsView() {
 					<p className="font-semibold text-sm text-text-accent">
 						{t('me.arts.noArts')}
 					</p>
-					<CLink href="/me/arts/new">
+					<CLink
+						className="gap-2"
+						href="/me/arts/new"
+						variant={'primary'}
+					>
 						<Icon className="size-4" icon="lucide:plus" />
 						<p className="font-semibold">
 							{t('me.arts.createFirst')}

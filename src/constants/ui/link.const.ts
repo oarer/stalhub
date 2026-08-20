@@ -1,5 +1,7 @@
 import { cva } from 'class-variance-authority'
 
+// а нахуй я это добавил
+// тут же стили как у кнопки
 export const linkVariants = cva(
 	'inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-400 ease-in-out cursor-pointer',
 	{

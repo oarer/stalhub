@@ -7,6 +7,7 @@
     --color-accent: var(--background-accent);
     --color-text-accent: var(--text-accent);
     --color-foreground: var(--foreground);
+    --color-primary: var(--primary)
 }
 
 :root {
