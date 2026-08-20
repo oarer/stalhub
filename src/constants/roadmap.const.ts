@@ -30,6 +30,6 @@ export const RoadmapItems: RoadmapItem[] = [
 		date: '2026.08',
 		title: 'roadmap.release.title',
 		description: 'roadmap.release.description',
-		status: 'done',
+		status: 'in-progress',
 	},
 ]
