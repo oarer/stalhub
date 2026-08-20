@@ -39,11 +39,16 @@ export const tabGroups: TabGroup[] = [
 				href: '/me/clan/stats',
 				icon: 'lucide:bar-chart-3',
 			},
-			{
-				title: 'me.nav.grenades',
-				href: '/me/clan/grenades',
-				icon: 'lucide:bomb',
-			},
+		{
+			title: 'me.nav.grenades',
+			href: '/me/clan/grenades',
+			icon: 'lucide:bomb',
+		},
+		{
+			title: 'me.nav.orders',
+			href: '/me/clan/orders',
+			icon: 'lucide:clipboard-list',
+		},
 			{
 				title: 'me.nav.squads',
 				href: '/me/clan/squads',

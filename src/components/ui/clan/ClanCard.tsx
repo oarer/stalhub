@@ -36,6 +36,18 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			icon: 'lucide:users',
 			value: clan.member_count.toLocaleString(),
 		},
+		{
+			key: 'boost_mode',
+			label: 'clan.boosts.shortTitle',
+			icon: 'lucide:flask-conical',
+			value: clan.boost_mode === 'ISSUED' ? t('clan.boosts.modeIssued') : t('clan.boosts.modeSelf'),
+		},
+		{
+			key: 'grenade_mode',
+			label: 'clan.grenades.shortTitle',
+			icon: 'lucide:bomb',
+			value: clan.grenade_mode === 'ISSUED' ? t('clan.grenades.modeIssued') : t('clan.grenades.modeSelf'),
+		},
 	]
 
 	return (

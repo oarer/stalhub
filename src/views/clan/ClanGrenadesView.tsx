@@ -33,28 +33,26 @@ function ClanGrenadesContent({ clanId }: { clanId: string }) {
 
 	const events = stages?.events ?? []
 
-	if (events.length === 0) {
-		return (
-			<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
-				<Icon className="text-4xl" icon="lucide:bomb" />
-				<h3 className="font-semibold text-lg">
-					{t('clan.grenades.emptyTitle')}
-				</h3>
-				<p className="font-semibold text-sm text-text-accent">
-					{t('clan.grenades.emptyDesc')}
-				</p>
-			</div>
-		)
-	}
-
 	return (
 		<div className="flex flex-col gap-4">
-			{events.map((event) => (
-				<EventCard
-					event={event}
-					key={`${event.event_type}-${event.raid_date}`}
-				/>
-			))}
+			{events.length === 0 ? (
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+					<Icon className="text-4xl" icon="lucide:bomb" />
+					<h3 className="font-semibold text-lg">
+						{t('clan.grenades.emptyTitle')}
+					</h3>
+					<p className="font-semibold text-sm text-text-accent">
+						{t('clan.grenades.emptyDesc')}
+					</p>
+				</div>
+			) : (
+				events.map((event) => (
+					<EventCard
+						event={event}
+						key={`${event.event_type}-${event.raid_date}`}
+					/>
+				))
+			)}
 		</div>
 	)
 }

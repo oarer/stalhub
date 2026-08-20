@@ -1,5 +1,6 @@
 'use client'
 
+import { ConsumablesSection } from './components/settings/ConsumablesSection'
 import { DiscordBotSection } from './components/settings/DiscordBotSection'
 import { FreezeSection } from './components/settings/FreezeSection'
 import { PublicProfileSection } from './components/settings/PublicProfileSection'
@@ -10,6 +11,7 @@ import { useClanSettings } from './hooks/useClanSettings'
 
 export default function ClanSettingsView() {
 	const {
+		settings,
 		isLeader,
 		isOfficer,
 		isPublic,
@@ -21,6 +23,8 @@ export default function ClanSettingsView() {
 		toggleRecruiting,
 		setScheduleField,
 		saveSchedule,
+		setBoostMode,
+		setGrenadeMode,
 		sync,
 		freeze,
 		generateBotToken,
@@ -37,11 +41,13 @@ export default function ClanSettingsView() {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<PublicProfileSection
-				isPending={isPublicPending}
-				isPublic={isPublic}
-				onToggle={togglePublic}
-			/>
+			{isOfficer && (
+				<PublicProfileSection
+					isPending={isPublicPending}
+					isPublic={isPublic}
+					onToggle={togglePublic}
+				/>
+			)}
 			{isOfficer && (
 				<SyncSection isPending={isSyncPending} onSync={sync} />
 			)}
@@ -64,7 +70,7 @@ export default function ClanSettingsView() {
 					schedule={schedule}
 				/>
 			)}
-			{isLeader && (
+			{isOfficer && (
 				<RecruitingSection
 					isPending={isRecruitingPending}
 					onToggle={toggleRecruiting}
@@ -72,10 +78,15 @@ export default function ClanSettingsView() {
 				/>
 			)}
 			{isLeader && (
-				<FreezeSection
-					isPending={isFreezePending}
-					onFreeze={freeze}
+				<ConsumablesSection
+					boostMode={settings.boost_mode}
+					grenadeMode={settings.grenade_mode}
+					onSetBoostMode={setBoostMode}
+					onSetGrenadeMode={setGrenadeMode}
 				/>
+			)}
+			{isLeader && (
+				<FreezeSection isPending={isFreezePending} onFreeze={freeze} />
 			)}
 		</div>
 	)

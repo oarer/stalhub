@@ -42,6 +42,7 @@ const Switch = forwardRef<HTMLButtonElement, ISwitchProps>(
 			variant,
 			...props
 		},
+		ref
 	) => {
 		const [internalChecked, setInternalChecked] = useState(defaultChecked)
 		const isControlled = controlledChecked !== undefined
@@ -84,6 +85,7 @@ const Switch = forwardRef<HTMLButtonElement, ISwitchProps>(
 				name={name}
 				onClick={handleToggle}
 				onKeyDown={handleKeyDown}
+				ref={ref}
 				role="switch"
 				tabIndex={0}
 				type="button"
@@ -93,7 +95,7 @@ const Switch = forwardRef<HTMLButtonElement, ISwitchProps>(
 				<motion.div
 					animate={{ x: checked ? thumbOffset : 0 }}
 					className={switchThumbVariants({ size })}
-				transition={{ duration: 0.2, ease: 'easeInOut' }}
+					transition={{ duration: 0.2, ease: 'easeInOut' }}
 				/>
 
 				{name && (

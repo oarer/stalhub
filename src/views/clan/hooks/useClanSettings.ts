@@ -7,7 +7,7 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
-import type { BotLinkToken, ClanSchedule } from '@/types/clan/clan.type'
+import type { BoostMode, BotLinkToken, ClanSchedule } from '@/types/clan/clan.type'
 import { useClanRoles } from './useClanRoles'
 
 export function useClanSettings() {
@@ -110,6 +110,28 @@ export function useClanSettings() {
 		onError: () => toast.error(t('clan.settings.toasts.freezeError')),
 	})
 
+	const boostModeMutation = useMutation({
+		mutationFn: (boost_mode: BoostMode) =>
+			clanService.updateBoostMode(boost_mode),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['clan', 'settings'] })
+			queryClient.invalidateQueries({ queryKey: ['clan', 'grenades'] })
+			toast.success(t('clan.settings.toasts.saved'))
+		},
+		onError: () => toast.error(t('clan.settings.toasts.saveError')),
+	})
+
+	const grenadeModeMutation = useMutation({
+		mutationFn: (grenade_mode: BoostMode) =>
+			clanService.updateGrenadeMode(grenade_mode),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['clan', 'settings'] })
+			queryClient.invalidateQueries({ queryKey: ['clan', 'grenades'] })
+			toast.success(t('clan.settings.toasts.saved'))
+		},
+		onError: () => toast.error(t('clan.settings.toasts.saveError')),
+	})
+
 	const togglePublic = (value: boolean) => {
 		setIsPublic(value)
 		settingsMutation.mutate({ is_public: value })
@@ -136,9 +158,14 @@ export function useClanSettings() {
 	const generateBotToken = () => linkBotMutation.mutate()
 	const unlinkBot = (guildId: string) => unlinkBotMutation.mutate(guildId)
 	const closeBotToken = () => setLinkToken(null)
+	const setBoostMode = (boost_mode: BoostMode) =>
+		boostModeMutation.mutate(boost_mode)
+	const setGrenadeMode = (grenade_mode: BoostMode) =>
+		grenadeModeMutation.mutate(grenade_mode)
 
 	return {
 		clan,
+		settings,
 		isLeader,
 		isOfficer,
 		isPublic,
@@ -152,6 +179,8 @@ export function useClanSettings() {
 		saveSchedule,
 		sync,
 		freeze,
+		setBoostMode,
+		setGrenadeMode,
 		generateBotToken,
 		unlinkBot,
 		closeBotToken,

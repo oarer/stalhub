@@ -3,11 +3,41 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Badge } from '@/components/ui/Badge'
-import type { GrenadeStageEvent } from '@/types/clan/clan.type'
+import type { GrenadeBoxEntry, GrenadeStageEvent } from '@/types/clan/clan.type'
 
 function formatDate(raidDate: string) {
 	const [y, m, d] = raidDate.split('-')
 	return `${d}.${m}.${y}`
+}
+
+function BoxesSummary({ boxes }: { boxes: GrenadeBoxEntry[] }) {
+	const t = useTranslations()
+	if (boxes.length === 0) return null
+
+	const grouped = boxes.reduce(
+		(acc, b) => {
+			acc[b.type] = (acc[b.type] ?? 0) + b.count
+			return acc
+		},
+		{} as Record<string, number>
+	)
+
+	const totalGrenades = boxes.reduce((s, b) => s + b.count * 10, 0)
+
+	return (
+		<div className="flex flex-wrap items-center gap-2">
+			{Object.entries(grouped).map(([type, count]) => (
+				<Badge key={type} variant="secondary">
+					{type}: {count} {t('clan.grenades.boxes')}
+				</Badge>
+			))}
+			<Badge variant="secondary">
+				{t('clan.grenades.totalGrenades', {
+					count: totalGrenades,
+				})}
+			</Badge>
+		</div>
+	)
 }
 
 export function EventCard({ event }: { event: GrenadeStageEvent }) {
@@ -26,6 +56,7 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 					{t('clan.grenades.stageCount', { count: cols })}
 				</Badge>
 			</div>
+			<BoxesSummary boxes={event.boxes} />
 			{members.length === 0 ? (
 				<p className="py-2 text-neutral-500 text-sm">
 					{t('clan.grenades.noData')}
@@ -57,6 +88,11 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 							)
 							return found?.grenades ?? 0
 						})
+						const playerBoxes = event.boxes.filter(
+							(b) => b.name === m.name
+						)
+						const playerBoxGrenades =
+							playerBoxes.reduce((s, b) => s + b.count * 10, 0)
 						return (
 							<div
 								className="grid items-center gap-2 border-border-secondary border-b px-2 py-2 last:border-b-0"
@@ -65,9 +101,17 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 									gridTemplateColumns: `minmax(0, 1.4fr) repeat(${cols}, minmax(2.5rem, 1fr)) auto`,
 								}}
 							>
-								<span className="min-w-0 truncate font-semibold text-sm">
-									{m.name}
-								</span>
+								<div className="min-w-0 truncate">
+									<span className="font-semibold text-sm">
+										{m.name}
+									</span>
+									{playerBoxGrenades > 0 && (
+										<span className="ml-1 text-neutral-500 text-xs">
+											({playerBoxGrenades}{' '}
+											{t('clan.grenades.fromBoxes')})
+										</span>
+									)}
+								</div>
 								{row.map((g, i) => (
 									<span
 										className="text-center font-semibold text-sm tabular-nums"

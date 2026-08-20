@@ -4,9 +4,13 @@ import type {
 	AttendanceSummary,
 	BotGuild,
 	BotLinkToken,
+	BoostMode,
+	ClanBoostOrdersResponse,
 	ClanInfo,
 	ClanInvite,
 	ClanMember,
+	ClanMemberNote,
+	ClanMemberNoteWithMember,
 	ClanMemberUser,
 	ClanSchedule,
 	ClanSettings,
@@ -20,7 +24,12 @@ import type {
 	GoldDrop,
 	GoldDropStatus,
 	GrenadeAllTimeResponse,
+	GrenadeBoxEntry,
+	GrenadeBoxesResponse,
 	GrenadeStagesResponse,
+	ListingItem,
+	ConsumableListingItem,
+	MyClanProfile,
 	PublicClan,
 	SquadMap,
 	StageAttendance,
@@ -121,6 +130,17 @@ class ClanService {
 			'/api/v1/clan/me'
 		)
 		return data
+	}
+
+	async getMyClans(): Promise<MyClanProfile[]> {
+		const { data } = await apiClient.get<MyClanProfile[]>(
+			'/api/v1/clan/my-clans'
+		)
+		return data ?? []
+	}
+
+	async switchClan(clanId: string): Promise<void> {
+		await apiClient.post('/api/v1/clan/switch', { clanId })
 	}
 
 	async register(): Promise<ClanInfo> {
@@ -466,6 +486,136 @@ class ClanService {
 
 	async kickGuest(userId: number): Promise<void> {
 		await apiClient.delete(`/api/v1/clan/invites/guest/${userId}`)
+	}
+
+	async getAllNotes(): Promise<ClanMemberNoteWithMember[]> {
+		const { data } = await apiClient.get<ClanMemberNoteWithMember[]>(
+			'/api/v1/clan/notes'
+		)
+		return data ?? []
+	}
+
+	async createMemberNote(
+		memberId: number,
+		content: string
+	): Promise<ClanMemberNote> {
+		const { data } = await apiClient.post<ClanMemberNote>(
+			'/api/v1/clan/notes',
+			{ memberId, content }
+		)
+		return data
+	}
+
+	async updateMemberNote(
+		noteId: number,
+		content: string
+	): Promise<ClanMemberNote> {
+		const { data } = await apiClient.patch<ClanMemberNote>(
+			`/api/v1/clan/notes/${noteId}`,
+			{ content }
+		)
+		return data
+	}
+
+	async deleteMemberNote(noteId: number): Promise<void> {
+		await apiClient.delete(`/api/v1/clan/notes/${noteId}`)
+	}
+
+	async getGrenadeBoxes(
+		clanId: string,
+		date: string
+	): Promise<GrenadeBoxesResponse> {
+		const { data } = await apiClient.get<GrenadeBoxesResponse>(
+			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
+			{ params: { date } }
+		)
+		return data
+	}
+
+	async addGrenadeBox(
+		clanId: string,
+		entry: GrenadeBoxEntry & { date: string }
+	): Promise<GrenadeBoxesResponse> {
+		const { data } = await apiClient.post<GrenadeBoxesResponse>(
+			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
+			entry
+		)
+		return data
+	}
+
+	async removeGrenadeBox(
+		clanId: string,
+		date: string,
+		index: number
+	): Promise<GrenadeBoxesResponse> {
+		const { data } = await apiClient.delete<GrenadeBoxesResponse>(
+			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
+			{ params: { date, index } }
+		)
+		return data
+	}
+
+	async updateBoostMode(boost_mode: BoostMode): Promise<ClanInfo> {
+		const { data } = await apiClient.patch<ClanInfo>(
+			'/api/v1/clan/boost-mode',
+			{ boost_mode }
+		)
+		return data
+	}
+
+	async updateGrenadeMode(grenade_mode: BoostMode): Promise<ClanInfo> {
+		const { data } = await apiClient.patch<ClanInfo>(
+			'/api/v1/clan/grenade-mode',
+			{ grenade_mode }
+		)
+		return data
+	}
+
+	async getGrenadeBoxListing(): Promise<ListingItem[]> {
+		const { data } = await apiClient.get<ListingItem[]>(
+			'/api/v1/clan/listing/grenade-boxes'
+		)
+		return data
+	}
+
+	async getConsumableListing(): Promise<ConsumableListingItem[]> {
+		const { data } = await apiClient.get<ConsumableListingItem[]>(
+			'/api/v1/clan/listing/consumables'
+		)
+		return data
+	}
+
+	async getBoostOrders(
+		date: string
+	): Promise<ClanBoostOrdersResponse> {
+		const { data } = await apiClient.get<ClanBoostOrdersResponse>(
+			`/api/v1/clan/boosts/${date}`
+		)
+		return data
+	}
+
+	async addBoostOrder(body: {
+		playerId: number
+		itemId: string
+		itemName: string
+		count: number
+		date: string
+	}): Promise<ClanBoostOrdersResponse> {
+		const { data } = await apiClient.post<ClanBoostOrdersResponse>(
+			'/api/v1/clan/boosts',
+			body
+		)
+		return data
+	}
+
+	async removeBoostOrder(
+		date: string,
+		index: number
+	): Promise<ClanBoostOrdersResponse> {
+		const { data } = await apiClient.delete<ClanBoostOrdersResponse>(
+			`/api/v1/clan/boosts/${date}/${index}`
+		)
+		return data
 	}
 }
 

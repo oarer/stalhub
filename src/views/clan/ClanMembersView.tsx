@@ -1,6 +1,6 @@
 'use client'
 
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
@@ -12,6 +12,9 @@ import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { Section } from '../me/components/Section'
 import { RANK_COLORS, RANK_ORDER } from './clan.const'
+import { useClanRoles } from './hooks/useClanRoles'
+import { MemberNotesButton } from './components/members/MemberNotesButton'
+import type { ClanMemberNoteWithMember } from '@/types/clan/clan.type'
 
 export default function ClanMembersView() {
 	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
@@ -23,10 +26,15 @@ export default function ClanMembersView() {
 
 function ClanMembersContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
+	const { isOfficer } = useClanRoles()
 	const { data: members, isLoading } = useSuspenseQuery(
 		clanQueries.getMembers(clanId)
 	)
 	const { data: squads } = useSuspenseQuery(clanQueries.getSquads(clanId))
+	const { data: allNotes } = useQuery({
+		...clanQueries.getAllNotes(),
+		enabled: isOfficer,
+	})
 
 	const squadByMemberId = useMemo(() => {
 		const map = new Map<number, string>()
@@ -37,6 +45,14 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 		}
 		return map
 	}, [squads])
+
+	const noteByMemberId = useMemo(() => {
+		const map = new Map<number, ClanMemberNoteWithMember>()
+		for (const note of allNotes ?? []) {
+			map.set(note.memberId, note)
+		}
+		return map
+	}, [allNotes])
 
 	if (isLoading) {
 		return (
@@ -100,6 +116,13 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 								>
 									{squadByMemberId.get(member.id)}
 								</Badge>
+							)}
+							{isOfficer && (
+								<MemberNotesButton
+									memberId={member.id}
+									memberName={member.name}
+									note={noteByMemberId.get(member.id) ?? null}
+								/>
 							)}
 							<Badge
 								className={RANK_COLORS[member.rank] ?? ''}

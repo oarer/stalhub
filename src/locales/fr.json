@@ -1286,6 +1286,7 @@
 		"layout": {
 			"activated": "Clan activé",
 			"activateError": "Impossible d'activer le clan",
+			"switchError": "Impossible de changer de clan",
 			"notLinked": {
 				"title": "Clan non lié",
 				"desc": "Liez votre compte EXBO dans les paramètres et rejoignez le clan pour le gérer",

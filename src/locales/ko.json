@@ -1286,6 +1286,7 @@
 		"layout": {
 			"activated": "클랜이 활성화되었습니다",
 			"activateError": "클랜을 활성화하지 못했습니다",
+			"switchError": "클랜을 전환하지 못했습니다",
 			"notLinked": {
 				"title": "클랜이 연결되지 않음",
 				"desc": "설정에서 EXBO 계정을 연결하고 클랜에 가입하여 관리하세요",

@@ -1,31 +1,46 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 import { clanService } from '@/services/clan/clan.service'
-import type { AttendanceFilter } from '@/views/clan/components/charts/chart.utils'
 import type {
 	Absence,
 	AttendanceSummary,
 	BotGuild,
+	ClanBoostOrdersResponse,
 	ClanInfo,
 	ClanInvite,
 	ClanMember,
+	ClanMemberNoteWithMember,
 	ClanSchedule,
 	ClanSettings,
 	ClanSquad,
 	ClanStats,
+	ConsumableListingItem,
 	GoldDrop,
 	GrenadeAllTimeResponse,
+	GrenadeBoxesResponse,
 	GrenadeStagesResponse,
+	ListingItem,
+	MyClanProfile,
 	PublicClan,
 	StageSession,
 	StageSessionDetail,
 	UserClanProfile,
 } from '@/types/clan/clan.type'
+import type { AttendanceFilter } from '@/views/clan/components/charts/chart.utils'
 
 class ClanQueries {
 	getMe() {
 		return queryOptions<UserClanProfile | null>({
 			queryKey: ['clan', 'me'],
 			queryFn: () => clanService.getMe(),
+			staleTime: 1000 * 30,
+			retry: false,
+		})
+	}
+
+	getMyClans() {
+		return queryOptions<MyClanProfile[]>({
+			queryKey: ['clan', 'my-clans'],
+			queryFn: () => clanService.getMyClans(),
 			staleTime: 1000 * 30,
 			retry: false,
 		})
@@ -101,7 +116,13 @@ class ClanQueries {
 		from?: string
 	) {
 		return queryOptions<AttendanceSummary>({
-			queryKey: ['clan', clanId, 'attendance', type ?? 'ALL', from ?? 'all'],
+			queryKey: [
+				'clan',
+				clanId,
+				'attendance',
+				type ?? 'ALL',
+				from ?? 'all',
+			],
 			queryFn: () => clanService.getAttendanceSummary(clanId, type, from),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
@@ -177,6 +198,46 @@ class ClanQueries {
 			queryFn: () => clanService.getPublicClan(clanId),
 			staleTime: 1000 * 60,
 			retry: false,
+		})
+	}
+
+	getAllNotes() {
+		return queryOptions<ClanMemberNoteWithMember[]>({
+			queryKey: ['clan', 'notes'],
+			queryFn: () => clanService.getAllNotes(),
+			staleTime: 1000 * 30,
+		})
+	}
+
+	getGrenadeBoxes(clanId: string, date: string) {
+		return queryOptions<GrenadeBoxesResponse>({
+			queryKey: ['clan', clanId, 'grenades', 'boxes', date],
+			queryFn: () => clanService.getGrenadeBoxes(clanId, date),
+			staleTime: 1000 * 30,
+		})
+	}
+
+	getGrenadeBoxListing() {
+		return queryOptions<ListingItem[]>({
+			queryKey: ['clan', 'listing', 'grenade-boxes'],
+			queryFn: () => clanService.getGrenadeBoxListing(),
+			staleTime: 1000 * 60 * 60,
+		})
+	}
+
+	getConsumableListing() {
+		return queryOptions<ConsumableListingItem[]>({
+			queryKey: ['clan', 'listing', 'consumables'],
+			queryFn: () => clanService.getConsumableListing(),
+			staleTime: 1000 * 60 * 60,
+		})
+	}
+
+	getBoostOrders(date: string) {
+		return queryOptions<ClanBoostOrdersResponse>({
+			queryKey: ['clan', 'boosts', date],
+			queryFn: () => clanService.getBoostOrders(date),
+			staleTime: 1000 * 30,
 		})
 	}
 }

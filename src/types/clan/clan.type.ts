@@ -62,8 +62,18 @@ export interface UserClanProfile {
 	userId: number
 	clanId: string | null
 	region: string
+	isActive: boolean
 	clan: ClanInfo | null
 	updatedAt: string
+}
+
+export interface MyClanProfile {
+	userId: number
+	clanId: string
+	region: string
+	isActive: boolean
+	clan: ClanInfo
+	updated_at: string
 }
 
 export interface ClanInvite {
@@ -113,12 +123,16 @@ export interface PublicClan {
 	is_public: boolean
 	recruiting: boolean
 	schedule: ClanSchedule
+	boost_mode: BoostMode
+	grenade_mode: BoostMode
 	created_at: string
 }
 
 export interface ClanSettings {
 	is_public: boolean
 	schedule: ClanSchedule
+	boost_mode: BoostMode
+	grenade_mode: BoostMode
 }
 
 export interface BotLinkToken {
@@ -340,6 +354,7 @@ export interface GrenadeStageEvent {
 	raid_date: string
 	stages: GrenadeStage[]
 	total: GrenadeStageMember[]
+	boxes: GrenadeBoxEntry[]
 }
 
 export interface GrenadeStagesResponse {
@@ -348,4 +363,55 @@ export interface GrenadeStagesResponse {
 
 export interface GrenadeAllTimeResponse {
 	members: GrenadeStageMember[]
+}
+
+export interface ClanMemberNote {
+	id: number
+	memberId: number
+	authorId: number
+	content: string
+	created_at: Date
+	updated_at: Date
+	author: ClanMemberUser
+}
+
+export interface ClanMemberNoteWithMember extends ClanMemberNote {
+	member: { id: number; name: string }
+}
+
+export interface GrenadeBoxEntry {
+	name: string
+	type: string
+	count: number
+}
+
+export interface GrenadeBoxesResponse {
+	boxes: GrenadeBoxEntry[]
+}
+
+export type BoostMode = 'ISSUED' | 'SELF'
+
+export interface ListingItem {
+	id: string
+	name: string
+}
+
+export interface ConsumableListingItem extends ListingItem {
+	category: string
+}
+
+export interface ClanBoostOrder {
+	id: number
+	clanId: string
+	date: string
+	playerId: number
+	itemId: string
+	itemName: string
+	count: number
+	player: { id: number; name: string }
+	created_at: string
+}
+
+export interface ClanBoostOrdersResponse {
+	orders: ClanBoostOrder[]
 }

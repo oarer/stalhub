@@ -11,7 +11,6 @@ export const apiClient = axios.create({
 })
 
 let isRefreshing = false
-let hasSession = false
 
 let failedQueue: Array<{
 	resolve: () => void
@@ -31,10 +30,7 @@ const processQueue = (error?: unknown) => {
 }
 
 apiClient.interceptors.response.use(
-	(response) => {
-		hasSession = true
-		return response
-	},
+	(response) => response,
 
 	async (error) => {
 		const originalRequest = error.config
@@ -55,10 +51,6 @@ apiClient.interceptors.response.use(
 		}
 
 		if (error.response?.status !== 401) {
-			return Promise.reject(error)
-		}
-
-		if (!hasSession) {
 			return Promise.reject(error)
 		}
 

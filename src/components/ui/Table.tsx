@@ -25,14 +25,15 @@ const features = tableFeatures({
 
 export type TableFeatures = typeof features
 
-export type ColumnDef<TData extends RowData, TValue extends CellData = CellData> =
-	CoreColumnDef<TableFeatures, TData, TValue>
+export type ColumnDef<
+	TData extends RowData,
+	TValue extends CellData = CellData,
+> = CoreColumnDef<TableFeatures, TData, TValue>
 
-type Column<TData extends RowData, TValue extends CellData = CellData> = CoreColumn<
-	TableFeatures,
-	TData,
-	TValue
->
+type Column<
+	TData extends RowData,
+	TValue extends CellData = CellData,
+> = CoreColumn<TableFeatures, TData, TValue>
 
 function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
 	return (
@@ -99,7 +100,7 @@ function TableHead({ className, ...props }: React.ComponentProps<'th'>) {
 	return (
 		<th
 			className={cn(
-				'h-10 whitespace-nowrap border-border-secondary border-r px-2 text-left align-middle font-semibold last:border-r-0 [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'h-10 whitespace-nowrap border-border-secondary border-r px-2 text-left align-middle font-semibold last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-head"
@@ -112,7 +113,7 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
 	return (
 		<td
 			className={cn(
-				'whitespace-nowrap border-border-secondary border-r p-2 align-middle last:border-r-0 [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'whitespace-nowrap border-border-secondary border-r p-2 align-middle last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-cell"

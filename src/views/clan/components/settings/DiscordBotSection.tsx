@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
 import type { BotGuild, BotLinkToken } from '@/types/clan/clan.type'
@@ -34,12 +33,6 @@ export function DiscordBotSection({
 				{t('clan.settings.botTitle')}
 			</div>
 
-			<Alert.Root>
-				<Alert.Description>
-					{t('clan.settings.botDesc')}
-				</Alert.Description>
-			</Alert.Root>
-
 			{linkToken ? (
 				<div className="flex flex-col gap-2 rounded-lg bg-border-secondary/40 p-4">
 					<div className="flex items-center justify-between gap-3">
@@ -47,22 +40,22 @@ export function DiscordBotSection({
 							<span className="font-semibold text-sm">
 								{t('clan.settings.botCommandLabel')}
 							</span>
-							<code className="break-all font-mono text-sm">
+							<code className="w-fit break-all rounded-lg bg-background p-2 font-mono text-sm">
 								{linkToken.command}
 							</code>
 						</div>
 						<div className="flex shrink-0 items-center gap-2">
-							<CopyButton text={linkToken.command} />
+							<CopyButton
+								className="p-4"
+								text={linkToken.command}
+							/>
 							<Button
 								aria-label={t('clan.common.close')}
 								className="h-9 w-9 p-0"
 								onClick={onCloseToken}
 								variant="ghost"
 							>
-								<Icon
-									className="text-base"
-									icon="lucide:x"
-								/>
+								<Icon className="text-base" icon="lucide:x" />
 							</Button>
 						</div>
 					</div>
@@ -88,11 +81,7 @@ export function DiscordBotSection({
 						onClick={onGenerate}
 						variant="secondary"
 					>
-						<Icon
-							className="text-base"
-							icon="lucide:link"
-						/>
-						{t('clan.settings.botLinkButton')}
+						<Icon icon="lucide:link" />
 					</Button>
 				</div>
 			)}
@@ -125,9 +114,7 @@ export function DiscordBotSection({
 									disabled={
 										unlinkPendingId === guild.guild_id
 									}
-									loading={
-										unlinkPendingId === guild.guild_id
-									}
+									loading={unlinkPendingId === guild.guild_id}
 									onClick={() => onUnlink(guild.guild_id)}
 									size="sm"
 									variant="danger"
