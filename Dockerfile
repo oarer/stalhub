@@ -15,6 +15,8 @@ WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 
+ARG GIT_COMMIT_SHA
+ENV NEXT_PUBLIC_GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 ENV NODE_ENV=production
 
 RUN node_modules/.bin/next build
@@ -23,11 +25,6 @@ RUN node_modules/.bin/next build
 FROM node:22-bookworm-slim AS runner
 
 WORKDIR /app
-
-ARG GIT_COMMIT_SHA
-ENV NEXT_PUBLIC_GIT_COMMIT_SHA=$GIT_COMMIT_SHA
-
-ENV NODE_ENV=production
 
 ENV NODE_ENV=production
 ENV PORT=3000
