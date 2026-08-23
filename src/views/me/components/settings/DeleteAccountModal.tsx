@@ -31,6 +31,7 @@ export function DeleteAccountModal({
 			<Modal.Content
 				background="bg-linear-to-t from-red-400/20 to-neutral-white/20"
 				className="max-w-120"
+				fullScreen={false}
 			>
 				<Modal.Header>
 					<Modal.Title className="font-bold">
@@ -40,7 +41,7 @@ export function DeleteAccountModal({
 						{t.rich('me.settings.deleteConfirmDesc', {
 							username,
 							bold: (chunks) => (
-								<span className="font-bold text-red-400">
+								<span className="font-bold text-destructive">
 									{chunks}
 								</span>
 							),
@@ -49,7 +50,7 @@ export function DeleteAccountModal({
 				</Modal.Header>
 				<Modal.Body>
 					<Input
-						className="w-full rounded-lg border border-red-500/20 bg-background px-3 py-2 text-sm outline-none focus:border-red-500/50"
+						className="w-full rounded-lg border border-destructive/20 bg-card px-3 py-2 text-sm outline-none focus:border-destructive/50"
 						onChange={(e) => setConfirmNickname(e.target.value)}
 						placeholder={t('me.settings.deletePlaceholder')}
 						value={confirmNickname}

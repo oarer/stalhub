@@ -23,19 +23,17 @@ class BuildApiService {
 		priceMin?: number
 		priceMax?: number
 	} = {}): Promise<PaginatedResponse<BuildApi>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<BuildApi> & { totalCount: number }
-		>('/api/v1/builds', {
+		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>('/api/v1/builds', {
 			params: {
 				take,
 				page,
 				...(tags && tags.length > 0 && { tags: tags.join(',') }),
 				...(sort && sort !== 'newest' && { sort }),
-				...(priceMin != null && { priceMin }),
-				...(priceMax != null && { priceMax }),
+				...(priceMin != null && { price_min: priceMin }),
+				...(priceMax != null && { price_max: priceMax }),
 			},
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async listMine({
@@ -45,12 +43,10 @@ class BuildApiService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<BuildApi>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<BuildApi> & { totalCount: number }
-		>('/api/v1/users/@me/builds', {
+		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>('/api/v1/users/@me/builds', {
 			params: { take, page },
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async get(id: string): Promise<BuildApi> {

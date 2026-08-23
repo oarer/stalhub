@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
-import { MDXRemote } from 'next-mdx-remote'
 import { useTranslations } from 'next-intl'
+import { MDXRemote } from 'next-mdx-remote'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
 import { cn } from '@/lib/cn'
 import type { EditorTab } from './editor-utils'
@@ -31,7 +31,7 @@ export function PreviewPane({
 	return (
 		<div
 			className={cn(
-				'relative my-2 mr-2 min-h-0 flex-1 overflow-y-auto rounded-lg border-2 border-border/20 bg-background',
+				'relative my-2 mr-2 min-h-0 flex-1 overflow-y-auto rounded-lg border-2 border-primary/20 bg-card',
 				mobileTab !== 'preview' && 'hidden md:flex'
 			)}
 			onScroll={onScroll}
@@ -69,7 +69,7 @@ export function PreviewPane({
 					</div>
 				)}
 				{compileError && (
-					<div className="flex items-center gap-2 border-red-500/20 border-t bg-red-500/5 px-4 py-2 text-red-400 text-xs">
+					<div className="flex items-center gap-2 border-destructive/20 border-t bg-destructive/5 px-4 py-2 text-destructive text-xs">
 						<Icon className="size-4" icon="lucide:alert-triangle" />
 						<p className="font-semibold">
 							{t('me.articleEditor.mdxError')}

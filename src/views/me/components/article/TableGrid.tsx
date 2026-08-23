@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { montserrat } from '@/app/fonts'
 import { TABLE_MAX } from '@/constants/article-editor.const'
 import { cn } from '@/lib/cn'
@@ -30,7 +30,7 @@ export function TableGrid({ onInsert }: TableGridProps) {
 									'size-6 rounded-sm border transition-colors',
 									r < hover[0] && c < hover[1]
 										? 'border-accent bg-accent/30'
-										: 'border-border-secondary hover:border-accent/50'
+										: 'border-primary hover:border-accent/50'
 								)}
 								key={c}
 								onClick={() => onInsert(r + 1, c + 1)}

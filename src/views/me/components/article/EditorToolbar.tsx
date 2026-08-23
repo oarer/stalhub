@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
-import { useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useMemo, useState } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
@@ -179,7 +179,7 @@ export function EditorToolbar({
 
 	return (
 		<div className="flex items-center justify-between px-2">
-			<div className="flex items-center gap-2 rounded-lg bg-background p-1 px-2">
+			<div className="flex items-center gap-2 rounded-lg bg-card p-1 px-2">
 				{toolbarActions.map((action, i) =>
 					action.separator ? (
 						<Divider
@@ -203,7 +203,7 @@ export function EditorToolbar({
 					)
 				)}
 			</div>
-			<div className="flex items-center gap-2 rounded-lg bg-background p-1 px-2">
+			<div className="flex items-center gap-2 rounded-lg bg-card p-1 px-2">
 				<Button
 					className="p-2"
 					onClick={() => setTagsModalOpen(true)}
@@ -279,7 +279,7 @@ export function EditorToolbar({
 										{t(h.label)}
 									</span>
 									<kbd
-										className={`${montserrat.className} rounded-md border border-border-secondary bg-background px-2 py-0.5 font-semibold text-text-accent text-xs`}
+										className={`${montserrat.className} rounded-md border border-primary bg-card px-2 py-0.5 font-semibold text-text-accent text-xs`}
 									>
 										{h.shortcut}
 									</kbd>

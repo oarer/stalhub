@@ -2,6 +2,7 @@ import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 import { clanService } from '@/services/clan/clan.service'
 import type {
 	Absence,
+	AttendanceMonth,
 	AttendanceSummary,
 	BotGuild,
 	ClanBoostOrdersResponse,
@@ -129,6 +130,14 @@ class ClanQueries {
 		})
 	}
 
+	getAttendanceMonth(clanId: string, month: string) {
+		return queryOptions<AttendanceMonth>({
+			queryKey: ['clan', clanId, 'attendance', 'month', month],
+			queryFn: () => clanService.getAttendanceMonth(month),
+			staleTime: 1000 * 30,
+		})
+	}
+
 	getSettings() {
 		return queryOptions<ClanSettings>({
 			queryKey: ['clan', 'settings'],
@@ -209,10 +218,10 @@ class ClanQueries {
 		})
 	}
 
-	getGrenadeBoxes(clanId: string, date: string) {
+	getGrenadeBoxes(clanId: string) {
 		return queryOptions<GrenadeBoxesResponse>({
-			queryKey: ['clan', clanId, 'grenades', 'boxes', date],
-			queryFn: () => clanService.getGrenadeBoxes(clanId, date),
+			queryKey: ['clan', clanId, 'grenades', 'boxes'],
+			queryFn: () => clanService.getGrenadeBoxes(clanId),
 			staleTime: 1000 * 30,
 		})
 	}
@@ -233,10 +242,10 @@ class ClanQueries {
 		})
 	}
 
-	getBoostOrders(date: string) {
+	getBoostOrders() {
 		return queryOptions<ClanBoostOrdersResponse>({
-			queryKey: ['clan', 'boosts', date],
-			queryFn: () => clanService.getBoostOrders(date),
+			queryKey: ['clan', 'boosts'],
+			queryFn: () => clanService.getBoostOrders(),
 			staleTime: 1000 * 30,
 		})
 	}

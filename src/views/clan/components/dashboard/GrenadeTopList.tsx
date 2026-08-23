@@ -12,13 +12,11 @@ interface GrenadeTopEntry {
 
 interface GrenadeTopListProps {
 	latestEvent: GrenadeStageEvent | null
-	grenadeTotal: number
 	grenadeTop: GrenadeTopEntry[]
 }
 
 export function GrenadeTopList({
 	latestEvent,
-	grenadeTotal,
 	grenadeTop,
 }: GrenadeTopListProps) {
 	const t = useTranslations()
@@ -26,9 +24,7 @@ export function GrenadeTopList({
 	return (
 		<Section
 			icon="lucide:bomb"
-			title={t('clan.dashboard.grenadesTitle', {
-				total: grenadeTotal.toLocaleString(),
-			})}
+			title={t('clan.dashboard.grenadesTitle')}
 		>
 			{latestEvent && (
 				<p
@@ -56,7 +52,7 @@ export function GrenadeTopList({
 							maxTotal > 0 ? (g.total / maxTotal) * 100 : 0
 						return (
 							<div
-								className="flex items-center gap-3 border-border-secondary border-b py-2 last:border-b-0"
+								className="flex items-center gap-3 border-muted border-b py-2 last:border-b-0"
 								key={g.character}
 							>
 								<span
@@ -69,13 +65,13 @@ export function GrenadeTopList({
 										<span className="font-semibold text-sm">
 											{g.character}
 										</span>
-										<span className="font-semibold text-sm">
+										<span className={`${montserrat.className} font-semibold text-sm`}>
 											{g.total.toLocaleString()}
 										</span>
 									</div>
-									<div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-accent">
+									<div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-muted">
 										<div
-											className="h-full rounded-full bg-linear-to-r from-border-secondary to-border transition-all"
+											className="h-full rounded-full bg-linear-to-r from-muted/50 to-primary transition-all"
 											style={{ width: `${pct}%` }}
 										/>
 									</div>

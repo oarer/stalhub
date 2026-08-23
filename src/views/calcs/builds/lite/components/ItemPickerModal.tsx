@@ -130,7 +130,7 @@ export function ItemPickerModal({
 
 						<div
 							className={cn(
-								'flex h-full min-h-0 w-full flex-col gap-3 overflow-hidden bg-background px-3 py-3',
+								'flex h-full min-h-0 w-full flex-col gap-3 overflow-hidden px-3 py-3',
 								selectedItem
 									? 'fixed inset-0 z-50 md:static md:flex'
 									: 'hidden md:flex'

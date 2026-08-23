@@ -11,7 +11,7 @@ export function StatCard({
 	value: number | string
 }) {
 	return (
-		<div className="flex items-center gap-4 rounded-lg bg-background p-4">
+		<div className="flex items-center gap-4 rounded-lg bg-card p-4">
 			<Icon className="text-2xl" icon={icon} />
 			<div>
 				<p className="font-bold text-sm">{label}</p>

@@ -24,7 +24,7 @@ export function Pagination({
 			>
 				<Icon icon="lucide:chevron-left" />
 			</Button>
-			<span className="text-neutral-400 text-sm">
+			<span className="text-muted-foreground text-sm">
 				{page} / {totalPages}
 			</span>
 			<Button

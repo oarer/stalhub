@@ -23,9 +23,9 @@ export function LinksSection({
 					{...view}
 					className={`${unbounded.className} flex items-center gap-3 px-3 font-bold uppercase tracking-wider`}
 				>
-					<span className="flex items-center rounded-lg bg-background p-2">
+					<span className="flex items-center rounded-lg bg-card p-2">
 						<Icon
-							className="size-5 text-border"
+							className="size-5 text-primary"
 							icon="lucide:link"
 						/>
 					</span>
@@ -41,12 +41,12 @@ export function LinksSection({
 								href={link.href}
 								variant="secondary"
 							>
-								<div className="flex items-center rounded-lg bg-border/10 p-2 text-border transition-colors duration-300 group-hover/link:bg-border/20">
+								<div className="flex items-center rounded-lg bg-border/10 p-2 text-primary transition-colors duration-300 group-hover/link:bg-border/20">
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
 									<p
-										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-border`}
+										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-primary`}
 									>
 										{t(link.label)}
 									</p>
@@ -72,9 +72,9 @@ export function LinksSection({
 					{...view}
 					className={`${unbounded.className} flex items-center gap-3 px-3 font-bold uppercase tracking-wider`}
 				>
-					<span className="flex items-center rounded-lg bg-background p-2">
+					<span className="flex items-center rounded-lg bg-card p-2">
 						<Icon
-							className="size-5 text-border"
+							className="size-5 text-primary"
 							icon="lucide:link"
 						/>
 					</span>
@@ -90,12 +90,12 @@ export function LinksSection({
 								href={link.href}
 								variant="secondary"
 							>
-								<div className="flex items-center rounded-lg bg-border/10 p-2 text-border transition-colors duration-300 group-hover/link:bg-border/20">
+								<div className="flex items-center rounded-lg bg-border/10 p-2 text-primary transition-colors duration-300 group-hover/link:bg-border/20">
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
 									<p
-										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-border`}
+										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-primary`}
 									>
 										{t(link.label)}
 									</p>

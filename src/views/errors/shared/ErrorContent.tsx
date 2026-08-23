@@ -30,7 +30,7 @@ export default function ErrorContent({
 				{title ?? t('errors.oops')}
 			</h1>
 			<p
-				className={`${unbounded.className} font-semibold text-xl dark:text-neutral-100/90`}
+				className={`${unbounded.className} font-semibold text-xl dark:text-foreground/90`}
 			>
 				{description}
 			</p>

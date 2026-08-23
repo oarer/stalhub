@@ -125,7 +125,7 @@ export default function Page() {
 					</Alert.Root>
 				</header>
 
-				<div className="relative flex min-h-58 overflow-hidden rounded-xl bg-background p-6 ring-2 ring-border/50">
+				<div className="relative flex min-h-58 overflow-hidden rounded-xl bg-card p-6 ring-2 ring-primary/50">
 					<AnimatePresence initial={false} mode="wait">
 						<motion.div
 							animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -193,7 +193,7 @@ export default function Page() {
 											</p>
 										</Button>
 										<Button
-											className="gap-2 bg-purple-600 ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
+											className="gap-2 bg-primary ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
 											loading={loading === 'exbo'}
 											onClick={() => handleLogin('exbo')}
 										>
@@ -246,7 +246,7 @@ export default function Page() {
 											value={password}
 										/>
 										{error && (
-											<p className="font-semibold text-red-400 text-sm">
+											<p className="font-semibold text-destructive text-sm">
 												{error}
 											</p>
 										)}

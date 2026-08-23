@@ -19,7 +19,7 @@ export default function AboutView() {
 				<GradientText
 					animationSpeed={2}
 					className={`${unbounded.className} text-4xl sm:text-5xl`}
-					colors={['#94cceb', '#0081b9']}
+					colors={['var(--primary)', '#afe3ff']}
 					yoyo={false}
 				>
 					{t('about.contacts_title')}
@@ -36,7 +36,7 @@ export default function AboutView() {
 				<GradientText
 					animationSpeed={2}
 					className={`${unbounded.className} text-xl sm:text-3xl`}
-					colors={['#94cceb', '#0081b9']}
+					colors={['var(--primary)', '#afe3ff']}
 					yoyo={false}
 				>
 					{t('about.thanks_title')}

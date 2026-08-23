@@ -23,7 +23,7 @@ export function ScheduleSection({
 }: ScheduleSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
 			<div className="flex items-center gap-2 font-semibold text-lg">
 				<Icon className="text-xl" icon="lucide:calendar-days" />
 				{t('clan.settings.scheduleTitle')}
@@ -34,10 +34,10 @@ export function ScheduleSection({
 				max={4}
 				min={0}
 				onChange={(e) =>
-					onFieldChange('brawlsPerWeek', Number(e.target.value))
+					onFieldChange('brawls_per_week', Number(e.target.value))
 				}
 				type="number"
-				value={schedule.brawlsPerWeek}
+				value={schedule.brawls_per_week}
 			/>
 
 			<div className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3">
@@ -50,10 +50,10 @@ export function ScheduleSection({
 					</span>
 				</div>
 				<Switch
-					checked={schedule.brawlsMandatory}
+					checked={schedule.brawls_mandatory}
 					disabled={isPending}
 					onCheckedChange={(value) =>
-						onFieldChange('brawlsMandatory', value)
+						onFieldChange('brawls_mandatory', value)
 					}
 				/>
 			</div>
@@ -63,17 +63,18 @@ export function ScheduleSection({
 			>
 				{t('clan.settings.scheduleTotal', {
 					tournament: TOURNAMENT_DAYS,
-					brawl: schedule.brawlsPerWeek,
-					mandatory: schedule.brawlsMandatory ? 'yes' : 'no',
+					brawl: schedule.brawls_per_week,
+					mandatory: schedule.brawls_mandatory ? 'yes' : 'no',
 				})}
 			</p>
 
 			<Button
-				className="self-start"
+				className="gap-2 self-start"
 				disabled={isPending}
 				onClick={onSave}
 				type="button"
 			>
+				<Icon className="text-lg" icon="lucide:save" />
 				{t('clan.settings.saveSchedule')}
 			</Button>
 		</div>

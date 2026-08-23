@@ -5,15 +5,16 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artService } from '@/services/art/art.service'
-import { ArtType, type ArtCreate } from '@/types/art.type'
+import { type ArtCreate, ArtType } from '@/types/art.type'
 import { ArtImageField } from '@/views/me/components/ArtImageField'
 import { parseTags } from '@/views/me/components/article/editor-utils'
-import { Section } from './components/Section'
+import { Section } from '../components/Section'
 
 const ART_TYPES = [
 	{ value: ArtType.DEFAULT, label: 'me.newArt.default' },
@@ -67,7 +68,7 @@ export default function NewArtView() {
 				</h1>
 			</div>
 
-			<div className="grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
+			<div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
 				<Section icon="lucide:info" title={t('me.newArt.info')}>
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-col gap-2">
@@ -125,8 +126,13 @@ export default function NewArtView() {
 						</div>
 					</div>
 				</Section>
-				<Section icon="lucide:image" title={t('me.newArt.img')}>
+				<Section icon="lucide:image" title={t('me.newArt.work')}>
 					<div className="flex flex-col gap-2">
+						<Alert.Root variant={'warning'}>
+							<Alert.Description>
+								{t('me.newArt.warn')}
+							</Alert.Description>
+						</Alert.Root>
 						<label
 							className="font-semibold text-md text-text-accent"
 							htmlFor="art-image"

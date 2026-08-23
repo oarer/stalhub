@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Button } from '@/components/ui/Button'
@@ -10,7 +11,6 @@ import { METRICS, type Metric } from './chart.utils'
 import { baseBarOptions } from './chartOptions'
 
 interface TopPlayersChartProps {
-	isDark: boolean
 	topPlayers: { name: string; value: number }[]
 	metric: Metric
 	topCount: number
@@ -18,13 +18,13 @@ interface TopPlayersChartProps {
 }
 
 export function TopPlayersChart({
-	isDark,
 	topPlayers,
 	metric,
 	topCount,
 	onMetricChange,
 }: TopPlayersChartProps) {
 	const t = useTranslations()
+	const { resolvedTheme } = useTheme()
 	const activeMetric = METRICS.find((m) => m.value === metric) ?? METRICS[0]
 
 	const data = useMemo(
@@ -41,20 +41,17 @@ export function TopPlayersChart({
 		}),
 		[topPlayers, activeMetric, t]
 	)
-	const options = useMemo(
-		() => baseBarOptions(isDark, t(activeMetric.label)),
-		[isDark, activeMetric, t]
-	)
+	const options = baseBarOptions(t(activeMetric.label))
 
 	return (
 		<ChartCard
 			action={
-				<div className="flex items-center gap-2 rounded-xl bg-accent/40 px-2 py-1.5">
+				<div className="flex items-center gap-2 rounded-xl bg-muted px-2 py-1.5">
 					{METRICS.map((m) => (
 						<Button
 							className={cn(
-								'font-semibold',
-								metric === m.value && 'bg-accent'
+								'font-semibold text-card-foreground',
+								metric === m.value && 'bg-primary/40'
 							)}
 							key={m.value}
 							onClick={() => onMetricChange(m.value)}
@@ -84,7 +81,11 @@ export function TopPlayersChart({
 					{t('clan.charts.noPlayers')}
 				</div>
 			) : (
-				<Bar data={data} options={options} />
+				<Bar
+					data={data}
+					key={resolvedTheme ?? 'light'}
+					options={options}
+				/>
 			)}
 		</ChartCard>
 	)

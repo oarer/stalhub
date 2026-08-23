@@ -30,15 +30,15 @@ export function MapTabs({
 			onValueChange={(value) => onActiveMapChange(value as SquadMap)}
 			value={activeMap}
 		>
-			<Tabs.List className="grid w-full grid-cols-3 gap-2 rounded-xl bg-background ring-transparent">
+			<Tabs.List className="grid w-full grid-cols-3 gap-2 rounded-xl ring-transparent">
 				{SQUAD_MAPS.map((map) => (
 					<Tabs.Trigger
-						className="gap-2 bg-accent/30"
+						className="gap-2"
 						key={map.value}
 						value={map.value}
 					>
 						<Icon
-							className="text-lg text-neutral-400"
+							className="text-lg"
 							icon={map.icon}
 						/>
 						{t(map.label)}
@@ -47,7 +47,7 @@ export function MapTabs({
 			</Tabs.List>
 			<div className="flex flex-col gap-3">{children}</div>
 			{squadCount === 0 && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:map-pinned" />
 					<h2 className="font-semibold text-lg">
 						{t('clan.squads.noSquadsHere')}

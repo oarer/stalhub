@@ -117,7 +117,7 @@ export default function NewArticleView() {
 							<Button
 								className={`gap-2 ${
 									type === articleType.value &&
-									'ring-2 ring-border/80'
+									'ring-2 ring-primary/80'
 								}`}
 								key={articleType.value}
 								onClick={() => setType(articleType.value)}

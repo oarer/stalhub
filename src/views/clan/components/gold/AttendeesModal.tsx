@@ -2,7 +2,10 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { montserrat } from '@/app/fonts'
+import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import { cn } from '@/lib/cn'
 import type { ClanMember, GoldDrop } from '@/types/clan/clan.type'
 import { mskLabel } from './gold.utils'
 
@@ -32,54 +35,48 @@ export function AttendeesModal({
 		<Modal.Root onOpenChange={onOpenChange} open={drop !== null}>
 			<Modal.Content fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>
+					<Modal.Title className={montserrat.className}>
 						{t('clan.gold.attendeesTitle', {
 							date: drop ? mskLabel(drop.date) : '',
 						})}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<p className="mb-3 text-neutral-500 text-sm">
-						{t('clan.gold.alreadyMarked', {
-							count: attendeeIdSet.size,
-						})}
-					</p>
 					<div className="flex max-h-96 flex-col gap-2 overflow-y-auto">
 						{members.map((m) => {
 							const checked = selectedIds.includes(m.id)
-							const busy = !checked && attendeeIdSet.has(m.id)
 							return (
-								<button
-									className={`flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors ${
+								<Button
+									className={cn(
+										'justify-between',
 										checked
-											? 'border-sky-500/60 bg-sky-500/10'
-											: busy
-												? 'border-border-secondary opacity-50'
-												: 'border-border-secondary hover:bg-accent'
-									}`}
-									disabled={busy}
+											? 'bg-muted'
+											: 'hover:bg-primary/40'
+									)}
 									key={m.id}
 									onClick={() => onToggleMember(m.id)}
-									type="button"
+									variant={'secondary'}
 								>
-									<div className="flex size-8 items-center justify-center rounded-full bg-accent font-semibold text-sm">
-										{m.name.charAt(0)}
-									</div>
-									<div className="flex-1">
-										<p className="font-medium text-sm">
-											{m.name}
-										</p>
-										<p className="text-neutral-500 text-xs">
-											{m.user?.name ?? m.rank}
-										</p>
+									<div className="flex gap-2">
+										<div className="flex size-8 items-center justify-center rounded-full bg-card font-semibold text-sm">
+											{m.name.charAt(0)}
+										</div>
+										<div className="flex flex-col text-left">
+											<p className="font-semibold text-sm">
+												{m.name}
+											</p>
+											<p className="font-semibold text-muted-foreground text-xs">
+												{m.user?.name ?? m.rank}
+											</p>
+										</div>
 									</div>
 									{checked && (
 										<Icon
-											className="text-sky-500"
+											className="text-primary"
 											icon="lucide:check"
 										/>
 									)}
-								</button>
+								</Button>
 							)
 						})}
 					</div>

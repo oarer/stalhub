@@ -51,9 +51,9 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 
 				<Card.Content className="space-y-6">
 					<HeroStats data={data} />
-					<div className="border-border/60 border-t" />
+					<div className="border-primary/60 border-t" />
 					<HeroCombat data={data.stats} />
-					<div className="border-border/60 border-t" />
+					<div className="border-primary/60 border-t" />
 					{data.displayedAchievements && (
 						<div className="space-y-3">
 							<div className="flex items-center gap-2">

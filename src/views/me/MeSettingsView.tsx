@@ -61,9 +61,9 @@ export default function MeSettingsView() {
 	const [isBannerEditorOpen, setIsBannerEditorOpen] = useState(false)
 
 	const layout = (user.customization?.layout ?? 'CLASSIC') as Layout
-	const bannerMode = user.customization?.bannerMode ?? 'NONE'
-	const bannerType = user.customization?.bannerType ?? 'BACKGROUND'
-	const bannerColor = user.customization?.bannerColor ?? '#000000'
+	const bannerMode = user.customization?.banner_mode ?? 'NONE'
+	const bannerType = user.customization?.banner_type ?? 'BACKGROUND'
+	const bannerColor = user.customization?.banner_color ?? '#000000'
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -142,14 +142,14 @@ export default function MeSettingsView() {
 				}}
 				isUploading={uploadBannerMutation.isPending}
 				onColorChange={(color) =>
-					bannerMutation.mutate({ bannerColor: color })
+					bannerMutation.mutate({ banner_color: color })
 				}
 				onModeChange={(mode) =>
-					bannerMutation.mutate({ bannerMode: mode })
+					bannerMutation.mutate({ banner_mode: mode })
 				}
 				onOpenChange={setIsBannerEditorOpen}
 				onTypeChange={(type) =>
-					bannerMutation.mutate({ bannerType: type })
+					bannerMutation.mutate({ banner_type: type })
 				}
 				onUpload={(file) => uploadBannerMutation.mutate(file)}
 				open={isBannerEditorOpen}

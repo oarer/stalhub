@@ -65,18 +65,18 @@ export function ArtifactSlots({
 						: InfoColor.DEFAULT
 
 				const borderColor = isSelected
-					? 'border-border/60'
+					? 'border-primary/60'
 					: !slots[i]
-						? 'border-border/40'
+						? 'border-primary/40'
 						: copyMode
-							? 'hover:border-border/80'
-							: 'border-border/40'
+							? 'hover:border-primary/80'
+							: 'border-primary/40'
 
 				return (
 					<div className="relative" key={i}>
 						<button
 							className={cn(
-								'flex h-24 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-border/40 bg-background/25 p-1 backdrop-blur-sm transition-colors',
+								'flex h-24 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-primary/40 bg-card/25 p-1 backdrop-blur-sm transition-colors',
 								borderColor
 							)}
 							onClick={() => onSelectSlot(i)}

@@ -48,16 +48,16 @@ export default function UserDetailView({ userId }: Props) {
 	const [banDuration, setBanDuration] = useState('')
 
 	const [bannerMode, setBannerMode] = useState<'COLOR' | 'IMAGE' | 'NONE'>(
-		user.customization?.bannerMode ?? 'NONE'
+		user.customization?.banner_mode ?? 'NONE'
 	)
 	const [bannerType, setBannerType] = useState<'BACKGROUND' | 'HEADER'>(
-		user.customization?.bannerType ?? 'HEADER'
+		user.customization?.banner_type ?? 'HEADER'
 	)
 	const [bannerColor, setBannerColor] = useState(
-		user.customization?.bannerColor ?? '#171717'
+		user.customization?.banner_color ?? '#171717'
 	)
 	const [bannerImage, setBannerImage] = useState(
-		user.customization?.bannerImage ?? ''
+		user.customization?.banner_image ?? ''
 	)
 
 	const updateMutation = useMutation({
@@ -178,10 +178,10 @@ export default function UserDetailView({ userId }: Props) {
 	const bannerMutation = useMutation({
 		mutationFn: () =>
 			adminUserService.updateCustomization(userId, {
-				bannerMode,
-				bannerType,
-				bannerColor,
-				bannerImage: bannerImage || null,
+				banner_mode: bannerMode,
+				banner_type: bannerType,
+				banner_color: bannerColor,
+				banner_image: bannerImage || null,
 			}),
 		onSuccess: () => {
 			toast.success(t('admin.userDetail.toast.bannerUpdated'))
@@ -438,12 +438,12 @@ export default function UserDetailView({ userId }: Props) {
 										</Table.Cell>
 										<Table.Cell>
 											{new Date(
-												session.created_at
+												session.last_used_at
 											).toLocaleDateString('ru-RU')}
 										</Table.Cell>
 										<Table.Cell>
 											{new Date(
-												session.last_active
+												session.last_used_at
 											).toLocaleDateString('ru-RU')}
 										</Table.Cell>
 										<Table.Cell>
@@ -563,7 +563,7 @@ export default function UserDetailView({ userId }: Props) {
 								<div className="flex flex-col gap-2">
 									{userRoles.map((role) => (
 										<div
-											className="flex items-center justify-between rounded-lg bg-background/50 px-3 py-2"
+											className="flex items-center justify-between rounded-lg bg-card/50 px-3 py-2"
 											key={role.id}
 										>
 											<div>
@@ -722,7 +722,7 @@ export default function UserDetailView({ userId }: Props) {
 								<div className="flex flex-col gap-2">
 									{userBadges.map((badge) => (
 										<div
-											className="flex items-center justify-between rounded-lg bg-background/50 px-3 py-2"
+											className="flex items-center justify-between rounded-lg bg-card/50 px-3 py-2"
 											key={badge.id}
 										>
 											<div
@@ -817,7 +817,7 @@ export default function UserDetailView({ userId }: Props) {
 						</Card.Header>
 						<Card.Content>
 							<div className="flex flex-col gap-4">
-								<div className="relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border-2 border-border-secondary">
+								<div className="relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border-2 border-primary">
 									{bannerMode === 'COLOR' && (
 										<div
 											className="h-full w-full"
@@ -895,7 +895,7 @@ export default function UserDetailView({ userId }: Props) {
 								{bannerMode === 'COLOR' && (
 									<div className="flex items-center gap-3">
 										<input
-											className="h-9 w-16 cursor-pointer rounded border-2 border-border-secondary bg-background"
+											className="h-9 w-16 cursor-pointer rounded border-2 border-primary bg-card"
 											onChange={(e) =>
 												setBannerColor(e.target.value)
 											}
@@ -921,7 +921,7 @@ export default function UserDetailView({ userId }: Props) {
 											}
 											value={bannerImage}
 										/>
-										<label className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-2 border-border-secondary px-4 py-2 font-semibold text-sm transition-colors duration-300 hover:bg-accent">
+										<label className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-2 border-primary px-4 py-2 font-semibold text-sm transition-colors duration-300 hover:bg-accent">
 											<Icon icon="lucide:upload" />
 											{t(
 												'admin.userDetail.banner.upload'

@@ -19,38 +19,53 @@ export const SquadPngTemplate = forwardRef<
 	const t = useTranslations()
 
 	return (
-		<div className="w-7xl bg-background p-8 text-white" ref={ref}>
+		<div className="w-7xl bg-card p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-border uppercase tracking-[3]`}
+				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3]`}
 			>
 				stalhub.dev
 			</h1>
 			<header className="mb-6 flex items-center justify-between gap-8">
 				<h2
-					className={`${unbounded.className} max-w-160 text-3xl text-red-500`}
+					className={`${unbounded.className} max-w-160 text-3xl text-destructive`}
 				>
 					{t('clan.squads.png.title', { map: mapLabel })}
 				</h2>
-				<div
-					className={`${montserrat.className} rounded-lg bg-black/25 px-4 py-1 text-right`}
-				>
-					<p className="font-semibold text-text-accent text-xs">
-						{t('clan.squads.png.squadCount')}
-					</p>
-					<p className="font-bold text-lg text-yellow-300">
-						{squads.length}
-					</p>
+				<div className="flex gap-4">
+					<div
+						className={`${montserrat.className} rounded-lg bg-card px-4 py-1 text-right`}
+					>
+						<p className="font-semibold text-text-accent text-xs">
+							{t('clan.squads.png.squadCount')}
+						</p>
+						<p className="font-bold text-lg text-primary">
+							{squads.length}
+						</p>
+					</div>
+					<div
+						className={`${montserrat.className} rounded-lg bg-card px-4 py-1 text-right`}
+					>
+						<p className="font-semibold text-text-accent text-xs">
+							{t('clan.squads.png.membersCount')}
+						</p>
+						<p className="font-bold text-lg text-primary">
+							{squads.reduce(
+								(sum, s) => sum + s.members.length,
+								0
+							)}
+						</p>
+					</div>
 				</div>
 			</header>
 			<div
-				className={`${montserrat.className} mb-6 flex w-fit items-center gap-6 rounded-lg bg-background px-4 py-2 font-semibold text-xs`}
+				className={`${montserrat.className} mb-6 flex w-fit items-center gap-6 rounded-lg bg-card px-4 py-2 font-semibold text-xs`}
 			>
 				<span className="flex items-center gap-2 text-text-accent">
 					<span className="size-3 rounded border border-amber-500/60 bg-amber-500/10" />
 					{t('clan.squads.png.leader')}
 				</span>
 				<span className="flex items-center gap-2 text-text-accent">
-					<span className="size-3 rounded border border-red-500/60 bg-red-500/10" />
+					<span className="size-3 rounded border border-destructive/60 bg-destructive/10" />
 					{t('clan.squads.png.absent')}
 				</span>
 			</div>
@@ -77,7 +92,7 @@ function SquadPngCard({
 	const members = [...squad.members].sort((a, b) => a.slot - b.slot)
 
 	return (
-		<div className="flex flex-col gap-3 rounded-lg bg-background/50 p-5 ring-2 ring-border/50">
+		<div className="flex flex-col gap-3 rounded-lg bg-card/50 p-5 ring-2 ring-primary/50">
 			<div className="flex items-center justify-between gap-2">
 				<p
 					className={`${unbounded.className} truncate font-bold text-md uppercase tracking-widest`}
@@ -106,7 +121,7 @@ function SquadPngCard({
 					return (
 						<SquadSlotPng
 							absentUserIds={absentUserIds}
-							isLeader={squad.leaderId === member?.id}
+							isLeader={squad.leader_id === member?.id}
 							key={slot}
 							member={member}
 							slot={slot}
@@ -130,19 +145,19 @@ function SquadSlotPng({
 }) {
 	const t = useTranslations()
 	const isAbsent =
-		member?.member.userId != null &&
-		absentUserIds.has(member.member.userId as number)
+		member?.member.user_id != null &&
+		absentUserIds.has(member.member.user_id as number)
 
 	return (
 		<div
 			className={`flex items-center justify-between gap-2 rounded-lg border px-3 py-1.5 ${
 				member
 					? isAbsent
-						? 'border-red-500/60 bg-red-500/10'
+						? 'border-destructive/60 bg-destructive/10'
 						: isLeader
 							? 'border-amber-500/60 bg-amber-500/10'
-							: 'border-border-secondary bg-background/40'
-					: 'border-border-secondary border-dashed'
+							: 'border-muted bg-card/40'
+					: 'border-muted border-dashed'
 			}`}
 		>
 			{member ? (

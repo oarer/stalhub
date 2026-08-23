@@ -26,7 +26,7 @@ export function StyleControls({
 						className={cn(
 							'h-6 w-6 cursor-pointer rounded-full border-2 transition-transform hover:scale-110',
 							color === c
-								? 'scale-110 border-sky-400'
+								? 'scale-110 border-primary'
 								: 'border-neutral-300 dark:border-neutral-600'
 						)}
 						key={c}
@@ -36,7 +36,7 @@ export function StyleControls({
 				))}
 				<label className="relative flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-400 border-dashed dark:border-neutral-600">
 					<Icon
-						className="text-neutral-500 text-xs"
+						className="text-muted-foreground text-xs"
 						icon="lucide:plus"
 					/>
 					<input
@@ -47,7 +47,7 @@ export function StyleControls({
 					/>
 				</label>
 			</div>
-			<p className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
+			<p className="font-semibold text-muted-foreground text-xs">
 				{t('cwMap.style.thickness')} {lineWidth}px
 			</p>
 			<input

@@ -68,10 +68,10 @@ class AdminClanService {
 
 	async sync(
 		clanId: string
-	): Promise<{ clanId: string; memberCount: number }> {
+	): Promise<{ clan_id: string; member_count: number }> {
 		const { data } = await apiClient.post<{
-			clanId: string
-			memberCount: number
+			clan_id: string
+			member_count: number
 		}>(`/api/v1/admin/clans/${clanId}/sync`)
 		return data
 	}

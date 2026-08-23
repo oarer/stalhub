@@ -29,12 +29,6 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 	const stageCountForType = (type: string) =>
 		type === 'BASE_CAPTURE' ? 4 : 3
 
-	const stageName = (type: string, stage: number) =>
-		t('clan.sessions.stageName', {
-			name: t(`clan.stage.${type}`),
-			stage,
-		})
-
 	const handleUploadOpenChange = (open: boolean) => {
 		setUploadOpen(open)
 		if (!open) return
@@ -61,7 +55,7 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 			const startTime = STAGE_SCHEDULE[uploadType]?.stages.find(
 				(s) => s.stage === uploadStage
 			)?.start
-			const started_at = uploadDate
+			const startedAt = uploadDate
 				? new Date(
 						`${uploadDate}T${
 							startTime
@@ -72,10 +66,10 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 				: undefined
 			const session = await clanService.createSession({
 				region: profile?.region ?? 'RU',
-				map_name:
-					uploadMapName.trim() || stageName(uploadType, uploadStage),
+				map_name: uploadMapName.trim() || t(`clan.stage.${uploadType}`),
+				stage_number: uploadStage,
 				type: uploadType,
-				started_at,
+				started_at: startedAt,
 			})
 			const { default: axios } = await import('axios')
 			const formData = new FormData()

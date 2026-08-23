@@ -7,11 +7,13 @@ import { cn } from '@/lib/cn'
 
 type Props = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
 	label?: string
+	containerClass?: string
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function Input({
 	className,
+	containerClass,
 	type = 'text',
 	value,
 	onChange,
@@ -142,11 +144,11 @@ export default function Input({
 	const computedPlaceholder = propPlaceholder ?? (label ? ' ' : undefined)
 
 	return (
-		<div className="relative">
+		<div className={cn('relative', containerClass)}>
 			<input
 				{...rest}
 				className={cn(
-					`peer w-full rounded-lg border-2 border-border-secondary bg-background px-2.5 py-1 font-semibold text-neutral-900 outline-none transition-all duration-500 ease-in-out placeholder:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-100 dark:placeholder:text-neutral-400`,
+					`peer w-full rounded-lg border-2 border-muted bg-card px-2.5 py-1 font-semibold text-foreground outline-none transition-all duration-500 ease-in-out placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
 					label && 'pt-3',
 					type === 'number' && `${montserrat.className} text-sm`,
 					className
@@ -166,7 +168,7 @@ export default function Input({
 
 			{label && (
 				<label
-					className="pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-bold text-neutral-400 text-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-neutral-400 peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-neutral-400"
+					className="pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-bold text-muted-foreground text-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-muted-foreground peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-muted-foreground"
 					htmlFor={id}
 				>
 					{t(label)}
@@ -177,7 +179,7 @@ export default function Input({
 				<div className="absolute top-1/2 right-2 flex -translate-y-1/2 flex-col">
 					<button
 						aria-label="increase"
-						className="flex cursor-pointer items-center justify-center text-neutral-500 duration-500 hover:text-black dark:text-neutral-400 dark:hover:text-white"
+						className="flex cursor-pointer items-center justify-center text-muted-foreground duration-500 hover:text-foreground"
 						onClick={() => handleStep('up')}
 						type="button"
 					>
@@ -186,7 +188,7 @@ export default function Input({
 
 					<button
 						aria-label="decrease"
-						className="flex cursor-pointer items-center justify-center text-neutral-500 duration-500 hover:text-black dark:text-neutral-400 dark:hover:text-white"
+						className="flex cursor-pointer items-center justify-center text-muted-foreground duration-500 hover:text-foreground"
 						onClick={() => handleStep('down')}
 						type="button"
 					>
@@ -197,7 +199,7 @@ export default function Input({
 
 			{type === 'password' && (
 				<button
-					className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-neutral-500 hover:text-black dark:text-neutral-300 dark:hover:text-white"
+					className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
 					onClick={togglePassword}
 					type="button"
 				>

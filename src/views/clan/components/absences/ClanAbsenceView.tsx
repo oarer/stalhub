@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { mskDate, mskHour } from '@/lib/date'
 import { clanQueries } from '@/queries/clan/clan.queries'
-import { AbsenceForm } from './components/absences/AbsenceForm'
-import { AbsenceList } from './components/absences/AbsenceList'
-import { DEADLINE_MSK_HOUR } from './components/absences/absence.const'
-import { DeadlineNotice } from './components/absences/DeadlineNotice'
-import { useClanAbsence } from './hooks/useClanAbsence'
+import { useClanAbsence } from '../../hooks/useClanAbsence'
+import { AbsenceForm } from './AbsenceForm'
+import { AbsenceList } from './AbsenceList'
+import { DEADLINE_MSK_HOUR } from './absence.const'
+import { DeadlineNotice } from './DeadlineNotice'
 
 export default function ClanAbsenceView() {
 	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
@@ -17,7 +17,7 @@ export default function ClanAbsenceView() {
 	if (!clanId) return null
 
 	return (
-		<ClanAbsenceContent clanId={clanId} currentUserId={profile?.userId} />
+		<ClanAbsenceContent clanId={clanId} currentUserId={profile?.user_id} />
 	)
 }
 

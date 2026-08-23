@@ -31,8 +31,8 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const memberUserIds = useMemo(
 		() =>
 			(members ?? [])
-				.filter((m) => m.userId != null)
-				.map((m) => m.userId as number),
+				.filter((m) => m.user_id != null)
+				.map((m) => m.user_id as number),
 		[members]
 	)
 	const { data: loadouts } = useSuspenseQuery(
@@ -44,13 +44,13 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 		for (const squad of squads ?? []) {
 			bySquad.set(
 				squad.id,
-				squad.requests.some((r) => r.memberId === myMember?.id)
+				squad.requests.some((r) => r.member_id === myMember?.id)
 			)
 		}
 		return bySquad
 	}, [squads, myMember])
 	const absentUserIds = useMemo(
-		() => new Set((todayAbsences ?? []).map((a) => a.userId)),
+		() => new Set((todayAbsences ?? []).map((a) => a.user_id)),
 		[todayAbsences]
 	)
 
@@ -65,7 +65,7 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const loadoutByUserId = useMemo(() => {
 		const map = new Map<number, UserLoadout>()
 		for (const lo of loadouts ?? []) {
-			map.set(lo.userId, lo)
+			map.set(lo.user_id, lo)
 		}
 		return map
 	}, [loadouts])

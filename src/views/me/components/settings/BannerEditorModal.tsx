@@ -1,8 +1,8 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import type { BannerMode, BannerType } from '@/types/user.type'
@@ -65,7 +65,7 @@ export function BannerEditorModal({
 					</div>
 					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 						<span className="font-semibold text-md">
-							{t('me.settings.bannerType')}
+							{t('me.settings.banner_type')}
 						</span>
 						<OptionDropdown
 							onSelect={onModeChange}
@@ -83,11 +83,11 @@ export function BannerEditorModal({
 					{banner.mode === 'COLOR' && (
 						<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 							<span className="font-semibold text-md">
-								{t('me.settings.bannerColor')}
+								{t('me.settings.banner_color')}
 							</span>
 							<label className="relative flex cursor-pointer items-center gap-2">
 								<div
-									className="size-8 rounded-lg ring-2 ring-border/50"
+									className="size-8 rounded-lg ring-2 ring-primary/50"
 									style={{ backgroundColor: banner.color }}
 								/>
 								<span className="font-semibold text-sm text-text-accent">
@@ -106,7 +106,7 @@ export function BannerEditorModal({
 					)}
 					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 						<span className="font-semibold text-md">
-							{t('me.settings.bannerImage')}
+							{t('me.settings.banner_image')}
 						</span>
 						<div className="flex items-center gap-2">
 							<input

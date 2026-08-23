@@ -20,7 +20,7 @@ export function ConsumablesSection({
 }: BoostModeSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
 			<div className="flex items-center gap-2 font-semibold text-lg">
 				<Icon className="text-xl" icon="lucide:flask-conical" />
 				{t('clan.consumables.title')}

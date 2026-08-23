@@ -181,7 +181,7 @@ export default function BadgesAdminView() {
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
 											createMode === 'icon'
 												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-border-secondary hover:border-sky-500/30'
+												: 'border-primary hover:border-sky-500/30'
 										}`}
 										onClick={() => setCreateMode('icon')}
 										type="button"
@@ -196,7 +196,7 @@ export default function BadgesAdminView() {
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
 											createMode === 'image'
 												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-border-secondary hover:border-sky-500/30'
+												: 'border-primary hover:border-sky-500/30'
 										}`}
 										onClick={() => setCreateMode('image')}
 										type="button"
@@ -234,7 +234,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex items-center gap-2">
 								<input
-									className="size-9 shrink-0 cursor-pointer rounded border-2 border-border-secondary bg-transparent"
+									className="size-9 shrink-0 cursor-pointer rounded border-2 border-primary bg-transparent"
 									onChange={(e) =>
 										setCreateColor(e.target.value)
 									}
@@ -259,7 +259,7 @@ export default function BadgesAdminView() {
 							</Button>
 						</div>
 
-						<div className="flex items-center gap-2 rounded-lg bg-background px-3 py-2 text-sm">
+						<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
 							<span className="text-text-accent">
 								{t('admin.badges.preview')}
 							</span>
@@ -450,7 +450,7 @@ export default function BadgesAdminView() {
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
 											editMode === 'icon'
 												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-border-secondary hover:border-sky-500/30'
+												: 'border-primary hover:border-sky-500/30'
 										}`}
 										onClick={() => setEditMode('icon')}
 										type="button"
@@ -465,7 +465,7 @@ export default function BadgesAdminView() {
 										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
 											editMode === 'image'
 												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-border-secondary hover:border-sky-500/30'
+												: 'border-primary hover:border-sky-500/30'
 										}`}
 										onClick={() => setEditMode('image')}
 										type="button"
@@ -499,7 +499,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex items-center gap-2">
 								<input
-									className="size-9 shrink-0 cursor-pointer rounded border-2 border-border-secondary bg-transparent"
+									className="size-9 shrink-0 cursor-pointer rounded border-2 border-primary bg-transparent"
 									onChange={(e) =>
 										setEditColor(e.target.value)
 									}
@@ -515,7 +515,7 @@ export default function BadgesAdminView() {
 								/>
 							</div>
 
-							<div className="flex items-center gap-2 rounded-lg bg-background px-3 py-2 text-sm">
+							<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
 								<span className="text-text-accent">
 									{t('admin.badges.preview')}
 								</span>

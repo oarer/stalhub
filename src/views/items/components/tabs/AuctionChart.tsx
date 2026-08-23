@@ -7,8 +7,7 @@ import {
 	LinearScale,
 	PointElement,
 } from 'chart.js'
-import { useTheme } from 'next-themes'
-import { useMemo } from 'react'
+import { getChartColors } from '@/lib/chart-theme'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, ChartTooltip, Legend)
 
@@ -31,55 +30,51 @@ type DatasetConfig = {
 export function useAuctionChartOptions(
 	tooltipCallbacks?: TooltipCallbacks
 ): ChartOptions<'scatter'> {
-	const { resolvedTheme } = useTheme()
-	const isDark = resolvedTheme === 'dark'
+	const colors = getChartColors()
 
-	return useMemo<ChartOptions<'scatter'>>(
-		() => ({
-			responsive: true,
-			maintainAspectRatio: false,
-			scales: {
-				x: {
-					reverse: true,
-					type: 'category',
-					ticks: {
-						color: isDark ? '#aaa' : '#333',
-						font: { weight: 'bold', size: 12 },
-					},
-					grid: { color: isDark ? '#44464c' : '#ccc' },
+	return {
+		responsive: true,
+		maintainAspectRatio: false,
+		scales: {
+			x: {
+				reverse: true,
+				type: 'category',
+				ticks: {
+					color: colors.axis,
+					font: { weight: 'bold', size: 12 },
 				},
-				y: {
-					type: 'linear',
-					ticks: {
-						color: isDark ? '#aaa' : '#333',
-						font: { weight: 'bold', size: 12 },
-					},
-					grid: { color: isDark ? '#44464c' : '#ccc' },
+				grid: { color: colors.grid },
+			},
+			y: {
+				type: 'linear',
+				ticks: {
+					color: colors.axis,
+					font: { weight: 'bold', size: 12 },
 				},
+				grid: { color: colors.grid },
 			},
-			plugins: {
-				legend: { display: false },
-				tooltip: {
-					mode: 'nearest',
-					intersect: false,
-					backgroundColor: isDark ? '#080808' : '#fff',
-					titleColor: isDark ? '#fbfbfe' : '#171717',
-					bodyColor: isDark ? '#d4d4d4' : '#525252',
-					borderColor: isDark ? '#3d4a52' : '#badbeb',
-					borderWidth: 2,
-					padding: 12,
-					displayColors: false,
-					titleFont: { size: 13, weight: 'bold' },
-					bodyFont: { size: 12, weight: 'bold' },
-					callbacks: tooltipCallbacks,
-				},
+		},
+		plugins: {
+			legend: { display: false },
+			tooltip: {
+				mode: 'nearest',
+				intersect: false,
+				backgroundColor: colors.tooltip.background,
+				titleColor: colors.tooltip.titleColor,
+				bodyColor: colors.tooltip.bodyColor,
+				borderColor: colors.tooltip.borderColor,
+				borderWidth: 2,
+				padding: 12,
+				displayColors: false,
+				titleFont: { size: 13, weight: 'bold' },
+				bodyFont: { size: 12, weight: 'bold' },
+				callbacks: tooltipCallbacks,
 			},
-			elements: {
-				point: { hoverRadius: 7 },
-			},
-		}),
-		[isDark, tooltipCallbacks]
-	)
+		},
+		elements: {
+			point: { hoverRadius: 7 },
+		},
+	}
 }
 
 export function createAuctionDataset(

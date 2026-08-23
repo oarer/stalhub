@@ -24,10 +24,10 @@ export default function ClassicLayout({
 			/>
 			<div className="block pt-8 lg:hidden">
 				<MeBanner
-					bannerColor={customization.bannerColor}
-					bannerImage={customization.bannerImage}
-					bannerMode={customization.bannerMode}
-					bannerType={customization.bannerType}
+					bannerColor={customization.banner_color}
+					bannerImage={customization.banner_image}
+					bannerMode={customization.banner_mode}
+					bannerType={customization.banner_type}
 				/>
 			</div>
 			<div className="pb-4 lg:px-0 lg:py-4">{children}</div>

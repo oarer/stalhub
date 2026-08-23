@@ -61,7 +61,7 @@ export default function PlayerSearchView() {
 					/>
 
 					<Input
-						className="h-full border-border/40"
+						className="h-full border-primary/40"
 						id="nickname-input"
 						label="playerSearch.nickname"
 						onChange={(e) => setCharacter(e.target.value)}

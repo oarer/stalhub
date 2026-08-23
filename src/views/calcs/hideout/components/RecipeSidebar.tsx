@@ -118,9 +118,9 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 						{cat.recipes.map((recipe) => (
 							<button
 								className={cn(
-									'flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-left transition-colors hover:bg-background',
+									'flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-left transition-colors hover:bg-card',
 									selectedItem === recipe.id &&
-										'font-bold text-border'
+										'font-bold text-primary'
 								)}
 								key={recipe.id}
 								onClick={() => onItemChange(recipe.id)}

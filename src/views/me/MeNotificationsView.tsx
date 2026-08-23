@@ -64,7 +64,7 @@ export default function MeNotificationsView() {
 	})
 
 	const notifications = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / NOTIFICATIONS_PER_PAGE) : 1
+	const totalPages = data ? Math.ceil(data.total_count / NOTIFICATIONS_PER_PAGE) : 1
 
 	const handleNotificationClick = (id: number) => {
 		if (!notifications.find((n) => n.id === id)?.read) {

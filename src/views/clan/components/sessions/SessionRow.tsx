@@ -35,15 +35,19 @@ export function SessionRow({
 	useEffect(() => {
 		if (!expanded) return
 		let stopped = false
+		let wasActive = false
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const poll = async () => {
 			const d = await refreshDetail()
 			if (stopped) return
 			const hasActive = d?.screenshots.some(
-				(s) => s.aiStatus === 'pending' || s.aiStatus === 'processing'
+				(s) => s.ai_status === 'pending' || s.ai_status === 'processing'
 			)
 			if (hasActive) {
+				wasActive = true
 				timer = setTimeout(poll, 3000)
+			} else if (wasActive) {
+				onUpload()
 			}
 		}
 		poll()
@@ -51,7 +55,7 @@ export function SessionRow({
 			stopped = true
 			clearTimeout(timer)
 		}
-	}, [expanded, refreshDetail])
+	}, [expanded, refreshDetail, onUpload])
 
 	const retryMutation = useMutation({
 		mutationFn: async (screenshotId: number) => {
@@ -70,6 +74,7 @@ export function SessionRow({
 	const deleteMutation = useMutation({
 		mutationFn: () => clanService.deleteSession(session.id),
 		onSuccess: () => {
+			onUpload()
 			toast.success(t('clan.sessions.toasts.deleted'))
 		},
 		onError: () => {
@@ -78,11 +83,11 @@ export function SessionRow({
 	})
 
 	const hasActive = detail?.screenshots.some(
-		(s) => s.aiStatus === 'pending' || s.aiStatus === 'processing'
+		(s) => s.ai_status === 'pending' || s.ai_status === 'processing'
 	)
 
 	return (
-		<div className="rounded-lg bg-background px-5 py-4">
+		<div className="rounded-lg bg-card px-5 py-4">
 			<div className="flex items-start justify-between">
 				<button
 					className="flex-1 cursor-pointer text-left"
@@ -92,32 +97,34 @@ export function SessionRow({
 					<div className="flex flex-col gap-1">
 						<div className="flex items-center gap-2">
 							<h3 className="font-semibold">
-								{t(`clan.stage.${session.type}`)}
+								{t(`clan.stage.${session.type}`)} |{' '}
+								{session.map_name} | {t('clan.sessions.stage')}{' '}
+								{session.stage_number}
 							</h3>
 							<span
 								className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
 									session.victory
-										? 'bg-green-500/20 text-green-600 dark:text-green-400'
-										: 'bg-red-500/20 text-red-600 dark:text-red-400'
+										? 'bg-green-500/20 text-success'
+										: 'bg-red-500/20 text-destructive'
 								}`}
 							>
 								{session.victory
 									? t('clan.common.victory')
 									: t('clan.common.defeat')}
 							</span>
-							{session.totalScore != null && (
+							{session.total_score != null && (
 								<Badge
 									className={montserrat.className}
 									variant={'secondary'}
 								>
 									{t('clan.sessions.scorePoints', {
-										score: session.totalScore,
+										score: session.total_score,
 									})}
 								</Badge>
 							)}
 							{hasActive && (
 								<Badge
-									className="text-sky-500"
+									className="text-primary"
 									variant="secondary"
 								>
 									<Icon
@@ -131,7 +138,7 @@ export function SessionRow({
 						<p
 							className={`${montserrat.className} font-semibold text-[11px] text-text-accent`}
 						>
-							{formatDate(session.startedAt)}
+							{formatDate(session.started_at)}
 						</p>
 					</div>
 				</button>
@@ -151,12 +158,14 @@ export function SessionRow({
 							</Modal.Header>
 							<Modal.Body className="font-semibold">
 								{t.rich('clan.sessions.deleteBody', {
-									name: session.mapName
-										? ` «${session.mapName}»`
+									name: session.map_name
+										? ` «${session.map_name}»`
 										: '',
-									date: formatDate(session.startedAt),
+									date: formatDate(session.started_at),
 									span: (chunks) => (
-										<span className="text-border">
+										<span
+											className={`${montserrat.className} text-primary text-sm`}
+										>
 											{chunks}
 										</span>
 									),
@@ -215,71 +224,94 @@ export function SessionRow({
 							<p className="font-semibold text-sm">
 								{t('clan.sessions.screenshots')}
 							</p>
-							{session.mapName && (
+							{session.map_name && (
 								<Badge variant="secondary">
 									<Icon
 										className="text-sm"
 										icon="lucide:map-pin"
 									/>
-									{session.mapName}
+									{session.map_name}
 								</Badge>
 							)}
 						</div>
 					</div>
 
-					{detail && detail.screenshots.length > 0 && (
-						<ScreenshotStatusList
-							isRetryPending={retryMutation.isPending}
-							onRetry={(screenshotId) =>
-								retryMutation.mutate(screenshotId)
-							}
-							screenshots={detail.screenshots}
-						/>
-					)}
-
-					{detail?.aiSummary && (
-						<SessionSummary summary={detail.aiSummary} />
-					)}
-
-					{detail && detail.attendance.length > 0 && (
+					{!detail ? (
+						<div className="flex flex-col gap-2">
+							{[...Array(2)].map((_, i) => (
+								<div
+									className="h-10 w-full animate-pulse rounded-lg bg-accent/50"
+									key={i}
+								/>
+							))}
+						</div>
+					) : (
 						<>
-							<div className="flex items-center justify-between">
-								<p className="font-semibold text-sm">
-									{t('clan.sessions.attendance')}
-								</p>
-								<span
-									className={`${montserrat.className} font-semibold text-text-accent text-xs`}
-								>
-									{t('clan.sessions.presentOf', {
-										present: detail.attendance.filter(
-											(a) => a.status === 'PRESENT'
-										).length,
-										total: detail.attendance.length,
-									})}
-								</span>
-							</div>
-							<div className="flex flex-wrap gap-2">
-								{[...detail.attendance]
-									.sort((a, b) => {
-										if (a.status === b.status) return 0
-										return a.status === 'PRESENT' ? -1 : 1
-									})
-									.map((a) => (
-										<Badge
-											className={
-												a.status === 'PRESENT'
-													? 'bg-green-500/20 text-green-600 dark:text-green-400'
-													: 'bg-red-500/20 text-red-600 dark:text-red-400'
-											}
-											key={a.id}
-											variant="secondary"
+							{detail.screenshots.length > 0 && (
+								<ScreenshotStatusList
+									isRetryPending={retryMutation.isPending}
+									onRetry={(screenshotId) =>
+										retryMutation.mutate(screenshotId)
+									}
+									screenshots={detail.screenshots}
+								/>
+							)}
+
+							{detail.ai_summary && (
+								<SessionSummary summary={detail.ai_summary} />
+							)}
+
+							{detail.attendance.length > 0 && (
+								<>
+									<div className="flex items-center justify-between">
+										<p className="font-semibold text-sm">
+											{t('clan.sessions.attendance')}
+										</p>
+										<span
+											className={`${montserrat.className} font-semibold text-text-accent text-xs`}
 										>
-											{a.name || a.user?.name || '—'}
-											{a.status === 'ABSENT' &&
-												t('clan.sessions.absent')}
-										</Badge>
-									))}
-							</div>
+											{t('clan.sessions.presentOf', {
+												present:
+													detail.attendance.filter(
+														(a) =>
+															a.status ===
+															'PRESENT'
+													).length,
+												total: detail.attendance.length,
+											})}
+										</span>
+									</div>
+									<div className="flex flex-wrap gap-2">
+										{[...detail.attendance]
+											.sort((a, b) => {
+												if (a.status === b.status)
+													return 0
+												return a.status === 'PRESENT'
+													? -1
+													: 1
+											})
+											.map((a) => (
+												<Badge
+													className={
+														a.status === 'PRESENT'
+															? 'bg-green-500/20 text-success'
+															: 'bg-red-500/20 text-destructive'
+													}
+													key={a.id}
+													variant="secondary"
+												>
+													{a.name ||
+														a.user?.name ||
+														'—'}
+													{a.status === 'ABSENT' &&
+														t(
+															'clan.sessions.absent'
+														)}
+												</Badge>
+											))}
+									</div>
+								</>
+							)}
 						</>
 					)}
 				</div>

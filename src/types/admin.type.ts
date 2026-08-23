@@ -45,8 +45,8 @@ export interface AdminSession {
 	id: number
 	ip: string
 	user_agent: string
-	created_at: string
-	last_active: string
+	last_used_at: string
+	revoked: boolean
 }
 
 export interface AdminUserListParams {
@@ -61,7 +61,7 @@ export interface AdminBanUser {
 }
 
 export interface AdminAssignPermissions {
-	permissionIds: number[]
+	permission_ids: number[]
 }
 
 export interface AdminBadge {
@@ -100,7 +100,7 @@ export interface AdminClan {
 	status: 'FROZEN' | 'ACTIVE'
 	is_public: boolean
 	recruiting: boolean
-	schedule: { brawlsPerWeek: number; brawlsMandatory: boolean } | null
+	schedule: { brawls_per_week: number; brawls_mandatory: boolean } | null
 	blocked: boolean
 	block_reason: string | null
 	blocked_at: string | null
@@ -121,18 +121,18 @@ export interface AdminClanUpdate {
 	is_public?: boolean
 	recruiting?: boolean
 	region?: string
-	schedule?: { brawlsPerWeek?: number; brawlsMandatory?: boolean }
+	schedule?: { brawls_per_week?: number; brawls_mandatory?: boolean }
 }
 
 export interface AdminClanMember {
 	id: number
-	clanId: string
+	clan_id: string
 	name: string
 	rank: string
-	joinTime: string | null
-	userId: number | null
+	join_time: string | null
+	user_id: number | null
 	user: { id: number; username: string; name: string } | null
-	syncedAt: string
+	synced_at: string
 }
 
 export interface AdminClanStage {
@@ -144,8 +144,8 @@ export interface AdminClanStage {
 	started_at: string
 	ended_at: string | null
 	stage_number: number | null
-	creatorId: number | null
-	clanId: string | null
+	creator_id: number | null
+	clan_id: string | null
 	_count: {
 		screenshots: number
 		attendance: number
@@ -164,19 +164,19 @@ export interface AdminClanStageUpdate {
 export interface AdminUserCustomization {
 	id?: number
 	layout?: string
-	bannerMode?: 'COLOR' | 'IMAGE' | 'NONE'
-	bannerType?: 'BACKGROUND' | 'HEADER'
-	bannerColor?: string
-	bannerImage?: string | null
-	cardBackground?: string
-	cardColor?: string
+	banner_mode?: 'COLOR' | 'IMAGE' | 'NONE'
+	banner_type?: 'BACKGROUND' | 'HEADER'
+	banner_color?: string
+	banner_image?: string | null
+	card_background?: string
+	card_color?: string
 }
 
 export interface AdminUserDetail extends AdminUser {
 	username_changed_at?: string
 	onboarded?: boolean
 	customization?: AdminUserCustomization | null
-	UserSettings?: {
+	user_settings?: {
 		banned: boolean
 		ban_reason: string | null
 		ban_expires_at: string | null

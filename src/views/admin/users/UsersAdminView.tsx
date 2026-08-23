@@ -37,7 +37,7 @@ export default function UsersAdminView() {
 		},
 	})
 
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -46,7 +46,7 @@ export default function UsersAdminView() {
 					{t('admin.users.title')}
 				</h1>
 				<span className="text-neutral-400 text-sm">
-					{data?.total ?? 0} {t('admin.users.total')}
+					{data?.total_count ?? 0} {t('admin.users.total')}
 				</span>
 			</div>
 

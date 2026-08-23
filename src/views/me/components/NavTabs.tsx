@@ -16,12 +16,12 @@ export default function NavTabs({
 }: NavTabsProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col rounded-lg bg-background px-4 py-3">
+		<div className="flex flex-col rounded-lg bg-card px-4 py-3">
 			{filterTabsByRoles(tabGroups, roles).map((group, gi) => (
 				<div key={gi}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (
-						<p className="mb-1 px-2 font-semibold text-[11px] text-neutral-500 uppercase tracking-wider">
+						<p className="mb-1 px-2 font-semibold text-[11px] text-muted-foreground uppercase tracking-wider">
 							{t(group.label)}
 						</p>
 					)}
@@ -49,7 +49,7 @@ export default function NavTabs({
 									{tab.href === '/me/notifications' &&
 										unreadCount != null &&
 										unreadCount > 0 && (
-											<span className="ml-auto rounded-full bg-sky-500 px-1.5 py-0.5 font-semibold text-white text-xs leading-none">
+											<span className="ml-auto rounded-full bg-primary px-1.5 py-0.5 font-semibold text-white text-xs leading-none">
 												{unreadCount > 99
 													? '99+'
 													: unreadCount}

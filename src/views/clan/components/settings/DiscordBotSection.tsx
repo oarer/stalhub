@@ -27,7 +27,7 @@ export function DiscordBotSection({
 }: DiscordBotSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
 			<div className="flex items-center gap-2 font-semibold text-lg">
 				<Icon className="text-xl" icon="lucide:bot" />
 				{t('clan.settings.botTitle')}
@@ -40,7 +40,7 @@ export function DiscordBotSection({
 							<span className="font-semibold text-sm">
 								{t('clan.settings.botCommandLabel')}
 							</span>
-							<code className="w-fit break-all rounded-lg bg-background p-2 font-mono text-sm">
+							<code className="w-fit break-all rounded-lg bg-card p-2 font-mono text-sm">
 								{linkToken.command}
 							</code>
 						</div>

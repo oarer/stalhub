@@ -131,11 +131,11 @@ export function Accordion({
 							>
 								{item.icon && (
 									<Icon
-										className="text-lg dark:text-neutral-100"
+										className="text-foreground text-lg"
 										icon={item.icon}
 									/>
 								)}
-								<span className="font-semibold dark:text-neutral-100">
+								<span className="font-semibold text-foreground">
 									{item.title}
 								</span>
 							</div>

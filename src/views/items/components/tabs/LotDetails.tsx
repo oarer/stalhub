@@ -170,8 +170,8 @@ export function ModuleAttributes({
 										'font-bold text-sm',
 										montserrat.className,
 										stat.sign === '+'
-											? 'text-green-400'
-											: 'text-red-400'
+											? 'text-success'
+											: 'text-destructive'
 									)}
 								>
 									{`${stat.sign}${stat.value.toFixed(3)}`}

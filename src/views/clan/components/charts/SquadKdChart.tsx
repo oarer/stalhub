@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { ChartCard } from './ChartCard'
@@ -8,12 +9,12 @@ import type { SquadAgg } from './chart.utils'
 import { squadBarOptions } from './chartOptions'
 
 interface SquadKdChartProps {
-	isDark: boolean
 	squadRows: SquadAgg[]
 }
 
-export function SquadKdChart({ isDark, squadRows }: SquadKdChartProps) {
+export function SquadKdChart({ squadRows }: SquadKdChartProps) {
 	const t = useTranslations()
+	const { resolvedTheme } = useTheme()
 	const data = useMemo(
 		() => ({
 			labels: squadRows.map((s) => s.name),
@@ -34,7 +35,7 @@ export function SquadKdChart({ isDark, squadRows }: SquadKdChartProps) {
 		}),
 		[squadRows, t]
 	)
-	const options = useMemo(() => squadBarOptions(isDark), [isDark])
+	const options = squadBarOptions()
 
 	return (
 		<ChartCard title={t('clan.charts.topSquadsKd')}>
@@ -43,7 +44,7 @@ export function SquadKdChart({ isDark, squadRows }: SquadKdChartProps) {
 					{t('clan.charts.noSquads')}
 				</div>
 			) : (
-				<Bar data={data} options={options} />
+				<Bar data={data} key={resolvedTheme ?? 'light'} options={options} />
 			)}
 		</ChartCard>
 	)

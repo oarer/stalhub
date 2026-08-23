@@ -2,7 +2,9 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import { cn } from '@/lib/cn'
 import type { ClanSquad } from '@/types/clan/clan.type'
 
 interface AssignLeaderModalProps {
@@ -28,53 +30,55 @@ export function AssignLeaderModal({
 				<Modal.Header>
 					<Modal.Title>
 						{t('clan.squads.leaderTitle', {
-							name: squad?.name ? `«${squad.name}»` : '',
+							name: squad?.name ? squad.name : '',
 						})}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					{squad && squad.members.length === 0 ? (
-						<p className="text-neutral-500 text-sm">
+						<p className="text-muted-foreground text-sm">
 							{t('clan.squads.noMembers')}
 						</p>
 					) : (
 						<div className="flex flex-col gap-2">
 							{squad?.members.map((m) => (
-								<button
-									className={`flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors ${
-										squad.leaderId === m.id
-											? 'border-amber-500/60 bg-amber-500/10'
-											: 'border-border-secondary hover:bg-accent'
-									}`}
+								<Button
+									className={cn(
+										'justify-between',
+										squad.leader_id === m.id &&
+											'border-amber-500/60 bg-amber-500/10'
+									)}
 									key={m.id}
 									onClick={() => onAssign(m.id)}
-									type="button"
+									variant={'secondary'}
 								>
-									<div className="flex size-8 items-center justify-center rounded-full bg-accent font-semibold text-sm">
-										{m.member.name.charAt(0)}
+									<div className="flex items-center gap-2">
+										<div className="flex size-8 items-center justify-center rounded-full bg-card font-semibold text-sm">
+											{m.member.name.charAt(0)}
+										</div>
+										<div className="flex flex-col text-left">
+											<p className="font-semibold text-sm">
+												{m.member.name}
+											</p>
+											<p className="font-semibold text-muted-foreground text-xs">
+												{m.member.rank}
+											</p>
+										</div>
 									</div>
-									<div className="flex-1">
-										<p className="font-medium text-sm">
-											{m.member.name}
-										</p>
-										<p className="text-neutral-500 text-xs">
-											{m.member.rank}
-										</p>
-									</div>
-									{squad.leaderId === m.id && (
+									{squad.leader_id === m.id && (
 										<Icon
 											className="text-amber-500"
 											icon="lucide:crown"
 										/>
 									)}
-								</button>
+								</Button>
 							))}
 						</div>
 					)}
 				</Modal.Body>
 				<Modal.Footer>
 					<Modal.Close>{t('clan.common.close')}</Modal.Close>
-					{squad?.leaderId != null && (
+					{squad?.leader_id != null && (
 						<Modal.Action
 							closeOnClick
 							disabled={isPending}

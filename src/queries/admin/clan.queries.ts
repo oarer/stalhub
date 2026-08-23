@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query'
+import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
 import { adminClanService } from '@/services/admin/clan.service'
 import type { AdminClanMember, AdminClanStage } from '@/types/admin.type'
@@ -16,6 +16,7 @@ class AdminClanQueries {
 		return queryOptions({
 			queryKey: ['admin', 'clans', { take, page, search }],
 			queryFn: () => adminClanService.list({ take, page, search }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}

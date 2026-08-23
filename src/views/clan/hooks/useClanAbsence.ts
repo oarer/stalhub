@@ -25,15 +25,15 @@ export function useClanAbsence(clanId: string, currentUserId?: number) {
 	const [stageSel, setStageSel] = useState<Record<string, number[]>>({})
 	const [note, setNote] = useState('')
 
-	const myAbsence = absences?.find((a) => a.userId === currentUserId)
+	const myAbsence = absences?.find((a) => a.user_id === currentUserId)
 
 	useEffect(() => {
 		const events = myAbsence?.events ?? []
 		const nextSelected: Record<string, boolean> = {}
 		const nextStages: Record<string, number[]> = {}
 		for (const e of events) {
-			nextSelected[e.eventType] = true
-			if (e.stages?.length) nextStages[e.eventType] = e.stages
+			nextSelected[e.event_type] = true
+			if (e.stages?.length) nextStages[e.event_type] = e.stages
 		}
 		setSelected(nextSelected)
 		setStageSel(nextStages)
@@ -49,7 +49,7 @@ export function useClanAbsence(clanId: string, currentUserId?: number) {
 		mutationFn: () => {
 			const events = EVENT_OPTIONS.filter((o) => selected[o.value]).map(
 				(o) => ({
-					eventType: o.value,
+					event_type: o.value,
 					...(stageSel[o.value]?.length
 						? { stages: stageSel[o.value] }
 						: {}),
@@ -84,12 +84,12 @@ export function useClanAbsence(clanId: string, currentUserId?: number) {
 	const memberName = useMemo(() => {
 		const map = new Map(
 			(members ?? [])
-				.filter((m) => m.userId != null)
-				.map((m) => [m.userId as number, m.name])
+				.filter((m) => m.user_id != null)
+				.map((m) => [m.user_id as number, m.name])
 		)
-		return (userId: number) =>
-			map.get(userId) ??
-			absences?.find((a) => a.userId === userId)?.user.name ??
+		return (user_id: number) =>
+			map.get(user_id) ??
+			absences?.find((a) => a.user_id === user_id)?.user.name ??
 			''
 	}, [members, absences])
 

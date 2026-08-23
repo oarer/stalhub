@@ -49,14 +49,14 @@ export default function MeArtsView() {
 					<h1 className="font-semibold text-xl">
 						{t('me.arts.title')}
 					</h1>
-					{arts?.total != null && (
+					{arts?.total_count != null && (
 						<span className="text-sm text-text-accent">
-							{arts.total}
+							{arts.total_count}
 						</span>
 					)}
 				</div>
 				<Link
-					className="inline-flex items-center gap-1.5 rounded-lg bg-sky-400 px-4 py-2 font-medium text-sm text-white shadow-md transition-all hover:brightness-120 dark:bg-sky-600/70"
+					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
 					href="/me/arts/new"
 				>
 					<Icon className="size-4" icon="lucide:plus" />
@@ -116,7 +116,7 @@ export default function MeArtsView() {
 				<div className="grid grid-cols-1 gap-2">
 					{filteredArts.map((art) => (
 						<div
-							className="flex items-center gap-3 rounded-lg bg-background px-3 py-2 ring-2 ring-border/30"
+							className="flex items-center gap-3 rounded-lg bg-card px-3 py-2 ring-2 ring-primary/30"
 							key={art.id}
 						>
 							{art.image_url ? (

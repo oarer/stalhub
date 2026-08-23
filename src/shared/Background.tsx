@@ -102,7 +102,7 @@ const BeamView = React.memo(function ({
 					left: beam.lineIndex * cellSize,
 					width: Math.max(2, lineWidth),
 					height: beam.length,
-					background: 'var(--beam-color)',
+					background: beamColor,
 					boxShadow,
 					borderRadius: 1,
 					willChange: 'transform, opacity',
@@ -143,10 +143,10 @@ export function GridBackgroundWithBeams({
 	cols = 10,
 	cellSize = 40,
 	lineWidth = 2,
-	beamColor = '#38bdf8',
+	beamColor = 'var(--primary)',
 	maxBeams = 3,
 	beamInterval = 500,
-	glowColor = 'rgba(56,189,248,0.3)',
+	glowColor = 'color-mix(in oklch, var(--primary) 50%, transparent)',
 	glowIntensity = 1,
 }: GridBackgroundWithBeamsProps) {
 	const [beams, setBeams] = useState<Beam[]>([])
@@ -202,8 +202,10 @@ export function GridBackgroundWithBeams({
 	}, [])
 
 	const gridStyle = useMemo<React.CSSProperties>(() => {
-		const vertical = `repeating-linear-gradient(90deg, var(--grid-line) 0 ${lineWidth}px, transparent ${lineWidth}px ${cellSize}px)`
-		const horizontal = `repeating-linear-gradient(0deg, var(--grid-line) 0 ${lineWidth}px, transparent ${lineWidth}px ${cellSize}px)`
+		const gridLineColor =
+			'color-mix(in oklch, var(--foreground) 2%, transparent)'
+		const vertical = `repeating-linear-gradient(90deg, ${gridLineColor} 0 ${lineWidth}px, transparent ${lineWidth}px ${cellSize}px)`
+		const horizontal = `repeating-linear-gradient(0deg, ${gridLineColor} 0 ${lineWidth}px, transparent ${lineWidth}px ${cellSize}px)`
 		return {
 			position: 'absolute',
 			inset: 0,

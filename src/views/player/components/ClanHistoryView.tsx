@@ -25,7 +25,7 @@ export default function ClanHistoryView({
 			<Card.Content className="space-y-2">
 				{history.map((h) => (
 					<div
-						className="flex items-center justify-between rounded-lg bg-background px-3 py-2"
+						className="flex items-center justify-between rounded-lg bg-card px-3 py-2"
 						key={h.id}
 					>
 						<div className="flex flex-col gap-0.5">

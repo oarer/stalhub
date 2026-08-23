@@ -63,7 +63,7 @@ export default function BuildsPublicView() {
 	)
 
 	const builds = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
@@ -72,7 +72,7 @@ export default function BuildsPublicView() {
 					{t('buildsPublic.title')}
 				</h1>
 				<span className="font-semibold text-sm text-text-accent">
-					{t('buildsPublic.total', { count: data?.total ?? 0 })}
+					{t('buildsPublic.total', { count: data?.total_count ?? 0 })}
 				</span>
 			</div>
 

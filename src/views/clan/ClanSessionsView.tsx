@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -25,7 +25,7 @@ function ClanSessionsContent({
 	profile: UserClanProfile
 }) {
 	const t = useTranslations()
-	const { data: sessions, isLoading } = useSuspenseQuery(
+	const { data: sessions, isLoading, isFetching } = useQuery(
 		clanQueries.getSessions(clanId)
 	)
 	const {
@@ -58,9 +58,17 @@ function ClanSessionsContent({
 	return (
 		<div className="flex flex-col gap-3">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-lg">
-					{t('clan.sessions.title')}
-				</h1>
+				<div className="flex items-center gap-2">
+					<h1 className="font-bold text-2xl">
+						{t('clan.sessions.title')}
+					</h1>
+					{isFetching && (
+						<Icon
+							className="animate-spin text-base text-text-accent"
+							icon="lucide:loader-circle"
+						/>
+					)}
+				</div>
 				<UploadScreenshotModal
 					detected={detected}
 					onDateChange={setUploadDate}
@@ -68,7 +76,9 @@ function ClanSessionsContent({
 					onOpenChange={handleUploadOpenChange}
 					onStageChange={setUploadStage}
 					onTypeChange={handleTypeChange}
-					onUpload={() => uploadFiles && uploadMutation.mutate(uploadFiles)}
+					onUpload={() =>
+						uploadFiles && uploadMutation.mutate(uploadFiles)
+					}
 					open={uploadOpen}
 					uploadDate={uploadDate}
 					uploadFiles={uploadFiles}
@@ -79,7 +89,7 @@ function ClanSessionsContent({
 			</div>
 
 			{!sessions || sessions.length === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:swords" />
 					<h3 className="font-semibold text-lg">
 						{t('clan.common.noGames')}

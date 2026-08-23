@@ -1,25 +1,25 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import type {
 	Absence,
+	AttendanceMonth,
 	AttendanceSummary,
+	BoostMode,
 	BotGuild,
 	BotLinkToken,
-	BoostMode,
+	BulkInviteResult,
 	ClanBoostOrdersResponse,
 	ClanInfo,
 	ClanInvite,
 	ClanMember,
 	ClanMemberNote,
 	ClanMemberNoteWithMember,
-	ClanMemberUser,
 	ClanSchedule,
 	ClanSettings,
 	ClanSquad,
 	ClanSquadMember,
 	ClanSquadRequest,
 	ClanStats,
-	ClanStatsSession,
-	BulkInviteResult,
+	ConsumableListingItem,
 	CreatedGuestInvite,
 	GoldDrop,
 	GoldDropStatus,
@@ -28,101 +28,14 @@ import type {
 	GrenadeBoxesResponse,
 	GrenadeStagesResponse,
 	ListingItem,
-	ConsumableListingItem,
 	MyClanProfile,
 	PublicClan,
 	SquadMap,
-	StageAttendance,
 	StageSession,
 	StageSessionDetail,
 	SyncResponse,
 	UserClanProfile,
 } from '@/types/clan/clan.type'
-
-function normalizeSession(s: Record<string, unknown>): StageSession {
-	return {
-		id: s.id as number,
-		externalId: (s.external_id as string) ?? '',
-		region: (s.region as string) ?? '',
-		mapName: (s.map_name as string) ?? '',
-		type: (s.type as StageSession['type']) ?? 'TOURNAMENT',
-		startedAt: s.started_at as string,
-		endedAt: (s.ended_at as string | null) ?? null,
-		creatorId: s.creatorId as number,
-		clanId: (s.clanId as string | null) ?? null,
-		_count: s._count as StageSession['_count'],
-		victory: (s.victory as StageSession['victory']) ?? {
-			wins: 0,
-			losses: 0,
-			unknown: 0,
-		},
-		totalScore:
-			(s.ai_summary as { totalScore?: number | null } | null | undefined)
-				?.totalScore ?? null,
-		createdAt: s.created_at as string,
-	}
-}
-
-function normalizeDetail(d: Record<string, unknown>): StageSessionDetail {
-	return {
-		...normalizeSession(d),
-		screenshots: ((d.screenshots as unknown[]) ?? []).map((ss) => ({
-			id: (ss as Record<string, unknown>).id as number,
-			aiStatus: (ss as Record<string, unknown>)
-				.ai_status as StageSessionDetail['screenshots'][number]['aiStatus'],
-			aiError: (ss as Record<string, unknown>).ai_error as string | null,
-			victory: (ss as Record<string, unknown>).victory as boolean | null,
-			createdAt: (ss as Record<string, unknown>).created_at as string,
-			filePath: (ss as Record<string, unknown>).file_path as string,
-		})),
-		attendance: ((d.attendance as unknown[]) ?? []).map((a) => {
-			const raw = a as Record<string, unknown>
-			const user = (raw.user as ClanMemberUser | null) ?? null
-			return {
-				id: raw.id as number,
-				name: (raw.name as string) ?? user?.name ?? '',
-				status: raw.status as StageAttendance['status'],
-				source: raw.source as StageAttendance['source'],
-				note: (raw.note as string | null) ?? null,
-				user,
-			}
-		}),
-		aiSummary: (d.ai_summary as StageSessionDetail['aiSummary']) ?? null,
-	}
-}
-
-function normalizeStats(d: unknown): ClanStats {
-	const raw = Array.isArray(d)
-		? (d as unknown[])
-		: (((d as Record<string, unknown> | null)?.sessions as unknown[]) ?? [])
-	const sessions = raw.map((s) => {
-		const sess = s as Record<string, unknown>
-		return {
-			id: sess.id as number,
-			mapName: (sess.map_name as string) ?? '',
-			type: (sess.type as ClanStatsSession['type']) ?? 'TOURNAMENT',
-			startedAt: sess.started_at as string,
-			screenshots: ((sess.screenshots as unknown[]) ?? []).map((shot) => {
-				const sh = shot as Record<string, unknown>
-				return {
-					id: sh.id as number,
-					victory: (sh.victory as boolean | null) ?? null,
-					players: ((sh.players as unknown[]) ?? []).map((p) => {
-						const pl = p as Record<string, unknown>
-						return {
-							name: (pl.name as string) ?? '',
-							kills: (pl.kills as number | null) ?? 0,
-							deaths: (pl.deaths as number | null) ?? 0,
-							assists: (pl.assists as number | null) ?? 0,
-							score: (pl.score as number | null) ?? 0,
-						}
-					}),
-				}
-			}),
-		}
-	})
-	return { sessions }
-}
 
 class ClanService {
 	async getMe(): Promise<UserClanProfile | null> {
@@ -140,7 +53,7 @@ class ClanService {
 	}
 
 	async switchClan(clanId: string): Promise<void> {
-		await apiClient.post('/api/v1/clan/switch', { clanId })
+		await apiClient.post('/api/v1/clan/switch', { clan_id: clanId })
 	}
 
 	async register(): Promise<ClanInfo> {
@@ -150,7 +63,7 @@ class ClanService {
 
 	async sync(body?: {
 		region?: string
-		clanId?: string
+		clan_id?: string
 	}): Promise<SyncResponse> {
 		const { data } = await apiClient.post<SyncResponse>(
 			'/api/v1/clan/sync',
@@ -172,24 +85,25 @@ class ClanService {
 	}
 
 	async getSessions(clanId?: string): Promise<StageSession[]> {
-		const { data } = await apiClient.get<Record<string, unknown>[]>(
+		const { data } = await apiClient.get<StageSession[]>(
 			'/api/v1/clan/analytics/sessions',
-			{ params: { clanId } }
+			{ params: { clan_id: clanId } }
 		)
-		return (data ?? []).map(normalizeSession)
+		return data ?? []
 	}
 
 	async getSession(id: number): Promise<StageSessionDetail> {
-		const { data } = await apiClient.get<Record<string, unknown>>(
+		const { data } = await apiClient.get<StageSessionDetail>(
 			`/api/v1/clan/analytics/sessions/${id}`
 		)
-		return normalizeDetail(data)
+		return data
 	}
 
 	async createSession(body: {
 		region: string
 		map_name: string
 		type?: string
+		stage_number?: number
 		started_at?: string
 	}): Promise<StageSession> {
 		const { data } = await apiClient.post<StageSession>(
@@ -210,11 +124,11 @@ class ClanService {
 	}
 
 	async getStats(clanId: string): Promise<ClanStats> {
-		const { data } = await apiClient.get<unknown>(
+		const { data } = await apiClient.get<ClanStats>(
 			'/api/v1/clan/analytics/stats',
-			{ params: { clanId } }
+			{ params: { clan_id: clanId } }
 		)
-		return normalizeStats(data)
+		return data
 	}
 
 	async getAttendanceSummary(
@@ -230,6 +144,14 @@ class ClanService {
 					...(from ? { from } : {}),
 				},
 			}
+		)
+		return data
+	}
+
+	async getAttendanceMonth(month: string): Promise<AttendanceMonth> {
+		const { data } = await apiClient.get<AttendanceMonth>(
+			'/api/v1/clan/analytics/attendance',
+			{ params: { month } }
 		)
 		return data
 	}
@@ -303,7 +225,7 @@ class ClanService {
 	): Promise<ClanSquad> {
 		const { data } = await apiClient.post<ClanSquad>(
 			`/api/v1/clan/squads/${squadId}/slots`,
-			{ memberId, slot }
+			{ member_id: memberId, slot }
 		)
 		return data
 	}
@@ -318,7 +240,7 @@ class ClanService {
 	): Promise<ClanSquad> {
 		const { data } = await apiClient.put<ClanSquad>(
 			`/api/v1/clan/squads/${squadId}/leader`,
-			{ memberId }
+			{ member_id: memberId }
 		)
 		return data
 	}
@@ -348,7 +270,7 @@ class ClanService {
 	): Promise<GoldDrop> {
 		const { data } = await apiClient.post<GoldDrop>(
 			`/api/v1/clan/gold/${dropId}/attendees`,
-			{ memberIds }
+			{ member_ids: memberIds }
 		)
 		return data
 	}
@@ -386,7 +308,7 @@ class ClanService {
 
 	async upsertAbsence(body: {
 		date: string
-		events: { eventType: string; stages?: number[] }[]
+		events: { event_type: string; stages?: number[] }[]
 		note?: string | null
 	}): Promise<Absence> {
 		const { data } = await apiClient.put<Absence>(
@@ -434,7 +356,7 @@ class ClanService {
 		const { data } = await apiClient.post<ClanInfo>('/api/v1/clan/freeze')
 		return data
 	}
-	
+
 	async discordLink(): Promise<BotLinkToken> {
 		const { data } = await apiClient.post<BotLinkToken>(
 			'/api/v1/clan/bot/link-token'
@@ -470,9 +392,7 @@ class ClanService {
 		return data
 	}
 
-	async createInvitesBulk(
-		nicknames: string[]
-	): Promise<BulkInviteResult[]> {
+	async createInvitesBulk(nicknames: string[]): Promise<BulkInviteResult[]> {
 		const { data } = await apiClient.post<BulkInviteResult[]>(
 			'/api/v1/clan/invites/bulk',
 			{ nicknames }
@@ -489,9 +409,10 @@ class ClanService {
 	}
 
 	async getAllNotes(): Promise<ClanMemberNoteWithMember[]> {
-		const { data } = await apiClient.get<ClanMemberNoteWithMember[]>(
-			'/api/v1/clan/notes'
-		)
+		const { data } =
+			await apiClient.get<ClanMemberNoteWithMember[]>(
+				'/api/v1/clan/notes'
+			)
 		return data ?? []
 	}
 
@@ -501,7 +422,7 @@ class ClanService {
 	): Promise<ClanMemberNote> {
 		const { data } = await apiClient.post<ClanMemberNote>(
 			'/api/v1/clan/notes',
-			{ memberId, content }
+			{ member_id: memberId, content }
 		)
 		return data
 	}
@@ -521,20 +442,16 @@ class ClanService {
 		await apiClient.delete(`/api/v1/clan/notes/${noteId}`)
 	}
 
-	async getGrenadeBoxes(
-		clanId: string,
-		date: string
-	): Promise<GrenadeBoxesResponse> {
+	async getGrenadeBoxes(clanId: string): Promise<GrenadeBoxesResponse> {
 		const { data } = await apiClient.get<GrenadeBoxesResponse>(
-			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
-			{ params: { date } }
+			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`
 		)
 		return data
 	}
 
 	async addGrenadeBox(
 		clanId: string,
-		entry: GrenadeBoxEntry & { date: string }
+		entry: GrenadeBoxEntry
 	): Promise<GrenadeBoxesResponse> {
 		const { data } = await apiClient.post<GrenadeBoxesResponse>(
 			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
@@ -545,12 +462,11 @@ class ClanService {
 
 	async removeGrenadeBox(
 		clanId: string,
-		date: string,
 		index: number
 	): Promise<GrenadeBoxesResponse> {
 		const { data } = await apiClient.delete<GrenadeBoxesResponse>(
 			`/api/v1/clan/analytics/grenades/clan/${clanId}/boxes`,
-			{ params: { date, index } }
+			{ params: { index } }
 		)
 		return data
 	}
@@ -585,21 +501,17 @@ class ClanService {
 		return data
 	}
 
-	async getBoostOrders(
-		date: string
-	): Promise<ClanBoostOrdersResponse> {
-		const { data } = await apiClient.get<ClanBoostOrdersResponse>(
-			`/api/v1/clan/boosts/${date}`
-		)
+	async getBoostOrders(): Promise<ClanBoostOrdersResponse> {
+		const { data } =
+			await apiClient.get<ClanBoostOrdersResponse>(`/api/v1/clan/boosts`)
 		return data
 	}
 
 	async addBoostOrder(body: {
-		playerId: number
-		itemId: string
-		itemName: string
+		player_id: number
+		item_id: string
+		item_name: string
 		count: number
-		date: string
 	}): Promise<ClanBoostOrdersResponse> {
 		const { data } = await apiClient.post<ClanBoostOrdersResponse>(
 			'/api/v1/clan/boosts',
@@ -608,12 +520,9 @@ class ClanService {
 		return data
 	}
 
-	async removeBoostOrder(
-		date: string,
-		index: number
-	): Promise<ClanBoostOrdersResponse> {
+	async removeBoostOrder(index: number): Promise<ClanBoostOrdersResponse> {
 		const { data } = await apiClient.delete<ClanBoostOrdersResponse>(
-			`/api/v1/clan/boosts/${date}/${index}`
+			`/api/v1/clan/boosts/${index}`
 		)
 		return data
 	}

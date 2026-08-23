@@ -1,5 +1,6 @@
 import {
 	infiniteQueryOptions,
+	keepPreviousData,
 	queryOptions,
 } from '@tanstack/react-query'
 
@@ -27,7 +28,7 @@ class AuctionQueries {
 			],
 			queryFn: () =>
 				auctionService.getLots({ id, limit, offset, additional, region }),
-			placeholderData: undefined,
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})
 	}
@@ -57,7 +58,7 @@ class AuctionQueries {
 					additional,
 					region,
 				}),
-			placeholderData: undefined,
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})
 	}

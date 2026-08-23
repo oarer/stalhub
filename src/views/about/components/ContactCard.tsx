@@ -25,7 +25,7 @@ export function ContactCard({ name, description, links }: AboutMember) {
 				<motion.div {...view}>
 					<Image
 						alt={name}
-						className="h-40 w-40 rounded-2xl bg-background object-cover shadow-2xl shadow-border/40 ring-2 ring-border/80 sm:h-52 sm:w-52 lg:h-56.5 lg:w-56.5"
+						className="h-40 w-40 rounded-2xl bg-card object-cover shadow-2xl shadow-border/40 ring-2 ring-primary/80 sm:h-52 sm:w-52 lg:h-56.5 lg:w-56.5"
 						height={226}
 						src={`/images/avatars/${name}.jpg`}
 						width={226}
@@ -42,7 +42,7 @@ export function ContactCard({ name, description, links }: AboutMember) {
 						{name}
 					</h2>
 					<h3
-						className={`${unbounded.className} font-bold text-border text-sm uppercase tracking-widest`}
+						className={`${unbounded.className} font-bold text-primary text-sm uppercase tracking-widest`}
 					>
 						{t(description)}
 					</h3>
@@ -66,7 +66,7 @@ export function ContactCard({ name, description, links }: AboutMember) {
 			<motion.div className="perspective-dramatic group" {...view}>
 				<Image
 					alt={`${name} quote`}
-					className="group-hover:transform-[translateZ(0)] max-h-65 w-full min-w-80 -rotate-y-2 rounded-xl bg-background p-2 shadow-2xl shadow-accent ring-2 ring-border-secondary transition-transform duration-500 md:min-w-lg"
+					className="group-hover:transform-[translateZ(0)] max-h-65 w-full min-w-80 -rotate-y-2 rounded-xl bg-card p-2 shadow-2xl shadow-accent ring-2 ring-muted transition-transform duration-500 md:min-w-lg"
 					height={512}
 					quality={100}
 					src={`/images/avatars/quote/${name}.png`}

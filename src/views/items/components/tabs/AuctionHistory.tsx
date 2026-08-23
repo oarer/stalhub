@@ -2,6 +2,7 @@
 
 import type { TooltipItem } from 'chart.js'
 import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import { Scatter } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
@@ -33,6 +34,7 @@ type HistoryPoint = BaseChartPoint & {
 
 export default function AuctionHistory({ data }: Props) {
 	const t = useTranslations()
+	const { resolvedTheme } = useTheme()
 	useModulesData()
 
 	const tooltipCallbacks = {
@@ -102,7 +104,7 @@ export default function AuctionHistory({ data }: Props) {
 				pointColorFn: (p) => getArtifactColor((p as HistoryPoint).qlt),
 			},
 		],
-		options.scales?.x?.ticks?.color === '#aaa'
+		resolvedTheme === 'dark'
 	)
 
 	return (

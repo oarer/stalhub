@@ -10,7 +10,7 @@ import { CLink } from '@/components/ui/Link'
 import { Modal } from '@/components/ui/Modal'
 
 const linkClass =
-	'href= relative text-border duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:hover:text-sky-400'
+	'href= relative text-primary duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full dark:hover:text-primary'
 
 export default function RelocationModal() {
 	const [modalOpen, setOpenModal] = useState(false)
@@ -39,7 +39,7 @@ export default function RelocationModal() {
 						<p className="font-semibold">
 							{t.rich('test.message', {
 								unavailable: (chunks) => (
-									<span className="text-red-400">
+									<span className="text-destructive">
 										{chunks}
 									</span>
 								),

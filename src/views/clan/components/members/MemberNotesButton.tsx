@@ -85,7 +85,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 				<Button
 					className={cn(
 						'relative cursor-pointer p-1 text-text-accent',
-						note && 'text-border!'
+						note && 'text-primary!'
 					)}
 					onClick={handleOpen}
 					variant={'secondary'}
@@ -102,7 +102,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						{note && !isEditing && (
-							<div className="rounded-lg border border-border-secondary bg-background p-3">
+							<div className="rounded-lg border border-primary bg-card p-3">
 								<p className="whitespace-pre-wrap font-semibold text-sm">
 									{note.content}
 								</p>
@@ -146,7 +146,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 						{(!note || isEditing) && (
 							<textarea
 								autoFocus
-								className="min-h-20 resize-none rounded-lg border-2 border-border-secondary bg-background px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-border/60"
+								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/60"
 								maxLength={512}
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t('clan.notes.placeholder')}

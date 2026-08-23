@@ -45,8 +45,8 @@ export default function UserProfileView({
 	)
 	const loadout = loadouts[0] ?? null
 
-	const bgVariant = user.customization?.cardBackground ?? 'NONE'
-	const bgColor = user.customization?.cardColor ?? '#000000'
+	const bgVariant = user.customization?.card_background ?? 'NONE'
+	const bgColor = user.customization?.card_color ?? '#000000'
 
 	const allItems = [...(weapons ?? []), ...(armorItems ?? [])]
 	const renderItem = (itemId: string | null) => (
@@ -71,7 +71,7 @@ export default function UserProfileView({
 							{t('clan.squads.loadoutTitle')}
 						</h2>
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t(
 										'clan.squads.loadoutFields.primaryWeapon'
@@ -79,31 +79,31 @@ export default function UserProfileView({
 								</span>
 								{renderItem(loadout.data.weapon_primary)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.secondaryWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('clan.squads.loadoutFields.pistol')}
 								</span>
 								{renderItem(loadout.data.weapon_pistol)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.bioArmor')}
 								</span>
 								{renderItem(loadout.data.bio_armor)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.fatBuild')}
 								</span>
@@ -121,7 +121,7 @@ export default function UserProfileView({
 										}
 										containers={containers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-border transition-colors hover:text-text-accent">
+										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-text-accent">
 											{
 												buildById.get(
 													String(
@@ -132,10 +132,12 @@ export default function UserProfileView({
 										</span>
 									</HoverBuildCard>
 								) : (
-									<span className="text-neutral-500">—</span>
+									<span className="text-muted-foreground">
+										—
+									</span>
 								)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-background p-3">
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
 								<span className="font-semibold text-sm text-text-accent">
 									{t('users.speedBuild')}
 								</span>
@@ -153,7 +155,7 @@ export default function UserProfileView({
 										}
 										containers={containers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-border transition-colors hover:text-text-accent">
+										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-text-accent">
 											{
 												buildById.get(
 													String(
@@ -164,7 +166,9 @@ export default function UserProfileView({
 										</span>
 									</HoverBuildCard>
 								) : (
-									<span className="text-neutral-500">—</span>
+									<span className="text-muted-foreground">
+										—
+									</span>
 								)}
 							</div>
 						</div>
@@ -179,7 +183,7 @@ export default function UserProfileView({
 						<div className="flex flex-col gap-2">
 							{user.clan_history.map((h) => (
 								<div
-									className="flex items-center justify-between rounded-lg bg-background p-3"
+									className="flex items-center justify-between rounded-lg bg-card p-3"
 									key={h.id}
 								>
 									<div className="flex flex-col gap-0.5">

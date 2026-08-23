@@ -60,7 +60,7 @@ export function UsernameField({
 				</p>
 			)}
 			{invalid && (
-				<p className="font-semibold text-red-400 text-xs">
+				<p className="font-semibold text-destructive text-xs">
 					{t('me.settings.usernameInvalid')}
 				</p>
 			)}

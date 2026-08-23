@@ -22,7 +22,7 @@ export default function SidebarHeader({
 	return (
 		<motion.div
 			animate={{ opacity: 1, y: 0 }}
-			className="flex items-center justify-between gap-2 border-border/30 border-b-2 pb-3"
+			className="flex items-center justify-between gap-2 border-primary/30 border-b-2 pb-3"
 			initial={{ opacity: 0, y: -10 }}
 		>
 			<Button

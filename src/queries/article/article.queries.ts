@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query'
+import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
 import { articleService } from '@/services/article/article.service'
 import type { Article, ArticleVersion } from '@/types/article.type'
@@ -9,6 +9,7 @@ class ArticleQueries {
 		return queryOptions<PaginatedResponse<Article>>({
 			queryKey: ['articles', { take, page }],
 			queryFn: () => articleService.list({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}
@@ -17,6 +18,7 @@ class ArticleQueries {
 		return queryOptions<PaginatedResponse<Article>>({
 			queryKey: ['articles', 'public', { take, page }],
 			queryFn: () => articleService.publicList({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})
 	}
@@ -26,6 +28,7 @@ class ArticleQueries {
 			queryKey: ['articles', 'approved', { take, page }],
 			queryFn: () =>
 				articleService.list({ take, page, status: 'APPROVED' }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})
 	}

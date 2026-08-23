@@ -57,7 +57,7 @@ export function ActionButtons({
 				</div>
 			</div>
 
-			<div className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
+			<div className="font-semibold text-muted-foreground text-xs">
 				<p>{t('cwMap.actions.undo')}</p>
 				<p>{t('cwMap.actions.save')}</p>
 			</div>

@@ -42,11 +42,11 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 	)
 	const [isPublic, setIsPublic] = useState(clan?.is_public ?? false)
 	const [recruiting, setRecruiting] = useState(clan?.recruiting ?? false)
-	const [brawlsPerWeek, setBrawlsPerWeek] = useState(
-		clan?.schedule?.brawlsPerWeek ?? 4
+	const [brawls_per_week, setBrawlsPerWeek] = useState(
+		clan?.schedule?.brawls_per_week ?? 4
 	)
-	const [brawlsMandatory, setBrawlsMandatory] = useState(
-		clan?.schedule?.brawlsMandatory ?? false
+	const [brawls_mandatory, setBrawlsMandatory] = useState(
+		clan?.schedule?.brawls_mandatory ?? false
 	)
 	const [blockReason, setBlockReason] = useState('')
 
@@ -66,8 +66,8 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 				is_public: isPublic,
 				recruiting,
 				schedule: {
-					brawlsPerWeek,
-					brawlsMandatory,
+					brawls_per_week,
+					brawls_mandatory,
 				},
 			}),
 		onSuccess: () => {
@@ -81,7 +81,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 		mutationFn: () => adminClanService.sync(clanId),
 		onSuccess: (res) => {
 			toast.success(
-				t('admin.clans.toast.synced', { count: res.memberCount })
+				t('admin.clans.toast.synced', { count: res.member_count })
 			)
 			invalidate()
 		},
@@ -226,7 +226,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 								<div className="flex items-center gap-8">
 									<Switch
 										checked={isPublic}
-										label={t('admin.clans.detail.isPublic')}
+										label={t('admin.clans.detail.is_public')}
 										onCheckedChange={setIsPublic}
 									/>
 									<Switch
@@ -241,7 +241,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 								<div className="flex items-center gap-8">
 									<div className="w-40">
 										<Input
-											label="admin.clans.detail.brawlsPerWeek"
+											label="admin.clans.detail.brawls_per_week"
 											max={7}
 											min={0}
 											onChange={(e) =>
@@ -250,13 +250,13 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 												)
 											}
 											type="number"
-											value={brawlsPerWeek}
+											value={brawls_per_week}
 										/>
 									</div>
 									<Switch
-										checked={brawlsMandatory}
+										checked={brawls_mandatory}
 										label={t(
-											'admin.clans.detail.brawlsMandatory'
+											'admin.clans.detail.brawls_mandatory'
 										)}
 										onCheckedChange={setBrawlsMandatory}
 									/>
@@ -272,7 +272,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 										</span>
 										<span>
 											{t(
-												'admin.clans.detail.levelPoints'
+												'admin.clans.detail.level_points'
 											)}
 											:{' '}
 											<span className="font-semibold text-neutral-200">
@@ -458,9 +458,9 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 										</Table.Cell>
 										<Table.Cell>{member.rank}</Table.Cell>
 										<Table.Cell>
-											{member.joinTime
+											{member.join_time
 												? new Date(
-														member.joinTime
+														member.join_time
 													).toLocaleDateString(
 														'ru-RU'
 													)

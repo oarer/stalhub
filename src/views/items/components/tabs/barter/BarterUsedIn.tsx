@@ -25,7 +25,7 @@ export function BarterUsedIn({ items, locale }: Props) {
 				<div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
 					{items.map((item) => (
 						<Link
-							className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
+							className="group flex flex-col items-center gap-3 rounded-xl border-2 border-primary p-2"
 							href={`/items${item.category}`}
 							key={item.item_id}
 						>

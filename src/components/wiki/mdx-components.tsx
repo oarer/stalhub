@@ -18,7 +18,11 @@ function slugify(text: string): string {
 		.replace(/\s+/g, '-')
 }
 
-function MdxCode({ children, className, ...props }: React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }) {
+function MdxCode({
+	children,
+	className,
+	...props
+}: React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }) {
 	const inPre = useContext(PreCodeContext)
 	const isInline = !className && !inPre
 
@@ -59,7 +63,7 @@ export function useMDXComponents(): MDXComponents {
 				typeof children === 'string' ? slugify(children) : undefined
 			return (
 				<h2
-					className="mt-10 mb-4 scroll-m-20 border-border-secondary border-b pb-2 font-semibold text-3xl tracking-tight first:mt-0"
+					className="mt-10 mb-4 scroll-m-20 border-primary border-b pb-2 font-semibold text-3xl tracking-tight first:mt-0"
 					id={id}
 					{...props}
 				>
@@ -140,10 +144,10 @@ export function useMDXComponents(): MDXComponents {
 		),
 		code: MdxCode,
 		pre: MdxPre,
-		hr: () => <hr className="my-8 border-border" />,
+		hr: () => <hr className="my-8 border-primary" />,
 		table: ({ children, ...props }) => (
 			<div
-				className="relative w-full overflow-x-auto rounded-lg border-2 border-border/50 bg-background/50 px-2 backdrop-blur-sm"
+				className="relative w-full overflow-x-auto rounded-lg border-2 border-primary/50 bg-card/50 px-2 backdrop-blur-sm"
 				data-slot="table-container"
 				{...props}
 			>
@@ -172,7 +176,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		tr: ({ children, ...props }) => (
 			<tr
-				className="border-border-secondary border-b transition-colors hover:bg-background/50 data-[state=selected]:bg-background"
+				className="border-primary border-b transition-colors hover:bg-card/50 data-[state=selected]:bg-card"
 				data-slot="table-row"
 				{...props}
 			>
@@ -181,7 +185,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		th: ({ children, ...props }) => (
 			<th
-				className="h-10 whitespace-nowrap border-border-secondary border-r px-2 text-left align-middle font-semibold last:border-r-0"
+				className="h-10 whitespace-nowrap border-primary border-r px-2 text-left align-middle font-semibold last:border-r-0"
 				data-slot="table-head"
 				{...props}
 			>
@@ -190,7 +194,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		td: ({ children, ...props }) => (
 			<td
-				className="whitespace-nowrap border-border-secondary border-r p-2 align-middle font-semibold last:border-r-0"
+				className="whitespace-nowrap border-primary border-r p-2 align-middle font-semibold last:border-r-0"
 				data-slot="table-cell"
 				{...props}
 			>

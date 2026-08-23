@@ -51,23 +51,23 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 	const isCopied = copyMode && isSelected
 
 	const borderColor = isCopied
-		? '#b8e6feB3'
+		? 'color-mix(in oklch, var(--primary) 50%, transparent)'
 		: isSelected
 			? colorHex !== InfoColor.DEFAULT
 				? `${colorHex}80`
-				: '#b8e6feB3'
+				: 'color-mix(in oklch, var(--primary) 50%, transparent)'
 			: !instanceId
-				? 'var(--border-secondary)'
+				? 'var(--muted)'
 				: copyMode
-					? 'var(--border-secondary)'
+					? 'var(--muted)'
 					: colorHex
 						? `${colorHex}4D`
-						: 'var(--border-secondary)'
+						: 'var(--muted)'
 
 	return (
 		<div
 			className={cn(
-				'flex w-full cursor-pointer items-center rounded-lg border-2 bg-background/25 px-2 py-1.5 backdrop-blur-sm transition-all duration-500 hover:bg-background'
+				'flex w-full cursor-pointer items-center rounded-lg border-2 bg-card/25 px-2 py-1.5 backdrop-blur-sm transition-all duration-500 hover:bg-card'
 			)}
 			onClick={() => {
 				if (copyMode) {

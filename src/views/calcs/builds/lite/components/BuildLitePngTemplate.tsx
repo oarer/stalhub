@@ -57,7 +57,8 @@ export const BuildLitePngTemplate = forwardRef<
 	},
 	ref
 ) {
-	const { displayNamesMap, hps, prime, sortedStats, stopping } = useBuildStats()
+	const { displayNamesMap, hps, prime, sortedStats, stopping } =
+		useBuildStats()
 	const { priceMap } = useBuildPrices()
 
 	const statGroups = useMemo(
@@ -123,7 +124,7 @@ export const BuildLitePngTemplate = forwardRef<
 	return (
 		<div className="w-7xl bg-background p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-border uppercase tracking-[3]`}
+				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3]`}
 			>
 				stalhub.dev
 			</h1>
@@ -136,30 +137,34 @@ export const BuildLitePngTemplate = forwardRef<
 				<div
 					className={`${montserrat.className} flex gap-3 text-right`}
 				>
-					<div className="rounded-lg bg-black/25 px-4 py-1">
+					<div className="rounded-lg bg-card px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.prime')}
 						</p>
-						<p className="font-bold text-border text-lg">{prime}</p>
+						<p className="font-bold text-lg text-primary">
+							{prime}
+						</p>
 					</div>
-					<div className="rounded-lg bg-black/25 px-4 py-1">
+					<div className="rounded-lg bg-card px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.regen')}
 						</p>
-						<p className="font-bold text-border text-lg">{hps}%</p>
+						<p className="font-bold text-lg text-primary">{hps}%</p>
 					</div>
-					<div className="rounded-lg bg-black/25 px-4 py-1">
+					<div className="rounded-lg bg-card px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.stopping')}
 						</p>
-						<p className="font-bold text-border text-lg">{stopping}%</p>
+						<p className="font-bold text-lg text-primary">
+							{stopping}%
+						</p>
 					</div>
 				</div>
 			</header>
 
 			<div className="grid grid-cols-[40%_1fr] gap-8">
 				<div className="space-y-5">
-					<section className="flex flex-col gap-4 rounded-lg bg-white/4 p-5 ring-2 ring-border/50">
+					<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
 						<h1
 							className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
 						>
@@ -195,7 +200,7 @@ export const BuildLitePngTemplate = forwardRef<
 
 									return (
 										<div
-											className="flex items-center gap-3 rounded-lg border border-border-secondary bg-background/40 px-2 py-1.5"
+											className="flex items-center gap-3 rounded-lg border border-primary/50 bg-card/40 px-2 py-1.5"
 											key={`${index}-${instanceId ?? 'empty'}`}
 										>
 											{item ? (
@@ -232,7 +237,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{art?.percent}%
 													</p>
 													<p
-														className={`${montserrat.className} ml-auto font-bold text-border text-sm`}
+														className={`${montserrat.className} ml-auto font-bold text-primary text-sm`}
 													>
 														{price?.source ===
 														'estimate'
@@ -291,12 +296,12 @@ export const BuildLitePngTemplate = forwardRef<
 							</p>
 						)}
 						{totalPrice > 0 && (
-							<div className="flex items-center justify-between rounded-lg bg-black/25 px-4 py-1">
+							<div className="flex items-center justify-between rounded-lg bg-card px-4 py-1">
 								<p className="font-semibold text-text-accent text-xs">
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`${montserrat.className} font-bold text-border text-lg`}
+									className={`${montserrat.className} font-bold text-lg text-primary`}
 								>
 									{formatArtPrice(totalPrice)}
 								</p>
@@ -304,7 +309,7 @@ export const BuildLitePngTemplate = forwardRef<
 						)}
 					</section>
 
-					<section className="flex flex-col gap-4 rounded-lg bg-white/4 p-5 ring-2 ring-border/50">
+					<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
 						<h1
 							className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
 						>
@@ -337,14 +342,14 @@ export const BuildLitePngTemplate = forwardRef<
 									</div>
 								</>
 							) : (
-								<p className="text-neutral-400 text-sm">
+								<p className="font-semibold text-neutral-400 text-sm">
 									{t('build.no_armor')}
 								</p>
 							)}
 						</div>
 					</section>
 					{boosts.length > 0 && (
-						<section className="flex flex-col gap-4 rounded-lg bg-white/4 p-5 ring-2 ring-border/50">
+						<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
 							<h1
 								className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
 							>
@@ -354,7 +359,7 @@ export const BuildLitePngTemplate = forwardRef<
 							<div className="grid grid-cols-6 gap-2">
 								{boosts.map(({ category, boostItem }) => (
 									<div
-										className="flex size-14 items-center justify-center rounded-lg bg-black/25"
+										className="flex size-14 items-center justify-center rounded-lg bg-card"
 										key={category}
 									>
 										<img
@@ -374,7 +379,7 @@ export const BuildLitePngTemplate = forwardRef<
 					)}
 				</div>
 
-				<section className="flex flex-col gap-4 rounded-lg bg-white/4 p-5 ring-2 ring-border/50">
+				<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
 					<h1
 						className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
 					>
@@ -391,7 +396,7 @@ export const BuildLitePngTemplate = forwardRef<
 									className="flex flex-col gap-1"
 									key={group.key}
 								>
-									<p className="border-border-secondary border-b pb-1 font-semibold text-neutral-500 text-xs uppercase tracking-wider">
+									<p className="border-primary border-b pb-1 font-semibold text-neutral-500 text-xs uppercase tracking-wider">
 										{t(
 											`build.stats.categories.${group.key}`
 										)}

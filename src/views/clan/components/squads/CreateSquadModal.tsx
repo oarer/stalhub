@@ -2,8 +2,10 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { cn } from '@/lib/cn'
 import type { SquadMap } from '@/types/clan/clan.type'
 import { SQUAD_MAPS } from './squads.const'
 
@@ -43,34 +45,34 @@ export function CreateSquadModal({
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						<Input
+							label={t('clan.squads.namePlaceholder')}
 							onChange={(e) => onNameChange(e.target.value)}
-							placeholder={t('clan.squads.namePlaceholder')}
 							value={name}
 						/>
 						<div className="flex flex-col gap-2">
-							<p className="font-medium text-neutral-500 text-sm">
+							<p className="font-semibold text-muted-foreground text-sm">
 								{t('clan.squads.map')}
 							</p>
-							<div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+							<div className="flex flex-col gap-2">
 								{SQUAD_MAPS.map((mapOpt) => (
-									<button
-										className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
-											map === mapOpt.value
-												? 'border-sky-500/60 bg-sky-500/10'
-												: 'border-border-secondary hover:bg-accent'
-										}`}
+									<Button
+										className={cn(
+											'gap-2',
+											map === mapOpt.value &&
+												'bg-primary/40'
+										)}
 										key={mapOpt.value}
 										onClick={() =>
 											onMapChange(mapOpt.value)
 										}
-										type="button"
+										variant={'secondary'}
 									>
 										<Icon
-											className="text-lg text-neutral-400"
+											className="text-lg text-muted-foreground"
 											icon={mapOpt.icon}
 										/>
 										{t(mapOpt.label)}
-									</button>
+									</Button>
 								))}
 							</div>
 						</div>

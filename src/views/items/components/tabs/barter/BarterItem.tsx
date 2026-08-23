@@ -17,7 +17,7 @@ export function BarterItem({ item, amount, locale }: Props) {
 
 	return (
 		<Link
-			className="group flex flex-col items-center gap-3 rounded-xl border-2 border-border-secondary p-2"
+			className="group flex flex-col items-center gap-3 rounded-xl border-2 border-primary p-2"
 			href={`/items${item.category}`}
 		>
 			<Image

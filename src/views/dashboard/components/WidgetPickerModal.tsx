@@ -82,7 +82,7 @@ export function WidgetPickerModal({
 											variant={'secondary'}
 										>
 											<Icon
-												className="text-border text-xl"
+												className="text-primary text-xl"
 												icon={widget.icon}
 											/>
 											<span className="font-semibold text-sm">

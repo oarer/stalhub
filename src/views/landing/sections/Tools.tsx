@@ -24,19 +24,19 @@ export default function Tools() {
 				<div className="flex flex-col gap-4">
 					<GradientText
 						className={`${unbounded.className} text-balance font-bold text-3xl tracking-tight md:text-5xl`}
-						colors={['#21c0ff', '#afe3ff']}
+						colors={['var(--primary)', '#afc7d4']}
 						yoyo={false}
 					>
 						{t('landing.tools.title')}
 					</GradientText>
 
-					<p className="text-center font-medium text-xl md:text-2xl dark:text-white/90">
+					<p className="text-center font-medium text-xl md:text-2xl dark:text-foreground/90">
 						{t('landing.tools.description')}
 					</p>
 				</div>
 			</motion.div>
 
-			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-border/30 md:grid-cols-2 lg:grid-cols-3">
+			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl bg-card ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
 				{tools.map((tool, index) => (
 					<motion.div
 						className="h-full"
@@ -48,26 +48,26 @@ export default function Tools() {
 					>
 						<Link
 							className={cn(
-								'flex h-full w-full flex-col justify-start gap-3 bg-background/80 p-10 text-left ring ring-border/20 duration-400 hover:brightness-125',
+								'flex h-full w-full flex-col justify-start gap-3 bg-card/80 p-10 text-left ring ring-primary/20 duration-400 hover:brightness-125',
 								index % 2 === 0 &&
-									'bg-[radial-gradient(105.38%_145.07%_at_41.4%_40.19%,#38bdf82b_0,#ff6aa900_65%)]'
+									'bg-[radial-gradient(105.38%_145.07%_at_41.4%_40.19%,color-mix(in_srgb,var(--primary)_17%,transparent)_0,transparent_65%)]'
 							)}
 							href={tool.link}
 						>
 							<div className="flex items-center gap-2">
-								<div className="rounded-lg bg-cyan-500/10 p-2">
+								<div className="rounded-lg bg-primary p-2">
 									<Icon
-										className="text-3xl text-border"
+										className="text-3xl text-primary-foreground"
 										icon={tool.icon}
 									/>
 								</div>
-								<p className="font-semibold text-neutral-800 text-xl dark:text-neutral-100">
+								<p className="font-semibold text-foreground text-xl">
 									{t(tool.title)}
 								</p>
 							</div>
 
 							<p
-								className={`${montserrat.className} font-semibold text-[13px] text-neutral-600 dark:text-neutral-400`}
+								className={`${montserrat.className} font-semibold text-[13px] text-muted-foreground`}
 							>
 								{t(tool.desc)}
 							</p>

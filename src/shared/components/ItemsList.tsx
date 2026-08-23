@@ -95,7 +95,7 @@ const Row = ({
 				>
 					<Icon
 						className={`text-xl ${
-							isFav ? 'text-yellow-400' : 'text-neutral-100'
+							isFav ? 'text-warning' : 'text-neutral-100'
 						}`}
 						icon="lucide:star"
 					/>

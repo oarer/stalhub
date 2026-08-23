@@ -1,5 +1,9 @@
-import type { LinkTab } from '@/components/ui/LinkTabs'
-import type { CardBackground, PublicUser, User } from '@/types/user.type'
+import type {
+	PublicUser,
+	UpdateUserSettingsDto,
+	User,
+} from '@/types/user.type'
+import type { LinkTab } from '@/views/me/components/LinkTabs'
 
 interface Tab {
 	title: string
@@ -35,20 +39,25 @@ export const tabGroups: TabGroup[] = [
 				icon: 'lucide:swords',
 			},
 			{
+				title: 'me.nav.attendance',
+				href: '/me/clan/attendance',
+				icon: 'lucide:calendar-check-2',
+			},
+			{
 				title: 'me.nav.stats',
 				href: '/me/clan/stats',
 				icon: 'lucide:bar-chart-3',
 			},
-		{
-			title: 'me.nav.grenades',
-			href: '/me/clan/grenades',
-			icon: 'lucide:bomb',
-		},
-		{
-			title: 'me.nav.orders',
-			href: '/me/clan/orders',
-			icon: 'lucide:clipboard-list',
-		},
+			{
+				title: 'me.nav.grenades',
+				href: '/me/clan/grenades',
+				icon: 'lucide:bomb',
+			},
+			{
+				title: 'me.nav.orders',
+				href: '/me/clan/orders',
+				icon: 'lucide:clipboard-list',
+			},
 			{
 				title: 'me.nav.squads',
 				href: '/me/clan/squads',
@@ -63,11 +72,6 @@ export const tabGroups: TabGroup[] = [
 				title: 'me.nav.invites',
 				href: '/me/clan/invites',
 				icon: 'lucide:ticket',
-			},
-			{
-				title: 'me.nav.absences',
-				href: '/me/clan/absences',
-				icon: 'lucide:calendar-x',
 			},
 			{
 				title: 'me.nav.settings',
@@ -159,12 +163,11 @@ export const getNavTabs = (
 
 export interface UserCardProps extends React.ComponentPropsWithoutRef<'div'> {
 	user: User | PublicUser
-	cardBackground: CardBackground
+	cardBackground: NonNullable<
+		User['customization']['card_background']
+	>
 	cardColor: string
-	onCardChange?: (data: {
-		cardBackground?: CardBackground
-		cardColor?: string
-	}) => void
+	onCardChange?: (data: UpdateUserSettingsDto) => void
 }
 export interface NavTabsProps {
 	pathname: string
@@ -177,8 +180,5 @@ export interface MeLayoutProps {
 	user: User
 	unreadCount: number | null | undefined
 	pathname: string
-	onCardChange: (data: {
-		cardBackground?: CardBackground
-		cardColor?: string
-	}) => void
+	onCardChange: (data: UpdateUserSettingsDto) => void
 }

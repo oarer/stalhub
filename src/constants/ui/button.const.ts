@@ -6,20 +6,20 @@ export const buttonVariants = cva(
 		variants: {
 			variant: {
 				primary:
-					'bg-sky-400 text-white dark:bg-sky-600/70 shadow-md hover:brightness-120 font-semibold',
+					'bg-primary text-primary-foreground shadow-md hover:brightness-110 font-semibold',
 				secondary:
-					'bg-white/60 text-neutral-900 dark:bg-neutral-800/50 dark:text-neutral-100 shadow-sm hover:brightness-120',
+					'bg-secondary text-secondary-foreground shadow-sm hover:brightness-110',
 				outline:
-					'ring-2 ring-border-secondary dark:ring-neutral-700 bg-transparent hover:bg-neutral-300 dark:hover:bg-neutral-800 bg-neutral-100 dark:bg-neutral-950',
+					'ring-2 ring-primary/40 bg-transparent hover:bg-muted',
 				bordered:
-					'border border-sky-400 dark:border-border/50 border-2 bg-sky-200 dark:bg-sky-900 text-sky-600 font-semibold hover:bg-sky-50 dark:hover:bg-sky-800 dark:text-sky-200',
-				ghost: 'bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100',
-				shadow: 'bg-white dark:bg-neutral-900 shadow-[0_10px_20px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_25px_-10px_rgba(0,0,0,0.3)] hover:-translate-y-0.5',
-				danger: 'ring-2 ring-red-400 text-red-600 font-semibold dark:text-red-200 shadow-sm hover:bg-red-200 dark:hover:bg-red-800/40 hover:shadow-md dark:bg-neutral-800/50 bg-white/60',
-				none: 'hover:text-neutral-900 dark:hover:text-neutral-400',
+					'border-2 border-primary bg-primary/15 text-primary font-semibold hover:bg-primary/25',
+				ghost: 'bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground',
+				shadow: 'bg-card text-card-foreground shadow-[0_10px_20px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_25px_-10px_rgba(0,0,0,0.3)] hover:-translate-y-0.5',
+				danger: 'ring-2 ring-destructive text-destructive font-semibold shadow-sm hover:bg-destructive/40 hover:shadow-md bg-card',
+				none: 'hover:text-foreground',
 			},
 			disabled: {
-				true: 'cursor-not-allowed text-accent bg-background dark:bg-background hover:bg-background dark:hover:bg-background brightness-80 hover:brightness-80',
+				true: 'cursor-not-allowed text-muted-foreground bg-muted hover:bg-muted hover:bg-muted brightness-80 hover:brightness-80',
 			},
 			size: {
 				sm: 'px-3 py-1.5 text-sm',

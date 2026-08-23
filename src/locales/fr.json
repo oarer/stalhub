@@ -1392,6 +1392,7 @@
         "previewTitle": "Aperçu des escouades",
         "title": "Escouades · {map}",
         "squadCount": "Escouades",
+        "membersCount": "Joueurs",
         "leader": "Leader",
         "absent": "Absence",
         "empty": "Vide"
@@ -1607,6 +1608,17 @@
       "membersCount": "Membres non liés : {count}",
       "selectAll": "Tout sélectionner",
       "selectedCount": "Sélectionnés : {count}"
+    },
+    "attendance": {
+      "title": "Présence",
+      "member": "Membre",
+      "empty": "Aucun événement analysé ce mois-ci",
+      "status": {
+        "PRESENT": "Présent",
+        "ABSENT": "Absent",
+        "EXCUSED": "Excusé",
+        "LATE": "En retard"
+      }
     }
   },
   "me": {
@@ -1629,7 +1641,8 @@
       "stars": "Favoris",
       "system": "Système",
       "notifications": "Notifications",
-      "invites": "Invitations"
+      "invites": "Invitations",
+      "attendance": "Présence"
     },
     "menu": "Menu",
     "home": {
@@ -1674,11 +1687,11 @@
       "default": "Normale",
       "nsfw": "NSFW",
       "image": "Image (lien)",
-      "imagePlaceholder": "Collez le lien de l'image",
+      "workPlaceholder": "Collez le lien de l'image",
       "upload": "Importer",
       "imageInvalidType": "Seuls PNG, JPG, WEBP et GIF sont pris en charge",
-      "imageTooLarge": "La taille maximale du fichier est de 10 Mo",
-      "imageUploaded": "Image importée",
+      "workTooLarge": "La taille maximale du fichier est de 10 Mo",
+      "workUploaded": "Image importée",
       "imageUploadError": "Erreur lors de l'importation de l'image",
       "tags": "Tags",
       "tagsPlaceholder": "Tags séparés par des virgules",
@@ -2045,7 +2058,13 @@
   "themes": {
     "system": "Système",
     "dark": "Sombre",
-    "light": "Claire"
+    "light": "Claire",
+    "add": "Ajouter",
+    "addCustom": "Ajouter un thème personnalisé",
+    "load": "Charger le thème",
+    "import": "Importer",
+    "hint": "Collez une URL de thème tweakcn.com ou du JSON. Le thème sera sauvegardé localement.",
+    "colorThemes": "Thèmes de couleur"
   },
   "clans": {
     "title": "Clans",

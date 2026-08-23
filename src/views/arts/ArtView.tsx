@@ -14,7 +14,7 @@ import { Divider } from '@/components/ui/Divider'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
-import { resolveImageUrl } from '@/lib/imageUrl'
+import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
@@ -85,23 +85,39 @@ export default function ArtView({ artId }: ArtViewProps) {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-				<div className="flex min-h-100 min-w-0 items-center justify-center overflow-hidden rounded-xl bg-background ring-2 ring-border/40">
+				<div className="flex min-h-100 min-w-0 items-center justify-center overflow-hidden rounded-xl bg-card ring-2 ring-primary/40">
 					{art.image_url ? (
-						<Image
-							alt={art.title}
-							className={cn(
-								'block h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full object-contain transition-all',
-								art.type === ArtType.NSFW &&
-									!revealed &&
-									'blur-xl',
-								art.type === ArtType.NSFW && 'cursor-pointer'
-							)}
-							height={1600}
-							onClick={() => setRevealed(true)}
-							src={resolveImageUrl(art.image_url) ?? ''}
-							unoptimized
-							width={1200}
-						/>
+						isVideoUrl(art.image_url) ? (
+							<video
+								className={cn(
+									'block max-h-[calc(100vh-9rem)] w-auto max-w-full transition-all',
+									art.type === ArtType.NSFW &&
+										!revealed &&
+										'blur-xl'
+								)}
+								controls
+								onClick={() => setRevealed(true)}
+								preload="metadata"
+								src={resolveImageUrl(art.image_url) ?? ''}
+							/>
+						) : (
+							<Image
+								alt={art.title}
+								className={cn(
+									'block h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full object-contain transition-all',
+									art.type === ArtType.NSFW &&
+										!revealed &&
+										'blur-xl',
+									art.type === ArtType.NSFW &&
+										'cursor-pointer'
+								)}
+								height={1600}
+								onClick={() => setRevealed(true)}
+								src={resolveImageUrl(art.image_url) ?? ''}
+								unoptimized
+								width={1200}
+							/>
+						)
 					) : (
 						<div className="flex aspect-square items-center justify-center">
 							<Icon
@@ -165,7 +181,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 						)}
 					</div>
 
-					<div className="flex flex-col gap-2 rounded-xl bg-background p-4 ring-2 ring-border/40">
+					<div className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-2 ring-primary/40">
 						<div className="flex items-center justify-between">
 							<span className="font-semibold text-sm text-text-accent">
 								{t('arts.author')}
@@ -233,7 +249,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 											art.author.social_links
 										).map(([network, url]) => (
 											<a
-												className="flex items-center gap-1.5 rounded-md bg-background px-2 py-1 font-semibold text-xs transition-colors duration-500 hover:bg-border/50"
+												className="flex items-center gap-1.5 rounded-md bg-card px-2 py-1 font-semibold text-xs transition-colors duration-500 hover:bg-border/50"
 												href={url}
 												key={network}
 												rel="noopener noreferrer"
@@ -257,7 +273,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-wrap gap-1.5">
 							{art.tags.map((tag) => (
 								<Link
-									className="rounded-md bg-border-secondary px-2 py-0.5 font-semibold text-text-accent text-xs transition-colors hover:text-border"
+									className="rounded-md bg-border-secondary px-2 py-0.5 font-semibold text-text-accent text-xs transition-colors hover:text-primary"
 									href={`/arts?search=${encodeURIComponent(tag)}`}
 									key={tag}
 								>
@@ -283,7 +299,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 			</div>
 
 			<div
-				className="flex scroll-mt-28 flex-col gap-4 border-border-secondary border-t pt-6"
+				className="flex scroll-mt-28 flex-col gap-4 border-primary border-t pt-6"
 				id="art-comments"
 			>
 				<ArtComments artId={artId} />

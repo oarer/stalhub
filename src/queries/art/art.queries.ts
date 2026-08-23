@@ -9,6 +9,7 @@ class ArtQueries {
 		return queryOptions<PaginatedResponse<Art>>({
 			queryKey: ['arts', { take, page }],
 			queryFn: () => artService.list({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}

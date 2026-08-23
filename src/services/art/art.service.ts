@@ -10,10 +10,8 @@ class ArtService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<Art> & { totalCount: number }
-		>('/api/v1/arts', { params: { take, page } })
-		return { ...data, total: data.totalCount ?? data.total }
+		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/arts', { params: { take, page } })
+		return data
 	}
 
 	async publicList({
@@ -27,9 +25,7 @@ class ArtService {
 		tags?: string[]
 		type?: ArtType
 	} = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<Art> & { totalCount: number }
-		>('/api/v1/arts/public', {
+		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/arts/public', {
 			params: {
 				take,
 				page,
@@ -37,7 +33,7 @@ class ArtService {
 				type,
 			},
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async get(id: string): Promise<Art> {
@@ -57,6 +53,27 @@ class ArtService {
 			'/api/v1/arts/upload',
 			formData,
 			{ headers: { 'Content-Type': 'multipart/form-data' } }
+		)
+		return data
+	}
+
+	async uploadMedia(
+		file: File,
+		onProgress?: (percent: number) => void
+	): Promise<{ image_url: string }> {
+		const formData = new FormData()
+		formData.append('file', file)
+		const { data } = await apiClient.post<{ image_url: string }>(
+			'/api/v1/arts/upload',
+			formData,
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				onUploadProgress: (e) => {
+					if (onProgress && e.total) {
+						onProgress(Math.round((e.loaded / e.total) * 100))
+					}
+				},
+			}
 		)
 		return data
 	}

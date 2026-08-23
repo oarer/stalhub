@@ -15,9 +15,9 @@ export const RANK_COLORS: Record<string, string> = {
 	SERGEANT:
 		'bg-green-500/20 ring-green-500/40 text-green-600 dark:text-green-400',
 	SOLDIER:
-		'bg-neutral-500/20 ring-neutral-500/40 text-neutral-600 dark:text-neutral-400',
-	COMMONER: 'bg-neutral-500/10 ring-neutral-500/40 text-neutral-500',
-	RECRUIT: 'bg-neutral-500/10 text-neutral-500',
+		'bg-neutral-500/20 ring-neutral-500/40 text-muted-foreground',
+	COMMONER: 'bg-neutral-500/10 ring-neutral-500/40 text-muted-foreground',
+	RECRUIT: 'bg-neutral-500/10 text-muted-foreground',
 }
 
 export const STAGE_TYPE_COLORS: Record<string, string> = {

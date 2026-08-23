@@ -35,6 +35,25 @@ type Column<
 	TValue extends CellData = CellData,
 > = CoreColumn<TableFeatures, TData, TValue>
 
+export type ColumnAlign = 'left' | 'center' | 'right'
+
+const alignClasses: Record<ColumnAlign, string> = {
+	left: 'text-left',
+	center: 'text-center',
+	right: 'text-right',
+}
+
+export function getColumnAlign<TData extends RowData>(
+	column: Column<TData>
+): ColumnAlign {
+	const meta = column.columnDef.meta as { align?: ColumnAlign } | undefined
+	return meta?.align ?? 'left'
+}
+
+export function alignClass(align: ColumnAlign): string {
+	return alignClasses[align]
+}
+
 function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
 	return (
 		<div
@@ -74,7 +93,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<'tfoot'>) {
 	return (
 		<tfoot
 			className={cn(
-				'border-border-secondary border-t bg-background/50 font-medium [&>tr]:last:border-b-0',
+				'border-primary/20 border-t bg-card/50 font-medium [&>tr]:last:border-b-0',
 				className
 			)}
 			data-slot="table-footer"
@@ -87,7 +106,7 @@ function TableRow({ className, ...props }: React.ComponentProps<'tr'>) {
 	return (
 		<tr
 			className={cn(
-				'border-border-secondary border-b transition-colors hover:bg-background/50 data-[state=selected]:bg-background',
+				'border-primary/20 border-b transition-colors hover:bg-card/50 data-[state=selected]:bg-card',
 				className
 			)}
 			data-slot="table-row"
@@ -100,7 +119,7 @@ function TableHead({ className, ...props }: React.ComponentProps<'th'>) {
 	return (
 		<th
 			className={cn(
-				'h-10 whitespace-nowrap border-border-secondary border-r px-2 text-left align-middle font-semibold last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'h-10 whitespace-nowrap border-primary/20 border-r px-2 text-left align-middle font-semibold last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-head"
@@ -113,7 +132,7 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
 	return (
 		<td
 			className={cn(
-				'whitespace-nowrap border-border-secondary border-r p-2 align-middle last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'whitespace-nowrap border-primary/20 border-r p-2 last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-cell"
@@ -137,11 +156,13 @@ function TableCaption({
 
 function SortableHeader<TData extends RowData>({
 	column,
+	align = 'left',
 	className,
 	children,
 	...props
 }: {
 	column: Column<TData>
+	align?: ColumnAlign
 	children?: React.ReactNode
 } & React.ComponentProps<'th'>) {
 	if (!column || !column.getCanSort()) return null
@@ -149,13 +170,19 @@ function SortableHeader<TData extends RowData>({
 	return (
 		<th
 			className={cn(
-				'cursor-pointer select-none border-border-secondary border-r p-2 transition-colors duration-500 last:border-r-0 hover:bg-accent',
+				'cursor-pointer select-none border-primary/20 border-r p-2 transition-colors duration-500 last:border-r-0 hover:bg-accent',
 				className
 			)}
 			onClick={column.getToggleSortingHandler()}
 			{...props}
 		>
-			<div className="flex items-center gap-1">
+			<div
+				className={cn(
+					'flex items-center gap-1',
+					align === 'center' && 'justify-center',
+					align === 'right' && 'justify-end'
+				)}
+			>
 				{children}
 				{{
 					asc: <Icon className="h-4 w-4" icon="lucide:arrow-up" />,

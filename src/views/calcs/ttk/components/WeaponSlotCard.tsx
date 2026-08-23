@@ -106,7 +106,7 @@ export function WeaponSlotCard({
 			>
 				<Card.Content className="flex min-w-0 gap-3">
 					{weapon && weaponIconUrl && (
-						<div className="flex h-21.5 w-21.5 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-background">
+						<div className="flex h-21.5 w-21.5 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-card">
 							<Image
 								alt={messageToString(weapon.name, locale)}
 								className="h-full w-full object-contain p-2"
@@ -162,7 +162,7 @@ export function WeaponSlotCard({
 						</div>
 
 						{weapon && CUSTOM_ROF_MAP[weapon.id] && (
-							<div className="flex items-center gap-1 rounded-lg p-1 ring-2 ring-border-secondary">
+							<div className="flex items-center gap-1 rounded-lg p-1 ring-2 ring-muted">
 								<Button
 									className={cn(
 										'w-full font-semibold text-sm',
@@ -198,7 +198,7 @@ export function WeaponSlotCard({
 
 						{weapon &&
 							(compatibleAmmo.length === 1 ? (
-								<div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-border/40 bg-background px-2 py-1.5 text-xs">
+								<div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-primary/40 bg-card px-2 py-1.5 text-xs">
 									<Icon
 										className="shrink-0 text-text-accent"
 										icon="lucide:zap"
@@ -259,7 +259,7 @@ export function WeaponSlotCard({
 									</Button>
 
 									<Input
-										className="w-20 shrink-0 rounded-lg border-border-secondary"
+										className="w-20 shrink-0 rounded-lg border-primary"
 										label="ui.input_sharpening"
 										max={15}
 										min={0}

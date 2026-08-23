@@ -58,10 +58,10 @@ function TabsList({ className, children, ...props }: TabsListProps) {
 	return (
 		<div
 			className={cn(
-				'bg-background/50',
+				'bg-card/50',
 				'items-center justify-center rounded-lg p-2',
 				'backdrop-blur-sm',
-				'ring-2 ring-border/30',
+				'ring-2 ring-primary/30',
 				'gap-2',
 				className
 			)}
@@ -94,18 +94,17 @@ function TabsTrigger({
 		<button
 			aria-selected={isActive}
 			className={cn(
-				'inline-flex items-center justify-center gap-3 rounded-md bg-background px-3 py-1.5 font-semibold text-sm transition-all md:text-[16px]',
+				'inline-flex items-center justify-center gap-3 rounded-md bg-card px-3 py-1.5 font-semibold text-sm transition-all md:text-[16px]',
 				'cursor-pointer select-none',
 
-				'text-neutral-600 dark:text-neutral-300',
+				'text-muted-foreground',
 
-				'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
-				'focus-visible:ring-offset-neutral-100 dark:focus-visible:ring-offset-neutral-900',
+				'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+				'focus-visible:ring-offset-background',
 
-				'hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50',
+				'hover:bg-muted/50',
 
-				'data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-950',
-				'data-[state=active]:text-neutral-950 dark:data-[state=active]:text-neutral-50',
+				'data-[state=active]:bg-primary/40 data-[state=active]:text-foreground',
 				'data-[state=active]:shadow-sm',
 
 				'disabled:pointer-events-none disabled:opacity-50',
@@ -144,7 +143,7 @@ function TabsContent({
 		<div
 			className={cn(
 				'mt-4 rounded-lg',
-				'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+				'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 				'focus-visible:ring-offset-background',
 				className
 			)}

@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query'
+import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
 import { adminUserService } from '@/services/admin/user.service'
 import type { AdminUserListParams } from '@/types/admin.type'
@@ -8,6 +8,7 @@ class AdminUserQueries {
 		return queryOptions({
 			queryKey: ['admin', 'users', { take, page, search }],
 			queryFn: () => adminUserService.list({ take, page, search }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}

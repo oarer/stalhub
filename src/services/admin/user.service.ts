@@ -66,7 +66,7 @@ class AdminUserService {
 
 	async assignRole(userId: number, roleId: number): Promise<void> {
 		await apiClient.post(`/api/v1/admin/users/${userId}/roles`, {
-			roleId,
+			role_id: roleId,
 		})
 	}
 
@@ -85,10 +85,10 @@ class AdminUserService {
 	async updateCustomization(
 		userId: number,
 		update: {
-			bannerMode?: 'COLOR' | 'IMAGE' | 'NONE'
-			bannerType?: 'BACKGROUND' | 'HEADER'
-			bannerColor?: string
-			bannerImage?: string | null
+			banner_mode?: 'COLOR' | 'IMAGE' | 'NONE'
+			banner_type?: 'BACKGROUND' | 'HEADER'
+			banner_color?: string
+			banner_image?: string | null
 		}
 	): Promise<void> {
 		await apiClient.patch(

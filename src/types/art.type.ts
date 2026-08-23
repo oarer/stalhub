@@ -43,7 +43,7 @@ export interface ArtComment {
 	id: number
 	content: string
 	author: ArtCommentAuthor
-	parentId: number | null
+	parent_id: number | null
 	replies?: ArtComment[]
 	created_at: string
 }
@@ -51,9 +51,10 @@ export interface ArtComment {
 export interface ArtCommentAuthor {
 	id: number
 	username: string
+	name: string
 }
 
 export interface ArtCommentCreate {
 	content: string
-	parentId?: number
+	parent_id?: number
 }

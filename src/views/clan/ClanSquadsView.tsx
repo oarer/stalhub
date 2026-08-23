@@ -24,7 +24,7 @@ export default function ClanSquadsView() {
 	const clanId = profile?.clan?.id
 	if (!clanId) return null
 
-	return <ClanSquadsContent clanId={clanId} currentUserId={profile?.userId} />
+	return <ClanSquadsContent clanId={clanId} currentUserId={profile?.user_id} />
 }
 
 function ClanSquadsContent({
@@ -96,7 +96,7 @@ function ClanSquadsContent({
 			</div>
 
 			<AssignMemberModal
-				members={mutations.unassignedMembers()}
+				members={mutations.unassignedMembers(modals.assignSquad?.map)}
 				onAssign={(memberId) => {
 					if (
 						modals.assignSquadId != null &&
@@ -104,7 +104,7 @@ function ClanSquadsContent({
 					) {
 						mutations.assignMutation.mutate({
 							squadId: modals.assignSquadId,
-							memberId,
+							member_id: memberId,
 							slot: modals.assignSlot,
 						})
 					}
@@ -125,7 +125,7 @@ function ClanSquadsContent({
 					if (modals.leaderSquadId != null) {
 						mutations.leaderMutation.mutate({
 							squadId: modals.leaderSquadId,
-							memberId,
+							member_id: memberId,
 						})
 					}
 				}}
@@ -136,7 +136,7 @@ function ClanSquadsContent({
 					if (modals.leaderSquadId != null) {
 						mutations.leaderMutation.mutate({
 							squadId: modals.leaderSquadId,
-							memberId: null,
+							member_id: null
 						})
 					}
 				}}
@@ -234,9 +234,9 @@ function ClanSquadsContent({
 					builds={data.myBuilds}
 					isPending={mutations.saveLoadoutMutation.isPending}
 					loadout={
-						modals.editingMember.userId != null
+						modals.editingMember.user_id != null
 							? (data.loadoutByUserId.get(
-									modals.editingMember.userId
+									modals.editingMember.user_id
 								) ?? null)
 							: null
 					}

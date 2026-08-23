@@ -92,7 +92,7 @@ function ClanStatsContent({ clanId }: { clanId: string }) {
 			</div>
 
 			{players.length === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:bar-chart-3" />
 					<h3 className="font-semibold text-lg">
 						{t('clan.stats.emptyTitle')}

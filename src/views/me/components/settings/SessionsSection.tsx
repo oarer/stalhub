@@ -43,8 +43,8 @@ export function SessionsSection({
 				{sessions?.map((session) => (
 					<div
 						className={cn(
-							'flex flex-col gap-2 rounded-lg bg-background p-4',
-							session.is_self && 'border-2 border-border/50'
+							'flex flex-col gap-2 rounded-lg bg-accent/50 p-4',
+							session.is_self && 'border-2 border-primary/50'
 						)}
 						key={session.id}
 					>
@@ -84,7 +84,7 @@ export function SessionsSection({
 							variant="danger"
 						>
 							<Icon
-								className="text-lg text-red-400"
+								className="text-destructive text-lg"
 								icon="lucide:x"
 							/>
 						</Button>

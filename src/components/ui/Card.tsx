@@ -12,7 +12,7 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-border/50 backdrop-blur-none md:backdrop-blur-md dark:bg-background md:dark:bg-background/20',
+				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 backdrop-blur-none md:bg-card/50 md:backdrop-blur-md',
 				className
 			)}
 			ref={ref}
@@ -31,7 +31,7 @@ const CardLink = forwardRef<HTMLAnchorElement, CardLinkProps>(
 	({ className, href, ...props }, ref) => (
 		<Link
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-white px-5 py-4 shadow-lg ring-2 ring-border/50 backdrop-blur-none md:backdrop-blur-md dark:bg-background md:dark:bg-background/20',
+				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 backdrop-blur-none md:bg-card/50 md:backdrop-blur-md',
 				className
 			)}
 			href={href}
@@ -68,10 +68,7 @@ CardTitle.displayName = 'UI.CardTitle'
 const CardDescription = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
-			className={cn(
-				'text-neutral-600 text-sm dark:text-neutral-300',
-				className
-			)}
+			className={cn('text-muted-foreground text-sm', className)}
 			ref={ref}
 			{...props}
 		/>
@@ -82,10 +79,7 @@ CardDescription.displayName = 'UI.CardDescription'
 const CardContent = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
-			className={cn(
-				'font-semibold text-neutral-800 dark:text-neutral-100',
-				className
-			)}
+			className={cn('font-semibold text-card-foreground', className)}
 			ref={ref}
 			{...props}
 		/>

@@ -101,8 +101,7 @@ export default function NotificationsAdminView() {
 						<div className="flex gap-2">
 							<Button
 								className={`gap-2 ${
-									mode === 'broadcast' &&
-									'dark:bg-border/20'
+									mode === 'broadcast' && 'dark:bg-border/20'
 								}`}
 								onClick={() => setMode('broadcast')}
 								variant={'secondary'}
@@ -112,8 +111,7 @@ export default function NotificationsAdminView() {
 							</Button>
 							<Button
 								className={`gap-2 ${
-									mode === 'user' &&
-									'dark:bg-border/20'
+									mode === 'user' && 'dark:bg-border/20'
 								}`}
 								onClick={() => setMode('user')}
 								variant={'secondary'}
@@ -134,7 +132,7 @@ export default function NotificationsAdminView() {
 									value={userSearch}
 								/>
 								{userSearch && !selectedUserId && (
-									<div className="flex flex-col gap-1 rounded-lg border border-border-secondary bg-background p-1">
+									<div className="flex flex-col gap-1 rounded-lg border border-primary bg-card p-1">
 										{users
 											.filter(
 												(u) =>
@@ -233,7 +231,7 @@ export default function NotificationsAdminView() {
 								{t('admin.notifications.contentLabel')}
 							</span>
 							<textarea
-								className="min-h-20 resize-none rounded-lg border-2 border-border-secondary bg-background px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-sky-400/50"
+								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/50"
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t(
 									'admin.notifications.contentPlaceholder'

@@ -19,7 +19,7 @@ export const EMPTY_LOADOUT: LoadoutData = {
 }
 
 export interface UserLoadout {
-	userId: number
+	user_id: number
 	data: LoadoutData
 	is_public: boolean
 	updated_at: string

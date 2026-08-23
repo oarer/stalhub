@@ -45,13 +45,13 @@ export function SquadLoadoutTable({
 
 	return (
 		<div className="mt-4">
-			<p className="mb-2 flex items-center gap-2 font-semibold text-neutral-400 text-sm">
+			<p className="mb-2 flex items-center gap-2 font-semibold text-muted-foreground text-sm">
 				<Icon className="text-base" icon="lucide:shirt" />
 				{t('clan.squads.loadoutTitle')}
 			</p>
 			<div className="overflow-x-auto">
 				<div
-					className="grid min-w-160 items-center gap-2 border-border-secondary border-b px-2 pb-1 font-semibold text-neutral-500 text-xs"
+					className="grid min-w-160 items-center gap-2 border-primary border-b px-2 pb-1 font-semibold text-muted-foreground text-xs"
 					style={{ gridTemplateColumns: GRID_TEMPLATE }}
 				>
 					{HEADERS.map((h) => (
@@ -61,15 +61,15 @@ export function SquadLoadoutTable({
 				</div>
 				{members.map(({ member }) => {
 					const loadout =
-						member.userId != null
-							? loadoutByUserId.get(member.userId)
+						member.user_id != null
+							? loadoutByUserId.get(member.user_id)
 							: null
 					const data = loadout?.data
 					const isSelf =
-						member.userId != null && member.userId === currentUserId
+						member.user_id != null && member.user_id === currentUserId
 					return (
 						<div
-							className="grid min-w-160 items-center gap-2 border-border-secondary border-b px-2 py-2 last:border-b-0"
+							className="grid min-w-160 items-center gap-2 border-primary border-b px-2 py-2 last:border-b-0"
 							key={member.id}
 							style={{ gridTemplateColumns: GRID_TEMPLATE }}
 						>

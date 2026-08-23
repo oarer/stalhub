@@ -41,7 +41,7 @@ export default function ArtsAdminView() {
 	})
 
 	const arts = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -51,7 +51,7 @@ export default function ArtsAdminView() {
 				</h1>
 				<div className="flex items-center gap-2">
 					<span className="text-neutral-400 text-sm">
-						{data?.total ?? 0} {t('admin.permissions.total')}
+						{data?.total_count ?? 0} {t('admin.permissions.total')}
 					</span>
 					<Button onClick={() => setIsCreateOpen(true)}>
 						<Icon icon="lucide:plus" />
@@ -133,7 +133,7 @@ export default function ArtsAdminView() {
 											'rounded-full px-2 py-0.5 font-semibold text-xs',
 											art.type === ArtType.NSFW
 												? 'bg-red-500/20 text-red-400'
-												: 'bg-border/20 text-border'
+												: 'bg-border/20 text-primary'
 										)}
 									>
 										{art.type}

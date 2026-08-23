@@ -4,18 +4,24 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import type { Regions } from '@/types/api.type'
 import type { PlayerResponse } from '@/types/player.type'
 import { allianceBackground } from '@/types/user.type'
 
-export function CharacterCard({ character }: { character: PlayerResponse }) {
+interface Props {
+	character: PlayerResponse
+	region: Regions
+}
+
+export function CharacterCard({ character, region }: Props) {
 	const t = useTranslations()
 
 	return (
 		<Link
-			className={`${allianceBackground[character.alliance] ?? 'bg-background'} flex items-center gap-3 rounded-lg p-3 transition-all hover:brightness-90`}
-			href={`/player/RU/${character.username}`}
+			className={`${allianceBackground[character.alliance] ?? 'bg-card'} flex items-center gap-3 rounded-lg p-3 transition-all hover:brightness-90`}
+			href={`/player/${region}/${character.username}`}
 		>
-			<div className="rounded-lg bg-accent p-1">
+			<div className="rounded-lg bg-card p-1">
 				{character.alliance ? (
 					<Image
 						alt={character.alliance}
@@ -34,7 +40,7 @@ export function CharacterCard({ character }: { character: PlayerResponse }) {
 				</h3>
 
 				{character.clan && (
-					<span className="font-bold text-text-accent text-xs">
+					<span className="font-bold text-muted-foreground text-xs">
 						{character.clan.info.name} ·{' '}
 						{t(`player.rank.${character.clan.member.rank}`)}
 					</span>

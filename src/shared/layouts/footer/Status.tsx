@@ -24,14 +24,14 @@ export const StatusWidget = () => {
 			? lastGoodProblemsRef.current
 			: currentProblems
 
-	let indicatorColor = 'bg-green-400'
+	let indicatorColor = 'bg-success'
 
 	if (isError || !data?.data) {
-		indicatorColor = 'bg-red-400'
+		indicatorColor = 'bg-destructive'
 	} else if (problemServices.some((s) => s.currentStatus === 'DEGRADED')) {
-		indicatorColor = 'bg-amber-400'
+		indicatorColor = 'bg-warning'
 	} else if (problemServices.length > 0) {
-		indicatorColor = 'bg-red-400'
+		indicatorColor = 'bg-destructive'
 	}
 
 	useEffect(() => {
@@ -77,11 +77,11 @@ export const StatusWidget = () => {
 
 			<div>
 				{isError || !data?.data ? (
-					<p className="text-red-400 text-sm">
+					<p className="text-destructive text-sm">
 						{t('status_widget.services_error')}
 					</p>
 				) : displayedProblems.length === 0 ? (
-					<p className="text-neutral-400 text-sm">
+					<p className="text-muted-foreground text-sm">
 						{t('status_widget.services_ok')}
 					</p>
 				) : (

@@ -1,3 +1,4 @@
+import type { Regions } from './api.type'
 import type { Article } from './article.type'
 import type { BuildApi } from './build-api.type'
 import type { ClanHistoryEntry, PublicClan } from './clan/clan.type'
@@ -28,12 +29,12 @@ export interface User {
 
 interface UserCustomization {
 	layout: string
-	bannerMode: BannerMode
-	bannerType: BannerType
-	bannerColor: string
-	bannerImage: string
-	cardBackground: CardBackground
-	cardColor: string
+	banner_mode: BannerMode
+	banner_type: BannerType
+	banner_color: string
+	banner_image: string | null
+	card_background: CardBackground
+	card_color: string
 	avatar: string | null
 }
 
@@ -85,6 +86,7 @@ interface ExboProvider {
 	id: string
 	login: string
 	username: string
+	region: Regions
 }
 
 export interface Session {
@@ -111,8 +113,7 @@ export interface Notification {
 
 export interface StarredItem {
 	id: number
-	type: 'build' | 'article'
-	item_id: string
+	type: 'build' | 'article' | 'art'
 	title: string
 	created_at: string
 }
@@ -133,21 +134,28 @@ export type PublicUser = Pick<
 
 export type PublicUserBuild = Pick<
 	BuildApi,
-	'id' | 'title' | 'tags' | 'created_at' | 'data' | 'price' | 'is_starred'
+	| 'id'
+	| 'title'
+	| 'tags'
+	| 'created_at'
+	| 'data'
+	| 'price'
+	| 'is_starred'
+	| 'stars_count'
 > & {
 	tags: string
 }
 
 export type PublicUserArticle = Pick<
 	Article,
-	'id' | 'type' | 'title' | 'image_url' | 'created_at' | 'stars'
+	'id' | 'type' | 'title' | 'image_url' | 'created_at' | 'stars_count'
 > & {
 	tags: string
 }
 
 export interface PaginatedResponse<T> {
 	data: T[]
-	total: number
+	total_count: number
 	page: number
 	take: number
 }
@@ -161,13 +169,13 @@ export interface UpdateUserSettingsDto {
 
 	layout?: Layout
 
-	bannerMode?: BannerMode
-	bannerType?: BannerType
-	bannerColor?: string
-	bannerImage?: string
+	banner_mode?: BannerMode
+	banner_type?: BannerType
+	banner_color?: string
+	banner_image?: string
 
-	cardBackground?: CardBackground
-	cardColor?: string
+	card_background?: CardBackground
+	card_color?: string
 
 	social_links?: Record<string, string>
 

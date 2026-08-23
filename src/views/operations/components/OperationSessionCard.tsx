@@ -72,7 +72,7 @@ export default function OperationSessionCard({
 					<div className="flex flex-wrap gap-1">
 						{session.participants.map((p) => (
 							<span
-								className="rounded-md bg-background px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+								className="rounded-md bg-card px-1.5 py-0.5 font-semibold text-text-accent text-xs"
 								key={p.username}
 							>
 								{p.username}

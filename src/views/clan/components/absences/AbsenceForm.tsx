@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { cn } from '@/lib/cn'
 import type { AbsenceEventType } from '@/types/clan/clan.type'
 import { EVENT_OPTIONS } from './absence.const'
 
@@ -44,7 +45,7 @@ export function AbsenceForm({
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 			<p className="font-semibold">{t('clan.absence.myAbsence')}</p>
 			<div className="flex flex-col gap-3">
 				<Input
@@ -56,31 +57,28 @@ export function AbsenceForm({
 				/>
 				<div className="flex flex-col gap-2">
 					{EVENT_OPTIONS.map((opt) => (
-						<div
-							className={`rounded-lg border p-3 transition-colors ${
-								selected[opt.value]
-									? 'border-sky-500/60 bg-sky-500/10'
-									: 'border-border-secondary'
-							}`}
+						<Button
+							className={cn(
+								'flex flex-col items-start justify-start gap-2 p-3',
+								selected[opt.value] && 'bg-primary/40'
+							)}
 							key={opt.value}
+							onClick={() => onToggleEvent(opt.value)}
+							variant={'secondary'}
 						>
-							<button
-								className="flex cursor-pointer items-center gap-2"
-								onClick={() => onToggleEvent(opt.value)}
-								type="button"
-							>
+							<div className="flex items-center gap-2">
 								<Icon
-									className={`text-lg ${selected[opt.value] ? 'text-sky-500' : 'text-neutral-400'}`}
+									className={`text-lg ${selected[opt.value] ? 'text-primary' : 'text-muted-foreground'}`}
 									icon={
 										selected[opt.value]
 											? 'lucide:check-square'
 											: 'lucide:square'
 									}
 								/>
-								<span className="font-medium text-sm">
+								<span className="font-semibold text-sm">
 									{t(opt.label)}
 								</span>
-							</button>
+							</div>
 							{selected[opt.value] && opt.maxStages > 0 && (
 								<div className="mt-2 flex flex-wrap gap-1.5 pl-6">
 									{Array.from(
@@ -91,30 +89,32 @@ export function AbsenceForm({
 											stageSel[opt.value] ?? []
 										).includes(stage)
 										return (
-											<button
-												className={`cursor-pointer rounded-full border px-3 py-1 text-xs transition-colors ${
-													active
-														? 'border-sky-500/60 bg-sky-500/15 text-sky-600 dark:text-sky-400'
-														: 'border-border-secondary text-neutral-500 hover:bg-accent'
-												}`}
+											<Button
+												className={cn(
+													montserrat.className,
+													'rounded-full px-3 py-1 font-semibold text-xs',
+													active &&
+														'bg-primary/20 text-primary'
+												)}
 												key={stage}
-												onClick={() =>
+												onClick={(e) => {
+													e.stopPropagation()
 													onToggleStage(
 														opt.value,
 														stage
 													)
-												}
-												type="button"
+												}}
+												variant={'secondary'}
 											>
 												{t('clan.absence.stage', {
 													stage,
 												})}
-											</button>
+											</Button>
 										)
 									})}
 								</div>
 							)}
-						</div>
+						</Button>
 					))}
 				</div>
 				<Input
@@ -128,7 +128,7 @@ export function AbsenceForm({
 						loading={isSaving}
 						onClick={onSave}
 					>
-						<Icon className="text-sm" icon="lucide:save" />
+						<Icon className="text-lg" icon="lucide:save" />
 						{t('clan.common.save')}
 					</Button>
 					{hasAbsence && (
@@ -138,7 +138,7 @@ export function AbsenceForm({
 							onClick={onRemove}
 							variant={'danger'}
 						>
-							<Icon className="text-sm" icon="lucide:trash-2" />
+							<Icon className="text-lg" icon="lucide:trash-2" />
 							{t('clan.common.delete')}
 						</Button>
 					)}

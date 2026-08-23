@@ -66,7 +66,7 @@ export default function NavMobile() {
 						{locales.map((loc) => (
 							<button
 								className={`flex w-full cursor-pointer items-center gap-3 rounded-lg px-2 py-1.5 transition-all duration-300 hover:opacity-70 active:opacity-50 ${
-									currentLocale === loc.code && 'text-border'
+									currentLocale === loc.code && 'text-primary'
 								}`}
 								key={loc.code}
 								onClick={() => handleLocaleChange(loc.code)}
@@ -133,7 +133,7 @@ export default function NavMobile() {
 						ref={menuRef}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
-						<div className="flex flex-col gap-4 rounded-xl bg-background p-6 shadow-lg ring-2 ring-border/50">
+						<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
 							<Link
 								className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
 								href="/"
@@ -153,7 +153,7 @@ export default function NavMobile() {
 							</Link>
 						</div>
 
-						<div className="flex flex-col gap-4 rounded-xl bg-background p-4 shadow-lg ring-2 ring-border/50">
+						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
 							<Accordion
 								className="flex flex-col gap-4"
 								disableEntranceAnimation
@@ -162,10 +162,10 @@ export default function NavMobile() {
 								size="sm"
 							/>
 						</div>
-						<div className="flex flex-col gap-4 rounded-xl bg-background p-4 shadow-lg ring-2 ring-border/50">
+						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
 							<ItemSearchModal
 								trigger={
-									<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-border/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
+									<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
 										<span className="flex items-center gap-3">
 											<Icon
 												className="text-xl"
@@ -190,7 +190,7 @@ export default function NavMobile() {
 								size="sm"
 							/>
 						</div>
-						<div className="flex flex-col gap-4 rounded-xl bg-background p-4 shadow-lg ring-2 ring-border/50">
+						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
 							{MobileLinks.map((link) => (
 								<Link
 									className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"

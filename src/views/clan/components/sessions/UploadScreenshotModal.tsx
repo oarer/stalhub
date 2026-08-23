@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
+import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import type { DetectedStage } from '@/constants/stageSchedule'
@@ -61,7 +62,7 @@ export function UploadScreenshotModal({
 									className="text-base"
 									icon="lucide:sparkles"
 								/>
-								<span>
+								<span className='font-semibold'>
 									{t.rich('clan.sessions.detected', {
 										label: t(`clan.stage.${detected.type}`),
 										stage: detected.stage,
@@ -78,24 +79,23 @@ export function UploadScreenshotModal({
 							</p>
 							<div className="grid grid-cols-2 gap-2">
 								{STAGE_TYPES.map((stageType, index) => (
-									<button
+									<Button
 										className={cn(
-											'flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors',
+											'gap-2 font-semibold',
 											index === STAGE_TYPES.length - 1 &&
 												'col-span-2',
-											uploadType === stageType.value
-												? 'border-accent bg-accent'
-												: 'border-border-secondary hover:bg-accent/10'
+											uploadType === stageType.value &&
+												'bg-primary/60'
 										)}
 										key={stageType.value}
 										onClick={() =>
 											onTypeChange(stageType.value)
 										}
-										type="button"
+										variant={'secondary'}
 									>
 										<Icon icon={stageType.icon} />
 										{t(stageType.label)}
-									</button>
+									</Button>
 								))}
 							</div>
 						</div>
@@ -108,18 +108,16 @@ export function UploadScreenshotModal({
 									{ length: stageCount },
 									(_, i) => i + 1
 								).map((n) => (
-									<button
-										className={`flex cursor-pointer items-center justify-center rounded-lg border-2 px-3 py-2 font-semibold text-sm transition-colors ${
-											uploadStage === n
-												? 'border-accent bg-accent'
-												: 'border-border-secondary hover:bg-accent/10'
+									<Button
+										className={`py-1 font-semibold text-lg ${
+											uploadStage === n && 'bg-primary/60'
 										}`}
 										key={n}
 										onClick={() => onStageChange(n)}
-										type="button"
+										variant={'secondary'}
 									>
 										{n}
-									</button>
+									</Button>
 								))}
 							</div>
 						</div>
@@ -134,7 +132,7 @@ export function UploadScreenshotModal({
 							<p className="font-semibold text-sm">
 								{t('clan.sessions.screenshotLabel')}
 							</p>
-							<label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-border-secondary border-dashed px-3 py-3 font-semibold text-sm transition-colors hover:bg-accent/10">
+							<label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-primary/50 border-dashed px-3 py-3 font-semibold text-sm transition-colors hover:bg-accent/10">
 								<Icon
 									className="text-lg"
 									icon="lucide:image-plus"

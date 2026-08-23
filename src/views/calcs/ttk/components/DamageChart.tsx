@@ -13,6 +13,7 @@ import {
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import React from 'react'
+import { getChartColors } from '@/lib/chart-theme'
 import { Line } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
 
@@ -100,7 +101,6 @@ const generatePointsVariableSteps = (
 
 export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 	const { resolvedTheme } = useTheme()
-	const isDark = resolvedTheme === 'dark'
 	const t = useTranslations()
 
 	const points = React.useMemo(
@@ -125,6 +125,8 @@ export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 		],
 	}
 
+	const colors = getChartColors()
+
 	const options: ChartOptions<'line'> = {
 		maintainAspectRatio: false,
 		responsive: true,
@@ -133,10 +135,10 @@ export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 			tooltip: {
 				mode: 'nearest',
 				intersect: false,
-				backgroundColor: isDark ? '#080808' : '#fff',
-				titleColor: isDark ? '#fbfbfe' : '#171717',
-				bodyColor: isDark ? '#d4d4d4' : '#525252',
-				borderColor: isDark ? '#3d4a52' : '#badbeb',
+				backgroundColor: colors.tooltip.background,
+				titleColor: colors.tooltip.titleColor,
+				bodyColor: colors.tooltip.bodyColor,
+				borderColor: colors.tooltip.borderColor,
 				borderWidth: 2,
 				padding: 12,
 				displayColors: false,
@@ -193,7 +195,7 @@ export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 				</h1>
 			</Card.Header>
 
-			<Line data={data} options={options} />
+			<Line data={data} key={resolvedTheme ?? 'light'} options={options} />
 		</Card.Root>
 	)
 }

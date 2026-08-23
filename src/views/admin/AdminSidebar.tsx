@@ -64,7 +64,7 @@ export default function AdminSidebar() {
 	const t = useTranslations()
 
 	return (
-		<div className="flex h-fit flex-col gap-2 rounded-lg bg-background px-4 py-3">
+		<div className="flex h-fit flex-col gap-2 rounded-lg bg-card px-4 py-3">
 			{tabs.map((tab) => (
 				<Link
 					className={cn(

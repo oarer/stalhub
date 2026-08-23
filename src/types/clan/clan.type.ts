@@ -9,33 +9,32 @@ export type AbsenceEventType =
 	| 'BRAWL'
 	| 'BASE_CAPTURE'
 	| 'GOLD_DROP'
-type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED'
+export type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED'
 type AttendanceSource = 'ai' | 'manual'
 
 export interface ClanSchedule {
-	brawlsPerWeek: number
-	brawlsMandatory: boolean
+	brawls_per_week: number
+	brawls_mandatory: boolean
 }
 
 export const TOURNAMENT_DAYS = 3
-
 
 export interface ClanInfo {
 	id: string
 	name: string
 	tag: string
 	level: number
-	levelPoints: number
+	level_points: number
 	alliance: string
 	description: string
 	leader: string
-	memberCount: number
+	member_count: number
 	region: string
 	status: ClanStatus
 	blocked: boolean
 	block_reason?: string
-	syncedAt: string
-	createdAt: string
+	synced_at: string
+	created_at: string
 	is_public?: boolean
 	recruiting?: boolean
 	schedule?: ClanSchedule | null
@@ -49,29 +48,29 @@ export interface ClanMemberUser {
 
 export interface ClanMember {
 	id: number
-	clanId: string
+	clan_id: string
 	name: string
 	rank: string
-	joinTime: string | null
-	userId: number | null
+	join_time: string | null
+	user_id: number | null
 	user: ClanMemberUser | null
-	syncedAt: string
+	synced_at: string
 }
 
 export interface UserClanProfile {
-	userId: number
-	clanId: string | null
+	user_id: number
+	clan_id: string | null
 	region: string
-	isActive: boolean
+	is_active: boolean
 	clan: ClanInfo | null
-	updatedAt: string
+	updated_at: string
 }
 
 export interface MyClanProfile {
-	userId: number
-	clanId: string
+	user_id: number
+	clan_id: string
 	region: string
-	isActive: boolean
+	is_active: boolean
 	clan: ClanInfo
 	updated_at: string
 }
@@ -80,7 +79,7 @@ export interface ClanInvite {
 	id: number
 	code: string
 	clan_id: string
-	userId: number
+	user_id: number
 	claimed_by: string | null
 	claimed_at: string | null
 	created_by: string
@@ -153,30 +152,31 @@ export interface BotGuild {
 
 export interface StageSession {
 	id: number
-	externalId: string
+	external_id: string
 	region: string
-	mapName: string
+	map_name: string
 	type: StageType
-	startedAt: string
-	endedAt: string | null
-	creatorId: number
-	clanId: string | null
+	stage_number?: number
+	started_at: string
+	ended_at: string | null
+	creator_id: number
+	clan_id: string | null
 	_count: {
 		screenshots: number
 		attendance: number
 	}
 	victory: boolean
-	totalScore: number | null
-	createdAt: string
+	total_score: number | null
+	created_at: string
 }
 
 export interface StageScreenshot {
 	id: number
-	aiStatus: 'pending' | 'processing' | 'done' | 'error'
-	aiError: string | null
+	ai_status: 'pending' | 'processing' | 'done' | 'error'
+	ai_error: string | null
 	victory: boolean | null
-	createdAt: string
-	filePath: string
+	created_at: string
+	file_path: string
 }
 
 export interface StageAttendance {
@@ -191,7 +191,7 @@ export interface StageAttendance {
 export interface StageSessionDetail extends StageSession {
 	screenshots: StageScreenshot[]
 	attendance: StageAttendance[]
-	aiSummary: StageSummary | null
+	ai_summary: StageSummary | null
 }
 
 interface StageSummaryPlayer {
@@ -202,22 +202,22 @@ interface StageSummaryPlayer {
 	assists: number
 	score: number
 	appearances: number
-	bestKills: number
+	best_kills: number
 }
 
 export interface StageSummary {
-	screenshotsAnalyzed: number
-	totalScore: number | null
-	opponentScore: number | null
+	screenshots_analyzed: number
+	total_score: number | null
+	opponent_score: number | null
 	teams: Array<{
 		name: string
 		score: number | null
-		isPlayerClan: boolean
+		is_player_clan: boolean
 	}>
-	screens: Array<{ screenshotId: number; score: number | null }>
+	screens: Array<{ screenshot_id: number; score: number | null }>
 	players: StageSummaryPlayer[]
 	victory: boolean
-	generatedAt: string
+	generated_at: string
 }
 
 interface ClanStatsPlayer {
@@ -236,9 +236,9 @@ interface ClanStatsScreenshot {
 
 export interface ClanStatsSession {
 	id: number
-	mapName: string
+	map_name: string
 	type: StageType
-	startedAt: string
+	started_at: string
 	screenshots: ClanStatsScreenshot[]
 }
 
@@ -257,9 +257,32 @@ export interface AttendanceSummary {
 	}[]
 }
 
+export interface AttendanceMonth {
+	month: string
+	days: Array<{
+		date: string
+		sessions: Array<{
+			id: number
+			type: StageType
+			stage_number: number | null
+		}>
+	}>
+	members: Array<{
+		name: string
+		days: Record<
+			string,
+			Array<{
+				session_id: number
+				status: AttendanceStatus
+				note: string | null
+			}>
+		>
+	}>
+}
+
 export interface SyncResponse {
-	clanId: string
-	memberCount: number
+	clan_id: string
+	member_count: number
 }
 
 export interface ClanHistoryEntry {
@@ -277,28 +300,28 @@ export interface ClanHistoryEntry {
 
 export interface ClanSquadMember {
 	id: number
-	squadId: number
+	squad_id: number
 	slot: number
-	memberId: number
+	member_id: number
 	member: ClanMember
 }
 
 export interface ClanSquadRequest {
 	id: number
-	squadId: number
-	memberId: number
+	squad_id: number
+	member_id: number
 	member: ClanMember
 	created_at: string
 }
 
 export interface ClanSquad {
 	id: number
-	clanId: string
+	clan_id: string
 	name: string
 	map: SquadMap
-	createdBy: number
+	created_by: number
 	members: ClanSquadMember[]
-	leaderId: number | null
+	leader_id: number | null
 	leader: ClanSquadMember | null
 	requests: ClanSquadRequest[]
 	created_at: string
@@ -307,14 +330,14 @@ export interface ClanSquad {
 
 interface GoldDropAttendee {
 	id: number
-	dropId: number
-	memberId: number
+	drop_id: number
+	member_id: number
 	member: ClanMember
 }
 
 export interface GoldDrop {
 	id: number
-	clanId: string
+	clan_id: string
 	date: string
 	status: GoldDropStatus
 	created_at: string
@@ -322,14 +345,14 @@ export interface GoldDrop {
 }
 
 interface AbsenceEvent {
-	eventType: AbsenceEventType
+	event_type: AbsenceEventType
 	stages?: number[]
 }
 
 export interface Absence {
 	id: number
-	clanId: string
-	userId: number
+	clan_id: string
+	user_id: number
 	date: string
 	events: AbsenceEvent[]
 	note: string | null
@@ -367,8 +390,8 @@ export interface GrenadeAllTimeResponse {
 
 export interface ClanMemberNote {
 	id: number
-	memberId: number
-	authorId: number
+	member_id: number
+	author_id: number
 	content: string
 	created_at: Date
 	updated_at: Date
@@ -402,11 +425,11 @@ export interface ConsumableListingItem extends ListingItem {
 
 export interface ClanBoostOrder {
 	id: number
-	clanId: string
+	clan_id: string
 	date: string
-	playerId: number
-	itemId: string
-	itemName: string
+	player_id: number
+	item_id: string
+	item_name: string
 	count: number
 	player: { id: number; name: string }
 	created_at: string

@@ -21,7 +21,7 @@ export function EditorPane({
 	return (
 		<div
 			className={cn(
-				'my-2 ml-2 min-h-0 flex-1 rounded-lg border-2 border-border/20 bg-background',
+				'my-2 ml-2 min-h-0 flex-1 rounded-lg border-2 border-primary/20 bg-card',
 				mobileTab !== 'write' && 'hidden md:flex md:flex-col'
 			)}
 		>

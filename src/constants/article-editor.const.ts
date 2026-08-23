@@ -195,26 +195,26 @@ export const MDX_COMPONENTS = [
 	{
 		type: 'info',
 		icon: 'lucide:info',
-		color: 'border-blue-500/30 hover:bg-blue-500/10',
+		color: 'border-info/30 hover:bg-info/10',
 	},
 	{
 		type: 'warning',
 		icon: 'lucide:alert-triangle',
-		color: 'border-yellow-500/30 hover:bg-yellow-500/10',
+		color: 'border-warning/30 hover:bg-warning/10',
 	},
 	{
 		type: 'tip',
 		icon: 'lucide:lightbulb',
-		color: 'border-green-500/30 hover:bg-green-500/10',
+		color: 'border-success/30 hover:bg-success/10',
 	},
 	{
 		type: 'danger',
 		icon: 'lucide:alert-circle',
-		color: 'border-red-500/30 hover:bg-red-500/10',
+		color: 'border-destructive/30 hover:bg-destructive/10',
 	},
 	{
 		type: 'success',
 		icon: 'lucide:check-circle',
-		color: 'border-green-500/30 hover:bg-green-500/10',
+		color: 'border-success/30 hover:bg-success/10',
 	},
 ] as const

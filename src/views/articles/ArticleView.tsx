@@ -64,9 +64,9 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<header className="flex flex-col gap-4 border-border-secondary border-b pb-6">
+			<header className="flex flex-col gap-4 border-primary border-b pb-6">
 				<Link
-					className="font-semibold text-sm text-text-accent transition-colors hover:text-border"
+					className="font-semibold text-sm text-text-accent transition-colors hover:text-primary"
 					href="/articles"
 				>
 					{t('articles.allArticles')}
@@ -136,14 +136,14 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 								}
 								icon="lucide:star"
 							/>
-							<span>{article.stars}</span>
+							<span>{article.stars_count}</span>
 						</Button>
 					)}
 
-					{!user && article.stars > 0 && (
+					{!user && article.stars_count > 0 && (
 						<div className="flex items-center gap-1 text-text-accent">
 							<Icon icon="lucide:star" />
-							<span>{article.stars}</span>
+							<span>{article.stars_count}</span>
 						</div>
 					)}
 				</div>
@@ -192,7 +192,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 				)}
 			</div>
 
-			<div className="border-border-secondary border-t pt-6">
+			<div className="border-primary border-t pt-6">
 				<ArticleComments articleId={articleId} />
 			</div>
 		</section>

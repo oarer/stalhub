@@ -96,13 +96,13 @@ export function useClanSquadMutations({
 	const assignMutation = useMutation({
 		mutationFn: ({
 			squadId,
-			memberId,
+			member_id,
 			slot,
 		}: {
 			squadId: number
-			memberId: number
+			member_id: number
 			slot: number
-		}) => clanService.assignSquadMember(squadId, memberId, slot),
+		}) => clanService.assignSquadMember(squadId, member_id, slot),
 		onSuccess: () => {
 			setAssignSquadId(null)
 			setAssignSlot(null)
@@ -119,11 +119,11 @@ export function useClanSquadMutations({
 	const leaderMutation = useMutation({
 		mutationFn: ({
 			squadId,
-			memberId,
+			member_id,
 		}: {
 			squadId: number
-			memberId: number | null
-		}) => clanService.setSquadLeader(squadId, memberId),
+			member_id: number | null
+		}) => clanService.setSquadLeader(squadId, member_id),
 		onSuccess: () => {
 			setLeaderSquadId(null)
 			invalidate()
@@ -159,9 +159,11 @@ export function useClanSquadMutations({
 		},
 	})
 
-	const unassignedMembers = () => {
+	const unassignedMembers = (map?: SquadMap) => {
 		const assignedIds = new Set(
-			squads.flatMap((s) => s.members.map((m) => m.memberId))
+			squads
+				.filter((s) => !map || s.map === map)
+				.flatMap((s) => s.members.map((m) => m.member_id))
 		)
 		return members.filter((m) => !assignedIds.has(m.id))
 	}
@@ -180,13 +182,13 @@ export function useClanSquadMutations({
 			if (occupant) {
 				await assignMutation.mutateAsync({
 					squadId: source.squadId,
-					memberId: occupant.memberId,
+					member_id: occupant.member_id,
 					slot: source.slot,
 				})
 			}
 			await assignMutation.mutateAsync({
 				squadId: target.squadId,
-				memberId: source.memberId,
+				member_id: source.memberId,
 				slot: target.slot,
 			})
 		} catch {

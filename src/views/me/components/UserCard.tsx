@@ -19,7 +19,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 		<div
 			{...props}
 			className={cn(
-				'relative flex flex-col gap-2 overflow-hidden rounded-lg bg-background px-4 py-6',
+				'relative flex flex-col gap-2 overflow-hidden rounded-lg bg-card px-4 py-6',
 				className
 			)}
 			ref={ref}
@@ -73,12 +73,12 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 
 				<div className="flex flex-col gap-2">
 					{user.badges.length > 0 && (
-						<div className="flex w-fit items-center gap-2 rounded-md bg-background/50 p-1 backdrop-blur-sm">
+						<div className="flex w-fit items-center gap-2 rounded-md bg-card/50 p-1 backdrop-blur-sm">
 							{user.badges.map((badge: UserBadge) => (
 								<Tooltip.Root key={badge.id}>
 									<Tooltip.Trigger asChild>
 										<button
-											className="flex size-6 items-center justify-center rounded-sm bg-sky-400"
+											className="flex size-6 items-center justify-center rounded-sm bg-primary"
 											style={{ background: badge.color }}
 										>
 											{badge.icon ? (

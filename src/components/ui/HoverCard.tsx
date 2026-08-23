@@ -120,7 +120,10 @@ const HoverCardTrigger = forwardRef<HTMLDivElement, TriggerProps>(
 		const Comp = asChild ? Slot : 'div'
 		return (
 			<Comp
-				className={cn(!asChild && 'inline-block cursor-pointer', className)}
+				className={cn(
+					!asChild && 'inline-block cursor-pointer',
+					className
+				)}
 				data-slot="hover-card-trigger"
 				ref={ref}
 				{...props}
@@ -252,7 +255,7 @@ const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 			className: cn(
 				'absolute z-50',
 				alignClass,
-				'w-64 rounded-lg border-2 border-border/60 bg-background p-4 shadow-md',
+				'w-64 rounded-lg border-2 border-primary/60 bg-card p-4 shadow-md',
 				className
 			),
 			id: `hover-card-content-${id}`,

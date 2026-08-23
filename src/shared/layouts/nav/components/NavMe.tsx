@@ -16,9 +16,9 @@ import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
 
 const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
-	0: { icon: 'lucide:info', color: 'text-sky-400' },
-	1: { icon: 'lucide:alert-triangle', color: 'text-yellow-400' },
-	2: { icon: 'lucide:alert-circle', color: 'text-red-400' },
+	0: { icon: 'lucide:info', color: 'text-info' },
+	1: { icon: 'lucide:alert-triangle', color: 'text-warning' },
+	2: { icon: 'lucide:alert-circle', color: 'text-destructive' },
 }
 
 export default function NavMe() {
@@ -61,7 +61,7 @@ export default function NavMe() {
 	return user ? (
 		<div className="relative flex items-center gap-2" ref={menuRef}>
 			<button
-				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-neutral-300/60 hover:opacity-100 active:opacity-50 hover:dark:bg-neutral-700/30"
+				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
 				onClick={() => setOpen(!open)}
 			>
 				<div
@@ -71,7 +71,7 @@ export default function NavMe() {
 				>
 					<Icon className="text-2xl" icon="lucide:bell" />
 					{unreadCount != null && unreadCount > 0 && (
-						<span className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-sky-500 font-bold text-[10px] text-white leading-none">
+						<span className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary font-bold text-[10px] text-primary-foreground leading-none">
 							{unreadCount > 99 ? '99+' : unreadCount}
 						</span>
 					)}
@@ -89,17 +89,17 @@ export default function NavMe() {
 				{open && (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 border-border/30 bg-background/95 shadow-lg backdrop-blur-lg"
+						className="absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 border-primary/40 bg-card/95 shadow-lg backdrop-blur-lg"
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
-						<div className="flex items-center justify-between border-border-secondary border-b px-4 py-3">
+						<div className="flex items-center justify-between border-primary/40 border-b px-4 py-3">
 							<span className="font-semibold text-sm">
 								{t('me.nav.notifications')}
 							</span>
 							<Link
-								className="font-bold text-border/90 text-xs hover:underline"
+								className="font-bold text-primary/90 text-xs hover:underline"
 								href="/me/notifications"
 								onClick={() => setOpen(false)}
 							>
@@ -109,7 +109,7 @@ export default function NavMe() {
 
 						<div className="max-h-80 overflow-y-auto">
 							{notifications.length === 0 ? (
-								<p className="px-4 py-6 text-center font-semibold text-sm text-text-accent">
+								<p className="px-4 py-6 text-center font-semibold text-muted-foreground text-sm">
 									{t('me.notifications.empty')}
 								</p>
 							) : (
@@ -139,14 +139,14 @@ export default function NavMe() {
 														{n.title}
 													</p>
 													{!n.read && (
-														<span className="size-1.5 shrink-0 rounded-full bg-sky-400" />
+														<span className="size-1.5 shrink-0 rounded-full bg-primary" />
 													)}
 												</div>
 												<p className="font-semibold text-text-accent text-xs">
 													{n.content}
 												</p>
 												<span
-													className={`${montserrat.className} font-semibold text-[10px] text-neutral-500`}
+													className={`${montserrat.className} font-semibold text-[10px] text-muted-foreground`}
 												>
 													{formatDate(
 														n.created_at,
@@ -157,7 +157,7 @@ export default function NavMe() {
 										</>
 									)
 
-									const className = `flex items-start gap-2.5 border-border-secondary border-b px-3 py-2.5 transition-colors last:border-b-0 last:rounded-b-xl ${
+									const className = `flex items-start gap-2.5 border-primary-foreground border-b px-3 py-2.5 transition-colors last:border-b-0 last:rounded-b-xl ${
 										!n.read ? 'bg-sky-500/5' : ''
 									} ${n.link ? 'hover:bg-accent cursor-pointer' : ''}`
 
@@ -193,7 +193,7 @@ export default function NavMe() {
 			<CLink href="/me" variant={'none'}>
 				<Image
 					alt={user.name || 'avatar'}
-					className="rounded-lg border-2 border-border/60 transition-all duration-300 hover:scale-110 active:scale-95"
+					className="rounded-lg border-2 border-primary/60 transition-all duration-300 hover:scale-110 active:scale-95"
 					height={46}
 					src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
 					unoptimized

@@ -1,10 +1,10 @@
 import type { ClanStats } from '@/types/clan/clan.type'
 
 export interface StageEntry {
-	sessionId: number
-	mapName: string
+	session_id: number
+	map_name: string
 	type: string
-	startedAt: string
+	started_at: string
 	victory: boolean | null
 	kills: number
 	deaths: number
@@ -89,10 +89,10 @@ export function buildPlayers(stats: ClanStats): PlayerAgg[] {
 			const entry = byPlayer.get(key)
 			if (!entry) continue
 			entry.stages.push({
-				sessionId: session.id,
-				mapName: session.mapName,
+				session_id: session.id,
+				map_name: session.map_name,
 				type: session.type,
-				startedAt: session.startedAt,
+				started_at: session.started_at,
 				victory,
 				kills: t.kills,
 				deaths: t.deaths,

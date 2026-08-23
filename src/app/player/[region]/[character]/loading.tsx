@@ -15,7 +15,7 @@ export default function LoadingPlayer() {
 						<Skeleton className="h-5 w-48" />
 						<Skeleton className="h-5 w-64" />
 					</div>
-					<div className="border-border/60 border-t" />
+					<div className="border-primary/60 border-t" />
 					<div className="grid grid-cols-1 justify-between gap-4 sm:grid-cols-2">
 						<div className="space-y-2">
 							<Skeleton className="h-4 w-32" />

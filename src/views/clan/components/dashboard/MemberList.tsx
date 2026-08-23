@@ -31,7 +31,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 				<div className="flex flex-col">
 					{members.slice(0, 10).map((member) => (
 						<div
-							className="flex items-center justify-between border-border-secondary border-b py-2.5 last:border-b-0"
+							className="flex items-center justify-between border-primary/50 border-b py-2.5 last:border-b-0"
 							key={member.id}
 						>
 							<div className="flex items-center gap-3">
@@ -43,7 +43,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 										width={32}
 									/>
 								) : (
-									<div className="flex size-8 items-center justify-center rounded-full bg-accent font-semibold text-xs">
+									<div className="flex size-8 items-center justify-center rounded-full bg-accent/50 font-semibold text-xs">
 										{member.name.charAt(0).toUpperCase()}
 									</div>
 								)}

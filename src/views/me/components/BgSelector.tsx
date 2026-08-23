@@ -6,11 +6,12 @@ import useClickOutside from '@/hooks/useClickOutside'
 import { cn } from '@/lib/cn'
 import type { CardBackground, UpdateUserSettingsDto } from '@/types/user.type'
 
-const bgVariantConfig: Record<CardBackground, { icon: string; label: string }> = {
-	AVATAR: { icon: 'lucide:image', label: 'me.bg.avatar' },
-	COLOR: { icon: 'lucide:palette', label: 'me.bg.color' },
-	NONE: { icon: 'lucide:x', label: 'me.bg.none' },
-}
+const bgVariantConfig: Record<CardBackground, { icon: string; label: string }> =
+	{
+		AVATAR: { icon: 'lucide:image', label: 'me.bg.avatar' },
+		COLOR: { icon: 'lucide:palette', label: 'me.bg.color' },
+		NONE: { icon: 'lucide:x', label: 'me.bg.none' },
+	}
 
 export function BgVariantSelector({
 	variant,
@@ -37,7 +38,7 @@ export function BgVariantSelector({
 		if (next === variant) return setExpanded(false)
 		if (timeoutRef.current) clearTimeout(timeoutRef.current)
 		setOpacity(0)
-		mutate({ cardBackground: next })
+		mutate({ card_background: next })
 
 		timeoutRef.current = setTimeout(() => {
 			setDisplayVariant(next)
@@ -50,7 +51,7 @@ export function BgVariantSelector({
 	}
 
 	const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		mutate({ cardColor: e.target.value })
+		mutate({ card_color: e.target.value })
 	}
 
 	return (
@@ -100,8 +101,8 @@ export function BgVariantSelector({
 									className={cn(
 										'flex size-5.5 cursor-pointer items-center justify-center rounded-sm transition-colors',
 										variant === key
-											? 'bg-background'
-											: 'text-text-accent hover:bg-background'
+											? 'bg-card'
+											: 'text-text-accent hover:bg-card'
 									)}
 									onClick={() => handleVariantChange(key)}
 									title={t(cfg.label)}

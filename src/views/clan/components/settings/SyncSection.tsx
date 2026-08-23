@@ -12,7 +12,7 @@ interface SyncSectionProps {
 export function SyncSection({ isPending, onSync }: SyncSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex items-center justify-between rounded-lg bg-background p-4">
+		<div className="flex items-center justify-between rounded-lg bg-card p-4">
 			<div className="flex flex-col gap-3">
 				<div className="flex items-center gap-2 font-semibold text-lg">
 					<Icon className="text-xl" icon="lucide:refresh-cw" />

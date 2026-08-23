@@ -24,7 +24,7 @@ export function formatKda(
 
 export function kdClass(kills: number, deaths: number): string {
 	const v = deaths === 0 ? kills : kills / deaths
-	if (v >= 2) return 'text-green-600 dark:text-green-400'
-	if (v >= 1) return 'text-sky-600 dark:text-sky-400'
-	return 'text-red-600 dark:text-red-400'
+	if (v >= 2) return 'text-success'
+	if (v >= 1) return 'text-primary'
+	return 'text-destructive'
 }

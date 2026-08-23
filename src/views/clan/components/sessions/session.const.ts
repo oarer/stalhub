@@ -18,23 +18,23 @@ export const SCREENSHOT_STATUS: Record<
 > = {
 	pending: {
 		label: 'clan.screenshotStatus.pending',
-		color: 'text-neutral-500',
+		color: 'text-muted-foreground',
 		icon: 'lucide:clock',
 	},
 	processing: {
 		label: 'clan.screenshotStatus.processing',
-		color: 'text-sky-500',
+		color: 'text-primary',
 		icon: 'lucide:loader-circle',
 		spin: true,
 	},
 	done: {
 		label: 'clan.screenshotStatus.done',
-		color: 'text-green-500',
+		color: 'text-success',
 		icon: 'lucide:check-circle',
 	},
 	error: {
 		label: 'clan.screenshotStatus.error',
-		color: 'text-red-500',
+		color: 'text-destructive',
 		icon: 'lucide:alert-circle',
 	},
 }

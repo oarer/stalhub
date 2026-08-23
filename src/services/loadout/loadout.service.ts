@@ -5,7 +5,7 @@ class LoadoutService {
 	async getMany(userIds: number[]): Promise<UserLoadout[]> {
 		if (userIds.length === 0) return []
 		const { data } = await apiClient.get<UserLoadout[]>('/api/v1/loadout', {
-			params: { userIds: userIds.join(',') },
+			params: { user_ids: userIds.join(',') },
 		})
 		return data ?? []
 	}

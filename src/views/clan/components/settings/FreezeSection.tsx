@@ -28,7 +28,7 @@ export function FreezeSection({ isPending, onFreeze }: FreezeSectionProps) {
 						<span className="font-semibold text-sm">
 							{t('clan.settings.freezeLabel')}
 						</span>
-						<span className="font-semibold text-red-400 text-sm">
+						<span className="font-semibold text-destructive text-sm">
 							{t('clan.settings.freezeDesc')}
 						</span>
 					</div>

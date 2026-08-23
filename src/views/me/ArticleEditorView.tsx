@@ -192,7 +192,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				textareaRef={textareaRef}
 			/>
 
-			<div className="border-border-secondary border-b md:hidden">
+			<div className="border-primary border-b md:hidden">
 				<Tabs.Root
 					className="px-4 py-1.5"
 					onValueChange={(v) => setMobileTab(v as EditorTab)}

@@ -17,32 +17,27 @@ const calloutConfig: Record<
 > = {
 	info: {
 		icon: 'lucide:info',
-		className:
-			'border-blue-500/50 bg-blue-500/10 text-blue-700 dark:text-blue-300',
+		className: 'border-info/50 bg-info/10 text-info',
 		defaultTitle: 'Info',
 	},
 	warning: {
 		icon: 'lucide:alert-triangle',
-		className:
-			'border-yellow-500/50 bg-yellow-500/10 text-yellow-700 dark:text-yellow-300',
+		className: 'border-warning/50 bg-warning/10 text-warning',
 		defaultTitle: 'Warning',
 	},
 	tip: {
 		icon: 'lucide:lightbulb',
-		className:
-			'border-green-500/50 bg-green-500/10 text-green-700 dark:text-green-300',
+		className: 'border-success/50 bg-success/10 text-success',
 		defaultTitle: 'Tip',
 	},
 	danger: {
 		icon: 'lucide:alert-circle',
-		className:
-			'border-red-500/50 bg-red-500/10 text-red-700 dark:text-red-300',
+		className: 'border-destructive/50 bg-destructive/10 text-destructive',
 		defaultTitle: 'Danger',
 	},
 	success: {
 		icon: 'lucide:check-circle',
-		className:
-			'border-green-500/50 bg-green-500/10 text-green-700 dark:text-green-300',
+		className: 'border-success/50 bg-success/10 text-success',
 		defaultTitle: 'Success',
 	},
 }

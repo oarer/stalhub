@@ -5,14 +5,14 @@ export const alertVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-background ring-border/50',
-				info: 'bg-blue-50 text-blue-900 ring-blue-200 dark:bg-blue-950/80 dark:text-blue-200 dark:ring-blue-800 [--alert-icon:theme(colors.blue.500)]',
+				default: 'bg-card ring-primary/50 text-card-foreground',
+				info: 'bg-info/10 text-foreground ring-info/30 [--alert-icon:theme(colors.info)]',
 				success:
-					'bg-green-50 text-green-900 ring-green-200 dark:bg-green-950/40 dark:text-green-200 dark:ring-green-800 [--alert-icon:theme(colors.green.500)]',
+					'bg-success/10 text-foreground ring-success/30 [--alert-icon:theme(colors.success)]',
 				warning:
-					'bg-yellow-100 text-yellow-950 ring-yellow-400 dark:bg-yellow-950/40 dark:text-yellow-200 dark:ring-yellow-900/80 [--alert-icon:theme(colors.yellow.500)]',
+					'bg-warning/10 text-foreground ring-warning/30 [--alert-icon:theme(colors.warning)]',
 				destructive:
-					'bg-red-50 text-red-900 ring-red-200 dark:bg-red-950/40 dark:text-red-200 dark:ring-red-800 [--alert-icon:theme(colors.red.500)]',
+					'bg-destructive/10 text-foreground ring-destructive/30 [--alert-icon:theme(colors.destructive)]',
 			},
 		},
 		defaultVariants: { variant: 'default' },
@@ -26,4 +26,3 @@ export const alertIcons = {
 	warning: 'lucide:triangle-alert',
 	destructive: 'lucide:circle-x',
 } as const
-

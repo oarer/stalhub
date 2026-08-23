@@ -49,7 +49,7 @@ export interface Article {
 	flags: number | null
 	tags: string[]
 	author: ArticleAuthor
-	stars: number
+	stars_count: number
 	is_starred: boolean
 	comments_count: number
 	created_at: string
@@ -92,7 +92,7 @@ export interface ArticleComment {
 	id: number
 	content: string
 	author: ArticleCommentAuthor
-	parentId: number | null
+	parent_id: number | null
 	replies?: ArticleComment[]
 	created_at: string
 }
@@ -105,5 +105,5 @@ interface ArticleCommentAuthor {
 
 export interface ArticleCommentCreate {
 	content: string
-	parentId?: number
+	parent_id?: number
 }

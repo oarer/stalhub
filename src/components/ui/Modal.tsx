@@ -144,16 +144,17 @@ function ModalContent({
 				<div
 					aria-hidden={!isOpen}
 					className={cn(
-						'fixed inset-0 z-9999 flex justify-center px-2',
+						'fixed inset-0 z-9999 flex justify-center',
 						align === 'top'
 							? 'items-start pt-16 sm:pt-20'
-							: 'items-center'
+							: 'items-center',
+						!fullScreen && 'px-2'
 					)}
 				>
 					<motion.div
 						animate="animate"
 						className={cn(
-							'absolute inset-0 bg-background/20 backdrop-blur-sm',
+							'absolute inset-0 bg-card/20 backdrop-blur-none sm:backdrop-blur-sm',
 							background
 						)}
 						exit="exit"
@@ -167,9 +168,9 @@ function ModalContent({
 						animate="animate"
 						aria-modal="true"
 						className={cn(
-							'relative z-10 border-border-secondary bg-neutral-900/95 pb-4 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
+							'relative z-10 border-primary/40 bg-card pb-4 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
 							fullScreen
-								? 'h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none sm:border-border-secondary'
+								? 'h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none sm:border-primary/40'
 								: 'w-full max-w-lg rounded-xl border-2 px-6 shadow-2xl',
 							className
 						)}

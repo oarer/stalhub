@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { ChartCard } from './ChartCard'
@@ -8,15 +9,14 @@ import type { SessionResult } from './chart.utils'
 import { resultBarOptions } from './chartOptions'
 
 interface SessionResultsChartProps {
-	isDark: boolean
 	sessionResults: SessionResult[]
 }
 
 export function SessionResultsChart({
-	isDark,
 	sessionResults,
 }: SessionResultsChartProps) {
 	const t = useTranslations()
+	const { resolvedTheme } = useTheme()
 	const data = useMemo(
 		() => ({
 			labels: sessionResults.map((s) => s.label),
@@ -41,7 +41,7 @@ export function SessionResultsChart({
 		}),
 		[sessionResults, t]
 	)
-	const options = useMemo(() => resultBarOptions(isDark), [isDark])
+	const options = resultBarOptions()
 
 	return (
 		<ChartCard title={t('clan.charts.victoriesByGames')}>
@@ -50,7 +50,7 @@ export function SessionResultsChart({
 					{t('clan.charts.noGames')}
 				</div>
 			) : (
-				<Bar data={data} options={options} />
+				<Bar data={data} key={resolvedTheme ?? 'light'} options={options} />
 			)}
 		</ChartCard>
 	)

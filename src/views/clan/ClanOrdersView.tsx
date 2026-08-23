@@ -21,16 +21,15 @@ export default function ClanOrdersView() {
 function ClanOrdersContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
 	const { myMember } = useClanRoles()
-	const today = new Date().toISOString().slice(0, 10)
 
 	const { data: settings } = useSuspenseQuery(clanQueries.getSettings())
 
 	const { data: boxesData, isLoading: boxesLoading } = useSuspenseQuery(
-		clanQueries.getGrenadeBoxes(clanId, today)
+		clanQueries.getGrenadeBoxes(clanId)
 	)
 
 	const { data: boostData, isLoading: boostsLoading } = useSuspenseQuery(
-		clanQueries.getBoostOrders(today)
+		clanQueries.getBoostOrders()
 	)
 
 	const boxes = boxesData?.boxes ?? []
@@ -60,7 +59,7 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 	const { boostColumns, boostRows } = useMemo(() => {
 		const byItem = new Map<string, Map<string, number>>()
 		for (const order of boosts) {
-			const col = order.itemName
+			const col = order.item_name
 			if (!byItem.has(col)) byItem.set(col, new Map())
 			const row = order.player.name
 			const prev = byItem.get(col)!.get(row) ?? 0
@@ -95,13 +94,13 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 		<div className="flex flex-col gap-4">
 			{myMember && (
 				<div className="flex justify-end gap-2">
-					<GrenadeBoxOrder clanId={clanId} date={today} />
-					<BoostOrder date={today} settings={settings} />
+					<GrenadeBoxOrder clanId={clanId} />
+					<BoostOrder settings={settings} />
 				</div>
 			)}
 
 			{!hasBoxes && !hasBoosts && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:clipboard-list" />
 					<h3 className="font-semibold text-lg">
 						{t('clan.orders.emptyTitle')}
@@ -113,14 +112,14 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			)}
 
 			{hasBoxes && (
-				<div className="flex flex-col gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 					<h3 className="font-bold text-base">
 						{t('clan.grenades.boxOrderTitle')}
 					</h3>
 					<Table.Root>
 						<Table.Header>
 							<Table.Row>
-								<Table.Head className="sticky left-0 z-1 bg-background">
+								<Table.Head className="sticky left-0 z-1 bg-card">
 									{t('clan.grenades.playerName')}
 								</Table.Head>
 								{grenadeColumns.map((col) => (
@@ -136,7 +135,7 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 						<Table.Body>
 							{grenadeRows.map((row) => (
 								<Table.Row key={row.name}>
-									<Table.Cell className="sticky left-0 z-1 bg-background font-semibold">
+									<Table.Cell className="sticky left-0 z-1 bg-card font-semibold">
 										{row.name}
 									</Table.Cell>
 									{grenadeColumns.map((col) => (
@@ -157,14 +156,14 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			)}
 
 			{hasBoosts && (
-				<div className="flex flex-col gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 					<h3 className="font-bold text-base">
 						{t('clan.boosts.title')}
 					</h3>
 					<Table.Root>
 						<Table.Header>
 							<Table.Row>
-								<Table.Head className="sticky left-0 z-1 bg-background">
+								<Table.Head className="sticky left-0 z-1 bg-card">
 									{t('clan.grenades.playerName')}
 								</Table.Head>
 								{boostColumns.map((col) => (
@@ -180,7 +179,7 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 						<Table.Body>
 							{boostRows.map((row) => (
 								<Table.Row key={row.name}>
-									<Table.Cell className="sticky left-0 z-1 bg-background font-semibold">
+									<Table.Cell className="sticky left-0 z-1 bg-card font-semibold">
 										{row.name}
 									</Table.Cell>
 									{boostColumns.map((col) => (

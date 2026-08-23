@@ -87,7 +87,7 @@ function PickRow({
 				{label}
 			</span>
 			<Button
-				className="min-w-0 flex-1 justify-between gap-2 px-2 py-1.5"
+				className="min-w-0 flex-1 justify-between gap-2 rounded-md px-2 py-1.5"
 				onClick={() => {
 					setPreview(value)
 					setOpen(true)
@@ -95,7 +95,7 @@ function PickRow({
 				variant="outline"
 			>
 				<span
-					className={`min-w-0 truncate font-semibold text-sm ${!item ? 'text-text-accent' : ''}`}
+					className={`min-w-0 truncate font-semibold text-sm ${!item && 'text-text-accent'}`}
 					style={
 						item
 							? { color: infoColorMap[item.color as InfoColor] }

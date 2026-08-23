@@ -70,7 +70,7 @@ function BoostSelectModal({
 		<Modal.Root onOpenChange={setOpen} open={open}>
 			<Modal.Trigger
 				asChild
-				className="size-14 cursor-pointer justify-center rounded-xl bg-white/60 p-2 shadow-sm hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
+				className="size-14 cursor-pointer justify-center rounded-xl bg-secondary p-2 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800"
 				variant={'secondary'}
 			>
 				{selectedBoostId && selectedItemData ? (
@@ -153,7 +153,7 @@ function BoostSelectModal({
 				<Modal.Header>
 					<Modal.Title>
 						{t('modals.builds.consumables.pick_boost')}{' '}
-						<span className="text-border">
+						<span className="text-primary">
 							{t(`boost.${category.split('.').pop()!}`)}
 						</span>
 					</Modal.Title>
@@ -161,7 +161,7 @@ function BoostSelectModal({
 
 				<Modal.Body>
 					<div className="flex gap-4">
-						<Card.Root className="min-w-95 ring-border/20">
+						<Card.Root className="min-w-95 ring-primary/20">
 							<Card.Header>
 								<Input
 									className="px-2 text-[14px]"
@@ -181,7 +181,7 @@ function BoostSelectModal({
 								selectedItemId={previewId}
 							/>
 						</Card.Root>
-						<Card.Root className="min-w-95 ring-border/20">
+						<Card.Root className="min-w-95 ring-primary/20">
 							<Card.Header>
 								<Card.Title
 									style={{

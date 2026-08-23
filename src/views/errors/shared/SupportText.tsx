@@ -10,7 +10,7 @@ type SupportTextProps = {
 }
 
 const LINK_CLASSES =
-	'relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-200 dark:hover:text-sky-400'
+	'relative text-foreground duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full dark:text-muted-foreground dark:hover:text-primary'
 
 export default function SupportText({
 	identifierLabel,
@@ -21,7 +21,7 @@ export default function SupportText({
 	const t = useTranslations()
 
 	return (
-		<p className="text-center font-bold text-xs uppercase tracking-widest dark:text-neutral-400">
+		<p className="text-center font-bold text-xs uppercase tracking-widest dark:text-muted-foreground">
 			{identifierLabel} <br />
 			{t('errors.support.thenContact')}{' '}
 			<Link
@@ -36,7 +36,7 @@ export default function SupportText({
 			{identifierPrefix.toLowerCase()} <br />
 			{identifierValue ? (
 				<button
-					className="cursor-pointer text-neutral-500 uppercase tracking-widest"
+					className="cursor-pointer text-muted-foreground uppercase tracking-widest"
 					onClick={() =>
 						navigator.clipboard.writeText(identifierValue)
 					}

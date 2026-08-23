@@ -222,12 +222,12 @@ const mapNavItem = (
 		>
 			<Icon className="text-xl" icon={item.icon} />
 			<div className="flex flex-col">
-				<p className="font-semibold text-neutral-700 dark:text-neutral-100">
+				<p className="font-semibold text-foreground">
 					{t(item.labelKey)}
 				</p>
 
 				{item.descriptionKey && (
-					<span className="font-semibold text-neutral-500 text-xs dark:text-neutral-400">
+					<span className="font-semibold text-muted-foreground text-xs">
 						{t(item.descriptionKey)}
 					</span>
 				)}

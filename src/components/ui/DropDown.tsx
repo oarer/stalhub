@@ -23,7 +23,7 @@ import type {
 import { Divider } from './Divider'
 
 const baseClasses =
-	'absolute z-99999 min-w-[250px] flex flex-col gap-2 bg-background/95 ring-2 ring-border/50 rounded-lg shadow-lg p-2'
+	'absolute z-99999 min-w-[250px] flex flex-col gap-2 bg-card/95 ring-2 ring-primary/50 rounded-lg shadow-lg p-2'
 
 const toggleSubmenuKey = (
 	setOpenSubmenus: React.Dispatch<React.SetStateAction<Set<string>>>,
@@ -112,7 +112,7 @@ function DropdownMenuItem({
 	return (
 		<div className="relative">
 			{item.category && (
-				<p className="font-semibold text-[13px] dark:text-neutral-300">
+				<p className="font-semibold text-[13px] text-muted-foreground">
 					{renderMaybeTranslate(t, item.category)}
 				</p>
 			)}
@@ -123,8 +123,7 @@ function DropdownMenuItem({
 				aria-haspopup={hasSubmenu ? 'menu' : undefined}
 				className={cn(
 					'flex w-full items-center justify-between rounded-xl text-left font-semibold text-sm transition-colors',
-					item.disabled &&
-						'cursor-not-allowed text-neutral-400 dark:text-neutral-500',
+					item.disabled && 'cursor-not-allowed text-muted-foreground',
 
 					hasSubmenu && 'pr-2'
 				)}
@@ -146,7 +145,7 @@ function DropdownMenuItem({
 					>
 						<Icon
 							aria-hidden="true"
-							className="text-[16px] text-neutral-500 dark:text-white"
+							className="text-[16px] text-muted-foreground"
 							icon="lucide:chevron-right"
 						/>
 					</motion.div>
@@ -358,7 +357,7 @@ export default function DropdownMenu({
 						: compact
 							? 'gap-2 px-3.5 py-2 xl:gap-4 xl:px-6'
 							: 'gap-4 px-6 py-2'
-				} ${className} ${isOpen ? 'bg-background' : ''}`}
+				} ${className} ${isOpen ? 'bg-card' : ''}`}
 				onClick={toggleDropdown}
 				ref={triggerRef}
 				role="button"

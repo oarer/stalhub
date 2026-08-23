@@ -57,12 +57,12 @@ export default function Roadmap() {
 			<ol className="relative space-y-2">
 				<span
 					aria-hidden="true"
-					className="absolute top-0 bottom-0 left-1.75 w-px bg-border/60 md:hidden"
+					className="absolute top-0 bottom-0 left-1.75 w-px bg-primary/60 md:hidden"
 				/>
 
 				<span
 					aria-hidden="true"
-					className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-border/60 md:block"
+					className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-primary/60 md:block"
 				/>
 
 				{RoadmapItems.map((item, i) => {
@@ -74,9 +74,9 @@ export default function Roadmap() {
 								<div className="relative flex w-4 shrink-0 justify-center">
 									<span
 										className={cn(
-											'relative z-10 mt-1 size-4 rounded-full border-2 border-border-secondary bg-background',
+											'relative z-10 mt-1 size-4 rounded-full border-2 border-primary bg-card',
 											item.status === 'in-progress' &&
-												'border-border bg-border shadow-[0_0_16px_4px_lab(88.6983%_-11.3978_-16.8488)]'
+												'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
 										)}
 									/>
 								</div>
@@ -99,9 +99,9 @@ export default function Roadmap() {
 								<div className="flex justify-center">
 									<span
 										className={cn(
-											'z-10 size-4 rounded-full border-2 border-border-secondary bg-background',
+											'z-10 size-4 rounded-full border-2 border-primary bg-card',
 											item.status === 'in-progress' &&
-												'border-border bg-border shadow-[0_0_16px_4px_lab(88.6983%_-11.3978_-16.8488)]'
+												'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
 										)}
 									/>
 								</div>

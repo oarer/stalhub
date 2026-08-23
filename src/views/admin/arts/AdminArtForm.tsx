@@ -106,9 +106,9 @@ export function AdminArtForm({
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id }
 					: {
-							author_name: guestName.trim(),
+							authorName: guestName.trim(),
 							...(Object.keys(socials).length > 0 && {
-								author_social_links: socials,
+								authorSocialLinks: socials,
 							}),
 						}),
 			}),
@@ -132,8 +132,8 @@ export function AdminArtForm({
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id ?? null }
 					: {
-							author_name: guestName.trim() || null,
-							author_social_links:
+							authorName: guestName.trim() || null,
+							authorSocialLinks:
 								Object.keys(socials).length > 0
 									? socials
 									: null,
@@ -168,7 +168,11 @@ export function AdminArtForm({
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
 			<Modal.Content fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title>{isEdit ? t('admin.arts.editTitle') : t('admin.arts.createTitle')}</Modal.Title>
+					<Modal.Title>
+						{isEdit
+							? t('admin.arts.editTitle')
+							: t('admin.arts.createTitle')}
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex max-h-105 flex-col gap-4 overflow-y-auto pr-1">
@@ -201,7 +205,7 @@ export function AdminArtForm({
 										className={cn(
 											'gap-2',
 											type === artType.value &&
-												'ring-2 ring-border/80'
+												'ring-2 ring-primary/80'
 										)}
 										key={artType.value}
 										onClick={() => setType(artType.value)}
@@ -393,7 +397,9 @@ export function AdminArtForm({
 						onClick={handleSubmit}
 						variant="primary"
 					>
-						{isEdit ? t('admin.arts.form.save') : t('admin.arts.form.create')}
+						{isEdit
+							? t('admin.arts.form.save')
+							: t('admin.arts.form.create')}
 					</Button>
 				</Modal.Footer>
 			</Modal.Content>

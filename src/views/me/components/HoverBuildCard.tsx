@@ -94,7 +94,7 @@ export function HoverBuildCard({
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center justify-between">
 						<Link
-							className="truncate font-semibold text-border transition-colors hover:text-text-accent"
+							className="truncate font-semibold text-primary transition-colors hover:text-text-accent"
 							href={`/calcs/builds/lite?build=${build.id}`}
 						>
 							{build.title}

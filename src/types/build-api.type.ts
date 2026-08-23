@@ -2,6 +2,7 @@ import type { Build } from './build.type'
 
 export interface BuildApi {
 	id: string
+	external_id: string
 	title: string
 	data: Build
 	flags: number | null
@@ -9,8 +10,7 @@ export interface BuildApi {
 	price?: number | null
 	author: BuildApiAuthor
 	is_starred: boolean
-	stars: number
-	starred: boolean
+	stars_count: number
 	created_at: string
 	updated_at: string
 }

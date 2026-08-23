@@ -46,7 +46,7 @@ export default function ChangLang() {
 	return (
 		<div className="relative" ref={menuRef}>
 			<button
-				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-neutral-300/60 hover:opacity-100 active:opacity-50 hover:dark:bg-neutral-700/30"
+				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
 			>
 				<div
@@ -72,7 +72,7 @@ export default function ChangLang() {
 				{isMenuOpen && (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="absolute top-12 right-0 z-20 flex origin-top-right flex-col gap-4 rounded-2xl bg-background/95 p-6 shadow-lg ring-2 ring-border/30 backdrop-blur-lg"
+						className="absolute top-12 right-0 z-20 flex origin-top-right flex-col gap-4 rounded-2xl bg-card/95 p-6 shadow-lg ring-2 ring-primary/30 backdrop-blur-lg"
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}
 						transition={{ duration: 0.2, ease: 'easeOut' }}

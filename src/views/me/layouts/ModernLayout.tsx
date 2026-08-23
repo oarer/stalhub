@@ -16,10 +16,10 @@ export default function ModernLayout({
 	return (
 		<div className="mx-auto max-w-285 px-2 pt-28 pb-0 md:px-4 lg:px-0 lg:pb-12 xl:pt-36">
 			<MeBanner
-				bannerColor={customization.bannerColor}
-				bannerImage={customization.bannerImage}
-				bannerMode={customization.bannerMode}
-				bannerType={customization.bannerType}
+				bannerColor={customization.banner_color}
+				bannerImage={customization.banner_image}
+				bannerMode={customization.banner_mode}
+				bannerType={customization.banner_type}
 				className="mt-8 lg:mt-0 lg:mb-8"
 			/>
 			<section className="grid grid-cols-1 gap-8 lg:grid-cols-[27%_70%]">

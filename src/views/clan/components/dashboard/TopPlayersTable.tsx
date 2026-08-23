@@ -37,7 +37,7 @@ export function TopPlayersTable({ topPlayers }: TopPlayersTableProps) {
 			icon="lucide:bar-chart-3"
 			title={t('clan.dashboard.topPlayers.title')}
 		>
-			<div className="flex flex-col rounded-lg bg-accent/50 p-3">
+			<div className="flex flex-col rounded-lg p-3">
 				<Table.Root className={`${montserrat.className} font-semibold`}>
 					<Table.Header>
 						<Table.Row className="text-left text-text-accent">

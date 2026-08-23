@@ -75,10 +75,10 @@ function SliderRow({ items, activeHref, onSelect }: SliderRowProps) {
 					<button
 						aria-selected={isActive}
 						className={cn(
-							'mb-2 inline-flex shrink-0 cursor-pointer items-center gap-2 text-nowrap px-3 py-2 font-semibold text-sm transition-colors duration-500',
+							'mb-2 inline-flex shrink-0 cursor-pointer items-center gap-2 text-nowrap rounded-lg px-3 py-2 font-semibold text-sm transition-colors duration-500',
 							isActive
-								? 'rounded-lg bg-accent text-border'
-								: 'text-text-accent hover:text-border/80'
+								? 'bg-primary text-primary-foreground'
+								: 'text-muted-foreground hover:text-primary/80'
 						)}
 						key={tab.href}
 						onClick={() => onSelect(tab.href)}
@@ -102,7 +102,7 @@ function SliderRow({ items, activeHref, onSelect }: SliderRowProps) {
 			})}
 			<span
 				aria-hidden="true"
-				className="pointer-events-none absolute bottom-0 left-0 h-0.5 w-0 rounded-full bg-border opacity-0 transition-all duration-200 ease-in-out"
+				className="pointer-events-none absolute bottom-0 left-0 h-0.5 w-0 rounded-full bg-primary opacity-0 transition-all duration-200 ease-in-out"
 				ref={indicatorRef}
 			/>
 		</div>

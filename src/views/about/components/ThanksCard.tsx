@@ -21,7 +21,7 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 			<motion.div {...view}>
 				<Image
 					alt={name}
-					className="h-30 w-30 rounded-2xl bg-background object-cover shadow-2xl shadow-border/40 ring-2 ring-border/80 sm:h-52 sm:w-52 lg:h-50 lg:w-50"
+					className="h-30 w-30 rounded-2xl bg-card object-cover shadow-2xl shadow-border/40 ring-2 ring-primary/80 sm:h-52 sm:w-52 lg:h-50 lg:w-50"
 					height={186}
 					src={`/images/avatars/${name}.jpg`}
 					width={186}
@@ -35,7 +35,7 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 					{name}
 				</h1>
 				<h2
-					className={`${unbounded.className} font-bold text-border text-sm uppercase tracking-widest`}
+					className={`${unbounded.className} font-bold text-primary text-sm uppercase tracking-widest`}
 				>
 					{t.rich(description, {
 						br: () => <br />,

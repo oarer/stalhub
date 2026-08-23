@@ -3,8 +3,8 @@
 import { Icon } from '@iconify/react'
 import { Handle, Position } from '@xyflow/react'
 import { motion } from 'motion/react'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
@@ -26,12 +26,8 @@ const CustomNode = memo(
 				animate={{ opacity: 1, scale: 1 }}
 				className={cn(
 					'flex w-80 flex-col gap-2 rounded-lg border-2 px-4 py-2 text-center shadow-lg',
-					data.isRoot
-						? 'border-border/80'
-						: 'border-border-secondary',
-					data.isRoot
-						? 'bg-border/20 backdrop-blur-sm'
-						: 'bg-background'
+					data.isRoot ? 'border-primary/80' : 'border-primary',
+					data.isRoot ? 'bg-border/20 backdrop-blur-sm' : 'bg-card'
 				)}
 				initial={{ opacity: 0, scale: 0.95 }}
 				transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -74,7 +70,7 @@ const CustomNode = memo(
 					{data.isRoot ? (
 						<div className="flex items-center justify-center">
 							<Input
-								className="bg-background/50 text-sm"
+								className="bg-card/50 text-sm"
 								max={9999}
 								min={0}
 								onChange={(e) => {

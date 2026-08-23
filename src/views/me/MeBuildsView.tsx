@@ -2,8 +2,8 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { CLink } from '@/components/ui/Link'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
@@ -37,14 +37,13 @@ export default function MeBuildsView() {
 				<h1 className="font-semibold text-xl">
 					{t('me.builds.title')}
 				</h1>
-				<CLink
-					className="gap-2"
+				<Link
+					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
 					href={'/calcs/builds/lite'}
-					variant={'primary'}
 				>
 					<Icon className="size-4" icon="lucide:plus" />
-					{t('me.builds.create')}
-				</CLink>
+					<p className="font-semibold">{t('me.builds.create')}</p>
+				</Link>
 			</div>
 
 			{builds?.data.length === 0 ? (

@@ -6,12 +6,12 @@ import type {
 	ClanSquad,
 	ClanStats,
 } from '@/types/clan/clan.type'
-import type { Rank } from '@/types/player.type'
 import { TOURNAMENT_DAYS } from '@/types/clan/clan.type'
+import type { Rank } from '@/types/player.type'
 
 export const ATTENDANCE_THRESHOLD = 0.5
 export const ABSENCE_RATE_THRESHOLD = 0.25
-export const KD_REF = 3
+export const KD_REF = 0.85
 export const ABSENCE_LOOKBACK_DAYS = 30
 const WEEKS_PER_MONTH = 4
 
@@ -98,7 +98,7 @@ export function buildSessionResults(stats: ClanStats): SessionResult[] {
 				: ('draw' as const)
 		return {
 			id: session.id,
-			label: new Date(session.startedAt).toLocaleDateString('ru-RU', {
+			label: new Date(session.started_at).toLocaleDateString('ru-RU', {
 				day: '2-digit',
 				month: '2-digit',
 			}),
@@ -163,7 +163,7 @@ export function buildKickRows(params: {
 	members: ClanMember[]
 	attendance: AttendanceSummary
 	statsPlayers: PlayerAgg[]
-	absences: { userId: number; date: string; mandatory: boolean }[]
+	absences: { user_id: number; date: string; mandatory: boolean }[]
 	schedule: ClanSchedule
 }): KickRow[] {
 	const { members, attendance, statsPlayers, absences, schedule } = params
@@ -178,14 +178,14 @@ export function buildKickRows(params: {
 	for (const a of absences) {
 		if (!a.mandatory) continue
 		absenceCountByUser.set(
-			a.userId,
-			(absenceCountByUser.get(a.userId) ?? 0) + 1
+			a.user_id,
+			(absenceCountByUser.get(a.user_id) ?? 0) + 1
 		)
 	}
 
 	const mandatoryDays =
 		(TOURNAMENT_DAYS +
-			(schedule.brawlsMandatory ? schedule.brawlsPerWeek : 0)) *
+			(schedule.brawls_mandatory ? schedule.brawls_per_week : 0)) *
 		WEEKS_PER_MONTH
 
 	const rows: KickRow[] = []
@@ -199,11 +199,10 @@ export function buildKickRows(params: {
 		const attendedRate = total > 0 ? attended / total : null
 
 		const absenceDays =
-			member.userId != null
-				? (absenceCountByUser.get(member.userId) ?? 0)
+			member.user_id != null
+				? (absenceCountByUser.get(member.user_id) ?? 0)
 				: 0
-		const absenceRate =
-			mandatoryDays > 0 ? absenceDays / mandatoryDays : 0
+		const absenceRate = mandatoryDays > 0 ? absenceDays / mandatoryDays : 0
 
 		const kd = stats ? playerKd(stats) : 0
 

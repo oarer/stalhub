@@ -55,7 +55,7 @@ export function CompareSlots({
 
 	return (
 		<div className="flex w-full flex-col gap-2 sm:w-fit">
-			<p className="truncate border-border-secondary border-b pb-2 text-center font-bold sm:max-w-13">
+			<p className="truncate border-primary border-b pb-2 text-center font-bold sm:max-w-13">
 				{name}
 			</p>
 			{slots.length === 0 ? (

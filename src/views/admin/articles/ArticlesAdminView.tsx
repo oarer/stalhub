@@ -65,7 +65,7 @@ export default function ArticlesAdminView() {
 	const filtered = statusFilter
 		? articles.filter((a) => a.status === statusFilter)
 		: articles
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -74,7 +74,7 @@ export default function ArticlesAdminView() {
 					{t('admin.articles.title')}
 				</h1>
 				<span className="text-neutral-400 text-sm">
-					{data?.total ?? 0} {t('admin.permissions.total')}
+					{data?.total_count ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -152,7 +152,7 @@ export default function ArticlesAdminView() {
 								</Table.Cell>
 								<Table.Cell>
 									<span className="text-sm">
-										{article.stars}
+										{article.stars_count}
 									</span>
 								</Table.Cell>
 								<Table.Cell>

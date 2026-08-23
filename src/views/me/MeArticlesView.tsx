@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -12,7 +13,6 @@ import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import { ArticleStatus } from '@/types/article.type'
 import { ArticleCard } from './components/article/ArticleCard'
-import { CreateArticleButton } from './components/CreateArticleButton'
 
 const STATUSES: ArticleStatus[] = [
 	ArticleStatus.PENDING,
@@ -54,13 +54,19 @@ export default function MeArticlesView() {
 					<h1 className="font-semibold text-xl">
 						{t('me.articles.title')}
 					</h1>
-					{articles?.total != null && (
+					{articles?.total_count != null && (
 						<span className="text-sm text-text-accent">
-							{articles.total}
+							{articles.total_count}
 						</span>
 					)}
 				</div>
-				<CreateArticleButton />
+				<Link
+					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+					href="/me/articles/new"
+				>
+					<Icon className="size-4" icon="lucide:plus" />
+					<p className="font-semibold">{t('me.articles.create')}</p>
+				</Link>
 			</div>
 
 			<div className="flex flex-wrap gap-1.5">
@@ -100,7 +106,15 @@ export default function MeArticlesView() {
 					<p className="font-semibold text-sm text-text-accent">
 						{t('me.articles.noArticles')}
 					</p>
-					<CreateArticleButton label={t('me.articles.createFirst')} />
+					<Link
+						className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+						href="/me/articles/new"
+					>
+						<Icon className="size-4" icon="lucide:plus" />
+						<p className="font-semibold">
+							{t('me.articles.createFirst')}
+						</p>
+					</Link>
 				</div>
 			) : (
 				<div className="grid grid-cols-1 gap-2">

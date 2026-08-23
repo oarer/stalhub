@@ -7,9 +7,9 @@ import { formatDate } from '@/lib/date'
 import type { Notification } from '@/types/user.type'
 
 const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
-	0: { icon: 'lucide:info', color: 'text-sky-400' },
-	1: { icon: 'lucide:alert-triangle', color: 'text-yellow-400' },
-	2: { icon: 'lucide:alert-circle', color: 'text-red-400' },
+	0: { icon: 'lucide:info', color: 'text-primary' },
+	1: { icon: 'lucide:alert-triangle', color: 'text-warning' },
+	2: { icon: 'lucide:alert-circle', color: 'text-destructive' },
 }
 
 export function NotificationItem({
@@ -25,8 +25,8 @@ export function NotificationItem({
 
 	const content = (
 		<div
-			className={`flex items-start gap-3 rounded-lg border border-border-secondary px-3 py-2.5 transition-colors ${
-				!notification.read ? 'bg-sky-500/5' : 'bg-background'
+			className={`flex items-start gap-3 rounded-lg border border-primary px-3 py-2.5 transition-colors ${
+				!notification.read ? 'bg-primary/5' : 'bg-card'
 			} ${notification.link ? 'cursor-pointer hover:bg-accent' : ''}`}
 			onClick={onClick}
 		>
@@ -39,7 +39,7 @@ export function NotificationItem({
 						{notification.title}
 					</p>
 					{!notification.read && (
-						<span className="size-1.5 rounded-full bg-sky-400" />
+						<span className="size-1.5 rounded-full bg-primary" />
 					)}
 				</div>
 				<p className="font-semibold text-sm">{notification.content}</p>
@@ -54,7 +54,7 @@ export function NotificationItem({
 				</p>
 			</div>
 			<button
-				className="flex shrink-0 items-center justify-center rounded p-1 text-neutral-500 transition-colors hover:bg-red-500/10 hover:text-red-400"
+				className="flex shrink-0 items-center justify-center rounded p-1 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
 				onClick={(e) => {
 					e.stopPropagation()
 					onDelete()

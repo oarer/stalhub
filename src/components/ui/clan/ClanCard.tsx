@@ -31,19 +31,19 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			value: clan.leader,
 		},
 		{
-			key: 'member_count',
+			key: 'memberCount',
 			label: 'clan.common.members',
 			icon: 'lucide:users',
 			value: clan.member_count.toLocaleString(),
 		},
 		{
-			key: 'boost_mode',
+			key: 'boostMode',
 			label: 'clan.boosts.shortTitle',
 			icon: 'lucide:flask-conical',
 			value: clan.boost_mode === 'ISSUED' ? t('clan.boosts.modeIssued') : t('clan.boosts.modeSelf'),
 		},
 		{
-			key: 'grenade_mode',
+			key: 'grenadeMode',
 			label: 'clan.grenades.shortTitle',
 			icon: 'lucide:bomb',
 			value: clan.grenade_mode === 'ISSUED' ? t('clan.grenades.modeIssued') : t('clan.grenades.modeSelf'),
@@ -65,7 +65,7 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 					[{clan.tag}] {clan.name}
 				</p>
 				{clan.recruiting && (
-					<Badge className="shrink-0 bg-green-500/15 font-bold text-green-600 dark:text-green-400">
+					<Badge className="shrink-0 bg-success/15 font-bold text-success">
 						{t('clans.recruiting')}
 					</Badge>
 				)}
@@ -103,7 +103,7 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 						<span
 							className={`${montserrat.className} truncate font-semibold`}
 						>
-							{TOURNAMENT_DAYS + clan.schedule.brawlsPerWeek} / 7
+							{TOURNAMENT_DAYS + clan.schedule.brawls_per_week} / 7
 						</span>
 					</div>
 					<div className="flex items-center gap-1.5 text-sm">
@@ -117,8 +117,8 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 						<span
 							className={`${montserrat.className} truncate font-semibold`}
 						>
-							{clan.schedule.brawlsMandatory
-								? t('clans.brawlsMandatory')
+							{clan.schedule.brawls_mandatory
+								? t('clans.brawls_mandatory')
 								: t('clans.brawlsOptional')}
 						</span>
 					</div>

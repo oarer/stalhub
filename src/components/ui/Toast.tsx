@@ -12,46 +12,19 @@ type ToastOptions = {
 }
 
 const icons = {
-	success: (
-		<Icon
-			className="text-green-500 dark:text-green-400"
-			icon="lucide:circle-check"
-		/>
-	),
-	error: (
-		<Icon
-			className="text-red-500 dark:text-red-400"
-			icon="lucide:circle-x"
-		/>
-	),
-	info: (
-		<Icon className="text-blue-500 dark:text-blue-400" icon="lucide:info" />
-	),
+	success: <Icon className="text-success" icon="lucide:circle-check" />,
+	error: <Icon className="text-destructive" icon="lucide:circle-x" />,
+	info: <Icon className="text-info" icon="lucide:info" />,
 	loading: (
-		<Icon
-			className="animate-spin text-blue-500 dark:text-blue-400"
-			icon="lucide:loader-circle"
-		/>
+		<Icon className="animate-spin text-info" icon="lucide:loader-circle" />
 	),
 }
 
 const toastStyles: Record<ToastType, string> = {
-	success: cn(
-		'bg-green-200 text-green-800 ring-green-300',
-		'dark:bg-green-950 dark:text-green-200 dark:ring-green-500/40'
-	),
-	error: cn(
-		'bg-red-200 text-red-800 ring-red-300',
-		'dark:bg-red-950 dark:text-red-200 dark:ring-red-500/40'
-	),
-	info: cn(
-		'bg-blue-200 text-blue-800 ring-blue-300',
-		'dark:bg-blue-950 dark:text-blue-200 dark:ring-blue-500/40'
-	),
-	loading: cn(
-		'bg-neutral-200 text-neutral-800 ring-neutral-300',
-		'dark:bg-neutral-950 dark:text-neutral-200 dark:ring-neutral-500/40'
-	),
+	success: 'bg-success/15 text-success ring-success/30',
+	error: 'bg-destructive/15 text-destructive ring-destructive/30',
+	info: 'bg-info/15 text-info ring-info/30',
+	loading: 'bg-muted text-muted-foreground ring-primary',
 }
 
 const showToast = (
@@ -72,14 +45,14 @@ const showToast = (
 				<div className="flex min-w-0 flex-1 items-center gap-3">
 					<div className="shrink-0 text-lg">{icons[type]}</div>
 
-					<p className="wrap-break-word min-w-0 font-semibold text-gray-900 text-sm dark:text-gray-100">
+					<p className="wrap-break-word min-w-0 font-semibold text-card-foreground text-sm">
 						{message}
 					</p>
 				</div>
 
 				{showCloseButton && (
 					<button
-						className="ml-4 shrink-0 cursor-pointer rounded-md font-medium text-neutral-500 text-sm hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+						className="ml-4 shrink-0 cursor-pointer rounded-md font-medium text-muted-foreground text-sm hover:text-foreground"
 						onClick={() => sonnerToast.dismiss(id)}
 						type="button"
 					>

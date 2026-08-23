@@ -47,7 +47,7 @@ export default function MapsView() {
 						</Card.Header>
 
 						<div className="relative overflow-hidden bg-linear-to-b px-3 py-4">
-							<span className="block text-center font-semibold text-sm transition-colors duration-300 group-hover:text-sky-500 sm:text-base">
+							<span className="block text-center font-semibold text-sm transition-colors duration-300 group-hover:text-primary sm:text-base">
 								{/* {m.title[i18n.language as Locale]} */}
 							</span>
 							<div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-linear-to-r from-sky-600 to-sky-400 transition-all duration-300 group-hover:w-2/5" />

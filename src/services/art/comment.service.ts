@@ -7,12 +7,10 @@ class ArtCommentService {
 		artId: string,
 		{ take = 50, page = 1 } = {}
 	): Promise<PaginatedResponse<ArtComment>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<ArtComment> & { totalCount?: number }
-		>(`/api/v1/arts/${artId}/comments`, {
+		const { data } = await apiClient.get<PaginatedResponse<ArtComment>>(`/api/v1/arts/${artId}/comments`, {
 			params: { take, page },
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async create(

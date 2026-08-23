@@ -9,8 +9,8 @@ import { formatKd, kdClass } from '@/views/clan/clan.utils'
 export function SessionSummary({ summary }: { summary: StageSummary }) {
 	const t = useTranslations()
 	const summaryTeams = summary.teams ?? []
-	const playerTeam = summaryTeams.find((t) => t.isPlayerClan)
-	const opponents = summaryTeams.filter((t) => !t.isPlayerClan)
+	const playerTeam = summaryTeams.find((t) => t.is_player_clan)
+	const opponents = summaryTeams.filter((t) => !t.is_player_clan)
 
 	return (
 		<>
@@ -20,9 +20,9 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 				</p>
 				<span
 					className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
-						summary.victory
-							? 'bg-green-500/20 text-green-600 dark:text-green-400'
-							: 'bg-red-500/20 text-red-600 dark:text-red-400'
+					summary.victory
+						? 'bg-green-500/20 text-success'
+						: 'bg-red-500/20 text-destructive'
 					}`}
 				>
 					{summary.victory
@@ -30,11 +30,11 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 						: t('clan.common.defeat')}
 				</span>
 			</div>
-			{summary.totalScore && (
+			{summary.total_score && (
 				<div className="flex flex-col">
 					<p className="font-semibold text-sm text-text-accent">
 						{t('clan.sessions.stageScore', {
-							score: summary.totalScore,
+							score: summary.total_score,
 						})}
 						{playerTeam?.name && ` (${playerTeam.name})`}
 					</p>
@@ -59,7 +59,7 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 					</p>
 				</div>
 			)}
-			<div className="flex flex-col gap-2 rounded-lg bg-accent/50 p-3">
+			<div className="flex flex-col gap-2 p-3">
 				<Table.Root className={`${montserrat.className} font-semibold`}>
 					<Table.Header>
 						<Table.Row className="text-left text-text-accent">
@@ -100,7 +100,7 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 								>
 									{formatKd(p.kills, p.deaths)}
 								</Table.Cell>
-								<Table.Cell className="py-2 text-center font-medium text-neutral-500">
+								<Table.Cell className="py-2 text-center font-medium text-muted-foreground">
 									{p.score > 0 ? p.score : ''}
 								</Table.Cell>
 							</Table.Row>

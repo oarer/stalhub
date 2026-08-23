@@ -5,6 +5,7 @@ import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
@@ -74,7 +75,7 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 				</h1>
 			</div>
 
-			<div className="grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
+			<div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
 				<Section icon="lucide:info" title={t('me.newArt.info')}>
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-col gap-2">
@@ -132,8 +133,13 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 						</div>
 					</div>
 				</Section>
-				<Section icon="lucide:image" title={t('me.newArt.img')}>
+				<Section icon="lucide:image" title={t('me.newArt.work')}>
 					<div className="flex flex-col gap-2">
+						<Alert.Root variant={'warning'}>
+							<Alert.Description>
+								{t('me.newArt.warn')}
+							</Alert.Description>
+						</Alert.Root>
 						<label
 							className="font-semibold text-md text-text-accent"
 							htmlFor="art-image"

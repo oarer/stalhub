@@ -1392,6 +1392,7 @@
         "previewTitle": "분대 미리보기",
         "title": "분대 · {map}",
         "squadCount": "분대",
+        "membersCount": "플레이어",
         "leader": "리더",
         "absent": "불참",
         "empty": "비어 있음"
@@ -1607,6 +1608,17 @@
       "membersCount": "연결 안 된 멤버: {count}",
       "selectAll": "전체 선택",
       "selectedCount": "선택됨: {count}"
+    },
+    "attendance": {
+      "title": "출석",
+      "member": "멤버",
+      "empty": "이번 달에 분석된 이벤트가 없습니다",
+      "status": {
+        "PRESENT": "참석",
+        "ABSENT": "불참",
+        "EXCUSED": "사유 제출",
+        "LATE": "지각"
+      }
     }
   },
   "me": {
@@ -1629,7 +1641,8 @@
       "stars": "즐겨찾기",
       "system": "시스템",
       "notifications": "알림",
-      "invites": "초대장"
+      "invites": "초대장",
+      "attendance": "출석"
     },
     "menu": "메뉴",
     "home": {
@@ -1674,11 +1687,11 @@
       "default": "일반",
       "nsfw": "NSFW",
       "image": "이미지 (링크)",
-      "imagePlaceholder": "이미지 링크를 붙여넣으세요",
+      "workPlaceholder": "이미지 링크를 붙여넣으세요",
       "upload": "업로드",
       "imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
-      "imageTooLarge": "최대 파일 크기는 10MB입니다",
-      "imageUploaded": "이미지가 업로드되었습니다",
+      "workTooLarge": "최대 파일 크기는 10MB입니다",
+      "workUploaded": "이미지가 업로드되었습니다",
       "imageUploadError": "이미지 업로드 중 오류",
       "tags": "태그",
       "tagsPlaceholder": "태그는 쉼표로 구분",
@@ -2045,7 +2058,13 @@
   "themes": {
     "system": "시스템",
     "dark": "다크",
-    "light": "라이트"
+    "light": "라이트",
+    "add": "추가",
+    "addCustom": "사용자 지정 테마 추가",
+    "load": "테마 로드",
+    "import": "가져오기",
+    "hint": "tweakcn.com 테마 URL 또는 JSON을 붙여넣으세요. 테마가 로컬에 저장됩니다.",
+    "colorThemes": "색상 테마"
   },
   "clans": {
     "title": "클랜",

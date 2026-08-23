@@ -32,7 +32,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
 	return (
 		<Link
-			className="group/card flex flex-col gap-2 rounded-lg bg-background p-3.5 transition-all hover:bg-accent hover:shadow-sm"
+			className="group/card flex flex-col gap-2 rounded-lg bg-card p-3.5 transition-all hover:bg-accent hover:shadow-sm"
 			href={
 				isOwn
 					? `/me/articles/${article.id}/edit`
@@ -51,10 +51,10 @@ export function ArticleCard({ article }: ArticleCardProps) {
 			</div>
 
 			<div className="flex items-center gap-2 text-text-accent text-xs">
-				{article.stars > 0 && (
+				{article.stars_count > 0 && (
 					<div className="flex items-center gap-2">
 						<Icon icon="lucide:star" />
-						{article.stars}
+						{article.stars_count}
 					</div>
 				)}
 				<p className={`${montserrat.className} font-semibold`}>

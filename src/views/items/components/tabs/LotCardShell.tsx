@@ -13,7 +13,7 @@ export default function LotCardShell({
 
 	return (
 		<div
-			className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4 backdrop-blur-none md:backdrop-blur-md"
+			className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4 backdrop-blur-none md:backdrop-blur-md"
 			style={tint ? { background: tint } : undefined}
 		>
 			<LotRankBadge additional={additional} />

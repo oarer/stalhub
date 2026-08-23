@@ -304,7 +304,7 @@ export function Combobox(props: ComboboxProps) {
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
-				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-border/40 bg-background px-3 py-2 font-semibold text-sm"
+				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-semibold text-sm"
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
 				ref={triggerRef}
@@ -315,7 +315,7 @@ export function Combobox(props: ComboboxProps) {
 						{hasSelection ? (
 							selectedLabels.map((opt) => (
 								<div
-									className="flex min-w-0 shrink items-center gap-1 rounded bg-neutral-600/40 px-1.5 py-0.5 text-xs"
+									className="flex min-w-0 shrink items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs"
 									key={opt.value}
 								>
 									<p className="min-w-0 flex-1 truncate">
@@ -359,14 +359,14 @@ export function Combobox(props: ComboboxProps) {
 						{open && (
 							<motion.div
 								animate="visible"
-								className="overflow-hidden rounded-lg border-2 border-border/40 bg-background shadow-xl"
+								className="overflow-hidden rounded-lg border-2 border-primary/40 bg-card shadow-xl"
 								exit="hidden"
 								initial="hidden"
 								ref={dropdownRef}
 								style={dropdownStyle}
 								variants={dropdownVariants}
 							>
-								<div className="flex items-center gap-2 border-border/40 border-b-2 px-3 py-2">
+								<div className="flex items-center gap-2 border-primary/40 border-b-2 px-3 py-2">
 									<Icon icon="lucide:search" />
 									<input
 										className="w-full bg-transparent font-bold outline-none"
@@ -409,7 +409,7 @@ export function Combobox(props: ComboboxProps) {
 													) {
 														return (
 															<div
-																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-bold text-neutral-500 text-xs uppercase tracking-wide"
+																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-bold text-muted-foreground text-xs uppercase tracking-wide"
 																key={
 																	option.value
 																}
@@ -438,12 +438,12 @@ export function Combobox(props: ComboboxProps) {
 													return (
 														<div
 															className={cn(
-																'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-neutral-800/50',
+																'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-muted/50',
 																optionDisabled &&
-																	'cursor-not-allowed opacity-50 dark:text-neutral-500',
+																	'cursor-not-allowed text-muted-foreground opacity-50',
 																highlightedIndex ===
 																	virtualItem.index &&
-																	'bg-neutral-800/50'
+																	'bg-muted/50'
 															)}
 															key={option.value}
 															onClick={() => {

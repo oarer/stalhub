@@ -23,7 +23,7 @@ export default function ToolsListView() {
 					{t('toolsList.subtitle')}
 				</p>
 			</div>
-			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-border/30 md:grid-cols-2 lg:grid-cols-3">
+			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
 				{toolsList.map((tool, index) => (
 					<motion.div
 						className="h-full"
@@ -35,7 +35,7 @@ export default function ToolsListView() {
 					>
 						<Link
 							className={cn(
-								'flex h-full w-full flex-col justify-start gap-3 bg-background/80 p-10 text-left ring ring-border/20 duration-400 hover:brightness-125',
+								'flex h-full w-full flex-col justify-start gap-3 bg-card/80 p-10 text-left ring ring-primary/20 duration-400 hover:brightness-125',
 								index % 2 === 0 &&
 									'bg-[radial-gradient(105.38%_145.07%_at_41.4%_40.19%,#38bdf82b_0,#ff6aa900_65%)]'
 							)}
@@ -44,7 +44,7 @@ export default function ToolsListView() {
 							<div className="flex items-center gap-2">
 								<div className="rounded-lg bg-0/10 p-2">
 									<Icon
-										className="text-3xl text-border"
+										className="text-3xl text-primary"
 										icon={tool.icon}
 									/>
 								</div>

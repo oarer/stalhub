@@ -54,7 +54,7 @@ const Sidebar = ({
 					<motion.aside
 						animate={{ opacity: 1, x: 0 }}
 						className={cn(
-							'fixed top-1/2 z-999 flex max-h-[70vh] min-w-70 -translate-y-1/2 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-background/60 p-2 shadow-lg ring-2 ring-border/60 backdrop-blur-md',
+							'fixed top-1/2 z-999 flex max-h-[70vh] min-w-70 -translate-y-1/2 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-card/60 p-2 shadow-lg ring-2 ring-primary/60 backdrop-blur-md',
 							sidebarSideClass,
 							className
 						)}
@@ -80,7 +80,7 @@ const Sidebar = ({
 				}}
 				aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
 				className={cn(
-					'fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl bg-background/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-neutral-300/30 hover:dark:bg-neutral-800/60',
+					'fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl bg-card/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-muted/30',
 					buttonSideClass
 				)}
 				initial={{ opacity: 0, scale: 1, x: 0 }}

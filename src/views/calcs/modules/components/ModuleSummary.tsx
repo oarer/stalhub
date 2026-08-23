@@ -86,7 +86,9 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 			<Card.Header>
 				<Card.Title className="justify-start">
 					<Icon className="text-lg" icon="lucide:layers" />
-					<p className="font-semibold text-lg">{t('modules.summary')}</p>
+					<p className="font-semibold text-lg">
+						{t('modules.summary')}
+					</p>
 				</Card.Title>
 			</Card.Header>
 			{!hasModules ? (
@@ -143,7 +145,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						))}
 					</div>
 
-					<div className="flex flex-col gap-1 border-border/40 border-t pt-2 text-sm">
+					<div className="flex flex-col gap-1 border-primary/40 border-t pt-2 text-sm">
 						<div className="flex justify-between">
 							<span className="font-semibold">
 								{t('modules.rerollCost')}

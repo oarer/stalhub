@@ -47,7 +47,7 @@ export function DPIForm({
 						{t('dpi.from_game')}
 					</span>
 					<Combobox
-						className="border-border-secondary"
+						className="border-primary"
 						onValueChange={onFromGameChange}
 						options={gameOptions}
 						placeholder="dpi.pick_game"
@@ -73,13 +73,13 @@ export function DPIForm({
 						{t('dpi.to_game')}
 					</span>
 					<Combobox
-						className="border-border-secondary"
+						className="border-primary"
 						onValueChange={onToGameChange}
 						options={gameOptions}
 						placeholder="dpi.pick_game"
 						value={toGame}
 					/>
-					<div className="relative flex justify-between rounded-lg border-2 border-border-secondary bg-background px-2.5 py-3 pt-3">
+					<div className="relative flex justify-between rounded-lg border-2 border-primary bg-card px-2.5 py-3 pt-3">
 						<span className="absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-bold text-neutral-400 text-sm">
 							{t('dpi.result')}
 						</span>

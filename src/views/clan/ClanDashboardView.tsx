@@ -37,7 +37,7 @@ function ClanDashboardContent({
 	)
 	const { data: stats } = useSuspenseQuery(clanQueries.getStats(clan.id))
 
-	const memberCount = clan.memberCount ?? members?.length ?? 0
+	const memberCount = clan.member_count ?? members?.length ?? 0
 
 	const totalWins = stats.sessions.reduce(
 		(n, s) => n + s.screenshots.filter((sh) => sh.victory === true).length,
@@ -48,11 +48,10 @@ function ClanDashboardContent({
 		0
 	)
 
-	const linkedMembers = members?.filter((m) => m.userId != null).length ?? 0
+	const linkedMembers = members?.filter((m) => m.user_id != null).length ?? 0
 
 	const latestEvent = grenadeStages?.events?.[0] ?? null
-	const grenadeTotal =
-		latestEvent?.total.reduce((s, m) => s + m.grenades, 0) ?? 0
+
 	const grenadeTop =
 		latestEvent?.total.slice(0, 5).map((m) => ({
 			character: m.name,
@@ -109,10 +108,10 @@ function ClanDashboardContent({
 				/>
 			</div>
 
-			{linkedMembers < memberCount && (
+			{linkedMembers < 2 && (
 				<Alert.Root variant={'destructive'}>
 					<Alert.Description>
-						{t('clan.dashboard.notAllRegistered')}
+						{t('clan.dashboard.notEnoughRegPlayers')}
 					</Alert.Description>
 				</Alert.Root>
 			)}
@@ -146,7 +145,6 @@ function ClanDashboardContent({
 
 			<GrenadeTopList
 				grenadeTop={grenadeTop}
-				grenadeTotal={grenadeTotal}
 				latestEvent={latestEvent}
 			/>
 		</div>

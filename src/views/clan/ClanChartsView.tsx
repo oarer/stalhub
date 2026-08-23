@@ -2,7 +2,6 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useState } from 'react'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
@@ -36,8 +35,6 @@ export default function ClanChartsView() {
 
 function ClanChartsContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
-	const { resolvedTheme } = useTheme()
-	const isDark = resolvedTheme === 'dark'
 	const [topCount, setTopCount] = useState(10)
 	const [metric, setMetric] = useState<Metric>('kd')
 	const [attendanceType, setAttendanceType] =
@@ -122,14 +119,14 @@ function ClanChartsContent({ clanId }: { clanId: string }) {
 				attendance,
 				statsPlayers: players,
 				absences: (absences ?? []).map((a) => ({
-					userId: a.userId,
+					user_id: a.user_id,
 					date: a.date,
 					mandatory:
 						a.events?.some(
 							(e) =>
-								e.eventType === 'TOURNAMENT' ||
-								(e.eventType === 'BRAWL' &&
-									schedule.brawlsMandatory)
+								e.event_type === 'TOURNAMENT' ||
+								(e.event_type === 'BRAWL' &&
+									schedule.brawls_mandatory)
 						) ?? false,
 				})),
 				schedule,
@@ -140,12 +137,12 @@ function ClanChartsContent({ clanId }: { clanId: string }) {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-wrap items-center justify-between gap-3">
-				<div className="flex items-center gap-2 rounded-xl bg-background px-2 py-1.5">
+				<div className="flex items-center gap-2 rounded-xl bg-card px-2 py-1.5">
 					{([5, 10, 35] as const).map((n) => (
 						<Button
 							className={cn(
-								'font-semibold',
-								topCount === n && 'bg-accent'
+								'font-semibold text-card-foreground',
+								topCount === n && 'bg-primary/40'
 							)}
 							key={n}
 							onClick={() => setTopCount(n)}
@@ -161,19 +158,23 @@ function ClanChartsContent({ clanId }: { clanId: string }) {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-				<SessionResultsChart
-					isDark={isDark}
-					sessionResults={sessionResults}
-				/>
-				<SquadKdChart isDark={isDark} squadRows={squadRows} />
-				<TopPlayersChart
-					isDark={isDark}
-					metric={metric}
-					onMetricChange={setMetric}
-					topCount={topCount}
-					topPlayers={topPlayers}
-				/>
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+				<div className="min-w-0">
+					<SessionResultsChart sessionResults={sessionResults} />
+				</div>
+
+				<div className="min-w-0">
+					<SquadKdChart squadRows={squadRows} />
+				</div>
+
+				<div className="col-span-2 min-w-0">
+					<TopPlayersChart
+						metric={metric}
+						onMetricChange={setMetric}
+						topCount={topCount}
+						topPlayers={topPlayers}
+					/>
+				</div>
 			</div>
 			<Alert.Root variant={'warning'}>
 				<Alert.Title>{t('clan.charts.testFeatureTitle')}</Alert.Title>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
@@ -42,11 +43,11 @@ export function KickList({
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<div className="flex items-center gap-2">
 					<Icon
-						className="text-red-500 text-xl"
+						className="text-destructive text-xl"
 						icon="lucide:user-x"
 					/>
 					<p className="font-semibold">
@@ -55,17 +56,17 @@ export function KickList({
 					<Tooltip.Root position="top">
 						<Tooltip.Trigger underline={false}>
 							<Icon
-								className="size-4 text-text-accent"
+								className="size-4 text-card-foreground"
 								icon="lucide:circle-help"
 							/>
 						</Tooltip.Trigger>
 						<Tooltip.Content>
 							<div className="flex flex-col gap-1.5 py-0.5">
-								<p className="text-text-accent">
+								<p className="text-muted-foreground">
 									{t('clan.charts.scheduleTooltip', {
 										tournament: TOURNAMENT_DAYS,
-										brawl: schedule.brawlsPerWeek,
-										mandatory: schedule.brawlsMandatory
+										brawl: schedule.brawls_per_week,
+										mandatory: schedule.brawls_mandatory
 											? 'yes'
 											: 'no',
 									})}
@@ -85,7 +86,7 @@ export function KickList({
 										kd: KD_REF,
 									})}
 								</p>
-								<p className="text-text-accent">
+								<p className="text-muted-foreground">
 									{t('clan.charts.attendanceHint')}
 								</p>
 							</div>
@@ -99,21 +100,20 @@ export function KickList({
 						</Badge>
 					)}
 				</div>
-				<div className="flex items-center gap-2 rounded-xl bg-accent/40 px-2 py-1.5">
+				<div className="flex items-center gap-2 rounded-xl bg-muted px-2 py-1.5">
 					{ATTENDANCE_FILTERS.map((f) => (
-						<button
+						<Button
 							className={cn(
-								'rounded-lg px-2.5 py-1 font-semibold text-sm transition-colors',
-								attendanceType === f.value
-									? 'bg-accent'
-									: 'text-text-accent hover:text-text'
+								'font-semibold text-card-foreground',
+								attendanceType === f.value && 'bg-primary/40'
 							)}
 							key={f.value}
 							onClick={() => onAttendanceTypeChange(f.value)}
-							type="button"
+							size={'sm'}
+							variant={'ghost'}
 						>
 							{t(f.label)}
-						</button>
+						</Button>
 					))}
 				</div>
 			</div>
@@ -140,7 +140,7 @@ export function KickList({
 											width={36}
 										/>
 									) : (
-										<div className="flex size-9 items-center justify-center rounded-full bg-red-500/15 font-semibold text-red-500">
+										<div className="flex size-9 items-center justify-center rounded-full bg-destructive/15 font-semibold text-destructive">
 											{row.name.charAt(0)}
 										</div>
 									)}

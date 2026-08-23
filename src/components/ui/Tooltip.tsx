@@ -198,10 +198,10 @@ function TooltipContent({ children }: { children: ReactNode }) {
 	}, [open, updatePosition])
 
 	const arrowClass = {
-		top: 'top-full left-1/2 -translate-x-1/2  border-t-neutral-800 border-x-transparent border-b-transparent',
-		bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-neutral-800 border-x-transparent border-t-transparent',
-		left: 'left-full top-1/2 -translate-y-1/2  border-l-neutral-800 border-y-transparent border-r-transparent',
-		right: 'right-full top-1/2 -translate-y-1/2 border-r-neutral-800 border-y-transparent border-l-transparent',
+		top: 'top-full left-1/2 -translate-x-1/2  border-t-popover border-x-transparent border-b-transparent',
+		bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-popover border-x-transparent border-t-transparent',
+		left: 'left-full top-1/2 -translate-y-1/2  border-l-popover border-y-transparent border-r-transparent',
+		right: 'right-full top-1/2 -translate-y-1/2 border-r-popover border-y-transparent border-l-transparent',
 	}[position]
 
 	const motion$ = {
@@ -231,7 +231,7 @@ function TooltipContent({ children }: { children: ReactNode }) {
 					}}
 					transition={{ duration: 0.15 }}
 				>
-					<div className="wrap-break-word relative max-w-sm rounded-lg bg-white px-3 py-2 backdrop-blur-md dark:bg-neutral-800">
+					<div className="wrap-break-word relative max-w-sm rounded-lg bg-popover px-3 py-2 text-popover-foreground backdrop-blur-md">
 						<p className="font-semibold text-sm">{children}</p>
 						<span
 							className={`absolute h-0 w-0 border-8 ${arrowClass}`}

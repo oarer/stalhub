@@ -10,12 +10,10 @@ class ArticleCommentService {
 		articleId: string,
 		{ take = 20, page = 1 } = {}
 	): Promise<PaginatedResponse<ArticleComment>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<ArticleComment> & { totalCount: number }
-		>(`/api/v1/articles/${articleId}/comments`, {
+		const { data } = await apiClient.get<PaginatedResponse<ArticleComment>>(`/api/v1/articles/${articleId}/comments`, {
 			params: { take, page },
 		})
-		return { ...data, total: data.totalCount ?? (data as any).total }
+		return data
 	}
 
 	async create(

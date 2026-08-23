@@ -23,7 +23,7 @@ import { useClanRoles } from './hooks/useClanRoles'
 export default function ClanInvitesView() {
 	const t = useTranslations()
 	const queryClient = getQueryClient()
-	const { isLeader, members, clanId } = useClanRoles()
+	const { isLeader, members, clan_id } = useClanRoles()
 	const { data: invites } = useSuspenseQuery(clanQueries.getInvites())
 	const [createOpen, setCreateOpen] = useState(false)
 	const [selectedNames, setSelectedNames] = useState<string[]>([])
@@ -35,7 +35,7 @@ export default function ClanInvitesView() {
 			setResults(data)
 			queryClient.invalidateQueries({ queryKey: ['clan', 'invites'] })
 			queryClient.invalidateQueries({
-				queryKey: clanQueries.getMembers(clanId!).queryKey,
+				queryKey: clanQueries.getMembers(clan_id!).queryKey,
 			})
 		},
 		onError: () => toast.error(t('clan.invites.createError')),
@@ -51,12 +51,12 @@ export default function ClanInvitesView() {
 	})
 
 	const kickMutation = useMutation({
-		mutationFn: (userId: number) => clanService.kickGuest(userId),
+		mutationFn: (user_id: number) => clanService.kickGuest(user_id),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'invites'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'me'] })
 			queryClient.invalidateQueries({
-				queryKey: clanQueries.getMembers(clanId!).queryKey,
+				queryKey: clanQueries.getMembers(clan_id!).queryKey,
 			})
 			toast.success(t('clan.invites.kicked'))
 		},
@@ -65,7 +65,7 @@ export default function ClanInvitesView() {
 
 	if (!isLeader) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
+			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 				<Icon className="text-4xl" icon="lucide:shield-alert" />
 				<h1 className="font-semibold text-xl">
 					{t('clan.invites.leaderOnly')}
@@ -80,7 +80,7 @@ export default function ClanInvitesView() {
 	}
 
 	const unlinkedMembers = [...members]
-		.filter((m) => !m.userId)
+		.filter((m) => !m.user_id)
 		.sort((a, b) => (RANK_ORDER[a.rank] ?? 99) - (RANK_ORDER[b.rank] ?? 99))
 	const allSelected =
 		unlinkedMembers.length > 0 &&
@@ -126,7 +126,7 @@ export default function ClanInvitesView() {
 			</p>
 
 			{invites.length === 0 && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background p-8 text-center">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-8 text-center">
 					<Icon
 						className="text-3xl text-text-accent"
 						icon="lucide:ticket"
@@ -139,12 +139,12 @@ export default function ClanInvitesView() {
 
 			{invites.map((invite) => (
 				<div
-					className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4"
+					className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4"
 					key={invite.id}
 				>
 					<div className="flex flex-wrap items-center justify-between gap-2">
 						<div className="flex items-center gap-2">
-							<span className="rounded-md bg-accent px-2 py-1 font-mono font-semibold tracking-widest">
+							<span className="rounded-md bg-muted px-2 py-1 font-mono font-semibold tracking-widest">
 								{invite.code}
 							</span>
 							<Button
@@ -171,7 +171,7 @@ export default function ClanInvitesView() {
 								<Button
 									loading={kickMutation.isPending}
 									onClick={() =>
-										kickMutation.mutate(invite.userId)
+										kickMutation.mutate(invite.user_id)
 									}
 									size="sm"
 									variant="ghost"
@@ -210,7 +210,7 @@ export default function ClanInvitesView() {
 							<span
 								className={`${montserrat.className} font-medium`}
 							>
-								{t('clan.invites.claimedBy')}:{' '}
+								{t('clan.invites.claimed_by')}:{' '}
 								{invite.claimed_by}
 							</span>
 						)}
@@ -239,7 +239,7 @@ export default function ClanInvitesView() {
 									{t('clan.invites.createdDesc')}
 								</p>
 								{unlinkedMembers.length === 0 ? (
-									<div className="flex flex-col items-center gap-2 rounded-xl bg-background p-6 text-center">
+									<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-6 text-center">
 										<Icon
 											className="text-3xl text-text-accent"
 											icon="lucide:user-check"
@@ -260,6 +260,7 @@ export default function ClanInvitesView() {
 												)}
 											</span>
 											<Button
+												className="gap-2"
 												onClick={toggleAll}
 												size="sm"
 												variant="ghost"
@@ -278,7 +279,7 @@ export default function ClanInvitesView() {
 										<div className="flex max-h-64 flex-col gap-1 overflow-y-auto pr-1">
 											{unlinkedMembers.map((m) => (
 												<label
-													className="flex cursor-pointer items-center gap-3 rounded-lg bg-background px-3 py-2 transition-all hover:bg-accent/40"
+													className="flex cursor-pointer items-center gap-3 rounded-lg bg-card px-3 py-2 transition-all hover:bg-accent/40"
 													key={m.id}
 												>
 													<input
@@ -301,7 +302,7 @@ export default function ClanInvitesView() {
 															width={28}
 														/>
 													) : (
-														<div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-xs">
+														<div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted font-semibold text-xs">
 															{m.name
 																.charAt(0)
 																.toUpperCase()}
@@ -401,13 +402,13 @@ export default function ClanInvitesView() {
 											</div>
 										) : (
 											<div
-												className="flex items-center justify-between gap-2 rounded-lg bg-red-500/10 p-3"
+												className="flex items-center justify-between gap-2 rounded-lg bg-destructive/10 p-3"
 												key={i}
 											>
 												<span className="font-semibold">
 													{result.nickname}
 												</span>
-												<span className="font-semibold text-red-400 text-xs">
+												<span className="font-semibold text-destructive text-xs">
 													{result.error}
 												</span>
 											</div>
@@ -439,7 +440,7 @@ function CopyRow({
 	value: string
 }) {
 	return (
-		<div className="flex items-center justify-between gap-2 rounded-md bg-background/60 px-2 py-1">
+		<div className="flex items-center justify-between gap-2 rounded-md bg-card/60 px-2 py-1">
 			<span className="font-semibold text-sm text-text-accent">
 				{label}
 			</span>

@@ -69,7 +69,7 @@ const stepIcons: Record<StepKey, string> = {
 
 function LayoutThumb({ layout }: { layout: Layout }) {
 	return (
-		<div className="flex h-20 w-full items-start gap-1.5 rounded-lg bg-background p-2">
+		<div className="flex h-20 w-full items-start gap-1.5 rounded-lg bg-card p-2">
 			{layout === 'CLASSIC' && (
 				<>
 					<div className="flex h-full w-14 flex-col gap-1.5">
@@ -128,22 +128,22 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 		(user.customization?.layout as Layout) ?? 'CLASSIC'
 	)
 	const [bannerMode, setBannerMode] = useState<BannerMode>(
-		user.customization?.bannerMode ?? 'NONE'
+		user.customization?.banner_mode ?? 'NONE'
 	)
 	const [bannerType, setBannerType] = useState<BannerType>(
-		user.customization?.bannerType ?? 'HEADER'
+		user.customization?.banner_type ?? 'HEADER'
 	)
 	const [bannerColor, setBannerColor] = useState<string>(
-		user.customization?.bannerColor ?? DEFAULT_BANNER_COLOR
+		user.customization?.banner_color ?? DEFAULT_BANNER_COLOR
 	)
 	const [bannerImage, setBannerImage] = useState<string>(
-		user.customization?.bannerImage ?? ''
+		user.customization?.banner_image ?? ''
 	)
 	const [cardBackground, setCardBackground] = useState<CardBackground>(
-		user.customization?.cardBackground ?? 'NONE'
+		user.customization?.card_background ?? 'NONE'
 	)
 	const [cardColor, setCardColor] = useState<string>(
-		user.customization?.cardColor ?? DEFAULT_CARD_COLOR
+		user.customization?.card_color ?? DEFAULT_CARD_COLOR
 	)
 	const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -185,17 +185,16 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 				username: username !== user.username ? username : undefined,
 				region: hasExbo ? region : undefined,
 				layout,
-				bannerMode,
-				bannerType,
-				bannerColor,
-				bannerImage: bannerImage || undefined,
-				cardBackground,
-				cardColor,
+				banner_mode: bannerMode,
+				banner_type: bannerType,
+				banner_color: bannerColor,
+				banner_image: bannerImage || undefined,
+				card_background: cardBackground,
+				card_color: cardColor,
 			}),
 		onSuccess: async () => {
 			toast.success(t('onboarding.toastSuccess'))
 			await queryClient.invalidateQueries({ queryKey: ['user'] })
-			router.replace('/me')
 		},
 		onError: () => {
 			toast.error(t('onboarding.toastError'))
@@ -273,7 +272,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 					</div>
 				</header>
 
-				<div className="relative flex min-h-85 overflow-hidden rounded-xl bg-background p-6 ring-1 ring-border/50">
+				<div className="relative flex min-h-85 overflow-hidden rounded-xl bg-card p-6 ring-1 ring-primary/50">
 					<AnimatePresence initial={false} mode="wait">
 						<motion.div
 							animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -352,7 +351,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											{!USERNAME_PATTERN.test(
 												username
 											) && (
-												<p className="font-semibold text-red-400 text-xs">
+												<p className="font-semibold text-destructive text-xs">
 													{t(
 														'me.settings.usernameInvalid'
 													)}
@@ -391,7 +390,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 															layout ===
 															option.value
 																? 'bg-accent/50 ring-accent'
-																: 'ring-border/40 hover:bg-accent/30'
+																: 'ring-primary/40 hover:bg-accent/30'
 														}`}
 														key={option.value}
 														onClick={() =>
@@ -432,7 +431,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 												<span className="font-semibold text-sm">
 													{t(
-														'me.settings.bannerType'
+														'me.settings.banner_type'
 													)}
 												</span>
 												<OptionDropdown
@@ -471,12 +470,12 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 												<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 													<span className="font-semibold text-sm">
 														{t(
-															'me.settings.bannerColor'
+															'me.settings.banner_color'
 														)}
 													</span>
 													<label className="relative flex cursor-pointer items-center gap-2">
 														<div
-															className="size-8 rounded-lg ring-2 ring-border/50"
+															className="size-8 rounded-lg ring-2 ring-primary/50"
 															style={{
 																backgroundColor:
 																	bannerColor,
@@ -503,7 +502,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 												<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 													<span className="font-semibold text-sm">
 														{t(
-															'me.settings.bannerImage'
+															'me.settings.banner_image'
 														)}
 													</span>
 													<input
@@ -552,7 +551,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																cardBackground ===
 																option.value
 																	? 'bg-accent/50 ring-accent'
-																	: 'bg-accent/50 ring-transparent hover:ring-border/50'
+																	: 'bg-accent/50 ring-transparent hover:ring-primary/50'
 															}`}
 															key={option.value}
 															onClick={() =>
@@ -581,12 +580,12 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 													<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 														<span className="font-semibold text-sm">
 															{t(
-																'me.settings.cardColor'
+																'me.settings.card_color'
 															)}
 														</span>
 														<label className="relative flex cursor-pointer items-center gap-2">
 															<div
-																className="size-8 rounded-lg ring-2 ring-border/50"
+																className="size-8 rounded-lg ring-2 ring-primary/50"
 																style={{
 																	backgroundColor:
 																		cardColor,

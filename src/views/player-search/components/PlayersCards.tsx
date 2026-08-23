@@ -27,7 +27,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 						</h1>
 					</Card.Title>
 				</Card.Header>
-				<Card.Content className="border-border-secondary border-t pt-2">
+				<Card.Content className="border-primary border-t pt-2">
 					<PlayersList data={popular} />
 				</Card.Content>
 			</Card.Root>
@@ -49,7 +49,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 						</Tooltip.Content>
 					</Tooltip.Root>
 				</Card.Header>
-				<Card.Content className="border-border-secondary border-t pt-2">
+				<Card.Content className="border-primary border-t pt-2">
 					<PlayersList data={recent} />
 				</Card.Content>
 			</Card.Root>

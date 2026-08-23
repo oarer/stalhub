@@ -32,7 +32,7 @@ export function BPResults({
 			</Card.Header>
 
 			<Card.Content className="flex flex-col gap-3">
-				<div className="flex items-center justify-between rounded-lg bg-background p-3">
+				<div className="flex items-center justify-between rounded-lg bg-card p-3">
 					<div className="flex items-center gap-2">
 						<Icon
 							className="text-lg text-neutral-400"
@@ -49,7 +49,7 @@ export function BPResults({
 					</Badge>
 				</div>
 
-				<div className="flex items-center justify-between rounded-lg bg-background p-3">
+				<div className="flex items-center justify-between rounded-lg bg-card p-3">
 					<div className="flex items-center gap-2">
 						<Icon
 							className="text-lg text-neutral-400"

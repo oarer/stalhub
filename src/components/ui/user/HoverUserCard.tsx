@@ -43,9 +43,9 @@ export default function HoverUserCard({
 				{user && (
 					<UserCard
 						cardBackground={
-							user.customization.cardBackground ?? 'NONE'
+							user.customization.card_background ?? 'NONE'
 						}
-						cardColor={user.customization.cardColor ?? '#000000'}
+						cardColor={user.customization.card_color ?? '#000000'}
 						user={user}
 					/>
 				)}

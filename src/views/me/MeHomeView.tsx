@@ -36,7 +36,9 @@ export default function MeHomeView() {
 		<div className="flex flex-col gap-6">
 			{hasExbo && (
 				<Suspense fallback={<CharactersSkeleton />}>
-					<ExboSection />
+					<ExboSection
+						region={user.providers.exbo?.region ?? Regions.RU}
+					/>
 				</Suspense>
 			)}
 
@@ -103,7 +105,7 @@ function CharactersSkeleton() {
 			<div className="flex flex-col gap-2">
 				{Array.from({ length: 2 }).map((_, i) => (
 					<div
-						className="flex animate-pulse items-center gap-3 rounded-lg bg-background p-3"
+						className="flex animate-pulse items-center gap-3 rounded-lg bg-card p-3"
 						key={i}
 					>
 						<div className="size-9 rounded-lg bg-accent" />
@@ -118,7 +120,7 @@ function CharactersSkeleton() {
 	)
 }
 
-function ExboSection() {
+function ExboSection({ region }: { region: Regions }) {
 	const t = useTranslations()
 	const { data: characters } = useSuspenseQuery(
 		exboQueries.getCharacters(Regions.RU)
@@ -130,7 +132,11 @@ function ExboSection() {
 		<HomeSection title={t('me.home.characters')}>
 			<div className="flex flex-col gap-2">
 				{characters.map((character) => (
-					<CharacterCard character={character} key={character.uuid} />
+					<CharacterCard
+						character={character}
+						key={character.uuid}
+						region={region}
+					/>
 				))}
 			</div>
 		</HomeSection>

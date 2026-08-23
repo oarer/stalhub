@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import type { ClanSquad, SquadMap } from '@/types/clan/clan.type'
 import { SQUAD_MAPS } from './squads.const'
@@ -31,37 +32,29 @@ export function ChangeMapModal({
 				<Modal.Header>
 					<Modal.Title>
 						{t('clan.squads.mapTitle', {
-							name: squad?.name ? `«${squad.name}»` : '',
+							name: squad?.name ? squad.name : '',
 						})}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex flex-col gap-2">
 						{SQUAD_MAPS.map((map) => (
-							<button
-								className={`flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors ${
-									targetMap === map.value
-										? 'border-sky-500/60 bg-sky-500/10'
-										: 'border-border-secondary hover:bg-accent'
+							<Button
+								className={`gap-2 ${
+									targetMap === map.value && 'bg-primary/60'
 								}`}
 								key={map.value}
 								onClick={() => onTargetMapChange(map.value)}
-								type="button"
+								variant={'secondary'}
 							>
-								<Icon
-									className="text-lg text-neutral-400"
-									icon={map.icon}
-								/>
-								<span className="font-medium text-sm">
+								<Icon className="text-lg" icon={map.icon} />
+								<span className="font-semibold text-sm">
 									{t(map.label)}
 								</span>
 								{targetMap === map.value && (
-									<Icon
-										className="ml-auto text-sky-500"
-										icon="lucide:check"
-									/>
+									<Icon icon="lucide:check" />
 								)}
-							</button>
+							</Button>
 						))}
 					</div>
 				</Modal.Body>

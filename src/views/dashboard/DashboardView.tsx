@@ -71,7 +71,7 @@ export function DashboardView() {
 				) : hasWidgets ? (
 					<DashboardCanvas />
 				) : (
-					<div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-border-secondary border-dashed px-6 py-20 text-center">
+					<div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-primary border-dashed px-6 py-20 text-center">
 						<Icon
 							className="size-12 text-text-accent"
 							icon="lucide:layout-grid"

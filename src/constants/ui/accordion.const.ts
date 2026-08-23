@@ -5,14 +5,13 @@ export const accordionVariants = cva(
 	{
 		variants: {
 			variant: {
-				default:
-					'border-border-secondary bg-background hover:brightness-120',
+				default: 'border-primary bg-card hover:brightness-120',
 				warning:
-					'border-yellow-400 bg-yellow-50 text-yellow-700 dark:bg-yellow-900/10 dark:text-yellow-300 hover:bg-yellow-100/70',
-				danger: 'border-red-500 bg-red-50 text-red-700 dark:bg-red-900/10 dark:text-red-300 hover:bg-red-100/70',
+					'border-warning bg-warning/10 text-warning-foreground hover:bg-warning/15',
+				danger: 'border-destructive bg-destructive/10 text-destructive-foreground hover:bg-destructive/15',
 				success:
-					'border-green-500 bg-green-50 text-green-700 dark:bg-green-900/10 dark:text-green-300 hover:bg-green-100/70',
-				ghost: 'dark:bg-neutral-800/20 hover:brightness-75 border-transparent',
+					'border-success bg-success/10 text-success-foreground hover:bg-success/15',
+				ghost: 'bg-muted/20 hover:brightness-75 border-transparent',
 			},
 			size: {
 				sm: 'text-sm px-2 py-1',
@@ -32,10 +31,10 @@ export const accordionIndicatorVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'dark:text-neutral-100',
-				warning: 'text-yellow-600 dark:text-yellow-400',
-				danger: 'text-red-600 dark:text-red-400',
-				success: 'text-green-600 dark:text-green-400',
+				default: 'text-foreground',
+				warning: 'text-warning',
+				danger: 'text-destructive',
+				success: 'text-success',
 				ghost: '',
 			},
 			size: {

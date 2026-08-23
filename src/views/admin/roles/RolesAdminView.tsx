@@ -76,7 +76,7 @@ export default function RolesAdminView() {
 	const assignPermissionsMutation = useMutation({
 		mutationFn: () =>
 			adminRoleService.assignPermissions(permissionsRole!.id, {
-				permissionIds: selectedPermissions,
+				permission_ids: selectedPermissions,
 			}),
 		onSuccess: () => {
 			toast.success(t('admin.roles.toast.permissionsUpdated'))

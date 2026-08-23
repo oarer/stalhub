@@ -122,7 +122,7 @@ export const NumericElement: React.FC<{
 							'font-semibold text-sm',
 							override.improved
 								? 'text-emerald-500'
-								: 'text-red-500'
+								: 'text-destructive'
 						)}
 					>
 						({override.deltaPct > 0 ? '+' : ''}
@@ -192,7 +192,7 @@ export const UsageElement: React.FC<{
 export const FallbackElement: React.FC<{ el: InfoElement }> = ({ el }) => {
 	return (
 		<div className="text-red-200 text-sm">
-			<pre className="whitespace-pre-wrap text-red-400 text-xs">
+			<pre className="whitespace-pre-wrap text-destructive text-xs">
 				{JSON.stringify(el, null, 2)}
 			</pre>
 		</div>

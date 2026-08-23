@@ -19,8 +19,11 @@ import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Modal } from '@/components/ui/Modal'
 import {
+	alignClass,
+	type ColumnAlign,
 	type ColumnDef,
 	flexRender,
+	getColumnAlign,
 	Table,
 	useTableSort,
 } from '@/components/ui/Table'
@@ -67,7 +70,7 @@ function stageGrenades(
 
 	const byPlayerDate = new Map<string, StageEntry[]>()
 	for (const s of playerStages) {
-		const date = mskDate(new Date(s.startedAt))
+		const date = mskDate(new Date(s.started_at))
 		const arr = byPlayerDate.get(date) ?? []
 		arr.push(s)
 		byPlayerDate.set(date, arr)
@@ -77,7 +80,7 @@ function stageGrenades(
 	for (const [date, arr] of byPlayerDate) {
 		const gStages = byDate.get(date) ?? []
 		arr.forEach((s, i) => {
-			result.set(s.sessionId, gStages[i]?.get(playerKey) ?? 0)
+			result.set(s.session_id, gStages[i]?.get(playerKey) ?? 0)
 		})
 	}
 	return result
@@ -102,16 +105,16 @@ export function PlayerList({
 		if (!selectedPlayer) return []
 		const stages = selectedPlayer.stages
 			.slice()
-			.sort((a, b) => a.startedAt.localeCompare(b.startedAt))
+			.sort((a, b) => a.started_at.localeCompare(b.started_at))
 		const grenadeByStage = stageGrenades(
 			stages,
 			selectedPlayer.name,
 			grenadeStages
 		)
 		return stages.map((s) => ({
-			label: formatDate(s.startedAt),
+			label: formatDate(s.started_at),
 			kd: kdValue(s.kills, s.deaths),
-			grenades: grenadeByStage.get(s.sessionId) ?? 0,
+			grenades: grenadeByStage.get(s.session_id) ?? 0,
 		}))
 	}, [selectedPlayer, grenadeStages])
 
@@ -209,22 +212,26 @@ export function PlayerList({
 			{
 				accessorKey: 'kills',
 				header: t('clan.common.killsShort'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => row.original.kills,
 			},
 			{
 				accessorKey: 'deaths',
 				header: t('clan.common.deathsShort'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => row.original.deaths,
 			},
 			{
 				accessorKey: 'assists',
 				header: t('clan.common.assistsShort'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => row.original.assists,
 			},
 			{
 				id: 'kda',
 				accessorFn: (p) => kdaValue(p.kills, p.deaths, p.assists),
 				header: t('clan.common.kda'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => (
 					<span
 						className={kdClass(
@@ -244,6 +251,7 @@ export function PlayerList({
 				id: 'kd',
 				accessorFn: (p) => kdValue(p.kills, p.deaths),
 				header: t('clan.common.kd'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => (
 					<span
 						className={kdClass(
@@ -260,6 +268,7 @@ export function PlayerList({
 				accessorFn: (p) =>
 					grenades.get(p.name.trim().toLowerCase()) ?? 0,
 				header: t('clan.common.grenadesShort'),
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: ({ row }) => (
 					<span>
 						{(
@@ -274,6 +283,7 @@ export function PlayerList({
 				id: 'expand',
 				header: '',
 				enableSorting: false,
+				meta: { align: 'center' satisfies ColumnAlign },
 				cell: () => (
 					<Icon
 						className="text-text-accent"
@@ -291,18 +301,19 @@ export function PlayerList({
 
 	return (
 		<Section title={t('clan.stats.title')}>
-			<div className="rounded-lg bg-accent/50 p-3">
+			<div className="rounded-lg p-3">
 				<Table.Root className="font-semibold">
 					<Table.Header>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<Table.Row
-								className={`${montserrat.className} text-left text-text-accent text-xs`}
+								className={`${montserrat.className} text-xs`}
 								key={headerGroup.id}
 							>
-								{headerGroup.headers.map((header) =>
-									header.column.getCanSort() ? (
+								{headerGroup.headers.map((header) => {
+									const align = getColumnAlign(header.column)
+									return header.column.getCanSort() ? (
 										<Table.SortableHeader
-											className="text-center"
+											align={align}
 											column={header.column}
 											key={header.id}
 										>
@@ -313,7 +324,7 @@ export function PlayerList({
 										</Table.SortableHeader>
 									) : (
 										<Table.Head
-											className="text-center"
+											className={alignClass(align)}
 											key={header.id}
 										>
 											{flexRender(
@@ -322,7 +333,7 @@ export function PlayerList({
 											)}
 										</Table.Head>
 									)
-								)}
+								})}
 							</Table.Row>
 						))}
 					</Table.Header>
@@ -336,7 +347,9 @@ export function PlayerList({
 							>
 								{row.getVisibleCells().map((cell) => (
 									<Table.Cell
-										className="text-center"
+										className={alignClass(
+											getColumnAlign(cell.column)
+										)}
 										key={cell.id}
 									>
 										{flexRender(
@@ -376,14 +389,14 @@ export function PlayerList({
 									{selectedPlayer.stages
 										.slice()
 										.sort((a, b) =>
-											b.startedAt.localeCompare(
-												a.startedAt
+											b.started_at.localeCompare(
+												a.started_at
 											)
 										)
 										.map((s) => (
 											<div
 												className="flex items-center justify-between rounded-lg bg-accent/50 px-3 py-2"
-												key={`${s.sessionId}-${s.mapName}`}
+												key={`${s.session_id}-${s.map_name}`}
 											>
 												<div className="flex flex-col gap-2">
 													<div className="flex items-center gap-2">
@@ -400,13 +413,13 @@ export function PlayerList({
 															)}
 														</Badge>
 														<span className="font-semibold">
-															{s.mapName || '—'}
+															{s.map_name || '—'}
 														</span>
 														<span
 															className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
 																s.victory
-																	? 'bg-green-500/20 text-green-600 dark:text-green-400'
-																	: 'bg-red-500/20 text-red-600 dark:text-red-400'
+																	? 'bg-green-500/20 text-success'
+																	: 'bg-red-500/20 text-destructive'
 															}`}
 														>
 															{s.victory
@@ -422,7 +435,7 @@ export function PlayerList({
 														className={`${montserrat.className} font-semibold text-text-accent text-xs`}
 													>
 														{formatDate(
-															s.startedAt
+															s.started_at
 														)}
 													</span>
 												</div>

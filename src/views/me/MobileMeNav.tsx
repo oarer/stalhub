@@ -27,8 +27,8 @@ export default function MobileMeNav() {
 
 	const svgPath = useSvg()
 
-	const bgVariant = user.customization?.cardBackground ?? 'NONE'
-	const bgColor = user.customization?.cardColor ?? '#000000'
+	const bgVariant = user.customization?.card_background ?? 'NONE'
+	const bgColor = user.customization?.card_color ?? '#000000'
 
 	const bgUpdateMutation = usePatchMe()
 
@@ -56,7 +56,7 @@ export default function MobileMeNav() {
 		<>
 			<motion.button
 				aria-label="Open navigation"
-				className="fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-border/60 bg-background p-2 shadow-lg backdrop-blur-md lg:hidden"
+				className="fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-primary/60 bg-card p-2 shadow-lg backdrop-blur-md lg:hidden"
 				onClick={() => setIsOpen(true)}
 				type="button"
 				whileTap={{ scale: 0.9 }}
@@ -81,7 +81,7 @@ export default function MobileMeNav() {
 
 								<motion.aside
 									animate={{ x: 0 }}
-									className="absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 bg-background px-4 py-6 shadow-xl"
+									className="absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 bg-card px-4 py-6 shadow-xl"
 									exit={{ x: '-100%' }}
 									initial={{ x: '-100%' }}
 									transition={{

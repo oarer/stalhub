@@ -88,7 +88,7 @@ function CompareHeaderRow({ nameA, nameB }: { nameA: string; nameB: string }) {
 	const t = useTranslations()
 
 	return (
-		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-border-secondary border-b pb-2">
+		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-primary border-b pb-2">
 			<span className="font-bold">{t('build.stats.title')}</span>
 			<span className="w-20 truncate text-right font-bold">{nameA}</span>
 			<span className="w-20 truncate text-right font-bold">{nameB}</span>

@@ -128,12 +128,10 @@ class UserService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<Notification>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<Notification> & { totalCount?: number }
-		>('/api/v1/users/@me/notifications', {
+		const { data } = await apiClient.get<PaginatedResponse<Notification>>('/api/v1/users/@me/notifications', {
 			params: { take, page: page - 1 },
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async getUnreadCount(): Promise<number> {

@@ -20,7 +20,7 @@ export default function SidebarActions({ onExport }: SidebarActionsProps) {
 	return (
 		<motion.div
 			animate={{ opacity: 1, y: 0 }}
-			className="flex items-center justify-between gap-2 border-border/30 border-t-2 pt-3"
+			className="flex items-center justify-between gap-2 border-primary/30 border-t-2 pt-3"
 			initial={{ opacity: 0, y: 10 }}
 			transition={{ delay: 0.2 }}
 		>

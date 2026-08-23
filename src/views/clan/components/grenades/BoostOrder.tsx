@@ -24,11 +24,10 @@ interface PendingItem {
 }
 
 interface Props {
-	date: string
 	settings: ClanSettings | undefined
 }
 
-export function BoostOrder({ date, settings }: Props) {
+export function BoostOrder({ settings }: Props) {
 	const t = useTranslations()
 	const queryClient = useQueryClient()
 	const { myMember } = useClanRoles()
@@ -39,7 +38,7 @@ export function BoostOrder({ date, settings }: Props) {
 	const isSelfBoost = settings?.boost_mode === 'SELF'
 
 	const { data: ordersData } = useQuery({
-		...clanQueries.getBoostOrders(date),
+		...clanQueries.getBoostOrders(),
 		enabled: isOpen && !isSelfBoost,
 	})
 
@@ -54,11 +53,10 @@ export function BoostOrder({ date, settings }: Props) {
 				items.map((item) => {
 					if (!myMember) throw new Error('No member')
 					return clanService.addBoostOrder({
-						playerId: myMember.id,
-						itemId: item.itemId,
-						itemName: item.itemName,
+						player_id: myMember.id,
+						item_id: item.itemId,
+						item_name: item.itemName,
 						count: item.count,
-						date,
 					})
 				})
 			),
@@ -74,7 +72,7 @@ export function BoostOrder({ date, settings }: Props) {
 
 	const removeMutation = useMutation({
 		mutationFn: (index: number) =>
-			clanService.removeBoostOrder(date, index),
+			clanService.removeBoostOrder(index),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['clan', 'boosts'],
@@ -162,7 +160,7 @@ export function BoostOrder({ date, settings }: Props) {
 														{order.player.name}
 													</Table.Cell>
 													<Table.Cell className="font-semibold">
-														{order.itemName}
+														{order.item_name}
 													</Table.Cell>
 													<Table.Cell
 														className={`${montserrat.className} text-center font-semibold`}

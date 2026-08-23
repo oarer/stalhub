@@ -1,4 +1,4 @@
-import ClanAbsenceView from '@/views/clan/ClanAbsenceView'
+import ClanAbsenceView from '@/views/clan/components/absences/ClanAbsenceView'
 
 export default function ClanAbsencePage() {
 	return <ClanAbsenceView />

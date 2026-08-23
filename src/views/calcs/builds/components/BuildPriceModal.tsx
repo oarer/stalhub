@@ -147,7 +147,7 @@ export default function BuildPriceModal() {
 														</Tooltip.Root>
 													)}
 													<span
-														className={`${montserrat.className} font-bold text-border text-sm`}
+														className={`${montserrat.className} font-bold text-primary text-sm`}
 													>
 														{formatArtPrice(
 															price.price
@@ -177,7 +177,7 @@ export default function BuildPriceModal() {
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`${montserrat.className} font-bold text-border text-xl`}
+									className={`${montserrat.className} font-bold text-primary text-xl`}
 								>
 									{formatArtPrice(total)}₽
 								</p>

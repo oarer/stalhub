@@ -38,7 +38,7 @@ interface SquadCardProps {
 	onOpenAssign: (slot: number) => void
 	onOpenLeader: () => void
 	onOpenMap: () => void
-	onEditLoadout: (memberId: number) => void
+	onEditLoadout: (member_id: number) => void
 	onMove: (
 		source: DragSource,
 		target: { squadId: number; slot: number }
@@ -76,10 +76,10 @@ export function SquadCard({
 	const squadMembers = [...squad.members].sort((a, b) => a.slot - b.slot)
 	const inSquad =
 		myMemberId != null &&
-		squad.members.some((m) => m.memberId === myMemberId)
+		squad.members.some((m) => m.member_id === myMemberId)
 
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-background px-5 py-4">
+		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-2">
 					<div className="flex items-center gap-2 font-semibold text-lg">
@@ -211,18 +211,6 @@ export function SquadCard({
 								<div className="flex items-center gap-2">
 									<Button
 										className="gap-2 ring-transparent"
-										disabled={isApprovePending}
-										onClick={() => onApprove(request.id)}
-										size="sm"
-										variant={'ghost'}
-									>
-										<Icon
-											className="text-lg"
-											icon="lucide:check"
-										/>
-									</Button>
-									<Button
-										className="gap-2 ring-transparent"
 										disabled={isRejectPending}
 										onClick={() => onReject(request.id)}
 										size="sm"
@@ -231,6 +219,18 @@ export function SquadCard({
 										<Icon
 											className="text-lg"
 											icon="lucide:x"
+										/>
+									</Button>
+									<Button
+										className="gap-2"
+										disabled={isApprovePending}
+										onClick={() => onApprove(request.id)}
+										size="sm"
+										variant={'primary'}
+									>
+										<Icon
+											className="text-lg"
+											icon="lucide:check"
 										/>
 									</Button>
 								</div>
@@ -244,8 +244,8 @@ export function SquadCard({
 				{Array.from({ length: 5 }, (_, slot) => {
 					const member = squad.members.find((m) => m.slot === slot)
 					const isAbsent =
-						member?.member.userId != null &&
-						absentUserIds.has(member.member.userId as number)
+						member?.member.user_id != null &&
+						absentUserIds.has(member.member.user_id as number)
 					return (
 						<SquadSlot
 							isAbsent={isAbsent}
@@ -308,7 +308,7 @@ function SquadSlot({
 		? {
 				squadId: squad.id,
 				slot,
-				memberId: member.memberId,
+				memberId: member.member_id,
 				name: member.member.name,
 			}
 		: null
@@ -320,14 +320,14 @@ function SquadSlot({
 		onDrop: (item) => onMove(item, { squadId: squad.id, slot }),
 	})
 
-	const isLeader = squad.leaderId === member?.id
+	const isLeader = squad.leader_id === member?.id
 	const cardStyles = member
 		? isLeader
 			? 'border-amber-500/60 bg-amber-500/10'
 			: isAbsent
-				? 'border-red-500/60 bg-red-500/10'
-				: 'border-border-secondary bg-accent/30'
-		: 'border-border-secondary border-dashed'
+				? 'border-destructive/60 bg-destructive/10'
+				: 'border-primary bg-accent/30'
+		: 'border-primary border-dashed'
 
 	return (
 		<div

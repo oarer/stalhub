@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { useDebounce } from '@/hooks/useDebounce'
 import { cn } from '@/lib/cn'
-import { resolveImageUrl } from '@/lib/imageUrl'
+import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { artQueries } from '@/queries/art/art.queries'
 import { ArtType } from '@/types/art.type'
 
@@ -36,7 +36,7 @@ export default function ArtsView() {
 	)
 
 	const arts = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
@@ -45,7 +45,7 @@ export default function ArtsView() {
 					{t('arts.title')}
 				</h1>
 				<span className="font-semibold text-sm text-text-accent">
-					{t('arts.total', { count: data?.total ?? 0 })}
+					{t('arts.total', { count: data?.total_count ?? 0 })}
 				</span>
 			</div>
 
@@ -90,7 +90,7 @@ export default function ArtsView() {
 				<div className="columns-2 gap-3 sm:columns-4">
 					{Array.from({ length: take }).map((_, i) => (
 						<div
-							className="mb-3 aspect-square animate-pulse rounded-lg bg-background"
+							className="mb-3 aspect-square animate-pulse rounded-lg bg-card"
 							key={i}
 						/>
 					))}
@@ -108,13 +108,13 @@ export default function ArtsView() {
 			) : (
 				<div
 					className={cn(
-						'columns-2 gap-3 sm:columns-4',
+						'columns-2 gap-3 sm:columns-3 lg:columns-4',
 						isPlaceholderData && 'opacity-60'
 					)}
 				>
 					{arts.map((art) => (
 						<Link
-							className="group relative block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-background ring-2 ring-border/30 duration-200 hover:ring-border/70"
+							className="group relative block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-card ring-2 ring-primary/30 duration-200 hover:ring-primary/70"
 							href={`/arts/${art.id}`}
 							key={art.id}
 						>
@@ -127,18 +127,45 @@ export default function ArtsView() {
 								</Badge>
 							)}
 							{art.image_url ? (
-								<Image
-									alt={art.title}
-									className={cn(
-										'h-auto w-full transition-all duration-400',
-										art.type === ArtType.NSFW &&
-											'blur-xl hover:blur-none'
-									)}
-									height={1600}
-									src={resolveImageUrl(art.image_url) ?? ''}
-									unoptimized
-									width={1200}
-								/>
+								isVideoUrl(art.image_url) ? (
+									<>
+										<video
+											className={cn(
+												'h-auto w-full transition-all duration-400',
+												art.type === ArtType.NSFW &&
+													'blur-xl hover:blur-none'
+											)}
+											muted
+											playsInline
+											preload="metadata"
+											src={
+												resolveImageUrl(
+													art.image_url
+												) ?? ''
+											}
+										/>
+										<Icon
+											className="absolute top-1/2 left-1/2 z-2 size-10 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-md"
+											icon="lucide:play"
+										/>
+									</>
+								) : (
+									<Image
+										alt={art.title}
+										className={cn(
+											'h-auto w-full transition-all duration-400',
+											art.type === ArtType.NSFW &&
+												'blur-xl hover:blur-none'
+										)}
+										height={1600}
+										src={
+											resolveImageUrl(art.image_url) ??
+											''
+										}
+										unoptimized
+										width={1200}
+									/>
+								)
 							) : (
 								<div className="flex aspect-square w-full items-center justify-center">
 									<Icon

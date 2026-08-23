@@ -18,7 +18,7 @@ export default function ArticlesView() {
 	const { data } = useSuspenseQuery(articleQueries.publicList({ take, page }))
 
 	const articles = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
@@ -27,7 +27,7 @@ export default function ArticlesView() {
 					{t('articles.title')}
 				</h1>
 				<p className="font-semibold text-sm text-text-accent">
-					{t('articles.publishedCount', { count: data?.total ?? 0 })}
+					{t('articles.publishedCount', { count: data?.total_count ?? 0 })}
 				</p>
 			</div>
 
@@ -45,11 +45,11 @@ export default function ArticlesView() {
 				<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 					{articles.map((article) => (
 						<Link
-							className="group flex flex-col gap-3 rounded-lg border-2 border-border/50 bg-background p-4 transition-colors hover:bg-accent/70"
+							className="group flex flex-col gap-3 rounded-lg border-2 border-primary/50 bg-card p-4 transition-colors hover:bg-accent/70"
 							href={`/articles/${article.id}`}
 							key={article.id}
 						>
-							<h2 className="font-semibold text-lg transition-colors group-hover:text-border">
+							<h2 className="font-semibold text-lg transition-colors group-hover:text-primary">
 								{article.title}
 							</h2>
 
@@ -62,10 +62,10 @@ export default function ArticlesView() {
 									<Icon icon="lucide:calendar" />
 									{formatDate(article.created_at, 'date')}
 								</div>
-								{article.stars > 0 && (
+								{article.stars_count > 0 && (
 									<div className="flex items-center gap-1">
 										<Icon icon="lucide:star" />
-										{article.stars}
+										{article.stars_count}
 									</div>
 								)}
 							</div>

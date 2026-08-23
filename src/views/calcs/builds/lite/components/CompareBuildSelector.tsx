@@ -84,7 +84,7 @@ export function CompareBuildSelector({
 				/>
 			)}
 			{compareBuild && (
-				<div className="flex min-w-0 items-center gap-1 rounded-lg bg-background/50 px-2 py-2 ring-2 ring-border/50">
+				<div className="flex min-w-0 items-center gap-1 rounded-lg bg-card/50 px-2 py-2 ring-2 ring-primary/50">
 					<Icon
 						className="shrink-0 text-green-500 text-lg"
 						icon="lucide:git-compare-arrows"

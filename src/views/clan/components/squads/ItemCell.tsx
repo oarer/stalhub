@@ -6,7 +6,7 @@ import { messageToString } from '@/utils/itemUtils'
 
 export function ItemCell({ item }: { item: Item | undefined }) {
 	if (!item) {
-		return <span className="text-neutral-500">—</span>
+		return <span className="text-muted-foreground">—</span>
 	}
 	return (
 		<span
@@ -26,11 +26,11 @@ export function BuildCell({
 	id?: string | number
 }) {
 	if (!title) {
-		return <span className="text-neutral-500">—</span>
+		return <span className="text-muted-foreground">—</span>
 	}
 	return (
 		<Link
-			className="truncate font-semibold text-border"
+			className="truncate font-semibold text-primary"
 			href={`/calcs/builds/lite?build=${id}`}
 		>
 			{title}

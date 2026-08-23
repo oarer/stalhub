@@ -40,7 +40,7 @@ export function CopyButton({
 					disabled: disabled,
 				}),
 				copied &&
-					'bg-green-500/10 text-green-600 ring-green-500/40 hover:bg-green-500/15 hover:text-green-600 dark:text-green-400',
+					'bg-success/10 text-success ring-success/40 hover:bg-success/15 hover:text-success',
 				'relative',
 				className
 			)}

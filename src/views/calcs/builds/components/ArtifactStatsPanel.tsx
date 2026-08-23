@@ -110,7 +110,6 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 			</div>
 
 			<div className="flex flex-col gap-4">
-
 				<div className="flex flex-col gap-1">
 					{Object.values(stats)
 						.filter(
@@ -175,7 +174,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					<div className="grid grid-cols-4 gap-2">
 						{potentialButtons.map((p) => (
 							<button
-								className="min-w-9 cursor-pointer rounded-lg bg-neutral-800/80 p-2 text-center ring-2 ring-border/40 transition-colors hover:bg-neutral-900"
+								className="min-w-9 cursor-pointer rounded-lg bg-neutral-800/80 p-2 text-center ring-2 ring-primary/40 transition-colors hover:bg-neutral-900"
 								key={p}
 								onClick={() => onPotentialChange(p)}
 							>

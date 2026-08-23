@@ -11,6 +11,7 @@ import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { formatArtPrice } from '@/hooks/useBuildPrices'
+import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
@@ -20,7 +21,6 @@ import type { Item } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
-import { cn } from '@/lib/cn'
 
 interface BuildCardProps {
 	build: BuildApi | PublicUserBuild
@@ -66,7 +66,7 @@ export function BuildCard({
 	}
 
 	const author = 'author' in build ? build.author : null
-	const stars = 'stars' in build ? build.stars : 0
+	const stars = build.stars_count
 
 	const isOwner =
 		user && author !== null && String(user.id) === String(author.id)
@@ -145,15 +145,13 @@ export function BuildCard({
 
 	return (
 		<div
-			className={`group relative flex flex-col gap-2 rounded-lg bg-background p-3 transition-colors hover:bg-accent ${
-				isOwner
-					? 'border-2 border-border/40'
-					: 'border border-transparent'
+			className={`group relative flex flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
+				isOwner && 'border-2 border-primary/40'
 			}`}
 		>
 			<div className="flex items-center justify-between gap-2">
 				<Link
-					className="w-fit truncate rounded-lg px-2 py-1 font-semibold text-border text-md transition-colors hover:bg-text-accent/20"
+					className="w-fit truncate rounded-lg px-2 py-1 font-semibold text-md text-primary transition-colors hover:bg-accent/20"
 					href={`/calcs/builds/lite?build=${build.id}`}
 				>
 					{build.title}
@@ -178,7 +176,7 @@ export function BuildCard({
 							<Icon
 								className={cn(
 									'text-xl',
-									build.is_starred && 'text-yellow-400'
+									build.is_starred && 'text-warning'
 								)}
 								icon="lucide:star"
 							/>
@@ -191,7 +189,7 @@ export function BuildCard({
 							variant={'danger'}
 						>
 							<Icon
-								className="size-3.5 text-red-400"
+								className="size-3.5 text-destructive"
 								icon="lucide:trash-2"
 							/>
 						</Button>
@@ -311,7 +309,7 @@ export function BuildCard({
 				{author && (
 					<HoverUserCard id={author.id}>
 						<p
-							className={`${montserrat.className} font-semibold text-border`}
+							className={`${montserrat.className} font-semibold text-primary`}
 						>
 							{author.username}
 						</p>

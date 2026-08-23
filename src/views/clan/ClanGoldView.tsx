@@ -41,11 +41,11 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 	const attendeesMutation = useMutation({
 		mutationFn: ({
 			dropId,
-			memberIds,
+			member_ids,
 		}: {
 			dropId: number
-			memberIds: number[]
-		}) => clanService.setGoldAttendees(dropId, memberIds),
+			member_ids: number[]
+		}) => clanService.setGoldAttendees(dropId, member_ids),
 		onSuccess: () => {
 			setEditDropId(null)
 			invalidate()
@@ -72,16 +72,16 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 	const attendeeIdSet = useMemo(() => {
 		const set = new Set<number>()
 		for (const drop of drops ?? []) {
-			for (const a of drop.attendees) set.add(a.memberId)
+			for (const a of drop.attendees) set.add(a.member_id)
 		}
 		return set
 	}, [drops])
 
-	const toggleMember = (memberId: number) => {
+	const toggleMember = (member_id: number) => {
 		setSelectedIds((prev) =>
-			prev.includes(memberId)
-				? prev.filter((id) => id !== memberId)
-				: [...prev, memberId]
+			prev.includes(member_id)
+				? prev.filter((id) => id !== member_id)
+				: [...prev, member_id]
 		)
 	}
 
@@ -107,7 +107,7 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 			</div>
 
 			{drops?.length === 0 && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background px-5 py-4">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:coins" />
 					<h3 className="font-semibold text-lg">
 						{t('clan.gold.empty')}
@@ -129,7 +129,7 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 						})
 					}
 					onOpenAttendees={() => {
-						setSelectedIds(drop.attendees.map((a) => a.memberId))
+						setSelectedIds(drop.attendees.map((a) => a.member_id))
 						setEditDropId(drop.id)
 					}}
 				/>
@@ -147,7 +147,7 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 					if (editDropId != null) {
 						attendeesMutation.mutate({
 							dropId: editDropId,
-							memberIds: selectedIds,
+							member_ids: selectedIds,
 						})
 					}
 				}}

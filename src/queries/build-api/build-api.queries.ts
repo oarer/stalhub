@@ -56,6 +56,7 @@ class BuildApiQueries {
 		return queryOptions<PaginatedResponse<BuildApi>>({
 			queryKey: ['builds', 'mine', { take, page }],
 			queryFn: () => buildApiService.listMine({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}

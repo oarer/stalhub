@@ -28,10 +28,10 @@ export default function Nav() {
 				paddingTop: isScrolled ? '1rem' : '2rem',
 				paddingBottom: isScrolled ? '1rem' : '2rem',
 			}}
-			className={`fixed top-0 z-90 w-full items-center text-neutral-700 backdrop-blur-sm transition-colors duration-500 dark:text-neutral-100 ${
+			className={`fixed top-0 z-90 w-full items-center text-foreground backdrop-blur-sm transition-colors duration-500 ${
 				isScrolled
-					? 'outline-2 outline-border/40'
-					: 'outline-2 outline-border/2'
+					? 'outline-2 outline-primary/40'
+					: 'outline-2 outline-primary/2'
 			}`}
 			initial={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
 			transition={{ duration: 0.7 }}

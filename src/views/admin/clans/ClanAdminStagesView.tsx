@@ -60,7 +60,7 @@ function StageEditModal({
 
 	const invalidate = () => {
 		queryClient.invalidateQueries({
-			queryKey: ['admin', 'clan', stage?.clanId, 'stages'],
+			queryKey: ['admin', 'clan', stage?.clan_id, 'stages'],
 		})
 	}
 
@@ -99,7 +99,7 @@ function StageEditModal({
 				<Modal.Body>
 					<div className="flex flex-col gap-4">
 						<Input
-							label="admin.clans.stages.mapName"
+							label="admin.clans.stages.map_name"
 							onChange={(e) => setMapName(e.target.value)}
 							value={mapName}
 						/>
@@ -131,7 +131,7 @@ function StageEditModal({
 								value={type}
 							/>
 							<Input
-								label="admin.clans.stages.stageNumber"
+								label="admin.clans.stages.stage_number"
 								onChange={(e) => setStageNumber(e.target.value)}
 								type="number"
 								value={stageNumber}
@@ -139,13 +139,13 @@ function StageEditModal({
 						</div>
 						<div className="grid grid-cols-2 gap-3">
 							<Input
-								label="admin.clans.stages.startedAt"
+								label="admin.clans.stages.started_at"
 								onChange={(e) => setStartedAt(e.target.value)}
 								type="datetime-local"
 								value={startedAt}
 							/>
 							<Input
-								label="admin.clans.stages.endedAt"
+								label="admin.clans.stages.ended_at"
 								onChange={(e) => setEndedAt(e.target.value)}
 								type="datetime-local"
 								value={endedAt}

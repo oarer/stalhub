@@ -96,7 +96,7 @@ export function ModuleGroupCard({
 					<div className="flex flex-col gap-1">
 						<p className="font-bold text-lg">{module.lines.ru}</p>
 						{module.description && (
-							<p className="font-semibold text-border text-xs">
+							<p className="font-semibold text-primary text-xs">
 								{module.description.ru}
 							</p>
 						)}

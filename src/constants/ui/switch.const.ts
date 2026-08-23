@@ -10,9 +10,9 @@ export const switchTrackVariants = cva(
 				lg: 'h-7 w-14',
 			},
 			variant: {
-				default: 'bg-neutral-300 data-[checked=true]:bg-border/40 dark:bg-neutral-700',
+				default: 'bg-muted data-[checked=true]:bg-primary/40',
 				outline:
-					'border-neutral-300 bg-transparent data-[checked=true]:border-sky-500 dark:border-neutral-600 dark:data-[checked=true]:border-sky-500',
+					'border-muted bg-transparent data-[checked=true]:border-primary',
 			},
 		},
 		defaultVariants: {
@@ -23,7 +23,7 @@ export const switchTrackVariants = cva(
 )
 
 export const switchThumbVariants = cva(
-	'pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform',
+	'pointer-events-none block rounded-full bg-foreground shadow-lg ring-0 transition-transform',
 	{
 		variants: {
 			size: {

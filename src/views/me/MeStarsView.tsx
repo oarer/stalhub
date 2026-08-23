@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { montserrat } from '@/app/fonts'
 import { formatDate } from '@/lib/date'
 import { userQueries } from '@/queries/user/user.queries'
 
@@ -23,19 +24,23 @@ export default function MeStarsView() {
 				<div className="flex flex-col gap-2">
 					{stars?.data.map((item) => (
 						<Link
-							className="flex items-center gap-3 rounded-lg border border-border-secondary bg-background p-3 transition-colors hover:bg-accent"
+							className="flex items-center gap-3 rounded-lg border-2 border-primary/50 bg-card p-3 transition-colors hover:bg-accent"
 							href={
 								item.type === 'build'
-									? `/builds/${item.item_id}`
-									: `/articles/${item.item_id}`
+									? `/builds/${item.id}`
+									: item.type === 'art'
+										? `/arts/${item.id}`
+										: `/articles/${item.id}`
 							}
-							key={item.id}
+							key={item.type + item.id}
 						>
 							<div
 								className={`flex size-8 items-center justify-center rounded-lg ${
 									item.type === 'build'
 										? 'bg-purple-500/10 text-purple-400'
-										: 'bg-sky-500/10 text-sky-400'
+										: item.type === 'art'
+											? 'bg-pink-500/10 text-pink-400'
+											: 'bg-primary/10 text-primary'
 								}`}
 							>
 								<Icon
@@ -43,7 +48,9 @@ export default function MeStarsView() {
 									icon={
 										item.type === 'build'
 											? 'lucide:box'
-											: 'lucide:book-open'
+											: item.type === 'art'
+												? 'lucide:image'
+												: 'lucide:book-open'
 									}
 								/>
 							</div>
@@ -51,15 +58,19 @@ export default function MeStarsView() {
 								<p className="truncate font-semibold text-sm">
 									{item.title}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p
+									className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
+								>
 									{item.type === 'build'
 										? t('me.stars.build')
-										: t('me.stars.article')}{' '}
+										: item.type === 'art'
+											? t('me.stars.art')
+											: t('me.stars.article')}{' '}
 									· {formatDate(item.created_at, 'date')}
 								</p>
 							</div>
 							<Icon
-								className="size-4 text-yellow-400"
+								className="size-4 text-warning"
 								icon="lucide:star"
 							/>
 						</Link>

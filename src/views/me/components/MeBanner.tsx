@@ -6,7 +6,7 @@ interface MeBannerProps {
 	bannerMode: BannerMode
 	bannerType: BannerType
 	bannerColor?: string
-	bannerImage?: string
+	bannerImage?: string | null
 	className?: string
 }
 
@@ -35,7 +35,7 @@ export default function MeBanner({
 					className="absolute inset-0"
 					style={{ backgroundColor: bannerColor || '#000000' }}
 				/>
-			) : (
+			) : bannerImage ? (
 				<>
 					<Image
 						alt="banner"
@@ -47,7 +47,7 @@ export default function MeBanner({
 					/>
 					<div className="absolute inset-0 bg-black/40" />
 				</>
-			)}
+			) : null}
 		</div>
 	)
 }

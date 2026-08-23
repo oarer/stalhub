@@ -1392,6 +1392,7 @@
         "previewTitle": "Squads preview",
         "title": "Squads · {map}",
         "squadCount": "Squads",
+        "membersCount": "Players",
         "leader": "Leader",
         "absent": "Absent",
         "empty": "Empty"
@@ -1659,6 +1660,17 @@
       "membersCount": "Unlinked members: {count}",
       "selectAll": "Select all",
       "selectedCount": "Selected: {count}"
+    },
+    "attendance": {
+      "title": "Attendance",
+      "member": "Member",
+      "empty": "No analyzed events this month yet",
+      "status": {
+        "PRESENT": "Present",
+        "ABSENT": "Absent",
+        "EXCUSED": "Excused",
+        "LATE": "Late"
+      }
     }
   },
   "me": {
@@ -1682,7 +1694,8 @@
       "stars": "Favorites",
       "system": "System",
       "notifications": "Notifications",
-      "invites": "Invites"
+      "invites": "Invites",
+      "attendance": "Attendance"
     },
     "menu": "Menu",
     "home": {
@@ -1727,11 +1740,11 @@
       "default": "Regular",
       "nsfw": "NSFW",
       "image": "Image (URL)",
-      "imagePlaceholder": "Paste the image link",
+      "workPlaceholder": "Paste the image link",
       "upload": "Upload",
       "imageInvalidType": "Only PNG, JPG, WEBP and GIF are supported",
-      "imageTooLarge": "Maximum file size is 10 MB",
-      "imageUploaded": "Image uploaded",
+      "workTooLarge": "Maximum file size is 10 MB",
+      "workUploaded": "Image uploaded",
       "imageUploadError": "Error uploading image",
       "tags": "Tags",
       "tagsPlaceholder": "Tags, comma separated",
@@ -2098,7 +2111,13 @@
   "themes": {
     "system": "System",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "add": "Add",
+    "addCustom": "Add Custom Theme",
+    "load": "Load Theme",
+    "import": "Import",
+    "hint": "Paste a tweakcn.com theme URL or raw JSON. The theme will be saved locally.",
+    "colorThemes": "Color themes"
   },
   "clans": {
     "title": "Clans",

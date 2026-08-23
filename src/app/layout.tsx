@@ -3,14 +3,15 @@ import { Suspense } from 'react'
 import '@/shared/styles/index.css'
 import { headers } from 'next/headers'
 import Script from 'next/script'
-import LocaleProvider from '@/providers/LocaleProvider'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
-import { raleway } from '@/app/fonts'
+import { inter, mono, montserrat, raleway, unbounded } from '@/app/fonts'
 import { getMetadataByPath } from '@/constants/meta'
+import LocaleProvider from '@/providers/LocaleProvider'
 import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
+import ThemeApplier from '@/shared/layouts/nav/components/theme/ThemeApplier'
 import Nav from '@/shared/layouts/nav/Nav'
 /* import PageTransitionEffect from '@/shared/transitionEffects/PageTransitionEffect' */
 
@@ -31,13 +32,13 @@ export default async function RootLayout({
 
 	return (
 		<html
-			className="dark"
+			className={`dark ${raleway.variable} ${montserrat.variable} ${unbounded.variable} ${mono.variable} ${inter.variable}`}
 			data-scroll-behavior="smooth"
 			lang={locale}
 			suppressHydrationWarning
 		>
 			<body
-				className={`${raleway.className} bg-neutral-100 transition-colors duration-500 ease-in-out dark:bg-neutral-950`}
+				className={`${raleway.className} bg-background text-foreground transition-colors duration-500 ease-in-out`}
 			>
 				<GridBackgroundWithBeams
 					cellSize={20}
@@ -58,6 +59,7 @@ export default async function RootLayout({
 						disableTransitionOnChange
 						enableSystem
 					>
+						<ThemeApplier />
 						<LocaleProvider locale={locale} messages={messages}>
 							<Providers>
 								<Nav />

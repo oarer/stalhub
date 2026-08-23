@@ -17,7 +17,7 @@ export function Section({
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-background px-5 py-4',
+				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4',
 				className
 			)}
 		>
@@ -25,7 +25,7 @@ export function Section({
 				<div
 					className={cn(
 						'flex items-center gap-2 font-semibold text-lg',
-						danger && 'text-red-400'
+						danger && 'text-destructive'
 					)}
 				>
 					{icon && <Icon className="text-xl" icon={icon} />}

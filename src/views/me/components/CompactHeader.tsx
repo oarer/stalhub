@@ -6,7 +6,6 @@ import Avatar from '@/components/ui/user/Avatar'
 import type {
 	BannerMode,
 	BannerType,
-	CardBackground,
 	User,
 	UserBadge,
 } from '@/types/user.type'
@@ -17,9 +16,7 @@ interface CompactHeaderProps {
 	bannerMode: BannerMode
 	bannerType: BannerType
 	bannerColor?: string
-	bannerImage?: string
-	cardBackground: CardBackground
-	cardColor: string
+	bannerImage?: string | null
 }
 
 export default function CompactHeader({
@@ -28,8 +25,6 @@ export default function CompactHeader({
 	bannerType,
 	bannerColor,
 	bannerImage,
-	cardBackground,
-	cardColor,
 }: CompactHeaderProps) {
 	return (
 		<>
@@ -42,7 +37,7 @@ export default function CompactHeader({
 				/>
 			)}
 
-			<div className="relative h-42 overflow-hidden rounded-lg bg-background">
+			<div className="relative h-44 overflow-hidden rounded-lg bg-secondary">
 				{bannerType === 'HEADER' && (
 					<MeBanner
 						bannerColor={bannerColor}
@@ -82,7 +77,7 @@ export default function CompactHeader({
 									<Tooltip.Root key={badge.id}>
 										<Tooltip.Trigger asChild>
 											<button
-												className="flex size-5 items-center justify-center rounded-sm bg-sky-400"
+												className="flex size-5 items-center justify-center rounded-sm bg-primary"
 												style={{
 													background: badge.color,
 												}}
@@ -110,7 +105,7 @@ export default function CompactHeader({
 							</div>
 						)}
 						<p
-							className={`${montserrat.className} w-fit rounded-md bg-accent px-2.5 py-1 font-semibold text-xs leading-none`}
+							className={`${montserrat.className} w-fit rounded-md bg-muted px-2.5 py-1 font-semibold text-xs leading-none`}
 						>
 							ID: {user.id}
 						</p>

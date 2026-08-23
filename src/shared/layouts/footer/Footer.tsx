@@ -17,7 +17,7 @@ const BuildHash = () => (
 		<Icon className="h-4 w-4" icon="mdi:code-tags" />
 		build@
 		<Link
-			className="text-border transition-colors hover:underline"
+			className="text-primary transition-colors hover:underline"
 			href={`https://github.com/oarer/stalhub/tree/${process.env.NEXT_PUBLIC_GIT_COMMIT_SHA}`}
 			rel="noopener noreferrer"
 			target="_blank"
@@ -34,13 +34,13 @@ const Footer = () => {
 	const t = useTranslations()
 
 	return (
-		<footer className="outline-2 outline-border/40 backdrop-blur-xs">
+		<footer className="outline-2 outline-primary/40 backdrop-blur-xs">
 			<div
 				className={`${montserrat.className} mx-auto flex max-w-7xl flex-col gap-8 px-6 py-8`}
 			>
 				<div className="grid grid-cols-1 gap-6 font-semibold md:grid-cols-3">
 					<section className="flex flex-col gap-3">
-						<p className="text-neutral-900 dark:text-neutral-100">
+						<p className="text-foreground">
 							© StalHub, oarer &amp; Art3mLapa {year}
 						</p>
 						<BuildHash />
@@ -54,10 +54,10 @@ const Footer = () => {
 					</section>
 
 					<section className="flex">
-						<p className="text-neutral-800 dark:text-neutral-100">
+						<p className="text-foreground">
 							{t('footer.made_by')}
 							<Link
-								className="text-cyan-700 transition-colors duration-500 hover:text-sky-600 dark:text-cyan-400 dark:hover:text-sky-200"
+								className="text-info transition-colors duration-500 hover:text-primary"
 								href="https://oarer.fun"
 								rel="noopener noreferrer"
 								target="_blank"
@@ -66,7 +66,7 @@ const Footer = () => {
 							</Link>
 							{t('footer.and')}
 							<Link
-								className="text-cyan-700 transition-colors duration-500 hover:text-sky-600 dark:text-cyan-400 dark:hover:text-sky-200"
+								className="text-info transition-colors duration-500 hover:text-primary"
 								href="https://github.com/Art3mLapa"
 								rel="noopener noreferrer"
 								target="_blank"
@@ -92,7 +92,7 @@ const Footer = () => {
 											className="h-5 w-5"
 											icon={link.icon}
 										/>
-										<span className="text-left text-neutral-700 text-sm duration-500 dark:text-white dark:group-hover:text-neutral-50">
+										<span className="text-left text-muted-foreground text-sm duration-500 group-hover:text-foreground">
 											{t(link.title)}
 										</span>
 									</CLink>
@@ -102,11 +102,11 @@ const Footer = () => {
 					</nav>
 				</div>
 
-				<div className="border-border/30 border-t py-8 font-semibold text-sm">
-					<p className="text-neutral-700 dark:text-neutral-400">
+				<div className="border-primary/30 border-t py-8 font-semibold text-sm">
+					<p className="text-muted-foreground">
 						{t('footer.project.with')}
 						<Link
-							className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
+							className="relative text-foreground duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
 							href="https://github.com/oarer/stalhub"
 							rel="noopener noreferrer"
 							target="_blank"
@@ -115,7 +115,7 @@ const Footer = () => {
 						</Link>
 						. {t('footer.project.license')}
 						<Link
-							className="relative text-neutral-900 duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:text-neutral-100 dark:hover:text-sky-400"
+							className="relative text-foreground duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
 							href="https://www.gnu.org/licenses/gpl-3.0.html"
 							rel="noopener noreferrer"
 							target="_blank"
@@ -124,7 +124,7 @@ const Footer = () => {
 						</Link>
 						.
 					</p>
-					<p className="text-neutral-600 dark:text-neutral-400/80">
+					<p className="text-muted-foreground/80">
 						Not an official EXBO East LLC service.
 					</p>
 				</div>

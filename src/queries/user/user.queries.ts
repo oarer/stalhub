@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query'
+import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
 import { userService } from '@/services/user/user.service'
 import type {
@@ -41,6 +41,7 @@ class UserQueries {
 		return queryOptions<PaginatedResponse<StarredItem>>({
 			queryKey: ['user', 'stars', { take, page }],
 			queryFn: () => userService.getStars({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})
 	}
@@ -49,6 +50,7 @@ class UserQueries {
 		return queryOptions<PaginatedResponse<Notification>>({
 			queryKey: ['user', 'notifications', { take, page }],
 			queryFn: () => userService.getNotifications({ take, page }),
+			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})
 	}

@@ -99,7 +99,7 @@ function OperationsContent() {
 					value={regionInput}
 				/>
 				<Input
-					className="h-full border-border/40 py-1"
+					className="h-full border-primary/40 py-1"
 					id="operations-nickname-input"
 					label="operations.nickname"
 					onChange={(e) => setCharacterInput(e.target.value)}

@@ -21,12 +21,7 @@ interface PendingBox {
 	count: number
 }
 
-interface Props {
-	clanId: string
-	date: string
-}
-
-export function GrenadeBoxOrder({ clanId, date }: Props) {
+export function GrenadeBoxOrder({ clanId }: { clanId: string }) {
 	const t = useTranslations()
 	const queryClient = useQueryClient()
 	const { myMember } = useClanRoles()
@@ -36,7 +31,7 @@ export function GrenadeBoxOrder({ clanId, date }: Props) {
 	const playerName = myMember?.name ?? ''
 
 	const { data: boxesData } = useQuery({
-		...clanQueries.getGrenadeBoxes(clanId, date),
+		...clanQueries.getGrenadeBoxes(clanId),
 		enabled: isOpen,
 	})
 
@@ -53,7 +48,6 @@ export function GrenadeBoxOrder({ clanId, date }: Props) {
 						name: playerName,
 						type: item.typeName,
 						count: item.count,
-						date,
 					})
 				)
 			),
@@ -69,7 +63,7 @@ export function GrenadeBoxOrder({ clanId, date }: Props) {
 
 	const removeMutation = useMutation({
 		mutationFn: (index: number) =>
-			clanService.removeGrenadeBox(clanId, date, index),
+			clanService.removeGrenadeBox(clanId, index),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['clan', clanId, 'grenades'],

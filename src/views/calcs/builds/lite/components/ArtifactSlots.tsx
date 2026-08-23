@@ -193,7 +193,7 @@ export function ArtifactSlotsLite({
 		<>
 			<div className="flex flex-col gap-2">
 				{title && (
-					<p className="truncate border-border-secondary border-b pb-2 text-center font-bold">
+					<p className="truncate border-primary border-b pb-2 text-center font-bold">
 						{title}
 					</p>
 				)}

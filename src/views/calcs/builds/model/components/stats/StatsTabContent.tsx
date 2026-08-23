@@ -95,7 +95,7 @@ function AccumulationWarnings({
 	if (warnings.length === 0) return null
 
 	return (
-		<div className="flex flex-col gap-1 border-border-secondary border-b pb-2 text-red-400">
+		<div className="flex flex-col gap-1 border-primary border-b pb-2 text-red-400">
 			{warnings.map(({ name }) => (
 				<p className="text-sm" key={name}>
 					{name} — {t('build.damaged')}
@@ -137,14 +137,16 @@ export const StatsTabContent = memo(function StatsTabContent({
 				/>
 				<div className="flex w-full justify-between">
 					<span>{t('build.stats.regen')}</span>
-					<span className={`${montserrat.className} text-border`}>
+					<span className={`${montserrat.className} text-primary`}>
 						{hps}%
 					</span>
 				</div>
 				{stopping !== null && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.stopping')}</span>
-						<span className={`${montserrat.className} text-border`}>
+						<span
+							className={`${montserrat.className} text-primary`}
+						>
 							{stopping}%
 						</span>
 					</p>
@@ -205,7 +207,9 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				{prime && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.prime')}</span>
-						<span className={`${montserrat.className} text-border`}>
+						<span
+							className={`${montserrat.className} text-primary`}
+						>
 							{prime}
 						</span>
 					</p>
@@ -216,7 +220,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 							<div className="flex w-full justify-between">
 								<span>{t('build.stats.regen')}</span>
 								<span
-									className={`${montserrat.className} text-border`}
+									className={`${montserrat.className} text-primary`}
 								>
 									{hps}%
 								</span>
@@ -233,7 +237,9 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				{stopping !== null && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.stopping')}</span>
-						<span className={`${montserrat.className} text-border`}>
+						<span
+							className={`${montserrat.className} text-primary`}
+						>
 							{stopping}%
 						</span>
 					</p>

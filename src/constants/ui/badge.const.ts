@@ -1,21 +1,20 @@
 import { cva } from 'class-variance-authority'
 
 export const badgeVariants = cva(
-	'flex items-center rounded-full gap-2 px-2.5 py-0.5 transition-colors text-xs font-semibold ring-2 ring-neutral-700',
+	'flex items-center rounded-full gap-2 px-2.5 py-0.5 transition-colors text-xs font-semibold ring-2 ring-muted',
 	{
 		variants: {
 			variant: {
-				primary: 'ring-transparent bg-white dark:bg-neutral-800',
-				secondary: 'bg-transparent',
-				danger: 'ring-red-400 text-red-600 font-bold dark:text-red-200 hover:bg-red-200 dark:hover:bg-red-800/60 dark:bg-neutral-800/50 bg-white/60',
+				primary: 'ring-transparent bg-muted text-card-foreground',
+				secondary: 'bg-card text-muted-foreground',
+				danger: 'ring-destructive text-destructive font-bold hover:bg-destructive/10 bg-card',
 				success:
-					'ring-green-400 text-green-600 font-bold dark:text-green-200 hover:bg-green-200 dark:hover:bg-green-800/60 dark:bg-neutral-800/50 bg-white/60',
-				exbo: 'ring-blue-700 dark:ring-blue-800 text-blue-500 dark:text-blue-200',
-				media: 'ring-violet-700 dark:ring-violet-500 text-violet-500 dark:text-violet-300',
+					'ring-success text-success font-bold hover:bg-success/10 bg-card',
+				exbo: 'ring-info text-info',
+				media: 'ring-[oklch(55%_0.22_300)] text-[oklch(65%_0.22_300)]',
 				stalhub:
-					'ring-border/80 text-border shadow-border/20 shadow-lg',
-				nsfw:
-					'ring-border/50 bg-border/20 text-border font-bold',
+					'ring-primary/80 text-primary shadow-border/20 shadow-lg',
+				nsfw: 'ring-primary/50 bg-border/20 text-primary font-bold',
 			},
 		},
 		defaultVariants: {

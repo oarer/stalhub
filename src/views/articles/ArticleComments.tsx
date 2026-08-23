@@ -29,7 +29,7 @@ function renderContent(text: string) {
 			return (
 				<HoverUserCard key={i} username={part.slice(1)}>
 					<span
-						className={`${montserrat.className} font-semibold text-border`}
+						className={`${montserrat.className} font-semibold text-primary`}
 					>
 						{part}
 					</span>
@@ -106,14 +106,14 @@ export default function ArticleComments({ articleId }: ArticleCommentsProps) {
 	return (
 		<div className="flex flex-col gap-4">
 			<h3 className="font-semibold text-lg">
-				{t('articles.comments.title', { count: data.total })}
+				{t('articles.comments.title', { count: data.total_count })}
 			</h3>
 
 			{user && (
 				<div className="flex flex-col gap-2">
 					<div className="flex gap-2">
 						<textarea
-							className="min-h-10 flex-1 resize-none rounded-lg border-2 border-border-secondary bg-background px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-sky-400/50"
+							className="min-h-10 flex-1 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/50"
 							onChange={(e) => setContent(e.target.value)}
 							onKeyDown={(e) => {
 								if (
@@ -187,11 +187,11 @@ function CommentItem({
 
 	return (
 		<div className="flex flex-col gap-2">
-			<div className="rounded-lg bg-background px-3 py-2">
+			<div className="rounded-lg bg-card px-3 py-2">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2">
 						<Image
-							alt={comment.author.username}
+							alt={comment.author.name}
 							className="rounded-full"
 							height={42}
 							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${comment.author.id}`}
@@ -202,7 +202,7 @@ function CommentItem({
 							<span
 								className={`${montserrat.className} font-semibold text-xs`}
 							>
-								{comment.author.username}
+								{comment.author.name}
 							</span>
 						</HoverUserCard>
 						<span
@@ -262,7 +262,7 @@ function CommentItem({
 			</div>
 
 			{replies.length > 0 && (
-				<div className="ml-6 flex flex-col gap-2 border-border-secondary border-l-2 pl-3">
+				<div className="ml-6 flex flex-col gap-2 border-primary border-l-2 pl-3">
 					{replies.map((reply) => (
 						<CommentItem
 							admin={admin}

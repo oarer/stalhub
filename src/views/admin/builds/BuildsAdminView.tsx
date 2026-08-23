@@ -34,7 +34,7 @@ export default function BuildsAdminView() {
 	})
 
 	const builds = data?.data ?? []
-	const totalPages = data ? Math.ceil(data.total / take) : 1
+	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -43,7 +43,7 @@ export default function BuildsAdminView() {
 					{t('admin.builds.title')}
 				</h1>
 				<span className="text-neutral-400 text-sm">
-					{data?.total ?? 0} {t('admin.permissions.total')}
+					{data?.total_count ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
 
@@ -85,7 +85,7 @@ export default function BuildsAdminView() {
 								</Table.Cell>
 								<Table.Cell>
 									<span className="text-sm">
-										{build.stars}
+										{build.stars_count}
 									</span>
 								</Table.Cell>
 								<Table.Cell>

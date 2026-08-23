@@ -36,7 +36,7 @@ export default function Hero() {
 				) : (
 					<Badge variant="secondary">
 						<Icon
-							className="text-cyan-400 text-xl"
+							className="text-primary text-xl"
 							icon="lucide:boxes"
 						/>
 						<span className="text-sm">{t('landing.overview')}</span>
@@ -52,12 +52,12 @@ export default function Hero() {
 			>
 				<GradientText
 					className="py-0"
-					colors={['#21c0ff', '#afe3ff']}
+					colors={['var(--primary)', '#afc7d4']}
 					yoyo={false}
 				>
 					{t('landing.tools_for')}
 				</GradientText>
-				<span className="dark:text-neutral-100">StalZone</span>
+				<span className="dark:text-foreground">StalZone</span>
 			</motion.h1>
 
 			<motion.p
@@ -98,7 +98,7 @@ export default function Hero() {
 				))}
 			</motion.div>
 
-			<div className="flex flex-col items-center justify-center gap-4 sm:flex-row dark:text-neutral-100">
+			<div className="flex flex-col items-center justify-center gap-4 sm:flex-row dark:text-foreground">
 				<motion.div
 					animate={{ y: 0, opacity: 1 }}
 					initial={{ y: 30, opacity: 0 }}

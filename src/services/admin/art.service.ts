@@ -15,7 +15,7 @@ export interface AdminArtCreate {
 	type?: ArtType
 	image_url?: string | null
 	tags?: string[]
-	authorId?: number
+	author_id?: number
 	author_name?: string
 	author_social_links?: Record<string, string>
 }
@@ -25,7 +25,7 @@ export interface AdminArtUpdate {
 	type?: ArtType
 	image_url?: string | null
 	tags?: string[]
-	authorId?: number | null
+	author_id?: number | null
 	author_name?: string | null
 	author_social_links?: Record<string, string> | null
 }
@@ -38,9 +38,7 @@ class AdminArtService {
 		type,
 		tags,
 	}: AdminArtListParams = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<
-			PaginatedResponse<Art> & { totalCount: number }
-		>('/api/v1/admin/arts', {
+		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/admin/arts', {
 			params: {
 				take,
 				page,
@@ -49,7 +47,7 @@ class AdminArtService {
 				tags: tags?.length ? tags.join(',') : undefined,
 			},
 		})
-		return { ...data, total: data.totalCount ?? data.total }
+		return data
 	}
 
 	async create(art: AdminArtCreate): Promise<Art> {

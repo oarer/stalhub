@@ -1392,6 +1392,7 @@
         "previewTitle": "Vista previa de escuadras",
         "title": "Escuadras · {map}",
         "squadCount": "Escuadras",
+        "membersCount": "Jugadores",
         "leader": "Líder",
         "absent": "Ausencia",
         "empty": "Vacío"
@@ -1607,6 +1608,17 @@
       "membersCount": "Miembros sin vincular: {count}",
       "selectAll": "Seleccionar todos",
       "selectedCount": "Seleccionados: {count}"
+    },
+    "attendance": {
+      "title": "Asistencia",
+      "member": "Miembro",
+      "empty": "Aún no hay eventos analizados este mes",
+      "status": {
+        "PRESENT": "Presente",
+        "ABSENT": "Ausente",
+        "EXCUSED": "Justificado",
+        "LATE": "Tarde"
+      }
     }
   },
   "me": {
@@ -1629,7 +1641,8 @@
       "stars": "Favoritos",
       "system": "Sistema",
       "notifications": "Notificaciones",
-      "invites": "Invitaciones"
+      "invites": "Invitaciones",
+      "attendance": "Asistencia"
     },
     "menu": "Menú",
     "home": {
@@ -1674,11 +1687,11 @@
       "default": "Normal",
       "nsfw": "NSFW",
       "image": "Imagen (enlace)",
-      "imagePlaceholder": "Pega el enlace de la imagen",
+      "workPlaceholder": "Pega el enlace de la imagen",
       "upload": "Subir",
       "imageInvalidType": "Solo se admiten PNG, JPG, WEBP y GIF",
-      "imageTooLarge": "El tamaño máximo del archivo es 10 MB",
-      "imageUploaded": "Imagen subida",
+      "workTooLarge": "El tamaño máximo del archivo es 10 MB",
+      "workUploaded": "Imagen subida",
       "imageUploadError": "Error al subir la imagen",
       "tags": "Etiquetas",
       "tagsPlaceholder": "Etiquetas separadas por comas",
@@ -2045,7 +2058,13 @@
   "themes": {
     "system": "Del sistema",
     "dark": "Oscuro",
-    "light": "Claro"
+    "light": "Claro",
+    "add": "Añadir",
+    "addCustom": "Añadir tema personalizado",
+    "load": "Cargar tema",
+    "import": "Importar",
+    "hint": "Pega una URL de tema de tweakcn.com o JSON. El tema se guardará localmente.",
+    "colorThemes": "Temas de color"
   },
   "clans": {
     "title": "Clanes",

@@ -10,11 +10,11 @@ import { Skeleton } from '@/components/ui/Skeleton'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { clanQueries } from '@/queries/clan/clan.queries'
+import type { ClanMemberNoteWithMember } from '@/types/clan/clan.type'
 import { Section } from '../me/components/Section'
 import { RANK_COLORS, RANK_ORDER } from './clan.const'
-import { useClanRoles } from './hooks/useClanRoles'
 import { MemberNotesButton } from './components/members/MemberNotesButton'
-import type { ClanMemberNoteWithMember } from '@/types/clan/clan.type'
+import { useClanRoles } from './hooks/useClanRoles'
 
 export default function ClanMembersView() {
 	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
@@ -40,7 +40,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 		const map = new Map<number, string>()
 		for (const squad of squads ?? []) {
 			for (const m of squad.members) {
-				map.set(m.memberId, squad.name)
+				map.set(m.member_id, squad.name)
 			}
 		}
 		return map
@@ -49,7 +49,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 	const noteByMemberId = useMemo(() => {
 		const map = new Map<number, ClanMemberNoteWithMember>()
 		for (const note of allNotes ?? []) {
-			map.set(note.memberId, note)
+			map.set(note.member_id, note)
 		}
 		return map
 	}, [allNotes])
@@ -75,7 +75,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 			<div className="flex flex-col">
 				{sorted.map((member) => (
 					<div
-						className="flex items-center justify-between border-border-secondary border-b py-3 last:border-b-0"
+						className="flex items-center justify-between border-primary border-b py-3 last:border-b-0"
 						key={member.id}
 					>
 						<div className="flex items-center gap-3">

@@ -41,7 +41,7 @@ export default function BannedView() {
 						className={`${unbounded.className} text-center font-bold text-2xl uppercase tracking-widest md:text-left md:text-3xl`}
 					>
 						{t('errors.banned.account')}{' '}
-						<span className="text-red-500">
+						<span className="text-destructive">
 							{t('errors.banned.blocked')}
 						</span>
 					</h1>
@@ -54,7 +54,7 @@ export default function BannedView() {
 					</p>
 					{remaining != null && remaining > 0 && (
 						<p
-							className={`${unbounded.className} text-center font-semibold text-sm md:text-left md:text-lg dark:text-neutral-400`}
+							className={`${unbounded.className} text-center font-semibold text-sm md:text-left md:text-lg dark:text-muted-foreground`}
 						>
 							{t('errors.banned.remaining')}{' '}
 							{stringTimeDeltaFull(

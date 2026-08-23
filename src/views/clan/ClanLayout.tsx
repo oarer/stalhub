@@ -49,7 +49,7 @@ export default function ClanLayout({
 	})
 
 	const switchMutation = useMutation({
-		mutationFn: (clanId: string) => clanService.switchClan(clanId),
+		mutationFn: (clan_id: string) => clanService.switchClan(clan_id),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'me'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'my-clans'] })
@@ -70,7 +70,7 @@ export default function ClanLayout({
 
 	if (error || !profile) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
+			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 				<Icon className="text-4xl" icon="lucide:users" />
 				<h1 className={`${unbounded.className} font-semibold text-xl`}>
 					{t('clan.layout.notLinked.title')}
@@ -90,7 +90,7 @@ export default function ClanLayout({
 
 	if (!profile.clan) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
+			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 				<Icon className="text-4xl" icon="lucide:users" />
 				<h1 className={`${unbounded.className} font-semibold text-xl`}>
 					{t('clan.layout.notFound.title')}
@@ -110,14 +110,14 @@ export default function ClanLayout({
 					profile={profile}
 					switchMutation={switchMutation}
 				/>
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-background p-8 text-center">
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-8 text-center">
 					<Icon
-						className="text-4xl text-red-400"
+						className="text-4xl text-destructive"
 						icon="lucide:shield-ban"
 					/>
 
 					<h1
-						className={`${unbounded.className} font-semibold text-red-400 text-xl`}
+						className={`${unbounded.className} font-semibold text-destructive text-xl`}
 					>
 						{t('clan.layout.blocked.title')}
 					</h1>
@@ -155,7 +155,7 @@ export default function ClanLayout({
 						profile={profile}
 						switchMutation={switchMutation}
 					/>
-					<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
+					<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 						<Icon className="text-4xl" icon="lucide:snowflake" />
 						<h1
 							className={`${unbounded.className} font-semibold text-xl`}
@@ -163,7 +163,7 @@ export default function ClanLayout({
 							{t.rich('clan.layout.frozen.titleMember', {
 								name: profile.clan.name,
 								span: (chunks) => (
-									<span className="text-border">
+									<span className="text-primary">
 										{chunks}
 									</span>
 								),
@@ -185,7 +185,7 @@ export default function ClanLayout({
 					profile={profile}
 					switchMutation={switchMutation}
 				/>
-				<div className="flex flex-col items-center gap-4 rounded-xl bg-background p-8 text-center">
+				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:crown" />
 					<h1
 						className={`${unbounded.className} font-semibold text-xl`}
@@ -193,7 +193,7 @@ export default function ClanLayout({
 						{t.rich('clan.layout.frozen.title', {
 							name: profile.clan.name,
 							span: (chunks) => (
-								<span className="text-border">{chunks}</span>
+								<span className="text-primary">{chunks}</span>
 							),
 							tag: profile.clan.tag,
 						})}
@@ -242,20 +242,20 @@ function ClanSelector({
 		<DropdownMenu
 			className={`${montserrat.className} text-sm`}
 			items={(myClans ?? []).map((c) => ({
-				key: c.clanId,
+				key: c.clan_id,
 				content: (
 					<div
 						className="flex w-full cursor-pointer items-center justify-between gap-2 px-2 py-1"
 						onClick={() => {
-							if (c.clanId !== profile.clanId) {
-								switchMutation.mutate(c.clanId)
+							if (c.clan_id !== profile.clan_id) {
+								switchMutation.mutate(c.clan_id)
 							}
 						}}
 					>
 						<span className="font-semibold">
 							[{c.clan.tag}] {c.clan.name}
 						</span>
-						{c.clanId === profile.clanId && (
+						{c.clan_id === profile.clan_id && (
 							<Icon className="text-lg" icon="lucide:check" />
 						)}
 					</div>

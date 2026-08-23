@@ -68,7 +68,7 @@ export function useClanSettings() {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'grenades'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'catalog'] })
 			toast.success(
-				t('clan.settings.toasts.synced', { count: res.memberCount })
+				t('clan.settings.toasts.synced', { count: res.member_count })
 			)
 		},
 		onError: () => toast.error(t('clan.settings.toasts.syncError')),
@@ -111,8 +111,8 @@ export function useClanSettings() {
 	})
 
 	const boostModeMutation = useMutation({
-		mutationFn: (boost_mode: BoostMode) =>
-			clanService.updateBoostMode(boost_mode),
+		mutationFn: (boostMode: BoostMode) =>
+			clanService.updateBoostMode(boostMode),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'settings'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'grenades'] })
@@ -122,8 +122,8 @@ export function useClanSettings() {
 	})
 
 	const grenadeModeMutation = useMutation({
-		mutationFn: (grenade_mode: BoostMode) =>
-			clanService.updateGrenadeMode(grenade_mode),
+		mutationFn: (grenadeMode: BoostMode) =>
+			clanService.updateGrenadeMode(grenadeMode),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'settings'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'grenades'] })
@@ -158,10 +158,10 @@ export function useClanSettings() {
 	const generateBotToken = () => linkBotMutation.mutate()
 	const unlinkBot = (guildId: string) => unlinkBotMutation.mutate(guildId)
 	const closeBotToken = () => setLinkToken(null)
-	const setBoostMode = (boost_mode: BoostMode) =>
-		boostModeMutation.mutate(boost_mode)
-	const setGrenadeMode = (grenade_mode: BoostMode) =>
-		grenadeModeMutation.mutate(grenade_mode)
+	const setBoostMode = (boostMode: BoostMode) =>
+		boostModeMutation.mutate(boostMode)
+	const setGrenadeMode = (grenadeMode: BoostMode) =>
+		grenadeModeMutation.mutate(grenadeMode)
 
 	return {
 		clan,
