@@ -30,5 +30,5 @@
 		".next/dev/types/**/*.ts",
 		"src/app/indev/model.tsx"
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "tests"]
 }

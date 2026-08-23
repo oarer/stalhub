@@ -94,6 +94,33 @@ const initialDefaults: BuildDefaults = {
 	},
 }
 
+export const normalizeBuildArtifacts = (build: Build): Build => {
+	if (!build.container) {
+		return build.arts.length === 0 ? build : { ...build, arts: [] }
+	}
+
+	const artsById = new Map(build.arts.map((art) => [art.instanceId, art]))
+	const assignedIds = new Set<string>()
+	const slots = build.container.slots.map((instanceId) => {
+		if (
+			!instanceId ||
+			!artsById.has(instanceId) ||
+			assignedIds.has(instanceId)
+		) {
+			return null
+		}
+
+		assignedIds.add(instanceId)
+		return instanceId
+	})
+
+	return {
+		...build,
+		arts: build.arts.filter((art) => assignedIds.has(art.instanceId)),
+		container: { ...build.container, slots },
+	}
+}
+
 const createInstanceId = () => crypto.randomUUID()
 
 const doAutoSave = (
@@ -349,13 +376,13 @@ export const useBuildStore = create<BuildState>()(
 					}
 
 					return {
-						build: {
+						build: normalizeBuildArtifacts({
 							...state.build,
 							container: {
 								id,
 								slots: newSlots,
 							},
-						},
+						}),
 					}
 				})
 				doAutoSave(set, get)
@@ -363,7 +390,10 @@ export const useBuildStore = create<BuildState>()(
 
 			removeContainer: () => {
 				set((state) => ({
-					build: { ...state.build, container: null },
+					build: normalizeBuildArtifacts({
+						...state.build,
+						container: null,
+					}),
 				}))
 				doAutoSave(set, get)
 			},
@@ -435,7 +465,7 @@ export const useBuildStore = create<BuildState>()(
 
 				if (override) {
 					set((s) => ({
-						build: {
+						build: normalizeBuildArtifacts({
 							...s.build,
 							container: {
 								...s.build.container!,
@@ -443,7 +473,7 @@ export const useBuildStore = create<BuildState>()(
 									i === slotIndex ? artId : v
 								),
 							},
-						},
+						}),
 					}))
 					doAutoSave(set, get)
 					return true
@@ -462,7 +492,7 @@ export const useBuildStore = create<BuildState>()(
 						return { build: state.build }
 
 					return {
-						build: {
+						build: normalizeBuildArtifacts({
 							...state.build,
 							container: {
 								...state.build.container,
@@ -470,7 +500,7 @@ export const useBuildStore = create<BuildState>()(
 									(v, i) => (i === slotIndex ? null : v)
 								),
 							},
-						},
+						}),
 					}
 				})
 				doAutoSave(set, get)
@@ -526,7 +556,9 @@ export const useBuildStore = create<BuildState>()(
 				if (!saved) return
 
 				set({
-					build: JSON.parse(JSON.stringify(saved.build)),
+					build: normalizeBuildArtifacts(
+						JSON.parse(JSON.stringify(saved.build))
+					),
 					defaults: JSON.parse(JSON.stringify(saved.defaults)),
 					currentBuildId: id,
 				})
@@ -540,7 +572,9 @@ export const useBuildStore = create<BuildState>()(
 				)
 				if (existing) {
 					set({
-						build: JSON.parse(JSON.stringify(existing.build)),
+						build: normalizeBuildArtifacts(
+							JSON.parse(JSON.stringify(existing.build))
+						),
 						defaults: JSON.parse(JSON.stringify(existing.defaults)),
 						currentBuildId: existing.id,
 					})
@@ -552,7 +586,9 @@ export const useBuildStore = create<BuildState>()(
 				const newBuild: SavedBuild = {
 					id,
 					name,
-					build: JSON.parse(JSON.stringify(buildData)),
+					build: normalizeBuildArtifacts(
+						JSON.parse(JSON.stringify(buildData))
+					),
 					defaults: JSON.parse(JSON.stringify(initialDefaults)),
 					apiBuildId,
 					tags,
@@ -639,14 +675,14 @@ export const useBuildStore = create<BuildState>()(
 						const newBuild: SavedBuild = {
 							id,
 							name: buildName,
-							build: data.build,
+							build: normalizeBuildArtifacts(data.build),
 							defaults: data.defaults,
 							createdAt: now,
 							updatedAt: now,
 						}
 						const { savedBuilds } = get()
 						set({
-							build: data.build,
+							build: normalizeBuildArtifacts(data.build),
 							defaults: data.defaults,
 							savedBuilds: [...savedBuilds, newBuild],
 							currentBuildId: id,
@@ -663,7 +699,20 @@ export const useBuildStore = create<BuildState>()(
 		}),
 		{
 			name: 'build-storage',
-			version: 2,
+			version: 3,
+			migrate: (persistedState) => {
+				const state = persistedState as Partial<BuildState>
+				return {
+					...state,
+					build: state.build
+						? normalizeBuildArtifacts(state.build)
+						: initialBuild,
+					savedBuilds: (state.savedBuilds ?? []).map((saved) => ({
+						...saved,
+						build: normalizeBuildArtifacts(saved.build),
+					})),
+				} as BuildState
+			},
 			partialize: (state) => ({
 				build: state.build,
 				defaults: state.defaults,
