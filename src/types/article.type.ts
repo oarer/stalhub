@@ -100,6 +100,7 @@ export interface ArticleComment {
 interface ArticleCommentAuthor {
 	id: number
 	username: string
+	name: string
 	avatar: string | null
 }
 
