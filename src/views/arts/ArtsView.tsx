@@ -114,7 +114,7 @@ export default function ArtsView() {
 				>
 					{arts.map((art) => (
 						<Link
-							className="group relative block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-card ring-2 ring-primary/30 duration-200 hover:ring-primary/70"
+							className="group relative mb-3 block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-card ring-2 ring-primary/30 duration-200 hover:ring-primary/70"
 							href={`/arts/${art.id}`}
 							key={art.id}
 						>
@@ -159,8 +159,7 @@ export default function ArtsView() {
 										)}
 										height={1600}
 										src={
-											resolveImageUrl(art.image_url) ??
-											''
+											resolveImageUrl(art.image_url) ?? ''
 										}
 										unoptimized
 										width={1200}
