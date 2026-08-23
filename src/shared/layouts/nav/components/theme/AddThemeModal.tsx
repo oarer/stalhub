@@ -98,7 +98,7 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 						<div className="flex flex-col gap-3">
 							<Input
 								onChange={(e) => setUrlInput(e.target.value)}
-								placeholder="https://tweakcn.com/r/themes/catppuccin.json"
+								placeholder="https://tweakcn.com/themes/cmmea3qbd000004jvb99v39cd"
 								type="url"
 								value={urlInput}
 							/>
@@ -136,10 +136,12 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 						<Alert.Description>
 							{t.rich('themes.hint', {
 								domain: (chunks) => (
-									<Link
-										className="text-primary"
-										href="https://stalhub.dev"
-									>
+<Link
+  className="text-primary"
+  href="https://tweakcn.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
 										{chunks}
 									</Link>
 								),
