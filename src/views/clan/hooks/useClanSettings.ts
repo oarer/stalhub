@@ -60,8 +60,7 @@ export function useClanSettings() {
 	})
 
 	const syncMutation = useMutation({
-		mutationFn: (region?: string) =>
-			clanService.sync(region ? { region } : undefined),
+		mutationFn: (region: string) => clanService.sync({ region }),
 		onSuccess: (res) => {
 			queryClient.invalidateQueries({ queryKey: ['clan', 'me'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'members'] })
@@ -153,7 +152,7 @@ export function useClanSettings() {
 		scheduleMutation.mutate(schedule)
 	}
 
-	const sync = () => syncMutation.mutate(undefined)
+	const sync = () => syncMutation.mutate(clan.region)
 	const freeze = () => freezeMutation.mutate()
 	const generateBotToken = () => linkBotMutation.mutate()
 	const unlinkBot = (guildId: string) => unlinkBotMutation.mutate(guildId)
