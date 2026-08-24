@@ -18,6 +18,7 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminClanQueries } from '@/queries/admin/clan.queries'
 import { adminClanService } from '@/services/admin/clan.service'
+import type { SundayActivity } from '@/types/clan/clan.type'
 import ClanAdminStagesView from './ClanAdminStagesView'
 
 interface Props {
@@ -48,6 +49,9 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 	const [brawls_mandatory, setBrawlsMandatory] = useState(
 		clan?.schedule?.brawls_mandatory ?? false
 	)
+	const [sundayActivity, setSundayActivity] = useState<SundayActivity>(
+		clan?.schedule?.sunday_activity ?? 'BRAWL'
+	)
 	const [blockReason, setBlockReason] = useState('')
 
 	const invalidate = () => {
@@ -68,6 +72,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 				schedule: {
 					brawls_per_week,
 					brawls_mandatory,
+					sunday_activity: sundayActivity,
 				},
 			}),
 		onSuccess: () => {
@@ -226,7 +231,9 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 								<div className="flex items-center gap-8">
 									<Switch
 										checked={isPublic}
-										label={t('admin.clans.detail.is_public')}
+										label={t(
+											'admin.clans.detail.is_public'
+										)}
 										onCheckedChange={setIsPublic}
 									/>
 									<Switch
@@ -242,7 +249,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 									<div className="w-40">
 										<Input
 											label="admin.clans.detail.brawls_per_week"
-											max={7}
+											max={4}
 											min={0}
 											onChange={(e) =>
 												setBrawlsPerWeek(
@@ -260,6 +267,31 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 										)}
 										onCheckedChange={setBrawlsMandatory}
 									/>
+									<div className="w-56">
+										<Combobox
+											onValueChange={(value) =>
+												setSundayActivity(
+													value as SundayActivity
+												)
+											}
+											options={[
+												{
+													value: 'BASE_CAPTURE',
+													label: 'clan.settings.sundayActivities.baseCapture',
+												},
+												{
+													value: 'BRAWL',
+													label: 'clan.settings.sundayActivities.brawl',
+												},
+												{
+													value: 'NONE',
+													label: 'clan.settings.sundayActivities.none',
+												},
+											]}
+											placeholder="clan.settings.sundayActivityLabel"
+											value={sundayActivity}
+										/>
+									</div>
 								</div>
 
 								{clan?.level ? (

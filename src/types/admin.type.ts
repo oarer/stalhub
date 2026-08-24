@@ -1,3 +1,5 @@
+import type { ClanSchedule } from './clan/clan.type'
+
 export interface AdminPermission {
 	id: number
 	name: string
@@ -100,7 +102,7 @@ export interface AdminClan {
 	status: 'FROZEN' | 'ACTIVE'
 	is_public: boolean
 	recruiting: boolean
-	schedule: { brawls_per_week: number; brawls_mandatory: boolean } | null
+	schedule: ClanSchedule | null
 	blocked: boolean
 	block_reason: string | null
 	blocked_at: string | null
@@ -121,7 +123,7 @@ export interface AdminClanUpdate {
 	is_public?: boolean
 	recruiting?: boolean
 	region?: string
-	schedule?: { brawls_per_week?: number; brawls_mandatory?: boolean }
+	schedule?: Partial<ClanSchedule>
 }
 
 export interface AdminClanMember {

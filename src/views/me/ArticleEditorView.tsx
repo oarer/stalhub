@@ -5,6 +5,10 @@ import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+	QuestArticleFields,
+	type QuestFieldsValue,
+} from '@/components/articles/QuestArticleFields'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Tabs } from '@/components/ui/Tabs'
@@ -17,7 +21,9 @@ import { articleService } from '@/services/article/article.service'
 import {
 	ARTICLE_STATUS_META,
 	ArticleStatus,
+	ArticleType,
 	type ArticleUpdate,
+	QuestType,
 } from '@/types/article.type'
 import { ComponentsModal } from './components/article/ComponentsModal'
 import { EditorPane } from './components/article/EditorPane'
@@ -49,6 +55,13 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 	const [content, setContent] = useState(article.content)
 	const [tags, setTags] = useState(article.tags.join(', '))
 	const [imageUrl, setImageUrl] = useState(article.image_url ?? '')
+	const [quest, setQuest] = useState<QuestFieldsValue>({
+		quest_name: article.quest_name ?? '',
+		quest_type: article.quest_type ?? QuestType.STORY,
+		reward_text: article.reward_text ?? '',
+		reward_money:
+			article.reward_money == null ? '' : String(article.reward_money),
+	})
 	const [mobileTab, setMobileTab] = useState<EditorTab>('write')
 	const [isSaving, setIsSaving] = useState(false)
 	const [lastSaved, setLastSaved] = useState<Date | null>(null)
@@ -61,7 +74,14 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		title !== article.title ||
 		content !== article.content ||
 		tags !== article.tags.join(', ') ||
-		imageUrl !== (article.image_url ?? '')
+		imageUrl !== (article.image_url ?? '') ||
+		quest.quest_name !== (article.quest_name ?? '') ||
+		quest.reward_text !== (article.reward_text ?? '') ||
+		quest.reward_money !==
+			(article.reward_money == null
+				? ''
+				: String(article.reward_money)) ||
+		quest.quest_type !== (article.quest_type ?? QuestType.STORY)
 
 	const updateMutation = useMutation({
 		mutationFn: (data: ArticleUpdate) =>
@@ -99,8 +119,28 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 			content,
 			tags: parseTags(tags),
 			image_url: imageUrl || null,
+			...(article.type === ArticleType.QUEST
+				? {
+						quest_name: quest.quest_name || null,
+						quest_type: quest.quest_type,
+						reward_text: quest.reward_text || null,
+						reward_money:
+							quest.reward_money === ''
+								? null
+								: Number(quest.reward_money),
+					}
+				: {}),
 		})
-	}, [title, content, tags, imageUrl, isSaving, updateMutation])
+	}, [
+		title,
+		content,
+		tags,
+		imageUrl,
+		quest,
+		article.type,
+		isSaving,
+		updateMutation,
+	])
 
 	const handleSubmit = () => {
 		submitMutation.mutate()
@@ -192,6 +232,10 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				textareaRef={textareaRef}
 			/>
 
+			{article.type === ArticleType.QUEST && (
+				<QuestArticleFields onChange={setQuest} value={quest} />
+			)}
+
 			<div className="border-primary border-b md:hidden">
 				<Tabs.Root
 					className="px-4 py-1.5"
@@ -209,7 +253,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				</Tabs.Root>
 			</div>
 
-			<div className="flex min-h-0 flex-1 flex-col gap-2 md:flex-row">
+			<div className="flex min-h-90 flex-1 flex-col gap-2 md:flex-row">
 				<EditorPane
 					mobileTab={mobileTab}
 					onChange={setContent}
@@ -235,6 +279,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 			/>
 
 			<ComponentsModal
+				articleId={articleId}
 				onOpenChange={setComponentsModalOpen}
 				open={componentsModalOpen}
 				setContent={setContent}

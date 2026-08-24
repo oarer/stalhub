@@ -209,7 +209,15 @@
       "title": "Статистика",
       "reg": "В зоне:",
       "hours": "В игре:",
-      "last_login": "Последний вход:"
+      "last_login": "Последний вход:",
+      "description": "Вся доступная статистика игрока",
+      "shown": "{shown} из {total}",
+      "search": "Поиск статистики по названию или ID",
+      "category_filter": "Категория статистики",
+      "all": "Все",
+      "empty": "Статистика не найдена",
+      "empty_hint": "Попробуйте изменить запрос или категорию.",
+      "reset": "Сбросить фильтры"
     },
     "rank": {
       "LEADER": "Лидер",
@@ -234,7 +242,8 @@
       "HIDEOUT": "Убежище",
       "SESSION_MODES": "Сессионные режимы",
       "ECONOMY": "Экономика",
-      "COMBAT": "Бой"
+      "COMBAT": "Бой",
+      "NONE": "Прочее"
     },
     "clan": {
       "title": "Клан",
@@ -321,7 +330,8 @@
     "kg": "кг",
     "unit": "ед",
     "meter": "м",
-    "second": "с"
+    "second": "с",
+    "hours": "ч"
   },
   "arts": {
     "ART_QUALITY_COMMON": "Обычный",
@@ -1252,6 +1262,21 @@
       "DENIED": "Отклонено",
       "BANNED": "Заблокировано",
       "APPROVED": "Одобрено"
+    },
+    "quest": {
+      "details": "Детали квеста",
+      "name": "Название квеста",
+      "type": "Тип квеста",
+      "story": "Сюжетный",
+      "side": "Побочный",
+      "map": "Карта",
+      "selectMap": "Выберите карту",
+      "money": "Деньги",
+      "rewardText": "Награды",
+      "markers": "Метки",
+      "markerLabel": "Подпись",
+      "addMarker": "Добавить метку",
+      "gallery": "Галерея"
     }
   },
   "clan": {
@@ -1610,6 +1635,16 @@
       "recruitingTitle": "Набор в клан",
       "acceptRequests": "Принимать заявки",
       "acceptRequestsHint": "В списке кланов появится бейджик",
+      "recruitmentFields": {
+        "leaderDiscord": "Discord лидера",
+        "clanDiscord": "Discord клана (необязательно)",
+        "tier": "Тир клана",
+        "guildsPerWeek": "Гильз в неделю (необязательно)"
+      },
+      "paidRecruitment": "Платная основа",
+      "paidRecruitmentHint": "Ведётся ли набор на платной основе",
+      "leaderDiscordRequired": "Discord лидера обязателен",
+      "saveRecruitment": "Сохранить данные набора",
       "scheduleTitle": "Расписание КВ",
       "scheduleDesc": "Клан обязательно играет 3 турнира в неделю. Настройка потасовок показывает расписание публично и используется в расчёте шанса на кик.",
       "tournamentFixedLabel": "Турниры (обязательно)",
@@ -1644,6 +1679,8 @@
         "saveError": "Не удалось сохранить настройки",
         "recruitingUpdated": "Набор обновлён",
         "recruitingError": "Не удалось изменить набор",
+        "recruitmentSaved": "Данные набора сохранены",
+        "recruitmentError": "Не удалось сохранить данные набора",
         "scheduleSaved": "Расписание сохранено",
         "scheduleError": "Не удалось сохранить расписание",
         "synced": "Состав обновлён: {count} участников",
@@ -1654,6 +1691,13 @@
         "botUnlinkError": "Не удалось отвязать сервер",
         "frozen": "Клан заморожен",
         "freezeError": "Не удалось заморозить клан"
+      },
+      "sundayActivityLabel": "Активность в воскресенье",
+      "sundayActivityHint": "Выберите, во что клан играет в воскресенье",
+      "sundayActivities": {
+        "baseCapture": "Захват базы",
+        "brawl": "Потасовка",
+        "none": "Ничего"
       }
     },
     "invites": {
@@ -2169,6 +2213,13 @@
     "title": "Кланы",
     "searchLabel": "Название или тег",
     "recruiting": "Набор",
+    "leaderDiscord": "Discord лидера",
+    "clanDiscord": "Discord клана",
+    "paidRecruitment": "Платная основа",
+    "paidRecruitmentYes": "да",
+    "paidRecruitmentNo": "нет",
+    "tier": "Тир клана",
+    "guildsPerWeek": "Гильз в неделю",
     "empty": "Публичных кланов нет",
     "faction": "Фракция",
     "schedule": "Расписание:",

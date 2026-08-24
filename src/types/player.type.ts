@@ -29,6 +29,7 @@ export type Achievements = string
 export type StatType = 'INTEGER' | 'DECIMAL' | 'DATE' | 'DURATION'
 export type StatCategory =
 	| 'EXPLORATION'
+	| 'SURVIVAL'
 	| 'COMBAT'
 	| 'SESSION_MODES'
 	| 'ECONOMY'
@@ -81,7 +82,6 @@ export enum Role {
 	MEDIA = 'MEDIA',
 	STALHUB = 'STALHUB',
 }
-
 
 export interface PlayerStatsResponse {
 	uuid: string

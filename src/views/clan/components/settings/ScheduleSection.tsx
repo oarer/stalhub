@@ -6,12 +6,26 @@ import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Switch } from '@/components/ui/Switch'
-import { type ClanSchedule, TOURNAMENT_DAYS } from '@/types/clan/clan.type'
+import {
+	type ClanSchedule,
+	type SundayActivity,
+	TOURNAMENT_DAYS,
+} from '@/types/clan/clan.type'
+import { OptionDropdown } from '@/views/me/components/settings/OptionDropdown'
+
+const SUNDAY_OPTIONS: Array<{ value: SundayActivity; label: string }> = [
+	{ value: 'BASE_CAPTURE', label: 'clan.settings.sundayActivities.baseCapture' },
+	{ value: 'BRAWL', label: 'clan.settings.sundayActivities.brawl' },
+	{ value: 'NONE', label: 'clan.settings.sundayActivities.none' },
+]
 
 interface ScheduleSectionProps {
 	schedule: ClanSchedule
 	isPending: boolean
-	onFieldChange: (key: keyof ClanSchedule, value: number | boolean) => void
+	onFieldChange: (
+		key: keyof ClanSchedule,
+		value: number | boolean | SundayActivity
+	) => void
 	onSave: () => void
 }
 
@@ -39,6 +53,27 @@ export function ScheduleSection({
 				type="number"
 				value={schedule.brawls_per_week}
 			/>
+
+			<div className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3">
+				<div className="flex flex-col gap-1">
+					<span className="font-semibold text-sm">
+						{t('clan.settings.sundayActivityLabel')}
+					</span>
+					<span className="font-semibold text-sm text-text-accent">
+						{t('clan.settings.sundayActivityHint')}
+					</span>
+				</div>
+				<OptionDropdown
+					onSelect={(value) => onFieldChange('sunday_activity', value)}
+					options={SUNDAY_OPTIONS}
+					title={
+						SUNDAY_OPTIONS.find(
+							(option) => option.value === schedule.sunday_activity
+						)?.label ?? 'clan.settings.sundayActivities.brawl'
+					}
+					value={schedule.sunday_activity}
+				/>
+			</div>
 
 			<div className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3">
 				<div className="flex flex-col gap-1">

@@ -7,7 +7,6 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
-import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
@@ -50,16 +49,9 @@ export default function MeArticlesView() {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
-				<div className="flex items-center gap-3">
-					<h1 className="font-semibold text-xl">
-						{t('me.articles.title')}
-					</h1>
-					{articles?.total_count != null && (
-						<span className="text-sm text-text-accent">
-							{articles.total_count}
-						</span>
-					)}
-				</div>
+				<h1 className="font-semibold text-xl">
+					{t('me.articles.title')}
+				</h1>
 				<Link
 					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
 					href="/me/articles/new"
@@ -71,26 +63,20 @@ export default function MeArticlesView() {
 
 			<div className="flex flex-wrap gap-1.5">
 				<Button
-					className={cn(
-						filter === 'ALL' && 'bg-accent text-text',
-						'font-semibold'
-					)}
+					className="font-semibold"
 					onClick={() => setFilter('ALL')}
 					size={'sm'}
-					variant={'ghost'}
+					variant={filter === 'ALL' ? 'primary' : 'ghost'}
 				>
 					{t('me.articles.all')}
 				</Button>
 				{STATUSES.map((status) => (
 					<Button
-						className={cn(
-							filter === status && 'bg-accent text-text',
-							'font-semibold'
-						)}
+						className="font-semibold"
 						key={status}
 						onClick={() => setFilter(status)}
 						size={'sm'}
-						variant={'ghost'}
+						variant={filter === status ? 'primary' : 'ghost'}
 					>
 						{t(`articles.status.${status}`)}
 					</Button>

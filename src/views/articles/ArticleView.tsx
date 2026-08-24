@@ -17,6 +17,7 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import { useAuthStore } from '@/stores/useAuth.store'
+import { ArticleType } from '@/types/article.type'
 import ArticleComments from './ArticleComments'
 
 const EMPTY_SCOPE = {}
@@ -161,6 +162,28 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 					</div>
 				)}
 			</header>
+
+			{article.type === ArticleType.QUEST && (
+				<section className="grid gap-4 rounded-xl border-2 border-primary/20 bg-card p-5 md:grid-cols-2">
+					<div className="flex flex-col gap-2">
+						<h2 className="font-bold text-xl">
+							{article.quest_name ?? t('articles.quest.details')}
+						</h2>
+						<span className="text-text-accent">
+							{t(
+								`articles.quest.${article.quest_type === 'SIDE' ? 'side' : 'story'}`
+							)}
+						</span>
+						{article.reward_text && <p>{article.reward_text}</p>}
+						{article.reward_money != null && (
+							<p className="font-semibold">
+								{t('articles.quest.money')}:{' '}
+								{article.reward_money.toLocaleString()}
+							</p>
+						)}
+					</div>
+				</section>
+			)}
 
 			<div className="min-h-50">
 				{compiledSource ? (

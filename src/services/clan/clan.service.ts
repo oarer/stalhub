@@ -30,6 +30,7 @@ import type {
 	ListingItem,
 	MyClanProfile,
 	PublicClan,
+	RecruitmentSettings,
 	SquadMap,
 	StageSession,
 	StageSessionDetail,
@@ -348,6 +349,14 @@ class ClanService {
 		const { data } = await apiClient.patch<ClanInfo>(
 			'/api/v1/clan/recruiting',
 			{ recruiting }
+		)
+		return data
+	}
+
+	async updateRecruitment(body: RecruitmentSettings): Promise<ClanInfo> {
+		const { data } = await apiClient.patch<ClanInfo>(
+			'/api/v1/clan/recruitment',
+			body
 		)
 		return data
 	}

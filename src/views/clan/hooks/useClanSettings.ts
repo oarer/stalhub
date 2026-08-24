@@ -7,7 +7,16 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
-import type { BoostMode, BotLinkToken, ClanSchedule } from '@/types/clan/clan.type'
+import type {
+	BoostMode,
+	BotLinkToken,
+	ClanSchedule,
+	SundayActivity,
+} from '@/types/clan/clan.type'
+import {
+	type RecruitmentFormState,
+	toRecruitmentPayload,
+} from '../utils/recruitment'
 import { useClanRoles } from './useClanRoles'
 
 export function useClanSettings() {
@@ -20,11 +29,29 @@ export function useClanSettings() {
 
 	const [isPublic, setIsPublic] = useState(clan.is_public ?? false)
 	const [recruiting, setRecruiting] = useState(clan.recruiting ?? false)
+	const [recruitmentForm, setRecruitmentForm] =
+		useState<RecruitmentFormState>({
+			leader_discord: settings.leader_discord,
+			clan_discord: settings.clan_discord ?? '',
+			paid_recruitment: settings.paid_recruitment,
+			tier: settings.tier,
+			guilds_per_week: settings.guilds_per_week?.toString() ?? '',
+		})
+	const savedLeaderDiscord = settings.leader_discord.trim()
 	const [schedule, setSchedule] = useState<ClanSchedule>(settings.schedule)
 
 	useEffect(() => {
 		setSchedule(settings.schedule)
 	}, [settings.schedule])
+	useEffect(() => {
+		setRecruitmentForm({
+			leader_discord: settings.leader_discord,
+			clan_discord: settings.clan_discord ?? '',
+			paid_recruitment: settings.paid_recruitment,
+			tier: settings.tier,
+			guilds_per_week: settings.guilds_per_week?.toString() ?? '',
+		})
+	}, [settings])
 
 	const settingsMutation = useMutation({
 		mutationFn: (body: { is_public?: boolean }) =>
@@ -39,12 +66,27 @@ export function useClanSettings() {
 
 	const recruitingMutation = useMutation({
 		mutationFn: (value: boolean) => clanService.updateRecruiting(value),
-		onSuccess: () => {
+		onSuccess: (_result, value) => {
+			setRecruiting(value)
 			queryClient.invalidateQueries({ queryKey: ['clan', 'me'] })
 			queryClient.invalidateQueries({ queryKey: ['clan', 'catalog'] })
 			toast.success(t('clan.settings.toasts.recruitingUpdated'))
 		},
 		onError: () => toast.error(t('clan.settings.toasts.recruitingError')),
+	})
+
+	const recruitmentMutation = useMutation({
+		mutationFn: () =>
+			clanService.updateRecruitment(
+				toRecruitmentPayload(recruitmentForm)
+			),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['clan', 'settings'] })
+			queryClient.invalidateQueries({ queryKey: ['clan', 'me'] })
+			queryClient.invalidateQueries({ queryKey: ['clan', 'catalog'] })
+			toast.success(t('clan.settings.toasts.recruitmentSaved'))
+		},
+		onError: () => toast.error(t('clan.settings.toasts.recruitmentError')),
 	})
 
 	const scheduleMutation = useMutation({
@@ -74,9 +116,7 @@ export function useClanSettings() {
 	})
 
 	const [linkToken, setLinkToken] = useState<BotLinkToken | null>(null)
-	const [unlinkPendingId, setUnlinkPendingId] = useState<string | null>(
-		null
-	)
+	const [unlinkPendingId, setUnlinkPendingId] = useState<string | null>(null)
 
 	const linkBotMutation = useMutation({
 		mutationFn: () => clanService.discordLink(),
@@ -137,13 +177,17 @@ export function useClanSettings() {
 	}
 
 	const toggleRecruiting = (value: boolean) => {
-		setRecruiting(value)
 		recruitingMutation.mutate(value)
 	}
+	const setRecruitmentField = <K extends keyof RecruitmentFormState>(
+		key: K,
+		value: RecruitmentFormState[K]
+	) => setRecruitmentForm((previous) => ({ ...previous, [key]: value }))
+	const saveRecruitment = () => recruitmentMutation.mutate()
 
 	const setScheduleField = (
 		key: keyof ClanSchedule,
-		value: number | boolean
+		value: number | boolean | SundayActivity
 	) => {
 		setSchedule((prev) => ({ ...prev, [key]: value }))
 	}
@@ -169,11 +213,15 @@ export function useClanSettings() {
 		isOfficer,
 		isPublic,
 		recruiting,
+		recruitmentForm,
+		hasSavedLeaderDiscord: Boolean(savedLeaderDiscord),
 		schedule,
 		guilds,
 		linkToken,
 		togglePublic,
 		toggleRecruiting,
+		setRecruitmentField,
+		saveRecruitment,
 		setScheduleField,
 		saveSchedule,
 		sync,
@@ -185,6 +233,7 @@ export function useClanSettings() {
 		closeBotToken,
 		isPublicPending: settingsMutation.isPending,
 		isRecruitingPending: recruitingMutation.isPending,
+		isRecruitmentPending: recruitmentMutation.isPending,
 		isSchedulePending: scheduleMutation.isPending,
 		isSyncPending: syncMutation.isPending,
 		isFreezePending: freezeMutation.isPending,

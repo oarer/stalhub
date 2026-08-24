@@ -12,9 +12,20 @@ export type AbsenceEventType =
 export type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'LATE' | 'EXCUSED'
 type AttendanceSource = 'ai' | 'manual'
 
+export type SundayActivity = 'BASE_CAPTURE' | 'BRAWL' | 'NONE'
+
 export interface ClanSchedule {
 	brawls_per_week: number
 	brawls_mandatory: boolean
+	sunday_activity: SundayActivity
+}
+
+export interface RecruitmentSettings {
+	leader_discord: string
+	clan_discord: string | null
+	paid_recruitment: boolean
+	tier: number
+	guilds_per_week: number | null
 }
 
 export const TOURNAMENT_DAYS = 3
@@ -37,6 +48,11 @@ export interface ClanInfo {
 	created_at: string
 	is_public?: boolean
 	recruiting?: boolean
+	leader_discord?: string
+	clan_discord?: string | null
+	paid_recruitment?: boolean
+	tier?: number
+	guilds_per_week?: number | null
 	schedule?: ClanSchedule | null
 }
 
@@ -121,13 +137,18 @@ export interface PublicClan {
 	status: ClanStatus
 	is_public: boolean
 	recruiting: boolean
+	leader_discord: string
+	clan_discord: string | null
+	paid_recruitment: boolean
+	tier: number
+	guilds_per_week: number | null
 	schedule: ClanSchedule
 	boost_mode: BoostMode
 	grenade_mode: BoostMode
 	created_at: string
 }
 
-export interface ClanSettings {
+export interface ClanSettings extends RecruitmentSettings {
 	is_public: boolean
 	schedule: ClanSchedule
 	boost_mode: BoostMode

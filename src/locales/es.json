@@ -192,7 +192,15 @@
       "title": "Estadística",
       "reg": "En la zona:",
       "hours": "En el juego:",
-      "last_login": "Última conexión:"
+      "last_login": "Última conexión:",
+      "description": "Consulta todas las estadísticas disponibles por categoría.",
+      "shown": "{shown} de {total}",
+      "search": "Buscar estadísticas por nombre o ID",
+      "category_filter": "Categoría de estadísticas",
+      "all": "Todas",
+      "empty": "No se encontraron estadísticas",
+      "empty_hint": "Prueba a cambiar la búsqueda o la categoría.",
+      "reset": "Restablecer filtros"
     },
     "rank": {
       "LEADER": "Líder",
@@ -217,7 +225,8 @@
       "HIDEOUT": "Escondite",
       "SESSION_MODES": "Modos de sesión",
       "ECONOMY": "Economía",
-      "COMBAT": "Combate"
+      "COMBAT": "Combate",
+      "NONE": "Otros"
     },
     "clan": {
       "title": "Clan",
@@ -299,7 +308,8 @@
     "kg": "kg",
     "unit": "uds",
     "meter": "m",
-    "second": "s"
+    "second": "s",
+    "hours": "h"
   },
   "arts": {
     "ART_QUALITY_COMMON": "Común",
@@ -1227,6 +1237,21 @@
       "DENIED": "Rechazado",
       "BANNED": "Bloqueado",
       "APPROVED": "Aprobado"
+    },
+    "quest": {
+      "details": "Detalles de la misión",
+      "name": "Nombre de la misión",
+      "type": "Tipo de misión",
+      "story": "Historia",
+      "side": "Secundaria",
+      "map": "Mapa",
+      "selectMap": "Seleccionar mapa",
+      "money": "Dinero",
+      "rewardText": "Descripción de la recompensa",
+      "markers": "Marcadores",
+      "markerLabel": "Etiqueta",
+      "addMarker": "Añadir marcador",
+      "gallery": "Galería"
     }
   },
   "clan": {
@@ -1532,6 +1557,16 @@
       "recruitingTitle": "Reclutamiento en el clan",
       "acceptRequests": "Aceptar solicitudes",
       "acceptRequestsHint": "Aparecerá una insignia en la lista de clanes",
+		"recruitmentFields": {
+			"leaderDiscord": "Discord del líder",
+			"clanDiscord": "Discord del clan (opcional)",
+			"tier": "Nivel del clan",
+			"guildsPerWeek": "Guilds por semana (opcional)"
+		},
+		"paidRecruitment": "Modalidad de pago",
+		"paidRecruitmentHint": "Indica si el reclutamiento es de pago",
+		"leaderDiscordRequired": "El Discord del líder es obligatorio",
+		"saveRecruitment": "Guardar datos de reclutamiento",
       "scheduleTitle": "Horario de guerras de clanes",
       "scheduleDesc": "El clan juega obligatoriamente 3 torneos por semana. La configuración de peleas muestra el horario públicamente y se usa para calcular la probabilidad de kick.",
       "tournamentFixedLabel": "Torneos (obligatorios)",
@@ -1568,6 +1603,8 @@
         "saveError": "No se pudieron guardar los ajustes",
         "recruitingUpdated": "Reclutamiento actualizado",
         "recruitingError": "No se pudo cambiar el reclutamiento",
+			"recruitmentSaved": "Datos de reclutamiento guardados",
+			"recruitmentError": "No se pudieron guardar los datos de reclutamiento",
         "scheduleSaved": "Horario guardado",
         "scheduleError": "No se pudo guardar el horario",
         "synced": "Miembros actualizados: {count} participantes",
@@ -1578,6 +1615,13 @@
         "botUnlinkError": "No se pudo desvincular el servidor",
         "frozen": "Clan congelado",
         "freezeError": "No se pudo congelar el clan"
+      },
+      "sundayActivityLabel": "Actividad del domingo",
+      "sundayActivityHint": "Elige a qué juega el clan el domingo",
+      "sundayActivities": {
+        "baseCapture": "Captura de base",
+        "brawl": "Pelea",
+        "none": "Nada"
       }
     },
     "invites": {
@@ -2070,6 +2114,13 @@
     "title": "Clanes",
     "searchLabel": "Nombre o tag",
     "recruiting": "Reclutando",
+		"leaderDiscord": "Discord del líder",
+		"clanDiscord": "Discord del clan",
+		"paidRecruitment": "Modalidad de pago",
+		"paidRecruitmentYes": "sí",
+		"paidRecruitmentNo": "no",
+		"tier": "Nivel del clan",
+		"guildsPerWeek": "Guilds por semana",
     "empty": "No hay clanes públicos",
     "faction": "Facción",
     "schedule": "Horario:",

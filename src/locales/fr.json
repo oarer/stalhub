@@ -192,7 +192,15 @@
       "title": "Statistiques",
       "reg": "En zone :",
       "hours": "En jeu :",
-      "last_login": "Dernière connexion :"
+      "last_login": "Dernière connexion :",
+      "description": "Parcourez toutes les statistiques disponibles par catégorie.",
+      "shown": "{shown} sur {total}",
+      "search": "Rechercher par nom ou identifiant",
+      "category_filter": "Catégorie de statistiques",
+      "all": "Toutes",
+      "empty": "Aucune statistique trouvée",
+      "empty_hint": "Essayez de modifier la recherche ou la catégorie.",
+      "reset": "Réinitialiser les filtres"
     },
     "rank": {
       "LEADER": "Leader",
@@ -217,7 +225,8 @@
       "HIDEOUT": "Planque",
       "SESSION_MODES": "Modes de session",
       "ECONOMY": "Économie",
-      "COMBAT": "Combat"
+      "COMBAT": "Combat",
+      "NONE": "Autres"
     },
     "clan": {
       "title": "Clan",
@@ -299,7 +308,8 @@
     "kg": "kg",
     "unit": "u",
     "meter": "m",
-    "second": "s"
+    "second": "s",
+    "hours": "h"
   },
   "arts": {
     "ART_QUALITY_COMMON": "Commun",
@@ -1227,6 +1237,21 @@
       "DENIED": "Refusé",
       "BANNED": "Bloqué",
       "APPROVED": "Approuvé"
+    },
+    "quest": {
+      "details": "Détails de la quête",
+      "name": "Nom de la quête",
+      "type": "Type de quête",
+      "story": "Principale",
+      "side": "Secondaire",
+      "map": "Carte",
+      "selectMap": "Sélectionner une carte",
+      "money": "Argent",
+      "rewardText": "Description de la récompense",
+      "markers": "Marqueurs",
+      "markerLabel": "Libellé",
+      "addMarker": "Ajouter un marqueur",
+      "gallery": "Galerie"
     }
   },
   "clan": {
@@ -1532,6 +1557,16 @@
       "recruitingTitle": "Recrutement du clan",
       "acceptRequests": "Accepter les demandes",
       "acceptRequestsHint": "Un badge apparaîtra dans la liste des clans",
+		"recruitmentFields": {
+			"leaderDiscord": "Discord du chef",
+			"clanDiscord": "Discord du clan (facultatif)",
+			"tier": "Niveau du clan",
+			"guildsPerWeek": "Guilds par semaine (facultatif)"
+		},
+		"paidRecruitment": "Base payante",
+		"paidRecruitmentHint": "Indique si le recrutement est payant",
+		"leaderDiscordRequired": "Le Discord du chef est obligatoire",
+		"saveRecruitment": "Enregistrer les informations de recrutement",
       "scheduleTitle": "Programme des guerres de clans",
       "scheduleDesc": "Le clan joue obligatoirement 3 tournois par semaine. La configuration des bagarres affiche le programme publiquement et est utilisée pour calculer le risque de kick.",
       "tournamentFixedLabel": "Tournois (obligatoires)",
@@ -1568,6 +1603,8 @@
         "saveError": "Impossible d'enregistrer les paramètres",
         "recruitingUpdated": "Recrutement mis à jour",
         "recruitingError": "Impossible de modifier le recrutement",
+			"recruitmentSaved": "Informations de recrutement enregistrées",
+			"recruitmentError": "Impossible d’enregistrer les informations de recrutement",
         "scheduleSaved": "Programme enregistré",
         "scheduleError": "Impossible d'enregistrer le programme",
         "synced": "Effectif mis à jour : {count} membres",
@@ -1578,6 +1615,13 @@
         "botUnlinkError": "Impossible de dissocier le serveur",
         "frozen": "Clan gelé",
         "freezeError": "Impossible de geler le clan"
+      },
+      "sundayActivityLabel": "Activité du dimanche",
+      "sundayActivityHint": "Choisissez l’activité du clan le dimanche",
+      "sundayActivities": {
+        "baseCapture": "Capture de base",
+        "brawl": "Bagarre",
+        "none": "Aucune"
       }
     },
     "invites": {
@@ -2070,6 +2114,13 @@
     "title": "Clans",
     "searchLabel": "Nom ou tag",
     "recruiting": "Recrutement",
+		"leaderDiscord": "Discord du chef",
+		"clanDiscord": "Discord du clan",
+		"paidRecruitment": "Base payante",
+		"paidRecruitmentYes": "oui",
+		"paidRecruitmentNo": "non",
+		"tier": "Niveau du clan",
+		"guildsPerWeek": "Guilds par semaine",
     "empty": "Aucun clan public",
     "faction": "Faction",
     "schedule": "Programme :",

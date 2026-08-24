@@ -39,11 +39,32 @@ export const ARTICLE_STATUS_META: Record<
 	},
 }
 
+export enum QuestType {
+	STORY = 'STORY',
+	SIDE = 'SIDE',
+}
+
+export interface QuestMapData {
+	map_id: string
+	map_name?: string
+	markers: Array<{ x: number; y: number; label?: string }>
+}
+
+export const articleImageUrl = (url: string) =>
+	url.startsWith('/uploads/')
+		? `${process.env.NEXT_PUBLIC_API ?? ''}${url}`
+		: url
+
 export interface Article {
 	id: string
 	title: string
 	content: string
 	image_url: string | null
+	quest_name: string | null
+	quest_type: QuestType | null
+	quest_map: QuestMapData | null
+	reward_text: string | null
+	reward_money: number | null
 	status: ArticleStatus
 	type: ArticleType | null
 	flags: number | null
@@ -66,6 +87,11 @@ export interface ArticleCreate {
 	title: string
 	content: string
 	image_url?: string | null
+	quest_name?: string | null
+	quest_type?: QuestType | null
+	quest_map?: QuestMapData | null
+	reward_text?: string | null
+	reward_money?: number | null
 	type?: ArticleType
 	flags?: number
 	tags?: string[]
@@ -75,6 +101,11 @@ export interface ArticleUpdate {
 	title?: string
 	content?: string
 	image_url?: string | null
+	quest_name?: string | null
+	quest_type?: QuestType | null
+	quest_map?: QuestMapData | null
+	reward_text?: string | null
+	reward_money?: number | null
 	type?: ArticleType
 	flags?: number
 	tags?: string[]

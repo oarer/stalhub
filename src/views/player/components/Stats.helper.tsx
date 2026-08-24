@@ -1,32 +1,13 @@
 'use client'
 
-import { useVirtualizer } from '@tanstack/react-virtual'
-
+import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { useRef } from 'react'
 import { montserrat } from '@/app/fonts'
 import { getLocale } from '@/lib/getLocale'
-import type { DBStats, Stat, StatCategory } from '@/types/player.type'
+import type { Stat, StatCategory } from '@/types/player.type'
 import { decimalConfig } from '@/types/player.type'
 import { messageToString } from '@/utils/itemUtils'
-import { DB_STATS_BY_ID } from '@/utils/player/StatParse'
-
-export function groupPlayerStats(stats: Stat[]) {
-	const result: Record<string, (Stat & { meta?: DBStats })[]> = {}
-
-	for (const stat of stats) {
-		const meta = DB_STATS_BY_ID[stat.id]
-		const category = meta?.category ?? 'NONE'
-
-		if (!result[category]) {
-			result[category] = []
-		}
-
-		result[category].push({ ...stat, meta })
-	}
-
-	return result
-}
+import type { PlayerStat } from './Stats.utils'
 
 type TFunction = ReturnType<typeof useTranslations>
 
@@ -36,153 +17,96 @@ function formatStatValue(stat: Stat, locale: string, t: TFunction) {
 	switch (type) {
 		case 'INTEGER':
 			return Number(value).toLocaleString(locale)
-
 		case 'DECIMAL': {
 			const config = decimalConfig[id] ?? {
 				divisor: 100000,
 				precision: 2,
 				unit: 'km',
 			}
-
-			const decimalValue = Number(value) / config.divisor
-			const formatted = decimalValue.toFixed(config.precision)
-
+			const formatted = (Number(value) / config.divisor).toLocaleString(
+				locale,
+				{
+					maximumFractionDigits: config.precision,
+					minimumFractionDigits: config.precision,
+				}
+			)
 			return config.unit
 				? `${formatted} ${t(`unit.${config.unit}`)}`
 				: formatted
 		}
-
-		case 'DURATION':
-			return (Number(value) / (1000 * 60 * 60)).toFixed(0)
-
-		case 'DATE':
-			return value instanceof Date
-				? value.toLocaleDateString(locale)
-				: new Date(value).toLocaleDateString(locale)
-
+		case 'DURATION': {
+			const hours = Number(value) / (1000 * 60 * 60)
+			return `${hours.toLocaleString(locale, { maximumFractionDigits: 1 })} ${t('unit.hours')}`
+		}
+		case 'DATE': {
+			const date = value instanceof Date ? value : new Date(value)
+			return Number.isNaN(date.getTime())
+				? String(value)
+				: date.toLocaleDateString(locale)
+		}
 		default:
 			return String(value)
 	}
 }
 
-const ROW_HEIGHT = 52
-const COLUMN_COUNT = 3
-
 type StatsSectionProps = {
 	title: StatCategory
-	stats: (Stat & { meta?: DBStats })[]
+	icon: string
+	stats: PlayerStat[]
 }
 
-export function StatsSection({ title, stats }: StatsSectionProps) {
-	const parentRef = useRef<HTMLDivElement>(null)
+export function StatsSection({ title, icon, stats }: StatsSectionProps) {
 	const locale = getLocale()
 	const t = useTranslations()
-
-	const safeStats = stats ?? []
-	const shouldVirtualize = safeStats.length > 50
-	const rowCount = Math.ceil(safeStats.length / COLUMN_COUNT)
-
-	const virtualizer = useVirtualizer({
-		count: rowCount,
-		getScrollElement: () => parentRef.current,
-		estimateSize: () => ROW_HEIGHT,
-		overscan: 5,
-	})
-
-	if (safeStats.length === 0) return null
-
-	const getCell = (rowIndex: number, columnIndex: number) => {
-		const index = rowIndex * COLUMN_COUNT + columnIndex
-		return safeStats[index]
-	}
+	if (stats.length === 0) return null
 
 	return (
-		<div className="space-y-3">
+		<section aria-labelledby={`stats-${title}`} className="space-y-3">
 			<div className="flex items-center gap-2">
-				<h3 className="font-semibold text-lg">
+				<div className="rounded-lg bg-primary/15 p-1.5 text-primary">
+					<Icon aria-hidden="true" icon={icon} />
+				</div>
+				<h3 className="font-semibold text-lg" id={`stats-${title}`}>
 					{t(`player.category.${title}`)}
 				</h3>
+				<span
+					className={`${montserrat.className} text-muted-foreground text-xs`}
+				>
+					{stats.length}
+				</span>
 			</div>
-
-			{shouldVirtualize ? (
-				<div className="h-100 overflow-auto pl-7" ref={parentRef}>
-					<div
-						style={{
-							height: virtualizer.getTotalSize(),
-							position: 'relative',
-							width: '100%',
-						}}
-					>
-						{virtualizer.getVirtualItems().map((virtualRow) => {
-							const rowIndex = virtualRow.index
-
-							return (
-								<div
-									key={virtualRow.key}
-									style={{
-										position: 'absolute',
-										top: 0,
-										left: 0,
-										width: '100%',
-										height: ROW_HEIGHT,
-										transform: `translateY(${virtualRow.start}px)`,
-										display: 'grid',
-										gridTemplateColumns: `repeat(${COLUMN_COUNT}, 200px)`,
-									}}
-								>
-									{Array.from({ length: COLUMN_COUNT }).map(
-										(_, columnIndex) => {
-											const stat = getCell(
-												rowIndex,
-												columnIndex
-											)
-											if (!stat) return null
-
-											return (
-												<div
-													className="space-y-1 p-2"
-													key={stat.id}
-												>
-													<p className="font-semibold text-md">
-														{messageToString(
-															stat.meta?.name,
-															locale
-														)}
-													</p>
-													<p
-														className={`${montserrat.className} font-medium text-sm`}
-													>
-														{formatStatValue(
-															stat,
-															locale,
-															t
-														)}
-													</p>
-												</div>
-											)
-										}
-									)}
-								</div>
-							)
-						})}
-					</div>
-				</div>
-			) : (
-				<div className="grid grid-cols-1 gap-4 pl-7 md:grid-cols-2 lg:grid-cols-3">
-					{safeStats.map((stat) => (
-						<div className="space-y-1" key={stat.id}>
-							<p className="font-semibold text-md">
-								{messageToString(stat.meta?.name, locale)}
+			<div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+				{stats.map((stat) => {
+					const name =
+						messageToString(stat.meta?.name, locale) || stat.id
+					return (
+						<div
+							className="min-w-0 rounded-lg border border-muted bg-card/60 px-3 py-2.5 transition-colors hover:border-primary/40"
+							key={stat.id}
+						>
+							<p
+								className="truncate font-semibold text-muted-foreground text-sm"
+								title={name}
+							>
+								{name}
 							</p>
 							<p
-								className={`${montserrat.className} font-medium text-sm`}
+								className={`${montserrat.className} wrap-break-word font-semibold text-base`}
 							>
 								{formatStatValue(stat, locale, t)}
 							</p>
+							{!stat.meta && (
+								<code
+									className="block truncate text-muted-foreground text-xs"
+									title={stat.id}
+								>
+									{stat.id}
+								</code>
+							)}
 						</div>
-					))}
-				</div>
-			)}
-		</div>
+					)
+				})}
+			</div>
+		</section>
 	)
 }

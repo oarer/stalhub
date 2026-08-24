@@ -12,9 +12,11 @@ class ArticleService {
 		take = 20,
 		page = 1,
 		status,
-	}: { take?: number; page?: number; status?: string } = {}): Promise<
-		PaginatedResponse<Article>
-	> {
+	}: {
+		take?: number
+		page?: number
+		status?: string
+	} = {}): Promise<PaginatedResponse<Article>> {
 		const { data } = await apiClient.get<PaginatedResponse<Article>>(
 			'/api/v1/articles',
 			{ params: { take, page, status } }
@@ -25,9 +27,10 @@ class ArticleService {
 	async publicList({
 		take = 20,
 		page = 1,
-	}: { take?: number; page?: number } = {}): Promise<
-		PaginatedResponse<Article>
-	> {
+	}: {
+		take?: number
+		page?: number
+	} = {}): Promise<PaginatedResponse<Article>> {
 		const { data } = await apiClient.get<PaginatedResponse<Article>>(
 			'/api/v1/articles/public',
 			{ params: { take, page } }
@@ -41,8 +44,22 @@ class ArticleService {
 	}
 
 	async create(article: ArticleCreate): Promise<Article> {
-		const { data } = await apiClient.post<Article>('/api/v1/articles', article)
+		const { data } = await apiClient.post<Article>(
+			'/api/v1/articles',
+			article
+		)
 		return data
+	}
+
+	async uploadImage(id: string, file: File): Promise<string> {
+		const form = new FormData()
+		form.append('file', file)
+		const { data } = await apiClient.post<{ url: string }>(
+			`/api/v1/articles/${id}/image`,
+			form,
+			{ headers: { 'Content-Type': 'multipart/form-data' } }
+		)
+		return data.url
 	}
 
 	async update(id: string, article: ArticleUpdate): Promise<Article> {
@@ -79,10 +96,7 @@ class ArticleService {
 		return data
 	}
 
-	async getVersion(
-		id: string,
-		versionId: string
-	): Promise<ArticleVersion> {
+	async getVersion(id: string, versionId: string): Promise<ArticleVersion> {
 		const { data } = await apiClient.get<ArticleVersion>(
 			`/api/v1/articles/${id}/versions/${versionId}`
 		)

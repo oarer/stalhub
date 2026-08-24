@@ -192,7 +192,15 @@
       "title": "Statistics",
       "reg": "In zone:",
       "hours": "In game:",
-      "last_login": "Last login:"
+      "last_login": "Last login:",
+      "description": "Browse all available player stats by category.",
+      "shown": "{shown} of {total}",
+      "search": "Search stats by name or ID",
+      "category_filter": "Stat category",
+      "all": "All",
+      "empty": "No stats found",
+      "empty_hint": "Try changing your search or category.",
+      "reset": "Reset filters"
     },
     "rank": {
       "LEADER": "Leader",
@@ -217,7 +225,8 @@
       "HIDEOUT": "Hideout",
       "SESSION_MODES": "Session modes",
       "ECONOMY": "Economy",
-      "COMBAT": "Combat"
+      "COMBAT": "Combat",
+      "NONE": "Other"
     },
     "clan": {
       "title": "Clan",
@@ -299,7 +308,8 @@
     "kg": "kg",
     "unit": "u",
     "meter": "m",
-    "second": "s"
+    "second": "s",
+    "hours": "h"
   },
   "arts": {
     "ART_QUALITY_COMMON": "Common",
@@ -1227,6 +1237,21 @@
       "DENIED": "Denied",
       "BANNED": "Banned",
       "APPROVED": "Approved"
+    },
+    "quest": {
+      "details": "Quest details",
+      "name": "Quest name",
+      "type": "Quest type",
+      "story": "Story",
+      "side": "Side",
+      "map": "Map",
+      "selectMap": "Select map",
+      "money": "Money",
+      "rewardText": "Reward description",
+      "markers": "Markers",
+      "markerLabel": "Label",
+      "addMarker": "Add marker",
+      "gallery": "Gallery"
     }
   },
   "clan": {
@@ -1584,6 +1609,16 @@
       "recruitingTitle": "Clan recruiting",
       "acceptRequests": "Accept requests",
       "acceptRequestsHint": "A badge will appear in the clan list",
+		"recruitmentFields": {
+			"leaderDiscord": "Leader Discord",
+			"clanDiscord": "Clan Discord (optional)",
+			"tier": "Clan tier",
+			"guildsPerWeek": "Guilds per week (optional)"
+		},
+		"paidRecruitment": "Paid basis",
+		"paidRecruitmentHint": "Whether recruitment is offered on a paid basis",
+		"leaderDiscordRequired": "Leader Discord is required",
+		"saveRecruitment": "Save recruitment details",
       "scheduleTitle": "Clan wars schedule",
       "scheduleDesc": "The clan must play 3 tournaments per week. The brawls setting shows the schedule publicly and is used in the kick chance calculation.",
       "tournamentFixedLabel": "Tournaments (mandatory)",
@@ -1620,6 +1655,8 @@
         "saveError": "Could not save settings",
         "recruitingUpdated": "Recruiting updated",
         "recruitingError": "Could not change recruiting",
+			"recruitmentSaved": "Recruitment details saved",
+			"recruitmentError": "Could not save recruitment details",
         "scheduleSaved": "Schedule saved",
         "scheduleError": "Could not save schedule",
         "synced": "Roster updated: {count} members",
@@ -1630,6 +1667,13 @@
         "botUnlinkError": "Could not unlink server",
         "frozen": "Clan frozen",
         "freezeError": "Could not freeze clan"
+      },
+      "sundayActivityLabel": "Sunday activity",
+      "sundayActivityHint": "Choose what the clan plays on Sunday",
+      "sundayActivities": {
+        "baseCapture": "Base capture",
+        "brawl": "Brawl",
+        "none": "Nothing"
       }
     },
     "invites": {
@@ -2123,6 +2167,13 @@
     "title": "Clans",
     "searchLabel": "Name or tag",
     "recruiting": "Recruiting",
+		"leaderDiscord": "Leader Discord",
+		"clanDiscord": "Clan Discord",
+		"paidRecruitment": "Paid basis",
+		"paidRecruitmentYes": "yes",
+		"paidRecruitmentNo": "no",
+		"tier": "Clan tier",
+		"guildsPerWeek": "Guilds per week",
     "empty": "No public clans",
     "faction": "Faction",
     "schedule": "Schedule:",

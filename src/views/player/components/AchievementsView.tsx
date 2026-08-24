@@ -1,3 +1,4 @@
+import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { getLocale } from '@/lib/getLocale'
 import type { Achievements } from '@/types/player.type'
@@ -15,12 +16,14 @@ export default function AchievementsView({ data }: { data: Achievements[] }) {
 
 				return (
 					<div className="flex gap-2" key={ach}>
-						<Badge className="flex min-w-9 items-center justify-center self-center p-2 text-sky-200 text-sm dark:bg-sky-700/70">
+						<Badge
+							className={`${montserrat.className} flex min-w-9 items-center justify-center self-center bg-primary/50 p-2 text-sms`}
+						>
 							{achievement.point}
 						</Badge>
 
-						<div className="flex flex-col gap-2">
-							<p className="text-sky-200">
+						<div className="flex flex-col gap-1">
+							<p className="text-primary">
 								{messageToString(achievement.title, locale)}
 							</p>
 							<p className="text-sm">

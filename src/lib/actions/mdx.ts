@@ -42,7 +42,8 @@ export async function compileMdx(source: string) {
 				remarkCallouts,
 			],
 		},
-		blockJS: true,
+		blockJS: false,
+		blockDangerousJS: true,
 	})
 
 	return {

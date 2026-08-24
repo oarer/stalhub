@@ -32,7 +32,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
 	return (
 		<Link
-			className="group/card flex flex-col gap-2 rounded-lg bg-card p-3.5 transition-all hover:bg-accent hover:shadow-sm"
+			className="group/card flex flex-col gap-2 rounded-lg bg-card p-3.5 transition-all hover:bg-muted hover:shadow-sm"
 			href={
 				isOwn
 					? `/me/articles/${article.id}/edit`

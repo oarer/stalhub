@@ -49,6 +49,50 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			value: clan.grenade_mode === 'ISSUED' ? t('clan.grenades.modeIssued') : t('clan.grenades.modeSelf'),
 		},
 	]
+	const recruitmentFields = clan.recruiting
+		? [
+				{
+					key: 'leaderDiscord',
+					label: 'clans.leaderDiscord',
+					icon: 'lucide:message-circle',
+					value: clan.leader_discord,
+				},
+				...(clan.clan_discord
+					? [
+							{
+								key: 'clanDiscord',
+								label: 'clans.clanDiscord',
+								icon: 'lucide:messages-square',
+								value: clan.clan_discord,
+							},
+						]
+					: []),
+				{
+					key: 'paidRecruitment',
+					label: 'clans.paidRecruitment',
+					icon: 'lucide:badge-dollar-sign',
+					value: clan.paid_recruitment
+						? t('clans.paidRecruitmentYes')
+						: t('clans.paidRecruitmentNo'),
+				},
+				{
+					key: 'tier',
+					label: 'clans.tier',
+					icon: 'lucide:shield',
+					value: clan.tier,
+				},
+				...(clan.guilds_per_week !== null
+					? [
+							{
+								key: 'guildsPerWeek',
+								label: 'clans.guildsPerWeek',
+								icon: 'lucide:circle-dollar-sign',
+								value: clan.guilds_per_week,
+							},
+						]
+					: []),
+			]
+		: []
 
 	return (
 		<div
@@ -89,6 +133,25 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 					</div>
 				))}
 			</div>
+
+			{recruitmentFields.length > 0 && (
+				<div className="flex flex-col gap-2 border-border-secondary border-t pt-3 text-sm">
+					{recruitmentFields.map((field) => (
+						<div className="flex items-center gap-1.5" key={field.key}>
+							<Icon
+								className="size-4 shrink-0 text-text-accent"
+								icon={field.icon}
+							/>
+							<span className="font-semibold text-text-accent">
+								{t(field.label)}:
+							</span>
+							<span className={`${montserrat.className} truncate font-semibold`}>
+								{field.value}
+							</span>
+						</div>
+					))}
+				</div>
+			)}
 
 			{clan.schedule && (
 				<>

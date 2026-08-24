@@ -16,11 +16,15 @@ export default function ClanSettingsView() {
 		isOfficer,
 		isPublic,
 		recruiting,
+		recruitmentForm,
+		hasSavedLeaderDiscord,
 		schedule,
 		guilds,
 		linkToken,
 		togglePublic,
 		toggleRecruiting,
+		setRecruitmentField,
+		saveRecruitment,
 		setScheduleField,
 		saveSchedule,
 		setBoostMode,
@@ -32,6 +36,7 @@ export default function ClanSettingsView() {
 		closeBotToken,
 		isPublicPending,
 		isRecruitingPending,
+		isRecruitmentPending,
 		isSchedulePending,
 		isSyncPending,
 		isFreezePending,
@@ -70,9 +75,13 @@ export default function ClanSettingsView() {
 					schedule={schedule}
 				/>
 			)}
-			{isOfficer && (
+			{isLeader && (
 				<RecruitingSection
-					isPending={isRecruitingPending}
+					form={recruitmentForm}
+					hasSavedLeaderDiscord={hasSavedLeaderDiscord}
+					isPending={isRecruitingPending || isRecruitmentPending}
+					onFieldChange={setRecruitmentField}
+					onSave={saveRecruitment}
 					onToggle={toggleRecruiting}
 					recruiting={recruiting}
 				/>

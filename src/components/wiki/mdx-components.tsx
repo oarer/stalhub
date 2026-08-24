@@ -6,6 +6,8 @@ import { createContext, useContext } from 'react'
 import { cn } from '@/lib/cn'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
+import { Gallery } from './gallery'
+import { QuestMap } from './quest-map'
 
 const PreCodeContext = createContext(false)
 
@@ -50,6 +52,8 @@ function MdxPre({ children }: React.HTMLAttributes<HTMLPreElement>) {
 export function useMDXComponents(): MDXComponents {
 	return {
 		Callout,
+		Gallery,
+		QuestMap,
 		h1: ({ children, ...props }) => (
 			<h1
 				className="mb-6 scroll-m-20 font-bold text-4xl tracking-tight lg:text-5xl"

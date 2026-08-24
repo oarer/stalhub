@@ -28,6 +28,7 @@ interface ComboboxBaseProps {
 	placeholder?: string
 	searchPlaceholder?: string
 	emptyText?: string
+	translateOptions?: boolean
 	className?: string
 	disabled?: boolean
 	zIndex?: number
@@ -67,6 +68,7 @@ export function Combobox(props: ComboboxProps) {
 		placeholder = 'ui.combobox.default.placeholder',
 		searchPlaceholder = 'ui.combobox.default.search.button',
 		emptyText = 'ui.combobox.default.search.notFound',
+		translateOptions = true,
 		className,
 		disabled = false,
 	} = props
@@ -83,6 +85,7 @@ export function Combobox(props: ComboboxProps) {
 	}, [props])
 
 	const t = useTranslations()
+	const optionLabel = (label: string) => (translateOptions ? t(label) : label)
 
 	const [open, setOpen] = useState(false)
 	const [search, setSearch] = useState('')
@@ -99,8 +102,11 @@ export function Combobox(props: ComboboxProps) {
 	const filtered = useMemo(() => {
 		if (!search) return options
 		const lower = search.toLowerCase()
-		return options.filter((o) => o.label.toLowerCase().includes(lower))
-	}, [options, search])
+		return options.filter((o) => {
+			const label = translateOptions ? t(o.label) : o.label
+			return label.toLowerCase().includes(lower)
+		})
+	}, [options, search, translateOptions, t])
 
 	const selectedCount = isMultiple
 		? (props.values?.length ?? 0)
@@ -319,7 +325,7 @@ export function Combobox(props: ComboboxProps) {
 									key={opt.value}
 								>
 									<p className="min-w-0 flex-1 truncate">
-										{t(opt.label)}
+										{optionLabel(opt.label)}
 									</p>
 
 									<span
@@ -339,9 +345,9 @@ export function Combobox(props: ComboboxProps) {
 					</div>
 				) : (
 					<span className="truncate">
-						{t(
-							hasSelection ? selectedLabels[0].label : placeholder
-						)}
+						{hasSelection
+							? optionLabel(selectedLabels[0].label)
+							: t(placeholder)}
 					</span>
 				)}
 
@@ -418,7 +424,7 @@ export function Combobox(props: ComboboxProps) {
 																	transform: `translateY(${virtualItem.start}px)`,
 																}}
 															>
-																{t(
+																{optionLabel(
 																	option.label
 																)}
 															</div>
@@ -470,7 +476,7 @@ export function Combobox(props: ComboboxProps) {
 															/>
 
 															<span className="truncate text-left">
-																{t(
+																{optionLabel(
 																	option.label
 																)}
 															</span>
