@@ -21,7 +21,7 @@ export const useBuildPrices = (
 
 	const queries = useMemo(() => {
 		return arts.map((art) => ({
-			itemId: art.itemId,
+			item_id: art.itemId,
 			qlt: artQualityToQualityIndex[art.qualityClass] ?? 0,
 			ptn: art.potential ?? 0,
 		}))
@@ -34,7 +34,7 @@ export const useBuildPrices = (
 	const priceMap = useMemo(() => {
 		const map: Record<string, ArtPriceResult> = {}
 		for (const price of data?.prices ?? []) {
-			map[artPriceKey(price.itemId, price.qlt, price.ptn)] = price
+			map[artPriceKey(price.item_id, price.qlt, price.ptn)] = price
 		}
 		return map
 	}, [data])
