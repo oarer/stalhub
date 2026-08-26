@@ -366,56 +366,62 @@ export default function UserDetailView({ userId }: Props) {
 								</div>
 							)}
 						</Card.Content>
-				</Card.Root>
+					</Card.Root>
 
-				<Card.Root className="mt-4">
-					<Card.Header>
-						<Card.Title>
-							<Icon icon="lucide:box" />
-							{t('admin.userDetail.builds.title')} (
-							{user._count.builds})
-						</Card.Title>
-					</Card.Header>
-					<Card.Content>
-						<Modal.Root>
-							<Modal.Trigger variant="danger">
-								<Icon icon="lucide:trash-2" />
-								{t('admin.userDetail.builds.trigger')}
-							</Modal.Trigger>
-							<Modal.Content fullScreen={false}>
-								<Modal.Header>
-									<Modal.Title>
-										{t(
-											'admin.userDetail.builds.confirmTitle'
-										)}
-									</Modal.Title>
-									<Modal.Description>
-										{t(
-											'admin.userDetail.builds.description',
-											{ count: user._count.builds }
-										)}
-									</Modal.Description>
-								</Modal.Header>
-								<Modal.Footer>
-									<Modal.Close>
-										{t('admin.userDetail.cancel')}
-									</Modal.Close>
-									<Modal.Action
-										closeOnClick
-										onClick={() =>
-											deleteBuildsMutation.mutate()
-										}
-										variant="danger"
-									>
-										{t('admin.userDetail.builds.confirm')}
-									</Modal.Action>
-								</Modal.Footer>
-							</Modal.Content>
-						</Modal.Root>
-					</Card.Content>
-				</Card.Root>
+					<Card.Root className="mt-4">
+						<Card.Header>
+							<Card.Title>
+								<Icon icon="lucide:box" />
+								{t('admin.userDetail.builds.title')} (
+								{user._count?.builds ?? 0})
+							</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<Modal.Root>
+								<Modal.Trigger variant="danger">
+									<Icon icon="lucide:trash-2" />
+									{t('admin.userDetail.builds.trigger')}
+								</Modal.Trigger>
+								<Modal.Content fullScreen={false}>
+									<Modal.Header>
+										<Modal.Title>
+											{t(
+												'admin.userDetail.builds.confirmTitle'
+											)}
+										</Modal.Title>
+										<Modal.Description>
+											{t(
+												'admin.userDetail.builds.description',
+												{
+													count:
+														user._count?.builds ||
+														0,
+												}
+											)}
+										</Modal.Description>
+									</Modal.Header>
+									<Modal.Footer>
+										<Modal.Close>
+											{t('admin.userDetail.cancel')}
+										</Modal.Close>
+										<Modal.Action
+											closeOnClick
+											onClick={() =>
+												deleteBuildsMutation.mutate()
+											}
+											variant="danger"
+										>
+											{t(
+												'admin.userDetail.builds.confirm'
+											)}
+										</Modal.Action>
+									</Modal.Footer>
+								</Modal.Content>
+							</Modal.Root>
+						</Card.Content>
+					</Card.Root>
 
-				<Card.Root className="mt-4">
+					<Card.Root className="mt-4">
 						<Card.Header>
 							<Card.Title>
 								<Icon

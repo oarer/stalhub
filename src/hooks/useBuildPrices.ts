@@ -6,8 +6,8 @@ import { Regions } from '@/types/api.type'
 import type { ArtPriceResult } from '@/types/artifacts.type'
 import { artQualityToQualityIndex } from '@/utils/artUtils'
 
-export const artPriceKey = (itemId: string, qlt: number, ptn: number): string =>
-	`${itemId}:${qlt}:${ptn}`
+export const artPriceKey = (item_id: string, qlt: number, ptn: number): string =>
+	`${item_id}:${qlt}:${ptn}`
 
 export const useBuildPrices = (
 	region: string = Regions.RU
