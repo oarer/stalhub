@@ -13,7 +13,6 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	width:100%;
 }
 
 .leaflet-container {
@@ -291,6 +290,28 @@
 .leaflet-pane > svg path.leaflet-interactive,
 svg.leaflet-image-layer.leaflet-interactive path {
 	pointer-events: auto;
+}
+
+.leaflet-container.map-calibration-mode .leaflet-marker-icon {
+	pointer-events: auto;
+	cursor: crosshair;
+}
+
+.leaflet-container.map-editor-mode .leaflet-marker-icon {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.leaflet-container.map-editor-mode .leaflet-pane > svg path.leaflet-interactive {
+	cursor: pointer;
+}
+
+.map-polygon-handle {
+	border: 2px solid white;
+	border-radius: 999px;
+	background: #58a6ff;
+	box-shadow: 0 0 0 1px #1f2937;
+	cursor: move;
 }
 
 /* visual tweaks */

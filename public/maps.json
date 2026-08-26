@@ -2,22 +2,93 @@
 	"maps": [
 		{
 			"name": "sever",
-			"url": "http://localhost:3000/maps/sever/tiles/{z}/{x}/{y}.png",
-			"title": { "ru": "Северная зона", "en": "North zone" },
-			"preview_image": "/maps/sever/map.png",
-			"image": { "width": 5120, "height": 5632, "maxZoom": 13 },
-			"markers": "http://localhost:3000/maps/sever/markers.json"
+			"url": "https://cdn.stalhub.dev/maps/sever/tiles/{z}/{x}/{y}.png",
+			"title": {
+				"ru": "Север",
+				"en": "North zone"
+			},
+			"preview_image": "https://cdn.stalhub.dev/maps/sever/sever.jpeg",
+			"image": {
+				"width": 5120,
+				"height": 3584,
+				"maxZoom": 13
+			},
+			"markers": "/markers/sever.json"
 		},
 		{
-			"name": "zaton",
+			"name": "old_sever",
 			"title": {
-				"ru": "Тихая заводь (Затон)",
+				"ru": "Дикий север",
 				"en": "Stillwaters (Zaton)"
 			},
-			"url": "http://localhost:3000/maps/zaton/tiles/{z}/{x}/{y}.png",
-			"preview_image": "/maps/sever/map.png",
-			"image": { "width": 4096, "height": 4096, "maxZoom": 12 },
-			"markers": "http://localhost:3000/maps/zaton/markers.json"
+			"url": "https://cdn.stalhub.dev/maps/old_sever/tiles/{z}/{x}/{y}.png",
+			"preview_image": "https://cdn.stalhub.dev/maps/old_sever/old_sever.png",
+			"image": {
+				"width": 3072,
+				"height": 1536,
+				"maxZoom": 12
+			},
+			"markers": "/markers/old_sever.json"
+		},
+		{
+			"name": "south",
+			"title": {
+				"ru": "Юг",
+				"en": "Stillwaters (Zaton)"
+			},
+			"url": "https://cdn.stalhub.dev/maps/south/tiles/{z}/{x}/{y}.png",
+			"preview_image": "https://cdn.stalhub.dev/maps/south/south.png",
+			"image": {
+				"width": 4096,
+				"height": 4096,
+				"maxZoom": 12
+			},
+			"markers": "/markers/south.json"
+		},
+		{
+			"name": "limansk",
+			"title": {
+				"ru": "Любеч-3 (Лиманск)",
+				"en": "Stillwaters (Zaton)"
+			},
+			"url": "https://cdn.stalhub.dev/maps/limansk/tiles/{z}/{x}/{y}.png",
+			"preview_image": "https://cdn.stalhub.dev/maps/limansk/limansk.png",
+			"image": {
+				"width": 3072,
+				"height": 3072,
+				"maxZoom": 12
+			},
+			"markers": "/markers/limansk.json"
+		},
+		{
+			"name": "labyrinth",
+			"title": {
+				"ru": "Лабиринт",
+				"en": "Stillwaters (Zaton)"
+			},
+			"url": "https://cdn.stalhub.dev/maps/labyrinth/tiles/{z}/{x}/{y}.png",
+			"preview_image": "https://cdn.stalhub.dev/maps/labyrinth/labyrinth.png",
+			"image": {
+				"width": 2048,
+				"height": 3072,
+				"maxZoom": 12
+			},
+			"markers": "/markers/labyrinth.json"
+		},
+		{
+			"name": "graveyard",
+			"title": {
+				"ru": "Могильник",
+				"en": "Stillwaters (Zaton)"
+			},
+			"url": "https://cdn.stalhub.dev/maps/graveyard/tiles/{z}/{x}/{y}.png",
+			"preview_image": "https://cdn.stalhub.dev/maps/graveyard/graveyard.png",
+			"image": {
+				"width": 6144,
+				"height": 4096,
+				"maxZoom": 13
+			},
+			"markers": "http://localhost:3000/markers/graveyard.json"
 		}
 	]
 }

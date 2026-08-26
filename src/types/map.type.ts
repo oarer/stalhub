@@ -4,14 +4,27 @@ export type LatLng = { lat: number; lng: number }
 
 type LocalizedString = Partial<Record<Locale, string>>
 
-type MarkerPoint = {
+export type MarkerPoint = {
 	id?: number
 	coordinates: LatLng
 	description?: LocalizedString
 	popup?: string
+	iconUrl?: string
+	color?: string
+	popupImage?: string
 }
 
-type MarkerGroup = {
+export type MarkerPolygon = {
+	id?: number | string
+	points: LatLng[]
+	popup?: string
+	description?: LocalizedString
+	label?: string
+	color?: string
+	fillColor?: string
+}
+
+export type MarkerGroup = {
 	id: number
 	slug: string
 	name: LocalizedString
@@ -23,6 +36,7 @@ type MarkerGroup = {
 		iconHeight?: number
 	}
 	markers: MarkerPoint[]
+	polygons?: MarkerPolygon[]
 }
 
 export type MarkerClusterFull = {

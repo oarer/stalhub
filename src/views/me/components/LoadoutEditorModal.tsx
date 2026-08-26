@@ -42,6 +42,10 @@ function filterPistols(weapons: Item[]) {
 	return weapons.filter((w) => w.category === 'weapon/pistol')
 }
 
+function filterMeleeWeapons(weapons: Item[]) {
+	return weapons.filter((w) => w.category === 'weapon/melee')
+}
+
 function filterArmor(armors: Item[]) {
 	return armors.filter((a) => ARMOR_CATEGORIES.includes(a.category))
 }
@@ -54,6 +58,7 @@ type ItemField =
 	| 'weapon_primary'
 	| 'weapon_secondary'
 	| 'weapon_pistol'
+	| 'weapon_melee'
 	| 'armor'
 	| 'bio_armor'
 
@@ -211,6 +216,7 @@ export function LoadoutEditorModal({
 
 	const mainWeapons = filterMainWeapons(weapons)
 	const pistols = filterPistols(weapons)
+	const meleeWeapons = filterMeleeWeapons(weapons)
 	const armorItems = filterArmor(armors)
 	const bioArmorItems = filterBioArmor(armors)
 
@@ -263,6 +269,16 @@ export function LoadoutEditorModal({
 						onClear={() => clearItem('weapon_pistol')}
 						title={t('clan.squads.loadoutFields.pistol')}
 						value={draft.weapon_pistol}
+					/>
+					<PickRow
+						favoriteType="weapon"
+						items={meleeWeapons}
+						label={t('clan.squads.loadoutFields.meleeWeapon')}
+						locale={locale}
+						onChange={(v) => setItem('weapon_melee', v)}
+						onClear={() => clearItem('weapon_melee')}
+						title={t('clan.squads.loadoutFields.meleeWeapon')}
+						value={draft.weapon_melee}
 					/>
 					<PickRow
 						favoriteType="armor"

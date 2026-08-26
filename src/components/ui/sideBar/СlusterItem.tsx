@@ -101,6 +101,7 @@ export default function ClusterItem({
 
 								const markerName =
 									(marker.name as TranslatedText)?.[lang] ||
+									marker.settings?.name ||
 									marker.slug
 
 								return (

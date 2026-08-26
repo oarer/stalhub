@@ -9,6 +9,7 @@ type Props = {
 	children: ReactNode
 	className?: string
 	defaultOpen?: boolean
+	id?: string
 	side?: 'left' | 'right'
 }
 
@@ -16,6 +17,7 @@ const Sidebar = ({
 	children,
 	className,
 	defaultOpen = true,
+	id,
 	side = 'left',
 }: Props) => {
 	const [isOpen, setIsOpen] = useState(defaultOpen)
@@ -59,6 +61,7 @@ const Sidebar = ({
 							className
 						)}
 						exit={{ opacity: 0, x: sidebarTranslate }}
+						id={id}
 						initial={{ opacity: 0, x: sidebarTranslate }}
 						ref={sidebarRef}
 						transition={{ duration: 0.4, ease: 'easeInOut' }}

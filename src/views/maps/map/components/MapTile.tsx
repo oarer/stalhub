@@ -9,13 +9,13 @@ import SidebarActions from '@/components/ui/sideBar/SidebarActions'
 import SidebarHeader from '@/components/ui/sideBar/SidebarHeader'
 import ClusterItem from '@/components/ui/sideBar/СlusterItem'
 import { useMarkersFile } from '@/hooks/useMarkersFile'
+import CalibrationTool from './CalibrationTool'
 import CanvasLayer from './CanvasLayer'
+import MarkerEditor from './MarkerEditor'
 import ServerMarkers from './ServerMarkers'
 import SetImageBounds from './SetImageBounds'
 import { serverMarkersToGeoJSON } from './serverToGeoJSON'
-/* eslint-disable import/order */
 import ZoomControl from './ZoomControl'
-/* eslint-enable import/order */
 
 import 'leaflet-draw/dist/leaflet.draw.css'
 import '@/shared/styles/map.css'
@@ -28,6 +28,7 @@ type TileMapProps = {
 	imageHeight: number
 	fullMaxLevel: number
 	markersUrl?: string
+	mapName: string
 }
 
 export default function MapTile({
@@ -45,6 +46,7 @@ export default function MapTile({
 		toggleGroup,
 		showAll,
 		hideAll,
+		setMarkersFile,
 	} = useMarkersFile(markersUrl)
 
 	const t = useTranslations()
@@ -107,7 +109,7 @@ export default function MapTile({
 				zIndex: 0,
 			}}
 		>
-			<Sidebar>
+			<Sidebar className="max-w-lg" id="map-editor-sidebar">
 				<SidebarHeader
 					hasClusters={hasClusters}
 					hideAll={hideAll}
@@ -158,6 +160,8 @@ export default function MapTile({
 					fullMaxLevel={fullMaxLevel}
 					imageHeight={imageHeight}
 					imageWidth={imageWidth}
+					padding={0.1}
+					viscosity={0.8}
 				/>
 
 				<CanvasLayer
@@ -173,6 +177,19 @@ export default function MapTile({
 					markersFile={markersFile}
 					visibleClusterIds={visibleClusterIds}
 					visibleGroupKeys={visibleGroupKeys}
+				/>
+
+				<CalibrationTool
+					fullMaxLevel={fullMaxLevel}
+					imageHeight={imageHeight}
+					imageWidth={imageWidth}
+					markersFile={markersFile}
+				/>
+
+				<MarkerEditor
+					fullMaxLevel={fullMaxLevel}
+					markersFile={markersFile}
+					setMarkersFile={setMarkersFile}
 				/>
 			</MapContainer>
 		</div>

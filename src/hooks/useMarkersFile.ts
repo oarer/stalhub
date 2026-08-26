@@ -24,7 +24,7 @@ export function useMarkersFile(markersUrl?: string) {
 	useEffect(() => {
 		if (!markersUrl) return
 		let mounted = true
-		fetch(markersUrl)
+		fetch(markersUrl, { cache: 'no-store' })
 			.then((r) => {
 				if (!r.ok) throw new Error('Network response not ok')
 				return r.json()

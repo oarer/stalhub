@@ -34,6 +34,7 @@ export default function MapView({ mapName }: { mapName: string }) {
 			fullMaxLevel={mapConfig.image.maxZoom}
 			imageHeight={mapConfig.image.height}
 			imageWidth={mapConfig.image.width}
+			mapName={mapName}
 			markersUrl={mapConfig.markers}
 			url={mapConfig.url}
 		/>
