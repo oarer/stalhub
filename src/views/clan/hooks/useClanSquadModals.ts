@@ -4,6 +4,12 @@ import { useMemo, useState } from 'react'
 import type { ClanMember, ClanSquad, SquadMap } from '@/types/clan/clan.type'
 import { SQUAD_MAPS } from '../components/squads/squads.const'
 
+export interface EditingContext {
+	clanMemberId: number
+	squadMemberId: number
+	slot: number
+}
+
 export function useClanSquadModals(
 	squads: ClanSquad[] = [],
 	members: ClanMember[] = []
@@ -32,7 +38,7 @@ export function useClanSquadModals(
 	const [leaderSquadId, setLeaderSquadId] = useState<number | null>(null)
 	const [mapSquadId, setMapSquadId] = useState<number | null>(null)
 	const [targetMap, setTargetMap] = useState<SquadMap>('SMALL_BERDOVKA')
-	const [editingMemberId, setEditingMemberId] = useState<number | null>(null)
+	const [editingCtx, setEditingCtx] = useState<EditingContext | null>(null)
 
 	const activeSquads = useMemo(
 		() => squads.filter((s) => s.map === activeMap),
@@ -41,7 +47,9 @@ export function useClanSquadModals(
 	const mapSquad = squads.find((s) => s.id === mapSquadId) ?? null
 	const leaderSquad = squads.find((s) => s.id === leaderSquadId) ?? null
 	const assignSquad = squads.find((s) => s.id === assignSquadId) ?? null
-	const editingMember = members.find((m) => m.id === editingMemberId) ?? null
+	const editingMember = editingCtx
+		? members.find((m) => m.id === editingCtx.clanMemberId) ?? null
+		: null
 
 	return {
 		activeMap,
@@ -63,8 +71,8 @@ export function useClanSquadModals(
 		setMapSquadId,
 		targetMap,
 		setTargetMap,
-		editingMemberId,
-		setEditingMemberId,
+		editingCtx,
+		setEditingCtx,
 		mapSquad,
 		leaderSquad,
 		assignSquad,

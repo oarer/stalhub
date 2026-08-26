@@ -1,3 +1,4 @@
+import type { LoadoutData } from '../loadout/loadout.type'
 import type { Alliance } from '../player.type'
 
 type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
@@ -325,6 +326,7 @@ export interface ClanSquadMember {
 	slot: number
 	member_id: number
 	member: ClanMember
+	gear_override: LoadoutData | null
 }
 
 export interface ClanSquadRequest {

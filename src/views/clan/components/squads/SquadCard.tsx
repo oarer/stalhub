@@ -38,7 +38,7 @@ interface SquadCardProps {
 	onOpenAssign: (slot: number) => void
 	onOpenLeader: () => void
 	onOpenMap: () => void
-	onEditLoadout: (member_id: number) => void
+	onEditLoadout: (memberId: number, squadMemberId: number, slot: number) => void
 	onMove: (
 		source: DragSource,
 		target: { squadId: number; slot: number }
@@ -267,6 +267,7 @@ export function SquadCard({
 					armors={armors}
 					buildById={buildById}
 					currentUserId={currentUserId}
+					isOfficer={isOfficer}
 					loadoutByUserId={loadoutByUserId}
 					members={squadMembers}
 					onEditLoadout={onEditLoadout}

@@ -6,16 +6,17 @@ import { Button } from '@/components/ui/Button'
 import type { BuildApi } from '@/types/build-api.type'
 import type { ClanSquadMember } from '@/types/clan/clan.type'
 import type { Item } from '@/types/item.type'
-import type { UserLoadout } from '@/types/loadout/loadout.type'
-import { BuildCell, ItemCell } from './ItemCell'
+import type { LoadoutData, UserLoadout } from '@/types/loadout/loadout.type'
+import { BuildCell, ItemCell, SLEDGEHAMMER_ID } from './ItemCell'
 
-const GRID_TEMPLATE = 'minmax(6rem, 1.2fr) repeat(7, minmax(5.5rem, 1fr)) 2rem'
+const GRID_TEMPLATE = 'minmax(6rem, 1.2fr) repeat(8, minmax(5.5rem, 1fr)) 2rem'
 
 const HEADERS = [
 	'clan.squads.loadoutHeaders.player',
 	'clan.squads.loadoutHeaders.primary',
 	'clan.squads.loadoutHeaders.secondary',
 	'clan.squads.loadoutHeaders.pistol',
+	'Кувалда',
 	'clan.squads.loadoutHeaders.fatBuild',
 	'clan.squads.loadoutHeaders.speedBuild',
 	'clan.squads.loadoutHeaders.armor',
@@ -29,7 +30,20 @@ interface SquadLoadoutTableProps {
 	armors: Item[]
 	buildById: Map<string, BuildApi>
 	currentUserId?: number
-	onEditLoadout: (memberId: number) => void
+	isOfficer: boolean
+	onEditLoadout: (
+		memberId: number,
+		squadMemberId: number,
+		slot: number
+	) => void
+}
+
+function resolveData(
+	gear_override: LoadoutData | null,
+	userLoadout: UserLoadout | null | undefined
+): LoadoutData | null {
+	if (gear_override) return gear_override
+	return userLoadout?.data ?? null
 }
 
 export function SquadLoadoutTable({
@@ -39,6 +53,7 @@ export function SquadLoadoutTable({
 	armors,
 	buildById,
 	currentUserId,
+	isOfficer,
 	onEditLoadout,
 }: SquadLoadoutTableProps) {
 	const t = useTranslations()
@@ -59,38 +74,57 @@ export function SquadLoadoutTable({
 					))}
 					<span />
 				</div>
-				{members.map(({ member }) => {
+				{members.map((squadMember) => {
+					const { member, gear_override } = squadMember
 					const loadout =
 						member.user_id != null
 							? loadoutByUserId.get(member.user_id)
 							: null
-					const data = loadout?.data
+					const data = resolveData(gear_override, loadout)
+					const hasOverride = gear_override != null
 					const isSelf =
-						member.user_id != null && member.user_id === currentUserId
+						member.user_id != null &&
+						member.user_id === currentUserId
+
+					const primary = weapons?.find(
+						(w) => w.id === data?.weapon_primary
+					)
+					const secondary = weapons?.find(
+						(w) => w.id === data?.weapon_secondary
+					)
+					const pistol = weapons?.find(
+						(w) => w.id === data?.weapon_pistol
+					)
+
+					const hasSledgehammer =
+						data?.weapon_melee === SLEDGEHAMMER_ID
+
 					return (
 						<div
-							className="grid min-w-160 items-center gap-2 border-primary border-b px-2 py-2 last:border-b-0"
+							className={`grid min-w-160 items-center gap-2 border-primary border-b px-2 py-2 last:border-b-0 ${hasOverride ? 'bg-primary/5' : ''}`}
 							key={member.id}
 							style={{ gridTemplateColumns: GRID_TEMPLATE }}
 						>
 							<span className="min-w-0 truncate font-medium text-sm">
 								{member.name}
+								{hasOverride && (
+									<Icon
+										className="ml-1 inline text-md text-primary"
+										icon="lucide:shield-check"
+									/>
+								)}
 							</span>
-							<ItemCell
-								item={weapons?.find(
-									(w) => w.id === data?.weapon_primary
-								)}
-							/>
-							<ItemCell
-								item={weapons?.find(
-									(w) => w.id === data?.weapon_secondary
-								)}
-							/>
-							<ItemCell
-								item={weapons?.find(
-									(w) => w.id === data?.weapon_pistol
-								)}
-							/>
+							<ItemCell item={primary} />
+							<ItemCell item={secondary} />
+							<ItemCell item={pistol} />
+							{hasSledgehammer ? (
+								<Icon
+									className="text-lg text-primary"
+									icon="lucide:check-circle-2"
+								/>
+							) : (
+								<span className="text-muted-foreground">—</span>
+							)}
 							<BuildCell
 								title={
 									data?.build_fat != null
@@ -116,11 +150,21 @@ export function SquadLoadoutTable({
 									(a) => a.id === data?.bio_armor
 								)}
 							/>
-							{isSelf ? (
+							{isSelf || isOfficer ? (
 								<Button
 									className="p-2"
-									onClick={() => onEditLoadout(member.id)}
-									title={t('clan.squads.editLoadout')}
+									onClick={() =>
+										onEditLoadout(
+											member.id,
+											squadMember.id,
+											squadMember.slot
+										)
+									}
+									title={
+										isOfficer && !isSelf
+											? t('clan.squads.editGearOverride')
+											: t('clan.squads.editLoadout')
+									}
 									variant={'ghost'}
 								>
 									<Icon

@@ -12,6 +12,7 @@ import UserCard from '@/views/me/components/UserCard'
 import { ArticleCard } from '../me/components/article/ArticleCard'
 import { BuildCard } from '../me/components/BuildCard'
 import { HoverBuildCard } from '../me/components/HoverBuildCard'
+import UserComments from './components/UserComments'
 
 interface UserProfileViewProps {
 	id: number | null
@@ -85,15 +86,21 @@ export default function UserProfileView({
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
-									{t('clan.squads.loadoutFields.pistol')}
-								</span>
-								{renderItem(loadout.data.weapon_pistol)}
-							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
-									{t('clan.squads.loadoutFields.armor')}
+						<div className="flex items-center justify-between rounded-lg bg-card p-3">
+							<span className="font-semibold text-sm text-text-accent">
+								{t('clan.squads.loadoutFields.pistol')}
+							</span>
+							{renderItem(loadout.data.weapon_pistol)}
+						</div>
+						<div className="flex items-center justify-between rounded-lg bg-card p-3">
+							<span className="font-semibold text-sm text-text-accent">
+								{t('clan.squads.loadoutFields.meleeWeapon')}
+							</span>
+							{renderItem(loadout.data.weapon_melee)}
+						</div>
+						<div className="flex items-center justify-between rounded-lg bg-card p-3">
+							<span className="font-semibold text-sm text-text-accent">
+								{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
@@ -250,6 +257,8 @@ export default function UserProfileView({
 						</div>
 					</section>
 				)}
+
+				<UserComments userId={user.id} />
 			</div>
 		</section>
 	)

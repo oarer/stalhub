@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { useMemo } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -39,6 +40,19 @@ function ClanSquadsContent({
 		clanId,
 		currentUserId
 	)
+
+	const editingCtx = modals.editingCtx
+
+	const gearOverrideForEdit = useMemo(() => {
+		if (!editingCtx) return null
+		for (const squad of data.squads ?? []) {
+			const sm = squad.members.find(
+				(m) => m.id === editingCtx.squadMemberId
+			)
+			if (sm) return sm.gear_override
+		}
+		return null
+	}, [editingCtx, data.squads])
 
 	if (data.isLoading) {
 		return (
@@ -173,8 +187,12 @@ function ClanSquadsContent({
 							onDelete={() =>
 								mutations.deleteMutation.mutate(squad.id)
 							}
-							onEditLoadout={(memberId) =>
-								modals.setEditingMemberId(memberId)
+							onEditLoadout={(memberId, squadMemberId, slot) =>
+								modals.setEditingCtx({
+									clanMemberId: memberId,
+									squadMemberId,
+									slot,
+								})
 							}
 							onJoin={() =>
 								mutations.joinMutation.mutate(squad.id)
@@ -228,24 +246,39 @@ function ClanSquadsContent({
 				targetMap={modals.targetMap}
 			/>
 
-			{modals.editingMember && (
+			{modals.editingMember && editingCtx && (
 				<LoadoutEditorModal
 					armors={data.armors}
 					builds={data.myBuilds}
-					isPending={mutations.saveLoadoutMutation.isPending}
+					isPending={
+						mutations.saveLoadoutMutation.isPending ||
+						mutations.setGearOverrideMutation.isPending
+					}
 					loadout={
-						modals.editingMember.user_id != null
-							? (data.loadoutByUserId.get(
-									modals.editingMember.user_id
-								) ?? null)
-							: null
+						gearOverrideForEdit
+							? { user_id: editingCtx.clanMemberId, data: gearOverrideForEdit, is_public: false, updated_at: '' }
+							: modals.editingMember.user_id != null
+								? (data.loadoutByUserId.get(
+										modals.editingMember.user_id
+									) ?? null)
+								: null
 					}
 					onOpenChange={(open) => {
-						if (!open) modals.setEditingMemberId(null)
+						if (!open) modals.setEditingCtx(null)
 					}}
-					onSave={(loadout) =>
-						mutations.saveLoadoutMutation.mutate(loadout)
-					}
+					onSave={(loadout) => {
+						if (data.isOfficer && modals.editingMember?.user_id !== currentUserId) {
+							mutations.setGearOverrideMutation.mutate({
+								squadId: modals.activeSquads.find((s) =>
+									s.members.some((m) => m.id === editingCtx.squadMemberId)
+								)?.id ?? 0,
+								slot: editingCtx.slot,
+								gear_override: loadout,
+							})
+						} else {
+							mutations.saveLoadoutMutation.mutate(loadout)
+						}
+					}}
 					open
 					weapons={data.weapons}
 				/>

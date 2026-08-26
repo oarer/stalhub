@@ -88,7 +88,7 @@ export function ModuleGroupCard({
 			/>
 
 			{!module ? (
-				<p className="py-2 text-center text-sm text-text-accent">
+				<p className="py-2 text-center font-semibold text-sm text-text-accent">
 					{t('modules.not_selected')}
 				</p>
 			) : (

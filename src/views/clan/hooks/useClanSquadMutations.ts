@@ -9,6 +9,7 @@ import { loadoutService } from '@/services/loadout/loadout.service'
 import type { ClanMember, ClanSquad, SquadMap } from '@/types/clan/clan.type'
 import type { LoadoutData } from '@/types/loadout/loadout.type'
 import type { DragSource } from '../components/squads/SquadDnd'
+import type { EditingContext } from './useClanSquadModals'
 
 interface UseClanSquadMutationsParams {
 	clanId: string
@@ -20,7 +21,7 @@ interface UseClanSquadMutationsParams {
 	setAssignSlot: (slot: number | null) => void
 	setLeaderSquadId: (id: number | null) => void
 	setMapSquadId: (id: number | null) => void
-	setEditingMemberId: (id: number | null) => void
+	setEditingCtx: (ctx: EditingContext | null) => void
 }
 
 export function useClanSquadMutations({
@@ -33,7 +34,7 @@ export function useClanSquadMutations({
 	setAssignSlot,
 	setLeaderSquadId,
 	setMapSquadId,
-	setEditingMemberId,
+	setEditingCtx,
 }: UseClanSquadMutationsParams) {
 	const t = useTranslations()
 	const queryClient = getQueryClient()
@@ -152,7 +153,27 @@ export function useClanSquadMutations({
 		onSuccess: () => {
 			toast.success(t('clan.squads.toasts.loadoutSaved'))
 			queryClient.invalidateQueries({ queryKey: ['loadout'] })
-			setEditingMemberId(null)
+			setEditingCtx(null)
+		},
+		onError: () => {
+			toast.error(t('clan.squads.toasts.loadoutError'))
+		},
+	})
+
+	const setGearOverrideMutation = useMutation({
+		mutationFn: ({
+			squadId,
+			slot,
+			gear_override,
+		}: {
+			squadId: number
+			slot: number
+			gear_override: LoadoutData | null
+		}) => clanService.setGearOverride(squadId, slot, gear_override),
+		onSuccess: () => {
+			toast.success(t('clan.squads.toasts.loadoutSaved'))
+			invalidate()
+			setEditingCtx(null)
 		},
 		onError: () => {
 			toast.error(t('clan.squads.toasts.loadoutError'))
@@ -207,6 +228,7 @@ export function useClanSquadMutations({
 		deleteMutation,
 		mapMutation,
 		saveLoadoutMutation,
+		setGearOverrideMutation,
 		moveMember,
 		unassignedMembers,
 	}

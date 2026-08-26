@@ -18,7 +18,7 @@ export function useClanSquads(clanId: string, currentUserId?: number) {
 		setAssignSlot: modals.setAssignSlot,
 		setLeaderSquadId: modals.setLeaderSquadId,
 		setMapSquadId: modals.setMapSquadId,
-		setEditingMemberId: modals.setEditingMemberId,
+		setEditingCtx: modals.setEditingCtx,
 	})
 	const png = useClanSquadPng(modals.activeSquads, modals.activeMap)
 

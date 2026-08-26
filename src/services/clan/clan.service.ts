@@ -37,6 +37,7 @@ import type {
 	SyncResponse,
 	UserClanProfile,
 } from '@/types/clan/clan.type'
+import type { LoadoutData } from '@/types/loadout/loadout.type'
 
 class ClanService {
 	async getMe(): Promise<UserClanProfile | null> {
@@ -254,6 +255,18 @@ class ClanService {
 		const { data } = await apiClient.patch<ClanSquad>(
 			`/api/v1/clan/squads/${squadId}/map`,
 			{ map }
+		)
+		return data
+	}
+
+	async setGearOverride(
+		squadId: number,
+		slot: number,
+		gear_override: LoadoutData | null
+	): Promise<ClanSquadMember> {
+		const { data } = await apiClient.put<ClanSquadMember>(
+			`/api/v1/clan/squads/${squadId}/slots/${slot}/gear`,
+			{ gear_override }
 		)
 		return data
 	}

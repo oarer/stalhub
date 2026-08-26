@@ -6,6 +6,7 @@ import { unbounded } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { MODULE_GROUP_KEYS, useModulesStore } from '@/stores/useModules.store'
 import { ModuleGroupCard } from './components/ModuleGroupCard'
+import ModuleSelector from './components/ModuleSelector'
 import { ModuleSummary } from './components/ModuleSummary'
 
 type ModulesViewProps = {
@@ -49,6 +50,10 @@ export function ModulesView({ variant = 'page' }: ModulesViewProps) {
 					</Alert.Description>
 				</Alert.Root>
 			)}
+
+			<div className="flex items-center justify-end">
+				<ModuleSelector />
+			</div>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
 				{MODULE_GROUP_KEYS.map((group) => (

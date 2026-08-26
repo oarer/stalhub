@@ -73,66 +73,79 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 	return (
 		<Section icon="lucide:users" title={t('clan.members.title')}>
 			<div className="flex flex-col">
-				{sorted.map((member) => (
-					<div
-						className="flex items-center justify-between border-primary border-b py-3 last:border-b-0"
-						key={member.id}
-					>
-						<div className="flex items-center gap-3">
-							{member.user ? (
-								<Avatar
-									height={32}
-									id={member.user.id}
-									username={member.user.username}
-									width={32}
-								/>
-							) : (
-								<div className="flex size-8 items-center justify-center rounded-full bg-accent font-semibold text-xs">
-									{member.name.charAt(0).toUpperCase()}
-								</div>
-							)}
-							<div>
-								<p className="font-semibold text-sm">
-									{member.name}
-								</p>
-								{member.user && (
-									<HoverUserCard id={member.user.id}>
-										<Link
-											className={`${montserrat.className} font-semibold text-text-accent text-xs`}
-											href={`/users/${member.user.id}`}
+				{sorted.map((member) => {
+					const note = noteByMemberId.get(member.id)
+					return (
+						<div
+							className="flex items-center justify-between border-primary border-b py-3 last:border-b-0"
+							key={member.id}
+						>
+							<div className="flex min-w-0 items-center gap-3">
+								{member.user ? (
+									<Avatar
+										height={32}
+										id={member.user.id}
+										username={member.user.username}
+										width={32}
+									/>
+								) : (
+									<div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent/50 font-semibold text-xs">
+										{member.name.charAt(0).toUpperCase()}
+									</div>
+								)}
+								<div className="flex min-w-0 items-center gap-2">
+									<div className="flex flex-col">
+										<p className="font-semibold text-sm leading-4">
+											{member.name}
+										</p>
+										{member.user && (
+											<HoverUserCard id={member.user.id}>
+												<Link
+													className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+													href={`/users/${member.user.id}`}
+												>
+													{member.user.name}
+												</Link>
+											</HoverUserCard>
+										)}
+									</div>
+									{isOfficer && note && (
+										<p
+											className="max-w-60 truncate font-semibold text-muted-foreground text-xs"
+											title={note.content}
 										>
-											{member.user.name}
-										</Link>
-									</HoverUserCard>
+											{note.content}
+										</p>
+									)}
+								</div>
+							</div>
+							<div className="flex items-center gap-2">
+								{squadByMemberId.has(member.id) && (
+									<Badge
+										className={montserrat.className}
+										title={t('clan.members.squad')}
+										variant="secondary"
+									>
+										{squadByMemberId.get(member.id)}
+									</Badge>
+								)}
+								<Badge
+									className={RANK_COLORS[member.rank] ?? ''}
+									variant="secondary"
+								>
+									{t(`player.rank.${member.rank}`)}
+								</Badge>
+								{isOfficer && (
+									<MemberNotesButton
+										memberId={member.id}
+										memberName={member.name}
+										note={note ?? null}
+									/>
 								)}
 							</div>
 						</div>
-						<div className="flex items-center gap-2">
-							{squadByMemberId.has(member.id) && (
-								<Badge
-									className={montserrat.className}
-									title={t('clan.members.squad')}
-									variant="secondary"
-								>
-									{squadByMemberId.get(member.id)}
-								</Badge>
-							)}
-							{isOfficer && (
-								<MemberNotesButton
-									memberId={member.id}
-									memberName={member.name}
-									note={noteByMemberId.get(member.id) ?? null}
-								/>
-							)}
-							<Badge
-								className={RANK_COLORS[member.rank] ?? ''}
-								variant="secondary"
-							>
-								{t(`player.rank.${member.rank}`)}
-							</Badge>
-						</div>
-					</div>
-				))}
+					)
+				})}
 			</div>
 		</Section>
 	)

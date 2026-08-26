@@ -85,6 +85,7 @@ export default function NavMe() {
 				</div>
 			</button>
 
+			{/*TODO под рефакторинг */}
 			<AnimatePresence>
 				{open && (
 					<motion.div
@@ -159,7 +160,7 @@ export default function NavMe() {
 
 									const className = `flex items-start gap-2.5 border-primary-foreground border-b px-3 py-2.5 transition-colors last:border-b-0 last:rounded-b-xl ${
 										!n.read ? 'bg-sky-500/5' : ''
-									} ${n.link ? 'hover:bg-accent cursor-pointer' : ''}`
+									} ${n.link ? 'hover:bg-primary/40 cursor-pointer' : ''}`
 
 									if (n.link) {
 										return (
