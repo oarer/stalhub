@@ -1,5 +1,5 @@
 export type ArtPriceQuery = {
-	itemId: string
+	item_id: string
 	qlt: number
 	ptn: number
 }
