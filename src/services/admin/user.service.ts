@@ -82,6 +82,13 @@ class AdminUserService {
 		await apiClient.delete(`/api/v1/admin/users/${userId}/ban`)
 	}
 
+	async deleteBuilds(userId: number): Promise<{ deleted: number }> {
+		const { data } = await apiClient.delete<{ deleted: number }>(
+			`/api/v1/admin/users/${userId}/builds`
+		)
+		return data
+	}
+
 	async updateCustomization(
 		userId: number,
 		update: {

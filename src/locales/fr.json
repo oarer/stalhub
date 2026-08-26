@@ -170,6 +170,11 @@
       "hideAll": "Tout afficher",
       "export": "Exporter",
       "top": "Haut de page"
+    },
+    "squads": {
+      "title": "Escouades du clan",
+      "toggle": "Escouades du clan",
+      "memberCount": "{count, plural, one {# membre} other {# membres}}"
     }
   },
   "playerSearch": {
@@ -874,6 +879,13 @@
         "upload": "Charger un fichier",
         "save": "Enregistrer"
       },
+      "builds": {
+        "title": "Builds",
+        "trigger": "Supprimer tous les builds",
+        "confirmTitle": "Supprimer tous les builds?",
+        "description": "Tous les <strong>{count}</strong> builds de cet utilisateur seront supprimés définitivement. Cette action est irréversible.",
+        "confirm": "Tout supprimer"
+      },
       "toast": {
         "updated": "Utilisateur mis à jour",
         "updateError": "Erreur de mise à jour",
@@ -895,6 +907,8 @@
         "bannerUpdateError": "Erreur de mise à jour de la bannière",
         "bannerUploaded": "Bannière chargée",
         "bannerUploadError": "Erreur de chargement de la bannière",
+        "buildsDeleted": "{count} builds supprimés",
+        "buildsDeleteError": "Erreur de suppression des builds",
         "deleted": "Utilisateur supprimé",
         "deleteError": "Erreur de suppression"
       },

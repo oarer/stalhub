@@ -187,6 +187,11 @@
       "hideAll": "Показать все",
       "export": "Экспорт",
       "top": "Наверх"
+    },
+    "squads": {
+      "title": "Отряды клана",
+      "toggle": "Отряды клана",
+      "memberCount": "{count, plural, one {# участник} few {# участника} many {# участников} other {# участников}}"
     }
   },
   "playerSearch": {
@@ -741,7 +746,13 @@
     "rerollCost": "Стоимость реролла",
     "disassembleCost": "Стоимость разбора",
     "restoreCost": "Стоимость восстановления",
-    "categoryCost": "Стоимость категории"
+    "categoryCost": "Стоимость категории",
+    "save": "Конфигурации",
+    "newModule": "Новая конфигурация",
+    "deleteModule": "Удалить",
+    "renameModule": "Переименовать",
+    "noModules": "Нет сохранённых конфигураций",
+    "moduleName": "Название конфигурации"
   },
   "cwMap": {
     "loading": "Загрузка редактора...",
@@ -897,6 +908,13 @@
         "upload": "Загрузить файл",
         "save": "Сохранить"
       },
+      "builds": {
+        "title": "Сборки",
+        "trigger": "Удалить все сборки",
+        "confirmTitle": "Удалить все сборки?",
+        "description": "Все <strong>{count}</strong> сборок этого пользователя будут удалены навсегда. Это действие нельзя отменить.",
+        "confirm": "Удалить все"
+      },
       "toast": {
         "updated": "Пользователь обновлён",
         "updateError": "Ошибка обновления",
@@ -918,6 +936,8 @@
         "bannerUpdateError": "Ошибка обновления баннера",
         "bannerUploaded": "Баннер загружен",
         "bannerUploadError": "Ошибка загрузки баннера",
+        "buildsDeleted": "Сборок удалено: {count}",
+        "buildsDeleteError": "Ошибка удаления сборок",
         "deleted": "Пользователь удалён",
         "deleteError": "Ошибка удаления"
       },
@@ -1420,6 +1440,7 @@
         "primary": "Основное",
         "secondary": "Вторичное",
         "pistol": "Пистолет",
+        "meleeWeapon": "Мили",
         "fatBuild": "Сборка «жир»",
         "speedBuild": "Сборка «скорость»",
         "armor": "Броня",
@@ -1430,6 +1451,7 @@
         "primaryWeapon": "Основное оружие",
         "secondaryWeapon": "Вторичное оружие",
         "pistol": "Пистолет",
+        "meleeWeapon": "Мили оружие",
         "armor": "Броня",
         "bioArmor": "Био броня",
         "fatBuild": "Сборка «жир»",
@@ -2160,7 +2182,22 @@
     "secondaryWeapon": "Второстепенное оружие",
     "bioArmor": "Био-броня",
     "fatBuild": "Сборка на жир",
-    "speedBuild": "Сборка на скорость"
+    "speedBuild": "Сборка на скорость",
+    "comments": {
+      "title": "Комментарии ({count})",
+      "placeholder": "Написать комментарий...",
+      "empty": "Нет комментариев",
+      "reply": "Ответить",
+      "deleteTitle": "Удалить комментарий?",
+      "cancel": "Отмена",
+      "deleteConfirm": "Удалить",
+      "toast": {
+        "added": "Комментарий добавлен",
+        "addError": "Ошибка добавления комментария",
+        "deleted": "Комментарий удалён",
+        "deleteError": "Ошибка удаления комментария"
+      }
+    }
   },
   "auth": {
     "title": "Авторизация",

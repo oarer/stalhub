@@ -170,6 +170,11 @@
       "hideAll": "Mostrar todo",
       "export": "Exportar",
       "top": "Arriba"
+    },
+    "squads": {
+      "title": "Escuadras del clan",
+      "toggle": "Escuadras del clan",
+      "memberCount": "{count, plural, one {# miembro} other {# miembros}}"
     }
   },
   "playerSearch": {
@@ -874,6 +879,13 @@
         "upload": "Subir archivo",
         "save": "Guardar"
       },
+      "builds": {
+        "title": "Builds",
+        "trigger": "Eliminar todos los builds",
+        "confirmTitle": "¿Eliminar todos los builds?",
+        "description": "Los <strong>{count}</strong> builds de este usuario serán eliminados permanentemente. Esta acción no se puede deshacer.",
+        "confirm": "Eliminar todos"
+      },
       "toast": {
         "updated": "Usuario actualizado",
         "updateError": "Error al actualizar",
@@ -895,6 +907,8 @@
         "bannerUpdateError": "Error al actualizar el banner",
         "bannerUploaded": "Banner subido",
         "bannerUploadError": "Error al subir el banner",
+        "buildsDeleted": "{count} builds eliminados",
+        "buildsDeleteError": "Error al eliminar builds",
         "deleted": "Usuario eliminado",
         "deleteError": "Error al eliminar"
       },

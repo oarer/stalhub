@@ -170,6 +170,11 @@
       "hideAll": "Show all",
       "export": "Export",
       "top": "Top"
+    },
+    "squads": {
+      "title": "Clan squads",
+      "toggle": "Clan squads",
+      "memberCount": "{count, plural, one {# member} other {# members}}"
     }
   },
   "playerSearch": {
@@ -874,6 +879,13 @@
         "upload": "Upload file",
         "save": "Save"
       },
+      "builds": {
+        "title": "Builds",
+        "trigger": "Delete all builds",
+        "confirmTitle": "Delete all builds?",
+        "description": "All <strong>{count}</strong> builds by this user will be deleted forever. This action cannot be undone.",
+        "confirm": "Delete all"
+      },
       "toast": {
         "updated": "User updated",
         "updateError": "Update error",
@@ -895,6 +907,8 @@
         "bannerUpdateError": "Banner update error",
         "bannerUploaded": "Banner uploaded",
         "bannerUploadError": "Banner upload error",
+        "buildsDeleted": "{count} builds deleted",
+        "buildsDeleteError": "Builds delete error",
         "deleted": "User deleted",
         "deleteError": "Delete error"
       },
@@ -1394,6 +1408,7 @@
         "primary": "Primary",
         "secondary": "Secondary",
         "pistol": "Pistol",
+        "meleeWeapon": "Melee",
         "fatBuild": "Build «fat»",
         "speedBuild": "Build «speed»",
         "armor": "Armor",
@@ -1404,6 +1419,7 @@
         "primaryWeapon": "Primary weapon",
         "secondaryWeapon": "Secondary weapon",
         "pistol": "Pistol",
+        "meleeWeapon": "Melee weapon",
         "armor": "Armor",
         "bioArmor": "Bio armor",
         "fatBuild": "Build «fat»",
@@ -2114,7 +2130,22 @@
     "secondaryWeapon": "Secondary weapon",
     "bioArmor": "Bio armor",
     "fatBuild": "Heavy build",
-    "speedBuild": "Fast build"
+    "speedBuild": "Fast build",
+    "comments": {
+      "title": "Comments ({count})",
+      "placeholder": "Write a comment...",
+      "empty": "No comments",
+      "reply": "Reply",
+      "deleteTitle": "Delete comment?",
+      "cancel": "Cancel",
+      "deleteConfirm": "Delete",
+      "toast": {
+        "added": "Comment added",
+        "addError": "Error adding comment",
+        "deleted": "Comment deleted",
+        "deleteError": "Error deleting comment"
+      }
+    }
   },
   "auth": {
     "title": "Authorization",

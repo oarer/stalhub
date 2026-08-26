@@ -170,6 +170,11 @@
 			"hideAll": "모두 표시",
 			"export": "내보내기",
 			"top": "맨 위로"
+		},
+		"squads": {
+			"title": "클랜 분대",
+			"toggle": "클랜 분대",
+			"memberCount": "{count}명"
 		}
 	},
 	"playerSearch": {
@@ -874,6 +879,13 @@
 				"upload": "파일 업로드",
 				"save": "저장"
 			},
+			"builds": {
+				"title": "빌드",
+				"trigger": "모든 빌드 삭제",
+				"confirmTitle": "모든 빌드를 삭제하시겠습니까?",
+				"description": "이 사용자의 <strong>{count}</strong>개의 빌드가 모두 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+				"confirm": "모두 삭제"
+			},
 			"toast": {
 				"updated": "사용자가 업데이트되었습니다",
 				"updateError": "업데이트 오류",
@@ -895,6 +907,8 @@
 				"bannerUpdateError": "배너 업데이트 오류",
 				"bannerUploaded": "배너가 업로드되었습니다",
 				"bannerUploadError": "배너 업로드 오류",
+				"buildsDeleted": "빌드 {count}개가 삭제되었습니다",
+				"buildsDeleteError": "빌드 삭제 오류",
 				"deleted": "사용자가 삭제되었습니다",
 				"deleteError": "삭제 오류"
 			},
