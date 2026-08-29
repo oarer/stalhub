@@ -41,14 +41,18 @@ function validateTheme(data: unknown): data is TweakcnTheme {
 }
 
 function extractNameFromUrl(url: string): string {
-	try {
-		const isTweakcn = u.hostname === 'tweakcn.com'
-		const parts = u.pathname.split('/')
-		const last = parts[parts.length - 1]
-		return last.replace(/\.json$/, '') || 'custom'
-	} catch {
-		return 'custom'
-	}
+    try {
+        const u = new URL(url)
+
+        const isTweakcn = u.hostname === 'tweakcn.com'
+
+        const parts = u.pathname.split('/')
+        const last = parts[parts.length - 1]
+
+        return last.replace(/\.json$/, '') || 'custom'
+    } catch {
+        return 'custom'
+    }
 }
 
 export function useCustomTheme() {
