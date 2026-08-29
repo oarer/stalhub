@@ -1,6 +1,7 @@
 'use client'
 
 import type { MDXComponents } from 'mdx/types'
+import Image from 'next/image'
 import Link from 'next/link'
 import { createContext, useContext } from 'react'
 import { cn } from '@/lib/cn'
@@ -205,10 +206,28 @@ export function useMDXComponents(): MDXComponents {
 				{children}
 			</td>
 		),
-		img: ({ children, ...props }) => (
-			<img alt="" {...props} fetchPriority="low" loading="lazy">
-				{children}
-			</img>
+		img: ({ children, src, alt, ...props }) => (
+			<figure className="my-6 flex flex-col items-center">
+				<Image
+					alt={alt || ''}
+					className="relative m-0 h-auto w-full"
+					height={900}
+					onLoad={(e) => {
+						e.currentTarget.style.opacity = '1'
+					}}
+					src={src || ''}
+					style={{ opacity: 0 }}
+					width={1600}
+					{...props}
+				>
+					{children}
+				</Image>
+				{alt ? (
+					<figcaption className="mt-2 text-center text-neutral-400 text-sm">
+						{alt}
+					</figcaption>
+				) : null}
+			</figure>
 		),
 	}
 }
