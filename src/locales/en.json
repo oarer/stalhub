@@ -2037,7 +2037,10 @@
       "mdxContent": "Content",
       "uploadFile": "Upload file",
       "imageUploaded": "Image uploaded",
-      "imageUploadError": "Failed to upload image"
+      "imageUploadError": "Failed to upload image",
+      "insertImage": "Insert image",
+      "insertImageTitle": "Insert image into article",
+      "imageAlt": "Image caption (alt)"
     },
     "bg": {
       "avatar": "Avatar",

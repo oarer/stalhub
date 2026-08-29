@@ -1982,7 +1982,10 @@
 			"mdxContent": "콘텐츠",
 			"uploadFile": "파일 업로드",
 			"imageUploaded": "이미지가 업로드되었습니다",
-			"imageUploadError": "이미지 업로드 실패"
+			"imageUploadError": "이미지 업로드 실패",
+			"insertImage": "이미지 삽입",
+			"insertImageTitle": "기사에 이미지 삽입",
+			"imageAlt": "이미지 캡션 (alt)"
 		},
 		"bg": {
 			"avatar": "아바타",

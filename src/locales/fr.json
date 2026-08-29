@@ -1982,7 +1982,10 @@
       "mdxContent": "Contenu",
       "uploadFile": "Téléverser un fichier",
       "imageUploaded": "Image téléversée",
-      "imageUploadError": "Échec du téléversement de l'image"
+      "imageUploadError": "Échec du téléversement de l'image",
+      "insertImage": "Insérer une image",
+      "insertImageTitle": "Insérer une image dans l'article",
+      "imageAlt": "Légende de l'image (alt)"
     },
     "bg": {
       "avatar": "Avatar",

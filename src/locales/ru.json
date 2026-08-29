@@ -2092,7 +2092,10 @@
       "mdxContent": "Контент",
       "uploadFile": "Загрузить файл",
       "imageUploaded": "Изображение загружено",
-      "imageUploadError": "Ошибка при загрузке изображения"
+      "imageUploadError": "Ошибка при загрузке изображения",
+      "insertImage": "Вставить изображение",
+      "insertImageTitle": "Вставить изображение в статью",
+      "imageAlt": "Подпись к изображению (alt)"
     },
     "bg": {
       "avatar": "Аватар",

@@ -1982,7 +1982,10 @@
       "mdxContent": "Contenido",
       "uploadFile": "Subir archivo",
       "imageUploaded": "Imagen subida",
-      "imageUploadError": "Error al subir la imagen"
+      "imageUploadError": "Error al subir la imagen",
+      "insertImage": "Insertar imagen",
+      "insertImageTitle": "Insertar imagen en el artículo",
+      "imageAlt": "Pie de foto (alt)"
     },
     "bg": {
       "avatar": "Avatar",

@@ -28,7 +28,7 @@ import {
 import { ComponentsModal } from './components/article/ComponentsModal'
 import { EditorPane } from './components/article/EditorPane'
 import { EditorToolbar } from './components/article/EditorToolbar'
-import { parseTags } from './components/article/editor-utils'
+import { applyEdit, parseTags } from './components/article/editor-utils'
 import { ImageModal } from './components/article/ImageModal'
 import { PreviewPane } from './components/article/PreviewPane'
 import { TableModal } from './components/article/TableModal'
@@ -156,6 +156,20 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		[articleId]
 	)
 
+	const handleInsertMarkdown = useCallback(
+		(markdown: string) => {
+			const ta = textareaRef.current
+			if (!ta) return
+			const start = ta.selectionStart
+			const end = ta.selectionEnd
+			const next =
+				ta.value.slice(0, start) + markdown + ta.value.slice(end)
+			const newStart = start + markdown.length
+			applyEdit(ta, setContent, { next, newStart, newEnd: newStart })
+		},
+		[]
+	)
+
 	const handleTagsSave = (newTags: string) => {
 		setTags(newTags)
 	}
@@ -240,6 +254,8 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				setTagsModalOpen={setTagsModalOpen}
 				showSubmit={article.status === ArticleStatus.PENDING}
 				textareaRef={textareaRef}
+				onImageUpload={handleImageUpload}
+				onInsertMarkdown={handleInsertMarkdown}
 			/>
 
 			{article.type === ArticleType.QUEST && (

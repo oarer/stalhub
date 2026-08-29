@@ -10,6 +10,7 @@ import {
 	type ToolbarAction,
 } from '@/constants/article-editor.const'
 import { applyEdit, insertAtLineStart, wrapSelection } from './editor-utils'
+import { InsertImageModal } from './InsertImageModal'
 
 const HOTKEYS = [
 	{ shortcut: 'Ctrl+B', label: 'me.articleEditor.toolbar.bold' },
@@ -42,6 +43,8 @@ interface EditorToolbarProps {
 	setComponentsModalOpen: (v: boolean) => void
 	setTagsModalOpen: (v: boolean) => void
 	setImageModalOpen: (v: boolean) => void
+	onImageUpload?: (file: File) => Promise<string>
+	onInsertMarkdown: (markdown: string) => void
 	isDirty: boolean
 	isSaving: boolean
 	save: () => void
@@ -57,6 +60,8 @@ export function EditorToolbar({
 	setComponentsModalOpen,
 	setTagsModalOpen,
 	setImageModalOpen,
+	onImageUpload,
+	onInsertMarkdown,
 	isDirty,
 	isSaving,
 	save,
@@ -65,6 +70,7 @@ export function EditorToolbar({
 	showSubmit,
 }: EditorToolbarProps) {
 	const [hotkeysOpen, setHotkeysOpen] = useState(false)
+	const [uploadImageOpen, setUploadImageOpen] = useState(false)
 	const t = useTranslations()
 
 	const toolbarActions = useMemo<ToolbarAction[]>(() => {
@@ -225,6 +231,19 @@ export function EditorToolbar({
 				</Button>
 
 				<Button
+					className="p-2"
+					onClick={() => setUploadImageOpen(true)}
+					size="sm"
+					title={t('me.articleEditor.insertImage')}
+					variant="secondary"
+				>
+					<Icon
+						className="size-4.5"
+						icon="lucide:image-plus"
+					/>
+				</Button>
+
+				<Button
 					className="gap-1.5"
 					disabled={!isDirty || isSaving}
 					onClick={save}
@@ -289,6 +308,13 @@ export function EditorToolbar({
 					</Modal.Body>
 				</Modal.Content>
 			</Modal.Root>
+
+			<InsertImageModal
+				onInsert={onInsertMarkdown}
+				onOpenChange={setUploadImageOpen}
+				onUpload={onImageUpload}
+				open={uploadImageOpen}
+			/>
 		</div>
 	)
 }
