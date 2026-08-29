@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { WeaponSlot } from '@/stores/useTTK.store'
 import { useTTKStore } from '@/stores/useTTK.store'
 import type { Item } from '@/types/item.type'
@@ -30,9 +29,7 @@ export function useTTKWeaponSlots(
 
 	const handleWeaponSelect = (slotId: string, weaponId: string) => {
 		const w = weaponMap.get(weaponId)
-		const compatible = w
-			? getCompatibleAmmo(allAmmo, getAmmoType(w))
-			: []
+		const compatible = w ? getCompatibleAmmo(allAmmo, getAmmoType(w)) : []
 		const slot = slots.find((s) => s.id === slotId)
 		const currentAmmoCompatible =
 			slot?.ammoId && compatible.some((a) => a.id === slot.ammoId)
@@ -47,11 +44,8 @@ export function useTTKWeaponSlots(
 		setPendingSlotId(null)
 	}
 
-	// бэкфилл: слоты, сохранённые до дефолтного патрона (оружие есть, патрона нет)
 	useEffect(() => {
-		const missing = slots.filter(
-			(s) => s.weaponId && !s.ammoId
-		)
+		const missing = slots.filter((s) => s.weaponId && !s.ammoId)
 		if (missing.length === 0) return
 
 		let next = slots

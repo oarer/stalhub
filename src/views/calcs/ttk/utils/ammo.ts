@@ -94,6 +94,6 @@ export function pickDefaultAmmo(compatible: Item[]): Item | null {
 			return nameKey.replace(/\.name$/, '').endsWith(suffix)
 		})
 
-	// по дефолту — бронебойный (item.amm.<caliber>bb), иначе обычный (…st)
+	// по дефолту берём бронебойный (item.amm.<caliber>bb), иначе обычный
 	return bySuffix('bb') ?? bySuffix('st') ?? compatible[0]
 }
