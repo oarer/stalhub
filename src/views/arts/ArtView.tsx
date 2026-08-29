@@ -205,7 +205,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 						<Divider />
 
-						<div className="grid grid-cols-2 gap-4">
+						<div className="grid grid-cols-3 gap-4">
 							<div>
 								<p className="font-semibold text-text-accent text-xs">
 									{t('arts.stars')}
@@ -214,6 +214,17 @@ export default function ArtView({ artId }: ArtViewProps) {
 									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
 								>
 									{art.stars_count}
+								</p>
+							</div>
+
+							<div>
+								<p className="font-semibold text-text-accent text-xs">
+									{t('arts.views')}
+								</p>
+								<p
+									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+								>
+									{art.views}
 								</p>
 							</div>
 

@@ -76,8 +76,8 @@ export function RecruitingSection({
 				/>
 				<Input
 					label="clan.settings.recruitmentFields.tier"
-					max={4}
-					min={1}
+					max={3000}
+					min={0}
 					onChange={(event) =>
 						onFieldChange('tier', Number(event.target.value))
 					}

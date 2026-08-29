@@ -99,6 +99,11 @@ export const tabGroups: TabGroup[] = [
 				icon: 'lucide:palette',
 			},
 			{
+				title: 'me.nav.tierlists',
+				href: '/me/tierlists',
+				icon: 'lucide:trophy',
+			},
+			{
 				title: 'me.nav.stars',
 				href: '/me/stars',
 				icon: 'lucide:star',

@@ -11,6 +11,28 @@ export enum ArticleType {
 	GUIDE = 'GUIDE',
 	OTHER = 'OTHER',
 	STALHUB = 'STALHUB',
+	FACTION = 'FACTION',
+}
+
+export enum Faction {
+	BANDITS = 'BANDITS',
+	STALKERS = 'STALKERS',
+	ALL = 'ALL',
+}
+
+export const FACTION_META: Record<Faction, { label: string; color: string }> = {
+	[Faction.BANDITS]: {
+		label: 'Бандиты',
+		color: 'bg-red-500/10 text-red-400',
+	},
+	[Faction.STALKERS]: {
+		label: 'Сталкеры',
+		color: 'bg-green-500/10 text-green-400',
+	},
+	[Faction.ALL]: {
+		label: 'Все',
+		color: 'bg-blue-500/10 text-blue-400',
+	},
 }
 
 export const ARTICLE_STATUS_META: Record<
@@ -65,10 +87,12 @@ export interface Article {
 	quest_map: QuestMapData | null
 	reward_text: string | null
 	reward_money: number | null
+	faction: Faction | null
 	status: ArticleStatus
 	type: ArticleType | null
 	flags: number | null
 	tags: string[]
+	views: number
 	author: ArticleAuthor
 	stars_count: number
 	is_starred: boolean
@@ -92,6 +116,7 @@ export interface ArticleCreate {
 	quest_map?: QuestMapData | null
 	reward_text?: string | null
 	reward_money?: number | null
+	faction?: Faction | null
 	type?: ArticleType
 	flags?: number
 	tags?: string[]
@@ -106,6 +131,7 @@ export interface ArticleUpdate {
 	quest_map?: QuestMapData | null
 	reward_text?: string | null
 	reward_money?: number | null
+	faction?: Faction | null
 	type?: ArticleType
 	flags?: number
 	tags?: string[]

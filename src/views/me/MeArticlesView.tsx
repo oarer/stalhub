@@ -27,7 +27,7 @@ export default function MeArticlesView() {
 	const [filter, setFilter] = useState<ArticleStatus | 'ALL'>('ALL')
 
 	const { data: articles } = useSuspenseQuery(
-		articleQueries.list({ take: 50 })
+		articleQueries.mine({ take: 50 })
 	)
 
 	const filteredArticles =

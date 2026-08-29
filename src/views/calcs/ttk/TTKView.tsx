@@ -30,7 +30,6 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 	const {
 		weaponMap,
 		ammoMap,
-		ammoByType,
 		weaponOptions,
 		prime,
 		focusedSlot,
@@ -51,7 +50,7 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 		addSlot,
 		removeSlot,
 		setFocusedSlotId,
-	} = useTTKWeaponSlots(weaponMap, ammoByType)
+	} = useTTKWeaponSlots(weaponMap, allAmmo)
 
 	useEffect(() => {
 		modulesLoad()

@@ -1,9 +1,17 @@
 'use client'
 
+import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import { type RoadmapItem, RoadmapItems } from '@/constants/roadmap.const'
 import { cn } from '@/lib/cn'
+
+const rise = (shouldReduceMotion: boolean | null) => ({
+	initial: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
+	whileInView: { opacity: 1, y: 0 },
+	viewport: { once: true, amount: 0.4 },
+	transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+})
 
 function RoadmapContent({
 	item,
@@ -13,13 +21,15 @@ function RoadmapContent({
 	align: 'left' | 'right'
 }) {
 	const t = useTranslations()
+	const shouldReduceMotion = useReducedMotion()
 
 	return (
-		<div
+		<motion.div
 			className={cn(
 				'flex flex-col gap-2',
 				align === 'right' ? 'text-right' : 'text-left'
 			)}
+			{...rise(shouldReduceMotion)}
 		>
 			<time
 				className={cn(
@@ -47,7 +57,30 @@ function RoadmapContent({
 					{t(item.description)}
 				</p>
 			)}
-		</div>
+		</motion.div>
+	)
+}
+
+function TimelineDot({ status }: { status: RoadmapItem['status'] }) {
+	const shouldReduceMotion = useReducedMotion()
+
+	return (
+		<motion.span
+			className={cn(
+				'z-10 size-4 rounded-full border-2 border-primary bg-card',
+				status === 'in-progress' &&
+					'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
+			)}
+			initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
+			transition={{
+				duration: 0.4,
+				type: 'spring',
+				stiffness: 300,
+				damping: 20,
+			}}
+			viewport={{ once: true, amount: 'some' }}
+			whileInView={{ opacity: 1, scale: 1 }}
+		/>
 	)
 }
 
@@ -72,13 +105,7 @@ export default function Roadmap() {
 						<li className="relative min-h-30" key={item.date}>
 							<div className="flex gap-4 md:hidden">
 								<div className="relative flex w-4 shrink-0 justify-center">
-									<span
-										className={cn(
-											'relative z-10 mt-1 size-4 rounded-full border-2 border-primary bg-card',
-											item.status === 'in-progress' &&
-												'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
-										)}
-									/>
+									<TimelineDot status={item.status} />
 								</div>
 
 								<div className="flex-1 pb-8">
@@ -97,13 +124,7 @@ export default function Roadmap() {
 								</div>
 
 								<div className="flex justify-center">
-									<span
-										className={cn(
-											'z-10 size-4 rounded-full border-2 border-primary bg-card',
-											item.status === 'in-progress' &&
-												'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
-										)}
-									/>
+									<TimelineDot status={item.status} />
 								</div>
 
 								<div className="px-6 pl-4">

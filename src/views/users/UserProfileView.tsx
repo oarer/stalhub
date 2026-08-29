@@ -2,9 +2,12 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { Icon } from '@iconify/react'
 import ClanCard from '@/components/ui/clan/ClanCard'
+import { CLink } from '@/components/ui/Link'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
+import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { userQueries } from '@/queries/user/user.queries'
 import type { Item } from '@/types/item.type'
 import { ItemCell } from '@/views/clan/components/squads/ItemCell'
@@ -43,6 +46,9 @@ export default function UserProfileView({
 	)
 	const { data: loadouts } = useSuspenseQuery(
 		loadoutQueries.getMany([user.id])
+	)
+	const { data: tierLists } = useSuspenseQuery(
+		tierListQueries.listMine({ take: 10 })
 	)
 	const loadout = loadouts[0] ?? null
 
@@ -253,6 +259,39 @@ export default function UserProfileView({
 									article={article}
 									key={article.id}
 								/>
+							))}
+						</div>
+					</section>
+				)}
+
+				{tierLists && tierLists.data.length > 0 && (
+					<section className="flex flex-col gap-3">
+						<div className="flex items-center justify-between">
+							<h2 className="font-semibold text-xl">
+								{t('tierlists.title')}
+							</h2>
+							<CLink className="text-primary text-sm hover:underline" href="/tierlists">
+								{t('tierlists.viewAll')}
+							</CLink>
+						</div>
+
+						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+							{tierLists.data.map((tl) => (
+								<CLink href={`/tierlists/${tl.external_id}`} key={tl.id}>
+									<div className="flex items-center gap-3 rounded-lg border border-muted bg-card p-3 transition-colors hover:border-primary/30">
+										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary text-lg">
+											<Icon className="size-5" icon="lucide:layout-list" />
+										</div>
+										<div className="min-w-0 flex-1">
+											<p className="truncate font-semibold text-sm">
+												{tl.title}
+											</p>
+											<p className="text-text-accent text-xs">
+												{tl.entry_count ?? tl.entries?.length ?? 0} items · {tl.item_kind}
+											</p>
+										</div>
+									</div>
+								</CLink>
 							))}
 						</div>
 					</section>

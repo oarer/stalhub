@@ -14,6 +14,15 @@ class ArticleQueries {
 		})
 	}
 
+	mine({ take = 20, page = 1 } = {}) {
+		return queryOptions<PaginatedResponse<Article>>({
+			queryKey: ['articles', 'mine', { take, page }],
+			queryFn: () => articleService.mine({ take, page }),
+			placeholderData: keepPreviousData,
+			staleTime: 1000 * 30,
+		})
+	}
+
 	publicList({ take = 20, page = 1 } = {}) {
 		return queryOptions<PaginatedResponse<Article>>({
 			queryKey: ['articles', 'public', { take, page }],

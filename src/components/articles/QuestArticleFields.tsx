@@ -4,13 +4,14 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
-import { QuestType } from '@/types/article.type'
+import { Faction, QuestType } from '@/types/article.type'
 
 export type QuestFieldsValue = {
 	quest_name: string
 	quest_type: QuestType
 	reward_text: string
 	reward_money: string
+	faction: Faction | null
 }
 
 export function QuestArticleFields({
@@ -26,6 +27,11 @@ export function QuestArticleFields({
 	const questTypeOptions = [
 		{ value: QuestType.STORY, label: t('story') },
 		{ value: QuestType.SIDE, label: t('side') },
+	]
+	const factionOptions = [
+		{ value: Faction.BANDITS, label: t('bandits') },
+		{ value: Faction.STALKERS, label: t('stalkers') },
+		{ value: Faction.ALL, label: t('all') },
 	]
 
 	return (
@@ -50,6 +56,16 @@ export function QuestArticleFields({
 					placeholder="articles.quest.type"
 					translateOptions={false}
 					value={value.quest_type}
+				/>
+				<Combobox
+					className="py-0.5"
+					onValueChange={(faction) => {
+						patch({ faction: faction ? (faction as Faction) : null })
+					}}
+					options={factionOptions}
+					placeholder="articles.quest.faction"
+					translateOptions={false}
+					value={value.faction ?? ''}
 				/>
 				<Input
 					label="articles.quest.money"

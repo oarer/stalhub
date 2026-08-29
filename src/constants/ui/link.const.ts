@@ -9,7 +9,7 @@ export const linkVariants = cva(
 					'bg-primary text-primary-foreground shadow-md hover:brightness-110',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-sm hover:bg-muted',
-				outline: 'ring-2 ring-primary bg-transparent hover:bg-muted',
+				outline: 'ring-2 ring-primary/40 bg-transparent hover:bg-muted',
 				bordered:
 					'border-2 border-primary bg-transparent text-primary font-semibold hover:bg-primary/10',
 				ghost: 'bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground',

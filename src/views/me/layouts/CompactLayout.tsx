@@ -1,35 +1,40 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-import { Divider } from '@/components/ui/Divider'
 import type { MeLayoutProps } from '@/types/me.types'
-import { getNavTabs } from '@/types/me.types'
-import CompactHeader from '@/views/me/components/CompactHeader'
-import LinkTabs from '@/views/me/components/LinkTabs'
+import MeBanner from '@/views/me/components/MeBanner'
+import MeSidebar from '@/views/me/components/MeSidebar'
 
 export default function CompactLayout({
 	children,
 	user,
 	unreadCount,
+	pathname,
+	onCardChange,
 }: MeLayoutProps) {
-	const t = useTranslations()
 	const customization = user.customization
 
 	return (
-		<div className="mx-auto max-w-285 px-2 pt-28 pb-0 md:px-4 lg:px-0 lg:pb-12 xl:pt-36">
-			<div className="flex flex-col gap-4">
-				<div className="hidden flex-col gap-4 lg:flex">
-					<CompactHeader
+		<div className="flex min-h-dvh">
+			<aside className="hidden w-84 shrink-0 border-primary/2 border-r-2 bg-background/80 px-4 pt-38 pb-6 lg:block">
+				<MeSidebar
+					onCardChange={onCardChange}
+					pathname={pathname}
+					showBanner
+					unreadCount={unreadCount}
+					user={user}
+				/>
+			</aside>
+			<div className="min-w-0 flex-1 pt-12">
+				<div className="px-2 pt-28 pb-12 md:px-4">
+					<MeBanner
 						bannerColor={customization.banner_color}
 						bannerImage={customization.banner_image}
 						bannerMode={customization.banner_mode}
 						bannerType={customization.banner_type}
-						user={user}
+						className="mt-8 mb-8 lg:hidden"
 					/>
-					<LinkTabs tabs={getNavTabs(unreadCount, t, user.roles)} />
-					<Divider />
+					<div className="py-6 lg:py-0">{children}</div>
 				</div>
-				<div className="py-6 lg:px-0 lg:py-0">{children}</div>
 			</div>
 		</div>
 	)

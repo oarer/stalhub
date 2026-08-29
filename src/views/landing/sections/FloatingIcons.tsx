@@ -1,19 +1,25 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 
 import { floatingIcons } from '@/constants/landing.const'
 
 export default function FloatingIcons() {
+	const shouldReduceMotion = useReducedMotion()
+
 	return (
 		<div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block">
 			{floatingIcons.map((iconData, index) => (
 				<motion.div
-					animate={{
-						y: [0, index % 2 === 0 ? -20 : -15, 0],
-						rotate: [0, index % 2 === 0 ? 5 : -3, 0],
-					}}
+					animate={
+						shouldReduceMotion
+							? { y: 0, rotate: 0 }
+							: {
+									y: [0, index % 2 === 0 ? -20 : -15, 0],
+									rotate: [0, index % 2 === 0 ? 5 : -3, 0],
+								}
+					}
 					className={iconData.className}
 					key={index}
 					transition={{

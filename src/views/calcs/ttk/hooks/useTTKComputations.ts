@@ -14,7 +14,6 @@ import { COLORS } from '../constants/ttk'
 import {
 	buildSeries,
 	calcTTKAtDist,
-	getAmmoType,
 	getDamageBlock,
 } from '../utils'
 import type { useTTKData } from './useTTKData'
@@ -53,16 +52,6 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 		() => new Map(allAmmo.map((a) => [a.id, a])),
 		[allAmmo]
 	)
-
-	const ammoByType = useMemo(() => {
-		const map = new Map<string, (typeof allAmmo)[0][]>()
-		for (const a of allAmmo) {
-			const key = getAmmoType(a)
-			if (!map.has(key)) map.set(key, [])
-			map.get(key)!.push(a)
-		}
-		return map
-	}, [allAmmo])
 
 	const selectedPlate = useMemo(
 		() => plates.find((p) => p.id === plateId) ?? null,
@@ -253,7 +242,6 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 	return {
 		weaponMap,
 		ammoMap,
-		ammoByType,
 		selectedPlate,
 		prime,
 		activeSlots,

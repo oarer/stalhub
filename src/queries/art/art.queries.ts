@@ -14,6 +14,15 @@ class ArtQueries {
 		})
 	}
 
+	mine({ take = 20, page = 1 } = {}) {
+		return queryOptions<PaginatedResponse<Art>>({
+			queryKey: ['arts', 'mine', { take, page }],
+			queryFn: () => artService.mine({ take, page }),
+			placeholderData: keepPreviousData,
+			staleTime: 1000 * 30,
+		})
+	}
+
 	publicList({
 		take = 24,
 		page = 1,

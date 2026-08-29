@@ -24,6 +24,14 @@ class ArticleService {
 		return data
 	}
 
+	async mine({ take = 20, page = 1 } = {}): Promise<PaginatedResponse<Article>> {
+		const { data } = await apiClient.get<PaginatedResponse<Article>>(
+			'/api/v1/articles/mine',
+			{ params: { take, page } }
+		)
+		return data
+	}
+
 	async publicList({
 		take = 20,
 		page = 1,

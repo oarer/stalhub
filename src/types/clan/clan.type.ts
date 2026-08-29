@@ -2,7 +2,7 @@ import type { LoadoutData } from '../loadout/loadout.type'
 import type { Alliance } from '../player.type'
 
 type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
-type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
+export type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
 export type SquadMap = 'SMALL_BERDOVKA' | 'KHVOUINOY' | 'NIZINA'
 export type GoldDropStatus = 'PENDING' | 'CLAIMED'
 export type AbsenceEventType =

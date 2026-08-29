@@ -61,6 +61,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		reward_text: article.reward_text ?? '',
 		reward_money:
 			article.reward_money == null ? '' : String(article.reward_money),
+		faction: article.faction ?? null,
 	})
 	const [mobileTab, setMobileTab] = useState<EditorTab>('write')
 	const [isSaving, setIsSaving] = useState(false)
@@ -81,7 +82,8 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 			(article.reward_money == null
 				? ''
 				: String(article.reward_money)) ||
-		quest.quest_type !== (article.quest_type ?? QuestType.STORY)
+		quest.quest_type !== (article.quest_type ?? QuestType.STORY) ||
+		quest.faction !== (article.faction ?? null)
 
 	const updateMutation = useMutation({
 		mutationFn: (data: ArticleUpdate) =>
@@ -128,6 +130,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 							quest.reward_money === ''
 								? null
 								: Number(quest.reward_money),
+						faction: quest.faction,
 					}
 				: {}),
 		})
@@ -145,6 +148,13 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 	const handleSubmit = () => {
 		submitMutation.mutate()
 	}
+
+	const handleImageUpload = useCallback(
+		async (file: File) => {
+			return articleService.uploadImage(articleId, file)
+		},
+		[articleId]
+	)
 
 	const handleTagsSave = (newTags: string) => {
 		setTags(newTags)
@@ -297,6 +307,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				initialUrl={imageUrl}
 				onOpenChange={setImageModalOpen}
 				onSave={setImageUrl}
+				onUpload={handleImageUpload}
 				open={imageModalOpen}
 			/>
 		</section>

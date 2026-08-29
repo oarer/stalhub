@@ -259,7 +259,7 @@ export function WeaponSlotCard({
 									</Button>
 
 									<Input
-										className="w-20 shrink-0 rounded-lg border-primary"
+										className="w-20 shrink-0 rounded-lg border-primary/40"
 										label="ui.input_sharpening"
 										max={15}
 										min={0}

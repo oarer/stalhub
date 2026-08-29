@@ -73,7 +73,7 @@ export const KeyValueElement: React.FC<{
 		<div className="flex justify-between font-semibold">
 			<p style={nameColor ? { color: nameColor } : undefined}>{key}</p>
 			<p
-				className={`${montserrat.className} text-nowrap text-[15px]`}
+				className={`${montserrat.className} ] text-nowrap`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{value}
@@ -131,7 +131,7 @@ export const NumericElement: React.FC<{
 				</div>
 			) : (
 				<p
-					className={`${montserrat.className} font-medium text-sm`}
+					className={`${montserrat.className} font-medium`}
 					style={nameColor ? { color: nameColor } : undefined}
 				>
 					{display}
@@ -163,7 +163,7 @@ export const RangeElement: React.FC<{
 				{name}
 			</p>
 			<p
-				className={`${montserrat.className} font-font-semibold text-sm`}
+				className={`${montserrat.className} font-semibold`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{display}
@@ -181,7 +181,7 @@ export const UsageElement: React.FC<{
 
 	return (
 		<p
-			className={`${montserrat.className} font-medium text-sm`}
+			className={`${montserrat.className} font-medium`}
 			style={valueColor ? { color: valueColor } : undefined}
 		>
 			{name}

@@ -21,7 +21,7 @@ export default function MeHomeView() {
 		buildApiQueries.mine({ take: 10 })
 	)
 	const { data: articles } = useSuspenseQuery(
-		articleQueries.list({ take: 10 })
+		articleQueries.mine({ take: 10 })
 	)
 	const { artifacts, armorItems, containers } = useItemsData()
 

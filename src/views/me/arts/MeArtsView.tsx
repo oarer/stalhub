@@ -24,7 +24,7 @@ export default function MeArtsView() {
 	const t = useTranslations()
 	const [filter, setFilter] = useState<ArtType | 'ALL'>('ALL')
 
-	const { data: arts } = useSuspenseQuery(artQueries.list({ take: 50 }))
+	const { data: arts } = useSuspenseQuery(artQueries.mine({ take: 50 }))
 
 	const filteredArts =
 		filter === 'ALL'

@@ -3,12 +3,17 @@
 import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { useMemo, useState } from 'react'
+import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
-import type { UserClanProfile } from '@/types/clan/clan.type'
+import type { StageType, UserClanProfile } from '@/types/clan/clan.type'
 import { SessionRow } from './components/sessions/SessionRow'
+import { STAGE_TYPES } from './components/sessions/session.const'
 import { UploadScreenshotModal } from './components/sessions/UploadScreenshotModal'
 import { useScreenshotUpload } from './hooks/useScreenshotUpload'
+
+type SessionFilter = 'ALL' | StageType
 
 export default function ClanSessionsView() {
 	const { data: profile } = useSuspenseQuery(clanQueries.getMe())
@@ -25,9 +30,11 @@ function ClanSessionsContent({
 	profile: UserClanProfile
 }) {
 	const t = useTranslations()
-	const { data: sessions, isLoading, isFetching } = useQuery(
-		clanQueries.getSessions(clanId)
-	)
+	const {
+		data: sessions,
+		isLoading,
+		isFetching,
+	} = useQuery(clanQueries.getSessions(clanId))
 	const {
 		uploadOpen,
 		uploadType,
@@ -44,6 +51,15 @@ function ClanSessionsContent({
 		invalidateSessions,
 		uploadMutation,
 	} = useScreenshotUpload(profile)
+
+	const [filter, setFilter] = useState<SessionFilter>('ALL')
+
+	const filteredSessions = useMemo(() => {
+		if (!sessions) return []
+		return filter === 'ALL'
+			? sessions
+			: sessions.filter((s) => s.type === filter)
+	}, [sessions, filter])
 
 	if (isLoading) {
 		return (
@@ -88,6 +104,34 @@ function ClanSessionsContent({
 				/>
 			</div>
 
+			<div className="flex flex-wrap items-center gap-2">
+				<Button
+					className="font-semibold"
+					key="all"
+					onClick={() => setFilter('ALL')}
+					size="sm"
+					variant={filter === 'ALL' ? 'primary' : 'ghost'}
+				>
+					{t('clan.filters.ALL')}
+				</Button>
+				{STAGE_TYPES.map((stageType) => (
+					<Button
+						className="gap-2 font-semibold"
+						key={stageType.value}
+						onClick={() =>
+							setFilter(stageType.value as SessionFilter)
+						}
+						size="sm"
+						variant={
+							filter === stageType.value ? 'primary' : 'ghost'
+						}
+					>
+						<Icon className="text-base" icon={stageType.icon} />
+						{t(stageType.label)}
+					</Button>
+				))}
+			</div>
+
 			{!sessions || sessions.length === 0 ? (
 				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:swords" />
@@ -98,8 +142,15 @@ function ClanSessionsContent({
 						{t('clan.sessions.noGamesDesc')}
 					</p>
 				</div>
+			) : filteredSessions.length === 0 ? (
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
+					<Icon className="text-4xl" icon="lucide:filter-x" />
+					<h3 className="font-semibold text-lg">
+						{t('clan.common.noGames')}
+					</h3>
+				</div>
 			) : (
-				sessions.map((session) => (
+				filteredSessions.map((session) => (
 					<SessionRow
 						key={session.id}
 						onUpload={invalidateSessions}

@@ -8,6 +8,7 @@ export interface BuildApi {
 	flags: number | null
 	tags: string[]
 	price?: number | null
+	views: number
 	author: BuildApiAuthor
 	is_starred: boolean
 	stars_count: number

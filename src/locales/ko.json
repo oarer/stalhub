@@ -10,6 +10,16 @@
 		},
 		"start": "시작하기",
 		"more_details": "자세히",
+		"hero": {
+			"title": "<brand>Stalhub</brand> — StalZone의 조수",
+			"title_accent": "Stalhub",
+			"subtitle": "빌드 계산기, TTK, 아스널, 아티클, 가이드 및 무료 클랜 분석"
+		},
+		"footer": {
+			"title": "경계 없는 행동",
+			"subtitle": "활발한 커뮤니티에 참여하여 프로젝트에 기여하세요",
+			"github": "GitHub"
+		},
 		"tools": {
 			"title": "도구",
 			"description": "방대한 도구 모음",
@@ -51,6 +61,14 @@
 					"desc": "아스널 평판에 필요한 아이템 수량을 계산하세요"
 				}
 			}
+		},
+		"tops": {
+			"title": "최고의 작가",
+			"description": "이번 주와 이번 달의 인기 작가",
+			"week": "주간 TOP",
+			"month": "월간 TOP",
+			"views": "조회수",
+			"empty": "데이터 없음"
 		}
 	},
 	"footer": {
@@ -1265,7 +1283,11 @@
 			"markers": "마커",
 			"markerLabel": "라벨",
 			"addMarker": "마커 추가",
-			"gallery": "갤러리"
+			"gallery": "갤러리",
+			"faction": "진영",
+			"bandits": "산적",
+			"stalkers": "스토커",
+			"all": "모든 진영"
 		}
 	},
 	"clan": {
@@ -1693,9 +1715,10 @@
 			"absences": "불참",
 			"settings": "설정",
 			"content": "콘텐츠",
-			"articles": "게시글",
+			"articles": "기사",
 			"builds": "빌드",
 			"arts": "아트",
+			"tierlists": "티어 리스트",
 			"stars": "즐겨찾기",
 			"system": "시스템",
 			"notifications": "알림",
@@ -1710,7 +1733,12 @@
 			"publishedArticles": "게시된 게시글",
 			"allArticles": "모든 게시글",
 			"underReview": "검토 중",
-			"characters": "캐릭터"
+			"characters": "캐릭터",
+			"authorOfWeek": "이번 주의 작가",
+			"viewsBuilds": " 빌드",
+			"viewsArticles": " 게시물",
+			"viewsArts": " 아트",
+			"totalViews": "조회수"
 		},
 		"articles": {
 			"title": "게시글",
@@ -1951,7 +1979,10 @@
 				"save": "저장"
 			},
 			"hotkeysTitle": "단축키",
-			"mdxContent": "콘텐츠"
+			"mdxContent": "콘텐츠",
+			"uploadFile": "파일 업로드",
+			"imageUploaded": "이미지가 업로드되었습니다",
+			"imageUploadError": "이미지 업로드 실패"
 		},
 		"bg": {
 			"avatar": "아바타",
@@ -2251,5 +2282,58 @@
 		"search": "작전 보기",
 		"prompt": "지역을 선택하고 캐릭터 닉네임을 입력해 작전을 확인하세요.",
 		"loadMore": "더 불러오기"
+	},
+	"tierlists": {
+		"title": "티어 목록",
+		"description": "무기와 방어구의 효율 등급",
+		"create": "티어 목록 만들기",
+		"all": "전체",
+		"allItems": "모든 아이템",
+		"weapons": "무기",
+		"armor": "방어구",
+		"system": "시스템",
+		"user": "사용자",
+		"auto": "자동",
+		"empty": "비어 있음",
+		"exportPng": "PNG 내보내기",
+		"pngPreview": "이미지 미리보기",
+		"copyPng": "복사",
+		"downloadPng": "다운로드",
+		"pngCopied": "이미지가 복사되었습니다",
+		"pngError": "이미지를 만들 수 없습니다",
+		"copyError": "복사할 수 없습니다",
+		"notFound": "티어 목록을 찾을 수 없습니다",
+		"edit": "편집",
+		"deleted": "티어 목록이 삭제되었습니다",
+		"saved": "티어 목록이 저장되었습니다",
+		"saveError": "저장 중 오류가 발생했습니다",
+		"viewAll": "모든 티어 목록",
+		"editor": {
+			"create": "새 티어 목록",
+			"edit": "티어 목록 편집",
+			"title": "제목",
+			"description": "설명",
+			"category": "카테고리",
+			"categoryPlaceholder": "카테고리 선택",
+			"addItem": "아이템 추가",
+			"pickItem": "아이템 선택",
+			"searchItems": "아이템 검색",
+			"save": "저장"
+		},
+		"allCategories": "모든 카테고리",
+		"categories": {
+			"general": "일반",
+			"assault_rifle": "돌격소총",
+			"sniper_rifle": "저격소총",
+			"shotgun_rifle": "산탄총",
+			"submachine_gun": "기관단총",
+			"machine_gun": "기관총",
+			"pistol": "권총",
+			"heavy": "중화기"
+		},
+		"info": {
+			"title": "TTK 계산 방법",
+			"aggregate": "랭크는 평균 TTK 기준: 각 무기에 대해 약 400개의 무작위 설정(HP 400–800, 생명력 1.0–1.3), 헤드샷, 강화 15, 최고 AP 탄약을 사용합니다. 카테고리 최고 무기 대비 평균 TTK와 0.05초 간격으로 S–E 랭크가 매겨집니다."
+		}
 	}
 }

@@ -84,3 +84,16 @@ export function getCompatibleAmmo(
 		return prefixes.some((p) => p === `item.amm.${itemCaliber}`)
 	})
 }
+
+export function pickDefaultAmmo(compatible: Item[]): Item | null {
+	if (compatible.length === 0) return null
+
+	const bySuffix = (suffix: string) =>
+		compatible.find((a) => {
+			const nameKey = a.name?.type === 'translation' ? a.name.key : ''
+			return nameKey.replace(/\.name$/, '').endsWith(suffix)
+		})
+
+	// по дефолту — бронебойный (item.amm.<caliber>bb), иначе обычный (…st)
+	return bySuffix('bb') ?? bySuffix('st') ?? compatible[0]
+}

@@ -1,35 +1,35 @@
 export const floatingIcons = [
 	{
 		icon: 'lucide:calculator',
-		className: 'absolute top-60 left-1/4',
+		className: 'absolute top-10 left-1/4',
 		size: 'text-4xl',
 		color: 'text-primary/35',
 		delay: 0,
 	},
 	{
 		icon: 'lucide:braces',
-		className: 'absolute top-120 left-2/6',
+		className: 'absolute top-60 left-2/6',
 		size: 'text-4xl',
 		color: 'text-primary/20',
 		delay: 0,
 	},
 	{
 		icon: 'lucide:shield-half',
-		className: 'absolute top-50 left-2/5',
+		className: 'absolute top-20 left-2/5',
 		size: 'text-3xl',
 		color: 'text-primary/50',
 		delay: 0,
 	},
 	{
 		icon: 'lucide:box',
-		className: 'absolute top-110 right-3/10',
+		className: 'absolute top-64 right-3/10',
 		size: 'text-4xl',
 		color: 'text-primary/50',
 		delay: 2,
 	},
 	{
 		icon: 'lucide:landmark',
-		className: 'absolute top-52 right-1/3',
+		className: 'absolute top-12 right-1/3',
 		size: 'text-4xl',
 		color: 'text-primary/50',
 		delay: 2,
@@ -57,6 +57,21 @@ export const featuresHero = [
 	{
 		value: '24/7',
 		label: 'landing.features.uptime',
+		color: 'text-primary/90',
+	},
+	{
+		value: '0₽',
+		label: 'landing.features.price',
+		color: 'text-primary/90',
+	},
+	{
+		value: '100+',
+		label: 'landing.features.users',
+		color: 'text-primary/90',
+	},
+	{
+		value: '99.8%',
+		label: 'landing.features.analytic',
 		color: 'text-primary/90',
 	},
 ]

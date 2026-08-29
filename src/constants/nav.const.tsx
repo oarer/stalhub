@@ -167,6 +167,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.other.items.operations.description',
 			},
 			{
+				key: 'tierlists',
+				icon: 'lucide:trophy',
+				href: '/tierlists',
+				labelKey: 'tierlists.title',
+				descriptionKey: 'tierlists.description',
+			},
+			{
 				key: 'models',
 				icon: 'lucide:box',
 				href: '',

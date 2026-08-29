@@ -10,6 +10,7 @@ export interface Art {
 	title: string
 	image_url: string | null
 	tags: string[]
+	views: number
 	author: ArtAuthor
 	stars_count: number
 	is_starred: boolean

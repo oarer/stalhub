@@ -10,6 +10,16 @@
     },
     "start": "Start",
     "more_details": "More details",
+    "hero": {
+      "title": "<brand>Stalhub</brand> — your assistant in StalZone",
+      "title_accent": "Stalhub",
+      "subtitle": "Build calculators, TTK, arsenal, articles, guides and free clan analytics"
+    },
+    "footer": {
+      "title": "Action without borders",
+      "subtitle": "Join an active community and contribute to the project",
+      "github": "GitHub"
+    },
     "tools": {
       "title": "Tools",
       "description": "A comprehensive collection of tools",
@@ -51,6 +61,14 @@
           "desc": "Calculate the required number of items for arsenal reputation"
         }
       }
+    },
+    "tops": {
+      "title": "Top authors",
+      "description": "The most popular authors of the week and month",
+      "week": "Top of the week",
+      "month": "Top of the month",
+      "views": "views",
+      "empty": "No data"
     }
   },
   "footer": {
@@ -1265,7 +1283,11 @@
       "markers": "Markers",
       "markerLabel": "Label",
       "addMarker": "Add marker",
-      "gallery": "Gallery"
+      "gallery": "Gallery",
+      "faction": "Faction",
+      "bandits": "Bandits",
+      "stalkers": "Stalkers",
+      "all": "All factions"
     }
   },
   "clan": {
@@ -1625,16 +1647,16 @@
       "recruitingTitle": "Clan recruiting",
       "acceptRequests": "Accept requests",
       "acceptRequestsHint": "A badge will appear in the clan list",
-		"recruitmentFields": {
-			"leaderDiscord": "Leader Discord",
-			"clanDiscord": "Clan Discord (optional)",
-			"tier": "Clan tier",
-			"guildsPerWeek": "Guilds per week (optional)"
-		},
-		"paidRecruitment": "Paid basis",
-		"paidRecruitmentHint": "Whether recruitment is offered on a paid basis",
-		"leaderDiscordRequired": "Leader Discord is required",
-		"saveRecruitment": "Save recruitment details",
+      "recruitmentFields": {
+        "leaderDiscord": "Leader Discord",
+        "clanDiscord": "Clan Discord (optional)",
+        "tier": "Clan tier",
+        "guildsPerWeek": "Guilds per week (optional)"
+      },
+      "paidRecruitment": "Paid basis",
+      "paidRecruitmentHint": "Whether recruitment is offered on a paid basis",
+      "leaderDiscordRequired": "Leader Discord is required",
+      "saveRecruitment": "Save recruitment details",
       "scheduleTitle": "Clan wars schedule",
       "scheduleDesc": "The clan must play 3 tournaments per week. The brawls setting shows the schedule publicly and is used in the kick chance calculation.",
       "tournamentFixedLabel": "Tournaments (mandatory)",
@@ -1671,8 +1693,8 @@
         "saveError": "Could not save settings",
         "recruitingUpdated": "Recruiting updated",
         "recruitingError": "Could not change recruiting",
-			"recruitmentSaved": "Recruitment details saved",
-			"recruitmentError": "Could not save recruitment details",
+        "recruitmentSaved": "Recruitment details saved",
+        "recruitmentError": "Could not save recruitment details",
         "scheduleSaved": "Schedule saved",
         "scheduleError": "Could not save schedule",
         "synced": "Roster updated: {count} members",
@@ -1751,6 +1773,7 @@
       "articles": "Articles",
       "builds": "Builds",
       "arts": "Art",
+      "tierlists": "Tier lists",
       "stars": "Favorites",
       "system": "System",
       "notifications": "Notifications",
@@ -1765,7 +1788,12 @@
       "publishedArticles": "Published articles",
       "allArticles": "All articles",
       "underReview": "Under review",
-      "characters": "Characters"
+      "characters": "Characters",
+      "authorOfWeek": "Author of the Week",
+      "viewsBuilds": " builds",
+      "viewsArticles": " articles",
+      "viewsArts": " arts",
+      "totalViews": "views"
     },
     "articles": {
       "title": "Articles",
@@ -2006,7 +2034,10 @@
         "save": "Save"
       },
       "hotkeysTitle": "Hotkeys",
-      "mdxContent": "Content"
+      "mdxContent": "Content",
+      "uploadFile": "Upload file",
+      "imageUploaded": "Image uploaded",
+      "imageUploadError": "Failed to upload image"
     },
     "bg": {
       "avatar": "Avatar",
@@ -2198,13 +2229,13 @@
     "title": "Clans",
     "searchLabel": "Name or tag",
     "recruiting": "Recruiting",
-		"leaderDiscord": "Leader Discord",
-		"clanDiscord": "Clan Discord",
-		"paidRecruitment": "Paid basis",
-		"paidRecruitmentYes": "yes",
-		"paidRecruitmentNo": "no",
-		"tier": "Clan tier",
-		"guildsPerWeek": "Guilds per week",
+    "leaderDiscord": "Leader Discord",
+    "clanDiscord": "Clan Discord",
+    "paidRecruitment": "Paid basis",
+    "paidRecruitmentYes": "yes",
+    "paidRecruitmentNo": "no",
+    "tier": "Clan tier",
+    "guildsPerWeek": "Guilds per week",
     "empty": "No public clans",
     "faction": "Faction",
     "schedule": "Schedule:",
@@ -2321,5 +2352,58 @@
     "search": "Show operations",
     "prompt": "Pick a region and enter a character nickname to see its operations.",
     "loadMore": "Load more"
+  },
+  "tierlists": {
+    "title": "Tier Lists",
+    "description": "Rankings of weapons and armor by efficiency",
+    "create": "Create tier list",
+    "all": "All",
+    "allItems": "All items",
+    "weapons": "Weapons",
+    "armor": "Armor",
+    "system": "System",
+    "user": "User",
+    "auto": "Auto",
+    "empty": "Empty",
+    "exportPng": "Export PNG",
+    "pngPreview": "Image preview",
+    "copyPng": "Copy",
+    "downloadPng": "Download",
+    "pngCopied": "Image copied",
+    "pngError": "Failed to create image",
+    "copyError": "Failed to copy",
+    "notFound": "Tier list not found",
+    "edit": "Edit",
+    "deleted": "Tier list deleted",
+    "saved": "Tier list saved",
+    "saveError": "Failed to save",
+    "viewAll": "All tier lists",
+    "editor": {
+      "create": "New tier list",
+      "edit": "Edit tier list",
+      "title": "Title",
+      "description": "Description",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "addItem": "Add item",
+      "pickItem": "Pick item",
+      "searchItems": "Search items",
+      "save": "Save"
+    },
+    "allCategories": "All categories",
+    "categories": {
+      "general": "General",
+      "assault_rifle": "Assault rifles",
+      "sniper_rifle": "Sniper rifles",
+      "shotgun_rifle": "Shotguns",
+      "submachine_gun": "SMGs",
+      "machine_gun": "Machine guns",
+      "pistol": "Pistols",
+      "heavy": "Heavy"
+    },
+    "info": {
+      "title": "How TTK is calculated",
+      "aggregate": "Rating is based on average TTK: for each weapon we take ~400 random setups (HP 400–800, vitality 1.0–1.3), head hits, sharpening 15 and best AP ammo. Ranks S–E are assigned by the average TTK relative to the best weapon in the category with a 0.05 s step."
+    }
   }
 }

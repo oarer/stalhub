@@ -17,7 +17,7 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import { useAuthStore } from '@/stores/useAuth.store'
-import { ArticleType } from '@/types/article.type'
+import { ArticleType, FACTION_META, type Faction } from '@/types/article.type'
 import ArticleComments from './ArticleComments'
 
 const EMPTY_SCOPE = {}
@@ -109,6 +109,15 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 					</div>
 
 					<div className="flex items-center gap-1 text-text-accent">
+						<Icon icon="lucide:eye" />
+						<span
+							className={`${montserrat.className} font-semibold text-xs`}
+						>
+							{article.views}
+						</span>
+					</div>
+
+					<div className="flex items-center gap-1 text-text-accent">
 						<Icon icon="lucide:calendar" />
 						<span
 							className={`${montserrat.className} font-semibold text-xs`}
@@ -116,6 +125,15 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 							{formatDate(article.created_at, 'datetime')}
 						</span>
 					</div>
+
+					{article.faction && (
+						<span
+							className={`rounded-md px-2 py-0.5 font-semibold text-xs ${FACTION_META[article.faction as Faction]?.color ?? ''}`}
+						>
+							{FACTION_META[article.faction as Faction]?.label ??
+								article.faction}
+						</span>
+					)}
 
 					{user && (
 						<Button

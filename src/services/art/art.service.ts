@@ -14,6 +14,14 @@ class ArtService {
 		return data
 	}
 
+	async mine({ take = 20, page = 1 } = {}): Promise<PaginatedResponse<Art>> {
+		const { data } = await apiClient.get<PaginatedResponse<Art>>(
+			'/api/v1/arts/mine',
+			{ params: { take, page } }
+		)
+		return data
+	}
+
 	async publicList({
 		take = 24,
 		page = 1,

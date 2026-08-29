@@ -10,6 +10,16 @@
     },
     "start": "Empezar",
     "more_details": "Más detalles",
+    "hero": {
+      "title": "<brand>Stalhub</brand>, tu asistente en StalZone",
+      "title_accent": "Stalhub",
+      "subtitle": "Calculadoras de builds, TTK, arsenal, artículos, guías y análisis de clanes gratis"
+    },
+    "footer": {
+      "title": "Acción sin fronteras",
+      "subtitle": "Únete a la comunidad activa y aporta tu granito de arena al proyecto",
+      "github": "GitHub"
+    },
     "tools": {
       "title": "Herramientas",
       "description": "Amplia colección de herramientas",
@@ -51,6 +61,14 @@
           "desc": "Calcula la cantidad de objetos necesaria para la reputación del arsenal"
         }
       }
+    },
+    "tops": {
+      "title": "Mejores autores",
+      "description": "Los autores más populares de la semana y del mes",
+      "week": "Top de la semana",
+      "month": "Top del mes",
+      "views": "visitas",
+      "empty": "Sin datos"
     }
   },
   "footer": {
@@ -1265,7 +1283,11 @@
       "markers": "Marcadores",
       "markerLabel": "Etiqueta",
       "addMarker": "Añadir marcador",
-      "gallery": "Galería"
+      "gallery": "Galería",
+      "faction": "Facción",
+      "bandits": "Bandidos",
+      "stalkers": "Stalkers",
+      "all": "Todas las facciones"
     }
   },
   "clan": {
@@ -1571,16 +1593,16 @@
       "recruitingTitle": "Reclutamiento en el clan",
       "acceptRequests": "Aceptar solicitudes",
       "acceptRequestsHint": "Aparecerá una insignia en la lista de clanes",
-		"recruitmentFields": {
-			"leaderDiscord": "Discord del líder",
-			"clanDiscord": "Discord del clan (opcional)",
-			"tier": "Nivel del clan",
-			"guildsPerWeek": "Guilds por semana (opcional)"
-		},
-		"paidRecruitment": "Modalidad de pago",
-		"paidRecruitmentHint": "Indica si el reclutamiento es de pago",
-		"leaderDiscordRequired": "El Discord del líder es obligatorio",
-		"saveRecruitment": "Guardar datos de reclutamiento",
+      "recruitmentFields": {
+        "leaderDiscord": "Discord del líder",
+        "clanDiscord": "Discord del clan (opcional)",
+        "tier": "Nivel del clan",
+        "guildsPerWeek": "Guilds por semana (opcional)"
+      },
+      "paidRecruitment": "Modalidad de pago",
+      "paidRecruitmentHint": "Indica si el reclutamiento es de pago",
+      "leaderDiscordRequired": "El Discord del líder es obligatorio",
+      "saveRecruitment": "Guardar datos de reclutamiento",
       "scheduleTitle": "Horario de guerras de clanes",
       "scheduleDesc": "El clan juega obligatoriamente 3 torneos por semana. La configuración de peleas muestra el horario públicamente y se usa para calcular la probabilidad de kick.",
       "tournamentFixedLabel": "Torneos (obligatorios)",
@@ -1617,8 +1639,8 @@
         "saveError": "No se pudieron guardar los ajustes",
         "recruitingUpdated": "Reclutamiento actualizado",
         "recruitingError": "No se pudo cambiar el reclutamiento",
-			"recruitmentSaved": "Datos de reclutamiento guardados",
-			"recruitmentError": "No se pudieron guardar los datos de reclutamiento",
+        "recruitmentSaved": "Datos de reclutamiento guardados",
+        "recruitmentError": "No se pudieron guardar los datos de reclutamiento",
         "scheduleSaved": "Horario guardado",
         "scheduleError": "No se pudo guardar el horario",
         "synced": "Miembros actualizados: {count} participantes",
@@ -1694,8 +1716,9 @@
       "settings": "Ajustes",
       "content": "Contenido",
       "articles": "Artículos",
-      "builds": "Builds",
+      "builds": "Configuraciones",
       "arts": "Arte",
+      "tierlists": "Listas de niveles",
       "stars": "Favoritos",
       "system": "Sistema",
       "notifications": "Notificaciones",
@@ -1710,7 +1733,12 @@
       "publishedArticles": "Artículos publicados",
       "allArticles": "Todos los artículos",
       "underReview": "En revisión",
-      "characters": "Personajes"
+      "characters": "Personajes",
+      "authorOfWeek": "Autor de la semana",
+      "viewsBuilds": " builds",
+      "viewsArticles": " artículos",
+      "viewsArts": " arts",
+      "totalViews": "vistas"
     },
     "articles": {
       "title": "Artículos",
@@ -1951,7 +1979,10 @@
         "save": "Guardar"
       },
       "hotkeysTitle": "Atajos de teclado",
-      "mdxContent": "Contenido"
+      "mdxContent": "Contenido",
+      "uploadFile": "Subir archivo",
+      "imageUploaded": "Imagen subida",
+      "imageUploadError": "Error al subir la imagen"
     },
     "bg": {
       "avatar": "Avatar",
@@ -2128,13 +2159,13 @@
     "title": "Clanes",
     "searchLabel": "Nombre o tag",
     "recruiting": "Reclutando",
-		"leaderDiscord": "Discord del líder",
-		"clanDiscord": "Discord del clan",
-		"paidRecruitment": "Modalidad de pago",
-		"paidRecruitmentYes": "sí",
-		"paidRecruitmentNo": "no",
-		"tier": "Nivel del clan",
-		"guildsPerWeek": "Guilds por semana",
+    "leaderDiscord": "Discord del líder",
+    "clanDiscord": "Discord del clan",
+    "paidRecruitment": "Modalidad de pago",
+    "paidRecruitmentYes": "sí",
+    "paidRecruitmentNo": "no",
+    "tier": "Nivel del clan",
+    "guildsPerWeek": "Guilds por semana",
     "empty": "No hay clanes públicos",
     "faction": "Facción",
     "schedule": "Horario:",
@@ -2251,5 +2282,58 @@
     "search": "Mostrar operaciones",
     "prompt": "Elija una región e ingrese el apodo del personaje para ver sus operaciones.",
     "loadMore": "Cargar más"
+  },
+  "tierlists": {
+    "title": "Listas de niveles",
+    "description": "Clasificaciones de armas y armaduras por eficacia",
+    "create": "Crear lista de niveles",
+    "all": "Todos",
+    "allItems": "Todos los objetos",
+    "weapons": "Armas",
+    "armor": "Armadura",
+    "system": "Sistema",
+    "user": "Usuario",
+    "auto": "Auto",
+    "empty": "Vacío",
+    "exportPng": "Exportar PNG",
+    "pngPreview": "Vista previa de imagen",
+    "copyPng": "Copiar",
+    "downloadPng": "Descargar",
+    "pngCopied": "Imagen copiada",
+    "pngError": "No se pudo crear la imagen",
+    "copyError": "No se pudo copiar",
+    "notFound": "Lista de niveles no encontrada",
+    "edit": "Editar",
+    "deleted": "Lista de niveles eliminada",
+    "saved": "Lista de niveles guardada",
+    "saveError": "Error al guardar",
+    "viewAll": "Todas las listas",
+    "editor": {
+      "create": "Nueva lista de niveles",
+      "edit": "Editar lista de niveles",
+      "title": "Título",
+      "description": "Descripción",
+      "category": "Categoría",
+      "categoryPlaceholder": "Selecciona una categoría",
+      "addItem": "Añadir objeto",
+      "pickItem": "Elegir objeto",
+      "searchItems": "Buscar objetos",
+      "save": "Guardar"
+    },
+    "allCategories": "Todas las categorías",
+    "categories": {
+      "general": "General",
+      "assault_rifle": "Rifles de asalto",
+      "sniper_rifle": "Rifles de francotirador",
+      "shotgun_rifle": "Escopetas",
+      "submachine_gun": "Subfusiles",
+      "machine_gun": "Ametralladoras",
+      "pistol": "Pistolas",
+      "heavy": "Pesado"
+    },
+    "info": {
+      "title": "Cómo se calcula el TTK",
+      "aggregate": "El rango se basa en el TTK medio: para cada arma se toman ~400 configuraciones aleatorias (HP 400–800, vitalidad 1.0–1.3), impactos en la cabeza, afinado 15 y mejor munición AP. Los rangos S–E se asignan según el TTK medio relativo a la mejor arma de la categoría con un paso de 0,05 s."
+    }
   }
 }

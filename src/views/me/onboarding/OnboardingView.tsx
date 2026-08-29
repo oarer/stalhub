@@ -87,24 +87,27 @@ function LayoutThumb({ layout }: { layout: Layout }) {
 			)}
 			{layout === 'MODERN' && (
 				<div className="flex h-full w-full flex-col gap-1.5">
-					<div className="h-5 w-full rounded-sm bg-border-secondary" />
-					<div className="flex items-center gap-1.5">
-						<div className="size-7 shrink-0 rounded-sm bg-border-secondary" />
-						<div className="flex flex-1 flex-col gap-1.5">
-							<div className="h-2 w-16 rounded bg-border-secondary" />
-							<div className="h-1.5 w-24 rounded bg-border-secondary" />
-						</div>
-					</div>
-				</div>
-			)}
-			{layout === 'COMPACT' && (
-				<div className="flex h-full w-full flex-col gap-1.5">
 					<div className="flex w-full items-center gap-1.5 rounded-sm bg-accent/40 p-1.5">
 						<div className="size-7 shrink-0 rounded-sm bg-border-secondary" />
 						<div className="h-2 w-20 rounded bg-border-secondary" />
 					</div>
 					<div className="h-1.5 w-full rounded bg-border-secondary" />
 					<div className="h-1.5 w-full rounded bg-border-secondary" />
+				</div>
+			)}
+			{layout === 'COMPACT' && (
+				<div className="flex h-full w-full gap-1.5">
+					<div className="flex w-8 flex-col gap-1.5 rounded-sm bg-accent/40 p-1.5">
+						<div className="size-5 shrink-0 rounded-sm bg-border-secondary" />
+						<div className="h-1.5 w-full rounded bg-border-secondary" />
+						<div className="h-1.5 w-full rounded bg-border-secondary" />
+					</div>
+					<div className="flex flex-1 flex-col gap-1.5">
+						<div className="h-5 w-full rounded-sm bg-border-secondary" />
+						<div className="h-2 w-16 rounded bg-border-secondary" />
+						<div className="h-1.5 w-full rounded bg-border-secondary" />
+						<div className="h-1.5 w-3/4 rounded bg-border-secondary" />
+					</div>
 				</div>
 			)}
 		</div>

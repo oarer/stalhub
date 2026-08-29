@@ -36,7 +36,7 @@ export default function Tools() {
 				</div>
 			</motion.div>
 
-			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl bg-card ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
+			<div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-card ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
 				{tools.map((tool, index) => (
 					<motion.div
 						className="h-full"

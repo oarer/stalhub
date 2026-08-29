@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useEffect } from 'react'
 import type { WeaponSlot } from '@/stores/useTTK.store'
 import { useTTKStore } from '@/stores/useTTK.store'
 import type { Item } from '@/types/item.type'
-import { getAmmoType } from '../utils'
+import { getAmmoType, getCompatibleAmmo, pickDefaultAmmo } from '../utils'
 
 const mkSlot = (): WeaponSlot => ({
 	id:
@@ -19,7 +20,7 @@ const mkSlot = (): WeaponSlot => ({
 
 export function useTTKWeaponSlots(
 	weaponMap: Map<string, Item>,
-	ammoByType: Map<string, Item[]>
+	allAmmo: Item[]
 ) {
 	const { slots, setSlots, setFocusedSlotId, focusedSlotId } = useTTKStore()
 	const [pendingSlotId, setPendingSlotId] = useState<string | null>(null)
@@ -29,23 +30,44 @@ export function useTTKWeaponSlots(
 
 	const handleWeaponSelect = (slotId: string, weaponId: string) => {
 		const w = weaponMap.get(weaponId)
-		const compatible = w ? (ammoByType.get(getAmmoType(w)) ?? []) : []
+		const compatible = w
+			? getCompatibleAmmo(allAmmo, getAmmoType(w))
+			: []
 		const slot = slots.find((s) => s.id === slotId)
 		const currentAmmoCompatible =
 			slot?.ammoId && compatible.some((a) => a.id === slot.ammoId)
 
 		updateSlot(slotId, {
 			weaponId,
-			ammoId:
-				compatible.length === 1
-					? compatible[0].id
-					: currentAmmoCompatible
-						? slot!.ammoId
-						: '',
+			ammoId: currentAmmoCompatible
+				? slot!.ammoId
+				: (pickDefaultAmmo(compatible)?.id ?? ''),
 		})
 		setFocusedSlotId(slotId)
 		setPendingSlotId(null)
 	}
+
+	// бэкфилл: слоты, сохранённые до дефолтного патрона (оружие есть, патрона нет)
+	useEffect(() => {
+		const missing = slots.filter(
+			(s) => s.weaponId && !s.ammoId
+		)
+		if (missing.length === 0) return
+
+		let next = slots
+		for (const s of missing) {
+			const w = weaponMap.get(s.weaponId)
+			if (!w) continue
+			const compatible = getCompatibleAmmo(allAmmo, getAmmoType(w))
+			const def = pickDefaultAmmo(compatible)
+			if (def) {
+				next = next.map((slot) =>
+					slot.id === s.id ? { ...slot, ammoId: def.id } : slot
+				)
+			}
+		}
+		setSlots(next)
+	}, [slots, weaponMap, allAmmo, setSlots])
 
 	const addSlot = () => {
 		const newSlot = mkSlot()
