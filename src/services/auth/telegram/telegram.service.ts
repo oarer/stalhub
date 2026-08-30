@@ -15,7 +15,11 @@ class TelegramAuthService {
 	}
 
 	async handleIdToken(id_token: string): Promise<void> {
-		await apiClient.post('/api/v1/auth/telegram/callback', { id_token })
+		await apiClient.post(
+			'/api/v1/auth/telegram/callback',
+			{ id_token },
+			{ skipAuthRefresh: true }
+		)
 	}
 }
 

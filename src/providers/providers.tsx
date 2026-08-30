@@ -1,7 +1,7 @@
 'use client'
 
-import { type ReactNode, useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { type ReactNode, useEffect, useState } from 'react'
 import { Toaster } from 'sonner'
 import { UwuProvider } from '@/providers/uwuProvider'
 import { userService } from '@/services/user/user.service'
@@ -23,15 +23,22 @@ export default function Providers({ children }: Props) {
 	useEffect(() => {
 		setMounted(true)
 
-		if (pathname.startsWith('/auth/callback')) {
+		if (pathname.startsWith('/auth')) {
 			setUser(null)
 			return
 		}
 
+		const controller = new AbortController()
+		let active = true
+
 		userService
-			.getMe()
-			.then(setUser)
-			.catch(() => setUser(null))
+			.getMe({ skipAuthRefresh: true, signal: controller.signal })
+			.then((user) => {
+				if (active) setUser(user)
+			})
+			.catch(() => {
+				if (active && !controller.signal.aborted) setUser(null)
+			})
 
 		console.log(
 			`%cЧувак, ты думал тут что-то будет?\n` +
@@ -39,7 +46,11 @@ export default function Providers({ children }: Props) {
 			'font-size: 1.5rem; color: #EA9D9E; font-weight: bold;',
 			'font-size: 1.2rem; color: #4caf50; font-style: italic;'
 		)
-	}, [setUser])
+		return () => {
+			active = false
+			controller.abort()
+		}
+	}, [pathname, setUser])
 
 	if (!mounted) return null
 

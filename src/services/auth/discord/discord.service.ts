@@ -11,6 +11,7 @@ class DiscordAuthService {
 	async handleCallback(code: string, state?: string): Promise<void> {
 		await apiClient.get('/api/v1/auth/discord/callback', {
 			params: { code, state },
+			skipAuthRefresh: true,
 		})
 	}
 }

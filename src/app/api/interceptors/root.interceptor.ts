@@ -1,6 +1,15 @@
 import axios from 'axios'
 import { useBanStore } from '@/stores/useBan.store'
 
+declare module 'axios' {
+	interface AxiosRequestConfig {
+		skipAuthRefresh?: boolean
+	}
+}
+
+const isAuthRoute = () =>
+	typeof window !== 'undefined' && window.location.pathname.startsWith('/auth')
+
 export const apiClient = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API,
 	timeout: 10_000,
@@ -59,6 +68,12 @@ apiClient.interceptors.response.use(
 		}
 
 		if (originalRequest._retry) {
+			return Promise.reject(error)
+		}
+
+		// Some /me probes are intentionally unauthenticated. They must not start
+		// refresh: the refresh token is HttpOnly and cannot be checked in JS.
+		if (originalRequest.skipAuthRefresh || isAuthRoute()) {
 			return Promise.reject(error)
 		}
 

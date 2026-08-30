@@ -11,6 +11,7 @@ class ExboAuthService {
 	async handleCallback(code: string, state: string): Promise<void> {
 		await apiClient.get('/api/v1/auth/exbo/callback', {
 			params: { code, state },
+			skipAuthRefresh: true,
 		})
 	}
 }

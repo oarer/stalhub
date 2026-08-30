@@ -12,8 +12,14 @@ import type {
 } from '@/types/user.type'
 
 class UserService {
-	async getMe(): Promise<User> {
-		const { data } = await apiClient.get<User>('/api/v1/users/@me')
+	async getMe(options?: {
+		skipAuthRefresh?: boolean
+		signal?: AbortSignal
+	}): Promise<User> {
+		const { data } = await apiClient.get<User>('/api/v1/users/@me', {
+			skipAuthRefresh: options?.skipAuthRefresh,
+			signal: options?.signal,
+		})
 		return data
 	}
 

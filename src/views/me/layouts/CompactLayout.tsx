@@ -15,7 +15,7 @@ export default function CompactLayout({
 
 	return (
 		<div className="flex min-h-dvh">
-			<aside className="hidden w-84 shrink-0 border-primary/2 border-r-2 bg-background/80 px-4 pt-38 pb-6 lg:block">
+			<aside className="sticky top-0 hidden h-dvh w-84 shrink-0 overflow-y-auto border-primary/2 border-r-2 bg-background/80 px-4 pt-38 pb-6 lg:block">
 				<MeSidebar
 					onCardChange={onCardChange}
 					pathname={pathname}
