@@ -38,15 +38,18 @@ class AdminArtService {
 		type,
 		tags,
 	}: AdminArtListParams = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/admin/arts', {
-			params: {
-				take,
-				page,
-				search,
-				type,
-				tags: tags?.length ? tags.join(',') : undefined,
-			},
-		})
+		const { data } = await apiClient.get<PaginatedResponse<Art>>(
+			'/api/v1/admin/arts',
+			{
+				params: {
+					take,
+					page,
+					search,
+					type,
+					tags: tags?.length ? tags.join(',') : undefined,
+				},
+			}
+		)
 		return data
 	}
 

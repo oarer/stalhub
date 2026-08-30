@@ -106,9 +106,9 @@ export function AdminArtForm({
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id }
 					: {
-							authorName: guestName.trim(),
+							author_name: guestName.trim(),
 							...(Object.keys(socials).length > 0 && {
-								authorSocialLinks: socials,
+								author_social_links: socials,
 							}),
 						}),
 			}),
@@ -132,8 +132,8 @@ export function AdminArtForm({
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id ?? null }
 					: {
-							authorName: guestName.trim() || null,
-							authorSocialLinks:
+							author_name: guestName.trim() || null,
+							author_social_links:
 								Object.keys(socials).length > 0
 									? socials
 									: null,
