@@ -138,7 +138,9 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 								domain: (chunks) => (
 									<Link
 										className="text-primary"
-										href="https://stalhub.dev"
+href="https://tweakcn.com"
+  target="_blank"
+  rel="noopener noreferrer"
 									>
 										{chunks}
 									</Link>

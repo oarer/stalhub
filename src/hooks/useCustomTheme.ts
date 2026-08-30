@@ -41,14 +41,18 @@ function validateTheme(data: unknown): data is TweakcnTheme {
 }
 
 function extractNameFromUrl(url: string): string {
-	try {
-		const u = new URL(url)
-		const parts = u.pathname.split('/')
-		const last = parts[parts.length - 1]
-		return last.replace(/\.json$/, '') || 'custom'
-	} catch {
-		return 'custom'
-	}
+    try {
+        const u = new URL(url)
+
+        const isTweakcn = u.hostname === 'tweakcn.com'
+
+        const parts = u.pathname.split('/')
+        const last = parts[parts.length - 1]
+
+        return last.replace(/\.json$/, '') || 'custom'
+    } catch {
+        return 'custom'
+    }
 }
 
 export function useCustomTheme() {
@@ -90,12 +94,18 @@ export function useCustomTheme() {
 
 	const fetchThemeFromUrl = useCallback(
 		async (url: string): Promise<TweakcnTheme> => {
-			const res = await fetch(url)
-			if (!res.ok) throw new Error(`HTTP ${res.status}`)
-			const data = await res.json()
-			if (!validateTheme(data)) throw new Error('Invalid tweakcn theme format')
-			const name = data.name || extractNameFromUrl(url)
-			return { name, url, cssVars: data.cssVars }
+const u = new URL(url)
+		let apiUrl = url
+		if (u.hostname === 'tweakcn.com' && u.pathname.startsWith('/themes') && !u.pathname.startsWith('/r/themes')) {
+		apiUrl = `https://tweakcn.com/r${u.pathname}`
+		}
+		const res = await fetch(apiUrl)
+		if (!res.ok) throw new Error(`HTTP ${res.status}`)
+		const data = await res.json()
+		if (!validateTheme(data)) throw new Error('Invalid tweakcn theme format')
+		const name = data.name || extractNameFromUrl(apiUrl)
+		return { name, url: apiUrl, cssVars: data.cssVars }
+
 		},
 		[]
 	)
