@@ -9,7 +9,7 @@ import type { DropdownItem, DropdownMenuGroup } from '@/types/ui/dropdown.type'
 export const MobileLinks = [
 	{
 		title: 'Discord',
-		href: '/discord',
+		href: 'https://discord.gg/VPT7RWYVpc',
 		iconName: 'ic:baseline-discord',
 	},
 	{
@@ -147,12 +147,12 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				labelKey: 'nav.groups.other.items.dashboard.label',
 				descriptionKey: 'nav.groups.other.items.dashboard.description',
 			},
-			// {
-			// 	key: 'maps',
-			// 	icon: 'lucide:map',
-			// 	href: '/maps',
-			// 	labelKey: 'nav.groups.other.items.maps.label',
-			// },
+			{
+				key: 'maps',
+				icon: 'lucide:map',
+				href: '/maps',
+				labelKey: 'nav.groups.other.items.maps.label',
+			},
 			{
 				key: 'players',
 				icon: 'lucide:user-round-search',
@@ -165,13 +165,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				href: '/operations',
 				labelKey: 'nav.groups.other.items.operations.label',
 				descriptionKey: 'nav.groups.other.items.operations.description',
-			},
-			{
-				key: 'tierlists',
-				icon: 'lucide:trophy',
-				href: '/tierlists',
-				labelKey: 'tierlists.title',
-				descriptionKey: 'tierlists.description',
 			},
 			{
 				key: 'models',
@@ -189,6 +182,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 		icon: 'lucide:more-horizontal',
 		items: [
 			{
+				key: 'arts',
+				icon: 'lucide:palette',
+				href: '/arts',
+				labelKey: 'nav.groups.creative.items.arts.label',
+				descriptionKey: 'nav.groups.creative.items.arts.description',
+			},
+			{
 				key: 'articles',
 				icon: 'lucide:book',
 				href: '/articles',
@@ -204,11 +204,11 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.creative.items.builds.description',
 			},
 			{
-				key: 'arts',
-				icon: 'lucide:palette',
-				href: '/arts',
-				labelKey: 'nav.groups.creative.items.arts.label',
-				descriptionKey: 'nav.groups.creative.items.arts.description',
+				key: 'tierlists',
+				icon: 'lucide:trophy',
+				href: '/tierlists',
+				labelKey: 'nav.groups.creative.items.tierlists.label',
+				descriptionKey: 'nav.groups.creative.items.tierlists.description',
 			},
 		],
 	},
