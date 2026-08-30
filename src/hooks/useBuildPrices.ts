@@ -21,8 +21,8 @@ export const useBuildPrices = (
 
 	const queries = useMemo(() => {
 		return arts.map((art) => ({
-			item_id: art.itemId,
-			qlt: artQualityToQualityIndex[art.qualityClass] ?? 0,
+			item_id: art.item_id,
+			qlt: artQualityToQualityIndex[art.quality_class] ?? 0,
 			ptn: art.potential ?? 0,
 		}))
 	}, [arts])

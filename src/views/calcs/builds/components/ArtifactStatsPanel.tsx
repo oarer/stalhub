@@ -21,12 +21,12 @@ import { BUILD_HIDDEN_STAT_KEYS } from '../model/components/hooks/itemStatsUtils
 
 type ArtifactStatsPanelProps = {
 	art: {
-		instanceId: string
-		itemId: string
+		instance_id: string
+		item_id: string
 		percent: number
 		potential: number
-		selectedStats: (string | null)[]
-		qualityClass?: ArtQuality
+		selected_stats: (string | null)[]
+		quality_class?: ArtQuality
 	} | null
 	stats: Record<string, StatBreakdown> | null
 	parsed: ParsedItem | null
@@ -204,7 +204,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					onValuesChange={onSelectedStatsChange}
 					options={addOptions}
 					placeholder="ui.combobox.addStats.placeholder"
-					values={(art.selectedStats ?? []).filter(
+					values={(art.selected_stats ?? []).filter(
 						(v): v is string => typeof v === 'string'
 					)}
 				/>
@@ -219,7 +219,7 @@ function QualityDropdown({
 	qualityOverrides,
 	onQualitySelect,
 }: {
-	art: { instanceId: string; percent: number; qualityClass?: ArtQuality }
+	art: { instance_id: string; percent: number; quality_class?: ArtQuality }
 	percentState: number
 	qualityOverrides: Record<string, ArtQuality | undefined>
 	onQualitySelect: (
@@ -231,9 +231,9 @@ function QualityDropdown({
 	const candidates = getArtQualityCandidates(art.percent ?? percentState)
 	if (candidates.length <= 1) return null
 
-	const instanceId = art.instanceId
+	const instanceId = art.instance_id
 	const override = instanceId ? qualityOverrides[instanceId] : undefined
-	const current = override ?? art.qualityClass
+	const current = override ?? art.quality_class
 
 	const items: DropdownItem[] = candidates.map((q) => {
 		const colorHex = infoColorMap[q as ArtQuality] ?? InfoColor.DEFAULT

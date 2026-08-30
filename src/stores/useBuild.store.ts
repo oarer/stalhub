@@ -99,7 +99,7 @@ export const normalizeBuildArtifacts = (build: Build): Build => {
 		return build.arts.length === 0 ? build : { ...build, arts: [] }
 	}
 
-	const artsById = new Map(build.arts.map((art) => [art.instanceId, art]))
+	const artsById = new Map(build.arts.map((art) => [art.instance_id, art]))
 	const assignedIds = new Set<string>()
 	const slots = build.container.slots.map((instanceId) => {
 		if (
@@ -116,12 +116,37 @@ export const normalizeBuildArtifacts = (build: Build): Build => {
 
 	return {
 		...build,
-		arts: build.arts.filter((art) => assignedIds.has(art.instanceId)),
+		arts: build.arts.filter((art) => assignedIds.has(art.instance_id)),
 		container: { ...build.container, slots },
 	}
 }
 
 const createInstanceId = () => crypto.randomUUID()
+
+const toSnakeCaseArt = (art: Art): Art => {
+	const instanceId = (art as unknown as Record<string, unknown>).instanceId
+	const itemId = (art as unknown as Record<string, unknown>).itemId
+	const selectedStats = (art as unknown as Record<string, unknown>)
+		.selectedStats
+	const qualityClass = (art as unknown as Record<string, unknown>)
+		.qualityClass
+
+	return {
+		instance_id: art.instance_id ?? (instanceId as string),
+		item_id: art.item_id ?? (itemId as string),
+		percent: art.percent,
+		potential: art.potential,
+		selected_stats: art.selected_stats ??
+			(selectedStats as (string | null)[]) ??
+			Array(3).fill(null),
+		quality_class: art.quality_class ?? (qualityClass as Art['quality_class']),
+	}
+}
+
+const migrateBuild = (build: Build): Build => ({
+	...build,
+	arts: build.arts.map(toSnakeCaseArt),
+})
 
 const doAutoSave = (
 	set: (
@@ -195,10 +220,10 @@ export const useBuildStore = create<BuildState>()(
 
 					const existingInstanceId = currContainer.slots[placeInSlot]
 					const existingArt = state.build.arts.find(
-						(a) => a.instanceId === existingInstanceId
+						(a) => a.instance_id === existingInstanceId
 					)
 
-					if (existingArt?.itemId === itemId) {
+					if (existingArt?.item_id === itemId) {
 						return { build: state.build }
 					}
 
@@ -211,18 +236,18 @@ export const useBuildStore = create<BuildState>()(
 							...state.build,
 							arts: [
 								...state.build.arts.filter(
-									(a) => a.instanceId !== existingInstanceId
+									(a) => a.instance_id !== existingInstanceId
 								),
 								{
-									instanceId,
-									itemId,
+									instance_id: instanceId,
+									item_id: itemId,
 									percent,
 									potential: data.potential ?? d.potential,
-									selectedStats:
-										data.selectedStats ??
+									selected_stats:
+										data.selected_stats ??
 										Array(3).fill(null),
-									qualityClass:
-										data.qualityClass ??
+									quality_class:
+										data.quality_class ??
 										getQualityByPercent(percent),
 								},
 							],
@@ -245,22 +270,22 @@ export const useBuildStore = create<BuildState>()(
 					build: {
 						...state.build,
 						arts: state.build.arts.map((art) => {
-							if (art.instanceId !== instanceId) return art
+							if (art.instance_id !== instanceId) return art
 
 							const nextPercent = data.percent ?? art.percent
 
 							return {
 								...art,
 								...data,
-								selectedStats:
-									data.selectedStats ??
-									art.selectedStats ??
+								selected_stats:
+									data.selected_stats ??
+									art.selected_stats ??
 									Array(3).fill(null),
-								qualityClass:
-									data.qualityClass ??
+								quality_class:
+									data.quality_class ??
 									(data.percent != null
 										? getQualityByPercent(nextPercent)
-										: art.qualityClass),
+										: art.quality_class),
 							}
 						}),
 					},
@@ -271,7 +296,7 @@ export const useBuildStore = create<BuildState>()(
 			removeArt: (id) => {
 				set((state) => {
 					const newArts = state.build.arts.filter(
-						(a) => a.instanceId !== id
+						(a) => a.instance_id !== id
 					)
 
 					const container = state.build.container
@@ -301,7 +326,7 @@ export const useBuildStore = create<BuildState>()(
 				if (toSlot < 0 || toSlot >= container.slots.length) return
 
 				const sourceArt = build.arts.find(
-					(a) => a.instanceId === instanceId
+					(a) => a.instance_id === instanceId
 				)
 				if (!sourceArt) return
 
@@ -316,11 +341,11 @@ export const useBuildStore = create<BuildState>()(
 							...state.build,
 							arts: [
 								...state.build.arts.filter(
-									(a) => a.instanceId !== existingInstanceId
+									(a) => a.instance_id !== existingInstanceId
 								),
 								{
 									...sourceArt,
-									instanceId: newInstanceId,
+									instance_id: newInstanceId,
 								},
 							],
 							container: {
@@ -429,7 +454,7 @@ export const useBuildStore = create<BuildState>()(
 				if (!container) return false
 				if (slotIndex < 0 || slotIndex >= container.slots.length)
 					return false
-				if (!arts.find((a) => a.instanceId === artId)) return false
+				if (!arts.find((a) => a.instance_id === artId)) return false
 
 				const prev = container.slots.indexOf(artId)
 				if (prev !== -1) {
@@ -587,7 +612,9 @@ export const useBuildStore = create<BuildState>()(
 					id,
 					name,
 					build: normalizeBuildArtifacts(
-						JSON.parse(JSON.stringify(buildData))
+						migrateBuild(
+							JSON.parse(JSON.stringify(buildData)) as Build
+						)
 					),
 					defaults: JSON.parse(JSON.stringify(initialDefaults)),
 					apiBuildId,
@@ -672,17 +699,20 @@ export const useBuildStore = create<BuildState>()(
 						const now = Date.now()
 						const id = crypto.randomUUID()
 						const buildName = data.name || 'Новая сборка'
+						const migrated = normalizeBuildArtifacts(
+							migrateBuild(data.build)
+						)
 						const newBuild: SavedBuild = {
 							id,
 							name: buildName,
-							build: normalizeBuildArtifacts(data.build),
+							build: migrated,
 							defaults: data.defaults,
 							createdAt: now,
 							updatedAt: now,
 						}
 						const { savedBuilds } = get()
 						set({
-							build: normalizeBuildArtifacts(data.build),
+							build: migrated,
 							defaults: data.defaults,
 							savedBuilds: [...savedBuilds, newBuild],
 							currentBuildId: id,
@@ -699,17 +729,17 @@ export const useBuildStore = create<BuildState>()(
 		}),
 		{
 			name: 'build-storage',
-			version: 3,
+			version: 4,
 			migrate: (persistedState) => {
 				const state = persistedState as Partial<BuildState>
 				return {
 					...state,
 					build: state.build
-						? normalizeBuildArtifacts(state.build)
+						? normalizeBuildArtifacts(migrateBuild(state.build))
 						: initialBuild,
 					savedBuilds: (state.savedBuilds ?? []).map((saved) => ({
 						...saved,
-						build: normalizeBuildArtifacts(saved.build),
+						build: normalizeBuildArtifacts(migrateBuild(saved.build)),
 					})),
 				} as BuildState
 			},

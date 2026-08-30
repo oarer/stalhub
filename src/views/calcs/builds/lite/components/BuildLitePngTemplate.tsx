@@ -67,7 +67,7 @@ export const BuildLitePngTemplate = forwardRef<
 	)
 
 	const artsMap = useMemo(
-		() => new Map(build.arts.map((a) => [a.instanceId, a])),
+		() => new Map(build.arts.map((a) => [a.instance_id, a])),
 		[build.arts]
 	)
 	const itemsMap = useMemo(
@@ -111,8 +111,8 @@ export const BuildLitePngTemplate = forwardRef<
 				const price =
 					priceMap[
 						artPriceKey(
-							art.itemId,
-							artQualityToQualityIndex[art.qualityClass] ?? 0,
+							art.item_id,
+							artQualityToQualityIndex[art.quality_class] ?? 0,
 							art.potential ?? 0
 						)
 					]
@@ -177,11 +177,11 @@ export const BuildLitePngTemplate = forwardRef<
 										? (artsMap.get(instanceId) ?? null)
 										: null
 									const item = art
-										? (itemsMap.get(art.itemId) ?? null)
+										? (itemsMap.get(art.item_id) ?? null)
 										: null
 									const color =
-										art?.qualityClass !== undefined
-											? infoColorMap[art.qualityClass]
+										art?.quality_class !== undefined
+											? infoColorMap[art.quality_class]
 											: InfoColor.DEFAULT
 									const itemName = item
 										? messageToString(item.name, locale)
@@ -189,9 +189,9 @@ export const BuildLitePngTemplate = forwardRef<
 									const price = art
 										? priceMap[
 												artPriceKey(
-													art.itemId,
+													art.item_id,
 													artQualityToQualityIndex[
-														art.qualityClass
+														art.quality_class
 													] ?? 0,
 													art.potential ?? 0
 												)

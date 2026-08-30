@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import GradientText from '@/components/ui/GradientText'
 import { CLink } from '@/components/ui/Link'
@@ -17,7 +17,7 @@ export default function Hero() {
 
 	return (
 		<section
-			className="mx-auto flex min-h-screen flex-col items-center gap-6 text-center xl:px-0 xl:pt-42.5"
+			className="mx-auto flex min-h-screen flex-col items-center gap-6 text-center xl:px-0"
 			id="hero"
 		>
 			<motion.div
@@ -39,14 +39,16 @@ export default function Hero() {
 							className="text-primary text-xl"
 							icon="lucide:boxes"
 						/>
-						<span className="text-sm">{t('landing.overview')}</span>
+						<span className="text-xs md:text-sm">
+							{t('landing.overview')}
+						</span>
 					</Badge>
 				)}
 			</motion.div>
 
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${unbounded.className} font-bold text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-7xl`}
+				className={`${unbounded.className} font-bold text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-8xl`}
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>
@@ -62,7 +64,7 @@ export default function Hero() {
 
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}
-				className="max-w-xl text-nowrap px-4 text-center font-semibold text-xl leading-relaxed md:text-2xl dark:text-white"
+				className="max-w-xl px-4 text-center font-semibold text-xl leading-relaxed md:text-3xl dark:text-white"
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.4 }}
 			>
@@ -71,14 +73,14 @@ export default function Hero() {
 
 			<motion.div
 				animate={{ y: 0, opacity: 1 }}
-				className="flex flex-wrap justify-center gap-4 px-4 sm:gap-6 md:gap-8"
+				className="grid grid-cols-2 items-center justify-center gap-4 px-4 sm:grid-cols-4 sm:gap-6 md:gap-8"
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.5 }}
 			>
 				{featuresHero.map((stat, index) => (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="w-1/2 text-center sm:w-auto"
+						className="text-center"
 						initial={{ opacity: 0 }}
 						key={stat.label}
 						transition={{
@@ -86,14 +88,14 @@ export default function Hero() {
 							delay: 0.6 + index * 0.3,
 						}}
 					>
-						<div
-							className={`font-bold text-xl md:text-2xl ${stat.color}`}
+						<p
+							className={`${montserrat.className} font-bold text-primary text-xl md:text-2xl`}
 						>
 							{stat.value}
-						</div>
-						<div className="font-semibold text-xs sm:text-sm">
+						</p>
+						<p className="font-semibold text-foreground text-xs sm:text-sm">
 							{t(stat.label)}
-						</div>
+						</p>
 					</motion.div>
 				))}
 			</motion.div>

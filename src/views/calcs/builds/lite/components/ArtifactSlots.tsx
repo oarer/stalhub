@@ -74,7 +74,7 @@ export function ArtifactSlotsLite({
 		: null
 
 	const artsMap = useMemo(
-		() => new Map(arts.map((a) => [a.instanceId, a])),
+		() => new Map(arts.map((a) => [a.instance_id, a])),
 		[arts]
 	)
 	const itemsMap = useMemo(
@@ -201,7 +201,7 @@ export function ArtifactSlotsLite({
 					const art = instanceId
 						? (artsMap.get(instanceId) ?? null)
 						: null
-					const item = art ? (itemsMap.get(art.itemId) ?? null) : null
+					const item = art ? (itemsMap.get(art.item_id) ?? null) : null
 					return (
 						<ArtifactSlotRow
 							art={art}

@@ -109,18 +109,20 @@ export function BuildCard({
 
 	const artsMap = artifacts ? new Map(artifacts.map((i) => [i.id, i])) : null
 
-	const instanceToArt = new Map(build.data.arts.map((a) => [a.instanceId, a]))
+	const instanceToArt = new Map(
+		build.data.arts.map((a) => [a.instance_id, a])
+	)
 
 	const artifactEntries = (build.data.container?.slots ?? [])
 		.filter((s): s is string => s !== null)
 		.map((instanceId) => {
 			const art = instanceToArt.get(instanceId)
 			if (!art) return null
-			const item = artsMap?.get(art.itemId)
+			const item = artsMap?.get(art.item_id)
 			if (!item) return null
 			const color =
-				art.qualityClass !== undefined
-					? (infoColorMap[art.qualityClass as InfoColor] ??
+				art.quality_class !== undefined
+					? (infoColorMap[art.quality_class as InfoColor] ??
 						infoColorMap[InfoColor.DEFAULT])
 					: infoColorMap[InfoColor.DEFAULT]
 			return {

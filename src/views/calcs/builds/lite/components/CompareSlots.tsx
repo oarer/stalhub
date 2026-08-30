@@ -65,11 +65,11 @@ export function CompareSlots({
 			) : (
 				slots.map((instanceId, i) => {
 					const art = instanceId
-						? build.arts.find((a) => a.instanceId === instanceId)
+						? build.arts.find((a) => a.instance_id === instanceId)
 						: null
-					const item = art ? (itemsMap.get(art.itemId) ?? null) : null
-					const colorHex = art?.qualityClass
-						? (infoColorMap[art.qualityClass as InfoColor] ??
+					const item = art ? (itemsMap.get(art.item_id) ?? null) : null
+					const colorHex = art?.quality_class
+						? (infoColorMap[art.quality_class as InfoColor] ??
 							InfoColor.DEFAULT)
 						: InfoColor.DEFAULT
 

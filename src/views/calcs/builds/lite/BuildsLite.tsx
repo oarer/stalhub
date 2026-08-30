@@ -214,10 +214,10 @@ export default function BuildsLiteView({
 
 			for (const slot of build.container?.slots ?? []) {
 				const art = slot
-					? build.arts.find((item) => item.instanceId === slot)
+					? build.arts.find((item) => item.instance_id === slot)
 					: null
 				const item = art
-					? items.find((candidate) => candidate.id === art.itemId)
+					? items.find((candidate) => candidate.id === art.item_id)
 					: null
 				if (item) iconItems.set(item.id, item)
 			}

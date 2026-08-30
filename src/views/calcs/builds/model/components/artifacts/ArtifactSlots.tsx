@@ -40,7 +40,7 @@ export function ArtifactSlots({
 	const t = useTranslations()
 
 	const artsMap = useMemo(
-		() => new Map(arts.map((a) => [a.instanceId, a])),
+		() => new Map(arts.map((a) => [a.instance_id, a])),
 		[arts]
 	)
 	const itemsMap = useMemo(
@@ -55,10 +55,10 @@ export function ArtifactSlots({
 				const art = instanceId
 					? (artsMap.get(instanceId) ?? null)
 					: null
-				const item = art ? (itemsMap.get(art.itemId) ?? null) : null
+				const item = art ? (itemsMap.get(art.item_id) ?? null) : null
 
 				const isSelected = selectedSlot === i
-				const qualityClass = art?.qualityClass
+				const qualityClass = art?.quality_class
 				const colorHex =
 					qualityClass !== undefined
 						? infoColorMap[qualityClass]

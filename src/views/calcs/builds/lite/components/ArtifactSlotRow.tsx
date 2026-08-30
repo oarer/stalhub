@@ -42,7 +42,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 }: ArtifactSlotRowProps) {
 	const t = useTranslations()
 
-	const qualityClass = art?.qualityClass
+	const qualityClass = art?.quality_class
 	const colorHex =
 		qualityClass !== undefined
 			? infoColorMap[qualityClass]

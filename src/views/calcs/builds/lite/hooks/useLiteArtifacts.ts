@@ -49,10 +49,10 @@ export function useLiteArtifacts({
 
 			const art =
 				(build.arts as Art[]).find(
-					(a) => a.instanceId === instanceId
+					(a) => a.instance_id === instanceId
 				) ?? null
 			const item = art
-				? (items.find((it) => it.id === art.itemId) ?? null)
+				? (items.find((it) => it.id === art.item_id) ?? null)
 				: null
 			const parsed = item ? parseItemStats(item, locale) : null
 
@@ -61,7 +61,7 @@ export function useLiteArtifacts({
 				item,
 				parsed,
 				itemName: item?.name,
-				qualityClass: art?.qualityClass ?? undefined,
+				qualityClass: art?.quality_class ?? undefined,
 			}
 		},
 		[build.container?.slots, build.arts, items, locale]
@@ -74,16 +74,16 @@ export function useLiteArtifacts({
 		const stats = computeArtifactStatsFromParsed(
 			art,
 			parsed,
-			art.selectedStats
+			art.selected_stats
 		)
 
 		return {
 			art,
-			instanceId: art.instanceId,
+			instanceId: art.instance_id,
 			stats,
 			parsed,
 			itemName,
-			color: art.qualityClass,
+			color: art.quality_class,
 		}
 	}, [selectedSlot, getArtAndItemBySlot])
 
@@ -120,7 +120,7 @@ export function useLiteArtifacts({
 			(defaults.art.potential ?? 0) >= 15 &&
 			addStatKeys.length > 0 &&
 			addStatKeys.length <= 3
-				? { selectedStats: addStatKeys }
+				? { selected_stats: addStatKeys }
 				: undefined
 		addArt(itemId, data, selectedSlot)
 	}
@@ -197,7 +197,10 @@ export function useLiteArtifacts({
 
 			if (instanceId && newStatsCount < oldStatsCount) {
 				updateArt(instanceId, {
-					selectedStats: art?.selectedStats.slice(0, newStatsCount),
+					selected_stats: art?.selected_stats.slice(
+						0,
+						newStatsCount
+					),
 				})
 			}
 
@@ -206,7 +209,7 @@ export function useLiteArtifacts({
 					selectedStatsData?.parsed?.addStats ?? {}
 				)
 				if (addStatKeys.length <= 3 && instanceId) {
-					updateArt(instanceId, { selectedStats: addStatKeys })
+					updateArt(instanceId, { selected_stats: addStatKeys })
 				}
 			}
 
@@ -227,7 +230,7 @@ export function useLiteArtifacts({
 				...prev,
 				[instanceId]: choice,
 			}))
-			updateArt(instanceId, { qualityClass: choice })
+			updateArt(instanceId, { quality_class: choice })
 		},
 		[updateArt]
 	)
@@ -236,7 +239,7 @@ export function useLiteArtifacts({
 		(next: string[]) => {
 			if (selectedStatsData?.instanceId) {
 				updateArt(selectedStatsData.instanceId, {
-					selectedStats: next,
+					selected_stats: next,
 				})
 			}
 		},

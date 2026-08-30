@@ -18,11 +18,11 @@ export function computeArtifactStats(
 	items: Item[],
 	locale: Locale
 ): BuildStats {
-	const item = items.find((i) => i.id === art.itemId)
+	const item = items.find((i) => i.id === art.item_id)
 	if (!item) return {}
 
 	const parsed = parseItemStats(item, locale)
-	const stats = computeArtifactStatsFromParsed(art, parsed, art.selectedStats)
+	const stats = computeArtifactStatsFromParsed(art, parsed, art.selected_stats)
 
 	const result: BuildStats = {}
 
@@ -41,13 +41,13 @@ export function computeIsPercentMap(
 ): Record<string, boolean> {
 	const map: Record<string, boolean> = {}
 	for (const art of arts) {
-		const item = artefacts.find((i) => i.id === art.itemId)
+		const item = artefacts.find((i) => i.id === art.item_id)
 		if (!item) continue
 		const parsed = parseItemStats(item, locale)
 		const stats = computeArtifactStatsFromParsed(
 			art,
 			parsed,
-			art.selectedStats
+			art.selected_stats
 		)
 		for (const [key, stat] of Object.entries(stats)) {
 			const cleanKey = key.startsWith('add:') ? key.slice(4) : key
@@ -149,7 +149,7 @@ export function buildAllStatKeys(
 	}
 
 	for (const art of build.arts) {
-		const artItem = artefacts.find((a) => a.id === art.itemId)
+		const artItem = artefacts.find((a) => a.id === art.item_id)
 		if (artItem) {
 			getItemKeys(artItem).forEach((k) => keys.add(k))
 		}

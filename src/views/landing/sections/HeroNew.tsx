@@ -12,12 +12,12 @@ export default function HeroNew() {
 
 	return (
 		<section
-			className="relative flex min-h-150 flex-col items-center justify-between overflow-hidden px-4 py-8 text-center xl:min-h-140"
+			className="relative flex min-h-120 flex-col items-center justify-between overflow-hidden px-4 py-8 text-center xl:min-h-140"
 			id="hero"
 		>
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${unbounded.className} max-w-300 font-semibold text-[40px] leading-none sm:text-5xl md:text-6xl lg:text-8xl`}
+				className={`${unbounded.className} max-w-300 font-semibold text-[44px] leading-none sm:text-5xl md:text-6xl lg:text-8xl`}
 				initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>

@@ -19,8 +19,8 @@ export function computeArtifactStatsFromParsed(
 
 	const selectedRaw = Array.isArray(selectedKeys)
 		? selectedKeys
-		: Array.isArray(art?.selectedStats)
-			? art.selectedStats
+		: Array.isArray(art?.selected_stats)
+			? art.selected_stats
 			: []
 
 	const selectedStrings: string[] = selectedRaw.filter(
@@ -106,7 +106,7 @@ export function computeArtifactStatsFromParsed(
 		return { V: 0, P: 0 }
 	}
 
-	const defaultQualityClass = art && art.qualityClass
+	const defaultQualityClass = art && art.quality_class
 
 	for (const key of Array.from(keys).sort()) {
 		let { V, P } = resolveVPForKeyParsed(parsedItem, key)

@@ -45,8 +45,8 @@ export const floatingIcons = [
 
 export const featuresHero = [
 	{
-		value: '2000+',
-		label: 'landing.features.items',
+		value: '0₽',
+		label: 'landing.features.price',
 		color: 'text-primary/90',
 	},
 	{
@@ -57,16 +57,6 @@ export const featuresHero = [
 	{
 		value: '24/7',
 		label: 'landing.features.uptime',
-		color: 'text-primary/90',
-	},
-	{
-		value: '0₽',
-		label: 'landing.features.price',
-		color: 'text-primary/90',
-	},
-	{
-		value: '100+',
-		label: 'landing.features.users',
 		color: 'text-primary/90',
 	},
 	{

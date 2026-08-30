@@ -40,12 +40,12 @@ export default function BuildPriceModal() {
 
 	const rows = arts
 		.map((art) => {
-			const item = itemsMap.get(art.itemId)
+			const item = itemsMap.get(art.item_id)
 			if (!item) return null
 
 			const key = artPriceKey(
-				art.itemId,
-				artQualityToQualityIndex[art.qualityClass] ?? 0,
+				art.item_id,
+				artQualityToQualityIndex[art.quality_class] ?? 0,
 				art.potential ?? 0
 			)
 			const price = priceMap[key]
@@ -88,13 +88,13 @@ export default function BuildPriceModal() {
 						<div className="flex flex-col gap-2">
 							{rows.map(({ art, item, price }) => {
 								const colorHex =
-									infoColorMap[art.qualityClass] ??
+									infoColorMap[art.quality_class] ??
 									InfoColor.DEFAULT
 
 								return (
 									<div
 										className="flex items-center justify-between gap-3 rounded-lg bg-accent/60 px-3 py-2"
-										key={art.instanceId}
+										key={art.instance_id}
 										style={{
 											backgroundColor:
 												`${colorHex}22` || undefined,

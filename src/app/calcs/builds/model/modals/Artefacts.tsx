@@ -55,16 +55,16 @@ export default function ArtModal({ onClose }: ModalProps) {
 
 			const art =
 				(build.arts as Art[]).find(
-					(a) => a.instanceId === instanceId
+					(a) => a.instance_id === instanceId
 				) ?? null
 
 			const item = art
-				? (items.find((it) => it.id === art.itemId) ?? null)
+				? (items.find((it) => it.id === art.item_id) ?? null)
 				: null
 
 			const parsed = item ? parseItemStats(item, locale) : null
 
-			const qualityClass = art?.qualityClass ?? undefined
+			const qualityClass = art?.quality_class ?? undefined
 
 			return { art, item, parsed, itemName: item?.name, qualityClass }
 		},
@@ -82,7 +82,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 			(defaults.art.potential ?? 0) >= 15 &&
 			addStatKeys.length > 0 &&
 			addStatKeys.length <= 3
-				? { selectedStats: addStatKeys }
+				? { selected_stats: addStatKeys }
 				: undefined
 		addArt(itemId, data, selectedSlot)
 	}
@@ -110,16 +110,16 @@ export default function ArtModal({ onClose }: ModalProps) {
 		const stats = computeArtifactStatsFromParsed(
 			art,
 			parsed,
-			art.selectedStats
+			art.selected_stats
 		)
 
 		return {
 			art,
-			instanceId: art.instanceId,
+			instanceId: art.instance_id,
 			stats,
 			parsed,
 			itemName,
-			color: art.qualityClass,
+			color: art.quality_class,
 		}
 	}, [selectedSlot, getArtAndItemBySlot])
 
@@ -143,7 +143,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 		setPercentState(selectedStatsData.art.percent ?? 100)
 		setPotentialState(selectedStatsData.art.potential ?? 0)
 	}, [
-		selectedStatsData?.art?.instanceId,
+		selectedStatsData?.art?.instance_id,
 		selectedStatsData?.art,
 		selectedStatsData?.art?.percent,
 		selectedStatsData?.art?.potential,
@@ -198,7 +198,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 				selectedStatsData.parsed.addStats ?? {}
 			)
 			if (addStatKeys.length <= 3) {
-				updateArt(instanceId, { selectedStats: addStatKeys })
+				updateArt(instanceId, { selected_stats: addStatKeys })
 			}
 		},
 		[selectedStatsData?.parsed, updateArt]
@@ -234,7 +234,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 			}))
 
 			if (typeof updateArt === 'function') {
-				updateArt(instanceId, { qualityClass: choice })
+				updateArt(instanceId, { quality_class: choice })
 			}
 		},
 		[updateArt]
@@ -243,7 +243,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const handleSelectedStatsChange = useCallback(
 		(next: string[]) => {
 			if (selectedStatsData?.instanceId) {
-				updateArt(selectedStatsData.instanceId, { selectedStats: next })
+				updateArt(selectedStatsData.instanceId, { selected_stats: next })
 			}
 		},
 		[selectedStatsData?.instanceId, updateArt]

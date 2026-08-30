@@ -14,12 +14,12 @@ export type ItemsParams = {
 export type ItemsResponse = Record<string, Item>
 
 export type Art = {
-	instanceId: string
-	itemId: string
+	instance_id: string
+	item_id: string
 	percent: number
 	potential: number
-	selectedStats: (string | null)[]
-	qualityClass: ArtQuality
+	selected_stats: (string | null)[]
+	quality_class: ArtQuality
 }
 
 export type Armor = {

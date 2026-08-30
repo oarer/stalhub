@@ -43,13 +43,13 @@ export function computePrimeFromBuild(
 	}
 
 	for (const art of build.arts) {
-		const item = artefacts.find((i) => i.id === art.itemId)
+		const item = artefacts.find((i) => i.id === art.item_id)
 		if (!item) continue
 		const parsed = parseItemStats(item, locale)
 		const artStats = computeArtifactStatsFromParsed(
 			art,
 			parsed,
-			art.selectedStats
+			art.selected_stats
 		)
 		for (const [key, stat] of Object.entries(artStats)) {
 			const cleanKey = key.startsWith('add:') ? key.slice(4) : key
