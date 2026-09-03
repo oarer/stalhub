@@ -1,13 +1,14 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { memo, useMemo } from 'react'
+import { type ComponentProps, memo, useMemo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Accordion } from '@/components/ui/Accordion'
 import { Card } from '@/components/ui/Card'
 import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
+import { ReactionSelector } from './ReactionSelector'
 import { StatRow } from './StatRow'
 import { groupStatsByCategory, type StatCategoryGroup } from './statsCategories'
 
@@ -24,12 +25,14 @@ interface StatCategoryListProps {
 	groups: StatCategoryGroup[]
 	displayNamesMap: Record<string, string>
 	isPercentMap?: Record<string, boolean>
+	deltaMap?: Record<string, number>
 }
 
 const StatCategoryList = memo(function StatCategoryList({
 	groups,
 	displayNamesMap,
 	isPercentMap,
+	deltaMap,
 }: StatCategoryListProps) {
 	const t = useTranslations()
 
@@ -41,6 +44,7 @@ const StatCategoryList = memo(function StatCategoryList({
 				content: group.rows.map(([key, val]) => (
 					<StatRow
 						color={BUILD_STAT_COLORS[key]}
+						delta={deltaMap?.[key]}
 						isPercent={isPercentMap?.[key]}
 						key={key}
 						keyName={key}
@@ -49,7 +53,7 @@ const StatCategoryList = memo(function StatCategoryList({
 					/>
 				)),
 			})),
-		[groups, displayNamesMap, isPercentMap, t]
+		[groups, displayNamesMap, isPercentMap, deltaMap, t]
 	)
 
 	const defaultExpandedKeys = useMemo(
@@ -113,6 +117,8 @@ interface StatsTabContentProps {
 	hasContainer?: boolean
 	hps?: number
 	stopping?: number
+	reactionProps?: ComponentProps<typeof ReactionSelector>
+	deltaMap?: Record<string, number>
 }
 
 export const StatsTabContent = memo(function StatsTabContent({
@@ -123,6 +129,8 @@ export const StatsTabContent = memo(function StatsTabContent({
 	hasContainer = true,
 	hps,
 	stopping,
+	reactionProps,
+	deltaMap,
 }: StatsTabContentProps) {
 	const t = useTranslations()
 
@@ -135,6 +143,10 @@ export const StatsTabContent = memo(function StatsTabContent({
 					displayNamesMap={displayNamesMap}
 					statsMap={statsMap}
 				/>
+				{reactionProps &&
+					reactionProps.availableReactions.length > 0 && (
+						<ReactionSelector {...reactionProps} />
+					)}
 				<div className="flex w-full justify-between">
 					<span>{t('build.stats.regen')}</span>
 					<span className={`${montserrat.className} text-primary`}>
@@ -160,6 +172,7 @@ export const StatsTabContent = memo(function StatsTabContent({
 						</p>
 					) : (
 						<StatCategoryList
+							deltaMap={deltaMap}
 							displayNamesMap={displayNamesMap}
 							groups={groups}
 							isPercentMap={isPercentMap}
@@ -179,6 +192,8 @@ interface AllStatsTabContentProps {
 	statsMap: BuildStats
 	displayNamesMap: Record<string, string>
 	isPercentMap?: Record<string, boolean>
+	reactionProps?: ComponentProps<typeof ReactionSelector>
+	deltaMap?: Record<string, number>
 }
 
 export const AllStatsTabContent = memo(function AllStatsTabContent({
@@ -189,6 +204,8 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 	statsMap,
 	displayNamesMap,
 	isPercentMap,
+	reactionProps,
+	deltaMap,
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
 
@@ -204,6 +221,10 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 					displayNamesMap={displayNamesMap}
 					statsMap={statsMap}
 				/>
+				{reactionProps &&
+					reactionProps.availableReactions.length > 0 && (
+						<ReactionSelector {...reactionProps} />
+					)}
 				{prime && (
 					<p className="flex justify-between">
 						<span>{t('build.stats.prime')}</span>
@@ -251,6 +272,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 						</p>
 					) : (
 						<StatCategoryList
+							deltaMap={deltaMap}
 							displayNamesMap={displayNamesMap}
 							groups={groups}
 							isPercentMap={isPercentMap}

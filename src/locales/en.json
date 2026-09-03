@@ -550,6 +550,7 @@
         "contaminationProtection": "Contamination protection",
         "accumulation": "Contamination",
         "effects": "Other effects",
+        "reaction": "Reactions",
         "misc": "Misc"
       }
     },
@@ -560,7 +561,30 @@
     "price_estimate_hint": "There are no exact market lots — the price is calculated approximately",
     "price_unavailable": "Prices are temporarily unavailable",
     "price_empty": "Add artifacts to calculate the cost",
-    "price_updated": "Updated:"
+    "price_updated": "Updated:",
+    "reactions": {
+      "title": "Reaction",
+      "placeholder": "No reaction selected"
+    },
+    "sickness": {
+      "title": "Infections and sicknesses",
+      "add": "Add debuff",
+      "level": "Level",
+      "clear": "Clear",
+      "active_count": "Active debuffs: {count}",
+      "names": {
+        "rad": "Radiation",
+        "thr": "Overheating",
+        "bio": "Bio-contamination",
+        "psy": "Psi-contamination",
+        "bld": "Bleeding",
+        "cmb": "Burning",
+        "txc": "Toxin",
+        "frs": "Frost",
+        "gnr": "Reverse",
+        "abnormal": "Emission"
+      }
+    }
   },
   "ttk": {
     "page": {

@@ -58,6 +58,15 @@ export const STAT_CATEGORIES: StatCategory[] = [
 			'stalker.artefact_properties.factor.frost_accumulation',
 		],
 	},
+	{
+		key: 'reaction',
+		statKeys: [
+			'stalker.artefact_properties.factor.reaction_to_burn',
+			'stalker.artefact_properties.factor.reaction_to_tear',
+			'stalker.artefact_properties.factor.reaction_to_chemical_burn',
+			'stalker.artefact_properties.factor.reaction_to_electroshock',
+		],
+	},
 ]
 
 export interface StatCategoryGroup {

@@ -18,6 +18,7 @@ import StatsTabs from '@/views/calcs/builds/components/StatsTabs'
 import BuildPriceModal from '../components/BuildPriceModal'
 import BuildSelector from '../components/BuildSelector'
 import DefaultsSettings from '../components/DefaultsSettings'
+import { SicknessSelector } from '../model/components/stats/SicknessSelector'
 
 export default function BuildsView() {
 	const {
@@ -276,6 +277,7 @@ export default function BuildsView() {
 									</Button>
 								)}
 								<BuildPriceModal />
+								<SicknessSelector />
 								<Modal.Root>
 									<Modal.Trigger
 										className="p-2"

@@ -20,6 +20,7 @@ export interface DropdownProps {
 	blur?: boolean
 	compact?: boolean
 	onlyIcon?: boolean
+	mobileSheet?: boolean
 }
 
 export interface DropdownMenuItemProps {

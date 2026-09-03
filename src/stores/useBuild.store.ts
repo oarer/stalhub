@@ -6,6 +6,7 @@ import type {
 	Build,
 	BuildDefaults,
 } from '@/types/build.type'
+import type { SicknessKey } from '@/types/sickness.type'
 import { getQualityByPercent } from '@/utils/artUtils'
 
 export type SavedBuild = {
@@ -40,6 +41,12 @@ type BuildState = {
 
 	setBoost: (category: BoostCategory, boostId: string) => void
 	removeBoost: (category: BoostCategory) => void
+
+	setReaction: (reaction: NonNullable<Build['reaction']>) => void
+	removeReaction: () => void
+
+	setSicknessLevel: (key: SicknessKey, level: number) => void
+	removeSickness: (key: SicknessKey) => void
 
 	assignArtToSlot: (
 		artId: string,
@@ -82,6 +89,7 @@ const initialBuild: Build = {
 	},
 	armor: null,
 	container: null,
+	reaction: null,
 }
 
 const initialDefaults: BuildDefaults = {
@@ -446,6 +454,64 @@ export const useBuildStore = create<BuildState>()(
 						},
 					},
 				}))
+				doAutoSave(set, get)
+			},
+
+			setReaction: (reaction) => {
+				set((state) => ({
+					build: {
+						...state.build,
+						reaction,
+					},
+				}))
+				doAutoSave(set, get)
+			},
+
+			removeReaction: () => {
+				set((state) => ({
+					build: {
+						...state.build,
+						reaction: null,
+					},
+				}))
+				doAutoSave(set, get)
+			},
+
+			setSicknessLevel: (key, level) => {
+				set((state) => {
+					const sickness = { ...(state.build.sickness ?? {}) }
+					if (level <= 0) {
+						delete sickness[key]
+					} else {
+						sickness[key] = level
+					}
+					return {
+						build: {
+							...state.build,
+							sickness:
+								Object.keys(sickness).length > 0
+									? sickness
+									: undefined,
+						},
+					}
+				})
+				doAutoSave(set, get)
+			},
+
+			removeSickness: (key) => {
+				set((state) => {
+					const sickness = { ...(state.build.sickness ?? {}) }
+					delete sickness[key]
+					return {
+						build: {
+							...state.build,
+							sickness:
+								Object.keys(sickness).length > 0
+									? sickness
+									: undefined,
+						},
+					}
+				})
 				doAutoSave(set, get)
 			},
 

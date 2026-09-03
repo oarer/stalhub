@@ -1,4 +1,5 @@
 import type { ArtQuality, Item } from './item.type'
+import type { SicknessKey } from './sickness.type'
 
 export type ItemsParams = {
 	type:
@@ -51,11 +52,23 @@ export const BoostButtons: Record<BoostCategory, string> = {
 }
 
 
+export const REACTION_KEYS: Record<
+	'burn' | 'tear' | 'chemical_burn' | 'electroshock',
+	string
+> = {
+	burn: 'stalker.artefact_properties.factor.reaction_to_burn',
+	tear: 'stalker.artefact_properties.factor.reaction_to_tear',
+	chemical_burn: 'stalker.artefact_properties.factor.reaction_to_chemical_burn',
+	electroshock: 'stalker.artefact_properties.factor.reaction_to_electroshock',
+} as const
+
 export type Build = {
 	arts: Art[]
 	boost: Record<BoostCategory, string | null>
 	armor: Armor | null
 	container?: Container | null
+	reaction?: (typeof REACTION_KEYS)[keyof typeof REACTION_KEYS] | null
+	sickness?: Partial<Record<SicknessKey, number>>
 }
 
 export type BuildDefaults = {

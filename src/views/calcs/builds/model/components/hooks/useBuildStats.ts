@@ -1,9 +1,14 @@
 'use client'
 
 import { useMemo } from 'react'
+import {
+	applySicknessEffects,
+	computeSicknessEffects,
+} from '@/constants/sickness'
 import { getLocale } from '@/lib/getLocale'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Build } from '@/types/build.type'
+import { REACTION_KEYS } from '@/types/build.type'
 import type { BuildStats } from './buildStatsUtils'
 import {
 	applyContainerModifiers,
@@ -103,7 +108,26 @@ export function useBuildStats(buildOverride?: Build) {
 			}
 		}
 
-		return result
+		// реакция: если выбрана, её процент прибавляется к живучести и выносливости
+		if (build.reaction) {
+			const reactionVal = result[build.reaction] ?? 0
+			if (reactionVal !== 0) {
+				result['stalker.artefact_properties.factor.health_bonus'] =
+					(result[
+						'stalker.artefact_properties.factor.health_bonus'
+					] ?? 0) + reactionVal
+				result[
+					'stalker.artefact_properties.factor.stamina_regeneration_bonus'
+				] =
+					(result[
+						'stalker.artefact_properties.factor.stamina_regeneration_bonus'
+					] ?? 0) + reactionVal
+			}
+		}
+
+		// дебафы (заражения/болезни)
+		const sicknessEffects = computeSicknessEffects(build.sickness)
+		return applySicknessEffects(result, sicknessEffects)
 	}, [
 		build,
 		armors,
@@ -134,10 +158,31 @@ export function useBuildStats(buildOverride?: Build) {
 			}
 		}
 
-		return applyContainerModifiers(
+		const modified = applyContainerModifiers(
 			result,
 			containerModifiers.effectiveness,
 			containerModifiers.innerProtection
+		)
+
+		if (build.reaction) {
+			const reactionVal = modified[build.reaction] ?? 0
+			if (reactionVal !== 0) {
+				modified['stalker.artefact_properties.factor.health_bonus'] =
+					(modified[
+						'stalker.artefact_properties.factor.health_bonus'
+					] ?? 0) + reactionVal
+				modified[
+					'stalker.artefact_properties.factor.stamina_regeneration_bonus'
+				] =
+					(modified[
+						'stalker.artefact_properties.factor.stamina_regeneration_bonus'
+					] ?? 0) + reactionVal
+			}
+		}
+
+		return applySicknessEffects(
+			modified,
+			computeSicknessEffects(build.sickness)
 		)
 	}, [
 		build,
@@ -149,7 +194,6 @@ export function useBuildStats(buildOverride?: Build) {
 	])
 
 	const { prime, hps, stopping } = useDerivedStats(stats)
-
 	const sortedStats = useMemo(() => {
 		return Object.entries(stats)
 			.filter(
@@ -179,6 +223,11 @@ export function useBuildStats(buildOverride?: Build) {
 		[build.arts, artefacts, locale]
 	)
 
+	const availableReactions = useMemo(() => {
+		const keys = Object.values(REACTION_KEYS)
+		return keys.filter((key) => (stats[key] ?? 0) !== 0)
+	}, [stats])
+
 	return {
 		stats,
 		containerStats,
@@ -190,5 +239,7 @@ export function useBuildStats(buildOverride?: Build) {
 		hps,
 		stopping,
 		hasContainer: !!build.container,
+		availableReactions,
+		selectedReaction: build.reaction ?? null,
 	}
 }

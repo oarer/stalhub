@@ -5,6 +5,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
@@ -16,6 +17,7 @@ import { ArtifactStatsPanel } from '@/views/calcs/builds/components/ArtifactStat
 import { ArtifactSlots } from '@/views/calcs/builds/model/components/artifacts/ArtifactSlots'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
+import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
 
 export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
@@ -34,6 +36,9 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const [selectedSlot, setSelectedSlot] = useState<number>(0)
 	const [copyMode, setCopyMode] = useState(false)
 	const [filter, setFilter] = useState('')
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
+		[]
+	)
 	const [percentState, setPercentState] = useState<number>(100)
 	const [potentialState, setPotentialState] = useState<number>(0)
 	const [qualityOverrides, setQualityOverrides] = useState<
@@ -133,6 +138,94 @@ export default function ArtModal({ onClose }: ModalProps) {
 			})
 		)
 	}, [selectedStatsData?.parsed])
+
+	const parsedItemsMap = useMemo(() => {
+		const map = new Map<string, ReturnType<typeof parseItemStats>>()
+		for (const item of items) {
+			map.set(item.id, parseItemStats(item, locale))
+		}
+		return map
+	}, [items, locale])
+
+	const effectFilterMap = useMemo(() => {
+		const posSet = new Set<string>()
+		const negSet = new Set<string>()
+
+		for (const parsed of parsedItemsMap.values()) {
+			const allStats = { ...parsed.statRanges, ...parsed.addStats }
+			for (const [key, val] of Object.entries(allStats)) {
+				if (isDebuffColor(val.color)) {
+					negSet.add(key)
+				} else {
+					posSet.add(key)
+				}
+			}
+		}
+
+		return { posSet, negSet }
+	}, [parsedItemsMap])
+
+	const effectOptions = useMemo<ComboboxOption[]>(() => {
+		const { posSet, negSet } = effectFilterMap
+		const posLabels = new Map<string, string>()
+		const negLabels = new Map<string, string>()
+
+		for (const parsed of parsedItemsMap.values()) {
+			const allStats = { ...parsed.statRanges, ...parsed.addStats }
+			for (const [key] of Object.entries(allStats)) {
+				const display = parsed.displayNames[key] ?? key
+				if (negSet.has(key)) {
+					negLabels.set(key, display)
+				} else if (posSet.has(key)) {
+					posLabels.set(key, display)
+				}
+			}
+		}
+
+		return [
+			...Array.from(posLabels.entries()).map(([value, label]) => ({
+				value,
+				label,
+			})),
+			...Array.from(negLabels.entries()).map(([value, label]) => ({
+				value,
+				label,
+			})),
+		]
+	}, [parsedItemsMap, effectFilterMap])
+
+	const effectFilteredItems = useMemo(() => {
+		if (selectedEffectStats.length === 0) return items
+
+		const { posSet } = effectFilterMap
+		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
+		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
+
+		return items.filter((item) => {
+			const parsed = parsedItemsMap.get(item.id)
+			if (!parsed) return true
+
+			const allStats = { ...parsed.statRanges, ...parsed.addStats }
+
+			if (positiveKeys.length > 0) {
+				const hasPositive = positiveKeys.every(
+					(key) =>
+						key in allStats && !isDebuffColor(allStats[key].color)
+				)
+				if (!hasPositive) return false
+			}
+
+			if (negativeKeys.length > 0) {
+				const hasNegative = negativeKeys.every(
+					(key) =>
+						key in allStats && isDebuffColor(allStats[key].color)
+				)
+				if (!hasNegative) return false
+			}
+
+			return true
+		})
+	}, [items, parsedItemsMap, selectedEffectStats, effectFilterMap])
 
 	useEffect(() => {
 		if (!selectedStatsData?.art) {
@@ -245,8 +338,8 @@ export default function ArtModal({ onClose }: ModalProps) {
 
 	return (
 		<div className="flex flex-col gap-4 text-nowrap">
-			<div className="z-999 flex gap-4">
-				<Card.Root className="min-w-70">
+			<div className="z-999 flex flex-col gap-4 md:flex-row">
+				<Card.Root className="w-full md:min-w-70">
 					<Card.Header>
 						<Input
 							className="px-2 text-[14px]"
@@ -254,19 +347,29 @@ export default function ArtModal({ onClose }: ModalProps) {
 							onChange={(e) => setFilter(e.target.value)}
 							value={filter}
 						/>
+						<Combobox
+							className="mt-2"
+							multiple
+							onValuesChange={setSelectedEffectStats}
+							options={effectOptions}
+							placeholder="build.labels.effects"
+							translateOptions={false}
+							values={selectedEffectStats}
+							zIndex={999999}
+						/>
 					</Card.Header>
 
 					<ItemsList
 						className="max-h-90 overflow-y-auto"
 						favoriteType="artefact"
-						items={items}
+						items={effectFilteredItems}
 						locale={locale}
 						onSelectItem={handleAdd}
 						query={filter}
 					/>
 				</Card.Root>
 
-				<Card.Root className="min-w-90">
+				<Card.Root className="w-full md:min-w-90">
 					<Button
 						aria-label="Close modal"
 						className="absolute top-2.5 right-4 flex cursor-pointer items-center justify-center rounded-full p-2.5"

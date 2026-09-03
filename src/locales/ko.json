@@ -550,6 +550,7 @@
 				"contaminationProtection": "오염 방어",
 				"accumulation": "오염",
 				"effects": "기타 효과",
+				"reaction": "반응",
 				"misc": "기타"
 			}
 		},
@@ -560,7 +561,30 @@
 		"price_estimate_hint": "시장에 정확한 매물이 없어 가격은 대략 계산되었습니다",
 		"price_unavailable": "가격을 일시적으로 사용할 수 없습니다",
 		"price_empty": "비용을 계산하려면 아티팩트를 추가하세요",
-		"price_updated": "업데이트:"
+		"price_updated": "업데이트:",
+		"reactions": {
+			"title": "반응",
+			"placeholder": "반응이 선택되지 않음"
+		},
+		"sickness": {
+			"title": "감염 및 질병",
+			"add": "디버프 추가",
+			"level": "레벨",
+			"clear": "지우기",
+			"active_count": "활성 디버프: {count}",
+			"names": {
+				"rad": "방사능",
+				"thr": "과열",
+				"bio": "생물 오염",
+				"psy": "사이 오염",
+				"bld": "출혈",
+				"cmb": "화상",
+				"txc": "독소",
+				"frs": "서리",
+				"gnr": "역방향",
+				"abnormal": "방출"
+			}
+		}
 	},
 	"ttk": {
 		"page": {

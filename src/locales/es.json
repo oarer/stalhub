@@ -550,6 +550,7 @@
         "contaminationProtection": "Protección contra la contaminación",
         "accumulation": "Contaminación",
         "effects": "Otros efectos",
+        "reaction": "Reacciones",
         "misc": "Otros"
       }
     },
@@ -560,7 +561,30 @@
     "price_estimate_hint": "No hay lotes exactos en el mercado: el precio se calcula aproximadamente",
     "price_unavailable": "Los precios no están disponibles temporalmente",
     "price_empty": "Añade artefactos para calcular el coste",
-    "price_updated": "Actualizado:"
+    "price_updated": "Actualizado:",
+    "reactions": {
+      "title": "Reacción",
+      "placeholder": "Ninguna reacción seleccionada"
+    },
+    "sickness": {
+      "title": "Infecciones y enfermedades",
+      "add": "Añadir debuff",
+      "level": "Nivel",
+      "clear": "Limpiar",
+      "active_count": "Debuffs activos: {count}",
+      "names": {
+        "rad": "Radiación",
+        "thr": "Sobrecalentamiento",
+        "bio": "Biocontaminación",
+        "psy": "Contaminación psi",
+        "bld": "Sangrado",
+        "cmb": "Quemadura",
+        "txc": "Toxina",
+        "frs": "Escarcha",
+        "gnr": "Inverso",
+        "abnormal": "Emisión"
+      }
+    }
   },
   "ttk": {
     "page": {

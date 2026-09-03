@@ -18,6 +18,7 @@ import type { SavedBuild } from '@/stores/useBuild.store'
 import BuildPriceModal from '../../components/BuildPriceModal'
 import BuildSelector from '../../components/BuildSelector'
 import DefaultsSettings from '../../components/DefaultsSettings'
+import { SicknessSelector } from '../../model/components/stats/SicknessSelector'
 import { CompareBuildSelector } from './CompareBuildSelector'
 
 type BuildLiteHeaderProps = {
@@ -334,6 +335,7 @@ export function BuildLiteHeader({
 							savedBuilds={savedBuilds}
 						/>
 					</div>
+					<SicknessSelector />
 				</div>
 			</div>
 			<div className="block sm:hidden">

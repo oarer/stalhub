@@ -299,11 +299,14 @@ export default function DropdownMenu({
 	blur = true,
 	compact = false,
 	onlyIcon = false,
+	mobileSheet = false,
 }: DropdownProps) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [openSubmenus, setOpenSubmenus] = useState<Set<string>>(new Set())
+	const [dragY, setDragY] = useState(0)
 	const dropdownRef = useRef<HTMLDivElement | null>(null)
 	const triggerRef = useRef<HTMLButtonElement>(null)
+	const sheetRef = useRef<HTMLDivElement>(null)
 	const t = useTranslations()
 
 	const toggleDropdown = useCallback(() => {
@@ -317,9 +320,38 @@ export default function DropdownMenu({
 	const closeDropdown = useCallback(() => {
 		setIsOpen(false)
 		setOpenSubmenus(new Set())
+		setDragY(0)
 	}, [])
 
+	const handleSheetDrag = useCallback(
+		(_: unknown, info: { offset: { y: number } }) => {
+			setDragY(Math.max(0, info.offset.y))
+		},
+		[]
+	)
+
+	const handleSheetDragEnd = useCallback(
+		(_: unknown, info: { offset: { y: number } }) => {
+			const height = sheetRef.current?.offsetHeight ?? 400
+			if (info.offset.y > Math.max(120, height * 0.25)) {
+				closeDropdown()
+			} else {
+				setDragY(0)
+			}
+		},
+		[closeDropdown]
+	)
+
 	useClickOutside(dropdownRef, closeDropdown)
+
+	useEffect(() => {
+		if (!mobileSheet || !isOpen) return
+		const original = document.body.style.overflow
+		document.body.style.overflow = 'hidden'
+		return () => {
+			document.body.style.overflow = original
+		}
+	}, [mobileSheet, isOpen])
 
 	useEffect(() => {
 		const handleEscape = (event: KeyboardEvent) => {
@@ -351,7 +383,7 @@ export default function DropdownMenu({
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
 				aria-label={onlyIcon ? t(title) : undefined}
-				className={`flex items-center justify-center rounded-full outline-none transition-all duration-300 ${
+				className={`group/btn flex items-center justify-center rounded-full outline-none transition-all duration-300 ${
 					onlyIcon
 						? 'h-10 px-2.5'
 						: compact
@@ -366,7 +398,7 @@ export default function DropdownMenu({
 			>
 				{icon && <Icon className="text-xl" icon={icon} />}
 				{onlyIcon ? (
-					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:max-w-45 group-hover:opacity-100">
+					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/btn:ml-2 group-hover/btn:max-w-45 group-hover/btn:opacity-100">
 						<span className="font-semibold text-md">
 							{t(title)}
 						</span>
@@ -390,27 +422,100 @@ export default function DropdownMenu({
 
 			<AnimatePresence>
 				{isOpen && (
-					<motion.div
-						animate={{ opacity: 1 }}
-						className={cn(dropdownPositionClass, {
-							'backdrop-blur-xl': blur,
-						})}
-						exit={{ opacity: 0 }}
-						initial={{ opacity: 0 }}
-						role="menu"
-						transition={{ duration: 0.15, ease: 'easeOut' }}
-					>
-						{items.map((item) => (
-							<DropdownMenuItem
-								depth={1}
-								item={item}
-								key={item.key}
-								onClose={closeDropdown}
-								openSubmenus={openSubmenus}
-								setOpenSubmenus={setOpenSubmenus}
-							/>
-						))}
-					</motion.div>
+					<>
+						<motion.div
+							animate={{ opacity: 1 }}
+							className={cn(dropdownPositionClass, {
+								'backdrop-blur-xl': blur,
+								'hidden sm:block': mobileSheet,
+							})}
+							exit={{ opacity: 0 }}
+							initial={{ opacity: 0 }}
+							role="menu"
+							transition={{ duration: 0.15, ease: 'easeOut' }}
+						>
+							{items.map((item) => (
+								<DropdownMenuItem
+									depth={1}
+									item={item}
+									key={item.key}
+									onClose={closeDropdown}
+									openSubmenus={openSubmenus}
+									setOpenSubmenus={setOpenSubmenus}
+								/>
+							))}
+						</motion.div>
+
+						{mobileSheet && (
+							<>
+								<motion.div
+									animate={{
+										opacity: 1 - Math.min(1, dragY / 300),
+									}}
+									aria-hidden="true"
+									className="fixed inset-0 z-[60] bg-black/60 sm:hidden"
+									exit={{ opacity: 0 }}
+									initial={{ opacity: 0 }}
+									onClick={closeDropdown}
+									transition={{
+										duration: 0.2,
+										ease: 'easeOut',
+									}}
+								/>
+								<motion.div
+									animate={{ opacity: 1, y: 0 }}
+									className={cn(
+										'fixed inset-x-0 bottom-0 z-[70] flex max-h-[80dvh] flex-col gap-1 rounded-t-2xl bg-card p-3 shadow-lg ring-2 ring-primary/40 sm:hidden',
+										dragY > 0 && 'cursor-grabbing'
+									)}
+									drag="y"
+									dragConstraints={{ top: 0, bottom: 0 }}
+									dragElastic={{ top: 0, bottom: 0.5 }}
+									exit={{ opacity: 0, y: 40 }}
+									initial={{ opacity: 0, y: 40 }}
+									onDrag={(event, info) =>
+										handleSheetDrag(event, info)
+									}
+									onDragEnd={(event, info) =>
+										handleSheetDragEnd(event, info)
+									}
+									role="menu"
+									transition={{ duration: 0.2, ease: 'easeOut' }}
+								>
+									<div
+										className="flex shrink-0 cursor-grab touch-none flex-col items-center gap-2 px-4 py-1.5"
+										ref={sheetRef}
+									>
+										<div className="h-1.5 w-12 rounded-full bg-neutral-600" />
+									</div>
+									<div className="flex shrink-0 items-center justify-between gap-2 px-1 pb-1">
+										<p className="font-semibold text-sm">
+											{t(title)}
+										</p>
+										<button
+											className="cursor-pointer p-1 text-neutral-400 transition-colors hover:text-neutral-200"
+											onClick={closeDropdown}
+											type="button"
+										>
+											<Icon icon="lucide:x" />
+										</button>
+									</div>
+									<div className="min-h-0 flex-1 overflow-y-auto px-1">
+										{items.map((item) => (
+											<DropdownMenuItem
+												depth={1}
+												item={item}
+												key={item.key}
+												onClose={closeDropdown}
+												openSubmenus={openSubmenus}
+												setOpenSubmenus={setOpenSubmenus}
+											/>
+										))}
+									</div>
+								</motion.div>
+							</>
+						)}
+					</>
 				)}
 			</AnimatePresence>
 		</div>

@@ -9,6 +9,7 @@ import {
 	AllStatsTabContent,
 	StatsTabContent,
 } from '@/views/calcs/builds/model/components/stats'
+import { useStatDeltas } from '@/views/calcs/builds/model/components/stats/useStatDeltas'
 
 export default memo(function StatsTabs() {
 	const {
@@ -22,9 +23,19 @@ export default memo(function StatsTabs() {
 		hasContainer,
 		stats,
 		containerStats,
+		availableReactions,
+		selectedReaction,
 	} = useBuildStats()
 
+	const deltaMap = useStatDeltas(stats)
+
 	const t = useTranslations()
+
+	const reactionProps = {
+		availableReactions,
+		selectedReaction,
+		displayNamesMap,
+	}
 
 	return (
 		<Tabs.Root className="w-full" defaultValue="statsAll">
@@ -40,10 +51,12 @@ export default memo(function StatsTabs() {
 			</Tabs.List>
 			<Tabs.Content value="statsAll">
 				<AllStatsTabContent
+					deltaMap={deltaMap}
 					displayNamesMap={displayNamesMap}
 					hps={hps}
 					isPercentMap={isPercentMap}
 					prime={prime}
+					reactionProps={reactionProps}
 					sortedStats={sortedStats}
 					statsMap={stats}
 					stopping={stopping}
@@ -51,10 +64,12 @@ export default memo(function StatsTabs() {
 			</Tabs.Content>
 			<Tabs.Content value="statsCont">
 				<StatsTabContent
+					deltaMap={deltaMap}
 					displayNamesMap={displayNamesMap}
 					hasContainer={hasContainer}
 					hps={hps}
 					isPercentMap={isPercentMap}
+					reactionProps={reactionProps}
 					stats={sortedContainerStats}
 					statsMap={containerStats}
 					stopping={stopping}
