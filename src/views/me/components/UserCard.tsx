@@ -105,7 +105,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 						</div>
 					)}
 					<p
-						className={`${montserrat.className} rounded-lg bg-border-secondary px-2 py-2 font-semibold text-sm leading-none`}
+						className={`${montserrat.className} rounded-lg text-card-foreground bg-card px-2 py-2 font-semibold text-sm leading-none`}
 					>
 						ID: {user.id}
 					</p>

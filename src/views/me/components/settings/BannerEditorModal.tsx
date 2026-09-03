@@ -65,7 +65,7 @@ export function BannerEditorModal({
 					</div>
 					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 						<span className="font-semibold text-md">
-							{t('me.settings.banner_type')}
+							{t('me.settings.bannerType')}
 						</span>
 						<OptionDropdown
 							onSelect={onModeChange}
@@ -106,7 +106,7 @@ export function BannerEditorModal({
 					)}
 					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 						<span className="font-semibold text-md">
-							{t('me.settings.banner_image')}
+							{t('me.settings.bannerImage')}
 						</span>
 						<div className="flex items-center gap-2">
 							<input

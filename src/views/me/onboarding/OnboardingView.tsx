@@ -434,7 +434,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 												<span className="font-semibold text-sm">
 													{t(
-														'me.settings.banner_type'
+														'me.settings.bannerType'
 													)}
 												</span>
 												<OptionDropdown
@@ -505,7 +505,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 												<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
 													<span className="font-semibold text-sm">
 														{t(
-															'me.settings.banner_image'
+															'me.settings.bannerImage'
 														)}
 													</span>
 													<input
