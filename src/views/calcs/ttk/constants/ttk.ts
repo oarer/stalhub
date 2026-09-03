@@ -23,6 +23,10 @@ export const CUSTOM_ROF_MAP: Record<string, CustomRof> = {
 	'3grwz': { rof: 1200 },
 }
 
+export const HOLD_WEAPON_ID = '969kl'
+export const HOLD_MAX_TIME = 0.5
+export const isHoldWeapon = (id?: string) => id === HOLD_WEAPON_ID
+
 export const HIT_ZONES: { value: HitZone; labelKey: string }[] = [
 	{ value: 'head', labelKey: 'ttk.hitZones.head' },
 	{ value: 'body', labelKey: 'ttk.hitZones.body' },

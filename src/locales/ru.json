@@ -611,6 +611,7 @@
         "auto": "Авто",
         "burst": "Отсечки"
       },
+      "hold_time": "Время зажатия",
       "combobox": {
         "build": {
           "placeholder": "— не выбрано —",

@@ -581,6 +581,7 @@
         "auto": "Automático",
         "burst": "Ráfagas"
       },
+      "hold_time": "Tiempo de retención",
       "combobox": {
         "build": {
           "placeholder": "— no seleccionado —",

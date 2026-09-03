@@ -146,7 +146,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 							s.useBurstRof,
 							plate,
 							plateDurability,
-							moduleMods
+							moduleMods,
+							s.holdTime
 						),
 						color: COLORS[i % COLORS.length],
 						labelColor: infoColorMap[weapon.color as InfoColor],
@@ -186,7 +187,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 						s.useBurstRof,
 						plate,
 						plateDurability,
-						moduleMods
+						moduleMods,
+						s.holdTime
 					)
 					const resultMax = block
 						? calcTTKAtDist(
@@ -200,7 +202,8 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 								s.useBurstRof,
 								plate,
 								plateDurability,
-								moduleMods
+								moduleMods,
+								s.holdTime
 							)
 						: result0
 

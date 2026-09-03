@@ -57,7 +57,8 @@ export function calcTTKAtDist(
 	useBurstRof: boolean,
 	plate?: Item | null,
 	plateDurability?: number,
-	moduleMods?: ModuleDamageMods
+	moduleMods?: ModuleDamageMods,
+	holdTime = 0
 ): { ttk: number; shots: number } {
 	const rofConfig = getWeaponRofConfig(weapon, useBurstRof)
 	if (rofConfig.rof <= 0) return { ttk: 0, shots: 0 }
@@ -82,7 +83,8 @@ export function calcTTKAtDist(
 			dist,
 			variantIndex,
 			undefined,
-			moduleMods
+			moduleMods,
+			holdTime
 		)
 		const shots = getShotsToKill(effectiveHp, dmg)
 		if (shots <= 0) return { ttk: 0, shots: 0 }
@@ -97,7 +99,8 @@ export function calcTTKAtDist(
 		dist,
 		variantIndex,
 		undefined,
-		moduleMods
+		moduleMods,
+		holdTime
 	)
 	if (dmgNaked <= 0) return { ttk: 0, shots: 0 }
 
@@ -108,7 +111,8 @@ export function calcTTKAtDist(
 		dist,
 		variantIndex,
 		plate,
-		moduleMods
+		moduleMods,
+		holdTime
 	)
 
 	const absorption = getPlateDamageAbsorption(plate)

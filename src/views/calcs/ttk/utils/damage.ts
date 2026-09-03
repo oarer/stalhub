@@ -68,12 +68,13 @@ export function getDmgPerShot(
 	dist: number,
 	variantIndex: number,
 	plate?: Item | null,
-	moduleMods?: ModuleDamageMods
+	moduleMods?: ModuleDamageMods,
+	holdTime = 0
 ): number {
 	const block = getDamageBlock(weapon)
 	if (!block) return 0
 
-	const variantBase = getDamageVariant(weapon, variantIndex)
+	const variantBase = getDamageVariant(weapon, variantIndex, holdTime)
 	const startDamage = variantBase > 0 ? variantBase : block.startDamage
 	const baseRatio =
 		block.startDamage > 0 ? startDamage / block.startDamage : 1

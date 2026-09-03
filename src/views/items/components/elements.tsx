@@ -217,6 +217,17 @@ export const NumericVariantsElementRenderer: React.FC<{
 	const format = (v: number) =>
 		Number.isInteger(v) ? String(v) : v.toFixed(2)
 
+	const pair = Array.isArray(current)
+		? (current as [number, number])
+		: null
+
+	const display =
+		pair !== null
+			? `${format(pair[0])} — ${format(pair[1])}`
+			: current !== null
+				? format(current as number)
+				: '—'
+
 	return (
 		<div className="flex items-center justify-between py-1">
 			<p
@@ -229,7 +240,7 @@ export const NumericVariantsElementRenderer: React.FC<{
 				className={`${montserrat.className} font-medium text-md`}
 				style={valueColor ? { color: valueColor } : undefined}
 			>
-				{current !== null ? format(current) : '—'}
+				{display}
 			</p>
 		</div>
 	)

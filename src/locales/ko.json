@@ -581,6 +581,7 @@
 				"auto": "자동",
 				"burst": "점사"
 			},
+			"hold_time": "홀드 시간",
 			"combobox": {
 				"build": {
 					"placeholder": "— 선택 안 됨 —",

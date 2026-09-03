@@ -171,7 +171,7 @@ type Usage = {
 export type NumericVariantsElement = {
 	type: 'numericVariants'
 	name: Message
-	value: number[]
+	value: number[] | [number, number][]
 	nameColor?: string
 	valueColor?: string
 } & FormattedBlock

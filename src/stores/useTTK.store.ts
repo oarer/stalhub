@@ -8,6 +8,7 @@ export interface WeaponSlot {
 	ammoId: string
 	variantIndex: number
 	useBurstRof: boolean
+	holdTime: number
 }
 
 interface TTKState {
@@ -42,6 +43,7 @@ export const useTTKStore = create<TTKState>()(
 					ammoId: '',
 					variantIndex: 15,
 					useBurstRof: false,
+					holdTime: 0,
 				},
 			],
 			bulletRes: 0,

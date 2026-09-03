@@ -15,7 +15,8 @@ export function buildSeries(
 	useBurstRof: boolean,
 	plate?: Item | null,
 	plateDurability?: number,
-	moduleMods?: ModuleDamageMods
+	moduleMods?: ModuleDamageMods,
+	holdTime = 0
 ): TTKSeries {
 	const block = getDamageBlock(weapon)
 	const label =
@@ -38,7 +39,8 @@ export function buildSeries(
 			useBurstRof,
 			plate,
 			plateDurability,
-			moduleMods
+			moduleMods,
+			holdTime
 		)
 		points.push({
 			x: d,
@@ -59,7 +61,8 @@ export function buildSeries(
 			useBurstRof,
 			plate,
 			plateDurability,
-			moduleMods
+			moduleMods,
+			holdTime
 		)
 		points.push({
 			x: block.maxDistance,

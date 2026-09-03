@@ -3,6 +3,7 @@ import type {
 	ElementListBlock,
 	Item,
 } from '@/types/item.type'
+import { HOLD_MAX_TIME, isHoldWeapon } from '../constants/ttk'
 
 export function getNumericStat(item: Item, key: string): number {
 	for (const block of item.infoBlocks) {
@@ -22,8 +23,12 @@ export function getNumericStat(item: Item, key: string): number {
 	return 0
 }
 
-export function getDamageVariant(item: Item, variantIndex: number): number {
-	let values: number[] = []
+export function getDamageVariant(
+	item: Item,
+	variantIndex: number,
+	holdTime = 0
+): number {
+	let values: number[] | [number, number][] = []
 
 	for (const block of item.infoBlocks) {
 		if (block.type !== 'list') continue
@@ -43,7 +48,19 @@ export function getDamageVariant(item: Item, variantIndex: number): number {
 
 	if (!values.length) return 0
 	const idx = Math.min(Math.max(variantIndex, 0), values.length - 1)
-	return values[idx] ?? 0
+	const v = values[idx] ?? null
+	if (v === null) return 0
+	if (Array.isArray(v)) {
+		const pair = v as [number, number]
+		if (isHoldWeapon(item.id)) {
+			const t = Math.max(0, Math.min(1, (holdTime ?? 0) / HOLD_MAX_TIME))
+			const min = pair[0] ?? 0
+			const max = pair[1] ?? 0
+			return min + t * (max - min)
+		}
+		return Math.max(pair[0] ?? 0, pair[1] ?? 0)
+	}
+	return v
 }
 
 export function getDamageBlock(

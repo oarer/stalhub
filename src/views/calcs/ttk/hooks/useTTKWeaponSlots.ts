@@ -15,6 +15,7 @@ const mkSlot = (): WeaponSlot => ({
 	ammoId: '',
 	variantIndex: 15,
 	useBurstRof: false,
+	holdTime: 0,
 })
 
 export function useTTKWeaponSlots(

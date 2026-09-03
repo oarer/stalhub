@@ -104,6 +104,9 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 										slot.weaponId &&
 										setFocusedSlotId(slot.id)
 									}
+									onHoldTimeChange={(v) =>
+										updateSlot(slot.id, { holdTime: v })
+									}
 									onRemove={() => removeSlot(slot.id)}
 									onVariantChange={(v) =>
 										updateSlot(slot.id, { variantIndex: v })
@@ -152,13 +155,14 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 					<Card.Root>
 						<Card.Content>
 							{focusedWeapon && focusedSlot ? (
-								<WeaponStatsPanel
-									ammo={focusedAmmo}
-									hitZone={hitZone}
-									useBurstRof={focusedSlot.useBurstRof}
-									variantIndex={focusedSlot.variantIndex}
-									weapon={focusedWeapon}
-								/>
+							<WeaponStatsPanel
+								ammo={focusedAmmo}
+								hitZone={hitZone}
+								holdTime={focusedSlot.holdTime}
+								useBurstRof={focusedSlot.useBurstRof}
+								variantIndex={focusedSlot.variantIndex}
+								weapon={focusedWeapon}
+							/>
 							) : (
 								<p className="py-4 text-center text-neutral-500 text-sm">
 									{t('ttk.page.weapon_pick')}

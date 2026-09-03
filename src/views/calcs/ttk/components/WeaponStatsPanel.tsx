@@ -20,6 +20,7 @@ interface WeaponStatsPanelProps {
 	hitZone: HitZone
 	variantIndex: number
 	useBurstRof: boolean
+	holdTime?: number
 }
 
 const WeaponStatsPanel = memo(function Wsp({
@@ -28,11 +29,22 @@ const WeaponStatsPanel = memo(function Wsp({
 	hitZone,
 	variantIndex,
 	useBurstRof,
+	holdTime = 0,
 }: WeaponStatsPanelProps) {
 	const t = useTranslations()
 	const dmg0 = useMemo(
-		() => getDmgPerShot(weapon, ammo, hitZone, 0, variantIndex),
-		[weapon, ammo, hitZone, variantIndex]
+		() =>
+			getDmgPerShot(
+				weapon,
+				ammo,
+				hitZone,
+				0,
+				variantIndex,
+				undefined,
+				undefined,
+				holdTime
+			),
+		[weapon, ammo, hitZone, variantIndex, holdTime]
 	)
 	const rofConfig = useMemo((): CustomRof => {
 		if (useBurstRof && CUSTOM_ROF_MAP[weapon.id]) {

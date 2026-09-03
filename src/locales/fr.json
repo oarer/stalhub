@@ -581,6 +581,7 @@
         "auto": "Auto",
         "burst": "Rafales"
       },
+      "hold_time": "Temps de maintien",
       "combobox": {
         "build": {
           "placeholder": "— non sélectionné —",

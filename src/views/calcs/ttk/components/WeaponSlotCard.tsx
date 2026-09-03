@@ -8,13 +8,18 @@ import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import Slider from '@/components/ui/Slider'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import type { WeaponSlot } from '@/stores/useTTK.store'
 import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import { messageToString, roundNumber } from '@/utils/itemUtils'
 import { ItemPickerModal } from '@/views/calcs/builds/lite/components/ItemPickerModal'
-import { CUSTOM_ROF_MAP } from '../constants/ttk'
+import {
+	CUSTOM_ROF_MAP,
+	HOLD_MAX_TIME,
+	isHoldWeapon,
+} from '../constants/ttk'
 import { getAmmoType, getCompatibleAmmo } from '../utils'
 
 interface WeaponSlotCardProps {
@@ -30,6 +35,7 @@ interface WeaponSlotCardProps {
 	onWeaponSelect: (weaponId: string) => void
 	onAmmoSelect: (ammoId: string) => void
 	onVariantChange: (variantIndex: number) => void
+	onHoldTimeChange: (holdTime: number) => void
 	onBurstRofToggle: () => void
 	onRemove: () => void
 	showRemove: boolean
@@ -48,6 +54,7 @@ export function WeaponSlotCard({
 	onWeaponSelect,
 	onAmmoSelect,
 	onVariantChange,
+	onHoldTimeChange,
 	onBurstRofToggle,
 	onRemove,
 	showRemove,
@@ -273,6 +280,28 @@ export function WeaponSlotCard({
 									/>
 								</div>
 							))}
+
+						{weapon && isHoldWeapon(weapon.id) && (
+							<div className="flex flex-col gap-1 rounded-lg p-2 ring-2 ring-muted">
+								<div className="flex items-center justify-between">
+									<span className="font-semibold text-neutral-400 text-xs">
+										{t('ttk.page.hold_time')}
+									</span>
+									<span
+										className={`${montserrat.className} font-semibold text-xs`}
+									>
+										{roundNumber(slot.holdTime)} с
+									</span>
+								</div>
+								<Slider
+									max={HOLD_MAX_TIME}
+									min={0}
+									onValueChange={onHoldTimeChange}
+									step={0.01}
+									value={slot.holdTime}
+								/>
+							</div>
+						)}
 					</div>
 				</Card.Content>
 			</Card.Root>
