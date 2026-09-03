@@ -160,14 +160,10 @@ export default function ArtModal({ onClose }: ModalProps) {
 				return
 			}
 
-			if (typeof updateArt === 'function') {
-				if (type === 'percent') {
-					updateArt(instanceId, { percent: value })
-				} else {
-					updateArt(instanceId, { potential: value })
-				}
+			if (type === 'percent') {
+				updateArt(instanceId, { percent: value })
 			} else {
-				console.warn('updateArt not available in store', payload)
+				updateArt(instanceId, { potential: value })
 			}
 		},
 		[updateArt]
@@ -233,9 +229,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 				[instanceId]: choice,
 			}))
 
-			if (typeof updateArt === 'function') {
-				updateArt(instanceId, { quality_class: choice })
-			}
+			updateArt(instanceId, { quality_class: choice })
 		},
 		[updateArt]
 	)

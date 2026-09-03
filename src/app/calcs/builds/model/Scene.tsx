@@ -69,7 +69,7 @@ function AutoCenter({
 		const fov = (camera.fov * Math.PI) / 180
 		const distance = Math.abs(maxDim / (2 * Math.tan(fov / 2))) * 1.2
 
-		camera.position.set(center.x, center.y + maxDim * 0.25, (center.z = -3))
+		camera.position.set(center.x, center.y + maxDim * 0.25, -3)
 		camera.near = Math.max(0.1, distance / 1000)
 		camera.updateProjectionMatrix()
 
