@@ -117,7 +117,7 @@ export function ItemPickerModal({
 					<div className="relative grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[50%_50%]">
 						<div className="flex w-full flex-col gap-2">
 							<ItemsList
-								className="max-h-screen sm:h-91"
+								className="max-h-[72dvh] sm:h-91"
 								emptyText={t('build.labels.not_found')}
 								favoriteType={favoriteType}
 								items={items}
