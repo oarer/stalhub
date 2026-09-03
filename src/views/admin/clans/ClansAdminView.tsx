@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { Table } from '@/components/ui/Table'
+import { useDebounce } from '@/hooks/useDebounce'
 import { adminClanQueries } from '@/queries/admin/clan.queries'
 
 export default function ClansAdminView() {
@@ -17,16 +18,17 @@ export default function ClansAdminView() {
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const take = 20
+	const debouncedSearch = useDebounce(search)
 
 	const { data } = useSuspenseQuery(
-		adminClanQueries.list({ take, page, search: search || undefined })
+		adminClanQueries.list({ take, page, search: debouncedSearch || undefined })
 	)
 
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1 className="font-semibold text-2xl">
 					{t('admin.clans.title')}
 				</h1>
@@ -36,7 +38,7 @@ export default function ClansAdminView() {
 			</div>
 
 			<div className="flex items-center gap-3">
-				<div className="w-80">
+				<div className="w-full md:w-80">
 					<Input
 						label="admin.clans.search"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +51,7 @@ export default function ClansAdminView() {
 			</div>
 
 			<Card.Root className="overflow-hidden p-0">
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -126,6 +129,7 @@ export default function ClansAdminView() {
 						))}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			</Card.Root>
 
 			{totalPages > 1 && (

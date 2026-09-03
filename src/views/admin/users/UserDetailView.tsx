@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -27,6 +28,7 @@ interface Props {
 
 export default function UserDetailView({ userId }: Props) {
 	const t = useTranslations()
+	const router = useRouter()
 	const queryClient = getQueryClient()
 
 	const { data: user } = useSuspenseQuery(adminUserQueries.get(userId))
@@ -170,7 +172,7 @@ export default function UserDetailView({ userId }: Props) {
 		mutationFn: () => adminUserService.delete(userId),
 		onSuccess: () => {
 			toast.success(t('admin.userDetail.toast.deleted'))
-			window.location.href = '/admin/users'
+			router.push('/admin/users')
 		},
 		onError: () => toast.error(t('admin.userDetail.toast.deleteError')),
 	})
@@ -232,13 +234,13 @@ export default function UserDetailView({ userId }: Props) {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center gap-3">
+			<div className="flex flex-wrap items-center gap-3">
 				<Link href="/admin/users">
 					<Button size="sm" variant="ghost">
 						<Icon icon="lucide:arrow-left" />
 					</Button>
 				</Link>
-				<h1 className="font-semibold text-2xl">{user.username}</h1>
+				<h1 className="break-all font-semibold text-2xl">{user.username}</h1>
 				{user.banned && (
 					<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
 						{t('admin.users.status.banned')}
@@ -247,7 +249,7 @@ export default function UserDetailView({ userId }: Props) {
 			</div>
 
 			<Tabs.Root defaultValue="info">
-				<Tabs.List>
+				<Tabs.List className="flex-wrap">
 					<Tabs.Trigger value="info">
 						<Icon icon="lucide:user" />
 						{t('admin.userDetail.tabs.info')}
@@ -283,7 +285,7 @@ export default function UserDetailView({ userId }: Props) {
 						</Card.Header>
 						<Card.Content>
 							<div className="flex flex-col gap-4">
-								<div className="grid grid-cols-2 gap-3">
+								<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 									<Input
 										label="admin.userDetail.username"
 										onChange={(
@@ -337,7 +339,7 @@ export default function UserDetailView({ userId }: Props) {
 								</div>
 							) : (
 								<div className="flex flex-col gap-4">
-									<div className="grid grid-cols-2 gap-3">
+									<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 										<Input
 											label="admin.userDetail.ban.reason"
 											onChange={(
@@ -474,6 +476,7 @@ export default function UserDetailView({ userId }: Props) {
 
 				<Tabs.Content value="sessions">
 					<Card.Root className="overflow-hidden p-0">
+						<div className="overflow-x-auto">
 						<Table.Root>
 							<Table.Header>
 								<Table.Row>
@@ -561,7 +564,8 @@ export default function UserDetailView({ userId }: Props) {
 									</Table.Row>
 								))}
 							</Table.Body>
-						</Table.Root>
+					</Table.Root>
+						</div>
 					</Card.Root>
 				</Tabs.Content>
 
@@ -916,7 +920,7 @@ export default function UserDetailView({ userId }: Props) {
 											))}
 								</div>
 
-								<div className="grid grid-cols-2 gap-3">
+								<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 									<Combobox
 										onValueChange={(v) =>
 											setBannerMode(

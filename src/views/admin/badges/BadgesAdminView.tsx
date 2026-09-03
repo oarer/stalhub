@@ -143,7 +143,7 @@ export default function BadgesAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1 className="font-semibold text-2xl">
 					{t('admin.badges.title')}
 				</h1>
@@ -161,8 +161,8 @@ export default function BadgesAdminView() {
 				</Card.Header>
 				<Card.Content>
 					<div className="flex flex-col gap-3">
-						<div className="flex items-end gap-3">
-							<div className="max-w-60">
+						<div className="flex flex-col flex-wrap gap-3 md:flex-row md:items-end">
+							<div className="w-full flex-1 md:w-auto md:max-w-60 md:flex-none">
 								<Input
 									label="admin.permissions.name"
 									onChange={(
@@ -211,7 +211,7 @@ export default function BadgesAdminView() {
 							</div>
 
 							{createMode === 'icon' ? (
-								<div className="max-w-60">
+								<div className="w-full md:w-auto md:max-w-60">
 									<Input
 										label="admin.badges.icon"
 										onChange={(
@@ -221,7 +221,7 @@ export default function BadgesAdminView() {
 									/>
 								</div>
 							) : (
-								<div className="max-w-80">
+								<div className="w-full md:w-auto md:max-w-80">
 									<Input
 										label="admin.badges.imageUrl"
 										onChange={(
@@ -276,6 +276,7 @@ export default function BadgesAdminView() {
 			</Card.Root>
 
 			<Card.Root className="overflow-hidden p-0">
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -419,6 +420,7 @@ export default function BadgesAdminView() {
 						)}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			</Card.Root>
 
 			<Modal.Root

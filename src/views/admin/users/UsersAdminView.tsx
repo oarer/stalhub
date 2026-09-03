@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { useDebounce } from '@/hooks/useDebounce'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminUserService } from '@/services/admin/user.service'
@@ -21,9 +22,10 @@ export default function UsersAdminView() {
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const take = 20
+	const debouncedSearch = useDebounce(search)
 
 	const { data } = useSuspenseQuery(
-		adminUserQueries.list({ take, page, search: search || undefined })
+		adminUserQueries.list({ take, page, search: debouncedSearch || undefined })
 	)
 
 	const deleteMutation = useMutation({
@@ -41,7 +43,7 @@ export default function UsersAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1 className="font-semibold text-2xl">
 					{t('admin.users.title')}
 				</h1>
@@ -51,7 +53,7 @@ export default function UsersAdminView() {
 			</div>
 
 			<div className="flex items-center gap-3">
-				<div className="w-80">
+				<div className="w-full md:w-80">
 					<Input
 						label="admin.users.search"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +66,7 @@ export default function UsersAdminView() {
 			</div>
 
 			<Card.Root className="overflow-hidden p-0">
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -181,6 +184,7 @@ export default function UsersAdminView() {
 						))}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			</Card.Root>
 
 			{totalPages > 1 && (

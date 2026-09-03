@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Badge } from '@/components/ui/Badge'
@@ -27,6 +28,7 @@ interface Props {
 
 export default function ClanAdminDetailView({ clanId }: Props) {
 	const t = useTranslations()
+	const router = useRouter()
 	const queryClient = getQueryClient()
 
 	const { data: clan } = useSuspenseQuery(adminClanQueries.get(clanId))
@@ -117,20 +119,20 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 		mutationFn: () => adminClanService.delete(clanId),
 		onSuccess: () => {
 			toast.success(t('admin.clans.toast.deleted'))
-			window.location.href = '/admin/clans'
+			router.push('/admin/clans')
 		},
 		onError: () => toast.error(t('admin.clans.toast.deleteError')),
 	})
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center gap-3">
+			<div className="flex flex-wrap items-center gap-3">
 				<Link href="/admin/clans">
 					<Button size="sm" variant="ghost">
 						<Icon icon="lucide:arrow-left" />
 					</Button>
 				</Link>
-				<h1 className="font-semibold text-2xl">
+				<h1 className="break-all font-semibold text-2xl">
 					{clan?.name}
 					{clan?.tag && (
 						<span className="ml-2 text-lg text-neutral-400">
@@ -154,7 +156,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 			</div>
 
 			<Tabs.Root defaultValue="info">
-				<Tabs.List>
+				<Tabs.List className="flex-wrap">
 					<Tabs.Trigger value="info">
 						<Icon icon="lucide:info" />
 						{t('admin.clans.detail.tabs.info')}
@@ -180,7 +182,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 						</Card.Header>
 						<Card.Content>
 							<div className="flex flex-col gap-4">
-								<div className="grid grid-cols-3 gap-3">
+								<div className="grid grid-cols-1 gap-3 md:grid-cols-3">
 									<Input
 										label="admin.clans.detail.name"
 										onChange={(e) =>
@@ -201,7 +203,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 										value={region}
 									/>
 								</div>
-								<div className="grid grid-cols-2 gap-3">
+								<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 									<Input
 										label="admin.clans.detail.description"
 										onChange={(e) =>
@@ -228,7 +230,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 									/>
 								</div>
 
-								<div className="flex items-center gap-8">
+								<div className="flex flex-wrap items-center gap-x-8 gap-y-3">
 									<Switch
 										checked={isPublic}
 										label={t(
@@ -245,8 +247,8 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 									/>
 								</div>
 
-								<div className="flex items-center gap-8">
-									<div className="w-40">
+								<div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+									<div className="w-full md:w-40">
 										<Input
 											label="admin.clans.detail.brawls_per_week"
 											max={4}
@@ -267,7 +269,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 										)}
 										onCheckedChange={setBrawlsMandatory}
 									/>
-									<div className="w-56">
+									<div className="w-full md:w-56">
 										<Combobox
 											onValueChange={(value) =>
 												setSundayActivity(
@@ -463,6 +465,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 
 				<Tabs.Content value="members">
 					<Card.Root className="overflow-hidden p-0">
+						<div className="overflow-x-auto">
 						<Table.Root>
 							<Table.Header>
 								<Table.Row>
@@ -514,7 +517,8 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 									</Table.Row>
 								))}
 							</Table.Body>
-						</Table.Root>
+					</Table.Root>
+						</div>
 					</Card.Root>
 				</Tabs.Content>
 

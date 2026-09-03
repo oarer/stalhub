@@ -98,7 +98,7 @@ export default function NotificationsAdminView() {
 				</Card.Header>
 				<Card.Content>
 					<div className="flex flex-col gap-4">
-						<div className="flex gap-2">
+						<div className="flex flex-wrap gap-2">
 							<Button
 								className={`gap-2 ${
 									mode === 'broadcast' && 'dark:bg-border/20'

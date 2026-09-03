@@ -45,7 +45,7 @@ export default function ArtsAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1 className="font-semibold text-2xl">
 					{t('admin.arts.title')}
 				</h1>
@@ -60,7 +60,7 @@ export default function ArtsAdminView() {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-2">
+			<div className="flex flex-wrap items-center gap-2">
 				<Button
 					onClick={() => setTypeFilter('')}
 					size="sm"
@@ -84,6 +84,7 @@ export default function ArtsAdminView() {
 			</div>
 
 			<Card.Root className="overflow-hidden p-0">
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -239,6 +240,7 @@ export default function ArtsAdminView() {
 						)}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			</Card.Root>
 
 			{totalPages > 1 && (

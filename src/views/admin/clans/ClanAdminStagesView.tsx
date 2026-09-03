@@ -103,7 +103,7 @@ function StageEditModal({
 							onChange={(e) => setMapName(e.target.value)}
 							value={mapName}
 						/>
-						<div className="grid grid-cols-2 gap-3">
+						<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 							<Combobox
 								onValueChange={(v) =>
 									setType(
@@ -137,7 +137,7 @@ function StageEditModal({
 								value={stageNumber}
 							/>
 						</div>
-						<div className="grid grid-cols-2 gap-3">
+						<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 							<Input
 								label="admin.clans.stages.started_at"
 								onChange={(e) => setStartedAt(e.target.value)}
@@ -199,6 +199,7 @@ export default function ClanAdminStagesView({ clanId }: { clanId: string }) {
 	return (
 		<Card.Root className="overflow-hidden p-0">
 			{stages?.length ? (
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -290,6 +291,7 @@ export default function ClanAdminStagesView({ clanId }: { clanId: string }) {
 						))}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			) : (
 				<Card.Content className="py-8 text-center text-neutral-400">
 					{t('admin.clans.stages.empty')}

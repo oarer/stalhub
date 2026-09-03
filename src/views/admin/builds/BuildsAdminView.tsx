@@ -38,7 +38,7 @@ export default function BuildsAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1 className="font-semibold text-2xl">
 					{t('admin.builds.title')}
 				</h1>
@@ -48,6 +48,7 @@ export default function BuildsAdminView() {
 			</div>
 
 			<Card.Root className="overflow-hidden p-0">
+				<div className="overflow-x-auto">
 				<Table.Root>
 					<Table.Header>
 						<Table.Row>
@@ -169,6 +170,7 @@ export default function BuildsAdminView() {
 						)}
 					</Table.Body>
 				</Table.Root>
+				</div>
 			</Card.Root>
 
 			{totalPages > 1 && (

@@ -959,6 +959,7 @@
 			"close": "닫기"
 		},
 		"sidebar": {
+			"title": "관리자",
 			"users": "사용자",
 			"roles": "역할",
 			"permissions": "권한",

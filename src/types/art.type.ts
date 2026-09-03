@@ -7,7 +7,7 @@ export interface Art {
 	id: string
 	external_id: string
 	type: ArtType
-	title?: string
+	title: string
 	description?: string
 	image_url: string | null
 	tags: string[]

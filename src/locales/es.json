@@ -959,6 +959,7 @@
       "close": "Cerrar"
     },
     "sidebar": {
+      "title": "Admin",
       "users": "Usuarios",
       "roles": "Roles",
       "permissions": "Permisos",

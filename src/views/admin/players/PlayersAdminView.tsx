@@ -104,7 +104,7 @@ export default function PlayersAdminView() {
 				</Card.Header>
 				<Card.Content>
 					<div className="flex flex-col gap-4">
-						<div className="flex items-end gap-3">
+						<div className="flex flex-col items-stretch gap-3 md:flex-row md:items-end">
 							<div className="flex-1">
 								<Input
 									label="UUID"
@@ -114,7 +114,7 @@ export default function PlayersAdminView() {
 									value={addUuid}
 								/>
 							</div>
-							<div className="w-48">
+							<div className="w-full md:w-48">
 								<Combobox
 									onValueChange={(v) =>
 										setAddRole(v as PlayerRoleValue)
@@ -128,7 +128,7 @@ export default function PlayersAdminView() {
 								/>
 							</div>
 						</div>
-						<div className="flex items-end gap-3">
+						<div className="flex flex-col items-stretch gap-3 md:flex-row md:items-end">
 							<div className="flex-1">
 								<Input
 									label="admin.permissions.description"
@@ -151,12 +151,12 @@ export default function PlayersAdminView() {
 			</Card.Root>
 
 			<div>
-				<div className="mb-4 flex items-center gap-3">
+				<div className="mb-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 					<h2 className="font-semibold text-lg">
 						{t('admin.players.rolesTitle')}
 					</h2>
 					<Combobox
-						className="w-48"
+						className="w-full sm:w-48"
 						onValueChange={(v) =>
 							setSelectedRole(v as PlayerRoleValue)
 						}
@@ -170,6 +170,7 @@ export default function PlayersAdminView() {
 				</div>
 
 				<Card.Root className="overflow-hidden p-0">
+					<div className="overflow-x-auto">
 					<Table.Root>
 						<Table.Header>
 							<Table.Row>
@@ -214,8 +215,9 @@ export default function PlayersAdminView() {
 									<Table.Cell />
 								</Table.Row>
 							)}
-						</Table.Body>
+					</Table.Body>
 					</Table.Root>
+					</div>
 				</Card.Root>
 			</div>
 
@@ -226,7 +228,7 @@ export default function PlayersAdminView() {
 
 				<Card.Root>
 					<Card.Content>
-						<div className="flex items-end gap-3">
+						<div className="flex flex-col items-stretch gap-3 md:flex-row md:items-end">
 							<div className="flex-1">
 								<Input
 									label="UUID"
@@ -251,7 +253,8 @@ export default function PlayersAdminView() {
 				</Card.Root>
 
 				{blacklist && blacklist.length > 0 && (
-					<Card.Root className="mt-4 overflow-hidden p-0">
+				<Card.Root className="mt-4 overflow-hidden p-0">
+						<div className="overflow-x-auto">
 						<Table.Root>
 							<Table.Header>
 								<Table.Row>
@@ -286,7 +289,8 @@ export default function PlayersAdminView() {
 									</Table.Row>
 								))}
 							</Table.Body>
-						</Table.Root>
+					</Table.Root>
+						</div>
 					</Card.Root>
 				)}
 			</div>

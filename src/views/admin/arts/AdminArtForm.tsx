@@ -204,7 +204,7 @@ export function AdminArtForm({
 							<span className="font-semibold text-md text-text-accent">
 								{t('admin.arts.form.type')}
 							</span>
-							<div className="grid grid-cols-2 gap-2">
+							<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
 								{ART_TYPES.map((artType) => (
 									<Button
 										className={cn(
