@@ -169,10 +169,9 @@ export const NAV_STRUCTURE: NavGroup[] = [
 			{
 				key: 'models',
 				icon: 'lucide:box',
-				href: '',
+				href: '/models',
 				labelKey: 'nav.groups.other.items.models.label',
 				descriptionKey: 'nav.groups.other.items.models.description',
-				disabled: true,
 			},
 		],
 	},
