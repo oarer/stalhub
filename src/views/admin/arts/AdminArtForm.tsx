@@ -47,6 +47,7 @@ export function AdminArtForm({
 	const [type, setType] = useState<ArtType>(ArtType.DEFAULT)
 	const [imageUrl, setImageUrl] = useState('')
 	const [tags, setTags] = useState('')
+	const [description, setDescription] = useState('')
 
 	const [authorMode, setAuthorMode] = useState<AuthorMode>('guest')
 	const [guestName, setGuestName] = useState('')
@@ -61,6 +62,7 @@ export function AdminArtForm({
 				setType(art.type)
 				setImageUrl(art.image_url ?? '')
 				setTags(art.tags.join(', '))
+				setDescription(art.description ?? '')
 				if (art.author.id !== null) {
 					setAuthorMode('user')
 					setSelectedUser({
@@ -82,6 +84,7 @@ export function AdminArtForm({
 				setType(ArtType.DEFAULT)
 				setImageUrl('')
 				setTags('')
+				setDescription('')
 				setAuthorMode('guest')
 				setGuestName('')
 				setSocials({})
@@ -103,6 +106,7 @@ export function AdminArtForm({
 				type,
 				image_url: imageUrl.trim() || null,
 				tags: parseTags(tags),
+				description: description.trim() || undefined,
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id }
 					: {
@@ -129,6 +133,7 @@ export function AdminArtForm({
 				type,
 				image_url: imageUrl.trim() || null,
 				tags: parseTags(tags),
+				description: description.trim() || undefined,
 				...(authorMode === 'user'
 					? { authorId: selectedUser?.id ?? null }
 					: {
@@ -236,6 +241,18 @@ export function AdminArtForm({
 								label="admin.arts.form.tagsPlaceholder"
 								onChange={(e) => setTags(e.target.value)}
 								value={tags}
+							/>
+						</div>
+
+						<div className="flex flex-col gap-2">
+							<span className="font-semibold text-md text-text-accent">
+								{t('admin.arts.form.description')}
+							</span>
+							<textarea
+								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
+								placeholder={t('admin.arts.form.descriptionPlaceholder')}
+								onChange={(e) => setDescription(e.target.value)}
+								value={description}
 							/>
 						</div>
 

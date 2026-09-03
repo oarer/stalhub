@@ -1861,6 +1861,8 @@
       "imageUploadError": "Error uploading image",
       "tags": "Tags",
       "tagsPlaceholder": "Tags, comma separated",
+      "description": "Description",
+      "descriptionPlaceholder": "Enter description (optional)",
       "create": "Create",
       "toastCreated": "Work created",
       "toastCreateError": "Create error",

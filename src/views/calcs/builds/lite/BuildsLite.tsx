@@ -5,7 +5,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { toPng } from 'html-to-image'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
@@ -26,9 +26,13 @@ import { BuildLiteHeader } from './components/BuildLiteHeader'
 import { BuildLitePngTemplate } from './components/BuildLitePngTemplate'
 import { CompareSlots } from './components/CompareSlots'
 import ConsumablesModalLite from './components/ConsumablesModal'
-import { ItemPickerModal } from './components/ItemPickerModal'
+import { ItemPickerModal, type StatFilterGroup } from './components/ItemPickerModal'
 import { StatsCompare } from './components/StatsCompare'
 import { useLiteArtifacts } from './hooks/useLiteArtifacts'
+import {
+	buildPositiveNegativeOptions,
+	filterItemsByEffects,
+} from '../utils/effectFilters'
 
 const imagePlaceholder =
 	'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E'
@@ -140,6 +144,56 @@ export default function BuildsLiteView({
 
 	const setArmor = useBuildStore((s) => s.setArmor)
 	const removeArmor = useBuildStore((s) => s.removeArmor)
+
+	const [selectedArmorPositiveStats, setSelectedArmorPositiveStats] = useState<
+		string[]
+	>([])
+	const [selectedArmorNegativeStats, setSelectedArmorNegativeStats] = useState<
+		string[]
+	>([])
+
+	const armorEffectOptions = useMemo(
+		() => buildPositiveNegativeOptions(armor, locale),
+		[armor, locale]
+	)
+
+	const armorStatFilteredItems = useMemo(
+		() =>
+			filterItemsByEffects(
+				armor,
+				locale,
+				selectedArmorPositiveStats,
+				selectedArmorNegativeStats
+			),
+		[
+			armor,
+			locale,
+			selectedArmorPositiveStats,
+			selectedArmorNegativeStats,
+		]
+	)
+
+	const armorStatFilters = useMemo(() => {
+		const groups: StatFilterGroup[] = []
+		if (armorEffectOptions.positiveOptions.length > 0) {
+			groups.push({
+				label: 'build.labels.positive_stats',
+				options: armorEffectOptions.positiveOptions,
+				values: selectedArmorPositiveStats,
+				onValuesChange: setSelectedArmorPositiveStats,
+			})
+		}
+		if (armorEffectOptions.negativeOptions.length > 0) {
+			groups.push({
+				label: 'build.labels.negative_stats',
+				options: armorEffectOptions.negativeOptions,
+				values: selectedArmorNegativeStats,
+				onValuesChange: setSelectedArmorNegativeStats,
+			})
+		}
+		return groups
+	}, [armorEffectOptions, selectedArmorPositiveStats, selectedArmorNegativeStats])
+
 
 	const {
 		addOptions,
@@ -481,7 +535,7 @@ export default function BuildsLiteView({
 			<ItemPickerModal
 				emptyTitle="build.labels.armor"
 				favoriteType="armor"
-				items={armor}
+				items={armorStatFilteredItems}
 				locale={locale}
 				onConfirm={(itemId) => {
 					setArmor(itemId)
@@ -490,8 +544,15 @@ export default function BuildsLiteView({
 				}}
 				previewId={armorPreviewId}
 				setPreviewId={setArmorPreviewId}
-				setShowModal={setShowArmorModal}
+				setShowModal={(open) => {
+					setShowArmorModal(open)
+					if (!open) {
+						setSelectedArmorPositiveStats([])
+						setSelectedArmorNegativeStats([])
+					}
+				}}
 				showModal={showArmorModal}
+				statFilters={armorStatFilters}
 				title="build.labels.armor_title"
 			/>
 			<div

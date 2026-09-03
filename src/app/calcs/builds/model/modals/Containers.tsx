@@ -3,9 +3,10 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
@@ -21,6 +22,11 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { findContSizeInBlocks, messageToString } from '@/utils/itemUtils'
+import {
+	buildEffectFilterMap,
+	buildEffectOptions,
+	filterItemsByEffects,
+} from '@/views/calcs/builds/utils/effectFilters'
 import { ListBlock } from '@/views/items/components/blocks'
 
 type Slot = string | null
@@ -33,6 +39,26 @@ export default function ContModal({ onClose }: ModalProps) {
 	const t = useTranslations()
 
 	const [filter, setFilter] = useState('')
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
+		[]
+	)
+
+	const effectOptions = useMemo(() => buildEffectOptions(items, locale), [
+		items,
+		locale,
+	])
+
+	const effectFilteredItems = useMemo(() => {
+		const { posSet } = buildEffectFilterMap(items, locale)
+		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
+		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
+		return filterItemsByEffects(
+			items,
+			locale,
+			positiveKeys,
+			negativeKeys
+		)
+	}, [items, locale, selectedEffectStats])
 
 	const container = useBuildStore((s) => s.build.container)
 	const setContainer = useBuildStore((s) => s.setContainer)
@@ -78,12 +104,22 @@ export default function ContModal({ onClose }: ModalProps) {
 							onChange={(e) => setFilter(e.target.value)}
 							value={filter}
 						/>
+						<Combobox
+							className="mt-2"
+							multiple
+							onValuesChange={setSelectedEffectStats}
+							options={effectOptions}
+							placeholder="build.labels.effects"
+							translateOptions={false}
+							values={selectedEffectStats}
+							zIndex={999999}
+						/>
 					</Card.Header>
 
 					<ItemsList
 						className="max-h-90"
 						favoriteType="container"
-						items={items}
+						items={effectFilteredItems}
 						locale={locale}
 						onSelectItem={(id) => setPreviewId(id)}
 						query={filter}

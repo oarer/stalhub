@@ -15,6 +15,7 @@ export interface AdminArtCreate {
 	type?: ArtType
 	image_url?: string | null
 	tags?: string[]
+	description?: string
 	author_id?: number
 	author_name?: string
 	author_social_links?: Record<string, string>
@@ -25,6 +26,7 @@ export interface AdminArtUpdate {
 	type?: ArtType
 	image_url?: string | null
 	tags?: string[]
+	description?: string
 	author_id?: number | null
 	author_name?: string | null
 	author_social_links?: Record<string, string> | null

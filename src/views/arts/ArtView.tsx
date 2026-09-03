@@ -102,7 +102,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 							/>
 						) : (
 							<Image
-								alt={art.title}
+								alt={art.title || 'none'}
 								className={cn(
 									'block h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full object-contain transition-all',
 									art.type === ArtType.NSFW &&
@@ -130,11 +130,22 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 				<aside className="flex min-w-0 flex-col gap-4">
 					<div className="flex items-center justify-between gap-2">
-						<h1
-							className={`${unbounded.className} min-w-0 font-bold text-2xl`}
-						>
-							{art.title}
-						</h1>
+						<div className='flex flex-col gap-0'>
+							{art.title && (
+								<h1
+									className={`${unbounded.className} min-w-0 font-bold text-2xl`}
+								>
+									{art.title}
+								</h1>
+							)}
+							{art.description && (
+								<h2
+									className={`${montserrat.className} min-w-0 font-semibold text-md`}
+								>
+									{art.description}
+								</h2>
+							)}
+						</div>
 						{art.type === ArtType.NSFW && (
 							<Badge variant={'nsfw'}>NSFW</Badge>
 						)}

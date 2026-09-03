@@ -399,7 +399,8 @@
     },
     "publishedAt": "Дата публикации",
     "readComments": "К комментариям",
-    "notFound": "Работа не найдена"
+    "notFound": "Работа не найдена",
+    "views": "Просмотры"
   },
   "ui": {
     "combobox": {
@@ -1224,6 +1225,8 @@
         "image": "Изображение",
         "tags": "Теги",
         "tagsPlaceholder": "Теги через запятую",
+        "description": "Описание",
+        "descriptionPlaceholder": "Введите описание (необязательно)",
         "author": "Автор",
         "authorGuest": "Вне сайта",
         "authorUser": "Пользователь сайта",
@@ -1914,6 +1917,8 @@
       "imageUploadError": "Ошибка при загрузке изображения",
       "tags": "Теги",
       "tagsPlaceholder": "Теги через запятую",
+      "description": "Описание",
+      "descriptionPlaceholder": "Введите описание (необязательно)",
       "create": "Создать",
       "toastCreated": "Работа создана",
       "toastCreateError": "Ошибка при создании",

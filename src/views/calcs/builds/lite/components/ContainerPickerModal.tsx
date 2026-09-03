@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react'
 import { Modal } from '@/components/ui/Modal'
 import type { Item, Locale } from '@/types/item.type'
 import { findContSizeInBlocks } from '@/utils/itemUtils'
-import { ItemPickerModal } from './ItemPickerModal'
+import { ItemPickerModal, type StatFilterGroup } from './ItemPickerModal'
 
 type ContainerPickerModalProps = {
 	showModal: boolean
@@ -17,6 +17,7 @@ type ContainerPickerModalProps = {
 	locale: Locale
 	currentSlots: (string | null)[]
 	onSelectItem?: (itemId: string, slotsCount: number) => void
+	statFilters?: StatFilterGroup[]
 }
 
 export function ContainerPickerModal({
@@ -29,6 +30,7 @@ export function ContainerPickerModal({
 	locale,
 	currentSlots,
 	onSelectItem,
+	statFilters,
 }: ContainerPickerModalProps) {
 	const [showConfirm, setShowConfirm] = useState(false)
 	const t = useTranslations()
@@ -75,6 +77,7 @@ export function ContainerPickerModal({
 					if (!open) setShowConfirm(false)
 				}}
 				showModal={showModal}
+				statFilters={statFilters}
 				title="build.labels.cont_title"
 			/>
 			<Modal.Root onOpenChange={setShowConfirm} open={showConfirm}>

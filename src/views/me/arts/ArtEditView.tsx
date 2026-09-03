@@ -37,6 +37,7 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 	const [type, setType] = useState<ArtType>(art.type)
 	const [imageUrl, setImageUrl] = useState(art.image_url ?? '')
 	const [tags, setTags] = useState(art.tags.join(', '))
+	const [description, setDescription] = useState(art.description ?? '')
 
 	const updateMutation = useMutation({
 		mutationFn: (data: ArtUpdate) => artService.update(artId, data),
@@ -57,6 +58,7 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 			type,
 			image_url: imageUrl.trim() || null,
 			tags: parseTags(tags),
+			description: description.trim() || undefined,
 		})
 	}
 
@@ -115,6 +117,22 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 									</Button>
 								))}
 							</div>
+						</div>
+
+						<div className="flex flex-col gap-2">
+							<label
+								className="font-semibold text-md text-text-accent"
+								htmlFor="art-description"
+							>
+								{t('me.newArt.description')}
+							</label>
+							<textarea
+								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
+								id="art-description"
+								placeholder={t('me.newArt.descriptionPlaceholder')}
+								onChange={(e) => setDescription(e.target.value)}
+								value={description}
+							/>
 						</div>
 
 						<div className="flex flex-col gap-2">

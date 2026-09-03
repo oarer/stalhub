@@ -15,8 +15,10 @@ import {
 import { messageToString } from '@/utils/itemUtils'
 import { ArtifactSlotRow } from '@/views/calcs/builds/lite/components/ArtifactSlotRow'
 import { ContainerPickerModal } from '@/views/calcs/builds/lite/components/ContainerPickerModal'
-import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
-import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
+import {
+	buildPositiveNegativeOptions,
+	filterItemsByEffects,
+} from '@/views/calcs/builds/utils/effectFilters'
 import type { StatFilterGroup } from './ItemPickerModal'
 import { ItemPickerModal } from './ItemPickerModal'
 
@@ -82,39 +84,9 @@ export function ArtifactSlotsLite({
 		[items]
 	)
 
-	const parsedItemsMap = useMemo(() => {
-		const map = new Map<string, ReturnType<typeof parseItemStats>>()
-		for (const item of items) {
-			map.set(item.id, parseItemStats(item, locale))
-		}
-		return map
-	}, [items, locale])
-
 	const { positiveOptions, negativeOptions } = useMemo(() => {
-		const posMap = new Map<string, string>()
-		const negMap = new Map<string, string>()
-
-		for (const parsed of parsedItemsMap.values()) {
-			const allStats = { ...parsed.statRanges, ...parsed.addStats }
-			for (const [key, val] of Object.entries(allStats)) {
-				const display = parsed.displayNames[key] ?? key
-				if (isDebuffColor(val.color)) {
-					negMap.set(key, display)
-				} else {
-					posMap.set(key, display)
-				}
-			}
-		}
-
-		return {
-			positiveOptions: Array.from(posMap.entries()).map(
-				([value, label]) => ({ value, label })
-			),
-			negativeOptions: Array.from(negMap.entries()).map(
-				([value, label]) => ({ value, label })
-			),
-		}
-	}, [parsedItemsMap])
+		return buildPositiveNegativeOptions(items, locale)
+	}, [items, locale])
 
 	const [selectedPositiveStats, setSelectedPositiveStats] = useState<
 		string[]
@@ -124,37 +96,13 @@ export function ArtifactSlotsLite({
 	>([])
 
 	const statFilteredItems = useMemo(() => {
-		if (
-			selectedPositiveStats.length === 0 &&
-			selectedNegativeStats.length === 0
+		return filterItemsByEffects(
+			items,
+			locale,
+			selectedPositiveStats,
+			selectedNegativeStats
 		)
-			return items
-
-		return items.filter((item) => {
-			const parsed = parsedItemsMap.get(item.id)
-			if (!parsed) return true
-
-			const allStats = { ...parsed.statRanges, ...parsed.addStats }
-
-			if (selectedPositiveStats.length > 0) {
-				const hasPositive = selectedPositiveStats.every(
-					(key) =>
-						key in allStats && !isDebuffColor(allStats[key].color)
-				)
-				if (!hasPositive) return false
-			}
-
-			if (selectedNegativeStats.length > 0) {
-				const hasNegative = selectedNegativeStats.every(
-					(key) =>
-						key in allStats && isDebuffColor(allStats[key].color)
-				)
-				if (!hasNegative) return false
-			}
-
-			return true
-		})
-	}, [items, parsedItemsMap, selectedPositiveStats, selectedNegativeStats])
+	}, [items, locale, selectedPositiveStats, selectedNegativeStats])
 
 	const statFilters: StatFilterGroup[] = [
 		...(positiveOptions.length > 0
@@ -187,6 +135,61 @@ export function ArtifactSlotsLite({
 	const handleModalOpenChange = (open: boolean) => {
 		setShowModal(open)
 		if (!open) resetFilters()
+	}
+
+	const containerEffectOptions = useMemo(
+		() => buildPositiveNegativeOptions(containers, locale),
+		[containers, locale]
+	)
+
+	const [selectedContainerPositiveStats, setSelectedContainerPositiveStats] =
+		useState<string[]>([])
+	const [selectedContainerNegativeStats, setSelectedContainerNegativeStats] =
+		useState<string[]>([])
+
+	const containerStatFilteredItems = useMemo(
+		() =>
+			filterItemsByEffects(
+				containers,
+				locale,
+				selectedContainerPositiveStats,
+				selectedContainerNegativeStats
+			),
+		[
+			containers,
+			locale,
+			selectedContainerPositiveStats,
+			selectedContainerNegativeStats,
+		]
+	)
+
+	const containerStatFilters = useMemo(() => {
+		const groups: StatFilterGroup[] = []
+		if (containerEffectOptions.positiveOptions.length > 0) {
+			groups.push({
+				label: 'build.labels.positive_stats',
+				options: containerEffectOptions.positiveOptions,
+				values: selectedContainerPositiveStats,
+				onValuesChange: setSelectedContainerPositiveStats,
+			})
+		}
+		if (containerEffectOptions.negativeOptions.length > 0) {
+			groups.push({
+				label: 'build.labels.negative_stats',
+				options: containerEffectOptions.negativeOptions,
+				values: selectedContainerNegativeStats,
+				onValuesChange: setSelectedContainerNegativeStats,
+			})
+		}
+		return groups
+	}, [containerEffectOptions, selectedContainerPositiveStats, selectedContainerNegativeStats])
+
+	const handleContainerModalOpenChange = (open: boolean) => {
+		setShowContainerModal(open)
+		if (!open) {
+			setSelectedContainerPositiveStats([])
+			setSelectedContainerNegativeStats([])
+		}
 	}
 
 	return (
@@ -276,14 +279,15 @@ export function ArtifactSlotsLite({
 			/>
 			<ContainerPickerModal
 				currentSlots={slots}
-				items={containers}
+				items={containerStatFilteredItems}
 				locale={locale}
 				onSelectItem={onCreateContainer}
 				previewId={containerPreviewId}
 				selectedItem={selectedContainer}
 				setPreviewId={setContainerPreviewId}
-				setShowModal={setShowContainerModal}
+				setShowModal={handleContainerModalOpenChange}
 				showModal={showContainerModal}
+				statFilters={containerStatFilters}
 			/>
 		</>
 	)

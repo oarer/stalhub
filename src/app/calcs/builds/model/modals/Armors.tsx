@@ -3,9 +3,10 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
@@ -20,6 +21,11 @@ import {
 	infoColorMap,
 } from '@/types/item.type'
 import { isNumericVariantsBlock, messageToString } from '@/utils/itemUtils'
+import {
+	buildEffectFilterMap,
+	buildEffectOptions,
+	filterItemsByEffects,
+} from '@/views/calcs/builds/utils/effectFilters'
 import { ListBlock, NumericVariantsCard } from '@/views/items/components/blocks'
 
 export default function ArmorModal({ onClose }: ModalProps) {
@@ -32,12 +38,32 @@ export default function ArmorModal({ onClose }: ModalProps) {
 
 	const [filter, setFilter] = useState('')
 	const [numericVariants, setNumericVariants] = useState<number>(0)
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
+		[]
+	)
 	const armor = useBuildStore((s) => s.build.armor)
 	const setArmor = useBuildStore((s) => s.setArmor)
 
 	const [previewId, setPreviewId] = useState<string | null>(armor?.id ?? null)
 
 	const selectedItem = items.find((i) => i.id === previewId)
+
+	const effectOptions = useMemo(() => buildEffectOptions(items, locale), [
+		items,
+		locale,
+	])
+
+	const effectFilteredItems = useMemo(() => {
+		const { posSet } = buildEffectFilterMap(items, locale)
+		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
+		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
+		return filterItemsByEffects(
+			items,
+			locale,
+			positiveKeys,
+			negativeKeys
+		)
+	}, [items, locale, selectedEffectStats])
 
 	const handleSet = () => {
 		setArmor(previewId!, numericVariants)
@@ -54,12 +80,22 @@ export default function ArmorModal({ onClose }: ModalProps) {
 						onChange={(e) => setFilter(e.target.value)}
 						value={filter}
 					/>
+					<Combobox
+						className="mt-2"
+						multiple
+						onValuesChange={setSelectedEffectStats}
+						options={effectOptions}
+						placeholder="build.labels.effects"
+						translateOptions={false}
+						values={selectedEffectStats}
+						zIndex={999999}
+					/>
 				</Card.Header>
 
 				<ItemsList
 					className="max-h-127"
 					favoriteType="armor"
-					items={items}
+					items={effectFilteredItems}
 					locale={locale}
 					onSelectItem={(id) => setPreviewId(id)}
 					query={filter}

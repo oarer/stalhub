@@ -453,7 +453,7 @@ export default function DropdownMenu({
 										opacity: 1 - Math.min(1, dragY / 300),
 									}}
 									aria-hidden="true"
-									className="fixed inset-0 z-[60] bg-black/60 sm:hidden"
+									className="fixed inset-0 z-60 bg-black/60 sm:hidden"
 									exit={{ opacity: 0 }}
 									initial={{ opacity: 0 }}
 									onClick={closeDropdown}
@@ -465,7 +465,7 @@ export default function DropdownMenu({
 								<motion.div
 									animate={{ opacity: 1, y: 0 }}
 									className={cn(
-										'fixed inset-x-0 bottom-0 z-[70] flex max-h-[80dvh] flex-col gap-1 rounded-t-2xl bg-card p-3 shadow-lg ring-2 ring-primary/40 sm:hidden',
+										'fixed inset-x-0 bottom-0 z-70 flex max-h-[80dvh] flex-col gap-1 rounded-t-2xl bg-card p-3 shadow-lg ring-2 ring-primary/40 sm:hidden',
 										dragY > 0 && 'cursor-grabbing'
 									)}
 									drag="y"

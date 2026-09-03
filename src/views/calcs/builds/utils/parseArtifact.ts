@@ -51,7 +51,7 @@ function createStatPushers() {
 
 	function pushBase(key: string, val: number, display?: string) {
 		if (!key) return
-		if (key in statRanges) return
+		if (key in statRanges || key in addStats) return
 		baseStats[key] = (baseStats[key] ?? 0) + val
 		if (display) {
 			displayNames[key] = display

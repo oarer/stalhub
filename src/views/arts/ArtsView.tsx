@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -151,7 +151,7 @@ export default function ArtsView() {
 									</>
 								) : (
 									<Image
-										alt={art.title}
+										alt={art.title || 'none'}
 										className={cn(
 											'h-auto w-full transition-all duration-400',
 											art.type === ArtType.NSFW &&
@@ -199,7 +199,9 @@ export default function ArtsView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className="text-sm text-text-accent">
+					<span
+						className={`${montserrat.className} text-foreground text-sm`}
+					>
 						{page} / {totalPages}
 					</span>
 					<Button
