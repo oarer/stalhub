@@ -4,8 +4,8 @@
 			"name": "sever",
 			"url": "https://cdn.stalhub.dev/maps/sever/tiles/{z}/{x}/{y}.png",
 			"title": {
-				"ru": "Север",
-				"en": "North zone"
+				"ru": "Северная зона",
+				"en": "North Zone"
 			},
 			"preview_image": "https://cdn.stalhub.dev/maps/sever/sever.jpeg",
 			"image": {
@@ -18,8 +18,8 @@
 		{
 			"name": "old_sever",
 			"title": {
-				"ru": "Дикий север",
-				"en": "Stillwaters (Zaton)"
+				"ru": "Дикий Север",
+				"en": "Wild North"
 			},
 			"url": "https://cdn.stalhub.dev/maps/old_sever/tiles/{z}/{x}/{y}.png",
 			"preview_image": "https://cdn.stalhub.dev/maps/old_sever/old_sever.png",
@@ -33,8 +33,8 @@
 		{
 			"name": "south",
 			"title": {
-				"ru": "Юг",
-				"en": "Stillwaters (Zaton)"
+				"ru": "Южная зона",
+				"en": "South Zone"
 			},
 			"url": "https://cdn.stalhub.dev/maps/south/tiles/{z}/{x}/{y}.png",
 			"preview_image": "https://cdn.stalhub.dev/maps/south/south.png",
@@ -48,8 +48,8 @@
 		{
 			"name": "limansk",
 			"title": {
-				"ru": "Любеч-3 (Лиманск)",
-				"en": "Stillwaters (Zaton)"
+				"ru": "Любеч-3",
+				"en": "Limansk"
 			},
 			"url": "https://cdn.stalhub.dev/maps/limansk/tiles/{z}/{x}/{y}.png",
 			"preview_image": "https://cdn.stalhub.dev/maps/limansk/limansk.png",
@@ -64,7 +64,7 @@
 			"name": "labyrinth",
 			"title": {
 				"ru": "Лабиринт",
-				"en": "Stillwaters (Zaton)"
+				"en": "Labyrinth"
 			},
 			"url": "https://cdn.stalhub.dev/maps/labyrinth/tiles/{z}/{x}/{y}.png",
 			"preview_image": "https://cdn.stalhub.dev/maps/labyrinth/labyrinth.png",
@@ -79,7 +79,7 @@
 			"name": "graveyard",
 			"title": {
 				"ru": "Могильник",
-				"en": "Stillwaters (Zaton)"
+				"en": "Graveyard"
 			},
 			"url": "https://cdn.stalhub.dev/maps/graveyard/tiles/{z}/{x}/{y}.png",
 			"preview_image": "https://cdn.stalhub.dev/maps/graveyard/graveyard.png",
@@ -88,7 +88,7 @@
 				"height": 4096,
 				"maxZoom": 13
 			},
-			"markers": "http://localhost:3000/markers/graveyard.json"
+			"markers": "/markers/graveyard.json"
 		}
 	]
 }
