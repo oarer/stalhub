@@ -106,6 +106,19 @@ const doAutoSave = (
 	set({ savedModules: [...savedModules] })
 }
 
+let autoSaveTimer: ReturnType<typeof setTimeout> | null = null
+
+const scheduleAutoSave = (
+	set: Parameters<typeof doAutoSave>[0],
+	get: Parameters<typeof doAutoSave>[1]
+) => {
+	if (autoSaveTimer !== null) clearTimeout(autoSaveTimer)
+	autoSaveTimer = setTimeout(() => {
+		autoSaveTimer = null
+		doAutoSave(set, get)
+	}, 400)
+}
+
 export const useModulesStore = create<ModulesState>()(
 	persist(
 		(set, get) => ({
@@ -137,7 +150,7 @@ export const useModulesStore = create<ModulesState>()(
 						[group]: { ...state.slots[group], moduleKey },
 					},
 				}))
-				doAutoSave(set, get)
+				scheduleAutoSave(set, get)
 			},
 
 			setQuality: (group, quality) => {
@@ -147,7 +160,7 @@ export const useModulesStore = create<ModulesState>()(
 						[group]: { ...state.slots[group], quality },
 					},
 				}))
-				doAutoSave(set, get)
+				scheduleAutoSave(set, get)
 			},
 
 			resetGroup: (group) => {
@@ -157,7 +170,7 @@ export const useModulesStore = create<ModulesState>()(
 						[group]: { moduleKey: '', quality: 0 },
 					},
 				}))
-				doAutoSave(set, get)
+				scheduleAutoSave(set, get)
 			},
 
 			saveModule: (name) => {

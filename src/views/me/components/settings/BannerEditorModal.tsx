@@ -2,11 +2,12 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import type { BannerMode, BannerType } from '@/types/user.type'
 import { BANNER_MODES, BANNER_TYPES, findLabel } from './constants'
+import { ImageEditorModal } from './ImageEditorModal'
 import { OptionDropdown } from './OptionDropdown'
 
 export function BannerEditorModal({
@@ -30,10 +31,15 @@ export function BannerEditorModal({
 }) {
 	const t = useTranslations()
 	const fileInputRef = useRef<HTMLInputElement>(null)
+	const [editorFile, setEditorFile] = useState<File | null>(null)
+	const [isEditorOpen, setIsEditorOpen] = useState(false)
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0]
-		if (file) onUpload(file)
+		if (file) {
+			setEditorFile(file)
+			setIsEditorOpen(true)
+		}
 		e.target.value = ''
 	}
 
@@ -128,6 +134,21 @@ export function BannerEditorModal({
 					</div>
 				</Modal.Body>
 			</Modal.Content>
+			<ImageEditorModal
+				file={editorFile}
+				isUploading={isUploading}
+				onConfirm={(file) => {
+					onUpload(file)
+					setIsEditorOpen(false)
+					setEditorFile(null)
+				}}
+				onOpenChange={(open) => {
+					setIsEditorOpen(open)
+					if (!open) setEditorFile(null)
+				}}
+				open={isEditorOpen}
+				title={t('me.settings.editorTitle')}
+			/>
 		</Modal.Root>
 	)
 }

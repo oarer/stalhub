@@ -94,7 +94,7 @@ export type ModalProps = {
 export const percentButtons = [
 	{
 		value: 100,
-		color: 'ring-neutral-600 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600',
+		color: 'ring-neutral-600 bg-foreground/50 hover:bg-neutral-700',
 	},
 	{
 		value: 115,

@@ -292,6 +292,11 @@ export function getModuleByDefinitionId(
 export interface ModuleDamageModifiers {
 	startMult: number
 	endMult: number
+	headMult?: number
+	limbsMult?: number
+	plateDamageMult?: number
+	first5Bonus?: number
+	last5Bonus?: number
 }
 
 export function getModuleDamageModifiers(
@@ -317,5 +322,60 @@ export function getModuleDamageModifiers(
 	return {
 		startMult: 1 + damage / 100,
 		endMult: 1 + damageDistant / 100,
+	}
+}
+
+export function getConceptModuleDamageMods(
+	moduleKey: string,
+	quality: number
+): ModuleDamageModifiers | null {
+	if (!moduleKey) return null
+
+	const module = getModuleByKey('concept', moduleKey)
+	if (!module) return null
+
+	let damage = 0
+	let damageDistant = 0
+	let headMult: number | undefined
+	let limbsMult: number | undefined
+	let plateDamageMult: number | undefined
+	let first5Bonus: number | undefined
+	let last5Bonus: number | undefined
+
+	for (const stat of module.stats) {
+		const value = getModuleStatValue(stat, quality)
+		switch (stat.key) {
+			case 'damage':
+				damage += value
+				break
+			case 'damage_distant':
+				damageDistant += value
+				break
+			case 'head_damage_modifier':
+				headMult = value
+				break
+			case 'limbs_damage_modifier':
+				limbsMult = value
+				break
+			case 'armor_plate_damage':
+				plateDamageMult = value
+				break
+			case 'first5_damage_bonus':
+				first5Bonus = value
+				break
+			case 'last5_damage_bonus':
+				last5Bonus = value
+				break
+		}
+	}
+
+	return {
+		startMult: 1 + damage / 100,
+		endMult: 1 + damageDistant / 100,
+		headMult,
+		limbsMult,
+		plateDamageMult,
+		first5Bonus,
+		last5Bonus,
 	}
 }

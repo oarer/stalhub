@@ -8,13 +8,14 @@ import type { InfoColor } from '@/types/item.type'
 import { infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { computePrimeFromBuild } from '@/views/calcs/builds/utils/computePrimeFromBuild'
-import { getModuleDamageModifiers } from '@/views/calcs/modules/utils/moduleCalc'
+import { getConceptModuleDamageMods } from '@/views/calcs/modules/utils/moduleCalc'
 import type { TTKSeries } from '../components/TTKChart'
 import { COLORS } from '../constants/ttk'
 import {
 	buildSeries,
 	calcTTKAtDist,
 	getDamageBlock,
+	type ModuleDamageMods,
 } from '../utils'
 import type { useTTKData } from './useTTKData'
 
@@ -31,7 +32,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 	} = data
 
 	const { savedBuilds } = useBuildStore()
-	const modulesSlots = useModulesStore((s) => s.slots)
+	const modulesData = useModulesStore((s) => s.data)
 	const {
 		slots,
 		focusedSlotId,
@@ -41,7 +42,6 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 		plateId,
 		plateDurability,
 		buildId,
-		modulesEnabled,
 	} = useTTKStore()
 
 	const weaponMap = useMemo(
@@ -92,10 +92,22 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 
 	const activeSlots = useMemo(() => slots.filter((s) => s.weaponId), [slots])
 
-	const moduleMods = useMemo(
-		() => (modulesEnabled ? getModuleDamageModifiers(modulesSlots) : undefined),
-		[modulesEnabled, modulesSlots]
-	)
+	const slotModsMap = useMemo(() => {
+		const map = new Map<string, ModuleDamageMods | undefined>()
+		const ready = modulesData.groups.length > 0
+		for (const s of activeSlots) {
+			map.set(
+				s.id,
+				ready && s.moduleKey
+					? (getConceptModuleDamageMods(
+							s.moduleKey,
+							s.moduleQuality
+						) ?? undefined)
+					: undefined
+			)
+		}
+		return map
+	}, [activeSlots, modulesData])
 
 	const focusedSlot = useMemo(
 		() =>
@@ -115,6 +127,10 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 		() => (focusedSlot ? (ammoMap.get(focusedSlot.ammoId) ?? null) : null),
 		[focusedSlot, ammoMap]
 	)
+
+	const focusedModuleMods = focusedSlot
+		? slotModsMap.get(focusedSlot.id)
+		: undefined
 
 	const weaponOptions = useMemo(
 		() => weapons.filter((w) => getDamageBlock(w) !== null),
@@ -146,7 +162,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 							s.useBurstRof,
 							plate,
 							plateDurability,
-							moduleMods,
+							slotModsMap.get(s.id),
 							s.holdTime
 						),
 						color: COLORS[i % COLORS.length],
@@ -163,7 +179,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 			activeSlots,
 			plate,
 			plateDurability,
-			moduleMods,
+			slotModsMap,
 		]
 	)
 
@@ -175,6 +191,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 					if (!weapon) return null
 					const ammo = ammoMap.get(s.ammoId) ?? null
 					const block = getDamageBlock(weapon)
+					const moduleMods = slotModsMap.get(s.id)
 
 					const result0 = calcTTKAtDist(
 						weapon,
@@ -229,7 +246,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 			locale,
 			plate,
 			plateDurability,
-			moduleMods,
+			slotModsMap,
 		]
 	)
 
@@ -251,6 +268,7 @@ export function useTTKComputations(data: ReturnType<typeof useTTKData>) {
 		focusedSlot,
 		focusedWeapon,
 		focusedAmmo,
+		focusedModuleMods,
 		weaponOptions,
 		focusedItemColor,
 		plate,

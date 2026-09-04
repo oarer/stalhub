@@ -1,12 +1,7 @@
 import type { Item } from '@/types/item.type'
 import { CUSTOM_ROF_MAP, type CustomRof, type HitZone } from '../constants/ttk'
 import { getAmmoPenetration } from './ammo'
-import {
-	getDmgPerShot,
-	getShotsToKill,
-	getShotsToKillWithPlate,
-	type ModuleDamageMods,
-} from './damage'
+import { getDmgPerShot, type ModuleDamageMods } from './damage'
 import { getNumericStat } from './itemStats'
 import { getPlateDamageAbsorption, getPlateMaxDurability } from './plate'
 
@@ -67,65 +62,69 @@ export function calcTTKAtDist(
 	const computeTtk = (shots: number) =>
 		(isBurst
 			? calcBurstTTK(shots, rofConfig)
-			: (shots - 1) * (60 / rofConfig.rof)) +
-		getReloadTime(weapon, shots)
+			: (shots - 1) * (60 / rofConfig.rof)) + getReloadTime(weapon, shots)
 
 	const penetration = ammo ? getAmmoPenetration(ammo) : 0
 
 	const effectiveHp =
 		((100 + bulletRes * (1 - penetration / 100)) * (vitality + 100)) / 100
 
-	if (!plate || hitZone !== 'body') {
-		const dmg = getDmgPerShot(
+	const mag = getNumericStat(weapon, 'weapon.tooltip.weapon.info.clip_size')
+	const shotInMag = (shotNumber: number) =>
+		mag > 0 ? ((shotNumber - 1) % mag) + 1 : shotNumber
+
+	const dmgForShot = (shotNumber: number, plated: boolean) =>
+		getDmgPerShot(
 			weapon,
 			ammo,
 			hitZone,
 			dist,
 			variantIndex,
-			undefined,
+			plated ? plate : undefined,
 			moduleMods,
-			holdTime
+			holdTime,
+			shotInMag(shotNumber),
+			mag
 		)
-		const shots = getShotsToKill(effectiveHp, dmg)
-		if (shots <= 0) return { ttk: 0, shots: 0 }
 
+	if (!plate || hitZone !== 'body') {
+		let hp = effectiveHp
+		let shots = 0
+		let guard = 0
+		while (hp > 0 && guard < 100000) {
+			guard++
+			const dmg = dmgForShot(shots + 1, false)
+			if (dmg <= 0) break
+			hp -= dmg
+			shots++
+		}
+		if (shots <= 0 || hp > 0) return { ttk: 0, shots: 0 }
 		return { ttk: computeTtk(shots), shots }
 	}
 
-	const dmgNaked = getDmgPerShot(
-		weapon,
-		ammo,
-		hitZone,
-		dist,
-		variantIndex,
-		undefined,
-		moduleMods,
-		holdTime
-	)
-	if (dmgNaked <= 0) return { ttk: 0, shots: 0 }
-
-	const dmgPlated = getDmgPerShot(
-		weapon,
-		ammo,
-		hitZone,
-		dist,
-		variantIndex,
-		plate,
-		moduleMods,
-		holdTime
-	)
-
-	const absorption = getPlateDamageAbsorption(plate)
-	const drainPerShot = dmgNaked * (absorption / 100)
+	const absorption = getPlateDamageAbsorption(plate) / 100
 	const durability = plateDurability ?? getPlateMaxDurability(plate)
+	const plateDmgMult = moduleMods?.plateDamageMult ?? 0
 
-	const shots = getShotsToKillWithPlate(
-		effectiveHp,
-		dmgPlated,
-		dmgNaked,
-		drainPerShot,
-		durability
-	)
+	let hp = effectiveHp
+	let dura = durability
+	let shots = 0
+	let guard = 0
+	while (hp > 0 && guard < 100000) {
+		guard++
+		const plated = dura > 0
+		const shotNumber = shots + 1
+		const dmg = dmgForShot(shotNumber, plated)
+		if (dmg <= 0) break
 
+		if (plated) {
+			const nakedDmg = dmgForShot(shotNumber, false)
+			dura -= nakedDmg * absorption * (1 + plateDmgMult / 100)
+		}
+
+		hp -= dmg
+		shots++
+	}
+	if (shots <= 0 || hp > 0) return { ttk: 0, shots: 0 }
 	return { ttk: computeTtk(shots), shots }
 }

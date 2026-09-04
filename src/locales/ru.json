@@ -659,7 +659,12 @@
       "table": {
         "ttk": "ТТК",
         "hits": "Попаданий"
-      }
+      },
+      "module_concept": "Модуль концепта",
+      "module_pick": "Выберите модуль",
+      "module_search": "Поиск модуля...",
+      "module_empty": "Модули не найдены",
+      "module_reset": "Сбросить модуль"
     },
     "hitZones": {
       "head": "Голова",
@@ -2062,7 +2067,16 @@
       "syncClansTitle": "Синхронизация кланов",
       "syncClansDesc": "Обновить список ваших кланов по данным EXBO. Кланы будут обнаружены и связаны с вашим аккаунтом.",
       "syncClansSuccess": "Кланы синхронизированы: найдено {count}",
-      "syncClansError": "Не удалось синхронизировать кланы"
+      "syncClansError": "Не удалось синхронизировать кланы",
+      "editorTitle": "Редактирование изображения",
+      "editorCrop": "Обрезка",
+      "editorBrush": "Кисть",
+      "editorFill": "Заливка",
+      "editorUndo": "Отменить",
+      "editorReset": "Сброс",
+      "editorCropHint": "Потяните по изображению, чтобы выбрать область обрезки",
+      "editorApplyCrop": "Применить обрезку",
+      "editorConfirm": "Сохранить"
     },
     "buildCard": {
       "toastError": "Ошибка",

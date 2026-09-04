@@ -75,9 +75,11 @@ export default function BuildPriceModal() {
 				</Modal.Header>
 				<Modal.Body>
 					{isLoading ? (
-						<p className="py-8 text-center text-neutral-400">…</p>
+						<p className="py-8 text-center text-muted-foreground">
+							…
+						</p>
 					) : isError ? (
-						<p className="py-8 text-center text-neutral-400">
+						<p className="py-8 text-center text-muted-foreground">
 							{t('build.price_unavailable')}
 						</p>
 					) : rows.length === 0 ? (
@@ -121,7 +123,7 @@ export default function BuildPriceModal() {
 													)}
 												</p>
 												<p
-													className={`${montserrat.className} font-semibold text-neutral-400 text-xs`}
+													className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
 												>
 													{art.percent}%
 													{art.potential > 0

@@ -626,7 +626,12 @@
       "table": {
         "ttk": "TTK",
         "hits": "Aciertos"
-      }
+      },
+      "module_concept": "Módulo de concepto",
+      "module_pick": "Seleccionar módulo",
+      "module_search": "Buscar módulo...",
+      "module_empty": "No se encontraron módulos",
+      "module_reset": "Restablecer módulo"
     },
     "hitZones": {
       "head": "Cabeza",
@@ -1945,7 +1950,16 @@
       "syncClansTitle": "Sincronizar clanes",
       "syncClansDesc": "Actualizar tu lista de clanes desde los datos de EXBO. Los clanes serán descubiertos y vinculados a tu cuenta.",
       "syncClansSuccess": "Clanes sincronizados: encontrados {count}",
-      "syncClansError": "Error al sincronizar clanes"
+      "syncClansError": "Error al sincronizar clanes",
+      "editorTitle": "Editar imagen",
+      "editorCrop": "Recortar",
+      "editorBrush": "Pincel",
+      "editorFill": "Relleno",
+      "editorUndo": "Deshacer",
+      "editorReset": "Restablecer",
+      "editorCropHint": "Arrastra sobre la imagen para seleccionar el área de recorte",
+      "editorApplyCrop": "Aplicar recorte",
+      "editorConfirm": "Guardar"
     },
     "buildCard": {
       "toastError": "Error",

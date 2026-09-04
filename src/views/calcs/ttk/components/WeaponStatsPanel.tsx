@@ -12,7 +12,7 @@ import {
 	getWeaponStats,
 	type HitZone,
 } from '../constants/ttk'
-import { getDmgPerShot, getNumericStat } from '../utils'
+import { getDmgPerShot, getNumericStat, type ModuleDamageMods } from '../utils'
 
 interface WeaponStatsPanelProps {
 	weapon: Item
@@ -21,6 +21,7 @@ interface WeaponStatsPanelProps {
 	variantIndex: number
 	useBurstRof: boolean
 	holdTime?: number
+	moduleMods?: ModuleDamageMods
 }
 
 const WeaponStatsPanel = memo(function Wsp({
@@ -30,6 +31,7 @@ const WeaponStatsPanel = memo(function Wsp({
 	variantIndex,
 	useBurstRof,
 	holdTime = 0,
+	moduleMods,
 }: WeaponStatsPanelProps) {
 	const t = useTranslations()
 	const dmg0 = useMemo(
@@ -41,10 +43,10 @@ const WeaponStatsPanel = memo(function Wsp({
 				0,
 				variantIndex,
 				undefined,
-				undefined,
+				moduleMods,
 				holdTime
 			),
-		[weapon, ammo, hitZone, variantIndex, holdTime]
+		[weapon, ammo, hitZone, variantIndex, moduleMods, holdTime]
 	)
 	const rofConfig = useMemo((): CustomRof => {
 		if (useBurstRof && CUSTOM_ROF_MAP[weapon.id]) {

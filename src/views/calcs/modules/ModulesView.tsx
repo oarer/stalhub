@@ -1,10 +1,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { MODULE_GROUP_KEYS, useModulesStore } from '@/stores/useModules.store'
+import type { ModuleGroupKey } from '@/types/module.type'
 import { ModuleGroupCard } from './components/ModuleGroupCard'
 import ModuleSelector from './components/ModuleSelector'
 import { ModuleSummary } from './components/ModuleSummary'
@@ -21,6 +22,21 @@ export function ModulesView({ variant = 'page' }: ModulesViewProps) {
 	useEffect(() => {
 		load()
 	}, [load])
+
+	const handleQuality = useCallback(
+		(group: ModuleGroupKey) => (quality: number) =>
+			setQuality(group, quality),
+		[setQuality]
+	)
+	const handleSelect = useCallback(
+		(group: ModuleGroupKey) => (moduleKey: string) =>
+			setModule(group, moduleKey),
+		[setModule]
+	)
+	const handleReset = useCallback(
+		(group: ModuleGroupKey) => () => resetGroup(group),
+		[resetGroup]
+	)
 
 	return (
 		<section
@@ -60,9 +76,9 @@ export function ModulesView({ variant = 'page' }: ModulesViewProps) {
 					<ModuleGroupCard
 						group={group}
 						key={group}
-						onQuality={(quality) => setQuality(group, quality)}
-						onReset={() => resetGroup(group)}
-						onSelect={(moduleKey) => setModule(group, moduleKey)}
+						onQuality={handleQuality(group)}
+						onReset={handleReset(group)}
+						onSelect={handleSelect(group)}
 						slot={slots[group]}
 					/>
 				))}

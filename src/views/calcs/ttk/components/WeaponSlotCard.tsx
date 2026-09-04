@@ -7,6 +7,7 @@ import { type CSSProperties, useEffect, useMemo, useState } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import Slider from '@/components/ui/Slider'
 import { cn } from '@/lib/cn'
@@ -16,10 +17,15 @@ import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { messageToString, roundNumber } from '@/utils/itemUtils'
 import { ItemPickerModal } from '@/views/calcs/builds/lite/components/ItemPickerModal'
 import {
-	CUSTOM_ROF_MAP,
-	HOLD_MAX_TIME,
-	isHoldWeapon,
-} from '../constants/ttk'
+	getModuleByKey,
+	getModuleStatValue,
+	getRarityByQuality,
+	QUALITY_MAX,
+	QUALITY_MIN,
+	RARITY_COLORS,
+	useModulesData,
+} from '@/views/calcs/modules/utils/moduleCalc'
+import { CUSTOM_ROF_MAP, HOLD_MAX_TIME, isHoldWeapon } from '../constants/ttk'
 import { getAmmoType, getCompatibleAmmo } from '../utils'
 
 interface WeaponSlotCardProps {
@@ -37,6 +43,9 @@ interface WeaponSlotCardProps {
 	onVariantChange: (variantIndex: number) => void
 	onHoldTimeChange: (holdTime: number) => void
 	onBurstRofToggle: () => void
+	onModuleSelect: (moduleKey: string) => void
+	onModuleQuality: (quality: number) => void
+	onModuleReset: () => void
 	onRemove: () => void
 	showRemove: boolean
 }
@@ -56,6 +65,9 @@ export function WeaponSlotCard({
 	onVariantChange,
 	onHoldTimeChange,
 	onBurstRofToggle,
+	onModuleSelect,
+	onModuleQuality,
+	onModuleReset,
 	onRemove,
 	showRemove,
 }: WeaponSlotCardProps) {
@@ -97,6 +109,25 @@ export function WeaponSlotCard({
 				: null,
 		[ammo]
 	)
+
+	const modulesData = useModulesData()
+	const conceptModules = useMemo(
+		() => (modulesData.groups ?? []).find((g) => g.key === 'concept'),
+		[modulesData]
+	)
+	const moduleOptions = useMemo(
+		() =>
+			(conceptModules?.modules ?? []).map((m) => ({
+				value: m.key,
+				label: m.lines.ru,
+			})),
+		[conceptModules]
+	)
+	const selectedModule = useMemo(
+		() => getModuleByKey('concept', slot.moduleKey),
+		[slot.moduleKey]
+	)
+	const moduleRarity = getRarityByQuality(slot.moduleQuality)
 
 	return (
 		<>
@@ -280,6 +311,129 @@ export function WeaponSlotCard({
 									/>
 								</div>
 							))}
+
+						{weapon && (
+							<div className="flex flex-col gap-1 rounded-lg p-2 ring-2 ring-muted">
+								<div className="flex items-center justify-between gap-2">
+									<span className="font-semibold text-neutral-400 text-xs">
+										{t('ttk.page.module_concept')}
+									</span>
+									{slot.moduleKey && (
+										<Button
+											className="p-1 ring-transparent"
+											onClick={(e) => {
+												e.stopPropagation()
+												onModuleReset()
+											}}
+											size="sm"
+											title={t('ttk.page.module_reset')}
+											variant="danger"
+										>
+											<Icon
+												className="text-xs"
+												icon="lucide:x"
+											/>
+										</Button>
+									)}
+								</div>
+								<Combobox
+									emptyText="ttk.page.module_empty"
+									onValueChange={onModuleSelect}
+									options={moduleOptions}
+									placeholder="ttk.page.module_pick"
+									searchPlaceholder="ttk.page.module_search"
+									translateOptions={false}
+									value={slot.moduleKey}
+								/>
+								{selectedModule && (
+									<>
+										<div className="flex items-center gap-2">
+											<Input
+												className="h-8"
+												max={QUALITY_MAX}
+												min={QUALITY_MIN}
+												onChange={(e) => {
+													const parsed = Number(
+														e.target.value
+													)
+													if (!Number.isNaN(parsed)) {
+														onModuleQuality(
+															Math.max(
+																QUALITY_MIN,
+																Math.min(
+																	QUALITY_MAX,
+																	parsed
+																)
+															)
+														)
+													}
+												}}
+												step="0.01"
+												type="number"
+												value={slot.moduleQuality}
+											/>
+											<span
+												className="rounded bg-accent/50 px-2 py-1.5 font-bold text-xs"
+												style={{
+													color: RARITY_COLORS[
+														moduleRarity
+													],
+												}}
+											>
+												{t(
+													`arts.ART_QUALITY_${moduleRarity.toUpperCase()}`
+												)}
+											</span>
+										</div>
+										<Slider
+											max={QUALITY_MAX}
+											min={QUALITY_MIN}
+											onValueChange={onModuleQuality}
+											step={0.01}
+											value={slot.moduleQuality}
+										/>
+										<div className="flex flex-col gap-0.5 rounded-lg bg-neutral-800/30 p-2 text-xs">
+											{selectedModule.stats.map(
+												(stat) => {
+													const value =
+														getModuleStatValue(
+															stat,
+															slot.moduleQuality
+														)
+													return (
+														<div
+															className="flex items-center justify-between gap-2"
+															key={stat.key}
+														>
+															<span className="font-semibold">
+																{stat.lines.ru}
+															</span>
+															<span
+																className={cn(
+																	'font-semibold',
+																	montserrat.className,
+																	stat.type ===
+																		'negative'
+																		? 'text-red-400'
+																		: stat.type ===
+																				'special'
+																			? 'text-blue-400'
+																			: 'text-green-400'
+																)}
+															>
+																{value > 0
+																	? `+${value.toFixed(3)}%`
+																	: `${value.toFixed(3)}%`}
+															</span>
+														</div>
+													)
+												}
+											)}
+										</div>
+									</>
+								)}
+							</div>
+						)}
 
 						{weapon && isHoldWeapon(weapon.id) && (
 							<div className="flex flex-col gap-1 rounded-lg p-2 ring-2 ring-muted">

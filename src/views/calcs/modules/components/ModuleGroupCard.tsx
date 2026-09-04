@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -35,7 +36,7 @@ interface ModuleGroupCardProps {
 	onReset: () => void
 }
 
-export function ModuleGroupCard({
+export const ModuleGroupCard = memo(function ModuleGroupCard({
 	group,
 	slot,
 	onSelect,
@@ -215,4 +216,4 @@ export function ModuleGroupCard({
 			)}
 		</Card.Root>
 	)
-}
+})

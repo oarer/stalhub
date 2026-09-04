@@ -109,7 +109,7 @@ export function ArtifactSlots({
 							) : (
 								<div className="flex flex-col items-center">
 									<Icon
-										className="text-2xl text-neutral-500"
+										className="text-2xl text-muted-foreground"
 										icon="lucide:circle-question-mark"
 									/>
 								</div>

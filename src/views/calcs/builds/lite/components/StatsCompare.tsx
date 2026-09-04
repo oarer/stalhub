@@ -189,9 +189,9 @@ export function StatsCompare({
 							valueA={Number(statsA.hps)}
 							valueB={Number(statsB.hps)}
 						/>
-						<div className="flex flex-col gap-2 border-neutral-700 border-t pt-2">
+						<div className="flex flex-col gap-2 border-border border-t pt-2">
 							{allKeys.length === 0 ? (
-								<p className="text-neutral-500">
+								<p className="text-muted-foreground">
 									{t('build.stats.no_stats')}
 								</p>
 							) : (
@@ -206,7 +206,7 @@ export function StatsCompare({
 					<Card.Content className="flex flex-col gap-2 text-sm">
 						<CompareHeaderRow nameA={nameA} nameB={nameB} />
 						{containerKeys.length === 0 ? (
-							<p className="text-neutral-500">
+							<p className="text-muted-foreground">
 								{t('build.stats.no_stats')}
 							</p>
 						) : (

@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { cn } from '@/lib/cn'
 
 interface SliderProps {
@@ -23,6 +23,44 @@ export default function Slider({
 	value,
 }: SliderProps) {
 	const containerRef = useRef<HTMLDivElement>(null)
+
+	const onValueChangeRef = useRef(onValueChange)
+	useEffect(() => {
+		onValueChangeRef.current = onValueChange
+	}, [onValueChange])
+
+	const rafRef = useRef<number | null>(null)
+	const pendingRef = useRef<number | null>(null)
+
+	const flushUpdate = useCallback(() => {
+		if (rafRef.current !== null) {
+			cancelAnimationFrame(rafRef.current)
+			rafRef.current = null
+		}
+		const pending = pendingRef.current
+		if (pending === null) return
+		pendingRef.current = null
+		onValueChangeRef.current?.(pending)
+	}, [])
+
+	const scheduleUpdate = useCallback((v: number) => {
+		pendingRef.current = v
+		if (rafRef.current !== null) return
+		rafRef.current = requestAnimationFrame(() => {
+			rafRef.current = null
+			const pending = pendingRef.current
+			if (pending === null) return
+			pendingRef.current = null
+			onValueChangeRef.current?.(pending)
+		})
+	}, [])
+
+	useEffect(
+		() => () => {
+			if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+		},
+		[]
+	)
 
 	const clamp = useCallback(
 		(v: number) => Math.max(min, Math.min(max, Number(v.toFixed(3)))),
@@ -48,13 +86,21 @@ export default function Slider({
 		e.preventDefault()
 		containerRef.current?.setPointerCapture(e.pointerId)
 
-		onValueChange?.(valueFromPointer(e.clientX))
+		scheduleUpdate(valueFromPointer(e.clientX))
 	}
 
 	const handlePointerMove = (e: React.PointerEvent) => {
 		if (disabled || !e.buttons) return
 
-		onValueChange?.(valueFromPointer(e.clientX))
+		scheduleUpdate(valueFromPointer(e.clientX))
+	}
+
+	const handlePointerEnd = (e: React.PointerEvent) => {
+		if (disabled) return
+		if (containerRef.current?.hasPointerCapture(e.pointerId)) {
+			containerRef.current.releasePointerCapture(e.pointerId)
+		}
+		flushUpdate()
 	}
 
 	const handleKeyDown = useCallback(
@@ -83,9 +129,9 @@ export default function Slider({
 			}
 
 			e.preventDefault()
-			onValueChange?.(clamp(next))
+			onValueChangeRef.current?.(clamp(next))
 		},
-		[clamp, disabled, max, min, onValueChange, step, value]
+		[clamp, disabled, max, min, step, value]
 	)
 
 	return (
@@ -100,8 +146,10 @@ export default function Slider({
 				className
 			)}
 			onKeyDown={handleKeyDown}
+			onPointerCancel={handlePointerEnd}
 			onPointerDown={handlePointerDown}
 			onPointerMove={handlePointerMove}
+			onPointerUp={handlePointerEnd}
 			ref={containerRef}
 			role="slider"
 			tabIndex={disabled ? -1 : 0}

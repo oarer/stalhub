@@ -1,6 +1,6 @@
-import type { HitZone } from '@/views/calcs/ttk/constants/ttk'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import type { HitZone } from '@/views/calcs/ttk/constants/ttk'
 
 export interface WeaponSlot {
 	id: string
@@ -9,6 +9,8 @@ export interface WeaponSlot {
 	variantIndex: number
 	useBurstRof: boolean
 	holdTime: number
+	moduleKey: string
+	moduleQuality: number
 }
 
 interface TTKState {
@@ -44,6 +46,8 @@ export const useTTKStore = create<TTKState>()(
 					variantIndex: 15,
 					useBurstRof: false,
 					holdTime: 0,
+					moduleKey: '',
+					moduleQuality: 0,
 				},
 			],
 			bulletRes: 0,
@@ -76,6 +80,25 @@ export const useTTKStore = create<TTKState>()(
 				buildId: s.buildId,
 				modulesEnabled: s.modulesEnabled,
 			}),
+			merge: (persisted, current) => {
+				const state = persisted as Partial<TTKState> | undefined
+				const slots = state?.slots ?? current.slots
+				return {
+					...current,
+					...state,
+					slots: slots.map((s) => ({
+						...s,
+						moduleKey:
+							typeof s.moduleKey === 'string' ? s.moduleKey : '',
+						moduleQuality:
+							typeof s.moduleQuality === 'number'
+								? s.moduleQuality
+								: 0,
+						holdTime:
+							typeof s.holdTime === 'number' ? s.holdTime : 0,
+					})),
+				}
+			},
 		}
 	)
 )

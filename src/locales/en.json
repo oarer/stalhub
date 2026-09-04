@@ -630,7 +630,12 @@
       "table": {
         "ttk": "TTK",
         "hits": "Hits"
-      }
+      },
+      "module_concept": "Concept module",
+      "module_pick": "Select a module",
+      "module_search": "Search module...",
+      "module_empty": "No modules found",
+      "module_reset": "Reset module"
     },
     "hitZones": {
       "head": "Head",
@@ -2002,7 +2007,16 @@
       "syncClansTitle": "Sync Clans",
       "syncClansDesc": "Update your clan list from EXBO data. Clans will be discovered and linked to your account.",
       "syncClansSuccess": "Clans synced: found {count}",
-      "syncClansError": "Failed to sync clans"
+      "syncClansError": "Failed to sync clans",
+      "editorTitle": "Edit image",
+      "editorCrop": "Crop",
+      "editorBrush": "Brush",
+      "editorFill": "Fill",
+      "editorUndo": "Undo",
+      "editorReset": "Reset",
+      "editorCropHint": "Drag across the image to select a crop area",
+      "editorApplyCrop": "Apply crop",
+      "editorConfirm": "Save"
     },
     "buildCard": {
       "toastError": "Error",

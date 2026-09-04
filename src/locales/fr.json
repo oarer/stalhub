@@ -626,7 +626,12 @@
       "table": {
         "ttk": "TTK",
         "hits": "Impacts"
-      }
+      },
+      "module_concept": "Module concept",
+      "module_pick": "Sélectionner un module",
+      "module_search": "Rechercher un module...",
+      "module_empty": "Aucun module trouvé",
+      "module_reset": "Réinitialiser le module"
     },
     "hitZones": {
       "head": "Tête",
@@ -1945,7 +1950,16 @@
       "syncClansTitle": "Synchroniser les clans",
       "syncClansDesc": "Mettre à jour votre liste de clans depuis les données EXBO. Les clans seront découverts et liés à votre compte.",
       "syncClansSuccess": "Clans synchronisés : trouvés {count}",
-      "syncClansError": "Échec de la synchronisation des clans"
+      "syncClansError": "Échec de la synchronisation des clans",
+      "editorTitle": "Modifier l'image",
+      "editorCrop": "Recadrer",
+      "editorBrush": "Pinceau",
+      "editorFill": "Remplir",
+      "editorUndo": "Annuler",
+      "editorReset": "Réinitialiser",
+      "editorCropHint": "Faites glisser sur l’image pour sélectionner la zone de recadrage",
+      "editorApplyCrop": "Appliquer le recadrage",
+      "editorConfirm": "Enregistrer"
     },
     "buildCard": {
       "toastError": "Erreur",

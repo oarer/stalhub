@@ -45,7 +45,7 @@ export function SicknessSelector() {
 									'shrink-0',
 									currentLevel > 0
 										? 'text-red-400'
-										: 'text-neutral-500'
+										: 'text-muted-foreground'
 								)}
 								icon={def.icon}
 							/>
@@ -62,7 +62,7 @@ export function SicknessSelector() {
 											'flex shrink-0 cursor-pointer items-center justify-center rounded-md px-2 py-1 font-semibold text-xs transition-colors',
 											currentLevel === lvl
 												? 'bg-red-500/30 text-red-300 ring-1 ring-red-500/50'
-												: 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
+												: 'bg-muted text-muted-foreground hover:bg-accent'
 										)}
 										key={lvlKey}
 										onClick={(e) => {

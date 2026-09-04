@@ -122,7 +122,7 @@ export const BuildLitePngTemplate = forwardRef<
 	)
 
 	return (
-		<div className="w-7xl bg-background p-8 text-white" ref={ref}>
+		<div className="dark w-7xl bg-background p-8 text-white" ref={ref}>
 			<h1
 				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3]`}
 			>
@@ -291,7 +291,7 @@ export const BuildLitePngTemplate = forwardRef<
 								</p>
 							</div>
 						) : (
-							<p className="text-neutral-400 text-sm">
+							<p className="text-muted-foreground text-sm">
 								{t('build.stats.no_container')}
 							</p>
 						)}
@@ -342,7 +342,7 @@ export const BuildLitePngTemplate = forwardRef<
 									</div>
 								</>
 							) : (
-								<p className="font-semibold text-neutral-400 text-sm">
+								<p className="font-semibold text-muted-foreground text-sm">
 									{t('build.no_armor')}
 								</p>
 							)}
@@ -385,9 +385,9 @@ export const BuildLitePngTemplate = forwardRef<
 					>
 						{t('build.stats.title')}
 					</h1>
-					<div className="flex flex-col gap-1 font-semibold text-neutral-800 text-sm dark:text-neutral-100">
+					<div className="flex flex-col gap-1 font-semibold text-foreground text-sm">
 						{sortedStats.length === 0 ? (
-							<p className="text-neutral-500">
+							<p className="text-muted-foreground">
 								{t('build.stats.no_stats')}
 							</p>
 						) : (
@@ -396,7 +396,7 @@ export const BuildLitePngTemplate = forwardRef<
 									className="flex flex-col gap-1"
 									key={group.key}
 								>
-									<p className="border-primary border-b pb-1 font-semibold text-neutral-500 text-xs uppercase tracking-wider">
+									<p className="border-primary border-b pb-1 font-semibold text-muted-foreground text-xs uppercase tracking-wider">
 										{t(
 											`build.stats.categories.${group.key}`
 										)}

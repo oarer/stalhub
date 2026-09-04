@@ -130,7 +130,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 
 					<div className="flex items-center gap-3">
 						<Button
-							className="rounded-lg p-1.5 text-white"
+							className="rounded-lg p-1.5"
 							onClick={(e) => {
 								e.stopPropagation()
 
@@ -160,7 +160,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 						</Button>
 
 						<Button
-							className="rounded-lg p-1.5 text-white"
+							className="rounded-lg p-1.5"
 							onClick={(e) => {
 								e.stopPropagation()
 								onSelectSlot(index)
@@ -174,7 +174,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 						</Button>
 
 						<Button
-							className="rounded-lg p-1.5 text-white ring-transparent"
+							className="rounded-lg p-1.5 ring-transparent"
 							onClick={(e) => {
 								e.stopPropagation()
 								onRemove?.(instanceId!)
