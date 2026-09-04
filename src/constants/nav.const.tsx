@@ -178,7 +178,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:box',
 				href: '/models',
 				labelKey: 'nav.groups.other.items.models.label',
-				descriptionKey: 'nav.groups.other.items.models.description',
 			},
 		],
 	},
