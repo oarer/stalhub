@@ -2,11 +2,11 @@ export type ServerOnlineEntry = {
 	region: string
 	serverId: string
 	online: number
-	updatedAt: string
+	updatedAt: Date
 }
 
 export type ServerOnlineHistoryPoint = {
 	region: string
-	createdAt: string
+	createdAt: Date
 	online: number
 }

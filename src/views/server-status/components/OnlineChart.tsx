@@ -17,6 +17,7 @@ import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import { montserrat } from '@/app/fonts'
 import { getChartColors } from '@/lib/chart-theme'
+import { formatDate } from '@/lib/date'
 import type { ServerOnlineHistoryPoint } from '@/types/server-online.type'
 
 ChartJS.register(
@@ -49,23 +50,17 @@ const REGION_COLORS: Record<string, string> = {
 	GLOBAL: '#a78bfa',
 }
 
-function formatTime(iso: string): string {
-	const date = new Date(iso)
-	const hh = String(date.getHours()).padStart(2, '0')
-	const mm = String(date.getMinutes()).padStart(2, '0')
-	return `${hh}:${mm}`
-}
-
 export function OnlineChart({
 	history,
 }: {
 	history: ServerOnlineHistoryPoint[]
 }) {
-	const chartData = useMemo((): ChartData<'line'> => {
-		const labels = Array.from(
-			new Set(history.map((p) => p.createdAt))
-		).sort()
+	const labels = useMemo(
+		() => Array.from(new Set(history.map((p) => p.createdAt))).sort(),
+		[history]
+	)
 
+	const chartData = useMemo((): ChartData<'line'> => {
 		const series = new Map<
 			string,
 			{ label: string; color: string; data: (number | null)[] }
@@ -104,7 +99,7 @@ export function OnlineChart({
 					fill: false,
 				})),
 		}
-	}, [history])
+	}, [history, labels])
 
 	const colors = getChartColors()
 
@@ -150,7 +145,7 @@ export function OnlineChart({
 							(items[0].chart.data.labels as string[])[
 								items[0].dataIndex
 							] ?? ''
-						return formatTime(label)
+						return formatDate(label, 'time')
 					},
 					label: (ctx: TooltipItem<'line'>) => {
 						const value = ctx.parsed.y ?? 0
@@ -169,6 +164,10 @@ export function OnlineChart({
 					color: colors.axis,
 					maxTicksLimit: 10,
 					font: { size: 11, weight: 'bold' },
+					callback: (value) => {
+						const label = labels[Number(value)] ?? ''
+						return formatDate(label, 'time')
+					},
 				},
 			},
 			y: {
