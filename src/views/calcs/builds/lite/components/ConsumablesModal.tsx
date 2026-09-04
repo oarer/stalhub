@@ -80,10 +80,9 @@ function BoostSelectModal({
 				}
 			}
 		}
-		return Array.from(map.entries()).map(([value, label]) => ({
-			value,
-			label,
-		}))
+		return Array.from(map.entries())
+			.map(([value, label]) => ({ value, label }))
+			.sort((a, b) => b.label.localeCompare(a.label))
 	}, [categoryItems, locale])
 
 	const statFilteredItems = useMemo(() => {

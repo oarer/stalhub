@@ -122,7 +122,7 @@ export function buildEffectOptions(
 			value,
 			label,
 		})),
-	]
+	].sort((a, b) => b.label.localeCompare(a.label))
 }
 
 export function filterItemsByEffects(
@@ -180,11 +180,11 @@ export function buildPositiveNegativeOptions(
 	}
 
 	return {
-		positiveOptions: Array.from(posMap.entries()).map(
-			([value, label]) => ({ value, label })
-		),
-		negativeOptions: Array.from(negMap.entries()).map(
-			([value, label]) => ({ value, label })
-		),
+		positiveOptions: Array.from(posMap.entries())
+			.map(([value, label]) => ({ value, label }))
+			.sort((a, b) => b.label.localeCompare(a.label)),
+		negativeOptions: Array.from(negMap.entries())
+			.map(([value, label]) => ({ value, label }))
+			.sort((a, b) => b.label.localeCompare(a.label)),
 	}
 }
