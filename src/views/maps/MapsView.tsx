@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import { unbounded } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
@@ -11,6 +11,7 @@ import { useMaps } from '@/hooks/useMaps'
 export default function MapsView() {
 	const { maps, error } = useMaps()
 	const t = useTranslations()
+	const locale = useLocale()
 
 	useEffect(() => {
 		if (error) {
@@ -30,7 +31,7 @@ export default function MapsView() {
 				{maps.map((m, index) => (
 					<Card.Link
 						className="group overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-						href={`/map/${encodeURIComponent(m.name)}`}
+						href={`/maps/${encodeURIComponent(m.name)}`}
 						key={m.url ?? m.name}
 						style={{
 							animation: `fadeInUp 0.5s ease-out ${index * 0.05}s both`,
@@ -47,9 +48,9 @@ export default function MapsView() {
 						</Card.Header>
 
 						<div className="relative overflow-hidden bg-linear-to-b px-3 py-4">
-							<span className="block text-center font-semibold text-sm transition-colors duration-300 group-hover:text-primary sm:text-base">
-								{/* {m.title[i18n.language as Locale]} */}
-							</span>
+						<span className="block text-center font-semibold text-sm transition-colors duration-300 group-hover:text-primary sm:text-base">
+							{m.title[locale as keyof typeof m.title] ?? m.title.en ?? m.name}
+						</span>
 							<div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-linear-to-r from-sky-600 to-sky-400 transition-all duration-300 group-hover:w-2/5" />
 						</div>
 					</Card.Link>

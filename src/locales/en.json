@@ -6,7 +6,10 @@
     "features": {
       "items": "Items",
       "tools": "Tools",
-      "uptime": "Uptime"
+      "uptime": "Uptime",
+      "price": "Price",
+      "users": "Users",
+      "analytic": "Analytics accuracy"
     },
     "start": "Start",
     "more_details": "More details",
@@ -175,6 +178,27 @@
           "operations": {
             "label": "Operations",
             "description": "Player operation history"
+          }
+        }
+      },
+      "creative": {
+        "title": "Creative",
+        "items": {
+          "arts": {
+            "label": "Art",
+            "description": "Fan art by artists"
+          },
+          "articles": {
+            "label": "Articles",
+            "description": "Quest guides by players"
+          },
+          "builds": {
+            "label": "Builds",
+            "description": "Public builds by players"
+          },
+          "tierlists": {
+            "label": "Tier Lists",
+            "description": "Tier lists by players"
           }
         }
       }
