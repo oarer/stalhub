@@ -2368,5 +2368,11 @@
       "title": "Cómo se calcula el TTK",
       "aggregate": "El rango se basa en el TTK medio: para cada arma se toman ~400 configuraciones aleatorias (HP 400–800, vitalidad 1.0–1.3), impactos en la cabeza, afinado 15 y mejor munición AP. Los rangos S–E se asignan según el TTK medio relativo a la mejor arma de la categoría con un paso de 0,05 s."
     }
+  },
+  "servers": {
+    "title": "Servidores en línea",
+    "description": "En línea en regiones y servidores de StalZone.",
+    "online": "En línea",
+    "charts": "Gráficos de en línea"
   }
 }

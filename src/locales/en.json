@@ -155,6 +155,10 @@
           "maps": {
             "label": "Interactive map"
           },
+          "servers": {
+            "label": "Servers",
+            "description": "Server online"
+          },
           "auction": {
             "label": "Auction"
           },
@@ -2383,6 +2387,12 @@
     "search": "Show operations",
     "prompt": "Pick a region and enter a character nickname to see its operations.",
     "loadMore": "Load more"
+  },
+  "servers": {
+    "title": "Server online",
+    "description": "Online across StalZone regions and servers.",
+    "online": "Online",
+    "charts": "Online charts"
   },
   "models": {
     "title": "Model viewer",

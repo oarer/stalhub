@@ -154,6 +154,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				labelKey: 'nav.groups.other.items.maps.label',
 			},
 			{
+				key: 'servers',
+				icon: 'lucide:server',
+				href: '/servers',
+				labelKey: 'nav.groups.other.items.servers.label',
+				descriptionKey: 'nav.groups.other.items.servers.description',
+			},
+			{
 				key: 'players',
 				icon: 'lucide:user-round-search',
 				href: '/player',

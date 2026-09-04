@@ -2368,5 +2368,11 @@
       "title": "Comment le TTK est calculé",
       "aggregate": "Le rang est basé sur le TTK moyen : pour chaque arme on prend ~400 configurations aléatoires (HP 400–800, vitalité 1.0–1.3), tirs à la tête, polish 15 et meilleure munition AP. Les rangs S–E sont attribués selon le TTK moyen relatif à la meilleure arme de la catégorie avec un pas de 0,05 s."
     }
+  },
+  "servers": {
+    "title": "Serveurs en ligne",
+    "description": "En ligne sur les régions et serveurs StalZone.",
+    "online": "En ligne",
+    "charts": "Graphiques de connexion"
   }
 }

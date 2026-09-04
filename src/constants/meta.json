@@ -29,6 +29,19 @@
 			"клановая аналитика"
 		]
 	},
+	"/servers": {
+		"title": "Онлайн · StalHub",
+		"description": "Онлайн серверов StalZone: регионы RU, GLOBAL.",
+		"keywords": [
+			"сталкрафт серверы",
+			"stalcraft servers",
+			"сталзон серверы",
+			"сталкрафт пинг",
+			"stalcraft ping",
+			"сталкрафт онлайн",
+			"stalcraft online"
+		]
+	},
 	"/calcs": {
 		"title": "Калькуляторы · StalHub",
 		"description": "Калькуляторы для StalZone: TTK, сборки, Арсенал и другие игровые расчёты.",
