@@ -100,7 +100,7 @@ export const tools = [
 		icon: 'lucide:map',
 		title: 'landing.tools.tool_list.map.title',
 		desc: 'landing.tools.tool_list.map.desc',
-		link: '#',
+		link: '/maps',
 	},
 	{
 		id: 'player_search',

@@ -133,7 +133,7 @@ export const NAV_STRUCTURE: NavGroup[] = [
 					{
 						key: 'clanMaps',
 						icon: 'lucide:map-pinned',
-						href: '/map/cw',
+						href: '/maps/cw',
 						labelKey: 'nav.groups.clans.items.clanMaps.label',
 						descriptionKey:
 							'nav.groups.clans.items.clanMaps.description',
@@ -185,7 +185,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:box',
 				href: '/models',
 				labelKey: 'nav.groups.other.items.models.label',
-				descriptionKey: 'nav.groups.other.items.models.description',
 			},
 		],
 	},
