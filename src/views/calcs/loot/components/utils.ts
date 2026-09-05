@@ -14,7 +14,7 @@ export function pickName(
 }
 
 export function formattedPct(pct: number): string {
-	return `${pct.toLocaleString(undefined, { maximumFractionDigits: 2 })}%`
+	return `${pct.toLocaleString(undefined, { maximumFractionDigits: 6 })}%`
 }
 
 export function slotLabel(slot: CatalogSlot, index: number): string {
