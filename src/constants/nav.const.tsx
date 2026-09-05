@@ -141,6 +141,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				],
 			},
 			{
+				key: 'loot',
+				icon: 'lucide:pen',
+				href: '/loot',
+				labelKey: 'nav.groups.other.items.loot.label',
+				descriptionKey: 'nav.groups.other.items.loot.description',
+			},
+			{
 				key: 'dashboard',
 				icon: 'lucide:layout-grid',
 				href: '/dashboard',
