@@ -159,6 +159,10 @@
             "label": "Servers",
             "description": "Server online"
           },
+          "balance": {
+            "label": "Balance",
+            "description": "Balance changes"
+          },
           "auction": {
             "label": "Auction"
           },
@@ -2407,6 +2411,27 @@
     "description": "Online across StalZone regions and servers.",
     "online": "Online",
     "charts": "Online charts"
+  },
+  "balance": {
+    "title": "Balance",
+    "description": "Balance changes since the latest patch.",
+    "refresh": "Refresh",
+    "refreshSuccess": "Balance refreshed",
+    "refreshError": "Failed to refresh balance",
+    "fresh": "Up to date",
+    "empty": "No balance changes yet",
+    "backToLatest": "Back to latest changes",
+    "archived": "Archive",
+    "categories": {
+      "weapon": "Weapons",
+      "armor": "Armor",
+      "artefact": "Artifacts",
+      "attachment": "Attachments",
+      "bag": "Backpacks and containers",
+      "boost": "Boosts",
+      "bullet": "Bullets",
+      "grenade": "Grenades"
+    }
   },
   "models": {
     "title": "Model viewer",

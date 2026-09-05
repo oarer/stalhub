@@ -171,6 +171,10 @@
           "operations": {
             "label": "Operaciones",
             "description": "Historial de operaciones del jugador"
+          },
+          "balance": {
+            "label": "Balance",
+            "description": "Cambios de balance"
           }
         }
       }

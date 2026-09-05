@@ -159,6 +159,10 @@
 						"label": "서버",
 						"description": "서버 온라인"
 					},
+					"balance": {
+						"label": "밸런스",
+						"description": "밸런스 변경"
+					},
 					"auction": {
 						"label": "경매장"
 					},

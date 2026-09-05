@@ -161,6 +161,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.other.items.servers.description',
 			},
 			{
+				key: 'balance',
+				icon: 'lucide:scale',
+				href: '/balance',
+				labelKey: 'nav.groups.other.items.balance.label',
+				descriptionKey: 'nav.groups.other.items.balance.description',
+			},
+			{
 				key: 'players',
 				icon: 'lucide:user-round-search',
 				href: '/player',
@@ -214,7 +221,8 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				icon: 'lucide:trophy',
 				href: '/tierlists',
 				labelKey: 'nav.groups.creative.items.tierlists.label',
-				descriptionKey: 'nav.groups.creative.items.tierlists.description',
+				descriptionKey:
+					'nav.groups.creative.items.tierlists.description',
 			},
 		],
 	},

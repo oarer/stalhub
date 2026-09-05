@@ -171,6 +171,10 @@
           "operations": {
             "label": "Opérations",
             "description": "Historique des opérations du joueur"
+          },
+          "balance": {
+            "label": "Équilibre",
+            "description": "Changements d'équilibre"
           }
         }
       }
