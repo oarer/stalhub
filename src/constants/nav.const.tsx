@@ -98,6 +98,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				descriptionKey: 'nav.groups.calculators.items.bp.description',
 			},
 			{
+				key: 'sessions',
+				icon: 'lucide:swords',
+				href: '/calcs/sessions',
+				labelKey: 'nav.groups.calculators.items.sessions.label',
+				descriptionKey:
+					'nav.groups.calculators.items.sessions.description',
+			},
+			{
 				key: 'dpi',
 				icon: 'lucide:mouse',
 				href: '/calcs/dpi',

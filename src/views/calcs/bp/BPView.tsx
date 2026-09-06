@@ -1,43 +1,59 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { BPForm } from './components/BPForm'
-import { BPResults } from './components/BPResults'
-import { simulateXP } from './utils/bp'
+import { BPPlan } from './components/BPPlan'
+import {
+	type BPInput,
+	buildBPPlan,
+	computeDaysUntilSeasonEnd,
+} from './utils/bp'
 
 type BPViewProps = {
 	variant?: 'page' | 'widget'
 }
 
+const defaults: Omit<BPInput, 'daysLeft'> = {
+	currentLevel: 1,
+	targetLevel: 200,
+	maxTasksPerDay: 15,
+	donations: 0,
+	overloads: true,
+	boost3d: false,
+}
+
 export function BPView({ variant = 'page' }: BPViewProps) {
 	const t = useTranslations()
 
-	const [days, setDays] = useState(90)
-	const [playDays, setPlayDays] = useState(7)
-	const [tasks, setTasks] = useState(20)
-	const [overloads, setOverloads] = useState(15)
-	const [currentLevel, setCurrentLevel] = useState(0)
+	const [daysLeft, setDaysLeft] = useState<number | null>(null)
+	const [values, setValues] = useState<BPInput>({
+		...defaults,
+		daysLeft: 0,
+	})
 
-	const xpWithoutOverload = useMemo(() => {
-		return simulateXP(days, playDays, tasks, 0)
-	}, [days, playDays, tasks])
+	useEffect(() => {
+		setDaysLeft((prev) => prev ?? computeDaysUntilSeasonEnd(new Date()))
+	}, [])
 
-	const xpWithOverload = useMemo(() => {
-		return simulateXP(days, playDays, tasks, overloads)
-	}, [days, playDays, tasks, overloads])
+	const input: BPInput = useMemo(
+		() => ({ ...values, daysLeft: daysLeft ?? 0 }),
+		[values, daysLeft]
+	)
 
-	const levelWithout = Math.floor(xpWithoutOverload / 1000) + currentLevel
-	const levelWith = Math.floor(xpWithOverload / 1000) + currentLevel
-	const difference = levelWith - levelWithout
+	const onChange = (patch: Partial<BPInput>) => {
+		setValues((prev) => ({ ...prev, ...patch }))
+	}
+
+	const plan = useMemo(() => buildBPPlan(input), [input])
 
 	return (
 		<section
 			className={
 				variant === 'widget'
 					? 'flex flex-col gap-4'
-					: 'mx-auto flex max-w-4xl flex-col gap-10 px-4 pt-32 lg:pt-36'
+					: 'mx-auto flex max-w-5xl flex-col gap-10 px-4 pt-32 lg:pt-36'
 			}
 		>
 			{variant === 'page' && (
@@ -54,23 +70,13 @@ export function BPView({ variant = 'page' }: BPViewProps) {
 			)}
 			<div className="grid gap-6 md:grid-cols-2">
 				<BPForm
-					currentLevel={currentLevel}
-					days={days}
-					onCurrentLevelChange={setCurrentLevel}
-					onDaysChange={setDays}
-					onOverloadsChange={setOverloads}
-					onPlayDaysChange={setPlayDays}
-					onTasksChange={setTasks}
-					overloads={overloads}
-					playDays={playDays}
-					tasks={tasks}
+					daysLeft={daysLeft}
+					onChange={onChange}
+					onDaysLeftChange={setDaysLeft}
+					values={values}
 				/>
 
-				<BPResults
-					difference={difference}
-					levelWith={levelWith}
-					levelWithout={levelWithout}
-				/>
+				<BPPlan plan={plan} />
 			</div>
 		</section>
 	)

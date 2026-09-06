@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { checkboxVariants } from '@/constants/ui/checkBox.const'
 import { cn } from '@/lib/cn'
+import { montserrat } from '@/app/fonts'
 
 export interface ICheckboxProps
 	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>,
@@ -134,6 +135,7 @@ function CheckBox({
 					{label && (
 						<label
 							className={cn(
+								montserrat.className,
 								'cursor-pointer select-none font-semibold text-sm',
 								disabled && 'cursor-not-allowed opacity-50'
 							)}
@@ -143,7 +145,7 @@ function CheckBox({
 							{label}
 						</label>
 					)}
-					{description && <p className="text-sm">{description}</p>}
+					{description && <p className={`${montserrat.className} text-xs`}>{description}</p>}
 				</div>
 			</div>
 		)

@@ -5,7 +5,7 @@ export const alertVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-card ring-primary/50 text-card-foreground',
+				default: 'bg-card ring-0 text-card-foreground',
 				info: 'bg-info/10 text-foreground ring-info/30 [--alert-icon:theme(colors.info)]',
 				success:
 					'bg-success/10 text-foreground ring-success/30 [--alert-icon:theme(colors.success)]',
