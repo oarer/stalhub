@@ -81,6 +81,13 @@ const CONTAINER_MODIFIER_EXCLUDED_KEYS = new Set([
 	'stalker.artefact_properties.factor.frost_accumulation',
 ])
 
+const CONTAINER_ACCUMULATION_KEYS = new Set([
+	'stalker.artefact_properties.factor.radiation_accumulation',
+	'stalker.artefact_properties.factor.thermal_accumulation',
+	'stalker.artefact_properties.factor.biological_accumulation',
+	'stalker.artefact_properties.factor.psycho_accumulation',
+])
+
 export function applyContainerModifiers(
 	stats: BuildStats,
 	effectiveness: number,
@@ -96,7 +103,7 @@ export function applyContainerModifiers(
 			continue
 		}
 
-		const isAccumulation = key.includes('accumulation')
+		const isAccumulation = CONTAINER_ACCUMULATION_KEYS.has(key)
 		result[key] = isAccumulation
 			? currentVal * (1 - innerProtection)
 			: currentVal * effectiveness
