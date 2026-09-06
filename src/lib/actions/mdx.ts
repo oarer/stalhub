@@ -10,18 +10,22 @@ import {
 } from '@/lib/remark/callouts'
 
 const HTML_TAGS = new Set([
-	'a','abbr','address','area','article','aside','audio','b','base','bdi','bdo',
-	'blockquote','body','br','button','canvas','caption','cite','code','col',
-	'colgroup','data','datalist','dd','del','details','dfn','dialog','div','dl',
-	'dt','em','embed','fieldset','figcaption','figure','footer','form','h1','h2',
-	'h3','h4','h5','h6','head','header','hr','html','i','iframe','img','input',
-	'ins','kbd','label','legend','li','link','main','map','mark','meta','meter',
-	'nav','noscript','object','ol','optgroup','option','output','p','param',
-	'picture','pre','progress','q','rp','rt','ruby','s','samp','script','section',
-	'select','small','source','span','strong','style','sub','summary','sup',
-	'table','tbody','td','template','textarea','tfoot','th','thead','time','title',
-	'tr','track','u','ul','var','video','wbr',
+	'a','abbr','address','area','article','aside','audio','b','bdi','bdo',
+	'blockquote','br','button','caption','cite','code','col',
+	'colgroup','data','dd','del','details','dfn','dialog','div','dl',
+	'dt','em','figcaption','figure','footer','h1','h2',
+	'h3','h4','h5','h6','header','hr','i','img',
+	'ins','kbd','label','legend','li','main','mark','meter',
+	'nav','noscript','ol','optgroup','option','output','p',
+	'picture','pre','progress','q','rp','rt','ruby','s','samp','section',
+	'small','source','span','strong','sub','summary','sup',
+	'table','tbody','td','tfoot','th','thead','time',
+	'tr','u','ul','var','wbr',
 ])
+
+function stripDangerousExpressions(source: string): string {
+	return source.replace(/\{[\s\S]*?\}/g, '')
+}
 
 export async function compileMdx(source: string) {
 	const tagRegex = /<([a-z][a-z0-9-]*)[\s/>]/g
@@ -32,7 +36,9 @@ export async function compileMdx(source: string) {
 		}
 	}
 
-	const result = await serialize(source, {
+	const safe = stripDangerousExpressions(source)
+
+	const result = await serialize(safe, {
 		mdxOptions: {
 			remarkPlugins: [
 				remarkDirective,
@@ -42,8 +48,6 @@ export async function compileMdx(source: string) {
 				remarkCallouts,
 			],
 		},
-		blockJS: false,
-		blockDangerousJS: true,
 	})
 
 	return {
