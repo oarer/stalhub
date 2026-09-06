@@ -35,13 +35,6 @@ export const toolsList = [
 		link: '/calcs/bp',
 	},
 	{
-		id: 'sessions',
-		icon: 'lucide:swords',
-		title: 'landing.tools.tool_list.sessions.title',
-		desc: 'landing.tools.tool_list.sessions.desc',
-		link: '/calcs/session-battles',
-	},
-	{
 		id: 'player_search',
 		icon: 'lucide:user-round-search',
 		title: 'landing.tools.tool_list.player_search.title',
