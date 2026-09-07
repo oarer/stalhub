@@ -311,7 +311,7 @@ export default function Page() {
 					{t('auth.terms')}{' '}
 					<Link
 						className="underline underline-offset-2"
-						href="/wiki/legal/tos"
+						href="/legal/tos"
 					>
 						{t('auth.termsLink')}
 					</Link>
