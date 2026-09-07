@@ -102,6 +102,7 @@ export function MismatchesPanel({ clanId, screenshotId }: Props) {
 								value={chosen ?? ''}
 							/>
 							<Button
+								className="gap-2 py-2.5"
 								disabled={!chosen || resolveMutation.isPending}
 								onClick={() =>
 									resolveMutation.mutate({
@@ -110,7 +111,7 @@ export function MismatchesPanel({ clanId, screenshotId }: Props) {
 									})
 								}
 								size="sm"
-								variant="secondary"
+								variant="primary"
 							>
 								<Icon className="text-sm" icon="lucide:check" />
 								{t('clan.members.mismatchApply')}
