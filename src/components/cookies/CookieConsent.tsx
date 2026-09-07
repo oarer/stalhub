@@ -21,7 +21,7 @@ export function CookieConsent() {
 	if (!mounted || consent !== null) return null
 
 	return (
-		<Card.Root className="fixed right-4 bottom-4 max-w-120">
+		<Card.Root className="fixed right-4 bottom-4 ml-4 md:max-w-120">
 			<Card.Header>
 				<Card.Title className="gap-2 text-xl">
 					<Icon icon="lucide:cookie" />
