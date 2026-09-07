@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
+import { CLink } from '@/components/ui/Link'
 import type { BotGuild, BotLinkToken } from '@/types/clan/clan.type'
 
 interface DiscordBotSectionProps {
@@ -45,6 +46,13 @@ export function DiscordBotSection({
 							</code>
 						</div>
 						<div className="flex shrink-0 items-center gap-2">
+							<CLink
+								href="https://discord.com/oauth2/authorize?client_id=1520775494889377832&permissions=8533165861895233&integration_type=0&scope=bot"
+								size={'sm'}
+								variant={'primary'}
+							>
+								{t('clan.settings.botInviteLabel')}
+							</CLink>
 							<CopyButton
 								className="p-4"
 								text={linkToken.command}

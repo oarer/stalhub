@@ -86,7 +86,7 @@ export function RecruitingSection({
 				/>
 				<Input
 					label="clan.settings.recruitmentFields.guildsPerWeek"
-					max={999}
+					max={300000}
 					min={0}
 					onChange={(event) =>
 						onFieldChange('guilds_per_week', event.target.value)

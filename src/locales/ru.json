@@ -1840,7 +1840,7 @@
       "recruitmentFields": {
         "leaderDiscord": "Discord лидера",
         "clanDiscord": "Discord клана (необязательно)",
-        "tier": "Тир клана",
+        "tier": "Рейтинг клана",
         "guildsPerWeek": "Гильз в неделю (необязательно)"
       },
       "paidRecruitment": "Платная основа",
@@ -1900,7 +1900,8 @@
         "baseCapture": "Захват базы",
         "brawl": "Потасовка",
         "none": "Ничего"
-      }
+      },
+      "botInviteLabel": "Добавить"
     },
     "invites": {
       "title": "Инвайты",
