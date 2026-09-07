@@ -6,6 +6,7 @@ import Script from 'next/script'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { inter, mono, montserrat, raleway, unbounded } from '@/app/fonts'
+import { CookieConsent } from '@/components/cookies/CookieConsent'
 import { getMetadataByPath } from '@/constants/meta'
 import LocaleProvider from '@/providers/LocaleProvider'
 import Providers from '@/providers/providers'
@@ -22,9 +23,7 @@ export const generateMetadata = async () => {
 	return getMetadataByPath(path)
 }
 
-export default async function RootLayout({
-	children,
-}: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
 	const locale = await getLocale()
 	const messages = await getMessages()
 
@@ -65,6 +64,7 @@ export default async function RootLayout({
 								<main className="min-h-screen">{children}</main>
 								<Footer />
 								{/* </PageTransitionEffect> */}
+								<CookieConsent />
 							</Providers>
 						</LocaleProvider>
 					</ThemeProvider>
