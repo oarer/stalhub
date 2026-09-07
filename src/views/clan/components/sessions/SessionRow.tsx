@@ -14,6 +14,8 @@ import { clanService } from '@/services/clan/clan.service'
 import type { StageSession, StageSessionDetail } from '@/types/clan/clan.type'
 import { ScreenshotStatusList } from './ScreenshotStatusList'
 import { SessionSummary } from './SessionSummary'
+import { MismatchesPanel } from './MismatchesPanel'
+import { useClanRoles } from '../../hooks/useClanRoles'
 
 export function SessionRow({
 	session,
@@ -23,6 +25,7 @@ export function SessionRow({
 	onUpload: () => void
 }) {
 	const t = useTranslations()
+	const { clan_id, isOfficer } = useClanRoles()
 	const [expanded, setExpanded] = useState(false)
 	const [detail, setDetail] = useState<StageSessionDetail | null>(null)
 
@@ -260,6 +263,17 @@ export function SessionRow({
 							{detail.ai_summary && (
 								<SessionSummary summary={detail.ai_summary} />
 							)}
+
+							{isOfficer &&
+								detail.screenshots
+									.filter((s) => s.ai_status === 'done')
+									.map((s) => (
+										<MismatchesPanel
+											clanId={clan_id ?? ''}
+											key={s.id}
+											screenshotId={s.id}
+										/>
+									))}
 
 							{detail.attendance.length > 0 && (
 								<>

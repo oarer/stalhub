@@ -28,6 +28,7 @@ import type {
 	GrenadeBoxesResponse,
 	GrenadeStagesResponse,
 	ListingItem,
+	MismatchesResponse,
 	MyClanProfile,
 	PublicClan,
 	RecruitmentSettings,
@@ -82,6 +83,40 @@ class ClanService {
 	async getMembers(clanId: string): Promise<ClanMember[]> {
 		const { data } = await apiClient.get<ClanMember[]>(
 			`/api/v1/clan/members/${clanId}`
+		)
+		return data
+	}
+
+	async updateMemberName(
+		memberId: number,
+		name: string
+	): Promise<ClanMember> {
+		const { data } = await apiClient.patch<ClanMember>(
+			`/api/v1/clan/members/${memberId}`,
+			{ name }
+		)
+		return data
+	}
+
+	async deleteMember(memberId: number): Promise<void> {
+		await apiClient.delete(`/api/v1/clan/members/${memberId}`)
+	}
+
+	async findMismatches(screenshotId: number): Promise<MismatchesResponse> {
+		const { data } = await apiClient.get<MismatchesResponse>(
+			`/api/v1/clan/analytics/screenshots/${screenshotId}/mismatches`
+		)
+		return data
+	}
+
+	async resolveMismatch(
+		screenshotId: number,
+		detectedName: string,
+		memberId: number
+	): Promise<unknown> {
+		const { data } = await apiClient.post(
+			`/api/v1/clan/analytics/screenshots/${screenshotId}/mismatches/resolve`,
+			{ detected_name: detectedName, member_id: memberId }
 		)
 		return data
 	}

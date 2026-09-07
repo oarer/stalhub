@@ -63,6 +63,27 @@ export interface ClanMemberUser {
 	name: string
 }
 
+export interface MismatchRosterEntry {
+	id: number
+	name: string
+	rank: string
+}
+
+export interface MismatchEntry {
+	detected_name: string
+	kills: number | null
+	deaths: number | null
+	assists: number | null
+	score: number | null
+	role: string | null
+}
+
+export interface MismatchesResponse {
+	detected_count: number
+	mismatches: MismatchEntry[]
+	roster: MismatchRosterEntry[]
+}
+
 export interface ClanMember {
 	id: number
 	clan_id: string

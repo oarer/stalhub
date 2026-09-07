@@ -13,7 +13,9 @@ import { clanQueries } from '@/queries/clan/clan.queries'
 import type { ClanMemberNoteWithMember } from '@/types/clan/clan.type'
 import { Section } from '../me/components/Section'
 import { RANK_COLORS, RANK_ORDER } from './clan.const'
+import { MemberActions } from './components/members/MemberActions'
 import { MemberNotesButton } from './components/members/MemberNotesButton'
+import { useClanMemberMutations } from './hooks/useClanMemberMutations'
 import { useClanRoles } from './hooks/useClanRoles'
 
 export default function ClanMembersView() {
@@ -27,6 +29,7 @@ export default function ClanMembersView() {
 function ClanMembersContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
 	const { isOfficer } = useClanRoles()
+	const { renameMutation, deleteMutation } = useClanMemberMutations(clanId)
 	const { data: members, isLoading } = useSuspenseQuery(
 		clanQueries.getMembers(clanId)
 	)
@@ -136,11 +139,18 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 									{t(`player.rank.${member.rank}`)}
 								</Badge>
 								{isOfficer && (
-									<MemberNotesButton
-										memberId={member.id}
-										memberName={member.name}
-										note={note ?? null}
-									/>
+									<>
+										<MemberActions
+											deleteMutation={deleteMutation}
+											member={member}
+											renameMutation={renameMutation}
+										/>
+										<MemberNotesButton
+											memberId={member.id}
+											memberName={member.name}
+											note={note ?? null}
+										/>
+									</>
 								)}
 							</div>
 						</div>
