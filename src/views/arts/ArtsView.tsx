@@ -4,23 +4,31 @@ import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { Modal } from '@/components/ui/Modal'
 import { useDebounce } from '@/hooks/useDebounce'
 import { cn } from '@/lib/cn'
 import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { artQueries } from '@/queries/art/art.queries'
+import { useNsfwGateStore } from '@/stores/useNsfwGate.store'
 import { ArtType } from '@/types/art.type'
 
 export default function ArtsView() {
 	const t = useTranslations()
+	const router = useRouter()
 	const [page, setPage] = useState(1)
 	const [search, setSearch] = useState('')
 	const [type, setType] = useState<ArtType | ''>('')
+	const [nsfwGateOpen, setNsfwGateOpen] = useState(false)
+	const pendingNsfwId = useRef<string | null>(null)
+	const ageConfirmed = useNsfwGateStore((s) => s.ageConfirmed)
+	const confirmAge = useNsfwGateStore((s) => s.confirmAge)
 	const debouncedSearch = useDebounce(search, 300)
 	const take = 24
 
@@ -117,6 +125,23 @@ export default function ArtsView() {
 							className="group relative mb-3 block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-card ring-2 ring-primary/30 duration-200 hover:ring-primary/70"
 							href={`/arts/${art.id}`}
 							key={art.id}
+							onClick={
+								art.type === ArtType.NSFW && !ageConfirmed
+									? (e) => {
+											e.preventDefault()
+											pendingNsfwId.current = art.id
+											setNsfwGateOpen(true)
+										}
+									: undefined
+							}
+							onMouseEnter={
+								art.type === ArtType.NSFW && !ageConfirmed
+									? () => {
+											pendingNsfwId.current = art.id
+											setNsfwGateOpen(true)
+										}
+									: undefined
+							}
 						>
 							{art.type === ArtType.NSFW && (
 								<Badge
@@ -133,7 +158,11 @@ export default function ArtsView() {
 											className={cn(
 												'h-auto w-full transition-all duration-400',
 												art.type === ArtType.NSFW &&
-													'blur-xl hover:blur-none'
+													cn(
+														'blur-xl',
+														ageConfirmed &&
+															'hover:blur-none'
+													)
 											)}
 											muted
 											playsInline
@@ -155,7 +184,11 @@ export default function ArtsView() {
 										className={cn(
 											'h-auto w-full transition-all duration-400',
 											art.type === ArtType.NSFW &&
-												'blur-xl hover:blur-none'
+												cn(
+													'blur-xl',
+													ageConfirmed &&
+														'hover:blur-none'
+												)
 										)}
 										height={1600}
 										src={
@@ -214,6 +247,57 @@ export default function ArtsView() {
 					</Button>
 				</div>
 			)}
+
+			<Modal.Root
+				onOpenChange={(open) => {
+					if (!open) setNsfwGateOpen(false)
+				}}
+				open={nsfwGateOpen}
+			>
+				<Modal.Content fullScreen={false}>
+					<Modal.Header>
+						<Modal.Title className="flex items-center gap-2">
+							<Icon icon="emojione-monotone:no-one-under-eighteen" />
+							{t('arts.nsfwAge.title')}
+						</Modal.Title>
+					</Modal.Header>
+					<Modal.Body className="flex flex-col gap-2">
+						<p className="font-semibold">
+							{t('arts.nsfwAge.description')}
+						</p>
+						<p className="font-semibold text-foreground text-xs">
+							{t('arts.nsfwAge.terms')}{' '}
+							<Link
+								className="text-primary underline underline-offset-2"
+								href="/legal/tos"
+							>
+								{t('arts.nsfwAge.details')}
+							</Link>
+						</p>
+					</Modal.Body>
+					<Modal.Footer>
+						<Modal.Close className="gap-2">
+							<Icon icon="lucide:undo-2" />
+							Назад
+						</Modal.Close>
+						<Button
+							className="gap-2"
+							onClick={() => {
+								confirmAge()
+								setNsfwGateOpen(false)
+
+								const id = pendingNsfwId.current
+								pendingNsfwId.current = null
+
+								if (id) router.push(`/arts/${id}`)
+							}}
+						>
+							{t('arts.nsfwAge.confirm')}
+							<Icon icon="lucide:check" />
+						</Button>
+					</Modal.Footer>
+				</Modal.Content>
+			</Modal.Root>
 		</section>
 	)
 }

@@ -5,41 +5,20 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { useConsentStore } from '@/stores/useConsent.store'
 import { Card } from '../ui/Card'
-
-const CONSENT_KEY = 'cookie-consent'
-const UMAMI_DISABLED_KEY = 'umami.disabled'
-
-type Consent = 'accepted' | 'declined' | null
-
-function getConsent(): Consent {
-	if (typeof window === 'undefined') return null
-
-	const value = localStorage.getItem(CONSENT_KEY)
-
-	return value === 'accepted' || value === 'declined' ? value : null
-}
 
 export function CookieConsent() {
 	const t = useTranslations('cookies')
-	const [consent, setConsent] = useState<Consent>(null)
+	const consent = useConsentStore((s) => s.consent)
+	const decide = useConsentStore((s) => s.decide)
+	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {
-		setConsent(getConsent())
+		setMounted(true)
 	}, [])
 
-	const decide = (choice: Exclude<Consent, null>) => {
-		if (choice === 'declined') {
-			localStorage.setItem(UMAMI_DISABLED_KEY, '1')
-		} else {
-			localStorage.removeItem(UMAMI_DISABLED_KEY)
-		}
-
-		localStorage.setItem(CONSENT_KEY, choice)
-		setConsent(choice)
-	}
-
-	if (consent !== null) return null
+	if (!mounted || consent !== null) return null
 
 	return (
 		<Card.Root className="fixed right-4 bottom-4 max-w-120">
