@@ -113,7 +113,7 @@ export default function UserComments({ userId }: UserCommentsProps) {
 				<div className="flex flex-col gap-2">
 					<div className="flex gap-2">
 						<textarea
-							className="min-h-10 flex-1 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/50"
+							className="min-h-10 flex-1 resize-none rounded-lg border-2 border-primary/50 bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary"
 							onChange={(e) => setContent(e.target.value)}
 							onKeyDown={(e) => {
 								if (
