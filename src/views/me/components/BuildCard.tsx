@@ -231,7 +231,7 @@ export function BuildCard({
 									{messageToString(armorItem.name, locale)}
 								</span>
 							) : (
-								<span className="font-semibold text-text-accent/50">
+								<span className="font-semibold text-muted-foreground">
 									{t('me.buildCard.noArmor')}
 								</span>
 							)}
@@ -251,7 +251,7 @@ export function BuildCard({
 									)}
 								</span>
 							) : (
-								<span className="text-text-accent/50">
+								<span className="font-semibold text-muted-foreground">
 									{t('me.buildCard.noContainer')}
 								</span>
 							)}
@@ -285,7 +285,7 @@ export function BuildCard({
 								</div>
 							))
 						) : (
-							<span className="text-text-accent/50">
+							<span className="font-semibold text-muted-foreground">
 								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
@@ -297,14 +297,18 @@ export function BuildCard({
 				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
-						{stars}
+						<span
+							className={`${montserrat.className} font-semibold text-sm`}
+						>
+							{stars}
+						</span>
 					</div>
 				)}
-				{build.price && (
+				{build.price !== 0 && (
 					<div className="flex items-center gap-1">
 						<Icon className="text-lg" icon="lucide:coins" />
 						<p className={`${montserrat.className} font-semibold`}>
-							{formatArtPrice(build.price)}₽
+							{formatArtPrice(build.price || 0)}₽
 						</p>
 					</div>
 				)}
