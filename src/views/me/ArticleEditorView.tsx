@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Tabs } from '@/components/ui/Tabs'
 import { toast } from '@/components/ui/Toast'
-import type { EditorTab } from '@/constants/article-editor.const'
+import type { EditorTab } from '@/constants/article_editor.const'
 import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
@@ -156,19 +156,15 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 		[articleId]
 	)
 
-	const handleInsertMarkdown = useCallback(
-		(markdown: string) => {
-			const ta = textareaRef.current
-			if (!ta) return
-			const start = ta.selectionStart
-			const end = ta.selectionEnd
-			const next =
-				ta.value.slice(0, start) + markdown + ta.value.slice(end)
-			const newStart = start + markdown.length
-			applyEdit(ta, setContent, { next, newStart, newEnd: newStart })
-		},
-		[]
-	)
+	const handleInsertMarkdown = useCallback((markdown: string) => {
+		const ta = textareaRef.current
+		if (!ta) return
+		const start = ta.selectionStart
+		const end = ta.selectionEnd
+		const next = ta.value.slice(0, start) + markdown + ta.value.slice(end)
+		const newStart = start + markdown.length
+		applyEdit(ta, setContent, { next, newStart, newEnd: newStart })
+	}, [])
 
 	const handleTagsSave = (newTags: string) => {
 		setTags(newTags)
@@ -246,6 +242,8 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				isDirty={isDirty}
 				isSaving={isSaving}
 				isSubmitPending={submitMutation.isPending}
+				onImageUpload={handleImageUpload}
+				onInsertMarkdown={handleInsertMarkdown}
 				save={save}
 				setComponentsModalOpen={setComponentsModalOpen}
 				setContent={setContent}
@@ -254,8 +252,6 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				setTagsModalOpen={setTagsModalOpen}
 				showSubmit={article.status === ArticleStatus.PENDING}
 				textareaRef={textareaRef}
-				onImageUpload={handleImageUpload}
-				onInsertMarkdown={handleInsertMarkdown}
 			/>
 
 			{article.type === ArticleType.QUEST && (

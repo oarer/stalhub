@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { PREVIEW_DEBOUNCE } from '@/constants/article-editor.const'
+import { PREVIEW_DEBOUNCE } from '@/constants/article_editor.const'
 import { compileMdx } from '@/lib/actions/mdx'
 
 export function useCompiledPreview(content: string) {

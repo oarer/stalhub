@@ -10,7 +10,7 @@ import {
 import {
 	MDX_COMPONENT_SNIPPET,
 	MDX_COMPONENTS,
-} from '@/constants/article-editor.const'
+} from '@/constants/article_editor.const'
 import { cn } from '@/lib/cn'
 import { articleService } from '@/services/article/article.service'
 import { applyEdit } from './editor-utils'

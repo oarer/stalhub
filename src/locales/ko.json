@@ -63,6 +63,10 @@
 				"arsenal": {
 					"title": "아스널",
 					"desc": "아스널 평판에 필요한 아이템 수량을 계산하세요"
+				},
+				"upgrade": {
+					"title": "강화 계산기",
+					"desc": "유물·장비 강화 확률, 시도 횟수, 도구 비용"
 				}
 			}
 		},
@@ -2482,5 +2486,94 @@
 		"description": "StalZone 지역 및 서버의 온라인 현황.",
 		"online": "온라인",
 		"charts": "온라인 그래프"
+	},
+	"upgrade": {
+		"title": "강화 계산기",
+		"subtitle": "유물 및 장비 강화 계산: 확률, 시도 횟수, 에너지, 도구 비용",
+		"tabs": {
+			"artefact": "유물",
+			"armor": "방어구 및 장비"
+		},
+		"mode": {
+			"luck": "운빨",
+			"guarantee": "보장"
+		},
+		"levels": {
+			"from": "현재 레벨",
+			"to": "목표 레벨",
+			"to_hint": "각 레벨은 강화 단계입니다"
+		},
+		"cost": {
+			"title": "비용",
+			"stub": "도구 가격(화폐)을 직접 입력합니다",
+			"stub_artefact": "강화 에너지는 유물 설정에서 가져오며 도구 소모량은 레벨별로 고정입니다",
+			"artifact": "유물",
+			"artifact_hint": "기본 에너지와 도구 소모량이 자동 입력됩니다",
+			"artifact_placeholder": "유물 선택",
+			"artifact_search": "유물 검색…",
+			"artifact_empty": "유물을 찾을 수 없습니다",
+			"artifact_selected": "\"{name}\"의 강화 에너지가 자동 계산됩니다",
+			"attempt": "시도당 비용",
+			"support_item": "도구 가격 (개당)",
+			"amplifier": "촉매제",
+			"amplifier_id": "id {id}",
+			"amplifier_desc": "1~14레벨 확률 ×2, 실패 시 내구도 −5%",
+			"amplifier_price": "시도당 촉매제 가격",
+			"use_amplifier": "계산에 사용",
+			"energy_price": "에너지 1 가격 (kr.)",
+			"energy_hint": "장터 (양자 배터리): {price} kr./개",
+			"amp_price_hint": "장터 (촉매제): {price} kr.",
+			"catalyst_desc": "1~14레벨 확률 ×2, 실패 시 내구도 −5%. 장터 (최소): {price} kr.",
+			"support_choose": "보조 아이템 (도구/부품)",
+			"support_selected": "선택됨: {name}",
+			"consumables": "소모 아이템",
+			"consumables_auto": "방어구 레벨에 따라 자동 선택"
+		},
+		"items": {
+			"catalyst": "촉매제",
+			"quantum_battery": "양자 배터리",
+			"cheap_tools": "저렴한 도구",
+			"standard_tools": "표준 도구",
+			"advanced_tools": "고급 도구",
+			"cheap_parts": "저렴한 부품",
+			"standard_parts": "표준 부품",
+			"advanced_parts": "고급 부품"
+		},
+		"result": {
+			"attempts": "총 시도 횟수",
+			"attempts_suffix": "회",
+			"energy": "총 에너지",
+			"energy_suffix": "에너지",
+			"money": "비용",
+			"parts": "부품",
+			"parts_suffix": "개",
+			"tools": "도구",
+			"tools_suffix": "개",
+			"durability": "강화 후 내구도",
+			"min_durability": "강화 가능 최소 내구도",
+			"table": {
+				"title": "레벨별 상세",
+				"level": "레벨",
+				"chance": "확률",
+				"attempts": "시도",
+				"energy_attempt": "에너지 / 시도",
+				"energy_level": "레벨 에너지",
+				"per_attempt_cost": "비용 / 시도",
+				"level_cost": "레벨 비용",
+				"parts": "부품",
+				"tools": "도구",
+				"durability": "내구도",
+				"total": "합계"
+			},
+			"note_pity": "소프트 보장: 레벨 구간 내 연속 실패 ~{level}회 후 다음 시도는 보장됩니다 (구간 평균으로 계산).",
+			"note_artefact_luck": "유물은 실패할 때마다 확률이 올라갑니다. '운빨' 계산이 반영하며 내구도 손실도 표시됩니다.",
+			"note_energy": "강화 에너지 = 유물 기본 에너지 × 레벨 계수. 일반 유물은 1크론당 약 0.5 에너지를 사용합니다 (2.5크론 = 1에너지).",
+			"cost_stub_note": "방어구 도구 가격은 임시 값입니다.",
+			"prices": {
+				"title": "장터 가격 (최소)",
+				"updated_at": "업데이트됨: {date}"
+			}
+		},
+		"empty": "현재 레벨보다 높은 목표 레벨을 선택하세요"
 	}
 }

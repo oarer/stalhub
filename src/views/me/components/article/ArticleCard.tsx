@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/Badge'
 import {
 	MAX_VISIBLE_TAGS,
 	STATUS_VARIANT,
-} from '@/constants/article-editor.const'
+} from '@/constants/article_editor.const'
 import { formatDate } from '@/lib/date'
 import type { Article } from '@/types/article.type'
 import type { PublicUserArticle } from '@/types/user.type'

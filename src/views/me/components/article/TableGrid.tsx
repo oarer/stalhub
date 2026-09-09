@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { montserrat } from '@/app/fonts'
-import { TABLE_MAX } from '@/constants/article-editor.const'
+import { TABLE_MAX } from '@/constants/article_editor.const'
 import { cn } from '@/lib/cn'
 
 interface TableGridProps {

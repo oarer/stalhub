@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 import Script from 'next/script'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
-import { inter, mono, montserrat, raleway, unbounded } from '@/app/fonts'
+import { raleway } from '@/app/fonts'
 import { CookieConsent } from '@/components/cookies/CookieConsent'
 import { getMetadataByPath } from '@/constants/meta'
 import LocaleProvider from '@/providers/LocaleProvider'
@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 
 	return (
 		<html
-			className={`dark ${raleway.variable} ${montserrat.variable} ${unbounded.variable} ${mono.variable} ${inter.variable}`}
+			className="dark"
 			data-scroll-behavior="smooth"
 			lang={locale}
 			suppressHydrationWarning

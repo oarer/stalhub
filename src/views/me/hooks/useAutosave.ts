@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { AUTOSAVE_DELAY } from '@/constants/article-editor.const'
+import { AUTOSAVE_DELAY } from '@/constants/article_editor.const'
 
 export function useAutosave({
 	isDirty,

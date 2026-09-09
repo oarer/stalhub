@@ -106,6 +106,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 					'nav.groups.calculators.items.sessions.description',
 			},
 			{
+				key: 'upgrade',
+				icon: 'lucide:circle-fading-arrow-up',
+				href: '/calcs/upgrade',
+				labelKey: 'nav.groups.calculators.items.upgrade.label',
+				descriptionKey:
+					'nav.groups.calculators.items.upgrade.description',
+			},
+			{
 				key: 'dpi',
 				icon: 'lucide:mouse',
 				href: '/calcs/dpi',

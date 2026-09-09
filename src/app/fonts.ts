@@ -1,10 +1,4 @@
-import {
-	Inter,
-	Montserrat,
-	Raleway,
-	Roboto_Mono,
-	Unbounded,
-} from 'next/font/google'
+import { Montserrat, Raleway, Roboto_Mono, Unbounded } from 'next/font/google'
 
 export const raleway = Raleway({
 	weight: 'variable',
@@ -28,10 +22,4 @@ export const mono = Roboto_Mono({
 	weight: 'variable',
 	subsets: ['latin', 'cyrillic'],
 	variable: '--font-roboto-mono',
-})
-
-export const inter = Inter({
-	weight: 'variable',
-	subsets: ['latin', 'cyrillic'],
-	variable: '--font-inter',
 })

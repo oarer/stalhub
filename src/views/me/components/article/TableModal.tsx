@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { Modal } from '@/components/ui/Modal'
-import { TABLE_HEADER_PLACEHOLDER } from '@/constants/article-editor.const'
+import { TABLE_HEADER_PLACEHOLDER } from '@/constants/article_editor.const'
 import { applyEdit } from './editor-utils'
 import { TableGrid } from './TableGrid'
 

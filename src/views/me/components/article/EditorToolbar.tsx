@@ -8,7 +8,7 @@ import { Modal } from '@/components/ui/Modal'
 import {
 	TOOLBAR_ACTION_CONFIGS,
 	type ToolbarAction,
-} from '@/constants/article-editor.const'
+} from '@/constants/article_editor.const'
 import { applyEdit, insertAtLineStart, wrapSelection } from './editor-utils'
 import { InsertImageModal } from './InsertImageModal'
 
@@ -237,10 +237,7 @@ export function EditorToolbar({
 					title={t('me.articleEditor.insertImage')}
 					variant="secondary"
 				>
-					<Icon
-						className="size-4.5"
-						icon="lucide:image-plus"
-					/>
+					<Icon className="size-4.5" icon="lucide:image-plus" />
 				</Button>
 
 				<Button
