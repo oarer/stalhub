@@ -98,17 +98,17 @@ export default function BuildsView() {
 	const sceneArmor = useMemo(
 		() => ({
 			glb: armorModel?.model
-				? `https://cdn.stalhub.dev/${armorModel.model}`
+				? `https://cdn.stalhub.dev/sc/stalker/${armorModel.model}`
 				: 'https://cdn.stalhub.dev/sc/stalker/models/armor/hound/hound.glb',
 			textures: {
 				diff: armorModel?.diff
-					? `https://cdn.stalhub.dev/${armorModel.diff}`
+					? `https://cdn.stalhub.dev/sc/stalker/${armorModel.diff}`
 					: 'https://cdn.stalhub.dev/sc/stalker/models/armor/hound/hound_diff.dds',
 				emi: armorModel?.emi
-					? `https://cdn.stalhub.dev/${armorModel.emi}`
+					? `https://cdn.stalhub.dev/sc/stalker/${armorModel.emi}`
 					: undefined,
 				nrm: armorModel?.nrm
-					? `https://cdn.stalhub.dev/${armorModel.nrm}`
+					? `https://cdn.stalhub.dev/sc/stalker/${armorModel.nrm}`
 					: 'https://cdn.stalhub.dev/sc/stalker/models/armor/hound/hound_nrm.dds',
 			},
 		}),
@@ -118,17 +118,17 @@ export default function BuildsView() {
 	const sceneCont = useMemo(
 		() => ({
 			glb: containerModel?.model
-				? `https://cdn.stalhub.dev/${containerModel.model}`
+				? `https://cdn.stalhub.dev/sc/stalker/${containerModel.model}`
 				: 'https://cdn.stalhub.dev/sc/stalker/models/backpacks/cont_bear/bear6.glb',
 			textures: {
 				diff: containerModel?.diff
-					? `https://cdn.stalhub.dev/${containerModel.diff}`
+					? `https://cdn.stalhub.dev/sc/stalker/${containerModel.diff}`
 					: 'https://cdn.stalhub.dev/sc/stalker/models/backpacks/cont_bear/bear6_diff.dds',
 				emi: containerModel?.emi
-					? `https://cdn.stalhub.dev/${containerModel.emi}`
+					? `https://cdn.stalhub.dev/sc/stalker/${containerModel.emi}`
 					: undefined,
 				nrm: containerModel?.nrm
-					? `https://cdn.stalhub.dev/${containerModel.nrm}`
+					? `https://cdn.stalhub.dev/sc/stalker/${containerModel.nrm}`
 					: undefined,
 			},
 		}),
