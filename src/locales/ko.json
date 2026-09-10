@@ -1072,7 +1072,8 @@
 			"players": "플레이어",
 			"articles": "게시글",
 			"builds": "빌드",
-			"arts": "아트"
+			"arts": "아트",
+			"bans": "차단"
 		},
 		"roles": {
 			"title": "역할",
@@ -1324,6 +1325,36 @@
 				"broadcastSent": "{count, plural, one {사용자 #명에게} few {사용자 #명에게} many {사용자 #명에게} other {사용자 #명에게}}",
 				"sent": "알림이 전송되었습니다",
 				"sendError": "전송 오류"
+			}
+		},
+		"bans": {
+			"title": "차단",
+			"search": "닉네임 검색...",
+			"empty": "차단 내역이 없습니다",
+			"stats": {
+				"warnings": "경고",
+				"bans": "차단",
+				"autoBanned": "자동 차단",
+				"autoWarned": "자동 경고",
+				"byRule": "규칙별"
+			},
+			"filter": {
+				"all": "전체",
+				"auto": "자동",
+				"manual": "수동",
+				"allRules": "모든 규칙"
+			},
+			"table": {
+				"user": "사용자",
+				"rule": "규칙",
+				"severity": "심각도",
+				"type": "유형",
+				"reason": "사유",
+				"date": "날짜"
+			},
+			"type": {
+				"auto": "자동",
+				"manual": "수동"
 			}
 		}
 	},

@@ -108,7 +108,7 @@ export function AdminArtForm({
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
-					? { authorId: selectedUser?.id }
+					? { author_id: selectedUser?.id }
 					: {
 							author_name: guestName.trim(),
 							...(Object.keys(socials).length > 0 && {
@@ -135,7 +135,7 @@ export function AdminArtForm({
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
-					? { authorId: selectedUser?.id ?? null }
+					? { author_id: selectedUser?.id ?? null }
 					: {
 							author_name: guestName.trim() || null,
 							author_social_links:

@@ -42,6 +42,11 @@ const tabs = [
 		icon: 'lucide:bell',
 	},
 	{
+		title: 'admin.sidebar.bans',
+		href: '/admin/bans',
+		icon: 'lucide:shield-ban',
+	},
+	{
 		title: 'admin.sidebar.players',
 		href: '/admin/players',
 		icon: 'lucide:gamepad-2',

@@ -33,7 +33,7 @@ class AdminNotificationService {
 	): Promise<{ sent: number }> {
 		const { data: res } = await apiClient.post<{ sent: number }>(
 			'/api/v1/admin/notifications/batch',
-			{ ...data, userIds }
+			{ ...data, user_ids: userIds }
 		)
 		return res
 	}

@@ -190,3 +190,31 @@ export interface AdminUserDetail extends AdminUser {
 		stars: number
 	}
 }
+
+export interface AdminBanLog {
+	id: number
+	user_id: number
+	rule: string
+	severity: 'WARN' | 'BAN'
+	auto: boolean
+	reason: string
+	meta: Record<string, unknown> | null
+	created_at: string
+	user: { id: number; username: string; name: string | null }
+}
+
+export interface AdminBanStats {
+	total_warnings: number
+	total_bans: number
+	auto_banned_users: number
+	auto_warned_users: number
+	by_rule: { rule: string; severity: string; _count: { _all: number } }[]
+}
+
+export interface AdminBanListParams {
+	take?: number
+	page?: number
+	auto?: boolean
+	rule?: string
+	search?: string
+}

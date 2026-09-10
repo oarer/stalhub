@@ -1068,7 +1068,8 @@
 			"players": "Joueurs",
 			"articles": "Articles",
 			"builds": "Builds",
-			"arts": "Art"
+			"arts": "Art",
+			"bans": "Bannissements"
 		},
 		"roles": {
 			"title": "Rôles",
@@ -1320,6 +1321,36 @@
 				"broadcastSent": "Notification envoyée à {count, plural, one {# utilisateur} few {# utilisateurs} many {# utilisateurs} other {# utilisateurs}}",
 				"sent": "Notification envoyée",
 				"sendError": "Erreur d'envoi"
+			}
+		},
+		"bans": {
+			"title": "Bannissements",
+			"search": "Rechercher par pseudo...",
+			"empty": "Aucun bannissement trouvé",
+			"stats": {
+				"warnings": "Avertissements",
+				"bans": "Bannissements",
+				"autoBanned": "Auto-bannis",
+				"autoWarned": "Auto-avertis",
+				"byRule": "Par règle"
+			},
+			"filter": {
+				"all": "Tous",
+				"auto": "Auto",
+				"manual": "Manuel",
+				"allRules": "Toutes les règles"
+			},
+			"table": {
+				"user": "Utilisateur",
+				"rule": "Règle",
+				"severity": "Gravité",
+				"type": "Type",
+				"reason": "Raison",
+				"date": "Date"
+			},
+			"type": {
+				"auto": "Auto",
+				"manual": "Manuel"
 			}
 		}
 	},
@@ -2515,7 +2546,7 @@
 			"amplifier_id": "id {id}",
 			"amplifier_desc": "×2 de chance aux niveaux 1–14, mais −5% de durabilité en cas d'échec",
 			"amplifier_price": "Prix du catalyseur par tentative",
-      "use_amplifier": "Utiliser dans le calcul",
+			"use_amplifier": "Utiliser dans le calcul",
 			"energy_price": "Prix de 1 énergie (kr.)",
 			"energy_hint": "Marché (batterie quantique) : {price} kr./unité",
 			"amp_price_hint": "Marché (catalyseur) : {price} kr.",

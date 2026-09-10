@@ -1096,7 +1096,8 @@
 			"players": "Players",
 			"articles": "Articles",
 			"builds": "Builds",
-			"arts": "Art"
+			"arts": "Art",
+			"bans": "Bans"
 		},
 		"roles": {
 			"title": "Roles",
@@ -1346,6 +1347,36 @@
 				"broadcastSent": "Notification sent to {count, plural, one {# user} few {# users} many {# users} other {# users}}",
 				"sent": "Notification sent",
 				"sendError": "Send error"
+			}
+		},
+		"bans": {
+			"title": "Bans",
+			"search": "Search by username...",
+			"empty": "No bans found",
+			"stats": {
+				"warnings": "Warnings",
+				"bans": "Bans",
+				"autoBanned": "Auto-banned",
+				"autoWarned": "Auto-warned",
+				"byRule": "By rule"
+			},
+			"filter": {
+				"all": "All",
+				"auto": "Auto",
+				"manual": "Manual",
+				"allRules": "All rules"
+			},
+			"table": {
+				"user": "User",
+				"rule": "Rule",
+				"severity": "Severity",
+				"type": "Type",
+				"reason": "Reason",
+				"date": "Date"
+			},
+			"type": {
+				"auto": "Auto",
+				"manual": "Manual"
 			}
 		}
 	},
@@ -2677,7 +2708,7 @@
 			"amplifier_id": "id {id}",
 			"amplifier_desc": "×2 chance on levels 1–14, but −5% durability on fail",
 			"amplifier_price": "Catalyst price per attempt",
-      "use_amplifier": "Use in calculation",
+			"use_amplifier": "Use in calculation",
 			"energy_price": "Price of 1 energy (kr.)",
 			"energy_hint": "Market (quantum battery): {price} kr./unit",
 			"amp_price_hint": "Market (catalyst): {price} kr.",

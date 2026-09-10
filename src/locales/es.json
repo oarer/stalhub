@@ -1068,7 +1068,8 @@
 			"players": "Jugadores",
 			"articles": "Artículos",
 			"builds": "Builds",
-			"arts": "Arte"
+			"arts": "Arte",
+			"bans": "Baneos"
 		},
 		"roles": {
 			"title": "Roles",
@@ -1320,6 +1321,36 @@
 				"broadcastSent": "Notificación enviada a {count, plural, one {# usuario} few {# usuarios} many {# usuarios} other {# usuarios}}",
 				"sent": "Notificación enviada",
 				"sendError": "Error al enviar"
+			}
+		},
+		"bans": {
+			"title": "Baneos",
+			"search": "Buscar por apodo...",
+			"empty": "No se encontraron baneos",
+			"stats": {
+				"warnings": "Advertencias",
+				"bans": "Baneos",
+				"autoBanned": "Auto-baneados",
+				"autoWarned": "Auto-advertidos",
+				"byRule": "Por regla"
+			},
+			"filter": {
+				"all": "Todos",
+				"auto": "Auto",
+				"manual": "Manual",
+				"allRules": "Todas las reglas"
+			},
+			"table": {
+				"user": "Usuario",
+				"rule": "Regla",
+				"severity": "Gravedad",
+				"type": "Tipo",
+				"reason": "Motivo",
+				"date": "Fecha"
+			},
+			"type": {
+				"auto": "Auto",
+				"manual": "Manual"
 			}
 		}
 	},
@@ -2515,7 +2546,7 @@
 			"amplifier_id": "id {id}",
 			"amplifier_desc": "×2 de probabilidad en niveles 1–14, pero −5% de durabilidad al fallar",
 			"amplifier_price": "Precio del catalizador por intento",
-      "use_amplifier": "Usar en el cálculo",
+			"use_amplifier": "Usar en el cálculo",
 			"energy_price": "Precio de 1 energía (kr.)",
 			"energy_hint": "Mercado (batería cuántica): {price} kr./un.",
 			"amp_price_hint": "Mercado (catalizador): {price} kr.",
