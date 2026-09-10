@@ -351,7 +351,7 @@ export default function TierListEditorView() {
 					</h1>
 					<Button
 						className="gap-2"
-						disabled={!title.trim() || saveMutation.isPending}
+						loading={!title.trim() || saveMutation.isPending}
 						onClick={() => saveMutation.mutate()}
 						size="sm"
 					>
