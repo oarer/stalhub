@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import GradientText from '@/components/ui/GradientText'
 import { CLink } from '@/components/ui/Link'
@@ -89,7 +89,7 @@ export default function Hero() {
 						}}
 					>
 						<p
-							className={`${montserrat.className} font-bold text-primary text-xl md:text-2xl`}
+							className={`font-bold text-2xl text-primary tracking-tight`}
 						>
 							{stat.value}
 						</p>

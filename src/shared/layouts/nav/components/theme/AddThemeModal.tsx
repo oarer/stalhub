@@ -113,7 +113,7 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 					) : (
 						<div className="flex flex-col gap-3">
 							<textarea
-								className="min-h-40 w-full resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-mono text-foreground text-sm outline-none transition-colors focus:border-primary"
+								className="min-h-40 w-full resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-foreground text-sm outline-none transition-colors focus:border-primary"
 								onChange={(e) => setJsonInput(e.target.value)}
 								placeholder='{"name":"my-theme","cssVars":{"light":{...},"dark":{...}}}'
 								value={jsonInput}
