@@ -46,11 +46,8 @@ export default function Hero() {
 				)}
 			</motion.div>
 
-			<motion.h1
-				animate={{ y: 0, opacity: 1 }}
+			<h1
 				className={`${unbounded.className} font-bold text-3xl tracking-tight sm:text-4xl md:text-6xl lg:text-8xl`}
-				initial={{ y: 30, opacity: 0 }}
-				transition={{ duration: 0.6, delay: 0.3 }}
 			>
 				<GradientText
 					className="py-0"
@@ -60,7 +57,7 @@ export default function Hero() {
 					{t('landing.tools_for')}
 				</GradientText>
 				<span className="dark:text-foreground">StalZone</span>
-			</motion.h1>
+			</h1>
 
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}
