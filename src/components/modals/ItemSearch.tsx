@@ -211,7 +211,7 @@ export default function ItemSearchModal({
 					{trigger}
 				</Modal.Trigger>
 			) : (
-				<Modal.Trigger className="rounded-full p-2" variant={'ghost'}>
+				<Modal.Trigger aria-label="Поиск" className="rounded-full p-2" variant={'ghost'}>
 					<Icon className="text-lg" icon="lucide:search" />
 				</Modal.Trigger>
 			)}

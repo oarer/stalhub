@@ -46,6 +46,7 @@ export default function ChangLang() {
 	return (
 		<div className="relative" ref={menuRef}>
 			<button
+				aria-label="Язык"
 				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
 			>
