@@ -28,18 +28,24 @@ export async function generateItemMetadata(
 		? `/items/${slug.join('/')}.json`
 		: `/items/${slug}.json`
 
+	const iconSlug = Array.isArray(slug) ? slug.join('/') : slug
+
 	const res = await fetch(`${GITHUB_RAW_BASE}/listing.json`, {
 		next: { revalidate: 60 },
 	})
 	const listing: ItemListing[] = await res.json()
 
 	const item = listing.find((i) => i.data === githubUrl)
-	if (!item || !item.name || !item.icon) return null
+	if (!item || !item.name) return null
 
 	const name = item.name[locale] || item.name.en || item.name.ru
 	if (!name) return null
 
 	const description = DESCRIPTIONS[locale]?.(name) ?? DESCRIPTIONS.ru(name)
 
-	return { name, description, icon: item.icon }
+	return {
+		name,
+		description,
+		icon: item.icon ?? `/icons/${iconSlug}.png`,
+	}
 }
