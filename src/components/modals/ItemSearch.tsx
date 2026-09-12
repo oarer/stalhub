@@ -52,17 +52,19 @@ const ItemCard = React.memo(function ItemCard({
 			onClick={close}
 		>
 			<Card.Header className="flex flex-row items-center gap-4 transition-all hover:brightness-75">
-				<Card.Title>
-					<Image
-						alt={name}
-						className="size-12 object-contain"
-						height={44}
-						loading="lazy"
-						quality={80}
-						src={iconPath}
-						width={44}
-					/>
-				</Card.Title>
+				{iconPath && (
+					<Card.Title>
+						<Image
+							alt={name}
+							className="size-12 object-contain"
+							height={44}
+							loading="lazy"
+							quality={80}
+							src={iconPath}
+							width={44}
+						/>
+					</Card.Title>
+				)}
 				<p
 					className="font-semibold text-lg"
 					style={{ color: infoColorMap[item.color] }}
@@ -211,7 +213,11 @@ export default function ItemSearchModal({
 					{trigger}
 				</Modal.Trigger>
 			) : (
-				<Modal.Trigger aria-label="Поиск" className="rounded-full p-2" variant={'ghost'}>
+				<Modal.Trigger
+					aria-label="Поиск"
+					className="rounded-full p-2"
+					variant={'ghost'}
+				>
 					<Icon className="text-lg" icon="lucide:search" />
 				</Modal.Trigger>
 			)}

@@ -1,10 +1,12 @@
+'use client'
+
 import { useEffect } from 'react'
 
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useItemStore } from '@/stores/items.store'
 import type { ItemListing } from '@/types/api.type'
 
-const LISTING_URL = `${GITHUB_RAW_BASE}/listing.json`
+const LISTING_URL = `${GITHUB_RAW_BASE}listing.json`
 const COMMITS_API =
 	'https://api.github.com/repos/oarer/sc-db/commits?path=merged/listing.json&page=1&per_page=1'
 
@@ -18,37 +20,55 @@ export function useSearchItem() {
 		useItemStore()
 
 	useEffect(() => {
+		let cancelled = false
+
 		async function load() {
-			if (items && commit) return
+			const time = Number(localStorage.getItem(LS_TIME))
+			const isFresh = !!(time && Date.now() - time < TTL)
+
+			// Данные уже в сторе и проверены недавно — не дёргаем сеть.
+			if (items && commit && isFresh) return
 
 			setLoading(true)
 
 			const cached = localStorage.getItem(LS_DATA)
 			const cachedCommit = localStorage.getItem(LS_COMMIT)
 
+			let cachedItems: ItemListing[] | null = null
 			if (cached) {
 				try {
-					setItems(JSON.parse(cached))
+					cachedItems = JSON.parse(cached)
 				} catch {
-					null
+					cachedItems = null
 				}
 			}
-			if (cachedCommit) setCommit(cachedCommit)
+
+			if (!items && cachedItems) setItems(cachedItems)
+			if (!commit && cachedCommit) setCommit(cachedCommit)
 
 			try {
 				const res = await fetch(COMMITS_API)
+				if (!res.ok) throw new Error('GitHub API error')
 				const data = await res.json()
 
 				const latestSHA = data?.[0]?.sha
-				const currentSHA = cachedCommit || commit
+				if (!latestSHA) throw new Error('No commits')
 
-				if (latestSHA && latestSHA === currentSHA) {
-					setLoading(false)
+				const currentSHA = cachedCommit ?? commit
+
+				if (latestSHA === currentSHA && (items ?? cachedItems)) {
+					if (!items && cachedItems) setItems(cachedItems)
+					localStorage.setItem(LS_TIME, Date.now().toString())
 					return
 				}
 
-				const freshRaw = await fetch(LISTING_URL)
+				// Cache-bust: CDN кэширует /db/listing.json на 24ч (immutable),
+				// но кэширует ключ по полному URL — новый SHA даёт новый ключ.
+				const freshRaw = await fetch(`${LISTING_URL}?v=${latestSHA}`)
+				if (!freshRaw.ok) throw new Error('Listing fetch error')
 				const freshItems = (await freshRaw.json()) as ItemListing[]
+
+				if (cancelled) return
 
 				setItems(freshItems)
 				setCommit(latestSHA)
@@ -63,15 +83,18 @@ export function useSearchItem() {
 				)
 			} catch (e) {
 				console.log(e, 'error fetching items')
-				const time = Number(localStorage.getItem(LS_TIME))
 				if (!time || Date.now() - time > TTL)
 					setError('Не удалось получить актуальные данные')
 			} finally {
-				setLoading(false)
+				if (!cancelled) setLoading(false)
 			}
 		}
 
 		load()
+
+		return () => {
+			cancelled = true
+		}
 	}, [setItems, setCommit, setError, setLoading, items, commit])
 
 	return useItemStore()

@@ -8,7 +8,6 @@ import type { ItemListing } from '@/types/api.type'
 import type { Article } from '@/types/article.type'
 import type { ItemName, Locale } from '@/types/item.type'
 
-
 interface UsePreparedSearchOptions {
 	locale?: Locale
 	minLength?: number
