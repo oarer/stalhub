@@ -46,19 +46,19 @@ export default async function ItemsPage({ params }: PageProps) {
 	const { slug } = await params
 
 	const path = Array.isArray(slug) ? slug : []
+
 	const id = slug[slug.length - 1]
+
 	const githubUrl = `${path.join('/')}.json`
 
 	const queryClient = getQueryClient()
 
 	await Promise.allSettled([
-		queryClient.prefetchQuery(itemQueries.byGithubUrl(githubUrl)),
-		queryClient.prefetchQuery(itemQueries.barter(id)),
+		queryClient.query(itemQueries.byGithubUrl(githubUrl)),
+		queryClient.query(itemQueries.barter(id)),
+		queryClient.infiniteQuery(auctionQueries.lotsInfinite({ id })),
 
-		queryClient.prefetchInfiniteQuery(auctionQueries.lotsInfinite({ id })),
-		queryClient.prefetchInfiniteQuery(
-			auctionQueries.historyInfinite({ id })
-		),
+		queryClient.infiniteQuery(auctionQueries.historyInfinite({ id })),
 	])
 
 	const item = queryClient.getQueryData<Item>(
@@ -71,7 +71,7 @@ export default async function ItemsPage({ params }: PageProps) {
 
 	if (item.category.startsWith('weapon/')) {
 		await Promise.allSettled([
-			queryClient.prefetchQuery(itemQueries.attachments(id)),
+			queryClient.query(itemQueries.attachments(id)),
 		])
 	}
 

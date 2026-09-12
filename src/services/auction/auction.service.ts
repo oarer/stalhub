@@ -1,6 +1,13 @@
+import axios from 'axios'
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import { type AuctionParams, Regions } from '@/types/api.type'
 import type { LotsHistoryResponse, LotsResponse } from '@/types/item.type'
+
+const hasNoAuctionData = (error: unknown) => {
+	if (!axios.isAxiosError(error)) return false
+	const status = error.response?.status
+	return status === 400 || status === 404 || status === 422
+}
 
 class AuctionService {
 	async getLots({
@@ -10,13 +17,20 @@ class AuctionService {
 		additional = true,
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsResponse> {
-		const { data } = await apiClient.get<LotsResponse>(
-			`/api/v1/auction/${region}/${id}/lots`,
-			{
-				params: { limit, additional, offset },
+		try {
+			const { data } = await apiClient.get<LotsResponse>(
+				`/api/v1/auction/${region}/${id}/lots`,
+				{
+					params: { limit, additional, offset },
+				}
+			)
+			return data
+		} catch (error) {
+			if (hasNoAuctionData(error)) {
+				return { total: 0, lots: [] }
 			}
-		)
-		return data
+			throw error
+		}
 	}
 
 	async getHistory({
@@ -26,13 +40,20 @@ class AuctionService {
 		additional = true,
 		region = Regions.RU,
 	}: AuctionParams): Promise<LotsHistoryResponse> {
-		const { data } = await apiClient.get<LotsHistoryResponse>(
-			`/api/v1/auction/${region}/${id}/history`,
-			{
-				params: { limit, additional, offset },
+		try {
+			const { data } = await apiClient.get<LotsHistoryResponse>(
+				`/api/v1/auction/${region}/${id}/history`,
+				{
+					params: { limit, additional, offset },
+				}
+			)
+			return data
+		} catch (error) {
+			if (hasNoAuctionData(error)) {
+				return { total: 0, prices: [] }
 			}
-		)
-		return data
+			throw error
+		}
 	}
 }
 
