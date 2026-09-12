@@ -35,6 +35,10 @@
 					"title": "Builds Calculator Lite",
 					"desc": "Create and save artifact builds, experiment with combinations and compare the effectiveness of different setups"
 				},
+				"buy": {
+					"title": "Item Buy Price Table",
+					"desc": "Create a table of items you buy with set prices and export it as an image with your Discord contact"
+				},
 				"bp": {
 					"title": "Battle Pass Calculator",
 					"desc": "A convenient tool for calculating battle pass progress"
@@ -629,6 +633,40 @@
 				"abnormal": "Emission"
 			}
 		}
+	},
+	"buy": {
+		"title": "Item Buy Price Table",
+		"subtitle": "Create a table of items you buy, set the prices and export it as an image",
+		"tableTitleLabel": "Table title",
+		"tableTitlePlaceholder": "E.g. Buying / Selling",
+		"discord": "Discord",
+		"discordHint": "Discord will be shown in the exported image",
+		"addItem": "Add item",
+		"savePng": "Save PNG",
+		"copyText": "Copy as text",
+		"textCopied": "Text copied",
+		"clear": "Clear",
+		"item": "Item",
+		"price": "Price",
+		"total": "Total",
+		"remove": "Remove",
+		"emptyTable": "The table is empty",
+		"emptyTableHint": "Add items you want to buy using the button above",
+		"added": "Item added",
+		"searchTitle": "Search items",
+		"searchLabel": "Item name...",
+		"searchHint": "Start typing to find items",
+		"notFound": "Nothing found",
+		"loading": "Loading items...",
+		"pngPreview": "Table preview",
+		"close": "Close",
+		"copy": "Copy",
+		"download": "Download",
+		"pngCopied": "Image copied",
+		"copyError": "Could not copy image",
+		"pngError": "Failed to generate image",
+		"pngNoIcons": "Failed to load item icons",
+		"madeOn": "Made on"
 	},
 	"ttk": {
 		"page": {

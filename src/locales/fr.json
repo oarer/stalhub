@@ -32,6 +32,10 @@
 					"title": "Calculateur de builds Lite",
 					"desc": "Créez et enregistrez des builds d'artefacts, expérimentez avec les combinaisons et comparez l'efficacité des différents setups"
 				},
+				"buy": {
+					"title": "Tableau de prix d'achat",
+					"desc": "Créez un tableau des objets que vous achetez avec des prix définis et exportez-le en image avec votre contact Discord"
+				},
 				"bp": {
 					"title": "Calculateur de Passe de combat",
 					"desc": "Un outil pratique pour compter la progression du passe de combat"
@@ -111,7 +115,41 @@
 							"3d_description": "Fonctionnalité expérimentale"
 						}
 					},
-					"ttk": {
+"buy": {
+		"title": "Tableau de prix d'achat",
+		"subtitle": "Créez un tableau des objets que vous achetez, fixez les prix et exportez-le en image",
+		"tableTitleLabel": "Titre du tableau",
+		"tableTitlePlaceholder": "Ex. Achat / Vente",
+		"discord": "Discord",
+		"discordHint": "Le Discord sera affiché dans l'image exportée",
+		"addItem": "Ajouter un objet",
+		"savePng": "Enregistrer le PNG",
+		"copyText": "Copier en texte",
+		"textCopied": "Texte copié",
+		"clear": "Vider",
+		"item": "Objet",
+		"price": "Prix",
+		"total": "Total",
+		"remove": "Supprimer",
+		"emptyTable": "Le tableau est vide",
+		"emptyTableHint": "Ajoutez les objets que vous voulez acheter avec le bouton ci-dessus",
+		"added": "Objet ajouté",
+		"searchTitle": "Rechercher des objets",
+		"searchLabel": "Nom de l'objet...",
+		"searchHint": "Commencez à saisir pour trouver des objets",
+		"notFound": "Rien trouvé",
+		"loading": "Chargement des objets...",
+		"pngPreview": "Aperçu du tableau",
+		"close": "Fermer",
+		"copy": "Copier",
+		"download": "Télécharger",
+		"pngCopied": "Image copiée",
+		"copyError": "Impossible de copier l'image",
+		"pngError": "Impossible de générer l'image",
+		"pngNoIcons": "Impossible de charger les icônes des objets",
+		"madeOn": "Fait sur"
+	},
+	"ttk": {
 						"label": "TTK",
 						"description": "Efficacité des armes"
 					},

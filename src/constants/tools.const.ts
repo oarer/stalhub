@@ -14,6 +14,13 @@ export const toolsList = [
 		link: '/calcs/builds/lite',
 	},
 	{
+		id: 'buy',
+		icon: 'lucide:shopping-basket',
+		title: 'landing.tools.tool_list.buy.title',
+		desc: 'landing.tools.tool_list.buy.desc',
+		link: '/calcs/buy',
+	},
+	{
 		id: 'ttk',
 		icon: 'lucide:timer-reset',
 		title: 'landing.tools.tool_list.ttk.title',

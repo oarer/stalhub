@@ -32,6 +32,10 @@
 					"title": "빌드 계산기 Lite",
 					"desc": "아티팩트 빌드를 만들고 저장하며, 조합을 실험하고 다양한 세팅의 효율을 비교할 수 있습니다"
 				},
+				"buy": {
+					"title": "구매 가격표",
+					"desc": "구매하는 아이템 목록과 가격표를 만들고 Discord 연락처와 함께 이미지로 내보내세요"
+				},
 				"bp": {
 					"title": "배틀 패스 계산기",
 					"desc": "배틀 패스 진행도를 계산하는 편리한 도구"
@@ -111,7 +115,41 @@
 							"3d_description": "실험 기능"
 						}
 					},
-					"ttk": {
+"buy": {
+		"title": "구매 가격표",
+		"subtitle": "구매할 아이템 목록을 만들고 가격을 정한 뒤 이미지로 내보내세요",
+		"tableTitleLabel": "표 제목",
+		"tableTitlePlaceholder": "예: 구매 / 판매",
+		"discord": "Discord",
+		"discordHint": "내보낸 이미지에 Discord가 표시됩니다",
+		"addItem": "아이템 추가",
+		"savePng": "PNG 저장",
+		"copyText": "텍스트로 복사",
+		"textCopied": "텍스트가 복사되었습니다",
+		"clear": "비우기",
+		"item": "아이템",
+		"price": "가격",
+		"total": "합계",
+		"remove": "삭제",
+		"emptyTable": "표가 비어 있습니다",
+		"emptyTableHint": "위 버튼으로 구매할 아이템을 추가하세요",
+		"added": "아이템 추가됨",
+		"searchTitle": "아이템 검색",
+		"searchLabel": "아이템 이름...",
+		"searchHint": "입력을 시작하면 아이템을 찾을 수 있습니다",
+		"notFound": "결과 없음",
+		"loading": "아이템 불러오는 중...",
+		"pngPreview": "표 미리보기",
+		"close": "닫기",
+		"copy": "복사",
+		"download": "다운로드",
+		"pngCopied": "이미지가 복사되었습니다",
+		"copyError": "이미지를 복사할 수 없습니다",
+		"pngError": "이미지를 생성할 수 없습니다",
+		"pngNoIcons": "아이템 아이콘을 불러올 수 없습니다",
+		"madeOn": "만든 곳"
+	},
+	"ttk": {
 						"label": "TTK",
 						"description": "무기 효율"
 					},

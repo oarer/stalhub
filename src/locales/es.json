@@ -32,6 +32,10 @@
 					"title": "Calculadora de builds Lite",
 					"desc": "Crea y guarda builds de artefactos, experimenta con combinaciones y compara la eficacia de distintos conjuntos"
 				},
+				"buy": {
+					"title": "Tabla de precios de compra",
+					"desc": "Crea una tabla de los objetos que compras con precios fijados y expórtala como imagen con tu contacto de Discord"
+				},
 				"bp": {
 					"title": "Calculadora del pase de batalla",
 					"desc": "Una herramienta práctica para calcular el progreso del pase de batalla"
@@ -111,7 +115,41 @@
 							"3d_description": "Función experimental"
 						}
 					},
-					"ttk": {
+"buy": {
+		"title": "Tabla de precios de compra",
+		"subtitle": "Crea una tabla de los objetos que compras, fija los precios y expórtala como imagen",
+		"tableTitleLabel": "Título de la tabla",
+		"tableTitlePlaceholder": "P. ej. Compra / Venta",
+		"discord": "Discord",
+		"discordHint": "El Discord se mostrará en la imagen exportada",
+		"addItem": "Añadir objeto",
+		"savePng": "Guardar PNG",
+		"copyText": "Copiar como texto",
+		"textCopied": "Texto copiado",
+		"clear": "Limpiar",
+		"item": "Objeto",
+		"price": "Precio",
+		"total": "Total",
+		"remove": "Eliminar",
+		"emptyTable": "La tabla está vacía",
+		"emptyTableHint": "Añade los objetos que quieras comprar con el botón de arriba",
+		"added": "Objeto añadido",
+		"searchTitle": "Buscar objetos",
+		"searchLabel": "Nombre del objeto...",
+		"searchHint": "Empieza a escribir para encontrar objetos",
+		"notFound": "Nada encontrado",
+		"loading": "Cargando objetos...",
+		"pngPreview": "Vista previa de la tabla",
+		"close": "Cerrar",
+		"copy": "Copiar",
+		"download": "Descargar",
+		"pngCopied": "Imagen copiada",
+		"copyError": "No se pudo copiar la imagen",
+		"pngError": "No se pudo generar la imagen",
+		"pngNoIcons": "No se pudieron cargar los iconos de los objetos",
+		"madeOn": "Hecho en"
+	},
+	"ttk": {
 						"label": "TTK",
 						"description": "Eficacia del arma"
 					},
