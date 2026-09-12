@@ -144,15 +144,31 @@ const CustomNode = memo(
 					</div>
 				)}
 
-				{data.price != null && (
-					<div className="flex items-center justify-between font-semibold text-sm">
+				{data.onPriceChange && (
+					<div className="flex items-center justify-between gap-2 font-semibold text-sm">
 						<p>{t('hideout.cost')}</p>
-						<span className={montserrat.className}>
-							{(
-								data?.price * (data?.quantity ?? 0)
-							).toLocaleString()}
-							₽
-						</span>
+						<div className="flex items-center gap-2">
+							<Input
+								className="w-24 bg-card/50 text-sm"
+								min={0}
+								onChange={(e) => {
+									const raw = e.target.value
+									data.onPriceChange?.(
+										raw === '' ? null : Number(raw)
+									)
+								}}
+								placeholder="0"
+								step={1}
+								type="number"
+								value={data.price ?? ''}
+							/>
+							<span className={montserrat.className}>
+								{(
+									(data.price ?? 0) * (data.quantity ?? 0)
+								).toLocaleString()}
+								₽
+							</span>
+						</div>
 					</div>
 				)}
 
@@ -200,6 +216,7 @@ const CustomNode = memo(
 			a.energyPerCraft === b.energyPerCraft &&
 			a.onToggle === b.onToggle &&
 			a.onQuantityChange === b.onQuantityChange &&
+			a.onPriceChange === b.onPriceChange &&
 			a.ingredients === b.ingredients
 		)
 	}

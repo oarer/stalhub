@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { montserrat } from '@/app/fonts'
+import Input from '@/components/ui/Input'
 import Sidebar from '@/components/ui/sideBar/SideBar'
 import type { ColumnDef } from '@/components/ui/Table'
 import { flexRender, Table, useTableSort } from '@/components/ui/Table'
@@ -41,6 +42,8 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 		handleItemChange,
 		desiredQuantity,
 		expandedNodes,
+		manualPrices,
+		handlePriceChange,
 	} = useHideoutGraph(hideoutData, items, locale)
 
 	const ingredients = useMemo<IngredientRows[]>(() => {
@@ -100,6 +103,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				const ingId = normalizeItemId(ing.item)
 				const { name, icon } = getItemInfo(ingId)
 				const total = Math.ceil(multiplier * ing.amount)
+				const price = manualPrices[ingId] ?? ing.price ?? 0
 
 				rows.push({
 					id: ingId,
@@ -107,8 +111,8 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 					icon,
 					perCraft: ing.amount,
 					total,
-					price: ing.price ?? 0,
-					totalPrice: (ing.price ?? 0) * total,
+					price,
+					totalPrice: price * total,
 					depth,
 					energy: recipe.energy,
 				})
@@ -128,6 +132,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 		selectedItem,
 		desiredQuantity,
 		expandedNodes,
+		manualPrices,
 		locale,
 	])
 
@@ -175,9 +180,19 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				accessorKey: 'price',
 				header: t('hideout.pricePerUnit'),
 				cell: ({ row }) => (
-					<span className={montserrat.className}>
-						{row.original.price.toLocaleString()}₽
-					</span>
+					<Input
+						className="w-24"
+						min={0}
+						onChange={(e) => {
+							const raw = e.target.value
+							handlePriceChange(
+								row.original.id,
+								raw === '' ? null : Number(raw)
+							)
+						}}
+						type="number"
+						value={row.original.price}
+					/>
 				),
 			},
 			{
@@ -199,7 +214,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				),
 			},
 		],
-		[t]
+		[t, handlePriceChange]
 	)
 
 	const { table } = useTableSort(ingredients, columns)

@@ -13,6 +13,7 @@ export interface CustomNodeData {
 	isExpanded?: boolean
 	isRoot?: boolean
 	onToggle?: () => void
+	onPriceChange?: (value: number | null) => void
 	quantity?: number
 	perCraft?: number
 	onQuantityChange?: (delta: number) => void

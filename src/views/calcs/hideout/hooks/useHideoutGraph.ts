@@ -17,6 +17,8 @@ interface UseHideoutGraphReturn {
 	selectedItem: string
 	desiredQuantity: number
 	expandedNodes: Set<string>
+	manualPrices: Record<string, number>
+	handlePriceChange: (id: string, value: number | null) => void
 	handleItemChange: (val: string) => void
 }
 
@@ -31,6 +33,7 @@ export function useHideoutGraph(
 	const [selectedItem, setSelectedItem] = useState('')
 	const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set())
 	const [desiredQuantity, setDesiredQuantity] = useState(1)
+	const [manualPrices, setManualPrices] = useState<Record<string, number>>({})
 
 	const [centerTarget, setCenterTarget] = useState<{
 		x: number
@@ -75,6 +78,24 @@ export function useHideoutGraph(
 			return next
 		})
 	}, [])
+
+	const handlePriceChange = useCallback(
+		(id: string, value: number | null) => {
+			setManualPrices((prev) => {
+				if (value === null) {
+					if (!(id in prev)) return prev
+
+					const next = { ...prev }
+					delete next[id]
+
+					return next
+				}
+
+				return { ...prev, [id]: value }
+			})
+		},
+		[]
+	)
 
 	const getName = useCallback(
 		(id: string) => {
@@ -152,11 +173,16 @@ export function useHideoutGraph(
 					perCraft,
 
 					price:
+						manualPrices[id] ??
 						recipe?.result.find(
 							(r) => normalizeItemId(r.item) === id
-						)?.price ?? null,
+						)?.price ??
+						null,
 
 					onToggle: () => toggleNode(id),
+
+					onPriceChange: (value: number | null) =>
+						handlePriceChange(id, value),
 
 					onQuantityChange: isRoot
 						? (delta: number) => {
@@ -284,6 +310,8 @@ export function useHideoutGraph(
 		getName,
 		getIcon,
 		toggleNode,
+		manualPrices,
+		handlePriceChange,
 	])
 
 	const handleItemChange = useCallback(
@@ -309,6 +337,8 @@ export function useHideoutGraph(
 		selectedItem,
 		desiredQuantity,
 		expandedNodes,
+		manualPrices,
+		handlePriceChange,
 		handleItemChange,
 	}
 }
