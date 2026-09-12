@@ -6,7 +6,7 @@ import TierListsView from '@/views/tierlists/TierListsView'
 export default async function TierListsPage() {
 	const queryClient = getQueryClient()
 
-	await queryClient.prefetchQuery(
+	await queryClient.query(
 		tierListQueries.list({ take: 24, page: 1 })
 	)
 

@@ -7,18 +7,25 @@ import UserCard from '@/views/me/components/UserCard'
 import { HoverCard, type HoverCardSide } from '../HoverCard'
 
 type Props =
-	| { id: number; username?: never; side?: HoverCardSide; children: React.ReactNode }
-	| { username: string; id?: never; side?: HoverCardSide; children: React.ReactNode }
+	| {
+			id: number
+			username?: never
+			side?: HoverCardSide
+			children: React.ReactNode
+	  }
+	| {
+			username: string
+			id?: never
+			side?: HoverCardSide
+			children: React.ReactNode
+	  }
 
-export default function HoverUserCard({
-	id,
-	username,
-	side,
-	children,
-}: Props) {
+export default function HoverUserCard({ id, username, side, children }: Props) {
 	const queryClient = getQueryClient()
 
-	const query = id ? userQueries.getUser(id) : userQueries.getUserByUsername(username!)
+	const query = id
+		? userQueries.getUser(id)
+		: userQueries.getUserByUsername(username!)
 
 	const { data: user } = useQuery({
 		...query,
@@ -26,7 +33,7 @@ export default function HoverUserCard({
 	})
 
 	const handleMouseEnter = () => {
-		queryClient.prefetchQuery(query)
+		queryClient.query(query)
 	}
 
 	return (

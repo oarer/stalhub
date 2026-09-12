@@ -61,7 +61,7 @@ export default async function ArtPage({ params }: PageProps) {
 	const queryClient = getQueryClient()
 
 	try {
-		await queryClient.prefetchQuery(artQueries.get(id))
+		await queryClient.query(artQueries.get(id))
 	} catch {
 		notFound()
 	}

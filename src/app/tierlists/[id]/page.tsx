@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getQueryClient } from '@/providers/QueryProvider'
-import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
+import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import TierListDetailView from '@/views/tierlists/TierListDetailView'
 
 export default async function TierListDetailPage({
@@ -13,9 +13,9 @@ export default async function TierListDetailPage({
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-		queryClient.prefetchQuery(tierListQueries.get(id)),
-		queryClient.prefetchQuery(itemsQueries.get({ type: 'weapons' })),
-		queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' })),
+		queryClient.query(tierListQueries.get(id)),
+		queryClient.query(itemsQueries.get({ type: 'weapons' })),
+		queryClient.query(itemsQueries.get({ type: 'armor' })),
 	])
 
 	return (

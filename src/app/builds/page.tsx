@@ -8,10 +8,10 @@ export default async function BuildsPage() {
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-		queryClient.prefetchQuery(buildApiQueries.list({ take: 20, page: 1 })),
-		queryClient.prefetchQuery(itemsQueries.get({ type: 'artefact' })),
-		queryClient.prefetchQuery(itemsQueries.get({ type: 'armor' })),
-		queryClient.prefetchQuery(itemsQueries.get({ type: 'containers' })),
+		queryClient.query(buildApiQueries.list({ take: 20, page: 1 })),
+		queryClient.query(itemsQueries.get({ type: 'artefact' })),
+		queryClient.query(itemsQueries.get({ type: 'armor' })),
+		queryClient.query(itemsQueries.get({ type: 'containers' })),
 	])
 
 	return (

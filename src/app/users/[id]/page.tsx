@@ -1,5 +1,5 @@
-import type { AxiosError } from 'axios'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import type { AxiosError } from 'axios'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
@@ -57,9 +57,9 @@ export default async function UserPage({ params }: PageProps) {
 
 	try {
 		if (numericId !== null) {
-			await queryClient.prefetchQuery(userQueries.getUser(numericId))
+			await queryClient.query(userQueries.getUser(numericId))
 		} else {
-			await queryClient.prefetchQuery(userQueries.getUserByUsername(id))
+			await queryClient.query(userQueries.getUserByUsername(id))
 		}
 	} catch (e) {
 		const status = (e as AxiosError).response?.status

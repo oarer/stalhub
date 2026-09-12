@@ -65,7 +65,7 @@ export default async function ArticlePage({ params }: PageProps) {
 	const queryClient = getQueryClient()
 
 	try {
-		await queryClient.prefetchQuery(articleQueries.get(id))
+		await queryClient.query(articleQueries.get(id))
 	} catch {
 		notFound()
 	}
