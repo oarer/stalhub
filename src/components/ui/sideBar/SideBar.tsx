@@ -11,6 +11,7 @@ type Props = {
 	defaultOpen?: boolean
 	id?: string
 	side?: 'left' | 'right'
+	buttonSideClass?: string
 }
 
 const Sidebar = ({
@@ -18,6 +19,7 @@ const Sidebar = ({
 	className,
 	defaultOpen = true,
 	id,
+	buttonSideClass,
 	side = 'left',
 }: Props) => {
 	const [isOpen, setIsOpen] = useState(defaultOpen)
@@ -27,7 +29,6 @@ const Sidebar = ({
 	const isLeft = side === 'left'
 	const sidebarSideClass = isLeft ? 'left-4' : 'right-4'
 	const sidebarTranslate = isLeft ? -20 : 20
-	const buttonSideClass = isLeft ? 'left-5' : 'right-5'
 	const openIcon = isLeft ? 'lucide:chevron-left' : 'lucide:chevron-right'
 	const closedIcon = isLeft ? 'lucide:chevron-right' : 'lucide:chevron-left'
 
@@ -84,7 +85,8 @@ const Sidebar = ({
 				aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
 				className={cn(
 					'fixed top-1/2 z-999 -translate-y-1/2 cursor-pointer rounded-xl bg-card/60 p-3 backdrop-blur-xs transition-colors duration-400 hover:bg-muted/30',
-					buttonSideClass
+					buttonSideClass,
+					isLeft ? 'left-5' : 'right-5'
 				)}
 				initial={{ opacity: 0, scale: 1, x: 0 }}
 				onClick={() => setIsOpen(!isOpen)}

@@ -160,6 +160,7 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 					selectionMode="multiple"
 					size="sm"
 					titleClass="px-0 py-0"
+					variant={'ghost'}
 				/>
 			</div>
 		</Sidebar>

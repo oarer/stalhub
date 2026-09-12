@@ -11,7 +11,7 @@ export const accordionVariants = cva(
 				danger: 'border-destructive bg-destructive/10 text-destructive-foreground hover:bg-destructive/15',
 				success:
 					'border-success bg-success/10 text-success-foreground hover:bg-success/15',
-				ghost: 'bg-muted/20 hover:brightness-75 border-transparent',
+				ghost: 'bg-muted/20 border-transparent',
 			},
 			size: {
 				sm: 'text-sm px-2 py-1',
