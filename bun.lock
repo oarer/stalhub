@@ -6,7 +6,7 @@
       "name": "stalhub",
       "dependencies": {
         "@iconify/react": "^6.0.2",
-        "@oarer/leaflet-webgl-markers": "^0.3.0",
+        "@oarer/leaflet-webgl-markers": "^0.3.1",
         "@radix-ui/react-slot": "^1.3.3",
         "@react-three/drei": "^10.7.8",
         "@react-three/postprocessing": "^3.1.1",
@@ -315,7 +315,7 @@
 
     "@nolyfill/is-core-module": ["@nolyfill/is-core-module@1.0.39", "", {}, "sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA=="],
 
-    "@oarer/leaflet-webgl-markers": ["@oarer/leaflet-webgl-markers@0.3.0", "", { "dependencies": { "@types/leaflet": "^1.9.0" }, "peerDependencies": { "leaflet": "^1.9.0" } }, "sha512-Jo1XZSb3kLdSI0fry9WAWJpKIxJ+294P+m8megIJk73p/zQSeOdQK9D52kUeC2U77JRJEFwjwm3ytu5qICC4qw=="],
+    "@oarer/leaflet-webgl-markers": ["@oarer/leaflet-webgl-markers@0.3.1", "", { "dependencies": { "@types/leaflet": "^1.9.0" }, "peerDependencies": { "leaflet": "^1.9.0" } }, "sha512-LM1PtAi8lt5kEh+LTiiXcwmQ6HiOF6R/y1zg11uqzVIw9jcM+D5oTIXYMjbvO+QlwVpu78IGprghiZkH+LKEnA=="],
 
     "@parcel/watcher": ["@parcel/watcher@2.6.0", "", { "dependencies": { "detect-libc": "^2.0.3", "is-glob": "^4.0.3", "node-addon-api": "^7.0.0", "picomatch": "^4.0.4" }, "optionalDependencies": { "@parcel/watcher-android-arm64": "2.6.0", "@parcel/watcher-darwin-arm64": "2.6.0", "@parcel/watcher-darwin-x64": "2.6.0", "@parcel/watcher-freebsd-x64": "2.6.0", "@parcel/watcher-linux-arm-glibc": "2.6.0", "@parcel/watcher-linux-arm-musl": "2.6.0", "@parcel/watcher-linux-arm64-glibc": "2.6.0", "@parcel/watcher-linux-arm64-musl": "2.6.0", "@parcel/watcher-linux-x64-glibc": "2.6.0", "@parcel/watcher-linux-x64-musl": "2.6.0", "@parcel/watcher-win32-arm64": "2.6.0", "@parcel/watcher-win32-x64": "2.6.0" } }, "sha512-7FNeNl8NCE7aINx7WXiKQrPYZWC/hvrTsmk6zmxbI7LTXE7hVek/n8AfVgpe2y82zl3w0HvCHN0bVKMBoJcC0w=="],
 
