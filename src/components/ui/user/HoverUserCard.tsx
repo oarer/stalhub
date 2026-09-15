@@ -33,7 +33,7 @@ export default function HoverUserCard({ id, username, side, children }: Props) {
 	})
 
 	const handleMouseEnter = () => {
-		queryClient.query(query)
+		queryClient.fetchQuery(query)
 	}
 
 	return (

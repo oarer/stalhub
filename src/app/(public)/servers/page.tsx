@@ -7,8 +7,8 @@ export default async function ServerStatusPage() {
 	const queryClient = getQueryClient()
 
 	await Promise.allSettled([
-		queryClient.query(serverOnlineQueries.latest()),
-		queryClient.query(serverOnlineQueries.history(24)),
+		queryClient.fetchQuery(serverOnlineQueries.latest()),
+		queryClient.fetchQuery(serverOnlineQueries.history(24)),
 	])
 
 	return (

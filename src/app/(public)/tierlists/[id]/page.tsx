@@ -13,9 +13,9 @@ export default async function TierListDetailPage({
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-		queryClient.query(tierListQueries.get(id)),
-		queryClient.query(itemsQueries.get({ type: 'weapons' })),
-		queryClient.query(itemsQueries.get({ type: 'armor' })),
+		queryClient.fetchQuery(tierListQueries.get(id)),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'weapons' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'armor' })),
 	])
 
 	return (

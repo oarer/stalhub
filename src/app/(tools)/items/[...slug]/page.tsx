@@ -54,11 +54,11 @@ export default async function ItemsPage({ params }: PageProps) {
 	const queryClient = getQueryClient()
 
 	await Promise.allSettled([
-		queryClient.query(itemQueries.byGithubUrl(githubUrl)),
-		queryClient.query(itemQueries.barter(id)),
-		queryClient.infiniteQuery(auctionQueries.lotsInfinite({ id })),
+		queryClient.fetchQuery(itemQueries.byGithubUrl(githubUrl)),
+		queryClient.fetchQuery(itemQueries.barter(id)),
+		queryClient.fetchInfiniteQuery(auctionQueries.lotsInfinite({ id })),
 
-		queryClient.infiniteQuery(auctionQueries.historyInfinite({ id })),
+		queryClient.fetchInfiniteQuery(auctionQueries.historyInfinite({ id })),
 	])
 
 	const item = queryClient.getQueryData<Item>(
@@ -71,7 +71,7 @@ export default async function ItemsPage({ params }: PageProps) {
 
 	if (item.category.startsWith('weapon/')) {
 		await Promise.allSettled([
-			queryClient.query(itemQueries.attachments(id)),
+			queryClient.fetchQuery(itemQueries.attachments(id)),
 		])
 	}
 

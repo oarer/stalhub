@@ -57,9 +57,9 @@ export default async function UserPage({ params }: PageProps) {
 
 	try {
 		if (numericId !== null) {
-			await queryClient.query(userQueries.getUser(numericId))
+			await queryClient.fetchQuery(userQueries.getUser(numericId))
 		} else {
-			await queryClient.query(userQueries.getUserByUsername(id))
+			await queryClient.fetchQuery(userQueries.getUserByUsername(id))
 		}
 	} catch (e) {
 		const status = (e as AxiosError).response?.status

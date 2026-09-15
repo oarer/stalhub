@@ -54,7 +54,7 @@ function ClanChartsContent({ clanId }: { clanId: string }) {
 
 	useEffect(() => {
 		for (const type of ['ALL', 'TOURNAMENT', 'BRAWL'] as const) {
-			queryClient.query(
+			queryClient.fetchQuery(
 				clanQueries.getAttendanceSummary(clanId, type, from)
 			)
 		}

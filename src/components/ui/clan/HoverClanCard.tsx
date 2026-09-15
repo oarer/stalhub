@@ -21,7 +21,7 @@ export default function HoverClanCard({ clanId, side, children }: Props) {
 	})
 
 	const handleMouseEnter = () => {
-		queryClient.query(clanQueries.getPublicClan(clanId))
+		queryClient.fetchQuery(clanQueries.getPublicClan(clanId))
 	}
 
 	return (

@@ -7,13 +7,13 @@ export default async function TTKPage() {
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-		queryClient.query(itemsQueries.get({ type: 'weapons' })),
-		queryClient.query(itemsQueries.get({ type: 'ammo' })),
-		queryClient.query(itemsQueries.get({ type: 'plates' })),
-		queryClient.query(itemsQueries.get({ type: 'armor' })),
-		queryClient.query(itemsQueries.get({ type: 'containers' })),
-		queryClient.query(itemsQueries.get({ type: 'artefact' })),
-		queryClient.query(itemsQueries.get({ type: 'consumables' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'weapons' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'ammo' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'plates' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'armor' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'containers' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'artefact' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'consumables' })),
 	])
 
 	return (

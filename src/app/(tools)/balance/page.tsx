@@ -6,7 +6,7 @@ import BalanceView from '@/views/balance/BalanceView'
 export default async function BalancePage() {
 	const queryClient = getQueryClient()
 
-	await queryClient.query(balanceDiffQueries.latest())
+	await queryClient.fetchQuery(balanceDiffQueries.latest())
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

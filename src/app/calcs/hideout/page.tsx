@@ -6,7 +6,7 @@ import { HideoutView } from '@/views/calcs/hideout/HideoutView'
 export default async function HideoutPage() {
 	const queryClient = getQueryClient()
 
-	queryClient.query(hideoutQueries.get())
+	queryClient.fetchQuery(hideoutQueries.get())
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

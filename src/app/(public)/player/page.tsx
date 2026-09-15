@@ -7,8 +7,8 @@ export default async function PlayerSearchPage() {
 	const queryClient = getQueryClient()
 
 	await Promise.allSettled([
-		queryClient.query(playerQueries.getPopular()),
-		queryClient.query(playerQueries.getRecent()),
+		queryClient.fetchQuery(playerQueries.getPopular()),
+		queryClient.fetchQuery(playerQueries.getRecent()),
 	])
 
 	return (

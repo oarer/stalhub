@@ -6,7 +6,9 @@ import ArticlesView from '@/views/articles/ArticlesView'
 export default async function ArticlesPage() {
 	const queryClient = getQueryClient()
 
-	await queryClient.query(articleQueries.publicList({ take: 20, page: 1 }))
+	await queryClient.fetchQuery(
+		articleQueries.publicList({ take: 20, page: 1 })
+	)
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

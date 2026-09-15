@@ -7,8 +7,8 @@ export default async function BuildsLitePage() {
 	const queryClient = getQueryClient()
 
 	await Promise.all([
-		queryClient.query(itemsQueries.get({ type: 'armor' })),
-		queryClient.query(itemsQueries.get({ type: 'containers' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'armor' })),
+		queryClient.fetchQuery(itemsQueries.get({ type: 'containers' })),
 	])
 
 	return (

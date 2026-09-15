@@ -6,7 +6,7 @@ import { ArsenalView } from '@/views/calcs/arsenal/ArsenalView'
 export default async function ArsenalPage() {
 	const queryClient = getQueryClient()
 
-	queryClient.query(arsenalQueries.get())
+	queryClient.fetchQuery(arsenalQueries.get())
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
