@@ -39,7 +39,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 						alt={user.name ?? ''}
 						className="absolute inset-0 scale-105 object-cover blur-sm"
 						fill
-						src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
+						src={`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${user.id}`}
 						unoptimized
 					/>
 					<div className="absolute inset-0 bg-black/40" />

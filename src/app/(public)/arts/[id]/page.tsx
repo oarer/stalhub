@@ -22,7 +22,7 @@ export async function generateMetadata({
 		const images = art.image_url
 			? [
 					{
-						url: `https://api.stalhub.dev${art.image_url}`,
+						url: `https://cdn.stalhub.dev${art.image_url}`,
 						width: 1200,
 						height: 630,
 					},

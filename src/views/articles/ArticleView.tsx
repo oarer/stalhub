@@ -95,7 +95,7 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 							alt={article.author.username}
 							className="rounded-full"
 							height={42}
-							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${article.author.id}`}
+							src={`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${article.author.id}`}
 							unoptimized
 							width={42}
 						/>

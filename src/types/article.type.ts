@@ -74,7 +74,7 @@ export interface QuestMapData {
 
 export const articleImageUrl = (url: string) =>
 	url.startsWith('/uploads/')
-		? `${process.env.NEXT_PUBLIC_API ?? ''}${url}`
+		? `${process.env.NEXT_PUBLIC_CDN_URL ?? ''}${url}`
 		: url
 
 export interface Article {

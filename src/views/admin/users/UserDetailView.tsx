@@ -914,7 +914,7 @@ export default function UserDetailView({ userId }: Props) {
 											alt="banner"
 											className="h-full w-full object-cover"
 											height={128}
-											src={`${process.env.NEXT_PUBLIC_API}${bannerImage}`}
+											src={`${process.env.NEXT_PUBLIC_CDN_URL}${bannerImage}`}
 											unoptimized
 											width={512}
 										/>

@@ -191,7 +191,7 @@ function CommentItem({
 							alt={comment.author.name}
 							className="rounded-full"
 							height={42}
-							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${comment.author.id}`}
+							src={`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${comment.author.id}`}
 							unoptimized
 							width={42}
 						/>

@@ -47,7 +47,7 @@ export function ScreenshotStatusList({
 									</LightBox.Trigger>
 									<LightBox.Content
 										alt="screenshot"
-										src={`${process.env.NEXT_PUBLIC_API}/${shot.file_path}`}
+										src={`${process.env.NEXT_PUBLIC_CDN_URL}/${shot.file_path}`}
 									/>
 								</LightBox.Root>
 							</div>

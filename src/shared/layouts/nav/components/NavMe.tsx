@@ -196,7 +196,7 @@ export default function NavMe() {
 					alt={user.name || 'avatar'}
 					className="rounded-lg border-2 border-primary/60 transition-all duration-300 hover:scale-110 active:scale-95"
 					height={46}
-					src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
+					src={`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${user.id}`}
 					unoptimized
 					width={46}
 				/>

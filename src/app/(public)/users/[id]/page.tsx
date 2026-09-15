@@ -26,7 +26,7 @@ export async function generateMetadata({
 			: await userService.getUserByUsername(id)
 
 		const displayName = user.name ?? user.username
-		const avatarUrl = `${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`
+		const avatarUrl = `${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${user.id}`
 		const description = t('users.profileDescription', {
 			username: user.username,
 		})

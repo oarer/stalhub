@@ -17,7 +17,7 @@ export default function Avatar({
 			{...props}
 			alt={`${username}'s avatar`}
 			className={cn('rounded-full object-contain', className)}
-			src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${id}`}
+			src={`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${id}`}
 			unoptimized
 		/>
 	)

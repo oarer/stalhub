@@ -34,7 +34,7 @@ function truncate(str: string, max: number): string {
 async function fetchAvatarDataUri(userId: number): Promise<string | null> {
 	try {
 		const res = await fetch(
-			`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${userId}`,
+			`${process.env.NEXT_PUBLIC_CDN_URL}/api/v1/users/avatar/${userId}`,
 			{
 				headers: { Accept: 'image/*' },
 			}

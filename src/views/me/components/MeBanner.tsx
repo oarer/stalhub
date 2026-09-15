@@ -42,7 +42,7 @@ export default function MeBanner({
 						className="object-cover"
 						fill
 						priority
-						src={`${process.env.NEXT_PUBLIC_API}${bannerImage}`}
+						src={`${process.env.NEXT_PUBLIC_CDN_URL}${bannerImage}`}
 						unoptimized
 					/>
 					<div className="absolute inset-0 bg-black/40" />
