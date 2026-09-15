@@ -9,7 +9,22 @@ export type EffectFilterMap = {
 	negSet: Set<string>
 }
 
-type ColoredStat = { color: string; displayName: string }
+type ColoredStat = { color: string; displayName: string; magnitude: number }
+
+function getStatMagnitude(el: unknown): number {
+	const stat = el as {
+		type: string
+		value?: number | number[] | number[][]
+		max?: number
+	}
+	// Compare ranges at 100% quality and variants at the base upgrade level.
+	const raw = stat.type === 'range' ? stat.max : stat.value
+	const first = Array.isArray(raw) ? raw[0] : raw
+	const value = Array.isArray(first) ? first[1] : first
+	return typeof value === 'number' && Number.isFinite(value)
+		? Math.abs(value)
+		: 0
+}
 
 function getElementKey(el: unknown): string | null {
 	const name = (el as { name?: { type?: string; key?: string } })?.name
@@ -54,7 +69,11 @@ export function getEffectsStats(
 					// ignore
 				}
 
-				result[key] = { color, displayName }
+				result[key] = {
+					color,
+					displayName,
+					magnitude: getStatMagnitude(el),
+				}
 			}
 		}
 	}
@@ -134,7 +153,7 @@ export function filterItemsByEffects(
 
 	const effectsMap = buildEffectsMap(items, locale)
 
-	return items.filter((item) => {
+	const filtered = items.filter((item) => {
 		const effects = effectsMap.get(item.id)
 
 		if (positiveStats.length > 0) {
@@ -158,6 +177,21 @@ export function filterItemsByEffects(
 		}
 
 		return true
+	})
+
+	return filtered.sort((a, b) => {
+		const aStats = effectsMap.get(a.id)!
+		const bStats = effectsMap.get(b.id)!
+		// Selected buffs take priority; subsequent effects break ties.
+		for (const key of positiveStats) {
+			const delta = bStats[key].magnitude - aStats[key].magnitude
+			if (delta) return delta
+		}
+		for (const key of negativeStats) {
+			const delta = aStats[key].magnitude - bStats[key].magnitude
+			if (delta) return delta
+		}
+		return 0
 	})
 }
 

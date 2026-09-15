@@ -23,6 +23,7 @@ type ItemsListProps = {
 	className?: string
 	favoriteType?: FavoriteType
 	showFavorites?: boolean
+	preserveOrder?: boolean
 	minLength?: number
 	emptyText?: string
 }
@@ -113,6 +114,7 @@ export function ItemsList({
 	className,
 	favoriteType,
 	showFavorites = true,
+	preserveOrder = false,
 	minLength = 2,
 	emptyText,
 }: ItemsListProps) {
@@ -142,6 +144,10 @@ export function ItemsList({
 
 	// biome-ignore lint: useExhaustiveDependencies
 	const sortedItems = useMemo(() => {
+		if (preserveOrder) {
+			const matches = new Set(searchedItems.map((item) => item.id))
+			return items.filter((item) => matches.has(item.id))
+		}
 		return [...searchedItems].sort((a, b) => {
 			if (showFavorites && favoriteType) {
 				const aFav = isFavorite(favoriteType, a.id)
@@ -154,7 +160,15 @@ export function ItemsList({
 			const bPriority = colorPriority[b.color as InfoColor] ?? 0
 			return bPriority - aPriority
 		})
-	}, [searchedItems, showFavorites, favoriteType, isFavorite, favorites])
+	}, [
+		searchedItems,
+		showFavorites,
+		favoriteType,
+		isFavorite,
+		favorites,
+		preserveOrder,
+		items,
+	])
 
 	const virtualizer = useVirtualizer({
 		count: sortedItems.length,

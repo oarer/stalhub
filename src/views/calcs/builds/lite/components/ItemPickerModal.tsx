@@ -123,6 +123,9 @@ export function ItemPickerModal({
 								items={items}
 								locale={locale}
 								onSelectItem={(itemId) => setPreviewId(itemId)}
+								preserveOrder={statFilters?.some(
+									(group) => group.values.length > 0
+								)}
 								query={filter}
 								selectedItemId={previewId}
 							/>

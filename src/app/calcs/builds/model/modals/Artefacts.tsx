@@ -17,6 +17,7 @@ import { ArtifactStatsPanel } from '@/views/calcs/builds/components/ArtifactStat
 import { ArtifactSlots } from '@/views/calcs/builds/model/components/artifacts/ArtifactSlots'
 import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
+import { filterItemsByEffects } from '@/views/calcs/builds/utils/effectFilters'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
 
 export default function ArtModal({ onClose }: ModalProps) {
@@ -197,31 +198,8 @@ export default function ArtModal({ onClose }: ModalProps) {
 		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
 		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
 
-		return items.filter((item) => {
-			const parsed = parsedItemsMap.get(item.id)
-			if (!parsed) return true
-
-			const allStats = { ...parsed.statRanges, ...parsed.addStats }
-
-			if (positiveKeys.length > 0) {
-				const hasPositive = positiveKeys.every(
-					(key) =>
-						key in allStats && !isDebuffColor(allStats[key].color)
-				)
-				if (!hasPositive) return false
-			}
-
-			if (negativeKeys.length > 0) {
-				const hasNegative = negativeKeys.every(
-					(key) =>
-						key in allStats && isDebuffColor(allStats[key].color)
-				)
-				if (!hasNegative) return false
-			}
-
-			return true
-		})
-	}, [items, parsedItemsMap, selectedEffectStats, effectFilterMap])
+		return filterItemsByEffects(items, locale, positiveKeys, negativeKeys)
+	}, [items, locale, selectedEffectStats, effectFilterMap])
 
 	useEffect(() => {
 		if (!selectedStatsData?.art) {
@@ -363,6 +341,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 						items={effectFilteredItems}
 						locale={locale}
 						onSelectItem={handleAdd}
+						preserveOrder={selectedEffectStats.length > 0}
 						query={filter}
 					/>
 				</Card.Root>

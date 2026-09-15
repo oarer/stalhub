@@ -115,6 +115,7 @@ export default function ContModal({ onClose }: ModalProps) {
 						items={effectFilteredItems}
 						locale={locale}
 						onSelectItem={(id) => setPreviewId(id)}
+						preserveOrder={selectedEffectStats.length > 0}
 						query={filter}
 					/>
 				</Card.Root>
