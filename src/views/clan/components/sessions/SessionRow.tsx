@@ -12,10 +12,10 @@ import { toast } from '@/components/ui/Toast'
 import { formatDate } from '@/lib/date'
 import { clanService } from '@/services/clan/clan.service'
 import type { StageSession, StageSessionDetail } from '@/types/clan/clan.type'
+import { useClanRoles } from '../../hooks/useClanRoles'
+import { MismatchesPanel } from './MismatchesPanel'
 import { ScreenshotStatusList } from './ScreenshotStatusList'
 import { SessionSummary } from './SessionSummary'
-import { MismatchesPanel } from './MismatchesPanel'
-import { useClanRoles } from '../../hooks/useClanRoles'
 
 export function SessionRow({
 	session,

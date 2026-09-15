@@ -60,7 +60,9 @@ export function QuestArticleFields({
 				<Combobox
 					className="py-0.5"
 					onValueChange={(faction) => {
-						patch({ faction: faction ? (faction as Faction) : null })
+						patch({
+							faction: faction ? (faction as Faction) : null,
+						})
 					}}
 					options={factionOptions}
 					placeholder="articles.quest.faction"

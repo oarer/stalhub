@@ -1,2 +1,1 @@
-export const GITHUB_RAW_BASE =
-	'https://cdn.stalhub.dev/db/'
+export const GITHUB_RAW_BASE = 'https://cdn.stalhub.dev/db/'

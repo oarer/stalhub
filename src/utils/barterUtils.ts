@@ -1,8 +1,5 @@
 import { BarterCoins, CrimsonShell } from '@/constants/barter.const'
-import type {
-	BarterItemResult,
-	CurrencyType,
-} from '@/types/barter.type'
+import type { BarterItemResult, CurrencyType } from '@/types/barter.type'
 
 export const applyDiscount = (value: number, discount: number): number =>
 	discount > 0 ? Math.ceil(value * ((100 - discount) / 100)) : value

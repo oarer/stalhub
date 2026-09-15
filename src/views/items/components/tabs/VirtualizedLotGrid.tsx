@@ -1,7 +1,7 @@
 'use client'
 
-import { Fragment, useMemo } from 'react'
 import type { ReactNode } from 'react'
+import { Fragment, useMemo } from 'react'
 import { useVirtualizedRows } from '@/hooks/useVirtualizedRows'
 
 type Props<T> = {
@@ -25,10 +25,13 @@ export default function VirtualizedLotGrid<T>({
 		return paired
 	}, [items])
 
-	const { containerRef, virtualizer, visibleRows } = useVirtualizedRows(rows, {
-		hasMore,
-		onLoadMore,
-	})
+	const { containerRef, virtualizer, visibleRows } = useVirtualizedRows(
+		rows,
+		{
+			hasMore,
+			onLoadMore,
+		}
+	)
 
 	return (
 		<div
@@ -47,7 +50,8 @@ export default function VirtualizedLotGrid<T>({
 						ref={virtualizer.measureElement}
 						style={{
 							transform: `translateY(${
-								virtualRow.start - virtualizer.options.scrollMargin
+								virtualRow.start -
+								virtualizer.options.scrollMargin
 							}px)`,
 						}}
 					>

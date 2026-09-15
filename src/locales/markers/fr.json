@@ -1,0 +1,424 @@
+{
+  "pda": {
+    "waypoint": {
+      "we": {
+        "flex_node_electra": {
+          "title": "Amas de Proto-décharges"
+        },
+        "lost_device": {
+          "title": "Installation abandonnée"
+        },
+        "art_hunters": {
+          "title": "Arthunters du ZIVCAS"
+        },
+        "outpost": {
+          "covenant": "Avant-poste de l'Alliance",
+          "duty": "Avant-poste de la Frontière",
+          "freedom": "Avant-poste de l'Ascension",
+          "merc": "Avant-poste des Mercenaires",
+          "stalkers": "Avant-poste des Stalkers"
+        },
+        "abstract_anomaly_node": {
+          "title": "Faille anormale"
+        },
+        "abstract_camp_duty": {
+          "title": "Campement de la Frontière"
+        },
+        "force_group_duty": {
+          "title": "Groupe d'assaut de la Frontière"
+        },
+        "north_house_duty": {
+          "title": "Poste de garde de la Frontière"
+        },
+        "sniper_duty": {
+          "title": "Point de vue de sniper de la Frontière"
+        },
+        "abstract_boss_zombie": {
+          "title": "Horde de zombies"
+        },
+        "abstract_camp_krovosos": {
+          "title": "Nid de Goules"
+        },
+        "officer_duty": {
+          "title": "Camp des officiers"
+        },
+        "sapper_zivcas": {
+          "title": "Sappeurs du ZIVCAS"
+        },
+        "abstract_camp_zombie": {
+          "title": "Groupe de zombies"
+        },
+        "sapper_duty": {
+          "title": "Sapeurs de la Frontière"
+        },
+        "science_camp_duty": {
+          "title": "Scientifiques de la Frontière"
+        },
+        "boss_krovosos": {
+          "title": "La tanière de la Goule sombre"
+        },
+        "camp_dog": {
+          "title": "Tanière de canoïdes"
+        },
+        "boss_pseudogigant": {
+          "title": "Le repaire du béhémoth"
+        },
+        "infected_dog": {
+          "title": "Meute pestilentielle"
+        },
+        "force_group_zivcas": {
+          "title": "Groupe d'assaut du ZIVCAS"
+        },
+        "abstract_rescue_zombie": {
+          "title": "Attaque de zombies"
+        },
+        "rescue_covenant": {
+          "title": "Raid de « Zivcas »"
+        },
+        "lost_house": {
+          "title": "Poste de garde abandonné"
+        },
+        "boss_chimera": {
+          "title": "Le repaire du démon"
+        },
+        "supply_base_duty": {
+          "title": "Base de Ravitaillement"
+        },
+        "sniper_zivcas": {
+          "title": "Point de vue de sniper du ZIVCAS"
+        },
+        "abstract_rescue_extractor": {
+          "title": "Defensa de la instalación"
+        },
+        "abstract_rescue_scientist_north": {
+          "title": "Protéger les scientifiques du danger des mutants"
+        },
+        "field_lab": {
+          "title": "Enquête de terrain du ZIVCAS"
+        },
+        "abstract_camp_zivcas": {
+          "title": "Campement ZIVCAS"
+        },
+        "science_camp_zivcas": {
+          "title": "Scientifiques du ZIVCAS"
+        },
+        "science_rescue_covenant": {
+          "title": "Raid de ZIVCAS "
+        },
+        "abstract_camp_flesh": {
+          "title": "Tanière de Porcinous"
+        },
+        "abstract_camp_boar": {
+          "title": "Tanière de Sanglier"
+        },
+        "lightning_rod": {
+          "title": "Paratonnerre"
+        },
+        "high_boss": {
+          "title": "Bastion"
+        },
+        "north_house_freedom": {
+          "title": "Poste de garde de l'Ascension"
+        },
+        "abstract_camp_freedom": {
+          "title": "Campement de l'Ascension"
+        },
+        "abstract_camp_mercenary": {
+          "title": "Campement des Mercenaires"
+        },
+        "north_house_zivcas": {
+          "title": "Poste de garde ZIVCAS"
+        },
+        "force_group_freedom": {
+          "title": "Groupe d'assaut de l'Ascension"
+        },
+        "force_group_mercenary": {
+          "title": "Groupe d'assaut des Mercenaires"
+        },
+        "north_house_merc": {
+          "title": "Poste de garde des Mercenaires"
+        },
+        "rescue_freedom": {
+          "title": "Raid de « Zivcas »"
+        },
+        "sapper_mercenary": {
+          "title": "Sapeurs des Mercenaires"
+        },
+        "supply_base_merc": {
+          "title": "Base de Ravitaillement"
+        },
+        "science_camp_mercenary": {
+          "title": "Scientifiques des Mercenaires"
+        },
+        "sniper_mercenary": {
+          "title": "Point de vue de sniper des Mercenaires"
+        },
+        "officer_merc": {
+          "title": "Camp des officiers"
+        },
+        "abstract_camp_dog": {
+          "title": "Tanière de Clébards"
+        },
+        "limansk_vacate_monolit_10": {
+          "title": "Bâtiment occupé"
+        },
+        "limansk_vacate_military_20": {
+          "title": "Bâtiment occupé"
+        },
+        "abstract_rescue_scientist": {
+          "title": "Aider les scientifiques"
+        },
+        "limansk_vacate_military_10": {
+          "title": "Bâtiment occupé"
+        },
+        "limansk_krovosos_boss": {
+          "title": "Tanière de Psy-Ghoul"
+        },
+        "limansk_vacate_monolit_20": {
+          "title": "Bâtiment occupé"
+        },
+        "limansk_chimera_boss": {
+          "title": "Tanière de Démon fantôme"
+        },
+        "limansk_rescue_extractor": {
+          "title": "Defensa de la instalación"
+        },
+        "limansk_pseudogigant_boss": {
+          "title": "Nid de Rat géant"
+        },
+        "sapper_covenant": {
+          "title": "Sapeurs de l'Alliance"
+        },
+        "abstract_camp_covenant": {
+          "title": "Campement de l'Alliance"
+        },
+        "science_camp_covenant": {
+          "title": "Scientifiques de l'Alliance"
+        },
+        "north_house_coven": {
+          "title": "Poste de garde de l'Alliance"
+        },
+        "sniper_covenant": {
+          "title": "Point de vue de sniper de l'Alliance"
+        },
+        "officer_covenant": {
+          "title": "Camp des officiers"
+        },
+        "science_rescue_duty": {
+          "title": "Raid de ZIVCAS "
+        },
+        "force_group_covenant": {
+          "title": "Groupe d'assaut de l'Alliance"
+        },
+        "supply_base_covenant": {
+          "title": "Base de Ravitaillement"
+        },
+        "rescue_duty": {
+          "title": "Raid de « Zivcas »"
+        },
+        "sapper_freedom": {
+          "title": "Sapeurs de l'Ascension"
+        },
+        "abstract_camp_bandit": {
+          "title": "Campement de Bandits"
+        },
+        "abstract_camp_snork": {
+          "title": "Tanière de Pilleurs"
+        },
+        "abstract_camp_tushkan": {
+          "title": "Nid de Rats"
+        },
+        "abstract_camp_military": {
+          "title": "Poste de contrôle militaire"
+        },
+        "abstract_boss": {
+          "title": "Repaire du Boss"
+        },
+        "abstract_rescue": {
+          "title": "Aider les alliés"
+        },
+        "abstract_camp_krovosos_large": {
+          "title": "Tanière de Goules"
+        },
+        "military_lieutenant": {
+          "title": "Camp militaire"
+        },
+        "abstract_camp_zombie_large": {
+          "title": "Horde de zombies"
+        },
+        "south_destroy_object": {
+          "title": "Point de ravitaillement"
+        },
+        "abstract_camp_bandit_large": {
+          "title": "Camp de Bandits"
+        },
+        "tutorial_bolota_flesh": {
+          "title": "Harde de cochons"
+        },
+        "abstract_camp_stalker": {
+          "title": "Campement de stalkers"
+        },
+        "abstract_camp_stalker_large": {
+          "title": "Camp de stalkers"
+        },
+        "rescue_mercenary": {
+          "title": "Raid de « Zivcas »"
+        },
+        "science_camp_freedom": {
+          "title": "Scientifiques de l'Ascension"
+        },
+        "sniper_freedom": {
+          "title": "Point de vue de sniper de l'Ascension"
+        },
+        "officer_freedom": {
+          "title": "Camp des officiers"
+        },
+        "supply_base_freedom": {
+          "title": "Base de Ravitaillement"
+        },
+        "shopot_antena": {
+          "title": "Antenne de Murmure"
+        },
+        "art_device": {
+          "title": "Faille anormale"
+        },
+        "shopot_base": {
+          "title": "Base du Murmure"
+        },
+        "chronofaults": {
+          "title": "Chronorift"
+        },
+        "shopot_camp": {
+          "title": "Camp du Murmure"
+        },
+        "abstract_camp_monolit": {
+          "title": "Équipe du Murmure"
+        },
+        "shopot_lost_device": {
+          "title": "Structures anormales du Murmure"
+        },
+        "shopot_exit": {
+          "title": "Poste de garde du Murmure"
+        },
+        "shopot_control_center": {
+          "title": "Poste de commandement du Murmure"
+        }
+      }
+    }
+  },
+  "we": {
+    "flex_node": {
+      "goal": "Explorez la zone"
+    },
+    "abstract_camp_mutant": {
+      "goal": "Nettoyer la zone"
+    },
+    "abstract_camp_human": {
+      "goal": "Nettoyer la zone"
+    },
+    "abstract_anomaly_node": {
+      "goal": "Stabiliser à l'aide d'une installation de recherche d'anomalies"
+    },
+    "abstract_boss": {
+      "goal": "Tuer le boss"
+    },
+    "abstract_rescue_covenant": {
+      "goal": "Ne laissez pas les soldats de l'Alliance mourir"
+    },
+    "abstract_rescue_extractor": {
+      "goal": "Ne laisse pas les mutants détruire l'installation"
+    },
+    "abstract_rescue_scientist": {
+      "goal": "Ne laisse pas mourir les Scientifiques"
+    },
+    "lightning_rod": {
+      "goal": "Utiliser le paratonnerre"
+    },
+    "high_boss": {
+      "goal": "Nettoyer le bastion"
+    },
+    "abstract_rescue_freedom": {
+      "goal": "Ne laissez pas les soldats de l'Ascension mourir"
+    },
+    "limansk_vacate_monolit_10": {
+      "goal": "Nettoyer le bâtiment"
+    },
+    "limansk_vacate_military_20": {
+      "goal": "Nettoyer le bâtiment"
+    },
+    "limansk_vacate_military_10": {
+      "goal": "Nettoyer le bâtiment"
+    },
+    "limansk_krovosos_boss": {
+      "goal": "Nettoyer la zone"
+    },
+    "limansk_vacate_monolit_20": {
+      "goal": "Nettoyer le bâtiment"
+    },
+    "limansk_chimera_boss": {
+      "goal": "Nettoyer la zone"
+    },
+    "limansk_rescue_extractor": {
+      "goal": "Ne laisse pas les mutants détruire l'installation"
+    },
+    "limansk_pseudogigant_boss": {
+      "goal": "Nettoyer la zone"
+    },
+    "abstract_rescue_duty": {
+      "goal": "Ne laissez pas les soldats de la Frontière mourir"
+    },
+    "abstract_rescue_stalker": {
+      "goal": "Ne laisse pas mourir les stalkers"
+    },
+    "abstract_clash_st_ba": {
+      "goal": "Aider les alliés"
+    },
+    "south_destroy_object": {
+      "goal": "Détruisez toutes les réserves d'entrepôt."
+    },
+    "abstract_rescue_bandit": {
+      "goal": "Ne laisse pas mourir les bandits"
+    },
+    "abstract_rescue_merc": {
+      "goal": "Ne laissez pas mourir les soldats Mercenaires"
+    },
+    "abstract_contamination_antenna": {
+      "goal": "Détruire l'antenne"
+    },
+    "art_device": {
+      "goal": "Stabiliser à l'aide d'un Nooconvertisseur"
+    },
+    "chronofaults": {
+      "goal": "Stabiliser à l'aide d'un chronodispositif"
+    },
+    "shopot_exit_goal": "Nettoyer la zone et quitter les lieux"
+  },
+  "settlement": {
+    "id": {
+      "covenant": {
+        "title": "Résidence de l'Alliance"
+      },
+      "freedom": {
+        "title": "Base de l'Ascension"
+      },
+      "duty": {
+        "title": "Base de la Frontière"
+      },
+      "rostok": {
+        "title": "Le Bar"
+      },
+      "garage": {
+        "title": "Caserne de pompiers"
+      },
+      "csky": {
+        "title": "QG d'Ataman"
+      },
+      "merc": {
+        "title": "Camp de Mercenaire"
+      },
+      "bar_sever": {
+        "title": "Bar Geiger Ivre"
+      }
+    }
+  }
+}

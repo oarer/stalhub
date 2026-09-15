@@ -25,7 +25,9 @@ export default function ClanSquadsView() {
 	const clanId = profile?.clan?.id
 	if (!clanId) return null
 
-	return <ClanSquadsContent clanId={clanId} currentUserId={profile?.user_id} />
+	return (
+		<ClanSquadsContent clanId={clanId} currentUserId={profile?.user_id} />
+	)
 }
 
 function ClanSquadsContent({
@@ -150,7 +152,7 @@ function ClanSquadsContent({
 					if (modals.leaderSquadId != null) {
 						mutations.leaderMutation.mutate({
 							squadId: modals.leaderSquadId,
-							member_id: null
+							member_id: null,
 						})
 					}
 				}}
@@ -256,7 +258,12 @@ function ClanSquadsContent({
 					}
 					loadout={
 						gearOverrideForEdit
-							? { user_id: editingCtx.clanMemberId, data: gearOverrideForEdit, is_public: false, updated_at: '' }
+							? {
+									user_id: editingCtx.clanMemberId,
+									data: gearOverrideForEdit,
+									is_public: false,
+									updated_at: '',
+								}
 							: modals.editingMember.user_id != null
 								? (data.loadoutByUserId.get(
 										modals.editingMember.user_id
@@ -267,11 +274,19 @@ function ClanSquadsContent({
 						if (!open) modals.setEditingCtx(null)
 					}}
 					onSave={(loadout) => {
-						if (data.isOfficer && modals.editingMember?.user_id !== currentUserId) {
+						if (
+							data.isOfficer &&
+							modals.editingMember?.user_id !== currentUserId
+						) {
 							mutations.setGearOverrideMutation.mutate({
-								squadId: modals.activeSquads.find((s) =>
-									s.members.some((m) => m.id === editingCtx.squadMemberId)
-								)?.id ?? 0,
+								squadId:
+									modals.activeSquads.find((s) =>
+										s.members.some(
+											(m) =>
+												m.id ===
+												editingCtx.squadMemberId
+										)
+									)?.id ?? 0,
 								slot: editingCtx.slot,
 								gear_override: loadout,
 							})

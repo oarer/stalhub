@@ -28,9 +28,7 @@ class UserCommentService {
 	}
 
 	async delete(userId: number, commentId: number): Promise<void> {
-		await apiClient.delete(
-			`/api/v1/users/${userId}/comments/${commentId}`
-		)
+		await apiClient.delete(`/api/v1/users/${userId}/comments/${commentId}`)
 	}
 }
 

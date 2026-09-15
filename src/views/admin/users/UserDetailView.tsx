@@ -240,7 +240,9 @@ export default function UserDetailView({ userId }: Props) {
 						<Icon icon="lucide:arrow-left" />
 					</Button>
 				</Link>
-				<h1 className="break-all font-semibold text-2xl">{user.username}</h1>
+				<h1 className="break-all font-semibold text-2xl">
+					{user.username}
+				</h1>
 				{user.banned && (
 					<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
 						{t('admin.users.status.banned')}
@@ -477,94 +479,102 @@ export default function UserDetailView({ userId }: Props) {
 				<Tabs.Content value="sessions">
 					<Card.Root className="overflow-hidden p-0">
 						<div className="overflow-x-auto">
-						<Table.Root>
-							<Table.Header>
-								<Table.Row>
-									<Table.Head>ID</Table.Head>
-									<Table.Head>IP</Table.Head>
-									<Table.Head>
-										{t('admin.userDetail.sessions.device')}
-									</Table.Head>
-									<Table.Head>
-										{t('admin.userDetail.sessions.created')}
-									</Table.Head>
-									<Table.Head>
-										{t('admin.userDetail.sessions.active')}
-									</Table.Head>
-									<Table.Head />
-								</Table.Row>
-							</Table.Header>
-							<Table.Body>
-								{sessions?.map((session) => (
-									<Table.Row key={session.id}>
-										<Table.Cell>
-											<span className="font-mono text-neutral-400 text-xs">
-												{session.id}
-											</span>
-										</Table.Cell>
-										<Table.Cell>{session.ip}</Table.Cell>
-										<Table.Cell>
-											<span className="max-w-50 truncate text-xs">
-												{session.user_agent}
-											</span>
-										</Table.Cell>
-										<Table.Cell>
-											{new Date(
-												session.last_used_at
-											).toLocaleDateString('ru-RU')}
-										</Table.Cell>
-										<Table.Cell>
-											{new Date(
-												session.last_used_at
-											).toLocaleDateString('ru-RU')}
-										</Table.Cell>
-										<Table.Cell>
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:x"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.userDetail.sessions.revokeTitle'
-															)}
-														</Modal.Title>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'admin.userDetail.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																revokeSessionMutation.mutate(
-																	String(
-																		session.id
-																	)
-																)
-															}
-															variant="danger"
-														>
-															{t(
-																'admin.userDetail.sessions.revokeConfirm'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
-												</Modal.Content>
-											</Modal.Root>
-										</Table.Cell>
+							<Table.Root>
+								<Table.Header>
+									<Table.Row>
+										<Table.Head>ID</Table.Head>
+										<Table.Head>IP</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.userDetail.sessions.device'
+											)}
+										</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.userDetail.sessions.created'
+											)}
+										</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.userDetail.sessions.active'
+											)}
+										</Table.Head>
+										<Table.Head />
 									</Table.Row>
-								))}
-							</Table.Body>
-					</Table.Root>
+								</Table.Header>
+								<Table.Body>
+									{sessions?.map((session) => (
+										<Table.Row key={session.id}>
+											<Table.Cell>
+												<span className="font-mono text-neutral-400 text-xs">
+													{session.id}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												{session.ip}
+											</Table.Cell>
+											<Table.Cell>
+												<span className="max-w-50 truncate text-xs">
+													{session.user_agent}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												{new Date(
+													session.last_used_at
+												).toLocaleDateString('ru-RU')}
+											</Table.Cell>
+											<Table.Cell>
+												{new Date(
+													session.last_used_at
+												).toLocaleDateString('ru-RU')}
+											</Table.Cell>
+											<Table.Cell>
+												<Modal.Root>
+													<Modal.Trigger variant="ghost">
+														<Icon
+															className="text-red-400"
+															icon="lucide:x"
+														/>
+													</Modal.Trigger>
+													<Modal.Content
+														fullScreen={false}
+													>
+														<Modal.Header>
+															<Modal.Title>
+																{t(
+																	'admin.userDetail.sessions.revokeTitle'
+																)}
+															</Modal.Title>
+														</Modal.Header>
+														<Modal.Footer>
+															<Modal.Close>
+																{t(
+																	'admin.userDetail.cancel'
+																)}
+															</Modal.Close>
+															<Modal.Action
+																closeOnClick
+																onClick={() =>
+																	revokeSessionMutation.mutate(
+																		String(
+																			session.id
+																		)
+																	)
+																}
+																variant="danger"
+															>
+																{t(
+																	'admin.userDetail.sessions.revokeConfirm'
+																)}
+															</Modal.Action>
+														</Modal.Footer>
+													</Modal.Content>
+												</Modal.Root>
+											</Table.Cell>
+										</Table.Row>
+									))}
+								</Table.Body>
+							</Table.Root>
 						</div>
 					</Card.Root>
 				</Tabs.Content>

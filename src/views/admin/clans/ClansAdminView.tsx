@@ -21,7 +21,11 @@ export default function ClansAdminView() {
 	const debouncedSearch = useDebounce(search)
 
 	const { data } = useSuspenseQuery(
-		adminClanQueries.list({ take, page, search: debouncedSearch || undefined })
+		adminClanQueries.list({
+			take,
+			page,
+			search: debouncedSearch || undefined,
+		})
 	)
 
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
@@ -52,83 +56,87 @@ export default function ClansAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>
-								{t('admin.clans.table.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.table.tag')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.table.alliance')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.table.members')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.table.status')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.table.public')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{data?.data.map((clan) => (
-							<Table.Row key={clan.id}>
-								<Table.Cell>
-									<Link
-										className="font-semibold text-sky-400 hover:underline"
-										href={`/admin/clans/${clan.id}`}
-									>
-										{clan.name}
-									</Link>
-								</Table.Cell>
-								<Table.Cell>{clan.tag || '—'}</Table.Cell>
-								<Table.Cell>{clan.alliance || '—'}</Table.Cell>
-								<Table.Cell>{clan.member_count}</Table.Cell>
-								<Table.Cell>
-									{clan.blocked ? (
-										<Badge variant="danger">
-											{t('admin.clans.status.blocked')}
-										</Badge>
-									) : clan.status === 'ACTIVE' ? (
-										<Badge variant="success">
-											{t('admin.clans.status.active')}
-										</Badge>
-									) : (
-										<Badge variant="secondary">
-											{t('admin.clans.status.frozen')}
-										</Badge>
-									)}
-								</Table.Cell>
-								<Table.Cell>
-									{clan.is_public ? (
-										<Icon
-											className="text-green-400"
-											icon="lucide:check"
-										/>
-									) : (
-										<Icon
-											className="text-neutral-500"
-											icon="lucide:minus"
-										/>
-									)}
-								</Table.Cell>
-								<Table.Cell>
-									<Link href={`/admin/clans/${clan.id}`}>
-										<Button size="sm" variant="ghost">
-											<Icon icon="lucide:eye" />
-										</Button>
-									</Link>
-								</Table.Cell>
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>
+									{t('admin.clans.table.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.table.tag')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.table.alliance')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.table.members')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.table.status')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.table.public')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						))}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{data?.data.map((clan) => (
+								<Table.Row key={clan.id}>
+									<Table.Cell>
+										<Link
+											className="font-semibold text-sky-400 hover:underline"
+											href={`/admin/clans/${clan.id}`}
+										>
+											{clan.name}
+										</Link>
+									</Table.Cell>
+									<Table.Cell>{clan.tag || '—'}</Table.Cell>
+									<Table.Cell>
+										{clan.alliance || '—'}
+									</Table.Cell>
+									<Table.Cell>{clan.member_count}</Table.Cell>
+									<Table.Cell>
+										{clan.blocked ? (
+											<Badge variant="danger">
+												{t(
+													'admin.clans.status.blocked'
+												)}
+											</Badge>
+										) : clan.status === 'ACTIVE' ? (
+											<Badge variant="success">
+												{t('admin.clans.status.active')}
+											</Badge>
+										) : (
+											<Badge variant="secondary">
+												{t('admin.clans.status.frozen')}
+											</Badge>
+										)}
+									</Table.Cell>
+									<Table.Cell>
+										{clan.is_public ? (
+											<Icon
+												className="text-green-400"
+												icon="lucide:check"
+											/>
+										) : (
+											<Icon
+												className="text-neutral-500"
+												icon="lucide:minus"
+											/>
+										)}
+									</Table.Cell>
+									<Table.Cell>
+										<Link href={`/admin/clans/${clan.id}`}>
+											<Button size="sm" variant="ghost">
+												<Icon icon="lucide:eye" />
+											</Button>
+										</Link>
+									</Table.Cell>
+								</Table.Row>
+							))}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

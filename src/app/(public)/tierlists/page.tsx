@@ -6,9 +6,7 @@ import TierListsView from '@/views/tierlists/TierListsView'
 export default async function TierListsPage() {
 	const queryClient = getQueryClient()
 
-	await queryClient.query(
-		tierListQueries.list({ take: 24, page: 1 })
-	)
+	await queryClient.query(tierListQueries.list({ take: 24, page: 1 }))
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

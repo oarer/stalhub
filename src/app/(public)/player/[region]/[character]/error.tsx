@@ -32,9 +32,7 @@ export default function PlayerError({
 		<div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6">
 			<div className="grid items-center gap-16 md:flex">
 				<ErrorContent
-					buttonIcon={
-						notFound ? 'lucide:home' : 'lucide:rotate-ccw'
-					}
+					buttonIcon={notFound ? 'lucide:home' : 'lucide:rotate-ccw'}
 					buttonLabel={
 						notFound
 							? t('errors.playerNotFound.buttonLabel')

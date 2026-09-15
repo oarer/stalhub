@@ -15,9 +15,9 @@ import type { Art, ModalProps } from '@/types/build.type'
 import type { ArtQuality, Item } from '@/types/item.type'
 import { ArtifactStatsPanel } from '@/views/calcs/builds/components/ArtifactStatsPanel'
 import { ArtifactSlots } from '@/views/calcs/builds/model/components/artifacts/ArtifactSlots'
+import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
-import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
 
 export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
@@ -36,9 +36,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const [selectedSlot, setSelectedSlot] = useState<number>(0)
 	const [copyMode, setCopyMode] = useState(false)
 	const [filter, setFilter] = useState('')
-	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
-		[]
-	)
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>([])
 	const [percentState, setPercentState] = useState<number>(100)
 	const [potentialState, setPotentialState] = useState<number>(0)
 	const [qualityOverrides, setQualityOverrides] = useState<
@@ -80,9 +78,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 		if (copyMode) return
 		const item = items.find((it) => it.id === itemId)
 		const parsed = item ? parseItemStats(item, locale) : null
-		const addStatKeys = parsed
-			? Object.keys(parsed.addStats ?? {})
-			: []
+		const addStatKeys = parsed ? Object.keys(parsed.addStats ?? {}) : []
 		const data: Partial<Art> | undefined =
 			(defaults.art.potential ?? 0) >= 15 &&
 			addStatKeys.length > 0 &&
@@ -330,7 +326,9 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const handleSelectedStatsChange = useCallback(
 		(next: string[]) => {
 			if (selectedStatsData?.instanceId) {
-				updateArt(selectedStatsData.instanceId, { selected_stats: next })
+				updateArt(selectedStatsData.instanceId, {
+					selected_stats: next,
+				})
 			}
 		},
 		[selectedStatsData?.instanceId, updateArt]

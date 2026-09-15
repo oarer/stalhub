@@ -69,4 +69,3 @@ export function makeMarkerIcon(preset: MarkerPreset): L.DivIcon {
 		</div>`,
 	})
 }
-

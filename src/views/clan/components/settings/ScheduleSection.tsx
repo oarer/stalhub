@@ -14,7 +14,10 @@ import {
 import { OptionDropdown } from '@/views/me/components/settings/OptionDropdown'
 
 const SUNDAY_OPTIONS: Array<{ value: SundayActivity; label: string }> = [
-	{ value: 'BASE_CAPTURE', label: 'clan.settings.sundayActivities.baseCapture' },
+	{
+		value: 'BASE_CAPTURE',
+		label: 'clan.settings.sundayActivities.baseCapture',
+	},
 	{ value: 'BRAWL', label: 'clan.settings.sundayActivities.brawl' },
 	{ value: 'NONE', label: 'clan.settings.sundayActivities.none' },
 ]
@@ -64,11 +67,14 @@ export function ScheduleSection({
 					</span>
 				</div>
 				<OptionDropdown
-					onSelect={(value) => onFieldChange('sunday_activity', value)}
+					onSelect={(value) =>
+						onFieldChange('sunday_activity', value)
+					}
 					options={SUNDAY_OPTIONS}
 					title={
 						SUNDAY_OPTIONS.find(
-							(option) => option.value === schedule.sunday_activity
+							(option) =>
+								option.value === schedule.sunday_activity
 						)?.label ?? 'clan.settings.sundayActivities.brawl'
 					}
 					value={schedule.sunday_activity}

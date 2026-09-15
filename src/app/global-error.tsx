@@ -23,9 +23,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 		const match = document.cookie.match(/lang=(ru|en|es|fr|ko)/)
 		const loc = match?.[1] ?? 'ru'
 		setLocale(loc)
-		import(`@/locales/${loc}.json`).then((mod) =>
-			setMessages(mod.default)
-		)
+		import(`@/locales/${loc}.json`).then((mod) => setMessages(mod.default))
 	}, [])
 
 	useEffect(() => {
@@ -33,21 +31,21 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 
 		const sendError = async () => {
 			try {
-		const parts = [`Page: ${path}`, `Message: ${error.message ?? 'No message'}`]
+				const parts = [
+					`Page: ${path}`,
+					`Message: ${error.message ?? 'No message'}`,
+				]
 
-			if (error.digest) parts.push(`Digest: ${error.digest}`)
-			if (error.stack) {
-				const trace = error.stack
-					.split('\n')
-					.slice(0, 5)
-					.join('\n')
-				parts.push(`Stack:\n${trace}`)
-			}
+				if (error.digest) parts.push(`Digest: ${error.digest}`)
+				if (error.stack) {
+					const trace = error.stack.split('\n').slice(0, 5).join('\n')
+					parts.push(`Stack:\n${trace}`)
+				}
 
-			const content = parts.join('\n')
-			const response = await axios.post('/api/error-report', {
-				content,
-			})
+				const content = parts.join('\n')
+				const response = await axios.post('/api/error-report', {
+					content,
+				})
 
 				setErrorId(response.data.errorId)
 				console.info('Reported error, ID:', response.data.errorId)
@@ -63,14 +61,14 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 
 	return (
 		<NextIntlClientProvider
+			getMessageFallback={({ namespace, key }) =>
+				`${namespace ? `${namespace}.` : ''}${key}`
+			}
 			locale={locale}
 			messages={messages}
 			onError={(error) => {
 				if (error.code === 'MISSING_MESSAGE') return
 			}}
-			getMessageFallback={({ namespace, key }) =>
-				`${namespace ? `${namespace}.` : ''}${key}`
-			}
 		>
 			<GlobalErrorView errorId={errorId} reset={reset} />
 		</NextIntlClientProvider>

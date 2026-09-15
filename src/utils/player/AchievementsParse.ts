@@ -27,4 +27,3 @@ export const ACHIEVEMENTS_MAP = dbAchievements.reduce(
 		}
 	>
 )
-

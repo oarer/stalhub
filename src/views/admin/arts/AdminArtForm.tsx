@@ -250,8 +250,10 @@ export function AdminArtForm({
 							</span>
 							<textarea
 								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
-								placeholder={t('admin.arts.form.descriptionPlaceholder')}
 								onChange={(e) => setDescription(e.target.value)}
+								placeholder={t(
+									'admin.arts.form.descriptionPlaceholder'
+								)}
 								value={description}
 							/>
 						</div>

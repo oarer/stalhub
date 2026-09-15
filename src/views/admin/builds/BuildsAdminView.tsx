@@ -49,127 +49,133 @@ export default function BuildsAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.articles.author')}
-							</Table.Head>
-							<Table.Head>{t('admin.articles.stars')}</Table.Head>
-							<Table.Head>
-								{t('admin.articles.created')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{builds.map((build) => (
-							<Table.Row key={build.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{build.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="font-semibold">
-										{build.title}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-sm">
-										{build.author.username}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-sm">
-										{build.stars_count}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-neutral-400 text-xs">
-										{new Date(
-											build.created_at
-										).toLocaleDateString('ru-RU')}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.builds.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t.rich(
-															'admin.builds.deleteDescription',
-															{
-																title: build.title,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'clan.common.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																build.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'clan.common.delete'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
-							</Table.Row>
-						))}
-						{builds.length === 0 && (
+					<Table.Root>
+						<Table.Header>
 							<Table.Row>
-								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
-										{t('admin.builds.empty')}
-									</span>
-								</Table.Cell>
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.author')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.stars')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.created')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						)}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{builds.map((build) => (
+								<Table.Row key={build.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{build.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="font-semibold">
+											{build.title}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-sm">
+											{build.author.username}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-sm">
+											{build.stars_count}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-neutral-400 text-xs">
+											{new Date(
+												build.created_at
+											).toLocaleDateString('ru-RU')}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.builds.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t.rich(
+																'admin.builds.deleteDescription',
+																{
+																	title: build.title,
+																	strong: (
+																		chunks
+																	) => (
+																		<strong>
+																			{
+																				chunks
+																			}
+																		</strong>
+																	),
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'clan.common.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	build.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'clan.common.delete'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+							{builds.length === 0 && (
+								<Table.Row>
+									<Table.Cell>
+										<span className="text-neutral-400 text-sm">
+											{t('admin.builds.empty')}
+										</span>
+									</Table.Cell>
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+								</Table.Row>
+							)}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

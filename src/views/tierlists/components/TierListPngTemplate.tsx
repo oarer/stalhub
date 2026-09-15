@@ -103,7 +103,9 @@ export const TierListPngTemplate = forwardRef<
 										)}
 										<span
 											className={`${montserrat.className} truncate font-semibold`}
-											style={{color: getItemColor(entry)}}
+											style={{
+												color: getItemColor(entry),
+											}}
 										>
 											{getItemName(entry)}
 										</span>

@@ -480,7 +480,10 @@ export default function DropdownMenu({
 										handleSheetDragEnd(event, info)
 									}
 									role="menu"
-									transition={{ duration: 0.2, ease: 'easeOut' }}
+									transition={{
+										duration: 0.2,
+										ease: 'easeOut',
+									}}
 								>
 									<div
 										className="flex shrink-0 cursor-grab touch-none flex-col items-center gap-2 px-4 py-1.5"
@@ -508,7 +511,9 @@ export default function DropdownMenu({
 												key={item.key}
 												onClose={closeDropdown}
 												openSubmenus={openSubmenus}
-												setOpenSubmenus={setOpenSubmenus}
+												setOpenSubmenus={
+													setOpenSubmenus
+												}
 											/>
 										))}
 									</div>

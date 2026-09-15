@@ -85,12 +85,7 @@ export const getQualityByPercent = (percent: number): ArtQuality => {
 	return qualityIndexToArtQuality[idx] ?? InfoColor.ART_QUALITY_UNCOMMON
 }
 
-
-
 export const getArtifactColor = (qlt: number): string => {
 	const quality = qualityIndexToArtQuality[qlt]
 	return infoColorMap[quality] ?? '#FFFFFF'
 }
-
-
-

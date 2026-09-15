@@ -44,8 +44,7 @@ export function useClanRoles() {
 
 	const isLeader =
 		myMembers.some((m) => m.rank === 'LEADER') ||
-		(clan != null &&
-			characterNames.has(clan.leader.trim().toLowerCase()))
+		(clan != null && characterNames.has(clan.leader.trim().toLowerCase()))
 	const isOfficer = myMembers.some((m) => OFFICER_RANKS.has(m.rank))
 
 	return {

@@ -44,7 +44,11 @@ export function SquadKdChart({ squadRows }: SquadKdChartProps) {
 					{t('clan.charts.noSquads')}
 				</div>
 			) : (
-				<Bar data={data} key={resolvedTheme ?? 'light'} options={options} />
+				<Bar
+					data={data}
+					key={resolvedTheme ?? 'light'}
+					options={options}
+				/>
 			)}
 		</ChartCard>
 	)

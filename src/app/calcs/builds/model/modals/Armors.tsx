@@ -38,9 +38,7 @@ export default function ArmorModal({ onClose }: ModalProps) {
 
 	const [filter, setFilter] = useState('')
 	const [numericVariants, setNumericVariants] = useState<number>(0)
-	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
-		[]
-	)
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>([])
 	const armor = useBuildStore((s) => s.build.armor)
 	const setArmor = useBuildStore((s) => s.setArmor)
 
@@ -48,21 +46,16 @@ export default function ArmorModal({ onClose }: ModalProps) {
 
 	const selectedItem = items.find((i) => i.id === previewId)
 
-	const effectOptions = useMemo(() => buildEffectOptions(items, locale), [
-		items,
-		locale,
-	])
+	const effectOptions = useMemo(
+		() => buildEffectOptions(items, locale),
+		[items, locale]
+	)
 
 	const effectFilteredItems = useMemo(() => {
 		const { posSet } = buildEffectFilterMap(items, locale)
 		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
 		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
-		return filterItemsByEffects(
-			items,
-			locale,
-			positiveKeys,
-			negativeKeys
-		)
+		return filterItemsByEffects(items, locale, positiveKeys, negativeKeys)
 	}, [items, locale, selectedEffectStats])
 
 	const handleSet = () => {

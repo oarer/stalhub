@@ -1,9 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { Combobox } from '@/components/ui/Combobox'
-import type {
-	BarterRecipeResult,
-	CurrencyType,
-} from '@/types/barter.type'
+import type { BarterRecipeResult, CurrencyType } from '@/types/barter.type'
 import type { Locale } from '@/types/item.type'
 import {
 	applyDiscount,

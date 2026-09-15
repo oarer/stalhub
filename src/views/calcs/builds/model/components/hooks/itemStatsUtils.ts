@@ -81,9 +81,7 @@ function isRangeEl(el: InfoElement): el is NumericRangeElement {
 	return el.type === 'range'
 }
 
-function isNumericVariantsEl(
-	el: InfoElement
-): el is NumericVariantsElement {
+function isNumericVariantsEl(el: InfoElement): el is NumericVariantsElement {
 	return el.type === 'numericVariants'
 }
 

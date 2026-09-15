@@ -149,121 +149,125 @@ export default function RolesAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.description')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.roles.permissions')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{roles?.map((role) => (
-							<Table.Row key={role.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{role.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="font-semibold">
-										{role.name}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
-										{role.description ?? '—'}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-sm">
-										{role.permissions.length}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Button
-											onClick={() =>
-												openPermissions(role)
-											}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon icon="lucide:key" />
-										</Button>
-										<Button
-											onClick={() => openEdit(role)}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon icon="lucide:pencil" />
-										</Button>
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.roles.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t.rich(
-															'admin.roles.deleteDescription',
-															{
-																name: role.name,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'clan.common.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																role.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'clan.common.delete'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.description')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.roles.permissions')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						))}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{roles?.map((role) => (
+								<Table.Row key={role.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{role.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="font-semibold">
+											{role.name}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-neutral-400 text-sm">
+											{role.description ?? '—'}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-sm">
+											{role.permissions.length}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Button
+												onClick={() =>
+													openPermissions(role)
+												}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon icon="lucide:key" />
+											</Button>
+											<Button
+												onClick={() => openEdit(role)}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon icon="lucide:pencil" />
+											</Button>
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.roles.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t.rich(
+																'admin.roles.deleteDescription',
+																{
+																	name: role.name,
+																	strong: (
+																		chunks
+																	) => (
+																		<strong>
+																			{
+																				chunks
+																			}
+																		</strong>
+																	),
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'clan.common.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	role.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'clan.common.delete'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

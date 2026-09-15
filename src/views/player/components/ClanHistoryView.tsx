@@ -1,9 +1,9 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { Card } from '@/components/ui/Card'
-import type { ClanHistoryEntry } from '@/types/clan/clan.type'
-import { formatDate } from '@/lib/date'
 import { montserrat } from '@/app/fonts'
+import { Card } from '@/components/ui/Card'
+import { formatDate } from '@/lib/date'
+import type { ClanHistoryEntry } from '@/types/clan/clan.type'
 
 export default function ClanHistoryView({
 	history,
@@ -39,7 +39,9 @@ export default function ClanHistoryView({
 								{t(`player.rank.${h.rank}`)} · {h.region}
 							</span>
 						</div>
-						<span className={`${montserrat.className} text-text-accent text-xs`}>
+						<span
+							className={`${montserrat.className} text-text-accent text-xs`}
+						>
 							{formatDate(h.seen_at)}
 						</span>
 					</div>

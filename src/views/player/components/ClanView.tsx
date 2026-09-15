@@ -37,7 +37,9 @@ export default function ClanView({ data }: { data: Clan }) {
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.members')}</p>
-						<p className="font-semibold">{data.info.member_count}</p>
+						<p className="font-semibold">
+							{data.info.member_count}
+						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.leader')}</p>

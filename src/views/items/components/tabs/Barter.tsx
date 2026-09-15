@@ -2,10 +2,7 @@ import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
 import { getLocale } from '@/lib/getLocale'
-import type {
-	BarterResponse,
-	CurrencyType,
-} from '@/types/barter.type'
+import type { BarterResponse, CurrencyType } from '@/types/barter.type'
 import { BarterHeader } from './barter/BarterHeader'
 import { BarterRecipe } from './barter/BarterRecipe'
 import { BarterUsedIn } from './barter/BarterUsedIn'
@@ -44,9 +41,7 @@ export default function Barter({ data }: Props) {
 							onDiscountChange={(discount) =>
 								setSelectedDiscount(discount)
 							}
-							onRecipeChange={(index) =>
-								setSelectedRecipe(index)
-							}
+							onRecipeChange={(index) => setSelectedRecipe(index)}
 							recipes={recipes}
 							selectedCurrency={selectedCurrency}
 							selectedDiscount={selectedDiscount}
@@ -55,10 +50,7 @@ export default function Barter({ data }: Props) {
 					</section>
 				)}
 				{hasUsedIn && (
-					<BarterUsedIn
-						items={data.used_in}
-						locale={locale}
-					/>
+					<BarterUsedIn items={data.used_in} locale={locale} />
 				)}
 			</Card.Content>
 		</Card.Root>

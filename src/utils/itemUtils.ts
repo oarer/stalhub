@@ -17,7 +17,6 @@ export const roundNumber = (n: number): string => {
 	return Number.isInteger(n) ? String(n) : n.toFixed(2)
 }
 
-
 export const isNumericVariantsBlock = (
 	el: InfoElement
 ): el is Extract<InfoElement, { type: 'numericVariants' }> =>
@@ -81,10 +80,7 @@ const humanizeCategory = (cat?: string) => {
 		.join(' › ')
 }
 
-const findCategoryInBlocks = (
-	infoBlocks: InfoBlock[],
-	locale?: Locale
-) => {
+const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 	if (!Array.isArray(infoBlocks)) return ''
 
 	const loc = locale ?? getLocale()

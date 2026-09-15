@@ -144,10 +144,12 @@ const toSnakeCaseArt = (art: Art): Art => {
 		item_id: art.item_id ?? (itemId as string),
 		percent: art.percent,
 		potential: art.potential,
-		selected_stats: art.selected_stats ??
+		selected_stats:
+			art.selected_stats ??
 			(selectedStats as (string | null)[]) ??
 			Array(3).fill(null),
-		quality_class: art.quality_class ?? (qualityClass as Art['quality_class']),
+		quality_class:
+			art.quality_class ?? (qualityClass as Art['quality_class']),
 	}
 }
 
@@ -805,7 +807,9 @@ export const useBuildStore = create<BuildState>()(
 						: initialBuild,
 					savedBuilds: (state.savedBuilds ?? []).map((saved) => ({
 						...saved,
-						build: normalizeBuildArtifacts(migrateBuild(saved.build)),
+						build: normalizeBuildArtifacts(
+							migrateBuild(saved.build)
+						),
 					})),
 				} as BuildState
 			},

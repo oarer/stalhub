@@ -40,13 +40,19 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			key: 'boostMode',
 			label: 'clan.boosts.shortTitle',
 			icon: 'lucide:flask-conical',
-			value: clan.boost_mode === 'ISSUED' ? t('clan.boosts.modeIssued') : t('clan.boosts.modeSelf'),
+			value:
+				clan.boost_mode === 'ISSUED'
+					? t('clan.boosts.modeIssued')
+					: t('clan.boosts.modeSelf'),
 		},
 		{
 			key: 'grenadeMode',
 			label: 'clan.grenades.shortTitle',
 			icon: 'lucide:bomb',
-			value: clan.grenade_mode === 'ISSUED' ? t('clan.grenades.modeIssued') : t('clan.grenades.modeSelf'),
+			value:
+				clan.grenade_mode === 'ISSUED'
+					? t('clan.grenades.modeIssued')
+					: t('clan.grenades.modeSelf'),
 		},
 	]
 	const recruitmentFields = clan.recruiting
@@ -137,7 +143,10 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			{recruitmentFields.length > 0 && (
 				<div className="flex flex-col gap-2 border-border-secondary border-t pt-3 text-sm">
 					{recruitmentFields.map((field) => (
-						<div className="flex items-center gap-1.5" key={field.key}>
+						<div
+							className="flex items-center gap-1.5"
+							key={field.key}
+						>
 							<Icon
 								className="size-4 shrink-0 text-text-accent"
 								icon={field.icon}
@@ -145,7 +154,9 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 							<span className="font-semibold text-text-accent">
 								{t(field.label)}:
 							</span>
-							<span className={`${montserrat.className} truncate font-semibold`}>
+							<span
+								className={`${montserrat.className} truncate font-semibold`}
+							>
 								{field.value}
 							</span>
 						</div>
@@ -166,7 +177,8 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 						<span
 							className={`${montserrat.className} truncate font-semibold`}
 						>
-							{TOURNAMENT_DAYS + clan.schedule.brawls_per_week} / 7
+							{TOURNAMENT_DAYS + clan.schedule.brawls_per_week} /
+							7
 						</span>
 					</div>
 					<div className="flex items-center gap-1.5 text-sm">

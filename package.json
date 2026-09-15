@@ -27,6 +27,7 @@
 		"elkjs": "^0.12.0",
 		"fuse.js": "^7.5.0",
 		"html-to-image": "^1.11.13",
+		"@oarer/leaflet-webgl-markers": "^0.3.0",
 		"jszip": "^3.10.2",
 		"leaflet": "^1.9.4",
 		"motion": "^13.2.0",

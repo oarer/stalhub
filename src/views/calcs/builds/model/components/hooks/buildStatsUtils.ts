@@ -22,7 +22,11 @@ export function computeArtifactStats(
 	if (!item) return {}
 
 	const parsed = parseItemStats(item, locale)
-	const stats = computeArtifactStatsFromParsed(art, parsed, art.selected_stats)
+	const stats = computeArtifactStatsFromParsed(
+		art,
+		parsed,
+		art.selected_stats
+	)
 
 	const result: BuildStats = {}
 

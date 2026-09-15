@@ -7,8 +7,7 @@ import type {
 
 const WEIGHT_KEY = 'core.tooltip.info.weight'
 const CLIP_SIZE_KEY = 'weapon.tooltip.weapon.info.clip_size'
-const SPEED_MODIFIER_KEY =
-	'stalker.artefact_properties.factor.speed_modifier'
+const SPEED_MODIFIER_KEY = 'stalker.artefact_properties.factor.speed_modifier'
 
 const FACTOR_MAP: Record<string, string> = {
 	'weapon.stat_factor.spread': 'weapon.tooltip.weapon.info.spread',

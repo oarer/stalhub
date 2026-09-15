@@ -27,7 +27,9 @@ export default function ArticlesView() {
 					{t('articles.title')}
 				</h1>
 				<p className="font-semibold text-sm text-text-accent">
-					{t('articles.publishedCount', { count: data?.total_count ?? 0 })}
+					{t('articles.publishedCount', {
+						count: data?.total_count ?? 0,
+					})}
 				</p>
 			</div>
 

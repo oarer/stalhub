@@ -8,7 +8,8 @@ declare module 'axios' {
 }
 
 const isAuthRoute = () =>
-	typeof window !== 'undefined' && window.location.pathname.startsWith('/auth')
+	typeof window !== 'undefined' &&
+	window.location.pathname.startsWith('/auth')
 
 export const apiClient = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API,

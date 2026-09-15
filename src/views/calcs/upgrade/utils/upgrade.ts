@@ -209,8 +209,7 @@ export function computeUpgrade(
 		} else {
 			const { partsRequired, toolsRequired } = armorUpgradeLevels[level]
 			const { partsKey, toolsKey } = armorItemKeysForLevel(level)
-			const partsItemCost =
-				itemPrices?.[partsKey] ?? DEFAULT_ITEM_PRICE
+			const partsItemCost = itemPrices?.[partsKey] ?? DEFAULT_ITEM_PRICE
 			const toolsItemCost = itemPrices?.[toolsKey] ?? DEFAULT_ITEM_PRICE
 			const partsPerAttempt = partsRequired
 			const toolsPerAttempt = toolsRequired

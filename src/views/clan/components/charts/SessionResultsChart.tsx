@@ -50,7 +50,11 @@ export function SessionResultsChart({
 					{t('clan.charts.noGames')}
 				</div>
 			) : (
-				<Bar data={data} key={resolvedTheme ?? 'light'} options={options} />
+				<Bar
+					data={data}
+					key={resolvedTheme ?? 'light'}
+					options={options}
+				/>
 			)}
 		</ChartCard>
 	)

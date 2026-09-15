@@ -1,8 +1,4 @@
-import type {
-	PublicUser,
-	UpdateUserSettingsDto,
-	User,
-} from '@/types/user.type'
+import type { PublicUser, UpdateUserSettingsDto, User } from '@/types/user.type'
 import type { LinkTab } from '@/views/me/components/LinkTabs'
 
 interface Tab {
@@ -168,9 +164,7 @@ export const getNavTabs = (
 
 export interface UserCardProps extends React.ComponentPropsWithoutRef<'div'> {
 	user: User | PublicUser
-	cardBackground: NonNullable<
-		User['customization']['card_background']
-	>
+	cardBackground: NonNullable<User['customization']['card_background']>
 	cardColor: string
 	onCardChange?: (data: UpdateUserSettingsDto) => void
 }

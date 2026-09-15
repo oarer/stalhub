@@ -71,7 +71,10 @@ export function getBaseBarOptions(title: string): ChartOptions<'bar'> {
 			},
 			y: {
 				beginAtZero: true,
-				ticks: { color: colors.axis, font: { size: 11, weight: 'bold' } },
+				ticks: {
+					color: colors.axis,
+					font: { size: 11, weight: 'bold' },
+				},
 				grid: { color: colors.grid },
 			},
 		},

@@ -19,7 +19,9 @@ export function toRecruitmentPayload(
 		form.guilds_per_week === '' ? null : Number(form.guilds_per_week)
 	if (
 		guildsPerWeek !== null &&
-		(!Number.isInteger(guildsPerWeek) || guildsPerWeek < 0 || guildsPerWeek > 999)
+		(!Number.isInteger(guildsPerWeek) ||
+			guildsPerWeek < 0 ||
+			guildsPerWeek > 999)
 	)
 		throw new Error('guilds_per_week_invalid')
 

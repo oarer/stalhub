@@ -43,9 +43,7 @@ export default function BansAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<h1 className="font-semibold text-2xl">
-				{t('admin.bans.title')}
-			</h1>
+			<h1 className="font-semibold text-2xl">{t('admin.bans.title')}</h1>
 
 			{stats && (
 				<div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -266,7 +264,8 @@ export default function BansAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										<span className="font-semibold text-sm">
-											{ban.user?.username ?? `#${ban.user_id}`}
+											{ban.user?.username ??
+												`#${ban.user_id}`}
 										</span>
 										{ban.user?.name && (
 											<span className="ml-1 text-text-accent text-xs">

@@ -1,6 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import type { UseMutationResult } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -8,7 +9,6 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
 import type { ClanMember } from '@/types/clan/clan.type'
-import type { UseMutationResult } from '@tanstack/react-query'
 
 interface Props {
 	member: ClanMember

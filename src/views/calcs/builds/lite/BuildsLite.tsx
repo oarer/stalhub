@@ -20,19 +20,22 @@ import type { Art } from '@/types/build.type'
 import type { Item } from '@/types/item.type'
 import StatsTabs from '@/views/calcs/builds/components/StatsTabs'
 import { ArtifactStatsPanel } from '../components/ArtifactStatsPanel'
+import {
+	buildPositiveNegativeOptions,
+	filterItemsByEffects,
+} from '../utils/effectFilters'
 import { ArmorLiteSection } from './components/ArmorLiteSection'
 import { ArtifactSlotsLite } from './components/ArtifactSlots'
 import { BuildLiteHeader } from './components/BuildLiteHeader'
 import { BuildLitePngTemplate } from './components/BuildLitePngTemplate'
 import { CompareSlots } from './components/CompareSlots'
 import ConsumablesModalLite from './components/ConsumablesModal'
-import { ItemPickerModal, type StatFilterGroup } from './components/ItemPickerModal'
+import {
+	ItemPickerModal,
+	type StatFilterGroup,
+} from './components/ItemPickerModal'
 import { StatsCompare } from './components/StatsCompare'
 import { useLiteArtifacts } from './hooks/useLiteArtifacts'
-import {
-	buildPositiveNegativeOptions,
-	filterItemsByEffects,
-} from '../utils/effectFilters'
 
 const imagePlaceholder =
 	'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E'
@@ -145,12 +148,10 @@ export default function BuildsLiteView({
 	const setArmor = useBuildStore((s) => s.setArmor)
 	const removeArmor = useBuildStore((s) => s.removeArmor)
 
-	const [selectedArmorPositiveStats, setSelectedArmorPositiveStats] = useState<
-		string[]
-	>([])
-	const [selectedArmorNegativeStats, setSelectedArmorNegativeStats] = useState<
-		string[]
-	>([])
+	const [selectedArmorPositiveStats, setSelectedArmorPositiveStats] =
+		useState<string[]>([])
+	const [selectedArmorNegativeStats, setSelectedArmorNegativeStats] =
+		useState<string[]>([])
 
 	const armorEffectOptions = useMemo(
 		() => buildPositiveNegativeOptions(armor, locale),
@@ -165,12 +166,7 @@ export default function BuildsLiteView({
 				selectedArmorPositiveStats,
 				selectedArmorNegativeStats
 			),
-		[
-			armor,
-			locale,
-			selectedArmorPositiveStats,
-			selectedArmorNegativeStats,
-		]
+		[armor, locale, selectedArmorPositiveStats, selectedArmorNegativeStats]
 	)
 
 	const armorStatFilters = useMemo(() => {
@@ -192,8 +188,11 @@ export default function BuildsLiteView({
 			})
 		}
 		return groups
-	}, [armorEffectOptions, selectedArmorPositiveStats, selectedArmorNegativeStats])
-
+	}, [
+		armorEffectOptions,
+		selectedArmorPositiveStats,
+		selectedArmorNegativeStats,
+	])
 
 	const {
 		addOptions,

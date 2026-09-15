@@ -6,8 +6,11 @@ import { Regions } from '@/types/api.type'
 import type { ArtPriceResult } from '@/types/artifacts.type'
 import { artQualityToQualityIndex } from '@/utils/artUtils'
 
-export const artPriceKey = (item_id: string, qlt: number, ptn: number): string =>
-	`${item_id}:${qlt}:${ptn}`
+export const artPriceKey = (
+	item_id: string,
+	qlt: number,
+	ptn: number
+): string => `${item_id}:${qlt}:${ptn}`
 
 export const useBuildPrices = (
 	region: string = Regions.RU
@@ -51,4 +54,3 @@ export const formatArtPrice = (price: number | null): string | null => {
 	if (price == null) return null
 	return new Intl.NumberFormat('ru-RU').format(price)
 }
-

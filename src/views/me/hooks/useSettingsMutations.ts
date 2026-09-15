@@ -222,9 +222,7 @@ export function useSettingsMutations(
 			queryClient.invalidateQueries({ queryKey: ['clan'] })
 			queryClient.invalidateQueries({ queryKey: ['user'] })
 			const count = res.clans?.length ?? 0
-			toast.success(
-				t('me.settings.syncClansSuccess', { count })
-			)
+			toast.success(t('me.settings.syncClansSuccess', { count }))
 		},
 		onError: () => {
 			toast.error(t('me.settings.syncClansError'))

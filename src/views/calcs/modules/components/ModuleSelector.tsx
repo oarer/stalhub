@@ -32,11 +32,7 @@ export default function ModuleSelector() {
 					if (currentModuleId) {
 						autoSave()
 					} else {
-						const groupLabels = [
-							'add-on',
-							'deviation',
-							'concept',
-						]
+						const groupLabels = ['add-on', 'deviation', 'concept']
 							.map((gKey) => {
 								const group = data.groups.find(
 									(g) => g.key === gKey
@@ -46,7 +42,13 @@ export default function ModuleSelector() {
 							.filter(
 								(_, i) =>
 									slots[
-										(['add-on', 'deviation', 'concept'] as const)[i]
+										(
+											[
+												'add-on',
+												'deviation',
+												'concept',
+											] as const
+										)[i]
 									].moduleKey
 							)
 							.join(', ')
@@ -116,7 +118,9 @@ export default function ModuleSelector() {
 						className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-transparent px-2 py-1 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 						onClick={() => handleSelect('new')}
 					>
-						<p className="font-semibold">{t('modules.newModule')}</p>
+						<p className="font-semibold">
+							{t('modules.newModule')}
+						</p>
 						<Icon className="size-4" icon="lucide:plus" />
 					</div>
 				),

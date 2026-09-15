@@ -62,7 +62,7 @@ export function UploadScreenshotModal({
 									className="text-base"
 									icon="lucide:sparkles"
 								/>
-								<span className='font-semibold'>
+								<span className="font-semibold">
 									{t.rich('clan.sessions.detected', {
 										label: t(`clan.stage.${detected.type}`),
 										stage: detected.stage,

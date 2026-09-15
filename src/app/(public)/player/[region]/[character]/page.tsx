@@ -1,5 +1,5 @@
-import type { AxiosError } from 'axios'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import type { AxiosError } from 'axios'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { playerQueries } from '@/queries/player/player.queries'
 import { playerService } from '@/services/player/player.service'

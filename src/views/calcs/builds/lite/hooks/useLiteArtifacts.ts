@@ -113,9 +113,7 @@ export function useLiteArtifacts({
 		if (copyMode) return
 		const item = items.find((it) => it.id === itemId)
 		const parsed = item ? parseItemStats(item, locale) : null
-		const addStatKeys = parsed
-			? Object.keys(parsed.addStats ?? {})
-			: []
+		const addStatKeys = parsed ? Object.keys(parsed.addStats ?? {}) : []
 		const data: Partial<Art> | undefined =
 			(defaults.art.potential ?? 0) >= 15 &&
 			addStatKeys.length > 0 &&
@@ -197,10 +195,7 @@ export function useLiteArtifacts({
 
 			if (instanceId && newStatsCount < oldStatsCount) {
 				updateArt(instanceId, {
-					selected_stats: art?.selected_stats.slice(
-						0,
-						newStatsCount
-					),
+					selected_stats: art?.selected_stats.slice(0, newStatsCount),
 				})
 			}
 

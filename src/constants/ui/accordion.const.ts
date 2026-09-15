@@ -5,7 +5,7 @@ export const accordionVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'border-primary bg-card hover:brightness-120',
+				default: 'border-primary/50 bg-muted hover:brightness-120',
 				warning:
 					'border-warning bg-warning/10 text-warning-foreground hover:bg-warning/15',
 				danger: 'border-destructive bg-destructive/10 text-destructive-foreground hover:bg-destructive/15',

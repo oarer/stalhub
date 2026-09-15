@@ -14,8 +14,7 @@ export const RANK_COLORS: Record<string, string> = {
 	OFFICER: 'bg-blue-500/20 ring-blue-500/40 text-blue-600 dark:text-blue-400',
 	SERGEANT:
 		'bg-green-500/20 ring-green-500/40 text-green-600 dark:text-green-400',
-	SOLDIER:
-		'bg-neutral-500/20 ring-neutral-500/40 text-muted-foreground',
+	SOLDIER: 'bg-neutral-500/20 ring-neutral-500/40 text-muted-foreground',
 	COMMONER: 'bg-neutral-500/10 ring-neutral-500/40 text-muted-foreground',
 	RECRUIT: 'bg-neutral-500/10 text-muted-foreground',
 }

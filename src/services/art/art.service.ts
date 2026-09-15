@@ -10,7 +10,10 @@ class ArtService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/arts', { params: { take, page } })
+		const { data } = await apiClient.get<PaginatedResponse<Art>>(
+			'/api/v1/arts',
+			{ params: { take, page } }
+		)
 		return data
 	}
 
@@ -33,14 +36,17 @@ class ArtService {
 		tags?: string[]
 		type?: ArtType
 	} = {}): Promise<PaginatedResponse<Art>> {
-		const { data } = await apiClient.get<PaginatedResponse<Art>>('/api/v1/arts/public', {
-			params: {
-				take,
-				page,
-				tags: tags?.length ? tags.join(',') : undefined,
-				type,
-			},
-		})
+		const { data } = await apiClient.get<PaginatedResponse<Art>>(
+			'/api/v1/arts/public',
+			{
+				params: {
+					take,
+					page,
+					tags: tags?.length ? tags.join(',') : undefined,
+					type,
+				},
+			}
+		)
 		return data
 	}
 

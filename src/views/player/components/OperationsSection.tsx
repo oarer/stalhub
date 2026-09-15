@@ -55,7 +55,10 @@ export default function OperationsSection({
 				)}
 				{!isLoading &&
 					data?.sessions.map((session) => (
-						<OperationSessionCard key={session.id} session={session} />
+						<OperationSessionCard
+							key={session.id}
+							session={session}
+						/>
 					))}
 			</Card.Content>
 		</Card.Root>

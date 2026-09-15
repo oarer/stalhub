@@ -1,8 +1,8 @@
 'use client'
 
+import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { Icon } from '@iconify/react'
 import ClanCard from '@/components/ui/clan/ClanCard'
 import { CLink } from '@/components/ui/Link'
 import { itemsQueries } from '@/queries/calcs/items.queries'
@@ -92,21 +92,21 @@ export default function UserProfileView({
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
-						<div className="flex items-center justify-between rounded-lg bg-card p-3">
-							<span className="font-semibold text-sm text-text-accent">
-								{t('clan.squads.loadoutFields.pistol')}
-							</span>
-							{renderItem(loadout.data.weapon_pistol)}
-						</div>
-						<div className="flex items-center justify-between rounded-lg bg-card p-3">
-							<span className="font-semibold text-sm text-text-accent">
-								{t('clan.squads.loadoutFields.meleeWeapon')}
-							</span>
-							{renderItem(loadout.data.weapon_melee)}
-						</div>
-						<div className="flex items-center justify-between rounded-lg bg-card p-3">
-							<span className="font-semibold text-sm text-text-accent">
-								{t('clan.squads.loadoutFields.armor')}
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
+								<span className="font-semibold text-sm text-text-accent">
+									{t('clan.squads.loadoutFields.pistol')}
+								</span>
+								{renderItem(loadout.data.weapon_pistol)}
+							</div>
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
+								<span className="font-semibold text-sm text-text-accent">
+									{t('clan.squads.loadoutFields.meleeWeapon')}
+								</span>
+								{renderItem(loadout.data.weapon_melee)}
+							</div>
+							<div className="flex items-center justify-between rounded-lg bg-card p-3">
+								<span className="font-semibold text-sm text-text-accent">
+									{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
@@ -270,24 +270,36 @@ export default function UserProfileView({
 							<h2 className="font-semibold text-xl">
 								{t('tierlists.title')}
 							</h2>
-							<CLink className="text-primary text-sm hover:underline" href="/tierlists">
+							<CLink
+								className="text-primary text-sm hover:underline"
+								href="/tierlists"
+							>
 								{t('tierlists.viewAll')}
 							</CLink>
 						</div>
 
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
 							{tierLists.data.map((tl) => (
-								<CLink href={`/tierlists/${tl.external_id}`} key={tl.id}>
+								<CLink
+									href={`/tierlists/${tl.external_id}`}
+									key={tl.id}
+								>
 									<div className="flex items-center gap-3 rounded-lg border border-muted bg-card p-3 transition-colors hover:border-primary/30">
-										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary text-lg">
-											<Icon className="size-5" icon="lucide:layout-list" />
+										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-lg text-primary">
+											<Icon
+												className="size-5"
+												icon="lucide:layout-list"
+											/>
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="truncate font-semibold text-sm">
 												{tl.title}
 											</p>
 											<p className="text-text-accent text-xs">
-												{tl.entry_count ?? tl.entries?.length ?? 0} items · {tl.item_kind}
+												{tl.entry_count ??
+													tl.entries?.length ??
+													0}{' '}
+												items · {tl.item_kind}
 											</p>
 										</div>
 									</div>

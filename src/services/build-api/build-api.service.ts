@@ -23,16 +23,19 @@ class BuildApiService {
 		priceMin?: number
 		priceMax?: number
 	} = {}): Promise<PaginatedResponse<BuildApi>> {
-		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>('/api/v1/builds', {
-			params: {
-				take,
-				page,
-				...(tags && tags.length > 0 && { tags: tags.join(',') }),
-				...(sort && sort !== 'newest' && { sort }),
-				...(priceMin != null && { price_min: priceMin }),
-				...(priceMax != null && { price_max: priceMax }),
-			},
-		})
+		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>(
+			'/api/v1/builds',
+			{
+				params: {
+					take,
+					page,
+					...(tags && tags.length > 0 && { tags: tags.join(',') }),
+					...(sort && sort !== 'newest' && { sort }),
+					...(priceMin != null && { price_min: priceMin }),
+					...(priceMax != null && { price_max: priceMax }),
+				},
+			}
+		)
 		return data
 	}
 
@@ -43,9 +46,12 @@ class BuildApiService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<BuildApi>> {
-		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>('/api/v1/users/@me/builds', {
-			params: { take, page },
-		})
+		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>(
+			'/api/v1/users/@me/builds',
+			{
+				params: { take, page },
+			}
+		)
 		return data
 	}
 

@@ -3,12 +3,7 @@ import Image from 'next/image'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
-import type {
-	BannerMode,
-	BannerType,
-	User,
-	UserBadge,
-} from '@/types/user.type'
+import type { BannerMode, BannerType, User, UserBadge } from '@/types/user.type'
 import MeBanner from '@/views/me/components/MeBanner'
 
 interface CompactHeaderProps {

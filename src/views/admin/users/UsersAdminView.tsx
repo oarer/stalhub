@@ -25,7 +25,11 @@ export default function UsersAdminView() {
 	const debouncedSearch = useDebounce(search)
 
 	const { data } = useSuspenseQuery(
-		adminUserQueries.list({ take, page, search: debouncedSearch || undefined })
+		adminUserQueries.list({
+			take,
+			page,
+			search: debouncedSearch || undefined,
+		})
 	)
 
 	const deleteMutation = useMutation({
@@ -67,123 +71,130 @@ export default function UsersAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.users.table.username')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.users.table.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.users.table.roles')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.users.table.status')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{data?.data.map((user) => (
-							<Table.Row key={user.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{user.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<Link
-										className="font-semibold text-sky-400 hover:underline"
-										href={`/admin/users/${user.id}`}
-									>
-										{user.username}
-									</Link>
-								</Table.Cell>
-								<Table.Cell>{user.name ?? '—'}</Table.Cell>
-								<Table.Cell>
-									<div className="flex flex-wrap gap-1">
-										{user.roles.map((role) => (
-											<span
-												className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs"
-												key={role.id}
-											>
-												{role.name}
-											</span>
-										))}
-									</div>
-								</Table.Cell>
-								<Table.Cell>
-									{user.banned ? (
-										<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
-											{t('admin.users.status.banned')}
-										</span>
-									) : (
-										<span className="rounded-full bg-green-500/10 px-2 py-0.5 font-semibold text-green-400 text-xs">
-											{t('admin.users.status.active')}
-										</span>
-									)}
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Link href={`/admin/users/${user.id}`}>
-											<Button size="sm" variant="ghost">
-												<Icon icon="lucide:eye" />
-											</Button>
-										</Link>
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.users.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t(
-															'admin.users.deleteDescription',
-															{
-																name: user.username,
-															}
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'admin.users.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																user.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'admin.users.deleteConfirm'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.users.table.username')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.users.table.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.users.table.roles')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.users.table.status')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						))}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{data?.data.map((user) => (
+								<Table.Row key={user.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{user.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<Link
+											className="font-semibold text-sky-400 hover:underline"
+											href={`/admin/users/${user.id}`}
+										>
+											{user.username}
+										</Link>
+									</Table.Cell>
+									<Table.Cell>{user.name ?? '—'}</Table.Cell>
+									<Table.Cell>
+										<div className="flex flex-wrap gap-1">
+											{user.roles.map((role) => (
+												<span
+													className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs"
+													key={role.id}
+												>
+													{role.name}
+												</span>
+											))}
+										</div>
+									</Table.Cell>
+									<Table.Cell>
+										{user.banned ? (
+											<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
+												{t('admin.users.status.banned')}
+											</span>
+										) : (
+											<span className="rounded-full bg-green-500/10 px-2 py-0.5 font-semibold text-green-400 text-xs">
+												{t('admin.users.status.active')}
+											</span>
+										)}
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Link
+												href={`/admin/users/${user.id}`}
+											>
+												<Button
+													size="sm"
+													variant="ghost"
+												>
+													<Icon icon="lucide:eye" />
+												</Button>
+											</Link>
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.users.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t(
+																'admin.users.deleteDescription',
+																{
+																	name: user.username,
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'admin.users.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	user.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'admin.users.deleteConfirm'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

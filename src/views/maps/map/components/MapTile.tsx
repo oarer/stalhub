@@ -2,25 +2,33 @@
 
 import L from 'leaflet'
 import { useTranslations } from 'next-intl'
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import Sidebar from '@/components/ui/sideBar/SideBar'
+
 import SidebarActions from '@/components/ui/sideBar/SidebarActions'
 import SidebarHeader from '@/components/ui/sideBar/SidebarHeader'
 import ClusterItem from '@/components/ui/sideBar/СlusterItem'
+import { useAtlasMarkers } from '@/hooks/useAtlasMarkers'
 import { useMarkersFile } from '@/hooks/useMarkersFile'
 import CalibrationTool from './CalibrationTool'
 import CanvasLayer from './CanvasLayer'
+import ConvertOverlay from './ConvertOverlay'
+import type { MapMode } from './MapModeTabs'
+import MapModeTabs from './MapModeTabs'
 import MarkerEditor from './MarkerEditor'
 import ServerMarkers from './ServerMarkers'
 import SetImageBounds from './SetImageBounds'
 import { serverMarkersToGeoJSON } from './serverToGeoJSON'
+import WorldMarkerEditor from './WorldMarkerEditor'
+import WorldMarkerFilter from './WorldMarkerFilter'
+import WorldMarkers from './WorldMarkers'
 import ZoomControl from './ZoomControl'
 
 import 'leaflet-draw/dist/leaflet.draw.css'
 import '@/shared/styles/map.css'
 
-import type { MarkerClusterFull } from '@/types/map.type'
+import type { AtlasWaypoint, MarkerClusterFull } from '@/types/map.type'
 
 type TileMapProps = {
 	url: string
@@ -29,6 +37,8 @@ type TileMapProps = {
 	fullMaxLevel: number
 	markersUrl?: string
 	mapName: string
+	/** New-format world markers (atlas keys) instead of markers_clusters. */
+	atlasMarkers?: boolean
 }
 
 export default function MapTile({
@@ -37,6 +47,7 @@ export default function MapTile({
 	imageHeight,
 	fullMaxLevel,
 	markersUrl,
+	atlasMarkers,
 }: TileMapProps) {
 	const {
 		markersFile,
@@ -47,10 +58,35 @@ export default function MapTile({
 		showAll,
 		hideAll,
 		setMarkersFile,
-	} = useMarkersFile(markersUrl)
+	} = useMarkersFile(atlasMarkers ? undefined : markersUrl)
+
+	const { markers: atlasMarkersFile } = useAtlasMarkers(
+		atlasMarkers && markersUrl ? markersUrl : ''
+	)
 
 	const t = useTranslations()
 	const featureGroupRef = useRef<L.FeatureGroup | null>(null)
+
+	const [mode, setMode] = useState<MapMode>('view')
+	const [sidebarOpen, setSidebarOpen] = useState(true)
+
+	useEffect(() => {
+		if (mode === 'convert') setSidebarOpen(true)
+	}, [mode])
+
+	const [worldSpots, setWorldSpots] = useState<AtlasWaypoint[] | null>(null)
+	useEffect(() => {
+		if (atlasMarkersFile) setWorldSpots(atlasMarkersFile.spots)
+	}, [atlasMarkersFile])
+
+	const [hiddenIcons, setHiddenIcons] = useState<Set<string>>(new Set())
+	const [markerSearch, setMarkerSearch] = useState('')
+	const [selectedUuid, setSelectedUuid] = useState<string | null>(null)
+
+	const allowedModes: MapMode[] = ['view', 'convert', 'edit']
+
+	const canEdit = mode === 'edit' && !atlasMarkers
+	const canEditWorld = mode === 'edit' && atlasMarkers
 
 	const handleExport = () => {
 		const serverGeo = serverMarkersToGeoJSON(
@@ -109,33 +145,62 @@ export default function MapTile({
 				zIndex: 0,
 			}}
 		>
-			<Sidebar className="max-w-lg" id="map-editor-sidebar">
-				<SidebarHeader
-					hasClusters={hasClusters}
-					hideAll={hideAll}
-					showAll={showAll}
+			<Sidebar
+				className="max-w-lg"
+				id="map-editor-sidebar"
+				onOpenChange={setSidebarOpen}
+				open={sidebarOpen}
+			>
+				<MapModeTabs
+					mode={mode}
+					modes={allowedModes}
+					onModeChange={setMode}
 				/>
 
-				{hasClusters ? (
-					<div className="flex flex-col gap-3">
-						{(clusterList as MarkerClusterFull[]).map((cluster) => (
-							<ClusterItem
-								cluster={cluster}
-								isVisible={visibleClusterIds.has(cluster.id)}
-								key={cluster.id}
-								toggleCluster={toggleCluster}
-								toggleGroup={toggleGroup}
-								visibleGroupKeys={visibleGroupKeys}
-							/>
-						))}
-					</div>
-				) : (
-					<div className="flex items-center gap-2 py-4 text-sm">
-						{t('map.noMarkers')}
-					</div>
+				{canEdit && (
+					<>
+						<SidebarHeader
+							hasClusters={hasClusters}
+							hideAll={hideAll}
+							showAll={showAll}
+						/>
+
+						{hasClusters ? (
+							<div className="flex flex-col gap-3">
+								{(clusterList as MarkerClusterFull[]).map(
+									(cluster) => (
+										<ClusterItem
+											cluster={cluster}
+											isVisible={visibleClusterIds.has(
+												cluster.id
+											)}
+											key={cluster.id}
+											toggleCluster={toggleCluster}
+											toggleGroup={toggleGroup}
+											visibleGroupKeys={visibleGroupKeys}
+										/>
+									)
+								)}
+							</div>
+						) : (
+							<div className="flex items-center gap-2 py-4 text-sm">
+								{t('map.noMarkers')}
+							</div>
+						)}
+
+						<SidebarActions onExport={handleExport} />
+					</>
 				)}
 
-				<SidebarActions onExport={handleExport} />
+				{atlasMarkers && worldSpots && mode !== 'convert' && (
+					<WorldMarkerFilter
+						hiddenIcons={hiddenIcons}
+						onHiddenIconsChange={setHiddenIcons}
+						onSearchChange={setMarkerSearch}
+						search={markerSearch}
+						spots={worldSpots}
+					/>
+				)}
 			</Sidebar>
 
 			<MapContainer
@@ -170,27 +235,62 @@ export default function MapTile({
 					}}
 				/>
 
-				<ServerMarkers
-					fullMaxLevel={fullMaxLevel}
-					imageHeight={imageHeight}
-					imageWidth={imageWidth}
-					markersFile={markersFile}
-					visibleClusterIds={visibleClusterIds}
-					visibleGroupKeys={visibleGroupKeys}
-				/>
+				{mode !== 'convert' &&
+					(atlasMarkers && markersUrl && worldSpots ? (
+						<>
+							<WorldMarkers
+								editing={canEditWorld}
+								fullMaxLevel={fullMaxLevel}
+								hiddenIcons={hiddenIcons}
+								search={markerSearch}
+								selectedUuid={selectedUuid}
+								spots={worldSpots}
+							/>
+							{canEditWorld && (
+								<WorldMarkerEditor
+									fullMaxLevel={fullMaxLevel}
+									onSelect={setSelectedUuid}
+									selectedUuid={selectedUuid}
+									setSpots={(update) =>
+										setWorldSpots((current) =>
+											current ? update(current) : current
+										)
+									}
+									spots={worldSpots}
+								/>
+							)}
+						</>
+					) : (
+						<>
+							<ServerMarkers
+								fullMaxLevel={fullMaxLevel}
+								imageHeight={imageHeight}
+								imageWidth={imageWidth}
+								markersFile={markersFile}
+								visibleClusterIds={visibleClusterIds}
+								visibleGroupKeys={visibleGroupKeys}
+							/>
 
-				<CalibrationTool
-					fullMaxLevel={fullMaxLevel}
-					imageHeight={imageHeight}
-					imageWidth={imageWidth}
-					markersFile={markersFile}
-				/>
+							<CalibrationTool
+								fullMaxLevel={fullMaxLevel}
+								imageHeight={imageHeight}
+								imageWidth={imageWidth}
+								markersFile={markersFile}
+							/>
 
-				<MarkerEditor
-					fullMaxLevel={fullMaxLevel}
-					markersFile={markersFile}
-					setMarkersFile={setMarkersFile}
-				/>
+							{canEdit && (
+								<MarkerEditor
+									fullMaxLevel={fullMaxLevel}
+									markersFile={markersFile}
+									setMarkersFile={setMarkersFile}
+								/>
+							)}
+						</>
+					))}
+
+				{mode === 'convert' && (
+					<ConvertOverlay fullMaxLevel={fullMaxLevel} />
+				)}
 			</MapContainer>
 		</div>
 	)

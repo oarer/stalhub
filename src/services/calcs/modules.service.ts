@@ -6,7 +6,8 @@ const MODULES_URL = `${GITHUB_RAW_BASE}/modules.json`
 class ModulesService {
 	async getModules() {
 		const res = await fetch(MODULES_URL)
-		if (!res.ok) throw new Error(`Failed to fetch modules.json: ${res.status}`)
+		if (!res.ok)
+			throw new Error(`Failed to fetch modules.json: ${res.status}`)
 		return (await res.json()) as ModulesData
 	}
 }

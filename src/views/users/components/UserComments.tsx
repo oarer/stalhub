@@ -243,9 +243,7 @@ function CommentItem({
 											onClick={() => onDelete(comment.id)}
 											variant="danger"
 										>
-											{t(
-												'users.comments.deleteConfirm'
-											)}
+											{t('users.comments.deleteConfirm')}
 										</Modal.Action>
 									</Modal.Footer>
 								</Modal.Content>

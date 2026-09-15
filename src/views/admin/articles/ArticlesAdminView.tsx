@@ -102,199 +102,213 @@ export default function ArticlesAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.articles.author')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.users.table.status')}
-							</Table.Head>
-							<Table.Head>{t('admin.articles.stars')}</Table.Head>
-							<Table.Head>
-								{t('admin.articles.created')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{filtered.map((article) => (
-							<Table.Row key={article.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{article.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<Link
-										className="font-semibold text-sky-400 hover:underline"
-										href={`/articles/${article.id}`}
-										target="_blank"
-									>
-										{article.title}
-									</Link>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-sm">
-										{article.author.username}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span
-										className={`rounded-full px-2 py-0.5 font-semibold text-xs ${ARTICLE_STATUS_META[article.status].color}`}
-									>
-										{t(`articles.status.${article.status}`)}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-sm">
-										{article.stars_count}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-neutral-400 text-xs">
-										{new Date(
-											article.created_at
-										).toLocaleDateString('ru-RU')}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon icon="lucide:settings" />
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.articles.statusTitle',
-															{
-																title: article.title,
-															}
-														)}
-													</Modal.Title>
-												</Modal.Header>
-												<Modal.Body>
-													<div className="flex flex-col gap-2">
-														{STATUS_OPTIONS.map(
-															(status) => (
-																<Button
-																	className="justify-start"
-																	key={status}
-																	onClick={() =>
-																		setStatusMutation.mutate(
-																			{
-																				id: article.id,
-																				status,
-																			}
-																		)
-																	}
-																	variant={
-																		article.status ===
-																		status
-																			? 'primary'
-																			: 'outline'
-																	}
-																>
-																	<span
-																		className={`rounded-full px-2 py-0.5 text-xs ${ARTICLE_STATUS_META[status].color}`}
-																	>
-																		{t(
-																			`articles.status.${status}`
-																		)}
-																	</span>
-																</Button>
-															)
-														)}
-													</div>
-												</Modal.Body>
-												<Modal.Footer>
-													<Modal.Close>
-														{t('clan.common.close')}
-													</Modal.Close>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.articles.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t.rich(
-															'admin.articles.deleteDescription',
-															{
-																title: article.title,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'clan.common.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																article.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'clan.common.delete'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
-							</Table.Row>
-						))}
-						{filtered.length === 0 && (
+					<Table.Root>
+						<Table.Header>
 							<Table.Row>
-								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
-										{t('admin.articles.empty')}
-									</span>
-								</Table.Cell>
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.author')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.users.table.status')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.stars')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.articles.created')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						)}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{filtered.map((article) => (
+								<Table.Row key={article.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{article.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<Link
+											className="font-semibold text-sky-400 hover:underline"
+											href={`/articles/${article.id}`}
+											target="_blank"
+										>
+											{article.title}
+										</Link>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-sm">
+											{article.author.username}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span
+											className={`rounded-full px-2 py-0.5 font-semibold text-xs ${ARTICLE_STATUS_META[article.status].color}`}
+										>
+											{t(
+												`articles.status.${article.status}`
+											)}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-sm">
+											{article.stars_count}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-neutral-400 text-xs">
+											{new Date(
+												article.created_at
+											).toLocaleDateString('ru-RU')}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon icon="lucide:settings" />
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.articles.statusTitle',
+																{
+																	title: article.title,
+																}
+															)}
+														</Modal.Title>
+													</Modal.Header>
+													<Modal.Body>
+														<div className="flex flex-col gap-2">
+															{STATUS_OPTIONS.map(
+																(status) => (
+																	<Button
+																		className="justify-start"
+																		key={
+																			status
+																		}
+																		onClick={() =>
+																			setStatusMutation.mutate(
+																				{
+																					id: article.id,
+																					status,
+																				}
+																			)
+																		}
+																		variant={
+																			article.status ===
+																			status
+																				? 'primary'
+																				: 'outline'
+																		}
+																	>
+																		<span
+																			className={`rounded-full px-2 py-0.5 text-xs ${ARTICLE_STATUS_META[status].color}`}
+																		>
+																			{t(
+																				`articles.status.${status}`
+																			)}
+																		</span>
+																	</Button>
+																)
+															)}
+														</div>
+													</Modal.Body>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'clan.common.close'
+															)}
+														</Modal.Close>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.articles.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t.rich(
+																'admin.articles.deleteDescription',
+																{
+																	title: article.title,
+																	strong: (
+																		chunks
+																	) => (
+																		<strong>
+																			{
+																				chunks
+																			}
+																		</strong>
+																	),
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'clan.common.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	article.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'clan.common.delete'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+							{filtered.length === 0 && (
+								<Table.Row>
+									<Table.Cell>
+										<span className="text-neutral-400 text-sm">
+											{t('admin.articles.empty')}
+										</span>
+									</Table.Cell>
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+								</Table.Row>
+							)}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

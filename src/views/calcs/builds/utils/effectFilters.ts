@@ -22,12 +22,16 @@ function isStatElement(el: unknown): boolean {
 	return type === 'numeric' || type === 'range' || type === 'numericVariants'
 }
 
-export function getEffectsStats(item: Item, locale: Locale): Record<string, ColoredStat> {
+export function getEffectsStats(
+	item: Item,
+	locale: Locale
+): Record<string, ColoredStat> {
 	const result: Record<string, ColoredStat> = {}
 
 	for (const block of item.infoBlocks ?? []) {
 		if (block.type !== 'list' && block.type !== 'addStat') continue
-		if (!Array.isArray((block as { elements?: unknown[] }).elements)) continue
+		if (!Array.isArray((block as { elements?: unknown[] }).elements))
+			continue
 
 		for (const el of (block as { elements: unknown[] }).elements) {
 			if (!el || !isStatElement(el)) continue
@@ -39,17 +43,12 @@ export function getEffectsStats(item: Item, locale: Locale): Record<string, Colo
 			if (!(key in result)) {
 				const colorRaw = (el as { formatted?: { valueColor?: string } })
 					?.formatted?.valueColor
-				const color = colorRaw
-					? String(colorRaw).replace(/^#/, '')
-					: ''
+				const color = colorRaw ? String(colorRaw).replace(/^#/, '') : ''
 
 				let displayName = key
 				try {
 					const name = (el as { name?: unknown })?.name
-					const s = messageToString(
-						name as never,
-						locale
-					)
+					const s = messageToString(name as never, locale)
 					if (s && s.trim().length > 0) displayName = s
 				} catch {
 					// ignore

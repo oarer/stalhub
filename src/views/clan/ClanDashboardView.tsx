@@ -143,10 +143,7 @@ function ClanDashboardContent({
 
 			<TopPlayersTable topPlayers={topPlayers} />
 
-			<GrenadeTopList
-				grenadeTop={grenadeTop}
-				latestEvent={latestEvent}
-			/>
+			<GrenadeTopList grenadeTop={grenadeTop} latestEvent={latestEvent} />
 		</div>
 	)
 }

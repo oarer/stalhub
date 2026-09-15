@@ -250,7 +250,12 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 			</ReactFlow>
 
 			{ingredients.length > 0 && (
-				<Sidebar buttonSideClass='bg-primary/50' className="max-h-100" defaultOpen={false} side="right">
+				<Sidebar
+					buttonSideClass="bg-primary/50"
+					className="max-h-100"
+					defaultOpen={false}
+					side="right"
+				>
 					<Table.Root className="font-semibold">
 						<Table.Header>
 							{table.getHeaderGroups().map((headerGroup) => (

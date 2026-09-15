@@ -12,18 +12,18 @@ type ToastOptions = {
 }
 
 const icons = {
-	success: <Icon className="text-success" icon="lucide:circle-check" />,
-	error: <Icon className="text-destructive" icon="lucide:circle-x" />,
-	info: <Icon className="text-info" icon="lucide:info" />,
+	success: <Icon icon="lucide:circle-check" />,
+	error: <Icon className="text-destructive-foreground" icon="lucide:circle-x" />,
+	info: <Icon className="text-info-foreground" icon="lucide:info" />,
 	loading: (
 		<Icon className="animate-spin text-info" icon="lucide:loader-circle" />
 	),
 }
 
 const toastStyles: Record<ToastType, string> = {
-	success: 'bg-success/15 text-success ring-success/30',
-	error: 'bg-destructive/15 text-destructive ring-destructive/30',
-	info: 'bg-info/15 text-info ring-info/30',
+	success: 'bg-success ring-success/30',
+	error: 'bg-destructive text-destructive-foreground ring-destructive/30',
+	info: 'bg-info text-info-foreground ring-info/30',
 	loading: 'bg-muted text-muted-foreground ring-primary',
 }
 

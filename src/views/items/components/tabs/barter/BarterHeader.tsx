@@ -20,9 +20,7 @@ export function BarterHeader({ level, titles, locale }: Props) {
 			</Card.Title>
 			<Divider className="my-2" />
 			<Card.Description className="flex flex-col justify-start gap-2">
-				<h1 className={`font-semibold text-md`}>
-					{t('barter.base')}:
-				</h1>
+				<h1 className={`font-semibold text-md`}>{t('barter.base')}:</h1>
 				<div className="flex flex-wrap">
 					{titles.map((title, index) => (
 						<span

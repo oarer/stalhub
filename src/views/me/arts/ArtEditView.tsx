@@ -129,8 +129,10 @@ export default function ArtEditView({ artId }: ArtEditViewProps) {
 							<textarea
 								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
 								id="art-description"
-								placeholder={t('me.newArt.descriptionPlaceholder')}
 								onChange={(e) => setDescription(e.target.value)}
+								placeholder={t(
+									'me.newArt.descriptionPlaceholder'
+								)}
 								value={description}
 							/>
 						</div>

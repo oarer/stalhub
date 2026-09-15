@@ -37,10 +37,7 @@ export function MapTabs({
 						key={map.value}
 						value={map.value}
 					>
-						<Icon
-							className="text-lg"
-							icon={map.icon}
-						/>
+						<Icon className="text-lg" icon={map.icon} />
 						{t(map.label)}
 					</Tabs.Trigger>
 				))}

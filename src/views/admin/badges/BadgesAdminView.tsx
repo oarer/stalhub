@@ -277,149 +277,160 @@ export default function BadgesAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.name')}
-							</Table.Head>
-							<Table.Head>{t('admin.badges.type')}</Table.Head>
-							<Table.Head>{t('admin.badges.color')}</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{badges?.map((badge) => (
-							<Table.Row key={badge.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{badge.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<BadgePreview
-										color={badge.color}
-										icon={badge.icon ?? ''}
-										image={badge.image ?? ''}
-										mode={badge.image ? 'image' : 'icon'}
-										name={badge.name}
-									/>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-neutral-400 text-xs">
-										{badge.image ? (
-											<span className="flex items-center gap-1">
-												<Icon
-													className="size-3"
-													icon="lucide:image"
-												/>
-												{t('admin.badges.image')}
-											</span>
-										) : (
-											<span className="flex items-center gap-1">
-												<Icon
-													className="size-3"
-													icon="lucide:sparkles"
-												/>
-												{badge.icon}
-											</span>
-										)}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-2">
-										<div
-											className="size-4 rounded-full"
-											style={{
-												backgroundColor: badge.color,
-											}}
-										/>
-										<span className="font-mono text-neutral-400 text-xs">
-											{badge.color}
-										</span>
-									</div>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Button
-											onClick={() => openEdit(badge)}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon icon="lucide:pencil" />
-										</Button>
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.badges.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t.rich(
-															'admin.badges.deleteDescription',
-															{
-																name: badge.name,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'clan.common.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																badge.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'clan.common.delete'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
-							</Table.Row>
-						))}
-						{(!badges || badges.length === 0) && (
+					<Table.Root>
+						<Table.Header>
 							<Table.Row>
-								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
-										{t('admin.badges.empty')}
-									</span>
-								</Table.Cell>
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
-								<Table.Cell />
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.badges.type')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.badges.color')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						)}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{badges?.map((badge) => (
+								<Table.Row key={badge.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{badge.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<BadgePreview
+											color={badge.color}
+											icon={badge.icon ?? ''}
+											image={badge.image ?? ''}
+											mode={
+												badge.image ? 'image' : 'icon'
+											}
+											name={badge.name}
+										/>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-neutral-400 text-xs">
+											{badge.image ? (
+												<span className="flex items-center gap-1">
+													<Icon
+														className="size-3"
+														icon="lucide:image"
+													/>
+													{t('admin.badges.image')}
+												</span>
+											) : (
+												<span className="flex items-center gap-1">
+													<Icon
+														className="size-3"
+														icon="lucide:sparkles"
+													/>
+													{badge.icon}
+												</span>
+											)}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-2">
+											<div
+												className="size-4 rounded-full"
+												style={{
+													backgroundColor:
+														badge.color,
+												}}
+											/>
+											<span className="font-mono text-neutral-400 text-xs">
+												{badge.color}
+											</span>
+										</div>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Button
+												onClick={() => openEdit(badge)}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon icon="lucide:pencil" />
+											</Button>
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.badges.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t.rich(
+																'admin.badges.deleteDescription',
+																{
+																	name: badge.name,
+																	strong: (
+																		chunks
+																	) => (
+																		<strong>
+																			{
+																				chunks
+																			}
+																		</strong>
+																	),
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'clan.common.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	badge.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'clan.common.delete'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+							{(!badges || badges.length === 0) && (
+								<Table.Row>
+									<Table.Cell>
+										<span className="text-neutral-400 text-sm">
+											{t('admin.badges.empty')}
+										</span>
+									</Table.Cell>
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+									<Table.Cell />
+								</Table.Row>
+							)}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

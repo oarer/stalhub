@@ -65,7 +65,12 @@ export default function AuctionHistoryCards({
 							<span className="font-semibold text-text-accent">
 								{t('items.auction.date')}
 							</span>
-							<span className={cn('font-semibold', montserrat.className)}>
+							<span
+								className={cn(
+									'font-semibold',
+									montserrat.className
+								)}
+							>
 								{formatDate(lot.time, 'datetime')}
 							</span>
 						</div>
@@ -73,7 +78,12 @@ export default function AuctionHistoryCards({
 							<span className="font-semibold text-text-accent">
 								{t('arsenal.table.currentPrice')}
 							</span>
-							<span className={cn('font-semibold', montserrat.className)}>
+							<span
+								className={cn(
+									'font-semibold',
+									montserrat.className
+								)}
+							>
 								{formatPrice(lot.price)}
 							</span>
 						</div>
@@ -82,7 +92,12 @@ export default function AuctionHistoryCards({
 								<span className="font-semibold text-text-accent">
 									{t('items.auction.amount')}
 								</span>
-								<span className={cn('font-semibold', montserrat.className)}>
+								<span
+									className={cn(
+										'font-semibold',
+										montserrat.className
+									)}
+								>
 									{lot.amount}
 								</span>
 							</div>

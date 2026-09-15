@@ -31,6 +31,7 @@ export default function MapView({ mapName }: { mapName: string }) {
 
 	return (
 		<MapTile
+			atlasMarkers={mapConfig.atlasMarkers === true}
 			fullMaxLevel={mapConfig.image.maxZoom}
 			imageHeight={mapConfig.image.height}
 			imageWidth={mapConfig.image.width}

@@ -12,6 +12,9 @@ type Props = {
 	id?: string
 	side?: 'left' | 'right'
 	buttonSideClass?: string
+
+	open?: boolean
+	onOpenChange?: (open: boolean) => void
 }
 
 const Sidebar = ({
@@ -21,10 +24,19 @@ const Sidebar = ({
 	id,
 	buttonSideClass,
 	side = 'left',
+	open: openProp,
+	onOpenChange,
 }: Props) => {
-	const [isOpen, setIsOpen] = useState(defaultOpen)
+	const [isOpenInternal, setIsOpenInternal] = useState(defaultOpen)
 	const [sidebarWidth, setSidebarWidth] = useState(0)
 	const sidebarRef = useRef<HTMLElement | null>(null)
+
+	const isOpen = openProp ?? isOpenInternal
+
+	const setOpen = (next: boolean) => {
+		if (onOpenChange) onOpenChange(next)
+		else setIsOpenInternal(next)
+	}
 
 	const isLeft = side === 'left'
 	const sidebarSideClass = isLeft ? 'left-4' : 'right-4'
@@ -89,7 +101,7 @@ const Sidebar = ({
 					isLeft ? 'left-5' : 'right-5'
 				)}
 				initial={{ opacity: 0, scale: 1, x: 0 }}
-				onClick={() => setIsOpen(!isOpen)}
+				onClick={() => setOpen(!isOpen)}
 				transition={{
 					ease: 'easeInOut',
 					duration: 0.25,

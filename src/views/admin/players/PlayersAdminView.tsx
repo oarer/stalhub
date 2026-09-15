@@ -171,52 +171,52 @@ export default function PlayersAdminView() {
 
 				<Card.Root className="overflow-hidden p-0">
 					<div className="overflow-x-auto">
-					<Table.Root>
-						<Table.Header>
-							<Table.Row>
-								<Table.Head>UUID</Table.Head>
-								<Table.Head>
-									{t('admin.players.role')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.permissions.description')}
-								</Table.Head>
-							</Table.Row>
-						</Table.Header>
-						<Table.Body>
-							{players && players.length > 0 ? (
-								players.map((player, i) => (
-									<Table.Row
-										key={`${player.uuid}-${i.toString()}`}
-									>
-										<Table.Cell>
-											<span className="font-mono text-xs">
-												{player.uuid}
-											</span>
-										</Table.Cell>
-										<Table.Cell>
-											<span className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs">
-												{player.role}
-											</span>
-										</Table.Cell>
-										<Table.Cell>
-											{player.description}
-										</Table.Cell>
-									</Table.Row>
-								))
-							) : (
+						<Table.Root>
+							<Table.Header>
 								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.players.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
+									<Table.Head>UUID</Table.Head>
+									<Table.Head>
+										{t('admin.players.role')}
+									</Table.Head>
+									<Table.Head>
+										{t('admin.permissions.description')}
+									</Table.Head>
 								</Table.Row>
-							)}
-					</Table.Body>
-					</Table.Root>
+							</Table.Header>
+							<Table.Body>
+								{players && players.length > 0 ? (
+									players.map((player, i) => (
+										<Table.Row
+											key={`${player.uuid}-${i.toString()}`}
+										>
+											<Table.Cell>
+												<span className="font-mono text-xs">
+													{player.uuid}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												<span className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs">
+													{player.role}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												{player.description}
+											</Table.Cell>
+										</Table.Row>
+									))
+								) : (
+									<Table.Row>
+										<Table.Cell>
+											<span className="text-neutral-400 text-sm">
+												{t('admin.players.empty')}
+											</span>
+										</Table.Cell>
+										<Table.Cell />
+										<Table.Cell />
+									</Table.Row>
+								)}
+							</Table.Body>
+						</Table.Root>
 					</div>
 				</Card.Root>
 			</div>
@@ -253,43 +253,43 @@ export default function PlayersAdminView() {
 				</Card.Root>
 
 				{blacklist && blacklist.length > 0 && (
-				<Card.Root className="mt-4 overflow-hidden p-0">
+					<Card.Root className="mt-4 overflow-hidden p-0">
 						<div className="overflow-x-auto">
-						<Table.Root>
-							<Table.Header>
-								<Table.Row>
-									<Table.Head>UUID</Table.Head>
-									<Table.Head />
-								</Table.Row>
-							</Table.Header>
-							<Table.Body>
-								{blacklist.map((entry) => (
-									<Table.Row key={entry.uuid}>
-										<Table.Cell>
-											<span className="font-mono text-xs">
-												{entry.uuid}
-											</span>
-										</Table.Cell>
-										<Table.Cell>
-											<Button
-												onClick={() =>
-													blacklistRemoveMutation.mutate(
-														entry.uuid
-													)
-												}
-												size="sm"
-												variant="ghost"
-											>
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Button>
-										</Table.Cell>
+							<Table.Root>
+								<Table.Header>
+									<Table.Row>
+										<Table.Head>UUID</Table.Head>
+										<Table.Head />
 									</Table.Row>
-								))}
-							</Table.Body>
-					</Table.Root>
+								</Table.Header>
+								<Table.Body>
+									{blacklist.map((entry) => (
+										<Table.Row key={entry.uuid}>
+											<Table.Cell>
+												<span className="font-mono text-xs">
+													{entry.uuid}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												<Button
+													onClick={() =>
+														blacklistRemoveMutation.mutate(
+															entry.uuid
+														)
+													}
+													size="sm"
+													variant="ghost"
+												>
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Button>
+											</Table.Cell>
+										</Table.Row>
+									))}
+								</Table.Body>
+							</Table.Root>
 						</div>
 					</Card.Root>
 				)}

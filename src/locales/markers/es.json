@@ -1,0 +1,424 @@
+{
+  "pda": {
+    "waypoint": {
+      "we": {
+        "flex_node_electra": {
+          "title": "Cúmulo proto-Descarga"
+        },
+        "lost_device": {
+          "title": "Instalación abandonada"
+        },
+        "art_hunters": {
+          "title": "Cazadores de artefactos de ZIVCAS"
+        },
+        "outpost": {
+          "covenant": "Puesto avanzado del Pacto",
+          "duty": "Puesto avanzado de Frontera",
+          "freedom": "Puesto avanzado de Rebelión",
+          "merc": "Puesto avanzado de los Mercenarios",
+          "stalkers": "Avanzado de acechadores"
+        },
+        "abstract_anomaly_node": {
+          "title": "Grieta anómala"
+        },
+        "abstract_camp_duty": {
+          "title": "Acampada de Frontera"
+        },
+        "force_group_duty": {
+          "title": "Fuerza de ataque de Frontera"
+        },
+        "north_house_duty": {
+          "title": "Puesto avanzado de Frontera"
+        },
+        "sniper_duty": {
+          "title": "Posición de francotiradores de Frontera"
+        },
+        "abstract_boss_zombie": {
+          "title": "Multitud de zombis"
+        },
+        "abstract_camp_krovosos": {
+          "title": "Nido de necrófagos"
+        },
+        "officer_duty": {
+          "title": "Campo de oficiales"
+        },
+        "sapper_zivcas": {
+          "title": "Zapadores de ZIVCAS"
+        },
+        "abstract_camp_zombie": {
+          "title": "Grupo de zombis"
+        },
+        "sapper_duty": {
+          "title": "Zapadores de Frontera"
+        },
+        "science_camp_duty": {
+          "title": "Los científicos de Frontera"
+        },
+        "boss_krovosos": {
+          "title": "Guarida del Necrófago oscuro"
+        },
+        "camp_dog": {
+          "title": "Guarida de chuchos"
+        },
+        "boss_pseudogigant": {
+          "title": "Guarida del mastodonte"
+        },
+        "infected_dog": {
+          "title": "Manada de la peste"
+        },
+        "force_group_zivcas": {
+          "title": "Fuerza de ataque de ZIVCAS"
+        },
+        "abstract_rescue_zombie": {
+          "title": "Ataque de zombis"
+        },
+        "rescue_covenant": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "lost_house": {
+          "title": "Avanzadilla abandonada"
+        },
+        "boss_chimera": {
+          "title": "Guarida de la fiera"
+        },
+        "supply_base_duty": {
+          "title": "Base de suministro"
+        },
+        "sniper_zivcas": {
+          "title": "Posición de francotiradores de ZIVCAS"
+        },
+        "abstract_rescue_extractor": {
+          "title": "Defensa de la instalación"
+        },
+        "abstract_rescue_scientist_north": {
+          "title": "Defensa de los científicos contra los mutantes"
+        },
+        "field_lab": {
+          "title": "Estudios de campo de ZIVCAS"
+        },
+        "abstract_camp_zivcas": {
+          "title": "Acampada de ZIVCAS"
+        },
+        "science_camp_zivcas": {
+          "title": "Los científicos de ZIVCAS"
+        },
+        "science_rescue_covenant": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "abstract_camp_flesh": {
+          "title": "Guarida de puercos"
+        },
+        "abstract_camp_boar": {
+          "title": "Guarida de jabalíes"
+        },
+        "lightning_rod": {
+          "title": "Pararrayos"
+        },
+        "high_boss": {
+          "title": "Fortaleza"
+        },
+        "north_house_freedom": {
+          "title": "Puesto avanzado de Rebelión"
+        },
+        "abstract_camp_freedom": {
+          "title": "Acampada de Rebelión"
+        },
+        "abstract_camp_mercenary": {
+          "title": "Acampada de mercenarios"
+        },
+        "north_house_zivcas": {
+          "title": "Puesto avanzado ZIVCAS"
+        },
+        "force_group_freedom": {
+          "title": "Fuerza de ataque de Rebelión"
+        },
+        "force_group_mercenary": {
+          "title": "Fuerza de ataque de los Mercenarios"
+        },
+        "north_house_merc": {
+          "title": "Puesto avanzado de los Mercenarios"
+        },
+        "rescue_freedom": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "sapper_mercenary": {
+          "title": "Zapadores de los Mercenarios"
+        },
+        "supply_base_merc": {
+          "title": "Base de suministro"
+        },
+        "science_camp_mercenary": {
+          "title": "Los científicos de los Mercenarios"
+        },
+        "sniper_mercenary": {
+          "title": "Posición de francotiradores de los Mercenarios"
+        },
+        "officer_merc": {
+          "title": "Campo de oficiales"
+        },
+        "abstract_camp_dog": {
+          "title": "Guarida de chuchos"
+        },
+        "limansk_vacate_monolit_10": {
+          "title": "Edificio ocupado"
+        },
+        "limansk_vacate_military_20": {
+          "title": "Edificio ocupado"
+        },
+        "abstract_rescue_scientist": {
+          "title": "Ayuda a los científicos"
+        },
+        "limansk_vacate_military_10": {
+          "title": "Edificio ocupado"
+        },
+        "limansk_krovosos_boss": {
+          "title": "Guarida de necrófagos psy"
+        },
+        "limansk_vacate_monolit_20": {
+          "title": "Edificio ocupado"
+        },
+        "limansk_chimera_boss": {
+          "title": "Guarida de fieras fantasma"
+        },
+        "limansk_rescue_extractor": {
+          "title": "Defensa de la instalación"
+        },
+        "limansk_pseudogigant_boss": {
+          "title": "Guarida de ratas gigantes"
+        },
+        "sapper_covenant": {
+          "title": "Zapadores del Pacto"
+        },
+        "abstract_camp_covenant": {
+          "title": "Acampada del Pacto"
+        },
+        "science_camp_covenant": {
+          "title": "Los científicos del Pacto"
+        },
+        "north_house_coven": {
+          "title": "Puesto avanzado del Pacto"
+        },
+        "sniper_covenant": {
+          "title": "Posición de francotiradores del Pacto"
+        },
+        "officer_covenant": {
+          "title": "Campo de oficiales"
+        },
+        "science_rescue_duty": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "force_group_covenant": {
+          "title": "Fuerza de ataque del Pacto"
+        },
+        "supply_base_covenant": {
+          "title": "Base de suministro"
+        },
+        "rescue_duty": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "sapper_freedom": {
+          "title": "Zapadores de Rebelión"
+        },
+        "abstract_camp_bandit": {
+          "title": "Acampada de bandidos"
+        },
+        "abstract_camp_snork": {
+          "title": "Guarida de merodeadores"
+        },
+        "abstract_camp_tushkan": {
+          "title": "Nido de ratas"
+        },
+        "abstract_camp_military": {
+          "title": "Cuartel militar"
+        },
+        "abstract_boss": {
+          "title": "Guarida del jefe"
+        },
+        "abstract_rescue": {
+          "title": "Ayuda a los aliados"
+        },
+        "abstract_camp_krovosos_large": {
+          "title": "Guarida de necrófagos"
+        },
+        "military_lieutenant": {
+          "title": "Campamento militar"
+        },
+        "abstract_camp_zombie_large": {
+          "title": "Horda de zombis"
+        },
+        "south_destroy_object": {
+          "title": "Punto de suministro"
+        },
+        "abstract_camp_bandit_large": {
+          "title": "Campamento de bandidos"
+        },
+        "tutorial_bolota_flesh": {
+          "title": "Camada de puercos"
+        },
+        "abstract_camp_stalker": {
+          "title": "Acampada de acechadores"
+        },
+        "abstract_camp_stalker_large": {
+          "title": "Campamento de acechadores"
+        },
+        "rescue_mercenary": {
+          "title": "Incursión de ZIVCAS"
+        },
+        "science_camp_freedom": {
+          "title": "Los científicos de Rebelión"
+        },
+        "sniper_freedom": {
+          "title": "Posición de francotiradores de Rebelión"
+        },
+        "officer_freedom": {
+          "title": "Campo de oficiales"
+        },
+        "supply_base_freedom": {
+          "title": "Base de suministro"
+        },
+        "shopot_antena": {
+          "title": "Antena de Susurro"
+        },
+        "art_device": {
+          "title": "Grieta anómala"
+        },
+        "shopot_base": {
+          "title": "Base de Susurro"
+        },
+        "chronofaults": {
+          "title": "Cronogrieta"
+        },
+        "shopot_camp": {
+          "title": "Campamento de Susurro"
+        },
+        "abstract_camp_monolit": {
+          "title": "Escuadrón de Susurro"
+        },
+        "shopot_lost_device": {
+          "title": "Estructuras anómalas de Susurro"
+        },
+        "shopot_exit": {
+          "title": "Puesto avanzado de Susurro"
+        },
+        "shopot_control_center": {
+          "title": "Punto de control de Susurro"
+        }
+      }
+    }
+  },
+  "we": {
+    "flex_node": {
+      "goal": "Explora la zona"
+    },
+    "abstract_camp_mutant": {
+      "goal": "Despeja la zona"
+    },
+    "abstract_camp_human": {
+      "goal": "Despeja la zona"
+    },
+    "abstract_anomaly_node": {
+      "goal": "Debe estabilizarse en una instalación anómala"
+    },
+    "abstract_boss": {
+      "goal": "Mata al jefe"
+    },
+    "abstract_rescue_covenant": {
+      "goal": "No dejes morir a los soldados del Pacto"
+    },
+    "abstract_rescue_extractor": {
+      "goal": "No dejes que los mutantes destruyan la instalación"
+    },
+    "abstract_rescue_scientist": {
+      "goal": "No dejes morir a los científicos"
+    },
+    "lightning_rod": {
+      "goal": "Usar el Pararrayos"
+    },
+    "high_boss": {
+      "goal": "Despeja la fortaleza"
+    },
+    "abstract_rescue_freedom": {
+      "goal": "No dejes morir a los soldados de Rebelión"
+    },
+    "limansk_vacate_monolit_10": {
+      "goal": "Despeja el edificio"
+    },
+    "limansk_vacate_military_20": {
+      "goal": "Despeja el edificio"
+    },
+    "limansk_vacate_military_10": {
+      "goal": "Despeja el edificio"
+    },
+    "limansk_krovosos_boss": {
+      "goal": "Despeja la zona"
+    },
+    "limansk_vacate_monolit_20": {
+      "goal": "Despeja el edificio"
+    },
+    "limansk_chimera_boss": {
+      "goal": "Despeja la zona"
+    },
+    "limansk_rescue_extractor": {
+      "goal": "No dejes que los mutantes destruyan la instalación"
+    },
+    "limansk_pseudogigant_boss": {
+      "goal": "Despeja la zona"
+    },
+    "abstract_rescue_duty": {
+      "goal": "No dejes morir a los soldados de Frontera"
+    },
+    "abstract_rescue_stalker": {
+      "goal": "No dejes morir a los acechadores"
+    },
+    "abstract_clash_st_ba": {
+      "goal": "Ayudar a los aliados"
+    },
+    "south_destroy_object": {
+      "goal": "Destruye todas las provisiones almacenadas"
+    },
+    "abstract_rescue_bandit": {
+      "goal": "No dejes morir a los bandidos"
+    },
+    "abstract_rescue_merc": {
+      "goal": "No dejes morir a los soldados mercenarios"
+    },
+    "abstract_contamination_antenna": {
+      "goal": "Destruye la antena"
+    },
+    "art_device": {
+      "goal": "Estabilizar con ayuda del nooconvertidor"
+    },
+    "chronofaults": {
+      "goal": "Usa un cronodispositivo para la estabilización"
+    },
+    "shopot_exit_goal": "Despeja el área y abandona el lugar"
+  },
+  "settlement": {
+    "id": {
+      "covenant": {
+        "title": "Morada del Pacto"
+      },
+      "freedom": {
+        "title": "Base de Rebelión"
+      },
+      "duty": {
+        "title": "Base de Frontera"
+      },
+      "rostok": {
+        "title": "El Bar"
+      },
+      "garage": {
+        "title": "Parque de bomberos"
+      },
+      "csky": {
+        "title": "Cuartel general de Atamán"
+      },
+      "merc": {
+        "title": "Campamento de Mercenarios"
+      },
+      "bar_sever": {
+        "title": "Bar Geiger Borracho"
+      }
+    }
+  }
+}

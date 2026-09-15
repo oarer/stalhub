@@ -13,9 +13,9 @@ import {
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import React from 'react'
-import { getChartColors } from '@/lib/chart-theme'
 import { Line } from 'react-chartjs-2'
 import { Card } from '@/components/ui/Card'
+import { getChartColors } from '@/lib/chart-theme'
 
 ChartJS.register(
 	CategoryScale,
@@ -195,8 +195,11 @@ export const DamageChart: React.FC<DamageChartProps> = ({ block }) => {
 				</h1>
 			</Card.Header>
 
-			<Line data={data} key={resolvedTheme ?? 'light'} options={options} />
+			<Line
+				data={data}
+				key={resolvedTheme ?? 'light'}
+				options={options}
+			/>
 		</Card.Root>
 	)
 }
-

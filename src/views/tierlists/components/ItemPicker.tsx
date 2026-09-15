@@ -50,17 +50,27 @@ export function ItemPicker({
 					return (
 						<button
 							className={`flex items-center gap-2 rounded-md px-2 py-1 text-left text-sm transition-colors ${added ? 'bg-primary/10 text-primary' : 'text-text hover:bg-accent/30'}`}
-						disabled={added}
-						key={item.id}
-						onClick={() => onAdd(item.id)}
-						type="button"
+							disabled={added}
+							key={item.id}
+							onClick={() => onAdd(item.id)}
+							type="button"
 						>
-							<Image alt={name} className="size-6 shrink-0 object-contain" height={24} src={getItemIconUrl(item)} width={24} />
+							<Image
+								alt={name}
+								className="size-6 shrink-0 object-contain"
+								height={24}
+								src={getItemIconUrl(item)}
+								width={24}
+							/>
 							<span className="truncate">{name}</span>
 						</button>
 					)
 				})}
-				{filtered.length === 0 && <p className="col-span-full p-3 text-center text-sm text-text-accent">{t('tierlists.empty')}</p>}
+				{filtered.length === 0 && (
+					<p className="col-span-full p-3 text-center text-sm text-text-accent">
+						{t('tierlists.empty')}
+					</p>
+				)}
 			</div>
 		</div>
 	)

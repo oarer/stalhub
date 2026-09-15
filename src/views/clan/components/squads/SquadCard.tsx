@@ -38,7 +38,11 @@ interface SquadCardProps {
 	onOpenAssign: (slot: number) => void
 	onOpenLeader: () => void
 	onOpenMap: () => void
-	onEditLoadout: (memberId: number, squadMemberId: number, slot: number) => void
+	onEditLoadout: (
+		memberId: number,
+		squadMemberId: number,
+		slot: number
+	) => void
 	onMove: (
 		source: DragSource,
 		target: { squadId: number; slot: number }

@@ -1,4 +1,4 @@
-import type { Root, Paragraph, Text } from 'mdast'
+import type { Paragraph, Root, Text } from 'mdast'
 
 const CALLOUT_TYPES = new Set([
 	'info',
@@ -57,7 +57,14 @@ export function remarkCalloutContainers() {
 				: body
 
 			const children: any[] = contentText.trim()
-				? [{ type: 'paragraph', children: [{ type: 'text', value: contentText.trim() }] }]
+				? [
+						{
+							type: 'paragraph',
+							children: [
+								{ type: 'text', value: contentText.trim() },
+							],
+						},
+					]
 				: []
 
 			tree.children[i] = {

@@ -1,0 +1,424 @@
+{
+  "pda": {
+    "waypoint": {
+      "we": {
+        "flex_node_electra": {
+          "title": "Скопление «Проторазрядов»"
+        },
+        "lost_device": {
+          "title": "Брошенная установка"
+        },
+        "art_hunters": {
+          "title": "Артхантеры «Зивкаса»"
+        },
+        "outpost": {
+          "covenant": "Аванпост Завета",
+          "duty": "Аванпост «Рубежа»",
+          "freedom": "Аванпост «Зари»",
+          "merc": "Аванпост Наемников",
+          "stalkers": "Аванпост Сталкеров"
+        },
+        "abstract_anomaly_node": {
+          "title": "Аномальный разлом"
+        },
+        "abstract_camp_duty": {
+          "title": "Стоянка «Рубежа»"
+        },
+        "force_group_duty": {
+          "title": "Ударная группа «Рубежа»"
+        },
+        "north_house_duty": {
+          "title": "Застава «Рубежа»"
+        },
+        "sniper_duty": {
+          "title": "Позиция снайперов «Рубежа»"
+        },
+        "abstract_boss_zombie": {
+          "title": "Толпа зомбированных"
+        },
+        "abstract_camp_krovosos": {
+          "title": "Гнездо упырей"
+        },
+        "officer_duty": {
+          "title": "Офицерская ставка"
+        },
+        "sapper_zivcas": {
+          "title": "Саперы «Зивкаса»"
+        },
+        "abstract_camp_zombie": {
+          "title": "Группа зомбированных"
+        },
+        "sapper_duty": {
+          "title": "Саперы «Рубежа»"
+        },
+        "science_camp_duty": {
+          "title": "Ученые «Рубежа»"
+        },
+        "boss_krovosos": {
+          "title": "Логово Темного упыря"
+        },
+        "camp_dog": {
+          "title": "Лежанка шавок"
+        },
+        "boss_pseudogigant": {
+          "title": "Логово бурелома"
+        },
+        "infected_dog": {
+          "title": "Чумная стая"
+        },
+        "force_group_zivcas": {
+          "title": "Ударная группа «Зивкаса»"
+        },
+        "abstract_rescue_zombie": {
+          "title": "Нападение зомбированных"
+        },
+        "rescue_covenant": {
+          "title": "Облава «Зивкаса»"
+        },
+        "lost_house": {
+          "title": "Оставленная застава"
+        },
+        "boss_chimera": {
+          "title": "Логово бестии"
+        },
+        "supply_base_duty": {
+          "title": "База снабжения"
+        },
+        "sniper_zivcas": {
+          "title": "Позиция снайперов «Зивкаса»"
+        },
+        "abstract_rescue_extractor": {
+          "title": "Защита установки"
+        },
+        "abstract_rescue_scientist_north": {
+          "title": "Защита ученых от мутантов"
+        },
+        "field_lab": {
+          "title": "Полевое исследование «Зивкаса»"
+        },
+        "abstract_camp_zivcas": {
+          "title": "Стоянка «Зивкаса»"
+        },
+        "science_camp_zivcas": {
+          "title": "Ученые «Зивкаса»"
+        },
+        "science_rescue_covenant": {
+          "title": "Облава «Зивкаса»"
+        },
+        "abstract_camp_flesh": {
+          "title": "Лежанка хрюш"
+        },
+        "abstract_camp_boar": {
+          "title": "Лежанка кабанов"
+        },
+        "lightning_rod": {
+          "title": "Громоотвод"
+        },
+        "high_boss": {
+          "title": "Опорный пункт"
+        },
+        "north_house_freedom": {
+          "title": "Застава «Зари»"
+        },
+        "abstract_camp_freedom": {
+          "title": "Стоянка «Зари»"
+        },
+        "abstract_camp_mercenary": {
+          "title": "Стоянка Наемников"
+        },
+        "north_house_zivcas": {
+          "title": "Застава «Зивкаса»"
+        },
+        "force_group_freedom": {
+          "title": "Ударная группа «Зари»"
+        },
+        "force_group_mercenary": {
+          "title": "Ударная группа Наемников"
+        },
+        "north_house_merc": {
+          "title": "Застава Наемников"
+        },
+        "rescue_freedom": {
+          "title": "Облава «Зивкаса»"
+        },
+        "sapper_mercenary": {
+          "title": "Саперы Наемников"
+        },
+        "supply_base_merc": {
+          "title": "База снабжения"
+        },
+        "science_camp_mercenary": {
+          "title": "Ученые Наемников"
+        },
+        "sniper_mercenary": {
+          "title": "Позиция снайперов Наемников"
+        },
+        "officer_merc": {
+          "title": "Офицерская ставка"
+        },
+        "abstract_camp_dog": {
+          "title": "Логово шавок"
+        },
+        "limansk_vacate_monolit_10": {
+          "title": "Занятое здание"
+        },
+        "limansk_vacate_military_20": {
+          "title": "Занятое здание"
+        },
+        "abstract_rescue_scientist": {
+          "title": "Помощь ученым"
+        },
+        "limansk_vacate_military_10": {
+          "title": "Занятое здание"
+        },
+        "limansk_krovosos_boss": {
+          "title": "Логово пси-упыря"
+        },
+        "limansk_vacate_monolit_20": {
+          "title": "Занятое здание"
+        },
+        "limansk_chimera_boss": {
+          "title": "Логово Фантомной Бестии"
+        },
+        "limansk_rescue_extractor": {
+          "title": "Защита установки"
+        },
+        "limansk_pseudogigant_boss": {
+          "title": "Логово Крысиного Гиганта"
+        },
+        "sapper_covenant": {
+          "title": "Саперы «Завета»"
+        },
+        "abstract_camp_covenant": {
+          "title": "Стоянка «Завета»"
+        },
+        "science_camp_covenant": {
+          "title": "Ученые «Завета»"
+        },
+        "north_house_coven": {
+          "title": "Застава «Завета»"
+        },
+        "sniper_covenant": {
+          "title": "Позиция снайперов «Завета»"
+        },
+        "officer_covenant": {
+          "title": "Офицерская ставка"
+        },
+        "science_rescue_duty": {
+          "title": "Облава «Зивкаса»"
+        },
+        "force_group_covenant": {
+          "title": "Ударная группа «Завета»"
+        },
+        "supply_base_covenant": {
+          "title": "База снабжения"
+        },
+        "rescue_duty": {
+          "title": "Облава «Зивкаса»"
+        },
+        "sapper_freedom": {
+          "title": "Саперы «Зари»"
+        },
+        "abstract_camp_bandit": {
+          "title": "Стоянка бандитов"
+        },
+        "abstract_camp_snork": {
+          "title": "Логово шнырей"
+        },
+        "abstract_camp_tushkan": {
+          "title": "Крысиная нора"
+        },
+        "abstract_camp_military": {
+          "title": "Блокпост военных"
+        },
+        "abstract_boss": {
+          "title": "Логово Босса"
+        },
+        "abstract_rescue": {
+          "title": "Помощь союзникам"
+        },
+        "abstract_camp_krovosos_large": {
+          "title": "Логово упырей"
+        },
+        "military_lieutenant": {
+          "title": "Лагерь Военных"
+        },
+        "abstract_camp_zombie_large": {
+          "title": "Скопление зомбированных"
+        },
+        "south_destroy_object": {
+          "title": "Точка снабжения"
+        },
+        "abstract_camp_bandit_large": {
+          "title": "Лагерь бандитов"
+        },
+        "tutorial_bolota_flesh": {
+          "title": "Выводок хрюш"
+        },
+        "abstract_camp_stalker": {
+          "title": "Стоянка сталкеров"
+        },
+        "abstract_camp_stalker_large": {
+          "title": "Лагерь сталкеров"
+        },
+        "rescue_mercenary": {
+          "title": "Облава «Зивкаса»"
+        },
+        "science_camp_freedom": {
+          "title": "Ученые «Зари»"
+        },
+        "sniper_freedom": {
+          "title": "Позиция снайперов «Зари»"
+        },
+        "officer_freedom": {
+          "title": "Офицерская ставка"
+        },
+        "supply_base_freedom": {
+          "title": "База снабжения"
+        },
+        "shopot_antena": {
+          "title": "Антенна «Шепота»"
+        },
+        "art_device": {
+          "title": "Аномальный разлом"
+        },
+        "shopot_base": {
+          "title": "База «Шепота»"
+        },
+        "chronofaults": {
+          "title": "Хроноразлом"
+        },
+        "shopot_camp": {
+          "title": "Лагерь «Шепота»"
+        },
+        "abstract_camp_monolit": {
+          "title": "Отряд «Шепота»"
+        },
+        "shopot_lost_device": {
+          "title": "Аномальные структуры «Шепота»"
+        },
+        "shopot_exit": {
+          "title": "Застава «Шепота»"
+        },
+        "shopot_control_center": {
+          "title": "Пункт управления «Шепота»"
+        }
+      }
+    }
+  },
+  "we": {
+    "flex_node": {
+      "goal": "Исследовать область"
+    },
+    "abstract_camp_mutant": {
+      "goal": "Зачистить область"
+    },
+    "abstract_camp_human": {
+      "goal": "Зачистить область"
+    },
+    "abstract_anomaly_node": {
+      "goal": "Стабилизировать с помощью аномальной установки"
+    },
+    "abstract_boss": {
+      "goal": "Убить босса"
+    },
+    "abstract_rescue_covenant": {
+      "goal": "Не дать бойцам Завета погибнуть"
+    },
+    "abstract_rescue_extractor": {
+      "goal": "Не дать мутантам уничтожить установку"
+    },
+    "abstract_rescue_scientist": {
+      "goal": "Не дать ученым погибнуть"
+    },
+    "lightning_rod": {
+      "goal": "Использовать громоотвод"
+    },
+    "high_boss": {
+      "goal": "Зачистить опорный пункт"
+    },
+    "abstract_rescue_freedom": {
+      "goal": "Не дать бойцам «Зари» погибнуть"
+    },
+    "limansk_vacate_monolit_10": {
+      "goal": "Зачистить здание"
+    },
+    "limansk_vacate_military_20": {
+      "goal": "Зачистить здание"
+    },
+    "limansk_vacate_military_10": {
+      "goal": "Зачистить здание"
+    },
+    "limansk_krovosos_boss": {
+      "goal": "Зачистить область"
+    },
+    "limansk_vacate_monolit_20": {
+      "goal": "Зачистить здание"
+    },
+    "limansk_chimera_boss": {
+      "goal": "Зачистить область"
+    },
+    "limansk_rescue_extractor": {
+      "goal": "Не дать мутантам уничтожить установку"
+    },
+    "limansk_pseudogigant_boss": {
+      "goal": "Зачистить область"
+    },
+    "abstract_rescue_duty": {
+      "goal": "Не дать бойцам «Рубежа» погибнуть"
+    },
+    "abstract_rescue_stalker": {
+      "goal": "Не дать сталкерам погибнуть"
+    },
+    "abstract_clash_st_ba": {
+      "goal": "Помочь союзникам"
+    },
+    "south_destroy_object": {
+      "goal": "Уничтожьте все складские припасы"
+    },
+    "abstract_rescue_bandit": {
+      "goal": "Не дать бандитам погибнуть"
+    },
+    "abstract_rescue_merc": {
+      "goal": "Не дать бойцам Наемников погибнуть"
+    },
+    "abstract_contamination_antenna": {
+      "goal": "Уничтожить антенну"
+    },
+    "art_device": {
+      "goal": "Стабилизировать с помощью нооконвертера"
+    },
+    "chronofaults": {
+      "goal": "Стабилизировать с помощью хроноустановки"
+    },
+    "shopot_exit_goal": "Зачистите область и покиньте локацию"
+  },
+  "settlement": {
+    "id": {
+      "covenant": {
+        "title": "Обитель «Завета»"
+      },
+      "freedom": {
+        "title": "База «Зари»"
+      },
+      "duty": {
+        "title": "База «Рубежа»"
+      },
+      "rostok": {
+        "title": "Бар"
+      },
+      "garage": {
+        "title": "Пожарная часть"
+      },
+      "csky": {
+        "title": "Ставка Атамана"
+      },
+      "merc": {
+        "title": "Лагерь Наемников"
+      },
+      "bar_sever": {
+        "title": "Бар «Пьяный Гейгер»"
+      }
+    }
+  }
+}

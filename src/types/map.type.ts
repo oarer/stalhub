@@ -59,6 +59,37 @@ export type MapConfig = {
 	preview_image: string
 	image: { width: number; height: number; maxZoom: number }
 	markers: string
+	/** World (new-format atlas-key) markers instead of markers_clusters. */
+	atlasMarkers?: boolean
+}
+
+/**
+ * Frame (source rect) of an icon inside the waypoint icon atlas
+ * (`/markers/atlas_map_waypoint.png`). Order matches the given marker format:
+ * [x, y, w, h].
+ */
+export type IconFrame = [number, number, number, number]
+
+/**
+ * New waypoint-marker format. `x`/`z` are global world coordinates (not
+ * per-map) and will drive placement once a world map is introduced.
+ * `icon` is an atlas key (e.g. "waypoint_event_miniboss") resolved via the
+ * atlas sheet; `title_key`/`goal_key` are PDA-localization keys.
+ */
+export type AtlasWaypoint = {
+	uuid: string
+	icon: string
+	title_key: string
+	goal_key: string
+	settlement?: string
+	x: number
+	z: number
+}
+
+/** Shape of `/markers/markers.json` (by_icon holds icon key -> count). */
+export type AtlasMarkersFile = {
+	spots: AtlasWaypoint[]
+	by_icon: Record<string, number>
 }
 
 export const isPixelCoord = (

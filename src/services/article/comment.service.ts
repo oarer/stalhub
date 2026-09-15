@@ -1,8 +1,5 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
-import type {
-	ArticleComment,
-	ArticleCommentCreate,
-} from '@/types/article.type'
+import type { ArticleComment, ArticleCommentCreate } from '@/types/article.type'
 import type { PaginatedResponse } from '@/types/user.type'
 
 class ArticleCommentService {
@@ -10,9 +7,12 @@ class ArticleCommentService {
 		articleId: string,
 		{ take = 20, page = 1 } = {}
 	): Promise<PaginatedResponse<ArticleComment>> {
-		const { data } = await apiClient.get<PaginatedResponse<ArticleComment>>(`/api/v1/articles/${articleId}/comments`, {
-			params: { take, page },
-		})
+		const { data } = await apiClient.get<PaginatedResponse<ArticleComment>>(
+			`/api/v1/articles/${articleId}/comments`,
+			{
+				params: { take, page },
+			}
+		)
 		return data
 	}
 

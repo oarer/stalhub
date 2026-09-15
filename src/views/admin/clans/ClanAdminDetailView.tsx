@@ -466,58 +466,68 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 				<Tabs.Content value="members">
 					<Card.Root className="overflow-hidden p-0">
 						<div className="overflow-x-auto">
-						<Table.Root>
-							<Table.Header>
-								<Table.Row>
-									<Table.Head>
-										{t('admin.clans.detail.members.name')}
-									</Table.Head>
-									<Table.Head>
-										{t('admin.clans.detail.members.rank')}
-									</Table.Head>
-									<Table.Head>
-										{t('admin.clans.detail.members.joined')}
-									</Table.Head>
-									<Table.Head>
-										{t('admin.clans.detail.members.user')}
-									</Table.Head>
-								</Table.Row>
-							</Table.Header>
-							<Table.Body>
-								{members?.map((member) => (
-									<Table.Row key={member.id}>
-										<Table.Cell>
-											<span className="font-semibold">
-												{member.name}
-											</span>
-										</Table.Cell>
-										<Table.Cell>{member.rank}</Table.Cell>
-										<Table.Cell>
-											{member.join_time
-												? new Date(
-														member.join_time
-													).toLocaleDateString(
-														'ru-RU'
-													)
-												: '—'}
-										</Table.Cell>
-										<Table.Cell>
-											{member.user ? (
-												<Link
-													className="text-sky-400 hover:underline"
-													href={`/admin/users/${member.user.id}`}
-												>
-													{member.user.username ||
-														member.user.name}
-												</Link>
-											) : (
-												'—'
+							<Table.Root>
+								<Table.Header>
+									<Table.Row>
+										<Table.Head>
+											{t(
+												'admin.clans.detail.members.name'
 											)}
-										</Table.Cell>
+										</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.clans.detail.members.rank'
+											)}
+										</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.clans.detail.members.joined'
+											)}
+										</Table.Head>
+										<Table.Head>
+											{t(
+												'admin.clans.detail.members.user'
+											)}
+										</Table.Head>
 									</Table.Row>
-								))}
-							</Table.Body>
-					</Table.Root>
+								</Table.Header>
+								<Table.Body>
+									{members?.map((member) => (
+										<Table.Row key={member.id}>
+											<Table.Cell>
+												<span className="font-semibold">
+													{member.name}
+												</span>
+											</Table.Cell>
+											<Table.Cell>
+												{member.rank}
+											</Table.Cell>
+											<Table.Cell>
+												{member.join_time
+													? new Date(
+															member.join_time
+														).toLocaleDateString(
+															'ru-RU'
+														)
+													: '—'}
+											</Table.Cell>
+											<Table.Cell>
+												{member.user ? (
+													<Link
+														className="text-sky-400 hover:underline"
+														href={`/admin/users/${member.user.id}`}
+													>
+														{member.user.username ||
+															member.user.name}
+													</Link>
+												) : (
+													'—'
+												)}
+											</Table.Cell>
+										</Table.Row>
+									))}
+								</Table.Body>
+							</Table.Root>
 						</div>
 					</Card.Root>
 				</Tabs.Content>

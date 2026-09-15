@@ -76,7 +76,8 @@ export function useTierListPng() {
 			const previewUrl = createPreviewUrl(pngBlob)
 
 			setPngPreviewUrl((previousUrl) => {
-				if (previousUrl?.startsWith('blob:')) URL.revokeObjectURL(previousUrl)
+				if (previousUrl?.startsWith('blob:'))
+					URL.revokeObjectURL(previousUrl)
 				return previewUrl
 			})
 			setShowPngModal(true)

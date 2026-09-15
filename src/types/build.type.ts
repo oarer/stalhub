@@ -51,14 +51,14 @@ export const BoostButtons: Record<BoostCategory, string> = {
 	[BoostCategory.PROTECTION]: 'lucide:shield',
 }
 
-
 export const REACTION_KEYS: Record<
 	'burn' | 'tear' | 'chemical_burn' | 'electroshock',
 	string
 > = {
 	burn: 'stalker.artefact_properties.factor.reaction_to_burn',
 	tear: 'stalker.artefact_properties.factor.reaction_to_tear',
-	chemical_burn: 'stalker.artefact_properties.factor.reaction_to_chemical_burn',
+	chemical_burn:
+		'stalker.artefact_properties.factor.reaction_to_chemical_burn',
 	electroshock: 'stalker.artefact_properties.factor.reaction_to_electroshock',
 } as const
 

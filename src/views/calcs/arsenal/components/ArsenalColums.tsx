@@ -94,13 +94,15 @@ export function getArsenalColumns(
 				const count = getValue<number>()
 
 				if (count <= 0) {
-					return (
-						<span className="font-mono text-neutral-500">-</span>
-					)
+					return <span className="font-mono text-neutral-500">-</span>
 				}
 
 				if (!row.original.limitExceeded) {
-					return <span className="font-mono text-blue-400">×{count}</span>
+					return (
+						<span className="font-mono text-blue-400">
+							×{count}
+						</span>
+					)
 				}
 
 				return (

@@ -7,9 +7,9 @@ import { useState } from 'react'
 import { montserrat, unbounded } from '@/app/fonts'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs } from '@/components/ui/Tabs'
+import { cn } from '@/lib/cn'
 import { serverOnlineQueries } from '@/queries/server-online/server-online.queries'
 import { OnlineChart } from '@/views/server-status/components/OnlineChart'
-import { cn } from '@/lib/cn'
 
 const REGION_LABELS: Record<string, string> = {
 	RU: 'Россия / СНГ (RU)',
@@ -130,8 +130,8 @@ export default function ServerStatusView() {
 									'text-sm',
 									onlineByRegion.get(region)
 										? 'text-primary'
-										: 'text-muted-foreground')
-								}
+										: 'text-muted-foreground'
+								)}
 							>
 								{onlineByRegion.get(region)?.toLocaleString() ??
 									'—'}

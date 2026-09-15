@@ -9,8 +9,7 @@ export const buttonVariants = cva(
 					'bg-primary text-primary-foreground shadow-md hover:brightness-110 font-semibold',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-sm hover:brightness-110',
-				outline:
-					'ring-2 ring-primary/40 bg-transparent hover:bg-muted',
+				outline: 'ring-2 ring-primary/40 bg-transparent hover:bg-muted',
 				bordered:
 					'border-2 border-primary bg-primary/15 text-primary font-semibold hover:bg-primary/25',
 				ghost: 'bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground',

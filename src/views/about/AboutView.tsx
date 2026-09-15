@@ -4,7 +4,12 @@ import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import GradientText from '@/components/ui/GradientText'
-import { contactLinks, contacts, supportLinks, thanks } from '@/constants/about.const'
+import {
+	contactLinks,
+	contacts,
+	supportLinks,
+	thanks,
+} from '@/constants/about.const'
 import { view } from './components/about.types'
 import { ContactCard } from './components/ContactCard'
 import { LinksSection } from './components/LinksSection'

@@ -130,95 +130,99 @@ export default function PermissionsAdminView() {
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>ID</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.name')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.permissions.description')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{permissions?.map((perm) => (
-							<Table.Row key={perm.id}>
-								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
-										{perm.id}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="font-semibold">
-										{perm.name}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
-										{perm.description ?? '—'}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-1">
-										<Button
-											onClick={() => openEdit(perm)}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon icon="lucide:pencil" />
-										</Button>
-										<Modal.Root>
-											<Modal.Trigger variant="ghost">
-												<Icon
-													className="text-red-400"
-													icon="lucide:trash-2"
-												/>
-											</Modal.Trigger>
-											<Modal.Content fullScreen={false}>
-												<Modal.Header>
-													<Modal.Title>
-														{t(
-															'admin.permissions.deleteTitle'
-														)}
-													</Modal.Title>
-													<Modal.Description>
-														{t(
-															'admin.permissions.deleteDescription',
-															{ name: perm.name }
-														)}
-													</Modal.Description>
-												</Modal.Header>
-												<Modal.Footer>
-													<Modal.Close>
-														{t(
-															'admin.permissions.cancel'
-														)}
-													</Modal.Close>
-													<Modal.Action
-														closeOnClick
-														onClick={() =>
-															deleteMutation.mutate(
-																perm.id
-															)
-														}
-														variant="danger"
-													>
-														{t(
-															'admin.permissions.deleteConfirm'
-														)}
-													</Modal.Action>
-												</Modal.Footer>
-											</Modal.Content>
-										</Modal.Root>
-									</div>
-								</Table.Cell>
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>ID</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.name')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.permissions.description')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						))}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{permissions?.map((perm) => (
+								<Table.Row key={perm.id}>
+									<Table.Cell>
+										<span className="font-mono text-neutral-400 text-xs">
+											{perm.id}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="font-semibold">
+											{perm.name}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<span className="text-neutral-400 text-sm">
+											{perm.description ?? '—'}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-1">
+											<Button
+												onClick={() => openEdit(perm)}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon icon="lucide:pencil" />
+											</Button>
+											<Modal.Root>
+												<Modal.Trigger variant="ghost">
+													<Icon
+														className="text-red-400"
+														icon="lucide:trash-2"
+													/>
+												</Modal.Trigger>
+												<Modal.Content
+													fullScreen={false}
+												>
+													<Modal.Header>
+														<Modal.Title>
+															{t(
+																'admin.permissions.deleteTitle'
+															)}
+														</Modal.Title>
+														<Modal.Description>
+															{t(
+																'admin.permissions.deleteDescription',
+																{
+																	name: perm.name,
+																}
+															)}
+														</Modal.Description>
+													</Modal.Header>
+													<Modal.Footer>
+														<Modal.Close>
+															{t(
+																'admin.permissions.cancel'
+															)}
+														</Modal.Close>
+														<Modal.Action
+															closeOnClick
+															onClick={() =>
+																deleteMutation.mutate(
+																	perm.id
+																)
+															}
+															variant="danger"
+														>
+															{t(
+																'admin.permissions.deleteConfirm'
+															)}
+														</Modal.Action>
+													</Modal.Footer>
+												</Modal.Content>
+											</Modal.Root>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			</Card.Root>
 

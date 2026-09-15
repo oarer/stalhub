@@ -217,9 +217,7 @@ export const NumericVariantsElementRenderer: React.FC<{
 	const format = (v: number) =>
 		Number.isInteger(v) ? String(v) : v.toFixed(2)
 
-	const pair = Array.isArray(current)
-		? (current as [number, number])
-		: null
+	const pair = Array.isArray(current) ? (current as [number, number]) : null
 
 	const display =
 		pair !== null

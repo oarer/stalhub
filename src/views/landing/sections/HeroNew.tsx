@@ -22,12 +22,12 @@ export default function HeroNew() {
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>
 				{t.rich('landing.hero.title', {
-				brand: () => (
-					<span className="text-primary">
-						{t('landing.hero.title_accent')}
-					</span>
-				),
-			})}
+					brand: () => (
+						<span className="text-primary">
+							{t('landing.hero.title_accent')}
+						</span>
+					),
+				})}
 			</motion.h1>
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}

@@ -130,7 +130,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 				<aside className="flex min-w-0 flex-col gap-4">
 					<div className="flex items-center justify-between gap-2">
-						<div className='flex flex-col gap-0'>
+						<div className="flex flex-col gap-0">
 							{art.title && (
 								<h1
 									className={`${unbounded.className} min-w-0 font-bold text-2xl`}

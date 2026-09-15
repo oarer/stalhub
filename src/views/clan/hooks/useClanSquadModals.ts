@@ -48,7 +48,7 @@ export function useClanSquadModals(
 	const leaderSquad = squads.find((s) => s.id === leaderSquadId) ?? null
 	const assignSquad = squads.find((s) => s.id === assignSquadId) ?? null
 	const editingMember = editingCtx
-		? members.find((m) => m.id === editingCtx.clanMemberId) ?? null
+		? (members.find((m) => m.id === editingCtx.clanMemberId) ?? null)
 		: null
 
 	return {

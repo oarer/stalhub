@@ -6,9 +6,9 @@ import { cn } from '@/lib/cn'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { ModuleAttribute } from '@/types/module.type'
 import {
+	type ArtifactAdditional,
 	calcArtifactPercent,
 	qualityIndexToArtQuality,
-	type ArtifactAdditional,
 } from '@/utils/artUtils'
 import {
 	buildModuleAttrLines,
@@ -27,9 +27,7 @@ export function getLotRankColor(
 
 	const attributes = additional.attributes ?? []
 	if (attributes.length > 0) {
-		const maxPct = Math.max(
-			...attributes.map((a) => calcModulePct(a))
-		)
+		const maxPct = Math.max(...attributes.map((a) => calcModulePct(a)))
 		return RARITY_COLORS[getRarityByQuality(maxPct)]
 	}
 
@@ -49,9 +47,7 @@ export function getLotRankLabelKey(
 
 	const attributes = additional.attributes ?? []
 	if (attributes.length > 0) {
-		const maxPct = Math.max(
-			...attributes.map((a) => calcModulePct(a))
-		)
+		const maxPct = Math.max(...attributes.map((a) => calcModulePct(a)))
 		const rarity = getRarityByQuality(maxPct)
 		return `arts.ART_QUALITY_${rarity.toUpperCase()}`
 	}
@@ -206,9 +202,7 @@ export function AdditionalDetails({
 				<span className="font-semibold">
 					{t('modals.builds.settings.percent')}
 				</span>
-				<span
-					className={cn('font-bold', montserrat.className)}
-				>
+				<span className={cn('font-bold', montserrat.className)}>
 					{percent.toFixed(2)}%
 				</span>
 			</div>

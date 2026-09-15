@@ -21,7 +21,6 @@ export interface CustomNodeData {
 	ingredients?: IngredientInfo[]
 }
 
-
 export interface IngredientRows {
 	id: string
 	name: string

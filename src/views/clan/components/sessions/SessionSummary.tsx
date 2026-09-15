@@ -20,9 +20,9 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 				</p>
 				<span
 					className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
-					summary.victory
-						? 'bg-green-500/20 text-success'
-						: 'bg-red-500/20 text-destructive'
+						summary.victory
+							? 'bg-green-500/20 text-success'
+							: 'bg-red-500/20 text-destructive'
 					}`}
 				>
 					{summary.victory

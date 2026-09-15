@@ -7,9 +7,12 @@ class ArtCommentService {
 		artId: string,
 		{ take = 50, page = 1 } = {}
 	): Promise<PaginatedResponse<ArtComment>> {
-		const { data } = await apiClient.get<PaginatedResponse<ArtComment>>(`/api/v1/arts/${artId}/comments`, {
-			params: { take, page },
-		})
+		const { data } = await apiClient.get<PaginatedResponse<ArtComment>>(
+			`/api/v1/arts/${artId}/comments`,
+			{
+				params: { take, page },
+			}
+		)
 		return data
 	}
 

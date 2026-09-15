@@ -71,8 +71,10 @@ export function DashboardCanvas() {
 						height: item.h,
 						deletable: false,
 						selectable: false,
-						measured:
-							cached?.measured ?? { width: item.w, height: item.h },
+						measured: cached?.measured ?? {
+							width: item.w,
+							height: item.h,
+						},
 					}
 
 			cache.set(item.id, node)

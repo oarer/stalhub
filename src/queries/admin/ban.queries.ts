@@ -7,7 +7,8 @@ class AdminBanQueries {
 	list({ take = 24, page = 1, auto, rule, search }: AdminBanListParams = {}) {
 		return queryOptions({
 			queryKey: ['admin', 'bans', { take, page, auto, rule, search }],
-			queryFn: () => adminBanService.list({ take, page, auto, rule, search }),
+			queryFn: () =>
+				adminBanService.list({ take, page, auto, rule, search }),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 30,
 		})

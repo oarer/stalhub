@@ -4,9 +4,9 @@ import { Icon } from '@iconify/react'
 import type { VariantProps } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
+import { montserrat } from '@/app/fonts'
 import { checkboxVariants } from '@/constants/ui/checkBox.const'
 import { cn } from '@/lib/cn'
-import { montserrat } from '@/app/fonts'
 
 export interface ICheckboxProps
 	extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>,
@@ -65,8 +65,8 @@ function CheckBox({
 	}
 
 	const iconSizes = {
-		xs: 'text-xs',
-		sm: 'text-sm',
+		xs: 'h-2 w-2',
+		sm: 'h-2.5 w-2.5',
 		md: 'text-base',
 		lg: 'text-lg',
 	}
@@ -95,6 +95,7 @@ function CheckBox({
 					{checked && (
 						<motion.div
 							animate={{ scale: 1, opacity: 1 }}
+							className="flex items-center justify-center leading-none"
 							exit={{ scale: 0, opacity: 0 }}
 							initial={{ scale: 0, opacity: 0 }}
 							key="check"
@@ -105,7 +106,7 @@ function CheckBox({
 							}}
 						>
 							<Icon
-								className={iconSizes[size || 'md']}
+								className={cn('block', iconSizes[size || 'md'])}
 								icon="mdi:check"
 							/>
 						</motion.div>
@@ -129,9 +130,12 @@ function CheckBox({
 
 	if (label || description) {
 		return (
-			<div className="flex items-start gap-3">
+			<div className="flex items-center gap-3">
 				{checkboxElement}
-				<div className="flex flex-col gap-1">
+				<div
+					className="flex flex-col gap-1"
+					onClick={!disabled ? handleToggle : undefined}
+				>
 					{label && (
 						<label
 							className={cn(
@@ -140,12 +144,15 @@ function CheckBox({
 								disabled && 'cursor-not-allowed opacity-50'
 							)}
 							htmlFor={id}
-							onClick={!disabled ? handleToggle : undefined}
 						>
 							{label}
 						</label>
 					)}
-					{description && <p className={`${montserrat.className} text-xs`}>{description}</p>}
+					{description && (
+						<p className={`${montserrat.className} text-xs`}>
+							{description}
+						</p>
+					)}
 				</div>
 			</div>
 		)

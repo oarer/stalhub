@@ -134,9 +134,12 @@ class UserService {
 		take?: number
 		page?: number
 	} = {}): Promise<PaginatedResponse<Notification>> {
-		const { data } = await apiClient.get<PaginatedResponse<Notification>>('/api/v1/users/@me/notifications', {
-			params: { take, page: page - 1 },
-		})
+		const { data } = await apiClient.get<PaginatedResponse<Notification>>(
+			'/api/v1/users/@me/notifications',
+			{
+				params: { take, page: page - 1 },
+			}
+		)
 		return data
 	}
 

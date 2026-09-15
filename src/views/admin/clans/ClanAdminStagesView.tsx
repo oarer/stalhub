@@ -12,11 +12,11 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import { formatDate } from '@/lib/date'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminClanQueries } from '@/queries/admin/clan.queries'
 import { adminClanService } from '@/services/admin/clan.service'
 import type { AdminClanStage } from '@/types/admin.type'
-import { formatDate } from '@/lib/date'
 
 const STAGE_TYPE_VARIANTS: Record<
 	string,
@@ -200,97 +200,98 @@ export default function ClanAdminStagesView({ clanId }: { clanId: string }) {
 		<Card.Root className="overflow-hidden p-0">
 			{stages?.length ? (
 				<div className="overflow-x-auto">
-				<Table.Root>
-					<Table.Header>
-						<Table.Row>
-							<Table.Head>
-								{t('admin.clans.stages.table.id')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.map')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.type')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.stage')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.date')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.screenshots')}
-							</Table.Head>
-							<Table.Head>
-								{t('admin.clans.stages.table.attendance')}
-							</Table.Head>
-							<Table.Head />
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{stages.map((stage) => (
-							<Table.Row key={stage.id}>
-								<Table.Cell>#{stage.id}</Table.Cell>
-								<Table.Cell>
-									<span className="font-semibold">
-										{stage.map_name}
-									</span>
-								</Table.Cell>
-								<Table.Cell>
-									<Badge
-										variant={
-											STAGE_TYPE_VARIANTS[stage.type] ??
-											'secondary'
-										}
-									>
-										{t(
-											`admin.clans.stages.type.${stage.type}`
-										)}
-									</Badge>
-								</Table.Cell>
-								<Table.Cell>
-									{stage.stage_number ?? '—'}
-								</Table.Cell>
-								<Table.Cell>
-									{new Date(stage.started_at).toLocaleString(
-										'ru-RU'
-									)}
-								</Table.Cell>
-								<Table.Cell>
-									{stage._count.screenshots}
-								</Table.Cell>
-								<Table.Cell>
-									{stage._count.attendance}
-								</Table.Cell>
-								<Table.Cell>
-									<div className="flex items-center gap-2">
-										<Button
-											onClick={() =>
-												setEditingStage(stage)
-											}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon icon="lucide:edit" />
-										</Button>
-										<Button
-											onClick={() =>
-												setDeletingStage(stage)
-											}
-											size="sm"
-											variant="ghost"
-										>
-											<Icon
-												className="text-red-400"
-												icon="lucide:trash-2"
-											/>
-										</Button>
-									</div>
-								</Table.Cell>
+					<Table.Root>
+						<Table.Header>
+							<Table.Row>
+								<Table.Head>
+									{t('admin.clans.stages.table.id')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.map')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.type')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.stage')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.date')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.screenshots')}
+								</Table.Head>
+								<Table.Head>
+									{t('admin.clans.stages.table.attendance')}
+								</Table.Head>
+								<Table.Head />
 							</Table.Row>
-						))}
-					</Table.Body>
-				</Table.Root>
+						</Table.Header>
+						<Table.Body>
+							{stages.map((stage) => (
+								<Table.Row key={stage.id}>
+									<Table.Cell>#{stage.id}</Table.Cell>
+									<Table.Cell>
+										<span className="font-semibold">
+											{stage.map_name}
+										</span>
+									</Table.Cell>
+									<Table.Cell>
+										<Badge
+											variant={
+												STAGE_TYPE_VARIANTS[
+													stage.type
+												] ?? 'secondary'
+											}
+										>
+											{t(
+												`admin.clans.stages.type.${stage.type}`
+											)}
+										</Badge>
+									</Table.Cell>
+									<Table.Cell>
+										{stage.stage_number ?? '—'}
+									</Table.Cell>
+									<Table.Cell>
+										{new Date(
+											stage.started_at
+										).toLocaleString('ru-RU')}
+									</Table.Cell>
+									<Table.Cell>
+										{stage._count.screenshots}
+									</Table.Cell>
+									<Table.Cell>
+										{stage._count.attendance}
+									</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-2">
+											<Button
+												onClick={() =>
+													setEditingStage(stage)
+												}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon icon="lucide:edit" />
+											</Button>
+											<Button
+												onClick={() =>
+													setDeletingStage(stage)
+												}
+												size="sm"
+												variant="ghost"
+											>
+												<Icon
+													className="text-red-400"
+													icon="lucide:trash-2"
+												/>
+											</Button>
+										</div>
+									</Table.Cell>
+								</Table.Row>
+							))}
+						</Table.Body>
+					</Table.Root>
 				</div>
 			) : (
 				<Card.Content className="py-8 text-center text-neutral-400">
@@ -318,7 +319,7 @@ export default function ClanAdminStagesView({ clanId }: { clanId: string }) {
 							<Modal.Description>
 								{t('admin.clans.stages.deleteDescription', {
 									map: deletingStage.map_name,
-									date: formatDate(deletingStage.started_at)
+									date: formatDate(deletingStage.started_at),
 								})}
 							</Modal.Description>
 						</Modal.Header>

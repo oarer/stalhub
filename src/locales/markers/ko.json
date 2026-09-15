@@ -1,0 +1,424 @@
+{
+  "pda": {
+    "waypoint": {
+      "we": {
+        "flex_node_electra": {
+          "title": "원시 방출 군집"
+        },
+        "lost_device": {
+          "title": "버려진 시설"
+        },
+        "art_hunters": {
+          "title": "지브카스 사냥꾼"
+        },
+        "outpost": {
+          "covenant": "커버넌트 전초기지",
+          "duty": "프론티어 전초기지",
+          "freedom": "라이즈 전초기지",
+          "merc": "용병 전초기지",
+          "stalkers": "스토커 전초기지"
+        },
+        "abstract_anomaly_node": {
+          "title": "이상 균열"
+        },
+        "abstract_camp_duty": {
+          "title": "프론티어 야영지"
+        },
+        "force_group_duty": {
+          "title": "프론티어 타격대"
+        },
+        "north_house_duty": {
+          "title": "프론티어 전초기지"
+        },
+        "sniper_duty": {
+          "title": "프론티어 스나이퍼 위치"
+        },
+        "abstract_boss_zombie": {
+          "title": "좀비 떼"
+        },
+        "abstract_camp_krovosos": {
+          "title": "구울 둥지"
+        },
+        "officer_duty": {
+          "title": "장교 야영지"
+        },
+        "sapper_zivcas": {
+          "title": "지브카스 공병"
+        },
+        "abstract_camp_zombie": {
+          "title": "좀비 무리"
+        },
+        "sapper_duty": {
+          "title": "프론티어 공병"
+        },
+        "science_camp_duty": {
+          "title": "프론티어 과학자"
+        },
+        "boss_krovosos": {
+          "title": "다크 구울의 둥지"
+        },
+        "camp_dog": {
+          "title": "들개 소굴"
+        },
+        "boss_pseudogigant": {
+          "title": "베히모스의 둥지"
+        },
+        "infected_dog": {
+          "title": "역병 팩"
+        },
+        "force_group_zivcas": {
+          "title": "지브카스 타격대"
+        },
+        "abstract_rescue_zombie": {
+          "title": "좀비 공격"
+        },
+        "rescue_covenant": {
+          "title": "지브카스 습격"
+        },
+        "lost_house": {
+          "title": "버려진 전초기지"
+        },
+        "boss_chimera": {
+          "title": "악마의 둥지"
+        },
+        "supply_base_duty": {
+          "title": "보급 기지"
+        },
+        "sniper_zivcas": {
+          "title": "지브카스 스나이퍼 위치"
+        },
+        "abstract_rescue_extractor": {
+          "title": "설비 방어"
+        },
+        "abstract_rescue_scientist_north": {
+          "title": "돌연변이로부터 과학자 보호"
+        },
+        "field_lab": {
+          "title": "지브카스 현장 조사"
+        },
+        "abstract_camp_zivcas": {
+          "title": "지브카스 야영지"
+        },
+        "science_camp_zivcas": {
+          "title": "지브카스 과학자"
+        },
+        "science_rescue_covenant": {
+          "title": "지브카스 습격"
+        },
+        "abstract_camp_flesh": {
+          "title": "돌연변이 돼지 소굴"
+        },
+        "abstract_camp_boar": {
+          "title": "돌연변이 멧돼지 소굴"
+        },
+        "lightning_rod": {
+          "title": "피뢰침"
+        },
+        "high_boss": {
+          "title": "요새"
+        },
+        "north_house_freedom": {
+          "title": "라이즈 전초기지"
+        },
+        "abstract_camp_freedom": {
+          "title": "라이즈 야영지"
+        },
+        "abstract_camp_mercenary": {
+          "title": "용병 야영지"
+        },
+        "north_house_zivcas": {
+          "title": "지브카스 전초기지"
+        },
+        "force_group_freedom": {
+          "title": "라이즈 타격대"
+        },
+        "force_group_mercenary": {
+          "title": "용병 타격대"
+        },
+        "north_house_merc": {
+          "title": "용병 전초기지"
+        },
+        "rescue_freedom": {
+          "title": "지브카스 습격"
+        },
+        "sapper_mercenary": {
+          "title": "용병 공병"
+        },
+        "supply_base_merc": {
+          "title": "보급 기지"
+        },
+        "science_camp_mercenary": {
+          "title": "용병 과학자"
+        },
+        "sniper_mercenary": {
+          "title": "용병 스나이퍼 위치"
+        },
+        "officer_merc": {
+          "title": "장교 야영지"
+        },
+        "abstract_camp_dog": {
+          "title": "돌연변이 들개 소굴"
+        },
+        "limansk_vacate_monolit_10": {
+          "title": "점령된 건물"
+        },
+        "limansk_vacate_military_20": {
+          "title": "점령된 건물"
+        },
+        "abstract_rescue_scientist": {
+          "title": "과학자 지원"
+        },
+        "limansk_vacate_military_10": {
+          "title": "점령된 건물"
+        },
+        "limansk_krovosos_boss": {
+          "title": "사이 구울 소굴"
+        },
+        "limansk_vacate_monolit_20": {
+          "title": "점령된 건물"
+        },
+        "limansk_chimera_boss": {
+          "title": "팬텀 악마 소굴"
+        },
+        "limansk_rescue_extractor": {
+          "title": "설비 방어"
+        },
+        "limansk_pseudogigant_boss": {
+          "title": "거대 쥐 소굴"
+        },
+        "sapper_covenant": {
+          "title": "커버넌트 공병"
+        },
+        "abstract_camp_covenant": {
+          "title": "커버넌트 야영지"
+        },
+        "science_camp_covenant": {
+          "title": "커버넌트 과학자"
+        },
+        "north_house_coven": {
+          "title": "커버넌트 전초기지"
+        },
+        "sniper_covenant": {
+          "title": "커버넌트 스나이퍼 위치"
+        },
+        "officer_covenant": {
+          "title": "장교 야영지"
+        },
+        "science_rescue_duty": {
+          "title": "지브카스 습격"
+        },
+        "force_group_covenant": {
+          "title": "커버넌트 타격대"
+        },
+        "supply_base_covenant": {
+          "title": "보급 기지"
+        },
+        "rescue_duty": {
+          "title": "지브카스 습격"
+        },
+        "sapper_freedom": {
+          "title": "라이즈 공병"
+        },
+        "abstract_camp_bandit": {
+          "title": "밴디트 야영지"
+        },
+        "abstract_camp_snork": {
+          "title": "스키터 소굴"
+        },
+        "abstract_camp_tushkan": {
+          "title": "돌연변이 쥐 둥지"
+        },
+        "abstract_camp_military": {
+          "title": "군사 검문소"
+        },
+        "abstract_boss": {
+          "title": "우두머리 소굴"
+        },
+        "abstract_rescue": {
+          "title": "동료 돕기"
+        },
+        "abstract_camp_krovosos_large": {
+          "title": "구울 소굴"
+        },
+        "military_lieutenant": {
+          "title": "군사 캠프"
+        },
+        "abstract_camp_zombie_large": {
+          "title": "좀비 떼"
+        },
+        "south_destroy_object": {
+          "title": "보급 지점"
+        },
+        "abstract_camp_bandit_large": {
+          "title": "밴디트 캠프"
+        },
+        "tutorial_bolota_flesh": {
+          "title": "돌연변이 돼지 무리"
+        },
+        "abstract_camp_stalker": {
+          "title": "스토커 야영지"
+        },
+        "abstract_camp_stalker_large": {
+          "title": "스토커 캠프"
+        },
+        "rescue_mercenary": {
+          "title": "지브카스 습격"
+        },
+        "science_camp_freedom": {
+          "title": "라이즈 과학자"
+        },
+        "sniper_freedom": {
+          "title": "라이즈 스나이퍼 위치"
+        },
+        "officer_freedom": {
+          "title": "장교 야영지"
+        },
+        "supply_base_freedom": {
+          "title": "보급 기지"
+        },
+        "shopot_antena": {
+          "title": "속삭임 안테나"
+        },
+        "art_device": {
+          "title": "이상 균열"
+        },
+        "shopot_base": {
+          "title": "속삭임 기지"
+        },
+        "chronofaults": {
+          "title": "시간 균열"
+        },
+        "shopot_camp": {
+          "title": "속삭임 캠프"
+        },
+        "abstract_camp_monolit": {
+          "title": "속삭임 분대"
+        },
+        "shopot_lost_device": {
+          "title": "속삭임 이상 구조물"
+        },
+        "shopot_exit": {
+          "title": "속삭임 전초기지"
+        },
+        "shopot_control_center": {
+          "title": "속삭임 지휘소 "
+        }
+      }
+    }
+  },
+  "we": {
+    "flex_node": {
+      "goal": "지역 탐험"
+    },
+    "abstract_camp_mutant": {
+      "goal": "지역을 확보하세요"
+    },
+    "abstract_camp_human": {
+      "goal": "지역을 확보하세요"
+    },
+    "abstract_anomaly_node": {
+      "goal": "이상현상 연구 설비를 이용해 안정화"
+    },
+    "abstract_boss": {
+      "goal": "보스 처치"
+    },
+    "abstract_rescue_covenant": {
+      "goal": "커버넌트 병사들을 지키세요"
+    },
+    "abstract_rescue_extractor": {
+      "goal": "돌연변이의 설비 파괴 저지"
+    },
+    "abstract_rescue_scientist": {
+      "goal": "과학자들을 지키세요"
+    },
+    "lightning_rod": {
+      "goal": "피뢰침 사용하기"
+    },
+    "high_boss": {
+      "goal": "거점 청소"
+    },
+    "abstract_rescue_freedom": {
+      "goal": "라이즈 병사들을 지키세요"
+    },
+    "limansk_vacate_monolit_10": {
+      "goal": "건물 정리"
+    },
+    "limansk_vacate_military_20": {
+      "goal": "건물 정리"
+    },
+    "limansk_vacate_military_10": {
+      "goal": "건물 정리"
+    },
+    "limansk_krovosos_boss": {
+      "goal": "지역을 확보하세요"
+    },
+    "limansk_vacate_monolit_20": {
+      "goal": "건물 정리"
+    },
+    "limansk_chimera_boss": {
+      "goal": "지역을 확보하세요"
+    },
+    "limansk_rescue_extractor": {
+      "goal": "돌연변이의 설비 파괴 방지"
+    },
+    "limansk_pseudogigant_boss": {
+      "goal": "지역을 확보하세요"
+    },
+    "abstract_rescue_duty": {
+      "goal": "프론티어 병사들을 지키세요"
+    },
+    "abstract_rescue_stalker": {
+      "goal": "스토커들을 지키세요"
+    },
+    "abstract_clash_st_ba": {
+      "goal": "동료 돕기"
+    },
+    "south_destroy_object": {
+      "goal": "모든 창고 보급품을 파괴하라적 보급품 파괴"
+    },
+    "abstract_rescue_bandit": {
+      "goal": "밴디트들을 지키세요"
+    },
+    "abstract_rescue_merc": {
+      "goal": "용병 병사들을 지키세요"
+    },
+    "abstract_contamination_antenna": {
+      "goal": "안테나 제거"
+    },
+    "art_device": {
+      "goal": "노오컨버터로 안정화하기"
+    },
+    "chronofaults": {
+      "goal": "크로노디바이스로 안정화하기"
+    },
+    "shopot_exit_goal": "지역을 정리하고 떠나세요"
+  },
+  "settlement": {
+    "id": {
+      "covenant": {
+        "title": "커버넌트 거처"
+      },
+      "freedom": {
+        "title": "라이즈 기지"
+      },
+      "duty": {
+        "title": "프론티어 기지"
+      },
+      "rostok": {
+        "title": "술집"
+      },
+      "garage": {
+        "title": "소방서"
+      },
+      "csky": {
+        "title": "아타만의 본부"
+      },
+      "merc": {
+        "title": "용병 캠프"
+      },
+      "bar_sever": {
+        "title": "술 취한 가이거 술집"
+      }
+    }
+  }
+}

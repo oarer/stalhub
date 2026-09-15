@@ -2,12 +2,12 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { CheckBox } from '@/components/ui/CheckBox'
 import Input from '@/components/ui/Input'
 import type { BPInput } from '../utils/bp'
-import { montserrat } from '@/app/fonts'
 
 interface BPFormProps {
 	values: BPInput
@@ -137,7 +137,9 @@ export function BPForm({
 				</div>
 
 				<div className="flex flex-col gap-3">
-					<p className={`${montserrat.className} font-semibold text-muted-foreground text-sm`}>
+					<p
+						className={`${montserrat.className} font-semibold text-muted-foreground text-sm`}
+					>
 						{t('bp.donations')}
 					</p>
 					<div className="grid grid-cols-4 gap-2">
@@ -153,7 +155,11 @@ export function BPForm({
 										: 'outline'
 								}
 							>
-								<span className={`${montserrat.className} text-xs`}>{donations}</span>
+								<span
+									className={`${montserrat.className} text-xs`}
+								>
+									{donations}
+								</span>
 							</Button>
 						))}
 					</div>

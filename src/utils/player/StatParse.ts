@@ -28,4 +28,3 @@ export function getStatValue(
 
 	return stat?.value ?? 0
 }
-

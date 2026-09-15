@@ -1,0 +1,424 @@
+{
+  "pda": {
+    "waypoint": {
+      "we": {
+        "flex_node_electra": {
+          "title": "Proto-Discharge Cluster"
+        },
+        "lost_device": {
+          "title": "Abandoned Installation"
+        },
+        "art_hunters": {
+          "title": "ZIVCAS Arthunters"
+        },
+        "outpost": {
+          "covenant": "Covenant Outpost",
+          "duty": "Frontier Outpost",
+          "freedom": "Rise Outpost",
+          "merc": "Mercenary Outpost",
+          "stalkers": "Stalker Outpost"
+        },
+        "abstract_anomaly_node": {
+          "title": "Anomalous Rift"
+        },
+        "abstract_camp_duty": {
+          "title": "Frontier Encampment"
+        },
+        "force_group_duty": {
+          "title": "Frontier strike group"
+        },
+        "north_house_duty": {
+          "title": "Frontier Post"
+        },
+        "sniper_duty": {
+          "title": "Frontier sniper position"
+        },
+        "abstract_boss_zombie": {
+          "title": "Zombie Horde"
+        },
+        "abstract_camp_krovosos": {
+          "title": "Ghoul Nest"
+        },
+        "officer_duty": {
+          "title": "Officers' camp"
+        },
+        "sapper_zivcas": {
+          "title": "ZIVCAS sappers"
+        },
+        "abstract_camp_zombie": {
+          "title": "Zombie Group"
+        },
+        "sapper_duty": {
+          "title": "Frontier sappers"
+        },
+        "science_camp_duty": {
+          "title": "Frontier scientists"
+        },
+        "boss_krovosos": {
+          "title": "Dark Ghoul's Lair"
+        },
+        "camp_dog": {
+          "title": "Mutt Den"
+        },
+        "boss_pseudogigant": {
+          "title": "Behemoth's Lair"
+        },
+        "infected_dog": {
+          "title": "Plague Pack"
+        },
+        "force_group_zivcas": {
+          "title": "ZIVCAS strike group"
+        },
+        "abstract_rescue_zombie": {
+          "title": "Zombie attack"
+        },
+        "rescue_covenant": {
+          "title": "ZIVCAS Raid"
+        },
+        "lost_house": {
+          "title": "Abandoned Post"
+        },
+        "boss_chimera": {
+          "title": "Fiend's Lair"
+        },
+        "supply_base_duty": {
+          "title": "Supply Base"
+        },
+        "sniper_zivcas": {
+          "title": "ZIVCAS sniper position"
+        },
+        "abstract_rescue_extractor": {
+          "title": "Defending Installation"
+        },
+        "abstract_rescue_scientist_north": {
+          "title": "Protecting scientists from mutants"
+        },
+        "field_lab": {
+          "title": "ZIVCAS field research"
+        },
+        "abstract_camp_zivcas": {
+          "title": "ZIVCAS Encampment"
+        },
+        "science_camp_zivcas": {
+          "title": "ZIVCAS scientists"
+        },
+        "science_rescue_covenant": {
+          "title": "ZIVCAS Raid"
+        },
+        "abstract_camp_flesh": {
+          "title": "Piggy Den"
+        },
+        "abstract_camp_boar": {
+          "title": "Boar Den"
+        },
+        "lightning_rod": {
+          "title": "Lightning Rod"
+        },
+        "high_boss": {
+          "title": "Stronghold"
+        },
+        "north_house_freedom": {
+          "title": "Rise Post"
+        },
+        "abstract_camp_freedom": {
+          "title": "Rise Encampment"
+        },
+        "abstract_camp_mercenary": {
+          "title": "Mercenary Encampment"
+        },
+        "north_house_zivcas": {
+          "title": "ZIVCAS Post"
+        },
+        "force_group_freedom": {
+          "title": "Rise strike group"
+        },
+        "force_group_mercenary": {
+          "title": "Mercenary strike group"
+        },
+        "north_house_merc": {
+          "title": "Mercenary Post"
+        },
+        "rescue_freedom": {
+          "title": "ZIVCAS Raid"
+        },
+        "sapper_mercenary": {
+          "title": "Mercenary sappers"
+        },
+        "supply_base_merc": {
+          "title": "Supply Base"
+        },
+        "science_camp_mercenary": {
+          "title": "Mercenary scientists"
+        },
+        "sniper_mercenary": {
+          "title": "Mercenary sniper position"
+        },
+        "officer_merc": {
+          "title": "Officers' camp"
+        },
+        "abstract_camp_dog": {
+          "title": "Mutt Den"
+        },
+        "limansk_vacate_monolit_10": {
+          "title": "Occupied Building"
+        },
+        "limansk_vacate_military_20": {
+          "title": "Occupied Building"
+        },
+        "abstract_rescue_scientist": {
+          "title": "Help for Scientists"
+        },
+        "limansk_vacate_military_10": {
+          "title": "Occupied Building"
+        },
+        "limansk_krovosos_boss": {
+          "title": "Psy-Ghoul Den"
+        },
+        "limansk_vacate_monolit_20": {
+          "title": "Occupied Building"
+        },
+        "limansk_chimera_boss": {
+          "title": "Phantom Fiend Den"
+        },
+        "limansk_rescue_extractor": {
+          "title": "Defending Installation"
+        },
+        "limansk_pseudogigant_boss": {
+          "title": "Giant Rat Den"
+        },
+        "sapper_covenant": {
+          "title": "Covenant sappers"
+        },
+        "abstract_camp_covenant": {
+          "title": "Covenant Encampment"
+        },
+        "science_camp_covenant": {
+          "title": "Covenant scientists"
+        },
+        "north_house_coven": {
+          "title": "Covenant Post"
+        },
+        "sniper_covenant": {
+          "title": "Covenant sniper position"
+        },
+        "officer_covenant": {
+          "title": "Officers' camp"
+        },
+        "science_rescue_duty": {
+          "title": "ZIVCAS Raid"
+        },
+        "force_group_covenant": {
+          "title": "Covenant strike group"
+        },
+        "supply_base_covenant": {
+          "title": "Supply Base"
+        },
+        "rescue_duty": {
+          "title": "ZIVCAS Raid"
+        },
+        "sapper_freedom": {
+          "title": "Rise sappers"
+        },
+        "abstract_camp_bandit": {
+          "title": "Bandit Encampment"
+        },
+        "abstract_camp_snork": {
+          "title": "Skitter Den"
+        },
+        "abstract_camp_tushkan": {
+          "title": "Rat Nest"
+        },
+        "abstract_camp_military": {
+          "title": "Military Checkpoint"
+        },
+        "abstract_boss": {
+          "title": "Boss Den"
+        },
+        "abstract_rescue": {
+          "title": "Help Allies"
+        },
+        "abstract_camp_krovosos_large": {
+          "title": "Ghoul Den"
+        },
+        "military_lieutenant": {
+          "title": "Military Camp"
+        },
+        "abstract_camp_zombie_large": {
+          "title": "Zombie Horde"
+        },
+        "south_destroy_object": {
+          "title": "Supply Point"
+        },
+        "abstract_camp_bandit_large": {
+          "title": "Bandit Camp"
+        },
+        "tutorial_bolota_flesh": {
+          "title": "Piggy Brood"
+        },
+        "abstract_camp_stalker": {
+          "title": "Stalker Encampment"
+        },
+        "abstract_camp_stalker_large": {
+          "title": "Stalker Camp"
+        },
+        "rescue_mercenary": {
+          "title": "ZIVCAS Raid"
+        },
+        "science_camp_freedom": {
+          "title": "Rise scientists"
+        },
+        "sniper_freedom": {
+          "title": "Rise sniper position"
+        },
+        "officer_freedom": {
+          "title": "Officers' camp"
+        },
+        "supply_base_freedom": {
+          "title": "Supply Base"
+        },
+        "shopot_antena": {
+          "title": "Murmur Antenna"
+        },
+        "art_device": {
+          "title": "Anomalous Rift"
+        },
+        "shopot_base": {
+          "title": "Murmur Base"
+        },
+        "chronofaults": {
+          "title": "Chronorift"
+        },
+        "shopot_camp": {
+          "title": "Murmur Camp"
+        },
+        "abstract_camp_monolit": {
+          "title": "Murmur Squad"
+        },
+        "shopot_lost_device": {
+          "title": "Murmur Anomalous Structures"
+        },
+        "shopot_exit": {
+          "title": "Murmur Post"
+        },
+        "shopot_control_center": {
+          "title": "Murmur Control Point"
+        }
+      }
+    }
+  },
+  "we": {
+    "flex_node": {
+      "goal": "Explore the area"
+    },
+    "abstract_camp_mutant": {
+      "goal": "Clear out the area"
+    },
+    "abstract_camp_human": {
+      "goal": "Clear out the area"
+    },
+    "abstract_anomaly_node": {
+      "goal": "Stabilize using an anomaly research installation"
+    },
+    "abstract_boss": {
+      "goal": "Kill the boss"
+    },
+    "abstract_rescue_covenant": {
+      "goal": "Don't let the Covenant soldiers die"
+    },
+    "abstract_rescue_extractor": {
+      "goal": "Don't let the mutants destroy the installation"
+    },
+    "abstract_rescue_scientist": {
+      "goal": "Don't let the scientists die"
+    },
+    "lightning_rod": {
+      "goal": "Use the Lightning Rod"
+    },
+    "high_boss": {
+      "goal": "Clear out the stronghold"
+    },
+    "abstract_rescue_freedom": {
+      "goal": "Don't let the Rise soldiers die"
+    },
+    "limansk_vacate_monolit_10": {
+      "goal": "Clear out the building"
+    },
+    "limansk_vacate_military_20": {
+      "goal": "Clear out the building"
+    },
+    "limansk_vacate_military_10": {
+      "goal": "Clear out the building"
+    },
+    "limansk_krovosos_boss": {
+      "goal": "Clear out the area"
+    },
+    "limansk_vacate_monolit_20": {
+      "goal": "Clear out the building"
+    },
+    "limansk_chimera_boss": {
+      "goal": "Clear out the area"
+    },
+    "limansk_rescue_extractor": {
+      "goal": "Don't let the mutants destroy the installation"
+    },
+    "limansk_pseudogigant_boss": {
+      "goal": "Clear out the area"
+    },
+    "abstract_rescue_duty": {
+      "goal": "Don't let the Frontier soldiers die"
+    },
+    "abstract_rescue_stalker": {
+      "goal": "Don't let the stalkers die"
+    },
+    "abstract_clash_st_ba": {
+      "goal": "Help allies"
+    },
+    "south_destroy_object": {
+      "goal": "Destroy all storage supplies"
+    },
+    "abstract_rescue_bandit": {
+      "goal": "Don't let the bandits die"
+    },
+    "abstract_rescue_merc": {
+      "goal": "Don't let the Mercenary soldiers die"
+    },
+    "abstract_contamination_antenna": {
+      "goal": "Eliminate the antenna"
+    },
+    "art_device": {
+      "goal": "Stabilize With Noo-Converter"
+    },
+    "chronofaults": {
+      "goal": "Stabilize using a chronodevice"
+    },
+    "shopot_exit_goal": "Clear the area and leave the location"
+  },
+  "settlement": {
+    "id": {
+      "covenant": {
+        "title": "Covenant Abode"
+      },
+      "freedom": {
+        "title": "Rise Base"
+      },
+      "duty": {
+        "title": "Frontier Base"
+      },
+      "rostok": {
+        "title": "The Bar"
+      },
+      "garage": {
+        "title": "Fire Station"
+      },
+      "csky": {
+        "title": "Ataman's HQ"
+      },
+      "merc": {
+        "title": "Mercenary Camp"
+      },
+      "bar_sever": {
+        "title": "Drunken Geiger Bar"
+      }
+    }
+  }
+}

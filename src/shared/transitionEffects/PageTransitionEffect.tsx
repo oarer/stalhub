@@ -57,8 +57,11 @@ export default function PageTransitionEffect({
 				overflow: 'visible',
 			}}
 		>
-			<AnimatePresence mode="sync" initial>
+			<AnimatePresence initial mode="sync">
 				<motion.div
+					animate="enter"
+					exit="exit"
+					initial="hidden"
 					key={pathname}
 					style={{
 						gridArea: '1 / 1',
@@ -66,11 +69,8 @@ export default function PageTransitionEffect({
 						width: '100%',
 						willChange: 'transform, opacity, filter',
 					}}
-					variants={variants}
-					initial="hidden"
-					animate="enter"
-					exit="exit"
 					transition={transition}
+					variants={variants}
 				>
 					<FrozenRouter>{children}</FrozenRouter>
 				</motion.div>

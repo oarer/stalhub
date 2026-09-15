@@ -71,8 +71,7 @@ export function BoostOrder({ settings }: Props) {
 	})
 
 	const removeMutation = useMutation({
-		mutationFn: (index: number) =>
-			clanService.removeBoostOrder(index),
+		mutationFn: (index: number) => clanService.removeBoostOrder(index),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['clan', 'boosts'],

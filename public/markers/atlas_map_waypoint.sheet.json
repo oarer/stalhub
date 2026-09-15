@@ -1,0 +1,5493 @@
+{
+	"frames": {
+		"waypoint_a": {
+			"frame": {
+				"x": 123,
+				"y": 186,
+				"w": 24,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_bunker": {
+			"frame": {
+				"x": 963,
+				"y": 228,
+				"w": 19,
+				"h": 21
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 11
+			}
+		},
+		"waypoint_contract": {
+			"frame": {
+				"x": 218,
+				"y": 181,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_event_abnormal_installation": {
+			"frame": {
+				"x": 851,
+				"y": 5,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_abnormal_structures": {
+			"frame": {
+				"x": 880,
+				"y": 5,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_airdrop": {
+			"frame": {
+				"x": 248,
+				"y": 181,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_anomaly_node": {
+			"frame": {
+				"x": 703,
+				"y": 137,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_anomaly_pvp": {
+			"frame": {
+				"x": 712,
+				"y": 169,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_antenna": {
+			"frame": {
+				"x": 715,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_arrester_camp_mutants": {
+			"frame": {
+				"x": 909,
+				"y": 5,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_arrester_force_group_zivcas": {
+			"frame": {
+				"x": 938,
+				"y": 5,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_arrester_spot": {
+			"frame": {
+				"x": 967,
+				"y": 5,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_arrester_zivcas": {
+			"frame": {
+				"x": 251,
+				"y": 80,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_arrester_zombie": {
+			"frame": {
+				"x": 280,
+				"y": 80,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_arthunter_red": {
+			"frame": {
+				"x": 309,
+				"y": 80,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_bandit": {
+			"frame": {
+				"x": 338,
+				"y": 80,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_battlepass_spot": {
+			"frame": {
+				"x": 5,
+				"y": 45,
+				"w": 32,
+				"h": 37
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 19
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 19
+			}
+		},
+		"waypoint_event_battlepass_spot_little": {
+			"frame": {
+				"x": 5,
+				"y": 87,
+				"w": 32,
+				"h": 37
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 19
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 19
+			}
+		},
+		"waypoint_event_big_nps_spot": {
+			"frame": {
+				"x": 367,
+				"y": 79,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_boss": {
+			"frame": {
+				"x": 715,
+				"y": 70,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_boss_outpost_bandits": {
+			"frame": {
+				"x": 135,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_covenant": {
+			"frame": {
+				"x": 164,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_duty": {
+			"frame": {
+				"x": 193,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_freedom": {
+			"frame": {
+				"x": 222,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_merc": {
+			"frame": {
+				"x": 251,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_military": {
+			"frame": {
+				"x": 280,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_neutral": {
+			"frame": {
+				"x": 309,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_stalkers": {
+			"frame": {
+				"x": 338,
+				"y": 40,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_outpost_zombie": {
+			"frame": {
+				"x": 367,
+				"y": 39,
+				"w": 24,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 9,
+				"w": 12,
+				"h": 17
+			}
+		},
+		"waypoint_event_boss_zombie": {
+			"frame": {
+				"x": 396,
+				"y": 74,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_buran_altar": {
+			"frame": {
+				"x": 744,
+				"y": 37,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_ammo": {
+			"frame": {
+				"x": 744,
+				"y": 69,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_boss": {
+			"frame": {
+				"x": 773,
+				"y": 36,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_crystal": {
+			"frame": {
+				"x": 773,
+				"y": 68,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_delivery": {
+			"frame": {
+				"x": 732,
+				"y": 102,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_exit": {
+			"frame": {
+				"x": 732,
+				"y": 134,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_help": {
+			"frame": {
+				"x": 741,
+				"y": 166,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_keeper": {
+			"frame": {
+				"x": 761,
+				"y": 101,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_military": {
+			"frame": {
+				"x": 761,
+				"y": 133,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_mutants": {
+			"frame": {
+				"x": 770,
+				"y": 165,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_quest_izgoi": {
+			"frame": {
+				"x": 790,
+				"y": 100,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_buran_thermal_station": {
+			"frame": {
+				"x": 94,
+				"y": 125,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_camp": {
+			"frame": {
+				"x": 790,
+				"y": 132,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_camp_military": {
+			"frame": {
+				"x": 799,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_camp_murmur": {
+			"frame": {
+				"x": 94,
+				"y": 158,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_camp_mutants": {
+			"frame": {
+				"x": 802,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_camp_neutral": {
+			"frame": {
+				"x": 95,
+				"y": 217,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_camp_sanitars": {
+			"frame": {
+				"x": 831,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_centrifuge": {
+			"frame": {
+				"x": 123,
+				"y": 120,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_clash": {
+			"frame": {
+				"x": 860,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_control point_gold": {
+			"frame": {
+				"x": 123,
+				"y": 153,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_delivery": {
+			"frame": {
+				"x": 889,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_dolg": {
+			"frame": {
+				"x": 918,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_electric_ball": {
+			"frame": {
+				"x": 947,
+				"y": 38,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_emission": {
+			"frame": {
+				"x": 152,
+				"y": 115,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_force_group": {
+			"frame": {
+				"x": 152,
+				"y": 148,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_assault": {
+			"frame": {
+				"x": 181,
+				"y": 115,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_assault_gold": {
+			"frame": {
+				"x": 181,
+				"y": 148,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_assault_main": {
+			"frame": {
+				"x": 210,
+				"y": 115,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_blind_survive": {
+			"frame": {
+				"x": 210,
+				"y": 148,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_blind_survive_gold": {
+			"frame": {
+				"x": 239,
+				"y": 115,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_blind_survive_main": {
+			"frame": {
+				"x": 239,
+				"y": 148,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_camp": {
+			"frame": {
+				"x": 268,
+				"y": 113,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_camp_gold": {
+			"frame": {
+				"x": 268,
+				"y": 146,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_camp_main": {
+			"frame": {
+				"x": 297,
+				"y": 113,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_communications": {
+			"frame": {
+				"x": 297,
+				"y": 146,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_communications_gold": {
+			"frame": {
+				"x": 326,
+				"y": 113,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_communications_main": {
+			"frame": {
+				"x": 326,
+				"y": 146,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_defence": {
+			"frame": {
+				"x": 355,
+				"y": 113,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_defence_gold": {
+			"frame": {
+				"x": 355,
+				"y": 146,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_defence_main": {
+			"frame": {
+				"x": 384,
+				"y": 112,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_energy_structure_gold": {
+			"frame": {
+				"x": 384,
+				"y": 145,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_interact_survive": {
+			"frame": {
+				"x": 413,
+				"y": 107,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_interact_survive_gold": {
+			"frame": {
+				"x": 413,
+				"y": 140,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_interact_survive_main": {
+			"frame": {
+				"x": 124,
+				"y": 216,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_jammer": {
+			"frame": {
+				"x": 153,
+				"y": 205,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_jammer_gold": {
+			"frame": {
+				"x": 277,
+				"y": 179,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_megajammer_gold": {
+			"frame": {
+				"x": 306,
+				"y": 179,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_pvo_gold": {
+			"frame": {
+				"x": 335,
+				"y": 179,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_rescue": {
+			"frame": {
+				"x": 364,
+				"y": 179,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_rescue_gold": {
+			"frame": {
+				"x": 393,
+				"y": 178,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_respawn_disabled": {
+			"frame": {
+				"x": 182,
+				"y": 211,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_event_frontline_respawn_enabled": {
+			"frame": {
+				"x": 212,
+				"y": 211,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_event_frontline_zombie": {
+			"frame": {
+				"x": 422,
+				"y": 173,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_zombiestation": {
+			"frame": {
+				"x": 425,
+				"y": 39,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_frontline_zombiestation_gold": {
+			"frame": {
+				"x": 425,
+				"y": 72,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_gold_airdrop": {
+			"frame": {
+				"x": 819,
+				"y": 100,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_gold_camp_military": {
+			"frame": {
+				"x": 819,
+				"y": 132,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_gold_covenant": {
+			"frame": {
+				"x": 454,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_gold_duty": {
+			"frame": {
+				"x": 483,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_gold_freedom": {
+			"frame": {
+				"x": 454,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_gold_installation_protection": {
+			"frame": {
+				"x": 848,
+				"y": 100,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_gold_merc": {
+			"frame": {
+				"x": 512,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_gold_neutral": {
+			"frame": {
+				"x": 483,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_himera_gold": {
+			"frame": {
+				"x": 541,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_home_outpost_bandits": {
+			"frame": {
+				"x": 36,
+				"y": 129,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_home_outpost_covenant": {
+			"frame": {
+				"x": 36,
+				"y": 174,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_home_outpost_duty": {
+			"frame": {
+				"x": 65,
+				"y": 127,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_home_outpost_freedom": {
+			"frame": {
+				"x": 65,
+				"y": 172,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_home_outpost_merc": {
+			"frame": {
+				"x": 77,
+				"y": 45,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_home_outpost_stalkers": {
+			"frame": {
+				"x": 106,
+				"y": 40,
+				"w": 24,
+				"h": 40
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 10,
+				"w": 12,
+				"h": 20
+			}
+		},
+		"waypoint_event_installation_protection": {
+			"frame": {
+				"x": 848,
+				"y": 132,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_installation_scientists": {
+			"frame": {
+				"x": 512,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_kill_arthunters": {
+			"frame": {
+				"x": 828,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_krovosos_gold": {
+			"frame": {
+				"x": 570,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_lost_device": {
+			"frame": {
+				"x": 541,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_airdrop": {
+			"frame": {
+				"x": 599,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_airdrop_quest": {
+			"frame": {
+				"x": 570,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_base": {
+			"frame": {
+				"x": 628,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_base_quest": {
+			"frame": {
+				"x": 599,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_boss": {
+			"frame": {
+				"x": 657,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_boss_quest": {
+			"frame": {
+				"x": 628,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_broke": {
+			"frame": {
+				"x": 686,
+				"y": 38,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_broke_quest": {
+			"frame": {
+				"x": 657,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_evacuation": {
+			"frame": {
+				"x": 428,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_evacuation_ready": {
+			"frame": {
+				"x": 461,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_installation_protection_base": {
+			"frame": {
+				"x": 686,
+				"y": 71,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_installation_protection_quest": {
+			"frame": {
+				"x": 442,
+				"y": 105,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_kill": {
+			"frame": {
+				"x": 442,
+				"y": 138,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_kill_quest": {
+			"frame": {
+				"x": 471,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_large_base": {
+			"frame": {
+				"x": 471,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_large_base_quest": {
+			"frame": {
+				"x": 500,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_large_flag": {
+			"frame": {
+				"x": 500,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_large_flag_quest": {
+			"frame": {
+				"x": 529,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_loot": {
+			"frame": {
+				"x": 529,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_loot_quest": {
+			"frame": {
+				"x": 558,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_shop": {
+			"frame": {
+				"x": 558,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_marathon_teleport": {
+			"frame": {
+				"x": 94,
+				"y": 191,
+				"w": 22,
+				"h": 21
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_event_marathon_teleport_zombie": {
+			"frame": {
+				"x": 910,
+				"y": 228,
+				"w": 22,
+				"h": 21
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_event_mercenary": {
+			"frame": {
+				"x": 877,
+				"y": 100,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_minerals": {
+			"frame": {
+				"x": 877,
+				"y": 132,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_miniboss": {
+			"frame": {
+				"x": 857,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_monolith": {
+			"frame": {
+				"x": 906,
+				"y": 100,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_airdrop": {
+			"frame": {
+				"x": 906,
+				"y": 132,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_boss_colab": {
+			"frame": {
+				"x": 886,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_boss_human": {
+			"frame": {
+				"x": 951,
+				"y": 70,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_boss_mutant": {
+			"frame": {
+				"x": 915,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_help": {
+			"frame": {
+				"x": 935,
+				"y": 102,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_new_year_quest_airdrop": {
+			"frame": {
+				"x": 944,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_newyear_boss_active": {
+			"frame": {
+				"x": 587,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_newyear_boss_sleep": {
+			"frame": {
+				"x": 587,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_nps_spot": {
+			"frame": {
+				"x": 616,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_officer_house": {
+			"frame": {
+				"x": 616,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_officer_lost_house": {
+			"frame": {
+				"x": 645,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_outpost_bandits": {
+			"frame": {
+				"x": 37,
+				"y": 219,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_camp_military": {
+			"frame": {
+				"x": 66,
+				"y": 217,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_covenant": {
+			"frame": {
+				"x": 77,
+				"y": 90,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_duty": {
+			"frame": {
+				"x": 106,
+				"y": 85,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_freedom": {
+			"frame": {
+				"x": 135,
+				"y": 80,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_merc": {
+			"frame": {
+				"x": 396,
+				"y": 39,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_neutral": {
+			"frame": {
+				"x": 164,
+				"y": 80,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_stalkers": {
+			"frame": {
+				"x": 193,
+				"y": 80,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_outpost_zombie": {
+			"frame": {
+				"x": 222,
+				"y": 80,
+				"w": 24,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 8,
+				"w": 12,
+				"h": 15
+			}
+		},
+		"waypoint_event_psi_irradiated": {
+			"frame": {
+				"x": 821,
+				"y": 5,
+				"w": 25,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 13,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 13,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest": {
+			"frame": {
+				"x": 5,
+				"y": 129,
+				"w": 26,
+				"h": 43
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 11,
+				"w": 13,
+				"h": 21
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 11,
+				"w": 13,
+				"h": 21
+			}
+		},
+		"waypoint_event_quest_active": {
+			"frame": {
+				"x": 5,
+				"y": 177,
+				"w": 26,
+				"h": 43
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 11,
+				"w": 13,
+				"h": 21
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 11,
+				"w": 13,
+				"h": 21
+			}
+		},
+		"waypoint_event_quest_antenna": {
+			"frame": {
+				"x": 645,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_camp": {
+			"frame": {
+				"x": 674,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_camp_military": {
+			"frame": {
+				"x": 674,
+				"y": 137,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_camp_mutants": {
+			"frame": {
+				"x": 451,
+				"y": 171,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_clash": {
+			"frame": {
+				"x": 480,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_large_flag": {
+			"frame": {
+				"x": 509,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_quest_marathon_boss": {
+			"frame": {
+				"x": 538,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_rescue": {
+			"frame": {
+				"x": 964,
+				"y": 102,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_sapper": {
+			"frame": {
+				"x": 567,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_science": {
+			"frame": {
+				"x": 596,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_selected": {
+			"frame": {
+				"x": 741,
+				"y": 198,
+				"w": 24,
+				"h": 23
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 11
+			}
+		},
+		"waypoint_event_snipers": {
+			"frame": {
+				"x": 625,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_stalker": {
+			"frame": {
+				"x": 973,
+				"y": 164,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_supply_base": {
+			"frame": {
+				"x": 654,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_support_scientists": {
+			"frame": {
+				"x": 980,
+				"y": 70,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_svoboda": {
+			"frame": {
+				"x": 993,
+				"y": 102,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_boss": {
+			"frame": {
+				"x": 272,
+				"y": 213,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_camp_mutants": {
+			"frame": {
+				"x": 683,
+				"y": 170,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_underside_emphasis": {
+			"frame": {
+				"x": 301,
+				"y": 212,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_exit": {
+			"frame": {
+				"x": 330,
+				"y": 212,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_help": {
+			"frame": {
+				"x": 359,
+				"y": 212,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_house": {
+			"frame": {
+				"x": 388,
+				"y": 212,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_installation": {
+			"frame": {
+				"x": 417,
+				"y": 211,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_knot": {
+			"frame": {
+				"x": 770,
+				"y": 197,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_lighthouse": {
+			"frame": {
+				"x": 799,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_location_x2": {
+			"frame": {
+				"x": 471,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_event_underside_location_x3": {
+			"frame": {
+				"x": 494,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_event_underside_loot": {
+			"frame": {
+				"x": 828,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_miniboss": {
+			"frame": {
+				"x": 857,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_savezone": {
+			"frame": {
+				"x": 991,
+				"y": 134,
+				"w": 24,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 12
+			}
+		},
+		"waypoint_event_underside_shron": {
+			"frame": {
+				"x": 703,
+				"y": 104,
+				"w": 24,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 14
+			}
+		},
+		"waypoint_event_underside_teleport": {
+			"frame": {
+				"x": 725,
+				"y": 5,
+				"w": 27,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_event_underside_territory_boar": {
+			"frame": {
+				"x": 494,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_event_underside_territory_flesh": {
+			"frame": {
+				"x": 527,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_event_underside_territory_krovosos": {
+			"frame": {
+				"x": 362,
+				"y": 5,
+				"w": 28,
+				"h": 29
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 15
+			}
+		},
+		"waypoint_event_underside_territory_snork": {
+			"frame": {
+				"x": 560,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_event_vacate_building": {
+			"frame": {
+				"x": 886,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_winter_airdrop": {
+			"frame": {
+				"x": 915,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_zaton_exit": {
+			"frame": {
+				"x": 944,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_zavet": {
+			"frame": {
+				"x": 973,
+				"y": 196,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_event_zombie": {
+			"frame": {
+				"x": 712,
+				"y": 201,
+				"w": 24,
+				"h": 27
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 7,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_location_underground_down_one_way_teleport": {
+			"frame": {
+				"x": 517,
+				"y": 232,
+				"w": 19,
+				"h": 19
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_location_underground_left_one_way_teleport": {
+			"frame": {
+				"x": 541,
+				"y": 232,
+				"w": 19,
+				"h": 19
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_location_underground_right_one_way_teleport": {
+			"frame": {
+				"x": 565,
+				"y": 232,
+				"w": 19,
+				"h": 19
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_location_underground_up_one_way_teleport": {
+			"frame": {
+				"x": 576,
+				"y": 203,
+				"w": 19,
+				"h": 19
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_pin": {
+			"frame": {
+				"x": 5,
+				"y": 225,
+				"w": 27,
+				"h": 26
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_player": {
+			"frame": {
+				"x": 1002,
+				"y": 163,
+				"w": 17,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 6,
+				"w": 9,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 6,
+				"w": 9,
+				"h": 12
+			}
+		},
+		"waypoint_player_custom": {
+			"frame": {
+				"x": 1002,
+				"y": 40,
+				"w": 17,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 6,
+				"w": 9,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 6,
+				"w": 9,
+				"h": 13
+			}
+		},
+		"waypoint_player_custom_chest": {
+			"frame": {
+				"x": 965,
+				"y": 134,
+				"w": 21,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 11,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 11,
+				"h": 13
+			}
+		},
+		"waypoint_player_custom_cross": {
+			"frame": {
+				"x": 451,
+				"y": 204,
+				"w": 20,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			}
+		},
+		"waypoint_player_custom_flag": {
+			"frame": {
+				"x": 476,
+				"y": 204,
+				"w": 20,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			}
+		},
+		"waypoint_player_custom_flash": {
+			"frame": {
+				"x": 501,
+				"y": 203,
+				"w": 20,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			}
+		},
+		"waypoint_player_custom_magnifier": {
+			"frame": {
+				"x": 526,
+				"y": 203,
+				"w": 20,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			}
+		},
+		"waypoint_player_custom_question": {
+			"frame": {
+				"x": 551,
+				"y": 203,
+				"w": 20,
+				"h": 24
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 6,
+				"w": 10,
+				"h": 12
+			}
+		},
+		"waypoint_player_death": {
+			"frame": {
+				"x": 187,
+				"y": 181,
+				"w": 26,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_player_leader": {
+			"frame": {
+				"x": 242,
+				"y": 213,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_player_reward": {
+			"frame": {
+				"x": 757,
+				"y": 5,
+				"w": 27,
+				"h": 26
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_player_squad": {
+			"frame": {
+				"x": 802,
+				"y": 70,
+				"w": 24,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 12,
+				"h": 13
+			}
+		},
+		"waypoint_player_teammate": {
+			"frame": {
+				"x": 704,
+				"y": 233,
+				"w": 13,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 3,
+				"y": 5,
+				"w": 7,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 3,
+				"y": 5,
+				"w": 7,
+				"h": 9
+			}
+		},
+		"waypoint_player_teammate_leader": {
+			"frame": {
+				"x": 446,
+				"y": 233,
+				"w": 20,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 10,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 10,
+				"h": 9
+			}
+		},
+		"waypoint_player_teammate_says": {
+			"frame": {
+				"x": 153,
+				"y": 238,
+				"w": 20,
+				"h": 13
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 3,
+				"w": 10,
+				"h": 7
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 3,
+				"w": 10,
+				"h": 7
+			}
+		},
+		"waypoint_quest_available": {
+			"frame": {
+				"x": 799,
+				"y": 228,
+				"w": 25,
+				"h": 23
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 11
+			}
+		},
+		"waypoint_quest_complete": {
+			"frame": {
+				"x": 831,
+				"y": 70,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_quest_complete_active": {
+			"frame": {
+				"x": 861,
+				"y": 70,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_quest_location": {
+			"frame": {
+				"x": 891,
+				"y": 70,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_quest_location_active": {
+			"frame": {
+				"x": 921,
+				"y": 70,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_region_bg": {
+			"frame": {
+				"x": 589,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_region_clan": {
+			"frame": {
+				"x": 612,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_region_clan_dark": {
+			"frame": {
+				"x": 600,
+				"y": 203,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_region_lock": {
+			"frame": {
+				"x": 635,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_region_quest": {
+			"frame": {
+				"x": 691,
+				"y": 203,
+				"w": 12,
+				"h": 12
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 3,
+				"y": 3,
+				"w": 6,
+				"h": 6
+			},
+			"tiledPadding": {
+				"x": 3,
+				"y": 3,
+				"w": 6,
+				"h": 6
+			}
+		},
+		"waypoint_stash": {
+			"frame": {
+				"x": 935,
+				"y": 134,
+				"w": 25,
+				"h": 25
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_stash_eye": {
+			"frame": {
+				"x": 829,
+				"y": 228,
+				"w": 22,
+				"h": 22
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_territory_boar": {
+			"frame": {
+				"x": 593,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_territory_crystal": {
+			"frame": {
+				"x": 626,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_territory_flesh": {
+			"frame": {
+				"x": 659,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_territory_krovosos": {
+			"frame": {
+				"x": 395,
+				"y": 5,
+				"w": 28,
+				"h": 29
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 15
+			}
+		},
+		"waypoint_territory_snork": {
+			"frame": {
+				"x": 692,
+				"y": 5,
+				"w": 28,
+				"h": 28
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 14,
+				"h": 14
+			}
+		},
+		"waypoint_territory_underside": {
+			"frame": {
+				"x": 45,
+				"y": 5,
+				"w": 32,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 9,
+				"w": 16,
+				"h": 17
+			}
+		},
+		"waypoint_unpin": {
+			"frame": {
+				"x": 789,
+				"y": 5,
+				"w": 27,
+				"h": 26
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			},
+			"tiledPadding": {
+				"x": 7,
+				"y": 7,
+				"w": 13,
+				"h": 13
+			}
+		},
+		"waypoint_world_buran": {
+			"frame": {
+				"x": 623,
+				"y": 203,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_dungeon": {
+			"frame": {
+				"x": 5,
+				"y": 5,
+				"w": 35,
+				"h": 35
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 9,
+				"y": 9,
+				"w": 17,
+				"h": 17
+			},
+			"tiledPadding": {
+				"x": 9,
+				"y": 9,
+				"w": 17,
+				"h": 17
+			}
+		},
+		"waypoint_world_location_limansk_closed": {
+			"frame": {
+				"x": 976,
+				"y": 40,
+				"w": 21,
+				"h": 21
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_world_location_limansk_teleport": {
+			"frame": {
+				"x": 937,
+				"y": 228,
+				"w": 21,
+				"h": 21
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_world_location_north_teleport": {
+			"frame": {
+				"x": 996,
+				"y": 5,
+				"w": 21,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 8,
+				"w": 11,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 8,
+				"w": 11,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_northeast_teleport": {
+			"frame": {
+				"x": 856,
+				"y": 228,
+				"w": 22,
+				"h": 22
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_world_location_northwest_teleport": {
+			"frame": {
+				"x": 883,
+				"y": 228,
+				"w": 22,
+				"h": 22
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			},
+			"tiledPadding": {
+				"x": 6,
+				"y": 6,
+				"w": 11,
+				"h": 11
+			}
+		},
+		"waypoint_world_location_only_east_teleport": {
+			"frame": {
+				"x": 82,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_north_teleport": {
+			"frame": {
+				"x": 117,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_northeast_teleport": {
+			"frame": {
+				"x": 152,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_northwest_teleport": {
+			"frame": {
+				"x": 187,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_south_teleport": {
+			"frame": {
+				"x": 222,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_southeast_teleport": {
+			"frame": {
+				"x": 257,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_southwest_teleport": {
+			"frame": {
+				"x": 292,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_only_west_teleport": {
+			"frame": {
+				"x": 327,
+				"y": 5,
+				"w": 30,
+				"h": 30
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 8,
+				"w": 15,
+				"h": 15
+			}
+		},
+		"waypoint_world_location_west_teleport": {
+			"frame": {
+				"x": 152,
+				"y": 181,
+				"w": 30,
+				"h": 19
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 5,
+				"w": 15,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 5,
+				"w": 15,
+				"h": 9
+			}
+		},
+		"waypoint_world_radioactive_rain": {
+			"frame": {
+				"x": 658,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_siege": {
+			"frame": {
+				"x": 42,
+				"y": 45,
+				"w": 30,
+				"h": 36
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 9,
+				"w": 15,
+				"h": 18
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 9,
+				"w": 15,
+				"h": 18
+			}
+		},
+		"waypoint_world_siege_empty": {
+			"frame": {
+				"x": 42,
+				"y": 86,
+				"w": 30,
+				"h": 36
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 8,
+				"y": 9,
+				"w": 15,
+				"h": 18
+			},
+			"tiledPadding": {
+				"x": 8,
+				"y": 9,
+				"w": 15,
+				"h": 18
+			}
+		},
+		"waypoint_world_super_wild_territories": {
+			"frame": {
+				"x": 646,
+				"y": 203,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_underground_down_one_way_teleport": {
+			"frame": {
+				"x": 1002,
+				"y": 192,
+				"w": 17,
+				"h": 17
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_underground_down_teleport": {
+			"frame": {
+				"x": 1002,
+				"y": 214,
+				"w": 17,
+				"h": 17
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_underground_up_one_way_teleport": {
+			"frame": {
+				"x": 669,
+				"y": 203,
+				"w": 17,
+				"h": 17
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_underground_up_teleport": {
+			"frame": {
+				"x": 722,
+				"y": 233,
+				"w": 17,
+				"h": 17
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 4,
+				"y": 4,
+				"w": 9,
+				"h": 9
+			}
+		},
+		"waypoint_world_wild_territories": {
+			"frame": {
+				"x": 681,
+				"y": 233,
+				"w": 18,
+				"h": 18
+			},
+			"tiled": false,
+			"tiledBorders": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			},
+			"tiledPadding": {
+				"x": 5,
+				"y": 5,
+				"w": 9,
+				"h": 9
+			}
+		}
+	},
+	"meta": {
+		"SmartUpdateHash": "$TexturePacker:SmartUpdate:fa66ad79b1313fb365435109d6b1be1a:f34eeae9217e0dd3a83efd839d0c6a3c:f8a59671b744b7388be61ad3b9a19eba$",
+		"size": {
+			"w": 1024,
+			"h": 256
+		},
+		"source": "Created with TexturePacker (http://www.texturepacker.com) for CAAT"
+	}
+}

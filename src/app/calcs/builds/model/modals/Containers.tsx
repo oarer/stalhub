@@ -39,25 +39,18 @@ export default function ContModal({ onClose }: ModalProps) {
 	const t = useTranslations()
 
 	const [filter, setFilter] = useState('')
-	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>(
-		[]
-	)
+	const [selectedEffectStats, setSelectedEffectStats] = useState<string[]>([])
 
-	const effectOptions = useMemo(() => buildEffectOptions(items, locale), [
-		items,
-		locale,
-	])
+	const effectOptions = useMemo(
+		() => buildEffectOptions(items, locale),
+		[items, locale]
+	)
 
 	const effectFilteredItems = useMemo(() => {
 		const { posSet } = buildEffectFilterMap(items, locale)
 		const positiveKeys = selectedEffectStats.filter((k) => posSet.has(k))
 		const negativeKeys = selectedEffectStats.filter((k) => !posSet.has(k))
-		return filterItemsByEffects(
-			items,
-			locale,
-			positiveKeys,
-			negativeKeys
-		)
+		return filterItemsByEffects(items, locale, positiveKeys, negativeKeys)
 	}, [items, locale, selectedEffectStats])
 
 	const container = useBuildStore((s) => s.build.container)

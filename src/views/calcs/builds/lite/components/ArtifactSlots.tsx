@@ -182,7 +182,11 @@ export function ArtifactSlotsLite({
 			})
 		}
 		return groups
-	}, [containerEffectOptions, selectedContainerPositiveStats, selectedContainerNegativeStats])
+	}, [
+		containerEffectOptions,
+		selectedContainerPositiveStats,
+		selectedContainerNegativeStats,
+	])
 
 	const handleContainerModalOpenChange = (open: boolean) => {
 		setShowContainerModal(open)
@@ -204,7 +208,9 @@ export function ArtifactSlotsLite({
 					const art = instanceId
 						? (artsMap.get(instanceId) ?? null)
 						: null
-					const item = art ? (itemsMap.get(art.item_id) ?? null) : null
+					const item = art
+						? (itemsMap.get(art.item_id) ?? null)
+						: null
 					return (
 						<ArtifactSlotRow
 							art={art}

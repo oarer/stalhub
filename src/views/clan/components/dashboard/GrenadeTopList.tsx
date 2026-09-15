@@ -22,10 +22,7 @@ export function GrenadeTopList({
 	const t = useTranslations()
 
 	return (
-		<Section
-			icon="lucide:bomb"
-			title={t('clan.dashboard.grenadesTitle')}
-		>
+		<Section icon="lucide:bomb" title={t('clan.dashboard.grenadesTitle')}>
 			{latestEvent && (
 				<p
 					className={`${montserrat.className} font-semibold text-sm text-text-accent`}
@@ -65,7 +62,9 @@ export function GrenadeTopList({
 										<span className="font-semibold text-sm">
 											{g.character}
 										</span>
-										<span className={`${montserrat.className} font-semibold text-sm`}>
+										<span
+											className={`${montserrat.className} font-semibold text-sm`}
+										>
 											{g.total.toLocaleString()}
 										</span>
 									</div>

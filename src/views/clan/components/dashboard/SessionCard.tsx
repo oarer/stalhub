@@ -32,7 +32,9 @@ export function SessionCard({ session }: { session: StageSession }) {
 								? t('clan.common.victory')
 								: t('clan.common.defeat')}
 						</span>
-						<span className="font-semibold">{session.map_name}</span>
+						<span className="font-semibold">
+							{session.map_name}
+						</span>
 					</div>
 					<p
 						className={`${montserrat.className} font-semibold text-[11px] text-text-accent`}
