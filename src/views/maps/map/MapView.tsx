@@ -2,8 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { useMaps } from '@/hooks/useMaps'
-import type { MapConfig } from '@/types/map.type'
+import { WORLD_MAP } from '@/constants/map.const'
 
 function Loading() {
 	const t = useTranslations()
@@ -21,23 +20,16 @@ const MapTile = dynamic(() => import('./components/MapTile'), {
 	loading: () => <Loading />,
 })
 
-export default function MapView({ mapName }: { mapName: string }) {
-	const { maps } = useMaps()
-	const t = useTranslations()
-
-	const mapConfig = maps.find((m: MapConfig) => m.name === mapName)
-
-	if (!mapConfig) return <p>{t('map.notFound', { mapName })}</p>
-
+export default function MapView() {
 	return (
 		<MapTile
-			atlasMarkers={mapConfig.atlasMarkers === true}
-			fullMaxLevel={mapConfig.image.maxZoom}
-			imageHeight={mapConfig.image.height}
-			imageWidth={mapConfig.image.width}
-			mapName={mapName}
-			markersUrl={mapConfig.markers}
-			url={mapConfig.url}
+			atlasMarkers={WORLD_MAP.atlasMarkers === true}
+			fullMaxLevel={WORLD_MAP.image.maxZoom}
+			imageHeight={WORLD_MAP.image.height}
+			imageWidth={WORLD_MAP.image.width}
+			mapName={WORLD_MAP.name}
+			markersUrl={WORLD_MAP.markers}
+			url={WORLD_MAP.url}
 		/>
 	)
 }

@@ -6,7 +6,7 @@ import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import type { QuestMapMarker } from '@/components/wiki/quest-map'
-import { useMaps } from '@/hooks/useMaps'
+import { WORLD_MAP } from '@/constants/map.const'
 
 interface QuestMapModalProps {
 	open: boolean
@@ -24,7 +24,7 @@ export function QuestMapModal({
 	onInsert,
 }: QuestMapModalProps) {
 	const t = useTranslations('articles.quest')
-	const { maps } = useMaps()
+	const maps = [WORLD_MAP]
 	const [mapId, setMapId] = useState('')
 	const [markers, setMarkers] = useState<QuestMapMarker[]>([])
 	const mapOptions = maps.map((map) => ({

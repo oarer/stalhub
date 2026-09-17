@@ -173,7 +173,7 @@ export const NAV_STRUCTURE: NavGroup[] = [
 			{
 				key: 'maps',
 				icon: 'lucide:map',
-				href: '/maps',
+				href: '/map',
 				labelKey: 'nav.groups.other.items.maps.label',
 			},
 			{
