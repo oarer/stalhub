@@ -276,7 +276,10 @@
     },
     "filter": {
       "title": "Фильтр",
-      "search": "Поиск по названию / фракции",
+      "search": "Поиск по названию",
+      "filteredSearch": "Поиск объектов по названию",
+      "nameResults": "Найдено: {count}",
+      "namesInfo": "Объекты ({total}, показано {shown})",
       "all": "Все",
       "none": "Ничего",
       "iconsInfo": "Спотов ({total}, показано {shown})"

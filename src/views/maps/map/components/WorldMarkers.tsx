@@ -6,7 +6,7 @@ import {
 	WebGLMarkerLayer,
 } from '@oarer/leaflet-webgl-markers'
 import L from 'leaflet'
-import { useEffect, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useMap } from 'react-leaflet'
 import { useMarkerText, useSettlementText } from '@/hooks/useMarkerText'
 import type { AtlasWaypoint } from '@/types/map.type'
@@ -14,6 +14,12 @@ import {
 	waitAtlasMap,
 	waitAtlasSheet,
 } from '@/views/maps/marker-editor/lib/iconAtlas'
+import {
+	acquirePointerCursor,
+	animatePopupIn,
+	getLayerCanvas,
+	releasePointerCursor,
+} from '../lib/webglLayer'
 import { buildWorldAtlas, resolveSheetKey } from '../lib/worldAtlas'
 import { worldToImagePx } from '../lib/worldCoords'
 
@@ -32,7 +38,33 @@ type SpotEntry = {
 	py: number
 }
 
+type RGB = [number, number, number]
+
+type VisualEntry = {
+	gl: WebGLMarker
+	uuids: string[]
+	baseColor: RGB
+	baseSize: number
+	hiColor: RGB
+	hiSize: number
+}
+
 const MAX_POPUP_ITEMS = 12
+const ICON_SIZE = 24
+const HIGHLIGHT_SIZE = 34
+const BASE_COLOR: RGB = [1, 1, 1]
+const GROUP_COLOR: RGB = [1, 0.82, 0.25]
+const HIGHLIGHT_COLOR: RGB = [0.3, 0.7, 1]
+const HIGHLIGHT_DURATION = 180
+const APPEAR_DURATION = 220
+
+function lerpColor(from: RGB, to: RGB, k: number): RGB {
+	return [
+		from[0] + (to[0] - from[0]) * k,
+		from[1] + (to[1] - from[1]) * k,
+		from[2] + (to[2] - from[2]) * k,
+	]
+}
 
 export default function WorldMarkers({
 	spots,
@@ -45,6 +77,12 @@ export default function WorldMarkers({
 	const map = useMap()
 	const popupRef = useRef<L.Popup | null>(null)
 	const dupIndexRef = useRef(new Map<string, number>())
+	const layerRef = useRef<WebGLMarkerLayer | null>(null)
+	const entriesRef = useRef<VisualEntry[]>([])
+	const tweensRef = useRef<Map<number, number>>(new Map())
+	const selectedUuidRef = useRef<string | null>(null)
+	const selectedPropRef = useRef<string | null>(selectedUuid)
+	selectedPropRef.current = selectedUuid
 	const text = useMarkerText()
 	const settlementText = useSettlementText()
 
@@ -66,10 +104,78 @@ export default function WorldMarkers({
 		})
 	}, [spots, hiddenIcons, search, text, settlementText])
 
+	const cancelTween = useCallback((id: number) => {
+		const raf = tweensRef.current.get(id)
+		if (raf !== undefined) {
+			cancelAnimationFrame(raf)
+			tweensRef.current.delete(id)
+		}
+	}, [])
+
+	const cancelAllTweens = useCallback(() => {
+		for (const raf of tweensRef.current.values()) cancelAnimationFrame(raf)
+		tweensRef.current.clear()
+	}, [])
+
+	const tweenMarker = useCallback(
+		(gl: WebGLMarker, toColor: RGB, toSize: number) => {
+			const layer = layerRef.current
+			if (!layer || layer.getMarker(gl.id) !== gl) return
+			cancelTween(gl.id)
+			const fromColor: RGB = [gl.color[0], gl.color[1], gl.color[2]]
+			const fromSize = typeof gl.size === 'number' ? gl.size : ICON_SIZE
+			const start = performance.now()
+			const step = (now: number) => {
+				const current = layerRef.current
+				if (!current || current.getMarker(gl.id) !== gl) {
+					tweensRef.current.delete(gl.id)
+					return
+				}
+				const k = Math.min(1, (now - start) / HIGHLIGHT_DURATION)
+				const eased = 1 - (1 - k) ** 3
+				current.updateMarker(gl.id, {
+					color: lerpColor(fromColor, toColor, eased),
+					size: fromSize + (toSize - fromSize) * eased,
+				})
+				if (k < 1) {
+					tweensRef.current.set(gl.id, requestAnimationFrame(step))
+				} else {
+					tweensRef.current.delete(gl.id)
+				}
+			}
+			tweensRef.current.set(gl.id, requestAnimationFrame(step))
+		},
+		[cancelTween]
+	)
+
+	const applySelection = useCallback(
+		(uuid: string | null) => {
+			const entries = entriesRef.current
+			const prev = selectedUuidRef.current
+			selectedUuidRef.current = uuid
+			for (const entry of entries) {
+				const wasOn = prev != null && entry.uuids.includes(prev)
+				const isOn = uuid != null && entry.uuids.includes(uuid)
+				if (wasOn === isOn) continue
+				tweenMarker(
+					entry.gl,
+					isOn ? entry.hiColor : entry.baseColor,
+					isOn ? entry.hiSize : entry.baseSize
+				)
+			}
+		},
+		[tweenMarker]
+	)
+
+	useEffect(() => {
+		applySelection(selectedUuid)
+	}, [selectedUuid, applySelection])
+
 	useEffect(() => {
 		if (filteredSpots.length === 0) return
 		let disposed = false
 		let markerLayer: WebGLMarkerLayer | null = null
+		let hovering = false
 		const badgeMarkers: L.Marker[] = []
 
 		const groups = new Map<string, SpotEntry[]>()
@@ -133,16 +239,18 @@ export default function WorldMarkers({
 					`<div class="world-popup-body">${items.join('')}</div>`
 				)
 				.openOn(map)
-			popup.getElement()?.animate(
-				[
-					{ opacity: 0, transform: 'scale(0.95)' },
-					{ opacity: 1, transform: 'scale(1)' },
-				],
-				{
-					duration: 160,
-					easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-				}
-			)
+			const element = popup.getElement()
+			if (element) animatePopupIn(element)
+		}
+		const onOver = () => {
+			if (hovering) return
+			hovering = true
+			acquirePointerCursor(map)
+		}
+		const onOut = () => {
+			if (!hovering) return
+			hovering = false
+			releasePointerCursor(map)
 		}
 		const onError = (event: { stage: string; message: string }) => {
 			console.error('World markers:', event.stage, event.message)
@@ -169,77 +277,109 @@ export default function WorldMarkers({
 			if (!atlas) return
 
 			const layer = new WebGLMarkerLayer({
-				iconSize: 24,
+				iconSize: ICON_SIZE,
 				atlasColumns: atlas.columns,
 				atlasRows: atlas.rows,
 			})
 			layer.addTo(map)
 			markerLayer = layer
+			layerRef.current = layer
 			layer.on('click', onMarkerClick)
 			layer.on('error', onError)
+			layer.on('mouseover', onOver)
+			layer.on('mouseout', onOut)
 			layer.setAtlas({
 				textureUrl: atlas.canvas.toDataURL(),
 				columns: atlas.columns,
 				rows: atlas.rows,
 			})
 
+			const markers: WebGLMarker[] = []
+			const entries: VisualEntry[] = []
 			for (const group of groups.values()) {
 				const first = group[0]
 				const sheetKey = resolveSheetKey(first.spot.icon, sheet)
 				const frame = sheetKey ? atlas.frames.get(sheetKey) : undefined
 				if (frame === undefined) continue
 				const latlng = map.unproject([first.px, first.py], fullMaxLevel)
-				const highlighted = group.some(
-					({ spot }) => spot.uuid === selectedUuid
-				)
-				if (group.length === 1) {
-					const spot = first.spot
-					layer.addMarker(
-						new WebGLMarker({
-							latlng,
-							color: highlighted ? [0.3, 0.7, 1] : [1, 1, 1],
-							size: highlighted ? 34 : null,
-							frame,
-							data: spot,
-						})
-					)
-					continue
-				}
-				layer.addMarker(
-					new WebGLMarker({
-						latlng,
-						color: highlighted ? [0.3, 0.7, 1] : [1, 0.82, 0.25],
-						size: null,
-						frame,
-						data: first.spot,
-					})
-				)
-				const badge = L.marker(latlng, {
-					interactive: false,
-					icon: L.divIcon({
-						className: 'world-marker-badge',
-						html: `<span class="world-marker-badge-count">${group.length}</span>`,
-						iconSize: [18, 18],
-						iconAnchor: [20, -2],
-					}),
+				const isGroup = group.length > 1
+				const gl = new WebGLMarker({
+					latlng,
+					color: isGroup ? GROUP_COLOR : BASE_COLOR,
+					size: ICON_SIZE,
+					frame,
+					data: first.spot,
 				})
-				badge.addTo(map)
-				badgeMarkers.push(badge)
+				markers.push(gl)
+				entries.push({
+					gl,
+					uuids: group.map(({ spot }) => spot.uuid),
+					baseColor: isGroup ? GROUP_COLOR : BASE_COLOR,
+					baseSize: ICON_SIZE,
+					hiColor: HIGHLIGHT_COLOR,
+					hiSize: isGroup ? ICON_SIZE : HIGHLIGHT_SIZE,
+				})
+
+				if (isGroup) {
+					const badge = L.marker(latlng, {
+						interactive: false,
+						icon: L.divIcon({
+							className: 'world-marker-badge',
+							html: `<span class="world-marker-badge-count">${group.length}</span>`,
+							iconSize: [18, 18],
+							iconAnchor: [20, -2],
+						}),
+					})
+					badge.addTo(map)
+					badgeMarkers.push(badge)
+				}
+			}
+
+			if (disposed) return
+			layer.setMarkers(markers)
+			entriesRef.current = entries
+			selectedUuidRef.current = null
+			applySelection(selectedPropRef.current)
+
+			const canvas = getLayerCanvas(layer)
+			if (canvas) {
+				canvas.style.transition = 'none'
+				canvas.style.opacity = '0'
+				void canvas.offsetWidth
+				canvas.style.transition = `opacity ${APPEAR_DURATION}ms ease-out`
+				canvas.style.opacity = '1'
 			}
 		})()
 
 		return () => {
 			disposed = true
+			if (hovering) {
+				hovering = false
+				releasePointerCursor(map)
+			}
 			if (markerLayer) {
 				markerLayer.off('click', onMarkerClick)
 				markerLayer.off('error', onError)
+				markerLayer.off('mouseover', onOver)
+				markerLayer.off('mouseout', onOut)
+				cancelAllTweens()
 				markerLayer.remove()
 			}
+			layerRef.current = null
+			entriesRef.current = []
 			for (const badge of badgeMarkers) badge.remove()
 			popupRef.current?.remove()
 			popupRef.current = null
 		}
-	}, [map, filteredSpots, fullMaxLevel, editing, selectedUuid, text])
+	}, [
+		map,
+		filteredSpots,
+		fullMaxLevel,
+		editing,
+		text,
+		applySelection,
+		cancelAllTweens,
+	])
 
 	return null
 }

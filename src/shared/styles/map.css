@@ -824,3 +824,69 @@ path.leaflet-interactive:focus:not(:focus-visible) {
 	color: color-mix(in oklab, var(--color-card-foreground) 60%, transparent);
 	padding-top: 4px;
 }
+
+.world-popup-sub {
+	font-size: 0.75rem;
+	line-height: 1.2;
+	color: color-mix(in oklab, var(--color-card-foreground) 60%, transparent);
+	padding-top: 2px;
+}
+
+.world-popup-dests {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding-top: 2px;
+}
+
+.world-popup-dest {
+	cursor: pointer;
+	border-radius: 0.25rem;
+	padding: 2px 6px;
+	background: color-mix(in oklab, var(--color-primary) 12%, transparent);
+	transition: background 120ms ease;
+}
+
+.world-popup-dest:hover {
+	background: color-mix(in oklab, var(--color-primary) 26%, transparent);
+}
+
+.world-dest-tooltip {
+	font-size: 0.7rem;
+	line-height: 1.1;
+}
+
+.coords-goal {
+	background: transparent;
+	border: none;
+	pointer-events: none;
+}
+
+.coords-goal-dot {
+	width: 22px;
+	height: 22px;
+	border-radius: 9999px;
+	border: 2px solid rgb(255, 51, 102);
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.8),
+		0 0 12px 2px rgba(255, 51, 102, 0.75);
+	animation: coords-goal-pulse 1.1s ease-out infinite;
+}
+
+@keyframes coords-goal-pulse {
+	0% {
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.8),
+			0 0 12px 2px rgba(255, 51, 102, 0.75);
+		transform: scale(1);
+	}
+	70% {
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.8),
+			0 0 20px 6px rgba(255, 51, 102, 0.3);
+		transform: scale(1.15);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

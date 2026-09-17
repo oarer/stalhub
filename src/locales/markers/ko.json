@@ -420,5 +420,1241 @@
         "title": "술 취한 가이거 술집"
       }
     }
+  },
+  "go": {
+    "Barrikada_wood": {
+      "name": "나무 바리케이드"
+    },
+    "Bochka_5857_3": {
+      "name": "배럴"
+    },
+    "Bochka_5857_4": {
+      "name": "배럴"
+    },
+    "Bochka_5857_5": {
+      "name": "배럴"
+    },
+    "Bolshoi_rukzak_5919": {
+      "name": "대형 배낭"
+    },
+    "Derevyannyi_stol_(seryi)_5913": {
+      "name": "나무 탁자"
+    },
+    "Divan_5840": {
+      "name": "소파"
+    },
+    "Elektroshitok_5881": {
+      "name": "두꺼비집"
+    },
+    "Gazovaya_plita_5876": {
+      "name": "가스 레인지"
+    },
+    "Holodilnik_2": {
+      "name": "냉장고"
+    },
+    "Holodilnik_5858": {
+      "name": "냉장고"
+    },
+    "Korobki_kartonnye_5859": {
+      "name": "골판지 상자"
+    },
+    "Kreslo_ofisnoe_5926": {
+      "name": "사무용 의자"
+    },
+    "Krest_2_5839": {
+      "name": "십자가 2"
+    },
+    "Kvest_btr_tank": {
+      "name": "탱크"
+    },
+    "Kvest_chistotel": {
+      "name": "애기똥풀"
+    },
+    "Kvest_door_sar": {
+      "name": "문"
+    },
+    "Kvest_koloda": {
+      "name": "장작 패기 받침대"
+    },
+    "Kvest_skaner": {
+      "name": "스캐너"
+    },
+    "Kvest_tree_fall_a": {
+      "name": "나무"
+    },
+    "Kvest_truck_tank": {
+      "name": "탱크"
+    },
+    "Malyi_rukzak_5917": {
+      "name": "소형 배낭"
+    },
+    "Musorka_5821_a": {
+      "name": "쓰레기통"
+    },
+    "Polka_5848": {
+      "name": "선반"
+    },
+    "Pribory_2_5825": {
+      "name": "장치"
+    },
+    "Pribory_3": {
+      "name": "장치"
+    },
+    "Pribory_5824": {
+      "name": "장치"
+    },
+    "Radio_5861": {
+      "name": "라디오"
+    },
+    "Seif_5889": {
+      "name": "금고"
+    },
+    "Shkaf_derevo_5834": {
+      "name": "오래된 찬장"
+    },
+    "Shkaf_derevo_5835": {
+      "name": "오래된 찬장"
+    },
+    "Shkaf_derevo_5836": {
+      "name": "오래된 찬장"
+    },
+    "Shkaf_ssr": {
+      "name": "오래된 찬장"
+    },
+    "Shkaf_ssr_a": {
+      "name": "오래된 찬장"
+    },
+    "Skamya_4": {
+      "name": "벤치"
+    },
+    "Skamya_5": {
+      "name": "벤치"
+    },
+    "Skamya_5921": {
+      "name": "벤치"
+    },
+    "Skamya_7": {
+      "name": "벤치"
+    },
+    "Srednii_rukzak_5918": {
+      "name": "중형 배낭"
+    },
+    "Staryi_telek_5925": {
+      "name": "낡은 TV"
+    },
+    "Stol_1_5908": {
+      "name": "식탁"
+    },
+    "Stol_1_5909_open": {
+      "name": "식탁"
+    },
+    "Stol_1_a": {
+      "name": "식탁"
+    },
+    "Stol_1_b": {
+      "name": "식탁"
+    },
+    "Stul_5911": {
+      "name": "의자"
+    },
+    "Stul_5911_1": {
+      "name": "의자"
+    },
+    "Stul_5911_2": {
+      "name": "의자"
+    },
+    "Taburet_5912": {
+      "name": "발판"
+    },
+    "Taburet_5912_1": {
+      "name": "발판"
+    },
+    "Taburet_5912_2": {
+      "name": "발판"
+    },
+    "Taburet_new1": {
+      "name": "바닥과 띄워진 걸상"
+    },
+    "Taburet_new2": {
+      "name": "나무 의자"
+    },
+    "Tumba_5890": {
+      "name": "협탁"
+    },
+    "Tumba_5890_d2": {
+      "name": "협탁"
+    },
+    "Tumba_5890_с": {
+      "name": "여닫이 진열장"
+    },
+    "Yashik_group": {
+      "name": "상자들"
+    },
+    "Yashik_group3": {
+      "name": "상자들"
+    },
+    "Yashik_group5": {
+      "name": "상자들"
+    },
+    "Yashik_p_1": {
+      "name": "상자"
+    },
+    "Yashik_p_2": {
+      "name": "상자"
+    },
+    "Yashik_p_3": {
+      "name": "상자"
+    },
+    "Yashik_p_4": {
+      "name": "상자"
+    },
+    "Yashik_p_5": {
+      "name": "상자"
+    },
+    "Yashik_p_6": {
+      "name": "상자"
+    },
+    "Yashik_p_6a": {
+      "name": "상자"
+    },
+    "Yashiki_5832": {
+      "name": "상자들"
+    },
+    "Zheleznyi_chemodanchik_5833": {
+      "name": "철제 서류가방"
+    },
+    "Zheleznyi_shkafchik_5836": {
+      "name": "철제 수납장"
+    },
+    "acid_nettle": {
+      "name": "산성 쐐기풀"
+    },
+    "amber_wormwood": {
+      "name": "앰버 웜우드"
+    },
+    "ammo_box_close": {
+      "name": "상자"
+    },
+    "ammo_box_close_merc": {
+      "name": "상자"
+    },
+    "ammo_box_open": {
+      "name": "상자"
+    },
+    "avanpost_spot": {
+      "name": "전초 기지"
+    },
+    "base_prikop": {
+      "name": "은닉 물자"
+    },
+    "bed_3": {
+      "name": "침대"
+    },
+    "bed_m_1": {
+      "name": "침대"
+    },
+    "bed_m_2": {
+      "name": "침대"
+    },
+    "bed_m_3": {
+      "name": "침대"
+    },
+    "big_crates_setka": {
+      "name": "상자들"
+    },
+    "blizzard_fireplace_quest2": {
+      "name": "난방 설비 미가동 중"
+    },
+    "books": {
+      "name": "책더미"
+    },
+    "books3": {
+      "name": "책더미"
+    },
+    "books4": {
+      "name": "책더미"
+    },
+    "books5": {
+      "name": "책더미"
+    },
+    "books6": {
+      "name": "책더미"
+    },
+    "books7": {
+      "name": "책더미"
+    },
+    "bumaga_group_1": {
+      "name": "종이"
+    },
+    "bumaga_group_2": {
+      "name": "종이"
+    },
+    "bumaga_group_3": {
+      "name": "종이"
+    },
+    "bumaga_group_4": {
+      "name": "종이"
+    },
+    "bumaga_group_5": {
+      "name": "종이"
+    },
+    "cable_3d": {
+      "name": "3D 케이블"
+    },
+    "campfire_1": {
+      "name": "모닥불"
+    },
+    "campfire_1a": {
+      "name": "모닥불"
+    },
+    "carousel": {
+      "name": "블렌더"
+    },
+    "circus": {
+      "name": "인페르노"
+    },
+    "contamination_bio1_1": {
+      "name": "1레벨 생체"
+    },
+    "contamination_bio2_1": {
+      "name": "2레벨 생체"
+    },
+    "contamination_bio3_1": {
+      "name": "3레벨 생체"
+    },
+    "contamination_psy2_1": {
+      "name": "2레벨 정신파"
+    },
+    "contamination_psy3_1": {
+      "name": "3레벨 정신파"
+    },
+    "contamination_psy4_1": {
+      "name": "4레벨 정신파"
+    },
+    "contamination_rad1_1": {
+      "name": "1레벨 방사능"
+    },
+    "contamination_rad2_1": {
+      "name": "2레벨 방사능"
+    },
+    "contamination_rad3_1": {
+      "name": "3레벨 방사능"
+    },
+    "contamination_rad4_1": {
+      "name": "4레벨 방사능"
+    },
+    "contamination_rec31_bio1_1": {
+      "name": "3x1 직사각형 1레벨 생체"
+    },
+    "contamination_rec31_bio2_1": {
+      "name": "3x1 직사각형 2레벨 생체"
+    },
+    "contamination_rec31_bio3_1": {
+      "name": "3x1 직사각형 3레벨 생체"
+    },
+    "contamination_rec31_psy2_1": {
+      "name": "3x1 직사각형 2레벨 정신파"
+    },
+    "contamination_rec31_psy3_1": {
+      "name": "3x1 직사각형 3레벨 정신파"
+    },
+    "contamination_rec31_psy4_1": {
+      "name": "3x1 직사각형 4레벨 정신파"
+    },
+    "contamination_rec31_rad1_1": {
+      "name": "3x1 직사각형 1레벨 방사능"
+    },
+    "contamination_rec31_rad2_1": {
+      "name": "3x1 직사각형 2레벨 방사능"
+    },
+    "contamination_rec31_rad3_1": {
+      "name": "3x1 직사각형 3레벨 방사능"
+    },
+    "contamination_rec31_rad4_1": {
+      "name": "3x1 직사각형 4레벨 방사능"
+    },
+    "contamination_rec31_thr1_1": {
+      "name": "3x1 직사각형 1레벨 열"
+    },
+    "contamination_rec31_thr2_1": {
+      "name": "3x1 직사각형 2레벨 열"
+    },
+    "contamination_rec31_thr3_1": {
+      "name": "3x1 직사각형 3레벨 열"
+    },
+    "contamination_rec51_bio2_1": {
+      "name": "5x1 직사각형 2레벨 생체"
+    },
+    "contamination_rec51_psy2_1": {
+      "name": "5x1 직사각형 2레벨 정신파"
+    },
+    "contamination_rec51_psy3_1": {
+      "name": "5x1 직사각형 3레벨 정신파"
+    },
+    "contamination_rec51_thr3_1": {
+      "name": "5x1 직사각형 3레벨 열"
+    },
+    "contamination_rec71_bio1_1": {
+      "name": "7x1 직사각형 1레벨 생체"
+    },
+    "contamination_rec71_psy2_1": {
+      "name": "7x1 직사각형 2레벨 정신파"
+    },
+    "contamination_rec71_psy3_1": {
+      "name": "7x1 직사각형 3레벨 정신파"
+    },
+    "contamination_rec71_rad2_1": {
+      "name": "7x1 직사각형 2레벨 방사능"
+    },
+    "contamination_rec71_rad4_1": {
+      "name": "7x1 직사각형 4레벨 방사능"
+    },
+    "contamination_sphere_bio1_1": {
+      "name": "구체형 1레벨 생체"
+    },
+    "contamination_sphere_bio2_1": {
+      "name": "구체형 2레벨 생체"
+    },
+    "contamination_sphere_bio3_1": {
+      "name": "구체형 3레벨 생체"
+    },
+    "contamination_sphere_psy1_1": {
+      "name": "구체형 1레벨 정신파"
+    },
+    "contamination_sphere_psy2_1": {
+      "name": "구체형 2레벨 정신파"
+    },
+    "contamination_sphere_psy3_1": {
+      "name": "구체형 3레벨 정신파"
+    },
+    "contamination_sphere_psy4_1": {
+      "name": "구체형 4레벨 정신파"
+    },
+    "contamination_sphere_rad1_1": {
+      "name": "구체형 1레벨 방사능"
+    },
+    "contamination_sphere_rad2_1": {
+      "name": "구체형 2레벨 방사능"
+    },
+    "contamination_sphere_rad3_1": {
+      "name": "구체형 3레벨 방사능"
+    },
+    "contamination_sphere_rad4_1": {
+      "name": "구체형 4레벨 방사능"
+    },
+    "contamination_sphere_thr1_1": {
+      "name": "구체형 1레벨 열"
+    },
+    "contamination_sphere_thr2_1": {
+      "name": "구체형 2레벨 열"
+    },
+    "contamination_sphere_thr3_1": {
+      "name": "구체형 3레벨 열"
+    },
+    "contamination_thr1_1": {
+      "name": "1레벨 열"
+    },
+    "contamination_thr2_1": {
+      "name": "2레벨 열"
+    },
+    "contamination_thr3_1": {
+      "name": "3레벨 열"
+    },
+    "dek_pribors1": {
+      "name": "과학 전자기기"
+    },
+    "dek_pribors2": {
+      "name": "과학 전자기기"
+    },
+    "dek_pribors4": {
+      "name": "과학 전자기기"
+    },
+    "dek_pribors5": {
+      "name": "과학 전자기기"
+    },
+    "dekal_bumaga0": {
+      "name": "문서"
+    },
+    "dekal_bumaga1": {
+      "name": "종이"
+    },
+    "dekal_bumaga2": {
+      "name": "종이"
+    },
+    "dekor_yashik_vodka": {
+      "name": "증류주 상자"
+    },
+    "divan_kreslo": {
+      "name": "소파"
+    },
+    "divan_kreslo_1": {
+      "name": "소파"
+    },
+    "divan_kreslo_2": {
+      "name": "소파"
+    },
+    "door_1_closed": {
+      "name": "문"
+    },
+    "door_2_closed": {
+      "name": "문"
+    },
+    "door_germ_closed": {
+      "name": "문"
+    },
+    "electra": {
+      "name": "방출"
+    },
+    "electra_air": {
+      "name": "공기 방전"
+    },
+    "electroshitok": {
+      "name": "배전반"
+    },
+    "elevator_button2": {
+      "name": "엘리베이터 버튼"
+    },
+    "encaged_safe": {
+      "name": "금고"
+    },
+    "filling_cabinet_2_1": {
+      "name": "문서함"
+    },
+    "filling_cabinet_2_3": {
+      "name": "문서함"
+    },
+    "filling_cabinet_2_4": {
+      "name": "문서함"
+    },
+    "filling_cabinet_2_5": {
+      "name": "문서함"
+    },
+    "filling_cabinet_3_2": {
+      "name": "문서함"
+    },
+    "filling_cabinet_3_4": {
+      "name": "문서함"
+    },
+    "filling_cabinet_3_5": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_1": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_2": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_3": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_4": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_5": {
+      "name": "문서함"
+    },
+    "filling_cabinet_4_6": {
+      "name": "문서함"
+    },
+    "fridge_table": {
+      "name": "냉장고"
+    },
+    "funnel": {
+      "name": "소용돌이"
+    },
+    "gnezdo_1": {
+      "name": "까마귀 둥지"
+    },
+    "gnosis": {
+      "name": "그노시스"
+    },
+    "group_medecine_1": {
+      "name": "구급상자"
+    },
+    "group_polka3_loot": {
+      "name": "찬장"
+    },
+    "group_shkaf2_loot": {
+      "name": "여닫이 진열장"
+    },
+    "group_shkaf3_loot": {
+      "name": "찬장"
+    },
+    "group_shkaf4_loot": {
+      "name": "여닫이 진열장"
+    },
+    "gsp_11": {
+      "name": "배터리"
+    },
+    "hellroot": {
+      "name": "헬루트"
+    },
+    "hideout_armchair_1": {
+      "name": "안락의자"
+    },
+    "hideout_stool_wood_1": {
+      "name": "발판"
+    },
+    "karoteka_2": {
+      "name": "서류 캐비닛"
+    },
+    "kisel_1": {
+      "name": "아스픽"
+    },
+    "kisel_1_no_particles": {
+      "name": "아스픽"
+    },
+    "kisel_2": {
+      "name": "젤리화"
+    },
+    "kisel_2_no_particles": {
+      "name": "젤리화"
+    },
+    "korobki_karton_1": {
+      "name": "상자 더미"
+    },
+    "korobki_karton_4": {
+      "name": "상자 더미"
+    },
+    "kreslo_otk_1": {
+      "name": "접이식 의자"
+    },
+    "kreslo_otk_2": {
+      "name": "접이식 의자"
+    },
+    "kreslo_otk_3": {
+      "name": "접이식 의자"
+    },
+    "kreslo_otk_4": {
+      "name": "접이식 의자"
+    },
+    "lab_pc": {
+      "name": "OK 컴퓨터"
+    },
+    "looting_bag_haversack": {
+      "name": "배낭"
+    },
+    "looting_bag_mbss": {
+      "name": "배낭"
+    },
+    "looting_bag_sports": {
+      "name": "배낭"
+    },
+    "looting_bag_transformer": {
+      "name": "배낭"
+    },
+    "looting_cash_register": {
+      "name": "금전 등록기"
+    },
+    "looting_chekered_bag": {
+      "name": "가방"
+    },
+    "looting_chest": {
+      "name": "상자"
+    },
+    "looting_dom_suitcase": {
+      "name": "여행 가방"
+    },
+    "looting_fraction_box5_bandit": {
+      "name": "밴디트 컨테이너"
+    },
+    "looting_fraction_box5_dolg": {
+      "name": "프론티어 컨테이너"
+    },
+    "looting_fraction_box5_naim": {
+      "name": "용병 컨테이너"
+    },
+    "looting_fraction_box5_stalker": {
+      "name": "스토커 컨테이너"
+    },
+    "looting_fraction_box5_zarya": {
+      "name": "라이즈 컨테이너"
+    },
+    "looting_fraction_box5_zavet": {
+      "name": "커버넌트 컨테이너"
+    },
+    "looting_jacket_bandit": {
+      "name": "재킷"
+    },
+    "looting_jacket_civil": {
+      "name": "재킷"
+    },
+    "looting_jacket_military": {
+      "name": "재킷"
+    },
+    "looting_jacket_stalker": {
+      "name": "재킷"
+    },
+    "looting_med_bag": {
+      "name": "의료 가방"
+    },
+    "looting_med_box": {
+      "name": "약품 상자"
+    },
+    "looting_med_skaf": {
+      "name": "의료 로커"
+    },
+    "looting_military_box1": {
+      "name": "무기 컨테이너"
+    },
+    "looting_military_box2": {
+      "name": "무기 컨테이너"
+    },
+    "looting_military_box3": {
+      "name": "무기 컨테이너"
+    },
+    "looting_military_box4": {
+      "name": "무기 컨테이너"
+    },
+    "looting_military_box5": {
+      "name": "무기 컨테이너"
+    },
+    "looting_military_cabinet_big": {
+      "name": "무기 로커"
+    },
+    "looting_military_cabinet_small": {
+      "name": "무기 수납장"
+    },
+    "looting_safe_safe1": {
+      "name": "금고"
+    },
+    "looting_safe_safe2": {
+      "name": "금고"
+    },
+    "looting_safe_safe3": {
+      "name": "금고"
+    },
+    "looting_sapernabor": {
+      "name": "공병 키트"
+    },
+    "looting_tainiki_bag": {
+      "name": "가방"
+    },
+    "looting_tainiki_barrel": {
+      "name": "배럴"
+    },
+    "looting_tech_box": {
+      "name": "나무 상자"
+    },
+    "looting_tech_cabinet": {
+      "name": "금속 로커"
+    },
+    "looting_toolbox": {
+      "name": "철 상자"
+    },
+    "looting_trash_cardboard_box": {
+      "name": "골판지 상자"
+    },
+    "looting_trash_tank": {
+      "name": "폐기물 컨테이너"
+    },
+    "looting_wood_2_box": {
+      "name": "나무 상자"
+    },
+    "looting_wood_box": {
+      "name": "나무 상자"
+    },
+    "matras1": {
+      "name": "매트리스"
+    },
+    "matras2": {
+      "name": "매트리스"
+    },
+    "medecine_3": {
+      "name": "구급상자"
+    },
+    "medecine_9": {
+      "name": "항방사능제"
+    },
+    "mushrooms_1_l": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_1b": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_2_l": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_2b": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_3_l": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_3b": {
+      "name": "버섯 군체"
+    },
+    "mushrooms_blue_1": {
+      "name": "푸른빛 버섯 군체"
+    },
+    "mushrooms_blue_3": {
+      "name": "푸른빛 버섯 군체"
+    },
+    "mushrooms_violet_2": {
+      "name": "자줏빛 버섯 군체"
+    },
+    "mushrooms_violet_3": {
+      "name": "자줏빛 버섯 군체"
+    },
+    "mushrooms_yellow_1": {
+      "name": "노란빛 버섯 군체"
+    },
+    "mushrooms_yellow_3": {
+      "name": "노란빛 버섯 군체"
+    },
+    "negator_rec31": {
+      "name": "보호 영역: 직사각형 3x1"
+    },
+    "negator_rec51": {
+      "name": "보호 영역: 직사각형 5x1"
+    },
+    "negator_rec71": {
+      "name": "보호 영역: 직사각형 7x1"
+    },
+    "negator_sphere_1": {
+      "name": "보호 영역: 구"
+    },
+    "negatror_cube_1": {
+      "name": "보호 영역: 정사각형"
+    },
+    "newspaper_2": {
+      "name": "신문지 더미"
+    },
+    "newspaper_3": {
+      "name": "신문지 더미"
+    },
+    "newspaper_5": {
+      "name": "신문지 더미"
+    },
+    "notebook_army": {
+      "name": "노트북"
+    },
+    "pale_leaf": {
+      "name": "페일리프"
+    },
+    "plastik_stul": {
+      "name": "흰색 플라스틱 의자"
+    },
+    "plastik_stul1": {
+      "name": "파란 플라스틱 의자"
+    },
+    "plastik_stul2": {
+      "name": "녹색 플라스틱 의자"
+    },
+    "plastik_stul3": {
+      "name": "빨간 플라스틱 의자"
+    },
+    "plastik_stul4": {
+      "name": "노란 플라스틱 의자"
+    },
+    "prestige_psychoscope": {
+      "name": "사이코스코프"
+    },
+    "puh_new1": {
+      "name": "보풀"
+    },
+    "puh_new2": {
+      "name": "보풀"
+    },
+    "quest_notepad": {
+      "name": "수첩"
+    },
+    "quest_petrush": {
+      "name": "체르노빌 파슬리"
+    },
+    "shiferny_1": {
+      "name": "멀쩡한 슬레이트 울타리"
+    },
+    "steam": {
+      "name": "주전자"
+    },
+    "storeage_wire_door": {
+      "name": "찬장"
+    },
+    "stul_shkola": {
+      "name": "학교 의자"
+    },
+    "svalka_radio_prikop1": {
+      "name": "은닉 물자"
+    },
+    "table": {
+      "name": "식탁"
+    },
+    "table_stuff_4": {
+      "name": "일체형"
+    },
+    "teleport_bubble": {
+      "name": "굴"
+    },
+    "teleport_invisible": {
+      "name": "텔레포터"
+    },
+    "tent_triangl_1": {
+      "name": "텐트"
+    },
+    "tramp": {
+      "name": "트램펄린"
+    },
+    "tree_2b_1": {
+      "name": "나무"
+    },
+    "triggerCollision": {
+      "name": "보이지 않는 트리거 충돌 판정 몸체"
+    },
+    "unitaz_1": {
+      "name": "화장실"
+    },
+    "unitaz_2": {
+      "name": "화장실"
+    },
+    "unitaz_3": {
+      "name": "화장실"
+    },
+    "valve2": {
+      "name": "밸브"
+    },
+    "vehicle_boat_1": {
+      "name": "배"
+    },
+    "vodokachka": {
+      "name": "펌프"
+    },
+    "water_carrier": {
+      "name": "워터 캐리어"
+    },
+    "wood_polka_boxes": {
+      "name": "선반"
+    },
+    "yash_1_a": {
+      "name": "찬장"
+    },
+    "yash_3_a": {
+      "name": "찬장"
+    },
+    "zastoy": {
+      "name": "무중력 이상현상"
+    },
+    "zipline": {
+      "name": "집라인"
+    },
+    "zipline_vertical": {
+      "name": "집라인"
+    },
+    "kapkan": {
+      "name": "함정"
+    }
+  },
+  "location": {
+    "armsklad": {
+      "name": "폴레스코예"
+    },
+    "arsenal_workshop": {
+      "name": "아스널 작업장"
+    },
+    "atamans_hq": {
+      "name": "아타만의 본부"
+    },
+    "atp": {
+      "name": "소방서"
+    },
+    "bar": {
+      "name": "페르보마이스키 공장"
+    },
+    "bar_save": {
+      "name": "페르보마이스키 공장 술집"
+    },
+    "bar_save_residential_hangar": {
+      "name": "기숙사"
+    },
+    "bar_sever": {
+      "name": "술 취한 가이거 술집"
+    },
+    "base_covenant": {
+      "name": "커버넌트 거처"
+    },
+    "base_duty": {
+      "name": "프론티어 기지"
+    },
+    "base_freedom": {
+      "name": "라이즈 기지"
+    },
+    "base_merc": {
+      "name": "용병 캠프"
+    },
+    "boat_station": {
+      "name": "보트 창고"
+    },
+    "bolota": {
+      "name": "늪지"
+    },
+    "dungeon_Janiko": {
+      "name": "알 수 없음"
+    },
+    "dungeon_Ripper": {
+      "name": "알 수 없음"
+    },
+    "dungeon_apocalypse_challenge": {
+      "name": "미상"
+    },
+    "dungeon_apocalypse_obol": {
+      "name": "지하실"
+    },
+    "dungeon_art": {
+      "name": "늪지 참호"
+    },
+    "dungeon_barsani": {
+      "name": "어리석은 자들의 길"
+    },
+    "dungeon_base_sanitar_1_fight": {
+      "name": "질서자 기지"
+    },
+    "dungeon_base_sanitar_1_peaceful": {
+      "name": "질서자 기지"
+    },
+    "dungeon_chimera": {
+      "name": "페르보마이스키 공장"
+    },
+    "dungeon_domiki": {
+      "name": "홀펀치의 은신처"
+    },
+    "dungeon_domiki2": {
+      "name": "로드사이드"
+    },
+    "dungeon_domikizryach": {
+      "name": "알 수 없음"
+    },
+    "dungeon_dosug": {
+      "name": "집"
+    },
+    "dungeon_dyrokol": {
+      "name": "홀펀치의 은신처"
+    },
+    "dungeon_enlightened_1": {
+      "name": "깨달은 자들의 소굴"
+    },
+    "dungeon_enlightened_2": {
+      "name": "깨달은 자들의 소굴"
+    },
+    "dungeon_gribochki": {
+      "name": "던전"
+    },
+    "dungeon_kmpt_agro": {
+      "name": "콜로스 농업단지"
+    },
+    "dungeon_kompot_alco": {
+      "name": "알 수 없음"
+    },
+    "dungeon_kompot_zemlyanka": {
+      "name": "알 수 없음"
+    },
+    "dungeon_kpz": {
+      "name": "유치장"
+    },
+    "dungeon_lab": {
+      "name": "실험실"
+    },
+    "dungeon_leviathan_hutor": {
+      "name": "알 수 없음"
+    },
+    "dungeon_limansk_isxod": {
+      "name": "알 수 없음"
+    },
+    "dungeon_merc_01": {
+      "name": "알 수 없음"
+    },
+    "dungeon_merc_02": {
+      "name": "알 수 없음"
+    },
+    "dungeon_mgber": {
+      "name": "데드 시티"
+    },
+    "dungeon_minks": {
+      "name": "알 수 없음"
+    },
+    "dungeon_mir_korabley_cave": {
+      "name": "동굴"
+    },
+    "dungeon_moneta": {
+      "name": "알 수 없음"
+    },
+    "dungeon_moneta2": {
+      "name": "알 수 없음"
+    },
+    "dungeon_morok_arena": {
+      "name": "모프의 소굴"
+    },
+    "dungeon_morok_radar": {
+      "name": "레이더의 뒤집힌 세계"
+    },
+    "dungeon_mozglyak": {
+      "name": "약자의 은신처"
+    },
+    "dungeon_perbar": {
+      "name": "건물 내부"
+    },
+    "dungeon_podvalDed": {
+      "name": "알 수 없음"
+    },
+    "dungeon_polovetskiy": {
+      "name": "알 수 없음"
+    },
+    "dungeon_psisobaka": {
+      "name": "알 수 없음"
+    },
+    "dungeon_pumpstation": {
+      "name": "펌프장"
+    },
+    "dungeon_rest_in_peace": {
+      "name": "알 수 없음"
+    },
+    "dungeon_school": {
+      "name": "블라소프 학교"
+    },
+    "dungeon_sklad_frimena": {
+      "name": "알 수 없음"
+    },
+    "dungeon_spusk": {
+      "name": "바간트의 굴"
+    },
+    "dungeon_stels": {
+      "name": "알 수 없음"
+    },
+    "dungeon_sub_frontier_01": {
+      "name": "동굴"
+    },
+    "dungeon_sub_frontier_02": {
+      "name": "동굴"
+    },
+    "dungeon_sub_frontier_03": {
+      "name": "동굴"
+    },
+    "dungeon_sub_frontier_04": {
+      "name": "동굴"
+    },
+    "dungeon_sudba": {
+      "name": "동굴"
+    },
+    "dungeon_svetliy_bandits": {
+      "name": "알 수 없음"
+    },
+    "dungeon_svetliy_stalkers": {
+      "name": "알 수 없음"
+    },
+    "dungeon_tonnelradar": {
+      "name": "터널"
+    },
+    "dungeon_travnik": {
+      "name": "알 수 없음"
+    },
+    "dungeon_upir": {
+      "name": "알 수 없음"
+    },
+    "dungeon_vendetta": {
+      "name": "스토커 은신처"
+    },
+    "dungeon_zemlcap1": {
+      "name": "알 수 없음"
+    },
+    "ffa_base_bunker": {
+      "name": "벙커"
+    },
+    "ffa_base_kpp_north": {
+      "name": "검문소"
+    },
+    "ffa_base_meteostation": {
+      "name": "기상대"
+    },
+    "ffa_base_mine": {
+      "name": "오래된 광산"
+    },
+    "foton2": {
+      "name": "마을 학교"
+    },
+    "hideout": {
+      "name": "은신처"
+    },
+    "kordon": {
+      "name": "로드사이드"
+    },
+    "les": {
+      "name": "숲"
+    },
+    "north_forge": {
+      "name": "포지-11"
+    },
+    "north_inflow": {
+      "name": "유입지"
+    },
+    "north_maze_d_c": {
+      "name": "미궁"
+    },
+    "north_maze_m_f": {
+      "name": "미궁"
+    },
+    "north_mines": {
+      "name": "광산"
+    },
+    "outpost_covenant": {
+      "name": "커버넌트 전초기지"
+    },
+    "outpost_duty": {
+      "name": "프론티어 전초기지"
+    },
+    "outpost_freedom": {
+      "name": "라이즈 전초기지"
+    },
+    "outpost_merc": {
+      "name": "용병 전초기지"
+    },
+    "overpass": {
+      "name": "지하"
+    },
+    "pd": {
+      "name": "어리석은 자들의 길"
+    },
+    "rls": {
+      "name": "붉은 숲"
+    },
+    "savezone_agroprom": {
+      "name": "광부 오두막"
+    },
+    "savezone_td": {
+      "name": "광부 부지"
+    },
+    "svalka": {
+      "name": "폐기장"
+    },
+    "td": {
+      "name": "블랙 윌로우"
+    },
+    "tutorial_zemlyanka": {
+      "name": "참호"
+    },
+    "under_pd": {
+      "name": "어리석은 자들의 길 지하"
+    },
+    "yanov": {
+      "name": "우라늄 단지"
+    },
+    "yantar": {
+      "name": "구덩이"
+    },
+    "zaton": {
+      "name": "스틸워터"
+    },
+    "zemlyanka_shaman": {
+      "name": "샤먼의 굴"
+    }
+  },
+  "group": {
+    "anomalies": "이상현상",
+    "loot": "전리품",
+    "movement": "이동",
+    "other": "기타",
+    "quests": "퀘스트",
+    "teleports": "텔레포트"
+  },
+  "info": {
+    "destinations": "이동 지점"
   }
 }

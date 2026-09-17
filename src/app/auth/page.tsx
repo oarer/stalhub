@@ -6,11 +6,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { authService } from '@/services/auth/auth.service'
+import {
+	clearDesktopIntent,
+	issueDesktopLoginUrl,
+	persistDesktopIntent,
+} from '@/services/auth/desktop-auth'
 import { discordAuthService } from '@/services/auth/discord/discord.service'
 import { exboAuthService } from '@/services/auth/exbo/auth.service'
 import { telegramAuthService } from '@/services/auth/telegram/telegram.service'
@@ -41,6 +46,33 @@ export default function Page() {
 	const currentStep = steps[step]
 	const isLastStep = step === steps.length - 1
 
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search)
+		const desktopState = params.get('desktop_state')
+		const codeChallenge = params.get('code_challenge')
+		if (desktopState && codeChallenge) {
+			persistDesktopIntent({
+				desktop_state: desktopState,
+				code_challenge: codeChallenge,
+			})
+			params.delete('desktop_state')
+			params.delete('code_challenge')
+			const query = params.toString()
+			window.history.replaceState(
+				null,
+				'',
+				query ? `?${query}` : window.location.pathname
+			)
+			issueDesktopLoginUrl()
+				.then((url) => {
+					window.location.replace(url)
+				})
+				.catch(() => {
+					// show auth form
+				})
+		}
+	}, [])
+
 	const handleLogin = async (provider: Provider) => {
 		setLoading(provider)
 		try {
@@ -64,6 +96,12 @@ export default function Page() {
 		setError(null)
 		try {
 			await authService.login(username, password)
+			const desktopUrl = await issueDesktopLoginUrl().catch(() => null)
+			if (desktopUrl) {
+				clearDesktopIntent()
+				window.location.replace(desktopUrl)
+				return
+			}
 			const user = await userService.getMe()
 			const isGuest = user.roles?.some((r) => r.name === 'clan_guest')
 			router.replace(isGuest ? '/me/clan' : '/me')

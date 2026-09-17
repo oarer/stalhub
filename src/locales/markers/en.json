@@ -420,5 +420,1241 @@
         "title": "Drunken Geiger Bar"
       }
     }
+  },
+  "go": {
+    "Barrikada_wood": {
+      "name": "Wooden Barricade"
+    },
+    "Bochka_5857_3": {
+      "name": "Barrel"
+    },
+    "Bochka_5857_4": {
+      "name": "Barrel"
+    },
+    "Bochka_5857_5": {
+      "name": "Barrel"
+    },
+    "Bolshoi_rukzak_5919": {
+      "name": "Large Backpack"
+    },
+    "Derevyannyi_stol_(seryi)_5913": {
+      "name": "Wooden Table"
+    },
+    "Divan_5840": {
+      "name": "Couch"
+    },
+    "Elektroshitok_5881": {
+      "name": "Fuse Box"
+    },
+    "Gazovaya_plita_5876": {
+      "name": "Gas Stove"
+    },
+    "Holodilnik_2": {
+      "name": "Fridge"
+    },
+    "Holodilnik_5858": {
+      "name": "Fridge"
+    },
+    "Korobki_kartonnye_5859": {
+      "name": "Cardboard Boxes"
+    },
+    "Kreslo_ofisnoe_5926": {
+      "name": "Office Chair"
+    },
+    "Krest_2_5839": {
+      "name": "Cross 2"
+    },
+    "Kvest_btr_tank": {
+      "name": "Tank"
+    },
+    "Kvest_chistotel": {
+      "name": "Chelidonium"
+    },
+    "Kvest_door_sar": {
+      "name": "Door"
+    },
+    "Kvest_koloda": {
+      "name": "Cutting Block"
+    },
+    "Kvest_skaner": {
+      "name": "Scanner"
+    },
+    "Kvest_tree_fall_a": {
+      "name": "Tree"
+    },
+    "Kvest_truck_tank": {
+      "name": "Tank"
+    },
+    "Malyi_rukzak_5917": {
+      "name": "Small Backpack"
+    },
+    "Musorka_5821_a": {
+      "name": "Trash Can"
+    },
+    "Polka_5848": {
+      "name": "Shelf"
+    },
+    "Pribory_2_5825": {
+      "name": "Devices"
+    },
+    "Pribory_3": {
+      "name": "Devices"
+    },
+    "Pribory_5824": {
+      "name": "Devices"
+    },
+    "Radio_5861": {
+      "name": "Radio"
+    },
+    "Seif_5889": {
+      "name": "Safe"
+    },
+    "Shkaf_derevo_5834": {
+      "name": "Old Cupboard"
+    },
+    "Shkaf_derevo_5835": {
+      "name": "Old Cupboard"
+    },
+    "Shkaf_derevo_5836": {
+      "name": "Old Cupboard"
+    },
+    "Shkaf_ssr": {
+      "name": "Old Cupboard"
+    },
+    "Shkaf_ssr_a": {
+      "name": "Old Cupboard"
+    },
+    "Skamya_4": {
+      "name": "Bench"
+    },
+    "Skamya_5": {
+      "name": "Bench"
+    },
+    "Skamya_5921": {
+      "name": "Bench"
+    },
+    "Skamya_7": {
+      "name": "Bench"
+    },
+    "Srednii_rukzak_5918": {
+      "name": "Medium Backpack"
+    },
+    "Staryi_telek_5925": {
+      "name": "Old TV"
+    },
+    "Stol_1_5908": {
+      "name": "Table"
+    },
+    "Stol_1_5909_open": {
+      "name": "Table"
+    },
+    "Stol_1_a": {
+      "name": "Table"
+    },
+    "Stol_1_b": {
+      "name": "Table"
+    },
+    "Stul_5911": {
+      "name": "Chair"
+    },
+    "Stul_5911_1": {
+      "name": "Chair"
+    },
+    "Stul_5911_2": {
+      "name": "Chair"
+    },
+    "Taburet_5912": {
+      "name": "Stool"
+    },
+    "Taburet_5912_1": {
+      "name": "Stool"
+    },
+    "Taburet_5912_2": {
+      "name": "Stool"
+    },
+    "Taburet_new1": {
+      "name": "Stool with Suspended Seat"
+    },
+    "Taburet_new2": {
+      "name": "wooden chair"
+    },
+    "Tumba_5890": {
+      "name": "Bedside Table"
+    },
+    "Tumba_5890_d2": {
+      "name": "Bedside Table"
+    },
+    "Tumba_5890_с": {
+      "name": "Cabinet with Doors"
+    },
+    "Yashik_group": {
+      "name": "Crates"
+    },
+    "Yashik_group3": {
+      "name": "Crates"
+    },
+    "Yashik_group5": {
+      "name": "Crates"
+    },
+    "Yashik_p_1": {
+      "name": "Crate"
+    },
+    "Yashik_p_2": {
+      "name": "Crate"
+    },
+    "Yashik_p_3": {
+      "name": "Crate"
+    },
+    "Yashik_p_4": {
+      "name": "Crate"
+    },
+    "Yashik_p_5": {
+      "name": "Crate"
+    },
+    "Yashik_p_6": {
+      "name": "Crate"
+    },
+    "Yashik_p_6a": {
+      "name": "Crate"
+    },
+    "Yashiki_5832": {
+      "name": "Crates"
+    },
+    "Zheleznyi_chemodanchik_5833": {
+      "name": "Iron Briefcase"
+    },
+    "Zheleznyi_shkafchik_5836": {
+      "name": "Iron Cabinet"
+    },
+    "acid_nettle": {
+      "name": "Acid Nettle"
+    },
+    "amber_wormwood": {
+      "name": "Amber Wormwood"
+    },
+    "ammo_box_close": {
+      "name": "Crate"
+    },
+    "ammo_box_close_merc": {
+      "name": "Crate"
+    },
+    "ammo_box_open": {
+      "name": "Crate"
+    },
+    "avanpost_spot": {
+      "name": "Outpost"
+    },
+    "base_prikop": {
+      "name": "Cache"
+    },
+    "bed_3": {
+      "name": "bed"
+    },
+    "bed_m_1": {
+      "name": "bed"
+    },
+    "bed_m_2": {
+      "name": "bed"
+    },
+    "bed_m_3": {
+      "name": "bed"
+    },
+    "big_crates_setka": {
+      "name": "Crates"
+    },
+    "blizzard_fireplace_quest2": {
+      "name": "Heating Installation not operational"
+    },
+    "books": {
+      "name": "books"
+    },
+    "books3": {
+      "name": "books"
+    },
+    "books4": {
+      "name": "books"
+    },
+    "books5": {
+      "name": "books"
+    },
+    "books6": {
+      "name": "books"
+    },
+    "books7": {
+      "name": "books"
+    },
+    "bumaga_group_1": {
+      "name": "paper"
+    },
+    "bumaga_group_2": {
+      "name": "paper"
+    },
+    "bumaga_group_3": {
+      "name": "paper"
+    },
+    "bumaga_group_4": {
+      "name": "paper"
+    },
+    "bumaga_group_5": {
+      "name": "paper"
+    },
+    "cable_3d": {
+      "name": "3D Cable"
+    },
+    "campfire_1": {
+      "name": "Campfire"
+    },
+    "campfire_1a": {
+      "name": "Campfire"
+    },
+    "carousel": {
+      "name": "Blender"
+    },
+    "circus": {
+      "name": "Inferno"
+    },
+    "contamination_bio1_1": {
+      "name": "Bio Lv 1"
+    },
+    "contamination_bio2_1": {
+      "name": "Bio Lv 2"
+    },
+    "contamination_bio3_1": {
+      "name": "Bio Lv 3"
+    },
+    "contamination_psy2_1": {
+      "name": "Psy Lv 2"
+    },
+    "contamination_psy3_1": {
+      "name": "Psy Lv 3"
+    },
+    "contamination_psy4_1": {
+      "name": "Psy Lv 4"
+    },
+    "contamination_rad1_1": {
+      "name": "Radiation Lv 1"
+    },
+    "contamination_rad2_1": {
+      "name": "Radiation Lv 2"
+    },
+    "contamination_rad3_1": {
+      "name": "Radiation Lv 3"
+    },
+    "contamination_rad4_1": {
+      "name": "Radiation Lv 4"
+    },
+    "contamination_rec31_bio1_1": {
+      "name": "Bio Lv 1 rectangle 3x1"
+    },
+    "contamination_rec31_bio2_1": {
+      "name": "Bio Lv 2 rectangle 3x1"
+    },
+    "contamination_rec31_bio3_1": {
+      "name": "Bio Lv 3 rectangle 3x1"
+    },
+    "contamination_rec31_psy2_1": {
+      "name": "Psy Lv 2 rectangle 3x1"
+    },
+    "contamination_rec31_psy3_1": {
+      "name": "Psy Lv 3 rectangle 3x1"
+    },
+    "contamination_rec31_psy4_1": {
+      "name": "Psy Lv 4 rectangle 3x1"
+    },
+    "contamination_rec31_rad1_1": {
+      "name": "Radiation Lv 1 rectangle 3x1"
+    },
+    "contamination_rec31_rad2_1": {
+      "name": "Radiation Lv 2 rectangle 3x1"
+    },
+    "contamination_rec31_rad3_1": {
+      "name": "Radiation Lv 3 rectangle 3x1"
+    },
+    "contamination_rec31_rad4_1": {
+      "name": "Radiation Lv 4 rectangle 3x1"
+    },
+    "contamination_rec31_thr1_1": {
+      "name": "Thermal Lv 1 rectangle 3x1"
+    },
+    "contamination_rec31_thr2_1": {
+      "name": "Thermal Lv 2 rectangle 3x1"
+    },
+    "contamination_rec31_thr3_1": {
+      "name": "Thermal Lv 3 rectangle 3x1"
+    },
+    "contamination_rec51_bio2_1": {
+      "name": "Bio Lv 2 rectangle 5x1"
+    },
+    "contamination_rec51_psy2_1": {
+      "name": "Psy Lv 2 rectangle 5x1"
+    },
+    "contamination_rec51_psy3_1": {
+      "name": "Psy Lv 3 rectangle 5x1"
+    },
+    "contamination_rec51_thr3_1": {
+      "name": "Thermal Lv 3 rectangle 5x1"
+    },
+    "contamination_rec71_bio1_1": {
+      "name": "Bio Lv 1 rectangle 7x1"
+    },
+    "contamination_rec71_psy2_1": {
+      "name": "Psy Lv 2 rectangle 7x1"
+    },
+    "contamination_rec71_psy3_1": {
+      "name": "Psy Lv 3 rectangle 7x1"
+    },
+    "contamination_rec71_rad2_1": {
+      "name": "Radiation Lv 2 rectangle 7x1"
+    },
+    "contamination_rec71_rad4_1": {
+      "name": "Radiation Lv 4 rectangle 7x1"
+    },
+    "contamination_sphere_bio1_1": {
+      "name": "Bio Lv 1 sphere"
+    },
+    "contamination_sphere_bio2_1": {
+      "name": "Bio Lv 2 sphere"
+    },
+    "contamination_sphere_bio3_1": {
+      "name": "Bio Lv 3 sphere"
+    },
+    "contamination_sphere_psy1_1": {
+      "name": "Psy Lv 1 sphere"
+    },
+    "contamination_sphere_psy2_1": {
+      "name": "Psy Lv 2 sphere"
+    },
+    "contamination_sphere_psy3_1": {
+      "name": "Psy Lv 3 sphere"
+    },
+    "contamination_sphere_psy4_1": {
+      "name": "Psy Lv 4 sphere"
+    },
+    "contamination_sphere_rad1_1": {
+      "name": "Radiation Lv 1 sphere"
+    },
+    "contamination_sphere_rad2_1": {
+      "name": "Radiation Lv 2 sphere"
+    },
+    "contamination_sphere_rad3_1": {
+      "name": "Radiation Lv 3 sphere"
+    },
+    "contamination_sphere_rad4_1": {
+      "name": "Radiation Lv 4 sphere"
+    },
+    "contamination_sphere_thr1_1": {
+      "name": "Thermal Lv 1 sphere"
+    },
+    "contamination_sphere_thr2_1": {
+      "name": "Thermal Lv 2 sphere"
+    },
+    "contamination_sphere_thr3_1": {
+      "name": "Thermal Lv 3 sphere"
+    },
+    "contamination_thr1_1": {
+      "name": "Thermal Lv 1"
+    },
+    "contamination_thr2_1": {
+      "name": "Thermal Lv 2"
+    },
+    "contamination_thr3_1": {
+      "name": "Thermal Lv 3"
+    },
+    "dek_pribors1": {
+      "name": "Scientific Electronics"
+    },
+    "dek_pribors2": {
+      "name": "Scientific Electronics"
+    },
+    "dek_pribors4": {
+      "name": "Scientific Electronics"
+    },
+    "dek_pribors5": {
+      "name": "Scientific Electronics"
+    },
+    "dekal_bumaga0": {
+      "name": "Documents"
+    },
+    "dekal_bumaga1": {
+      "name": "paper"
+    },
+    "dekal_bumaga2": {
+      "name": "paper"
+    },
+    "dekor_yashik_vodka": {
+      "name": "Box of vodka"
+    },
+    "divan_kreslo": {
+      "name": "Couch"
+    },
+    "divan_kreslo_1": {
+      "name": "Couch"
+    },
+    "divan_kreslo_2": {
+      "name": "Couch"
+    },
+    "door_1_closed": {
+      "name": "Door"
+    },
+    "door_2_closed": {
+      "name": "Door"
+    },
+    "door_germ_closed": {
+      "name": "Door"
+    },
+    "electra": {
+      "name": "Discharge"
+    },
+    "electra_air": {
+      "name": "Air Discharge"
+    },
+    "electroshitok": {
+      "name": "Electrical Fuse Box"
+    },
+    "elevator_button2": {
+      "name": "Elevator Buttons"
+    },
+    "encaged_safe": {
+      "name": "Safe"
+    },
+    "filling_cabinet_2_1": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_2_3": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_2_4": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_2_5": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_3_2": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_3_4": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_3_5": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_1": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_2": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_3": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_4": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_5": {
+      "name": "Filing Cabinet"
+    },
+    "filling_cabinet_4_6": {
+      "name": "Filing Cabinet"
+    },
+    "fridge_table": {
+      "name": "Fridge"
+    },
+    "funnel": {
+      "name": "Whirlpool"
+    },
+    "gnezdo_1": {
+      "name": "Crow's Nest"
+    },
+    "gnosis": {
+      "name": "Gnosis"
+    },
+    "group_medecine_1": {
+      "name": "first-aid kit"
+    },
+    "group_polka3_loot": {
+      "name": "Cupboard"
+    },
+    "group_shkaf2_loot": {
+      "name": "Cabinet with Doors"
+    },
+    "group_shkaf3_loot": {
+      "name": "Cupboard"
+    },
+    "group_shkaf4_loot": {
+      "name": "Cabinet with Doors"
+    },
+    "gsp_11": {
+      "name": "battery"
+    },
+    "hellroot": {
+      "name": "Hellroot"
+    },
+    "hideout_armchair_1": {
+      "name": "Armchair"
+    },
+    "hideout_stool_wood_1": {
+      "name": "Stool"
+    },
+    "karoteka_2": {
+      "name": "Filing Cabinet"
+    },
+    "kisel_1": {
+      "name": "Aspic"
+    },
+    "kisel_1_no_particles": {
+      "name": "Aspic"
+    },
+    "kisel_2": {
+      "name": "Jellify"
+    },
+    "kisel_2_no_particles": {
+      "name": "Jellify"
+    },
+    "korobki_karton_1": {
+      "name": "Boxes"
+    },
+    "korobki_karton_4": {
+      "name": "Boxes"
+    },
+    "kreslo_otk_1": {
+      "name": "folding chair"
+    },
+    "kreslo_otk_2": {
+      "name": "folding chair"
+    },
+    "kreslo_otk_3": {
+      "name": "folding chair"
+    },
+    "kreslo_otk_4": {
+      "name": "folding chair"
+    },
+    "lab_pc": {
+      "name": "OK computer"
+    },
+    "looting_bag_haversack": {
+      "name": "Backpack"
+    },
+    "looting_bag_mbss": {
+      "name": "Backpack"
+    },
+    "looting_bag_sports": {
+      "name": "Backpack"
+    },
+    "looting_bag_transformer": {
+      "name": "Backpack"
+    },
+    "looting_cash_register": {
+      "name": "Cash Register"
+    },
+    "looting_chekered_bag": {
+      "name": "Bag"
+    },
+    "looting_chest": {
+      "name": "Chest"
+    },
+    "looting_dom_suitcase": {
+      "name": "Suitcase"
+    },
+    "looting_fraction_box5_bandit": {
+      "name": "Bandit Container"
+    },
+    "looting_fraction_box5_dolg": {
+      "name": "Frontier Container"
+    },
+    "looting_fraction_box5_naim": {
+      "name": "Mercenary Container"
+    },
+    "looting_fraction_box5_stalker": {
+      "name": "Stalker Container"
+    },
+    "looting_fraction_box5_zarya": {
+      "name": "Rise Container"
+    },
+    "looting_fraction_box5_zavet": {
+      "name": "Covenant Container"
+    },
+    "looting_jacket_bandit": {
+      "name": "Jackets"
+    },
+    "looting_jacket_civil": {
+      "name": "Jackets"
+    },
+    "looting_jacket_military": {
+      "name": "Jackets"
+    },
+    "looting_jacket_stalker": {
+      "name": "Jackets"
+    },
+    "looting_med_bag": {
+      "name": "Medical Bag"
+    },
+    "looting_med_box": {
+      "name": "Medicine Crate"
+    },
+    "looting_med_skaf": {
+      "name": "Medical Locker"
+    },
+    "looting_military_box1": {
+      "name": "Weapon Container"
+    },
+    "looting_military_box2": {
+      "name": "Weapon Container"
+    },
+    "looting_military_box3": {
+      "name": "Weapon Container"
+    },
+    "looting_military_box4": {
+      "name": "Weapon Container"
+    },
+    "looting_military_box5": {
+      "name": "Weapon Container"
+    },
+    "looting_military_cabinet_big": {
+      "name": "Weapon Locker"
+    },
+    "looting_military_cabinet_small": {
+      "name": "Weapon Cabinet"
+    },
+    "looting_safe_safe1": {
+      "name": "Safe"
+    },
+    "looting_safe_safe2": {
+      "name": "Safe"
+    },
+    "looting_safe_safe3": {
+      "name": "Safe"
+    },
+    "looting_sapernabor": {
+      "name": "Sapper Kit "
+    },
+    "looting_tainiki_bag": {
+      "name": "Bag"
+    },
+    "looting_tainiki_barrel": {
+      "name": "Barrel"
+    },
+    "looting_tech_box": {
+      "name": "Wooden Crate"
+    },
+    "looting_tech_cabinet": {
+      "name": "Metal Locker"
+    },
+    "looting_toolbox": {
+      "name": "Iron Crate"
+    },
+    "looting_trash_cardboard_box": {
+      "name": "Cardboard Box"
+    },
+    "looting_trash_tank": {
+      "name": "Waste Container"
+    },
+    "looting_wood_2_box": {
+      "name": "Wooden Crate"
+    },
+    "looting_wood_box": {
+      "name": "Wooden Crate"
+    },
+    "matras1": {
+      "name": "mattress"
+    },
+    "matras2": {
+      "name": "mattress"
+    },
+    "medecine_3": {
+      "name": "first-aid kit"
+    },
+    "medecine_9": {
+      "name": "antirad"
+    },
+    "mushrooms_1_l": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_1b": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_2_l": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_2b": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_3_l": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_3b": {
+      "name": "Mushrooms"
+    },
+    "mushrooms_blue_1": {
+      "name": "blue mushrooms"
+    },
+    "mushrooms_blue_3": {
+      "name": "blue mushrooms"
+    },
+    "mushrooms_violet_2": {
+      "name": "purple mushrooms"
+    },
+    "mushrooms_violet_3": {
+      "name": "purple mushrooms"
+    },
+    "mushrooms_yellow_1": {
+      "name": "yellow mushrooms"
+    },
+    "mushrooms_yellow_3": {
+      "name": "yellow mushrooms"
+    },
+    "negator_rec31": {
+      "name": "Protection: rectangle 3x1"
+    },
+    "negator_rec51": {
+      "name": "Protection: rectangle 5x1"
+    },
+    "negator_rec71": {
+      "name": "Protection: rectangle 7x1"
+    },
+    "negator_sphere_1": {
+      "name": "Protection: sphere"
+    },
+    "negatror_cube_1": {
+      "name": "Protection: cube"
+    },
+    "newspaper_2": {
+      "name": "Newspapers"
+    },
+    "newspaper_3": {
+      "name": "Newspapers"
+    },
+    "newspaper_5": {
+      "name": "Newspapers"
+    },
+    "notebook_army": {
+      "name": "Laptop"
+    },
+    "pale_leaf": {
+      "name": "Pale-Leaf"
+    },
+    "plastik_stul": {
+      "name": "White Plastic Chair"
+    },
+    "plastik_stul1": {
+      "name": "Blue Plastic Chair"
+    },
+    "plastik_stul2": {
+      "name": "Green Plastic Chair"
+    },
+    "plastik_stul3": {
+      "name": "Red Plastic Chair"
+    },
+    "plastik_stul4": {
+      "name": "Yellow Plastic Chair"
+    },
+    "prestige_psychoscope": {
+      "name": "Psychoscope"
+    },
+    "puh_new1": {
+      "name": "fluff"
+    },
+    "puh_new2": {
+      "name": "fluff"
+    },
+    "quest_notepad": {
+      "name": "Notebook"
+    },
+    "quest_petrush": {
+      "name": "Chernobyl Parsley"
+    },
+    "shiferny_1": {
+      "name": "intact slate fence"
+    },
+    "steam": {
+      "name": "Kettle"
+    },
+    "storeage_wire_door": {
+      "name": "Cupboard"
+    },
+    "stul_shkola": {
+      "name": "school chair"
+    },
+    "svalka_radio_prikop1": {
+      "name": "Cache"
+    },
+    "table": {
+      "name": "Table"
+    },
+    "table_stuff_4": {
+      "name": "one-piece"
+    },
+    "teleport_bubble": {
+      "name": "Burrow"
+    },
+    "teleport_invisible": {
+      "name": "Teleporter"
+    },
+    "tent_triangl_1": {
+      "name": "Tent"
+    },
+    "tramp": {
+      "name": "Trampoline"
+    },
+    "tree_2b_1": {
+      "name": "tree"
+    },
+    "triggerCollision": {
+      "name": "Invisible Trigger Collision"
+    },
+    "unitaz_1": {
+      "name": "Toilet"
+    },
+    "unitaz_2": {
+      "name": "Toilet"
+    },
+    "unitaz_3": {
+      "name": "Toilet"
+    },
+    "valve2": {
+      "name": "Valve"
+    },
+    "vehicle_boat_1": {
+      "name": "Boat"
+    },
+    "vodokachka": {
+      "name": "Pump"
+    },
+    "water_carrier": {
+      "name": "Water Carrier"
+    },
+    "wood_polka_boxes": {
+      "name": "Shelf"
+    },
+    "yash_1_a": {
+      "name": "Cupboard"
+    },
+    "yash_3_a": {
+      "name": "Cupboard"
+    },
+    "zastoy": {
+      "name": "Stasis"
+    },
+    "zipline": {
+      "name": "Zipline"
+    },
+    "zipline_vertical": {
+      "name": "Zipline"
+    },
+    "kapkan": {
+      "name": "Trap"
+    }
+  },
+  "location": {
+    "armsklad": {
+      "name": "Polesskoye"
+    },
+    "arsenal_workshop": {
+      "name": "Arsenal Workshop"
+    },
+    "atamans_hq": {
+      "name": "Ataman's HQ"
+    },
+    "atp": {
+      "name": "Fire Station"
+    },
+    "bar": {
+      "name": "Pervomaisky Factory"
+    },
+    "bar_save": {
+      "name": "Pervomaisky Factory Bar"
+    },
+    "bar_save_residential_hangar": {
+      "name": "Dorms"
+    },
+    "bar_sever": {
+      "name": "Drunken Geiger Bar"
+    },
+    "base_covenant": {
+      "name": "Covenant Abode"
+    },
+    "base_duty": {
+      "name": "Frontier Base"
+    },
+    "base_freedom": {
+      "name": "Rise Base"
+    },
+    "base_merc": {
+      "name": "Mercenary Camp"
+    },
+    "boat_station": {
+      "name": "Boathouse"
+    },
+    "bolota": {
+      "name": "The Swamps"
+    },
+    "dungeon_Janiko": {
+      "name": "Unknown"
+    },
+    "dungeon_Ripper": {
+      "name": "Unknown"
+    },
+    "dungeon_apocalypse_challenge": {
+      "name": "Unknown"
+    },
+    "dungeon_apocalypse_obol": {
+      "name": "Cellar"
+    },
+    "dungeon_art": {
+      "name": "Swamp Dugout"
+    },
+    "dungeon_barsani": {
+      "name": "The Path of Fools"
+    },
+    "dungeon_base_sanitar_1_fight": {
+      "name": "Orderly Base"
+    },
+    "dungeon_base_sanitar_1_peaceful": {
+      "name": "Orderly Base"
+    },
+    "dungeon_chimera": {
+      "name": "Pervomaisky Factory"
+    },
+    "dungeon_domiki": {
+      "name": "Hole Punch Hideout"
+    },
+    "dungeon_domiki2": {
+      "name": "Roadside"
+    },
+    "dungeon_domikizryach": {
+      "name": "Unknown"
+    },
+    "dungeon_dosug": {
+      "name": "House"
+    },
+    "dungeon_dyrokol": {
+      "name": "Hole Punch Hideout"
+    },
+    "dungeon_enlightened_1": {
+      "name": "Den of the Enlightened"
+    },
+    "dungeon_enlightened_2": {
+      "name": "Den of the Enlightened"
+    },
+    "dungeon_gribochki": {
+      "name": "Dungeon"
+    },
+    "dungeon_kmpt_agro": {
+      "name": "Kolos Agrocomplex"
+    },
+    "dungeon_kompot_alco": {
+      "name": "Unknown"
+    },
+    "dungeon_kompot_zemlyanka": {
+      "name": "Unknown"
+    },
+    "dungeon_kpz": {
+      "name": "Holding Cells"
+    },
+    "dungeon_lab": {
+      "name": "Laboratory"
+    },
+    "dungeon_leviathan_hutor": {
+      "name": "Unknown"
+    },
+    "dungeon_limansk_isxod": {
+      "name": "Unknown"
+    },
+    "dungeon_merc_01": {
+      "name": "Unknown"
+    },
+    "dungeon_merc_02": {
+      "name": "Unknown"
+    },
+    "dungeon_mgber": {
+      "name": "The Dead City"
+    },
+    "dungeon_minks": {
+      "name": "Unknown"
+    },
+    "dungeon_mir_korabley_cave": {
+      "name": "Cave"
+    },
+    "dungeon_moneta": {
+      "name": "Unknown"
+    },
+    "dungeon_moneta2": {
+      "name": "Unknown"
+    },
+    "dungeon_morok_arena": {
+      "name": "Morph's lair"
+    },
+    "dungeon_morok_radar": {
+      "name": "Inside Out of the Radar"
+    },
+    "dungeon_mozglyak": {
+      "name": "Weakling's Den"
+    },
+    "dungeon_perbar": {
+      "name": "Premises"
+    },
+    "dungeon_podvalDed": {
+      "name": "Unknown"
+    },
+    "dungeon_polovetskiy": {
+      "name": "Unknown"
+    },
+    "dungeon_psisobaka": {
+      "name": "Unknown"
+    },
+    "dungeon_pumpstation": {
+      "name": "Pumping Station"
+    },
+    "dungeon_rest_in_peace": {
+      "name": "Unknown"
+    },
+    "dungeon_school": {
+      "name": "Vlasov's School"
+    },
+    "dungeon_sklad_frimena": {
+      "name": "Unknown"
+    },
+    "dungeon_spusk": {
+      "name": "Vagant's Den"
+    },
+    "dungeon_stels": {
+      "name": "Unknown"
+    },
+    "dungeon_sub_frontier_01": {
+      "name": "Cave"
+    },
+    "dungeon_sub_frontier_02": {
+      "name": "Cave"
+    },
+    "dungeon_sub_frontier_03": {
+      "name": "Cave"
+    },
+    "dungeon_sub_frontier_04": {
+      "name": "Cave"
+    },
+    "dungeon_sudba": {
+      "name": "Caves"
+    },
+    "dungeon_svetliy_bandits": {
+      "name": "Unknown"
+    },
+    "dungeon_svetliy_stalkers": {
+      "name": "Unknown"
+    },
+    "dungeon_tonnelradar": {
+      "name": "Tunnel"
+    },
+    "dungeon_travnik": {
+      "name": "Unknown"
+    },
+    "dungeon_upir": {
+      "name": "Unknown"
+    },
+    "dungeon_vendetta": {
+      "name": "Stalkers' Shelter"
+    },
+    "dungeon_zemlcap1": {
+      "name": "Unknown"
+    },
+    "ffa_base_bunker": {
+      "name": "Bunker"
+    },
+    "ffa_base_kpp_north": {
+      "name": "Checkpoint"
+    },
+    "ffa_base_meteostation": {
+      "name": "Weather station"
+    },
+    "ffa_base_mine": {
+      "name": "Old mine"
+    },
+    "foton2": {
+      "name": "Village School"
+    },
+    "hideout": {
+      "name": "Hideout"
+    },
+    "kordon": {
+      "name": "Roadside"
+    },
+    "les": {
+      "name": "The Forest"
+    },
+    "north_forge": {
+      "name": "Forge-11"
+    },
+    "north_inflow": {
+      "name": "Inflow"
+    },
+    "north_maze_d_c": {
+      "name": "Labyrinth"
+    },
+    "north_maze_m_f": {
+      "name": "Labyrinth"
+    },
+    "north_mines": {
+      "name": "Mines"
+    },
+    "outpost_covenant": {
+      "name": "Covenant Outpost"
+    },
+    "outpost_duty": {
+      "name": "Frontier Outpost"
+    },
+    "outpost_freedom": {
+      "name": "Rise Outpost"
+    },
+    "outpost_merc": {
+      "name": "Mercenary Outpost"
+    },
+    "overpass": {
+      "name": "Underground"
+    },
+    "pd": {
+      "name": "The Path of Fools"
+    },
+    "rls": {
+      "name": "The Red Forest"
+    },
+    "savezone_agroprom": {
+      "name": "Digger Hut"
+    },
+    "savezone_td": {
+      "name": "Digger Plot"
+    },
+    "svalka": {
+      "name": "Scrapyard"
+    },
+    "td": {
+      "name": "Black Willows"
+    },
+    "tutorial_zemlyanka": {
+      "name": "Dugout"
+    },
+    "under_pd": {
+      "name": "The Path of Fools Underground"
+    },
+    "yanov": {
+      "name": "Uranus Mill"
+    },
+    "yantar": {
+      "name": "The Pit"
+    },
+    "zaton": {
+      "name": "Stillwaters"
+    },
+    "zemlyanka_shaman": {
+      "name": "Shaman's Den"
+    }
+  },
+  "group": {
+    "anomalies": "Anomalies",
+    "loot": "Loot",
+    "movement": "Movement",
+    "other": "Other",
+    "quests": "Quests",
+    "teleports": "Teleports"
+  },
+  "info": {
+    "destinations": "Destinations"
   }
 }

@@ -5,6 +5,11 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 import { unbounded } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
+import {
+	clearDesktopIntent,
+	getDesktopIntent,
+	issueDesktopLoginUrl,
+} from '@/services/auth/desktop-auth'
 import { discordAuthService } from '@/services/auth/discord/discord.service'
 import { exboAuthService } from '@/services/auth/exbo/auth.service'
 import { telegramAuthService } from '@/services/auth/telegram/telegram.service'
@@ -51,6 +56,16 @@ export default function CallbackPage() {
 						: exboAuthService
 					).handleCallback(code, state)
 					break
+			}
+			if (getDesktopIntent()) {
+				try {
+					const url = await issueDesktopLoginUrl()
+					clearDesktopIntent()
+					window.location.replace(url)
+					return
+				} catch {
+					// fall through to web onboarding
+				}
 			}
 			window.location.replace('/me/onboarding')
 		}

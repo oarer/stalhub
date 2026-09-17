@@ -275,6 +275,9 @@
 		},
 		"filter": {
 			"search": "Buscar por nombre / facción",
+			"filteredSearch": "Buscar marcadores por nombre",
+			"nameResults": "Encontrados: {count}",
+			"namesInfo": "Marcadores ({total}, mostrados {shown})",
 			"all": "Todos",
 			"none": "Nada",
 			"iconsInfo": "Iconos ({total}, mostrados {shown})",

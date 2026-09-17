@@ -420,5 +420,1241 @@
         "title": "Бар «Пьяный Гейгер»"
       }
     }
+  },
+  "go": {
+    "Barrikada_wood": {
+      "name": "Баррикада из дерева"
+    },
+    "Bochka_5857_3": {
+      "name": "Бочка"
+    },
+    "Bochka_5857_4": {
+      "name": "Бочка"
+    },
+    "Bochka_5857_5": {
+      "name": "Бочка"
+    },
+    "Bolshoi_rukzak_5919": {
+      "name": "Большой рюкзак"
+    },
+    "Derevyannyi_stol_(seryi)_5913": {
+      "name": "Деревянный стол"
+    },
+    "Divan_5840": {
+      "name": "Диван"
+    },
+    "Elektroshitok_5881": {
+      "name": "Электрощиток"
+    },
+    "Gazovaya_plita_5876": {
+      "name": "Газовая плита"
+    },
+    "Holodilnik_2": {
+      "name": "Холодильник"
+    },
+    "Holodilnik_5858": {
+      "name": "Холодильник"
+    },
+    "Korobki_kartonnye_5859": {
+      "name": "Коробки картонные"
+    },
+    "Kreslo_ofisnoe_5926": {
+      "name": "Кресло офисное"
+    },
+    "Krest_2_5839": {
+      "name": "Крест 2"
+    },
+    "Kvest_btr_tank": {
+      "name": "Бак"
+    },
+    "Kvest_chistotel": {
+      "name": "Чистотел"
+    },
+    "Kvest_door_sar": {
+      "name": "Дверь"
+    },
+    "Kvest_koloda": {
+      "name": "Колода"
+    },
+    "Kvest_skaner": {
+      "name": "Сканер"
+    },
+    "Kvest_tree_fall_a": {
+      "name": "Дерево"
+    },
+    "Kvest_truck_tank": {
+      "name": "Бак"
+    },
+    "Malyi_rukzak_5917": {
+      "name": "Малый рюкзак"
+    },
+    "Musorka_5821_a": {
+      "name": "Мусорка"
+    },
+    "Polka_5848": {
+      "name": "Полка"
+    },
+    "Pribory_2_5825": {
+      "name": "Приборы"
+    },
+    "Pribory_3": {
+      "name": "Приборы"
+    },
+    "Pribory_5824": {
+      "name": "Приборы"
+    },
+    "Radio_5861": {
+      "name": "Радио"
+    },
+    "Seif_5889": {
+      "name": "Сейф"
+    },
+    "Shkaf_derevo_5834": {
+      "name": "Старый шкаф"
+    },
+    "Shkaf_derevo_5835": {
+      "name": "Старый шкаф"
+    },
+    "Shkaf_derevo_5836": {
+      "name": "Старый шкаф"
+    },
+    "Shkaf_ssr": {
+      "name": "Старый шкаф"
+    },
+    "Shkaf_ssr_a": {
+      "name": "Старый шкаф"
+    },
+    "Skamya_4": {
+      "name": "Скамья"
+    },
+    "Skamya_5": {
+      "name": "Скамья"
+    },
+    "Skamya_5921": {
+      "name": "Скамья"
+    },
+    "Skamya_7": {
+      "name": "Скамья"
+    },
+    "Srednii_rukzak_5918": {
+      "name": "Средний рюкзак"
+    },
+    "Staryi_telek_5925": {
+      "name": "Старый телек"
+    },
+    "Stol_1_5908": {
+      "name": "Стол"
+    },
+    "Stol_1_5909_open": {
+      "name": "Стол"
+    },
+    "Stol_1_a": {
+      "name": "Стол"
+    },
+    "Stol_1_b": {
+      "name": "Стол"
+    },
+    "Stul_5911": {
+      "name": "Стул"
+    },
+    "Stul_5911_1": {
+      "name": "Стул"
+    },
+    "Stul_5911_2": {
+      "name": "Стул"
+    },
+    "Taburet_5912": {
+      "name": "Табурет"
+    },
+    "Taburet_5912_1": {
+      "name": "Табурет"
+    },
+    "Taburet_5912_2": {
+      "name": "Табурет"
+    },
+    "Taburet_new1": {
+      "name": "Табурет с сидушкой"
+    },
+    "Taburet_new2": {
+      "name": "деревянный стуль"
+    },
+    "Tumba_5890": {
+      "name": "Тумба"
+    },
+    "Tumba_5890_d2": {
+      "name": "Тумба"
+    },
+    "Tumba_5890_с": {
+      "name": "Шкафчик с дверьми"
+    },
+    "Yashik_group": {
+      "name": "Ящики"
+    },
+    "Yashik_group3": {
+      "name": "Ящики"
+    },
+    "Yashik_group5": {
+      "name": "Ящики"
+    },
+    "Yashik_p_1": {
+      "name": "Ящик"
+    },
+    "Yashik_p_2": {
+      "name": "Ящик"
+    },
+    "Yashik_p_3": {
+      "name": "Ящик"
+    },
+    "Yashik_p_4": {
+      "name": "Ящик"
+    },
+    "Yashik_p_5": {
+      "name": "Ящик"
+    },
+    "Yashik_p_6": {
+      "name": "Ящик"
+    },
+    "Yashik_p_6a": {
+      "name": "Ящик"
+    },
+    "Yashiki_5832": {
+      "name": "Ящики"
+    },
+    "Zheleznyi_chemodanchik_5833": {
+      "name": "Железный чемоданчик"
+    },
+    "Zheleznyi_shkafchik_5836": {
+      "name": "Железный шкафчик"
+    },
+    "acid_nettle": {
+      "name": "Кислотная крапива"
+    },
+    "amber_wormwood": {
+      "name": "Янтарная полынь"
+    },
+    "ammo_box_close": {
+      "name": "Ящик"
+    },
+    "ammo_box_close_merc": {
+      "name": "Ящик"
+    },
+    "ammo_box_open": {
+      "name": "Ящик"
+    },
+    "avanpost_spot": {
+      "name": "Аванпост"
+    },
+    "base_prikop": {
+      "name": "Прикоп"
+    },
+    "bed_3": {
+      "name": "кровать"
+    },
+    "bed_m_1": {
+      "name": "кровать"
+    },
+    "bed_m_2": {
+      "name": "кровать"
+    },
+    "bed_m_3": {
+      "name": "кровать"
+    },
+    "big_crates_setka": {
+      "name": "Ящики"
+    },
+    "blizzard_fireplace_quest2": {
+      "name": "Неработающая тепловая установка"
+    },
+    "books": {
+      "name": "книги"
+    },
+    "books3": {
+      "name": "книги"
+    },
+    "books4": {
+      "name": "книги"
+    },
+    "books5": {
+      "name": "книги"
+    },
+    "books6": {
+      "name": "книги"
+    },
+    "books7": {
+      "name": "книги"
+    },
+    "bumaga_group_1": {
+      "name": "бумага"
+    },
+    "bumaga_group_2": {
+      "name": "бумага"
+    },
+    "bumaga_group_3": {
+      "name": "бумага"
+    },
+    "bumaga_group_4": {
+      "name": "бумага"
+    },
+    "bumaga_group_5": {
+      "name": "бумага"
+    },
+    "cable_3d": {
+      "name": "3D Cable"
+    },
+    "campfire_1": {
+      "name": "Костер"
+    },
+    "campfire_1a": {
+      "name": "Костер"
+    },
+    "carousel": {
+      "name": "Волчок"
+    },
+    "circus": {
+      "name": "Пекло"
+    },
+    "contamination_bio1_1": {
+      "name": "Био 1 ур."
+    },
+    "contamination_bio2_1": {
+      "name": "Био 2 ур."
+    },
+    "contamination_bio3_1": {
+      "name": "Био 3 ур."
+    },
+    "contamination_psy2_1": {
+      "name": "Пси 2 ур."
+    },
+    "contamination_psy3_1": {
+      "name": "Пси 3 ур."
+    },
+    "contamination_psy4_1": {
+      "name": "Пси 4 ур."
+    },
+    "contamination_rad1_1": {
+      "name": "Радиация 1 ур."
+    },
+    "contamination_rad2_1": {
+      "name": "Радиация 2 ур."
+    },
+    "contamination_rad3_1": {
+      "name": "Радиация 3 ур."
+    },
+    "contamination_rad4_1": {
+      "name": "Радиация 4 ур."
+    },
+    "contamination_rec31_bio1_1": {
+      "name": "Био 1 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_bio2_1": {
+      "name": "Био 2 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_bio3_1": {
+      "name": "Био 3 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_psy2_1": {
+      "name": "Пси 2 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_psy3_1": {
+      "name": "Пси 3 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_psy4_1": {
+      "name": "Пси 4 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_rad1_1": {
+      "name": "Радиация 1 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_rad2_1": {
+      "name": "Радиация 2 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_rad3_1": {
+      "name": "Радиация 3 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_rad4_1": {
+      "name": "Радиация 4 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_thr1_1": {
+      "name": "Терма 1 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_thr2_1": {
+      "name": "Терма 2 ур. прямоугольник 3к1"
+    },
+    "contamination_rec31_thr3_1": {
+      "name": "Терма 3 ур. прямоугольник 3к1"
+    },
+    "contamination_rec51_bio2_1": {
+      "name": "Био 2 ур. прямоугольник 5к1"
+    },
+    "contamination_rec51_psy2_1": {
+      "name": "Пси 2 ур. прямоугольник 5к1"
+    },
+    "contamination_rec51_psy3_1": {
+      "name": "Пси 3 ур. прямоугольник 5к1"
+    },
+    "contamination_rec51_thr3_1": {
+      "name": "Терма 3 ур. прямоугольник 5к1"
+    },
+    "contamination_rec71_bio1_1": {
+      "name": "Био 1 ур. прямоугольник 7к1"
+    },
+    "contamination_rec71_psy2_1": {
+      "name": "Пси 2 ур. прямоугольник 7к1"
+    },
+    "contamination_rec71_psy3_1": {
+      "name": "Пси 3 ур. прямоугольник 7к1"
+    },
+    "contamination_rec71_rad2_1": {
+      "name": "Радиация 2 ур. прямоугольник 7к1"
+    },
+    "contamination_rec71_rad4_1": {
+      "name": "Радиация 4 ур. прямоугольник 7к1"
+    },
+    "contamination_sphere_bio1_1": {
+      "name": "Био 1 ур. шар"
+    },
+    "contamination_sphere_bio2_1": {
+      "name": "Био 2 ур. шар"
+    },
+    "contamination_sphere_bio3_1": {
+      "name": "Био 3 ур. шар"
+    },
+    "contamination_sphere_psy1_1": {
+      "name": "Пси 1 ур. шар"
+    },
+    "contamination_sphere_psy2_1": {
+      "name": "Пси 2 ур. шар"
+    },
+    "contamination_sphere_psy3_1": {
+      "name": "Пси 3 ур. шар"
+    },
+    "contamination_sphere_psy4_1": {
+      "name": "Пси 4 ур. шар"
+    },
+    "contamination_sphere_rad1_1": {
+      "name": "Радиация 1 ур. шар"
+    },
+    "contamination_sphere_rad2_1": {
+      "name": "Радиация 2 ур. шар"
+    },
+    "contamination_sphere_rad3_1": {
+      "name": "Радиация 3 ур. шар"
+    },
+    "contamination_sphere_rad4_1": {
+      "name": "Радиация 4 ур. шар"
+    },
+    "contamination_sphere_thr1_1": {
+      "name": "Терма 1 ур. шар"
+    },
+    "contamination_sphere_thr2_1": {
+      "name": "Терма 2 ур. шар"
+    },
+    "contamination_sphere_thr3_1": {
+      "name": "Терма 3 ур. шар"
+    },
+    "contamination_thr1_1": {
+      "name": "Терма 1 ур."
+    },
+    "contamination_thr2_1": {
+      "name": "Терма 2 ур."
+    },
+    "contamination_thr3_1": {
+      "name": "Терма 3 ур."
+    },
+    "dek_pribors1": {
+      "name": "Научная электроника"
+    },
+    "dek_pribors2": {
+      "name": "Научная электроника"
+    },
+    "dek_pribors4": {
+      "name": "Научная электроника"
+    },
+    "dek_pribors5": {
+      "name": "Научная электроника"
+    },
+    "dekal_bumaga0": {
+      "name": "Документы"
+    },
+    "dekal_bumaga1": {
+      "name": "бумага"
+    },
+    "dekal_bumaga2": {
+      "name": "бумага"
+    },
+    "dekor_yashik_vodka": {
+      "name": "Коробка с водкой"
+    },
+    "divan_kreslo": {
+      "name": "Диван"
+    },
+    "divan_kreslo_1": {
+      "name": "Диван"
+    },
+    "divan_kreslo_2": {
+      "name": "Диван"
+    },
+    "door_1_closed": {
+      "name": "Дверь"
+    },
+    "door_2_closed": {
+      "name": "Дверь"
+    },
+    "door_germ_closed": {
+      "name": "Дверь"
+    },
+    "electra": {
+      "name": "Разряд"
+    },
+    "electra_air": {
+      "name": "Воздушный разряд"
+    },
+    "electroshitok": {
+      "name": "Электрщиток"
+    },
+    "elevator_button2": {
+      "name": "Кнопки лифта"
+    },
+    "encaged_safe": {
+      "name": "Сейф"
+    },
+    "filling_cabinet_2_1": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_2_3": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_2_4": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_2_5": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_3_2": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_3_4": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_3_5": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_1": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_2": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_3": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_4": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_5": {
+      "name": "Картотека"
+    },
+    "filling_cabinet_4_6": {
+      "name": "Картотека"
+    },
+    "fridge_table": {
+      "name": "Холодильник"
+    },
+    "funnel": {
+      "name": "Омут"
+    },
+    "gnezdo_1": {
+      "name": "Воронье гнездо"
+    },
+    "gnosis": {
+      "name": "Гнозис"
+    },
+    "group_medecine_1": {
+      "name": "аптечка"
+    },
+    "group_polka3_loot": {
+      "name": "Шкаф"
+    },
+    "group_shkaf2_loot": {
+      "name": "Шкафчик с дверьми"
+    },
+    "group_shkaf3_loot": {
+      "name": "Шкаф"
+    },
+    "group_shkaf4_loot": {
+      "name": "Шкафчик с дверьми"
+    },
+    "gsp_11": {
+      "name": "аккумулятор"
+    },
+    "hellroot": {
+      "name": "Чертоцвет"
+    },
+    "hideout_armchair_1": {
+      "name": "Кресло"
+    },
+    "hideout_stool_wood_1": {
+      "name": "Табурет"
+    },
+    "karoteka_2": {
+      "name": "Картотечный шкаф"
+    },
+    "kisel_1": {
+      "name": "«Холодец»"
+    },
+    "kisel_1_no_particles": {
+      "name": "«Холодец»"
+    },
+    "kisel_2": {
+      "name": "«Студень»"
+    },
+    "kisel_2_no_particles": {
+      "name": "«Студень»"
+    },
+    "korobki_karton_1": {
+      "name": "Коробки"
+    },
+    "korobki_karton_4": {
+      "name": "Коробки"
+    },
+    "kreslo_otk_1": {
+      "name": "кресла откидное"
+    },
+    "kreslo_otk_2": {
+      "name": "кресла откидное"
+    },
+    "kreslo_otk_3": {
+      "name": "кресла откидное"
+    },
+    "kreslo_otk_4": {
+      "name": "кресла откидное"
+    },
+    "lab_pc": {
+      "name": "ок компутер"
+    },
+    "looting_bag_haversack": {
+      "name": "Рюкзак"
+    },
+    "looting_bag_mbss": {
+      "name": "Рюкзак"
+    },
+    "looting_bag_sports": {
+      "name": "Рюкзак"
+    },
+    "looting_bag_transformer": {
+      "name": "Рюкзак"
+    },
+    "looting_cash_register": {
+      "name": "Кассовый аппарат"
+    },
+    "looting_chekered_bag": {
+      "name": "Сумка"
+    },
+    "looting_chest": {
+      "name": "Сундук"
+    },
+    "looting_dom_suitcase": {
+      "name": "Чемодан"
+    },
+    "looting_fraction_box5_bandit": {
+      "name": "Контейнер Бандитов"
+    },
+    "looting_fraction_box5_dolg": {
+      "name": "Контейнер Рубежа"
+    },
+    "looting_fraction_box5_naim": {
+      "name": "Контейнер Наемников"
+    },
+    "looting_fraction_box5_stalker": {
+      "name": "Контейнер Сталкеров"
+    },
+    "looting_fraction_box5_zarya": {
+      "name": "Контейнер Зари"
+    },
+    "looting_fraction_box5_zavet": {
+      "name": "Контейнер Завета"
+    },
+    "looting_jacket_bandit": {
+      "name": "Куртки"
+    },
+    "looting_jacket_civil": {
+      "name": "Куртки"
+    },
+    "looting_jacket_military": {
+      "name": "Куртки"
+    },
+    "looting_jacket_stalker": {
+      "name": "Куртки"
+    },
+    "looting_med_bag": {
+      "name": "Медицинская сумка"
+    },
+    "looting_med_box": {
+      "name": "Медицинский ящик"
+    },
+    "looting_med_skaf": {
+      "name": "Медицинский шкаф"
+    },
+    "looting_military_box1": {
+      "name": "Оружейный контейнер"
+    },
+    "looting_military_box2": {
+      "name": "Оружейный контейнер"
+    },
+    "looting_military_box3": {
+      "name": "Оружейный контейнер"
+    },
+    "looting_military_box4": {
+      "name": "Оружейный контейнер"
+    },
+    "looting_military_box5": {
+      "name": "Оружейный контейнер"
+    },
+    "looting_military_cabinet_big": {
+      "name": "Оружейный шкаф"
+    },
+    "looting_military_cabinet_small": {
+      "name": "Оружейный шкафчик"
+    },
+    "looting_safe_safe1": {
+      "name": "Сейф"
+    },
+    "looting_safe_safe2": {
+      "name": "Сейф"
+    },
+    "looting_safe_safe3": {
+      "name": "Сейф"
+    },
+    "looting_sapernabor": {
+      "name": "Набор сапера"
+    },
+    "looting_tainiki_bag": {
+      "name": "Сумка"
+    },
+    "looting_tainiki_barrel": {
+      "name": "Бочка"
+    },
+    "looting_tech_box": {
+      "name": "Деревянный ящик"
+    },
+    "looting_tech_cabinet": {
+      "name": "Металлический шкаф"
+    },
+    "looting_toolbox": {
+      "name": "Железный ящик"
+    },
+    "looting_trash_cardboard_box": {
+      "name": "Картонная коробка"
+    },
+    "looting_trash_tank": {
+      "name": "Мусорный бак"
+    },
+    "looting_wood_2_box": {
+      "name": "Деревянный ящик"
+    },
+    "looting_wood_box": {
+      "name": "Деревянный ящик"
+    },
+    "matras1": {
+      "name": "матрас"
+    },
+    "matras2": {
+      "name": "матрас"
+    },
+    "medecine_3": {
+      "name": "аптечка"
+    },
+    "medecine_9": {
+      "name": "антирад"
+    },
+    "mushrooms_1_l": {
+      "name": "Грибы"
+    },
+    "mushrooms_1b": {
+      "name": "Грибы"
+    },
+    "mushrooms_2_l": {
+      "name": "Грибы"
+    },
+    "mushrooms_2b": {
+      "name": "Грибы"
+    },
+    "mushrooms_3_l": {
+      "name": "Грибы"
+    },
+    "mushrooms_3b": {
+      "name": "Грибы"
+    },
+    "mushrooms_blue_1": {
+      "name": "голубые грибы"
+    },
+    "mushrooms_blue_3": {
+      "name": "голубые грибы"
+    },
+    "mushrooms_violet_2": {
+      "name": "фиолетовые грибы"
+    },
+    "mushrooms_violet_3": {
+      "name": "фиолетовые грибы"
+    },
+    "mushrooms_yellow_1": {
+      "name": "желтые грибы"
+    },
+    "mushrooms_yellow_3": {
+      "name": "желтые грибы"
+    },
+    "negator_rec31": {
+      "name": "Защита: прямоугольник 3к1"
+    },
+    "negator_rec51": {
+      "name": "Защита: прямоугольник 5к1"
+    },
+    "negator_rec71": {
+      "name": "Защита: прямоугольник 7к1"
+    },
+    "negator_sphere_1": {
+      "name": "Защита: шар"
+    },
+    "negatror_cube_1": {
+      "name": "Защита: куб"
+    },
+    "newspaper_2": {
+      "name": "газеты"
+    },
+    "newspaper_3": {
+      "name": "газеты"
+    },
+    "newspaper_5": {
+      "name": "газеты"
+    },
+    "notebook_army": {
+      "name": "Ноутбук"
+    },
+    "pale_leaf": {
+      "name": "Бледнолист"
+    },
+    "plastik_stul": {
+      "name": "Пластиковый стул белый"
+    },
+    "plastik_stul1": {
+      "name": "Пластиковый стул синий"
+    },
+    "plastik_stul2": {
+      "name": "Пластиковый стул зеленый"
+    },
+    "plastik_stul3": {
+      "name": "Пластиковый стул красный"
+    },
+    "plastik_stul4": {
+      "name": "Пластиковый стул желтый"
+    },
+    "prestige_psychoscope": {
+      "name": "Психоскоп"
+    },
+    "puh_new1": {
+      "name": "пух"
+    },
+    "puh_new2": {
+      "name": "пух"
+    },
+    "quest_notepad": {
+      "name": "Блокнот"
+    },
+    "quest_petrush": {
+      "name": "Чернобыльская петрушка"
+    },
+    "shiferny_1": {
+      "name": "забор шиферный целый"
+    },
+    "steam": {
+      "name": "Чайник"
+    },
+    "storeage_wire_door": {
+      "name": "Шкаф"
+    },
+    "stul_shkola": {
+      "name": "школьный стул"
+    },
+    "svalka_radio_prikop1": {
+      "name": "Прикоп"
+    },
+    "table": {
+      "name": "Стол"
+    },
+    "table_stuff_4": {
+      "name": "цельная"
+    },
+    "teleport_bubble": {
+      "name": "«Нора»"
+    },
+    "teleport_invisible": {
+      "name": "Телепорт"
+    },
+    "tent_triangl_1": {
+      "name": "Палатка"
+    },
+    "tramp": {
+      "name": "Батут"
+    },
+    "tree_2b_1": {
+      "name": "дерево"
+    },
+    "triggerCollision": {
+      "name": "Невидимая коллизия триггера"
+    },
+    "unitaz_1": {
+      "name": "Унитаз"
+    },
+    "unitaz_2": {
+      "name": "Унитаз"
+    },
+    "unitaz_3": {
+      "name": "Унитаз"
+    },
+    "valve2": {
+      "name": "Вентиль"
+    },
+    "vehicle_boat_1": {
+      "name": "Лодка"
+    },
+    "vodokachka": {
+      "name": "Колонка"
+    },
+    "water_carrier": {
+      "name": "Водонос"
+    },
+    "wood_polka_boxes": {
+      "name": "Полка"
+    },
+    "yash_1_a": {
+      "name": "Шкаф"
+    },
+    "yash_3_a": {
+      "name": "Шкаф"
+    },
+    "zastoy": {
+      "name": "Застой"
+    },
+    "zipline": {
+      "name": "Зиплайн"
+    },
+    "zipline_vertical": {
+      "name": "Зиплайн"
+    },
+    "kapkan": {
+      "name": "Капкан"
+    }
+  },
+  "location": {
+    "armsklad": {
+      "name": "Полесское"
+    },
+    "arsenal_workshop": {
+      "name": "Мастерская Арсенала"
+    },
+    "atamans_hq": {
+      "name": "Ставка Атамана"
+    },
+    "atp": {
+      "name": "Пожарная часть"
+    },
+    "bar": {
+      "name": "Завод «Первомайский»"
+    },
+    "bar_save": {
+      "name": "Бар завода «Первомайский»"
+    },
+    "bar_save_residential_hangar": {
+      "name": "«Жилка»"
+    },
+    "bar_sever": {
+      "name": "Бар «Пьяный Гейгер»"
+    },
+    "base_covenant": {
+      "name": "Обитель «Завета»"
+    },
+    "base_duty": {
+      "name": "База «Рубежа»"
+    },
+    "base_freedom": {
+      "name": "База «Зари»"
+    },
+    "base_merc": {
+      "name": "Лагерь Наемников"
+    },
+    "boat_station": {
+      "name": "Лодочная станция"
+    },
+    "bolota": {
+      "name": "Болота"
+    },
+    "dungeon_Janiko": {
+      "name": "Неизвестно"
+    },
+    "dungeon_Ripper": {
+      "name": "Неизвестно"
+    },
+    "dungeon_apocalypse_challenge": {
+      "name": "Неизвестно"
+    },
+    "dungeon_apocalypse_obol": {
+      "name": "Подвал"
+    },
+    "dungeon_art": {
+      "name": "Землянка на болотах"
+    },
+    "dungeon_barsani": {
+      "name": "Путь Дураков"
+    },
+    "dungeon_base_sanitar_1_fight": {
+      "name": "База Санитаров"
+    },
+    "dungeon_base_sanitar_1_peaceful": {
+      "name": "База Санитаров"
+    },
+    "dungeon_chimera": {
+      "name": "Завод «Первомайский»"
+    },
+    "dungeon_domiki": {
+      "name": "Убежище Дырокола"
+    },
+    "dungeon_domiki2": {
+      "name": "Обочина"
+    },
+    "dungeon_domikizryach": {
+      "name": "Неизвестно"
+    },
+    "dungeon_dosug": {
+      "name": "Дом"
+    },
+    "dungeon_dyrokol": {
+      "name": "Убежище Дырокола"
+    },
+    "dungeon_enlightened_1": {
+      "name": "Убежище Просвещенного"
+    },
+    "dungeon_enlightened_2": {
+      "name": "Убежище Просвещенного"
+    },
+    "dungeon_gribochki": {
+      "name": "Подземелье"
+    },
+    "dungeon_kmpt_agro": {
+      "name": "Агрокомплекс «Колос»"
+    },
+    "dungeon_kompot_alco": {
+      "name": "Неизвестно"
+    },
+    "dungeon_kompot_zemlyanka": {
+      "name": "Неизвестно"
+    },
+    "dungeon_kpz": {
+      "name": "КПЗ"
+    },
+    "dungeon_lab": {
+      "name": "Лаборатория"
+    },
+    "dungeon_leviathan_hutor": {
+      "name": "Неизвестно"
+    },
+    "dungeon_limansk_isxod": {
+      "name": "Неизвестно"
+    },
+    "dungeon_merc_01": {
+      "name": "Неизвестно"
+    },
+    "dungeon_merc_02": {
+      "name": "Неизвестно"
+    },
+    "dungeon_mgber": {
+      "name": "Мертвый город"
+    },
+    "dungeon_minks": {
+      "name": "Неизвестно"
+    },
+    "dungeon_mir_korabley_cave": {
+      "name": "Пещера"
+    },
+    "dungeon_moneta": {
+      "name": "Неизвестно"
+    },
+    "dungeon_moneta2": {
+      "name": "Неизвестно"
+    },
+    "dungeon_morok_arena": {
+      "name": "Убежище Морока"
+    },
+    "dungeon_morok_radar": {
+      "name": "Искаженный Радар"
+    },
+    "dungeon_mozglyak": {
+      "name": "Логово Мозгляка"
+    },
+    "dungeon_perbar": {
+      "name": "Помещение"
+    },
+    "dungeon_podvalDed": {
+      "name": "Неизвестно"
+    },
+    "dungeon_polovetskiy": {
+      "name": "Неизвестно"
+    },
+    "dungeon_psisobaka": {
+      "name": "Неизвестно"
+    },
+    "dungeon_pumpstation": {
+      "name": "Насосная Станция"
+    },
+    "dungeon_rest_in_peace": {
+      "name": "Неизвестно"
+    },
+    "dungeon_school": {
+      "name": "Школа Власова"
+    },
+    "dungeon_sklad_frimena": {
+      "name": "Неизвестно"
+    },
+    "dungeon_spusk": {
+      "name": "Логово Ваганта"
+    },
+    "dungeon_stels": {
+      "name": "Неизвестно"
+    },
+    "dungeon_sub_frontier_01": {
+      "name": "Пещера"
+    },
+    "dungeon_sub_frontier_02": {
+      "name": "Пещера"
+    },
+    "dungeon_sub_frontier_03": {
+      "name": "Пещера"
+    },
+    "dungeon_sub_frontier_04": {
+      "name": "Пещера"
+    },
+    "dungeon_sudba": {
+      "name": "Пещеры"
+    },
+    "dungeon_svetliy_bandits": {
+      "name": "Неизвестно"
+    },
+    "dungeon_svetliy_stalkers": {
+      "name": "Неизвестно"
+    },
+    "dungeon_tonnelradar": {
+      "name": "Тоннель"
+    },
+    "dungeon_travnik": {
+      "name": "Неизвестно"
+    },
+    "dungeon_upir": {
+      "name": "Неизвестно"
+    },
+    "dungeon_vendetta": {
+      "name": "Убежище Сталкеров"
+    },
+    "dungeon_zemlcap1": {
+      "name": "Неизвестно"
+    },
+    "ffa_base_bunker": {
+      "name": "Бункер"
+    },
+    "ffa_base_kpp_north": {
+      "name": "КПП"
+    },
+    "ffa_base_meteostation": {
+      "name": "Метеостанция"
+    },
+    "ffa_base_mine": {
+      "name": "Старая шахта"
+    },
+    "foton2": {
+      "name": "Сельская школа"
+    },
+    "hideout": {
+      "name": "Убежище"
+    },
+    "kordon": {
+      "name": "Обочина"
+    },
+    "les": {
+      "name": "Лес"
+    },
+    "north_forge": {
+      "name": "Кузня-11"
+    },
+    "north_inflow": {
+      "name": "Приток"
+    },
+    "north_maze_d_c": {
+      "name": "Лабиринт"
+    },
+    "north_maze_m_f": {
+      "name": "Лабиринт"
+    },
+    "north_mines": {
+      "name": "Шахты"
+    },
+    "outpost_covenant": {
+      "name": "Аванпост «Завета»"
+    },
+    "outpost_duty": {
+      "name": "Аванпост «Рубежа»"
+    },
+    "outpost_freedom": {
+      "name": "Аванпост «Зари»"
+    },
+    "outpost_merc": {
+      "name": "Аванпост «Наемников»"
+    },
+    "overpass": {
+      "name": "Подземка"
+    },
+    "pd": {
+      "name": "Путь Дураков"
+    },
+    "rls": {
+      "name": "Рыжий лес"
+    },
+    "savezone_agroprom": {
+      "name": "Хата Диггеров"
+    },
+    "savezone_td": {
+      "name": "Диггерская делянка"
+    },
+    "svalka": {
+      "name": "Свалка техники"
+    },
+    "td": {
+      "name": "Черные Ивы"
+    },
+    "tutorial_zemlyanka": {
+      "name": "Землянка"
+    },
+    "under_pd": {
+      "name": "Подземелья Пути Дураков"
+    },
+    "yanov": {
+      "name": "Комбинат «Уран»"
+    },
+    "yantar": {
+      "name": "Яма"
+    },
+    "zaton": {
+      "name": "Тихая заводь"
+    },
+    "zemlyanka_shaman": {
+      "name": "Убежище Шамана"
+    }
+  },
+  "group": {
+    "anomalies": "Аномалии",
+    "loot": "Лут",
+    "movement": "Перемещение",
+    "other": "Прочее",
+    "quests": "Квесты",
+    "teleports": "Телепорты"
+  },
+  "info": {
+    "destinations": "Переходы"
   }
 }

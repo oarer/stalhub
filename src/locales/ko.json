@@ -279,6 +279,9 @@
 		},
 		"filter": {
 			"search": "이름 / 진영으로 검색",
+			"filteredSearch": "이름으로 마커 검색",
+			"nameResults": "찾음: {count}",
+			"namesInfo": "마커 ({total}, 표시됨 {shown})",
 			"all": "전체",
 			"none": "없음",
 			"iconsInfo": "아이콘 ({total}, 표시됨 {shown})",

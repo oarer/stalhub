@@ -420,5 +420,1241 @@
         "title": "Bar Geiger Borracho"
       }
     }
+  },
+  "go": {
+    "Barrikada_wood": {
+      "name": "Barricada de madera"
+    },
+    "Bochka_5857_3": {
+      "name": "Barril"
+    },
+    "Bochka_5857_4": {
+      "name": "Barril"
+    },
+    "Bochka_5857_5": {
+      "name": "Barril"
+    },
+    "Bolshoi_rukzak_5919": {
+      "name": "Mochila grande"
+    },
+    "Derevyannyi_stol_(seryi)_5913": {
+      "name": "Mesa de madera"
+    },
+    "Divan_5840": {
+      "name": "Sofá"
+    },
+    "Elektroshitok_5881": {
+      "name": "Caja de fusibles eléctricos"
+    },
+    "Gazovaya_plita_5876": {
+      "name": "Fogón de gas"
+    },
+    "Holodilnik_2": {
+      "name": "Nevera"
+    },
+    "Holodilnik_5858": {
+      "name": "Nevera"
+    },
+    "Korobki_kartonnye_5859": {
+      "name": "Cajas de cartón"
+    },
+    "Kreslo_ofisnoe_5926": {
+      "name": "Silla de oficina"
+    },
+    "Krest_2_5839": {
+      "name": "Cruz 2"
+    },
+    "Kvest_btr_tank": {
+      "name": "Depósito"
+    },
+    "Kvest_chistotel": {
+      "name": "Celidonia"
+    },
+    "Kvest_door_sar": {
+      "name": "Puerta"
+    },
+    "Kvest_koloda": {
+      "name": "Bloque de cortar"
+    },
+    "Kvest_skaner": {
+      "name": "Escáner"
+    },
+    "Kvest_tree_fall_a": {
+      "name": "Árbol"
+    },
+    "Kvest_truck_tank": {
+      "name": "Depósito"
+    },
+    "Malyi_rukzak_5917": {
+      "name": "Mochila pequeña"
+    },
+    "Musorka_5821_a": {
+      "name": "Papelera"
+    },
+    "Polka_5848": {
+      "name": "Estante"
+    },
+    "Pribory_2_5825": {
+      "name": "Dispositivos"
+    },
+    "Pribory_3": {
+      "name": "Dispositivos"
+    },
+    "Pribory_5824": {
+      "name": "Dispositivos"
+    },
+    "Radio_5861": {
+      "name": "Radio"
+    },
+    "Seif_5889": {
+      "name": "Caja fuerte"
+    },
+    "Shkaf_derevo_5834": {
+      "name": "Alacena antigua"
+    },
+    "Shkaf_derevo_5835": {
+      "name": "Alacena antigua"
+    },
+    "Shkaf_derevo_5836": {
+      "name": "Alacena antigua"
+    },
+    "Shkaf_ssr": {
+      "name": "Alacena antigua"
+    },
+    "Shkaf_ssr_a": {
+      "name": "Alacena antigua"
+    },
+    "Skamya_4": {
+      "name": "Banco"
+    },
+    "Skamya_5": {
+      "name": "Banco"
+    },
+    "Skamya_5921": {
+      "name": "Banco"
+    },
+    "Skamya_7": {
+      "name": "Banco"
+    },
+    "Srednii_rukzak_5918": {
+      "name": "Mochila mediana"
+    },
+    "Staryi_telek_5925": {
+      "name": "TV antigua"
+    },
+    "Stol_1_5908": {
+      "name": "Mesa"
+    },
+    "Stol_1_5909_open": {
+      "name": "Mesa"
+    },
+    "Stol_1_a": {
+      "name": "Mesa"
+    },
+    "Stol_1_b": {
+      "name": "Mesa"
+    },
+    "Stul_5911": {
+      "name": "Silla"
+    },
+    "Stul_5911_1": {
+      "name": "Silla"
+    },
+    "Stul_5911_2": {
+      "name": "Silla"
+    },
+    "Taburet_5912": {
+      "name": "Taburete"
+    },
+    "Taburet_5912_1": {
+      "name": "Taburete"
+    },
+    "Taburet_5912_2": {
+      "name": "Taburete"
+    },
+    "Taburet_new1": {
+      "name": "Taburete con asiento suspendido"
+    },
+    "Taburet_new2": {
+      "name": "silla de madera"
+    },
+    "Tumba_5890": {
+      "name": "Mesilla de noche"
+    },
+    "Tumba_5890_d2": {
+      "name": "Mesilla de noche"
+    },
+    "Tumba_5890_с": {
+      "name": "Armario con puertas"
+    },
+    "Yashik_group": {
+      "name": "Cajas"
+    },
+    "Yashik_group3": {
+      "name": "Cajas"
+    },
+    "Yashik_group5": {
+      "name": "Cajas"
+    },
+    "Yashik_p_1": {
+      "name": "Caja"
+    },
+    "Yashik_p_2": {
+      "name": "Caja"
+    },
+    "Yashik_p_3": {
+      "name": "Caja"
+    },
+    "Yashik_p_4": {
+      "name": "Caja"
+    },
+    "Yashik_p_5": {
+      "name": "Caja"
+    },
+    "Yashik_p_6": {
+      "name": "Caja"
+    },
+    "Yashik_p_6a": {
+      "name": "Caja"
+    },
+    "Yashiki_5832": {
+      "name": "Cajas"
+    },
+    "Zheleznyi_chemodanchik_5833": {
+      "name": "Maletín de hierro"
+    },
+    "Zheleznyi_shkafchik_5836": {
+      "name": "Armario de hierro"
+    },
+    "acid_nettle": {
+      "name": "Ortiga ácida"
+    },
+    "amber_wormwood": {
+      "name": "Ajenjo ámbar"
+    },
+    "ammo_box_close": {
+      "name": "Caja"
+    },
+    "ammo_box_close_merc": {
+      "name": "Caja"
+    },
+    "ammo_box_open": {
+      "name": "Caja"
+    },
+    "avanpost_spot": {
+      "name": "Puesto avanzado"
+    },
+    "base_prikop": {
+      "name": "Depósito"
+    },
+    "bed_3": {
+      "name": "cama"
+    },
+    "bed_m_1": {
+      "name": "cama"
+    },
+    "bed_m_2": {
+      "name": "cama"
+    },
+    "bed_m_3": {
+      "name": "cama"
+    },
+    "big_crates_setka": {
+      "name": "Cajas"
+    },
+    "blizzard_fireplace_quest2": {
+      "name": "Instalación de calefacción no operativa"
+    },
+    "books": {
+      "name": "libros"
+    },
+    "books3": {
+      "name": "libros"
+    },
+    "books4": {
+      "name": "libros"
+    },
+    "books5": {
+      "name": "libros"
+    },
+    "books6": {
+      "name": "libros"
+    },
+    "books7": {
+      "name": "libros"
+    },
+    "bumaga_group_1": {
+      "name": "papel"
+    },
+    "bumaga_group_2": {
+      "name": "papel"
+    },
+    "bumaga_group_3": {
+      "name": "papel"
+    },
+    "bumaga_group_4": {
+      "name": "papel"
+    },
+    "bumaga_group_5": {
+      "name": "papel"
+    },
+    "cable_3d": {
+      "name": "3D Cable"
+    },
+    "campfire_1": {
+      "name": "Hoguera"
+    },
+    "campfire_1a": {
+      "name": "Hoguera"
+    },
+    "carousel": {
+      "name": "Remolino"
+    },
+    "circus": {
+      "name": "Inferno"
+    },
+    "contamination_bio1_1": {
+      "name": "Bio de niv. 1"
+    },
+    "contamination_bio2_1": {
+      "name": "Bio de niv. 2"
+    },
+    "contamination_bio3_1": {
+      "name": "Bio de niv. 3"
+    },
+    "contamination_psy2_1": {
+      "name": "Psy de niv. 2"
+    },
+    "contamination_psy3_1": {
+      "name": "Psy de niv. 3"
+    },
+    "contamination_psy4_1": {
+      "name": "Psy de niv. 4"
+    },
+    "contamination_rad1_1": {
+      "name": "Radiación de niv. 1"
+    },
+    "contamination_rad2_1": {
+      "name": "Radiación de niv. 2"
+    },
+    "contamination_rad3_1": {
+      "name": "Radiación de niv. 3"
+    },
+    "contamination_rad4_1": {
+      "name": "Radiación de niv. 4"
+    },
+    "contamination_rec31_bio1_1": {
+      "name": "Rectángulo 3x1 bio de niv. 1"
+    },
+    "contamination_rec31_bio2_1": {
+      "name": "Rectángulo 3x1 bio de niv. 2"
+    },
+    "contamination_rec31_bio3_1": {
+      "name": "Rectángulo 3x1 bio de niv. 3"
+    },
+    "contamination_rec31_psy2_1": {
+      "name": "Rectángulo 3x1 psy de niv. 2"
+    },
+    "contamination_rec31_psy3_1": {
+      "name": "Rectángulo 3x1 psy de niv. 3"
+    },
+    "contamination_rec31_psy4_1": {
+      "name": "Rectángulo 3x1 psy de niv. 4"
+    },
+    "contamination_rec31_rad1_1": {
+      "name": "Rectángulo 3x1 de radiación de niv. 1"
+    },
+    "contamination_rec31_rad2_1": {
+      "name": "Rectángulo 3x1 de radiación de niv. 2"
+    },
+    "contamination_rec31_rad3_1": {
+      "name": "Rectángulo 3x1 de radiación de niv. 3"
+    },
+    "contamination_rec31_rad4_1": {
+      "name": "Rectángulo 3x1 de radiación de niv. 4"
+    },
+    "contamination_rec31_thr1_1": {
+      "name": "Rectángulo 3x1 térmico de niv. 1"
+    },
+    "contamination_rec31_thr2_1": {
+      "name": "Rectángulo 3x1 térmico de niv. 2"
+    },
+    "contamination_rec31_thr3_1": {
+      "name": "Rectángulo 3x1 térmico de niv. 3"
+    },
+    "contamination_rec51_bio2_1": {
+      "name": "Rectángulo 5x1 bio de niv. 2"
+    },
+    "contamination_rec51_psy2_1": {
+      "name": "Rectángulo 5x1 psy de niv. 2"
+    },
+    "contamination_rec51_psy3_1": {
+      "name": "Rectángulo 5x1 psy de niv. 3"
+    },
+    "contamination_rec51_thr3_1": {
+      "name": "Rectángulo 5x1 térmico de niv. 3"
+    },
+    "contamination_rec71_bio1_1": {
+      "name": "Rectángulo 7x1 bio de niv. 1"
+    },
+    "contamination_rec71_psy2_1": {
+      "name": "Rectángulo 7x1 psy de niv. 2"
+    },
+    "contamination_rec71_psy3_1": {
+      "name": "Rectángulo 7x1 psy de niv. 3"
+    },
+    "contamination_rec71_rad2_1": {
+      "name": "Rectángulo 7x1 de radiación de niv. 2"
+    },
+    "contamination_rec71_rad4_1": {
+      "name": "Rectángulo 7x1 de radiación de niv. 4"
+    },
+    "contamination_sphere_bio1_1": {
+      "name": "Esfera bio de niv. 1"
+    },
+    "contamination_sphere_bio2_1": {
+      "name": "Esfera bio de niv. 2"
+    },
+    "contamination_sphere_bio3_1": {
+      "name": "Esfera bio de niv. 3"
+    },
+    "contamination_sphere_psy1_1": {
+      "name": "Esfera psy de niv. 1"
+    },
+    "contamination_sphere_psy2_1": {
+      "name": "Esfera psy de niv. 2"
+    },
+    "contamination_sphere_psy3_1": {
+      "name": "Esfera psy de niv. 3"
+    },
+    "contamination_sphere_psy4_1": {
+      "name": "Esfera psy de niv. 4"
+    },
+    "contamination_sphere_rad1_1": {
+      "name": "Esfera de radiación de niv. 1"
+    },
+    "contamination_sphere_rad2_1": {
+      "name": "Esfera de radiación de niv. 2"
+    },
+    "contamination_sphere_rad3_1": {
+      "name": "Esfera de radiación de niv. 3"
+    },
+    "contamination_sphere_rad4_1": {
+      "name": "Esfera de radiación de niv. 4"
+    },
+    "contamination_sphere_thr1_1": {
+      "name": "Esfera térmica de niv. 1"
+    },
+    "contamination_sphere_thr2_1": {
+      "name": "Esfera térmica de niv. 2"
+    },
+    "contamination_sphere_thr3_1": {
+      "name": "Esfera térmica de niv. 3"
+    },
+    "contamination_thr1_1": {
+      "name": "Térmica de niv. 1"
+    },
+    "contamination_thr2_1": {
+      "name": "Térmica de niv. 2"
+    },
+    "contamination_thr3_1": {
+      "name": "Térmica de niv. 3"
+    },
+    "dek_pribors1": {
+      "name": "Instrumentos electrónicos científicos"
+    },
+    "dek_pribors2": {
+      "name": "Instrumentos electrónicos científicos"
+    },
+    "dek_pribors4": {
+      "name": "Instrumentos electrónicos científicos"
+    },
+    "dek_pribors5": {
+      "name": "Instrumentos electrónicos científicos"
+    },
+    "dekal_bumaga0": {
+      "name": "Documentos"
+    },
+    "dekal_bumaga1": {
+      "name": "papel"
+    },
+    "dekal_bumaga2": {
+      "name": "papel"
+    },
+    "dekor_yashik_vodka": {
+      "name": "Caja de vodka"
+    },
+    "divan_kreslo": {
+      "name": "Sofá"
+    },
+    "divan_kreslo_1": {
+      "name": "Sofá"
+    },
+    "divan_kreslo_2": {
+      "name": "Sofá"
+    },
+    "door_1_closed": {
+      "name": "Puerta"
+    },
+    "door_2_closed": {
+      "name": "Puerta"
+    },
+    "door_germ_closed": {
+      "name": "Puerta"
+    },
+    "electra": {
+      "name": "Descarga"
+    },
+    "electra_air": {
+      "name": "Descarga atmosférica"
+    },
+    "electroshitok": {
+      "name": "Caja de fusibles eléctricos"
+    },
+    "elevator_button2": {
+      "name": "Botones de ascensor"
+    },
+    "encaged_safe": {
+      "name": "Caja fuerte"
+    },
+    "filling_cabinet_2_1": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_2_3": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_2_4": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_2_5": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_3_2": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_3_4": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_3_5": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_1": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_2": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_3": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_4": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_5": {
+      "name": "Archivador"
+    },
+    "filling_cabinet_4_6": {
+      "name": "Archivador"
+    },
+    "fridge_table": {
+      "name": "Nevera"
+    },
+    "funnel": {
+      "name": "Torbellino"
+    },
+    "gnezdo_1": {
+      "name": "Nido de cuervos"
+    },
+    "gnosis": {
+      "name": "Gnosis"
+    },
+    "group_medecine_1": {
+      "name": "botiquín"
+    },
+    "group_polka3_loot": {
+      "name": "Alacena"
+    },
+    "group_shkaf2_loot": {
+      "name": "Armario con puertas"
+    },
+    "group_shkaf3_loot": {
+      "name": "Alacena"
+    },
+    "group_shkaf4_loot": {
+      "name": "Armario con puertas"
+    },
+    "gsp_11": {
+      "name": "batería"
+    },
+    "hellroot": {
+      "name": "Orobanca"
+    },
+    "hideout_armchair_1": {
+      "name": "Sillón"
+    },
+    "hideout_stool_wood_1": {
+      "name": "Taburete"
+    },
+    "karoteka_2": {
+      "name": "Archivador"
+    },
+    "kisel_1": {
+      "name": "Áspic"
+    },
+    "kisel_1_no_particles": {
+      "name": "Áspic"
+    },
+    "kisel_2": {
+      "name": "Gelatificante"
+    },
+    "kisel_2_no_particles": {
+      "name": "Gelatificante"
+    },
+    "korobki_karton_1": {
+      "name": "Cajas"
+    },
+    "korobki_karton_4": {
+      "name": "Cajas"
+    },
+    "kreslo_otk_1": {
+      "name": "silla plegable"
+    },
+    "kreslo_otk_2": {
+      "name": "silla plegable"
+    },
+    "kreslo_otk_3": {
+      "name": "silla plegable"
+    },
+    "kreslo_otk_4": {
+      "name": "silla plegable"
+    },
+    "lab_pc": {
+      "name": "Ordenador OK"
+    },
+    "looting_bag_haversack": {
+      "name": "Mochila"
+    },
+    "looting_bag_mbss": {
+      "name": "Mochila"
+    },
+    "looting_bag_sports": {
+      "name": "Mochila"
+    },
+    "looting_bag_transformer": {
+      "name": "Mochila"
+    },
+    "looting_cash_register": {
+      "name": "Caja registradora"
+    },
+    "looting_chekered_bag": {
+      "name": "Bolsa"
+    },
+    "looting_chest": {
+      "name": "Cofre"
+    },
+    "looting_dom_suitcase": {
+      "name": "Maleta"
+    },
+    "looting_fraction_box5_bandit": {
+      "name": "Contenedor de bandidos"
+    },
+    "looting_fraction_box5_dolg": {
+      "name": "Contenedor de Frontera"
+    },
+    "looting_fraction_box5_naim": {
+      "name": "Contenedor de Mercenarios"
+    },
+    "looting_fraction_box5_stalker": {
+      "name": "Contenedor de acechadores"
+    },
+    "looting_fraction_box5_zarya": {
+      "name": "Contenedor de Rebelión"
+    },
+    "looting_fraction_box5_zavet": {
+      "name": "Contenedor del Pacto"
+    },
+    "looting_jacket_bandit": {
+      "name": "Chaquetas"
+    },
+    "looting_jacket_civil": {
+      "name": "Chaquetas"
+    },
+    "looting_jacket_military": {
+      "name": "Chaquetas"
+    },
+    "looting_jacket_stalker": {
+      "name": "Chaquetas"
+    },
+    "looting_med_bag": {
+      "name": "Bolsa médica"
+    },
+    "looting_med_box": {
+      "name": "Caja de medicamentos"
+    },
+    "looting_med_skaf": {
+      "name": "Armario médico"
+    },
+    "looting_military_box1": {
+      "name": "Contenedor de armas"
+    },
+    "looting_military_box2": {
+      "name": "Contenedor de armas"
+    },
+    "looting_military_box3": {
+      "name": "Contenedor de armas"
+    },
+    "looting_military_box4": {
+      "name": "Contenedor de armas"
+    },
+    "looting_military_box5": {
+      "name": "Contenedor de armas"
+    },
+    "looting_military_cabinet_big": {
+      "name": "Armario para armas"
+    },
+    "looting_military_cabinet_small": {
+      "name": "Armero"
+    },
+    "looting_safe_safe1": {
+      "name": "Caja fuerte"
+    },
+    "looting_safe_safe2": {
+      "name": "Caja fuerte"
+    },
+    "looting_safe_safe3": {
+      "name": "Caja fuerte"
+    },
+    "looting_sapernabor": {
+      "name": "Equipo de sapador"
+    },
+    "looting_tainiki_bag": {
+      "name": "Bolsa"
+    },
+    "looting_tainiki_barrel": {
+      "name": "Barril"
+    },
+    "looting_tech_box": {
+      "name": "Caja de madera"
+    },
+    "looting_tech_cabinet": {
+      "name": "Armario metálico"
+    },
+    "looting_toolbox": {
+      "name": "Caja de hierro"
+    },
+    "looting_trash_cardboard_box": {
+      "name": "Caja de cartón"
+    },
+    "looting_trash_tank": {
+      "name": "Cubo de basura"
+    },
+    "looting_wood_2_box": {
+      "name": "Caja de madera"
+    },
+    "looting_wood_box": {
+      "name": "Caja de madera"
+    },
+    "matras1": {
+      "name": "colchón"
+    },
+    "matras2": {
+      "name": "colchón"
+    },
+    "medecine_3": {
+      "name": "botiquín"
+    },
+    "medecine_9": {
+      "name": "antirradiación"
+    },
+    "mushrooms_1_l": {
+      "name": "Setas"
+    },
+    "mushrooms_1b": {
+      "name": "Setas"
+    },
+    "mushrooms_2_l": {
+      "name": "Setas"
+    },
+    "mushrooms_2b": {
+      "name": "Setas"
+    },
+    "mushrooms_3_l": {
+      "name": "Setas"
+    },
+    "mushrooms_3b": {
+      "name": "Setas"
+    },
+    "mushrooms_blue_1": {
+      "name": "setas azules"
+    },
+    "mushrooms_blue_3": {
+      "name": "setas azules"
+    },
+    "mushrooms_violet_2": {
+      "name": "setas moradas"
+    },
+    "mushrooms_violet_3": {
+      "name": "setas moradas"
+    },
+    "mushrooms_yellow_1": {
+      "name": "setas amarillas"
+    },
+    "mushrooms_yellow_3": {
+      "name": "setas amarillas"
+    },
+    "negator_rec31": {
+      "name": "Protección: rectángulo 3x1"
+    },
+    "negator_rec51": {
+      "name": "Protección: rectángulo 5x1"
+    },
+    "negator_rec71": {
+      "name": "Protección: rectángulo 7x1"
+    },
+    "negator_sphere_1": {
+      "name": "Protección: esfera"
+    },
+    "negatror_cube_1": {
+      "name": "Protección: cubo"
+    },
+    "newspaper_2": {
+      "name": "Periódicos"
+    },
+    "newspaper_3": {
+      "name": "Periódicos"
+    },
+    "newspaper_5": {
+      "name": "Periódicos"
+    },
+    "notebook_army": {
+      "name": "Portátil"
+    },
+    "pale_leaf": {
+      "name": "Palidonia"
+    },
+    "plastik_stul": {
+      "name": "Silla de plástico blanca"
+    },
+    "plastik_stul1": {
+      "name": "Silla de plástico azul"
+    },
+    "plastik_stul2": {
+      "name": "Silla de plástico verde"
+    },
+    "plastik_stul3": {
+      "name": "Silla de plástico roja"
+    },
+    "plastik_stul4": {
+      "name": "Silla de plástico amarilla"
+    },
+    "prestige_psychoscope": {
+      "name": "Psicoscopio"
+    },
+    "puh_new1": {
+      "name": "baba"
+    },
+    "puh_new2": {
+      "name": "baba"
+    },
+    "quest_notepad": {
+      "name": "Cuaderno"
+    },
+    "quest_petrush": {
+      "name": "Perejil de Chernóbil"
+    },
+    "shiferny_1": {
+      "name": "valla de pizarra intacta"
+    },
+    "steam": {
+      "name": "Tetera"
+    },
+    "storeage_wire_door": {
+      "name": "Alacena"
+    },
+    "stul_shkola": {
+      "name": "silla de colegio"
+    },
+    "svalka_radio_prikop1": {
+      "name": "Depósito"
+    },
+    "table": {
+      "name": "Mesa"
+    },
+    "table_stuff_4": {
+      "name": "one-piece"
+    },
+    "teleport_bubble": {
+      "name": "Madriguera"
+    },
+    "teleport_invisible": {
+      "name": "Teletransportador"
+    },
+    "tent_triangl_1": {
+      "name": "Tienda"
+    },
+    "tramp": {
+      "name": "Trampolín"
+    },
+    "tree_2b_1": {
+      "name": "árbol"
+    },
+    "triggerCollision": {
+      "name": "Choque de activador invisible"
+    },
+    "unitaz_1": {
+      "name": "Retrete"
+    },
+    "unitaz_2": {
+      "name": "Retrete"
+    },
+    "unitaz_3": {
+      "name": "Retrete"
+    },
+    "valve2": {
+      "name": "Válvula"
+    },
+    "vehicle_boat_1": {
+      "name": "Barco"
+    },
+    "vodokachka": {
+      "name": "Bomba"
+    },
+    "water_carrier": {
+      "name": "Ducto de agua"
+    },
+    "wood_polka_boxes": {
+      "name": "Estante"
+    },
+    "yash_1_a": {
+      "name": "Alacena"
+    },
+    "yash_3_a": {
+      "name": "Alacena"
+    },
+    "zastoy": {
+      "name": "Estasis"
+    },
+    "zipline": {
+      "name": "Tirolina"
+    },
+    "zipline_vertical": {
+      "name": "Tirolina"
+    },
+    "kapkan": {
+      "name": "Trampa"
+    }
+  },
+  "location": {
+    "armsklad": {
+      "name": "Poliske"
+    },
+    "arsenal_workshop": {
+      "name": "Taller de Arsenal"
+    },
+    "atamans_hq": {
+      "name": "Cuartel general de Atamán"
+    },
+    "atp": {
+      "name": "Parque de bomberos"
+    },
+    "bar": {
+      "name": "Fábrica Pervomaiski"
+    },
+    "bar_save": {
+      "name": "Bar de la Fábrica Pervomaiski"
+    },
+    "bar_save_residential_hangar": {
+      "name": "Residencias"
+    },
+    "bar_sever": {
+      "name": "Bar Geiger Borracho"
+    },
+    "base_covenant": {
+      "name": "Morada del Pacto"
+    },
+    "base_duty": {
+      "name": "Base de Frontera"
+    },
+    "base_freedom": {
+      "name": "Base de Rebelión"
+    },
+    "base_merc": {
+      "name": "Campamento de Mercenarios"
+    },
+    "boat_station": {
+      "name": "Cobertizo para botes"
+    },
+    "bolota": {
+      "name": "Los Pantanos"
+    },
+    "dungeon_Janiko": {
+      "name": "Desconocido"
+    },
+    "dungeon_Ripper": {
+      "name": "Desconocido"
+    },
+    "dungeon_apocalypse_challenge": {
+      "name": "Desconocido"
+    },
+    "dungeon_apocalypse_obol": {
+      "name": "Sótano"
+    },
+    "dungeon_art": {
+      "name": "Refugio del pantano"
+    },
+    "dungeon_barsani": {
+      "name": "El Camino de los Necios"
+    },
+    "dungeon_base_sanitar_1_fight": {
+      "name": "Base de los Auxiliares"
+    },
+    "dungeon_base_sanitar_1_peaceful": {
+      "name": "Base de los Auxiliares"
+    },
+    "dungeon_chimera": {
+      "name": "Fábrica Pervomaiski"
+    },
+    "dungeon_domiki": {
+      "name": "Escondite de Perforadora"
+    },
+    "dungeon_domiki2": {
+      "name": "Cuneta"
+    },
+    "dungeon_domikizryach": {
+      "name": "Desconocido"
+    },
+    "dungeon_dosug": {
+      "name": "Casa"
+    },
+    "dungeon_dyrokol": {
+      "name": "Escondite de Perforadora"
+    },
+    "dungeon_enlightened_1": {
+      "name": "Guarida de los iluminados"
+    },
+    "dungeon_enlightened_2": {
+      "name": "Guarida de los iluminados"
+    },
+    "dungeon_gribochki": {
+      "name": "Mazmorra"
+    },
+    "dungeon_kmpt_agro": {
+      "name": "Agrocomplejo Kolos"
+    },
+    "dungeon_kompot_alco": {
+      "name": "Desconocido"
+    },
+    "dungeon_kompot_zemlyanka": {
+      "name": "Desconocido"
+    },
+    "dungeon_kpz": {
+      "name": "Celdas de contención"
+    },
+    "dungeon_lab": {
+      "name": "Laboratorio"
+    },
+    "dungeon_leviathan_hutor": {
+      "name": "Desconocido"
+    },
+    "dungeon_limansk_isxod": {
+      "name": "Desconocido"
+    },
+    "dungeon_merc_01": {
+      "name": "Desconocido"
+    },
+    "dungeon_merc_02": {
+      "name": "Desconocido"
+    },
+    "dungeon_mgber": {
+      "name": "La Ciudad Muerta"
+    },
+    "dungeon_minks": {
+      "name": "Desconocido"
+    },
+    "dungeon_mir_korabley_cave": {
+      "name": "Cueva"
+    },
+    "dungeon_moneta": {
+      "name": "Desconocido"
+    },
+    "dungeon_moneta2": {
+      "name": "Desconocido"
+    },
+    "dungeon_morok_arena": {
+      "name": "Guarida de Morfo"
+    },
+    "dungeon_morok_radar": {
+      "name": "El Reverso del Radar"
+    },
+    "dungeon_mozglyak": {
+      "name": "Guarida de los debiluchos"
+    },
+    "dungeon_perbar": {
+      "name": "Locales"
+    },
+    "dungeon_podvalDed": {
+      "name": "Desconocido"
+    },
+    "dungeon_polovetskiy": {
+      "name": "Desconocido"
+    },
+    "dungeon_psisobaka": {
+      "name": "Desconocido"
+    },
+    "dungeon_pumpstation": {
+      "name": "Estación de bombeo"
+    },
+    "dungeon_rest_in_peace": {
+      "name": "Desconocido"
+    },
+    "dungeon_school": {
+      "name": "Escuela de Vlasov"
+    },
+    "dungeon_sklad_frimena": {
+      "name": "Desconocido"
+    },
+    "dungeon_spusk": {
+      "name": "Guarida del Juglar"
+    },
+    "dungeon_stels": {
+      "name": "Desconocido"
+    },
+    "dungeon_sub_frontier_01": {
+      "name": "Cueva"
+    },
+    "dungeon_sub_frontier_02": {
+      "name": "Cueva"
+    },
+    "dungeon_sub_frontier_03": {
+      "name": "Cueva"
+    },
+    "dungeon_sub_frontier_04": {
+      "name": "Cueva"
+    },
+    "dungeon_sudba": {
+      "name": "Cuevas"
+    },
+    "dungeon_svetliy_bandits": {
+      "name": "Desconocido"
+    },
+    "dungeon_svetliy_stalkers": {
+      "name": "Desconocido"
+    },
+    "dungeon_tonnelradar": {
+      "name": "Túnel"
+    },
+    "dungeon_travnik": {
+      "name": "Desconocido"
+    },
+    "dungeon_upir": {
+      "name": "Desconocido"
+    },
+    "dungeon_vendetta": {
+      "name": "Guarida de los Acechadores"
+    },
+    "dungeon_zemlcap1": {
+      "name": "Desconocido"
+    },
+    "ffa_base_bunker": {
+      "name": "Búnker"
+    },
+    "ffa_base_kpp_north": {
+      "name": "Punto de control"
+    },
+    "ffa_base_meteostation": {
+      "name": "Estación meteorológica"
+    },
+    "ffa_base_mine": {
+      "name": "Mina antigua"
+    },
+    "foton2": {
+      "name": "Escuela del pueblo"
+    },
+    "hideout": {
+      "name": "Escondite"
+    },
+    "kordon": {
+      "name": "Cuneta"
+    },
+    "les": {
+      "name": "El Bosque"
+    },
+    "north_forge": {
+      "name": "Forja-11"
+    },
+    "north_inflow": {
+      "name": "Afluencia"
+    },
+    "north_maze_d_c": {
+      "name": "Laberinto"
+    },
+    "north_maze_m_f": {
+      "name": "Laberinto"
+    },
+    "north_mines": {
+      "name": "Minas"
+    },
+    "outpost_covenant": {
+      "name": "Puesto avanzado del Pacto"
+    },
+    "outpost_duty": {
+      "name": "Puesto avanzado de Frontera"
+    },
+    "outpost_freedom": {
+      "name": "Puesto avanzado de Rebelión"
+    },
+    "outpost_merc": {
+      "name": "Puesto avanzado de los mercenarios"
+    },
+    "overpass": {
+      "name": "Bajo tierra"
+    },
+    "pd": {
+      "name": "El Camino de los Necios"
+    },
+    "rls": {
+      "name": "El Bosque Rojo"
+    },
+    "savezone_agroprom": {
+      "name": "Cabaña de excavadores"
+    },
+    "savezone_td": {
+      "name": "Parcela de excavadores"
+    },
+    "svalka": {
+      "name": "Vertedero"
+    },
+    "td": {
+      "name": "Sauces Negros"
+    },
+    "tutorial_zemlyanka": {
+      "name": "Refugio subterráneo"
+    },
+    "under_pd": {
+      "name": "Red subterránea del Camino de los Necios"
+    },
+    "yanov": {
+      "name": "Complejo Urano"
+    },
+    "yantar": {
+      "name": "La Fosa"
+    },
+    "zaton": {
+      "name": "Aguas Serenas"
+    },
+    "zemlyanka_shaman": {
+      "name": "Guarida de Chamán"
+    }
+  },
+  "group": {
+    "anomalies": "Anomalías",
+    "loot": "Botín",
+    "movement": "Movimiento",
+    "other": "Otros",
+    "quests": "Misiones",
+    "teleports": "Teleportes"
+  },
+  "info": {
+    "destinations": "Destinos"
   }
 }
