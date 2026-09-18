@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 import { type RoadmapItem, RoadmapItems } from '@/constants/roadmap.const'
 import { cn } from '@/lib/cn'
 
@@ -33,6 +33,7 @@ function RoadmapContent({
 		>
 			<time
 				className={cn(
+					montserrat.className,
 					'font-bold text-xs',
 					item.status === 'planned'
 						? 'text-neutral-200'
