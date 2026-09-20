@@ -2401,7 +2401,9 @@
     "loginByPassword": "Par mot de passe",
     "loginError": "Échec de la connexion",
     "back": "Retour",
-    "next": "Suivant"
+    "next": "Suivant",
+    "success": "Autorisation terminée !",
+    "closePage": "Tu peux fermer cette page"
   },
   "tech": {
     "title": "Travaux techniques en cours"

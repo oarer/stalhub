@@ -2497,7 +2497,9 @@
     "loginByPassword": "By password",
     "loginError": "Failed to sign in",
     "back": "Back",
-    "next": "Next"
+    "next": "Next",
+    "success": "Authorization complete!",
+    "closePage": "You can close this page"
   },
   "tech": {
     "title": "Technical work in progress"

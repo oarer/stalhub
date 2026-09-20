@@ -2401,8 +2401,10 @@
 		"loginByPassword": "Por contraseña",
 		"loginError": "Error al iniciar sesión",
 		"back": "Atrás",
-		"next": "Siguiente"
-	},
+		"next": "Siguiente",
+		"success": "¡Autorización completada!",
+		"closePage": "Puedes cerrar esta página"
+},
 	"tech": {
 		"title": "Trabajos técnicos en curso"
 	},

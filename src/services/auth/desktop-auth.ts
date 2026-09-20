@@ -30,7 +30,13 @@ export async function issueDesktopLoginUrl(): Promise<string> {
 	if (!intent) throw new Error('No desktop intent')
 	const { data } = await apiClient.post<{ url: string }>(
 		'/api/v1/auth/desktop/issue',
-		intent
+		intent,
+		{
+			// The issue endpoint requires a live session. On /auth the interceptor
+			// normally suppresses refresh; opt in so an existing (expired-access)
+			// session can still hand off to the desktop within its timeout.
+			allowAuthRefresh: true,
+		}
 	)
 	return data.url
 }

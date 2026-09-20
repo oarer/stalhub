@@ -2,7 +2,7 @@
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { unbounded } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
 import {
@@ -21,6 +21,7 @@ export default function CallbackPage() {
 	const params = useParams()
 	const searchParams = useSearchParams()
 	const t = useTranslations()
+	const [desktopComplete, setDesktopComplete] = useState(false)
 
 	const called = useRef(false)
 
@@ -61,6 +62,7 @@ export default function CallbackPage() {
 				try {
 					const url = await issueDesktopLoginUrl()
 					clearDesktopIntent()
+					setDesktopComplete(true)
 					window.location.replace(url)
 					return
 				} catch {
@@ -77,11 +79,24 @@ export default function CallbackPage() {
 
 	return (
 		<section className="mx-auto flex min-h-screen items-center justify-center gap-4 px-3">
-			<h1
-				className={`${unbounded.className} animate-pulse font-bold text-2xl uppercase tracking-widest`}
-			>
-				{t('auth.title')}
-			</h1>
+			{desktopComplete ? (
+				<div className="flex flex-col items-center gap-3 text-center">
+					<h1
+						className={`${unbounded.className} font-semibold text-2xl`}
+					>
+						{t('auth.success')}
+					</h1>
+					<p className="font-semibold text-sm text-text-accent">
+						{t('auth.closePage')}
+					</p>
+				</div>
+			) : (
+				<h1
+					className={`${unbounded.className} animate-pulse font-bold text-2xl uppercase tracking-widest`}
+				>
+					{t('auth.title')}
+				</h1>
+			)}
 		</section>
 	)
 }

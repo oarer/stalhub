@@ -2405,7 +2405,9 @@
 		"loginByPassword": "비밀번호로",
 		"loginError": "로그인 실패",
 		"back": "뒤로",
-		"next": "다음"
+		"next": "다음",
+		"success": "인증이 완료되었습니다!",
+		"closePage": "이 페이지를 닫아도 됩니다"
 	},
 	"tech": {
 		"title": "기술 점검 중입니다"

@@ -4,6 +4,7 @@ import { useBanStore } from '@/stores/useBan.store'
 declare module 'axios' {
 	interface AxiosRequestConfig {
 		skipAuthRefresh?: boolean
+		allowAuthRefresh?: boolean
 	}
 }
 
@@ -74,7 +75,12 @@ apiClient.interceptors.response.use(
 
 		// Some /me probes are intentionally unauthenticated. They must not start
 		// refresh: the refresh token is HttpOnly and cannot be checked in JS.
-		if (originalRequest.skipAuthRefresh || isAuthRoute()) {
+		// Requests from /auth never refresh either, except ones that opt in via
+		// allowAuthRefresh (e.g. desktop/issue needs a live session to hand off).
+		if (
+			originalRequest.skipAuthRefresh ||
+			(isAuthRoute() && !originalRequest.allowAuthRefresh)
+		) {
 			return Promise.reject(error)
 		}
 
