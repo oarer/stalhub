@@ -63,7 +63,7 @@ export function computeIsPercentMap(
 
 export function getContainerModifiers(containerItem: Item | undefined) {
 	if (!containerItem) {
-		return { effectiveness: 1, innerProtection: 0 }
+		return { effectiveness: 1 }
 	}
 
 	return {
@@ -71,11 +71,6 @@ export function getContainerModifiers(containerItem: Item | undefined) {
 			getNumericValue(
 				containerItem,
 				'stalker.tooltip.backpack.stat_name.effectiveness'
-			) / 100,
-		innerProtection:
-			getNumericValue(
-				containerItem,
-				'stalker.tooltip.backpack.stat_name.inner_protection'
 			) / 100,
 	}
 }
@@ -94,23 +89,23 @@ const CONTAINER_ACCUMULATION_KEYS = new Set([
 
 export function applyContainerModifiers(
 	stats: BuildStats,
-	effectiveness: number,
-	innerProtection: number
+	effectiveness: number
 ): BuildStats {
 	const result: BuildStats = {}
 
 	for (const key of Object.keys(stats)) {
 		const currentVal = stats[key] ?? 0
 
-		if (currentVal === 0 || CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key)) {
+		if (
+			currentVal === 0 ||
+			CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key) ||
+			CONTAINER_ACCUMULATION_KEYS.has(key)
+		) {
 			result[key] = currentVal
 			continue
 		}
 
-		const isAccumulation = CONTAINER_ACCUMULATION_KEYS.has(key)
-		result[key] = isAccumulation
-			? currentVal * (1 - innerProtection)
-			: currentVal * effectiveness
+		result[key] = currentVal * effectiveness
 	}
 
 	return result
