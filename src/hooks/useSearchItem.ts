@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useItemStore } from '@/stores/items.store'
@@ -15,49 +15,45 @@ const LS_COMMIT = 'items_commit'
 const LS_TIME = 'items_time'
 const TTL = 1000 * 60 * 10
 
-export function useSearchItem() {
-	const { items, commit, setItems, setCommit, setError, setLoading } =
-		useItemStore()
+let inflight: Promise<void> | null = null
 
-	useEffect(() => {
-		let cancelled = false
+function readCachedItems(): ItemListing[] | null {
+	const cached = localStorage.getItem(LS_DATA)
+	if (!cached) return null
+	try {
+		const parsed: unknown = JSON.parse(cached)
+		return Array.isArray(parsed) ? (parsed as ItemListing[]) : null
+	} catch {
+		return null
+	}
+}
 
-		async function load() {
-			const time = Number(localStorage.getItem(LS_TIME))
-			const isFresh = !!(time && Date.now() - time < TTL)
+function refreshItems(
+	storeCommit: string | null,
+	hasStoreItems: boolean,
+	setItems: (items: ItemListing[]) => void,
+	setCommit: (commit: string) => void,
+	setError: (err: string | null) => void
+): Promise<void> {
+	const time = Number(localStorage.getItem(LS_TIME))
+	if (time && Date.now() - time < TTL) return Promise.resolve()
 
-			// Данные уже в сторе и проверены недавно — не дёргаем сеть.
-			if (items && commit && isFresh) return
-
-			setLoading(true)
-
-			const cached = localStorage.getItem(LS_DATA)
-			const cachedCommit = localStorage.getItem(LS_COMMIT)
-
-			let cachedItems: ItemListing[] | null = null
-			if (cached) {
-				try {
-					cachedItems = JSON.parse(cached)
-				} catch {
-					cachedItems = null
-				}
-			}
-
-			if (!items && cachedItems) setItems(cachedItems)
-			if (!commit && cachedCommit) setCommit(cachedCommit)
-
+	if (!inflight) {
+		inflight = (async () => {
 			try {
 				const res = await fetch(COMMITS_API)
 				if (!res.ok) throw new Error('GitHub API error')
 				const data = await res.json()
 
-				const latestSHA = data?.[0]?.sha
+				const latestSHA: string | undefined = data?.[0]?.sha
 				if (!latestSHA) throw new Error('No commits')
 
-				const currentSHA = cachedCommit ?? commit
+				const cachedCommit = localStorage.getItem(LS_COMMIT)
+				const cachedItems = readCachedItems()
+				const currentSHA = cachedCommit ?? storeCommit
+				const hasData = hasStoreItems || !!cachedItems
 
-				if (latestSHA === currentSHA && (items ?? cachedItems)) {
-					if (!items && cachedItems) setItems(cachedItems)
+				if (latestSHA === currentSHA && hasData) {
 					localStorage.setItem(LS_TIME, Date.now().toString())
 					return
 				}
@@ -66,9 +62,9 @@ export function useSearchItem() {
 				// но кэширует ключ по полному URL — новый SHA даёт новый ключ.
 				const freshRaw = await fetch(`${LISTING_URL}?v=${latestSHA}`)
 				if (!freshRaw.ok) throw new Error('Listing fetch error')
-				const freshItems = (await freshRaw.json()) as ItemListing[]
-
-				if (cancelled) return
+				const fresh: unknown = await freshRaw.json()
+				if (!Array.isArray(fresh)) throw new Error('Bad listing')
+				const freshItems = fresh as ItemListing[]
 
 				setItems(freshItems)
 				setCommit(latestSHA)
@@ -83,11 +79,56 @@ export function useSearchItem() {
 				)
 			} catch (e) {
 				console.log(e, 'error fetching items')
-				if (!time || Date.now() - time > TTL)
+				const t = Number(localStorage.getItem(LS_TIME))
+				if (!t || Date.now() - t > TTL)
 					setError('Не удалось получить актуальные данные')
 			} finally {
-				if (!cancelled) setLoading(false)
+				inflight = null
 			}
+		})()
+	}
+
+	return inflight
+}
+
+export function useSearchItem() {
+	const { items, commit, setItems, setCommit, setError, setLoading } =
+		useItemStore()
+
+	const itemsRef = useRef(items)
+	const commitRef = useRef(commit)
+	itemsRef.current = items
+	commitRef.current = commit
+
+	useEffect(() => {
+		let cancelled = false
+
+		async function load() {
+			const cachedItems = readCachedItems()
+			const cachedCommit = localStorage.getItem(LS_COMMIT)
+			const hasStoreData = !!(itemsRef.current && commitRef.current)
+
+			// Кэш отдаём сразу, сверку свежести делаем в фоне.
+			if (!hasStoreData) {
+				if (cachedItems && !itemsRef.current) setItems(cachedItems)
+				if (cachedCommit && !commitRef.current) setCommit(cachedCommit)
+			}
+
+			const usable = hasStoreData || !!(cachedItems && cachedCommit)
+
+			// «Загрузка» — только когда данных нет вообще (ни стора, ни кэша).
+			if (!usable && !cancelled) setLoading(true)
+
+			await refreshItems(
+				commitRef.current,
+				!!itemsRef.current,
+				setItems,
+				setCommit,
+				setError
+			)
+
+			if (cancelled) return
+			setLoading(false)
 		}
 
 		load()
@@ -95,7 +136,7 @@ export function useSearchItem() {
 		return () => {
 			cancelled = true
 		}
-	}, [setItems, setCommit, setError, setLoading, items, commit])
+	}, [setItems, setCommit, setError, setLoading])
 
 	return useItemStore()
 }

@@ -225,6 +225,10 @@
           "balance": {
             "label": "Équilibre",
             "description": "Changements d'équilibre"
+          },
+          "download": {
+            "label": "Transférer les données vers l'application",
+            "description": "Regroupe toutes les données locales (builds, listes d'achat, favoris et plus) dans un seul lien et ouvre-le dans l'application de bureau Stalhub. Le cache du catalogue d'objets n'est pas inclus."
           }
         }
       }
@@ -589,6 +593,7 @@
       "title": "Recherche sur le site",
       "label": "Entrez votre requête",
       "not_found": "Rien trouvé",
+      "loading": "Chargement...",
       "pages": "Pages",
       "articles": "Articles"
     }
@@ -2712,5 +2717,46 @@
       }
     },
     "empty": "Choisissez un niveau cible supérieur au niveau actuel"
+  },
+  "download": {
+    "title": "Transférer les données vers l'application",
+    "description": "Regroupe toutes les données locales (builds, listes d'achat, favoris et plus) dans un seul lien et ouvre-le dans l'application de bureau Stalhub. Le cache du catalogue d'objets n'est pas inclus.",
+    "include": "Les données suivantes seront transférées :",
+    "empty": "Aucune donnée locale à transférer trouvée.",
+    "total": "Total : {count} entrées · {size}",
+    "generate": "Générer le lien",
+    "generated": "Lien de transfert créé",
+    "generateError": "Échec de la création du lien",
+    "open": "Ouvrir dans l'application",
+    "oversize": "Le lien est trop long — il risque de ne pas s'ouvrir dans l'application",
+    "hint": "Copiez le lien et ouvrez-le sur cet appareil où l'application Stalhub est installée.",
+    "app": {
+      "gradient": "Télécharger",
+      "version": "StalHub",
+      "tagline": "Installez l'application de bureau StalHub — builds, calculatrices, prix du marché et analyses du quotidien toujours à portée de main. Choisissez l'installateur pour votre système d'exploitation ci-dessous.",
+      "latest": "Dernière version : {version}",
+      "prerelease": "Pré-version",
+      "download": "Télécharger",
+      "all_releases": "Toutes les versions",
+      "published": "Publié le {date}",
+      "files": "Fichiers",
+      "no_assets": "Aucun fichier téléchargeable dans cette version.",
+      "error": "Impossible de charger les versions",
+      "retry": "Réessayer",
+      "loading": "Chargement des versions…",
+      "downloads": "{count} téléchargements",
+      "github": "Toutes les versions sur GitHub",
+      "select": "Choisir un paquet",
+      "close": "Fermer",
+      "platforms": {
+        "linux": "Linux",
+        "windows": "Windows",
+        "mac": "macOS",
+        "linux-deb": "Linux (DEB)",
+        "linux-rpm": "Linux (RPM)",
+        "linux-appimage": "Linux (AppImage)",
+        "other": "Other"
+      }
+    }
   }
 }

@@ -102,7 +102,7 @@ export default function ItemPickerModal({
 						value={query}
 					/>
 
-					{loading ? (
+					{loading && !items ? (
 						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-text-accent">
 							<Skeleton className="size-5" />
 							<p>{t('buy.loading')}</p>

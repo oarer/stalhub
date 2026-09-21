@@ -204,8 +204,6 @@ export default function ItemSearchModal({
 		displayedArticles.length === 0 &&
 		query.trim().length > 0
 
-	if (loading) return <Skeleton className="size-8" />
-
 	return (
 		<Modal.Root onOpenChange={setOpen} open={open}>
 			{trigger ? (
@@ -235,6 +233,13 @@ export default function ItemSearchModal({
 						type="text"
 						value={query}
 					/>
+
+					{loading && (
+						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-text-accent">
+							<Skeleton className="size-5" />
+							<p>{t('modals.search.loading')}</p>
+						</div>
+					)}
 
 					<AnimatePresence>
 						{isEmpty && (

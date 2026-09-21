@@ -209,6 +209,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				href: '/models',
 				labelKey: 'nav.groups.other.items.models.label',
 			},
+			{
+				key: 'download',
+				icon: 'lucide:download',
+				href: '/download',
+				labelKey: 'nav.groups.other.items.download.label',
+				descriptionKey: 'nav.groups.other.items.download.description',
+			},
 		],
 	},
 	{

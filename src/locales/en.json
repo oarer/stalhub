@@ -198,6 +198,10 @@
           "operations": {
             "label": "Operations",
             "description": "Player operation history"
+          },
+          "download": {
+            "label": "Transfer data to the app",
+            "description": "Pack all local data (builds, buy lists, favorites and more) into a single link and open it in the Stalhub desktop app. The item catalog cache is not included."
           }
         }
       },
@@ -583,6 +587,7 @@
       "title": "Site search",
       "label": "Enter a query",
       "not_found": "Nothing found",
+      "loading": "Loading...",
       "pages": "Pages",
       "articles": "Articles"
     }
@@ -2874,5 +2879,46 @@
       }
     },
     "empty": "Pick a target level above the current one to calculate"
+  },
+  "download": {
+    "title": "Transfer data to the app",
+    "description": "Pack all local data (builds, buy lists, favorites and more) into a single link and open it in the Stalhub desktop app. The item catalog cache is not included.",
+    "include": "The following data will be transferred:",
+    "empty": "No local data to transfer was found.",
+    "total": "Total: {count} entries · {size}",
+    "generate": "Generate link",
+    "generated": "Transfer link created",
+    "generateError": "Failed to create link",
+    "open": "Open in app",
+    "oversize": "Link is too large — it may not open in the app",
+    "hint": "Copy the link and open it on this device where the Stalhub app is installed.",
+    "app": {
+      "gradient": "Download",
+      "version": "StalHub",
+      "tagline": "Get the StalHub desktop app — builds, calculators, market prices and everyday analytics, always at hand. Pick the installer for your operating system below.",
+      "latest": "Latest release: {version}",
+      "prerelease": "Pre-release",
+      "download": "Download",
+      "all_releases": "All releases",
+      "published": "Published {date}",
+      "files": "Files",
+      "no_assets": "No downloadable files in this release.",
+      "error": "Failed to load releases",
+      "retry": "Try again",
+      "loading": "Loading releases…",
+      "downloads": "{count} downloads",
+      "github": "All releases on GitHub",
+      "select": "Choose a package",
+      "close": "Close",
+      "platforms": {
+        "linux": "Linux",
+        "windows": "Windows",
+        "mac": "macOS",
+        "linux-deb": "Linux (DEB)",
+        "linux-rpm": "Linux (RPM)",
+        "linux-appimage": "Linux (AppImage)",
+        "other": "Other"
+      }
+    }
   }
 }

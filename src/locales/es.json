@@ -589,6 +589,7 @@
 			"title": "Buscar en el sitio",
 			"label": "Introduce una consulta",
 			"not_found": "No se encontró nada",
+			"loading": "Cargando...",
 			"pages": "Páginas",
 			"articles": "Artículos"
 		}
@@ -2712,5 +2713,46 @@
 			}
 		},
 		"empty": "Elige un nivel objetivo superior al actual para calcular"
+	},
+	"download": {
+		"title": "Transferir datos a la aplicación",
+		"description": "Empaqueta todos los datos locales (armados, listas de compra, favoritos y más) en un solo enlace y ábrelo en la aplicación de escritorio Stalhub. La caché del catálogo de objetos no se incluye.",
+		"include": "Se transferirán los siguientes datos:",
+		"empty": "No se encontraron datos locales para transferir.",
+		"total": "Total: {count} entradas · {size}",
+		"generate": "Generar enlace",
+		"generated": "Enlace de transferencia creado",
+		"generateError": "No se pudo crear el enlace",
+		"open": "Abrir en la aplicación",
+		"oversize": "El enlace es demasiado grande: puede que no se abra en la aplicación",
+		"hint": "Copia el enlace y ábrelo en este dispositivo donde está instalada la aplicación Stalhub.",
+		"app": {
+			"gradient": "Descargar",
+			"version": "StalHub",
+			"tagline": "Instala la aplicación de escritorio StalHub: builds, calculadoras, precios del mercado y análisis cotidiano siempre a mano. Elige el instalador para tu sistema operativo a continuación.",
+			"latest": "Última versión: {version}",
+			"prerelease": "Pre-versión",
+			"download": "Descargar",
+			"all_releases": "Todas las versiones",
+			"published": "Publicado el {date}",
+			"files": "Archivos",
+			"no_assets": "No hay archivos descargables en esta versión.",
+			"error": "No se pudieron cargar las versiones",
+			"retry": "Reintentar",
+			"loading": "Cargando versiones…",
+"downloads": "{count} descargas",
+		"github": "Todas las versiones en GitHub",
+		"select": "Elegir paquete",
+		"close": "Cerrar",
+		"platforms": {
+			"linux": "Linux",
+			"windows": "Windows",
+				"mac": "macOS",
+				"linux-deb": "Linux (DEB)",
+				"linux-rpm": "Linux (RPM)",
+				"linux-appimage": "Linux (AppImage)",
+				"other": "Otro"
+			}
+		}
 	}
 }
