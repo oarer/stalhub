@@ -6,7 +6,10 @@
     "features": {
       "items": "Objets",
       "tools": "Outils",
-      "uptime": "Disponibilité"
+      "uptime": "Disponibilité",
+      "price": "Стоимость",
+      "users": "Пользователей",
+      "analytic": "точность аналитики"
     },
     "start": "Commencer",
     "more_details": "En savoir plus",
@@ -115,40 +118,6 @@
               "3d_description": "Fonctionnalité expérimentale"
             }
           },
-          "buy": {
-            "title": "Tableau de prix d'achat",
-            "subtitle": "Créez un tableau des objets que vous achetez, fixez les prix et exportez-le en image",
-            "tableTitleLabel": "Titre du tableau",
-            "tableTitlePlaceholder": "Ex. Achat / Vente",
-            "discord": "Discord",
-            "discordHint": "Le Discord sera affiché dans l'image exportée",
-            "addItem": "Ajouter un objet",
-            "savePng": "Enregistrer le PNG",
-            "copyText": "Copier en texte",
-            "textCopied": "Texte copié",
-            "clear": "Vider",
-            "item": "Objet",
-            "price": "Prix",
-            "total": "Total",
-            "remove": "Supprimer",
-            "emptyTable": "Le tableau est vide",
-            "emptyTableHint": "Ajoutez les objets que vous voulez acheter avec le bouton ci-dessus",
-            "added": "Objet ajouté",
-            "searchTitle": "Rechercher des objets",
-            "searchLabel": "Nom de l'objet...",
-            "searchHint": "Commencez à saisir pour trouver des objets",
-            "notFound": "Rien trouvé",
-            "loading": "Chargement des objets...",
-            "pngPreview": "Aperçu du tableau",
-            "close": "Fermer",
-            "copy": "Copier",
-            "download": "Télécharger",
-            "pngCopied": "Image copiée",
-            "copyError": "Impossible de copier l'image",
-            "pngError": "Impossible de générer l'image",
-            "pngNoIcons": "Impossible de charger les icônes des objets",
-            "madeOn": "Fait sur"
-          },
           "ttk": {
             "label": "TTK",
             "description": "Efficacité des armes"
@@ -172,6 +141,10 @@
           "sessions": {
             "label": "Combats de session",
             "description": "Montée de niveau"
+          },
+          "upgrade": {
+            "label": "Заточка предметов",
+            "description": "Расчёт предметов для заточки"
           },
           "dpi": {
             "label": "Sensibilité",
@@ -202,8 +175,20 @@
             "label": "Tableau de bord",
             "description": "Ces fameux widgets"
           },
+          "loot": {
+            "label": "Шансы",
+            "description": "Шансы на той или иной дроп"
+          },
           "maps": {
             "label": "Carte interactive"
+          },
+          "servers": {
+            "label": "Серверы",
+            "description": "Онлайн серверов"
+          },
+          "balance": {
+            "label": "Équilibre",
+            "description": "Changements d'équilibre"
           },
           "auction": {
             "label": "Enchères"
@@ -215,20 +200,36 @@
             "label": "Recherche de joueurs"
           },
           "models": {
-            "label": "Visualisation des modèles",
-            "description": "Bientôt..."
+            "label": "Visualisation des modèles"
           },
           "operations": {
             "label": "Opérations",
             "description": "Historique des opérations du joueur"
           },
-          "balance": {
-            "label": "Équilibre",
-            "description": "Changements d'équilibre"
-          },
           "download": {
             "label": "Transférer les données vers l'application",
             "description": "Regroupe toutes les données locales (builds, listes d'achat, favoris et plus) dans un seul lien et ouvre-le dans l'application de bureau Stalhub. Le cache du catalogue d'objets n'est pas inclus."
+          }
+        }
+      },
+      "creative": {
+        "title": "Творчество",
+        "items": {
+          "articles": {
+            "label": "Статьи",
+            "description": "Гайды на квесты от игроков"
+          },
+          "builds": {
+            "label": "Сборки",
+            "description": "Публичные сборки от игроков"
+          },
+          "arts": {
+            "label": "Рисунки",
+            "description": "Рисунки от художников"
+          },
+          "tierlists": {
+            "label": "Тир-листы",
+            "description": "Тир-листы от игроков"
           }
         }
       }
@@ -278,14 +279,14 @@
       "iconField": "Icône"
     },
     "filter": {
+      "title": "Filtre des marqueurs",
       "search": "Rechercher par nom",
       "filteredSearch": "Rechercher des marqueurs par nom",
       "nameResults": "Trouvés : {count}",
       "namesInfo": "Marqueurs ({total}, affichés {shown})",
       "all": "Tous",
       "none": "Aucun",
-      "iconsInfo": "Icônes ({total}, affichées {shown})",
-      "title": "Filtre des marqueurs"
+      "iconsInfo": "Icônes ({total}, affichées {shown})"
     },
     "convert": {
       "tools": "Outils",
@@ -417,7 +418,12 @@
       "difficulty": "Difficulté",
       "participants": "Participants : {count}",
       "empty": "Aucune opération trouvée",
-      "error": "Impossible de charger les opérations"
+      "error": "Impossible de charger les opérations",
+      "type": {
+        "big_cleanup": "Большая уборка",
+        "shock_therapy": "Фокусировка",
+        "sea_alienation": "Море отчуждения"
+      }
     }
   },
   "time": {
@@ -482,6 +488,7 @@
     "stars": "Étoiles",
     "comments": {
       "title": "Commentaires ({count})",
+      "aside": "Комментариев",
       "placeholder": "Écrire un commentaire...",
       "empty": "Aucun commentaire",
       "reply": "Répondre",
@@ -497,7 +504,16 @@
     },
     "publishedAt": "Publié le",
     "readComments": "Commentaires",
-    "notFound": "Œuvre introuvable"
+    "notFound": "Œuvre introuvable",
+    "views": "Просмотры",
+    "nsfwAge": {
+      "title": "Подтверждение возраста",
+      "description": "Данная работа содержит контент для взрослых (18+).",
+      "terms": "Продолжая, вы подтверждаете, что вам исполнилось 18 лет. Подробнее — в",
+      "details": "пользовательском соглашении",
+      "back": "Назад",
+      "confirm": "Мне есть 18"
+    }
   },
   "ui": {
     "combobox": {
@@ -697,7 +713,6 @@
     },
     "sickness": {
       "title": "Infections et maladies",
-      "add": "Ajouter un débuff",
       "level": "Niveau",
       "clear": "Effacer",
       "active_count": "Débuffs actifs : {count}",
@@ -714,6 +729,39 @@
         "abnormal": "Émission"
       }
     }
+  },
+  "buy": {
+    "title": "Tableau de prix d'achat",
+    "subtitle": "Créez un tableau des objets que vous achetez, fixez les prix et exportez-le en image",
+    "tableTitleLabel": "Titre du tableau",
+    "tableTitlePlaceholder": "Ex. Achat / Vente",
+    "discord": "Discord",
+    "discordHint": "Le Discord sera affiché dans l'image exportée",
+    "addItem": "Ajouter un objet",
+    "savePng": "Enregistrer le PNG",
+    "copyText": "Copier en texte",
+    "textCopied": "Texte copié",
+    "clear": "Vider",
+    "item": "Objet",
+    "price": "Prix",
+    "total": "Total",
+    "remove": "Supprimer",
+    "emptyTable": "Le tableau est vide",
+    "emptyTableHint": "Ajoutez les objets que vous voulez acheter avec le bouton ci-dessus",
+    "added": "Objet ajouté",
+    "searchTitle": "Rechercher des objets",
+    "searchLabel": "Nom de l'objet...",
+    "searchHint": "Commencez à saisir pour trouver des objets",
+    "notFound": "Rien trouvé",
+    "loading": "Chargement des objets...",
+    "pngPreview": "Aperçu du tableau",
+    "close": "Fermer",
+    "copy": "Copier",
+    "download": "Télécharger",
+    "pngCopied": "Image copiée",
+    "copyError": "Impossible de copier l'image",
+    "pngError": "Impossible de générer l'image",
+    "pngNoIcons": "Impossible de charger les icônes des objets"
   },
   "ttk": {
     "page": {
@@ -799,7 +847,6 @@
     "season_end_hint": "Par défaut — du début de saison au premier mercredi de la suivante",
     "days_to_level": "Jours jusqu’au niveau",
     "donations": "Packs «+50 niveaux»",
-    "donations_desc": "Maximum 3 · chacun 1 500 ₽ et donne 50 niveaux immédiatement",
     "reachable": "Tu arrives avant la fin de la saison",
     "not_reachable": "Pas possible : il faut {daysNeeded} j., il reste {daysLeft}",
     "days": "{count, plural, one {# jour} other {# jours}}"
@@ -826,6 +873,7 @@
     "spartak_brawl": "Bagarre de Spartak",
     "spartak_brawl_desc": "Événement temporaire (dur 9 jours) : bonus aux points finaux de partie",
     "boost_off": "Désactivé",
+    "auto_match_hint": "Le résultat de la partie est calculé automatiquement : pour chaque carte, un objectif jusqu'à la récompense maximale (PB) est choisi avec un minimum d'effort — 2 assists et 2 spots de base, captures selon le mode (capture/KOTH — 2, assaut — 1), le reste est complété par les éliminations",
     "maps": "Cartes",
     "maps_hint": "Sélectionnées : {count}",
     "select_active": "Actives",
@@ -859,7 +907,6 @@
       "deathmatch": "DM",
       "breakthrough": "Assaut"
     },
-    "auto_match_hint": "Le résultat de la partie est calculé automatiquement : pour chaque carte, un objectif jusqu'à la récompense maximale (PB) est choisi avec un minimum d'effort — 2 assists et 2 spots de base, captures selon le mode (capture/KOTH — 2, assaut — 1), le reste est complété par les éliminations",
     "include_captures": "Inclure les points de capture",
     "include_captures_desc": "Désactivez si vous ne prévoyez pas de capturer des points — l'objectif d'éliminations augmentera"
   },
@@ -978,7 +1025,13 @@
     "rerollCost": "Coût de relance",
     "disassembleCost": "Coût de démontage",
     "restoreCost": "Coût de restauration",
-    "categoryCost": "Coût de la catégorie"
+    "categoryCost": "Coût de la catégorie",
+    "save": "Конфигурации",
+    "newModule": "Новая конфигурация",
+    "deleteModule": "Удалить",
+    "renameModule": "Переименовать",
+    "noModules": "Нет сохранённых конфигураций",
+    "moduleName": "Название конфигурации"
   },
   "cwMap": {
     "loading": "Chargement de l'éditeur...",
@@ -1497,7 +1550,9 @@
     "notFound": {
       "buttonLabel": "Aller à l'accueil",
       "description": "Page introuvable",
-      "ifUrlCorrect": "Si vous pensez que l'URL est correcte,"
+      "ifUrlCorrect": "Si vous pensez que l'URL est correcte,",
+      "playerNotFound": "Пользователь не найден",
+      "userNotFound": "Пользователь не найден"
     },
     "globalError": {
       "buttonLabel": "Réessayer",
@@ -1659,12 +1714,27 @@
       "topPlayers": {
         "title": "Meilleurs joueurs (K/D)",
         "empty": "Chargez des captures d'écran d'étapes pour voir le K/D des joueurs"
-      }
+      },
+      "notEnoughRegPlayers": "Недостаточно зарегистрированных игроков на сайте, подсчёт гранат может работать некорректно."
     },
     "members": {
       "title": "Membres",
       "more": "+{count} membres",
-      "squad": "Escouade"
+      "squad": "Escouade",
+      "editTitle": "Редактировать ник",
+      "editPlaceholder": "Новый ник участника",
+      "save": "Сохранить",
+      "cancel": "Отмена",
+      "renamed": "Ник обновлён",
+      "renameError": "Ошибка при изменении ника",
+      "deleteTitle": "Удалить участника",
+      "deleteConfirm": "Удалить «{name}» из состава клана? Участник будет отвязан от клана.",
+      "delete": "Удалить",
+      "deleted": "Участник удалён",
+      "deleteError": "Ошибка при удалении участника",
+      "mismatchTitle": "Ники со скриншота не совпадают с составом — {count, plural, one {# ник} few {# ника} many {# ников} other {# ников}}",
+      "mismatchSelect": "Выбрать участника из состава…",
+      "mismatchApply": "Привязать"
     },
     "stats": {
       "title": "Statistiques",
@@ -1701,6 +1771,7 @@
         "primary": "Principal",
         "secondary": "Secondaire",
         "pistol": "Pistolet",
+        "meleeWeapon": "Мили",
         "fatBuild": "Build «tank»",
         "speedBuild": "Build «vitesse»",
         "armor": "Armure",
@@ -1711,6 +1782,7 @@
         "primaryWeapon": "Arme principale",
         "secondaryWeapon": "Arme secondaire",
         "pistol": "Pistolet",
+        "meleeWeapon": "Мили оружие",
         "armor": "Armure",
         "bioArmor": "Bio-armure",
         "fatBuild": "Build «tank»",
@@ -1724,10 +1796,10 @@
         "previewTitle": "Aperçu des escouades",
         "title": "Escouades · {map}",
         "squadCount": "Escouades",
-        "membersCount": "Joueurs",
         "leader": "Leader",
         "absent": "Absence",
-        "empty": "Vide"
+        "empty": "Vide",
+        "membersCount": "Joueurs"
       },
       "toasts": {
         "createError": "Impossible de créer l'escouade",
@@ -1823,11 +1895,63 @@
     "grenades": {
       "emptyTitle": "Aucune donnée sur les grenades",
       "emptyDesc": "Les données sur les grenades apparaîtront après la synchronisation des membres du clan",
+      "shortTitle": "Гранаты",
+      "modeTitle": "Режим гранат",
+      "modeLabel": "Режим выдачи гранат",
+      "modeHint": "Изменение доступно только для лидера",
+      "modeIssued": "Выдаём",
+      "modeSelf": "Не выдаём",
       "noData": "Aucune donnée sur les étapes",
       "player": "Joueur",
       "stage": "Étape {stage}",
       "total": "Total",
-      "stageCount": "{count, plural, one {# étape} few {# étapes} many {# étapes} other {# étapes}}"
+      "stageCount": "{count, plural, one {# étape} few {# étapes} many {# étapes} other {# étapes}}",
+      "orderBoxes": "Заказ гранат",
+      "boxOrderTitle": "Заказ гранат",
+      "currentOrders": "Текущие заказы",
+      "addBox": "Добавить ящик",
+      "playerName": "Игрок",
+      "boxType": "Тип гранаты",
+      "boxCount": "Количество",
+      "boxAdded": "Ящик добавлен",
+      "boxRemoved": "Ящик удалён",
+      "boxError": "Ошибка при работе с ящиком",
+      "boxes": "ящ.",
+      "totalGrenades": "{count} грн",
+      "fromBoxes": "из ящиков"
+    },
+    "boosts": {
+      "title": "Заказ бустов",
+      "shortTitle": "Бусты",
+      "orderBoosts": "Заказать бусты",
+      "modeLabel": "Выдача бустов",
+      "modeHint": "Лидер клана раздаёт всем игрокам бусты",
+      "modeIssued": "Выдаём",
+      "modeSelf": "Не выдаём",
+      "currentOrders": "Текущие заказы",
+      "addOrder": "Добавить заказ",
+      "selectItem": "Выберите предмет",
+      "quantity": "Количество",
+      "orderAdded": "Заказ добавлен",
+      "orderRemoved": "Заказ удалён",
+      "orderError": "Ошибка при работе с заказом",
+      "selfBoostNotice": "В режиме «Покупка игроком» бусты покупаются самостоятельно. Заказы через клан недоступны."
+    },
+    "orders": {
+      "emptyTitle": "Заказов пока нет",
+      "emptyDesc": "Заказы появятся после того, как игроки оформят их через вкладку «Гранаты»"
+    },
+    "notes": {
+      "title": "Заметки игрока",
+      "created": "Заметка создана",
+      "updated": "Заметка обновлена",
+      "deleted": "Заметка удалена",
+      "error": "Ошибка при работе с заметкой",
+      "placeholder": "Введите заметку (макс. 512 символов)",
+      "editing": "Редактирование",
+      "save": "Сохранить",
+      "add": "Добавить",
+      "cancel": "Отмена"
     },
     "charts": {
       "topCount": "Top {n}",
@@ -1889,12 +2013,10 @@
       "syncDesc": "Mettre à jour les membres du clan selon les données EXBO : les nouveaux membres seront ajoutés, les départs seront signalés.",
       "syncButton": "Synchroniser",
       "botTitle": "Bot Discord",
-      "botDesc": "Liez le bot à votre serveur Discord pour publier les escouades et recevoir les absences.",
       "botCommandLabel": "Exécutez la commande sur le serveur :",
       "botTokenExpires": "Le token est valable {minutes} min. Exécutez d'abord la commande, puis reliez à nouveau le bot si nécessaire.",
       "botLinkLabel": "Lier le bot Discord",
       "botLinkHint": "Générez un token et exécutez la commande /setup sur le serveur",
-      "botLinkButton": "Générer le token",
       "botGuildsTitle": "Serveurs liés",
       "botNoGuilds": "Aucun serveur lié pour le moment",
       "botUnlink": "Dissocier",
@@ -1929,7 +2051,8 @@
         "baseCapture": "Capture de base",
         "brawl": "Bagarre",
         "none": "Aucune"
-      }
+      },
+      "botInviteLabel": "Добавить"
     },
     "invites": {
       "title": "Invitations",
@@ -1958,7 +2081,19 @@
       "noUnlinked": "Tous les membres sont déjà liés",
       "membersCount": "Membres non liés : {count}",
       "selectAll": "Tout sélectionner",
-      "selectedCount": "Sélectionnés : {count}"
+      "selectedCount": "Sélectionnés : {count}",
+      "warning": "Пароль показывается один раз! Не забудьте сохранить его"
+    },
+    "consumables": {
+      "title": "Выдача расходников",
+      "boosts": {
+        "modeLabel": "Выдача бустов",
+        "modeHint": "Лидер клана раздаёт всем бусты"
+      },
+      "grenade": {
+        "modeLabel": "Вылача гранат",
+        "modeHint": "Лидер клана раздаёт всем гранаты"
+      }
     },
     "attendance": {
       "title": "Présence",
@@ -1969,6 +2104,11 @@
         "ABSENT": "Absent",
         "EXCUSED": "Excusé",
         "LATE": "En retard"
+      },
+      "type": {
+        "TOURNAMENT": "Турнир",
+        "BRAWL": "Потасовка",
+        "BASE_CAPTURE": "Захват базы"
       }
     }
   },
@@ -1981,6 +2121,7 @@
       "sessions": "Matchs",
       "stats": "Statistiques",
       "grenades": "Grenades",
+      "orders": "Заказы",
       "squads": "Escouades",
       "gold": "Drops d'or",
       "absences": "Absences",
@@ -2058,7 +2199,11 @@
       "toastCreated": "Œuvre créée",
       "toastCreateError": "Erreur lors de la création",
       "info": "Informations",
-      "img": "Image"
+      "img": "Image",
+      "videoTooLarge": "Видео слишком большое!",
+      "uploading": "Загружено: ",
+      "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
+      "work": "Работа"
     },
     "artEdit": {
       "title": "Modifier l'œuvre",
@@ -2077,7 +2222,8 @@
       "title": "Favoris",
       "empty": "Aucun article/build favori",
       "build": "Build",
-      "article": "Article"
+      "article": "Article",
+      "art": "Рисунок"
     },
     "newArticle": {
       "title": "Nouvel article",
@@ -2391,7 +2537,22 @@
     "secondaryWeapon": "Arme secondaire",
     "bioArmor": "Bio-armure",
     "fatBuild": "Build lourde",
-    "speedBuild": "Build rapide"
+    "speedBuild": "Build rapide",
+    "comments": {
+      "title": "Комментарии ({count})",
+      "placeholder": "Написать комментарий...",
+      "empty": "Нет комментариев",
+      "reply": "Ответить",
+      "deleteTitle": "Удалить комментарий?",
+      "cancel": "Отмена",
+      "deleteConfirm": "Удалить",
+      "toast": {
+        "added": "Комментарий добавлен",
+        "addError": "Ошибка добавления комментария",
+        "deleted": "Комментарий удалён",
+        "deleteError": "Ошибка удаления комментария"
+      }
+    }
   },
   "auth": {
     "title": "Connexion",
@@ -2413,6 +2574,13 @@
   "tech": {
     "title": "Travaux techniques en cours"
   },
+  "cookies": {
+    "title": "Мы используем cookies",
+    "description": "Мы используем cookies и локальное хранилище, так как без них ничего бы не работало.",
+    "details": "Подробнее — в соглашении",
+    "accept": "Принять",
+    "decline": "Отклонить"
+  },
   "roadmap": {
     "genesis": {
       "title": "Naissance du projet",
@@ -2429,6 +2597,10 @@
     "release": {
       "title": "Sortie du projet",
       "description": "Lancement complet du projet et support continu."
+    },
+    "app_release": {
+      "title": "Релиз приложения",
+      "description": "Запуск приложения со всем функционалом, с возможностью оффлайн работы и «трейд-мастера»"
     }
   },
   "themes": {
@@ -2572,7 +2744,6 @@
   },
   "tierlists": {
     "title": "Listes de niveaux",
-    "description": "Classements d'armes et d'armures par efficacité",
     "create": "Créer une liste de niveaux",
     "all": "Tous",
     "allItems": "Tous les objets",
@@ -2628,6 +2799,73 @@
     "description": "En ligne sur les régions et serveurs StalZone.",
     "online": "En ligne",
     "charts": "Graphiques de connexion"
+  },
+  "balance": {
+    "title": "Баланс правки",
+    "description": "Изменения баланса с последнего патча.",
+    "refresh": "Обновить",
+    "refreshSuccess": "Баланс обновлён",
+    "refreshError": "Не удалось обновить баланс",
+    "fresh": "Актуально",
+    "empty": "Изменений в балансе пока нет",
+    "backToLatest": "К последним изменениям",
+    "archived": "Архив",
+    "categories": {
+      "weapon": "Оружие",
+      "armor": "Броня",
+      "artefact": "Артефакты",
+      "attachment": "Модули",
+      "bag": "Рюкзаки и контейнеры",
+      "boost": "Стимуляторы",
+      "bullet": "Патроны",
+      "grenade": "Гранаты"
+    }
+  },
+  "models": {
+    "title": "Просмотр моделей",
+    "description": "Просматривайте модели и экспериментируйте с нанесением краски.",
+    "search": "Поиск моделей",
+    "loading": "Загрузка каталога моделей...",
+    "loadError": "Не удалось загрузить каталог моделей.",
+    "empty": "Модели не найдены.",
+    "selectModel": "Выберите модель, чтобы загрузить её ассеты.",
+    "chooseModel": "Выбрать",
+    "choosePaint": "Сменить",
+    "searchPaints": "Поиск красок",
+    "paintEmpty": "Краски не найдены.",
+    "paintEnabled": "Показывать краску",
+    "scale": "Масштаб краски",
+    "secondaryColor": "Цвет вторичной краски",
+    "colorDefault": "Цвет по умолчанию",
+    "model": "Модель",
+    "paint": "Краска",
+    "mask": "Источник маски",
+    "blend": "Тип наложения",
+    "masks": {
+      "diffuseAlpha": "Альфа diffuse",
+      "diffuseAlphaDual": "Альфа diffuse (двойная)",
+      "normalBlue": "Синий канал normal",
+      "normalBlueDual": "Синий канал normal (двойной)"
+    },
+    "blends": {
+      "replace": "Замена",
+      "multiply": "Умножение",
+      "overlay": "Перекрытие"
+    },
+    "modelLoadError": "Не удалось загрузить 3D-модель.",
+    "loadingModel": "Загрузка модели...",
+    "secondaryPaint": "Вторичная краска",
+    "secondaryEnabled": "Включить вторичную зону",
+    "secondaryDefault": "Использовать цвет по умолчанию",
+    "debugUv": "Отладка UV",
+    "debugUvEnabled": "Показать точки UV",
+    "debugUvHint": "Точки на модели: красный = u, зелёный = v. Переключение uv0/uv1 меняет и канал текстуры базы.",
+    "download": "Скачать модель",
+    "notSelected": "не выбрано",
+    "mobileNotSupported": "Просмотр 3D моделей не поддерживается на мобильных устройствах. Откройте страницу на компьютере для полного функционала.",
+    "textureWarning": "Текстуры могут криво отображаться, очень трудно перенести рендер 1 в 1. В Blender всё будет нормально",
+    "untranslatedWarning": "Из за костыльного способа составление списка моделей, некоторые названия могут быть не переведены",
+    "info": "В архив входит: модель, текстуры, краска и плагин на покраску"
   },
   "upgrade": {
     "title": "Calculateur d'amélioration",

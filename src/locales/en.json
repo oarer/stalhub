@@ -142,6 +142,10 @@
             "label": "Session battles",
             "description": "Leveling up"
           },
+          "upgrade": {
+            "label": "Заточка предметов",
+            "description": "Расчёт предметов для заточки"
+          },
           "dpi": {
             "label": "Sensitivity",
             "description": "DPI settings"
@@ -171,6 +175,10 @@
             "label": "Dashboard",
             "description": "Those very widgets"
           },
+          "loot": {
+            "label": "Шансы",
+            "description": "Шансы на той или иной дроп"
+          },
           "maps": {
             "label": "Interactive map"
           },
@@ -192,8 +200,7 @@
             "label": "Player search"
           },
           "models": {
-            "label": "Model viewer",
-            "description": "Soon..."
+            "label": "Model viewer"
           },
           "operations": {
             "label": "Operations",
@@ -208,10 +215,6 @@
       "creative": {
         "title": "Creative",
         "items": {
-          "arts": {
-            "label": "Art",
-            "description": "Fan art by artists"
-          },
           "articles": {
             "label": "Articles",
             "description": "Quest guides by players"
@@ -219,6 +222,10 @@
           "builds": {
             "label": "Builds",
             "description": "Public builds by players"
+          },
+          "arts": {
+            "label": "Art",
+            "description": "Fan art by artists"
           },
           "tierlists": {
             "label": "Tier Lists",
@@ -411,7 +418,12 @@
       "difficulty": "Difficulty",
       "participants": "Participants: {count}",
       "empty": "No operations found",
-      "error": "Failed to load operations"
+      "error": "Failed to load operations",
+      "type": {
+        "big_cleanup": "Большая уборка",
+        "shock_therapy": "Фокусировка",
+        "sea_alienation": "Море отчуждения"
+      }
     }
   },
   "time": {
@@ -476,6 +488,7 @@
     "stars": "Stars",
     "comments": {
       "title": "Comments ({count})",
+      "aside": "Комментариев",
       "placeholder": "Write a comment...",
       "empty": "No comments",
       "reply": "Reply",
@@ -491,7 +504,16 @@
     },
     "publishedAt": "Published",
     "readComments": "Comments",
-    "notFound": "Art not found"
+    "notFound": "Art not found",
+    "views": "Просмотры",
+    "nsfwAge": {
+      "title": "Подтверждение возраста",
+      "description": "Данная работа содержит контент для взрослых (18+).",
+      "terms": "Продолжая, вы подтверждаете, что вам исполнилось 18 лет. Подробнее — в",
+      "details": "пользовательском соглашении",
+      "back": "Назад",
+      "confirm": "Мне есть 18"
+    }
   },
   "ui": {
     "combobox": {
@@ -691,7 +713,6 @@
     },
     "sickness": {
       "title": "Infections and sicknesses",
-      "add": "Add debuff",
       "level": "Level",
       "clear": "Clear",
       "active_count": "Active debuffs: {count}",
@@ -740,8 +761,7 @@
     "pngCopied": "Image copied",
     "copyError": "Could not copy image",
     "pngError": "Failed to generate image",
-    "pngNoIcons": "Failed to load item icons",
-    "madeOn": "Made on"
+    "pngNoIcons": "Failed to load item icons"
   },
   "ttk": {
     "page": {
@@ -827,7 +847,6 @@
     "season_end_hint": "By default — from season start to the first Wednesday of the next one",
     "days_to_level": "Days to level",
     "donations": "“+50 levels” sets",
-    "donations_desc": "Max 3 · each 1 500 ₽ and grants 50 levels instantly",
     "reachable": "You make it before the season ends",
     "not_reachable": "Won’t make it: need {daysNeeded} days, {daysLeft} left",
     "days": "{count, plural, one {# day} other {# days}}"
@@ -854,6 +873,7 @@
     "spartak_brawl": "Brawl at Spartak",
     "spartak_brawl_desc": "Temporary event (lasts 9 days): bonus to final match points",
     "boost_off": "Off",
+    "auto_match_hint": "The match result is calculated automatically: for each map a target up to the maximum reward (BP) is chosen with minimal effort — base 2 assists and 2 spots, captures by mode (usual/KOTH — 2, assault — 1), the rest is made up by kills",
     "maps": "Maps",
     "maps_hint": "Selected: {count}",
     "select_active": "Active",
@@ -887,7 +907,6 @@
       "deathmatch": "DM",
       "breakthrough": "Assault"
     },
-    "auto_match_hint": "The match result is calculated automatically: for each map a target up to the maximum reward (BP) is chosen with minimal effort — base 2 assists and 2 spots, captures by mode (usual/KOTH — 2, assault — 1), the rest is made up by kills",
     "include_captures": "Include capture points",
     "include_captures_desc": "Disable if you don't plan to capture points — the kill target per match will increase"
   },
@@ -1006,7 +1025,13 @@
     "rerollCost": "Reroll cost",
     "disassembleCost": "Disassemble cost",
     "restoreCost": "Restore cost",
-    "categoryCost": "Category cost"
+    "categoryCost": "Category cost",
+    "save": "Конфигурации",
+    "newModule": "Новая конфигурация",
+    "deleteModule": "Удалить",
+    "renameModule": "Переименовать",
+    "noModules": "Нет сохранённых конфигураций",
+    "moduleName": "Название конфигурации"
   },
   "cwMap": {
     "loading": "Loading editor...",
@@ -1431,6 +1456,8 @@
         "image": "Image",
         "tags": "Tags",
         "tagsPlaceholder": "Tags, comma separated",
+        "description": "Описание",
+        "descriptionPlaceholder": "Введите описание (необязательно)",
         "author": "Author",
         "authorGuest": "Off-site",
         "authorUser": "Site user",
@@ -1523,7 +1550,9 @@
     "notFound": {
       "buttonLabel": "Go home",
       "description": "Page not found",
-      "ifUrlCorrect": "If you believe the URL was entered correctly,"
+      "ifUrlCorrect": "If you believe the URL was entered correctly,",
+      "playerNotFound": "Пользователь не найден",
+      "userNotFound": "Пользователь не найден"
     },
     "globalError": {
       "buttonLabel": "Try again",
@@ -1685,12 +1714,27 @@
       "topPlayers": {
         "title": "Top players (K/D)",
         "empty": "Upload stage screenshots to see players' K/D"
-      }
+      },
+      "notEnoughRegPlayers": "Недостаточно зарегистрированных игроков на сайте, подсчёт гранат может работать некорректно."
     },
     "members": {
       "title": "Members",
       "more": "+{count} members",
-      "squad": "Squad"
+      "squad": "Squad",
+      "editTitle": "Редактировать ник",
+      "editPlaceholder": "Новый ник участника",
+      "save": "Сохранить",
+      "cancel": "Отмена",
+      "renamed": "Ник обновлён",
+      "renameError": "Ошибка при изменении ника",
+      "deleteTitle": "Удалить участника",
+      "deleteConfirm": "Удалить «{name}» из состава клана? Участник будет отвязан от клана.",
+      "delete": "Удалить",
+      "deleted": "Участник удалён",
+      "deleteError": "Ошибка при удалении участника",
+      "mismatchTitle": "Ники со скриншота не совпадают с составом — {count, plural, one {# ник} few {# ника} many {# ников} other {# ников}}",
+      "mismatchSelect": "Выбрать участника из состава…",
+      "mismatchApply": "Привязать"
     },
     "stats": {
       "title": "Statistics",
@@ -1752,10 +1796,10 @@
         "previewTitle": "Squads preview",
         "title": "Squads · {map}",
         "squadCount": "Squads",
-        "membersCount": "Players",
         "leader": "Leader",
         "absent": "Absent",
-        "empty": "Empty"
+        "empty": "Empty",
+        "membersCount": "Players"
       },
       "toasts": {
         "createError": "Could not create squad",
@@ -1969,12 +2013,10 @@
       "syncDesc": "Update the clan roster using EXBO data: new members will be added, departed ones will be marked.",
       "syncButton": "Synchronize",
       "botTitle": "Discord bot",
-      "botDesc": "Link the bot to your Discord server to publish squads and accept absences.",
       "botCommandLabel": "Run the command on the server:",
       "botTokenExpires": "The token is valid for {minutes} min. First run the command, then re-link the bot if needed.",
       "botLinkLabel": "Link Discord bot",
       "botLinkHint": "Generate a token and run the /setup command on the server",
-      "botLinkButton": "Generate token",
       "botGuildsTitle": "Linked servers",
       "botNoGuilds": "No linked servers yet",
       "botUnlink": "Unlink",
@@ -2009,7 +2051,8 @@
         "baseCapture": "Base capture",
         "brawl": "Brawl",
         "none": "Nothing"
-      }
+      },
+      "botInviteLabel": "Добавить"
     },
     "invites": {
       "title": "Invites",
@@ -2038,7 +2081,19 @@
       "noUnlinked": "All members are already linked",
       "membersCount": "Unlinked members: {count}",
       "selectAll": "Select all",
-      "selectedCount": "Selected: {count}"
+      "selectedCount": "Selected: {count}",
+      "warning": "Пароль показывается один раз! Не забудьте сохранить его"
+    },
+    "consumables": {
+      "title": "Выдача расходников",
+      "boosts": {
+        "modeLabel": "Выдача бустов",
+        "modeHint": "Лидер клана раздаёт всем бусты"
+      },
+      "grenade": {
+        "modeLabel": "Вылача гранат",
+        "modeHint": "Лидер клана раздаёт всем гранаты"
+      }
     },
     "attendance": {
       "title": "Attendance",
@@ -2049,6 +2104,11 @@
         "ABSENT": "Absent",
         "EXCUSED": "Excused",
         "LATE": "Late"
+      },
+      "type": {
+        "TOURNAMENT": "Турнир",
+        "BRAWL": "Потасовка",
+        "BASE_CAPTURE": "Захват базы"
       }
     }
   },
@@ -2139,7 +2199,11 @@
       "toastCreated": "Work created",
       "toastCreateError": "Create error",
       "info": "Information",
-      "img": "Image"
+      "img": "Image",
+      "videoTooLarge": "Видео слишком большое!",
+      "uploading": "Загружено: ",
+      "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
+      "work": "Работа"
     },
     "artEdit": {
       "title": "Edit work",
@@ -2158,7 +2222,8 @@
       "title": "Favorites",
       "empty": "No favorite articles/builds",
       "build": "Build",
-      "article": "Article"
+      "article": "Article",
+      "art": "Рисунок"
     },
     "newArticle": {
       "title": "New article",
@@ -2509,6 +2574,13 @@
   "tech": {
     "title": "Technical work in progress"
   },
+  "cookies": {
+    "title": "Мы используем cookies",
+    "description": "Мы используем cookies и локальное хранилище, так как без них ничего бы не работало.",
+    "details": "Подробнее — в соглашении",
+    "accept": "Принять",
+    "decline": "Отклонить"
+  },
   "roadmap": {
     "genesis": {
       "title": "Project inception",
@@ -2525,6 +2597,10 @@
     "release": {
       "title": "Project release",
       "description": "Full launch of the project and further support."
+    },
+    "app_release": {
+      "title": "Релиз приложения",
+      "description": "Запуск приложения со всем функционалом, с возможностью оффлайн работы и «трейд-мастера»"
     }
   },
   "themes": {
@@ -2666,6 +2742,58 @@
     "prompt": "Pick a region and enter a character nickname to see its operations.",
     "loadMore": "Load more"
   },
+  "tierlists": {
+    "title": "Tier Lists",
+    "create": "Create tier list",
+    "all": "All",
+    "allItems": "All items",
+    "weapons": "Weapons",
+    "armor": "Armor",
+    "system": "System",
+    "user": "User",
+    "auto": "Auto",
+    "empty": "Empty",
+    "exportPng": "Export PNG",
+    "pngPreview": "Image preview",
+    "copyPng": "Copy",
+    "downloadPng": "Download",
+    "pngCopied": "Image copied",
+    "pngError": "Failed to create image",
+    "copyError": "Failed to copy",
+    "notFound": "Tier list not found",
+    "edit": "Edit",
+    "deleted": "Tier list deleted",
+    "saved": "Tier list saved",
+    "saveError": "Failed to save",
+    "viewAll": "All tier lists",
+    "editor": {
+      "create": "New tier list",
+      "edit": "Edit tier list",
+      "title": "Title",
+      "description": "Description",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "addItem": "Add item",
+      "pickItem": "Pick item",
+      "searchItems": "Search items",
+      "save": "Save"
+    },
+    "allCategories": "All categories",
+    "categories": {
+      "general": "General",
+      "assault_rifle": "Assault rifles",
+      "sniper_rifle": "Sniper rifles",
+      "shotgun_rifle": "Shotguns",
+      "submachine_gun": "SMGs",
+      "machine_gun": "Machine guns",
+      "pistol": "Pistols",
+      "heavy": "Heavy"
+    },
+    "info": {
+      "title": "How TTK is calculated",
+      "aggregate": "Rating is based on average TTK: for each weapon we take ~400 random setups (HP 400–800, vitality 1.0–1.3), head hits, sharpening 15 and best AP ammo. Ranks S–E are assigned by the average TTK relative to the best weapon in the category with a 0.05 s step."
+    }
+  },
   "servers": {
     "title": "Server online",
     "description": "Online across StalZone regions and servers.",
@@ -2736,60 +2864,8 @@
     "notSelected": "Not selected",
     "mobileNotSupported": "3D model viewing is not supported on mobile devices. Open the page on a computer for full functionality.",
     "textureWarning": "Textures may display incorrectly, it is very difficult to transfer a render 1:1. In Blender everything will look correct.",
-    "untranslatedWarning": "Due to the hacky way the model list is compiled, some names may not be translated"
-  },
-  "tierlists": {
-    "title": "Tier Lists",
-    "description": "Rankings of weapons and armor by efficiency",
-    "create": "Create tier list",
-    "all": "All",
-    "allItems": "All items",
-    "weapons": "Weapons",
-    "armor": "Armor",
-    "system": "System",
-    "user": "User",
-    "auto": "Auto",
-    "empty": "Empty",
-    "exportPng": "Export PNG",
-    "pngPreview": "Image preview",
-    "copyPng": "Copy",
-    "downloadPng": "Download",
-    "pngCopied": "Image copied",
-    "pngError": "Failed to create image",
-    "copyError": "Failed to copy",
-    "notFound": "Tier list not found",
-    "edit": "Edit",
-    "deleted": "Tier list deleted",
-    "saved": "Tier list saved",
-    "saveError": "Failed to save",
-    "viewAll": "All tier lists",
-    "editor": {
-      "create": "New tier list",
-      "edit": "Edit tier list",
-      "title": "Title",
-      "description": "Description",
-      "category": "Category",
-      "categoryPlaceholder": "Select a category",
-      "addItem": "Add item",
-      "pickItem": "Pick item",
-      "searchItems": "Search items",
-      "save": "Save"
-    },
-    "allCategories": "All categories",
-    "categories": {
-      "general": "General",
-      "assault_rifle": "Assault rifles",
-      "sniper_rifle": "Sniper rifles",
-      "shotgun_rifle": "Shotguns",
-      "submachine_gun": "SMGs",
-      "machine_gun": "Machine guns",
-      "pistol": "Pistols",
-      "heavy": "Heavy"
-    },
-    "info": {
-      "title": "How TTK is calculated",
-      "aggregate": "Rating is based on average TTK: for each weapon we take ~400 random setups (HP 400–800, vitality 1.0–1.3), head hits, sharpening 15 and best AP ammo. Ranks S–E are assigned by the average TTK relative to the best weapon in the category with a 0.05 s step."
-    }
+    "untranslatedWarning": "Due to the hacky way the model list is compiled, some names may not be translated",
+    "info": "В архив входит: модель, текстуры, краска и плагин на покраску"
   },
   "upgrade": {
     "title": "Upgrade Calculator",
