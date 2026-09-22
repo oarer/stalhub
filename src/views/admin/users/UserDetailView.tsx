@@ -12,6 +12,7 @@ import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { Switch } from '@/components/ui/Switch'
 import { Table } from '@/components/ui/Table'
 import { Tabs } from '@/components/ui/Tabs'
 import { toast } from '@/components/ui/Toast'
@@ -24,6 +25,52 @@ import { adminUserService } from '@/services/admin/user.service'
 
 interface Props {
 	userId: number
+}
+
+const SOCIAL_NETWORKS = ['telegram', 'youtube', 'twitch', 'boosty', 'x']
+
+const SOCIAL_ICONS: Record<string, string> = {
+	telegram: 'mingcute:telegram-fill',
+	youtube: 'lucide:youtube',
+	twitch: 'lucide:twitch',
+	boosty: 'simple-icons:boosty',
+	x: 'prime:twitter',
+}
+
+function LinkedAccount({
+	icon,
+	name,
+	value,
+	detail,
+}: {
+	icon: string
+	name: string
+	value: string
+	detail?: string
+}) {
+	const t = useTranslations()
+	return (
+		<div className="flex items-center rounded-lg bg-card/50 px-3 py-2">
+			<Icon className="shrink-0 text-muted-foreground" icon={icon} />
+			<span className="mx-2 w-24 shrink-0 font-semibold text-sm">
+				{name}
+			</span>
+			{value ? (
+				<div className="flex min-w-0 flex-1 flex-col">
+					<span className="truncate text-sm">{value}</span>
+					{detail && (
+						<span className="break-all font-mono text-muted-foreground text-xs">
+							{detail}
+						</span>
+					)}
+				</div>
+			) : (
+				<span className="text-muted-foreground text-sm">
+					{t('admin.userDetail.notConnected')}
+				</span>
+			)}
+		</div>
+	)
 }
 
 export default function UserDetailView({ userId }: Props) {
@@ -46,8 +93,35 @@ export default function UserDetailView({ userId }: Props) {
 
 	const [editName, setEditName] = useState(user.name ?? '')
 	const [editUsername, setEditUsername] = useState(user.username)
+	const [editOnboarded, setEditOnboarded] = useState(user.onboarded ?? false)
+	const [editPublicProfile, setEditPublicProfile] = useState(
+		user.user_settings?.public_profile ?? false
+	)
+	const [editSocialLinks, setEditSocialLinks] = useState<
+		Record<string, string>
+	>(
+		Object.fromEntries(
+			SOCIAL_NETWORKS.map((network) => [
+				network,
+				user.social_links?.[network] ?? '',
+			])
+		)
+	)
 	const [banReason, setBanReason] = useState('')
 	const [banDuration, setBanDuration] = useState('')
+
+	const [editLayout, setEditLayout] = useState(
+		user.customization?.layout ?? 'CLASSIC'
+	)
+	const [editCardBackground, setEditCardBackground] = useState(
+		user.customization?.card_background ?? 'NONE'
+	)
+	const [editCardColor, setEditCardColor] = useState(
+		user.customization?.card_color ?? '#171717'
+	)
+	const [editAvatar, setEditAvatar] = useState<string>(
+		user.customization?.avatar ?? 'NONE'
+	)
 
 	const [bannerMode, setBannerMode] = useState<'COLOR' | 'IMAGE' | 'NONE'>(
 		user.customization?.banner_mode ?? 'NONE'
@@ -67,6 +141,8 @@ export default function UserDetailView({ userId }: Props) {
 			adminUserService.update(userId, {
 				username: editUsername,
 				name: editName || undefined,
+				onboarded: editOnboarded,
+				public_profile: editPublicProfile,
 			}),
 		onSuccess: () => {
 			toast.success(t('admin.userDetail.toast.updated'))
@@ -75,6 +151,49 @@ export default function UserDetailView({ userId }: Props) {
 			})
 		},
 		onError: () => toast.error(t('admin.userDetail.toast.updateError')),
+	})
+
+	const socialLinksMutation = useMutation({
+		mutationFn: () => {
+			const pruned: Record<string, string> = {}
+			for (const [network, url] of Object.entries(editSocialLinks)) {
+				const trimmed = url.trim()
+				if (trimmed) pruned[network] = trimmed
+			}
+			return adminUserService.update(userId, { social_links: pruned })
+		},
+		onSuccess: () => {
+			toast.success(t('admin.userDetail.toast.linksUpdated'))
+			queryClient.invalidateQueries({
+				queryKey: ['admin', 'user', userId],
+			})
+		},
+		onError: () =>
+			toast.error(t('admin.userDetail.toast.linksUpdateError')),
+	})
+
+	const customizationMutation = useMutation({
+		mutationFn: () =>
+			adminUserService.updateCustomization(userId, {
+				layout: editLayout as 'CLASSIC' | 'MODERN' | 'COMPACT',
+				card_background: editCardBackground as
+					| 'COLOR'
+					| 'AVATAR'
+					| 'NONE',
+				card_color: editCardColor,
+				avatar:
+					editAvatar === 'NONE'
+						? null
+						: (editAvatar as 'DISCORD' | 'TELEGRAM'),
+			}),
+		onSuccess: () => {
+			toast.success(t('admin.userDetail.toast.customizationUpdated'))
+			queryClient.invalidateQueries({
+				queryKey: ['admin', 'user', userId],
+			})
+		},
+		onError: () =>
+			toast.error(t('admin.userDetail.toast.customizationUpdateError')),
 	})
 
 	const banMutation = useMutation({
@@ -271,9 +390,13 @@ export default function UserDetailView({ userId }: Props) {
 						{t('admin.userDetail.tabs.badges')} (
 						{userBadges?.length ?? 0})
 					</Tabs.Trigger>
+					<Tabs.Trigger value="links">
+						<Icon icon="lucide:link" />
+						{t('admin.userDetail.tabs.links')}
+					</Tabs.Trigger>
 					<Tabs.Trigger value="banner">
 						<Icon icon="lucide:image" />
-						{t('admin.userDetail.tabs.banner')}
+						{t('admin.userDetail.tabs.customization')}
 					</Tabs.Trigger>
 				</Tabs.List>
 
@@ -303,12 +426,99 @@ export default function UserDetailView({ userId }: Props) {
 										value={editName}
 									/>
 								</div>
+								<div className="grid grid-cols-1 gap-3 rounded-lg bg-card/50 p-4 md:grid-cols-2">
+									<div className="flex items-center justify-between gap-2">
+										<span className="flex items-center gap-2 font-semibold text-sm">
+											<Icon
+												className="text-muted-foreground"
+												icon="lucide:check-circle"
+											/>
+											{t('admin.userDetail.onboarded')}
+										</span>
+										<Switch
+											checked={editOnboarded}
+											onCheckedChange={setEditOnboarded}
+										/>
+									</div>
+									<div className="flex items-center justify-between gap-2">
+										<span className="flex items-center gap-2 font-semibold text-sm">
+											<Icon
+												className="text-muted-foreground"
+												icon="lucide:globe"
+											/>
+											{t(
+												'admin.userDetail.publicProfile'
+											)}
+										</span>
+										<Switch
+											checked={editPublicProfile}
+											onCheckedChange={
+												setEditPublicProfile
+											}
+										/>
+									</div>
+								</div>
 								<div className="flex items-center gap-3">
 									<Button
 										loading={updateMutation.isPending}
 										onClick={() => updateMutation.mutate()}
 									>
 										{t('admin.userDetail.save')}
+									</Button>
+								</div>
+							</div>
+						</Card.Content>
+					</Card.Root>
+
+					<Card.Root className="mt-4">
+						<Card.Header>
+							<Card.Title>
+								<Icon icon="lucide:share-2" />
+								{t('admin.userDetail.socialLinks')}
+							</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<div className="flex flex-col gap-3">
+								{SOCIAL_NETWORKS.map((network) => (
+									<div
+										className="flex items-center gap-2 rounded-lg bg-card/50 px-3 py-2"
+										key={network}
+									>
+										<Icon
+											className="shrink-0 text-muted-foreground"
+											icon={
+												SOCIAL_ICONS[network] ??
+												'lucide:link'
+											}
+										/>
+										<span className="w-20 shrink-0 font-semibold text-sm capitalize">
+											{network}
+										</span>
+										<Input
+											className="flex-1"
+											onChange={(e) =>
+												setEditSocialLinks((prev) => ({
+													...prev,
+													[network]: e.target.value,
+												}))
+											}
+											placeholder={t(
+												'admin.userDetail.socialLinksPlaceholder'
+											)}
+											value={
+												editSocialLinks[network] ?? ''
+											}
+										/>
+									</div>
+								))}
+								<div className="flex items-center gap-3">
+									<Button
+										loading={socialLinksMutation.isPending}
+										onClick={() =>
+											socialLinksMutation.mutate()
+										}
+									>
+										{t('admin.userDetail.socialLinksSave')}
 									</Button>
 								</div>
 							</div>
@@ -894,6 +1104,111 @@ export default function UserDetailView({ userId }: Props) {
 					<Card.Root>
 						<Card.Header>
 							<Card.Title>
+								<Icon icon="lucide:palette" />
+								{t('admin.userDetail.customization.title')}
+							</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<div className="flex flex-col gap-4">
+								<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+									<Combobox
+										onValueChange={setEditLayout}
+										options={[
+											{
+												value: 'CLASSIC',
+												label: 'admin.userDetail.customization.layoutClassic',
+											},
+											{
+												value: 'MODERN',
+												label: 'admin.userDetail.customization.layoutModern',
+											},
+											{
+												value: 'COMPACT',
+												label: 'admin.userDetail.customization.layoutCompact',
+											},
+										]}
+										placeholder="admin.userDetail.customization.layout"
+										value={editLayout}
+									/>
+									<Combobox
+										onValueChange={setEditCardBackground}
+										options={[
+											{
+												value: 'NONE',
+												label: 'admin.userDetail.banner.modeNone',
+											},
+											{
+												value: 'COLOR',
+												label: 'admin.userDetail.customization.cardBackgroundColor',
+											},
+											{
+												value: 'AVATAR',
+												label: 'admin.userDetail.customization.cardBackgroundAvatar',
+											},
+										]}
+										placeholder="admin.userDetail.customization.cardBackground"
+										value={editCardBackground}
+									/>
+									<Combobox
+										onValueChange={setEditAvatar}
+										options={[
+											{
+												value: 'NONE',
+												label: 'admin.userDetail.customization.avatarNone',
+											},
+											{
+												value: 'DISCORD',
+												label: 'admin.userDetail.customization.avatarDiscord',
+											},
+											{
+												value: 'TELEGRAM',
+												label: 'admin.userDetail.customization.avatarTelegram',
+											},
+										]}
+										placeholder="admin.userDetail.customization.avatar"
+										value={editAvatar}
+									/>
+								</div>
+
+								{editCardBackground === 'COLOR' && (
+									<div className="flex items-center gap-3">
+										<input
+											className="h-9 w-16 cursor-pointer rounded border-2 border-primary bg-card"
+											onChange={(e) =>
+												setEditCardColor(e.target.value)
+											}
+											type="color"
+											value={editCardColor}
+										/>
+										<Input
+											label="admin.userDetail.customization.cardColor"
+											onChange={(e) =>
+												setEditCardColor(e.target.value)
+											}
+											value={editCardColor}
+										/>
+									</div>
+								)}
+
+								<div className="flex items-center gap-3">
+									<Button
+										loading={
+											customizationMutation.isPending
+										}
+										onClick={() =>
+											customizationMutation.mutate()
+										}
+									>
+										{t('admin.userDetail.save')}
+									</Button>
+								</div>
+							</div>
+						</Card.Content>
+					</Card.Root>
+
+					<Card.Root className="mt-4">
+						<Card.Header>
+							<Card.Title>
 								<Icon icon="lucide:image" />
 								{t('admin.userDetail.banner.title')}
 							</Card.Title>
@@ -1038,6 +1353,53 @@ export default function UserDetailView({ userId }: Props) {
 										{t('admin.userDetail.banner.save')}
 									</Button>
 								</div>
+							</div>
+						</Card.Content>
+					</Card.Root>
+				</Tabs.Content>
+
+				<Tabs.Content value="links">
+					<Card.Root>
+						<Card.Header>
+							<Card.Title>
+								<Icon icon="lucide:link" />
+								{t('admin.userDetail.linkedAccounts')}
+							</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<div className="flex flex-col gap-2">
+								<LinkedAccount
+									detail={user.discord_auth?.discord_id}
+									icon="lucide:message-circle"
+									name={t(
+										'admin.userDetail.providers.discord'
+									)}
+									value={user.discord_auth?.username ?? ''}
+								/>
+								<LinkedAccount
+									detail={user.telegram_auth?.telegram_id}
+									icon="lucide:send"
+									name={t(
+										'admin.userDetail.providers.telegram'
+									)}
+									value={
+										user.telegram_auth?.login ||
+										user.telegram_auth?.name ||
+										''
+									}
+								/>
+								<LinkedAccount
+									detail={
+										user.exbo_auth
+											? user.exbo_auth.region
+												? `${user.exbo_auth.login} · ${user.exbo_auth.region}`
+												: user.exbo_auth.login
+											: undefined
+									}
+									icon="lucide:gamepad-2"
+									name={t('admin.userDetail.providers.exbo')}
+									value={user.exbo_auth?.username ?? ''}
+								/>
 							</div>
 						</Card.Content>
 					</Card.Root>

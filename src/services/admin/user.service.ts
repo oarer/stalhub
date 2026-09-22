@@ -3,6 +3,8 @@ import type {
 	AdminBanUser,
 	AdminRole,
 	AdminSession,
+	AdminUpdateUser,
+	AdminUpdateUserCustomization,
 	AdminUser,
 	AdminUserDetail,
 	AdminUserListParams,
@@ -31,9 +33,9 @@ class AdminUserService {
 
 	async update(
 		userId: number,
-		update: { username?: string; name?: string }
-	): Promise<AdminUser> {
-		const { data } = await apiClient.patch<AdminUser>(
+		update: AdminUpdateUser
+	): Promise<AdminUserDetail> {
+		const { data } = await apiClient.patch<AdminUserDetail>(
 			`/api/v1/admin/users/${userId}`,
 			update
 		)
@@ -91,12 +93,7 @@ class AdminUserService {
 
 	async updateCustomization(
 		userId: number,
-		update: {
-			banner_mode?: 'COLOR' | 'IMAGE' | 'NONE'
-			banner_type?: 'BACKGROUND' | 'HEADER'
-			banner_color?: string
-			banner_image?: string | null
-		}
+		update: AdminUpdateUserCustomization
 	): Promise<void> {
 		await apiClient.patch(
 			`/api/v1/admin/users/${userId}/customization`,

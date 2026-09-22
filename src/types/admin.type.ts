@@ -172,16 +172,64 @@ export interface AdminUserCustomization {
 	banner_image?: string | null
 	card_background?: string
 	card_color?: string
+	avatar?: 'DISCORD' | 'TELEGRAM' | null
+	avatar_image?: string | null
+}
+
+export interface AdminUpdateUser {
+	username?: string
+	name?: string
+	onboarded?: boolean
+	public_profile?: boolean
+	social_links?: Record<string, string>
+}
+
+export interface AdminUpdateUserCustomization {
+	layout?: 'CLASSIC' | 'MODERN' | 'COMPACT'
+	banner_mode?: 'COLOR' | 'IMAGE' | 'NONE'
+	banner_type?: 'BACKGROUND' | 'HEADER'
+	banner_color?: string
+	banner_image?: string | null
+	card_background?: 'COLOR' | 'AVATAR' | 'NONE'
+	card_color?: string
+	avatar?: 'DISCORD' | 'TELEGRAM' | null
 }
 
 export interface AdminUserDetail extends AdminUser {
 	username_changed_at?: string
 	onboarded?: boolean
+	social_links?: Record<string, string> | null
 	customization?: AdminUserCustomization | null
+	discord_auth?: {
+		id: number
+		discord_id: string
+		name: string
+		username: string
+		avatar_id: string | null
+		connected_at: string
+	} | null
+	telegram_auth?: {
+		id: number
+		telegram_id: string
+		name: string
+		login: string | null
+		avatar_id: string | null
+		connected_at: string
+	} | null
+	exbo_auth?: {
+		id: number
+		exbo_id: string
+		login: string
+		username: string
+		region: string | null
+		region_changed_at: string | null
+		connected_at: string
+	} | null
 	user_settings?: {
 		banned: boolean
 		ban_reason: string | null
 		ban_expires_at: string | null
+		public_profile?: boolean
 	} | null
 	_count?: {
 		sessions: number
