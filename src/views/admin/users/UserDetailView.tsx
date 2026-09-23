@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -716,7 +717,9 @@ export default function UserDetailView({ userId }: Props) {
 									{sessions?.map((session) => (
 										<Table.Row key={session.id}>
 											<Table.Cell>
-												<span className="font-mono text-neutral-400 text-xs">
+												<span
+													className={`${montserrat.className} font-semibold text-neutral-400 text-xs`}
+												>
 													{session.id}
 												</span>
 											</Table.Cell>
@@ -724,19 +727,33 @@ export default function UserDetailView({ userId }: Props) {
 												{session.ip}
 											</Table.Cell>
 											<Table.Cell>
-												<span className="max-w-50 truncate text-xs">
+												<span
+													className={`${montserrat.className} max-w-50 truncate text-xs`}
+												>
 													{session.user_agent}
 												</span>
 											</Table.Cell>
 											<Table.Cell>
-												{new Date(
-													session.last_used_at
-												).toLocaleDateString('ru-RU')}
+												<span
+													className={`${montserrat.className} font-semibold`}
+												>
+													{new Date(
+														session.last_used_at
+													).toLocaleDateString(
+														'ru-RU'
+													)}
+												</span>
 											</Table.Cell>
 											<Table.Cell>
-												{new Date(
-													session.last_used_at
-												).toLocaleDateString('ru-RU')}
+												<span
+													className={`${montserrat.className} font-semibold`}
+												>
+													{new Date(
+														session.last_used_at
+													).toLocaleDateString(
+														'ru-RU'
+													)}
+												</span>
 											</Table.Cell>
 											<Table.Cell>
 												<Modal.Root>

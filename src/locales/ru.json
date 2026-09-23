@@ -1145,7 +1145,7 @@
       "providers": {
         "discord": "Discord",
         "telegram": "Telegram",
-        "exbo": "Exbo (STALCRAFT)"
+        "exbo": "Exbo"
       },
       "customization": {
         "title": "Кастомизация профиля",
