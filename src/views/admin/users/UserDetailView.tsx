@@ -724,11 +724,15 @@ export default function UserDetailView({ userId }: Props) {
 												</span>
 											</Table.Cell>
 											<Table.Cell>
-												{session.ip}
+												<span
+													className={`${montserrat.className} font-semibold`}
+												>
+													{session.ip}
+												</span>
 											</Table.Cell>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} max-w-50 truncate text-xs`}
+													className={`${montserrat.className} max-w-50 truncate font-semibold text-xs`}
 												>
 													{session.user_agent}
 												</span>
