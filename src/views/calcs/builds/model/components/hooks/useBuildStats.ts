@@ -86,7 +86,8 @@ export function useBuildStats(buildOverride?: Build) {
 
 		const artWithModifiers = applyContainerModifiers(
 			artResult,
-			containerModifiers.effectiveness
+			containerModifiers.effectiveness,
+			containerModifiers.innerProtection
 		)
 
 		// объединяем: база + артефакты с модификаторами
@@ -159,7 +160,8 @@ export function useBuildStats(buildOverride?: Build) {
 
 		const modified = applyContainerModifiers(
 			result,
-			containerModifiers.effectiveness
+			containerModifiers.effectiveness,
+			containerModifiers.innerProtection
 		)
 
 		if (build.reaction) {
