@@ -66,7 +66,12 @@ class ArtService {
 		const { data } = await apiClient.post<{ image_url: string }>(
 			'/api/v1/arts/upload',
 			formData,
-			{ headers: { 'Content-Type': 'multipart/form-data' } }
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient —
+				// таймаут здесь отключаем (лимиты остаются на сервере).
+				timeout: 0,
+			}
 		)
 		return data
 	}
@@ -82,6 +87,9 @@ class ArtService {
 			formData,
 			{
 				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient —
+				// таймаут здесь отключаем (лимиты остаются на сервере).
+				timeout: 0,
 				onUploadProgress: (e) => {
 					if (onProgress && e.total) {
 						onProgress(Math.round((e.loaded / e.total) * 100))

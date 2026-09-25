@@ -110,7 +110,11 @@ class AdminUserService {
 		const { data } = await apiClient.post<{ banner_image: string }>(
 			`/api/v1/admin/users/${userId}/banner`,
 			formData,
-			{ headers: { 'Content-Type': 'multipart/form-data' } }
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient.
+				timeout: 0,
+			}
 		)
 		return data
 	}

@@ -68,7 +68,11 @@ class ArticleService {
 		const { data } = await apiClient.post<{ url: string }>(
 			`/api/v1/articles/${id}/image`,
 			form,
-			{ headers: { 'Content-Type': 'multipart/form-data' } }
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient.
+				timeout: 0,
+			}
 		)
 		return data.url
 	}

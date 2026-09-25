@@ -56,7 +56,11 @@ class UserService {
 		const { data } = await apiClient.post<{ banner_image: string }>(
 			'/api/v1/users/@me/banner',
 			formData,
-			{ headers: { 'Content-Type': 'multipart/form-data' } }
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient.
+				timeout: 0,
+			}
 		)
 		return data
 	}
@@ -67,7 +71,11 @@ class UserService {
 		const { data } = await apiClient.post<{ avatar_image: string }>(
 			'/api/v1/users/@me/avatar',
 			formData,
-			{ headers: { 'Content-Type': 'multipart/form-data' } }
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Файлы грузятся дольше глобальных 10с apiClient.
+				timeout: 0,
+			}
 		)
 		return data
 	}
