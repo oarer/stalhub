@@ -35,6 +35,7 @@ function detectPlatform(name: string): DownloadPlatform {
 	if (/\.deb$/i.test(lower)) return 'linux-deb'
 	if (/\.rpm$/i.test(lower)) return 'linux-rpm'
 	if (/\.(dmg|pkg)$/i.test(lower)) return 'mac'
+	if (/\.apk$/i.test(lower)) return 'android'
 	return 'other'
 }
 

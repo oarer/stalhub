@@ -49,6 +49,13 @@ export default function Hero({
 		[latest]
 	)
 
+	const androidAsset = useMemo(
+		() =>
+			latest?.assets.find((asset) => asset.platform === 'android') ??
+			null,
+		[latest]
+	)
+
 	const linuxAssets = useMemo(() => {
 		if (!latest) return []
 		return latest.assets
@@ -169,15 +176,16 @@ export default function Hero({
 								key="os-buttons"
 								transition={{ duration: 0.25 }}
 							>
-								{windowsAsset && (
-									<WindowsButton asset={windowsAsset} />
-								)}
-								{linuxAssets.length > 0 && (
-									<LinuxToggleButton
-										onToggle={() => setLinuxOpen(true)}
-										open={false}
-									/>
-								)}
+							{windowsAsset && (
+								<WindowsButton asset={windowsAsset} />
+							)}
+							{androidAsset && <AndroidButton asset={androidAsset} />}
+							{linuxAssets.length > 0 && (
+								<LinuxToggleButton
+									onToggle={() => setLinuxOpen(true)}
+									open={false}
+								/>
+							)}
 							</motion.div>
 						)}
 					</AnimatePresence>
@@ -219,6 +227,35 @@ function WindowsButton({ asset }: { asset: DownloadAsset }) {
 			<span className="flex flex-col items-start text-left">
 				<span className="font-semibold text-lg">
 					{t('download.app.platforms.windows')}
+				</span>
+				<span
+					className={`${montserrat.className} font-medium text-xs opacity-80`}
+				>
+					{formatBytes(asset.size)}
+				</span>
+			</span>
+			<Icon className="ml-1 text-xl" icon="lucide:download" />
+		</a>
+	)
+}
+
+function AndroidButton({ asset }: { asset: DownloadAsset }) {
+	const t = useTranslations()
+
+	return (
+		<a
+			className={cn(
+				buttonVariants({ variant: 'secondary', size: 'lg' }),
+				'gap-3 rounded-xl'
+			)}
+			href={asset.url}
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			<Icon className="text-2xl" icon={PLATFORM_ICONS.android} />
+			<span className="flex flex-col items-start text-left">
+				<span className="font-semibold text-lg">
+					{t('download.app.platforms.android')}
 				</span>
 				<span
 					className={`${montserrat.className} font-medium text-xs opacity-80`}

@@ -3025,6 +3025,7 @@
         "linux-deb": "Linux (DEB)",
         "linux-rpm": "Linux (RPM)",
         "linux-appimage": "Linux (AppImage)",
+        "android": "Android",
         "other": "기타"
       }
     }

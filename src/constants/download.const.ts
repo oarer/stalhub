@@ -8,6 +8,7 @@ export const PLATFORM_ICONS: Record<DownloadPlatform, string> = {
 	'linux-deb': 'simple-icons:debian',
 	'linux-rpm': 'simple-icons:fedora',
 	'linux-appimage': 'simple-icons:appimage',
+	android: 'simple-icons:android',
 	other: 'lucide:file-archive',
 }
 

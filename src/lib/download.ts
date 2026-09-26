@@ -14,6 +14,7 @@ export function detectOs(): DownloadPlatform | null {
 	const ua = navigator.userAgent
 	if (/Windows/i.test(ua)) return 'windows'
 	if (/Macintosh|Mac OS X|iPhone|iPad/i.test(ua)) return 'mac'
+	if (/Android/i.test(ua)) return 'android'
 
 	return 'linux-appimage'
 }

@@ -4,6 +4,7 @@ export type DownloadPlatform =
 	| 'linux-deb'
 	| 'linux-rpm'
 	| 'mac'
+	| 'android'
 	| 'other'
 
 export interface DownloadAsset {
