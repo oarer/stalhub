@@ -68,6 +68,13 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				],
 			},
 			{
+				key: 'buy',
+				icon: 'lucide:table',
+				href: '/calcs/buy',
+				labelKey: 'nav.groups.calculators.items.buy.label',
+				descriptionKey: 'nav.groups.calculators.items.buy.description',
+			},
+			{
 				key: 'TTK',
 				icon: 'lucide:timer-reset',
 				href: '/calcs/ttk',

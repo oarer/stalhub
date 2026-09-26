@@ -34,7 +34,7 @@ export function BuyHeader({
 	return (
 		<div className="flex flex-col gap-4">
 			<h1
-				className={`${unbounded.className} text-center text-3xl text-red-500 sm:text-left`}
+				className={`${unbounded.className} text-left text-3xl text-primary`}
 			>
 				| {title || t('buy.title')}
 			</h1>
@@ -45,14 +45,12 @@ export function BuyHeader({
 						label="buy.tableTitleLabel"
 						maxLength={60}
 						onChange={(e) => onTitleChange(e.target.value)}
-						placeholder={t('buy.tableTitlePlaceholder')}
 						type="text"
 						value={title}
 					/>
 					<Input
 						label="buy.discord"
 						onChange={(e) => onDiscordChange(e.target.value)}
-						placeholder="discord: username"
 						type="text"
 						value={discord}
 					/>
@@ -93,7 +91,7 @@ export function BuyHeader({
 					</Button>
 				</div>
 				{!discord.trim() && (
-					<p className="text-text-accent/70 text-xs">
+					<p className="font-semibold text-muted-foreground text-xs">
 						{t('buy.discordHint')}
 					</p>
 				)}
