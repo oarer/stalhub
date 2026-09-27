@@ -2633,6 +2633,10 @@
     "app_release": {
       "title": "Релиз приложения",
       "description": "Запуск приложения со всем функционалом, с возможностью оффлайн работы и «трейд-мастера»"
+    },
+    "redesign": {
+      "title": "Site redesign",
+      "description": "Fully redesign site, structure refactoring and UX"
     }
   },
   "themes": {
