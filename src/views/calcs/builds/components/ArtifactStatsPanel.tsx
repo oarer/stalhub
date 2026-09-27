@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
+import { montserrat } from '@/app/fonts'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import DropdownMenu from '@/components/ui/DropDown'
 import Input from '@/components/ui/Input'
@@ -128,7 +129,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 										{label}
 									</p>
 									<p
-										className="font-semibold text-sm"
+										className={`${montserrat.className} font-medium text-sm`}
 										style={
 											s.color
 												? { color: `#${s.color}` }
@@ -147,7 +148,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					<div className="grid grid-cols-3 gap-2">
 						{percentButtons.map((p) => (
 							<button
-								className={`w-fit min-w-12 cursor-pointer rounded-md px-3 text-center ring-2 ${p.color} transition-colors`}
+								className={`${montserrat.className} w-fit min-w-12 cursor-pointer rounded-md px-3 text-center ring-2 ${p.color} transition-colors`}
 								key={p.value}
 								onClick={() => onPercentChange(p.value)}
 							>

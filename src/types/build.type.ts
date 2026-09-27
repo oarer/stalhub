@@ -94,15 +94,15 @@ export type ModalProps = {
 export const percentButtons = [
 	{
 		value: 100,
-		color: 'ring-neutral-600 bg-foreground/50 hover:bg-neutral-700',
+		color: 'ring-[#B8BCC560] bg-[#B8BCC520] hover:bg-[#B8BCC540]',
 	},
 	{
 		value: 115,
-		color: 'ring-[#9DEB9D60] bg-[#9DEB9D20] hover:bg-[#9DEB9D40] active:bg-[#9DEB9D60]',
+		color: 'ring-[#9DEB9D60] bg-[#22C55E20] hover:bg-[#22C55E40] active:bg-[#22C55E60]',
 	},
 	{
 		value: 130,
-		color: 'ring-[#9F9FED60] bg-[#9F9FED20] hover:bg-[#9F9FED40] active:bg-[#9F9FED60]',
+		color: 'ring-[#8d8ed960] bg-[#8d8ed920] hover:bg-[#8d8ed940] active:bg-[#8d8ed960]',
 	},
 	{
 		value: 145,
@@ -110,7 +110,7 @@ export const percentButtons = [
 	},
 	{
 		value: 160,
-		color: 'ring-[#EA9D9E60] bg-[#EA9D9E20] hover:bg-[#EA9D9E40] active:bg-[#EA9D9E60]',
+		color: 'ring-[#F8717160] bg-[#F8717120] hover:bg-[#F8717140] active:bg-[#F8717160]',
 	},
 	{
 		value: 175,

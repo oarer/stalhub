@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import type { ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -18,7 +19,7 @@ import type {
 	Item,
 	Locale,
 } from '@/types/item.type'
-import { InfoColor, infoColorMap } from '@/types/item.type'
+import { type InfoColor, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 
@@ -63,6 +64,8 @@ export function ItemPickerModal({
 	statFilters,
 }: ItemPickerModalProps) {
 	const t = useTranslations()
+	const { resolvedTheme } = useTheme()
+	const isDark = resolvedTheme === 'dark'
 
 	const [filter, setFilter] = useState('')
 
@@ -174,10 +177,15 @@ export function ItemPickerModal({
 											<h2
 												className="font-semibold text-lg"
 												style={{
-													color:
-														infoColorMap[
-															selectedItem.color as InfoColor
-														] || InfoColor.DEFAULT,
+													color: !isDark
+														? `color-mix(in srgb, ${
+																infoColorMap[
+																	selectedItem.color as InfoColor
+																]
+															} 70%, var(--foreground))`
+														: infoColorMap[
+																selectedItem.color as InfoColor
+															],
 												}}
 											>
 												{messageToString(

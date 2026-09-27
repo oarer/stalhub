@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 import { useMemo, useRef } from 'react'
 import { useFuseSearch } from '@/hooks/useFuseSearch'
 import { cn } from '@/lib/cn'
@@ -36,6 +37,7 @@ type RowProps = {
 	favoriteType?: FavoriteType
 	isFavorite: (type: FavoriteType, id: string) => boolean
 	toggleFavorite: (type: FavoriteType, id: string) => void
+	isDark: boolean
 }
 
 const Row = ({
@@ -46,6 +48,7 @@ const Row = ({
 	favoriteType,
 	isFavorite,
 	toggleFavorite,
+	isDark,
 }: {
 	item: Item
 } & Omit<RowProps, 'items'>) => {
@@ -56,12 +59,19 @@ const Row = ({
 	return (
 		<div className="h-14">
 			<div
-				className="relative m-1 flex cursor-pointer items-center justify-between gap-2 rounded-xl p-2 ring-2 transition-colors"
+				className="relative m-1 flex cursor-pointer items-center justify-between gap-2 rounded-xl border-2 p-2 transition-colors"
 				onClick={() => onSelectItem?.(item.id)}
 				style={
 					{
-						background: isActive ? `${itemColor}40` : undefined,
-						'--tw-ring-color': `${itemColor}80`,
+						background: isActive
+							? !isDark
+								? `color-mix(in srgb, ${itemColor} 40%, var(--foreground))`
+								: `${itemColor}40`
+							: undefined,
+
+						borderColor: !isDark
+							? `color-mix(in srgb, ${itemColor} 50%, var(--foreground))`
+							: `${itemColor}80`,
 					} as React.CSSProperties
 				}
 			>
@@ -76,7 +86,11 @@ const Row = ({
 
 					<p
 						className="max-w-50 truncate font-semibold"
-						style={{ color: itemColor }}
+						style={{
+							color: !isDark
+								? `color-mix(in srgb, ${itemColor} 70%, var(--foreground))`
+								: itemColor,
+						}}
 					>
 						{messageToString(item.name, locale)}
 					</p>
@@ -120,6 +134,8 @@ export function ItemsList({
 }: ItemsListProps) {
 	const parentRef = useRef<HTMLDivElement>(null)
 	const { isFavorite, toggleFavorite, favorites } = useFavoritesStore()
+	const { resolvedTheme } = useTheme()
+	const isDark = resolvedTheme === 'dark'
 
 	const { filteredEntries } = useFuseSearch<Item>(items, query ?? '', {
 		getName: (item) => messageToString(item.name, locale),
@@ -216,6 +232,7 @@ export function ItemsList({
 								>
 									<Row
 										favoriteType={favoriteType}
+										isDark={isDark}
 										isFavorite={isFavorite}
 										item={item}
 										locale={locale}
