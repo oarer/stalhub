@@ -70,7 +70,8 @@ function TimelineDot({ status }: { status: RoadmapItem['status'] }) {
 			className={cn(
 				'z-10 size-4 rounded-full border-2 border-primary bg-card',
 				status === 'in-progress' &&
-					'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]'
+					'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]',
+				status === 'done' && 'border-primary/40 bg-muted'
 			)}
 			initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
 			transition={{
