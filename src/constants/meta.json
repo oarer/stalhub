@@ -44,7 +44,7 @@
 		"title": "Калькуляторы · StalHub",
 		"description": "Калькуляторы для StalZone: TTK, сборки, Арсенал и другие игровые расчёты.",
 		"keywords": [
-			"сталкрафт калькулятор",
+			"сталкрафт калькуляторы",
 			"stalcraft calculator",
 			"stalcraft calculators",
 			"калькуляторы stalzone",
@@ -65,14 +65,13 @@
 			"арсенал сталзон"
 		]
 	},
-	"/calcs/builds": {
+	"/calcs/builds/lite": {
 		"title": "Калькулятор сборок · StalHub",
-		"description": "Создание и сравнение сборок персонажа для StalZone.",
+		"description": "Создание и сравнение сборок для StalZone.",
 		"keywords": [
 			"сталкрафт сборки",
 			"stalcraft builds",
 			"сталкрафт билд",
-			"сталкрафт лучшие сборки",
 			"stalcraft build calculator",
 			"сборка сталкрафт"
 		]

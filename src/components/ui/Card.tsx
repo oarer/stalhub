@@ -12,7 +12,7 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 backdrop-blur-none md:bg-card/50 md:backdrop-blur-md',
+				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/30 backdrop-blur-none md:bg-card/50 md:backdrop-blur-md',
 				className
 			)}
 			ref={ref}
