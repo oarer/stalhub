@@ -188,6 +188,7 @@ interface AllStatsTabContentProps {
 	prime?: number
 	hps?: number
 	stopping?: number
+	speed?: number
 	sortedStats: [string, number][]
 	statsMap: BuildStats
 	displayNamesMap: Record<string, string>
@@ -202,6 +203,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 	stopping,
 	sortedStats,
 	statsMap,
+	speed,
 	displayNamesMap,
 	isPercentMap,
 	reactionProps,
@@ -262,6 +264,16 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 							className={`${montserrat.className} text-primary`}
 						>
 							{stopping}%
+						</span>
+					</p>
+				)}
+				{speed !== null && (
+					<p className="flex justify-between">
+						<span>{t('build.stats.speed')}</span>
+						<span
+							className={`${montserrat.className} text-primary`}
+						>
+							{speed}%
 						</span>
 					</p>
 				)}

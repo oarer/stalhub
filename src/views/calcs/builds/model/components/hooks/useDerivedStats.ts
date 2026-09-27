@@ -39,12 +39,23 @@ export function useDerivedStats(stats: BuildStats) {
 
 		return Number(
 			(
-				(1 - 100 / (100 + tearDmgFactor)) *
-				((100 - stoppingProtection) / 100) *
+				(1 -
+					(100 / (100 + tearDmgFactor)) *
+						((100 - stoppingProtection) / 100)) *
 				100
 			).toFixed(2)
 		)
 	}, [stats])
 
-	return { prime, hps, stopping }
+	const speed = useMemo(() => {
+		const speed =
+			stats['stalker.artefact_properties.factor.speed_modifier'] ?? 0
+		const sprint_speed =
+			stats['stalker.artefact_properties.factor.sprint_speed_modifier'] ??
+			0
+
+		return Number((speed + sprint_speed).toFixed(2))
+	}, [stats])
+
+	return { prime, hps, stopping, speed }
 }

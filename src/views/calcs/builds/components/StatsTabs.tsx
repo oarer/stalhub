@@ -20,6 +20,7 @@ export default memo(function StatsTabs() {
 		prime,
 		hps,
 		stopping,
+		speed,
 		hasContainer,
 		stats,
 		containerStats,
@@ -58,6 +59,7 @@ export default memo(function StatsTabs() {
 					prime={prime}
 					reactionProps={reactionProps}
 					sortedStats={sortedStats}
+					speed={speed}
 					statsMap={stats}
 					stopping={stopping}
 				/>

@@ -193,7 +193,7 @@ export function useBuildStats(buildOverride?: Build) {
 		containerModifiers,
 	])
 
-	const { prime, hps, stopping } = useDerivedStats(stats)
+	const { prime, hps, stopping, speed } = useDerivedStats(stats)
 	const sortedStats = useMemo(() => {
 		return Object.entries(stats)
 			.filter(
@@ -238,6 +238,7 @@ export function useBuildStats(buildOverride?: Build) {
 		prime,
 		hps,
 		stopping,
+		speed,
 		hasContainer: !!build.container,
 		availableReactions,
 		selectedReaction: build.reaction ?? null,
