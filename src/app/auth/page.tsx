@@ -272,7 +272,7 @@ export default function Page() {
 												</p>
 											</Button>
 											<Button
-												className="gap-2 bg-primary ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
+												className="gap-2 bg-purple-700/40 text-primary ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
 												loading={loading === 'exbo'}
 												onClick={() =>
 													handleLogin('exbo')
