@@ -87,10 +87,10 @@
     }
   },
   "footer": {
-    "made_by": "Сайт сделан ",
+    "made_by": "Разработка сайта ",
     "and": " и ",
     "links": {
-      "bug_report": "Сообщить о баге на GitHub",
+      "bug_report": "Сообщить о баге",
       "telegram": "Telegram канал",
       "discord": "Наш Discord",
       "about": "О нас",
@@ -100,7 +100,16 @@
       "with": "Проект с ",
       "open_source": "открытым исходным кодом",
       "license": "Лицензия "
-    }
+    },
+    "titles": {
+      "links": "Ссылки",
+      "docs": "Документы"
+    },
+    "docs": {
+      "tos": "Условия использования"
+    },
+    "brand": "© StalHub, {year}",
+    "design_by": "Дизайн сделан "
   },
   "nav": {
     "articles": "Статьи",

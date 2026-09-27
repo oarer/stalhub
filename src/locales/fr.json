@@ -100,6 +100,24 @@
       "with": "Projet ",
       "open_source": "open source",
       "license": "Licence "
+    },
+    "titles": {
+      "brand": "Projet",
+      "links": "Liens",
+      "tools": "Outils",
+      "docs": "Documents"
+    },
+    "brand": {
+      "description": "Calculateurs de builds, TTK et arsenal, articles et guides pour StalZone"
+    },
+    "docs": {
+      "tos": "Conditions d'utilisation"
+    },
+    "tools": {
+      "builds": "Builds",
+      "ttk": "TTK",
+      "map": "Carte",
+      "servers": "Serveurs"
     }
   },
   "nav": {

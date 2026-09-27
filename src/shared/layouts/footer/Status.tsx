@@ -65,8 +65,8 @@ export const StatusWidget = () => {
 	}, [currentProblems, isError, t])
 
 	return (
-		<div className="flex items-center gap-2">
-			<div className="relative flex size-3">
+		<div className="flex items-center gap-2 py-0.5">
+			<div className="relative flex size-3 shrink-0">
 				<div
 					className={`absolute h-full w-full animate-ping rounded-full ${indicatorColor}`}
 				/>
@@ -75,19 +75,21 @@ export const StatusWidget = () => {
 				/>
 			</div>
 
-			<div>
+			<div className="font-semibold text-[13px]">
 				{isError || !data?.data ? (
-					<p className="text-destructive text-sm">
+					<p className="text-destructive">
 						{t('status_widget.services_error')}
 					</p>
 				) : displayedProblems.length === 0 ? (
-					<p className="text-muted-foreground text-sm">
+					<p className="text-muted-foreground">
 						{t('status_widget.services_ok')}
 					</p>
 				) : (
 					<Tooltip.Root>
 						<Tooltip.Trigger>
-							{t('status_widget.services_problem')}
+							<span className="text-warning">
+								{t('status_widget.services_problem')}
+							</span>
 						</Tooltip.Trigger>
 						<Tooltip.Content>
 							{displayedProblems.map((name) => (

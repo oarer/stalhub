@@ -100,6 +100,24 @@
       "with": "프로젝트는 ",
       "open_source": "오픈소스로 제공됩니다",
       "license": "라이선스: "
+    },
+    "titles": {
+      "brand": "프로젝트",
+      "links": "링크",
+      "tools": "도구",
+      "docs": "문서"
+    },
+    "brand": {
+      "description": "StalZone용 빌드, TTK, 아스널 계산기와 가이드"
+    },
+    "docs": {
+      "tos": "이용약관"
+    },
+    "tools": {
+      "builds": "빌드",
+      "ttk": "TTK",
+      "map": "지도",
+      "servers": "서버"
     }
   },
   "nav": {
