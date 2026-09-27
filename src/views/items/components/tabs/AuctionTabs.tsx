@@ -107,7 +107,7 @@ function AuctionSubTabs({
 	const t = useTranslations()
 
 	return (
-		<Tabs.Root defaultValue="history">
+		<Tabs.Root defaultValue="current">
 			<Tabs.List className="grid w-full grid-cols-2 gap-2">
 				<Tabs.Trigger value="history">
 					<Icon className="text-lg" icon="lucide:book-open-text" />
