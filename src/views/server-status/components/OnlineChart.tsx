@@ -145,7 +145,7 @@ export function OnlineChart({
 							(items[0].chart.data.labels as string[])[
 								items[0].dataIndex
 							] ?? ''
-						return formatDate(label, 'time')
+						return formatDate(label, 'datetime')
 					},
 					label: (ctx: TooltipItem<'line'>) => {
 						const value = ctx.parsed.y ?? 0
