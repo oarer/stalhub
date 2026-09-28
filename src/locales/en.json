@@ -111,7 +111,11 @@
       "description": "Build, TTK and arsenal calculators, articles and guides for StalZone"
     },
     "docs": {
-      "tos": "Terms of Service"
+      "tos": "Terms of Service",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "contacts": "Contacts",
+      "disclaimer": "Disclaimer"
     },
     "tools": {
       "builds": "Builds",

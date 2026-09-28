@@ -269,7 +269,7 @@ export default function ArtsView() {
 							{t('arts.nsfwAge.terms')}{' '}
 							<Link
 								className="text-primary underline underline-offset-2"
-								href="/legal/tos"
+								href="/legal/terms"
 							>
 								{t('arts.nsfwAge.details')}
 							</Link>

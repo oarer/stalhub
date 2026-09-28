@@ -29,9 +29,24 @@ export const footerLinks: FooterLink[] = [
 
 export const footerDocs: FooterLink[] = [
 	{
-		href: '/legal/tos',
-		title: 'footer.docs.tos',
+		href: '/legal/privacy',
+		title: 'footer.docs.privacy',
+		icon: 'lucide:shield-check',
+	},
+	{
+		href: '/legal/terms',
+		title: 'footer.docs.terms',
 		icon: 'lucide:scale',
+	},
+	{
+		href: '/legal/disclaimer',
+		title: 'footer.docs.disclaimer',
+		icon: 'lucide:triangle-alert',
+	},
+	{
+		href: '/legal/contacts',
+		title: 'footer.docs.contacts',
+		icon: 'lucide:mail',
 	},
 ]
 

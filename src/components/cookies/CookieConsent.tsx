@@ -33,7 +33,7 @@ export function CookieConsent() {
 					{t('description')}{' '}
 					<Link
 						className="text-primary underline underline-offset-2"
-						href="/legal/tos"
+						href="/legal/privacy"
 					>
 						{t('details')}
 					</Link>

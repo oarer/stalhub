@@ -111,7 +111,11 @@
       "description": "StalZone용 빌드, TTK, 아스널 계산기와 가이드"
     },
     "docs": {
-      "tos": "이용약관"
+      "tos": "이용약관",
+      "terms": "이용약관",
+      "privacy": "개인정보처리방침",
+      "contacts": "연락처",
+      "disclaimer": "Disclaimer"
     },
     "tools": {
       "builds": "빌드",
