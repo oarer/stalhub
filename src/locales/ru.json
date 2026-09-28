@@ -1285,7 +1285,8 @@
       "articles": "Статьи",
       "builds": "Сборки",
       "arts": "Творчество",
-      "bans": "Баны"
+      "bans": "Баны",
+      "scNodes": "SC-ноды"
     },
     "roles": {
       "title": "Роли",
@@ -1567,6 +1568,53 @@
       "type": {
         "auto": "Авто",
         "manual": "Вручную"
+      }
+    },
+    "scNodes": {
+      "title": "SC-ноды",
+      "autoRefresh": "Автообновление каждые 15 сек",
+      "stats": {
+        "nodesUp": "Нод активно",
+        "tokensUp": "Токенов активно",
+        "quotaPerMin": "Квота / мин",
+        "costs": "Обычный / Auction"
+      },
+      "nodes": {
+        "title": "Ноды",
+        "name": "Название",
+        "baseUrl": "Base URL",
+        "apiKey": "API-ключ (секрет ноды)",
+        "priority": "Приоритет",
+        "add": "Добавить ноду",
+        "empty": "Ноды не добавлены",
+        "status": "Статус",
+        "ping": "Ping",
+        "on": "Вкл",
+        "off": "Выкл",
+        "deleteTitle": "Удалить ноду?"
+      },
+      "tokens": {
+        "title": "Токены",
+        "label": "Метка",
+        "token": "Токен",
+        "add": "Добавить токен",
+        "bulk": "Пакетная загрузка",
+        "bulkPlaceholder": "Вставь токены: через пробел, запятую или с новой строки…",
+        "bulkButton": "Загрузить пачкой",
+        "empty": "Токены не добавлены",
+        "usage": "Использовано",
+        "resetIn": "До сброса",
+        "deleteTitle": "Удалить токен?"
+      },
+      "toast": {
+        "error": "Что-то пошло не так",
+        "updated": "Сохранено",
+        "nodeCreated": "Нода добавлена",
+        "nodeDeleted": "Нода удалена",
+        "tokenCreated": "Токен добавлен",
+        "tokenDeleted": "Токен удалён",
+        "bulkLoaded": "Загружено: {created}, пропущено: {skipped}",
+        "pingFailed": "Нода не отвечает"
       }
     }
   },

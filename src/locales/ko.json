@@ -1289,7 +1289,8 @@
       "articles": "게시글",
       "builds": "빌드",
       "arts": "아트",
-      "bans": "차단"
+      "bans": "차단",
+      "scNodes": "SC 노드"
     },
     "roles": {
       "title": "역할",
@@ -1571,6 +1572,53 @@
       "type": {
         "auto": "자동",
         "manual": "수동"
+      }
+    },
+    "scNodes": {
+      "title": "SC 노드",
+      "autoRefresh": "15초마다 자동 새로고침",
+      "stats": {
+        "nodesUp": "활성 노드",
+        "tokensUp": "활성 토큰",
+        "quotaPerMin": "분당 할당량",
+        "costs": "일반 / 옥션"
+      },
+      "nodes": {
+        "title": "노드",
+        "name": "이름",
+        "baseUrl": "Base URL",
+        "apiKey": "API 키 (노드 시크릿)",
+        "priority": "우선순위",
+        "add": "노드 추가",
+        "empty": "노드 없음",
+        "status": "상태",
+        "ping": "Ping",
+        "on": "켬",
+        "off": "끔",
+        "deleteTitle": "노드를 삭제할까요?"
+      },
+      "tokens": {
+        "title": "토큰",
+        "label": "라벨",
+        "token": "토큰",
+        "add": "토큰 추가",
+        "bulk": "대량 업로드",
+        "bulkPlaceholder": "토큰 붙여넣기: 공백, 쉼표 또는 줄바꿈으로 구분…",
+        "bulkButton": "대량 업로드",
+        "empty": "토큰 없음",
+        "usage": "사용량",
+        "resetIn": "리셋까지",
+        "deleteTitle": "토큰을 삭제할까요?"
+      },
+      "toast": {
+        "error": "오류가 발생했습니다",
+        "updated": "저장됨",
+        "nodeCreated": "노드 추가됨",
+        "nodeDeleted": "노드 삭제됨",
+        "tokenCreated": "토큰 추가됨",
+        "tokenDeleted": "토큰 삭제됨",
+        "bulkLoaded": "로드됨: {created}, 건너뜀: {skipped}",
+        "pingFailed": "노드가 응답하지 않습니다"
       }
     }
   },

@@ -1289,7 +1289,8 @@
       "articles": "Artículos",
       "builds": "Builds",
       "arts": "Arte",
-      "bans": "Baneos"
+      "bans": "Baneos",
+      "scNodes": "Nodos SC"
     },
     "roles": {
       "title": "Roles",
@@ -1571,6 +1572,53 @@
       "type": {
         "auto": "Auto",
         "manual": "Manual"
+      }
+    },
+    "scNodes": {
+      "title": "Nodos SC",
+      "autoRefresh": "Actualización cada 15 s",
+      "stats": {
+        "nodesUp": "Nodos activos",
+        "tokensUp": "Tokens activos",
+        "quotaPerMin": "Cuota / min",
+        "costs": "Normal / Auction"
+      },
+      "nodes": {
+        "title": "Nodos",
+        "name": "Nombre",
+        "baseUrl": "Base URL",
+        "apiKey": "Clave API (secreto del nodo)",
+        "priority": "Prioridad",
+        "add": "Añadir nodo",
+        "empty": "Sin nodos",
+        "status": "Estado",
+        "ping": "Ping",
+        "on": "Sí",
+        "off": "No",
+        "deleteTitle": "¿Eliminar nodo?"
+      },
+      "tokens": {
+        "title": "Tokens",
+        "label": "Etiqueta",
+        "token": "Token",
+        "add": "Añadir token",
+        "bulk": "Carga masiva",
+        "bulkPlaceholder": "Pega los tokens: separados por espacio, coma o salto de línea…",
+        "bulkButton": "Cargar en lote",
+        "empty": "Sin tokens",
+        "usage": "Usados",
+        "resetIn": "Reinicio en",
+        "deleteTitle": "¿Eliminar token?"
+      },
+      "toast": {
+        "error": "Algo salió mal",
+        "updated": "Guardado",
+        "nodeCreated": "Nodo añadido",
+        "nodeDeleted": "Nodo eliminado",
+        "tokenCreated": "Token añadido",
+        "tokenDeleted": "Token eliminado",
+        "bulkLoaded": "Cargados: {created}, omitidos: {skipped}",
+        "pingFailed": "El nodo no responde"
       }
     }
   },

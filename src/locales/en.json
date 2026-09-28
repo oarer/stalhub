@@ -1289,7 +1289,8 @@
       "articles": "Articles",
       "builds": "Builds",
       "arts": "Art",
-      "bans": "Bans"
+      "bans": "Bans",
+      "scNodes": "SC Nodes"
     },
     "roles": {
       "title": "Roles",
@@ -1571,6 +1572,53 @@
       "type": {
         "auto": "Auto",
         "manual": "Manual"
+      }
+    },
+    "scNodes": {
+      "title": "SC Nodes",
+      "autoRefresh": "Auto-refresh every 15s",
+      "stats": {
+        "nodesUp": "Nodes up",
+        "tokensUp": "Tokens up",
+        "quotaPerMin": "Quota / min",
+        "costs": "Default / Auction"
+      },
+      "nodes": {
+        "title": "Nodes",
+        "name": "Name",
+        "baseUrl": "Base URL",
+        "apiKey": "API key (node secret)",
+        "priority": "Priority",
+        "add": "Add node",
+        "empty": "No nodes yet",
+        "status": "Status",
+        "ping": "Ping",
+        "on": "On",
+        "off": "Off",
+        "deleteTitle": "Delete node?"
+      },
+      "tokens": {
+        "title": "Tokens",
+        "label": "Label",
+        "token": "Token",
+        "add": "Add token",
+        "bulk": "Bulk upload",
+        "bulkPlaceholder": "Paste tokens: space, comma or newline separated…",
+        "bulkButton": "Upload bulk",
+        "empty": "No tokens yet",
+        "usage": "Used",
+        "resetIn": "Reset in",
+        "deleteTitle": "Delete token?"
+      },
+      "toast": {
+        "error": "Something went wrong",
+        "updated": "Saved",
+        "nodeCreated": "Node added",
+        "nodeDeleted": "Node deleted",
+        "tokenCreated": "Token added",
+        "tokenDeleted": "Token deleted",
+        "bulkLoaded": "Loaded: {created}, skipped: {skipped}",
+        "pingFailed": "Node is not responding"
       }
     }
   },

@@ -266,3 +266,61 @@ export interface AdminBanListParams {
 	rule?: string
 	search?: string
 }
+
+export interface AdminScNode {
+	id: number
+	name: string
+	base_url: string
+	has_api_key: boolean
+	enabled: boolean
+	priority: number
+	timeout_ms: number
+	last_seen_at: string | null
+	last_error: string | null
+	created_at: string
+	updated_at: string
+	used: number
+	remaining: number
+	reset_at: string
+}
+
+export interface AdminScTokenUsage {
+	id: number
+	label: string
+	tail: string
+	enabled: boolean
+	used: number
+	remaining: number
+	reset_at: string
+}
+
+export interface AdminScOverview {
+	quota_per_minute: number
+	node_quota_per_minute: number
+	costs: { default: number; auction: number }
+	nodes_up: number
+	tokens_up: number
+	nodes: AdminScNode[]
+	tokens: AdminScTokenUsage[]
+}
+
+export interface AdminScNodeInput {
+	name: string
+	base_url: string
+	api_key?: string
+	priority?: number
+	timeout_ms?: number
+	enabled?: boolean
+}
+
+export interface AdminScNodePing {
+	ok: boolean
+	latency_ms?: number
+	error?: string
+}
+
+export interface AdminScBulkResult {
+	created: number
+	skipped: number
+	total: number
+}

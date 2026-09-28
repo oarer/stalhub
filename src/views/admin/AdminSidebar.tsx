@@ -47,6 +47,11 @@ const tabs = [
 		icon: 'lucide:shield-ban',
 	},
 	{
+		title: 'admin.sidebar.scNodes',
+		href: '/admin/sc-nodes',
+		icon: 'lucide:server',
+	},
+	{
 		title: 'admin.sidebar.players',
 		href: '/admin/players',
 		icon: 'lucide:gamepad-2',

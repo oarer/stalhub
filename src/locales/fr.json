@@ -1289,7 +1289,8 @@
       "articles": "Articles",
       "builds": "Builds",
       "arts": "Art",
-      "bans": "Bannissements"
+      "bans": "Bannissements",
+      "scNodes": "Nœuds SC"
     },
     "roles": {
       "title": "Rôles",
@@ -1571,6 +1572,53 @@
       "type": {
         "auto": "Auto",
         "manual": "Manuel"
+      }
+    },
+    "scNodes": {
+      "title": "Nœuds SC",
+      "autoRefresh": "Actualisation toutes les 15 s",
+      "stats": {
+        "nodesUp": "Nœuds actifs",
+        "tokensUp": "Tokens actifs",
+        "quotaPerMin": "Quota / min",
+        "costs": "Normal / Auction"
+      },
+      "nodes": {
+        "title": "Nœuds",
+        "name": "Nom",
+        "baseUrl": "URL de base",
+        "apiKey": "Clé API (secret du nœud)",
+        "priority": "Priorité",
+        "add": "Ajouter un nœud",
+        "empty": "Aucun nœud",
+        "status": "Statut",
+        "ping": "Ping",
+        "on": "Oui",
+        "off": "Non",
+        "deleteTitle": "Supprimer le nœud ?"
+      },
+      "tokens": {
+        "title": "Tokens",
+        "label": "Libellé",
+        "token": "Token",
+        "add": "Ajouter un token",
+        "bulk": "Import en masse",
+        "bulkPlaceholder": "Collez les tokens : séparés par espace, virgule ou saut de ligne…",
+        "bulkButton": "Importer",
+        "empty": "Aucun token",
+        "usage": "Utilisés",
+        "resetIn": "Reset dans",
+        "deleteTitle": "Supprimer le token ?"
+      },
+      "toast": {
+        "error": "Une erreur est survenue",
+        "updated": "Enregistré",
+        "nodeCreated": "Nœud ajouté",
+        "nodeDeleted": "Nœud supprimé",
+        "tokenCreated": "Token ajouté",
+        "tokenDeleted": "Token supprimé",
+        "bulkLoaded": "Chargés : {created}, ignorés : {skipped}",
+        "pingFailed": "Le nœud ne répond pas"
       }
     }
   },
