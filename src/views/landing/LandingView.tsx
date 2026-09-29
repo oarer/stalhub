@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import LandingClan from './sections/ClanAnalytics'
 import Hero from './sections/Hero'
 
 const Tools = dynamic(() => import('./sections/Tools'))
@@ -10,6 +11,7 @@ export default function LandingView() {
 		<section className="relative mx-auto mt-18 mb-12 flex size-full max-w-440 flex-col gap-10 px-6 pt-18 sm:px-12 lg:px-14">
 			<Hero />
 			<Tools />
+			<LandingClan />
 			<Roadmap />
 			<LandingFooter />
 		</section>

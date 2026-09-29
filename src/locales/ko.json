@@ -84,6 +84,37 @@
       "month": "월간 TOP",
       "views": "조회수",
       "empty": "데이터 없음"
+    },
+    "clan": {
+      "title": "무료 <primary>클랜 분석</primary>",
+      "subtitle": "클랜 리더이신가요? 그렇다면 저희 솔루션이 딱 맞습니다",
+      "features": {
+        "ai": {
+          "title": "AI 분석",
+          "desc": "GPT 6 Sol을 사용해 스테이지를 더 정확하게 분석합니다."
+        },
+        "analytics": {
+          "title": "분석",
+          "desc": "시스템이 모든 스테이지 결과를 자동으로 모아 보기 쉽게 보여줍니다."
+        },
+        "bot": {
+          "title": "Discord 봇",
+          "desc": "사이트에 들어갈 시간 없이 빠르게 스테이지를 업로드할 수 있는 편리한 봇을 만들었습니다."
+        },
+        "grenades": {
+          "title": "수류탄",
+          "desc": "매 스테이지 후 수류탄을 빠르게 스캔해 지급된 수류탄을 모두 썼는지 항상 알 수 있습니다."
+        }
+      },
+      "stages": {
+        "upload": "스크린샷",
+        "analyze": "AI",
+        "cabinet": "캐비닛"
+      },
+      "demo": {
+        "processing": "처리 중",
+        "done": "성공"
+      }
     }
   },
   "footer": {

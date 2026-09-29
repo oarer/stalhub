@@ -97,39 +97,21 @@ export default function Hero() {
 				))}
 			</motion.div>
 
-			<div className="flex flex-col items-center justify-center gap-4 sm:flex-row dark:text-foreground">
-				<motion.div
-					animate={{ y: 0, opacity: 1 }}
-					initial={{ y: 30, opacity: 0 }}
-					transition={{ duration: 0.6, delay: 0.7 }}
+			<motion.div
+				animate={{ y: 0, opacity: 1 }}
+				initial={{ y: 30, opacity: 0 }}
+				transition={{ duration: 0.6, delay: 0.7 }}
+			>
+				<CLink
+					className="gap-2 rounded-xl"
+					href="/calcs"
+					size="lg"
+					variant="primary"
 				>
-					<CLink
-						className="gap-2 rounded-xl"
-						href="/calcs"
-						size="lg"
-						variant="primary"
-					>
-						<Icon className="text-xl" icon="lucide:rocket" />
-						{t('landing.start')}
-					</CLink>
-				</motion.div>
-
-				<motion.div
-					animate={{ y: 0, opacity: 1 }}
-					initial={{ y: 30, opacity: 0 }}
-					transition={{ duration: 0.6, delay: 0.95 }}
-				>
-					<CLink
-						className="gap-2 rounded-xl"
-						href="#tools"
-						size="lg"
-						variant="secondary"
-					>
-						{t('landing.more_details')}
-						<Icon className="text-xl" icon="lucide:chevron-right" />
-					</CLink>
-				</motion.div>
-			</div>
+					<Icon className="text-xl" icon="lucide:rocket" />
+					{t('landing.start')}
+				</CLink>
+			</motion.div>
 		</section>
 	)
 }

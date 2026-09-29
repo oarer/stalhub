@@ -84,6 +84,37 @@
       "month": "Top of the month",
       "views": "views",
       "empty": "No data"
+    },
+    "clan": {
+      "title": "Free <primary>clan analytics</primary>",
+      "subtitle": "Are you a clan leader? Then our solution is perfect for you",
+      "features": {
+        "ai": {
+          "title": "AI analysis",
+          "desc": "We use GPT 6 Sol for sharper stage analysis."
+        },
+        "analytics": {
+          "title": "Analytics",
+          "desc": "The system automatically collects results from every stage and shows them in a convenient view."
+        },
+        "bot": {
+          "title": "Discord bot",
+          "desc": "To save you a trip to the site, we built a handy bot for fast stage uploads."
+        },
+        "grenades": {
+          "title": "Grenades",
+          "desc": "Fast grenade scan after each stage, so you always know if players spend every grenade they were given."
+        }
+      },
+      "stages": {
+        "upload": "Screenshot",
+        "analyze": "AI",
+        "cabinet": "Cabinet"
+      },
+      "demo": {
+        "processing": "Processing",
+        "done": "Done"
+      }
     }
   },
   "footer": {

@@ -84,6 +84,37 @@
       "month": "Top du mois",
       "views": "vues",
       "empty": "Aucune donnée"
+    },
+    "clan": {
+      "title": "Analytique de clan <primary>gratuite</primary>",
+      "subtitle": "Vous êtes chef de clan ? Alors notre solution est faite pour vous",
+      "features": {
+        "ai": {
+          "title": "Analyse IA",
+          "desc": "Nous utilisons GPT 6 Sol pour une analyse plus précise des étapes."
+        },
+        "analytics": {
+          "title": "Analytique",
+          "desc": "Le système collecte automatiquement les résultats de toutes les étapes et les affiche clairement."
+        },
+        "bot": {
+          "title": "Bot Discord",
+          "desc": "Pour éviter de passer par le site, nous avons créé un bot pratique pour envoyer les étapes rapidement."
+        },
+        "grenades": {
+          "title": "Grenades",
+          "desc": "Scan rapide des grenades après chaque étape, pour toujours savoir si les joueurs dépensent toutes les grenades reçues."
+        }
+      },
+      "stages": {
+        "upload": "Capture",
+        "analyze": "IA",
+        "cabinet": "Cabinet"
+      },
+      "demo": {
+        "processing": "Traitement",
+        "done": "Réussi"
+      }
     }
   },
   "footer": {
