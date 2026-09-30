@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { type RoadmapItem, RoadmapItems } from '@/constants/roadmap.const'
 import { cn } from '@/lib/cn'
 
@@ -33,7 +33,7 @@ function RoadmapContent({
 		>
 			<time
 				className={cn(
-					montserrat.className,
+					mtsExtended.className,
 					'font-bold text-xs',
 					item.status === 'planned'
 						? 'text-neutral-200'
@@ -46,7 +46,7 @@ function RoadmapContent({
 
 			<h3
 				className={cn(
-					unbounded.className,
+					mtsExtended.className,
 					'font-bold text-[16px] uppercase tracking-widest dark:text-white'
 				)}
 			>
@@ -54,7 +54,9 @@ function RoadmapContent({
 			</h3>
 
 			{item.description && (
-				<p className="font-semibold text-[13px] text-text-accent leading-relaxed">
+				<p
+					className={`${mtsExtended.className} w-full max-w-xl font-medium text-muted-foreground text-xs`}
+				>
 					{t(item.description)}
 				</p>
 			)}
