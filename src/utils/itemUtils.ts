@@ -80,25 +80,39 @@ const humanizeCategory = (cat?: string) => {
 		.join(' › ')
 }
 
+const iterateListElements = (
+	infoBlocks: InfoBlock[],
+): InfoElement[] => {
+	if (!Array.isArray(infoBlocks)) return []
+
+	const out: InfoElement[] = []
+	for (const block of infoBlocks) {
+		if (!block) continue
+		if (block.type === 'list' || block.type === 'addStat') {
+			if (Array.isArray(block.elements)) out.push(...block.elements)
+		} else if (block.type === 'grouped') {
+			out.push(...iterateListElements(block.compact))
+			out.push(...iterateListElements(block.detailed))
+		}
+	}
+	return out
+}
+
 const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 	if (!Array.isArray(infoBlocks)) return ''
 
 	const loc = locale ?? getLocale()
 
-	for (const block of infoBlocks) {
-		if (block?.type !== 'list' || !Array.isArray(block?.elements)) continue
+	for (const el of iterateListElements(infoBlocks)) {
+		if (el?.type !== 'key-value') continue
 
-		for (const el of block.elements) {
-			if (el?.type !== 'key-value') continue
-
-			if (
-				el.key?.type === 'translation' &&
-				el.key?.key === 'core.tooltip.info.category'
-			) {
-				if (el.value) {
-					const translated = messageToString(el.value, loc)
-					if (translated) return translated
-				}
+		if (
+			el.key?.type === 'translation' &&
+			el.key?.key === 'core.tooltip.info.category'
+		) {
+			if (el.value) {
+				const translated = messageToString(el.value, loc)
+				if (translated) return translated
 			}
 		}
 	}
@@ -109,18 +123,14 @@ const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 export const findContSizeInBlocks = (infoBlocks?: InfoBlock[]): number => {
 	if (!Array.isArray(infoBlocks)) return 0
 
-	for (const block of infoBlocks) {
-		if (block?.type !== 'list' || !Array.isArray(block?.elements)) continue
+	for (const el of iterateListElements(infoBlocks)) {
+		if (el?.type !== 'numeric') continue
 
-		for (const el of block.elements) {
-			if (el?.type !== 'numeric') continue
-
-			if (
-				el.name?.type === 'translation' &&
-				el.name.key === 'stalker.tooltip.backpack.info.size'
-			) {
-				return el.value ?? 0
-			}
+		if (
+			el.name?.type === 'translation' &&
+			el.name.key === 'stalker.tooltip.backpack.info.size'
+		) {
+			return el.value ?? 0
 		}
 	}
 

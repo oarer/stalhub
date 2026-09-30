@@ -100,6 +100,8 @@ enum BindState {
 	PERSONAL_DROP = 'PERSONAL_DROP',
 }
 
+export type ItemBindStatus = BindState | { state: BindState }
+
 type FormattedBlock = {
 	formatted?: {
 		value?: LocalizedString
@@ -124,6 +126,16 @@ export type AddStatBlock = {
 	type: 'addStat'
 	title: Message
 	elements: InfoElement[]
+}
+
+export type ShowAllToggleBlock = {
+	type: 'show-all-toggle'
+}
+
+export type GroupedBlock = {
+	type: 'grouped'
+	compact: ElementListBlock[]
+	detailed: ElementListBlock[]
 }
 
 type PriceElement = {
@@ -201,6 +213,8 @@ export type InfoBlock =
 	| DamageDistanceInfoBlock
 	| NumericVariantsElement
 	| AddStatBlock
+	| ShowAllToggleBlock
+	| GroupedBlock
 
 interface Model {
 	model?: string
@@ -214,7 +228,7 @@ export interface Item {
 	category: string
 	name: Message
 	color: InfoColor
-	status?: BindState
+	status?: ItemBindStatus
 	infoBlocks: InfoBlock[]
 	model?: Model
 }
