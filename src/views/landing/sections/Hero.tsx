@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { mtsExtended, mtsUltraExtended, mtsWide } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import SwapText from '@/components/ui/SwapText'
 import { featuresHero } from '@/constants/landing.const'
@@ -44,7 +44,7 @@ export default function Hero() {
 					</div>
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
-						className={`${mtsUltraExtended.className} w-full max-w-xl font-medium text-sm leading-relaxed dark:text-white/80`}
+						className={`${mtsExtended.className} w-full max-w-xl font-medium text-sm leading-relaxed dark:text-white/80`}
 						initial={{ y: 24, opacity: 0 }}
 						transition={{ duration: 0.5, delay: 0.15 }}
 					>

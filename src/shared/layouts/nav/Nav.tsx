@@ -4,6 +4,7 @@ import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { mtsWide } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import DropdownMenu from '@/components/ui/DropDown'
 import { DropDownLinks } from '@/constants/nav.const'
@@ -43,15 +44,20 @@ export default function Nav() {
 					</div>
 					<div className="grid grid-flow-col items-center justify-start gap-3">
 						<Link
-							className="transform justify-center duration-500 hover:opacity-80 active:scale-95"
+							className="flex transform items-center justify-center gap-4 duration-500 hover:opacity-80 active:scale-95"
 							href="/"
 						>
 							<Image
 								alt="logo"
-								height={34}
+								height={26}
 								src={`${svgPath}logo.svg`}
-								width={34}
+								width={26}
 							/>
+							<p
+								className={`${mtsWide.className} font-medium text-xl`}
+							>
+								Stalhub
+							</p>
 						</Link>
 					</div>
 					<div className="hidden items-center gap-4 lg:flex xl:gap-6 2xl:gap-4">
@@ -63,6 +69,7 @@ export default function Nav() {
 								key={index}
 								placement="bottom-start"
 								title={menu.title}
+								titleClass={`${mtsWide.className} text-[15px]! font-medium!`}
 							/>
 						))}
 						<ItemSearchModal />

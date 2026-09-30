@@ -7,6 +7,7 @@ import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { statusQueries } from '@/queries/status/status.queries'
 import type { Service } from '@/types/status.type'
+import { mtsWide } from '@/app/fonts'
 
 export const StatusWidget = () => {
 	const { data, isError } = useQuery(statusQueries.get())
@@ -75,7 +76,7 @@ export const StatusWidget = () => {
 				/>
 			</div>
 
-			<div className="font-semibold text-[13px]">
+			<div className={`${mtsWide.className} font-semibold text-[13px]`}>
 				{isError || !data?.data ? (
 					<p className="text-destructive">
 						{t('status_widget.services_error')}

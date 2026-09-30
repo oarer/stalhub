@@ -6,7 +6,7 @@ export const linkVariants = cva(
 		variants: {
 			variant: {
 				primary:
-					'bg-primary text-primary-foreground shadow-md hover:brightness-110',
+					'bg-primary text-primary-foreground hover:bg-transparent hover:text-primary border-2',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-sm hover:bg-muted',
 				outline: 'ring-2 ring-primary/40 bg-transparent hover:bg-muted',

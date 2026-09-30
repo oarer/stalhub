@@ -295,6 +295,7 @@ export default function DropdownMenu({
 	icon,
 	placement = 'bottom-start',
 	className,
+	titleClass,
 	variant = 'ghost',
 	blur = true,
 	compact = false,
@@ -399,13 +400,17 @@ export default function DropdownMenu({
 				{icon && <Icon className="text-xl" icon={icon} />}
 				{onlyIcon ? (
 					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/btn:ml-2 group-hover/btn:max-w-45 group-hover/btn:opacity-100">
-						<span className="font-semibold text-md">
+						<span
+							className={cn(titleClass, 'font-semibold text-md')}
+						>
 							{t(title)}
 						</span>
 					</span>
 				) : (
 					<>
-						<p className="font-semibold text-md">{t(title)}</p>
+						<p className={cn(titleClass, 'font-semibold text-md')}>
+							{t(title)}
+						</p>
 						<motion.div
 							animate={{ rotate: isOpen ? 90 : 0 }}
 							transition={{ duration: 0.2, ease: 'easeInOut' }}

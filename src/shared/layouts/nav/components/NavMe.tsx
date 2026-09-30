@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import { montserrat } from '@/app/fonts'
+import { montserrat, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import useClickOutside from '@/hooks/useClickOutside'
 import { formatDate } from '@/lib/date'
@@ -210,7 +210,7 @@ export default function NavMe() {
 		>
 			<Icon className="text-xl" icon="lucide:log-in" />
 			<p
-				className={`${montserrat.className} hidden font-semibold text-md md:block`}
+				className={`${mtsWide.className} hidden font-medium text-md md:block`}
 			>
 				{t('auth.title')}
 			</p>
