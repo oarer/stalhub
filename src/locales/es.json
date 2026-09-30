@@ -3,6 +3,11 @@
     "overview": "Todo en un solo lugar",
     "tools_for": "Herramientas para",
     "need": "Todo lo necesario para",
+    "swap": {
+      "tools": "Herramientas",
+      "calcs": "Calculadoras",
+      "analytics": "Analítica"
+    },
     "features": {
       "items": "Objetos",
       "tools": "Herramientas",

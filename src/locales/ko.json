@@ -3,6 +3,11 @@
     "overview": "모든 것을 한곳에서",
     "tools_for": "도구:",
     "need": "필요한 모든 것",
+    "swap": {
+      "tools": "도구",
+      "calcs": "계산기",
+      "analytics": "분석"
+    },
     "features": {
       "items": "아이템",
       "tools": "도구",

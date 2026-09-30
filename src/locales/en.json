@@ -3,6 +3,11 @@
     "overview": "Everything in one place",
     "tools_for": "Tools for",
     "need": "Everything you need for",
+    "swap": {
+      "tools": "Tools",
+      "calcs": "Calculators",
+      "analytics": "Analytics"
+    },
     "features": {
       "items": "Items",
       "tools": "Tools",
