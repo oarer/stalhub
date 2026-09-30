@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsWide, unbounded } from '@/app/fonts'
 import { CLAN_FEATURES } from '../config'
 
 export function FeatureList() {
@@ -23,7 +23,9 @@ export function FeatureList() {
 							{t(`features.${feature.id}.title`)}
 						</dt>
 					</div>
-					<dd className="font-bold text-foreground/80 text-sm">
+					<dd
+						className={`${mtsWide.className} font-medium text-foreground/80 text-sm`}
+					>
 						{t(`features.${feature.id}.desc`)}
 					</dd>
 				</div>

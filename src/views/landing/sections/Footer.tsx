@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import FloatingIcons from './FloatingIcons'
 
@@ -13,21 +13,25 @@ export default function LandingFooter() {
 
 	return (
 		<section
-			className="relative flex min-h-150 flex-col items-center gap-8 overflow-hidden text-center xl:min-h-140"
+			className="relative flex min-h-150 flex-col items-center gap-6 overflow-hidden text-center xl:min-h-140"
 			id="contribute"
 		>
 			<FloatingIcons />
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${unbounded.className} max-w-300 pt-24 font-semibold text-[40px] text-primary leading-none sm:text-5xl md:text-6xl`}
+				className={`${mtsWide.className} max-w-300 pt-24 font-semibold text-[40px] leading-none sm:text-5xl md:text-6xl`}
 				initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>
-				{t('landing.footer.title')}
+				{t.rich('landing.footer.title', {
+					primary: (chunks) => (
+						<span className="text-primary italic">{chunks}</span>
+					),
+				})}
 			</motion.h1>
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}
-				className="max-w-65 font-bold text-xl lg:max-w-3xl lg:text-2xl xl:text-3xl"
+				className={`${mtsExtended.className} max-w-lg font-medium text-foreground text-lg`}
 				initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.5 }}
 			>
@@ -40,7 +44,7 @@ export default function LandingFooter() {
 					transition={{ duration: 0.6, delay: 0.7 }}
 				>
 					<CLink
-						className="gap-2 px-12 py-2"
+						className={`${mtsExtended.className} gap-2 px-12 py-2`}
 						href="/calcs"
 						size="lg"
 						variant="primary"
@@ -57,7 +61,7 @@ export default function LandingFooter() {
 					transition={{ duration: 0.6, delay: 0.95 }}
 				>
 					<CLink
-						className="gap-2 px-12 py-2"
+						className={`${mtsExtended.className} gap-2 px-12 py-2`}
 						external
 						href="https://github.com/oarer/stalhub"
 						size="lg"
