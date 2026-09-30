@@ -16,10 +16,10 @@ import { groupStatsByCategory, type StatCategoryGroup } from './statsCategories'
 const ACCUMULATION_THRESHOLDS: { key: string; threshold: number }[] = [
 	{
 		key: 'stalker.artefact_properties.factor.frost_accumulation',
-		threshold: 1,
+		threshold: 20,
 	},
 ]
-const DEFAULT_ACCUMULATION_THRESHOLD = 0.5
+const DEFAULT_ACCUMULATION_THRESHOLD = 10
 
 interface StatCategoryListProps {
 	groups: StatCategoryGroup[]
