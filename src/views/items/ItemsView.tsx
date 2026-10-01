@@ -21,6 +21,7 @@ import {
 	type TextInfoBlock,
 } from '@/types/item.type'
 import {
+	collectListBlocks,
 	getCategoryLabel,
 	isNumericVariantsBlock,
 	messageToString,
@@ -32,7 +33,6 @@ import {
 	type StatOverride,
 } from './components/attachments/attachmentStats'
 import {
-	collectListBlocks,
 	InfoBlocksRenderer,
 	NumericVariantsCard,
 	TextBlock,

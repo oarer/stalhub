@@ -4,7 +4,8 @@ import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
 import { Divider } from '@/components/ui/Divider'
 import { getLocale } from '@/lib/getLocale'
-import type { AddStatBlock, ElementListBlock, Item } from '@/types/item.type'
+import type { Item } from '@/types/item.type'
+import { collectListBlocks } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 import {
 	CUSTOM_ROF_MAP,
@@ -68,14 +69,11 @@ const WeaponStatsPanel = memo(function Wsp({
 
 	const filteredBlocks = useMemo(
 		() =>
-			weapon.infoBlocks
+			collectListBlocks(weapon.infoBlocks)
 				.filter(
-					(b): b is AddStatBlock | ElementListBlock =>
-						(b.type === 'list' || b.type === 'addStat') &&
-						Array.isArray(b.elements) &&
-						b.elements.length > 0
+					(b) => Array.isArray(b.elements) && b.elements.length > 0
 				)
-				.filter((_, idx) => idx !== 0 && idx !== 5 && idx !== 1),
+				.filter((_, idx) => idx !== 0),
 		[weapon]
 	)
 

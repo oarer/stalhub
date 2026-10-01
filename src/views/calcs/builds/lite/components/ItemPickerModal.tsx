@@ -13,14 +13,9 @@ import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
 import { ItemsList } from '@/shared/components/ItemsList'
 import type { FavoriteType } from '@/stores/useFavorites.store'
-import type {
-	AddStatBlock,
-	ElementListBlock,
-	Item,
-	Locale,
-} from '@/types/item.type'
+import type { Item, Locale } from '@/types/item.type'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import { collectListBlocks, messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 
 export type StatFilterGroup = {
@@ -205,15 +200,9 @@ export function ItemPickerModal({
 							<div className="max-h-full flex-1 overflow-y-auto md:max-h-56">
 								<div className="flex flex-col gap-3">
 									{children ??
-										selectedItem?.infoBlocks
-											?.filter(
-												(
-													b
-												): b is
-													| AddStatBlock
-													| ElementListBlock =>
-													(b.type === 'list' ||
-														b.type === 'addStat') &&
+										collectListBlocks(selectedItem?.infoBlocks)
+											.filter(
+												(b) =>
 													Array.isArray(b.elements) &&
 													b.elements.length > 0
 											)

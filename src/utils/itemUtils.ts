@@ -1,5 +1,7 @@
 import { getLocale } from '@/lib/getLocale'
 import type {
+	AddStatBlock,
+	ElementListBlock,
 	InfoBlock,
 	InfoElement,
 	Item,
@@ -80,23 +82,38 @@ const humanizeCategory = (cat?: string) => {
 		.join(' › ')
 }
 
-const iterateListElements = (
-	infoBlocks: InfoBlock[],
-): InfoElement[] => {
-	if (!Array.isArray(infoBlocks)) return []
+export type ListLikeBlock = ElementListBlock | AddStatBlock
 
-	const out: InfoElement[] = []
+/** Flatten list-like blocks, recursing into `grouped` (compact + detailed). */
+export const collectListBlocks = (
+	infoBlocks: InfoBlock[] | undefined
+): ListLikeBlock[] => {
+	if (!Array.isArray(infoBlocks)) return []
+	const out: ListLikeBlock[] = []
 	for (const block of infoBlocks) {
 		if (!block) continue
 		if (block.type === 'list' || block.type === 'addStat') {
-			if (Array.isArray(block.elements)) out.push(...block.elements)
+			out.push(block)
 		} else if (block.type === 'grouped') {
-			out.push(...iterateListElements(block.compact))
-			out.push(...iterateListElements(block.detailed))
+			out.push(...collectListBlocks(block.compact))
+			out.push(...collectListBlocks(block.detailed))
 		}
 	}
 	return out
 }
+
+/** All elements of list-like blocks, recursing into `grouped`. */
+export const collectListElements = (
+	infoBlocks: InfoBlock[] | undefined
+): InfoElement[] => {
+	const out: InfoElement[] = []
+	for (const block of collectListBlocks(infoBlocks)) {
+		if (Array.isArray(block.elements)) out.push(...block.elements)
+	}
+	return out
+}
+
+const iterateListElements = collectListElements
 
 const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 	if (!Array.isArray(infoBlocks)) return ''

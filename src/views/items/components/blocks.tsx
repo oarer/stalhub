@@ -7,8 +7,6 @@ import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { cn } from '@/lib/cn'
 import type {
-	AddStatBlock,
-	ElementListBlock,
 	GroupedBlock,
 	InfoBlock,
 	InfoElement,
@@ -17,7 +15,7 @@ import type {
 	TextInfoBlock,
 } from '@/types/item.type'
 import type { AccordionItem } from '@/types/ui/accordion.type'
-import { messageToString } from '@/utils/itemUtils'
+import { type ListLikeBlock, messageToString } from '@/utils/itemUtils'
 import type { StatOverride } from './attachments/attachmentStats'
 import InfoElementRenderer from './InfoRenderer'
 
@@ -106,8 +104,6 @@ const getElementKeys = (el: InfoElement): string[] => {
 			return []
 	}
 }
-
-type ListLikeBlock = ElementListBlock | AddStatBlock
 
 export const hasVisibleElements = (block: ListLikeBlock): boolean => {
 	if (!Array.isArray(block.elements) || block.elements.length === 0)
@@ -295,24 +291,6 @@ export const GroupedBlockView: React.FC<GroupedBlockProps> = ({
 	)
 
 	return content
-}
-
-/** Flatten list-like blocks, recursing into `grouped` (compact + detailed). */
-export const collectListBlocks = (
-	infoBlocks: InfoBlock[] | undefined
-): ListLikeBlock[] => {
-	if (!Array.isArray(infoBlocks)) return []
-	const out: ListLikeBlock[] = []
-	for (const block of infoBlocks) {
-		if (!block) continue
-		if (block.type === 'list' || block.type === 'addStat') {
-			out.push(block)
-		} else if (block.type === 'grouped') {
-			out.push(...collectListBlocks(block.compact))
-			out.push(...collectListBlocks(block.detailed))
-		}
-	}
-	return out
 }
 
 type InfoBlocksRendererProps = {

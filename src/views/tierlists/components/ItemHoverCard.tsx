@@ -8,8 +8,8 @@ import { HoverCard } from '@/components/ui/HoverCard'
 import type { Item, Locale } from '@/types/item.type'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
 import { TIER_RANK_COLORS, type TierRank } from '@/types/tier-list.type'
-import { messageToString } from '@/utils/itemUtils'
-import { collectListBlocks, ListBlock } from '@/views/items/components/blocks'
+import { collectListBlocks, messageToString } from '@/utils/itemUtils'
+import { ListBlock } from '@/views/items/components/blocks'
 import { formatTierTtk } from '../utils/tier-ttk'
 
 function getIconUrl(item: Item) {
