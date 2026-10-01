@@ -70,9 +70,9 @@ export function getDamageBlock(
 				return block as DamageDistanceInfoBlock
 			}
 			if (block.type === 'grouped') {
-				return (
-					find(block.compact) ?? find(block.detailed) ?? null
-				)
+				const nested =
+					find(block.compact) ?? find(block.detailed)
+				if (nested) return nested
 			}
 		}
 		return null
