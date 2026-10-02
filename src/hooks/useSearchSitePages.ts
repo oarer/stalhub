@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import {
+	getGroupItems,
 	NAV_STRUCTURE,
 	type NavGroup,
 	type NavItem,
@@ -65,7 +66,9 @@ const mapGroupToPages = (
 ) => {
 	const groupTitle = t(group.titleKey)
 
-	group.items.forEach((item) => mapItemToPages(item, t, groupTitle, acc))
+	getGroupItems(group).forEach((item) =>
+		mapItemToPages(item, t, groupTitle, acc)
+	)
 }
 
 export function useSearchSitePages() {

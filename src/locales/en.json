@@ -165,7 +165,13 @@
     "arts": "Art",
     "groups": {
       "calculators": {
-        "title": "Calculators",
+        "title": "Tools",
+        "categories": {
+          "main": { "title": "Main" },
+          "leveling": { "title": "Progression" },
+          "info": { "title": "Information" },
+          "services": { "title": "Services" }
+        },
         "items": {
           "art": {
             "label": "Builds",
@@ -179,6 +185,10 @@
           "ttk": {
             "label": "TTK",
             "description": "Weapon efficiency"
+          },
+          "buy": {
+            "description": "Creating buyout tables",
+            "label": "Buyout tables"
           },
           "arsenal": {
             "label": "Arsenal",
@@ -270,8 +280,37 @@
           }
         }
       },
+      "community": {
+        "title": "Resources",
+        "categories": {
+          "resources": {
+            "title": "Official resources",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "News, updates and giveaways"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "Fast technical support"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "Project repository"
+              },
+              "about": {
+                "label": "About us",
+                "description": "Extended project information"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Creative",
+        "categories": {
+          "community": { "title": "Community works" }
+        },
         "items": {
           "articles": {
             "label": "Articles",
@@ -2941,6 +2980,15 @@
     "description": "Online across StalZone regions and servers.",
     "online": "Online",
     "charts": "Online charts"
+  },
+  "devTracker": {
+    "title": "Developer comments",
+    "description": "Latest developer replies from the official forum.",
+    "allAuthors": "All authors",
+    "refresh": "Refresh",
+    "updated": "Updated",
+    "empty": "Nothing here yet — the forum poll has no records.",
+    "showMore": "Show more"
   },
   "balance": {
     "title": "Balance",

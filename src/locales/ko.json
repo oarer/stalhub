@@ -165,7 +165,13 @@
     "arts": "아트",
     "groups": {
       "calculators": {
-        "title": "계산기",
+        "title": "도구",
+        "categories": {
+          "main": { "title": "기본" },
+          "leveling": { "title": "성장" },
+          "info": { "title": "정보" },
+          "services": { "title": "서비스" }
+        },
         "items": {
           "art": {
             "label": "빌드",
@@ -179,6 +185,10 @@
           "ttk": {
             "label": "TTK",
             "description": "무기 효율"
+          },
+          "buy": {
+            "description": "매입 표 만들기",
+            "label": "매입 표"
           },
           "arsenal": {
             "label": "아스널",
@@ -270,8 +280,37 @@
           }
         }
       },
+      "community": {
+        "title": "리소스",
+        "categories": {
+          "resources": {
+            "title": "공식 리소스",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "뉴스, 업데이트 및 이벤트"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "빠른 기술 지원"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "프로젝트 저장소"
+              },
+              "about": {
+                "label": "소개",
+                "description": "프로젝트 상세 정보"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Творчество",
+        "categories": {
+          "community": { "title": "유저 작품" }
+        },
         "items": {
           "articles": {
             "label": "Статьи",

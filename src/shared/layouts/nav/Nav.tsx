@@ -3,14 +3,14 @@
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { mtsWide } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
-import DropdownMenu from '@/components/ui/DropDown'
-import { DropDownLinks } from '@/constants/nav.const'
+import { NAV_STRUCTURE } from '@/constants/nav.const'
 import useSvg from '@/hooks/useSvg'
 import ChangeLang from './components/ChangeLang'
 import ChangeTheme from './components/ChangeTheme'
+import NavDropdown from './components/NavDropdown'
 import NavMe from './components/NavMe'
 import NavMobile from './NavMobile'
 
@@ -19,9 +19,36 @@ export default function Nav() {
 
 	const [isScrolled, setIsScrolled] = useState(false)
 	const { scrollY } = useScroll()
+
+	const [openMenu, setOpenMenu] = useState<string | null>(null)
+	const menuRef = useRef<HTMLDivElement>(null)
+
 	useMotionValueEvent(scrollY, 'change', (latest) => {
 		setIsScrolled(!!latest)
 	})
+
+	const closeMenu = useCallback(() => setOpenMenu(null), [])
+
+	useEffect(() => {
+		if (!openMenu) return
+		const handleEscape = (event: KeyboardEvent) => {
+			if (event.key === 'Escape') closeMenu()
+		}
+		const handlePointerDown = (event: PointerEvent) => {
+			if (
+				menuRef.current &&
+				!menuRef.current.contains(event.target as Node)
+			) {
+				closeMenu()
+			}
+		}
+		document.addEventListener('keydown', handleEscape)
+		document.addEventListener('pointerdown', handlePointerDown)
+		return () => {
+			document.removeEventListener('keydown', handleEscape)
+			document.removeEventListener('pointerdown', handlePointerDown)
+		}
+	}, [openMenu, closeMenu])
 
 	return (
 		<motion.header
@@ -60,22 +87,29 @@ export default function Nav() {
 							</p>
 						</Link>
 					</div>
-					<div className="hidden items-center gap-4 lg:flex xl:gap-6 2xl:gap-4">
-						{DropDownLinks().map((menu, index) => (
-							<DropdownMenu
-								compact
-								icon={menu?.icon}
-								items={menu.items}
-								key={index}
-								placement="bottom-start"
-								title={menu.title}
-								titleClass={`${mtsWide.className} text-[15px]! font-medium!`}
+					<div
+						className="relative hidden items-center lg:flex xl:gap-2"
+						onMouseLeave={closeMenu}
+						ref={menuRef}
+					>
+						{NAV_STRUCTURE.map((group) => (
+							<NavDropdown
+								group={group}
+								isOpen={openMenu === group.key}
+								key={group.key}
+								onClose={closeMenu}
+								onOpen={() => setOpenMenu(group.key)}
+								onToggle={() =>
+									setOpenMenu((prev) =>
+										prev === group.key ? null : group.key
+									)
+								}
 							/>
 						))}
-						<ItemSearchModal />
 					</div>
-					<div className="relative flex items-center justify-end gap-4">
+					<div className="relative flex items-center justify-end gap-6">
 						<div className="hidden items-center gap-2 lg:flex">
+							<ItemSearchModal />
 							<ChangeLang />
 							<ChangeTheme />
 						</div>

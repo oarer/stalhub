@@ -157,7 +157,21 @@
     "arts": "Творчество",
     "groups": {
       "calculators": {
-        "title": "Калькуляторы",
+        "title": "Инструменты",
+        "categories": {
+          "main": {
+            "title": "Основное"
+          },
+          "leveling": {
+            "title": "Прокачка"
+          },
+          "info": {
+            "title": "Информация"
+          },
+          "services": {
+            "title": "Сервисы"
+          }
+        },
         "items": {
           "art": {
             "label": "Сборки",
@@ -173,8 +187,8 @@
             "description": "Эффективность оружия"
           },
           "buy": {
-            "description": "Создание таблиц для скупки",
-            "label": "Таблицы для скупки"
+            "label": "Таблица для скупки",
+            "description": "Создание таблиц для скупки"
           },
           "arsenal": {
             "label": "Арсенал",
@@ -183,10 +197,6 @@
           "hideout": {
             "label": "Убежище",
             "description": "Подсчёт ресурсов убежища"
-          },
-          "barter": {
-            "label": "Обменные монеты",
-            "description": "Бартер в обменные монеты"
           },
           "bp": {
             "label": "Сезонный пропуск",
@@ -207,6 +217,10 @@
           "modules": {
             "label": "Модули",
             "description": "Калькулятор модулей оружия"
+          },
+          "barter": {
+            "label": "Расчёт бартера",
+            "description": "Расчёт стоимости снаряжения"
           }
         }
       },
@@ -234,7 +248,8 @@
             "description": "Шансы на той или иной дроп"
           },
           "maps": {
-            "label": "Интерактивная карта"
+            "label": "Интерактивная карта",
+            "description": "Просмотр игровой карты"
           },
           "servers": {
             "label": "Серверы",
@@ -244,17 +259,16 @@
             "label": "Баланс",
             "description": "Изменения баланса"
           },
-          "auction": {
-            "label": "Аукцион"
-          },
           "items": {
             "label": "Поиск предметов"
           },
           "players": {
-            "label": "Поиск игроков"
+            "label": "Поиск игроков",
+            "description": "Просмотр статистики игрока"
           },
           "models": {
-            "label": "Просмотр моделей"
+            "label": "Просмотр моделей",
+            "description": "Просмотр моделей из игры"
           },
           "operations": {
             "label": "Операции",
@@ -263,11 +277,46 @@
           "download": {
             "label": "Скачать",
             "description": "Stalhub в виде программы"
+          },
+          "eforum": {
+            "label": "Посты с форума EXBO",
+            "description": "Посты от разработчиков"
+          }
+        }
+      },
+      "community": {
+        "title": "Ресурсы",
+        "categories": {
+          "resources": {
+            "title": "Официальные ресурсы",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "Новости, обновления и розыгрыши"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "Быстрая техническая поддержка"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "Репозиторий проекта"
+              },
+              "about": {
+                "label": "О нас",
+                "description": "Расширенная информация о проекте"
+              }
+            }
           }
         }
       },
       "creative": {
         "title": "Творчество",
+        "categories": {
+          "community": {
+            "title": "Работы от пользователей"
+          }
+        },
         "items": {
           "articles": {
             "label": "Статьи",
@@ -2938,6 +2987,15 @@
     "description": "Онлайн по регионам и серверам StalZone.",
     "online": "Онлайн",
     "charts": "Графики онлайна"
+  },
+  "devTracker": {
+    "title": "Комментарии разработчиков",
+    "description": "Последние ответы разработчиков с официального форума.",
+    "allAuthors": "Все авторы",
+    "refresh": "Обновить",
+    "updated": "Обновлено",
+    "empty": "Пока что пусто",
+    "showMore": "Показать ещё"
   },
   "balance": {
     "title": "Баланс правки",

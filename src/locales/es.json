@@ -165,7 +165,13 @@
     "arts": "Arte",
     "groups": {
       "calculators": {
-        "title": "Calculadoras",
+        "title": "Herramientas",
+        "categories": {
+          "main": { "title": "Principal" },
+          "leveling": { "title": "Progresión" },
+          "info": { "title": "Información" },
+          "services": { "title": "Servicios" }
+        },
         "items": {
           "art": {
             "label": "Builds",
@@ -179,6 +185,10 @@
           "ttk": {
             "label": "TTK",
             "description": "Eficacia del arma"
+          },
+          "buy": {
+            "description": "Creación de tablas de compra",
+            "label": "Tablas de compra"
           },
           "arsenal": {
             "label": "Arsenal",
@@ -270,8 +280,37 @@
           }
         }
       },
+      "community": {
+        "title": "Recursos",
+        "categories": {
+          "resources": {
+            "title": "Recursos oficiales",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "Noticias, actualizaciones y sorteos"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "Soporte técnico rápido"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "Repositorio del proyecto"
+              },
+              "about": {
+                "label": "Nosotros",
+                "description": "Información ampliada sobre el proyecto"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Творчество",
+        "categories": {
+          "community": { "title": "Trabajos de la comunidad" }
+        },
         "items": {
           "articles": {
             "label": "Статьи",
