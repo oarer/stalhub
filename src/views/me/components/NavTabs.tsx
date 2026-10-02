@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { unbounded } from '@/app/fonts'
 import { Divider } from '@/components/ui/Divider'
 import { cn } from '@/lib/cn'
 import type { NavTabsProps } from '@/types/me.types'
@@ -21,7 +22,7 @@ export default function NavTabs({
 				<div key={gi}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (
-						<p className="mb-1 px-2 font-semibold text-[11px] text-muted-foreground uppercase tracking-wider">
+						<p className={`${unbounded.className} mb-1 px-2 font-body text-[12px] text-muted-foreground uppercase`}>
 							{t(group.label)}
 						</p>
 					)}
@@ -43,13 +44,15 @@ export default function NavTabs({
 									onClick={onTabClick}
 								>
 									<Icon className="text-xl" icon={tab.icon} />
-									<p className="font-semibold text-sm">
+									<p
+										className={`${unbounded.className} font-body text-xs`}
+									>
 										{t(tab.title)}
 									</p>
 									{tab.href === '/me/notifications' &&
 										unreadCount != null &&
 										unreadCount > 0 && (
-											<span className="ml-auto rounded-full bg-primary px-1.5 py-0.5 font-semibold text-white text-xs leading-none">
+											<span className="ml-auto rounded-full bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground text-xs leading-none">
 												{unreadCount > 99
 													? '99+'
 													: unreadCount}

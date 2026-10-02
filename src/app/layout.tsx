@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 import Script from 'next/script'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
-import { raleway } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import { CookieConsent } from '@/components/cookies/CookieConsent'
 import { getMetadataByPath } from '@/constants/meta'
 import LocaleProvider from '@/providers/LocaleProvider'
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 			suppressHydrationWarning
 		>
 			<body
-				className={`${raleway.className} bg-background text-foreground transition-colors duration-500 ease-in-out`}
+				className={`${unbounded.className} bg-background text-foreground transition-colors duration-500 ease-in-out`}
 			>
 				<GridBackgroundWithBeams
 					cellSize={20}

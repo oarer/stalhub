@@ -153,7 +153,7 @@ export function BuildCard({
 		>
 			<div className="flex items-center justify-between gap-2">
 				<Link
-					className="w-fit truncate rounded-lg px-2 py-1 font-semibold text-md text-primary transition-colors hover:bg-accent/20"
+					className="w-fit truncate rounded-lg px-2 py-1 font-medium text-md text-primary transition-colors hover:bg-accent/20"
 					href={`/calcs/builds/lite?build=${build.id}`}
 				>
 					{build.title}
@@ -225,13 +225,13 @@ export function BuildCard({
 						<div className="flex items-center">
 							{armorItem ? (
 								<span
-									className="max-w-42 truncate font-semibold"
+									className="max-w-42 truncate font-body"
 									style={{ color: armorColor }}
 								>
 									{messageToString(armorItem.name, locale)}
 								</span>
 							) : (
-								<span className="font-semibold text-muted-foreground">
+								<span className="text-muted-foreground">
 									{t('me.buildCard.noArmor')}
 								</span>
 							)}
@@ -242,7 +242,7 @@ export function BuildCard({
 						<div className="flex items-center truncate">
 							{containerItem ? (
 								<span
-									className="truncate font-bold text-[16px]"
+									className="truncate text-sm"
 									style={{ color: containerColor }}
 								>
 									{messageToString(
@@ -251,7 +251,7 @@ export function BuildCard({
 									)}
 								</span>
 							) : (
-								<span className="font-semibold text-muted-foreground">
+								<span className="font-body text-muted-foreground text-sm">
 									{t('me.buildCard.noContainer')}
 								</span>
 							)}
@@ -263,7 +263,7 @@ export function BuildCard({
 									key={entry.name + i}
 								>
 									<p
-										className="min-w-0 flex-1 truncate font-semibold text-sm transition-colors"
+										className="min-w-0 flex-1 truncate font-body text-sm transition-colors"
 										style={{ color: entry.color }}
 									>
 										{entry.name}
@@ -285,7 +285,7 @@ export function BuildCard({
 								</div>
 							))
 						) : (
-							<span className="font-semibold text-muted-foreground">
+							<span className="text-muted-foreground">
 								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
@@ -297,26 +297,18 @@ export function BuildCard({
 				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
-						<span
-							className={`${montserrat.className} font-semibold text-sm`}
-						>
-							{stars}
-						</span>
+						<span className="text-sm">{stars}</span>
 					</div>
 				)}
 				{build.price !== 0 && (
 					<div className="flex items-center gap-1">
 						<Icon className="text-lg" icon="lucide:coins" />
-						<p className={`${montserrat.className} font-semibold`}>
-							{formatArtPrice(build.price || 0)}₽
-						</p>
+						<p>{formatArtPrice(build.price || 0)}₽</p>
 					</div>
 				)}
 				{author && (
 					<HoverUserCard id={author.id}>
-						<p
-							className={`${montserrat.className} font-semibold text-primary`}
-						>
+						<p className={`font-normal text-primary`}>
 							{author.username}
 						</p>
 					</HoverUserCard>

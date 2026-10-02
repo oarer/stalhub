@@ -11,6 +11,11 @@
     }
 }
 
+
+@theme {
+    --font-body: 400
+}
+
 @layer base {
     @import './browser.css';
 
