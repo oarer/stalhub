@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs } from '@/components/ui/Tabs'
 import { cn } from '@/lib/cn'
@@ -41,11 +41,15 @@ export default function ServerStatusView() {
 	const t = useTranslations()
 	const { data: online } = useSuspenseQuery(serverOnlineQueries.latest())
 	const [range, setRange] = useState('24')
+	const [peakDays, setPeakDays] = useState(30)
 	const activeRange =
 		HISTORY_RANGES.find((r) => r.value === range) ?? HISTORY_RANGES[1]
 	const { data: history, isPending: isHistoryPending } = useQuery(
 		serverOnlineQueries.history(activeRange.hours)
 	)
+	const { data: peaks } = useQuery(serverOnlineQueries.peaks(peakDays))
+	const { data: emissionRU } = useQuery(serverOnlineQueries.emissions('RU'))
+	const { data: emissionEU } = useQuery(serverOnlineQueries.emissions('EU'))
 
 	const onlineByRegion = new Map<string, number>()
 	for (const entry of online ?? []) {
@@ -62,14 +66,11 @@ export default function ServerStatusView() {
 
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
-			<div className="flex items-center gap-3">
-				<Icon className="text-3xl text-primary" icon="lucide:server" />
-				<h1
-					className={`${unbounded.className} font-semibold text-2xl sm:text-3xl`}
-				>
-					{t('servers.title')}
-				</h1>
-			</div>
+			<h1
+				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+			>
+				{t('servers.title')}
+			</h1>
 
 			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
 				<div className="flex items-center justify-between gap-3">
@@ -78,7 +79,7 @@ export default function ServerStatusView() {
 							className="text-primary text-xl"
 							icon="lucide:chart-line"
 						/>
-						<h2 className="font-semibold text-lg">
+						<h2 className="font-medium text-lg">
 							{t('servers.charts')}
 						</h2>
 					</div>
@@ -100,6 +101,76 @@ export default function ServerStatusView() {
 				)}
 			</div>
 
+			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+				<div className="flex items-center gap-2">
+					<Icon className="text-primary text-xl" icon="lucide:radiation" />
+					<h2 className="font-medium text-lg">{t('servers.emissions')}</h2>
+				</div>
+				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+					{[
+						{ label: 'RU', data: emissionRU },
+						{ label: 'EU', data: emissionEU },
+					].map(({ label, data }) => (
+						<div className="rounded-lg bg-accent/40 p-3 text-sm" key={label}>
+							<div className="font-mono font-semibold">{label}</div>
+							{data ? (
+								<div className="mt-1 flex flex-col gap-1 text-text-accent">
+									<span>
+										{t('servers.emissionCurrent')}:{' '}
+										{data.currentStart
+											? new Date(data.currentStart).toLocaleString()
+											: '—'}
+									</span>
+									<span>
+										{t('servers.emissionPrev')}:{' '}
+										{data.previousStart
+											? new Date(data.previousStart).toLocaleString()
+											: '—'}
+									</span>
+								</div>
+							) : (
+								<span className="text-text-accent">…</span>
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+
+			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+				<div className="flex items-center justify-between gap-3">
+					<div className="flex items-center gap-2">
+						<Icon className="text-primary text-xl" icon="lucide:trophy" />
+						<h2 className="font-medium text-lg">{t('servers.peaks')}</h2>
+					</div>
+					<Tabs.Root onValueChange={(v) => setPeakDays(Number(v))} value={String(peakDays)}>
+						<Tabs.List className="ring-2 ring-primary/30">
+							<Tabs.Trigger value="7">7D</Tabs.Trigger>
+							<Tabs.Trigger value="30">30D</Tabs.Trigger>
+						</Tabs.List>
+					</Tabs.Root>
+				</div>
+				<div className="overflow-x-auto">
+					<table className="w-full text-sm">
+						<thead>
+							<tr className="text-left text-text-accent">
+								<th className="py-1 pr-4 font-medium">{t('servers.peakDate')}</th>
+								<th className="py-1 pr-4 font-medium">{t('servers.peakRegion')}</th>
+								<th className="py-1 font-medium">{t('servers.peakOnline')}</th>
+							</tr>
+						</thead>
+						<tbody>
+							{(peaks ?? []).slice(-14).reverse().map((p) => (
+								<tr className="border-t border-border/50" key={`${p.region}-${p.date}`}>
+									<td className="py-1 pr-4 font-mono">{p.date}</td>
+									<td className="py-1 pr-4">{p.region}</td>
+									<td className="py-1 font-mono text-primary">{p.peak.toLocaleString()}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				{displayRegions.map((region) => (
 					<div
@@ -111,12 +182,12 @@ export default function ServerStatusView() {
 								className={`text-xl ${REGION_COLORS[region] ?? 'text-primary'}`}
 								icon="lucide:map-pin"
 							/>
-							<h2 className="font-semibold text-lg">
+							<h2 className="font-medium text-lg">
 								{REGION_LABELS[region]}
 							</h2>
 						</div>
 
-						<div className="flex items-center gap-1.5 font-semibold">
+						<div className="flex items-center gap-1.5 font-medium">
 							<Icon
 								className="text-lg text-primary"
 								icon="lucide:users"
@@ -126,7 +197,7 @@ export default function ServerStatusView() {
 							</span>
 							<span
 								className={cn(
-									montserrat.className,
+									'font-mono',
 									'text-sm',
 									onlineByRegion.get(region)
 										? 'text-primary'

@@ -3009,7 +3009,14 @@
     "title": "Онлайн серверов",
     "description": "Онлайн по регионам и серверам StalZone.",
     "online": "Онлайн",
-    "charts": "Графики онлайна"
+    "charts": "Графики онлайна",
+    "emissions": "Выбросы",
+    "emissionCurrent": "Текущий",
+    "emissionPrev": "Предыдущий",
+    "peaks": "Пиковый онлайн по дням",
+    "peakDate": "Дата",
+    "peakRegion": "Регион",
+    "peakOnline": "Пик"
   },
   "devTracker": {
     "title": "Комментарии разработчиков",

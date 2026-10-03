@@ -1,7 +1,9 @@
 import { apiClient } from '@/app/api/interceptors/root.interceptor'
 import type {
+	EmissionInfo,
 	ServerOnlineEntry,
 	ServerOnlineHistoryPoint,
+	ServerOnlinePeak,
 } from '@/types/server-online.type'
 
 class ServerOnlineService {
@@ -16,6 +18,22 @@ class ServerOnlineService {
 		const { data } = await apiClient.get<ServerOnlineHistoryPoint[]>(
 			'/api/v1/server-online/history',
 			{ params: { hours } }
+		)
+		return data
+	}
+
+	async peaks(days: number): Promise<ServerOnlinePeak[]> {
+		const { data } = await apiClient.get<ServerOnlinePeak[]>(
+			'/api/v1/server-online/peaks',
+			{ params: { days } }
+		)
+		return data
+	}
+
+	async emissions(region: string): Promise<EmissionInfo> {
+		const { data } = await apiClient.get<EmissionInfo>(
+			'/api/v1/server-online/emissions',
+			{ params: { region } }
 		)
 		return data
 	}

@@ -3008,7 +3008,14 @@
     "title": "Serveurs en ligne",
     "description": "En ligne sur les régions et serveurs StalZone.",
     "online": "En ligne",
-    "charts": "Graphiques de connexion"
+    "charts": "Graphiques de connexion",
+    "emissions": "Émissions",
+    "emissionCurrent": "Actuelle",
+    "emissionPrev": "Précédente",
+    "peaks": "Pic quotidien",
+    "peakDate": "Date",
+    "peakRegion": "Région",
+    "peakOnline": "Pic"
   },
   "balance": {
     "title": "Баланс правки",

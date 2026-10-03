@@ -3012,7 +3012,14 @@
     "title": "Server online",
     "description": "Online across StalZone regions and servers.",
     "online": "Online",
-    "charts": "Online charts"
+    "charts": "Online charts",
+    "emissions": "Emissions",
+    "emissionCurrent": "Current",
+    "emissionPrev": "Previous",
+    "peaks": "Daily peak online",
+    "peakDate": "Date",
+    "peakRegion": "Region",
+    "peakOnline": "Peak"
   },
   "devTracker": {
     "title": "Developer comments",

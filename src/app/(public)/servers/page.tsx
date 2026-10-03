@@ -9,6 +9,9 @@ export default async function ServerStatusPage() {
 	await Promise.allSettled([
 		queryClient.fetchQuery(serverOnlineQueries.latest()),
 		queryClient.fetchQuery(serverOnlineQueries.history(24)),
+		queryClient.fetchQuery(serverOnlineQueries.peaks(30)),
+		queryClient.fetchQuery(serverOnlineQueries.emissions('RU')),
+		queryClient.fetchQuery(serverOnlineQueries.emissions('EU')),
 	])
 
 	return (
