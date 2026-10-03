@@ -2319,7 +2319,8 @@
       "system": "Система",
       "notifications": "Уведомления",
       "invites": "Инвайты",
-      "attendance": "Посещаемость"
+      "attendance": "Посещаемость",
+      "analytics": "Аналитика"
     },
     "menu": "Меню",
     "home": {
@@ -3194,5 +3195,37 @@
         "other": "Other"
       }
     }
+  },
+  "personal": {
+    "title": "Личная аналитика",
+    "linkHint": "Выбери персонажа EXBO для отслеживания. Слепок статистики сохраняется каждые 12 часов.",
+    "yourCharacters": "Твои персонажи",
+    "track": "Отслеживать",
+    "characterPlaceholder": "Ник персонажа",
+    "linkAction": "Привязать",
+    "linked": "Персонаж привязан",
+    "linkError": "Не удалось привязать персонажа",
+    "noSnapshots": "Пока нет слепков. Обнови вручную или дождись автоматического сбора.",
+    "snapshots": "Слепков: {n}",
+    "refresh": "Обновить сейчас",
+    "makePublic": "Сделать публичной",
+    "makePrivate": "Скрыть",
+    "unlink": "Отвязать",
+    "unlinkConfirm": "Перестать отслеживать персонажа?",
+    "visibilityOk": "Видимость обновлена",
+    "copied": "Ссылка скопирована",
+    "snapshotOk": "Слепок сохранён",
+    "snapshotError": "Не удалось сохранить слепок",
+    "stagesTitle": "Этапы",
+    "stagesHint": "Личных сессий: {sessions}, убийств на этапах: {kills}",
+    "sessionsTitle": "Личные сессии этапов",
+    "sessionPlaceholder": "Название карты / этапа",
+    "sessionCreate": "Создать",
+    "sessionCreated": "Сессия создана",
+    "sessionDeleteConfirm": "Удалить сессию?",
+    "upload": "Скриншот",
+    "screenshotUploaded": "Скриншот загружен, анализ запущен",
+    "delete": "Удалить",
+    "noSessions": "Сессий пока нет"
   }
 }

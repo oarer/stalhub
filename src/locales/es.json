@@ -2312,7 +2312,8 @@
       "system": "Sistema",
       "notifications": "Notificaciones",
       "invites": "Invitaciones",
-      "attendance": "Asistencia"
+      "attendance": "Asistencia",
+      "analytics": "Analytics"
     },
     "menu": "Menú",
     "home": {
@@ -3174,5 +3175,37 @@
         "other": "Otro"
       }
     }
+  },
+  "personal": {
+    "title": "Personal analytics",
+    "linkHint": "Pick an EXBO character to track. A stats snapshot is saved every 12 hours.",
+    "yourCharacters": "Your characters",
+    "track": "Track",
+    "characterPlaceholder": "Character name",
+    "linkAction": "Link",
+    "linked": "Character linked",
+    "linkError": "Failed to link character",
+    "noSnapshots": "No snapshots yet. Refresh manually or wait for auto collection.",
+    "snapshots": "Snapshots: {n}",
+    "refresh": "Refresh now",
+    "makePublic": "Make public",
+    "makePrivate": "Hide",
+    "unlink": "Unlink",
+    "unlinkConfirm": "Stop tracking this character?",
+    "visibilityOk": "Visibility updated",
+    "copied": "Link copied",
+    "snapshotOk": "Snapshot saved",
+    "snapshotError": "Failed to save snapshot",
+    "stagesTitle": "Stages",
+    "stagesHint": "Personal sessions: {sessions}, stage kills: {kills}",
+    "sessionsTitle": "Personal stage sessions",
+    "sessionPlaceholder": "Map / stage name",
+    "sessionCreate": "Create",
+    "sessionCreated": "Session created",
+    "sessionDeleteConfirm": "Delete session?",
+    "upload": "Screenshot",
+    "screenshotUploaded": "Screenshot uploaded, analysis started",
+    "delete": "Delete",
+    "noSessions": "No sessions yet"
   }
 }
