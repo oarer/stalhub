@@ -30,6 +30,20 @@ class ItemService {
 		}
 	}
 
+	async listBarter(): Promise<{
+		total: number
+		items: {
+			item_id: string
+			settlement_required_level: number
+			lines: import('@/types/item.type').Message
+			category: string
+			color: string
+		}[]
+	}> {
+		const { data } = await apiClient.get('/api/v1/barter')
+		return data
+	}
+
 	async getAttachments(id: string) {
 		try {
 			const { data } = await apiClient.get<WeaponAttachmentsResponse>(

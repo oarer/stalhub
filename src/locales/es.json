@@ -83,6 +83,10 @@
         "text": {
           "title": "Formato",
           "desc": "§ y degradados"
+        },
+        "barter": {
+          "title": "Trueque",
+          "desc": "Árbol"
         }
       }
     },
@@ -3286,5 +3290,15 @@
     "clear": "Limpiar",
     "preview": "Vista previa",
     "hint": "§0-F — 16 colores, §#hex, §R — reset."
+  },
+  "barterCalc": {
+    "title": "Calculadora de trueque",
+    "subtitle": "Elige un objeto",
+    "search": "Buscar",
+    "pick": "Elige un objeto",
+    "tree": "Árbol",
+    "totals": "Total",
+    "allDone": "¡Listo!",
+    "reset": "Restablecer"
   }
 }

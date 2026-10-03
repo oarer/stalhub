@@ -55,4 +55,11 @@ export const toolsList = [
 		desc: 'landing.tools.tool_list.text.desc',
 		link: '/calcs/text',
 	},
+	{
+		id: 'barter',
+		icon: 'lucide:repeat',
+		title: 'landing.tools.tool_list.barter.title',
+		desc: 'landing.tools.tool_list.barter.desc',
+		link: '/calcs/barter',
+	},
 ]

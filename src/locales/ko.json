@@ -83,6 +83,10 @@
         "text": {
           "title": "서식",
           "desc": "§와 그라디언트"
+        },
+        "barter": {
+          "title": "물물교환",
+          "desc": "트리"
         }
       }
     },
@@ -3286,5 +3290,15 @@
     "clear": "지우기",
     "preview": "미리보기",
     "hint": "§0-F — 16색, §#hex, §R — 초기화."
+  },
+  "barterCalc": {
+    "title": "물물교환 계산기",
+    "subtitle": "아이템 선택",
+    "search": "검색",
+    "pick": "아이템 선택",
+    "tree": "트리",
+    "totals": "합계",
+    "allDone": "완료!",
+    "reset": "초기화"
   }
 }

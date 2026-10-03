@@ -83,6 +83,10 @@
         "text": {
           "title": "Formatage",
           "desc": "§ et dégradés"
+        },
+        "barter": {
+          "title": "Troc",
+          "desc": "Arbre"
         }
       }
     },
@@ -3286,5 +3290,15 @@
     "clear": "Effacer",
     "preview": "Aperçu",
     "hint": "§0-F — 16 couleurs, §#hex, §R — reset."
+  },
+  "barterCalc": {
+    "title": "Calculateur de troc",
+    "subtitle": "Choisis un objet",
+    "search": "Recherche",
+    "pick": "Choisis un objet",
+    "tree": "Arbre",
+    "totals": "Total",
+    "allDone": "Terminé !",
+    "reset": "Réinitialiser"
   }
 }

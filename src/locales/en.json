@@ -83,6 +83,10 @@
         "text": {
           "title": "Formatting",
           "desc": "§-codes and gradients"
+        },
+        "barter": {
+          "title": "Barter",
+          "desc": "Craft tree"
         }
       }
     },
@@ -3299,5 +3303,15 @@
     "clear": "Clear",
     "preview": "Preview (in-game)",
     "hint": "§0-F — 16 colors, §#RRGGBB — any hex, §R — reset. Clan desc newline resets color."
+  },
+  "barterCalc": {
+    "title": "Barter calculator",
+    "subtitle": "Pick an item — tree with stages, check off done steps",
+    "search": "Search item",
+    "pick": "Pick an item from barter list",
+    "tree": "Craft tree (check done)",
+    "totals": "Totals needed",
+    "allDone": "All done!",
+    "reset": "Reset"
   }
 }
