@@ -87,6 +87,10 @@
         "barter": {
           "title": "Trueque",
           "desc": "Árbol"
+        },
+        "donate": {
+          "title": "Donación",
+          "desc": "Mejor valor"
         }
       }
     },
@@ -3300,5 +3304,18 @@
     "totals": "Total",
     "allDone": "¡Listo!",
     "reset": "Restablecer"
+  },
+  "donateCalc": {
+    "title": "Calculadora de donación",
+    "subtitle": "Introduce stalcoins",
+    "input": "Stalcoins",
+    "hint": "Por precio/moneda.",
+    "item": "Objeto",
+    "coins": "Monedas",
+    "price": "Precio",
+    "perCoin": "₽/moneda",
+    "count": "Cant.",
+    "total": "Total",
+    "missing": "Faltan"
   }
 }

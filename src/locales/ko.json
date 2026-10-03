@@ -87,6 +87,10 @@
         "barter": {
           "title": "물물교환",
           "desc": "트리"
+        },
+        "donate": {
+          "title": "후원",
+          "desc": "판매 효율"
         }
       }
     },
@@ -3300,5 +3304,18 @@
     "totals": "합계",
     "allDone": "완료!",
     "reset": "초기화"
+  },
+  "donateCalc": {
+    "title": "후원 계산기",
+    "subtitle": "스탈코인 입력",
+    "input": "스탈코인",
+    "hint": "코인당 가격순.",
+    "item": "아이템",
+    "coins": "코인",
+    "price": "가격",
+    "perCoin": "₽/코인",
+    "count": "개수",
+    "total": "합계",
+    "missing": "DB 없음"
   }
 }

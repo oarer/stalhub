@@ -87,6 +87,10 @@
         "barter": {
           "title": "Barter",
           "desc": "Craft tree"
+        },
+        "donate": {
+          "title": "Donate",
+          "desc": "Best sell value"
         }
       }
     },
@@ -3313,5 +3317,18 @@
     "totals": "Totals needed",
     "allDone": "All done!",
     "reset": "Reset"
+  },
+  "donateCalc": {
+    "title": "Donate calculator",
+    "subtitle": "Enter stalcoins — best items to sell (price / coin)",
+    "input": "Stalcoins",
+    "hint": "Sorted by price per coin. Packs included.",
+    "item": "Item",
+    "coins": "Coins",
+    "price": "Price",
+    "perCoin": "₽/coin",
+    "count": "Count",
+    "total": "Total",
+    "missing": "Missing in DB"
   }
 }

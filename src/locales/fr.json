@@ -87,6 +87,10 @@
         "barter": {
           "title": "Troc",
           "desc": "Arbre"
+        },
+        "donate": {
+          "title": "Don",
+          "desc": "Meilleure valeur"
         }
       }
     },
@@ -3300,5 +3304,18 @@
     "totals": "Total",
     "allDone": "Terminé !",
     "reset": "Réinitialiser"
+  },
+  "donateCalc": {
+    "title": "Calculateur de don",
+    "subtitle": "Entrez les stalcoins",
+    "input": "Stalcoins",
+    "hint": "Par prix/pièce.",
+    "item": "Objet",
+    "coins": "Pièces",
+    "price": "Prix",
+    "perCoin": "₽/pièce",
+    "count": "Qté",
+    "total": "Total",
+    "missing": "Manquants"
   }
 }

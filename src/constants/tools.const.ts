@@ -62,4 +62,11 @@ export const toolsList = [
 		desc: 'landing.tools.tool_list.barter.desc',
 		link: '/calcs/barter',
 	},
+	{
+		id: 'donate',
+		icon: 'lucide:gem',
+		title: 'landing.tools.tool_list.donate.title',
+		desc: 'landing.tools.tool_list.donate.desc',
+		link: '/calcs/donate',
+	},
 ]
