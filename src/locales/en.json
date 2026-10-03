@@ -628,6 +628,13 @@
       "details": "пользовательском соглашении",
       "back": "Назад",
       "confirm": "Мне есть 18"
+    },
+    "regular": "Regular",
+    "sort": {
+      "newest": "New",
+      "oldest": "Old",
+      "views": "By views",
+      "stars": "By stars"
     }
   },
   "ui": {
