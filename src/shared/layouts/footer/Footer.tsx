@@ -212,12 +212,12 @@ export default function FooterLayout() {
 				aria-hidden
 				className="hidden w-full text-foreground lg:-ml-3 lg:block"
 				preserveAspectRatio="xMidYMid meet"
-				viewBox="0 0 1000 190"
+				viewBox="0 0 1000 200"
 			>
 				<text
-					className="font-bold"
+					className={`${mtsWide.className} font-bold`}
 					fill="none"
-					fontSize="218"
+					fontSize="180"
 					stroke="currentColor"
 					strokeOpacity="0.08"
 					strokeWidth="4"
