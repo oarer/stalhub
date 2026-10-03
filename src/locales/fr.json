@@ -167,10 +167,18 @@
       "calculators": {
         "title": "Outils",
         "categories": {
-          "main": { "title": "Principal" },
-          "leveling": { "title": "Progression" },
-          "info": { "title": "Informations" },
-          "services": { "title": "Services" }
+          "main": {
+            "title": "Principal"
+          },
+          "leveling": {
+            "title": "Progression"
+          },
+          "info": {
+            "title": "Informations"
+          },
+          "services": {
+            "title": "Services"
+          }
         },
         "items": {
           "art": {
@@ -309,7 +317,9 @@
       "creative": {
         "title": "Творчество",
         "categories": {
-          "community": { "title": "Créations de la communauté" }
+          "community": {
+            "title": "Créations de la communauté"
+          }
         },
         "items": {
           "articles": {
@@ -327,6 +337,10 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "patchNotes": {
+            "label": "Changements",
+            "description": "Patchs"
           }
         }
       }
@@ -3207,5 +3221,24 @@
     "screenshotUploaded": "Screenshot uploaded, analysis started",
     "delete": "Delete",
     "noSessions": "No sessions yet"
+  },
+  "patchNotes": {
+    "title": "Changements",
+    "subtitle": "Patch notes — {count}",
+    "empty": "Aucun changement",
+    "createTitle": "Créer une note",
+    "createDescription": "Publié immédiatement (STALHUB)",
+    "form": {
+      "title": "Titre",
+      "image": "Couverture (URL)",
+      "tags": "Tags",
+      "content": "Texte (MDX)",
+      "contentPlaceholder": "## Quoi de neuf...",
+      "create": "Publier"
+    },
+    "toast": {
+      "created": "Publié",
+      "createError": "Erreur"
+    }
   }
 }

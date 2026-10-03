@@ -333,6 +333,10 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "patchNotes": {
+            "label": "Изменения",
+            "description": "Патч-ноуты и обновления"
           }
         }
       }
@@ -3227,5 +3231,24 @@
     "screenshotUploaded": "Скриншот загружен, анализ запущен",
     "delete": "Удалить",
     "noSessions": "Сессий пока нет"
+  },
+  "patchNotes": {
+    "title": "Изменения",
+    "subtitle": "Патч-ноуты StalHub — {count} записей",
+    "empty": "Пока нет изменений",
+    "createTitle": "Создать изменение",
+    "createDescription": "Патч-ноут публикуется сразу (тип STALHUB)",
+    "form": {
+      "title": "Заголовок",
+      "image": "Обложка (URL)",
+      "tags": "Теги через запятую",
+      "content": "Текст (MDX)",
+      "contentPlaceholder": "## Что изменилось...",
+      "create": "Опубликовать"
+    },
+    "toast": {
+      "created": "Патч-ноут опубликован",
+      "createError": "Ошибка публикации"
+    }
   }
 }

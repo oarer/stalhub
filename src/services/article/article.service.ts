@@ -38,13 +38,15 @@ class ArticleService {
 	async publicList({
 		take = 20,
 		page = 1,
+		type,
 	}: {
 		take?: number
 		page?: number
+		type?: string
 	} = {}): Promise<PaginatedResponse<Article>> {
 		const { data } = await apiClient.get<PaginatedResponse<Article>>(
 			'/api/v1/articles/public',
-			{ params: { take, page } }
+			{ params: { take, page, type } }
 		)
 		return data
 	}

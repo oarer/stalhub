@@ -167,10 +167,18 @@
       "calculators": {
         "title": "도구",
         "categories": {
-          "main": { "title": "기본" },
-          "leveling": { "title": "성장" },
-          "info": { "title": "정보" },
-          "services": { "title": "서비스" }
+          "main": {
+            "title": "기본"
+          },
+          "leveling": {
+            "title": "성장"
+          },
+          "info": {
+            "title": "정보"
+          },
+          "services": {
+            "title": "서비스"
+          }
         },
         "items": {
           "art": {
@@ -309,7 +317,9 @@
       "creative": {
         "title": "Творчество",
         "categories": {
-          "community": { "title": "유저 작품" }
+          "community": {
+            "title": "유저 작품"
+          }
         },
         "items": {
           "articles": {
@@ -327,6 +337,10 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "patchNotes": {
+            "label": "변경 사항",
+            "description": "패치"
           }
         }
       }
@@ -3207,5 +3221,24 @@
     "screenshotUploaded": "Screenshot uploaded, analysis started",
     "delete": "Delete",
     "noSessions": "No sessions yet"
+  },
+  "patchNotes": {
+    "title": "변경 사항",
+    "subtitle": "패치 노트 — {count}",
+    "empty": "변경 없음",
+    "createTitle": "패치 노트 작성",
+    "createDescription": "즉시 게시됨 (STALHUB)",
+    "form": {
+      "title": "제목",
+      "image": "커버 (URL)",
+      "tags": "태그",
+      "content": "본문 (MDX)",
+      "contentPlaceholder": "## 변경 내용...",
+      "create": "게시"
+    },
+    "toast": {
+      "created": "게시됨",
+      "createError": "오류"
+    }
   }
 }

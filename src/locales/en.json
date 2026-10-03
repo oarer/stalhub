@@ -167,10 +167,18 @@
       "calculators": {
         "title": "Tools",
         "categories": {
-          "main": { "title": "Main" },
-          "leveling": { "title": "Progression" },
-          "info": { "title": "Information" },
-          "services": { "title": "Services" }
+          "main": {
+            "title": "Main"
+          },
+          "leveling": {
+            "title": "Progression"
+          },
+          "info": {
+            "title": "Information"
+          },
+          "services": {
+            "title": "Services"
+          }
         },
         "items": {
           "art": {
@@ -309,7 +317,9 @@
       "creative": {
         "title": "Creative",
         "categories": {
-          "community": { "title": "Community works" }
+          "community": {
+            "title": "Community works"
+          }
         },
         "items": {
           "articles": {
@@ -327,6 +337,10 @@
           "tierlists": {
             "label": "Tier Lists",
             "description": "Tier lists by players"
+          },
+          "patchNotes": {
+            "label": "Changelog",
+            "description": "Patches and updates"
           }
         }
       }
@@ -3220,5 +3234,24 @@
     "screenshotUploaded": "Screenshot uploaded, analysis started",
     "delete": "Delete",
     "noSessions": "No sessions yet"
+  },
+  "patchNotes": {
+    "title": "Changelog",
+    "subtitle": "StalHub patch notes — {count} entries",
+    "empty": "No changes yet",
+    "createTitle": "Create patch note",
+    "createDescription": "Patch note is published immediately (STALHUB type)",
+    "form": {
+      "title": "Title",
+      "image": "Cover (URL)",
+      "tags": "Tags comma separated",
+      "content": "Text (MDX)",
+      "contentPlaceholder": "## What changed...",
+      "create": "Publish"
+    },
+    "toast": {
+      "created": "Patch note published",
+      "createError": "Publish error"
+    }
   }
 }

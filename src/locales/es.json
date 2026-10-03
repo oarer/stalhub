@@ -167,10 +167,18 @@
       "calculators": {
         "title": "Herramientas",
         "categories": {
-          "main": { "title": "Principal" },
-          "leveling": { "title": "Progresión" },
-          "info": { "title": "Información" },
-          "services": { "title": "Servicios" }
+          "main": {
+            "title": "Principal"
+          },
+          "leveling": {
+            "title": "Progresión"
+          },
+          "info": {
+            "title": "Información"
+          },
+          "services": {
+            "title": "Servicios"
+          }
         },
         "items": {
           "art": {
@@ -309,7 +317,9 @@
       "creative": {
         "title": "Творчество",
         "categories": {
-          "community": { "title": "Trabajos de la comunidad" }
+          "community": {
+            "title": "Trabajos de la comunidad"
+          }
         },
         "items": {
           "articles": {
@@ -327,6 +337,10 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "patchNotes": {
+            "label": "Cambios",
+            "description": "Parches"
           }
         }
       }
@@ -3207,5 +3221,24 @@
     "screenshotUploaded": "Screenshot uploaded, analysis started",
     "delete": "Delete",
     "noSessions": "No sessions yet"
+  },
+  "patchNotes": {
+    "title": "Cambios",
+    "subtitle": "Notas de parche — {count}",
+    "empty": "Sin cambios",
+    "createTitle": "Crear nota",
+    "createDescription": "Se publica al instante (STALHUB)",
+    "form": {
+      "title": "Título",
+      "image": "Portada (URL)",
+      "tags": "Etiquetas",
+      "content": "Texto (MDX)",
+      "contentPlaceholder": "## Qué cambió...",
+      "create": "Publicar"
+    },
+    "toast": {
+      "created": "Publicado",
+      "createError": "Error"
+    }
   }
 }

@@ -354,6 +354,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 							'nav.groups.creative.items.articles.description',
 					},
 					{
+						key: 'patch-notes',
+						icon: 'lucide:scroll-text',
+						href: '/patch-notes',
+						labelKey: 'nav.groups.creative.items.patchNotes.label',
+						descriptionKey:
+							'nav.groups.creative.items.patchNotes.description',
+					},
+					{
 						key: 'builds',
 						icon: 'lucide:box',
 						href: '/builds',
