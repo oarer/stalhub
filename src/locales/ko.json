@@ -539,6 +539,14 @@
         "shock_therapy": "Фокусировка",
         "sea_alienation": "Море отчуждения"
       }
+    },
+    "summary": {
+      "title": "요약",
+      "kd": "K/D",
+      "pvp": "PvP",
+      "pve": "PvE",
+      "mutants": "돌연변이",
+      "sessionKd": "세션 K/D"
     }
   },
   "time": {

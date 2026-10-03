@@ -539,6 +539,14 @@
         "shock_therapy": "Фокусировка",
         "sea_alienation": "Море отчуждения"
       }
+    },
+    "summary": {
+      "title": "Résumé",
+      "kd": "K/D",
+      "pvp": "PvP",
+      "pve": "PvE",
+      "mutants": "mutants",
+      "sessionKd": "K/D sessions"
     }
   },
   "time": {
