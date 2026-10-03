@@ -4,8 +4,8 @@ import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
@@ -43,6 +43,7 @@ export function BuildCard({
 }: BuildCardProps) {
 	const locale = getLocale()
 	const t = useTranslations()
+	const router = useRouter()
 	const user = useAuthStore((s) => s.user)
 	const queryClient = getQueryClient()
 
@@ -147,9 +148,10 @@ export function BuildCard({
 
 	return (
 		<div
-			className={`group relative flex flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
+			className={`group relative flex cursor-pointer flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
 				isOwner && 'border-2 border-primary/40'
 			}`}
+			onClick={() => router.push(`/calcs/builds/lite?build=${build.id}`)}
 		>
 			<div className="flex items-center justify-between gap-2">
 				<Link
@@ -270,14 +272,14 @@ export function BuildCard({
 									</p>
 									{entry.potential !== 0 && (
 										<span
-											className={`${montserrat.className} shrink-0 font-medium text-sm transition-colors`}
+											className={`shrink-0 font-medium font-mono text-sm transition-colors`}
 											style={{ color: entry.color }}
 										>
 											+{entry.potential}
 										</span>
 									)}
 									<span
-										className={`${montserrat.className} shrink-0 font-medium text-sm transition-colors`}
+										className={`shrink-0 font-medium font-mono text-sm transition-colors`}
 										style={{ color: entry.color }}
 									>
 										{entry.percent}%
@@ -307,11 +309,13 @@ export function BuildCard({
 					</div>
 				)}
 				{author && (
+					<span onClick={(e) => e.stopPropagation()}>
 					<HoverUserCard id={author.id}>
 						<p className={`font-normal text-primary`}>
 							{author.username}
 						</p>
 					</HoverUserCard>
+					</span>
 				)}
 			</div>
 
