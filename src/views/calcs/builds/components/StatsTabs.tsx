@@ -24,8 +24,10 @@ export default memo(function StatsTabs() {
 		hasContainer,
 		stats,
 		containerStats,
+		rawArtifactStats,
 		availableReactions,
 		selectedReaction,
+		thresholdLimits,
 	} = useBuildStats()
 
 	const deltaMap = useStatDeltas(stats)
@@ -57,11 +59,13 @@ export default memo(function StatsTabs() {
 					hps={hps}
 					isPercentMap={isPercentMap}
 					prime={prime}
+					rawStats={rawArtifactStats}
 					reactionProps={reactionProps}
 					sortedStats={sortedStats}
 					speed={speed}
 					statsMap={stats}
 					stopping={stopping}
+					thresholdLimits={thresholdLimits}
 				/>
 			</Tabs.Content>
 			<Tabs.Content value="statsCont">
@@ -71,10 +75,12 @@ export default memo(function StatsTabs() {
 					hasContainer={hasContainer}
 					hps={hps}
 					isPercentMap={isPercentMap}
+					rawStats={rawArtifactStats}
 					reactionProps={reactionProps}
 					stats={sortedContainerStats}
 					statsMap={containerStats}
 					stopping={stopping}
+					thresholdLimits={thresholdLimits}
 				/>
 			</Tabs.Content>
 		</Tabs.Root>

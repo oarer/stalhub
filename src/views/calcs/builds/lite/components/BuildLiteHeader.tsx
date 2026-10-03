@@ -17,7 +17,7 @@ import { buildApiService } from '@/services/build-api/build-api.service'
 import type { SavedBuild } from '@/stores/useBuild.store'
 import BuildPriceModal from '../../components/BuildPriceModal'
 import BuildSelector from '../../components/BuildSelector'
-import DefaultsSettings from '../../components/DefaultsSettings'
+import Settings from '../../components/Settings'
 import { SicknessSelector } from '../../model/components/stats/SicknessSelector'
 import { CompareBuildSelector } from './CompareBuildSelector'
 
@@ -316,7 +316,7 @@ export function BuildLiteHeader({
 							</Modal.Header>
 
 							<Modal.Body className="py-2 pb-6">
-								<DefaultsSettings />
+								<Settings />
 							</Modal.Body>
 						</Modal.Content>
 					</Modal.Root>

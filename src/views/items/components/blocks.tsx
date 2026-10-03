@@ -99,6 +99,7 @@ const getElementKeys = (el: InfoElement): string[] => {
 			return el.text.type === 'translation' ? [el.text.key] : []
 		case 'numeric':
 		case 'range':
+		case 'threshold':
 			return el.name.type === 'translation' ? [el.name.key] : []
 		default:
 			return []

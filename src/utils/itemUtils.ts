@@ -48,6 +48,11 @@ export const isUsageElement = (
 	el: InfoElement
 ): el is Extract<InfoElement, { type: 'usage' }> => el.type === 'usage'
 
+export const isThresholdElement = (
+	el: InfoElement
+): el is Extract<InfoElement, { type: 'threshold' }> =>
+	el.type === 'threshold'
+
 export const hasFormatted = (v: unknown): v is { formatted?: Formatted } =>
 	typeof v === 'object' && v !== null && 'formatted' in (v as object)
 

@@ -2,6 +2,7 @@
 
 import { memo } from 'react'
 import { montserrat } from '@/app/fonts'
+import { useBuildStore } from '@/stores/useBuild.store'
 import { roundNumber } from '../hooks/useBuildStats'
 
 interface StatRowProps {
@@ -21,7 +22,14 @@ export const StatRow = memo(function StatRow({
 	color,
 	delta,
 }: StatRowProps) {
+	const sicknessDisplay = useBuildStore(
+		(s) => s.defaults.sicknessDisplay ?? 'new'
+	)
 	const isAccumulation = keyName.toLowerCase().includes('accumulation')
+	const legacyScale = isAccumulation && sicknessDisplay === 'old' ? 20 : 1
+
+	const shownValue = value / legacyScale
+	const shownDelta = delta !== undefined ? delta / legacyScale : undefined
 
 	const valueColor =
 		color ??
@@ -37,15 +45,15 @@ export const StatRow = memo(function StatRow({
 		<p className="flex justify-between">
 			<span>{name}</span>
 			<span className="flex items-center gap-1.5">
-				{delta !== undefined && (
+				{shownDelta !== undefined && (
 					<span
 						className={`${montserrat.className} font-semibold text-xs`}
 						style={{
-							color: delta >= 0 ? '#53C353' : '#C15252',
+							color: shownDelta >= 0 ? '#53C353' : '#C15252',
 						}}
 					>
-						{delta >= 0 ? '+' : ''}
-						{roundNumber(delta)}
+						{shownDelta >= 0 ? '+' : ''}
+						{roundNumber(shownDelta)}
 						{isPercent ? '%' : ''}
 					</span>
 				)}
@@ -53,8 +61,8 @@ export const StatRow = memo(function StatRow({
 					className={`${montserrat.className} font-semibold`}
 					style={{ color: valueColor }}
 				>
-					{value >= 0 && !color ? '+' : ''}
-					{roundNumber(value)}
+					{shownValue >= 0 && !color ? '+' : ''}
+					{roundNumber(shownValue)}
 					{isPercent ? '%' : ''}
 				</span>
 			</span>

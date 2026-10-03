@@ -624,7 +624,9 @@
         "title": "Paramètres",
         "auto_save": "La sauvegarde est automatique",
         "percent": "Pourcentage",
-        "potential": "Potentiel"
+        "potential": "Potentiel",
+        "armor_level": "Amélioration d'armure",
+        "sickness_legacy": "Affichage classique des afflictions"
       }
     },
     "search": {

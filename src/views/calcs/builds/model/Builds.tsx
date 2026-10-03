@@ -17,7 +17,7 @@ import { useBuildStore } from '@/stores/useBuild.store'
 import StatsTabs from '@/views/calcs/builds/components/StatsTabs'
 import BuildPriceModal from '../components/BuildPriceModal'
 import BuildSelector from '../components/BuildSelector'
-import DefaultsSettings from '../components/DefaultsSettings'
+import Settings from '../components/Settings'
 import { SicknessSelector } from '../model/components/stats/SicknessSelector'
 
 export default function BuildsView() {
@@ -298,7 +298,7 @@ export default function BuildsView() {
 										</Modal.Header>
 
 										<Modal.Body className="py-2 pb-6">
-											<DefaultsSettings />
+											<Settings />
 										</Modal.Body>
 									</Modal.Content>
 								</Modal.Root>

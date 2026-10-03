@@ -77,22 +77,37 @@ const StatCategoryList = memo(function StatCategoryList({
 
 function AccumulationWarnings({
 	statsMap,
+	rawStats,
 	displayNamesMap,
+	thresholdLimits,
 }: {
 	statsMap: BuildStats
+	rawStats?: BuildStats
 	displayNamesMap: Record<string, string>
+	thresholdLimits?: Record<string, number>
 }) {
-	const warnings: { name: string; value: number }[] = []
+	const warnings: { name: string; value: number; limit: number }[] = []
 	const t = useTranslations()
 
 	for (const [key, val] of Object.entries(statsMap)) {
 		if (!key.includes('accumulation')) continue
 		const custom = ACCUMULATION_THRESHOLDS.find((t) => t.key === key)
-		const threshold = custom
-			? custom.threshold
-			: DEFAULT_ACCUMULATION_THRESHOLD
-		if (val > threshold) {
-			warnings.push({ name: displayNamesMap[key] ?? key, value: val })
+		const limit =
+			thresholdLimits?.[key] ??
+			custom?.threshold ??
+			DEFAULT_ACCUMULATION_THRESHOLD
+
+		// Лимиты Threshold выражены в сырых единицах
+		// (limit = 10 / (1 - innerProtection)), поэтому триггеримся
+		// по сырой сумме артефактов, а показываем срезанное значение
+		// против базового порога (10, для холода 20).
+		const raw = rawStats?.[key] ?? val
+		if (raw > limit) {
+			warnings.push({
+				name: displayNamesMap[key] ?? key,
+				value: val,
+				limit: custom?.threshold ?? DEFAULT_ACCUMULATION_THRESHOLD,
+			})
 		}
 	}
 
@@ -112,6 +127,7 @@ function AccumulationWarnings({
 interface StatsTabContentProps {
 	stats: [string, number][]
 	statsMap: BuildStats
+	rawStats?: BuildStats
 	displayNamesMap: Record<string, string>
 	isPercentMap?: Record<string, boolean>
 	hasContainer?: boolean
@@ -119,11 +135,13 @@ interface StatsTabContentProps {
 	stopping?: number
 	reactionProps?: ComponentProps<typeof ReactionSelector>
 	deltaMap?: Record<string, number>
+	thresholdLimits?: Record<string, number>
 }
 
 export const StatsTabContent = memo(function StatsTabContent({
 	stats,
 	statsMap,
+	rawStats,
 	displayNamesMap,
 	isPercentMap,
 	hasContainer = true,
@@ -131,6 +149,7 @@ export const StatsTabContent = memo(function StatsTabContent({
 	stopping,
 	reactionProps,
 	deltaMap,
+	thresholdLimits,
 }: StatsTabContentProps) {
 	const t = useTranslations()
 
@@ -141,7 +160,9 @@ export const StatsTabContent = memo(function StatsTabContent({
 			<Card.Content className="flex flex-col gap-2 text-sm">
 				<AccumulationWarnings
 					displayNamesMap={displayNamesMap}
+					rawStats={rawStats}
 					statsMap={statsMap}
+					thresholdLimits={thresholdLimits}
 				/>
 				{reactionProps &&
 					reactionProps.availableReactions.length > 0 && (
@@ -191,10 +212,12 @@ interface AllStatsTabContentProps {
 	speed?: number
 	sortedStats: [string, number][]
 	statsMap: BuildStats
+	rawStats?: BuildStats
 	displayNamesMap: Record<string, string>
 	isPercentMap?: Record<string, boolean>
 	reactionProps?: ComponentProps<typeof ReactionSelector>
 	deltaMap?: Record<string, number>
+	thresholdLimits?: Record<string, number>
 }
 
 export const AllStatsTabContent = memo(function AllStatsTabContent({
@@ -203,11 +226,13 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 	stopping,
 	sortedStats,
 	statsMap,
+	rawStats,
 	speed,
 	displayNamesMap,
 	isPercentMap,
 	reactionProps,
 	deltaMap,
+	thresholdLimits,
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
 
@@ -221,7 +246,9 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 			<Card.Content className="flex flex-col gap-2 text-sm">
 				<AccumulationWarnings
 					displayNamesMap={displayNamesMap}
+					rawStats={rawStats}
 					statsMap={statsMap}
+					thresholdLimits={thresholdLimits}
 				/>
 				{reactionProps &&
 					reactionProps.availableReactions.length > 0 && (

@@ -87,6 +87,26 @@ export function getItemKeys(item: Item): Set<string> {
 	return keys
 }
 
+/** Limits (`limit`) of `threshold` elements keyed by stat key. */
+export function getThresholdLimits(
+	item: Item | undefined | null
+): Record<string, number> {
+	const limits: Record<string, number> = {}
+	if (!item?.infoBlocks) return limits
+
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (!el || el.type !== 'threshold') continue
+		const key = getElementKey(el)
+		if (!key) continue
+		const limit = Number(el.limit)
+		if (Number.isFinite(limit) && !(key in limits)) {
+			limits[key] = limit
+		}
+	}
+
+	return limits
+}
+
 export function getNumericValue(
 	item: Item,
 	key: string,
@@ -110,6 +130,10 @@ export function getNumericValue(
 		const values = el.value ?? []
 		const index = Math.min(Math.max(numericVariants, 0), values.length - 1)
 		return Number(values[index] ?? 0)
+	}
+
+	if (el.type === 'threshold') {
+		return Number(el.value ?? 0)
 	}
 
 	return 0

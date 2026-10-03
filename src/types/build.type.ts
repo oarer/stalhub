@@ -79,6 +79,7 @@ export type BuildDefaults = {
 	armor: {
 		level: number
 	}
+	sicknessDisplay: 'new' | 'old'
 }
 
 export type ModalManagerProps = {

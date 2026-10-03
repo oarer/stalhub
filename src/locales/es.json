@@ -624,7 +624,9 @@
         "title": "Ajustes",
         "auto_save": "El guardado es automático",
         "percent": "Porcentaje",
-        "potential": "Potencial"
+        "potential": "Potencial",
+        "armor_level": "Mejora de armadura",
+        "sickness_legacy": "Vista clásica de aflicciones"
       }
     },
     "search": {

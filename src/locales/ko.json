@@ -624,7 +624,9 @@
         "title": "설정",
         "auto_save": "자동 저장됩니다",
         "percent": "퍼센트",
-        "potential": "잠재력"
+        "potential": "잠재력",
+        "armor_level": "방어구 강화",
+        "sickness_legacy": "구방식 이상 표시"
       }
     },
     "search": {

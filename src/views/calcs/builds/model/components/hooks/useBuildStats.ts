@@ -18,7 +18,7 @@ import {
 	computeIsPercentMap,
 	getStatsFromItem,
 } from './buildStatsUtils'
-import { BUILD_HIDDEN_STAT_KEYS } from './itemStatsUtils'
+import { BUILD_HIDDEN_STAT_KEYS, getThresholdLimits } from './itemStatsUtils'
 import { useBuildItems } from './useBuildItems'
 import { useContainerModifiers } from './useContainerModifiers'
 import { useDerivedStats } from './useDerivedStats'
@@ -39,6 +39,11 @@ export function useBuildStats(buildOverride?: Build) {
 
 	const containerModifiers = useContainerModifiers(containerItem)
 
+	const thresholdLimits = useMemo(
+		() => getThresholdLimits(containerItem),
+		[containerItem]
+	)
+
 	const allStatKeys = useMemo(() => {
 		return buildAllStatKeys(
 			build,
@@ -52,6 +57,22 @@ export function useBuildStats(buildOverride?: Build) {
 	const displayNamesMap = useMemo(() => {
 		return buildDisplayNamesMap(allStatKeys, allItems, locale)
 	}, [allItems, allStatKeys, locale])
+
+	// сырые суммы статов артефактов (до модификаторов контейнера).
+	// Нужны для варнингов накоплений: лимиты Threshold выражены
+	// в сырых единицах (limit = 10 / (1 - innerProtection)).
+	const rawArtifactStats = useMemo<BuildStats>(() => {
+		const artResult: BuildStats = {}
+		for (const art of build.arts) {
+			const artStats = computeArtifactStats(art, artefacts, locale)
+			for (const [key, val] of Object.entries(artStats)) {
+				if (val !== 0) {
+					artResult[key] = (artResult[key] ?? 0) + val
+				}
+			}
+		}
+		return artResult
+	}, [build.arts, artefacts, locale])
 
 	const stats = useMemo<BuildStats>(() => {
 		// статы армора и контейнера - без модификаторов
@@ -74,18 +95,8 @@ export function useBuildStats(buildOverride?: Build) {
 		}
 
 		// статы артефактов - применяем модификаторы контейнера
-		const artResult: BuildStats = {}
-		for (const art of build.arts) {
-			const artStats = computeArtifactStats(art, artefacts, locale)
-			for (const [key, val] of Object.entries(artStats)) {
-				if (val !== 0) {
-					artResult[key] = (artResult[key] ?? 0) + val
-				}
-			}
-		}
-
 		const artWithModifiers = applyContainerModifiers(
-			artResult,
+			rawArtifactStats,
 			containerModifiers.effectiveness,
 			containerModifiers.innerProtection
 		)
@@ -132,7 +143,7 @@ export function useBuildStats(buildOverride?: Build) {
 		build,
 		armors,
 		containerItem,
-		artefacts,
+		rawArtifactStats,
 		consumables,
 		allStatKeys,
 		locale,
@@ -231,6 +242,7 @@ export function useBuildStats(buildOverride?: Build) {
 	return {
 		stats,
 		containerStats,
+		rawArtifactStats,
 		displayNamesMap,
 		isPercentMap,
 		sortedStats,
@@ -240,6 +252,7 @@ export function useBuildStats(buildOverride?: Build) {
 		stopping,
 		speed,
 		hasContainer: !!build.container,
+		thresholdLimits,
 		availableReactions,
 		selectedReaction: build.reaction ?? null,
 	}

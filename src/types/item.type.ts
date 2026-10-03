@@ -188,6 +188,14 @@ export type NumericVariantsElement = {
 	valueColor?: string
 } & FormattedBlock
 
+export type ThresholdElement = {
+	type: 'threshold'
+	name: Message
+	value: number
+	limit: number
+	withinLimit: boolean
+} & FormattedBlock
+
 export type InfoElement =
 	| PriceElement
 	| ItemElement
@@ -196,6 +204,7 @@ export type InfoElement =
 	| NumericElement
 	| NumericRangeElement
 	| NumericVariantsElement
+	| ThresholdElement
 	| Usage
 
 export type DamageDistanceInfoBlock = {

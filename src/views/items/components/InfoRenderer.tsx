@@ -10,6 +10,7 @@ import {
 	isNumericVariantsBlock,
 	isRangeElement,
 	isTextElement,
+	isThresholdElement,
 	isUsageElement,
 } from '@/utils/itemUtils'
 import type { StatOverride } from './attachments/attachmentStats'
@@ -21,6 +22,7 @@ import {
 	NumericVariantsElementRenderer,
 	RangeElement,
 	TextElement,
+	ThresholdElement,
 	UsageElement,
 } from './elements'
 
@@ -41,6 +43,8 @@ const InfoElementRenderer: React.FC<{
 		return <NumericElement el={el} locale={locale} override={override} />
 	}
 	if (isRangeElement(el)) return <RangeElement el={el} locale={locale} />
+	if (isThresholdElement(el))
+		return <ThresholdElement el={el} locale={locale} />
 	if (isUsageElement(el)) return <UsageElement el={el} locale={locale} />
 	if (isNumericVariantsBlock(el))
 		return (

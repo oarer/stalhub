@@ -98,8 +98,9 @@ const initialDefaults: BuildDefaults = {
 		potential: 0,
 	},
 	armor: {
-		level: 0,
+		level: 15,
 	},
+	sicknessDisplay: 'new',
 }
 
 export const normalizeBuildArtifacts = (build: Build): Build => {
@@ -797,14 +798,24 @@ export const useBuildStore = create<BuildState>()(
 		}),
 		{
 			name: 'build-storage',
-			version: 4,
+			version: 5,
 			migrate: (persistedState) => {
 				const state = persistedState as Partial<BuildState>
+				const defaults = {
+					...initialDefaults,
+					...state.defaults,
+					art: { ...initialDefaults.art, ...state.defaults?.art },
+					armor: {
+						...initialDefaults.armor,
+						...state.defaults?.armor,
+					},
+				}
 				return {
 					...state,
 					build: state.build
 						? normalizeBuildArtifacts(migrateBuild(state.build))
 						: initialBuild,
+					defaults,
 					savedBuilds: (state.savedBuilds ?? []).map((saved) => ({
 						...saved,
 						build: normalizeBuildArtifacts(

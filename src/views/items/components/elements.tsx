@@ -2,6 +2,7 @@
 
 import { montserrat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
+import { useBuildStore } from '@/stores/useBuild.store'
 import type {
 	InfoElement,
 	Locale,
@@ -186,6 +187,44 @@ export const UsageElement: React.FC<{
 		>
 			{name}
 		</p>
+	)
+}
+
+export const ThresholdElement: React.FC<{
+	el: Extract<InfoElement, { type: 'threshold' }>
+	locale: Locale
+}> = ({ el, locale }) => {
+	const sicknessDisplay = useBuildStore(
+		(s) => s.defaults.sicknessDisplay ?? 'new'
+	)
+	const scale = sicknessDisplay === 'old' ? 20 : 1
+
+	const name = messageToString(el.name, locale)
+	const nameColor = normalizeColor(el.formatted?.nameColor)
+	const valueColor =
+		normalizeColor(el.formatted?.valueColor) ??
+		(el.withinLimit ? '#22C55E' : '#EF4444')
+
+	const display =
+		hasFormatted(el) && el.formatted?.value?.[locale]
+			? el.formatted.value[locale]
+			: `${roundNumber(el.value / scale)} / ${roundNumber(el.limit / scale)}`
+
+	return (
+		<div className="flex justify-between gap-2">
+			<p
+				className="font-semibold"
+				style={nameColor ? { color: nameColor } : undefined}
+			>
+				{name}
+			</p>
+			<p
+				className={`${montserrat.className} font-medium text-nowrap`}
+				style={{ color: valueColor }}
+			>
+				{display}
+			</p>
+		</div>
 	)
 }
 

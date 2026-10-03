@@ -624,7 +624,9 @@
         "title": "Settings",
         "auto_save": "Saving happens automatically",
         "percent": "Percent",
-        "potential": "Potential"
+        "potential": "Potential",
+        "armor_level": "Armor sharpening",
+        "sickness_legacy": "Legacy sickness display"
       }
     },
     "search": {
