@@ -3,10 +3,11 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import Input from '@/components/ui/Input'
 import { useTableSort } from '@/components/ui/Table'
+import { Tabs } from '@/components/ui/Tabs'
 import { getLocale } from '@/lib/getLocale'
 import { arsenalQueries } from '@/queries/calcs/arsenal.queries'
 import {
@@ -14,6 +15,7 @@ import {
 	calculateReputationCoverage,
 } from './components/ArsenalCalc'
 import { getArsenalColumns } from './components/ArsenalColums'
+import { ArsenalShop } from './components/ArsenalShop'
 import { ArsenalTable } from './components/ArsenalTable'
 
 type ArsenalViewProps = {
@@ -23,6 +25,7 @@ type ArsenalViewProps = {
 export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 	const { data } = useSuspenseQuery(arsenalQueries.get())
 	const [targetReputation, setTargetReputation] = useState(0)
+	const [tab, setTab] = useState('calc')
 	const t = useTranslations()
 
 	const locale = getLocale()
@@ -50,18 +53,33 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 			}
 		>
 			{variant === 'page' && (
-				<div className="text-center">
+				<>
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 					>
 						{t('arsenal.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('arsenal.sub_title')}
 					</p>
-				</div>
+				</>
 			)}
 
+			<Tabs.Root onValueChange={setTab} value={tab}>
+				<Tabs.List>
+					<Tabs.Trigger value="calc">{t('arsenal.tabs.calc')}</Tabs.Trigger>
+					<Tabs.Trigger value="shop">{t('arsenal.tabs.shop')}</Tabs.Trigger>
+				</Tabs.List>
+				<Tabs.Content value="shop">
+					<ArsenalShop
+						onPickReputation={(rep) => {
+							setTargetReputation(rep)
+							setTab('calc')
+						}}
+					/>
+				</Tabs.Content>
+				<Tabs.Content value="calc">
+					<div className="flex flex-col gap-4 pt-4">
 			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<Input
 					className="py-2.5 md:w-80"
@@ -113,6 +131,9 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 			)}
 
 			<ArsenalTable table={table} />
+					</div>
+				</Tabs.Content>
+			</Tabs.Root>
 		</section>
 	)
 }

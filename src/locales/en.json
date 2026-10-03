@@ -680,6 +680,13 @@
       "rest": "Not enough for the goal",
       "restEnd": "reputation.",
       "unlimited": "Make up the rest with items without a limit."
+    },
+    "tabs": {
+      "calc": "Calculator",
+      "shop": "Shop"
+    },
+    "shop": {
+      "pick": "Pick"
     }
   },
   "modals": {

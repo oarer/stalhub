@@ -680,6 +680,13 @@
       "rest": "Faltan para la meta",
       "restEnd": "de reputación.",
       "unlimited": "Completa con objetos sin límite."
+    },
+    "tabs": {
+      "calc": "Calculadora",
+      "shop": "Tienda"
+    },
+    "shop": {
+      "pick": "Elegir"
     }
   },
   "modals": {

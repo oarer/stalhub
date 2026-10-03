@@ -680,6 +680,13 @@
       "rest": "Il manque pour l'objectif",
       "restEnd": "de réputation.",
       "unlimited": "Complétez avec des objets sans limite."
+    },
+    "tabs": {
+      "calc": "Calculateur",
+      "shop": "Boutique"
+    },
+    "shop": {
+      "pick": "Choisir"
     }
   },
   "modals": {

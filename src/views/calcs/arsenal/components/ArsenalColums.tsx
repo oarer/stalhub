@@ -1,7 +1,13 @@
+import Image from 'next/image'
 import type { ColumnDef } from '@/components/ui/Table'
 import type { Locale, Message } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import type { ArsenalRow } from './ArsenalCalc'
+
+export function arsenalIconUrl(row: { icon?: string; id?: string }): string | null {
+	if (row.icon) return `https://cdn.stalhub.dev/db${row.icon}`
+	return null
+}
 
 function getDaysLabel(days: number, t: (key: string) => string) {
 	const mod10 = days % 10
@@ -19,6 +25,23 @@ export function getArsenalColumns(
 	t: (key: string) => string
 ): ColumnDef<ArsenalRow>[] {
 	return [
+		{
+			accessorKey: 'icon',
+			header: '',
+			cell: ({ row }) => {
+				const url = arsenalIconUrl(row.original)
+				if (!url) return <span className="text-neutral-600">—</span>
+				return (
+					<Image
+						alt={messageToString(row.original.name, locale)}
+						className="object-contain"
+						height={32}
+						src={url}
+						width={32}
+					/>
+				)
+			},
+		},
 		{
 			accessorKey: 'name',
 			header: t('arsenal.table.item'),
