@@ -79,6 +79,10 @@
         "upgrade": {
           "title": "강화 계산기",
           "desc": "유물·장비 강화 확률, 시도 횟수, 도구 비용"
+        },
+        "text": {
+          "title": "서식",
+          "desc": "§와 그라디언트"
         }
       }
     },
@@ -3240,5 +3244,18 @@
       "created": "게시됨",
       "createError": "오류"
     }
+  },
+  "textFormatter": {
+    "title": "텍스트 서식",
+    "subtitle": "색상 텍스트와 그라디언트 (§)",
+    "clan": "클랜",
+    "plainLen": "코드 제외",
+    "gradient": "그라디언트",
+    "gradientText": "텍스트",
+    "applyGradient": "삽입",
+    "copy": "복사",
+    "clear": "지우기",
+    "preview": "미리보기",
+    "hint": "§0-F — 16색, §#hex, §R — 초기화."
   }
 }

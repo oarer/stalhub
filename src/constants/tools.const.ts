@@ -48,4 +48,11 @@ export const toolsList = [
 		desc: 'landing.tools.tool_list.player_search.desc',
 		link: '/player',
 	},
+	{
+		id: 'text',
+		icon: 'lucide:palette',
+		title: 'landing.tools.tool_list.text.title',
+		desc: 'landing.tools.tool_list.text.desc',
+		link: '/calcs/text',
+	},
 ]

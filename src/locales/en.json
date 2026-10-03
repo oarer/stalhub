@@ -79,6 +79,10 @@
         "upgrade": {
           "title": "Upgrade Calculator",
           "desc": "Upgrade chances, attempts and tool costs for artifacts and gear"
+        },
+        "text": {
+          "title": "Formatting",
+          "desc": "§-codes and gradients"
         }
       }
     },
@@ -3253,5 +3257,18 @@
       "created": "Patch note published",
       "createError": "Publish error"
     }
+  },
+  "textFormatter": {
+    "title": "Text formatting",
+    "subtitle": "Colored text and gradients (§-codes, §#hex)",
+    "clan": "Clan",
+    "plainLen": "Plain length",
+    "gradient": "Gradient",
+    "gradientText": "Gradient text",
+    "applyGradient": "Insert gradient",
+    "copy": "Copy for game",
+    "clear": "Clear",
+    "preview": "Preview (in-game)",
+    "hint": "§0-F — 16 colors, §#RRGGBB — any hex, §R — reset. Clan desc newline resets color."
   }
 }

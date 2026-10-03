@@ -79,6 +79,10 @@
         "upgrade": {
           "title": "Calculadora de afinado",
           "desc": "Probabilidades, intentos y coste de herramientas para artefactos y equipo"
+        },
+        "text": {
+          "title": "Formato",
+          "desc": "§ y degradados"
         }
       }
     },
@@ -3240,5 +3244,18 @@
       "created": "Publicado",
       "createError": "Error"
     }
+  },
+  "textFormatter": {
+    "title": "Formato de texto",
+    "subtitle": "Texto de colores y degradados (§)",
+    "clan": "Clan",
+    "plainLen": "Sin códigos",
+    "gradient": "Degradado",
+    "gradientText": "Texto",
+    "applyGradient": "Insertar",
+    "copy": "Copiar",
+    "clear": "Limpiar",
+    "preview": "Vista previa",
+    "hint": "§0-F — 16 colores, §#hex, §R — reset."
   }
 }

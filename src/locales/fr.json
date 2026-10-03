@@ -79,6 +79,10 @@
         "upgrade": {
           "title": "Calculateur d'amélioration",
           "desc": "Chances, tentatives et coût en outils pour artefacts et équipement"
+        },
+        "text": {
+          "title": "Formatage",
+          "desc": "§ et dégradés"
         }
       }
     },
@@ -3240,5 +3244,18 @@
       "created": "Publié",
       "createError": "Erreur"
     }
+  },
+  "textFormatter": {
+    "title": "Formatage du texte",
+    "subtitle": "Texte couleur et dégradés (§)",
+    "clan": "Clan",
+    "plainLen": "Sans codes",
+    "gradient": "Dégradé",
+    "gradientText": "Texte",
+    "applyGradient": "Insérer",
+    "copy": "Copier",
+    "clear": "Effacer",
+    "preview": "Aperçu",
+    "hint": "§0-F — 16 couleurs, §#hex, §R — reset."
   }
 }
