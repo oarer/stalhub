@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
@@ -133,14 +133,14 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-col gap-0">
 							{art.title && (
 								<h1
-									className={`${unbounded.className} min-w-0 font-bold text-2xl`}
+									className={`${mtsExtended.className} min-w-0 font-semibold text-2xl text-primary`}
 								>
 									{art.title}
 								</h1>
 							)}
 							{art.description && (
 								<h2
-									className={`${montserrat.className} min-w-0 font-semibold text-md`}
+									className={`min-w-0 font-medium font-mono text-sm`}
 								>
 									{art.description}
 								</h2>
@@ -194,20 +194,20 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 					<div className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-2 ring-primary/40">
 						<div className="flex items-center justify-between">
-							<span className="font-semibold text-sm text-text-accent">
+							<span className="font-medium text-sm text-text-accent">
 								{t('arts.author')}
 							</span>
 							{art.author.id !== null ? (
 								<HoverUserCard id={art.author.id}>
 									<span
-										className={`${montserrat.className} cursor-pointer font-semibold text-sm`}
+										className={`cursor-pointer font-medium font-mono text-sm`}
 									>
 										{art.author.username}
 									</span>
 								</HoverUserCard>
 							) : (
 								<span
-									className={`${montserrat.className} font-semibold text-sm`}
+									className={`font-medium font-mono text-sm`}
 								>
 									{art.author.name}
 								</span>
@@ -218,44 +218,44 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 						<div className="grid grid-cols-3 gap-4">
 							<div>
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('arts.stars')}
 								</p>
 								<p
-									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+									className={`font-medium font-mono text-sm text-text-accent`}
 								>
 									{art.stars_count}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('arts.views')}
 								</p>
 								<p
-									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+									className={`font-medium font-mono text-sm text-text-accent`}
 								>
 									{art.views}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('arts.comments.aside')}
 								</p>
 								<p
-									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+									className={`font-medium font-mono text-sm text-text-accent`}
 								>
 									{art.comments_count ?? 0}
 								</p>
 							</div>
 
 							<div className="col-span-2">
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('arts.publishedAt')}
 								</p>
 								<p
-									className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+									className={`font-medium font-mono text-sm text-text-accent`}
 								>
 									{formatDate(art.created_at)}
 								</p>
@@ -271,7 +271,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 											art.author.social_links
 										).map(([network, url]) => (
 											<a
-												className="flex items-center gap-1.5 rounded-md bg-card px-2 py-1 font-semibold text-xs transition-colors duration-500 hover:bg-border/50"
+												className="flex items-center gap-1.5 rounded-md bg-card px-2 py-1 font-medium text-xs transition-colors duration-500 hover:bg-border/50"
 												href={url}
 												key={network}
 												rel="noopener noreferrer"
@@ -295,7 +295,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-wrap gap-1.5">
 							{art.tags.map((tag) => (
 								<Link
-									className="rounded-md bg-border-secondary px-2 py-0.5 font-semibold text-text-accent text-xs transition-colors hover:text-primary"
+									className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-text-accent text-xs transition-colors hover:text-primary"
 									href={`/arts?search=${encodeURIComponent(tag)}`}
 									key={tag}
 								>

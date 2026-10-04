@@ -1,6 +1,5 @@
 'use client'
 
-import { montserrat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 import type {
 	InfoElement,
@@ -32,7 +31,7 @@ export const ItemElement: React.FC<{
 	return (
 		<div className="flex justify-between">
 			<p
-				className="font-semibold"
+				className="font-body"
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
@@ -49,7 +48,7 @@ export const TextElement: React.FC<{
 	const valueColor = normalizeColor(el.formatted?.valueColor)
 	return (
 		<p
-			className="font-semibold"
+			className="font-body text-[13px]"
 			style={valueColor ? { color: valueColor } : undefined}
 		>
 			{text}
@@ -70,10 +69,15 @@ export const KeyValueElement: React.FC<{
 		getValueColorByRankKey(el.value)
 
 	return (
-		<div className="flex justify-between font-semibold">
-			<p style={nameColor ? { color: nameColor } : undefined}>{key}</p>
+		<div className="flex justify-between">
 			<p
-				className={`${montserrat.className} ] text-nowrap`}
+				className="font-medium"
+				style={nameColor ? { color: nameColor } : undefined}
+			>
+				{key}
+			</p>
+			<p
+				className="max-w-40 truncate text-nowrap font-mono font-semibold"
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{value}
@@ -98,28 +102,23 @@ export const NumericElement: React.FC<{
 	return (
 		<div className="flex justify-between gap-2">
 			<p
-				className="font-semibold"
+				className="font-medium"
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
 			</p>
 			{override ? (
 				<div className="flex items-center gap-1 text-nowrap">
-					<span
-						className={`${montserrat.className} font-medium text-sm text-text-accent line-through`}
-					>
+					<span className="font-mono font-semibold text-sm text-text-accent line-through">
 						{roundNumber(override.base)}
 					</span>
 					<span aria-hidden="true">→</span>
-					<span
-						className={`${montserrat.className} font-semibold text-sm`}
-					>
+					<span className="font-mono font-semibold text-sm">
 						{roundNumber(override.modified)}
 					</span>
 					<span
 						className={cn(
-							montserrat.className,
-							'font-semibold text-sm',
+							'font-mono font-semibold text-sm',
 							override.improved
 								? 'text-emerald-500'
 								: 'text-destructive'
@@ -131,7 +130,7 @@ export const NumericElement: React.FC<{
 				</div>
 			) : (
 				<p
-					className={`${montserrat.className} font-medium`}
+					className="font-mono font-semibold"
 					style={nameColor ? { color: nameColor } : undefined}
 				>
 					{display}
@@ -157,13 +156,13 @@ export const RangeElement: React.FC<{
 	return (
 		<div className="flex justify-between">
 			<p
-				className="font-semibold"
+				className="font-medium"
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
 			</p>
 			<p
-				className={`${montserrat.className} font-semibold`}
+				className="font-mono font-semibold"
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{display}
@@ -181,7 +180,7 @@ export const UsageElement: React.FC<{
 
 	return (
 		<p
-			className={`${montserrat.className} font-medium`}
+			className="font-body"
 			style={valueColor ? { color: valueColor } : undefined}
 		>
 			{name}
@@ -191,8 +190,11 @@ export const UsageElement: React.FC<{
 
 export const FallbackElement: React.FC<{ el: InfoElement }> = ({ el }) => {
 	return (
-		<div className="text-red-200 text-sm">
-			<pre className="whitespace-pre-wrap text-destructive text-xs">
+		<div className="text-destructive text-sm">
+			<span className="font-mono font-semibold">
+				Парсер не смог обработать строки ниже:
+			</span>
+			<pre className="whitespace-pre-wrap font-medium font-mono text-xs">
 				{JSON.stringify(el, null, 2)}
 			</pre>
 		</div>
@@ -229,13 +231,13 @@ export const NumericVariantsElementRenderer: React.FC<{
 	return (
 		<div className="flex items-center justify-between py-1">
 			<p
-				className="truncate font-semibold"
+				className="truncate font-medium"
 				style={nameColor ? { color: nameColor } : undefined}
 			>
 				{name}
 			</p>
 			<p
-				className={`${montserrat.className} font-medium text-md`}
+				className="font-mono font-semibold text-md"
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{display}

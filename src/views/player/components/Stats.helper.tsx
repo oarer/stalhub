@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { getLocale } from '@/lib/getLocale'
 import type { Stat, StatCategory } from '@/types/player.type'
 import { decimalConfig } from '@/types/player.type'
@@ -69,9 +68,7 @@ export function StatsSection({ title, icon, stats }: StatsSectionProps) {
 				<h3 className="font-semibold text-lg" id={`stats-${title}`}>
 					{t(`player.category.${title}`)}
 				</h3>
-				<span
-					className={`${montserrat.className} text-muted-foreground text-xs`}
-				>
+				<span className={`font-mono text-muted-foreground text-xs`}>
 					{stats.length}
 				</span>
 			</div>
@@ -91,7 +88,7 @@ export function StatsSection({ title, icon, stats }: StatsSectionProps) {
 								{name}
 							</p>
 							<p
-								className={`${montserrat.className} wrap-break-word font-semibold text-base`}
+								className={`wrap-break-word font-mono font-semibold text-base`}
 							>
 								{formatStatValue(stat, locale, t)}
 							</p>

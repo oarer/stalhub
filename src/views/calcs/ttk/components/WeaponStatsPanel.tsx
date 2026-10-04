@@ -84,13 +84,15 @@ const WeaponStatsPanel = memo(function Wsp({
 			<div className="grid grid-cols-2 gap-2">
 				{statsList.map(({ labelKey, value, color }) => (
 					<div
-						className="flex flex-col items-center rounded-lg bg-neutral-800/50 py-2"
+						className="flex flex-col items-center rounded-lg bg-card py-2"
 						key={labelKey}
 					>
 						<span className="text-neutral-500 text-xs">
 							{t(labelKey)}
 						</span>
-						<span className={`font-bold text-lg ${color}`}>
+						<span
+							className={`font-mono font-semibold text-[17px] ${color}`}
+						>
 							{value}
 						</span>
 					</div>

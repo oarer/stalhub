@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { forwardRef } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import type { ClanSquad, ClanSquadMember } from '@/types/clan/clan.type'
 
 interface SquadPngTemplateProps {
@@ -21,7 +21,7 @@ export const SquadPngTemplate = forwardRef<
 	return (
 		<div className="w-7xl bg-card p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3]`}
+				className={`${unbounded.className} font-semibold text-2xl text-primary uppercase tracking-[3]`}
 			>
 				stalhub.dev
 			</h1>
@@ -33,22 +33,22 @@ export const SquadPngTemplate = forwardRef<
 				</h2>
 				<div className="flex gap-4">
 					<div
-						className={`${montserrat.className} rounded-lg bg-card px-4 py-1 text-right`}
+						className={`rounded-lg bg-card px-4 py-1 text-right font-mono`}
 					>
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-medium text-[13px] text-text-accent">
 							{t('clan.squads.png.squadCount')}
 						</p>
-						<p className="font-bold text-lg text-primary">
+						<p className="font-mono font-semibold text-lg text-primary">
 							{squads.length}
 						</p>
 					</div>
 					<div
-						className={`${montserrat.className} rounded-lg bg-card px-4 py-1 text-right`}
+						className={`rounded-lg bg-card px-4 py-1 text-right font-mono`}
 					>
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-medium text-[13px] text-text-accent">
 							{t('clan.squads.png.membersCount')}
 						</p>
-						<p className="font-bold text-lg text-primary">
+						<p className="font-mono font-semibold text-lg text-primary">
 							{squads.reduce(
 								(sum, s) => sum + s.members.length,
 								0
@@ -58,7 +58,7 @@ export const SquadPngTemplate = forwardRef<
 				</div>
 			</header>
 			<div
-				className={`${montserrat.className} mb-6 flex w-fit items-center gap-6 rounded-lg bg-card px-4 py-2 font-semibold text-xs`}
+				className={`mb-6 flex w-fit items-center gap-6 rounded-lg bg-card px-4 py-2 font-mono font-semibold text-xs`}
 			>
 				<span className="flex items-center gap-2 text-text-accent">
 					<span className="size-3 rounded border border-amber-500/60 bg-amber-500/10" />
@@ -95,12 +95,12 @@ function SquadPngCard({
 		<div className="flex flex-col gap-3 rounded-lg bg-card/50 p-5 ring-2 ring-primary/50">
 			<div className="flex items-center justify-between gap-2">
 				<p
-					className={`${unbounded.className} truncate font-bold text-md uppercase tracking-widest`}
+					className={`${unbounded.className} truncate font-semibold text-md uppercase tracking-widest`}
 				>
 					{squad.name}
 				</p>
 				<span
-					className={`${montserrat.className} font-bold text-sm text-text-accent`}
+					className={`font-medium font-mono text-sm text-text-accent`}
 				>
 					{squad.members.length}/5
 				</span>
@@ -109,7 +109,7 @@ function SquadPngCard({
 				<div className="flex items-center gap-1.5 text-amber-500">
 					<Icon className="text-sm" icon="lucide:crown" />
 					<span
-						className={`${montserrat.className} truncate font-semibold text-sm`}
+						className={`truncate font-mono font-semibold text-sm`}
 					>
 						{squad.leader.member.name}
 					</span>
@@ -162,20 +162,18 @@ function SquadSlotPng({
 		>
 			{member ? (
 				<>
-					<p
-						className={`${montserrat.className} truncate font-semibold text-sm`}
-					>
+					<p className={`truncate font-mono font-semibold text-sm`}>
 						{member.member.name}
 					</p>
 					<p
-						className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+						className={`font-mono font-semibold text-text-accent text-xs`}
 					>
 						{t(`player.rank.${member.member.rank}`)}
 					</p>
 				</>
 			) : (
 				<p
-					className={`${montserrat.className} font-semibold text-sm text-text-accent/70`}
+					className={`font-mono font-semibold text-sm text-text-accent/70`}
 				>
 					{t('clan.squads.png.empty')}
 				</p>

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { montserrat } from '@/app/fonts'
 import { getLocale } from '@/lib/getLocale'
 import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
@@ -12,7 +11,7 @@ export function ItemCell({ item }: { item: Item | undefined }) {
 	}
 	return (
 		<span
-			className={`${montserrat.className} flex min-w-0 items-center gap-1 truncate font-semibold text-sm`}
+			className={`flex min-w-0 items-center gap-1 truncate font-mono font-semibold text-sm`}
 		>
 			<span
 				className="truncate"

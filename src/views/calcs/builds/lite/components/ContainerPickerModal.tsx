@@ -86,14 +86,12 @@ export function ContainerPickerModal({
 						<Modal.Title>
 							{t('buildsLite.containerWarnTitle')}
 						</Modal.Title>
-						<Modal.Description className="font-semibold">
+						<Modal.Description>
 							{t('buildsLite.containerWarnDesc')}
 						</Modal.Description>
 					</Modal.Header>
 					<Modal.Body>
-						<p className="font-semibold">
-							{t('buildsLite.lostSlots', { count: lostSlots })}
-						</p>
+						<p>{t('buildsLite.lostSlots', { count: lostSlots })}</p>
 					</Modal.Body>
 					<Modal.Footer className="flex justify-end gap-2">
 						<Modal.Action

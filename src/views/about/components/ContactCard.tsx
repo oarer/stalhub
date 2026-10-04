@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import type { AboutMember } from './about.types'
 import { view } from './about.types'
@@ -37,12 +37,12 @@ export function ContactCard({ name, description, links }: AboutMember) {
 					{...view}
 				>
 					<h2
-						className={`${unbounded.className} font-bold text-xl uppercase tracking-widest sm:text-2xl`}
+						className={`${mtsExtended.className} font-semibold text-xl uppercase tracking-widest sm:text-2xl`}
 					>
 						{name}
 					</h2>
 					<h3
-						className={`${unbounded.className} font-bold text-primary text-sm uppercase tracking-widest`}
+						className={`${mtsWide.className} font-medium text-primary text-sm uppercase tracking-widest`}
 					>
 						{t(description)}
 					</h3>

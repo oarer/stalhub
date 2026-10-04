@@ -6,7 +6,6 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import Input from '@/components/ui/Input'
 import Sidebar from '@/components/ui/sideBar/SideBar'
 import type { ColumnDef } from '@/components/ui/Table'
@@ -162,18 +161,14 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				accessorKey: 'perCraft',
 				header: t('hideout.perCraft'),
 				cell: ({ row }) => (
-					<span className={montserrat.className}>
-						{row.original.perCraft}
-					</span>
+					<span className="font-mono">{row.original.perCraft}</span>
 				),
 			},
 			{
 				accessorKey: 'total',
 				header: t('hideout.total'),
 				cell: ({ row }) => (
-					<span className={montserrat.className}>
-						{row.original.total}
-					</span>
+					<span className="font-mono">{row.original.total}</span>
 				),
 			},
 			{
@@ -199,7 +194,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				accessorKey: 'totalPrice',
 				header: t('hideout.totalPrice'),
 				cell: ({ row }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{row.original.totalPrice.toLocaleString()}₽
 					</span>
 				),
@@ -208,7 +203,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				accessorKey: 'totalEnergy',
 				header: t('hideout.energy'),
 				cell: ({ row }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{row.original.energy.toLocaleString()}
 					</span>
 				),

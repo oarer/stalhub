@@ -85,7 +85,7 @@ const Row = ({
 					/>
 
 					<p
-						className="max-w-50 truncate font-semibold"
+						className="max-w-50 truncate font-medium text-sm"
 						style={{
 							color: !isDark
 								? `color-mix(in srgb, ${itemColor} 70%, var(--foreground))`
@@ -196,7 +196,7 @@ export function ItemsList({
 	return (
 		<div className="h-full min-h-0 w-full">
 			{emptyText && sortedItems.length === 0 ? (
-				<p className="flex h-full items-center justify-center font-semibold text-text-accent">
+				<p className="flex h-full items-center justify-center font-medium text-sm text-text-accent">
 					{emptyText}
 				</p>
 			) : (

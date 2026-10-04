@@ -2,6 +2,7 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { mtsExtended } from '@/app/fonts'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { mskDate, mskHour } from '@/lib/date'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -60,7 +61,9 @@ function ClanAbsenceContent({
 	return (
 		<div className="flex flex-col gap-4">
 			<div>
-				<h1 className="font-semibold text-lg">
+				<h1
+					className={`${mtsExtended.className} font-medium text-lg leading-none`}
+				>
 					{t('clan.absence.title')}
 				</h1>
 				<p className="font-semibold text-sm text-text-accent">

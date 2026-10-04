@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -188,7 +189,9 @@ export default function ScNodesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				>
 					{t('admin.scNodes.title')}
 				</h1>
 				<span className="flex items-center gap-1.5 text-neutral-400 text-sm">
@@ -210,7 +213,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.nodes_up}
 							</p>
 							<p className="text-text-accent text-xs">
@@ -228,7 +231,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.tokens_up}
 							</p>
 							<p className="text-text-accent text-xs">
@@ -246,7 +249,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.quota_per_minute}
 							</p>
 							<p className="text-text-accent text-xs">
@@ -264,7 +267,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.costs.default}/
 								{overview.costs.auction}
 							</p>

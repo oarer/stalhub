@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
@@ -61,7 +61,9 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 			}
 		>
 			<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-				<h1 className={`${unbounded.className} font-bold text-3xl`}>
+				<h1
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				>
 					{t('tierlists.title')}
 				</h1>
 				{(user || mine) && (
@@ -185,7 +187,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 						className="size-10 text-text-accent"
 						icon="lucide:layout-list"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-sm text-text-accent">
 						{t('tierlists.empty')}
 					</p>
 				</div>
@@ -199,7 +201,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 								key={tierList.id}
 							>
 								<div className="flex items-center justify-between gap-2">
-									<h2 className="max-w-50 truncate font-semibold text-lg text-text transition-colors group-hover:text-primary">
+									<h2 className="max-w-50 truncate font-medium text-lg text-text transition-colors group-hover:text-primary">
 										{tierList.title}
 									</h2>
 									{tierList.kind === TierListKind.SYSTEM && (
@@ -251,7 +253,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 									<div className="flex items-center gap-1 text-text-accent">
 										<Icon icon="lucide:eye" />
 										<span
-											className={`${montserrat.className} font-semibold text-xs`}
+											className={`font-medium font-mono text-xs`}
 										>
 											{tierList.views}
 										</span>

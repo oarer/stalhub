@@ -1,6 +1,5 @@
 'use client'
 
-import { montserrat } from '@/app/fonts'
 import type { CatalogItem, CatalogSlot } from '@/types/loot.type'
 import { getArtifactColor } from '@/utils/artUtils'
 import { formattedPct, pickName, sortedByPct } from './utils'
@@ -17,7 +16,7 @@ export function LootSlotCard({ label, slot }: LootSlotCardProps) {
 		<div className="rounded-lg bg-accent/40 p-2">
 			<div className="flex items-center justify-between text-sm">
 				<span className="font-semibold">{label}</span>
-				<span className={`${montserrat.className} font-semibold`}>
+				<span className={`font-mono font-semibold`}>
 					{slot.length} всего
 				</span>
 			</div>
@@ -51,14 +50,14 @@ function LootItemRow({ item }: { item: CatalogItem }) {
 				{name || String(id)}
 			</td>
 			<td
-				className={`${montserrat.className} whitespace-nowrap py-1 pr-3 text-right font-semibold`}
+				className={`whitespace-nowrap py-1 pr-3 text-right font-mono font-semibold`}
 			>
 				{formattedPct(item.pct)}
 			</td>
 			{item.stack?.stackSize !== undefined &&
 				item.stack.stackSize > 1 && (
 					<td
-						className={`${montserrat.className} whitespace-nowrap py-1 text-right font-semibold opacity-60`}
+						className={`whitespace-nowrap py-1 text-right font-mono font-semibold opacity-60`}
 					>
 						x{item.stack.stackSize}
 					</td>

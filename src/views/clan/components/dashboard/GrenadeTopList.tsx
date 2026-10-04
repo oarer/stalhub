@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import type { GrenadeStageEvent } from '@/types/clan/clan.type'
 import { Section } from '../../../me/components/Section'
 
@@ -25,7 +24,7 @@ export function GrenadeTopList({
 		<Section icon="lucide:bomb" title={t('clan.dashboard.grenadesTitle')}>
 			{latestEvent && (
 				<p
-					className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+					className={`font-medium font-mono text-[13px] text-text-accent`}
 				>
 					{t('clan.dashboard.grenadesLine', {
 						count: latestEvent.stages.length,
@@ -38,7 +37,7 @@ export function GrenadeTopList({
 				</p>
 			)}
 			{grenadeTop.length === 0 ? (
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-sm text-text-accent">
 					{t('clan.dashboard.noGrenades')}
 				</p>
 			) : (
@@ -53,17 +52,17 @@ export function GrenadeTopList({
 								key={g.character}
 							>
 								<span
-									className={`${montserrat.className} w-5 text-center font-bold text-text-accent text-xs`}
+									className={`w-5 text-center font-medium font-mono text-text-accent text-xs`}
 								>
 									{i + 1}
 								</span>
 								<div className="flex-1">
 									<div className="flex items-center justify-between">
-										<span className="font-semibold text-sm">
+										<span className="font-medium text-sm">
 											{g.character}
 										</span>
 										<span
-											className={`${montserrat.className} font-semibold text-sm`}
+											className={`font-medium font-mono text-sm`}
 										>
 											{g.total.toLocaleString()}
 										</span>

@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import type React from 'react'
-import { montserrat } from '@/app/fonts'
 import { HoverCard } from '@/components/ui/HoverCard'
 import type {
 	AddStatBlock,
@@ -86,7 +85,7 @@ export function ItemHoverCard({
 						width={32}
 					/>
 					<span
-						className={`${montserrat.className} truncate font-semibold text-sm`}
+						className={`truncate font-mono font-semibold text-sm`}
 						style={{ color: infoColorMap[item.color as InfoColor] }}
 					>
 						{name}
@@ -98,7 +97,7 @@ export function ItemHoverCard({
 						<span className="font-semibold text-text-accent">
 							TTK
 						</span>
-						<span className="font-bold font-mono text-primary">
+						<span className="font-mono font-semibold text-primary">
 							{ttkText} с
 						</span>
 					</div>
@@ -112,13 +111,13 @@ export function ItemHoverCard({
 					<div className="flex items-center gap-2 rounded-md border border-muted bg-card/60 px-2 py-1 text-xs">
 						<span className="text-text-accent">Tier</span>
 						<span
-							className={`inline-flex h-5 w-7 items-center justify-center rounded font-bold ${TIER_RANK_COLORS[rankChange.prev].bg} ${TIER_RANK_COLORS[rankChange.prev].text}`}
+							className={`inline-flex h-5 w-7 items-center justify-center rounded font-semibold ${TIER_RANK_COLORS[rankChange.prev].bg} ${TIER_RANK_COLORS[rankChange.prev].text}`}
 						>
 							{rankChange.prev}
 						</span>
 						<span className="text-text-accent/60">→</span>
 						<span
-							className={`inline-flex h-5 w-7 items-center justify-center rounded font-bold ${TIER_RANK_COLORS[rankChange.curr].bg} ${TIER_RANK_COLORS[rankChange.curr].text}`}
+							className={`inline-flex h-5 w-7 items-center justify-center rounded font-semibold ${TIER_RANK_COLORS[rankChange.curr].bg} ${TIER_RANK_COLORS[rankChange.curr].text}`}
 						>
 							{rankChange.curr}
 						</span>

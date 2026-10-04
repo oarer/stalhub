@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { useAuctionControls } from '@/hooks/useAuctionControls'
 import { cn } from '@/lib/cn'
@@ -65,12 +64,7 @@ export default function AuctionHistoryCards({
 							<span className="font-semibold text-text-accent">
 								{t('items.auction.date')}
 							</span>
-							<span
-								className={cn(
-									'font-semibold',
-									montserrat.className
-								)}
-							>
+							<span className={cn('font-semibold', 'font-mono')}>
 								{formatDate(lot.time, 'datetime')}
 							</span>
 						</div>
@@ -78,12 +72,7 @@ export default function AuctionHistoryCards({
 							<span className="font-semibold text-text-accent">
 								{t('arsenal.table.currentPrice')}
 							</span>
-							<span
-								className={cn(
-									'font-semibold',
-									montserrat.className
-								)}
-							>
+							<span className={cn('font-semibold', 'font-mono')}>
 								{formatPrice(lot.price)}
 							</span>
 						</div>
@@ -93,10 +82,7 @@ export default function AuctionHistoryCards({
 									{t('items.auction.amount')}
 								</span>
 								<span
-									className={cn(
-										'font-semibold',
-										montserrat.className
-									)}
+									className={cn('font-semibold', 'font-mono')}
 								>
 									{lot.amount}
 								</span>

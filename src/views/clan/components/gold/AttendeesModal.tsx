@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
@@ -35,7 +34,7 @@ export function AttendeesModal({
 		<Modal.Root onOpenChange={onOpenChange} open={drop !== null}>
 			<Modal.Content fullScreen={false}>
 				<Modal.Header>
-					<Modal.Title className={montserrat.className}>
+					<Modal.Title className="font-mono">
 						{t('clan.gold.attendeesTitle', {
 							date: drop ? mskLabel(drop.date) : '',
 						})}

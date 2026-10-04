@@ -67,7 +67,7 @@ export default function BuildSelector() {
 						className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-transparent px-2 py-1 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 						onClick={() => handleSelect(saved.id)}
 					>
-						<p className="truncate font-semibold">{saved.name}</p>
+						<p className="truncate font-medium">{saved.name}</p>
 
 						<Button
 							className="rounded p-1 ring-transparent"
@@ -100,7 +100,7 @@ export default function BuildSelector() {
 						className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-transparent px-2 py-1 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 						onClick={() => handleSelect('new')}
 					>
-						<p className="font-semibold">{t('build.new_build')}</p>
+						<p className="font-medium">{t('build.new_build')}</p>
 						<Icon className="size-4" icon="lucide:plus" />
 					</div>
 				),
@@ -112,7 +112,6 @@ export default function BuildSelector() {
 	return (
 		<DropdownMenu
 			blur={false}
-			className="font-semibold text-[15px]"
 			icon="lucide:package"
 			items={items}
 			placement="bottom-start"

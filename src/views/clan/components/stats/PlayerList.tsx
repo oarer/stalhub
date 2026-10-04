@@ -306,7 +306,7 @@ export function PlayerList({
 					<Table.Header>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<Table.Row
-								className={`${montserrat.className} text-xs`}
+								className={`font-mono text-xs`}
 								key={headerGroup.id}
 							>
 								{headerGroup.headers.map((header) => {
@@ -341,7 +341,7 @@ export function PlayerList({
 					<Table.Body>
 						{table.getRowModel().rows.map((row) => (
 							<Table.Row
-								className={`${montserrat.className} cursor-pointer hover:bg-accent/50`}
+								className={`cursor-pointer font-mono hover:bg-accent/50`}
 								key={row.id}
 								onClick={() => onSelect(row.original.name)}
 							>
@@ -432,7 +432,7 @@ export function PlayerList({
 														</span>
 													</div>
 													<span
-														className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+														className={`font-mono font-semibold text-text-accent text-xs`}
 													>
 														{formatDate(
 															s.started_at
@@ -440,7 +440,7 @@ export function PlayerList({
 													</span>
 												</div>
 												<span
-													className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+													className={`font-mono font-semibold text-sm text-text-accent`}
 												>
 													{s.kills}{' '}
 													{t(

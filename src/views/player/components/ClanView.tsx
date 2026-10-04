@@ -43,7 +43,7 @@ export default function ClanView({ data }: { data: Clan }) {
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.leader')}</p>
-						<p className="font-bold text-yellow-500">
+						<p className="font-semibold text-yellow-500">
 							{data.info.leader}
 						</p>
 					</div>

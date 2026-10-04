@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import DropdownMenu from '@/components/ui/DropDown'
 import { SICKNESS, SICKNESS_LABEL_KEYS } from '@/constants/sickness'
 import { cn } from '@/lib/cn'
@@ -49,7 +48,7 @@ export function SicknessSelector() {
 								)}
 								icon={def.icon}
 							/>
-							<p className="truncate font-semibold text-md">
+							<p className="truncate font-medium text-md">
 								{t(SICKNESS_LABEL_KEYS[k])}
 							</p>
 						</div>
@@ -74,11 +73,7 @@ export function SicknessSelector() {
 										}}
 										type="button"
 									>
-										<p
-											className={`${montserrat.className}`}
-										>
-											{lvl}
-										</p>
+										<p className="font-mono">{lvl}</p>
 									</button>
 								)
 							})}

@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { type CSSProperties, useEffect, useMemo, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -167,7 +166,7 @@ export function WeaponSlotCard({
 								variant="outline"
 							>
 								<span
-									className={`${montserrat.className} min-w-0 truncate font-semibold text-sm`}
+									className={`min-w-0 truncate text-sm`}
 									style={{
 										color: infoColorMap[
 											weapon?.color as InfoColor
@@ -373,7 +372,7 @@ export function WeaponSlotCard({
 												value={slot.moduleQuality}
 											/>
 											<span
-												className="rounded bg-accent/50 px-2 py-1.5 font-bold text-xs"
+												className="rounded bg-accent/50 px-2 py-1.5 font-semibold text-xs"
 												style={{
 													color: RARITY_COLORS[
 														moduleRarity
@@ -411,7 +410,7 @@ export function WeaponSlotCard({
 															<span
 																className={cn(
 																	'font-semibold',
-																	montserrat.className,
+																	'font-mono',
 																	stat.type ===
 																		'negative'
 																		? 'text-red-400'
@@ -442,7 +441,7 @@ export function WeaponSlotCard({
 										{t('ttk.page.hold_time')}
 									</span>
 									<span
-										className={`${montserrat.className} font-semibold text-xs`}
+										className={`font-mono font-semibold text-xs`}
 									>
 										{roundNumber(slot.holdTime)} с
 									</span>

@@ -5,7 +5,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Suspense, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -82,11 +82,11 @@ function OperationsContent() {
 		<section className="mx-auto flex max-w-4xl flex-col gap-4 px-4 pt-32 pb-12 lg:pt-36">
 			<div className="text-center">
 				<h1
-					className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} mb-2 font-semibold text-3xl text-primary tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('operations.title')}
 				</h1>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-sm text-text-accent">
 					{t('operations.description')}
 				</p>
 			</div>
@@ -128,11 +128,11 @@ function OperationsContent() {
 				<div className="flex flex-col gap-4">
 					<div className="flex items-center gap-2">
 						<Icon className="text-2xl" icon="lucide:siren" />
-						<h2 className="font-semibold text-xl">
+						<h2 className="font-medium text-xl">
 							{t('player.operations.title')}
 						</h2>
 						{total > 0 && (
-							<span className="rounded-full bg-accent px-2 py-0.5 font-semibold text-xs">
+							<span className="rounded-full bg-accent px-2 py-0.5 font-medium font-mono text-xs">
 								{total}
 							</span>
 						)}
@@ -148,7 +148,7 @@ function OperationsContent() {
 					{!isLoading && isError && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-semibold text-text-accent">
+								<p className="font-medium text-text-accent">
 									{t('player.operations.error')}
 								</p>
 							</Card.Content>
@@ -158,7 +158,7 @@ function OperationsContent() {
 					{!isLoading && !isError && sessions.length === 0 && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-semibold text-text-accent">
+								<p className="font-medium text-text-accent">
 									{t('player.operations.empty')}
 								</p>
 							</Card.Content>

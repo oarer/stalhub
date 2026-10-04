@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
@@ -247,13 +247,13 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 						<div className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:sparkles" />
 							<h1
-								className={`${unbounded.className} font-semibold text-xl`}
+								className={`${mtsExtended.className} font-medium text-lg leading-none`}
 							>
 								{t('onboarding.title')}
 							</h1>
 						</div>
 						{!isWelcome && (
-							<span className="font-semibold text-sm text-text-accent">
+							<span className="font-medium font-mono text-sm text-text-accent">
 								{t('onboarding.stepOf', {
 									current: step + 1,
 									total: steps.length,
@@ -293,12 +293,12 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											icon="lucide:waves-horizontal"
 										/>
 									</div>
-									<h2
-										className={`${unbounded.className} font-semibold text-2xl`}
+									<h1
+										className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
 									>
 										{t('onboarding.welcome.title')}
-									</h2>
-									<p className="font-semibold text-text-accent">
+									</h1>
+									<p className="font-medium text-sm text-text-accent">
 										{t('onboarding.welcome.subtitle')}
 									</p>
 								</div>
@@ -484,7 +484,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																	bannerColor,
 															}}
 														/>
-														<span className="font-semibold text-sm text-text-accent">
+														<span className="font-medium font-mono text-sm text-text-accent">
 															{bannerColor}
 														</span>
 														<input
@@ -594,7 +594,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																		cardColor,
 																}}
 															/>
-															<span className="font-semibold text-sm text-text-accent">
+															<span className="font-medium font-mono text-sm text-text-accent">
 																{cardColor}
 															</span>
 															<input
@@ -629,7 +629,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 													<span className="font-semibold text-sm">
 														{t('me.settings.name')}
 													</span>
-													<span className="font-semibold text-sm text-text-accent">
+													<span className="font-medium font-mono text-sm text-text-accent">
 														{name}
 													</span>
 												</div>
@@ -639,7 +639,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 															'me.settings.username'
 														)}
 													</span>
-													<span className="font-semibold text-sm text-text-accent">
+													<span className="font-medium font-mono text-sm text-text-accent">
 														{username}
 													</span>
 												</div>
@@ -650,7 +650,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																'me.settings.regionLabel'
 															)}
 														</span>
-														<span className="font-semibold text-sm text-text-accent">
+														<span className="font-medium font-mono text-sm text-text-accent">
 															{t(
 																'region.' +
 																	region

@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { formatDate } from '@/lib/date'
 import type { StageSession } from '@/types/clan/clan.type'
@@ -37,7 +36,7 @@ export function SessionCard({ session }: { session: StageSession }) {
 						</span>
 					</div>
 					<p
-						className={`${montserrat.className} font-semibold text-[11px] text-text-accent`}
+						className={`font-mono font-semibold text-[11px] text-text-accent`}
 					>
 						{formatDate(session.started_at)}
 					</p>

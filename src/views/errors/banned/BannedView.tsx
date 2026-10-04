@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { stringTimeDeltaFull } from '@/lib/time'
 import { useBanStore } from '@/stores/useBan.store'
 import SupportText from '../shared/SupportText'
@@ -38,7 +38,7 @@ export default function BannedView() {
 			<div className="grid items-center gap-8 md:flex">
 				<div className="flex max-w-sm flex-col gap-2">
 					<h1
-						className={`${unbounded.className} text-center font-bold text-2xl uppercase tracking-widest md:text-left md:text-3xl`}
+						className={`${mtsExtended.className} text-center font-semibold text-2xl uppercase tracking-widest md:text-left md:text-3xl`}
 					>
 						{t('errors.banned.account')}{' '}
 						<span className="text-destructive">
@@ -46,7 +46,7 @@ export default function BannedView() {
 						</span>
 					</h1>
 					<p
-						className={`${unbounded.className} text-center font-semibold text-md md:text-left md:text-xl dark:text-text-accent`}
+						className={`${mtsExtended.className} text-center font-medium text-md md:text-left md:text-xl dark:text-text-accent`}
 					>
 						{reason
 							? `${t('errors.banned.reasonPrefix')} ${reason}`
@@ -54,7 +54,7 @@ export default function BannedView() {
 					</p>
 					{remaining != null && remaining > 0 && (
 						<p
-							className={`${unbounded.className} text-center font-semibold text-sm md:text-left md:text-lg dark:text-muted-foreground`}
+							className={`${mtsExtended.className} text-center font-medium text-sm md:text-left md:text-lg dark:text-muted-foreground`}
 						>
 							{t('errors.banned.remaining')}{' '}
 							{stringTimeDeltaFull(

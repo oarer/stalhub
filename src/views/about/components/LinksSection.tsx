@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsWide } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
 import { CLink } from '@/components/ui/Link'
@@ -21,7 +21,7 @@ export function LinksSection({
 			<div className="flex flex-col gap-2">
 				<motion.h1
 					{...view}
-					className={`${unbounded.className} flex items-center gap-3 px-3 font-bold uppercase tracking-wider`}
+					className={`${mtsWide.className} flex items-center gap-3 px-3 font-semibold text-[15px] uppercase tracking-wider`}
 				>
 					<span className="flex items-center rounded-lg bg-card p-2">
 						<Icon
@@ -46,12 +46,12 @@ export function LinksSection({
 								</div>
 								<div className="flex flex-col">
 									<p
-										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-primary`}
+										className={`font-medium font-mono text-sm transition-colors group-hover/link:text-primary`}
 									>
 										{t(link.label)}
 									</p>
 									<span
-										className={`${montserrat.className} text-foreground text-xs`}
+										className={`font-mono text-foreground text-xs`}
 									>
 										{t(link.description)}
 									</span>
@@ -70,7 +70,7 @@ export function LinksSection({
 			<div className="flex flex-col gap-2" id="links">
 				<motion.h1
 					{...view}
-					className={`${unbounded.className} flex items-center gap-3 px-3 font-bold uppercase tracking-wider`}
+					className={`${mtsWide.className} flex items-center gap-3 px-3 font-semibold text-[15px] uppercase tracking-wider`}
 				>
 					<span className="flex items-center rounded-lg bg-card p-2">
 						<Icon
@@ -95,12 +95,12 @@ export function LinksSection({
 								</div>
 								<div className="flex flex-col">
 									<p
-										className={`${montserrat.className} font-semibold text-sm transition-colors group-hover/link:text-primary`}
+										className={`font-medium font-mono text-sm transition-colors group-hover/link:text-primary`}
 									>
 										{t(link.label)}
 									</p>
 									<span
-										className={`${montserrat.className} text-foreground text-xs`}
+										className={`font-mono text-foreground text-xs`}
 									>
 										{t(link.description)}
 									</span>

@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { CheckBox } from '@/components/ui/CheckBox'
@@ -57,9 +56,7 @@ function LevelPicker({
 					type="button"
 					variant={value === level ? 'primary' : 'outline'}
 				>
-					<span
-						className={`${montserrat.className} font-bold text-md`}
-					>
+					<span className={`font-medium font-mono text-md`}>
 						{level}
 					</span>
 				</Button>
@@ -81,7 +78,7 @@ function Field({
 		<div className="flex flex-col gap-2">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg text-neutral-400" icon={icon} />
-				<p className="font-semibold text-sm">{label}</p>
+				<p className="font-medium text-sm">{label}</p>
 			</div>
 			{children}
 		</div>

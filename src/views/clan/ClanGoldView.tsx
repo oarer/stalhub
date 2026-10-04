@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
@@ -98,7 +99,9 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 	return (
 		<div className="flex flex-col gap-4">
 			<div>
-				<h1 className="font-semibold text-lg">
+				<h1
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				>
 					{t('clan.gold.title')}
 				</h1>
 				<p className="font-semibold text-sm text-text-accent">

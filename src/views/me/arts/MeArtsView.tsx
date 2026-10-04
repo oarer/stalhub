@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
@@ -150,7 +149,7 @@ export default function MeArtsView() {
 									)}
 								</div>
 								<span
-									className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+									className={`font-mono font-semibold text-text-accent text-xs`}
 								>
 									{formatDate(art.created_at, 'date')}
 								</span>

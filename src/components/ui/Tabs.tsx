@@ -94,7 +94,7 @@ function TabsTrigger({
 		<button
 			aria-selected={isActive}
 			className={cn(
-				'inline-flex items-center justify-center gap-3 rounded-md bg-card px-3 py-1.5 font-semibold text-sm transition-all md:text-[16px]',
+				'inline-flex items-center justify-center gap-3 rounded-md bg-card px-3 py-1.5 font-medium text-sm transition-all md:text-[16px]',
 				'cursor-pointer select-none',
 
 				'text-muted-foreground',

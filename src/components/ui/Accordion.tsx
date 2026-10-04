@@ -135,7 +135,7 @@ export function Accordion({
 										icon={item.icon}
 									/>
 								)}
-								<span className="font-semibold text-foreground">
+								<span className="text-foreground">
 									{item.title}
 								</span>
 							</div>

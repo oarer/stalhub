@@ -146,10 +146,10 @@ function BoostSelectModal({
 
 	return (
 		<div className="relative size-14">
-			<button
-				className="flex size-14 cursor-pointer items-center justify-center rounded-xl bg-white/60 p-2 shadow-sm transition hover:bg-neutral-300 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
+			<Button
+				className="size-14 p-2"
 				onClick={() => setShowModal(true)}
-				type="button"
+				variant={'secondary'}
 			>
 				{selectedBoostId && selectedItemData ? (
 					<HoverCard.Root>
@@ -202,7 +202,7 @@ function BoostSelectModal({
 									.map((block, idx) => (
 										<ListBlock
 											block={block}
-											className="text-sm"
+											className="text-[13px]"
 											key={idx}
 											locale={locale}
 											numericVariants={0}
@@ -215,7 +215,7 @@ function BoostSelectModal({
 				) : (
 					<Icon className="size-7" icon={BoostButtons[category]} />
 				)}
-			</button>
+			</Button>
 
 			{selectedBoostId && selectedItemData && (
 				<Button

@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
@@ -108,7 +107,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 								</p>
 								<div className="mt-2 flex items-center justify-between">
 									<span
-										className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+										className={`font-mono font-semibold text-text-accent text-xs`}
 									>
 										{note.author.name} ·{' '}
 										{formatDate(note.created_at)}
@@ -154,7 +153,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 							/>
 						)}
 						<span
-							className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-text-accent text-xs`}
 						>
 							{content.length}/512
 						</span>

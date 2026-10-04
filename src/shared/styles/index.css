@@ -13,7 +13,8 @@
 
 
 @theme {
-    --font-body: 400
+    --font-body: 400;
+    --font-mono: var(--font-montserrat);
 }
 
 @layer base {

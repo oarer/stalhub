@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -67,7 +67,9 @@ export default function ClanInvitesView() {
 		return (
 			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 				<Icon className="text-4xl" icon="lucide:shield-alert" />
-				<h1 className="font-semibold text-xl">
+				<h1
+					className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+				>
 					{t('clan.invites.leaderOnly')}
 				</h1>
 			</div>
@@ -111,7 +113,9 @@ export default function ClanInvitesView() {
 			<div className="flex items-center justify-between gap-2">
 				<div className="flex items-center gap-2">
 					<Icon className="text-2xl" icon="lucide:ticket" />
-					<h1 className="font-semibold text-xl">
+					<h1
+						className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+					>
 						{t('clan.invites.title')}
 					</h1>
 				</div>
@@ -121,7 +125,7 @@ export default function ClanInvitesView() {
 				</Button>
 			</div>
 
-			<p className="font-semibold text-text-accent">
+			<p className="font-medium text-sm text-text-accent">
 				{t('clan.invites.desc')}
 			</p>
 
@@ -201,15 +205,11 @@ export default function ClanInvitesView() {
 						<span className="font-semibold">
 							{invite.user.name || invite.user.username}
 						</span>
-						<span
-							className={`${montserrat.className} font-semibold`}
-						>
+						<span className={`font-mono font-semibold`}>
 							{formatDate(invite.created_at, 'datetime')}
 						</span>
 						{invite.claimed_by && (
-							<span
-								className={`${montserrat.className} font-medium`}
-							>
+							<span className={`font-medium font-mono`}>
 								{t('clan.invites.claimed_by')}:{' '}
 								{invite.claimed_by}
 							</span>
@@ -312,7 +312,7 @@ export default function ClanInvitesView() {
 														{m.name}
 													</span>
 													<Badge
-														className={`${montserrat.className} ${RANK_COLORS[m.rank] ?? ''}`}
+														className={`font-mono ${RANK_COLORS[m.rank] ?? ''}`}
 														variant="secondary"
 													>
 														{t(

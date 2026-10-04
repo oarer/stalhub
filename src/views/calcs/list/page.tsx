@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { toolsList } from '@/constants/tools.const'
 import { cn } from '@/lib/cn'
 
@@ -13,16 +13,16 @@ export default function ToolsListView() {
 
 	return (
 		<section className="mx-auto max-w-7xl space-y-12 px-4 pt-42 pb-12 sm:px-6">
-			<div className="text-center">
+			<>
 				<h1
-					className={`${unbounded.className} mb-2 font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 				>
 					{t('toolsList.title')}
 				</h1>
-				<p className="font-semibold text-[16px] text-text-accent">
+				<p className="font-medium text-muted-foreground text-sm">
 					{t('toolsList.subtitle')}
 				</p>
-			</div>
+			</>
 			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
 				{toolsList.map((tool, index) => (
 					<motion.div
@@ -48,13 +48,15 @@ export default function ToolsListView() {
 										icon={tool.icon}
 									/>
 								</div>
-								<p className="font-semibold text-neutral-800 text-xl dark:text-neutral-100">
+								<p
+									className={`${mtsWide.className} font-medium text-neutral-800 text-xl dark:text-neutral-100`}
+								>
 									{t(tool.title)}
 								</p>
 							</div>
 
 							<p
-								className={`${montserrat.className} font-semibold text-[13px] text-neutral-600 dark:text-neutral-400`}
+								className={`font-medium font-mono text-[13px] text-neutral-600 dark:text-neutral-400`}
 							>
 								{t(tool.desc)}
 							</p>

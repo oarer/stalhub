@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { montserrat } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import { formatDate } from '@/lib/date'
 import type { EForumComment } from '@/types/eforum.type'
@@ -19,7 +18,7 @@ export function renderWithMentions(text: string) {
 			const username = part.slice(1)
 			return (
 				<a
-					className={`${montserrat.className} font-semibold text-primary hover:underline`}
+					className={`font-mono font-semibold text-primary hover:underline`}
 					href={profileUrl(username)}
 					key={i}
 					rel="noreferrer"
@@ -42,7 +41,7 @@ export default function DevTrackerCard({
 		<article className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
 			<header className="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<a
-					className={`${montserrat.className} font-semibold text-primary text-sm hover:underline`}
+					className={`font-mono font-semibold text-primary text-sm hover:underline`}
 					href={comment.author.profileUrl}
 					rel="noreferrer"
 					target="_blank"
@@ -50,7 +49,7 @@ export default function DevTrackerCard({
 					{comment.author.name}
 				</a>
 				<span
-					className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
+					className={`font-mono font-semibold text-muted-foreground text-xs`}
 				>
 					{formatDate(comment.createdAt)}
 				</span>
@@ -73,7 +72,7 @@ export default function DevTrackerCard({
 				>
 					{quote.author && (
 						<a
-							className={`${montserrat.className} font-semibold text-muted-foreground text-xs hover:text-primary`}
+							className={`font-mono font-semibold text-muted-foreground text-xs hover:text-primary`}
 							href={quote.authorUrl ?? profileUrl(quote.author)}
 							rel="noreferrer"
 							target="_blank"

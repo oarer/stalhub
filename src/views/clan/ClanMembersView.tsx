@@ -4,7 +4,6 @@ import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
 import Avatar from '@/components/ui/user/Avatar'
@@ -104,7 +103,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 										{member.user && (
 											<HoverUserCard id={member.user.id}>
 												<Link
-													className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+													className={`font-mono font-semibold text-text-accent text-xs`}
 													href={`/users/${member.user.id}`}
 												>
 													{member.user.name}
@@ -125,7 +124,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 							<div className="flex items-center gap-2">
 								{squadByMemberId.has(member.id) && (
 									<Badge
-										className={montserrat.className}
+										className="font-mono"
 										title={t('clan.members.squad')}
 										variant="secondary"
 									>

@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import type { ModuleGroupKey, ModuleRarity } from '@/types/module.type'
@@ -139,7 +138,7 @@ export function AuctionControls({
 					/>
 
 					<span
-						className={`${montserrat.className} font-bold text-text-accent text-xs uppercase tracking-widest`}
+						className={`font-mono font-semibold text-text-accent text-xs uppercase tracking-widest`}
 					>
 						цена
 					</span>

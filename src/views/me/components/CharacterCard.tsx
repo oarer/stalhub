@@ -40,7 +40,7 @@ export function CharacterCard({ character, region }: Props) {
 				</h3>
 
 				{character.clan && (
-					<span className="font-bold text-muted-foreground text-xs">
+					<span className="font-semibold text-muted-foreground text-xs">
 						{character.clan.info.name} ·{' '}
 						{t(`player.rank.${character.clan.member.rank}`)}
 					</span>

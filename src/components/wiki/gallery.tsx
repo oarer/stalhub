@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { LightBox } from '@/components/ui/LightBox'
 import { cn } from '@/lib/cn'
 import { articleImageUrl } from '@/types/article.type'
@@ -152,7 +151,7 @@ export function Gallery({
 						</button>
 
 						<p
-							className={`${montserrat.className} absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-card/50 px-3 py-1 font-semibold text-xs`}
+							className={`absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-card/50 px-3 py-1 font-mono font-semibold text-xs`}
 						>
 							{currentIndex + 1} / {normalized.length}
 						</p>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { useAuctionControls } from '@/hooks/useAuctionControls'
 import { cn } from '@/lib/cn'
@@ -65,12 +64,7 @@ export default function AuctionCurrentCards({
 							<span className="font-semibold text-text-accent">
 								{t('items.auction.listDate')}
 							</span>
-							<span
-								className={cn(
-									'font-semibold',
-									montserrat.className
-								)}
-							>
+							<span className={cn('font-semibold', 'font-mono')}>
 								{formatDate(lot.startTime, 'datetime')}
 							</span>
 						</div>
@@ -78,12 +72,7 @@ export default function AuctionCurrentCards({
 							<span className="font-semibold text-text-accent">
 								{t('items.auction.endDate')}
 							</span>
-							<span
-								className={cn(
-									'font-semibold',
-									montserrat.className
-								)}
-							>
+							<span className={cn('font-semibold', 'font-mono')}>
 								{formatDate(lot.endTime, 'datetime')}
 							</span>
 						</div>
@@ -93,10 +82,7 @@ export default function AuctionCurrentCards({
 									{t('items.auction.startPrice')}
 								</span>
 								<span
-									className={cn(
-										'font-semibold',
-										montserrat.className
-									)}
+									className={cn('font-semibold', 'font-mono')}
 								>
 									{formatPrice(lot.startPrice)}
 								</span>
@@ -108,10 +94,7 @@ export default function AuctionCurrentCards({
 									{t('items.auction.currentPrice')}
 								</span>
 								<span
-									className={cn(
-										'font-semibold',
-										montserrat.className
-									)}
+									className={cn('font-semibold', 'font-mono')}
 								>
 									{formatPrice(lot.currentPrice)}
 								</span>
@@ -123,10 +106,7 @@ export default function AuctionCurrentCards({
 									{t('items.auction.buyout')}
 								</span>
 								<span
-									className={cn(
-										'font-semibold',
-										montserrat.className
-									)}
+									className={cn('font-semibold', 'font-mono')}
 								>
 									{formatPrice(lot.buyoutPrice)}
 								</span>
@@ -138,10 +118,7 @@ export default function AuctionCurrentCards({
 									{t('items.auction.amount')}
 								</span>
 								<span
-									className={cn(
-										'font-semibold',
-										montserrat.className
-									)}
+									className={cn('font-semibold', 'font-mono')}
 								>
 									{lot.amount}
 								</span>

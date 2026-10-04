@@ -34,14 +34,14 @@ export function DeleteAccountModal({
 				fullScreen={false}
 			>
 				<Modal.Header>
-					<Modal.Title className="font-bold">
+					<Modal.Title className="font-semibold">
 						{t('me.settings.deleteConfirmTitle')}
 					</Modal.Title>
 					<Modal.Description className="font-semibold">
 						{t.rich('me.settings.deleteConfirmDesc', {
 							username,
 							bold: (chunks) => (
-								<span className="font-bold text-destructive">
+								<span className="font-semibold text-destructive">
 									{chunks}
 								</span>
 							),

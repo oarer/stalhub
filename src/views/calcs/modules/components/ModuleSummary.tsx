@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { CopyButton } from '@/components/ui/CopyButton'
 import { cn } from '@/lib/cn'
@@ -130,7 +129,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 								<span
 									className={cn(
 										'font-semibold',
-										montserrat.className,
+										'font-mono',
 										stat.type === 'negative'
 											? 'text-red-400'
 											: stat.type === 'special'
@@ -150,9 +149,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 							<span className="font-semibold">
 								{t('modules.rerollCost')}
 							</span>
-							<span
-								className={`${montserrat.className} font-semibold`}
-							>
+							<span className={`font-mono font-semibold`}>
 								{reroll}
 							</span>
 						</div>
@@ -160,9 +157,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 							<span className="font-semibold">
 								{t('modules.disassembleCost')}
 							</span>
-							<span
-								className={`${montserrat.className} font-semibold`}
-							>
+							<span className={`font-mono font-semibold`}>
 								{disassemble}
 							</span>
 						</div>
@@ -170,9 +165,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 							<span className="font-semibold">
 								{t('modules.restoreCost')}
 							</span>
-							<span
-								className={`${montserrat.className} font-semibold`}
-							>
+							<span className={`font-mono font-semibold`}>
 								{restore}
 							</span>
 						</div>
@@ -180,9 +173,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 							<span className="font-semibold">
 								{t('modules.categoryCost')}
 							</span>
-							<span
-								className={`${montserrat.className} font-semibold`}
-							>
+							<span className={`font-mono font-semibold`}>
 								{category}
 							</span>
 						</div>

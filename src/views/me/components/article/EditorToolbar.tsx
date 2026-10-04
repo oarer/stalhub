@@ -1,7 +1,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { Modal } from '@/components/ui/Modal'
@@ -295,7 +294,7 @@ export function EditorToolbar({
 										{t(h.label)}
 									</span>
 									<kbd
-										className={`${montserrat.className} rounded-md border border-primary bg-card px-2 py-0.5 font-semibold text-text-accent text-xs`}
+										className={`rounded-md border border-primary bg-card px-2 py-0.5 font-mono font-semibold text-text-accent text-xs`}
 									>
 										{h.shortcut}
 									</kbd>

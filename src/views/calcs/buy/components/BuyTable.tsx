@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useCallback } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
@@ -34,17 +33,17 @@ export function BuyTable() {
 			<div className="overflow-hidden rounded-xl ring-2 ring-primary/50">
 				<div className="grid grid-cols-[2.5rem_1fr] items-center gap-x-3 border-primary/50 border-b-2 bg-card/80 px-3 py-2 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:px-4">
 					<p
-						className={`${montserrat.className} font-bold text-text-accent text-xs uppercase`}
+						className={`font-medium font-mono text-text-accent text-xs uppercase`}
 					>
 						№
 					</p>
 					<p
-						className={`${montserrat.className} font-bold text-text-accent text-xs uppercase`}
+						className={`font-medium font-mono text-text-accent text-xs uppercase`}
 					>
 						{t('buy.item')}
 					</p>
 					<p
-						className={`${montserrat.className} hidden font-bold text-text-accent text-xs uppercase sm:block`}
+						className={`hidden font-medium font-mono text-text-accent text-xs uppercase sm:block`}
 					>
 						{t('buy.price')}
 					</p>
@@ -60,7 +59,7 @@ export function BuyTable() {
 							initial={{ opacity: 0 }}
 							key="empty"
 						>
-							<p className="font-semibold text-text-accent">
+							<p className="font-medium text-text-accent">
 								{t('buy.emptyTable')}
 							</p>
 							<p className="text-sm text-text-accent/60">
@@ -87,7 +86,7 @@ export function BuyTable() {
 									transition={{ duration: 0.15 }}
 								>
 									<p
-										className={`${montserrat.className} col-start-1 row-start-1 font-semibold text-sm text-text-accent`}
+										className={`col-start-1 row-start-1 font-medium font-mono text-sm text-text-accent`}
 									>
 										{index + 1}
 									</p>
@@ -101,7 +100,7 @@ export function BuyTable() {
 											width={36}
 										/>
 										<p
-											className="truncate font-semibold text-sm"
+											className="truncate font-medium text-sm"
 											style={{ color }}
 										>
 											{name}

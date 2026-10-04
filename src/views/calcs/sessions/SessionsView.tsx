@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { arcadeMaps } from '@/data/arcadeMaps'
 import { SessionForm } from './components/SessionForm'
 import { SessionMaps } from './components/SessionMaps'
@@ -74,16 +74,16 @@ export function SessionsView() {
 
 	return (
 		<section className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-32 pb-12 lg:pt-36">
-			<div className="text-center">
+			<>
 				<h1
-					className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 				>
 					{t('sessions.title')}
 				</h1>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-muted-foreground text-sm">
 					{t('sessions.sub_title')}
 				</p>
-			</div>
+			</>
 
 			<div className="grid items-start gap-6 md:grid-cols-2">
 				<SessionForm

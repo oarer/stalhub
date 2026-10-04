@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -45,12 +45,12 @@ export default function EForumFeed() {
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<div className="flex flex-wrap items-center gap-3">
 				<h1
-					className={`${unbounded.className} font-semibold text-2xl sm:text-3xl`}
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 				>
 					{t('devTracker.title')}
 				</h1>
 				<Button
-					className="ml-auto gap-2 font-semibold"
+					className="ml-auto gap-2 font-medium"
 					loading={isFetching}
 					onClick={() => refetch()}
 					size="sm"
@@ -74,7 +74,7 @@ export default function EForumFeed() {
 				/>
 				{data?.updatedAt && (
 					<span
-						className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
+						className={`font-medium font-mono text-muted-foreground text-xs`}
 					>
 						{t('devTracker.updated')}: {formatDate(data.updatedAt)}
 					</span>
@@ -88,7 +88,7 @@ export default function EForumFeed() {
 					))}
 				</div>
 			) : items.length === 0 ? (
-				<p className="rounded-xl bg-card px-5 py-8 text-center font-semibold text-muted-foreground text-sm">
+				<p className="rounded-xl bg-card px-5 py-8 text-center font-medium text-muted-foreground text-sm">
 					{t('devTracker.empty')}
 				</p>
 			) : (
@@ -102,7 +102,7 @@ export default function EForumFeed() {
 			{data?.hasMore && (
 				<div className="flex justify-center">
 					<Button
-						className={`${montserrat.className}`}
+						className={`font-mono`}
 						loading={isFetching}
 						onClick={() => setLimit((v) => v + PAGE_SIZE)}
 						variant="outline"

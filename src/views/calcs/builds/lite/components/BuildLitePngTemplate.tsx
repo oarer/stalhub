@@ -2,7 +2,7 @@
 
 import type { useTranslations } from 'next-intl'
 import { forwardRef, useMemo } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import {
 	artPriceKey,
 	formatArtPrice,
@@ -134,9 +134,7 @@ export const BuildLitePngTemplate = forwardRef<
 				>
 					{buildName}
 				</h2>
-				<div
-					className={`${montserrat.className} flex gap-3 text-right`}
-				>
+				<div className={`flex gap-3 text-right font-mono`}>
 					<div className="rounded-lg bg-card px-4 py-1">
 						<p className="font-semibold text-text-accent text-xs">
 							{t('build.stats.prime')}
@@ -228,7 +226,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{itemName}
 													</p>
 													<p
-														className={`${montserrat.className} font-semibold text-sm`}
+														className={`font-mono font-semibold text-sm`}
 														style={{ color }}
 													>
 														{art?.potential
@@ -237,7 +235,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{art?.percent}%
 													</p>
 													<p
-														className={`${montserrat.className} ml-auto font-bold text-primary text-sm`}
+														className={`ml-auto font-bold font-mono text-primary text-sm`}
 													>
 														{price?.source ===
 														'estimate'
@@ -301,7 +299,7 @@ export const BuildLitePngTemplate = forwardRef<
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`${montserrat.className} font-bold text-lg text-primary`}
+									className={`font-bold font-mono text-lg text-primary`}
 								>
 									{formatArtPrice(totalPrice)}
 								</p>

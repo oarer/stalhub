@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 import type { Art } from '@/types/build.type'
@@ -98,7 +97,7 @@ export function ArtifactSlots({
 										</p>
 										{art?.potential !== 0 && (
 											<span
-												className={`${montserrat.className} font-semibold text-xs transition-colors`}
+												className={`font-mono font-semibold text-xs transition-colors`}
 												style={{ color: colorHex }}
 											>
 												+{art?.potential}

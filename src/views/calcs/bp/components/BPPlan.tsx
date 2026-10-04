@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import type { BPPlan as BPPlanData } from '../utils/bp'
@@ -23,9 +22,7 @@ const row = (
 			<p className="text-muted-foreground text-sm">{label}</p>
 		</div>
 		<Badge variant="secondary">
-			<span className={`${montserrat.className} ${highlightClass ?? ''}`}>
-				{value}
-			</span>
+			<span className={`font-mono ${highlightClass ?? ''}`}>{value}</span>
 		</Badge>
 	</div>
 )
@@ -53,7 +50,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							className="text-green-500 text-lg"
 							icon="lucide:check-circle-2"
 						/>
-						<p className="font-semibold text-green-700 text-sm dark:text-green-400">
+						<p className="font-medium text-green-700 text-sm dark:text-green-400">
 							{plan.donationLevels > 0
 								? t('bp.reached_with_donation')
 								: t('bp.reached')}
@@ -79,7 +76,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 			<Card.Content className="flex flex-col gap-3">
 				<div className="flex flex-wrap gap-1.5 rounded-lg bg-primary/10 px-3 py-2.5">
 					<Badge variant="secondary">
-						<span className={`${montserrat.className} text-xs`}>
+						<span className={`font-mono text-xs`}>
 							{plan.currentLevel} → {plan.targetLevel}{' '}
 							{t('bp.levels')}
 						</span>
@@ -89,7 +86,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							className="bg-green-100 ring-green-200 dark:bg-green-900/50 dark:ring-green-800"
 							variant="secondary"
 						>
-							<span className={`${montserrat.className} text-xs`}>
+							<span className={`font-mono text-xs`}>
 								{t('bp.donation_levels', {
 									count: plan.donationLevels,
 								})}
@@ -117,7 +114,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 					'lucide:calendar-range',
 					t('bp.days_to_level'),
 					t('bp.days', { count: plan.daysNeeded }),
-					'font-bold'
+					'font-medium'
 				)}
 				{row(
 					'lucide:calendar-x',
@@ -132,7 +129,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							className="text-green-500 text-lg"
 							icon="lucide:check-circle-2"
 						/>
-						<p className="font-semibold text-green-700 text-sm dark:text-green-400">
+						<p className="font-medium text-green-700 text-sm dark:text-green-400">
 							{t('bp.reachable')}
 						</p>
 					</div>
@@ -143,7 +140,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							icon="lucide:alert-triangle"
 						/>
 						<p
-							className={`${montserrat.className} font-semibold text-destructive text-sm`}
+							className={`font-medium font-mono text-destructive text-sm`}
 						>
 							{t('bp.not_reachable', {
 								daysNeeded: plan.daysNeeded,
@@ -169,7 +166,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							variant="secondary"
 						>
 							<span
-								className={`${montserrat.className} text-green-700 dark:text-green-300`}
+								className={`font-mono text-green-700 dark:text-green-300`}
 							>
 								+{plan.loadBonus.toLocaleString()}
 							</span>
@@ -190,7 +187,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 						</div>
 						<Badge variant="secondary">
 							<span
-								className={`${montserrat.className} text-green-700 dark:text-green-300`}
+								className={`font-mono text-green-700 dark:text-green-300`}
 							>
 								+{plan.boostBonus.toLocaleString()}
 							</span>
@@ -210,9 +207,7 @@ export function BPPlan({ plan }: BPPlanProps) {
 							</p>
 						</div>
 						<Badge variant="secondary">
-							<span
-								className={`${montserrat.className} text-muted-foreground`}
-							>
+							<span className={`font-mono text-muted-foreground`}>
 								{t('bp.days', {
 									count: plan.daysWithoutOverload,
 								})}

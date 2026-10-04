@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Switch } from '@/components/ui/Switch'
@@ -99,9 +98,7 @@ export function ScheduleSection({
 				/>
 			</div>
 
-			<p
-				className={`${montserrat.className} font-semibold text-sm text-text-accent`}
-			>
+			<p className={`font-mono font-semibold text-sm text-text-accent`}>
 				{t('clan.settings.scheduleTotal', {
 					tournament: TOURNAMENT_DAYS,
 					brawl: schedule.brawls_per_week,

@@ -3,7 +3,7 @@
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { ARTEFACT_META_KEYS } from '@/constants/artefact_meta.const'
 import { MAX_UPGRADE_LEVEL } from '@/constants/upgrade.const'
 import { itemsQueries } from '@/queries/calcs/items.queries'
@@ -135,16 +135,16 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 			}
 		>
 			{variant === 'page' && (
-				<div className="text-center">
+				<>
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 					>
 						{t('upgrade.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('upgrade.subtitle')}
 					</p>
-				</div>
+				</>
 			)}
 
 			<UpgradeForm
@@ -170,7 +170,7 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 				/>
 			) : (
 				<div className="flex items-center justify-center gap-2 rounded-xl bg-card/50 px-5 py-10 text-muted-foreground ring-2 ring-primary/30">
-					<p className="font-semibold">{t('upgrade.empty')}</p>
+					<p className="font-medium">{t('upgrade.empty')}</p>
 				</div>
 			)}
 		</section>

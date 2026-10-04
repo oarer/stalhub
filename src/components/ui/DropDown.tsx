@@ -112,7 +112,7 @@ function DropdownMenuItem({
 	return (
 		<div className="relative">
 			{item.category && (
-				<p className="font-semibold text-[13px] text-muted-foreground">
+				<p className="font-medium text-[13px] text-muted-foreground">
 					{renderMaybeTranslate(t, item.category)}
 				</p>
 			)}
@@ -122,9 +122,8 @@ function DropdownMenuItem({
 				aria-expanded={hasSubmenu ? showSubmenu : undefined}
 				aria-haspopup={hasSubmenu ? 'menu' : undefined}
 				className={cn(
-					'flex w-full items-center justify-between rounded-xl text-left font-semibold text-sm transition-colors',
+					'flex w-full items-center justify-between rounded-xl text-left font-medium text-[13px] transition-colors',
 					item.disabled && 'cursor-not-allowed text-muted-foreground',
-
 					hasSubmenu && 'pr-2'
 				)}
 				exit={{ opacity: 0 }}
@@ -136,7 +135,6 @@ function DropdownMenuItem({
 				tabIndex={item.disabled ? -1 : 0}
 			>
 				{item.content}
-
 				{hasSubmenu && (
 					<motion.div
 						animate={{ rotate: showSubmenu ? 90 : 0 }}
@@ -400,15 +398,18 @@ export default function DropdownMenu({
 				{icon && <Icon className="text-xl" icon={icon} />}
 				{onlyIcon ? (
 					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/btn:ml-2 group-hover/btn:max-w-45 group-hover/btn:opacity-100">
-						<span
-							className={cn(titleClass, 'font-semibold text-md')}
-						>
+						<span className={cn(titleClass, 'font-medium text-sm')}>
 							{t(title)}
 						</span>
 					</span>
 				) : (
 					<>
-						<p className={cn(titleClass, 'font-semibold text-md')}>
+						<p
+							className={cn(
+								titleClass,
+								'font-medium text-[15px]'
+							)}
+						>
 							{t(title)}
 						</p>
 						<motion.div
@@ -497,7 +498,7 @@ export default function DropdownMenu({
 										<div className="h-1.5 w-12 rounded-full bg-neutral-600" />
 									</div>
 									<div className="flex shrink-0 items-center justify-between gap-2 px-1 pb-1">
-										<p className="font-semibold text-sm">
+										<p className="font-medium text-sm">
 											{t(title)}
 										</p>
 										<button

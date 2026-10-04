@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
@@ -67,14 +67,18 @@ export default function BuildsPublicView() {
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			<div className="flex items-center justify-between">
-				<h1 className={`${unbounded.className} font-bold text-3xl`}>
+			<>
+				<h1
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				>
 					{t('buildsPublic.title')}
 				</h1>
-				<span className="font-semibold text-sm text-text-accent">
-					{t('buildsPublic.total', { count: data?.total_count ?? 0 })}
-				</span>
-			</div>
+				<p className="font-medium text-muted-foreground text-sm">
+					{t('buildsPublic.total', {
+						count: data?.total_count ?? 0,
+					})}
+				</p>
+			</>
 
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
@@ -91,7 +95,7 @@ export default function BuildsPublicView() {
 					/>
 
 					<div className="flex items-center gap-2">
-						<span className="font-semibold text-sm text-text-accent">
+						<span className="font-medium text-sm text-text-accent">
 							{t('buildsPublic.price')}
 						</span>
 						<Input
@@ -113,7 +117,7 @@ export default function BuildsPublicView() {
 				</div>
 
 				<div className="flex items-center gap-2">
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-medium text-sm text-text-accent">
 						{t('buildsPublic.sort')}
 					</span>
 					{BUILD_SORTS.map((value) => (
@@ -133,7 +137,7 @@ export default function BuildsPublicView() {
 			</div>
 
 			{builds.length === 0 ? (
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-sm text-text-accent">
 					{t('me.builds.noBuilds')}
 				</p>
 			) : (
@@ -160,7 +164,7 @@ export default function BuildsPublicView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className="text-sm text-text-accent">
+					<span className="font-mono text-sm text-text-accent">
 						{page} / {totalPages}
 					</span>
 					<Button

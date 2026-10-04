@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { formatDate } from '@/lib/date'
 import { userQueries } from '@/queries/user/user.queries'
 
@@ -59,7 +58,7 @@ export default function MeStarsView() {
 									{item.title}
 								</p>
 								<p
-									className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
+									className={`font-mono font-semibold text-muted-foreground text-xs`}
 								>
 									{item.type === 'build'
 										? t('me.stars.build')

@@ -285,7 +285,7 @@ export default function UserProfileView({
 									key={tl.id}
 								>
 									<div className="flex items-center gap-3 rounded-lg border border-muted bg-card p-3 transition-colors hover:border-primary/30">
-										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-lg text-primary">
+										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-semibold text-lg text-primary">
 											<Icon
 												className="size-5"
 												icon="lucide:layout-list"

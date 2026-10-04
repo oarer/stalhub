@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -140,7 +140,7 @@ export default function TierListDetailView() {
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center gap-3">
 						<h1
-							className={`${unbounded.className} font-bold text-3xl`}
+							className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 						>
 							{tierList.title}
 						</h1>
@@ -169,7 +169,7 @@ export default function TierListDetailView() {
 								/>
 								<HoverUserCard id={tierList.author.id}>
 									<span
-										className={`${montserrat.className} font-semibold text-xs`}
+										className={`font-mono font-semibold text-xs`}
 									>
 										{tierList.author.name}
 									</span>
@@ -178,9 +178,7 @@ export default function TierListDetailView() {
 						)}
 						<div className="flex items-center gap-1 text-text-accent">
 							<Icon icon="lucide:eye" />
-							<span
-								className={`${montserrat.className} font-semibold text-xs`}
-							>
+							<span className={`font-mono font-semibold text-xs`}>
 								{tierList.views}
 							</span>
 						</div>
@@ -343,7 +341,7 @@ function TierListEntryCard({
 				/>
 			)}
 			<span
-				className={`${montserrat.className} truncate font-semibold`}
+				className={`truncate font-mono font-semibold`}
 				style={{ color: infoColorMap[item?.color as InfoColor] }}
 			>
 				{name}
@@ -400,7 +398,7 @@ function RankList({
 				return (
 					<div className="flex gap-2" key={rank}>
 						<div
-							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-bold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
+							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-semibold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
 						>
 							{rank}
 						</div>

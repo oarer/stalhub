@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsWide } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
@@ -43,7 +43,7 @@ export function MannequinControls({ prime }: { prime: number }) {
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg" icon="lucide:person-standing" />
-				<p className={`${unbounded.className} font-semibold text-xl`}>
+				<p className={`${mtsWide.className} font-semibold text-md`}>
 					{t('ttk.page.mannequin')}
 				</p>
 			</div>
@@ -105,11 +105,11 @@ export function MannequinControls({ prime }: { prime: number }) {
 							value={plateId}
 						/>
 					</div>
-					<div className="flex items-center justify-between rounded-lg bg-neutral-800/50 px-3 py-2">
+					<div className="flex items-center justify-between rounded-lg bg-muted px-3 py-2">
 						<span className="text-neutral-400 text-sm">
 							{t('build.stats.prime')}
 						</span>
-						<span className="font-bold text-yellow-400">
+						<span className="font-mono font-semibold text-primary text-sm">
 							{prime.toFixed(1)}
 						</span>
 					</div>

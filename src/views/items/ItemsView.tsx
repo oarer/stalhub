@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { getLocale } from '@/lib/getLocale'
 import { auctionQueries } from '@/queries/auction/auction.queries'
@@ -132,7 +132,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 						<div className="space-y-2 text-center">
 							<h1
-								className={`${unbounded.className} font-semibold text-xl`}
+								className={`${mtsExtended.className} font-semibold text-xl`}
 								style={{
 									color:
 										infoColorMap[data.color as InfoColor] ||
@@ -141,7 +141,9 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 							>
 								{messageToString(data.name, locale) || data.id}
 							</h1>
-							<p className="font-semibold">{categoryLabel}</p>
+							<p className="font-medium text-sm text-text-accent">
+								{categoryLabel}
+							</p>
 						</div>
 					</Card.Header>
 

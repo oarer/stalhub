@@ -5,7 +5,7 @@ import { headers } from 'next/headers'
 import Script from 'next/script'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
-import { unbounded } from '@/app/fonts'
+import { montserrat, unbounded } from '@/app/fonts'
 import { CookieConsent } from '@/components/cookies/CookieConsent'
 import { getMetadataByPath } from '@/constants/meta'
 import LocaleProvider from '@/providers/LocaleProvider'
@@ -29,13 +29,13 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 
 	return (
 		<html
-			className="dark"
+			className={`${unbounded.className} ${montserrat.variable} dark`}
 			data-scroll-behavior="smooth"
 			lang={locale}
 			suppressHydrationWarning
 		>
 			<body
-				className={`${unbounded.className} bg-background text-foreground transition-colors duration-500 ease-in-out`}
+				className={`bg-background text-foreground transition-colors duration-500 ease-in-out`}
 			>
 				<GridBackgroundWithBeams
 					cellSize={20}

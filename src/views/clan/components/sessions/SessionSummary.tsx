@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Table } from '@/components/ui/Table'
 import type { StageSummary } from '@/types/clan/clan.type'
 import { formatKd, kdClass } from '@/views/clan/clan.utils'
@@ -60,7 +59,7 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 				</div>
 			)}
 			<div className="flex flex-col gap-2 p-3">
-				<Table.Root className={`${montserrat.className} font-semibold`}>
+				<Table.Root className={`font-mono font-semibold`}>
 					<Table.Header>
 						<Table.Row className="text-left text-text-accent">
 							<Table.Head>{t('clan.common.player')}</Table.Head>

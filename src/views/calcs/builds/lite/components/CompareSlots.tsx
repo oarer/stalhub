@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Divider } from '@/components/ui/Divider'
 import type { Build } from '@/types/build.type'
 import {
@@ -55,7 +54,7 @@ export function CompareSlots({
 
 	return (
 		<div className="flex w-full flex-col gap-2 sm:w-fit">
-			<p className="truncate border-primary border-b pb-2 text-center font-bold sm:max-w-13">
+			<p className="truncate border-primary/50 border-b pb-2 text-center font-semibold sm:max-w-13">
 				{name}
 			</p>
 			{slots.length === 0 ? (
@@ -100,7 +99,7 @@ export function CompareSlots({
 									/>
 									<div className="flex min-w-0 flex-1 items-center justify-between gap-2 sm:hidden">
 										<p
-											className="truncate font-semibold text-sm"
+											className="truncate text-sm"
 											style={{ color: colorHex }}
 										>
 											{messageToString(item.name, locale)}
@@ -108,14 +107,14 @@ export function CompareSlots({
 										<div className="flex shrink-0 items-center gap-2">
 											{art?.potential !== 0 && (
 												<span
-													className={`${montserrat.className} font-medium text-sm`}
+													className={`font-medium font-mono text-sm`}
 													style={{ color: colorHex }}
 												>
 													+{art?.potential}
 												</span>
 											)}
 											<span
-												className={`${montserrat.className} font-medium text-sm`}
+												className={`font-medium font-mono text-sm`}
 												style={{ color: colorHex }}
 											>
 												{art?.percent}%
@@ -131,7 +130,7 @@ export function CompareSlots({
 											icon="lucide:circle-question-mark"
 										/>
 									</div>
-									<p className="truncate font-semibold text-sm text-text-accent/70 sm:hidden">
+									<p className="truncate font-medium text-sm text-text-accent/70 sm:hidden">
 										{t('build.empty_slot')}
 									</p>
 								</>
@@ -156,7 +155,7 @@ export function CompareSlots({
 							src={getIconUrl(container)}
 							width={34}
 						/>
-						<p className="truncate font-semibold text-sm sm:hidden">
+						<p className="truncate font-normal text-md sm:hidden">
 							{messageToString(container.name, locale)}
 						</p>
 					</div>

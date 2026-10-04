@@ -1,5 +1,4 @@
 import { Icon } from '@iconify/react'
-import { montserrat } from '@/app/fonts'
 
 export function StatCard({
 	icon,
@@ -14,10 +13,10 @@ export function StatCard({
 		<div className="flex items-center gap-4 rounded-lg bg-card p-4">
 			<Icon className="text-2xl" icon={icon} />
 			<div>
-				<p className="font-bold text-sm">{label}</p>
-				<p className={`${montserrat.className} font-semibold text-md`}>
-					{value}
+				<p className="font-medium text-[13px] text-text-accent">
+					{label}
 				</p>
+				<p className={`font-medium font-mono text-[15px]`}>{value}</p>
 			</div>
 		</div>
 	)

@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { cn } from '@/lib/cn'
 import type { PublicClan } from '@/types/clan/clan.type'
@@ -109,13 +108,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			)}
 		>
 			<div className="flex items-center justify-between gap-2">
-				<p
-					className={`${montserrat.className} truncate font-semibold text-md`}
-				>
+				<p className={`truncate font-medium font-mono text-md`}>
 					[{clan.tag}] {clan.name}
 				</p>
 				{clan.recruiting && (
-					<Badge className="shrink-0 bg-success/15 font-bold text-success">
+					<Badge className="shrink-0 bg-success/15 text-success">
 						{t('clans.recruiting')}
 					</Badge>
 				)}
@@ -128,11 +125,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 							className="size-4 shrink-0 text-text-accent"
 							icon={field.icon}
 						/>
-						<span className="font-semibold text-text-accent">
+						<span className="font-medium text-[13px] text-text-accent">
 							{t(field.label)}:
 						</span>
 						<span
-							className={`${montserrat.className} truncate font-semibold`}
+							className={`truncate font-medium font-mono text-[13px]`}
 						>
 							{field.value}
 						</span>
@@ -151,11 +148,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 								className="size-4 shrink-0 text-text-accent"
 								icon={field.icon}
 							/>
-							<span className="font-semibold text-text-accent">
+							<span className="font-medium text-[13px] text-text-accent">
 								{t(field.label)}:
 							</span>
 							<span
-								className={`${montserrat.className} truncate font-semibold`}
+								className={`truncate font-medium font-mono text-[13px]`}
 							>
 								{field.value}
 							</span>
@@ -171,11 +168,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 							className="size-4 shrink-0 text-text-accent"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-semibold text-text-accent">
+						<span className="font-medium text-[13px] text-text-accent">
 							{t('clans.schedule')}
 						</span>
 						<span
-							className={`${montserrat.className} truncate font-semibold`}
+							className={`truncate font-medium font-mono text-[13px]`}
 						>
 							{TOURNAMENT_DAYS + clan.schedule.brawls_per_week} /
 							7
@@ -186,11 +183,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 							className="size-4 shrink-0 text-text-accent"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-semibold text-text-accent">
+						<span className="font-medium text-[13px] text-text-accent">
 							{t('clans.brawls')}
 						</span>
 						<span
-							className={`${montserrat.className} truncate font-semibold`}
+							className={`truncate font-medium font-mono text-[13px]`}
 						>
 							{clan.schedule.brawls_mandatory
 								? t('clans.brawls_mandatory')

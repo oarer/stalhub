@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
@@ -94,9 +93,7 @@ export function KickList({
 					</Tooltip.Root>
 					{rows.length > 0 && (
 						<Badge variant="secondary">
-							<span className={montserrat.className}>
-								{rows.length}
-							</span>
+							<span className="font-mono">{rows.length}</span>
 						</Badge>
 					)}
 				</div>
@@ -121,7 +118,9 @@ export function KickList({
 			{rows.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-10 text-text-accent">
 					<Icon className="text-4xl" icon="lucide:shield-check" />
-					<p className="font-bold">{t('clan.charts.noCandidates')}</p>
+					<p className="font-medium text-sm">
+						{t('clan.charts.noCandidates')}
+					</p>
 				</div>
 			) : (
 				<div className="mt-3 overflow-x-auto">
@@ -140,20 +139,20 @@ export function KickList({
 											width={36}
 										/>
 									) : (
-										<div className="flex size-9 items-center justify-center rounded-full bg-destructive/15 font-semibold text-destructive">
+										<div className="flex size-9 items-center justify-center rounded-full bg-destructive/15 font-medium text-destructive text-sm">
 											{row.name.charAt(0)}
 										</div>
 									)}
 								</div>
 								<div className="w-44 flex-none">
 									<div className="flex items-center gap-1.5">
-										<p className="truncate font-semibold text-sm">
+										<p className="truncate font-medium text-sm">
 											{row.name}
 										</p>
 										{row.user && (
 											<HoverUserCard id={row.user.id}>
 												<Link
-													className={`${montserrat.className} truncate font-semibold text-text-accent text-xs`}
+													className={`truncate font-mono font-semibold text-text-accent text-xs`}
 													href={`/users/${row.user.id}`}
 												>
 													{row.user.name}
@@ -172,7 +171,7 @@ export function KickList({
 										})}
 									</Badge>
 									<Badge
-										className={`${montserrat.className} text-[11px]`}
+										className={`font-mono text-[11px]`}
 										variant="secondary"
 									>
 										{t('clan.charts.attendanceBadge', {

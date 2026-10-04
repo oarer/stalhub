@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -43,7 +44,11 @@ export default function BansAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<h1 className="font-semibold text-2xl">{t('admin.bans.title')}</h1>
+			<h1
+				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+			>
+				{t('admin.bans.title')}
+			</h1>
 
 			{stats && (
 				<div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -56,10 +61,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.total_warnings}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('admin.bans.stats.warnings')}
 								</p>
 							</div>
@@ -74,10 +79,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.total_bans}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('admin.bans.stats.bans')}
 								</p>
 							</div>
@@ -92,10 +97,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.auto_banned_users}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('admin.bans.stats.autoBanned')}
 								</p>
 							</div>
@@ -110,10 +115,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.auto_warned_users}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-text-accent text-xs">
 									{t('admin.bans.stats.autoWarned')}
 								</p>
 							</div>
@@ -149,7 +154,7 @@ export default function BansAdminView() {
 									<span className="text-sm">
 										{entry.rule}
 									</span>
-									<span className="font-bold text-sm text-text-accent">
+									<span className="font-medium font-mono text-sm text-text-accent">
 										{entry._count._all}
 									</span>
 								</div>
@@ -173,7 +178,7 @@ export default function BansAdminView() {
 				<div className="flex gap-1">
 					{(['all', 'auto', 'manual'] as const).map((opt) => (
 						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-semibold text-xs transition-colors ${
+							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
 								auto === opt
 									? 'border-sky-500 bg-sky-500/10 text-sky-400'
 									: 'border-primary hover:border-sky-500/30'
@@ -210,7 +215,7 @@ export default function BansAdminView() {
 					</button>
 					{BAN_RULES.map((r) => (
 						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-semibold text-xs transition-colors ${
+							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
 								rule === r.value
 									? 'border-sky-500 bg-sky-500/10 text-sky-400'
 									: 'border-primary hover:border-sky-500/30'
@@ -263,7 +268,7 @@ export default function BansAdminView() {
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="font-semibold text-sm">
+										<span className="font-medium text-sm">
 											{ban.user?.username ??
 												`#${ban.user_id}`}
 										</span>

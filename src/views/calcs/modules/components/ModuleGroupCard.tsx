@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -63,7 +62,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 	return (
 		<Card.Root>
 			<div className="flex items-center justify-between gap-2">
-				<p className="font-semibold text-sm text-text-accent dark:text-neutral-300">
+				<p className="font-medium text-sm text-text-accent dark:text-neutral-300">
 					{label}
 				</p>
 				{slot.moduleKey && (
@@ -89,15 +88,15 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 			/>
 
 			{!module ? (
-				<p className="py-2 text-center font-semibold text-sm text-text-accent">
+				<p className="py-2 text-center font-medium text-sm text-text-accent">
 					{t('modules.not_selected')}
 				</p>
 			) : (
 				<>
 					<div className="flex flex-col gap-1">
-						<p className="font-bold text-lg">{module.lines.ru}</p>
+						<p className="font-medium text-lg">{module.lines.ru}</p>
 						{module.description && (
-							<p className="font-semibold text-primary text-xs">
+							<p className="font-medium text-primary text-xs">
 								{module.description.ru}
 							</p>
 						)}
@@ -125,7 +124,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 								value={slot.quality}
 							/>
 							<span
-								className="rounded bg-accent/50 px-3 py-2 font-bold text-sm"
+								className="rounded bg-accent/50 px-3 py-2 font-medium text-sm"
 								style={{ color: RARITY_COLORS[rarity] }}
 							>
 								{t(`arts.ART_QUALITY_${rarity.toUpperCase()}`)}
@@ -149,13 +148,13 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 									className="flex items-center justify-between gap-2 text-sm"
 									key={stat.key}
 								>
-									<span className="font-semibold">
+									<span className="font-medium">
 										{stat.lines.ru}
 									</span>
 									<span
 										className={cn(
-											'font-semibold text-sm',
-											montserrat.className,
+											'font-medium text-sm',
+											'font-mono',
 											stat.type === 'negative'
 												? 'text-red-400'
 												: stat.type === 'special'
@@ -172,42 +171,34 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 					<Divider />
 					<div className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
 						<div className="flex justify-between">
-							<span className="font-semibold text-text-accent">
+							<span className="font-medium text-text-accent">
 								{t('modules.reroll')}
 							</span>
-							<span
-								className={`${montserrat.className} font-bold`}
-							>
+							<span className={`font-medium font-mono`}>
 								{costs.reroll}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-semibold text-text-accent">
+							<span className="font-medium text-text-accent">
 								{t('modules.disassemble')}
 							</span>
-							<span
-								className={`${montserrat.className} font-bold`}
-							>
+							<span className={`font-medium font-mono`}>
 								{costs.disassemble}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-semibold text-text-accent">
+							<span className="font-medium text-text-accent">
 								{t('modules.restore')}
 							</span>
-							<span
-								className={`${montserrat.className} font-bold`}
-							>
+							<span className={`font-medium font-mono`}>
 								{costs.restore}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-semibold text-text-accent">
+							<span className="font-medium text-text-accent">
 								{t('modules.category')}
 							</span>
-							<span
-								className={`${montserrat.className} font-bold`}
-							>
+							<span className={`font-medium font-mono`}>
 								{costs.category}
 							</span>
 						</div>

@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import {
 	MAX_VISIBLE_TAGS,
@@ -57,7 +56,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 						{article.stars_count}
 					</div>
 				)}
-				<p className={`${montserrat.className} font-semibold`}>
+				<p className={`font-mono font-semibold`}>
 					{author && <span>{author.username} · </span>}
 					{date && <span>{formatDate(date, 'date')}</span>}
 				</p>

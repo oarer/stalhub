@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
@@ -90,7 +89,7 @@ export function SquadCard({
 						<Icon className="text-xl" icon="lucide:group" />
 						{squad.name}
 					</div>
-					<Badge className={montserrat.className} variant="secondary">
+					<Badge className="font-mono" variant="secondary">
 						{squad.members.length}/5
 					</Badge>
 					<Button
@@ -379,7 +378,7 @@ function SquadSlot({
 				</>
 			) : (
 				<p
-					className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+					className={`font-mono font-semibold text-sm text-text-accent`}
 				>
 					{t('clan.squads.slot', { slot: slot + 1 })}
 				</p>

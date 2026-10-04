@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -68,7 +69,9 @@ function ClanSquadsContent({
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-lg">
+				<h1
+					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				>
 					{t('clan.squads.title')}
 				</h1>
 				<div className="flex items-center gap-2">

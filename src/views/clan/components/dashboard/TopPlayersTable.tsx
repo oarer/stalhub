@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Table } from '@/components/ui/Table'
 import { Section } from '../../../me/components/Section'
 import { formatKd, kdClass } from '../../clan.utils'
@@ -38,7 +37,7 @@ export function TopPlayersTable({ topPlayers }: TopPlayersTableProps) {
 			title={t('clan.dashboard.topPlayers.title')}
 		>
 			<div className="flex flex-col rounded-lg p-3">
-				<Table.Root className={`${montserrat.className} font-semibold`}>
+				<Table.Root className={`font-mono font-semibold`}>
 					<Table.Header>
 						<Table.Row className="text-left text-text-accent">
 							<Table.Head>{t('clan.common.player')}</Table.Head>

@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import type { GoldDrop } from '@/types/clan/clan.type'
@@ -35,9 +34,7 @@ export function GoldDropCard({
 						className={`text-xl ${claimed ? 'text-amber-500' : 'text-muted-foreground'}`}
 						icon={claimed ? 'lucide:check-check' : 'lucide:coins'}
 					/>
-					<p
-						className={`${montserrat.className} font-semibold text-sm`}
-					>
+					<p className={`font-mono font-semibold text-sm`}>
 						{mskLabel(drop.date)}
 					</p>
 					<Badge variant={claimed ? 'primary' : 'secondary'}>

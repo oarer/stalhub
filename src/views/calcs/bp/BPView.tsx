@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { BPForm } from './components/BPForm'
 import { BPPlan } from './components/BPPlan'
 import {
@@ -57,16 +57,16 @@ export function BPView({ variant = 'page' }: BPViewProps) {
 			}
 		>
 			{variant === 'page' && (
-				<div className="text-center">
+				<>
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 					>
 						{t('bp.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('bp.sub_title')}
 					</p>
-				</div>
+				</>
 			)}
 			<div className="grid gap-6 md:grid-cols-2">
 				<BPForm

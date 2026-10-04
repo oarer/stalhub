@@ -120,7 +120,7 @@ export function ItemPickerModal({
 					<div className="relative grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[50%_50%]">
 						<div className="flex w-full flex-col gap-2">
 							<ItemsList
-								className="max-h-[72dvh] sm:h-91"
+								className="max-h-[72dvh] sm:h-95"
 								emptyText={t('build.labels.not_found')}
 								favoriteType={favoriteType}
 								items={items}
@@ -136,7 +136,7 @@ export function ItemPickerModal({
 
 						<div
 							className={cn(
-								'flex h-full min-h-0 w-full flex-col gap-3 overflow-hidden bg-card px-3 py-3',
+								'flex h-full min-h-0 w-full flex-col justify-between gap-3 overflow-hidden bg-card px-3 py-3',
 								selectedItem
 									? 'fixed inset-0 z-50 md:static md:flex'
 									: 'hidden md:flex'
@@ -175,7 +175,7 @@ export function ItemPickerModal({
 											/>
 
 											<h2
-												className="font-semibold text-lg"
+												className="font-medium text-md"
 												style={{
 													color: !isDark
 														? `color-mix(in srgb, ${
@@ -220,7 +220,7 @@ export function ItemPickerModal({
 											.map((block, idx) => (
 												<ListBlock
 													block={block}
-													className="text-sm"
+													className="text-[13px]"
 													key={idx}
 													locale={locale}
 													numericVariants={0}

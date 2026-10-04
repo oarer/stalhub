@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsWide } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import { Table } from '@/components/ui/Table'
@@ -39,16 +39,14 @@ function SummaryCard({
 		<Card.Root className="gap-3">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg text-neutral-400" icon={icon} />
-				<p className="font-semibold text-muted-foreground text-sm">
+				<p className="font-medium text-muted-foreground text-sm">
 					{label}
 				</p>
 			</div>
-			<p
-				className={`${unbounded.className} font-semibold text-primary text-xl`}
-			>
+			<p className={`font-mono font-semibold text-primary text-xl`}>
 				{value}
 				{suffix && (
-					<span className="ml-1 font-semibold text-muted-foreground text-sm">
+					<span className="ml-1 font-medium font-mono text-muted-foreground text-sm">
 						{suffix}
 					</span>
 				)}
@@ -139,7 +137,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 					</Card.Title>
 					<Badge variant="secondary">
 						<span
-							className={`${unbounded.className} text-xs uppercase`}
+							className={`${mtsWide.className} font-medium text-xs uppercase`}
 						>
 							{t(
 								isLuck
@@ -207,22 +205,20 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 							<Table.Row key={row.targetLevel}>
 								<Table.Cell>
 									<span
-										className={`${montserrat.className} font-bold text-xs`}
+										className={`font-medium font-mono text-xs`}
 									>
 										{row.targetLevel}
 									</span>
 								</Table.Cell>
 								<Table.Cell>
 									<span
-										className={`${montserrat.className} font-semibold text-primary`}
+										className={`font-mono font-semibold text-primary`}
 									>
 										{formatPercent(row.chance)}
 									</span>
 								</Table.Cell>
 								<Table.Cell>
-									<span
-										className={`${montserrat.className} font-semibold`}
-									>
+									<span className={`font-mono font-semibold`}>
 										{Number.isFinite(row.attempts)
 											? format(row.attempts)
 											: '∞'}
@@ -232,14 +228,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 									<>
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-muted-foreground`}
+												className={`font-mono font-semibold text-muted-foreground`}
 											>
 												{format(row.energyPerAttempt)}
 											</span>
 										</Table.Cell>
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-primary`}
+												className={`font-mono font-semibold text-primary`}
 											>
 												{format(row.levelEnergy)}
 											</span>
@@ -249,14 +245,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 									<>
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-muted-foreground`}
+												className={`font-mono font-semibold text-muted-foreground`}
 											>
 												{format(row.costPerAttempt)}
 											</span>
 										</Table.Cell>
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-primary`}
+												className={`font-mono font-semibold text-primary`}
 											>
 												{format(row.levelCost)}
 											</span>
@@ -266,12 +262,12 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`${montserrat.className} font-semibold text-muted-foreground`}
+											className={`font-mono font-semibold text-muted-foreground`}
 										>
 											{t(`upgrade.items.${row.partsKey}`)}
 										</span>
 										<span
-											className={`${montserrat.className} ml-1 font-semibold text-primary`}
+											className={`ml-1 font-mono font-semibold text-primary`}
 										>
 											×{format(row.levelParts)}
 										</span>
@@ -280,12 +276,12 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`${montserrat.className} font-semibold text-muted-foreground`}
+											className={`font-mono font-semibold text-muted-foreground`}
 										>
 											{t(`upgrade.items.${row.toolsKey}`)}
 										</span>
 										<span
-											className={`${montserrat.className} ml-1 font-semibold text-primary`}
+											className={`ml-1 font-mono font-semibold text-primary`}
 										>
 											×{format(row.levelTools)}
 										</span>
@@ -296,7 +292,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 										<Table.Cell>
 											<span
 												className={cn(
-													montserrat.className,
+													'font-mono',
 													'font-semibold',
 													row.durabilityAfter <= 0.2
 														? 'text-destructive'
@@ -316,15 +312,13 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 						<Table.Footer>
 							<Table.Row>
 								<Table.Cell colSpan={2}>
-									<span
-										className={`${montserrat.className} font-semibold`}
-									>
+									<span className={`font-mono font-semibold`}>
 										{t('upgrade.result.table.total')}
 									</span>
 								</Table.Cell>
 								<Table.Cell>
 									<span
-										className={`${montserrat.className} font-semibold text-primary`}
+										className={`font-mono font-semibold text-primary`}
 									>
 										{format(result.totalAttempts)}
 									</span>
@@ -334,7 +328,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 										<Table.Cell />
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-primary`}
+												className={`font-mono font-semibold text-primary`}
 											>
 												{format(result.totalEnergy)}
 											</span>
@@ -346,7 +340,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 										<Table.Cell />
 										<Table.Cell className="text-right">
 											<span
-												className={`${montserrat.className} font-semibold text-primary`}
+												className={`font-mono font-semibold text-primary`}
 											>
 												{format(result.totalMoney)}
 											</span>
@@ -356,7 +350,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`${montserrat.className} font-semibold text-primary`}
+											className={`font-mono font-semibold text-primary`}
 										>
 											{format(result.totalParts)}
 										</span>
@@ -365,7 +359,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`${montserrat.className} font-semibold text-primary`}
+											className={`font-mono font-semibold text-primary`}
 										>
 											{format(result.totalTools)}
 										</span>

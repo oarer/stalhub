@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { montserrat } from '@/app/fonts'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { CLink } from '@/components/ui/Link'
 import { formatArtPrice } from '@/hooks/useBuildPrices'
@@ -103,7 +102,7 @@ export function HoverBuildCard({
 						</Link>
 						{build.price != null && build.price > 0 && (
 							<span
-								className={`${montserrat.className} shrink-0 font-semibold text-text-accent text-xs`}
+								className={`shrink-0 font-mono font-semibold text-text-accent text-xs`}
 							>
 								{formatArtPrice(build.price)}₽
 							</span>
@@ -144,7 +143,7 @@ export function HoverBuildCard({
 										src={getIconUrl(containerItem)}
 									/>
 									<span
-										className="truncate font-bold text-sm"
+										className="truncate font-semibold text-sm"
 										style={{ color: containerColor }}
 									>
 										{messageToString(
@@ -169,7 +168,7 @@ export function HoverBuildCard({
 											</p>
 											{entry.potential !== 0 && (
 												<span
-													className={`${montserrat.className} shrink-0 font-medium text-xs`}
+													className={`shrink-0 font-medium font-mono text-xs`}
 													style={{
 														color: entry.color,
 													}}
@@ -178,7 +177,7 @@ export function HoverBuildCard({
 												</span>
 											)}
 											<span
-												className={`${montserrat.className} shrink-0 font-medium text-xs`}
+												className={`shrink-0 font-medium font-mono text-xs`}
 												style={{ color: entry.color }}
 											>
 												{entry.percent}%

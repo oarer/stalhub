@@ -57,7 +57,7 @@ export function useMDXComponents(): MDXComponents {
 		QuestMap,
 		h1: ({ children, ...props }) => (
 			<h1
-				className="mb-6 scroll-m-20 font-bold text-4xl tracking-tight lg:text-5xl"
+				className="mb-6 scroll-m-20 font-semibold text-4xl tracking-tight lg:text-5xl"
 				{...props}
 			>
 				{children}

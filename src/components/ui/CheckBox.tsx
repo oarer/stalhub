@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import type { VariantProps } from 'class-variance-authority'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { checkboxVariants } from '@/constants/ui/checkBox.const'
 import { cn } from '@/lib/cn'
 
@@ -139,8 +138,7 @@ function CheckBox({
 					{label && (
 						<label
 							className={cn(
-								montserrat.className,
-								'cursor-pointer select-none font-semibold text-sm',
+								'cursor-pointer select-none text-sm',
 								disabled && 'cursor-not-allowed opacity-50'
 							)}
 							htmlFor={id}
@@ -149,9 +147,7 @@ function CheckBox({
 						</label>
 					)}
 					{description && (
-						<p className={`${montserrat.className} text-xs`}>
-							{description}
-						</p>
+						<p className={`font-mono text-xs`}>{description}</p>
 					)}
 				</div>
 			</div>

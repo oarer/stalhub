@@ -25,7 +25,7 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 			/>
 			<Card.Root className="z-10 w-full">
 				<Card.Header className="space-y-2">
-					<Card.Title className="flex flex-wrap items-center gap-4 font-bold text-xl md:text-3xl">
+					<Card.Title className="flex flex-wrap items-center gap-4 font-semibold text-xl md:text-3xl">
 						<span className={allianceColors[data.alliance]}>
 							{t(`player.alliance.${data.alliance}`)}
 						</span>

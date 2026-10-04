@@ -16,7 +16,6 @@ import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
-
 import { montserrat } from '@/app/fonts'
 
 ChartJS.register(

@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import { formatDate } from '@/lib/date'
@@ -31,13 +30,13 @@ export default function OperationSessionCard({
 							className="shrink-0 text-xl"
 							icon="lucide:siren"
 						/>
-						<h2 className="truncate font-semibold">
+						<h2 className="truncate font-medium">
 							{t('player.operations.type.' + session.map)}
 						</h2>
 					</div>
 					<Badge>
 						{t('player.operations.difficulty')}{' '}
-						<span className={`${montserrat.className}`}>
+						<span className={`font-mono`}>
 							{session.difficulty}
 						</span>
 					</Badge>
@@ -45,13 +44,13 @@ export default function OperationSessionCard({
 
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-accent">
 					<span
-						className={`${montserrat.className} flex items-center gap-1 text-xs`}
+						className={`flex items-center gap-1 font-mono text-xs`}
 					>
 						<Icon className="text-base" icon="lucide:calendar" />
 						{formatDate(session.startTime, 'datetime')}
 					</span>
 					<span
-						className={`${montserrat.className} flex items-center gap-1 text-xs`}
+						className={`flex items-center gap-1 font-mono text-xs`}
 					>
 						<Icon className="text-base" icon="lucide:timer" />
 						{formatDuration(session.sessionDurationSeconds)}
@@ -72,7 +71,7 @@ export default function OperationSessionCard({
 					<div className="flex flex-wrap gap-1">
 						{session.participants.map((p) => (
 							<span
-								className="rounded-md bg-card px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+								className="rounded-md bg-card px-1.5 py-0.5 font-medium text-text-accent text-xs"
 								key={p.username}
 							>
 								{p.username}

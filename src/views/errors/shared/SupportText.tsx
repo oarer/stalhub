@@ -21,7 +21,7 @@ export default function SupportText({
 	const t = useTranslations()
 
 	return (
-		<p className="text-center font-bold text-xs uppercase tracking-widest dark:text-muted-foreground">
+		<p className="text-center font-semibold text-xs uppercase tracking-widest dark:text-muted-foreground">
 			{identifierLabel} <br />
 			{t('errors.support.thenContact')}{' '}
 			<Link

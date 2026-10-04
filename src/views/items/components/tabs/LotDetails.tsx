@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { ModuleAttribute } from '@/types/module.type'
@@ -79,7 +78,7 @@ export function LotRankBadge({
 
 	return (
 		<div
-			className="self-start rounded-md px-2 py-0.5 font-bold text-sm"
+			className="self-start rounded-md px-2 py-0.5 font-semibold text-sm"
 			style={{
 				background: `color-mix(in srgb, ${color} 18%, transparent)`,
 				color,
@@ -133,7 +132,7 @@ export function ModuleAttributes({
 					>
 						<div className="flex items-center justify-between gap-2">
 							<p
-								className="font-bold text-sm"
+								className="font-semibold text-sm"
 								style={{ color: RARITY_COLORS[rarity] }}
 							>
 								{name}
@@ -141,8 +140,8 @@ export function ModuleAttributes({
 							<div className="flex items-center gap-2">
 								<span
 									className={cn(
-										'font-bold text-sm',
-										montserrat.className
+										'font-semibold text-sm',
+										'font-mono'
 									)}
 									style={{ color: RARITY_COLORS[rarity] }}
 								>
@@ -163,8 +162,8 @@ export function ModuleAttributes({
 								</span>
 								<span
 									className={cn(
-										'font-bold text-sm',
-										montserrat.className,
+										'font-semibold text-sm',
+										'font-mono',
 										stat.sign === '+'
 											? 'text-success'
 											: 'text-destructive'
@@ -202,7 +201,7 @@ export function AdditionalDetails({
 				<span className="font-semibold">
 					{t('modals.builds.settings.percent')}
 				</span>
-				<span className={cn('font-bold', montserrat.className)}>
+				<span className={cn('font-semibold', 'font-mono')}>
 					{percent.toFixed(2)}%
 				</span>
 			</div>

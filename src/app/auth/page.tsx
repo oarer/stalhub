@@ -20,7 +20,7 @@ import { discordAuthService } from '@/services/auth/discord/discord.service'
 import { exboAuthService } from '@/services/auth/exbo/auth.service'
 import { telegramAuthService } from '@/services/auth/telegram/telegram.service'
 import { userService } from '@/services/user/user.service'
-import { montserrat, unbounded } from '../fonts'
+import { mtsExtended } from '../fonts'
 
 type Provider = 'discord' | 'telegram' | 'exbo'
 
@@ -148,7 +148,7 @@ export default function Page() {
 								icon="lucide:loader-circle"
 							/>
 							<h1
-								className={`${unbounded.className} animate-pulse font-bold text-2xl uppercase tracking-widest`}
+								className={`${mtsExtended.className} animate-pulse font-medium text-2xl uppercase tracking-widest`}
 							>
 								{t('auth.title')}
 							</h1>
@@ -160,11 +160,11 @@ export default function Page() {
 								icon="lucide:circle-check"
 							/>
 							<h1
-								className={`${unbounded.className} font-semibold text-3xl`}
+								className={`${mtsExtended.className} font-medium text-3xl`}
 							>
 								{t('auth.success')}
 							</h1>
-							<p className="font-semibold text-sm text-text-accent">
+							<p className="font-medium text-sm text-text-accent">
 								{t('auth.closePage')}
 							</p>
 						</>
@@ -177,7 +177,7 @@ export default function Page() {
 						<div className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:log-in" />
 							<h1
-								className={`${unbounded.className} font-semibold text-xl`}
+								className={`${mtsExtended.className} font-medium text-xl`}
 							>
 								{t('auth.title')}
 							</h1>
@@ -392,7 +392,7 @@ export default function Page() {
 						)}
 					</div>
 					<p
-						className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+						className={`font-mono font-semibold text-sm text-text-accent`}
 					>
 						{t('auth.terms')}{' '}
 						<Link

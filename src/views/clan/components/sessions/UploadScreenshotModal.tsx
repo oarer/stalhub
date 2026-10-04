@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
@@ -122,7 +121,7 @@ export function UploadScreenshotModal({
 							</div>
 						</div>
 						<Input
-							className={`${montserrat.className} font-semibold text-[14px]`}
+							className={`font-mono font-semibold text-[14px]`}
 							label="clan.sessions.stageDate"
 							onChange={(e) => onDateChange(e.target.value)}
 							type="date"

@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
@@ -718,28 +717,28 @@ export default function UserDetailView({ userId }: Props) {
 										<Table.Row key={session.id}>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} font-semibold text-neutral-400 text-xs`}
+													className={`font-mono font-semibold text-neutral-400 text-xs`}
 												>
 													{session.id}
 												</span>
 											</Table.Cell>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} font-semibold`}
+													className={`font-mono font-semibold`}
 												>
 													{session.ip}
 												</span>
 											</Table.Cell>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} max-w-50 truncate font-semibold text-xs`}
+													className={`max-w-50 truncate font-mono font-semibold text-xs`}
 												>
 													{session.user_agent}
 												</span>
 											</Table.Cell>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} font-semibold`}
+													className={`font-mono font-semibold`}
 												>
 													{new Date(
 														session.last_used_at
@@ -750,7 +749,7 @@ export default function UserDetailView({ userId }: Props) {
 											</Table.Cell>
 											<Table.Cell>
 												<span
-													className={`${montserrat.className} font-semibold`}
+													className={`font-mono font-semibold`}
 												>
 													{new Date(
 														session.last_used_at

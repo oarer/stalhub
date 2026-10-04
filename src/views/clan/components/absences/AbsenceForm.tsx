@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { cn } from '@/lib/cn'
@@ -49,7 +48,7 @@ export function AbsenceForm({
 			<p className="font-semibold">{t('clan.absence.myAbsence')}</p>
 			<div className="flex flex-col gap-3">
 				<Input
-					className={`${montserrat.className} text-[15px]`}
+					className={`font-mono text-[15px]`}
 					min={minDate}
 					onChange={(e) => onDateChange(e.target.value)}
 					type="date"
@@ -91,7 +90,7 @@ export function AbsenceForm({
 										return (
 											<Button
 												className={cn(
-													montserrat.className,
+													'font-mono',
 													'rounded-full px-3 py-1 font-semibold text-xs',
 													active &&
 														'bg-primary/20 text-primary'

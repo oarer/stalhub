@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -75,7 +76,9 @@ function ClanSessionsContent({
 		<div className="flex flex-col gap-3">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-2">
-					<h1 className="font-bold text-2xl">
+					<h1
+						className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+					>
 						{t('clan.sessions.title')}
 					</h1>
 					{isFetching && (
