@@ -6,6 +6,7 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import ArticleView from '@/views/articles/ArticleView'
+import { articleImageUrl } from '@/types/article.type'
 
 type PageProps = {
 	params: Promise<{ id: string }>
@@ -23,7 +24,13 @@ export async function generateMetadata({
 	try {
 		const article = await articleService.get(id)
 		const images = article.image_url
-			? [{ url: article.image_url, width: 1200, height: 630 }]
+			? [
+					{
+						url: articleImageUrl(article.image_url),
+						width: 1200,
+						height: 630,
+					},
+				]
 			: [
 					{
 						url: ogImageUrl,

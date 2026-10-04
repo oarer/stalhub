@@ -3381,6 +3381,29 @@
       "updateError": "저장 오류",
       "galleryHint": "제목, 목록, 표, 이미지 URL은 바로 사용 가능; 갤러리 업로드는 게시 후 가능."
     },
+    "cover": {
+      "title": "커버 패널",
+      "hint": "자동 «읽기 / 태그» 패널 대신 사용자 지정 행. 나머지는 자동으로 생성됩니다.",
+      "enabled": "사용자 지정 패널",
+      "preset": "프리셋",
+      "presetAuto": "자동",
+      "presetBeforeAfter": "이전 / 이후",
+      "presetMetrics": "측정 항목",
+      "presetHidden": "패널 숨기기",
+      "icon": "아이콘",
+      "iconNone": "아이콘 없음",
+      "iconCustom": "사용자 지정 이름",
+      "iconNotFound": "아이콘을 찾을 수 없음",
+      "iconHint": "이모지 또는 짧은 텍스트 (예: ⚡)",
+      "panelTitle": "패널 제목",
+      "row": "{n}행",
+      "rowLabel": "라벨",
+      "rowValue": "값",
+      "rowFill": "채우기, %",
+      "rowAccent": "Accent",
+      "reset": "초기화",
+      "preview": "미리보기"
+    },
     "back": "전체 글"
   }
 }

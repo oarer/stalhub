@@ -3381,6 +3381,29 @@
       "updateError": "Erreur d’enregistrement",
       "galleryHint": "Titres, listes, tableaux et images par URL aussitôt ; envoi vers la galerie après publication."
     },
+    "cover": {
+      "title": "Panneau de couverture",
+      "hint": "Lignes personnalisées au lieu du panneau auto « lecture / tags ». Le reste est généré automatiquement.",
+      "enabled": "Panneau personnalisé",
+      "preset": "Préréglage",
+      "presetAuto": "Auto",
+      "presetBeforeAfter": "Avant / Après",
+      "presetMetrics": "Métriques",
+      "presetHidden": "Masquer le panneau",
+      "icon": "Icône",
+      "iconNone": "Sans icône",
+      "iconCustom": "Nom personnalisé",
+      "iconNotFound": "Icône introuvable",
+      "iconHint": "Emoji ou texte court, p. ex. ⚡",
+      "panelTitle": "Titre du panneau",
+      "row": "Ligne {n}",
+      "rowLabel": "Libellé",
+      "rowValue": "Valeur",
+      "rowFill": "Remplissage, %",
+      "rowAccent": "Accent",
+      "reset": "Réinitialiser",
+      "preview": "Aperçu"
+    },
     "back": "Tous"
   }
 }

@@ -17,13 +17,18 @@ import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import {
 	ARTICLE_STATUS_META,
-	ArticleStatus,
+	type ArticleStatus,
 	ArticleType,
+	type ArticleCoverConfig,
 } from '@/types/article.type'
 import { ComponentsModal } from '@/views/me/components/article/ComponentsModal'
+import { CoverPanelModal } from '@/views/me/components/article/CoverPanelModal'
 import { EditorPane } from '@/views/me/components/article/EditorPane'
 import { EditorToolbar } from '@/views/me/components/article/EditorToolbar'
-import { applyEdit, parseTags } from '@/views/me/components/article/editor-utils'
+import {
+	applyEdit,
+	parseTags,
+} from '@/views/me/components/article/editor-utils'
 import { ImageModal } from '@/views/me/components/article/ImageModal'
 import { PreviewPane } from '@/views/me/components/article/PreviewPane'
 import { TableModal } from '@/views/me/components/article/TableModal'
@@ -38,6 +43,7 @@ type Initial = {
 	content: string
 	tags: string
 	imageUrl: string
+	coverConfig: ArticleCoverConfig | null
 }
 
 function EditorForm({
@@ -57,6 +63,7 @@ function EditorForm({
 		content: string
 		tags: string[]
 		image_url: string | null
+		cover_config: ArticleCoverConfig | null
 	}) => void
 	submitLabel: string
 	isSubmitPending: boolean
@@ -73,6 +80,8 @@ function EditorForm({
 	const [content, setContent] = useState(initial.content)
 	const [tags, setTags] = useState(initial.tags)
 	const [imageUrl, setImageUrl] = useState(initial.imageUrl)
+	const [coverConfig, setCoverConfig] = useState(initial.coverConfig)
+	const [coverModalOpen, setCoverModalOpen] = useState(false)
 	const [mobileTab, setMobileTab] = useState<EditorTab>('write')
 	const [tagsModalOpen, setTagsModalOpen] = useState(false)
 	const [componentsModalOpen, setComponentsModalOpen] = useState(false)
@@ -83,7 +92,8 @@ function EditorForm({
 		title !== initial.title ||
 		content !== initial.content ||
 		tags !== initial.tags ||
-		imageUrl !== initial.imageUrl
+		imageUrl !== initial.imageUrl ||
+		JSON.stringify(coverConfig) !== JSON.stringify(initial.coverConfig)
 
 	const canSubmit = title.trim() !== '' && content.trim() !== ''
 
@@ -94,8 +104,9 @@ function EditorForm({
 			content,
 			tags: parseTags(tags),
 			image_url: imageUrl.trim() || null,
+			cover_config: coverConfig,
 		})
-	}, [canSubmit, onSubmit, title, content, tags, imageUrl])
+	}, [canSubmit, onSubmit, title, content, tags, imageUrl, coverConfig])
 
 	const handleImageUpload = useCallback(
 		async (file: File) => {
@@ -158,6 +169,17 @@ function EditorForm({
 
 				<div className="flex shrink-0 items-center gap-2">
 					{headerBadge}
+					<Button
+						className="p-2.5"
+						onClick={() => setCoverModalOpen(true)}
+						title={t('blog.cover.title')}
+						variant="ghost"
+					>
+						<Icon
+							className="size-5"
+							icon="lucide:sliders-horizontal"
+						/>
+					</Button>
 					{publicHref && (
 						<Link
 							className="hidden text-primary text-sm hover:underline sm:inline"
@@ -267,6 +289,16 @@ function EditorForm({
 				onUpload={articleId ? handleImageUpload : undefined}
 				open={imageModalOpen}
 			/>
+
+			<CoverPanelModal
+				content={content}
+				initial={coverConfig}
+				onOpenChange={setCoverModalOpen}
+				onSave={setCoverConfig}
+				open={coverModalOpen}
+				tags={parseTags(tags)}
+				title={title}
+			/>
 		</section>
 	)
 }
@@ -282,6 +314,7 @@ function CreateMode() {
 			content: string
 			tags: string[]
 			image_url: string | null
+			cover_config: ArticleCoverConfig | null
 		}) =>
 			articleService.create({
 				title: data.title,
@@ -289,6 +322,7 @@ function CreateMode() {
 				type: ArticleType.STALHUB,
 				tags: data.tags,
 				image_url: data.image_url,
+				cover_config: data.cover_config,
 			}),
 		onSuccess: (article) => {
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
@@ -300,7 +334,13 @@ function CreateMode() {
 
 	return (
 		<EditorForm
-			initial={{ title: '', content: '', tags: '', imageUrl: '' }}
+			initial={{
+				title: '',
+				content: '',
+				tags: '',
+				imageUrl: '',
+				coverConfig: null,
+			}}
 			isCreate
 			isSubmitPending={createMutation.isPending}
 			onSubmit={(data) => createMutation.mutate(data)}
@@ -320,6 +360,7 @@ function EditMode({ articleId }: { articleId: string }) {
 			content: string
 			tags: string[]
 			image_url: string | null
+			cover_config: ArticleCoverConfig | null
 		}) => articleService.update(articleId, data),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['article', articleId] })
@@ -348,6 +389,7 @@ function EditMode({ articleId }: { articleId: string }) {
 				content: article.content,
 				tags: article.tags.join(', '),
 				imageUrl: article.image_url ?? '',
+				coverConfig: article.cover_config ?? null,
 			}}
 			isCreate={false}
 			isSubmitPending={updateMutation.isPending}

@@ -3381,6 +3381,29 @@
       "updateError": "Error al guardar",
       "galleryHint": "Encabezados, listas, tablas e imágenes por URL desde el inicio; subir a la galería tras publicar."
     },
+    "cover": {
+      "title": "Panel de portada",
+      "hint": "Filas personalizadas en lugar del panel automático «lectura / etiquetas». El resto se genera automáticamente.",
+      "enabled": "Panel personalizado",
+      "preset": "Preajuste",
+      "presetAuto": "Auto",
+      "presetBeforeAfter": "Antes / Después",
+      "presetMetrics": "Métricas",
+      "presetHidden": "Ocultar panel",
+      "icon": "Icono",
+      "iconNone": "Sin icono",
+      "iconCustom": "Nombre personalizado",
+      "iconNotFound": "Icono no encontrado",
+      "iconHint": "Emoji o texto corto, p. ej. ⚡",
+      "panelTitle": "Título del panel",
+      "row": "Fila {n}",
+      "rowLabel": "Etiqueta",
+      "rowValue": "Valor",
+      "rowFill": "Relleno, %",
+      "rowAccent": "Acento",
+      "reset": "Restablecer",
+      "preview": "Vista previa"
+    },
     "back": "Todas"
   }
 }

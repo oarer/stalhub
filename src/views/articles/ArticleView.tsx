@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import { MDXRemote } from 'next-mdx-remote'
 import { useEffect, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
+import BlogCover from '@/components/blog/BlogCover'
 import { Button } from '@/components/ui/Button'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
@@ -85,7 +86,7 @@ export default function ArticleView({
 					{article.title}
 				</h1>
 
-				{article.image_url && (
+				{article.image_url ? (
 					<div className="relative aspect-video w-full overflow-hidden rounded-lg">
 						<Image
 							alt={article.title}
@@ -95,6 +96,16 @@ export default function ArticleView({
 							src={article.image_url}
 						/>
 					</div>
+				) : (
+					<BlogCover
+						content={article.content}
+						icon={article.cover_config?.icon ?? null}
+						mode={article.cover_config?.mode ?? null}
+						panel={article.cover_config?.panel ?? null}
+						seed={article.id}
+						tags={article.tags}
+						title={article.title}
+					/>
 				)}
 
 				<div className="flex flex-wrap items-center gap-4 font-medium text-sm">

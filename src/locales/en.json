@@ -3394,6 +3394,29 @@
       "updateError": "Save error",
       "galleryHint": "Headings, lists, tables and image URLs work right away; gallery file upload unlocks after publishing."
     },
+    "cover": {
+      "title": "Cover panel",
+      "hint": "Custom rows instead of the auto “reading / tags” panel. Everything else stays auto-generated.",
+      "enabled": "Custom panel",
+      "preset": "Preset",
+      "presetAuto": "Auto",
+      "presetBeforeAfter": "Before / After",
+      "presetMetrics": "Metrics",
+      "presetHidden": "Hide panel",
+      "icon": "Icon",
+      "iconNone": "No icon",
+      "iconCustom": "Custom name",
+      "iconNotFound": "Icon not found",
+      "iconHint": "Emoji or short text, e.g. ⚡",
+      "panelTitle": "Panel title",
+      "row": "Row {n}",
+      "rowLabel": "Label",
+      "rowValue": "Value",
+      "rowFill": "Fill, %",
+      "rowAccent": "Accent",
+      "reset": "Reset",
+      "preview": "Preview"
+    },
     "back": "All posts"
   }
 }

@@ -77,11 +77,36 @@ export const articleImageUrl = (url: string) =>
 		? `${process.env.NEXT_PUBLIC_CDN_URL ?? ''}${url}`
 		: url
 
+export type ArticleCoverPanelMode = 'auto' | 'custom' | 'hidden'
+
+export interface ArticleCoverPanelRow {
+	label: string
+	value: string
+	/** bar fill 0..1 */
+	fill: number
+	/** orange value + bar, otherwise white value + gray bar */
+	accent?: boolean
+}
+
+export interface ArticleCoverPanel {
+	title?: string
+	rows?: ArticleCoverPanelRow[]
+}
+
+export interface ArticleCoverConfig {
+	mode?: ArticleCoverPanelMode
+	preset?: string
+	panel?: ArticleCoverPanel
+	/** custom top-left corner glyph (emoji or short text) */
+	icon?: string
+}
+
 export interface Article {
 	id: string
 	title: string
 	content: string
 	image_url: string | null
+	cover_config: ArticleCoverConfig | null
 	quest_name: string | null
 	quest_type: QuestType | null
 	quest_map: QuestMapData | null
@@ -111,6 +136,7 @@ export interface ArticleCreate {
 	title: string
 	content: string
 	image_url?: string | null
+	cover_config?: ArticleCoverConfig | null
 	quest_name?: string | null
 	quest_type?: QuestType | null
 	quest_map?: QuestMapData | null
@@ -126,6 +152,7 @@ export interface ArticleUpdate {
 	title?: string
 	content?: string
 	image_url?: string | null
+	cover_config?: ArticleCoverConfig | null
 	quest_name?: string | null
 	quest_type?: QuestType | null
 	quest_map?: QuestMapData | null
