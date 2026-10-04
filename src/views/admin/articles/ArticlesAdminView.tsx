@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -13,7 +14,6 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
-import { AdminPatchNoteForm } from './AdminPatchNoteForm'
 
 const STATUS_OPTIONS = [
 	ArticleStatus.PENDING,
@@ -25,12 +25,11 @@ const STATUS_OPTIONS = [
 
 export default function ArticlesAdminView() {
 	const t = useTranslations()
+	const router = useRouter()
 	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const [statusFilter, setStatusFilter] = useState<ArticleStatus | ''>('')
 	const take = 20
-
-	const [patchNoteOpen, setPatchNoteOpen] = useState(false)
 
 	const { data } = useSuspenseQuery({
 		queryKey: ['articles', { take, page }],
@@ -80,14 +79,16 @@ export default function ArticlesAdminView() {
 					<span className="text-neutral-400 text-sm">
 						{data?.total_count ?? 0} {t('admin.permissions.total')}
 					</span>
-					<Button onClick={() => setPatchNoteOpen(true)} size="sm" variant="primary">
+					<Button
+						onClick={() => router.push('/admin/articles/new')}
+						size="sm"
+						variant="primary"
+					>
 						<Icon icon="lucide:plus" />
 						{t('patchNotes.createTitle')}
 					</Button>
 				</div>
 			</div>
-
-			<AdminPatchNoteForm open={patchNoteOpen} onOpenChange={setPatchNoteOpen} />
 
 			<div className="flex flex-wrap items-center gap-2">
 				<Button
@@ -180,6 +181,17 @@ export default function ArticlesAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										<div className="flex items-center gap-1">
+											<Button
+												onClick={() =>
+													router.push(
+														`/admin/articles/${article.id}/edit`
+													)
+												}
+												title={t('patchNotes.editor.edit')}
+												variant="ghost"
+											>
+												<Icon icon="lucide:pencil" />
+											</Button>
 											<Modal.Root>
 												<Modal.Trigger variant="ghost">
 													<Icon icon="lucide:settings" />

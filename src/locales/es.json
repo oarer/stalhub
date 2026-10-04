@@ -3280,6 +3280,16 @@
     "toast": {
       "created": "Publicado",
       "createError": "Error"
+    },
+    "editor": {
+      "titlePlaceholder": "Título del cambio",
+      "publish": "Publicar",
+      "save": "Guardar",
+      "edit": "Editar",
+      "view": "Ver",
+      "updated": "Cambio guardado",
+      "updateError": "Error al guardar",
+      "galleryHint": "Encabezados, listas, tablas e imágenes por URL desde el inicio; subir a la galería tras publicar."
     }
   },
   "textFormatter": {

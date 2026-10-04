@@ -3280,6 +3280,16 @@
     "toast": {
       "created": "게시됨",
       "createError": "오류"
+    },
+    "editor": {
+      "titlePlaceholder": "변경 제목",
+      "publish": "게시",
+      "save": "저장",
+      "edit": "편집",
+      "view": "보기",
+      "updated": "변경 저장됨",
+      "updateError": "저장 오류",
+      "galleryHint": "제목, 목록, 표, 이미지 URL은 바로 사용 가능; 갤러리 업로드는 게시 후 가능."
     }
   },
   "textFormatter": {

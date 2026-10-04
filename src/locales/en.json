@@ -3293,6 +3293,16 @@
     "toast": {
       "created": "Patch note published",
       "createError": "Publish error"
+    },
+    "editor": {
+      "titlePlaceholder": "Change title",
+      "publish": "Publish",
+      "save": "Save",
+      "edit": "Edit",
+      "view": "View",
+      "updated": "Change saved",
+      "updateError": "Save error",
+      "galleryHint": "Headings, lists, tables and image URLs work right away; gallery file upload unlocks after publishing."
     }
   },
   "textFormatter": {
