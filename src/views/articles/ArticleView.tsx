@@ -25,9 +25,15 @@ const EMPTY_FRONTMATTER = {}
 
 interface ArticleViewProps {
 	articleId: string
+	backHref?: string
+	backLabelKey?: string
 }
 
-export default function ArticleView({ articleId }: ArticleViewProps) {
+export default function ArticleView({
+	articleId,
+	backHref = '/articles',
+	backLabelKey = 'articles.allArticles',
+}: ArticleViewProps) {
 	const t = useTranslations()
 	const { data: article } = useSuspenseQuery(articleQueries.get(articleId))
 	const components = useMDXComponents()
@@ -68,9 +74,9 @@ export default function ArticleView({ articleId }: ArticleViewProps) {
 			<header className="flex flex-col gap-4 border-primary border-b pb-6">
 				<Link
 					className="font-medium text-sm text-text-accent transition-colors hover:text-primary"
-					href="/articles"
+					href={backHref}
 				>
-					{t('articles.allArticles')}
+					{t(backLabelKey)}
 				</Link>
 
 				<h1

@@ -1,5 +1,5 @@
-import PatchNoteEditorView from '@/views/admin/articles/PatchNoteEditorView'
+import BlogEditorView from '@/views/admin/articles/BlogEditorView'
 
-export default function AdminPatchNoteNewPage() {
-	return <PatchNoteEditorView mode="create" />
+export default function AdminBlogNewPage() {
+	return <BlogEditorView mode="create" />
 }

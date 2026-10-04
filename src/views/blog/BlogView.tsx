@@ -10,12 +10,12 @@ import { Button } from '@/components/ui/Button'
 import { formatDate } from '@/lib/date'
 import { articleQueries } from '@/queries/article/article.queries'
 
-export default function PatchNotesView() {
+export default function BlogView() {
 	const t = useTranslations()
 	const [page, setPage] = useState(1)
 	const take = 20
 
-	const { data } = useSuspenseQuery(articleQueries.patchNotes({ take, page }))
+	const { data } = useSuspenseQuery(articleQueries.blogPosts({ take, page }))
 
 	const articles = data?.data ?? []
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
@@ -26,10 +26,10 @@ export default function PatchNotesView() {
 				<h1
 					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
 				>
-					{t('patchNotes.title')}
+					{t('blog.title')}
 				</h1>
 				<p className="font-medium text-muted-foreground text-sm">
-					{t('patchNotes.subtitle', { count: data?.total_count ?? 0 })}
+					{t('blog.subtitle', { count: data?.total_count ?? 0 })}
 				</p>
 			</div>
 
@@ -40,7 +40,7 @@ export default function PatchNotesView() {
 						icon="lucide:scroll-text"
 					/>
 					<p className="font-medium text-sm text-text-accent">
-						{t('patchNotes.empty')}
+						{t('blog.empty')}
 					</p>
 				</div>
 			) : (
@@ -48,12 +48,17 @@ export default function PatchNotesView() {
 					{articles.map((article) => (
 						<Link
 							className="group flex flex-col gap-3 rounded-lg border-2 border-primary/50 bg-card p-4 transition-colors hover:bg-accent/70"
-							href={`/patch-notes/${article.id}`}
+							href={`/blog/${article.id}`}
 							key={article.id}
 						>
-							<h2 className="font-medium text-lg transition-colors group-hover:text-primary">
-								{article.title}
-							</h2>
+							<div className="flex items-center gap-2">
+								<span className="rounded-md bg-primary/15 px-1.5 py-0.5 font-mono font-semibold text-primary text-[11px] uppercase">
+									stalhub
+								</span>
+								<h2 className="font-medium text-lg transition-colors group-hover:text-primary">
+									{article.title}
+								</h2>
+							</div>
 
 							<div className="flex items-center gap-3 font-medium text-text-accent text-xs">
 								<div className="flex items-center gap-1">

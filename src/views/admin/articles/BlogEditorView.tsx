@@ -150,7 +150,7 @@ function EditorForm({
 					</Button>
 					<Input
 						className="flex-1 border-0"
-						label="patchNotes.editor.titlePlaceholder"
+						label="blog.editor.titlePlaceholder"
 						onChange={(e) => setTitle(e.target.value)}
 						value={title}
 					/>
@@ -164,7 +164,7 @@ function EditorForm({
 							href={publicHref}
 							target="_blank"
 						>
-							{t('patchNotes.editor.view')}
+							{t('blog.editor.view')}
 						</Link>
 					)}
 					<Button
@@ -182,7 +182,7 @@ function EditorForm({
 
 			{isCreate && (
 				<p className="px-4 font-medium text-text-accent text-xs">
-					{t('patchNotes.editor.galleryHint')}
+					{t('blog.editor.galleryHint')}
 				</p>
 			)}
 
@@ -292,10 +292,10 @@ function CreateMode() {
 			}),
 		onSuccess: (article) => {
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
-			toast.success(t('patchNotes.toast.created'))
+			toast.success(t('blog.toast.created'))
 			router.replace(`/admin/articles/${article.id}/edit`)
 		},
-		onError: () => toast.error(t('patchNotes.toast.createError')),
+		onError: () => toast.error(t('blog.toast.createError')),
 	})
 
 	return (
@@ -304,7 +304,7 @@ function CreateMode() {
 			isCreate
 			isSubmitPending={createMutation.isPending}
 			onSubmit={(data) => createMutation.mutate(data)}
-			submitLabel={t('patchNotes.editor.publish')}
+			submitLabel={t('blog.editor.publish')}
 		/>
 	)
 }
@@ -324,9 +324,9 @@ function EditMode({ articleId }: { articleId: string }) {
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['article', articleId] })
 			queryClient.invalidateQueries({ queryKey: ['articles'] })
-			toast.success(t('patchNotes.editor.updated'))
+			toast.success(t('blog.editor.updated'))
 		},
-		onError: () => toast.error(t('patchNotes.editor.updateError')),
+		onError: () => toast.error(t('blog.editor.updateError')),
 	})
 
 	return (
@@ -352,13 +352,13 @@ function EditMode({ articleId }: { articleId: string }) {
 			isCreate={false}
 			isSubmitPending={updateMutation.isPending}
 			onSubmit={(data) => updateMutation.mutate(data)}
-			publicHref={`/patch-notes/${articleId}`}
-			submitLabel={t('patchNotes.editor.save')}
+			publicHref={`/blog/${articleId}`}
+			submitLabel={t('blog.editor.save')}
 		/>
 	)
 }
 
-export default function PatchNoteEditorView({
+export default function BlogEditorView({
 	mode,
 	articleId,
 }: {

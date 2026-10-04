@@ -85,7 +85,7 @@ export default function ArticlesAdminView() {
 						variant="primary"
 					>
 						<Icon icon="lucide:plus" />
-						{t('patchNotes.createTitle')}
+						{t('blog.createTitle')}
 					</Button>
 				</div>
 			</div>
@@ -187,7 +187,7 @@ export default function ArticlesAdminView() {
 														`/admin/articles/${article.id}/edit`
 													)
 												}
-												title={t('patchNotes.editor.edit')}
+												title={t('blog.editor.edit')}
 												variant="ghost"
 											>
 												<Icon icon="lucide:pencil" />

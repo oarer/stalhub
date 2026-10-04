@@ -32,9 +32,9 @@ class ArticleQueries {
 		})
 	}
 
-	patchNotes({ take = 20, page = 1 } = {}) {
+	blogPosts({ take = 20, page = 1 } = {}) {
 		return queryOptions<PaginatedResponse<Article>>({
-			queryKey: ['articles', 'public', 'patch-notes', { take, page }],
+			queryKey: ['articles', 'public', 'blog', { take, page }],
 			queryFn: () =>
 				articleService.publicList({ take, page, type: 'STALHUB' }),
 			placeholderData: keepPreviousData,

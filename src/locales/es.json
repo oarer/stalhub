@@ -350,9 +350,9 @@
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
           },
-          "patchNotes": {
-            "label": "Cambios",
-            "description": "Parches"
+          "blog": {
+            "label": "Blog",
+            "description": "Noticias"
           }
         }
       }
@@ -3317,35 +3317,6 @@
     "delete": "Delete",
     "noSessions": "No sessions yet"
   },
-  "patchNotes": {
-    "title": "Cambios",
-    "subtitle": "Notas de parche — {count}",
-    "empty": "Sin cambios",
-    "createTitle": "Crear nota",
-    "createDescription": "Se publica al instante (STALHUB)",
-    "form": {
-      "title": "Título",
-      "image": "Portada (URL)",
-      "tags": "Etiquetas",
-      "content": "Texto (MDX)",
-      "contentPlaceholder": "## Qué cambió...",
-      "create": "Publicar"
-    },
-    "toast": {
-      "created": "Publicado",
-      "createError": "Error"
-    },
-    "editor": {
-      "titlePlaceholder": "Título del cambio",
-      "publish": "Publicar",
-      "save": "Guardar",
-      "edit": "Editar",
-      "view": "Ver",
-      "updated": "Cambio guardado",
-      "updateError": "Error al guardar",
-      "galleryHint": "Encabezados, listas, tablas e imágenes por URL desde el inicio; subir a la galería tras publicar."
-    }
-  },
   "textFormatter": {
     "title": "Formato de texto",
     "subtitle": "Texto de colores y degradados (§)",
@@ -3381,5 +3352,35 @@
     "count": "Cant.",
     "total": "Total",
     "missing": "Faltan"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Noticias — {count} publicaciones",
+    "empty": "Vacío",
+    "createTitle": "Escribir",
+    "createDescription": "Se publica al instante (STALHUB)",
+    "form": {
+      "title": "Título",
+      "image": "Portada (URL)",
+      "tags": "Etiquetas",
+      "content": "Texto (MDX)",
+      "contentPlaceholder": "## Qué cambió...",
+      "create": "Publicar"
+    },
+    "toast": {
+      "created": "Publicado",
+      "createError": "Error"
+    },
+    "editor": {
+      "titlePlaceholder": "Título del cambio",
+      "publish": "Publicar",
+      "save": "Guardar",
+      "edit": "Editar",
+      "view": "Ver",
+      "updated": "Cambio guardado",
+      "updateError": "Error al guardar",
+      "galleryHint": "Encabezados, listas, tablas e imágenes por URL desde el inicio; subir a la galería tras publicar."
+    },
+    "back": "Todas"
   }
 }

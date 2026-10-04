@@ -350,9 +350,9 @@
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
           },
-          "patchNotes": {
-            "label": "Changements",
-            "description": "Patchs"
+          "blog": {
+            "label": "Blog",
+            "description": "Actus"
           }
         }
       }
@@ -3317,35 +3317,6 @@
     "delete": "Delete",
     "noSessions": "No sessions yet"
   },
-  "patchNotes": {
-    "title": "Changements",
-    "subtitle": "Patch notes — {count}",
-    "empty": "Aucun changement",
-    "createTitle": "Créer une note",
-    "createDescription": "Publié immédiatement (STALHUB)",
-    "form": {
-      "title": "Titre",
-      "image": "Couverture (URL)",
-      "tags": "Tags",
-      "content": "Texte (MDX)",
-      "contentPlaceholder": "## Quoi de neuf...",
-      "create": "Publier"
-    },
-    "toast": {
-      "created": "Publié",
-      "createError": "Erreur"
-    },
-    "editor": {
-      "titlePlaceholder": "Titre du changement",
-      "publish": "Publier",
-      "save": "Enregistrer",
-      "edit": "Modifier",
-      "view": "Voir",
-      "updated": "Changement enregistré",
-      "updateError": "Erreur d’enregistrement",
-      "galleryHint": "Titres, listes, tableaux et images par URL aussitôt ; envoi vers la galerie après publication."
-    }
-  },
   "textFormatter": {
     "title": "Formatage du texte",
     "subtitle": "Texte couleur et dégradés (§)",
@@ -3381,5 +3352,35 @@
     "count": "Qté",
     "total": "Total",
     "missing": "Manquants"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Actus — {count} articles",
+    "empty": "Vide",
+    "createTitle": "Écrire",
+    "createDescription": "Publié immédiatement (STALHUB)",
+    "form": {
+      "title": "Titre",
+      "image": "Couverture (URL)",
+      "tags": "Tags",
+      "content": "Texte (MDX)",
+      "contentPlaceholder": "## Quoi de neuf...",
+      "create": "Publier"
+    },
+    "toast": {
+      "created": "Publié",
+      "createError": "Erreur"
+    },
+    "editor": {
+      "titlePlaceholder": "Titre du changement",
+      "publish": "Publier",
+      "save": "Enregistrer",
+      "edit": "Modifier",
+      "view": "Voir",
+      "updated": "Changement enregistré",
+      "updateError": "Erreur d’enregistrement",
+      "galleryHint": "Titres, listes, tableaux et images par URL aussitôt ; envoi vers la galerie après publication."
+    },
+    "back": "Tous"
   }
 }

@@ -350,9 +350,9 @@
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
           },
-          "patchNotes": {
-            "label": "변경 사항",
-            "description": "패치"
+          "blog": {
+            "label": "블로그",
+            "description": "소식"
           }
         }
       }
@@ -3317,35 +3317,6 @@
     "delete": "Delete",
     "noSessions": "No sessions yet"
   },
-  "patchNotes": {
-    "title": "변경 사항",
-    "subtitle": "패치 노트 — {count}",
-    "empty": "변경 없음",
-    "createTitle": "패치 노트 작성",
-    "createDescription": "즉시 게시됨 (STALHUB)",
-    "form": {
-      "title": "제목",
-      "image": "커버 (URL)",
-      "tags": "태그",
-      "content": "본문 (MDX)",
-      "contentPlaceholder": "## 변경 내용...",
-      "create": "게시"
-    },
-    "toast": {
-      "created": "게시됨",
-      "createError": "오류"
-    },
-    "editor": {
-      "titlePlaceholder": "변경 제목",
-      "publish": "게시",
-      "save": "저장",
-      "edit": "편집",
-      "view": "보기",
-      "updated": "변경 저장됨",
-      "updateError": "저장 오류",
-      "galleryHint": "제목, 목록, 표, 이미지 URL은 바로 사용 가능; 갤러리 업로드는 게시 후 가능."
-    }
-  },
   "textFormatter": {
     "title": "텍스트 서식",
     "subtitle": "색상 텍스트와 그라디언트 (§)",
@@ -3381,5 +3352,35 @@
     "count": "개수",
     "total": "합계",
     "missing": "DB 없음"
+  },
+  "blog": {
+    "title": "블로그",
+    "subtitle": "소식 — {count}개 글",
+    "empty": "비어 있음",
+    "createTitle": "글 쓰기",
+    "createDescription": "즉시 게시됨 (STALHUB)",
+    "form": {
+      "title": "제목",
+      "image": "커버 (URL)",
+      "tags": "태그",
+      "content": "본문 (MDX)",
+      "contentPlaceholder": "## 변경 내용...",
+      "create": "게시"
+    },
+    "toast": {
+      "created": "게시됨",
+      "createError": "오류"
+    },
+    "editor": {
+      "titlePlaceholder": "변경 제목",
+      "publish": "게시",
+      "save": "저장",
+      "edit": "편집",
+      "view": "보기",
+      "updated": "변경 저장됨",
+      "updateError": "저장 오류",
+      "galleryHint": "제목, 목록, 표, 이미지 URL은 바로 사용 가능; 갤러리 업로드는 게시 후 가능."
+    },
+    "back": "전체 글"
   }
 }

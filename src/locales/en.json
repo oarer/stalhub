@@ -350,9 +350,9 @@
             "label": "Tier Lists",
             "description": "Tier lists by players"
           },
-          "patchNotes": {
-            "label": "Changelog",
-            "description": "Patches and updates"
+          "blog": {
+            "label": "Blog",
+            "description": "News and updates"
           }
         }
       }
@@ -3330,35 +3330,6 @@
     "delete": "Delete",
     "noSessions": "No sessions yet"
   },
-  "patchNotes": {
-    "title": "Changelog",
-    "subtitle": "StalHub patch notes — {count} entries",
-    "empty": "No changes yet",
-    "createTitle": "Create patch note",
-    "createDescription": "Patch note is published immediately (STALHUB type)",
-    "form": {
-      "title": "Title",
-      "image": "Cover (URL)",
-      "tags": "Tags comma separated",
-      "content": "Text (MDX)",
-      "contentPlaceholder": "## What changed...",
-      "create": "Publish"
-    },
-    "toast": {
-      "created": "Patch note published",
-      "createError": "Publish error"
-    },
-    "editor": {
-      "titlePlaceholder": "Change title",
-      "publish": "Publish",
-      "save": "Save",
-      "edit": "Edit",
-      "view": "View",
-      "updated": "Change saved",
-      "updateError": "Save error",
-      "galleryHint": "Headings, lists, tables and image URLs work right away; gallery file upload unlocks after publishing."
-    }
-  },
   "textFormatter": {
     "title": "Text formatting",
     "subtitle": "Colored text and gradients (§-codes, §#hex)",
@@ -3394,5 +3365,35 @@
     "count": "Count",
     "total": "Total",
     "missing": "Missing in DB"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "StalHub news and updates — {count} posts",
+    "empty": "Nothing yet",
+    "createTitle": "Write post",
+    "createDescription": "Patch note is published immediately (STALHUB type)",
+    "form": {
+      "title": "Title",
+      "image": "Cover (URL)",
+      "tags": "Tags comma separated",
+      "content": "Text (MDX)",
+      "contentPlaceholder": "## What changed...",
+      "create": "Publish"
+    },
+    "toast": {
+      "created": "Patch note published",
+      "createError": "Publish error"
+    },
+    "editor": {
+      "titlePlaceholder": "Change title",
+      "publish": "Publish",
+      "save": "Save",
+      "edit": "Edit",
+      "view": "View",
+      "updated": "Change saved",
+      "updateError": "Save error",
+      "galleryHint": "Headings, lists, tables and image URLs work right away; gallery file upload unlocks after publishing."
+    },
+    "back": "All posts"
   }
 }

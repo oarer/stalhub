@@ -8,7 +8,7 @@ type PageProps = {
 	params: Promise<{ id: string }>
 }
 
-export default async function PatchNotePage({ params }: PageProps) {
+export default async function BlogPostPage({ params }: PageProps) {
 	const { id } = await params
 	const queryClient = getQueryClient()
 
@@ -20,7 +20,7 @@ export default async function PatchNotePage({ params }: PageProps) {
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
-			<ArticleView articleId={id} />
+			<ArticleView articleId={id} backHref="/blog" backLabelKey="blog.back" />
 		</HydrationBoundary>
 	)
 }
