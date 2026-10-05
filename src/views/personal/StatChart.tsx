@@ -3,6 +3,7 @@
 import {
 	CategoryScale,
 	Chart as ChartJS,
+	type ChartOptions,
 	Filler,
 	Legend,
 	LinearScale,
@@ -10,9 +11,12 @@ import {
 	PointElement,
 	Tooltip,
 } from 'chart.js'
+import { useTheme } from 'next-themes'
+import { useLocale, useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
-import { useTheme } from 'next-themes'
+import { getBaseLineOptions } from '@/lib/chart-theme'
+import { formatStatValue, type SeriesPoint, toDeltaPoints } from './statMeta'
 
 ChartJS.register(
 	CategoryScale,
@@ -24,52 +28,119 @@ ChartJS.register(
 	Filler
 )
 
+export type ChartMode = 'absolute' | 'delta'
+
 export function StatChart({
 	points,
 	label,
+	statId,
+	mode = 'absolute',
 }: {
-	points: { t: string; v: number }[]
+	points: SeriesPoint[]
 	label: string
+	statId: string
+	mode?: ChartMode
 }) {
 	const { resolvedTheme } = useTheme()
+	const t = useTranslations('personal')
+	const locale = useLocale()
 
-	const data = useMemo(
-		() => ({
-			labels: points.map((p) => new Date(p.t).toLocaleString()),
-			datasets: [
-				{
-					label,
-					data: points.map((p) => p.v),
-					borderColor: '#8b5cf6',
-					backgroundColor: 'rgba(139, 92, 246, 0.2)',
-					fill: true,
-					tension: 0.3,
-					pointRadius: 3,
-				},
-			],
-		}),
-		[points, label]
+	const shown = useMemo(
+		() => (mode === 'delta' ? toDeltaPoints(points) : points),
+		[points, mode]
 	)
 
+	const data = useMemo(() => {
+		const labels = shown.map((p) => {
+			const d = new Date(p.t)
+			return Number.isNaN(d.getTime())
+				? p.t
+				: d.toLocaleString(locale, {
+						day: '2-digit',
+						month: '2-digit',
+						hour: '2-digit',
+						minute: '2-digit',
+					})
+		})
+		const accent = mode === 'delta' ? '#22c55e' : '#0092D1'
+	return {
+		labels,
+		datasets: [
+			{
+				label: mode === 'delta' ? `${label} — ${t('chartGrowth')}` : label,
+				data: shown.map((p) => p.v),
+				fill: true,
+				tension: 0,
+				borderWidth: 2,
+				pointRadius: 4,
+				pointHoverRadius: 6,
+				borderColor: accent,
+				backgroundColor: `${accent}20`,
+			},
+		],
+	}
+	}, [shown, label, mode, locale, t])
+
+	const allEqual = shown.length > 1 && shown.every((p) => p.v === shown[0]!.v)
+
+	const base = getBaseLineOptions()
+
+	const options: ChartOptions<'line'> = {
+		...base,
+		plugins: {
+			...base.plugins,
+			tooltip: {
+				...base.plugins?.tooltip,
+				callbacks: {
+					label: (ctx) =>
+						` ${formatStatValue(statId, Number(ctx.parsed.y), locale)}`,
+				},
+			},
+		},
+		scales: {
+			...base.scales,
+			y: {
+				...base.scales?.y,
+				beginAtZero: mode === 'delta',
+				ticks: {
+					...base.scales?.y?.ticks,
+					callback: (v) => formatStatValue(statId, Number(v), locale),
+				},
+			},
+		},
+	}
+
 	if (points.length === 0) {
-		return <div className="py-8 text-center text-muted-foreground text-sm">—</div>
+		return (
+			<div className="py-8 text-center text-muted-foreground text-sm">
+				{t('chartNoData')}
+			</div>
+		)
 	}
 
 	return (
-		<div className="h-64">
-			<Line
-				data={data}
-				key={resolvedTheme ?? 'light'}
-				options={{
-					maintainAspectRatio: false,
-					responsive: true,
-					plugins: { legend: { display: false } },
-					scales: {
-						x: { ticks: { maxTicksLimit: 8 } },
-						y: { beginAtZero: true },
-					},
-				}}
-			/>
+		<div>
+			{allEqual && (
+				<p className="mb-1 text-muted-foreground text-xs">
+					{t('chartUnchanged')}:{' '}
+					{formatStatValue(statId, shown[0]!.v, locale)}
+				</p>
+			)}
+			<div className="h-64">
+				<Line
+					data={data}
+					key={`${resolvedTheme ?? 'light'}-${mode}`}
+					options={options}
+				/>
+			</div>
+			<div className="mt-1 flex justify-between text-muted-foreground text-xs">
+				<span>{new Date(points[0]!.t).toLocaleString(locale)}</span>
+				<span>
+					{new Date(points[points.length - 1]!.t).toLocaleString(
+						locale
+					)}
+				</span>
+			</div>
 		</div>
 	)
 }

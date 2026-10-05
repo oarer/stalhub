@@ -1,108 +1,151 @@
 'use client'
 
-import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import { Icon } from '@iconify/react'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-import { toast } from '@/components/ui/Toast'
+import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import Input from '@/components/ui/Input'
+import { Skeleton } from '@/components/ui/Skeleton'
 import { personalQueries } from '@/queries/personal/personal.queries'
-import { personalService } from '@/services/personal/personal.service'
+import { STAGE_TYPES } from '@/views/clan/components/sessions/session.const'
+import { usePersonalUpload } from './hooks/usePersonalUpload'
+import { PersonalSessionRow } from './PersonalSessionRow'
+import { PersonalUploadModal } from './PersonalUploadModal'
+
+type SessionFilter = 'ALL' | string
 
 export function PersonalSessions({ region }: { region: string }) {
-	const t = useTranslations('personal')
-	const qc = useQueryClient()
-	const { data: sessions } = useSuspenseQuery(personalQueries.getSessions())
-	const [mapName, setMapName] = useState('')
-	const [busy, setBusy] = useState(false)
+	const t = useTranslations()
+	const { data: sessions, isFetching } = useSuspenseQuery(
+		personalQueries.getSessions()
+	)
+	const [filter, setFilter] = useState<SessionFilter>('ALL')
 
-	const reload = () => qc.invalidateQueries({ queryKey: ['personal'] })
+	const {
+		uploadOpen,
+		mode,
+		setMode,
+		mapName,
+		setMapName,
+		uploadType,
+		uploadStage,
+		uploadDate,
+		uploadFile,
+		setUploadFile,
+		detected,
+		handleOpenChange,
+		handleTypeChange,
+		setUploadStage,
+		setUploadDate,
+		invalidate,
+		uploadMutation,
+	} = usePersonalUpload(region)
 
-	const create = async () => {
-		if (!mapName.trim()) return
-		setBusy(true)
-		try {
-			await personalService.createSession({
-				region,
-				map_name: mapName.trim(),
-				type: 'TOURNAMENT',
-			})
-			setMapName('')
-			toast.success(t('sessionCreated'))
-			reload()
-		} catch (e) {
-			toast.error(e instanceof Error ? e.message : 'Error')
-		} finally {
-			setBusy(false)
-		}
-	}
-
-	const remove = async (id: number) => {
-		if (!confirm(t('sessionDeleteConfirm'))) return
-		await personalService.deleteSession(id)
-		reload()
-	}
-
-	const upload = async (id: number, file: File) => {
-		try {
-			await personalService.uploadScreenshot(id, file)
-			toast.success(t('screenshotUploaded'))
-			reload()
-		} catch (e) {
-			toast.error(e instanceof Error ? e.message : 'Error')
-		}
-	}
+	const filtered = useMemo(() => {
+		if (!sessions) return []
+		return filter === 'ALL'
+			? sessions
+			: sessions.filter((s) => s.type === filter)
+	}, [sessions, filter])
 
 	return (
 		<Card.Root className="flex flex-col gap-3 p-5">
-			<h3 className="font-semibold">{t('sessionsTitle')}</h3>
-			<div className="flex gap-2">
-				<Input
-					onChange={(e) => setMapName(e.target.value)}
-					placeholder={t('sessionPlaceholder')}
-					value={mapName}
+			<div className="flex items-center justify-between">
+				<div className="flex items-center gap-2">
+					<h3 className="font-semibold">
+						{t('personal.sessionsTitle')}
+					</h3>
+					{isFetching && (
+						<Icon
+							className="animate-spin text-base text-text-accent"
+							icon="lucide:loader-circle"
+						/>
+					)}
+				</div>
+				<PersonalUploadModal
+					detected={detected}
+					mapName={mapName}
+					mode={mode}
+					onDateChange={setUploadDate}
+					onFileChange={setUploadFile}
+					onMapNameChange={setMapName}
+					onModeChange={setMode}
+					onOpenChange={handleOpenChange}
+					onStageChange={setUploadStage}
+					onTypeChange={handleTypeChange}
+					onUpload={() =>
+						uploadFile && uploadMutation.mutate(uploadFile)
+					}
+					open={uploadOpen}
+					uploadDate={uploadDate}
+					uploadFile={uploadFile}
+					uploading={uploadMutation.isPending}
+					uploadStage={uploadStage}
+					uploadType={uploadType}
 				/>
-				<Button disabled={busy || !mapName.trim()} onClick={create}>
-					{t('sessionCreate')}
+			</div>
+
+			<div className="flex flex-wrap items-center gap-2">
+				<Button
+					className="font-semibold"
+					key="all"
+					onClick={() => setFilter('ALL')}
+					size="sm"
+					variant={filter === 'ALL' ? 'primary' : 'ghost'}
+				>
+					{t('clan.filters.ALL')}
 				</Button>
-			</div>
-			<div className="flex flex-col gap-2">
-				{(sessions ?? []).map((s) => (
-					<div
-						className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-accent px-3 py-2 text-sm"
-						key={s.id}
+				{STAGE_TYPES.map((stageType) => (
+					<Button
+						className="gap-2 font-semibold"
+						key={stageType.value}
+						onClick={() => setFilter(stageType.value)}
+						size="sm"
+						variant={
+							filter === stageType.value ? 'primary' : 'ghost'
+						}
 					>
-						<div>
-							<p className="font-medium">{s.map_name}</p>
-							<p className="text-muted-foreground text-xs">
-								{s.type} · {new Date(s.started_at).toLocaleString()}
-								{s.victory === true ? ' · ✓' : s.victory === false ? ' · ✗' : ''}
-							</p>
-						</div>
-						<div className="flex items-center gap-2">
-							<label className="cursor-pointer rounded-md bg-primary px-2 py-1 text-primary-foreground text-xs">
-								{t('upload')}
-								<input
-									accept="image/png,image/jpeg,image/webp"
-									className="hidden"
-									onChange={(e) => {
-										const f = e.target.files?.[0]
-										if (f) upload(s.id, f)
-									}}
-									type="file"
-								/>
-							</label>
-							<Button onClick={() => remove(s.id)} size="sm" variant="ghost">
-								{t('delete')}
-							</Button>
-						</div>
-					</div>
+						<Icon className="text-base" icon={stageType.icon} />
+						{t(stageType.label)}
+					</Button>
 				))}
-				{(sessions ?? []).length === 0 && (
-					<p className="text-muted-foreground text-sm">{t('noSessions')}</p>
-				)}
 			</div>
+
+			{!sessions || sessions.length === 0 ? (
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-6">
+					<Icon className="text-4xl" icon="lucide:swords" />
+					<h3 className="font-semibold text-lg">
+						{t('personal.noSessions')}
+					</h3>
+					<p className="font-semibold text-md">
+						{t('personal.noSessionsHint')}
+					</p>
+				</div>
+			) : filtered.length === 0 ? (
+				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-6">
+					<Icon className="text-4xl" icon="lucide:filter-x" />
+					<h3 className="font-semibold text-lg">
+						{t('personal.noSessions')}
+					</h3>
+				</div>
+			) : (
+				<div className="flex flex-col gap-2">
+					{filtered.map((session) => (
+						<PersonalSessionRow
+							key={session.id}
+							onChanged={invalidate}
+							session={session}
+						/>
+					))}
+				</div>
+			)}
+
+			{isFetching && (
+				<div className="flex flex-col gap-2">
+					<Skeleton className="h-16 w-full" />
+				</div>
+			)}
 		</Card.Root>
 	)
 }

@@ -49,7 +49,7 @@ export function ModulesView({ variant = 'page' }: ModulesViewProps) {
 			{variant === 'page' && (
 				<div className="text-center">
 					<h1
-						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('modules.title')}
 					</h1>

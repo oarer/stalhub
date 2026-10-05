@@ -140,7 +140,7 @@ export default function TierListDetailView() {
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center gap-3">
 						<h1
-							className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+							className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 						>
 							{tierList.title}
 						</h1>

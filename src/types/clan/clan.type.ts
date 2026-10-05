@@ -482,3 +482,32 @@ export interface ClanBoostOrder {
 export interface ClanBoostOrdersResponse {
 	orders: ClanBoostOrder[]
 }
+
+export interface PublicClanStatRow {
+	clan_id: string
+	tag: string
+	name: string
+	sessions: number
+	battles: number
+	wins: number
+	losses: number
+	winrate: number
+	kills: number
+	deaths: number
+	kd: number
+}
+
+export interface PublicClansStats {
+	clans: PublicClanStatRow[]
+	total: {
+		clans: number
+		sessions: number
+		battles: number
+		wins: number
+		losses: number
+		winrate: number
+		kills: number
+		deaths: number
+		kd: number
+	} | null
+}

@@ -15,6 +15,7 @@ import {
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
+import { unbounded } from '@/app/fonts'
 import { getChartColors } from '@/lib/chart-theme'
 import type { BPSimResult } from '../utils/bp'
 
@@ -27,6 +28,9 @@ ChartJS.register(
 	Legend,
 	Filler
 )
+
+const CHART_FONT = unbounded.style.fontFamily
+ChartJS.defaults.font.family = CHART_FONT
 
 const shortDate = (iso: string) =>
 	new Date(`${iso}T12:00:00`).toLocaleDateString('ru-RU', {
@@ -83,8 +87,8 @@ export function BPProgressChart({ sim }: { sim: BPSimResult }) {
 				borderColor: colors.tooltip.borderColor,
 				borderWidth: 1,
 				padding: 10,
-				titleFont: { size: 12, weight: 'bold' },
-				bodyFont: { size: 12 },
+				titleFont: { size: 12, weight: 'bold', family: CHART_FONT },
+				bodyFont: { size: 12, family: CHART_FONT },
 				callbacks: {
 					title: (items: TooltipItem<'line'>[]) => {
 						const i = items[0]?.dataIndex ?? 0
@@ -104,7 +108,7 @@ export function BPProgressChart({ sim }: { sim: BPSimResult }) {
 				ticks: {
 					color: colors.axis,
 					maxTicksLimit: 8,
-					font: { size: 11 },
+					font: { size: 11, family: CHART_FONT },
 					callback: (_, index) => shortDate(labels[index] ?? ''),
 				},
 			},
@@ -115,7 +119,7 @@ export function BPProgressChart({ sim }: { sim: BPSimResult }) {
 				grid: { color: colors.grid },
 				ticks: {
 					color: colors.axis,
-					font: { size: 11 },
+					font: { size: 11, family: CHART_FONT },
 					maxTicksLimit: 5,
 					callback: (v) =>
 						typeof v === 'number' ? v.toLocaleString('ru-RU') : v,

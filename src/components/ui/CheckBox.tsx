@@ -138,7 +138,7 @@ function CheckBox({
 					{label && (
 						<label
 							className={cn(
-								'cursor-pointer select-none text-sm',
+								'cursor-pointer select-none font-medium text-sm',
 								disabled && 'cursor-not-allowed opacity-50'
 							)}
 							htmlFor={id}
@@ -147,7 +147,9 @@ function CheckBox({
 						</label>
 					)}
 					{description && (
-						<p className={`font-mono text-xs`}>{description}</p>
+						<p className={`font-medium text-[11px] text-muted-foreground`}>
+							{description}
+						</p>
 					)}
 				</div>
 			</div>

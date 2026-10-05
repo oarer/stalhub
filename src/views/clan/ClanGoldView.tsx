@@ -100,7 +100,7 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 		<div className="flex flex-col gap-4">
 			<div>
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('clan.gold.title')}
 				</h1>

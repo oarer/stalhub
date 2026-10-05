@@ -21,7 +21,8 @@ export default function DonateCalcView() {
 		return (data.items ?? [])
 			.filter((i) => i.has_market)
 			.map((i) => {
-				const affordable = i.stalcoins > 0 ? Math.floor(coins / i.stalcoins) : 0
+				const affordable =
+					i.stalcoins > 0 ? Math.floor(coins / i.stalcoins) : 0
 				return { ...i, affordable, totalValue: affordable * i.price }
 			})
 	}, [data, coins])
@@ -29,7 +30,9 @@ export default function DonateCalcView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div>
-				<h1 className={`${mtsExtended.className} font-medium text-[28px] leading-none`}>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('donateCalc.title')}
 				</h1>
 				<p className="mt-2 font-medium text-muted-foreground text-sm">
@@ -43,12 +46,18 @@ export default function DonateCalcView() {
 					id="stalcoins"
 					label="donateCalc.input"
 					min={0}
-					onChange={(e) => setCoins(e.target.value === '' ? 0 : Number(e.target.value))}
+					onChange={(e) =>
+						setCoins(
+							e.target.value === '' ? 0 : Number(e.target.value)
+						)
+					}
 					type="number"
 					value={coins}
 				/>
 				<Alert.Root className="flex-1" variant="default">
-					<Alert.Description>{t('donateCalc.hint')}</Alert.Description>
+					<Alert.Description>
+						{t('donateCalc.hint')}
+					</Alert.Description>
 				</Alert.Root>
 			</div>
 
@@ -56,33 +65,70 @@ export default function DonateCalcView() {
 				<table className="w-full text-sm">
 					<thead>
 						<tr className="text-left text-text-accent">
-							<th className="px-3 py-2 font-medium">{t('donateCalc.item')}</th>
-							<th className="px-3 py-2 font-medium">{t('donateCalc.coins')}</th>
-							<th className="px-3 py-2 font-medium">{t('donateCalc.price')}</th>
-							<th className="px-3 py-2 font-medium">{t('donateCalc.perCoin')}</th>
-							<th className="px-3 py-2 font-medium">{t('donateCalc.count')}</th>
-							<th className="px-3 py-2 font-medium">{t('donateCalc.total')}</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.item')}
+							</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.coins')}
+							</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.price')}
+							</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.perCoin')}
+							</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.count')}
+							</th>
+							<th className="px-3 py-2 font-medium">
+								{t('donateCalc.total')}
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						{rows.map((r) => (
-							<tr className="border-t border-border/50" key={r.key}>
+							<tr
+								className="border-border/50 border-t"
+								key={r.key}
+							>
 								<td className="px-3 py-2">
 									<span className="flex items-center gap-2">
 										{r.icon && (
-											<Image alt={r.id} height={28} src={`https://cdn.stalhub.dev/db${r.icon}`} width={28} />
+											<Image
+												alt={r.id}
+												height={28}
+												src={`https://cdn.stalhub.dev/db${r.icon}`}
+												width={28}
+											/>
 										)}
-										<span className="font-medium">{messageToString(r.name as never, locale)}</span>
+										<span className="font-medium">
+											{messageToString(
+												r.name as never,
+												locale
+											)}
+										</span>
 										{r.amount > 1 && (
-											<span className="font-mono text-text-accent text-xs">×{r.amount}</span>
+											<span className="font-mono text-text-accent text-xs">
+												×{r.amount}
+											</span>
 										)}
 									</span>
 								</td>
-								<td className="px-3 py-2 font-mono">{r.stalcoins}</td>
-								<td className="px-3 py-2 font-mono text-yellow-400">{r.price.toLocaleString()} ₽</td>
-								<td className="px-3 py-2 font-mono text-green-400">{r.price_per_coin.toLocaleString()}</td>
-								<td className="px-3 py-2 font-mono">{r.affordable}</td>
-								<td className="px-3 py-2 font-mono">{r.totalValue.toLocaleString()} ₽</td>
+								<td className="px-3 py-2 font-mono">
+									{r.stalcoins}
+								</td>
+								<td className="px-3 py-2 font-mono text-yellow-400">
+									{r.price.toLocaleString()} ₽
+								</td>
+								<td className="px-3 py-2 font-mono text-green-400">
+									{r.price_per_coin.toLocaleString()}
+								</td>
+								<td className="px-3 py-2 font-mono">
+									{r.affordable}
+								</td>
+								<td className="px-3 py-2 font-mono">
+									{r.totalValue.toLocaleString()} ₽
+								</td>
 							</tr>
 						))}
 					</tbody>

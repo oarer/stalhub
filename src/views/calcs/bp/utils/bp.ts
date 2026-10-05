@@ -123,8 +123,7 @@ export const simulateBP = (input: BPSimInput): BPSimResult => {
 				cursor.getMonth(),
 				cursor.getDate()
 			).getTime()
-			boosted =
-				input.boostOn && t >= boostStart && t < boostEnd
+			boosted = input.boostOn && t >= boostStart && t < boostEnd
 			if (boosted) daily = Math.round(daily * BP_BOOST_MULT)
 
 			dayTasks = tasks

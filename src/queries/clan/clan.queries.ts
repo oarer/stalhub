@@ -22,6 +22,7 @@ import type {
 	ListingItem,
 	MyClanProfile,
 	PublicClan,
+	PublicClansStats,
 	StageSession,
 	StageSessionDetail,
 	UserClanProfile,
@@ -207,6 +208,14 @@ class ClanQueries {
 			queryFn: () => clanService.getPublicClan(clanId),
 			staleTime: 1000 * 60,
 			retry: false,
+		})
+	}
+
+	getPublicClansStats() {
+		return queryOptions<PublicClansStats>({
+			queryKey: ['clan', 'public', 'stats'],
+			queryFn: () => clanService.getPublicClansStats(),
+			staleTime: 1000 * 300,
 		})
 	}
 

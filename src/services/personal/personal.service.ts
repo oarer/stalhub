@@ -106,6 +106,13 @@ class PersonalService {
 		return data
 	}
 
+	async retryScreenshot(screenshotId: number): Promise<unknown> {
+		const { data } = await apiClient.post(
+			`/api/v1/personal/screenshots/${screenshotId}/retry`
+		)
+		return data
+	}
+
 	async getStageStats(): Promise<PersonalStageStats> {
 		const { data } = await apiClient.get<PersonalStageStats>(
 			'/api/v1/personal/stage-stats'

@@ -215,7 +215,7 @@ export default function BuyView() {
 	return (
 		<section className="mx-auto flex max-w-300 flex-col gap-4 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('buy.title')}
 			</h1>

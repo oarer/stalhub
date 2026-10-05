@@ -34,7 +34,7 @@ export default function ClanCatalogView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('clans.title')}
 			</h1>

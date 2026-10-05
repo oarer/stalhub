@@ -45,7 +45,7 @@ export default function BansAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('admin.bans.title')}
 			</h1>

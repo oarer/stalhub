@@ -38,11 +38,47 @@ export interface PersonalSummary {
 	last: PersonalSnapshot | null
 }
 
+export interface PersonalClanStageStats {
+	clan_id: string | null
+	tag: string | null
+	name: string | null
+	sessions: number
+	appearances: number
+	kills: number
+	deaths: number
+	assists: number
+	kd: number
+	kda: number
+}
+
 export interface PersonalStageStats {
 	sessions: number
 	appearances: number
 	kills: number
-	per_stage: { session_id: number; kills: number; deaths: number }[]
+	deaths: number
+	assists: number
+	kd: number
+	kda: number
+	per_clan: PersonalClanStageStats[]
+	per_stage: {
+		session_id: number
+		map_name: string
+		started_at: string
+		clan: string
+		kills: number
+		deaths: number
+		assists: number
+	}[]
+	per_map: {
+		map: string
+		sessions: number
+		wins: number
+		losses: number
+		winrate: number
+		kills: number
+		deaths: number
+		kd: number
+	}[]
 }
 
 export interface PublicPersonal {
@@ -54,6 +90,7 @@ export interface PublicPersonal {
 		last_snapshot_at: string | null
 	}
 	snapshots: PersonalSnapshot[]
+	stage_stats: Omit<PersonalStageStats, 'per_stage'>
 }
 
 export interface PersonalSession {
@@ -66,4 +103,5 @@ export interface PersonalSession {
 	ended_at: string | null
 	stage_number: number | null
 	victory?: boolean | null
+	_count?: { screenshots: number; attendance?: number }
 }

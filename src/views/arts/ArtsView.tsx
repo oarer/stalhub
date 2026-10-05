@@ -25,7 +25,9 @@ export default function ArtsView() {
 	const [page, setPage] = useState(1)
 	const [search, setSearch] = useState('')
 	const [tab, setTab] = useState<'all' | 'default' | 'nsfw'>('all')
-	const [sort, setSort] = useState<'newest' | 'oldest' | 'views' | 'stars'>('newest')
+	const [sort, setSort] = useState<'newest' | 'oldest' | 'views' | 'stars'>(
+		'newest'
+	)
 	const [nsfwGateOpen, setNsfwGateOpen] = useState(false)
 	const pendingTabNsfw = useRef(false)
 	const pendingNsfwId = useRef<string | null>(null)
@@ -35,7 +37,11 @@ export default function ArtsView() {
 	const take = 24
 
 	const type: ArtType | undefined =
-		tab === 'nsfw' ? ArtType.NSFW : tab === 'default' ? ArtType.DEFAULT : undefined
+		tab === 'nsfw'
+			? ArtType.NSFW
+			: tab === 'default'
+				? ArtType.DEFAULT
+				: undefined
 
 	const tags = debouncedSearch
 		? debouncedSearch
@@ -65,7 +71,7 @@ export default function ArtsView() {
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<>
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('arts.title')}
 				</h1>

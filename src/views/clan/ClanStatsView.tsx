@@ -9,6 +9,7 @@ import { clanQueries } from '@/queries/clan/clan.queries'
 import ClanChartsView from './ClanChartsView'
 import { formatKd } from './clan.utils'
 import { StatCard } from './components/dashboard/StatCard'
+import { MapStatsTable, type MapStatRow } from './components/stats/MapStatsTable'
 import { PlayerList } from './components/stats/PlayerList'
 import { buildPlayers } from './components/stats/stats.utils'
 
@@ -30,9 +31,62 @@ function ClanStatsContent({ clanId }: { clanId: string }) {
 	const { data: grenadeStages } = useSuspenseQuery(
 		clanQueries.getGrenadeStages(clanId)
 	)
+	const { data: members } = useSuspenseQuery(clanQueries.getMembers(clanId))
 	const [selected, setSelected] = useState<string | null>(null)
 
 	const players = useMemo(() => buildPlayers(stats), [stats])
+
+	const mapRows: MapStatRow[] = useMemo(() => {
+		const memberNames = new Set(
+			(members ?? []).map((m) => m.name.trim().toLowerCase())
+		)
+		const byMap = new Map<
+			string,
+			{ sessions: number; wins: number; losses: number; kills: number; deaths: number }
+		>()
+		for (const s of stats.sessions) {
+			const key = s.map_name?.trim() || '—'
+			const b = byMap.get(key) ?? {
+				sessions: 0,
+				wins: 0,
+				losses: 0,
+				kills: 0,
+				deaths: 0,
+			}
+			b.sessions++
+			let w = 0
+			let l = 0
+			for (const sh of s.screenshots) {
+				if (sh.victory === true) w++
+				else if (sh.victory === false) l++
+				for (const p of sh.players) {
+					if (!memberNames.has(p.name.trim().toLowerCase())) continue
+					b.kills += p.kills ?? 0
+					b.deaths += p.deaths ?? 0
+				}
+			}
+			if (w + l > 0) {
+				if (w >= l) b.wins++
+				else b.losses++
+			}
+			byMap.set(key, b)
+		}
+		return [...byMap.entries()]
+			.map(([map, b]) => {
+				const decided = b.wins + b.losses
+				return {
+					map,
+					sessions: b.sessions,
+					wins: b.wins,
+					losses: b.losses,
+					winrate: decided > 0 ? b.wins / decided : 0,
+					kills: b.kills,
+					deaths: b.deaths,
+					kd: b.deaths > 0 ? b.kills / b.deaths : b.kills,
+				}
+			})
+			.sort((x, y) => y.sessions - x.sessions || y.kd - x.kd)
+	}, [stats, members])
 
 	const grenadeTotals = useMemo(() => {
 		const map = new Map<string, number>()
@@ -90,6 +144,12 @@ function ClanStatsContent({ clanId }: { clanId: string }) {
 					value={formatKd(clanKills, clanDeaths)}
 				/>
 			</div>
+
+			{mapRows.length > 0 && (
+				<div className="rounded-xl bg-card px-5 py-4">
+					<MapStatsTable rows={mapRows} />
+				</div>
+			)}
 
 			{players.length === 0 ? (
 				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">

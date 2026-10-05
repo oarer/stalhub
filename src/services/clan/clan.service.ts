@@ -31,6 +31,7 @@ import type {
 	MismatchesResponse,
 	MyClanProfile,
 	PublicClan,
+	PublicClansStats,
 	RecruitmentSettings,
 	SquadMap,
 	StageSession,
@@ -379,6 +380,13 @@ class ClanService {
 	async getPublicClan(clanId: string): Promise<PublicClan | null> {
 		const { data } = await apiClient.get<PublicClan | null>(
 			`/api/v1/clans/${clanId}`
+		)
+		return data
+	}
+
+	async getPublicClansStats(): Promise<PublicClansStats> {
+		const { data } = await apiClient.get<PublicClansStats>(
+			'/api/v1/clans/stats/summary'
 		)
 		return data
 	}

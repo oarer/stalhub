@@ -230,7 +230,7 @@ function ModalDescription({ children, className = '' }: Props) {
 }
 
 function ModalBody({ children, className = '' }: Props) {
-	return <div className={cn('pb-4', className)}>{children}</div>
+	return <div className={cn('pb-4 text-[13px]', className)}>{children}</div>
 }
 
 function ModalFooter({ children, className = '' }: Props) {

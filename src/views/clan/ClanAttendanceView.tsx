@@ -89,7 +89,7 @@ function AttendanceContent({
 			<ClanAbsenceView />
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('title')}
 				</h1>

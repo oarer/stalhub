@@ -282,6 +282,12 @@ export const NAV_STRUCTURE: NavGroup[] = [
 								labelKey: 'nav.groups.clans.items.clans.label',
 							},
 							{
+								key: 'clanStats',
+								icon: 'lucide:bar-chart-3',
+								href: '/clans/stats',
+								labelKey: 'nav.groups.clans.items.clanStats.label',
+							},
+							{
 								key: 'clanMaps',
 								icon: 'lucide:map-pinned',
 								href: '/maps/cw',

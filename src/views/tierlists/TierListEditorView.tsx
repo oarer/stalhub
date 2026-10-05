@@ -344,7 +344,7 @@ export default function TierListEditorView() {
 			<div className="flex flex-col gap-5">
 				<div className="flex items-center justify-between">
 					<h1
-						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{isEditing
 							? t('tierlists.editor.edit')

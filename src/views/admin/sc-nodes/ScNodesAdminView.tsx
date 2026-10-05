@@ -190,7 +190,7 @@ export default function ScNodesAdminView() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('admin.scNodes.title')}
 				</h1>

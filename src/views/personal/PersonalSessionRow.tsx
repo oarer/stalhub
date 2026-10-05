@@ -7,29 +7,30 @@ import { useCallback, useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/Badge'
 import { Divider } from '@/components/ui/Divider'
 import { Modal } from '@/components/ui/Modal'
+import { Skeleton } from '@/components/ui/Skeleton'
 import { toast } from '@/components/ui/Toast'
 import { formatDate } from '@/lib/date'
-import { clanService } from '@/services/clan/clan.service'
-import type { StageSession, StageSessionDetail } from '@/types/clan/clan.type'
-import { useClanRoles } from '../../hooks/useClanRoles'
-import { MismatchesPanel } from './MismatchesPanel'
-import { ScreenshotStatusList } from './ScreenshotStatusList'
-import { SessionSummary } from './SessionSummary'
+import { personalService } from '@/services/personal/personal.service'
+import type { StageSessionDetail } from '@/types/clan/clan.type'
+import type { PersonalSession } from '@/types/personal/personal.type'
+import { ScreenshotStatusList } from '@/views/clan/components/sessions/ScreenshotStatusList'
+import { SessionSummary } from '@/views/clan/components/sessions/SessionSummary'
 
-export function SessionRow({
+export function PersonalSessionRow({
 	session,
-	onUpload,
+	onChanged,
 }: {
-	session: StageSession
-	onUpload: () => void
+	session: PersonalSession
+	onChanged: () => void
 }) {
 	const t = useTranslations()
-	const { clan_id, isOfficer } = useClanRoles()
 	const [expanded, setExpanded] = useState(false)
 	const [detail, setDetail] = useState<StageSessionDetail | null>(null)
 
 	const refreshDetail = useCallback(async () => {
-		const d = await clanService.getSession(session.id)
+		const d = (await personalService.getSession(
+			session.id
+		)) as StageSessionDetail | null
 		setDetail(d)
 		return d
 	}, [session.id])
@@ -49,7 +50,7 @@ export function SessionRow({
 				wasActive = true
 				timer = setTimeout(poll, 3000)
 			} else if (wasActive) {
-				onUpload()
+				onChanged()
 			}
 		}
 		poll()
@@ -57,11 +58,11 @@ export function SessionRow({
 			stopped = true
 			clearTimeout(timer)
 		}
-	}, [expanded, refreshDetail, onUpload])
+	}, [expanded, refreshDetail, onChanged])
 
 	const retryMutation = useMutation({
 		mutationFn: async (screenshotId: number) => {
-			await clanService.retryScreenshot(screenshotId)
+			await personalService.retryScreenshot(screenshotId)
 			await refreshDetail()
 		},
 		onSuccess: () => {
@@ -74,9 +75,9 @@ export function SessionRow({
 
 	const [deleteOpen, setDeleteOpen] = useState(false)
 	const deleteMutation = useMutation({
-		mutationFn: () => clanService.deleteSession(session.id),
+		mutationFn: () => personalService.deleteSession(session.id),
 		onSuccess: () => {
-			onUpload()
+			onChanged()
 			toast.success(t('clan.sessions.toasts.deleted'))
 		},
 		onError: () => {
@@ -87,6 +88,7 @@ export function SessionRow({
 	const hasActive = detail?.screenshots.some(
 		(s) => s.ai_status === 'pending' || s.ai_status === 'processing'
 	)
+	const shotCount = session._count?.screenshots ?? 0
 
 	return (
 		<div className="rounded-lg bg-card px-5 py-4">
@@ -97,33 +99,21 @@ export function SessionRow({
 					type="button"
 				>
 					<div className="flex flex-col gap-1">
-						<div className="flex items-center gap-2">
+						<div className="flex flex-wrap items-center gap-2">
 							<h3 className="font-semibold">
 								{t(`clan.stage.${session.type}`)} |{' '}
 								{session.map_name} | {t('clan.sessions.stage')}{' '}
-								{session.stage_number}
+								{session.stage_number ?? '—'}
 							</h3>
-							<span
-								className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
-									session.victory
-										? 'bg-green-500/20 text-success'
-										: 'bg-red-500/20 text-destructive'
-								}`}
-							>
-								{session.victory
-									? t('clan.common.victory')
-									: t('clan.common.defeat')}
-							</span>
-							{session.total_score != null && (
-								<Badge
-									className="font-mono"
-									variant={'secondary'}
-								>
-									{t('clan.sessions.scorePoints', {
-										score: session.total_score,
-									})}
-								</Badge>
-							)}
+							{session.victory === true ? (
+								<span className="rounded bg-green-500/20 px-1.5 py-0.5 font-semibold text-success text-xs">
+									{t('clan.common.victory')}
+								</span>
+							) : session.victory === false ? (
+								<span className="rounded bg-red-500/20 px-1.5 py-0.5 font-semibold text-destructive text-xs">
+									{t('clan.common.defeat')}
+								</span>
+							) : null}
 							{hasActive && (
 								<Badge
 									className="text-primary"
@@ -136,10 +126,17 @@ export function SessionRow({
 									{t('clan.sessions.analyzing')}
 								</Badge>
 							)}
+							{shotCount === 0 && (
+								<Badge variant="secondary">
+									<Icon
+										className="text-sm"
+										icon="lucide:image-plus"
+									/>
+									{t('personal.noScreenshotsShort')}
+								</Badge>
+							)}
 						</div>
-						<p
-							className={`font-mono font-semibold text-[11px] text-text-accent`}
-						>
+						<p className="font-mono font-semibold text-[11px] text-text-accent">
 							{formatDate(session.started_at)}
 						</p>
 					</div>
@@ -165,9 +162,7 @@ export function SessionRow({
 										: '',
 									date: formatDate(session.started_at),
 									span: (chunks) => (
-										<span
-											className={`font-mono text-primary text-sm`}
-										>
+										<span className="font-mono font-semibold text-primary text-sm">
 											{chunks}
 										</span>
 									),
@@ -236,16 +231,18 @@ export function SessionRow({
 								</Badge>
 							)}
 						</div>
+						{shotCount === 0 && detail && (
+							<UploadIntoSession
+								onUploaded={refreshDetail}
+								sessionId={session.id}
+							/>
+						)}
 					</div>
 
 					{!detail ? (
 						<div className="flex flex-col gap-2">
-							{[...Array(2)].map((_, i) => (
-								<div
-									className="h-10 w-full animate-pulse rounded-lg bg-accent/50"
-									key={i}
-								/>
-							))}
+							<Skeleton className="h-10 w-full" />
+							<Skeleton className="h-10 w-full" />
 						</div>
 					) : (
 						<>
@@ -258,77 +255,64 @@ export function SessionRow({
 									screenshots={detail.screenshots}
 								/>
 							)}
-
 							{detail.ai_summary && (
 								<SessionSummary summary={detail.ai_summary} />
-							)}
-
-							{isOfficer &&
-								detail.screenshots
-									.filter((s) => s.ai_status === 'done')
-									.map((s) => (
-										<MismatchesPanel
-											clanId={clan_id ?? ''}
-											key={s.id}
-											screenshotId={s.id}
-										/>
-									))}
-
-							{detail.attendance.length > 0 && (
-								<>
-									<div className="flex items-center justify-between">
-										<p className="font-semibold text-sm">
-											{t('clan.sessions.attendance')}
-										</p>
-										<span
-											className={`font-mono font-semibold text-text-accent text-xs`}
-										>
-											{t('clan.sessions.presentOf', {
-												present:
-													detail.attendance.filter(
-														(a) =>
-															a.status ===
-															'PRESENT'
-													).length,
-												total: detail.attendance.length,
-											})}
-										</span>
-									</div>
-									<div className="flex flex-wrap gap-2">
-										{[...detail.attendance]
-											.sort((a, b) => {
-												if (a.status === b.status)
-													return 0
-												return a.status === 'PRESENT'
-													? -1
-													: 1
-											})
-											.map((a) => (
-												<Badge
-													className={
-														a.status === 'PRESENT'
-															? 'bg-green-500/20 text-success'
-															: 'bg-red-500/20 text-destructive'
-													}
-													key={a.id}
-													variant="secondary"
-												>
-													{a.name ||
-														a.user?.name ||
-														'—'}
-													{a.status === 'ABSENT' &&
-														t(
-															'clan.sessions.absent'
-														)}
-												</Badge>
-											))}
-									</div>
-								</>
 							)}
 						</>
 					)}
 				</div>
 			)}
 		</div>
+	)
+}
+
+function UploadIntoSession({
+	sessionId,
+	onUploaded,
+}: {
+	sessionId: number
+	onUploaded: () => void
+}) {
+	const t = useTranslations()
+	const [busy, setBusy] = useState(false)
+	const uploadMutation = useMutation({
+		mutationFn: (file: File) =>
+			personalService.uploadScreenshot(sessionId, file),
+		onSuccess: () => {
+			toast.success(t('clan.sessions.toasts.uploaded'))
+			onUploaded()
+		},
+		onError: () => {
+			toast.error(t('clan.sessions.toasts.uploadError'))
+		},
+	})
+
+	return (
+		<label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border-2 border-primary/50 border-dashed px-3 py-2 font-semibold text-sm transition-colors hover:bg-accent/10">
+			{busy || uploadMutation.isPending ? (
+				<Icon
+					className="animate-spin text-base"
+					icon="lucide:loader-circle"
+				/>
+			) : (
+				<Icon className="text-base" icon="lucide:image-plus" />
+			)}
+			{t('clan.sessions.selectFile')}
+			<input
+				accept="image/png,image/jpeg,image/webp"
+				className="hidden"
+				disabled={busy || uploadMutation.isPending}
+				onChange={(e) => {
+					const f = e.target.files?.[0]
+					if (!f) return
+					setBusy(true)
+					uploadMutation.mutate(f, {
+						onSettled: () => setBusy(false),
+					})
+					e.target.value = ''
+				}}
+				type="file"
+			/>
+		</label>
 	)
 }

@@ -13,8 +13,22 @@ import {
 } from '@/lib/stalcraft-text'
 
 const BASE_CODES = [
-	'0', '1', '2', '3', '4', '5', '6', '7',
-	'8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+	'0',
+	'1',
+	'2',
+	'3',
+	'4',
+	'5',
+	'6',
+	'7',
+	'8',
+	'9',
+	'A',
+	'B',
+	'C',
+	'D',
+	'E',
+	'F',
 ]
 
 export default function TextFormatterView() {
@@ -45,7 +59,9 @@ export default function TextFormatterView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div>
-				<h1 className={`${mtsExtended.className} font-medium text-[28px] leading-none`}>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('textFormatter.title')}
 				</h1>
 				<p className="mt-2 font-medium text-muted-foreground text-sm">
@@ -56,13 +72,23 @@ export default function TextFormatterView() {
 			<div className="grid gap-4 lg:grid-cols-2">
 				<div className="flex flex-col gap-4 rounded-xl border-2 border-primary/20 bg-card p-5">
 					<div className="flex items-center gap-2">
-						<Button onClick={() => setMode('pda')} size="sm" variant={mode === 'pda' ? 'primary' : 'outline'}>
+						<Button
+							onClick={() => setMode('pda')}
+							size="sm"
+							variant={mode === 'pda' ? 'primary' : 'outline'}
+						>
 							PDA · 800
 						</Button>
-						<Button onClick={() => setMode('clan')} size="sm" variant={mode === 'clan' ? 'primary' : 'outline'}>
+						<Button
+							onClick={() => setMode('clan')}
+							size="sm"
+							variant={mode === 'clan' ? 'primary' : 'outline'}
+						>
 							{t('textFormatter.clan')} · 320
 						</Button>
-						<span className={`ml-auto font-mono text-xs ${raw.length > limit ? 'text-red-400' : 'text-text-accent'}`}>
+						<span
+							className={`ml-auto font-mono text-xs ${raw.length > limit ? 'text-red-400' : 'text-text-accent'}`}
+						>
 							{raw.length} / {limit}
 						</span>
 					</div>
@@ -79,10 +105,13 @@ export default function TextFormatterView() {
 					<div className="flex flex-wrap gap-1.5">
 						{BASE_CODES.map((c) => (
 							<button
-								className="flex size-8 items-center justify-center rounded-md border border-border font-mono text-xs font-bold"
+								className="flex size-8 items-center justify-center rounded-md border border-border font-bold font-mono text-xs"
 								key={c}
 								onClick={() => insertCode(c)}
-								style={{ background: STALCRAFT_COLORS[c], color: '#000' }}
+								style={{
+									background: STALCRAFT_COLORS[c],
+									color: '#000',
+								}}
 								title={`§${c}`}
 								type="button"
 							>
@@ -99,12 +128,32 @@ export default function TextFormatterView() {
 					</div>
 
 					<div className="flex flex-col gap-2 rounded-lg bg-accent/40 p-3">
-						<span className="font-semibold text-sm">{t('textFormatter.gradient')}</span>
-						<Input label="textFormatter.gradientText" onChange={(e) => setGradText(e.target.value)} value={gradText} />
+						<span className="font-semibold text-sm">
+							{t('textFormatter.gradient')}
+						</span>
+						<Input
+							label="textFormatter.gradientText"
+							onChange={(e) => setGradText(e.target.value)}
+							value={gradText}
+						/>
 						<div className="flex items-center gap-2">
-							<input className="size-9 cursor-pointer rounded border border-border bg-transparent" onChange={(e) => setFrom(e.target.value)} type="color" value={from} />
-							<input className="size-9 cursor-pointer rounded border border-border bg-transparent" onChange={(e) => setTo(e.target.value)} type="color" value={to} />
-							<Button onClick={applyGradient} size="sm" variant="primary">
+							<input
+								className="size-9 cursor-pointer rounded border border-border bg-transparent"
+								onChange={(e) => setFrom(e.target.value)}
+								type="color"
+								value={from}
+							/>
+							<input
+								className="size-9 cursor-pointer rounded border border-border bg-transparent"
+								onChange={(e) => setTo(e.target.value)}
+								type="color"
+								value={to}
+							/>
+							<Button
+								onClick={applyGradient}
+								size="sm"
+								variant="primary"
+							>
 								{t('textFormatter.applyGradient')}
 							</Button>
 						</div>
@@ -121,11 +170,13 @@ export default function TextFormatterView() {
 				</div>
 
 				<div className="flex flex-col gap-4 rounded-xl border-2 border-primary/20 bg-card p-5">
-					<span className="font-semibold text-sm">{t('textFormatter.preview')}</span>
+					<span className="font-semibold text-sm">
+						{t('textFormatter.preview')}
+					</span>
 					<div className="min-h-40 rounded-lg bg-black/80 p-4 font-mono text-[15px] leading-relaxed">
 						<StalcraftText text={preview} />
 					</div>
-					<div className="rounded-lg bg-accent/40 p-3 text-xs text-text-accent">
+					<div className="rounded-lg bg-accent/40 p-3 text-text-accent text-xs">
 						{t('textFormatter.hint')}
 					</div>
 				</div>

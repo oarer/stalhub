@@ -10,7 +10,10 @@ import { Button } from '@/components/ui/Button'
 import { CheckBox } from '@/components/ui/CheckBox'
 import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
-import { barterCalcQueries, type BarterTreeNode } from '@/queries/barter/barter-calc.queries'
+import {
+	type BarterTreeNode,
+	barterCalcQueries,
+} from '@/queries/barter/barter-calc.queries'
 import { messageToString } from '@/utils/itemUtils'
 
 function iconUrl(category: string) {
@@ -30,7 +33,12 @@ function collectTotals(
 	if (node.children.length === 0) {
 		const e = out.get(node.item_id)
 		if (e) e.amount += cur
-		else out.set(node.item_id, { name: node.name, category: node.category, amount: cur })
+		else
+			out.set(node.item_id, {
+				name: node.name,
+				category: node.category,
+				amount: cur,
+			})
 		return
 	}
 	for (const ch of node.children) collectTotals(ch, cur, done, key, out)
@@ -52,20 +60,38 @@ function TreeNode({
 	const key = `${path}/${node.item_id}`
 	const isDone = done.has(key)
 	return (
-		<div className={depth > 0 ? 'ml-4 border-l-2 border-primary/20 pl-3' : ''}>
-			<div className={`flex items-center gap-2 rounded-lg p-2 ${isDone ? 'opacity-50 line-through' : 'bg-accent/40'}`}>
-				<CheckBox checked={isDone} onCheckedChange={() => onToggle(key)} />
+		<div
+			className={
+				depth > 0 ? 'ml-4 border-primary/20 border-l-2 pl-3' : ''
+			}
+		>
+			<div
+				className={`flex items-center gap-2 rounded-lg p-2 ${isDone ? 'line-through opacity-50' : 'bg-accent/40'}`}
+			>
+				<CheckBox
+					checked={isDone}
+					onCheckedChange={() => onToggle(key)}
+				/>
 				{iconUrl(node.category) && (
-					<Image alt={node.name} height={28} src={iconUrl(node.category)!} width={28} />
+					<Image
+						alt={node.name}
+						height={28}
+						src={iconUrl(node.category)!}
+						width={28}
+					/>
 				)}
 				<span className="font-medium text-sm">
 					{node.name} ×{node.amount}
 				</span>
 				{node.money > 0 && (
-					<span className="font-mono text-yellow-400 text-xs">{node.money.toLocaleString()} ₽</span>
+					<span className="font-mono text-xs text-yellow-400">
+						{node.money.toLocaleString()} ₽
+					</span>
 				)}
 				{node.level && (
-					<span className="font-mono text-text-accent text-xs">ур. {node.level}</span>
+					<span className="font-mono text-text-accent text-xs">
+						ур. {node.level}
+					</span>
 				)}
 				{!node.craftable && (
 					<span className="text-text-accent text-xs">— базовый</span>
@@ -73,7 +99,14 @@ function TreeNode({
 			</div>
 			{!isDone &&
 				node.children.map((ch, i) => (
-					<TreeNode depth={depth + 1} done={done} key={`${ch.item_id}-${i}`} node={ch} onToggle={onToggle} path={key} />
+					<TreeNode
+						depth={depth + 1}
+						done={done}
+						key={`${ch.item_id}-${i}`}
+						node={ch}
+						onToggle={onToggle}
+						path={key}
+					/>
 				))}
 		</div>
 	)
@@ -108,7 +141,10 @@ export default function BarterCalcView() {
 			if (next.has(key)) next.delete(key)
 			else next.add(key)
 			try {
-				localStorage.setItem(`barter-done-${selected}`, JSON.stringify([...next]))
+				localStorage.setItem(
+					`barter-done-${selected}`,
+					JSON.stringify([...next])
+				)
 			} catch {}
 			return next
 		})
@@ -120,7 +156,10 @@ export default function BarterCalcView() {
 		if (!q) return arr.slice(0, 50)
 		return arr
 			.filter((i) => {
-				const name = messageToString(i.lines as never, locale).toLowerCase()
+				const name = messageToString(
+					i.lines as never,
+					locale
+				).toLowerCase()
 				return name.includes(q) || i.item_id.toLowerCase().includes(q)
 			})
 			.slice(0, 50)
@@ -128,7 +167,10 @@ export default function BarterCalcView() {
 
 	const totals = useMemo(() => {
 		if (!tree) return []
-		const out = new Map<string, { name: string; category: string; amount: number }>()
+		const out = new Map<
+			string,
+			{ name: string; category: string; amount: number }
+		>()
 		collectTotals(tree, 1, done, '', out)
 		return [...out.entries()].map(([id, v]) => ({ id, ...v }))
 	}, [tree, done])
@@ -136,7 +178,9 @@ export default function BarterCalcView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div>
-				<h1 className={`${mtsExtended.className} font-medium text-[28px] leading-none`}>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('barterCalc.title')}
 				</h1>
 				<p className="mt-2 font-medium text-muted-foreground text-sm">
@@ -146,7 +190,11 @@ export default function BarterCalcView() {
 
 			<div className="grid gap-4 lg:grid-cols-[320px_1fr]">
 				<div className="flex flex-col gap-2 rounded-xl border-2 border-primary/20 bg-card p-4">
-					<Input label="barterCalc.search" onChange={(e) => setSearch(e.target.value)} value={search} />
+					<Input
+						label="barterCalc.search"
+						onChange={(e) => setSearch(e.target.value)}
+						value={search}
+					/>
 					<div className="flex max-h-120 flex-col gap-1 overflow-y-auto">
 						{items.map((i) => (
 							<button
@@ -156,9 +204,16 @@ export default function BarterCalcView() {
 								type="button"
 							>
 								{i.category && (
-									<Image alt={i.item_id} height={24} src={`https://cdn.stalhub.dev/db/icons${i.category}.png`} width={24} />
+									<Image
+										alt={i.item_id}
+										height={24}
+										src={`https://cdn.stalhub.dev/db/icons${i.category}.png`}
+										width={24}
+									/>
 								)}
-								<span className="truncate">{messageToString(i.lines as never, locale)}</span>
+								<span className="truncate">
+									{messageToString(i.lines as never, locale)}
+								</span>
 							</button>
 						))}
 					</div>
@@ -166,36 +221,74 @@ export default function BarterCalcView() {
 
 				<div className="flex flex-col gap-4">
 					{!selected ? (
-						<div className="flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-card p-8 text-text-accent text-sm">
+						<div className="flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-card p-8 text-sm text-text-accent">
 							<Icon icon="lucide:info" />
 							{t('barterCalc.pick')}
 						</div>
 					) : isPending ? (
-						<div className="rounded-xl border-2 border-primary/20 bg-card p-8 text-sm">…</div>
+						<div className="rounded-xl border-2 border-primary/20 bg-card p-8 text-sm">
+							…
+						</div>
 					) : tree ? (
 						<>
 							<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-								<div className="mb-2 font-semibold text-sm">{t('barterCalc.tree')}</div>
-								<TreeNode depth={0} done={done} node={tree} onToggle={toggle} path="" />
+								<div className="mb-2 font-semibold text-sm">
+									{t('barterCalc.tree')}
+								</div>
+								<TreeNode
+									depth={0}
+									done={done}
+									node={tree}
+									onToggle={toggle}
+									path=""
+								/>
 							</div>
 							<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-								<div className="mb-2 font-semibold text-sm">{t('barterCalc.totals')}</div>
+								<div className="mb-2 font-semibold text-sm">
+									{t('barterCalc.totals')}
+								</div>
 								{totals.length === 0 ? (
-									<p className="text-text-accent text-sm">{t('barterCalc.allDone')}</p>
+									<p className="text-sm text-text-accent">
+										{t('barterCalc.allDone')}
+									</p>
 								) : (
 									<div className="flex flex-col gap-1.5">
 										{totals.map((r) => (
-											<div className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm" key={r.id}>
+											<div
+												className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm"
+												key={r.id}
+											>
 												{r.category && (
-													<Image alt={r.name} height={24} src={`https://cdn.stalhub.dev/db/icons${r.category}.png`} width={24} />
+													<Image
+														alt={r.name}
+														height={24}
+														src={`https://cdn.stalhub.dev/db/icons${r.category}.png`}
+														width={24}
+													/>
 												)}
-												<span className="flex-1 truncate">{r.name}</span>
-												<span className="font-mono text-yellow-400">×{r.amount}</span>
+												<span className="flex-1 truncate">
+													{r.name}
+												</span>
+												<span className="font-mono text-yellow-400">
+													×{r.amount}
+												</span>
 											</div>
 										))}
 									</div>
 								)}
-								<Button className="mt-3" onClick={() => { setDone(new Set()); try { localStorage.removeItem(`barter-done-${selected}`) } catch {} }} size="sm" variant="outline">
+								<Button
+									className="mt-3"
+									onClick={() => {
+										setDone(new Set())
+										try {
+											localStorage.removeItem(
+												`barter-done-${selected}`
+											)
+										} catch {}
+									}}
+									size="sm"
+									variant="outline"
+								>
 									{t('barterCalc.reset')}
 								</Button>
 							</div>

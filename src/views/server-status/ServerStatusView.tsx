@@ -67,7 +67,7 @@ export default function ServerStatusView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('servers.title')}
 			</h1>
@@ -103,28 +103,42 @@ export default function ServerStatusView() {
 
 			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
 				<div className="flex items-center gap-2">
-					<Icon className="text-primary text-xl" icon="lucide:radiation" />
-					<h2 className="font-medium text-lg">{t('servers.emissions')}</h2>
+					<Icon
+						className="text-primary text-xl"
+						icon="lucide:radiation"
+					/>
+					<h2 className="font-medium text-lg">
+						{t('servers.emissions')}
+					</h2>
 				</div>
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{[
 						{ label: 'RU', data: emissionRU },
 						{ label: 'EU', data: emissionEU },
 					].map(({ label, data }) => (
-						<div className="rounded-lg bg-accent/40 p-3 text-sm" key={label}>
-							<div className="font-mono font-semibold">{label}</div>
+						<div
+							className="rounded-lg bg-accent/40 p-3 text-sm"
+							key={label}
+						>
+							<div className="font-mono font-semibold">
+								{label}
+							</div>
 							{data ? (
 								<div className="mt-1 flex flex-col gap-1 text-text-accent">
 									<span>
 										{t('servers.emissionCurrent')}:{' '}
 										{data.currentStart
-											? new Date(data.currentStart).toLocaleString()
+											? new Date(
+													data.currentStart
+												).toLocaleString()
 											: '—'}
 									</span>
 									<span>
 										{t('servers.emissionPrev')}:{' '}
 										{data.previousStart
-											? new Date(data.previousStart).toLocaleString()
+											? new Date(
+													data.previousStart
+												).toLocaleString()
 											: '—'}
 									</span>
 								</div>
@@ -139,10 +153,18 @@ export default function ServerStatusView() {
 			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex items-center gap-2">
-						<Icon className="text-primary text-xl" icon="lucide:trophy" />
-						<h2 className="font-medium text-lg">{t('servers.peaks')}</h2>
+						<Icon
+							className="text-primary text-xl"
+							icon="lucide:trophy"
+						/>
+						<h2 className="font-medium text-lg">
+							{t('servers.peaks')}
+						</h2>
 					</div>
-					<Tabs.Root onValueChange={(v) => setPeakDays(Number(v))} value={String(peakDays)}>
+					<Tabs.Root
+						onValueChange={(v) => setPeakDays(Number(v))}
+						value={String(peakDays)}
+					>
 						<Tabs.List className="ring-2 ring-primary/30">
 							<Tabs.Trigger value="7">7D</Tabs.Trigger>
 							<Tabs.Trigger value="30">30D</Tabs.Trigger>
@@ -153,19 +175,37 @@ export default function ServerStatusView() {
 					<table className="w-full text-sm">
 						<thead>
 							<tr className="text-left text-text-accent">
-								<th className="py-1 pr-4 font-medium">{t('servers.peakDate')}</th>
-								<th className="py-1 pr-4 font-medium">{t('servers.peakRegion')}</th>
-								<th className="py-1 font-medium">{t('servers.peakOnline')}</th>
+								<th className="py-1 pr-4 font-medium">
+									{t('servers.peakDate')}
+								</th>
+								<th className="py-1 pr-4 font-medium">
+									{t('servers.peakRegion')}
+								</th>
+								<th className="py-1 font-medium">
+									{t('servers.peakOnline')}
+								</th>
 							</tr>
 						</thead>
 						<tbody>
-							{(peaks ?? []).slice(-14).reverse().map((p) => (
-								<tr className="border-t border-border/50" key={`${p.region}-${p.date}`}>
-									<td className="py-1 pr-4 font-mono">{p.date}</td>
-									<td className="py-1 pr-4">{p.region}</td>
-									<td className="py-1 font-mono text-primary">{p.peak.toLocaleString()}</td>
-								</tr>
-							))}
+							{(peaks ?? [])
+								.slice(-14)
+								.reverse()
+								.map((p) => (
+									<tr
+										className="border-border/50 border-t"
+										key={`${p.region}-${p.date}`}
+									>
+										<td className="py-1 pr-4 font-mono">
+											{p.date}
+										</td>
+										<td className="py-1 pr-4">
+											{p.region}
+										</td>
+										<td className="py-1 font-mono text-primary">
+											{p.peak.toLocaleString()}
+										</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>

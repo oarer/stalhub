@@ -1,15 +1,14 @@
 'use client'
 
+import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { Accordion } from '@/components/ui/Accordion'
+import { Button } from '@/components/ui/Button'
+import { Card } from '@/components/ui/Card'
+import { CheckBox } from '@/components/ui/CheckBox'
+import Input from '@/components/ui/Input'
+import Slider from '@/components/ui/Slider'
 import { BP_TARGET_PRESETS, BP_TASK_PRESETS } from '../utils/bp'
-import {
-	Collapsible,
-	DateField,
-	FieldLabel,
-	Segmented,
-	Stepper,
-	WeekdayPicker,
-} from './bp-controls'
 import type { BPFormState } from './bp-form-state'
 
 const WEEKDAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const
@@ -21,167 +20,351 @@ interface Props {
 	todayISO: string
 }
 
-export function BPDashboardForm({ state, onChange, seasonWeeks, todayISO }: Props) {
+function Group({
+	icon,
+	title,
+	children,
+}: {
+	icon: string
+	title: string
+	children: React.ReactNode
+}) {
+	return (
+		<div className="flex flex-col gap-3">
+			<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+				<Icon className="text-lg" icon={icon} />
+				{title}
+			</p>
+			{children}
+		</div>
+	)
+}
+
+export function BPDashboardForm({
+	state,
+	onChange,
+	seasonWeeks,
+	todayISO,
+}: Props) {
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-5 rounded-xl border bg-card p-5">
-			<div className="grid grid-cols-2 gap-3">
-				<div className="flex flex-col gap-1.5">
-					<FieldLabel>{t('bp.current_level')}</FieldLabel>
-					<Stepper
-						max={9999}
-						min={0}
-						onChange={(v) => onChange({ currentLevel: v })}
-						value={state.currentLevel}
+		<Card.Root className="flex flex-col gap-4">
+			<Card.Header>
+				<Card.Title>
+					<Icon
+						className="text-neutral-700 text-xl dark:text-neutral-300"
+						icon="lucide:sliders-horizontal"
 					/>
-				</div>
-				<div className="flex flex-col gap-1.5">
-					<FieldLabel>{t('bp.target_level')}</FieldLabel>
-					<Stepper
-						max={9999}
-						min={1}
-						onChange={(v) => onChange({ targetLevel: v })}
-						value={state.targetLevel}
-					/>
-				</div>
-			</div>
+					<h2>{t('bp.data')}</h2>
+				</Card.Title>
+			</Card.Header>
 
-			<Segmented
-				columns={3}
-				onChange={(v) => onChange({ targetLevel: v })}
-				options={BP_TARGET_PRESETS.map((v) => ({
-					value: v,
-					label: t('bp.target_preset', { count: v }),
-				}))}
-				value={
-					BP_TARGET_PRESETS.includes(
-						state.targetLevel as (typeof BP_TARGET_PRESETS)[number]
-					)
-						? state.targetLevel
-						: -1
-				}
-			/>
-
-			<div className="flex flex-col gap-1.5">
-				<FieldLabel>{t('bp.deadline')}</FieldLabel>
-				<DateField
-					min={todayISO}
-					onChange={(v) => onChange({ deadlineISO: v })}
-					value={state.deadlineISO}
-				/>
-				<p className="text-muted-foreground text-xs">
-					{t('bp.season_weeks', { count: seasonWeeks })}
-				</p>
-			</div>
-
-			<div className="flex flex-col gap-2">
-				<p className="font-semibold text-[15px]">{t('bp.play_title')}</p>
-				<FieldLabel>{t('bp.max_tasks')}</FieldLabel>
-				<Stepper
-					max={300}
-					min={1}
-					onChange={(v) => onChange({ tasksPerDay: v })}
-					value={state.tasksPerDay}
-				/>
-			</div>
-
-			<Segmented
-				columns={3}
-				onChange={(v) => onChange({ tasksPerDay: v })}
-				options={BP_TASK_PRESETS.map((v) => ({
-					value: v,
-					label: t(`bp.pace_${v}`),
-					sub: t('bp.pace_tasks', { count: v }),
-				}))}
-				value={
-					BP_TASK_PRESETS.includes(
-						state.tasksPerDay as (typeof BP_TASK_PRESETS)[number]
-					)
-						? state.tasksPerDay
-						: -1
-				}
-			/>
-
-			<div className="flex flex-col gap-1.5">
-				<FieldLabel>{t('bp.weekdays')}</FieldLabel>
-				<WeekdayPicker
-					labels={WEEKDAY_KEYS.map((k) => t(`bp.weekday_${k}`))}
-					onChange={(v) => onChange({ weekdays: v })}
-					value={state.weekdays}
-				/>
-			</div>
-
-			<Collapsible sub={t('bp.boost_sub')} title={t('bp.boost_title')}>
-				<div className="flex flex-col gap-1.5">
-					<FieldLabel>{t('bp.overloads')}</FieldLabel>
-					<Segmented
-						columns={3}
-						onChange={(v) => onChange({ overloadMode: v })}
-						options={[
-							{ value: 'off', label: t('bp.overload_off') },
-							{ value: 'stock', label: t('bp.overload_stock') },
-							{ value: 'full', label: t('bp.overload_full') },
-						]}
-						value={state.overloadMode}
-					/>
-				</div>
-
-				{state.overloadMode === 'stock' && (
-					<div className="flex flex-col gap-1.5">
-						<FieldLabel>{t('bp.overload_stock_days')}</FieldLabel>
-						<Stepper
-							max={365}
+			<Card.Content className="flex flex-col gap-5">
+				<Group
+					icon="lucide:trophy"
+					title={t('bp.goal', { level: state.targetLevel })}
+				>
+					<div className="grid grid-cols-2 gap-4">
+						<Input
+							label="bp.current_level"
+							max={9999}
 							min={0}
-							onChange={(v) => onChange({ overloadStock: v })}
-							value={state.overloadStock}
+							onChange={(e) =>
+								onChange({
+									currentLevel: Number(e.target.value) || 0,
+								})
+							}
+							type="number"
+							value={state.currentLevel}
+						/>
+						<Input
+							label="bp.target_level"
+							max={9999}
+							min={1}
+							onChange={(e) =>
+								onChange({
+									targetLevel: Number(e.target.value) || 0,
+								})
+							}
+							type="number"
+							value={state.targetLevel}
 						/>
 					</div>
-				)}
+					<div className="grid grid-cols-3 gap-2">
+						{BP_TARGET_PRESETS.map((preset) => (
+							<Button
+								key={preset}
+								onClick={() =>
+									onChange({ targetLevel: preset })
+								}
+								size="sm"
+								type="button"
+								variant={
+									state.targetLevel === preset
+										? 'primary'
+										: 'secondary'
+								}
+							>
+								<span className="font-mono font-semibold text-xs">
+									{t('bp.target_preset', {
+										count: preset,
+									})}
+								</span>
+							</Button>
+						))}
+					</div>
+				</Group>
 
-				<div className="flex flex-col gap-1.5">
-					<FieldLabel>{t('bp.donations')}</FieldLabel>
-					<Segmented
-						columns={4}
-						onChange={(v) => onChange({ donationPacks: v })}
-						options={[0, 1, 2, 3].map((v) => ({
-							value: v,
-							label: v === 0 ? '0' : `+${v * 50}`,
-						}))}
-						value={state.donationPacks}
+				<Group icon="lucide:calendar" title={t('bp.deadline')}>
+					<Input
+						className="text-[13px]"
+						min={todayISO}
+						onChange={(e) =>
+							e.target.value &&
+							onChange({ deadlineISO: e.target.value })
+						}
+						type="date"
+						value={state.deadlineISO}
 					/>
-				</div>
+					<p className="text-muted-foreground text-xs">
+						{t('bp.season_weeks', { count: seasonWeeks })}
+					</p>
+				</Group>
 
-				<button
-					className="rounded-lg bg-muted px-3 py-2.5 font-semibold text-sm ring-1 ring-border transition-colors hover:bg-muted/70"
-					onClick={() => onChange({ boostOn: !state.boostOn })}
-					type="button"
-				>
-					{state.boostOn ? t('bp.bonus_on') : t('bp.bonus_off')}
-				</button>
+				<Group icon="lucide:gamepad-2" title={t('bp.max_tasks')}>
+					<Input
+						label="bp.tasks_per_day"
+						max={300}
+						min={1}
+						onChange={(e) =>
+							onChange({
+								tasksPerDay: Number(e.target.value) || 0,
+							})
+						}
+						type="number"
+						value={state.tasksPerDay}
+					/>
+					<Slider
+						max={50}
+						min={1}
+						onValueChange={(v) => onChange({ tasksPerDay: v })}
+						step={1}
+						value={Math.max(
+							1,
+							Math.min(50, state.tasksPerDay || 1)
+						)}
+					/>
+					<div className="grid grid-cols-3 gap-2">
+						{BP_TASK_PRESETS.map((preset) => (
+							<Button
+								className="flex-col gap-0.5 py-2"
+								key={preset}
+								onClick={() =>
+									onChange({ tasksPerDay: preset })
+								}
+								size="sm"
+								type="button"
+								variant={
+									state.tasksPerDay === preset
+										? 'primary'
+										: 'secondary'
+								}
+							>
+								<span className="font-semibold text-xs">
+									{t(`bp.pace_${preset}`)}
+								</span>
+								<span className="font-mono font-semibold text-[11px] opacity-70">
+									{t('bp.pace_tasks', { count: preset })}
+								</span>
+							</Button>
+						))}
+					</div>
+					<p className="text-muted-foreground text-xs">
+						{t('bp.max_tasks_hint')}
+					</p>
+				</Group>
 
-				{state.boostOn && (
-					<>
-						<div className="flex flex-col gap-1.5">
-							<FieldLabel>{t('bp.bonus_start')}</FieldLabel>
-							<DateField
-								min={todayISO}
-								onChange={(v) => onChange({ boostStartISO: v })}
-								value={state.boostStartISO}
-							/>
-						</div>
-						<div className="flex flex-col gap-1.5">
-							<FieldLabel>{t('bp.bonus_days')}</FieldLabel>
-							<Stepper
-								max={90}
-								min={0}
-								onChange={(v) => onChange({ boostDays: v })}
-								value={state.boostDays}
-							/>
-						</div>
-					</>
-				)}
-			</Collapsible>
-		</div>
+				<Group icon="lucide:calendar-days" title={t('bp.weekdays')}>
+					<div className="grid grid-cols-7 gap-1.5">
+						{WEEKDAY_KEYS.map((key, i) => {
+							const active = state.weekdays[i]
+							return (
+								<Button
+									className="px-1"
+									key={key}
+									onClick={() => {
+										const next = [...state.weekdays]
+										next[i] = !next[i]
+										onChange({ weekdays: next })
+									}}
+									size="sm"
+									type="button"
+									variant={active ? 'primary' : 'secondary'}
+								>
+									<span className="font-mono font-semibold text-xs">
+										{t(`bp.weekday_${key}`)}
+									</span>
+								</Button>
+							)
+						})}
+					</div>
+				</Group>
+
+				<Accordion
+					defaultExpandedKeys={['boost']}
+					items={[
+						{
+							key: 'boost',
+							title: t('bp.boost_title'),
+							icon: 'lucide:rocket',
+							content: (
+								<div className="flex flex-col gap-4 px-2">
+									<p className="-mt-1 text-muted-foreground text-xs">
+										{t('bp.boost_sub')}
+									</p>
+									<div className="flex flex-col gap-2">
+										<p className="font-semibold text-muted-foreground text-sm">
+											{t('bp.overloads')}
+										</p>
+										<div className="grid grid-cols-3 gap-2">
+											{(
+												[
+													'off',
+													'stock',
+													'full',
+												] as const
+											).map((mode) => (
+												<Button
+													key={mode}
+													onClick={() =>
+														onChange({
+															overloadMode: mode,
+														})
+													}
+													size="sm"
+													type="button"
+													variant={
+														state.overloadMode ===
+														mode
+															? 'primary'
+															: 'secondary'
+													}
+												>
+													<span className="font-semibold text-xs">
+														{t(
+															`bp.overload_${mode}`
+														)}
+													</span>
+												</Button>
+											))}
+										</div>
+										<p className="text-muted-foreground text-xs">
+											{t('bp.overloads_desc')}
+										</p>
+										{state.overloadMode === 'stock' && (
+											<Input
+												label="bp.overload_stock_days"
+												max={365}
+												min={0}
+												onChange={(e) =>
+													onChange({
+														overloadStock:
+															Number(
+																e.target.value
+															) || 0,
+													})
+												}
+												type="number"
+												value={state.overloadStock}
+											/>
+										)}
+									</div>
+
+									<div className="flex flex-col gap-2">
+										<p className="font-semibold text-muted-foreground text-sm">
+											{t('bp.donations')}
+										</p>
+										<div className="grid grid-cols-4 gap-2">
+											{[0, 1, 2, 3].map((packs) => (
+												<Button
+													key={packs}
+													onClick={() =>
+														onChange({
+															donationPacks:
+																packs,
+														})
+													}
+													size="sm"
+													type="button"
+													variant={
+														state.donationPacks ===
+														packs
+															? 'primary'
+															: 'secondary'
+													}
+												>
+													<span className="font-mono font-semibold text-xs">
+														{packs === 0
+															? '0'
+															: `+${packs * 50}`}
+													</span>
+												</Button>
+											))}
+										</div>
+									</div>
+
+									<div className="flex items-center justify-between gap-3 rounded-lg bg-card px-3 py-2.5">
+										<CheckBox
+											checked={state.boostOn}
+											description={t('bp.boost_3d_desc')}
+											label={t('bp.boost_3d')}
+											onCheckedChange={(checked) =>
+												onChange({ boostOn: checked })
+											}
+										/>
+									</div>
+
+									{state.boostOn && (
+										<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+											<Input
+												label="bp.bonus_start"
+												min={todayISO}
+												onChange={(e) =>
+													e.target.value &&
+													onChange({
+														boostStartISO:
+															e.target.value,
+													})
+												}
+												type="date"
+												value={state.boostStartISO}
+											/>
+											<Input
+												label="bp.bonus_days"
+												max={90}
+												min={0}
+												onChange={(e) =>
+													onChange({
+														boostDays:
+															Number(
+																e.target.value
+															) || 0,
+													})
+												}
+												type="number"
+												value={state.boostDays}
+											/>
+										</div>
+									)}
+								</div>
+							),
+						},
+					]}
+					selectionMode="multiple"
+					size={'sm'}
+				/>
+			</Card.Content>
+		</Card.Root>
 	)
 }

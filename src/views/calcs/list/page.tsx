@@ -15,7 +15,7 @@ export default function ToolsListView() {
 		<section className="mx-auto max-w-7xl space-y-12 px-4 pt-42 pb-12 sm:px-6">
 			<>
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('toolsList.title')}
 				</h1>

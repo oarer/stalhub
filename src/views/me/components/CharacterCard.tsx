@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import type { Regions } from '@/types/api.type'
 import type { PlayerResponse } from '@/types/player.type'
 import { allianceBackground } from '@/types/user.type'
+import { mtsWide } from '@/app/fonts'
 
 interface Props {
 	character: PlayerResponse
@@ -35,7 +36,7 @@ export function CharacterCard({ character, region }: Props) {
 			</div>
 
 			<div className="flex flex-col gap-0.5">
-				<h3 className="truncate font-semibold text-md">
+				<h3 className={`${mtsWide.className} truncate font-medium text-md`}>
 					{character.username}
 				</h3>
 

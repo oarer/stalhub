@@ -137,7 +137,7 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 			{variant === 'page' && (
 				<>
 					<h1
-						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('upgrade.title')}
 					</h1>

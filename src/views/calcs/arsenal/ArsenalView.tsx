@@ -55,7 +55,7 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 			{variant === 'page' && (
 				<>
 					<h1
-						className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('arsenal.title')}
 					</h1>
@@ -67,8 +67,12 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 
 			<Tabs.Root onValueChange={setTab} value={tab}>
 				<Tabs.List>
-					<Tabs.Trigger value="calc">{t('arsenal.tabs.calc')}</Tabs.Trigger>
-					<Tabs.Trigger value="shop">{t('arsenal.tabs.shop')}</Tabs.Trigger>
+					<Tabs.Trigger value="calc">
+						{t('arsenal.tabs.calc')}
+					</Tabs.Trigger>
+					<Tabs.Trigger value="shop">
+						{t('arsenal.tabs.shop')}
+					</Tabs.Trigger>
 				</Tabs.List>
 				<Tabs.Content value="shop">
 					<ArsenalShop
@@ -80,57 +84,61 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 				</Tabs.Content>
 				<Tabs.Content value="calc">
 					<div className="flex flex-col gap-4 pt-4">
-			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-				<Input
-					className="py-2.5 md:w-80"
-					id="target-reputation"
-					label="arsenal.input_label"
-					min={0}
-					onChange={(e) =>
-						setTargetReputation(
-							e.target.value === '' ? 0 : Number(e.target.value)
-						)
-					}
-					type="number"
-					value={targetReputation}
-				/>
+						<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+							<Input
+								className="py-2.5 md:w-80"
+								id="target-reputation"
+								label="arsenal.input_label"
+								min={0}
+								onChange={(e) =>
+									setTargetReputation(
+										e.target.value === ''
+											? 0
+											: Number(e.target.value)
+									)
+								}
+								type="number"
+								value={targetReputation}
+							/>
 
-				<Alert.Root className="flex-1" variant="warning">
-					<Alert.Description>{t('arsenal.alert')}</Alert.Description>
-				</Alert.Root>
-			</div>
+							<Alert.Root className="flex-1" variant="warning">
+								<Alert.Description>
+									{t('arsenal.alert')}
+								</Alert.Description>
+							</Alert.Root>
+						</div>
 
-			{targetReputation > 0 && (
-				<Alert.Root variant="default">
-					<Alert.Description>
-						{coverage.remaining > 0 ? (
-							<>
-								{t('arsenal.summary.limited')}{' '}
-								<span className="font-mono text-yellow-400">
-									{coverage.limitedMaxRep.toLocaleString()}
-								</span>{' '}
-								{t('arsenal.summary.limitedEnd')}{' '}
-								{t('arsenal.summary.rest')}{' '}
-								<span className="font-mono text-blue-400">
-									{coverage.remaining.toLocaleString()}
-								</span>{' '}
-								{t('arsenal.summary.restEnd')}{' '}
-								{t('arsenal.summary.unlimited')}
-							</>
-						) : (
-							<>
-								{t('arsenal.summary.covered')}{' '}
-								<span className="font-mono text-yellow-400">
-									{coverage.limitedMaxRep.toLocaleString()}
-								</span>{' '}
-								{t('arsenal.summary.coveredEnd')}
-							</>
+						{targetReputation > 0 && (
+							<Alert.Root variant="default">
+								<Alert.Description>
+									{coverage.remaining > 0 ? (
+										<>
+											{t('arsenal.summary.limited')}{' '}
+											<span className="font-mono text-yellow-400">
+												{coverage.limitedMaxRep.toLocaleString()}
+											</span>{' '}
+											{t('arsenal.summary.limitedEnd')}{' '}
+											{t('arsenal.summary.rest')}{' '}
+											<span className="font-mono text-blue-400">
+												{coverage.remaining.toLocaleString()}
+											</span>{' '}
+											{t('arsenal.summary.restEnd')}{' '}
+											{t('arsenal.summary.unlimited')}
+										</>
+									) : (
+										<>
+											{t('arsenal.summary.covered')}{' '}
+											<span className="font-mono text-yellow-400">
+												{coverage.limitedMaxRep.toLocaleString()}
+											</span>{' '}
+											{t('arsenal.summary.coveredEnd')}
+										</>
+									)}
+								</Alert.Description>
+							</Alert.Root>
 						)}
-					</Alert.Description>
-				</Alert.Root>
-			)}
 
-			<ArsenalTable table={table} />
+						<ArsenalTable table={table} />
 					</div>
 				</Tabs.Content>
 			</Tabs.Root>

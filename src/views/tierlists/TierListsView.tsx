@@ -62,7 +62,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 		>
 			<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 				<h1
-					className={`${mtsExtended.className} font-medium text-[28px] leading-none`}
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
 					{t('tierlists.title')}
 				</h1>
