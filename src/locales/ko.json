@@ -2813,7 +2813,14 @@
       "sort_price": "가격",
       "sort_rarity": "희귀도",
       "range_from": "부터",
-      "range_to": "까지"
+      "range_to": "까지",
+      "autoRefresh": "자동 새로고침",
+      "refreshNow": "지금 새로고침",
+      "secondsShort": "초",
+      "nextRefresh": "{sec}초 후",
+      "lastUpdate": "업데이트: {time}",
+      "minutesShort": "분",
+      "intervalHint": "10초 – 5분"
     }
   },
   "users": {

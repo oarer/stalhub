@@ -2810,7 +2810,14 @@
       "sort_price": "Цена",
       "sort_rarity": "Редкость",
       "range_from": "от",
-      "range_to": "до"
+      "range_to": "до",
+      "autoRefresh": "Автообновление",
+      "refreshNow": "Обновить сейчас",
+      "secondsShort": "сек",
+      "nextRefresh": "через {sec} с",
+      "lastUpdate": "Обновлено: {time}",
+      "minutesShort": "мин",
+      "intervalHint": "10 с – 5 мин"
     }
   },
   "users": {

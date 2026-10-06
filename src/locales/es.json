@@ -2813,7 +2813,14 @@
       "sort_price": "Precio",
       "sort_rarity": "Rareza",
       "range_from": "de",
-      "range_to": "a"
+      "range_to": "a",
+      "autoRefresh": "Actualización automática",
+      "refreshNow": "Actualizar ahora",
+      "secondsShort": "s",
+      "nextRefresh": "en {sec} s",
+      "lastUpdate": "Actualizado: {time}",
+      "minutesShort": "min",
+      "intervalHint": "10 s – 5 min"
     }
   },
   "users": {
