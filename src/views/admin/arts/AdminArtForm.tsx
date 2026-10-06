@@ -13,8 +13,8 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminArtService } from '@/services/admin/art.service'
 import type { AdminUser } from '@/types/admin.type'
-import { type Art, ArtType } from '@/types/art.type'
-import { ArtImageField } from '@/views/me/components/ArtImageField'
+import { type Art, ArtType, getArtImages } from '@/types/art.type'
+import { ArtImagesField } from '@/views/me/components/ArtImagesField'
 import { parseTags } from '@/views/me/components/article/editor-utils'
 import {
 	SOCIAL_ICONS,
@@ -45,7 +45,7 @@ export function AdminArtForm({
 
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArtType>(ArtType.DEFAULT)
-	const [imageUrl, setImageUrl] = useState('')
+	const [imageUrls, setImageUrls] = useState<string[]>([])
 	const [tags, setTags] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -60,7 +60,7 @@ export function AdminArtForm({
 			if (art) {
 				setTitle(art.title)
 				setType(art.type)
-				setImageUrl(art.image_url ?? '')
+				setImageUrls(getArtImages(art))
 				setTags(art.tags.join(', '))
 				setDescription(art.description ?? '')
 				if (art.author.id !== null) {
@@ -82,7 +82,7 @@ export function AdminArtForm({
 			} else {
 				setTitle('')
 				setType(ArtType.DEFAULT)
-				setImageUrl('')
+				setImageUrls([])
 				setTags('')
 				setDescription('')
 				setAuthorMode('guest')
@@ -104,7 +104,8 @@ export function AdminArtForm({
 			adminArtService.create({
 				title: title.trim(),
 				type,
-				image_url: imageUrl.trim() || null,
+				image_url: imageUrls[0] ?? null,
+				image_urls: imageUrls,
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
@@ -131,7 +132,8 @@ export function AdminArtForm({
 			adminArtService.update(art!.id, {
 				title: title.trim(),
 				type,
-				image_url: imageUrl.trim() || null,
+				image_url: imageUrls[0] ?? null,
+				image_urls: imageUrls,
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
@@ -227,9 +229,9 @@ export function AdminArtForm({
 							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.image')}
 							</span>
-							<ArtImageField
-								onChange={setImageUrl}
-								value={imageUrl}
+							<ArtImagesField
+								onChange={setImageUrls}
+								value={imageUrls}
 							/>
 						</div>
 

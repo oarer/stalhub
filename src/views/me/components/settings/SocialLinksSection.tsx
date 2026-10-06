@@ -7,7 +7,14 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Section } from '../Section'
 
-export const SOCIAL_NETWORKS = ['telegram', 'youtube', 'twitch', 'boosty', 'x']
+export const SOCIAL_NETWORKS = [
+	'telegram',
+	'youtube',
+	'twitch',
+	'boosty',
+	'x',
+	'tiktok',
+]
 
 export const SOCIAL_ICONS: Record<string, string> = {
 	telegram: 'mingcute:telegram-fill',
@@ -16,6 +23,7 @@ export const SOCIAL_ICONS: Record<string, string> = {
 	twitch: 'lucide:twitch',
 	boosty: 'simple-icons:boosty',
 	x: 'prime:twitter',
+	tiktok: 'simple-icons:tiktok',
 }
 
 export function SocialLinksSection({

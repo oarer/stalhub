@@ -12,7 +12,7 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artService } from '@/services/art/art.service'
 import { type ArtCreate, ArtType } from '@/types/art.type'
-import { ArtImageField } from '@/views/me/components/ArtImageField'
+import { ArtImagesField } from '@/views/me/components/ArtImagesField'
 import { parseTags } from '@/views/me/components/article/editor-utils'
 import { Section } from '../components/Section'
 
@@ -28,7 +28,7 @@ export default function NewArtView() {
 
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArtType>(ArtType.DEFAULT)
-	const [imageUrl, setImageUrl] = useState('')
+	const [imageUrls, setImageUrls] = useState<string[]>([])
 	const [tags, setTags] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -49,7 +49,8 @@ export default function NewArtView() {
 		createMutation.mutate({
 			title: title.trim(),
 			type,
-			image_url: imageUrl.trim() || null,
+			image_url: imageUrls[0] ?? null,
+			image_urls: imageUrls,
 			tags: parseTags(tags),
 			description: description.trim() || undefined,
 		})
@@ -159,9 +160,9 @@ export default function NewArtView() {
 						>
 							{t('me.newArt.image')}
 						</label>
-						<ArtImageField
-							onChange={setImageUrl}
-							value={imageUrl}
+						<ArtImagesField
+							onChange={setImageUrls}
+							value={imageUrls}
 						/>
 					</div>
 				</Section>

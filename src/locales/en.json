@@ -2472,7 +2472,7 @@
       "image": "Image (URL)",
       "workPlaceholder": "Paste the image link",
       "upload": "Upload",
-      "imageInvalidType": "Only PNG, JPG, WEBP and GIF are supported",
+      "imageInvalidType": "Only PNG, JPG, WEBP, GIF, MP4 and WEBM are supported",
       "workTooLarge": "Maximum file size is 10 MB",
       "workUploaded": "Image uploaded",
       "imageUploadError": "Error uploading image",
@@ -2488,7 +2488,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "Max {count} images per work",
+      "cover": "Cover"
     },
     "artEdit": {
       "title": "Edit work",

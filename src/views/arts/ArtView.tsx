@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -12,21 +11,26 @@ import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
 import { Divider } from '@/components/ui/Divider'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import { Gallery } from '@/components/wiki/gallery'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
-import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
+import { resolveImageUrl } from '@/lib/imageUrl'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
 import { useAuthStore } from '@/stores/useAuth.store'
-import { ArtType } from '@/types/art.type'
+import { ArtType, getArtImages } from '@/types/art.type'
 import ArtComments from './ArtComments'
 
 const SOCIAL_ICONS: Record<string, string> = {
 	telegram: 'lucide:send',
 	discord: 'lucide:message-circle',
 	twitter: 'lucide:twitter',
-	x: 'lucide:twitter',
+	x: 'prime:twitter',
+	youtube: 'lucide:youtube',
+	twitch: 'lucide:twitch',
+	boosty: 'simple-icons:boosty',
+	tiktok: 'simple-icons:tiktok',
 }
 
 function socialIcon(network: string) {
@@ -44,9 +48,12 @@ export default function ArtView({ artId }: ArtViewProps) {
 	const user = useAuthStore((s) => s.user)
 	const [revealed, setRevealed] = useState(false)
 	const [downloading, setDownloading] = useState(false)
+	const [activeIndex, setActiveIndex] = useState(0)
+
+	const artImages = getArtImages(art)
 
 	const downloadArt = async () => {
-		const url = resolveImageUrl(art.image_url)
+		const url = resolveImageUrl(artImages[activeIndex] ?? art.image_url)
 		if (!url || downloading) return
 
 		setDownloading(true)
@@ -85,39 +92,20 @@ export default function ArtView({ artId }: ArtViewProps) {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-				<div className="flex min-h-100 min-w-0 items-center justify-center overflow-hidden rounded-xl bg-card ring-2 ring-primary/40">
-					{art.image_url ? (
-						isVideoUrl(art.image_url) ? (
-							<video
-								className={cn(
-									'block max-h-[calc(100vh-9rem)] w-auto max-w-full transition-all',
-									art.type === ArtType.NSFW &&
-										!revealed &&
-										'blur-xl'
-								)}
-								controls
-								onClick={() => setRevealed(true)}
-								preload="metadata"
-								src={resolveImageUrl(art.image_url) ?? ''}
-							/>
-						) : (
-							<Image
-								alt={art.title || 'none'}
-								className={cn(
-									'block h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full object-contain transition-all',
-									art.type === ArtType.NSFW &&
-										!revealed &&
-										'blur-xl',
-									art.type === ArtType.NSFW &&
-										'cursor-pointer'
-								)}
-								height={1600}
-								onClick={() => setRevealed(true)}
-								src={resolveImageUrl(art.image_url) ?? ''}
-								unoptimized
-								width={1200}
-							/>
-						)
+				<div className="min-w-0 overflow-hidden rounded-xl bg-card ring-2 ring-primary/40">
+					{artImages.length > 0 ? (
+						<Gallery
+							alt={art.title || 'art'}
+							blur={art.type === ArtType.NSFW && !revealed}
+							className="my-0 border-0"
+							images={artImages.map((src) => ({
+								src,
+								alt: art.title || '',
+							}))}
+							onIndexChange={setActiveIndex}
+							onUnblur={() => setRevealed(true)}
+							resolveUrl={(src) => resolveImageUrl(src)}
+						/>
 					) : (
 						<div className="flex aspect-square items-center justify-center">
 							<Icon

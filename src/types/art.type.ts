@@ -3,6 +3,8 @@ export enum ArtType {
 	NSFW = 'NSFW',
 }
 
+export const ART_IMAGES_MAX_COUNT = 10
+
 export interface Art {
 	id: string
 	external_id: string
@@ -10,6 +12,7 @@ export interface Art {
 	title: string
 	description?: string
 	image_url: string | null
+	image_urls: string[]
 	tags: string[]
 	views: number
 	author: ArtAuthor
@@ -31,6 +34,7 @@ export interface ArtCreate {
 	title: string
 	type?: ArtType
 	image_url?: string | null
+	image_urls?: string[]
 	tags?: string[]
 	description?: string
 }
@@ -39,8 +43,35 @@ export interface ArtUpdate {
 	title?: string
 	type?: ArtType
 	image_url?: string | null
+	image_urls?: string[] | null
 	tags?: string[]
 	description?: string
+}
+
+export function getArtImages(art: {
+	image_urls?: string[] | null
+	image_url?: string | null
+}): string[] {
+	if (art.image_urls && art.image_urls.length > 0) return art.image_urls
+	if (art.image_url) return [art.image_url]
+	return []
+}
+
+export function normalizeArtImagesInput(
+	urls: (string | null | undefined)[],
+	fallbackUrl?: string | null
+): string[] {
+	const cleaned: string[] = []
+	for (const raw of urls) {
+		const trimmed = raw?.trim()
+		if (!trimmed || cleaned.includes(trimmed)) continue
+		cleaned.push(trimmed)
+		if (cleaned.length >= ART_IMAGES_MAX_COUNT) break
+	}
+	if (cleaned.length === 0 && fallbackUrl?.trim()) {
+		cleaned.push(fallbackUrl.trim())
+	}
+	return cleaned.slice(0, ART_IMAGES_MAX_COUNT)
 }
 
 export interface ArtComment {

@@ -17,7 +17,7 @@ import { cn } from '@/lib/cn'
 import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { artQueries } from '@/queries/art/art.queries'
 import { useNsfwGateStore } from '@/stores/useNsfwGate.store'
-import { ArtType } from '@/types/art.type'
+import { ArtType, getArtImages } from '@/types/art.type'
 
 export default function ArtsView() {
 	const t = useTranslations()
@@ -195,61 +195,83 @@ export default function ArtsView() {
 									NSFW
 								</Badge>
 							)}
-							{art.image_url ? (
-								isVideoUrl(art.image_url) ? (
+							{(() => {
+								const gallery = getArtImages(art)
+								const cover = gallery[0] ?? art.image_url
+								const extraCount = gallery.length - 1
+								return (
 									<>
-										<video
-											className={cn(
-												'h-auto w-full transition-all duration-400',
-												art.type === ArtType.NSFW &&
-													cn(
-														'blur-xl',
-														ageConfirmed &&
-															'hover:blur-none'
-													)
-											)}
-											muted
-											playsInline
-											preload="metadata"
-											src={
-												resolveImageUrl(
-													art.image_url
-												) ?? ''
-											}
-										/>
-										<Icon
-											className="absolute top-1/2 left-1/2 z-2 size-10 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-md"
-											icon="lucide:play"
-										/>
-									</>
-								) : (
-									<Image
-										alt={art.title || 'none'}
-										className={cn(
-											'h-auto w-full transition-all duration-400',
-											art.type === ArtType.NSFW &&
-												cn(
-													'blur-xl',
-													ageConfirmed &&
-														'hover:blur-none'
-												)
+										{cover ? (
+											isVideoUrl(cover) ? (
+												<>
+													<video
+														className={cn(
+															'h-auto w-full transition-all duration-400',
+															art.type ===
+																ArtType.NSFW &&
+																cn(
+																	'blur-xl',
+																	ageConfirmed &&
+																		'hover:blur-none'
+																)
+														)}
+														muted
+														playsInline
+														preload="metadata"
+														src={
+															resolveImageUrl(
+																cover
+															) ?? ''
+														}
+													/>
+													<Icon
+														className="absolute top-1/2 left-1/2 z-2 size-10 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-md"
+														icon="lucide:play"
+													/>
+												</>
+											) : (
+												<Image
+													alt={art.title || 'none'}
+													className={cn(
+														'h-auto w-full transition-all duration-400',
+														art.type ===
+															ArtType.NSFW &&
+															cn(
+																'blur-xl',
+																ageConfirmed &&
+																	'hover:blur-none'
+															)
+													)}
+													height={1600}
+													src={
+														resolveImageUrl(
+															cover
+														) ?? ''
+													}
+													unoptimized
+													width={1200}
+												/>
+											)
+										) : (
+											<div className="flex aspect-square w-full items-center justify-center">
+												<Icon
+													className="size-10 text-foreground"
+													icon="lucide:image-off"
+												/>
+											</div>
 										)}
-										height={1600}
-										src={
-											resolveImageUrl(art.image_url) ?? ''
-										}
-										unoptimized
-										width={1200}
-									/>
+										{extraCount > 0 && (
+											<span className="absolute top-2 left-2 z-2 flex items-center gap-1 rounded-md bg-black/60 px-2 py-0.5 font-mono font-semibold text-white text-xs backdrop-blur">
+												<Icon
+													className="size-3.5"
+													icon="lucide:images"
+												/>
+												+{extraCount}
+											</span>
+										)}
+									</>
 								)
-							) : (
-								<div className="flex aspect-square w-full items-center justify-center">
-									<Icon
-										className="size-10 text-foreground"
-										icon="lucide:image-off"
-									/>
-								</div>
-							)}
+							})()}
 							<div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-linear-to-t from-black/70 to-transparent px-3 pt-8 pb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
 								<span className="truncate font-medium text-sm text-white">
 									{art.title}

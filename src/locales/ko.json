@@ -2472,7 +2472,7 @@
       "image": "이미지 (링크)",
       "workPlaceholder": "이미지 링크를 붙여넣으세요",
       "upload": "업로드",
-      "imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
+      "imageInvalidType": "PNG, JPG, WEBP, GIF, MP4, WEBM만 지원됩니다",
       "workTooLarge": "최대 파일 크기는 10MB입니다",
       "workUploaded": "이미지가 업로드되었습니다",
       "imageUploadError": "이미지 업로드 중 오류",
@@ -2488,7 +2488,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "작품당 최대 {count}개의 이미지",
+      "cover": "표지"
     },
     "artEdit": {
       "title": "작품 수정",

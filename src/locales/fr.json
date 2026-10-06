@@ -2472,7 +2472,7 @@
       "image": "Image (lien)",
       "workPlaceholder": "Collez le lien de l'image",
       "upload": "Importer",
-      "imageInvalidType": "Seuls PNG, JPG, WEBP et GIF sont pris en charge",
+      "imageInvalidType": "Seuls PNG, JPG, WEBP, GIF, MP4 et WEBM sont pris en charge",
       "workTooLarge": "La taille maximale du fichier est de 10 Mo",
       "workUploaded": "Image importée",
       "imageUploadError": "Erreur lors de l'importation de l'image",
@@ -2488,7 +2488,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "Maximum {count} images par œuvre",
+      "cover": "Couverture"
     },
     "artEdit": {
       "title": "Modifier l'œuvre",

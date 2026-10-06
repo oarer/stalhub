@@ -19,15 +19,17 @@ export async function generateMetadata({
 
 	try {
 		const art = await artService.get(id)
-		const images = art.image_url
-			? [
-					{
-						url: `https://cdn.stalhub.dev${art.image_url}`,
-						width: 1200,
-						height: 630,
-					},
-				]
-			: []
+		const gallery =
+			art.image_urls && art.image_urls.length > 0
+				? art.image_urls
+				: art.image_url
+					? [art.image_url]
+					: []
+		const images = gallery.slice(0, 3).map((src) => ({
+			url: `https://cdn.stalhub.dev${src}`,
+			width: 1200,
+			height: 630,
+		}))
 
 		const description = t('arts.byAuthor', {
 			author: art.author.username,
