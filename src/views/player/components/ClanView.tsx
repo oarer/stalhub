@@ -21,36 +21,38 @@ export default function ClanView({ data }: { data: Clan }) {
 				<div className="grid grid-cols-1 gap-4 pl-7 md:grid-cols-2">
 					<div>
 						<p className="text-sm">{t('player.clan.name')}</p>
-						<p className="font-semibold">
+						<p className="font-semibold text-sm">
 							[{data.info.tag}] {data.info.name}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.rank')}</p>
-						<p className={`text-${rankColors[data.member.rank]}`}>
+						<p
+							className={`text-${rankColors[data.member.rank]} text-sm`}
+						>
 							{t(`player.rank.${data.member.rank}`)}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.level')}</p>
-						<p className="font-semibold">{data.info.level + 1}</p>
+						<p className="font-semibold text-sm">{data.info.level + 1}</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.members')}</p>
-						<p className="font-semibold">
-							{data.info.member_count}
+						<p className="font-semibold text-sm">
+							{data.info.memberCount}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.leader')}</p>
-						<p className="font-semibold text-yellow-500">
+						<p className="font-semibold text-sm text-yellow-500">
 							{data.info.leader}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.join_at')}</p>
-						<p className="font-semibold">
-							{formatDate(data.member.join_time)}
+						<p className="font-semibold text-sm">
+							{formatDate(data.member.joinTime)}
 						</p>
 					</div>
 				</div>

@@ -557,7 +557,9 @@
       "pvp": "PvP",
       "pve": "PvE",
       "mutants": "돌연변이",
-      "sessionKd": "세션 K/D"
+      "sessionKd": "세션 K/D",
+      "colosseumKd": "콜로세움 K/D",
+      "games": "게임"
     }
   },
   "time": {

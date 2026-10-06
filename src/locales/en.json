@@ -557,7 +557,9 @@
       "pvp": "PvP kills",
       "pve": "PvE kills",
       "mutants": "mutants",
-      "sessionKd": "Sessions K/D"
+      "sessionKd": "Sessions K/D",
+      "colosseumKd": "Colosseum K/D",
+      "games": "games"
     }
   },
   "time": {

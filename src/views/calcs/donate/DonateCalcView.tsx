@@ -6,10 +6,18 @@ import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
+import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import type { ColumnDef } from '@/components/ui/Table'
+import { flexRender, Table, useTableSort } from '@/components/ui/Table'
 import { getLocale } from '@/lib/getLocale'
-import { donateQueries } from '@/queries/donate/donate.queries'
+import { type DonateItem, donateQueries } from '@/queries/donate/donate.queries'
 import { messageToString } from '@/utils/itemUtils'
+
+type DonateRow = DonateItem & {
+	affordable: number
+	totalValue: number
+}
 
 export default function DonateCalcView() {
 	const t = useTranslations()
@@ -17,7 +25,7 @@ export default function DonateCalcView() {
 	const { data } = useSuspenseQuery(donateQueries.get())
 	const [coins, setCoins] = useState(1000)
 
-	const rows = useMemo(() => {
+	const rows = useMemo<DonateRow[]>(() => {
 		return (data.items ?? [])
 			.filter((i) => i.has_market)
 			.map((i) => {
@@ -27,18 +35,92 @@ export default function DonateCalcView() {
 			})
 	}, [data, coins])
 
+	const columns = useMemo<ColumnDef<DonateRow>[]>(
+		() => [
+			{
+				accessorFn: (row) => messageToString(row.name as never, locale),
+				id: 'item',
+				header: t('donateCalc.item'),
+				cell: ({ row }) => (
+					<span className="flex items-center gap-2">
+						{row.original.icon && (
+							<Image
+								alt={row.original.id}
+								height={28}
+								src={`https://cdn.stalhub.dev/db${row.original.icon}`}
+								width={28}
+							/>
+						)}
+						<span className="font-medium">
+							{messageToString(
+								row.original.name as never,
+								locale
+							)}
+						</span>
+						{row.original.amount > 1 && (
+							<span className="font-mono text-foreground text-xs">
+								×{row.original.amount}
+							</span>
+						)}
+					</span>
+				),
+			},
+			{
+				accessorKey: 'stalcoins',
+				header: t('donateCalc.coins'),
+				cell: ({ row }) => (
+					<span className="font-mono">{row.original.stalcoins}</span>
+				),
+			},
+			{
+				accessorKey: 'price',
+				header: t('donateCalc.price'),
+				cell: ({ row }) => (
+					<span className="font-mono text-yellow-400">
+						{row.original.price.toLocaleString()} ₽
+					</span>
+				),
+			},
+			{
+				accessorKey: 'price_per_coin',
+				header: t('donateCalc.perCoin'),
+				cell: ({ row }) => (
+					<span className="font-mono text-green-400">
+						{row.original.price_per_coin.toLocaleString()}
+					</span>
+				),
+			},
+			{
+				accessorKey: 'affordable',
+				header: t('donateCalc.count'),
+				cell: ({ row }) => (
+					<span className="font-mono">{row.original.affordable}</span>
+				),
+			},
+			{
+				accessorKey: 'totalValue',
+				header: t('donateCalc.total'),
+				cell: ({ row }) => (
+					<span className="font-mono">
+						{row.original.totalValue.toLocaleString()} ₽
+					</span>
+				),
+			},
+		],
+		[t, locale]
+	)
+
+	const { table } = useTableSort(rows, columns, [
+		{ id: 'price_per_coin', desc: true },
+	])
+
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<div>
-				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
-				>
-					{t('donateCalc.title')}
-				</h1>
-				<p className="mt-2 font-medium text-muted-foreground text-sm">
-					{t('donateCalc.subtitle')}
-				</p>
-			</div>
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
+				{t('donateCalc.title')}
+			</h1>
 
 			<div className="flex flex-col gap-4 sm:flex-row sm:items-center">
 				<Input
@@ -61,79 +143,50 @@ export default function DonateCalcView() {
 				</Alert.Root>
 			</div>
 
-			<div className="overflow-x-auto rounded-xl border-2 border-primary/20 bg-card">
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="text-left text-foreground">
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.item')}
-							</th>
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.coins')}
-							</th>
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.price')}
-							</th>
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.perCoin')}
-							</th>
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.count')}
-							</th>
-							<th className="px-3 py-2 font-medium">
-								{t('donateCalc.total')}
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{rows.map((r) => (
-							<tr
-								className="border-border/50 border-t"
-								key={r.key}
-							>
-								<td className="px-3 py-2">
-									<span className="flex items-center gap-2">
-										{r.icon && (
-											<Image
-												alt={r.id}
-												height={28}
-												src={`https://cdn.stalhub.dev/db${r.icon}`}
-												width={28}
-											/>
-										)}
-										<span className="font-medium">
-											{messageToString(
-												r.name as never,
-												locale
+			<Card.Root className="overflow-hidden p-0">
+				<Table.Root className="font-medium">
+					<Table.Header>
+						{table.getHeaderGroups().map((headerGroup) => (
+							<Table.Row key={headerGroup.id}>
+								{headerGroup.headers.map((header) =>
+									header.column.getCanSort() ? (
+										<Table.SortableHeader
+											column={header.column}
+											key={header.id}
+										>
+											{flexRender(
+												header.column.columnDef.header,
+												header.getContext()
 											)}
-										</span>
-										{r.amount > 1 && (
-											<span className="font-mono text-foreground text-xs">
-												×{r.amount}
-											</span>
-										)}
-									</span>
-								</td>
-								<td className="px-3 py-2 font-mono">
-									{r.stalcoins}
-								</td>
-								<td className="px-3 py-2 font-mono text-yellow-400">
-									{r.price.toLocaleString()} ₽
-								</td>
-								<td className="px-3 py-2 font-mono text-green-400">
-									{r.price_per_coin.toLocaleString()}
-								</td>
-								<td className="px-3 py-2 font-mono">
-									{r.affordable}
-								</td>
-								<td className="px-3 py-2 font-mono">
-									{r.totalValue.toLocaleString()} ₽
-								</td>
-							</tr>
+										</Table.SortableHeader>
+									) : (
+										<Table.Head key={header.id}>
+											{flexRender(
+												header.column.columnDef.header,
+												header.getContext()
+											)}
+										</Table.Head>
+									)
+								)}
+							</Table.Row>
 						))}
-					</tbody>
-				</table>
-			</div>
+					</Table.Header>
+					<Table.Body>
+						{table.getRowModel().rows.map((row) => (
+							<Table.Row key={row.original.key}>
+								{row.getVisibleCells().map((cell) => (
+									<Table.Cell key={cell.id}>
+										{flexRender(
+											cell.column.columnDef.cell,
+											cell.getContext()
+										)}
+									</Table.Cell>
+								))}
+							</Table.Row>
+						))}
+					</Table.Body>
+				</Table.Root>
+			</Card.Root>
 
 			{data.missing.length > 0 && (
 				<Alert.Root variant="warning">

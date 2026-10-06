@@ -68,7 +68,7 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 							<AchievementsView
 								data={data.displayedAchievements}
 							/>
-							<p>
+							<p className="font-mono font-semibold text-sm">
 								{t('player.hero.ach_points')}{' '}
 								{Number(getStatValue(data.stats, 'ach-points'))}
 							</p>

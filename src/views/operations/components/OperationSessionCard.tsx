@@ -42,24 +42,20 @@ export default function OperationSessionCard({
 					</Badge>
 				</div>
 
-				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-foreground text-sm">
-					<span
-						className={`flex items-center gap-1 font-mono text-xs`}
-					>
+				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-semibold text-muted-foreground text-xs">
+					<span className={`flex items-center gap-1 font-mono`}>
 						<Icon className="text-base" icon="lucide:calendar" />
 						{formatDate(session.startTime, 'datetime')}
 					</span>
-					<span
-						className={`flex items-center gap-1 font-mono text-xs`}
-					>
+					<span className={`flex items-center gap-1 font-mono`}>
 						<Icon className="text-base" icon="lucide:timer" />
 						{formatDuration(session.sessionDurationSeconds)}
 					</span>
-					<span className="flex items-center gap-1">
+					<span className="flex items-center gap-1 font-mono">
 						<Icon className="text-base" icon="lucide:gift" />
 						{session.difficultyReward}
 					</span>
-					<span className="flex items-center gap-1">
+					<span className="flex items-center gap-1 font-medium">
 						<Icon className="text-base" icon="lucide:users" />
 						{t('player.operations.participants', {
 							count: session.participants.length,

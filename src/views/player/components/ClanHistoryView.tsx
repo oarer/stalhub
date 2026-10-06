@@ -38,7 +38,9 @@ export default function ClanHistoryView({
 								{t(`player.rank.${h.rank}`)} · {h.region}
 							</span>
 						</div>
-						<span className={`font-mono text-foreground text-xs`}>
+						<span
+							className={`font-mono font-semibold text-foreground text-xs`}
+						>
 							{formatDate(h.seen_at)}
 						</span>
 					</div>

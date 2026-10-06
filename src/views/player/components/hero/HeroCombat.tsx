@@ -5,7 +5,7 @@ export default function HeroCombat({ data }: { data: Stat[] }) {
 	const t = useTranslations()
 
 	return (
-		<div className="grid grid-cols-1 justify-between gap-4 sm:grid-cols-2">
+		<div className="grid grid-cols-1 justify-between gap-4 text-sm sm:grid-cols-2">
 			<div>
 				<p>
 					{t('player.combat.kd')}{' '}

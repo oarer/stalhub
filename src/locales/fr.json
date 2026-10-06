@@ -557,7 +557,9 @@
       "pvp": "PvP",
       "pve": "PvE",
       "mutants": "mutants",
-      "sessionKd": "K/D sessions"
+      "sessionKd": "K/D sessions",
+      "colosseumKd": "K/D Colisée",
+      "games": "matchs"
     }
   },
   "time": {

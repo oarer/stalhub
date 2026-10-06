@@ -23,7 +23,7 @@ export default function PlayerView({
 	return (
 		<main className="mx-auto max-w-360 gap-12 space-y-6 px-4 pt-42 pb-12 sm:px-6 md:px-8">
 			<HeroView data={data} />
-			<PlayerSummary stats={data.stats} region={region} character={character} />
+			<PlayerSummary stats={data.stats} />
 			{data.clan && <ClanView data={data.clan} />}
 			<ClanHistoryView history={data.clan_history ?? []} />
 			<StatsView data={data.stats} />
