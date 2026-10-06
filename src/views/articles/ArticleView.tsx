@@ -150,7 +150,7 @@ export default function ArticleView({
 
 					{user && (
 						<Button
-							className={`p-2 ${
+							className={`gap-1 p-2 ${
 								article.is_starred
 									? 'text-yellow-400'
 									: 'text-foreground hover:text-yellow-400'
@@ -168,7 +168,7 @@ export default function ArticleView({
 								}
 								icon="lucide:star"
 							/>
-							<span>{article.stars_count}</span>
+							<span className='font-mono font-semibold'>{article.stars_count}</span>
 						</Button>
 					)}
 
