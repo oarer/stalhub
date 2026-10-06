@@ -188,7 +188,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 				</div>
 			) : (
 				<div className="flex flex-col items-center py-1.5">
-					<h2 className="font-medium text-sm text-text-accent/70">
+					<h2 className="font-medium text-foreground/70 text-sm">
 						{t('build.empty_slot')}
 					</h2>
 				</div>

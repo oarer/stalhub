@@ -121,7 +121,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 					) : (
 						<div className="flex aspect-square items-center justify-center">
 							<Icon
-								className="size-12 text-text-accent"
+								className="size-12 text-foreground"
 								icon="lucide:image-off"
 							/>
 						</div>
@@ -194,7 +194,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 					<div className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-2 ring-primary/40">
 						<div className="flex items-center justify-between">
-							<span className="font-medium text-sm text-text-accent">
+							<span className="font-medium text-foreground text-sm">
 								{t('arts.author')}
 							</span>
 							{art.author.id !== null ? (
@@ -218,44 +218,44 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 						<div className="grid grid-cols-3 gap-4">
 							<div>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('arts.stars')}
 								</p>
 								<p
-									className={`font-medium font-mono text-sm text-text-accent`}
+									className={`font-medium font-mono text-foreground text-sm`}
 								>
 									{art.stars_count}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('arts.views')}
 								</p>
 								<p
-									className={`font-medium font-mono text-sm text-text-accent`}
+									className={`font-medium font-mono text-foreground text-sm`}
 								>
 									{art.views}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('arts.comments.aside')}
 								</p>
 								<p
-									className={`font-medium font-mono text-sm text-text-accent`}
+									className={`font-medium font-mono text-foreground text-sm`}
 								>
 									{art.comments_count ?? 0}
 								</p>
 							</div>
 
 							<div className="col-span-2">
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('arts.publishedAt')}
 								</p>
 								<p
-									className={`font-medium font-mono text-sm text-text-accent`}
+									className={`font-medium font-mono text-foreground text-sm`}
 								>
 									{formatDate(art.created_at)}
 								</p>
@@ -295,7 +295,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-wrap gap-1.5">
 							{art.tags.map((tag) => (
 								<Link
-									className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-text-accent text-xs transition-colors hover:text-primary"
+									className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-foreground text-xs transition-colors hover:text-primary"
 									href={`/arts?search=${encodeURIComponent(tag)}`}
 									key={tag}
 								>

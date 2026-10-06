@@ -226,7 +226,7 @@ export function CoverPanelModal({
 										'flex items-center justify-center rounded-lg border-2 px-2 py-2.5 font-medium text-xs transition-colors',
 										!draft.icon.trim()
 											? 'border-primary bg-primary/10 text-primary'
-											: 'border-primary/20 text-text-accent hover:border-primary/50 hover:text-primary'
+											: 'border-primary/20 text-foreground hover:border-primary/50 hover:text-primary'
 									)}
 									onClick={() =>
 										setDraft((d) => ({ ...d, icon: '' }))
@@ -248,7 +248,7 @@ export function CoverPanelModal({
 												'flex items-center justify-center rounded-lg border-2 px-2 py-2.5 transition-colors',
 												active
 													? 'border-primary bg-primary/10 text-primary'
-													: 'border-primary/20 text-text-accent hover:border-primary/50 hover:text-primary'
+													: 'border-primary/20 text-foreground hover:border-primary/50 hover:text-primary'
 											)}
 											key={name}
 											onClick={() =>
@@ -298,7 +298,7 @@ export function CoverPanelModal({
 												'flex flex-col items-center gap-1.5 rounded-lg border-2 px-2 py-3 font-medium text-xs transition-colors',
 												active
 													? 'border-primary bg-primary/10 text-primary'
-													: 'border-primary/20 text-text-accent hover:border-primary/50 hover:text-primary'
+													: 'border-primary/20 text-foreground hover:border-primary/50 hover:text-primary'
 											)}
 											key={b.id}
 											onClick={() => selectPreset(b.id)}
@@ -357,7 +357,7 @@ export function CoverPanelModal({
 											/>
 										</div>
 										<div className="flex items-center gap-3">
-											<span className="w-28 shrink-0 font-medium text-text-accent text-xs">
+											<span className="w-28 shrink-0 font-medium text-foreground text-xs">
 												{t('blog.cover.rowFill')}
 											</span>
 											<Slider

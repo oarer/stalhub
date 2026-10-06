@@ -64,7 +64,7 @@ export default function Transfer() {
 			</h1>
 
 			<Card.Root className="gap-5">
-				<p className="font-medium text-text-accent">
+				<p className="font-medium text-foreground">
 					{t('download.description')}
 				</p>
 
@@ -73,7 +73,7 @@ export default function Transfer() {
 						{t('download.include')}
 					</span>
 					{entriesList.length === 0 ? (
-						<p className="font-semibold text-sm text-text-accent">
+						<p className="font-semibold text-foreground text-sm">
 							{t('download.empty')}
 						</p>
 					) : (
@@ -89,7 +89,7 @@ export default function Transfer() {
 									/>
 									<span>{key}</span>
 									<span
-										className={`font-mono text-text-accent`}
+										className={`font-mono text-foreground`}
 									>
 										{formatBytes(value.length)}
 									</span>
@@ -98,7 +98,7 @@ export default function Transfer() {
 						</ul>
 					)}
 					<p
-						className={`font-mono font-semibold text-text-accent text-xs`}
+						className={`font-mono font-semibold text-foreground text-xs`}
 					>
 						{t('download.total', {
 							count: entriesList.length,
@@ -151,7 +151,7 @@ export default function Transfer() {
 								</span>
 							)}
 						</div>
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-semibold text-foreground text-xs">
 							{t('download.hint')}
 						</p>
 					</div>

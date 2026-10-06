@@ -62,7 +62,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 	return (
 		<Card.Root>
 			<div className="flex items-center justify-between gap-2">
-				<p className="font-medium text-sm text-text-accent dark:text-neutral-300">
+				<p className="font-medium text-foreground text-sm dark:text-neutral-300">
 					{label}
 				</p>
 				{slot.moduleKey && (
@@ -88,7 +88,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 			/>
 
 			{!module ? (
-				<p className="py-2 text-center font-medium text-sm text-text-accent">
+				<p className="py-2 text-center font-medium text-foreground text-sm">
 					{t('modules.not_selected')}
 				</p>
 			) : (
@@ -171,7 +171,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 					<Divider />
 					<div className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
 						<div className="flex justify-between">
-							<span className="font-medium text-text-accent">
+							<span className="font-medium text-foreground">
 								{t('modules.reroll')}
 							</span>
 							<span className={`font-medium font-mono`}>
@@ -179,7 +179,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-text-accent">
+							<span className="font-medium text-foreground">
 								{t('modules.disassemble')}
 							</span>
 							<span className={`font-medium font-mono`}>
@@ -187,7 +187,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-text-accent">
+							<span className="font-medium text-foreground">
 								{t('modules.restore')}
 							</span>
 							<span className={`font-medium font-mono`}>
@@ -195,7 +195,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-text-accent">
+							<span className="font-medium text-foreground">
 								{t('modules.category')}
 							</span>
 							<span className={`font-medium font-mono`}>

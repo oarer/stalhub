@@ -39,7 +39,7 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 					{discord ? (
 						<div className="flex items-center gap-3">
 							<p
-								className={`font-medium font-mono text-sm text-text-accent`}
+								className={`font-medium font-mono text-foreground text-sm`}
 							>
 								{t('buy.discord')}
 							</p>
@@ -54,7 +54,7 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 
 				{items.length === 0 ? (
 					<p
-						className={`rounded-lg bg-card p-8 text-center font-medium font-mono text-text-accent`}
+						className={`rounded-lg bg-card p-8 text-center font-medium font-mono text-foreground`}
 					>
 						{t('buy.emptyTable')}
 					</p>
@@ -62,17 +62,17 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 					<div className="overflow-hidden rounded-lg ring-2 ring-primary/50">
 						<div className="grid grid-cols-[3rem_1fr_14rem] items-center border-primary/50 border-b bg-card px-4 py-2">
 							<p
-								className={`font-medium font-mono text-text-accent text-xs uppercase`}
+								className={`font-medium font-mono text-foreground text-xs uppercase`}
 							>
 								№
 							</p>
 							<p
-								className={`font-medium font-mono text-text-accent text-xs uppercase`}
+								className={`font-medium font-mono text-foreground text-xs uppercase`}
 							>
 								{t('buy.item')}
 							</p>
 							<p
-								className={`text-right font-medium font-mono text-text-accent text-xs uppercase`}
+								className={`text-right font-medium font-mono text-foreground text-xs uppercase`}
 							>
 								{t('buy.price')}
 							</p>
@@ -91,7 +91,7 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 									key={entry.key}
 								>
 									<p
-										className={`font-medium font-mono text-sm text-text-accent`}
+										className={`font-medium font-mono text-foreground text-sm`}
 									>
 										{index + 1}
 									</p>
@@ -122,7 +122,7 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 				)}
 
 				<p
-					className={`mt-6 text-center font-mono font-semibold text-text-accent/60 text-xs`}
+					className={`mt-6 text-center font-mono font-semibold text-foreground/60 text-xs`}
 				>
 					stalhub.dev
 				</p>

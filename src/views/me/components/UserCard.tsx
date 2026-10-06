@@ -65,7 +65,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 					</h2>
 
 					{user.name && (
-						<span className="font-semibold text-text-accent leading-none">
+						<span className="font-semibold text-foreground leading-none">
 							{user.username}
 						</span>
 					)}

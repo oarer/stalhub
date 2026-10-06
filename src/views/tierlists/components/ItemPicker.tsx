@@ -67,7 +67,7 @@ export function ItemPicker({
 					)
 				})}
 				{filtered.length === 0 && (
-					<p className="col-span-full p-3 text-center text-sm text-text-accent">
+					<p className="col-span-full p-3 text-center text-foreground text-sm">
 						{t('tierlists.empty')}
 					</p>
 				)}

@@ -41,7 +41,7 @@ function ClanGrenadesContent({ clanId }: { clanId: string }) {
 					<h3 className="font-semibold text-lg">
 						{t('clan.grenades.emptyTitle')}
 					</h3>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('clan.grenades.emptyDesc')}
 					</p>
 				</div>

@@ -104,7 +104,7 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 				>
 					{t('clan.gold.title')}
 				</h1>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-semibold text-foreground text-sm">
 					{t('clan.gold.desc')}
 				</p>
 			</div>

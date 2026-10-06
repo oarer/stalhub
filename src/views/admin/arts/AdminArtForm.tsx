@@ -183,7 +183,7 @@ export function AdminArtForm({
 					<div className="flex max-h-105 flex-col gap-4 overflow-y-auto pr-1">
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-md text-text-accent"
+								className="font-semibold text-foreground text-md"
 								htmlFor="admin-art-title"
 							>
 								{t('admin.arts.form.name')}
@@ -201,7 +201,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.type')}
 							</span>
 							<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -224,7 +224,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.image')}
 							</span>
 							<ArtImageField
@@ -234,7 +234,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.tags')}
 							</span>
 							<Input
@@ -245,7 +245,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.description')}
 							</span>
 							<textarea
@@ -259,7 +259,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.author')}
 							</span>
 							<div className="flex gap-1">
@@ -303,7 +303,7 @@ export function AdminArtForm({
 												key={network}
 											>
 												<Icon
-													className="shrink-0 text-text-accent"
+													className="shrink-0 text-foreground"
 													icon={
 														SOCIAL_ICONS[network] ??
 														'lucide:link'
@@ -348,7 +348,7 @@ export function AdminArtForm({
 												variant="ghost"
 											>
 												<Icon
-													className="text-text-accent"
+													className="text-foreground"
 													icon="lucide:x"
 												/>
 											</Button>
@@ -368,7 +368,7 @@ export function AdminArtForm({
 											{userSearch.trim() &&
 												userResults?.data?.length ===
 													0 && (
-													<p className="text-text-accent text-xs">
+													<p className="text-foreground text-xs">
 														{t(
 															'admin.arts.form.authorNotFound'
 														)}
@@ -394,7 +394,7 @@ export function AdminArtForm({
 																{u.name ||
 																	u.username}
 															</span>
-															<span className="text-text-accent text-xs">
+															<span className="text-foreground text-xs">
 																@{u.username}
 															</span>
 														</button>

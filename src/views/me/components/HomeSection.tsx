@@ -26,7 +26,7 @@ export function HomeSection({
 				</h2>
 				{actionHref && actionLabel && (
 					<Link
-						className="font-medium text-[13px] text-text-accent hover:underline"
+						className="font-medium text-[13px] text-foreground hover:underline"
 						href={actionHref}
 					>
 						{actionLabel}

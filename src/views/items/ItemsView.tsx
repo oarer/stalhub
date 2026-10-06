@@ -141,7 +141,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 							>
 								{messageToString(data.name, locale) || data.id}
 							</h1>
-							<p className="font-medium text-sm text-text-accent">
+							<p className="font-medium text-foreground text-sm">
 								{categoryLabel}
 							</p>
 						</div>

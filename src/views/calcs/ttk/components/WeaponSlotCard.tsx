@@ -179,7 +179,7 @@ export function WeaponSlotCard({
 								</span>
 
 								<Icon
-									className="shrink-0 text-text-accent text-xs"
+									className="shrink-0 text-foreground text-xs"
 									icon="lucide:chevron-down"
 								/>
 							</Button>
@@ -237,7 +237,7 @@ export function WeaponSlotCard({
 							(compatibleAmmo.length === 1 ? (
 								<div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-primary/40 bg-card px-2 py-1.5 text-xs">
 									<Icon
-										className="shrink-0 text-text-accent"
+										className="shrink-0 text-foreground"
 										icon="lucide:zap"
 									/>
 									<span className="min-w-0 truncate font-semibold">
@@ -270,7 +270,7 @@ export function WeaponSlotCard({
 												/>
 											) : (
 												<Icon
-													className="text-text-accent"
+													className="text-foreground"
 													icon="lucide:zap"
 												/>
 											)}
@@ -278,7 +278,7 @@ export function WeaponSlotCard({
 
 										<span
 											className={`min-w-0 truncate font-semibold text-sm ${
-												!ammo ? 'text-text-accent' : ''
+												!ammo ? 'text-foreground' : ''
 											}`}
 										>
 											{ammo
@@ -290,7 +290,7 @@ export function WeaponSlotCard({
 										</span>
 
 										<Icon
-											className="shrink-0 text-text-accent"
+											className="shrink-0 text-foreground"
 											icon="lucide:chevron-down"
 										/>
 									</Button>

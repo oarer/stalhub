@@ -96,7 +96,7 @@ export function BannerEditorModal({
 									className="size-8 rounded-lg ring-2 ring-primary/50"
 									style={{ backgroundColor: banner.color }}
 								/>
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{banner.color}
 								</span>
 								<input

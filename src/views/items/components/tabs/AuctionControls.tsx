@@ -138,7 +138,7 @@ export function AuctionControls({
 					/>
 
 					<span
-						className={`font-mono font-semibold text-text-accent text-xs uppercase tracking-widest`}
+						className={`font-mono font-semibold text-foreground text-xs uppercase tracking-widest`}
 					>
 						цена
 					</span>

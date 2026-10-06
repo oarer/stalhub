@@ -32,7 +32,7 @@ export function DashboardView() {
 				>
 					{t('dashboard.title')}
 				</h1>
-				<p className="font-medium text-[16px] text-text-accent">
+				<p className="font-medium text-[16px] text-foreground">
 					{t('dashboard.subtitle')}
 				</p>
 
@@ -73,14 +73,14 @@ export function DashboardView() {
 				) : (
 					<div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-primary border-dashed px-6 py-20 text-center">
 						<Icon
-							className="size-12 text-text-accent"
+							className="size-12 text-foreground"
 							icon="lucide:layout-grid"
 						/>
 						<div className="flex flex-col gap-1">
 							<p className="font-medium text-lg">
 								{t('dashboard.emptyTitle')}
 							</p>
-							<p className="font-medium text-sm text-text-accent">
+							<p className="font-medium text-foreground text-sm">
 								{t('dashboard.emptySubtitle')}
 							</p>
 						</div>

@@ -38,10 +38,10 @@ export default function BlogView() {
 			{articles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:scroll-text"
 					/>
-					<p className="font-medium text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('blog.empty')}
 					</p>
 				</div>
@@ -93,7 +93,7 @@ export default function BlogView() {
 									</h2>
 								</div>
 
-								<div className="flex items-center gap-3 font-medium text-text-accent text-xs">
+								<div className="flex items-center gap-3 font-medium text-foreground text-xs">
 									<div className="flex items-center gap-1">
 										<Icon icon="lucide:calendar" />
 										{formatDate(article.created_at, 'date')}
@@ -114,7 +114,7 @@ export default function BlogView() {
 									<div className="flex flex-wrap gap-1">
 										{article.tags.slice(0, 5).map((tag) => (
 											<span
-												className="rounded-md bg-border-secondary px-1.5 py-0.5 font-medium text-text-accent text-xs"
+												className="rounded-md bg-border-secondary px-1.5 py-0.5 font-medium text-foreground text-xs"
 												key={tag}
 											>
 												{tag}
@@ -138,7 +138,7 @@ export default function BlogView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className="font-mono text-sm text-text-accent">
+					<span className="font-mono text-foreground text-sm">
 						{page} / {totalPages}
 					</span>
 					<Button

@@ -51,7 +51,7 @@ export function ArmorLiteSection({
 					/>
 				</div>
 				<div className="flex flex-col justify-center gap-10">
-					<h2 className="text-text-accent">{t('build.no_armor')}</h2>
+					<h2 className="text-foreground">{t('build.no_armor')}</h2>
 					<Button
 						onClick={() => onOpenPicker(null)}
 						variant="secondary"

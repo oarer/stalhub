@@ -95,7 +95,7 @@ export default function BuildsPublicView() {
 					/>
 
 					<div className="flex items-center gap-2">
-						<span className="font-medium text-sm text-text-accent">
+						<span className="font-medium text-foreground text-sm">
 							{t('buildsPublic.price')}
 						</span>
 						<Input
@@ -105,7 +105,7 @@ export default function BuildsPublicView() {
 							onChange={(e) => setPriceMinDraft(e.target.value)}
 							type="number"
 						/>
-						<span className="text-sm text-text-accent">—</span>
+						<span className="text-foreground text-sm">—</span>
 						<Input
 							className="w-28"
 							label="buildsPublic.priceTo"
@@ -117,7 +117,7 @@ export default function BuildsPublicView() {
 				</div>
 
 				<div className="flex items-center gap-2">
-					<span className="font-medium text-sm text-text-accent">
+					<span className="font-medium text-foreground text-sm">
 						{t('buildsPublic.sort')}
 					</span>
 					{BUILD_SORTS.map((value) => (
@@ -137,7 +137,7 @@ export default function BuildsPublicView() {
 			</div>
 
 			{builds.length === 0 ? (
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('me.builds.noBuilds')}
 				</p>
 			) : (
@@ -164,7 +164,7 @@ export default function BuildsPublicView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className="font-mono text-sm text-text-accent">
+					<span className="font-mono text-foreground text-sm">
 						{page} / {totalPages}
 					</span>
 					<Button

@@ -58,7 +58,7 @@ const CustomNode = memo(
 							</h2>
 							{data.perCraft && data.perCraft > 1 && (
 								<span
-									className={`font-mono font-semibold text-[10px] text-text-accent`}
+									className={`font-mono font-semibold text-[10px] text-foreground`}
 								>
 									×{data.perCraft}
 								</span>
@@ -84,7 +84,7 @@ const CustomNode = memo(
 						</div>
 					) : data.quantity && data.quantity > 0 ? (
 						<span
-							className={`font-mono font-semibold text-sm text-text-accent`}
+							className={`font-mono font-semibold text-foreground text-sm`}
 						>
 							×{data.quantity}
 						</span>

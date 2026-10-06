@@ -16,7 +16,7 @@ export default function MeStarsView() {
 			<h1 className="font-semibold text-xl">{t('me.stars.title')}</h1>
 
 			{stars?.data.length === 0 ? (
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-semibold text-foreground text-sm">
 					{t('me.stars.empty')}
 				</p>
 			) : (

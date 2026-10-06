@@ -195,7 +195,7 @@ export function ItemPickerModal({
 											</h2>
 										</>
 									) : (
-										<h2 className="font-semibold text-text-accent">
+										<h2 className="font-semibold text-foreground">
 											{t(emptyTitle)}
 										</h2>
 									)}

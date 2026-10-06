@@ -129,7 +129,7 @@ function DraggableEntry({
 			}`}
 		>
 			<Icon
-				className="size-4 cursor-grab text-text-accent/50"
+				className="size-4 cursor-grab text-foreground/50"
 				icon="lucide:grip-vertical"
 			/>
 			{item && (

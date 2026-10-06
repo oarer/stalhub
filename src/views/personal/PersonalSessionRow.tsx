@@ -136,7 +136,7 @@ export function PersonalSessionRow({
 								</Badge>
 							)}
 						</div>
-						<p className="font-mono font-semibold text-[11px] text-text-accent">
+						<p className="font-mono font-semibold text-[11px] text-foreground">
 							{formatDate(session.started_at)}
 						</p>
 					</div>
@@ -206,7 +206,7 @@ export function PersonalSessionRow({
 						type="button"
 					>
 						<Icon
-							className={`text-lg text-text-accent transition-transform ${expanded ? 'rotate-90' : ''}`}
+							className={`text-foreground text-lg transition-transform ${expanded ? 'rotate-90' : ''}`}
 							icon="lucide:chevron-right"
 						/>
 					</button>

@@ -173,7 +173,7 @@ export default function BadgesAdminView() {
 							</div>
 
 							<div className="flex flex-col gap-1.5">
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-semibold text-foreground text-xs">
 									{t('admin.badges.type')}
 								</p>
 								<div className="flex gap-1">
@@ -260,7 +260,7 @@ export default function BadgesAdminView() {
 						</div>
 
 						<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
-							<span className="text-text-accent">
+							<span className="text-foreground">
 								{t('admin.badges.preview')}
 							</span>
 							<BadgePreview
@@ -455,7 +455,7 @@ export default function BadgesAdminView() {
 							/>
 
 							<div className="flex flex-col gap-1.5">
-								<span className="font-semibold text-text-accent text-xs">
+								<span className="font-semibold text-foreground text-xs">
 									{t('admin.badges.type')}
 								</span>
 								<div className="flex gap-1">
@@ -529,7 +529,7 @@ export default function BadgesAdminView() {
 							</div>
 
 							<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
-								<span className="text-text-accent">
+								<span className="text-foreground">
 									{t('admin.badges.preview')}
 								</span>
 								<BadgePreview

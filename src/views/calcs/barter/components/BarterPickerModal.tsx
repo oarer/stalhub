@@ -8,30 +8,44 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Skeleton } from '@/components/ui/Skeleton'
-import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useFuseSearch } from '@/hooks/useFuseSearch'
-import { useSearchItem } from '@/hooks/useSearchItem'
 import { getLocale } from '@/lib/getLocale'
-import { buyItemKey } from '@/stores/useBuy.store'
-import type { ItemListing } from '@/types/api.type'
+import type { Message } from '@/types/item.type'
 import { infoColorMap } from '@/types/item.type'
+import { messageToString } from '@/utils/itemUtils'
+
+export type BarterListEntry = {
+	item_id: string
+	settlement_required_level: number
+	lines: Message
+	category: string
+	color: string
+}
+
+type BarterPickerModalProps = {
+	items: BarterListEntry[] | undefined
+	loading: boolean
+	onOpenChange: (open: boolean) => void
+	onSelect: (item: BarterListEntry) => void
+	open: boolean
+	selectedId?: string
+}
 
 const PAGE_STEP = 20
 
-type ItemPickerModalProps = {
-	addedKeys: Set<string>
-	onAdd: (item: ItemListing) => void
-	onOpenChange: (open: boolean) => void
-	open: boolean
+function barterIcon(category: string) {
+	return category ? `https://cdn.stalhub.dev/db/icons${category}.png` : null
 }
 
-export default function ItemPickerModal({
-	addedKeys,
-	onAdd,
+export default function BarterPickerModal({
+	items,
+	loading,
 	onOpenChange,
+	onSelect,
 	open,
-}: ItemPickerModalProps) {
+	selectedId,
+}: BarterPickerModalProps) {
 	const t = useTranslations()
 	const locale = getLocale()
 
@@ -40,23 +54,27 @@ export default function ItemPickerModal({
 
 	const debouncedQuery = useDebounce(query, 150)
 
-	const { items, loading } = useSearchItem()
-
-	const { filteredEntries: filteredItems } = useFuseSearch<ItemListing>(
+	const { filteredEntries: searched } = useFuseSearch<BarterListEntry>(
 		items ?? [],
 		debouncedQuery,
 		{
-			getKey: (i) => buyItemKey(i),
-			getName: (i) => i.name?.[locale] ?? '',
+			getKey: (i) => i.item_id,
+			getName: (i) => messageToString(i.lines as never, locale),
 			locale,
 			minLength: 2,
 			threshold: 0.4,
 		}
 	)
 
+	const hasQuery = debouncedQuery.trim().length >= 2
+	const baseList = useMemo(() => {
+		if (hasQuery) return searched
+		return (items ?? []).slice(0, 100)
+	}, [hasQuery, searched, items])
+
 	const displayed = useMemo(
-		() => filteredItems.slice(0, visibleCount),
-		[filteredItems, visibleCount]
+		() => baseList.slice(0, visibleCount),
+		[baseList, visibleCount]
 	)
 
 	useEffect(() => {
@@ -71,20 +89,22 @@ export default function ItemPickerModal({
 			const el = e.currentTarget
 			if (
 				el.scrollTop + el.clientHeight >= el.scrollHeight - 80 &&
-				filteredItems.length > visibleCount
+				baseList.length > visibleCount
 			) {
 				setVisibleCount((v) => v + PAGE_STEP)
 			}
 		},
-		[filteredItems.length, visibleCount]
+		[baseList.length, visibleCount]
 	)
+
+	const totalCount = hasQuery ? searched.length : (items?.length ?? 0)
 
 	return (
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
 			<Modal.Content align="top" className="max-w-3xl">
 				<Modal.Header>
 					<Modal.Title>
-						{t('buy.searchTitle')} ({filteredItems.length})
+						{t('barterCalc.searchTitle')} ({totalCount})
 					</Modal.Title>
 				</Modal.Header>
 
@@ -92,7 +112,7 @@ export default function ItemPickerModal({
 					<Input
 						autoFocus
 						className="p-2"
-						label="buy.searchLabel"
+						label="barterCalc.search"
 						onChange={(e) => {
 							setQuery(e.target.value)
 							setVisibleCount(PAGE_STEP)
@@ -107,7 +127,7 @@ export default function ItemPickerModal({
 							<Skeleton className="size-5" />
 							<p>{t('buy.loading')}</p>
 						</div>
-					) : displayed.length === 0 && debouncedQuery.trim() ? (
+					) : displayed.length === 0 && hasQuery ? (
 						<AnimatePresence>
 							<motion.p
 								animate={{ opacity: 1, y: 0 }}
@@ -129,43 +149,48 @@ export default function ItemPickerModal({
 							onScroll={onScroll}
 						>
 							{displayed.map((item) => {
-								const key = buyItemKey(item)
-								const isAdded = addedKeys.has(key)
 								const name =
-									item.name?.[locale] ?? item.data ?? '—'
+									messageToString(
+										item.lines as never,
+										locale
+									) || item.item_id
+								const isSelected = selectedId === item.item_id
+								const icon = barterIcon(item.category)
 
 								return (
 									<motion.li
 										animate={{ opacity: 1, y: 0 }}
 										initial={{ opacity: 0, y: 8 }}
-										key={key}
+										key={item.item_id}
 										transition={{ duration: 0.15 }}
 									>
 										<button
-											className="flex w-full cursor-pointer items-center gap-4 rounded-lg border-2 border-muted bg-card px-3 py-2 text-left transition-all duration-200 hover:border-primary/50 hover:brightness-125 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
-											disabled={isAdded}
-											onClick={() => onAdd(item)}
+											className="flex w-full cursor-pointer items-center gap-4 rounded-lg border-2 border-muted bg-card px-3 py-2 text-left transition-all duration-200 hover:border-primary/50 hover:brightness-125"
+											onClick={() => onSelect(item)}
 											type="button"
 										>
-											<Image
-												alt={name}
-												className="size-8 object-contain"
-												height={32}
-												loading="lazy"
-												src={`${GITHUB_RAW_BASE}${item.icon}`}
-												width={32}
-											/>
+											{icon && (
+												<Image
+													alt={name}
+													className="size-8 object-contain"
+													height={32}
+													loading="lazy"
+													src={icon}
+													width={32}
+												/>
+											)}
 											<p
 												className="truncate font-semibold text-sm"
 												style={{
-													color: infoColorMap[
-														item.color
-													],
+													color:
+														infoColorMap[
+															item.color as keyof typeof infoColorMap
+														] ?? undefined,
 												}}
 											>
 												{name}
 											</p>
-											{isAdded && (
+											{isSelected && (
 												<Icon
 													className="ml-auto shrink-0 text-lg text-primary"
 													icon="lucide:check"

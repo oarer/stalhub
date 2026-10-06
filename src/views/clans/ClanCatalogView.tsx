@@ -67,7 +67,7 @@ export default function ClanCatalogView() {
 					))}
 				</div>
 			) : filtered.length === 0 ? (
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('clans.empty')}
 				</p>
 			) : (

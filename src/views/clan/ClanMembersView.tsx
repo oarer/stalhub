@@ -103,7 +103,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 										{member.user && (
 											<HoverUserCard id={member.user.id}>
 												<Link
-													className={`font-mono font-semibold text-text-accent text-xs`}
+													className={`font-mono font-semibold text-foreground text-xs`}
 													href={`/users/${member.user.id}`}
 												>
 													{member.user.name}

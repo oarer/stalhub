@@ -53,7 +53,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 									{member.user && (
 										<HoverUserCard id={member.user.id}>
 											<Link
-												className={`font-mono font-semibold text-text-accent text-xs`}
+												className={`font-mono font-semibold text-foreground text-xs`}
 												href={`/users/${member.user.id}`}
 											>
 												{member.user.name}
@@ -72,7 +72,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 					))}
 					{members.length > 10 && (
 						<p
-							className={`mt-2 text-center font-mono font-semibold text-text-accent text-xs`}
+							className={`mt-2 text-center font-mono font-semibold text-foreground text-xs`}
 						>
 							{t('clan.members.more', {
 								count: members.length - 10,

@@ -83,7 +83,7 @@ function ClanSessionsContent({
 					</h1>
 					{isFetching && (
 						<Icon
-							className="animate-spin text-base text-text-accent"
+							className="animate-spin text-base text-foreground"
 							icon="lucide:loader-circle"
 						/>
 					)}

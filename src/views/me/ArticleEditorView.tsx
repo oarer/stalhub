@@ -224,13 +224,13 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 					</span>
 
 					{isDirty && (
-						<span className="hidden font-semibold text-text-accent text-xs sm:inline-block">
+						<span className="hidden font-semibold text-foreground text-xs sm:inline-block">
 							{t('me.articleEditor.notSaved')}
 						</span>
 					)}
 
 					{lastSaved && !isDirty && (
-						<span className="hidden font-semibold text-text-accent text-xs sm:inline-block">
+						<span className="hidden font-semibold text-foreground text-xs sm:inline-block">
 							{t('me.articleEditor.saved')}
 						</span>
 					)}

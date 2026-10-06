@@ -33,17 +33,17 @@ export function BuyTable() {
 			<div className="overflow-hidden rounded-xl ring-2 ring-primary/50">
 				<div className="grid grid-cols-[2.5rem_1fr] items-center gap-x-3 border-primary/50 border-b-2 bg-card/80 px-3 py-2 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:px-4">
 					<p
-						className={`font-medium font-mono text-text-accent text-xs uppercase`}
+						className={`font-medium font-mono text-foreground text-xs uppercase`}
 					>
 						№
 					</p>
 					<p
-						className={`font-medium font-mono text-text-accent text-xs uppercase`}
+						className={`font-medium font-mono text-foreground text-xs uppercase`}
 					>
 						{t('buy.item')}
 					</p>
 					<p
-						className={`hidden font-medium font-mono text-text-accent text-xs uppercase sm:block`}
+						className={`hidden font-medium font-mono text-foreground text-xs uppercase sm:block`}
 					>
 						{t('buy.price')}
 					</p>
@@ -59,10 +59,10 @@ export function BuyTable() {
 							initial={{ opacity: 0 }}
 							key="empty"
 						>
-							<p className="font-medium text-text-accent">
+							<p className="font-medium text-foreground">
 								{t('buy.emptyTable')}
 							</p>
-							<p className="text-sm text-text-accent/60">
+							<p className="text-foreground/60 text-sm">
 								{t('buy.emptyTableHint')}
 							</p>
 						</motion.div>
@@ -86,7 +86,7 @@ export function BuyTable() {
 									transition={{ duration: 0.15 }}
 								>
 									<p
-										className={`col-start-1 row-start-1 font-medium font-mono text-sm text-text-accent`}
+										className={`col-start-1 row-start-1 font-medium font-mono text-foreground text-sm`}
 									>
 										{index + 1}
 									</p>

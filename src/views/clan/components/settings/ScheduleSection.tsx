@@ -61,7 +61,7 @@ export function ScheduleSection({
 					<span className="font-semibold text-sm">
 						{t('clan.settings.sundayActivityLabel')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.sundayActivityHint')}
 					</span>
 				</div>
@@ -85,7 +85,7 @@ export function ScheduleSection({
 					<span className="font-semibold text-sm">
 						{t('clan.settings.brawlsMandatoryLabel')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.brawlsMandatoryHint')}
 					</span>
 				</div>
@@ -98,7 +98,7 @@ export function ScheduleSection({
 				/>
 			</div>
 
-			<p className={`font-mono font-semibold text-sm text-text-accent`}>
+			<p className={`font-mono font-semibold text-foreground text-sm`}>
 				{t('clan.settings.scheduleTotal', {
 					tournament: TOURNAMENT_DAYS,
 					brawl: schedule.brawls_per_week,

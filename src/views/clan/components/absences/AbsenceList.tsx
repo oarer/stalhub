@@ -27,7 +27,7 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 				{t('clan.absence.listTitle', { date })}
 			</p>
 			{absences?.length === 0 && (
-				<p className="py-4 text-center font-semibold text-md text-text-accent">
+				<p className="py-4 text-center font-semibold text-foreground text-md">
 					{t('clan.absence.empty')}
 				</p>
 			)}

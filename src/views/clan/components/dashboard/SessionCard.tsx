@@ -36,7 +36,7 @@ export function SessionCard({ session }: { session: StageSession }) {
 						</span>
 					</div>
 					<p
-						className={`font-mono font-semibold text-[11px] text-text-accent`}
+						className={`font-mono font-semibold text-[11px] text-foreground`}
 					>
 						{formatDate(session.started_at)}
 					</p>

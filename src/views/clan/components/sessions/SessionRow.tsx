@@ -138,7 +138,7 @@ export function SessionRow({
 							)}
 						</div>
 						<p
-							className={`font-mono font-semibold text-[11px] text-text-accent`}
+							className={`font-mono font-semibold text-[11px] text-foreground`}
 						>
 							{formatDate(session.started_at)}
 						</p>
@@ -211,7 +211,7 @@ export function SessionRow({
 						type="button"
 					>
 						<Icon
-							className={`text-lg text-text-accent transition-transform ${expanded ? 'rotate-90' : ''}`}
+							className={`text-foreground text-lg transition-transform ${expanded ? 'rotate-90' : ''}`}
 							icon="lucide:chevron-right"
 						/>
 					</button>
@@ -281,7 +281,7 @@ export function SessionRow({
 											{t('clan.sessions.attendance')}
 										</p>
 										<span
-											className={`font-mono font-semibold text-text-accent text-xs`}
+											className={`font-mono font-semibold text-foreground text-xs`}
 										>
 											{t('clan.sessions.presentOf', {
 												present:

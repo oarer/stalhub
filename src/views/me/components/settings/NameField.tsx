@@ -48,7 +48,7 @@ export function NameField({
 				</Button>
 			</div>
 			{cooldownLeft > 0 && (
-				<p className="font-semibold text-text-accent text-xs">
+				<p className="font-semibold text-foreground text-xs">
 					{t('me.settings.nameCooldown')}{' '}
 					{numbersTxt(cooldownLeft, [
 						t('time.day.one'),

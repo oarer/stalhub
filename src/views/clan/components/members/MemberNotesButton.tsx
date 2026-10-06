@@ -83,7 +83,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 			<Modal.Trigger asChild>
 				<Button
 					className={cn(
-						'relative cursor-pointer p-1 text-text-accent',
+						'relative cursor-pointer p-1 text-foreground',
 						note && 'text-primary!'
 					)}
 					onClick={handleOpen}
@@ -107,7 +107,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 								</p>
 								<div className="mt-2 flex items-center justify-between">
 									<span
-										className={`font-mono font-semibold text-text-accent text-xs`}
+										className={`font-mono font-semibold text-foreground text-xs`}
 									>
 										{note.author.name} ·{' '}
 										{formatDate(note.created_at)}
@@ -153,7 +153,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 							/>
 						)}
 						<span
-							className={`font-mono font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-foreground text-xs`}
 						>
 							{content.length}/512
 						</span>

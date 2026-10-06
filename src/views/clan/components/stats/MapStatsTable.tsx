@@ -70,7 +70,7 @@ export function MapStatsTable({ rows }: { rows: MapStatRow[] }) {
 			</div>
 			<Table.Root className="font-mono font-semibold">
 				<Table.Header>
-					<Table.Row className="text-left text-text-accent">
+					<Table.Row className="text-left text-foreground">
 						<Table.Head>{t('personal.stagesMap')}</Table.Head>
 						<Table.Head className="text-center">
 							{tc('clan.common.games')}
@@ -98,10 +98,10 @@ export function MapStatsTable({ rows }: { rows: MapStatRow[] }) {
 										</span>
 									)}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{r.sessions}
 								</Table.Cell>
-								<Table.Cell className="text-center font-mono font-semibold text-text-accent">
+								<Table.Cell className="text-center font-mono font-semibold text-foreground">
 									<span className="text-primary">
 										{r.wins}
 									</span>

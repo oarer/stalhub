@@ -196,7 +196,7 @@ export function ItemsList({
 	return (
 		<div className="h-full min-h-0 w-full">
 			{emptyText && sortedItems.length === 0 ? (
-				<p className="flex h-full items-center justify-center font-medium text-sm text-text-accent">
+				<p className="flex h-full items-center justify-center font-medium text-foreground text-sm">
 					{emptyText}
 				</p>
 			) : (

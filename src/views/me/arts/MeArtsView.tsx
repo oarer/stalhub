@@ -49,7 +49,7 @@ export default function MeArtsView() {
 						{t('me.arts.title')}
 					</h1>
 					{arts?.total_count != null && (
-						<span className="text-sm text-text-accent">
+						<span className="text-foreground text-sm">
 							{arts.total_count}
 						</span>
 					)}
@@ -94,10 +94,10 @@ export default function MeArtsView() {
 			{!filteredArts || filteredArts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:palette"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('me.arts.noArts')}
 					</p>
 					<CLink
@@ -133,7 +133,7 @@ export default function MeArtsView() {
 							) : (
 								<div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-border-secondary">
 									<Icon
-										className="size-5 text-text-accent"
+										className="size-5 text-foreground"
 										icon="lucide:image-off"
 									/>
 								</div>
@@ -149,7 +149,7 @@ export default function MeArtsView() {
 									)}
 								</div>
 								<span
-									className={`font-mono font-semibold text-text-accent text-xs`}
+									className={`font-mono font-semibold text-foreground text-xs`}
 								>
 									{formatDate(art.created_at, 'date')}
 								</span>
@@ -157,7 +157,7 @@ export default function MeArtsView() {
 									<div className="flex flex-wrap gap-1">
 										{art.tags.map((tag) => (
 											<span
-												className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+												className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
 												key={tag}
 											>
 												{tag}

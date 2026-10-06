@@ -129,7 +129,7 @@ export default function TierListDetailView() {
 	if (!tierList) {
 		return (
 			<div className="mx-auto max-w-5xl px-4 py-16 text-center">
-				<p className="text-text-accent">{t('tierlists.notFound')}</p>
+				<p className="text-foreground">{t('tierlists.notFound')}</p>
 			</div>
 		)
 	}
@@ -152,11 +152,11 @@ export default function TierListDetailView() {
 						)}
 					</div>
 					{tierList.description && (
-						<p className="font-semibold text-text-accent">
+						<p className="font-semibold text-foreground">
 							{tierList.description}
 						</p>
 					)}
-					<div className="flex items-center gap-3 text-sm text-text-accent">
+					<div className="flex items-center gap-3 text-foreground text-sm">
 						{tierList.author && (
 							<div className="flex items-center gap-2">
 								<Avatar
@@ -176,7 +176,7 @@ export default function TierListDetailView() {
 								</HoverUserCard>
 							</div>
 						)}
-						<div className="flex items-center gap-1 text-text-accent">
+						<div className="flex items-center gap-1 text-foreground">
 							<Icon icon="lucide:eye" />
 							<span className={`font-mono font-semibold text-xs`}>
 								{tierList.views}

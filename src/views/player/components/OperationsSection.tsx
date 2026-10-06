@@ -44,12 +44,12 @@ export default function OperationsSection({
 					</>
 				)}
 				{!isLoading && isError && (
-					<p className="font-semibold text-text-accent">
+					<p className="font-semibold text-foreground">
 						{t('player.operations.error')}
 					</p>
 				)}
 				{!isLoading && data && data.sessions.length === 0 && (
-					<p className="font-semibold text-text-accent">
+					<p className="font-semibold text-foreground">
 						{t('player.operations.empty')}
 					</p>
 				)}

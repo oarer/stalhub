@@ -86,7 +86,7 @@ function OperationsContent() {
 				>
 					{t('operations.title')}
 				</h1>
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('operations.description')}
 				</p>
 			</div>
@@ -119,7 +119,7 @@ function OperationsContent() {
 			</Button>
 
 			{!isSearch && (
-				<p className="text-center font-semibold text-sm text-text-accent">
+				<p className="text-center font-semibold text-foreground text-sm">
 					{t('operations.prompt')}
 				</p>
 			)}
@@ -148,7 +148,7 @@ function OperationsContent() {
 					{!isLoading && isError && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-medium text-text-accent">
+								<p className="font-medium text-foreground">
 									{t('player.operations.error')}
 								</p>
 							</Card.Content>
@@ -158,7 +158,7 @@ function OperationsContent() {
 					{!isLoading && !isError && sessions.length === 0 && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-medium text-text-accent">
+								<p className="font-medium text-foreground">
 									{t('player.operations.empty')}
 								</p>
 							</Card.Content>

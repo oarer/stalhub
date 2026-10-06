@@ -41,7 +41,7 @@ export function DPIForm({
 			<Card.Content className="flex flex-col gap-3 md:flex-row">
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`font-medium font-mono text-[12px] text-text-accent uppercase tracking-widest`}
+						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
 					>
 						{t('dpi.from_game')}
 					</span>
@@ -67,7 +67,7 @@ export function DPIForm({
 
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`font-medium font-mono text-[12px] text-text-accent uppercase tracking-widest`}
+						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
 					>
 						{t('dpi.to_game')}
 					</span>

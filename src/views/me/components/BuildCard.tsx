@@ -167,7 +167,7 @@ export function BuildCard({
 						variant={'ghost'}
 					>
 						<Icon
-							className="size-3.5 text-text-accent"
+							className="size-3.5 text-foreground"
 							icon="lucide:link"
 						/>
 					</Button>
@@ -218,7 +218,7 @@ export function BuildCard({
 								/>
 							) : (
 								<Icon
-									className="text-lg text-text-accent"
+									className="text-foreground text-lg"
 									icon="lucide:shield"
 								/>
 							)}
@@ -295,7 +295,7 @@ export function BuildCard({
 				</div>
 			)}
 
-			<div className="flex items-center gap-2 text-text-accent text-xs">
+			<div className="flex items-center gap-2 text-foreground text-xs">
 				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
@@ -310,11 +310,11 @@ export function BuildCard({
 				)}
 				{author && (
 					<span onClick={(e) => e.stopPropagation()}>
-					<HoverUserCard id={author.id}>
-						<p className={`font-normal text-primary`}>
-							{author.username}
-						</p>
-					</HoverUserCard>
+						<HoverUserCard id={author.id}>
+							<p className={`font-normal text-primary`}>
+								{author.username}
+							</p>
+						</HoverUserCard>
 					</span>
 				)}
 			</div>
@@ -323,7 +323,7 @@ export function BuildCard({
 				<div className="flex flex-wrap gap-1">
 					{build.tags.slice(0, 3).map((tag) => (
 						<span
-							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
 							key={tag}
 						>
 							{t(`builds.tags.${tag}`)}

@@ -46,7 +46,7 @@ export default function PlayerSearchView() {
 				>
 					{t('playerSearch.title')}
 				</h1>
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('playerSearch.description')}
 				</p>
 			</div>

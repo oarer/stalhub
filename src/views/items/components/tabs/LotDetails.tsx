@@ -147,7 +147,7 @@ export function ModuleAttributes({
 								>
 									{pct.toFixed(2)}%
 								</span>
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-semibold text-foreground text-xs">
 									{groupLabel}
 								</p>
 							</div>

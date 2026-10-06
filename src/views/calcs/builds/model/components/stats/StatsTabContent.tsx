@@ -166,7 +166,7 @@ export const StatsTabContent = memo(function StatsTabContent({
 				)}
 				<div className="flex flex-col gap-2 border-border border-t pt-2">
 					{stats.length === 0 ? (
-						<p className="text-text-accent">
+						<p className="text-foreground">
 							{hasContainer
 								? t('build.stats.no_stats')
 								: t('build.stats.no_container')}
@@ -280,7 +280,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				)}
 				<div className="flex flex-col gap-2 border-border border-t pt-2">
 					{sortedStats.length === 0 ? (
-						<p className="text-text-accent">
+						<p className="text-foreground">
 							{t('build.stats.no_stats')}
 						</p>
 					) : (

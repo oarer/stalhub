@@ -216,7 +216,7 @@ export default function ScNodesAdminView() {
 							<p className="font-medium font-mono text-2xl">
 								{overview.nodes_up}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.nodesUp')}
 							</p>
 						</div>
@@ -234,7 +234,7 @@ export default function ScNodesAdminView() {
 							<p className="font-medium font-mono text-2xl">
 								{overview.tokens_up}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.tokensUp')}
 							</p>
 						</div>
@@ -252,7 +252,7 @@ export default function ScNodesAdminView() {
 							<p className="font-medium font-mono text-2xl">
 								{overview.quota_per_minute}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.quotaPerMin')}
 							</p>
 						</div>
@@ -271,7 +271,7 @@ export default function ScNodesAdminView() {
 								{overview.costs.default}/
 								{overview.costs.auction}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.costs')}
 							</p>
 						</div>
@@ -543,7 +543,7 @@ export default function ScNodesAdminView() {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<p className="font-semibold text-text-accent text-xs">
+							<p className="font-semibold text-foreground text-xs">
 								{t('admin.scNodes.tokens.bulk')}
 							</p>
 							<textarea

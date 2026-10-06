@@ -109,7 +109,7 @@ export const NumericElement: React.FC<{
 			</p>
 			{override ? (
 				<div className="flex items-center gap-1 text-nowrap">
-					<span className="font-mono font-semibold text-sm text-text-accent line-through">
+					<span className="font-mono font-semibold text-foreground text-sm line-through">
 						{roundNumber(override.base)}
 					</span>
 					<span aria-hidden="true">→</span>

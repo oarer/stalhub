@@ -194,7 +194,7 @@ export function EditorToolbar({
 						/>
 					) : (
 						<button
-							className="flex size-8 cursor-pointer items-center justify-center rounded-md text-text-accent transition-colors hover:bg-accent/50 hover:text-text"
+							className="flex size-8 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent/50 hover:text-text"
 							key={action.label}
 							onClick={() => {
 								const ta = textareaRef.current
@@ -294,7 +294,7 @@ export function EditorToolbar({
 										{t(h.label)}
 									</span>
 									<kbd
-										className={`rounded-md border border-primary bg-card px-2 py-0.5 font-mono font-semibold text-text-accent text-xs`}
+										className={`rounded-md border border-primary bg-card px-2 py-0.5 font-mono font-semibold text-foreground text-xs`}
 									>
 										{h.shortcut}
 									</kbd>

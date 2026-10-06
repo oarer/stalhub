@@ -77,7 +77,7 @@ export default function ClanLayout({
 				>
 					{t('clan.layout.notLinked.title')}
 				</h1>
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('clan.layout.notLinked.desc')}
 				</p>
 				<Button
@@ -99,7 +99,7 @@ export default function ClanLayout({
 				>
 					{t('clan.layout.notFound.title')}
 				</h1>
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('clan.layout.notFound.desc')}
 				</p>
 			</div>
@@ -174,7 +174,7 @@ export default function ClanLayout({
 								tag: profile.clan.tag,
 							})}
 						</h1>
-						<p className="font-medium text-sm text-text-accent">
+						<p className="font-medium text-foreground text-sm">
 							{t('clan.layout.frozen.descMember')}
 						</p>
 					</div>

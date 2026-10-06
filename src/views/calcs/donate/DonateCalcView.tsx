@@ -64,7 +64,7 @@ export default function DonateCalcView() {
 			<div className="overflow-x-auto rounded-xl border-2 border-primary/20 bg-card">
 				<table className="w-full text-sm">
 					<thead>
-						<tr className="text-left text-text-accent">
+						<tr className="text-left text-foreground">
 							<th className="px-3 py-2 font-medium">
 								{t('donateCalc.item')}
 							</th>
@@ -108,7 +108,7 @@ export default function DonateCalcView() {
 											)}
 										</span>
 										{r.amount > 1 && (
-											<span className="font-mono text-text-accent text-xs">
+											<span className="font-mono text-foreground text-xs">
 												×{r.amount}
 											</span>
 										)}

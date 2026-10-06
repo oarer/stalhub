@@ -150,10 +150,10 @@ export default function ArtsView() {
 			) : arts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:image"
 					/>
-					<p className="font-medium text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('arts.empty')}
 					</p>
 				</div>
@@ -245,7 +245,7 @@ export default function ArtsView() {
 							) : (
 								<div className="flex aspect-square w-full items-center justify-center">
 									<Icon
-										className="size-10 text-text-accent"
+										className="size-10 text-foreground"
 										icon="lucide:image-off"
 									/>
 								</div>

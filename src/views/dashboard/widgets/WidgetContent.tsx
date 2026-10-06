@@ -12,10 +12,10 @@ function WidgetErrorFallback() {
 	return (
 		<div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
 			<Icon
-				className="size-7 text-text-accent"
+				className="size-7 text-foreground"
 				icon="lucide:triangle-alert"
 			/>
-			<p className="font-semibold text-text-accent text-xs">
+			<p className="font-semibold text-foreground text-xs">
 				{t('dashboard.widgetError')}
 			</p>
 		</div>

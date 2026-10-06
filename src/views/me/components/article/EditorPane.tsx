@@ -26,7 +26,7 @@ export function EditorPane({
 			)}
 		>
 			<textarea
-				className="h-full w-full resize-none bg-transparent p-4 font-mono text-sm leading-relaxed outline-none placeholder:text-text-accent/40"
+				className="h-full w-full resize-none bg-transparent p-4 font-mono text-sm leading-relaxed outline-none placeholder:text-foreground/40"
 				onChange={(e) => onChange(e.target.value)}
 				onScroll={onScroll}
 				placeholder={t('me.articleEditor.placeholder')}

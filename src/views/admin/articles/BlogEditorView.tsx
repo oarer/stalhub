@@ -207,7 +207,7 @@ function EditorForm({
 			</header>
 
 			{isCreate && (
-				<p className="px-4 font-medium text-text-accent text-xs">
+				<p className="px-4 font-medium text-foreground text-xs">
 					{t('blog.editor.galleryHint')}
 				</p>
 			)}

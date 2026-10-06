@@ -86,7 +86,7 @@ export default function CallbackPage() {
 					>
 						{t('auth.success')}
 					</h1>
-					<p className="font-medium text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('auth.closePage')}
 					</p>
 				</div>

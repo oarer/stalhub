@@ -58,7 +58,7 @@ export function CompareSlots({
 				{name}
 			</p>
 			{slots.length === 0 ? (
-				<p className="py-4 text-center text-sm text-text-accent">
+				<p className="py-4 text-center text-foreground text-sm">
 					{t('build.stats.no_container')}
 				</p>
 			) : (
@@ -126,11 +126,11 @@ export function CompareSlots({
 								<>
 									<div className="flex flex-col items-center px-1.5 py-1.75">
 										<Icon
-											className="text-lg text-text-accent/70"
+											className="text-foreground/70 text-lg"
 											icon="lucide:circle-question-mark"
 										/>
 									</div>
-									<p className="truncate font-medium text-sm text-text-accent/70 sm:hidden">
+									<p className="truncate font-medium text-foreground/70 text-sm sm:hidden">
 										{t('build.empty_slot')}
 									</p>
 								</>

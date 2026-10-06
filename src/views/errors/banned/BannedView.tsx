@@ -46,7 +46,7 @@ export default function BannedView() {
 						</span>
 					</h1>
 					<p
-						className={`${mtsExtended.className} text-center font-medium text-md md:text-left md:text-xl dark:text-text-accent`}
+						className={`${mtsExtended.className} text-center font-medium text-md md:text-left md:text-xl dark:text-foreground`}
 					>
 						{reason
 							? `${t('errors.banned.reasonPrefix')} ${reason}`

@@ -286,7 +286,7 @@ export function PlayerList({
 				meta: { align: 'center' satisfies ColumnAlign },
 				cell: () => (
 					<Icon
-						className="text-text-accent"
+						className="text-foreground"
 						icon="lucide:chevron-right"
 					/>
 				),
@@ -432,7 +432,7 @@ export function PlayerList({
 														</span>
 													</div>
 													<span
-														className={`font-mono font-semibold text-text-accent text-xs`}
+														className={`font-mono font-semibold text-foreground text-xs`}
 													>
 														{formatDate(
 															s.started_at
@@ -440,7 +440,7 @@ export function PlayerList({
 													</span>
 												</div>
 												<span
-													className={`font-mono font-semibold text-sm text-text-accent`}
+													className={`font-mono font-semibold text-foreground text-sm`}
 												>
 													{s.kills}{' '}
 													{t(

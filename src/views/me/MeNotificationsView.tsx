@@ -94,7 +94,7 @@ export default function MeNotificationsView() {
 			</div>
 
 			{notifications.length === 0 ? (
-				<p className="py-8 text-center font-semibold text-sm text-text-accent">
+				<p className="py-8 text-center font-semibold text-foreground text-sm">
 					{t('me.notifications.empty')}
 				</p>
 			) : (

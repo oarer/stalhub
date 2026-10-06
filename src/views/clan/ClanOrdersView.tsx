@@ -106,7 +106,7 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 					<h3 className="font-medium text-lg">
 						{t('clan.orders.emptyTitle')}
 					</h3>
-					<p className="font-medium text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('clan.orders.emptyDesc')}
 					</p>
 				</div>

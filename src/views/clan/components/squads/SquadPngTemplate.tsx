@@ -35,7 +35,7 @@ export const SquadPngTemplate = forwardRef<
 					<div
 						className={`rounded-lg bg-card px-4 py-1 text-right font-mono`}
 					>
-						<p className="font-medium text-[13px] text-text-accent">
+						<p className="font-medium text-[13px] text-foreground">
 							{t('clan.squads.png.squadCount')}
 						</p>
 						<p className="font-mono font-semibold text-lg text-primary">
@@ -45,7 +45,7 @@ export const SquadPngTemplate = forwardRef<
 					<div
 						className={`rounded-lg bg-card px-4 py-1 text-right font-mono`}
 					>
-						<p className="font-medium text-[13px] text-text-accent">
+						<p className="font-medium text-[13px] text-foreground">
 							{t('clan.squads.png.membersCount')}
 						</p>
 						<p className="font-mono font-semibold text-lg text-primary">
@@ -60,11 +60,11 @@ export const SquadPngTemplate = forwardRef<
 			<div
 				className={`mb-6 flex w-fit items-center gap-6 rounded-lg bg-card px-4 py-2 font-mono font-semibold text-xs`}
 			>
-				<span className="flex items-center gap-2 text-text-accent">
+				<span className="flex items-center gap-2 text-foreground">
 					<span className="size-3 rounded border border-amber-500/60 bg-amber-500/10" />
 					{t('clan.squads.png.leader')}
 				</span>
-				<span className="flex items-center gap-2 text-text-accent">
+				<span className="flex items-center gap-2 text-foreground">
 					<span className="size-3 rounded border border-destructive/60 bg-destructive/10" />
 					{t('clan.squads.png.absent')}
 				</span>
@@ -100,7 +100,7 @@ function SquadPngCard({
 					{squad.name}
 				</p>
 				<span
-					className={`font-medium font-mono text-sm text-text-accent`}
+					className={`font-medium font-mono text-foreground text-sm`}
 				>
 					{squad.members.length}/5
 				</span>
@@ -166,14 +166,14 @@ function SquadSlotPng({
 						{member.member.name}
 					</p>
 					<p
-						className={`font-mono font-semibold text-text-accent text-xs`}
+						className={`font-mono font-semibold text-foreground text-xs`}
 					>
 						{t(`player.rank.${member.member.rank}`)}
 					</p>
 				</>
 			) : (
 				<p
-					className={`font-mono font-semibold text-sm text-text-accent/70`}
+					className={`font-mono font-semibold text-foreground/70 text-sm`}
 				>
 					{t('clan.squads.png.empty')}
 				</p>

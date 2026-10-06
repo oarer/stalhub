@@ -54,7 +54,7 @@ export function SessionsSection({
 						</div>
 						{session.ip && (
 							<p
-								className={`font-mono font-semibold text-text-accent text-xs`}
+								className={`font-mono font-semibold text-foreground text-xs`}
 							>
 								IP:{' '}
 								<span className="blur-xs transition-all hover:blur-none">
@@ -63,7 +63,7 @@ export function SessionsSection({
 							</p>
 						)}
 						<p
-							className={`font-mono font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-foreground text-xs`}
 						>
 							<Tooltip.Root>
 								<Tooltip.Trigger>

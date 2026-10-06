@@ -165,11 +165,11 @@ export default function NotificationsAdminView() {
 														{u.username}
 													</span>
 													{u.name && (
-														<span className="text-text-accent text-xs">
+														<span className="text-foreground text-xs">
 															({u.name})
 														</span>
 													)}
-													<span className="text-text-accent text-xs">
+													<span className="text-foreground text-xs">
 														ID: {u.id}
 													</span>
 												</button>
@@ -188,7 +188,7 @@ export default function NotificationsAdminView() {
 															userSearch.toLowerCase()
 														))
 										).length === 0 && (
-											<p className="px-2 py-1 text-sm text-text-accent">
+											<p className="px-2 py-1 text-foreground text-sm">
 												{t(
 													'admin.notifications.notFound'
 												)}
@@ -206,7 +206,7 @@ export default function NotificationsAdminView() {
 											{userSearch}
 										</span>
 										<button
-											className="text-text-accent text-xs hover:underline"
+											className="text-foreground text-xs hover:underline"
 											onClick={() => {
 												setSelectedUserId(null)
 												setUserSearch('')
@@ -227,7 +227,7 @@ export default function NotificationsAdminView() {
 						/>
 
 						<div className="flex flex-col gap-1">
-							<span className="font-semibold text-sm text-text-accent">
+							<span className="font-semibold text-foreground text-sm">
 								{t('admin.notifications.contentLabel')}
 							</span>
 							<textarea

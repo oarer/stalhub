@@ -15,13 +15,10 @@ import {
 } from '@/components/ui/Table'
 import { Tabs } from '@/components/ui/Tabs'
 import { cn } from '@/lib/cn'
-import { serverOnlineQueries } from '@/queries/server-online/server-online.queries'
-import type {
-	EmissionInfo,
-	ServerOnlinePeak,
-} from '@/types/server-online.type'
-import { OnlineChart } from '@/views/server-status/components/OnlineChart'
 import { formatDate } from '@/lib/date'
+import { serverOnlineQueries } from '@/queries/server-online/server-online.queries'
+import type { EmissionInfo, ServerOnlinePeak } from '@/types/server-online.type'
+import { OnlineChart } from '@/views/server-status/components/OnlineChart'
 
 const REGION_LABELS: Record<string, string> = {
 	RU: 'Россия / СНГ (RU)',
@@ -84,7 +81,8 @@ export default function ServerStatusView() {
 		return [...emissions].sort((a, b) => {
 			const aIndex = EMISSION_REGION_ORDER.indexOf(a.region)
 			const bIndex = EMISSION_REGION_ORDER.indexOf(b.region)
-			if (aIndex === -1 && bIndex === -1) return a.region.localeCompare(b.region)
+			if (aIndex === -1 && bIndex === -1)
+				return a.region.localeCompare(b.region)
 			if (aIndex === -1) return 1
 			if (bIndex === -1) return -1
 			return aIndex - bIndex
@@ -202,7 +200,7 @@ export default function ServerStatusView() {
 									</Badge>
 								</div>
 								{emissions ? (
-									<div className="mt-2 flex flex-col gap-1 text-text-accent">
+									<div className="mt-2 flex flex-col gap-1 text-foreground">
 										{isActive && data.currentStart ? (
 											<span>
 												{t('servers.emissionStarted')}:{' '}
@@ -222,7 +220,7 @@ export default function ServerStatusView() {
 										</span>
 									</div>
 								) : (
-									<span className="text-text-accent">…</span>
+									<span className="text-foreground">…</span>
 								)}
 							</div>
 						)

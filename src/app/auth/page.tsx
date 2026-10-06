@@ -164,7 +164,7 @@ export default function Page() {
 							>
 								{t('auth.success')}
 							</h1>
-							<p className="font-medium text-sm text-text-accent">
+							<p className="font-medium text-foreground text-sm">
 								{t('auth.closePage')}
 							</p>
 						</>
@@ -392,7 +392,7 @@ export default function Page() {
 						)}
 					</div>
 					<p
-						className={`font-mono font-semibold text-sm text-text-accent`}
+						className={`font-mono font-semibold text-foreground text-sm`}
 					>
 						{t('auth.terms')}{' '}
 						<Link

@@ -152,7 +152,7 @@ export default function UserComments({ userId }: UserCommentsProps) {
 				))}
 
 				{topLevel.length === 0 && (
-					<p className="py-4 text-center font-semibold text-sm text-text-accent">
+					<p className="py-4 text-center font-semibold text-foreground text-sm">
 						{t('users.comments.empty')}
 					</p>
 				)}
@@ -198,7 +198,7 @@ function CommentItem({
 							</span>
 						</HoverUserCard>
 						<span
-							className={`font-mono font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-foreground text-xs`}
 						>
 							{formatDate(comment.created_at)}
 						</span>

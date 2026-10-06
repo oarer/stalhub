@@ -43,7 +43,7 @@ export function NotificationItem({
 				</div>
 				<p className="font-semibold text-sm">{notification.content}</p>
 				<p
-					className={`mt-1 flex items-center gap-2 font-mono font-semibold text-[11px] text-text-accent`}
+					className={`mt-1 flex items-center gap-2 font-mono font-semibold text-[11px] text-foreground`}
 				>
 					<span>{notification.author}</span>
 					<span>·</span>

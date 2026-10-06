@@ -253,7 +253,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 							</h1>
 						</div>
 						{!isWelcome && (
-							<span className="font-medium font-mono text-sm text-text-accent">
+							<span className="font-medium font-mono text-foreground text-sm">
 								{t('onboarding.stepOf', {
 									current: step + 1,
 									total: steps.length,
@@ -298,7 +298,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 									>
 										{t('onboarding.welcome.title')}
 									</h1>
-									<p className="font-medium text-sm text-text-accent">
+									<p className="font-medium text-foreground text-sm">
 										{t('onboarding.welcome.subtitle')}
 									</p>
 								</div>
@@ -320,7 +320,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'name' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t('onboarding.step.name.desc')}
 											</p>
 											<Input
@@ -337,7 +337,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'username' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t(
 													'onboarding.step.username.desc'
 												)}
@@ -365,7 +365,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'region' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t(
 													'onboarding.step.region.desc'
 												)}
@@ -381,7 +381,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'layout' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t(
 													'onboarding.step.layout.desc'
 												)}
@@ -426,7 +426,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'banner' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t(
 													'onboarding.step.banner.desc'
 												)}
@@ -484,7 +484,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																	bannerColor,
 															}}
 														/>
-														<span className="font-medium font-mono text-sm text-text-accent">
+														<span className="font-medium font-mono text-foreground text-sm">
 															{bannerColor}
 														</span>
 														<input
@@ -543,7 +543,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'card' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t('onboarding.step.card.desc')}
 											</p>
 											<div className="flex flex-col gap-2">
@@ -594,7 +594,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																		cardColor,
 																}}
 															/>
-															<span className="font-medium font-mono text-sm text-text-accent">
+															<span className="font-medium font-mono text-foreground text-sm">
 																{cardColor}
 															</span>
 															<input
@@ -619,7 +619,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'finish' && (
 										<>
-											<p className="font-semibold text-sm text-text-accent">
+											<p className="font-semibold text-foreground text-sm">
 												{t(
 													'onboarding.step.finish.desc'
 												)}
@@ -629,7 +629,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 													<span className="font-semibold text-sm">
 														{t('me.settings.name')}
 													</span>
-													<span className="font-medium font-mono text-sm text-text-accent">
+													<span className="font-medium font-mono text-foreground text-sm">
 														{name}
 													</span>
 												</div>
@@ -639,7 +639,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 															'me.settings.username'
 														)}
 													</span>
-													<span className="font-medium font-mono text-sm text-text-accent">
+													<span className="font-medium font-mono text-foreground text-sm">
 														{username}
 													</span>
 												</div>
@@ -650,7 +650,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																'me.settings.regionLabel'
 															)}
 														</span>
-														<span className="font-medium font-mono text-sm text-text-accent">
+														<span className="font-medium font-mono text-foreground text-sm">
 															{t(
 																'region.' +
 																	region

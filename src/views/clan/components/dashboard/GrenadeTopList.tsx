@@ -24,7 +24,7 @@ export function GrenadeTopList({
 		<Section icon="lucide:bomb" title={t('clan.dashboard.grenadesTitle')}>
 			{latestEvent && (
 				<p
-					className={`font-medium font-mono text-[13px] text-text-accent`}
+					className={`font-medium font-mono text-[13px] text-foreground`}
 				>
 					{t('clan.dashboard.grenadesLine', {
 						count: latestEvent.stages.length,
@@ -37,7 +37,7 @@ export function GrenadeTopList({
 				</p>
 			)}
 			{grenadeTop.length === 0 ? (
-				<p className="font-medium text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('clan.dashboard.noGrenades')}
 				</p>
 			) : (
@@ -52,7 +52,7 @@ export function GrenadeTopList({
 								key={g.character}
 							>
 								<span
-									className={`w-5 text-center font-medium font-mono text-text-accent text-xs`}
+									className={`w-5 text-center font-medium font-mono text-foreground text-xs`}
 								>
 									{i + 1}
 								</span>

@@ -105,7 +105,7 @@ export function SquadCard({
 						variant={'ghost'}
 					>
 						<Icon
-							className="text-text-accent"
+							className="text-foreground"
 							icon="lucide:map-pin"
 						/>
 						<span className="font-semibold">
@@ -116,7 +116,7 @@ export function SquadCard({
 						</span>
 						{isOfficer && (
 							<Icon
-								className="text-text-accent"
+								className="text-foreground"
 								icon="lucide:chevrons-up-down"
 							/>
 						)}
@@ -136,7 +136,7 @@ export function SquadCard({
 									className={`text-lg ${
 										squad.leader
 											? 'text-amber-500'
-											: 'text-text-accent'
+											: 'text-foreground'
 									}`}
 									icon="lucide:crown"
 								/>
@@ -193,7 +193,7 @@ export function SquadCard({
 
 			{isOfficer && squad.requests.length > 0 && (
 				<div className="flex flex-col gap-2">
-					<p className="flex items-center gap-1 font-semibold text-text-accent text-xs">
+					<p className="flex items-center gap-1 font-semibold text-foreground text-xs">
 						<Icon className="text-sm" icon="lucide:inbox" />
 						{t('clan.squads.joinRequests')}
 					</p>
@@ -363,7 +363,7 @@ function SquadSlot({
 					<p className="max-w-24 truncate font-semibold">
 						{member.member.name}
 					</p>
-					<p className="font-semibold text-text-accent text-xs">
+					<p className="font-semibold text-foreground text-xs">
 						{t(`player.rank.${member.member.rank}`)}
 					</p>
 					{isOfficer && (
@@ -378,7 +378,7 @@ function SquadSlot({
 				</>
 			) : (
 				<p
-					className={`font-mono font-semibold text-sm text-text-accent`}
+					className={`font-mono font-semibold text-foreground text-sm`}
 				>
 					{t('clan.squads.slot', { slot: slot + 1 })}
 				</p>

@@ -74,7 +74,7 @@ export default function ArticleView({
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<header className="flex flex-col gap-4 border-primary border-b pb-6">
 				<Link
-					className="font-medium text-sm text-text-accent transition-colors hover:text-primary"
+					className="font-medium text-foreground text-sm transition-colors hover:text-primary"
 					href={backHref}
 				>
 					{t(backLabelKey)}
@@ -125,14 +125,14 @@ export default function ArticleView({
 						</HoverUserCard>
 					</div>
 
-					<div className="flex items-center gap-1 text-text-accent">
+					<div className="flex items-center gap-1 text-foreground">
 						<Icon icon="lucide:eye" />
 						<span className={`font-medium font-mono text-xs`}>
 							{article.views}
 						</span>
 					</div>
 
-					<div className="flex items-center gap-1 text-text-accent">
+					<div className="flex items-center gap-1 text-foreground">
 						<Icon icon="lucide:calendar" />
 						<span className={`font-medium font-mono text-xs`}>
 							{formatDate(article.created_at, 'datetime')}
@@ -153,7 +153,7 @@ export default function ArticleView({
 							className={`p-2 ${
 								article.is_starred
 									? 'text-yellow-400'
-									: 'text-text-accent hover:text-yellow-400'
+									: 'text-foreground hover:text-yellow-400'
 							}`}
 							onClick={() =>
 								article.is_starred
@@ -173,7 +173,7 @@ export default function ArticleView({
 					)}
 
 					{!user && article.stars_count > 0 && (
-						<div className="flex items-center gap-1 text-text-accent">
+						<div className="flex items-center gap-1 text-foreground">
 							<Icon icon="lucide:star" />
 							<span>{article.stars_count}</span>
 						</div>
@@ -184,7 +184,7 @@ export default function ArticleView({
 					<div className="flex flex-wrap gap-1.5">
 						{article.tags.map((tag) => (
 							<span
-								className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-text-accent text-xs"
+								className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-foreground text-xs"
 								key={tag}
 							>
 								{tag}
@@ -200,7 +200,7 @@ export default function ArticleView({
 						<h2 className="font-semibold text-xl">
 							{article.quest_name ?? t('articles.quest.details')}
 						</h2>
-						<span className="text-text-accent">
+						<span className="text-foreground">
 							{t(
 								`articles.quest.${article.quest_type === 'SIDE' ? 'side' : 'story'}`
 							)}
@@ -236,10 +236,10 @@ export default function ArticleView({
 				) : (
 					<div className="flex items-center justify-center gap-2 py-16">
 						<Icon
-							className="size-5 animate-spin text-text-accent"
+							className="size-5 animate-spin text-foreground"
 							icon="lucide:loader-circle"
 						/>
-						<span className="font-medium text-sm text-text-accent">
+						<span className="font-medium text-foreground text-sm">
 							{t('articles.loading')}
 						</span>
 					</div>

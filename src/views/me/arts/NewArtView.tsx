@@ -75,7 +75,7 @@ export default function NewArtView() {
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-md text-text-accent"
+								className="font-semibold text-foreground text-md"
 								htmlFor="art-title"
 							>
 								{t('me.newArt.name')}
@@ -90,7 +90,7 @@ export default function NewArtView() {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('me.newArt.type')}
 							</span>
 							<div className="grid grid-cols-2 gap-2">
@@ -114,7 +114,7 @@ export default function NewArtView() {
 
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-md text-text-accent"
+								className="font-semibold text-foreground text-md"
 								htmlFor="art-description"
 							>
 								{t('me.newArt.description')}
@@ -132,7 +132,7 @@ export default function NewArtView() {
 
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-md text-text-accent"
+								className="font-semibold text-foreground text-md"
 								htmlFor="art-tags"
 							>
 								{t('me.newArt.tags')}
@@ -154,7 +154,7 @@ export default function NewArtView() {
 							</Alert.Description>
 						</Alert.Root>
 						<label
-							className="font-semibold text-md text-text-accent"
+							className="font-semibold text-foreground text-md"
 							htmlFor="art-image"
 						>
 							{t('me.newArt.image')}

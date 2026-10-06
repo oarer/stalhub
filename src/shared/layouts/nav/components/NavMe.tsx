@@ -143,7 +143,7 @@ export default function NavMe() {
 														<span className="size-1.5 shrink-0 rounded-full bg-primary" />
 													)}
 												</div>
-												<p className="font-semibold text-text-accent text-xs">
+												<p className="font-semibold text-foreground text-xs">
 													{n.content}
 												</p>
 												<span

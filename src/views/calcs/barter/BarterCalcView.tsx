@@ -7,17 +7,39 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import { Card } from '@/components/ui/Card'
 import { CheckBox } from '@/components/ui/CheckBox'
-import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
 import {
 	type BarterTreeNode,
 	barterCalcQueries,
+	SERUM_ITEM_ID,
+	TOKEN_ITEM_ID,
 } from '@/queries/barter/barter-calc.queries'
+import type { Locale } from '@/types/item.type'
+import { applyDiscount } from '@/utils/barterUtils'
 import { messageToString } from '@/utils/itemUtils'
+import BarterCalcPanel from './components/BarterCalcPanel'
+import BarterPickerModal, {
+	type BarterListEntry,
+} from './components/BarterPickerModal'
 
 function iconUrl(category: string) {
 	return category ? `https://cdn.stalhub.dev/db/icons${category}.png` : null
+}
+
+function getNodeName(
+	node: BarterTreeNode,
+	locale: Locale,
+	rootFallback?: string
+): string {
+	const fromLines = node.lines
+		? messageToString(node.lines as never, locale)
+		: ''
+	if (fromLines) return fromLines
+	if (node.name && node.name !== node.item_id) return node.name
+	if (rootFallback) return rootFallback
+	return node.name || node.item_id
 }
 
 function collectTotals(
@@ -25,23 +47,44 @@ function collectTotals(
 	mult: number,
 	done: Set<string>,
 	path: string,
-	out: Map<string, { name: string; category: string; amount: number }>
+	out: Map<string, { name: string; category: string; amount: number }>,
+	moneyAcc: { value: number },
+	locale: Locale,
+	rootFallback?: string
 ) {
 	const key = `${path}/${node.item_id}`
 	if (done.has(key)) return
 	const cur = mult * node.amount
+	moneyAcc.value += node.money * mult
 	if (node.children.length === 0) {
 		const e = out.get(node.item_id)
+		const name = getNodeName(node, locale, rootFallback)
 		if (e) e.amount += cur
 		else
 			out.set(node.item_id, {
-				name: node.name,
+				name,
 				category: node.category,
 				amount: cur,
 			})
 		return
 	}
-	for (const ch of node.children) collectTotals(ch, cur, done, key, out)
+	for (const ch of node.children)
+		collectTotals(ch, cur, done, key, out, moneyAcc, locale)
+}
+
+/** Сколько сыворотки нужно по дереву (для расчёта жетонов). */
+function collectSerum(
+	node: BarterTreeNode,
+	mult: number,
+	done: Set<string>,
+	path: string
+): number {
+	const key = `${path}/${node.item_id}`
+	if (done.has(key)) return 0
+	const cur = mult * node.amount
+	let acc = node.item_id === SERUM_ITEM_ID ? cur : 0
+	for (const ch of node.children) acc += collectSerum(ch, cur, done, key)
+	return acc
 }
 
 function TreeNode({
@@ -50,15 +93,24 @@ function TreeNode({
 	depth,
 	done,
 	onToggle,
+	locale,
+	rootFallback,
 }: {
 	node: BarterTreeNode
 	path: string
 	depth: number
 	done: Set<string>
 	onToggle: (key: string) => void
+	locale: Locale
+	rootFallback?: string
 }) {
 	const key = `${path}/${node.item_id}`
 	const isDone = done.has(key)
+	const name = getNodeName(
+		node,
+		locale,
+		depth === 0 ? rootFallback : undefined
+	)
 	return (
 		<div
 			className={
@@ -74,27 +126,24 @@ function TreeNode({
 				/>
 				{iconUrl(node.category) && (
 					<Image
-						alt={node.name}
+						alt={name}
 						height={28}
 						src={iconUrl(node.category)!}
 						width={28}
 					/>
 				)}
 				<span className="font-medium text-sm">
-					{node.name} ×{node.amount}
+					{name} ×{node.amount}
 				</span>
 				{node.money > 0 && (
-					<span className="font-mono text-xs text-yellow-400">
+					<span className="font-mono font-semibold text-primary text-xs">
 						{node.money.toLocaleString()} ₽
 					</span>
 				)}
 				{node.level && (
-					<span className="font-mono text-text-accent text-xs">
+					<span className="font-mono font-semibold text-foreground text-xs">
 						ур. {node.level}
 					</span>
-				)}
-				{!node.craftable && (
-					<span className="text-text-accent text-xs">— базовый</span>
 				)}
 			</div>
 			{!isDone &&
@@ -103,6 +152,7 @@ function TreeNode({
 						depth={depth + 1}
 						done={done}
 						key={`${ch.item_id}-${i}`}
+						locale={locale}
 						node={ch}
 						onToggle={onToggle}
 						path={key}
@@ -115,25 +165,44 @@ function TreeNode({
 export default function BarterCalcView() {
 	const t = useTranslations()
 	const locale = getLocale()
-	const [search, setSearch] = useState('')
-	const [selected, setSelected] = useState('')
+	const [selected, setSelected] = useState<BarterListEntry | null>(null)
+	const [showPicker, setShowPicker] = useState(false)
 	const [done, setDone] = useState<Set<string>>(new Set())
+	const [includeTokens, setIncludeTokens] = useState(true)
+	const [discount, setDiscount] = useState('0')
 
-	const { data: list } = useQuery(barterCalcQueries.list())
+	const selectedId = selected?.item_id ?? ''
+	const rootFallback = selected
+		? messageToString(selected.lines as never, locale) || selected.item_id
+		: ''
+
+	const { data: list, isLoading: listLoading } = useQuery(
+		barterCalcQueries.list()
+	)
 	const { data: tree, isPending } = useQuery({
-		...barterCalcQueries.tree(selected),
-		enabled: !!selected,
+		...barterCalcQueries.tree(
+			selectedId,
+			selected
+				? {
+						lines: selected.lines,
+						category: selected.category,
+						color: selected.color,
+					}
+				: undefined,
+			includeTokens
+		),
+		enabled: !!selectedId,
 	})
 
 	useEffect(() => {
-		if (!selected) return
+		if (!selectedId) return
 		try {
-			const raw = localStorage.getItem(`barter-done-${selected}`)
+			const raw = localStorage.getItem(`barter-done-${selectedId}`)
 			setDone(new Set(raw ? JSON.parse(raw) : []))
 		} catch {
 			setDone(new Set())
 		}
-	}, [selected])
+	}, [selectedId])
 
 	const toggle = (key: string) => {
 		setDone((prev) => {
@@ -142,7 +211,7 @@ export default function BarterCalcView() {
 			else next.add(key)
 			try {
 				localStorage.setItem(
-					`barter-done-${selected}`,
+					`barter-done-${selectedId}`,
 					JSON.stringify([...next])
 				)
 			} catch {}
@@ -150,152 +219,202 @@ export default function BarterCalcView() {
 		})
 	}
 
-	const items = useMemo(() => {
-		const q = search.trim().toLowerCase()
-		const arr = list?.items ?? []
-		if (!q) return arr.slice(0, 50)
-		return arr
-			.filter((i) => {
-				const name = messageToString(
-					i.lines as never,
-					locale
-				).toLowerCase()
-				return name.includes(q) || i.item_id.toLowerCase().includes(q)
-			})
-			.slice(0, 50)
-	}, [list, search, locale])
-
-	const totals = useMemo(() => {
-		if (!tree) return []
+	const { totals, totalMoney, serumNeeded, tokenTotal } = useMemo(() => {
+		if (!tree)
+			return { totals: [], totalMoney: 0, serumNeeded: 0, tokenTotal: 0 }
 		const out = new Map<
 			string,
 			{ name: string; category: string; amount: number }
 		>()
-		collectTotals(tree, 1, done, '', out)
-		return [...out.entries()].map(([id, v]) => ({ id, ...v }))
-	}, [tree, done])
+		const moneyAcc = { value: 0 }
+		collectTotals(tree, 1, done, '', out, moneyAcc, locale, rootFallback)
+		const discountNum = Number(discount) || 0
+		const serum = includeTokens
+			? collectSerum(tree, 1, done, '')
+			: (out.get(SERUM_ITEM_ID)?.amount ?? 0)
+		return {
+			totals: [...out.entries()].map(([id, v]) => ({
+				id,
+				...v,
+				amount:
+					id === TOKEN_ITEM_ID
+						? v.amount
+						: applyDiscount(v.amount, discountNum),
+			})),
+			totalMoney: applyDiscount(moneyAcc.value, discountNum),
+			serumNeeded: serum,
+			tokenTotal: includeTokens
+				? (out.get(TOKEN_ITEM_ID)?.amount ?? 0)
+				: 0,
+		}
+	}, [tree, done, locale, rootFallback, includeTokens, discount])
+
+	const selectedIcon = selected ? iconUrl(selected.category) : null
 
 	return (
-		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<div>
-				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
-				>
-					{t('barterCalc.title')}
-				</h1>
-				<p className="mt-2 font-medium text-muted-foreground text-sm">
-					{t('barterCalc.subtitle')}
-				</p>
-			</div>
+		<section className="mx-auto flex max-w-300 flex-col gap-4 px-4 pt-32 pb-12 sm:px-6">
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
+				{t('barterCalc.title')}
+			</h1>
 
-			<div className="grid gap-4 lg:grid-cols-[320px_1fr]">
-				<div className="flex flex-col gap-2 rounded-xl border-2 border-primary/20 bg-card p-4">
-					<Input
-						label="barterCalc.search"
-						onChange={(e) => setSearch(e.target.value)}
-						value={search}
-					/>
-					<div className="flex max-h-120 flex-col gap-1 overflow-y-auto">
-						{items.map((i) => (
-							<button
-								className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm hover:bg-accent/60 ${selected === i.item_id ? 'bg-accent' : ''}`}
-								key={i.item_id}
-								onClick={() => setSelected(i.item_id)}
-								type="button"
-							>
-								{i.category && (
-									<Image
-										alt={i.item_id}
-										height={24}
-										src={`https://cdn.stalhub.dev/db/icons${i.category}.png`}
-										width={24}
-									/>
-								)}
-								<span className="truncate">
-									{messageToString(i.lines as never, locale)}
-								</span>
-							</button>
-						))}
+			<Card.Root className="gap-4">
+				<div className="flex flex-wrap items-center gap-3">
+					{selected && selectedIcon ? (
+						<Image
+							alt={rootFallback}
+							height={40}
+							src={selectedIcon}
+							width={40}
+						/>
+					) : (
+						<div className="flex size-10 items-center justify-center rounded-lg bg-accent/40">
+							<Icon
+								className="text-foreground text-xl"
+								icon="lucide:package"
+							/>
+						</div>
+					)}
+					<div className="min-w-0 flex-1">
+						{selected ? (
+							<>
+								<div className="truncate font-semibold text-lg">
+									{rootFallback}
+								</div>
+							</>
+						) : (
+							<div className="text-foreground text-sm">
+								{t('barterCalc.pick')}
+							</div>
+						)}
 					</div>
+					<Button
+						className="flex items-center gap-2"
+						onClick={() => setShowPicker(true)}
+						variant={selected ? 'outline' : 'primary'}
+					>
+						<Icon icon="lucide:search" />
+						{selected
+							? t('barterCalc.change')
+							: t('barterCalc.select')}
+					</Button>
+					{selected && (
+						<Button
+							onClick={() => {
+								setDone(new Set())
+								try {
+									localStorage.removeItem(
+										`barter-done-${selectedId}`
+									)
+								} catch {}
+							}}
+							size="sm"
+							variant="ghost"
+						>
+							{t('barterCalc.reset')}
+						</Button>
+					)}
 				</div>
+			</Card.Root>
 
-				<div className="flex flex-col gap-4">
-					{!selected ? (
-						<div className="flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-card p-8 text-sm text-text-accent">
-							<Icon icon="lucide:info" />
-							{t('barterCalc.pick')}
-						</div>
-					) : isPending ? (
-						<div className="rounded-xl border-2 border-primary/20 bg-card p-8 text-sm">
-							…
-						</div>
-					) : tree ? (
-						<>
-							<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-								<div className="mb-2 font-semibold text-sm">
-									{t('barterCalc.tree')}
-								</div>
-								<TreeNode
-									depth={0}
-									done={done}
-									node={tree}
-									onToggle={toggle}
-									path=""
-								/>
-							</div>
-							<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-								<div className="mb-2 font-semibold text-sm">
-									{t('barterCalc.totals')}
-								</div>
-								{totals.length === 0 ? (
-									<p className="text-sm text-text-accent">
-										{t('barterCalc.allDone')}
-									</p>
-								) : (
-									<div className="flex flex-col gap-1.5">
-										{totals.map((r) => (
-											<div
-												className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm"
-												key={r.id}
-											>
-												{r.category && (
-													<Image
-														alt={r.name}
-														height={24}
-														src={`https://cdn.stalhub.dev/db/icons${r.category}.png`}
-														width={24}
-													/>
-												)}
-												<span className="flex-1 truncate">
-													{r.name}
-												</span>
-												<span className="font-mono text-yellow-400">
-													×{r.amount}
-												</span>
-											</div>
-										))}
-									</div>
-								)}
-								<Button
-									className="mt-3"
-									onClick={() => {
-										setDone(new Set())
-										try {
-											localStorage.removeItem(
-												`barter-done-${selected}`
-											)
-										} catch {}
-									}}
-									size="sm"
-									variant="outline"
-								>
-									{t('barterCalc.reset')}
-								</Button>
-							</div>
-						</>
-					) : null}
+			{selected && (
+				<BarterCalcPanel
+					discount={discount}
+					includeTokens={includeTokens}
+					itemId={selectedId}
+					onDiscountChange={setDiscount}
+					onIncludeTokensChange={setIncludeTokens}
+					serumNeeded={serumNeeded}
+					tokenTotal={tokenTotal}
+				/>
+			)}
+
+			{!selected ? (
+				<div className="flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-card p-8 text-foreground text-sm">
+					<Icon icon="lucide:info" />
+					{t('barterCalc.pick')}
 				</div>
-			</div>
+			) : isPending ? (
+				<div className="rounded-xl border-2 border-primary/20 bg-card p-8 text-sm">
+					…
+				</div>
+			) : tree ? (
+				<>
+					<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
+						<div className="mb-2 font-semibold text-sm">
+							{t('barterCalc.tree')}
+						</div>
+						<TreeNode
+							depth={0}
+							done={done}
+							locale={locale}
+							node={tree}
+							onToggle={toggle}
+							path=""
+							rootFallback={rootFallback}
+						/>
+					</div>
+					<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
+						<div className="mb-2 font-semibold text-sm">
+							{t('barterCalc.totals')}
+						</div>
+						{totals.length === 0 ? (
+							<p className="text-foreground text-sm">
+								{t('barterCalc.allDone')}
+							</p>
+						) : (
+							<div className="flex flex-col gap-1.5">
+								{totals.map((r) => (
+									<div
+										className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm"
+										key={r.id}
+									>
+										{r.category && (
+											<Image
+												alt={r.name}
+												height={24}
+												src={`https://cdn.stalhub.dev/db/icons${r.category}.png`}
+												width={24}
+											/>
+										)}
+										<span className="flex-1 truncate">
+											{r.name}
+										</span>
+										<span className="font-mono font-semibold text-primary">
+											×{r.amount}
+										</span>
+									</div>
+								))}
+							</div>
+						)}
+						<div className="mt-3 flex items-center justify-between rounded-lg bg-accent/60 px-3 py-2.5">
+							<span className="flex items-center gap-2 font-semibold text-sm">
+								<Icon
+									className="text-primary"
+									icon="lucide:coins"
+								/>
+								{t('barterCalc.totalPrice')}
+							</span>
+							<span className="font-bold font-mono text-primary">
+								{totalMoney.toLocaleString()} ₽
+							</span>
+						</div>
+					</div>
+				</>
+			) : null}
+
+			<BarterPickerModal
+				items={list?.items as BarterListEntry[] | undefined}
+				loading={listLoading}
+				onOpenChange={setShowPicker}
+				onSelect={(item) => {
+					setSelected(item)
+					setShowPicker(false)
+				}}
+				open={showPicker}
+				selectedId={selectedId}
+			/>
 		</section>
 	)
 }

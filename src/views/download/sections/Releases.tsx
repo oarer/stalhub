@@ -36,7 +36,7 @@ export default function Releases({
 
 			{loading ? (
 				<Card.Root className="gap-3">
-					<p className="flex items-center gap-2 font-semibold text-text-accent">
+					<p className="flex items-center gap-2 font-semibold text-foreground">
 						<Icon
 							className="animate-spin text-primary"
 							icon="lucide:loader-circle"
@@ -121,7 +121,7 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 
 			{release.assets.length > 0 ? (
 				<div className="flex flex-col gap-2">
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('download.app.files')}
 					</span>
 					<div className="grid gap-2 sm:grid-cols-2">

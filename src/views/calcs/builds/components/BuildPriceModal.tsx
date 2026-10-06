@@ -82,7 +82,7 @@ export default function BuildPriceModal() {
 							{t('build.price_unavailable')}
 						</p>
 					) : rows.length === 0 ? (
-						<p className="py-8 text-center text-text-accent">
+						<p className="py-8 text-center text-foreground">
 							{t('build.price_empty')}
 						</p>
 					) : (
@@ -158,7 +158,7 @@ export default function BuildPriceModal() {
 												</>
 											)}
 											{price?.price == null && (
-												<span className="text-sm text-text-accent">
+												<span className="text-foreground text-sm">
 													—
 												</span>
 											)}
@@ -185,7 +185,7 @@ export default function BuildPriceModal() {
 							</div>
 							{updatedAt && (
 								<p
-									className={`font-medium font-mono text-text-accent text-xs`}
+									className={`font-medium font-mono text-foreground text-xs`}
 								>
 									{t('build.price_updated')}{' '}
 									{formatDate(updatedAt, 'datetime')}

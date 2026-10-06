@@ -66,7 +66,7 @@ function ClanAbsenceContent({
 				>
 					{t('clan.absence.title')}
 				</h1>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-semibold text-foreground text-sm">
 					{t('clan.absence.desc', {
 						hour: String(DEADLINE_MSK_HOUR).padStart(2, '0'),
 					})}

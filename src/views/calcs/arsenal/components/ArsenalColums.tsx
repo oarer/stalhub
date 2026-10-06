@@ -85,7 +85,7 @@ export function getArsenalColumns(
 			accessorKey: 'weight',
 			header: t('arsenal.table.weight'),
 			cell: ({ getValue }) => (
-				<span className="font-mono text-text-accent">
+				<span className="font-mono text-foreground">
 					{getValue<number>().toLocaleString()}
 				</span>
 			),
@@ -151,7 +151,7 @@ export function getArsenalColumns(
 			cell: ({ getValue }) => {
 				const total = getValue<number>()
 				return (
-					<span className="font-mono text-text-accent">
+					<span className="font-mono text-foreground">
 						{total > 0 ? total.toLocaleString() : '-'}
 					</span>
 				)

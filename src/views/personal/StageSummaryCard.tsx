@@ -70,7 +70,7 @@ export function StageSummaryCard({
 					{stageStats.per_clan.length > 0 ? (
 						<Table.Root className="font-mono font-semibold">
 							<Table.Header>
-								<Table.Row className="text-left text-text-accent">
+								<Table.Row className="text-left text-foreground">
 									<Table.Head>{t('stagesClan')}</Table.Head>
 									<Table.Head className="text-center">
 										{tc('clan.sessions.stage')}
@@ -87,27 +87,32 @@ export function StageSummaryCard({
 									<Table.Head className="text-center">
 										{tc('clan.sessions.kd')}
 									</Table.Head>
-									<Table.Head className="text-center">KDA</Table.Head>
+									<Table.Head className="text-center">
+										KDA
+									</Table.Head>
 								</Table.Row>
 							</Table.Header>
 							<Table.Body>
 								{stageStats.per_clan.map((c) => (
-									<Table.Row key={c.clan_id ?? c.name ?? 'personal'}>
+									<Table.Row
+										key={c.clan_id ?? c.name ?? 'personal'}
+									>
 										<Table.Cell className="max-w-40 truncate">
 											{c.tag
 												? `[${c.tag}] ${c.name ?? ''}`
-												: (c.name ?? t('stagesPersonal'))}
+												: (c.name ??
+													t('stagesPersonal'))}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-text-accent">
+										<Table.Cell className="text-center font-medium text-foreground">
 											{c.sessions}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-text-accent">
+										<Table.Cell className="text-center font-medium text-foreground">
 											{c.kills}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-text-accent">
+										<Table.Cell className="text-center font-medium text-foreground">
 											{c.deaths}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-text-accent">
+										<Table.Cell className="text-center font-medium text-foreground">
 											{c.assists}
 										</Table.Cell>
 										<Table.Cell
@@ -116,21 +121,29 @@ export function StageSummaryCard({
 											{formatKd(c.kills, c.deaths)}
 										</Table.Cell>
 										<Table.Cell className="text-center text-muted-foreground">
-											{formatKda(c.kills, c.deaths, c.assists)}
+											{formatKda(
+												c.kills,
+												c.deaths,
+												c.assists
+											)}
 										</Table.Cell>
 									</Table.Row>
 								))}
 							</Table.Body>
 						</Table.Root>
 					) : (
-						<p className="text-muted-foreground text-sm">{t('stagesEmpty')}</p>
+						<p className="text-muted-foreground text-sm">
+							{t('stagesEmpty')}
+						</p>
 					)}
 				</Tabs.Content>
 				<Tabs.Content value="maps">
 					{stageStats.per_map.length > 0 ? (
 						<MapStatsTable rows={stageStats.per_map} />
 					) : (
-						<p className="text-muted-foreground text-sm">{t('stagesEmpty')}</p>
+						<p className="text-muted-foreground text-sm">
+							{t('stagesEmpty')}
+						</p>
 					)}
 				</Tabs.Content>
 			</Tabs.Root>

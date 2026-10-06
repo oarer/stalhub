@@ -122,10 +122,10 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 				{infoFields.map((field) => (
 					<div className="flex items-center gap-1.5" key={field.key}>
 						<Icon
-							className="size-4 shrink-0 text-text-accent"
+							className="size-4 shrink-0 text-foreground"
 							icon={field.icon}
 						/>
-						<span className="font-medium text-[13px] text-text-accent">
+						<span className="font-medium text-[13px] text-foreground">
 							{t(field.label)}:
 						</span>
 						<span
@@ -145,10 +145,10 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 							key={field.key}
 						>
 							<Icon
-								className="size-4 shrink-0 text-text-accent"
+								className="size-4 shrink-0 text-foreground"
 								icon={field.icon}
 							/>
-							<span className="font-medium text-[13px] text-text-accent">
+							<span className="font-medium text-[13px] text-foreground">
 								{t(field.label)}:
 							</span>
 							<span
@@ -165,10 +165,10 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 				<>
 					<div className="flex items-center gap-1.5 text-sm">
 						<Icon
-							className="size-4 shrink-0 text-text-accent"
+							className="size-4 shrink-0 text-foreground"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-medium text-[13px] text-text-accent">
+						<span className="font-medium text-[13px] text-foreground">
 							{t('clans.schedule')}
 						</span>
 						<span
@@ -180,10 +180,10 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 					</div>
 					<div className="flex items-center gap-1.5 text-sm">
 						<Icon
-							className="size-4 shrink-0 text-text-accent"
+							className="size-4 shrink-0 text-foreground"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-medium text-[13px] text-text-accent">
+						<span className="font-medium text-[13px] text-foreground">
 							{t('clans.brawls')}
 						</span>
 						<span

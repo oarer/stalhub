@@ -70,7 +70,7 @@ export function WidgetPickerModal({
 
 						return (
 							<div className="flex flex-col gap-2" key={category}>
-								<p className="font-semibold text-sm text-text-accent">
+								<p className="font-semibold text-foreground text-sm">
 									{t(`dashboard.categories.${category}`)}
 								</p>
 								<div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -90,7 +90,7 @@ export function WidgetPickerModal({
 											</span>
 											{widget.requiresAuth && (
 												<Icon
-													className="absolute top-1/3 right-4 size-3.5 text-text-accent"
+													className="absolute top-1/3 right-4 size-3.5 text-foreground"
 													icon="lucide:lock"
 												/>
 											)}

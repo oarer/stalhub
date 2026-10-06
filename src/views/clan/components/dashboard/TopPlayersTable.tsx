@@ -24,7 +24,7 @@ export function TopPlayersTable({ topPlayers }: TopPlayersTableProps) {
 				icon="lucide:bar-chart-3"
 				title={t('clan.dashboard.topPlayers.title')}
 			>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-semibold text-foreground text-sm">
 					{t('clan.dashboard.topPlayers.empty')}
 				</p>
 			</Section>
@@ -39,7 +39,7 @@ export function TopPlayersTable({ topPlayers }: TopPlayersTableProps) {
 			<div className="flex flex-col rounded-lg p-3">
 				<Table.Root className={`font-mono font-semibold`}>
 					<Table.Header>
-						<Table.Row className="text-left text-text-accent">
+						<Table.Row className="text-left text-foreground">
 							<Table.Head>{t('clan.common.player')}</Table.Head>
 							<Table.Head className="text-center">
 								{t('clan.common.killsShort')}
@@ -57,10 +57,10 @@ export function TopPlayersTable({ topPlayers }: TopPlayersTableProps) {
 						{topPlayers.map((p) => (
 							<Table.Row key={p.name}>
 								<Table.Cell>{p.name}</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{p.kills}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{p.deaths}
 								</Table.Cell>
 								<Table.Cell

@@ -116,7 +116,7 @@ export default function PublishBlogButton({
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						{digestMutation.isPending ? (
-							<div className="flex items-center gap-2 py-6 text-sm text-text-accent">
+							<div className="flex items-center gap-2 py-6 text-foreground text-sm">
 								<Icon
 									className="size-4 animate-spin"
 									icon="lucide:loader-circle"
@@ -142,7 +142,7 @@ export default function PublishBlogButton({
 									value={digest}
 								/>
 								<div className="flex items-center justify-between">
-									<span className="font-mono text-text-accent text-xs">
+									<span className="font-mono text-foreground text-xs">
 										{digest.length}/1500
 									</span>
 									<Button
@@ -181,7 +181,7 @@ export default function PublishBlogButton({
 							/>
 						</div>
 
-						<p className="text-text-accent text-xs">
+						<p className="text-foreground text-xs">
 							{t('blog.publish.republishWarn')}
 						</p>
 					</div>

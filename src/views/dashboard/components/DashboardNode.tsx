@@ -46,7 +46,7 @@ const DashboardNodeView = memo(function DashboardNodeView({
 					<div className="flex shrink-0 items-center gap-1">
 						<Link
 							aria-label={t('dashboard.openFull')}
-							className="nodrag flex size-7 items-center justify-center rounded-md text-text-accent transition-colors hover:bg-accent hover:text-text"
+							className="nodrag flex size-7 items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent hover:text-text"
 							href={def.fullPath}
 							title={t('dashboard.openFull')}
 						>

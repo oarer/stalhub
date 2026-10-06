@@ -40,7 +40,7 @@ export function SquadKdChart({ squadRows }: SquadKdChartProps) {
 	return (
 		<ChartCard title={t('clan.charts.topSquadsKd')}>
 			{squadRows.length === 0 ? (
-				<div className="flex h-full items-center justify-center text-sm text-text-accent">
+				<div className="flex h-full items-center justify-center text-foreground text-sm">
 					{t('clan.charts.noSquads')}
 				</div>
 			) : (

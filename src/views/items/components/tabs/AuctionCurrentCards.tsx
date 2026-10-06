@@ -33,7 +33,7 @@ export default function AuctionCurrentCards({
 		return (
 			<Card.Root className="py-2">
 				<Card.Header>
-					<Card.Title className="justify-center text-md text-text-accent">
+					<Card.Title className="justify-center text-foreground text-md">
 						{t('modals.builds.no_data')}
 					</Card.Title>
 				</Card.Header>
@@ -61,7 +61,7 @@ export default function AuctionCurrentCards({
 				renderItem={(lot) => (
 					<LotCardShell additional={lot.additional}>
 						<div className="flex justify-between gap-2 text-sm">
-							<span className="font-semibold text-text-accent">
+							<span className="font-semibold text-foreground">
 								{t('items.auction.listDate')}
 							</span>
 							<span className={cn('font-semibold', 'font-mono')}>
@@ -69,7 +69,7 @@ export default function AuctionCurrentCards({
 							</span>
 						</div>
 						<div className="flex justify-between gap-2 text-sm">
-							<span className="font-semibold text-text-accent">
+							<span className="font-semibold text-foreground">
 								{t('items.auction.endDate')}
 							</span>
 							<span className={cn('font-semibold', 'font-mono')}>
@@ -78,7 +78,7 @@ export default function AuctionCurrentCards({
 						</div>
 						{lot.startPrice != 0 && (
 							<div className="flex justify-between gap-2 text-sm">
-								<span className="font-semibold text-text-accent">
+								<span className="font-semibold text-foreground">
 									{t('items.auction.startPrice')}
 								</span>
 								<span
@@ -90,7 +90,7 @@ export default function AuctionCurrentCards({
 						)}
 						{lot.currentPrice != null && (
 							<div className="flex justify-between gap-2 text-sm">
-								<span className="font-semibold text-text-accent">
+								<span className="font-semibold text-foreground">
 									{t('items.auction.currentPrice')}
 								</span>
 								<span
@@ -102,7 +102,7 @@ export default function AuctionCurrentCards({
 						)}
 						{lot.buyoutPrice != null && (
 							<div className="flex justify-between gap-2 text-sm">
-								<span className="font-semibold text-text-accent">
+								<span className="font-semibold text-foreground">
 									{t('items.auction.buyout')}
 								</span>
 								<span
@@ -114,7 +114,7 @@ export default function AuctionCurrentCards({
 						)}
 						{lot.amount > 1 && (
 							<div className="flex justify-between gap-2 text-sm">
-								<span className="font-semibold text-text-accent">
+								<span className="font-semibold text-foreground">
 									{t('items.auction.amount')}
 								</span>
 								<span

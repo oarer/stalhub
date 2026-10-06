@@ -64,7 +64,7 @@ export default function BansAdminView() {
 								<p className="font-medium font-mono text-2xl">
 									{stats.total_warnings}
 								</p>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.warnings')}
 								</p>
 							</div>
@@ -82,7 +82,7 @@ export default function BansAdminView() {
 								<p className="font-medium font-mono text-2xl">
 									{stats.total_bans}
 								</p>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.bans')}
 								</p>
 							</div>
@@ -100,7 +100,7 @@ export default function BansAdminView() {
 								<p className="font-medium font-mono text-2xl">
 									{stats.auto_banned_users}
 								</p>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.autoBanned')}
 								</p>
 							</div>
@@ -118,7 +118,7 @@ export default function BansAdminView() {
 								<p className="font-medium font-mono text-2xl">
 									{stats.auto_warned_users}
 								</p>
-								<p className="font-medium text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.autoWarned')}
 								</p>
 							</div>
@@ -154,7 +154,7 @@ export default function BansAdminView() {
 									<span className="text-sm">
 										{entry.rule}
 									</span>
-									<span className="font-medium font-mono text-sm text-text-accent">
+									<span className="font-medium font-mono text-foreground text-sm">
 										{entry._count._all}
 									</span>
 								</div>
@@ -273,7 +273,7 @@ export default function BansAdminView() {
 												`#${ban.user_id}`}
 										</span>
 										{ban.user?.name && (
-											<span className="ml-1 text-text-accent text-xs">
+											<span className="ml-1 text-foreground text-xs">
 												({ban.user.name})
 											</span>
 										)}

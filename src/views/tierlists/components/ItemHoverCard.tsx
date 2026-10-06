@@ -94,7 +94,7 @@ export function ItemHoverCard({
 
 				{ttk !== undefined && (
 					<div className="flex items-center justify-between rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-xs">
-						<span className="font-semibold text-text-accent">
+						<span className="font-semibold text-foreground">
 							TTK
 						</span>
 						<span className="font-mono font-semibold text-primary">
@@ -104,18 +104,18 @@ export function ItemHoverCard({
 				)}
 
 				{ammoName && (
-					<p className="mb-1 text-text-accent text-xs">{ammoName}</p>
+					<p className="mb-1 text-foreground text-xs">{ammoName}</p>
 				)}
 
 				{rankChange && rankChange.prev !== rankChange.curr && (
 					<div className="flex items-center gap-2 rounded-md border border-muted bg-card/60 px-2 py-1 text-xs">
-						<span className="text-text-accent">Tier</span>
+						<span className="text-foreground">Tier</span>
 						<span
 							className={`inline-flex h-5 w-7 items-center justify-center rounded font-semibold ${TIER_RANK_COLORS[rankChange.prev].bg} ${TIER_RANK_COLORS[rankChange.prev].text}`}
 						>
 							{rankChange.prev}
 						</span>
-						<span className="text-text-accent/60">→</span>
+						<span className="text-foreground/60">→</span>
 						<span
 							className={`inline-flex h-5 w-7 items-center justify-center rounded font-semibold ${TIER_RANK_COLORS[rankChange.curr].bg} ${TIER_RANK_COLORS[rankChange.curr].text}`}
 						>

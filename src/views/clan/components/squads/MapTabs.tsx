@@ -50,7 +50,7 @@ export function MapTabs({
 						{t('clan.squads.noSquadsHere')}
 					</h2>
 					{isOfficer && (
-						<p className="font-semibold text-sm text-text-accent">
+						<p className="font-semibold text-foreground text-sm">
 							{t('clan.squads.createFirstHint')}
 						</p>
 					)}

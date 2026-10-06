@@ -639,7 +639,7 @@ export function ImageEditorModal({
 
 							{tool === 'crop' && (
 								<div className="flex items-center justify-between">
-									<span className="font-semibold text-text-accent text-xs">
+									<span className="font-semibold text-foreground text-xs">
 										{t('me.settings.editorCropHint')}
 									</span>
 									<Button
