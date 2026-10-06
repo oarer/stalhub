@@ -10,8 +10,7 @@ export default async function ServerStatusPage() {
 		queryClient.fetchQuery(serverOnlineQueries.latest()),
 		queryClient.fetchQuery(serverOnlineQueries.history(24)),
 		queryClient.fetchQuery(serverOnlineQueries.peaks(30)),
-		queryClient.fetchQuery(serverOnlineQueries.emissions('RU')),
-		queryClient.fetchQuery(serverOnlineQueries.emissions('EU')),
+		queryClient.fetchQuery(serverOnlineQueries.emissions()),
 	])
 
 	return (

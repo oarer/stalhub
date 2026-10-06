@@ -30,10 +30,9 @@ class ServerOnlineService {
 		return data
 	}
 
-	async emissions(region: string): Promise<EmissionInfo> {
-		const { data } = await apiClient.get<EmissionInfo>(
-			'/api/v1/server-online/emissions',
-			{ params: { region } }
+	async emissions(): Promise<EmissionInfo[]> {
+		const { data } = await apiClient.get<EmissionInfo[]>(
+			'/api/v1/server-online/emissions'
 		)
 		return data
 	}

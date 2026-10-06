@@ -18,10 +18,14 @@ export const DATE_FORMATS = {
 } as const
 
 export const formatDate = (
-	date: Date | string | number,
+	date: Date | string | number | null | undefined,
 	format: keyof typeof DATE_FORMATS = 'datetime',
-	locale = 'ru-RU'
-) => new Date(date).toLocaleString(locale, DATE_FORMATS[format])
+	locale = 'ru-RU',
+	fallback = '—'
+) => {
+	if (!date) return fallback
+	return new Date(date).toLocaleString(locale, DATE_FORMATS[format])
+}
 
 export const MSK_OFFSET_MS = 3 * 60 * 60 * 1000
 

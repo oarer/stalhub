@@ -3,13 +3,25 @@
 import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
+import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
+import {
+	type ColumnDef,
+	flexRender,
+	Table,
+	useTableSort,
+} from '@/components/ui/Table'
 import { Tabs } from '@/components/ui/Tabs'
 import { cn } from '@/lib/cn'
 import { serverOnlineQueries } from '@/queries/server-online/server-online.queries'
+import type {
+	EmissionInfo,
+	ServerOnlinePeak,
+} from '@/types/server-online.type'
 import { OnlineChart } from '@/views/server-status/components/OnlineChart'
+import { formatDate } from '@/lib/date'
 
 const REGION_LABELS: Record<string, string> = {
 	RU: 'Россия / СНГ (RU)',
@@ -37,6 +49,8 @@ const HISTORY_RANGES = [
 	{ value: '168', hours: 168, label: '7D' },
 ]
 
+const EMISSION_REGION_ORDER = ['RU', 'EU', 'NA', 'NEA', 'SEA']
+
 export default function ServerStatusView() {
 	const t = useTranslations()
 	const { data: online } = useSuspenseQuery(serverOnlineQueries.latest())
@@ -48,8 +62,7 @@ export default function ServerStatusView() {
 		serverOnlineQueries.history(activeRange.hours)
 	)
 	const { data: peaks } = useQuery(serverOnlineQueries.peaks(peakDays))
-	const { data: emissionRU } = useQuery(serverOnlineQueries.emissions('RU'))
-	const { data: emissionEU } = useQuery(serverOnlineQueries.emissions('EU'))
+	const { data: emissions } = useQuery(serverOnlineQueries.emissions())
 
 	const onlineByRegion = new Map<string, number>()
 	for (const entry of online ?? []) {
@@ -63,6 +76,57 @@ export default function ServerStatusView() {
 	const displayRegions = Object.keys(REGION_LABELS).filter(
 		(r) => onlineByRegion.has(r) || r === 'RU'
 	)
+
+	const emissionList = useMemo<EmissionInfo[]>(() => {
+		if (!emissions?.length) {
+			return EMISSION_REGION_ORDER.map((region) => ({ region }))
+		}
+		return [...emissions].sort((a, b) => {
+			const aIndex = EMISSION_REGION_ORDER.indexOf(a.region)
+			const bIndex = EMISSION_REGION_ORDER.indexOf(b.region)
+			if (aIndex === -1 && bIndex === -1) return a.region.localeCompare(b.region)
+			if (aIndex === -1) return 1
+			if (bIndex === -1) return -1
+			return aIndex - bIndex
+		})
+	}, [emissions])
+
+	const peakRows = useMemo<ServerOnlinePeak[]>(
+		() => (peaks ?? []).slice(-14).reverse(),
+		[peaks]
+	)
+
+	const peakColumns = useMemo<ColumnDef<ServerOnlinePeak>[]>(
+		() => [
+			{
+				accessorKey: 'date',
+				header: t('servers.peakDate'),
+				cell: ({ row }) => (
+					<span className="font-mono font-semibold">
+						{row.original.date}
+					</span>
+				),
+			},
+			{
+				accessorKey: 'region',
+				header: t('servers.peakRegion'),
+				cell: ({ row }) => row.original.region,
+			},
+			{
+				accessorKey: 'peak',
+				header: t('servers.peakOnline'),
+				cell: ({ row }) => (
+					<span className="font-mono font-semibold text-primary">
+						{row.original.peak.toLocaleString()}
+					</span>
+				),
+				meta: { align: 'right' },
+			},
+		],
+		[t]
+	)
+
+	const { table: peaksTable } = useTableSort(peakRows, peakColumns)
 
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
@@ -111,42 +175,58 @@ export default function ServerStatusView() {
 						{t('servers.emissions')}
 					</h2>
 				</div>
-				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-					{[
-						{ label: 'RU', data: emissionRU },
-						{ label: 'EU', data: emissionEU },
-					].map(({ label, data }) => (
-						<div
-							className="rounded-lg bg-accent/40 p-3 text-sm"
-							key={label}
-						>
-							<div className="font-mono font-semibold">
-								{label}
-							</div>
-							{data ? (
-								<div className="mt-1 flex flex-col gap-1 text-text-accent">
-									<span>
-										{t('servers.emissionCurrent')}:{' '}
-										{data.currentStart
-											? new Date(
-													data.currentStart
-												).toLocaleString()
-											: '—'}
-									</span>
-									<span>
-										{t('servers.emissionPrev')}:{' '}
-										{data.previousStart
-											? new Date(
-													data.previousStart
-												).toLocaleString()
-											: '—'}
-									</span>
+				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+					{emissionList.map((data) => {
+						const isActive = Boolean(data.currentStart)
+						return (
+							<div
+								className="rounded-lg bg-accent/40 p-3 text-sm"
+								key={data.region}
+							>
+								<div className="flex items-center justify-between gap-2">
+									<div className="font-mono font-semibold">
+										{data.region}
+									</div>
+									<Badge
+										variant={
+											isActive ? 'success' : 'secondary'
+										}
+									>
+										{emissions
+											? t(
+													isActive
+														? 'servers.emissionActive'
+														: 'servers.emissionInactive'
+												)
+											: '…'}
+									</Badge>
 								</div>
-							) : (
-								<span className="text-text-accent">…</span>
-							)}
-						</div>
-					))}
+								{emissions ? (
+									<div className="mt-2 flex flex-col gap-1 text-text-accent">
+										{isActive && data.currentStart ? (
+											<span>
+												{t('servers.emissionStarted')}:{' '}
+												{formatDate(data.currentStart)}
+											</span>
+										) : null}
+										<span className="font-medium text-text">
+											{t('servers.emissionPrev')}:
+										</span>
+										<span>
+											{t('servers.emissionStarted')}:{' '}
+											{formatDate(data.previousStart)}
+										</span>
+										<span>
+											{t('servers.emissionEnded')}:{' '}
+											{formatDate(data.previousEnd)}
+										</span>
+									</div>
+								) : (
+									<span className="text-text-accent">…</span>
+								)}
+							</div>
+						)
+					})}
 				</div>
 			</div>
 
@@ -171,44 +251,41 @@ export default function ServerStatusView() {
 						</Tabs.List>
 					</Tabs.Root>
 				</div>
-				<div className="overflow-x-auto">
-					<table className="w-full text-sm">
-						<thead>
-							<tr className="text-left text-text-accent">
-								<th className="py-1 pr-4 font-medium">
-									{t('servers.peakDate')}
-								</th>
-								<th className="py-1 pr-4 font-medium">
-									{t('servers.peakRegion')}
-								</th>
-								<th className="py-1 font-medium">
-									{t('servers.peakOnline')}
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{(peaks ?? [])
-								.slice(-14)
-								.reverse()
-								.map((p) => (
-									<tr
-										className="border-border/50 border-t"
-										key={`${p.region}-${p.date}`}
+				<Table.Root>
+					<Table.Header>
+						{peaksTable.getHeaderGroups().map((headerGroup) => (
+							<Table.Row key={headerGroup.id}>
+								{headerGroup.headers.map((header) => (
+									<Table.SortableHeader
+										column={header.column}
+										key={header.id}
 									>
-										<td className="py-1 pr-4 font-mono">
-											{p.date}
-										</td>
-										<td className="py-1 pr-4">
-											{p.region}
-										</td>
-										<td className="py-1 font-mono text-primary">
-											{p.peak.toLocaleString()}
-										</td>
-									</tr>
+										{flexRender(
+											header.column.columnDef.header,
+											header.getContext()
+										)}
+									</Table.SortableHeader>
 								))}
-						</tbody>
-					</table>
-				</div>
+							</Table.Row>
+						))}
+					</Table.Header>
+					<Table.Body>
+						{peaksTable.getRowModel().rows.map((row) => (
+							<Table.Row
+								key={`${row.original.region}-${row.original.date}`}
+							>
+								{row.getVisibleCells().map((cell) => (
+									<Table.Cell key={cell.id}>
+										{flexRender(
+											cell.column.columnDef.cell,
+											cell.getContext()
+										)}
+									</Table.Cell>
+								))}
+							</Table.Row>
+						))}
+					</Table.Body>
+				</Table.Root>
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

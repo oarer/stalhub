@@ -34,10 +34,10 @@ class ServerOnlineQueries {
 		})
 	}
 
-	emissions(region: string) {
-		return queryOptions<EmissionInfo>({
-			queryKey: ['server-online', 'emissions', region],
-			queryFn: () => serverOnlineService.emissions(region),
+	emissions() {
+		return queryOptions<EmissionInfo[]>({
+			queryKey: ['server-online', 'emissions'],
+			queryFn: () => serverOnlineService.emissions(),
 			staleTime: 1000 * 60,
 			refetchInterval: 1000 * 60,
 		})
