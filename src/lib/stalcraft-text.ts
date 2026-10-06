@@ -55,30 +55,146 @@ export function lerpColor(from: string, to: string, t: number): string {
 	)
 }
 
-/** Градиент посимвольно: каждый символ получает §#hex */
 export function buildGradient(
 	text: string,
 	from: string,
 	to: string,
 	mid?: string
 ): string {
-	const chars = [...text]
-	if (chars.length === 0) return ''
-	if (chars.length === 1) return `§${from}${chars[0]}§R`
-	return chars
-		.map((ch, i) => {
-			if (ch === '\n') return '\n'
-			const t = i / (chars.length - 1)
-			let hex: string
-			if (mid && t < 0.5) hex = lerpColor(from, mid, t * 2)
-			else if (mid) hex = lerpColor(mid, to, (t - 0.5) * 2)
-			else hex = lerpColor(from, to, t)
-			return `§${hex}${ch}`
-		})
-		.join('') + '§R'
+	return buildMultiGradient(text, mid ? [from, mid, to] : [from, to])
 }
 
-/** Парсинг §-кодов в сегменты для превью. Поддерживает §0-F/R + §#RRGGBB */
+export function colorAtStops(colors: string[], t: number): string {
+	const stops = colors.filter(Boolean)
+	if (stops.length === 0) return '#FFFFFF'
+	if (stops.length === 1) return stops[0]
+	const clamped = Math.min(1, Math.max(0, t))
+	const segments = stops.length - 1
+	const pos = clamped * segments
+	const idx = Math.min(Math.floor(pos), segments - 1)
+	return lerpColor(stops[idx], stops[idx + 1], pos - idx)
+}
+
+export function buildMultiGradient(text: string, colors: string[]): string {
+	const stops = colors.filter(Boolean)
+	if (stops.length === 0) return text
+	const chars = [...text]
+	if (chars.length === 0) return ''
+	if (stops.length === 1) return `§${stops[0]}${text}§R`
+	if (chars.length === 1) return `§${stops[0]}${chars[0]}§R`
+	return (
+		chars
+			.map((ch, i) => {
+				if (ch === '\n') return '\n'
+				const t = i / (chars.length - 1)
+				return `§${colorAtStops(stops, t)}${ch}`
+			})
+			.join('') + '§R'
+	)
+}
+
+export function countColorCodes(input: string): number {
+	return input.match(/§(?:#[0-9A-Fa-f]{6}|[0-9A-Fa-f])/g)?.length ?? 0
+}
+
+export type CompressedGradient = {
+	text: string
+	runs: number
+	compressed: boolean
+	fits: boolean
+}
+
+export function buildCompressedGradient(
+	text: string,
+	colors: string[],
+	limit: number
+): CompressedGradient {
+	const stops = colors.filter(Boolean)
+	const chars = [...text]
+	const coded = chars.filter((ch) => ch !== '\n')
+	if (coded.length === 0)
+		return { text, runs: 0, compressed: false, fits: text.length <= limit }
+	if (stops.length === 0)
+		return { text, runs: 0, compressed: false, fits: text.length <= limit }
+
+	const plainLen = chars.length
+	if (plainLen + coded.length * 8 + 2 <= limit) {
+		return {
+			text: buildMultiGradient(text, stops),
+			runs: coded.length,
+			compressed: false,
+			fits: true,
+		}
+	}
+
+	const maxRuns = Math.floor((limit - plainLen - 2) / 8)
+	if (maxRuns < 1) {
+		const solid = `§${stops[0]}${text}§R`
+		return {
+			text: solid,
+			runs: 1,
+			compressed: true,
+			fits: solid.length <= limit,
+		}
+	}
+
+	const k = Math.min(maxRuns, coded.length)
+	let out = ''
+	let currentRun = -1
+	let m = -1
+	for (const ch of chars) {
+		if (ch === '\n') {
+			out += '\n'
+			continue
+		}
+		m += 1
+		const r = Math.min(Math.floor((m * k) / coded.length), k - 1)
+		if (r !== currentRun) {
+			currentRun = r
+			out += `§${colorAtStops(stops, (r + 0.5) / k)}`
+		}
+		out += ch
+	}
+	out += '§R'
+	return { text: out, runs: k, compressed: true, fits: out.length <= limit }
+}
+
+export function plainToRawRange(
+	raw: string,
+	start: number,
+	end: number
+): [number, number] {
+	const codeChar = /^[0-9a-fA-FrR]$/
+	let p = 0
+	let i = 0
+	let rs = -1
+	let re = -1
+	while (i < raw.length) {
+		if (p === start && rs === -1) rs = i
+		if (p === end) {
+			re = i
+			break
+		}
+		if (raw[i] === '§') {
+			const hexMatch = raw.slice(i, i + 8).match(/^§#[0-9a-fA-F]{6}/)
+			if (hexMatch) {
+				i += 8
+				continue
+			}
+			const next = raw[i + 1]
+			if (next && codeChar.test(next)) {
+				i += 2
+				continue
+			}
+		}
+		p += 1
+		i += 1
+	}
+	if (rs === -1) rs = raw.length
+	if (re === -1) re = raw.length
+	return [rs, re]
+}
+
 export function parseStalcraftText(input: string): StalSegment[][] {
 	const lines = input.split('\n')
 	return lines.map((line) => {
@@ -116,7 +232,6 @@ export function parseStalcraftText(input: string): StalSegment[][] {
 	})
 }
 
-/** Убрать все §-коды */
 export function stripStalcraftCodes(input: string): string {
 	return input.replace(/§#[0-9a-fA-F]{6}|§[0-9a-fA-FrR]/g, '')
 }

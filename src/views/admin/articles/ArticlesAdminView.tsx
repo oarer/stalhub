@@ -14,6 +14,7 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
+import PublishBlogButton from './PublishBlogButton'
 
 const STATUS_OPTIONS = [
 	ArticleStatus.PENDING,
@@ -181,6 +182,9 @@ export default function ArticlesAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										<div className="flex items-center gap-1">
+											<PublishBlogButton
+												articleId={article.id}
+											/>
 											<Button
 												onClick={() =>
 													router.push(

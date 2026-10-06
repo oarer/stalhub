@@ -17,9 +17,9 @@ import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
 import {
 	ARTICLE_STATUS_META,
+	type ArticleCoverConfig,
 	type ArticleStatus,
 	ArticleType,
-	type ArticleCoverConfig,
 } from '@/types/article.type'
 import { ComponentsModal } from '@/views/me/components/article/ComponentsModal'
 import { CoverPanelModal } from '@/views/me/components/article/CoverPanelModal'
@@ -37,6 +37,7 @@ import { useArticleHotkeys } from '@/views/me/hooks/useArticleHotkeys'
 import { useAutosave } from '@/views/me/hooks/useAutosave'
 import { useCompiledPreview } from '@/views/me/hooks/useCompiledPreview'
 import { useSyncedScroll } from '@/views/me/hooks/useSyncedScroll'
+import PublishBlogButton from './PublishBlogButton'
 
 type Initial = {
 	title: string
@@ -55,6 +56,7 @@ function EditorForm({
 	headerBadge,
 	publicHref,
 	isCreate,
+	publishButton,
 }: {
 	initial: Initial
 	articleId?: string
@@ -70,6 +72,7 @@ function EditorForm({
 	headerBadge?: React.ReactNode
 	publicHref?: string
 	isCreate: boolean
+	publishButton?: React.ReactNode
 }) {
 	const t = useTranslations()
 	const router = useRouter()
@@ -169,6 +172,7 @@ function EditorForm({
 
 				<div className="flex shrink-0 items-center gap-2">
 					{headerBadge}
+					{publishButton}
 					<Button
 						className="p-2.5"
 						onClick={() => setCoverModalOpen(true)}
@@ -395,6 +399,9 @@ function EditMode({ articleId }: { articleId: string }) {
 			isSubmitPending={updateMutation.isPending}
 			onSubmit={(data) => updateMutation.mutate(data)}
 			publicHref={`/blog/${articleId}`}
+			publishButton={
+				<PublishBlogButton articleId={articleId} variant="button" />
+			}
 			submitLabel={t('blog.editor.save')}
 		/>
 	)
