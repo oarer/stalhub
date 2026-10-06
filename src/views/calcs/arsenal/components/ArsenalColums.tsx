@@ -4,7 +4,10 @@ import type { Locale, Message } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
 import type { ArsenalRow } from './ArsenalCalc'
 
-export function arsenalIconUrl(row: { icon?: string; id?: string }): string | null {
+export function arsenalIconUrl(row: {
+	icon?: string
+	id?: string
+}): string | null {
 	if (row.icon) return `https://cdn.stalhub.dev/db${row.icon}`
 	return null
 }

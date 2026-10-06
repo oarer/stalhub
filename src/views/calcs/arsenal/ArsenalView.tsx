@@ -52,28 +52,38 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 					: 'mx-auto max-w-7xl space-y-6 px-4 pt-42 pb-12 sm:px-6'
 			}
 		>
-			{variant === 'page' && (
-				<>
-					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
-					>
-						{t('arsenal.title')}
-					</h1>
-					<p className="font-medium text-muted-foreground text-sm">
-						{t('arsenal.sub_title')}
-					</p>
-				</>
-			)}
-
 			<Tabs.Root onValueChange={setTab} value={tab}>
-				<Tabs.List>
-					<Tabs.Trigger value="calc">
-						{t('arsenal.tabs.calc')}
-					</Tabs.Trigger>
-					<Tabs.Trigger value="shop">
-						{t('arsenal.tabs.shop')}
-					</Tabs.Trigger>
-				</Tabs.List>
+				{variant === 'page' ? (
+					<div className="flex flex-wrap items-end justify-between gap-4">
+						<div className="space-y-2">
+							<h1
+								className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+							>
+								{t('arsenal.title')}
+							</h1>
+							<p className="font-medium text-muted-foreground text-sm">
+								{t('arsenal.sub_title')}
+							</p>
+						</div>
+						<Tabs.List className="w-fit">
+							<Tabs.Trigger value="calc">
+								{t('arsenal.tabs.calc')}
+							</Tabs.Trigger>
+							<Tabs.Trigger value="shop">
+								{t('arsenal.tabs.shop')}
+							</Tabs.Trigger>
+						</Tabs.List>
+					</div>
+				) : (
+					<Tabs.List className="w-fit">
+						<Tabs.Trigger value="calc">
+							{t('arsenal.tabs.calc')}
+						</Tabs.Trigger>
+						<Tabs.Trigger value="shop">
+							{t('arsenal.tabs.shop')}
+						</Tabs.Trigger>
+					</Tabs.List>
+				)}
 				<Tabs.Content value="shop">
 					<ArsenalShop
 						onPickReputation={(rep) => {
