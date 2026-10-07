@@ -266,6 +266,14 @@
             "label": "Monnaies d'échange",
             "description": "Troc en monnaies d'échange"
           },
+          "donate": {
+            "label": "Don",
+            "description": "Meilleure valeur"
+          },
+          "text": {
+            "label": "Formatage",
+            "description": "§ et dégradés"
+          },
           "bp": {
             "label": "Passe saisonnier",
             "description": "Calcul des niveaux"

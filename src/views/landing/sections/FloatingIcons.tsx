@@ -9,7 +9,7 @@ export default function FloatingIcons() {
 	const shouldReduceMotion = useReducedMotion()
 
 	return (
-		<div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block">
+		<div className="pointer-events-none absolute inset-0 hidden sm:block">
 			{floatingIcons.map((iconData, index) => (
 				<motion.div
 					animate={

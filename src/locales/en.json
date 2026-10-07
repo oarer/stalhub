@@ -266,6 +266,14 @@
             "label": "Barter coins",
             "description": "Barter for barter coins"
           },
+          "donate": {
+            "label": "Donate",
+            "description": "Best sell value"
+          },
+          "text": {
+            "label": "Formatting",
+            "description": "§-codes and gradients"
+          },
           "bp": {
             "label": "Season pass",
             "description": "Level calculation"

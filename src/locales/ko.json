@@ -266,6 +266,14 @@
             "label": "교환 코인",
             "description": "교환 코인으로 물물교환"
           },
+          "donate": {
+            "label": "후원",
+            "description": "판매 효율"
+          },
+          "text": {
+            "label": "서식",
+            "description": "§와 그라디언트"
+          },
           "bp": {
             "label": "시즌 패스",
             "description": "레벨 계산"

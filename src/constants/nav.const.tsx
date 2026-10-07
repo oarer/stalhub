@@ -150,11 +150,27 @@ export const NAV_STRUCTURE: NavGroup[] = [
 					},
 					{
 						key: 'barter',
-						icon: 'lucide:timer-reset',
+						icon: 'lucide:repeat',
 						href: '/calcs/barter',
 						labelKey: 'nav.groups.calculators.items.barter.label',
 						descriptionKey:
 							'nav.groups.calculators.items.barter.description',
+					},
+					{
+						key: 'donate',
+						icon: 'lucide:gem',
+						href: '/calcs/donate',
+						labelKey: 'nav.groups.calculators.items.donate.label',
+						descriptionKey:
+							'nav.groups.calculators.items.donate.description',
+					},
+					{
+						key: 'text',
+						icon: 'lucide:type',
+						href: '/calcs/text',
+						labelKey: 'nav.groups.calculators.items.text.label',
+						descriptionKey:
+							'nav.groups.calculators.items.text.description',
 					},
 				],
 			},

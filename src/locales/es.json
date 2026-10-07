@@ -266,6 +266,14 @@
             "label": "Monedas de intercambio",
             "description": "Trueque por monedas de intercambio"
           },
+          "donate": {
+            "label": "Donación",
+            "description": "Mejor valor"
+          },
+          "text": {
+            "label": "Formato",
+            "description": "§ y degradados"
+          },
           "bp": {
             "label": "Pase de temporada",
             "description": "Cálculo de niveles"
