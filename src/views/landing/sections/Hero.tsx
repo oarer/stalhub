@@ -28,10 +28,16 @@ export default function Hero() {
 							initial={{ y: 24, opacity: 0 }}
 							transition={{ duration: 0.5 }}
 						>
-							<SwapText
-								className="text-primary"
-								texts={swapTexts}
-							/>
+							<span className="sr-only">
+								StalHub — калькуляторы, сборки и гайды для
+								StalZone (Stalcraft):{' '}
+							</span>
+							<span aria-hidden>
+								<SwapText
+									className="text-primary"
+									texts={swapTexts}
+								/>
+							</span>
 						</motion.h1>
 						<motion.h2
 							animate={{ y: 0, opacity: 1 }}

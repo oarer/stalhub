@@ -3,11 +3,14 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { generateItemMetadata } from '@/lib/generateItemMetadata'
 import { getLocaleServer } from '@/lib/getLocaleServer'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
 import type { Item } from '@/types/item.type'
 import ItemsView from '@/views/items'
+import { JsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd'
+import { SITE_META } from '@/constants/meta'
 
 type PageProps = {
 	params: Promise<{ slug: string[] }>
@@ -22,24 +25,28 @@ export async function generateMetadata({
 	const itemData = await generateItemMetadata(slug, locale)
 	if (!itemData) {
 		return {
-			title: 'Item not found · StalHub',
+			title: 'Предмет не найден · StalHub',
 			robots: { index: false, follow: true },
 		}
 	}
 
+	const itemPath = `/items/${slug.join('/')}`
+
 	return {
 		title: `${itemData.name} · StalHub`,
 		description: itemData.description,
+		alternates: dynamicAlternates(itemPath),
 		openGraph: {
 			title: `${itemData.name} · StalHub`,
 			description: itemData.description,
+			url: itemPath,
 			images: [`https://cdn.stalhub.dev/db${itemData.icon}`],
 		},
-		twitter: {
+		twitter: dynamicTwitter({
 			title: `${itemData.name} · StalHub`,
 			description: itemData.description,
 			images: [`https://cdn.stalhub.dev/db${itemData.icon}`],
-		},
+		}),
 	}
 }
 export default async function ItemsPage({ params }: PageProps) {
@@ -77,6 +84,15 @@ export default async function ItemsPage({ params }: PageProps) {
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
+			<JsonLd
+				data={breadcrumbJsonLd(
+					SITE_META.SITE_URL,
+					path.map((segment, index) => ({
+						name: segment,
+						path: `/items/${path.slice(0, index + 1).join('/')}`,
+					}))
+				)}
+			/>
 			<ItemsView githubUrl={githubUrl} id={id} path={path} />
 		</HydrationBoundary>
 	)

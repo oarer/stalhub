@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { extractExcerpt } from '@/lib/blog-cover'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
@@ -45,8 +46,11 @@ export async function generateMetadata({
 		return {
 			title: `${article.title} · StalHub`,
 			description,
+			alternates: dynamicAlternates(`/blog/${id}`),
 			openGraph: {
 				title: `${article.title} · StalHub`,
+				description,
+				url: `/blog/${id}`,
 				type: 'article',
 				publishedTime: article.created_at,
 				modifiedTime: article.updated_at,
@@ -54,6 +58,11 @@ export async function generateMetadata({
 				tags: article.tags,
 				images,
 			},
+			twitter: dynamicTwitter({
+				title: `${article.title} · StalHub`,
+				description,
+				images: images.map((img) => img.url),
+			}),
 		}
 	} catch {
 		return {

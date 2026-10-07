@@ -6,6 +6,7 @@ import { getTranslations } from 'next-intl/server'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import UserProfileView from '@/views/users/UserProfileView'
 
 type PageProps = {
@@ -34,12 +35,19 @@ export async function generateMetadata({
 		return {
 			title: `${displayName} · StalHub`,
 			description,
+			alternates: dynamicAlternates(`/users/${id}`),
 			openGraph: {
 				title: `${displayName} · StalHub`,
 				description,
+				url: `/users/${id}`,
 				type: 'profile',
 				images: [{ url: avatarUrl, alt: user.username }],
 			},
+			twitter: dynamicTwitter({
+				title: `${displayName} · StalHub`,
+				description,
+				images: [avatarUrl],
+			}),
 		}
 	} catch {
 		return {

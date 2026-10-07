@@ -7,7 +7,12 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { montserrat, unbounded } from '@/app/fonts'
 import { CookieConsent } from '@/components/cookies/CookieConsent'
-import { getMetadataByPath } from '@/constants/meta'
+import {
+	JsonLd,
+	organizationJsonLd,
+	websiteJsonLd,
+} from '@/components/seo/JsonLd'
+import { getMetadataByPath, SITE_META } from '@/constants/meta'
 import LocaleProvider from '@/providers/LocaleProvider'
 import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
@@ -19,13 +24,15 @@ import Nav from '@/shared/layouts/nav/Nav'
 export const generateMetadata = async () => {
 	const headersList = await headers()
 	const path = headersList.get('X-Path')?.split('?')[0]
+	const locale = headersList.get('X-Locale') ?? undefined
 
-	return getMetadataByPath(path)
+	return getMetadataByPath(path, locale)
 }
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
 	const locale = await getLocale()
 	const messages = await getMessages()
+	const siteUrl = SITE_META.SITE_URL
 
 	return (
 		<html
@@ -37,6 +44,8 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 			<body
 				className={`bg-background text-foreground transition-colors duration-500 ease-in-out`}
 			>
+				<JsonLd data={websiteJsonLd(siteUrl)} />
+				<JsonLd data={organizationJsonLd(siteUrl)} />
 				<GridBackgroundWithBeams
 					cellSize={20}
 					cols={100}
