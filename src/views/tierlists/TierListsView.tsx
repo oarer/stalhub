@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
@@ -40,7 +41,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 		setPage(1)
 	}
 
-	const { data, isLoading } = useQuery(
+	const { data, isLoading, isError, error } = useQuery(
 		mine
 			? tierListQueries.listMine({ take: 50, page })
 			: tierListQueries.list({
@@ -51,6 +52,9 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 					category: categoryFilter,
 				})
 	)
+
+	const isUnauthorized =
+		axios.isAxiosError(error) && error.response?.status === 401
 
 	return (
 		<section
@@ -181,7 +185,20 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 						<Skeleton className="h-48 rounded-xl" key={i} />
 					))}
 				</div>
-			) : data?.data.length === 0 ? (
+			) : isError && isUnauthorized ? (
+				<div className="flex flex-col items-center gap-3 py-16">
+					<Icon
+						className="size-10 text-foreground"
+						icon="lucide:log-in"
+					/>
+					<p className="font-medium text-foreground text-sm">
+						{t('auth.error')}
+					</p>
+					<CLink href="/auth" variant="outline">
+						{t('auth.login')}
+					</CLink>
+				</div>
+			) : data?.data.length === 0 || isError ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
 						className="size-10 text-foreground"
