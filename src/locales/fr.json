@@ -132,6 +132,50 @@
         "processing": "Traitement",
         "done": "Réussi"
       }
+    },
+    "personal": {
+      "title": "Analyse <primary>personnelle</primary>",
+      "subtitle": "Liez votre personnage et suivez votre progression : les stats sont collectées automatiquement",
+      "cta": "Ouvrir l'analyse",
+      "features": {
+        "tracking": {
+          "title": "Suivi auto",
+          "desc": "Les instantanés de stats sont enregistrés automatiquement toutes les 12 heures, avec actualisation manuelle en un clic."
+        },
+        "dynamics": {
+          "title": "Dynamique",
+          "desc": "Graphiques K/D, précision, headshots et temps de jeu : valeur et progression sur la période."
+        },
+        "stages": {
+          "title": "Étapes",
+          "desc": "Étapes personnelles et de clan par carte : winrate, sessions et apparitions, bien organisées."
+        },
+        "sharing": {
+          "title": "Lien public",
+          "desc": "Devenez public en un clic et partagez une belle page de stats avec vos amis."
+        }
+      },
+      "stages": {
+        "link": "Lien",
+        "snapshot": "Instantané",
+        "dynamics": "Dynamique"
+      },
+      "demo": {
+        "snapshots": "Instantanés : {n}",
+        "growth": "Croissance",
+        "forPeriod": "sur la période",
+        "chartTitle": "K/D — dynamique",
+        "stats": {
+          "kills": "Éliminations",
+          "kd": "K/D",
+          "accuracy": "Précision",
+          "hours": "En jeu"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "<primary>Feuille de route</primary>",
+      "description": "Des premiers concepts à la sortie de l'app — et au-delà"
     }
   },
   "footer": {

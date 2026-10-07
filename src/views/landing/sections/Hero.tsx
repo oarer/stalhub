@@ -18,8 +18,11 @@ export default function Hero() {
 	]
 
 	return (
-		<section className="relative min-h-screen overflow-hidden" id="hero">
-			<div className="mx-auto grid w-full items-center gap-10 sm:py-14 lg:grid-cols-[1.15fr_0.95fr] lg:gap-12 lg:py-20">
+		<section
+			className="relative min-h-screen scroll-mt-24 overflow-hidden py-16 md:py-24"
+			id="hero"
+		>
+			<div className="mx-auto grid w-full items-center gap-10 lg:grid-cols-[1.15fr_0.95fr] lg:gap-12">
 				<div className="flex min-w-0 flex-col items-center gap-4 text-center lg:items-start lg:text-left">
 					<div className="flex flex-col gap-2">
 						<motion.h1

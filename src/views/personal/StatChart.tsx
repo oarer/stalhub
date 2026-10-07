@@ -71,11 +71,30 @@ export function StatChart({
 				data: shown.map((p) => p.v),
 				fill: true,
 				tension: 0,
-				borderWidth: 2,
+				borderWidth: 2.5,
 				pointRadius: 4,
 				pointHoverRadius: 6,
 				borderColor: accent,
-				backgroundColor: `${accent}20`,
+				// Градиентная заливка как в демо на лендинге:
+				// насыщенно под линией -> почти прозрачно к низу.
+				backgroundColor: (context: {
+					chart: {
+						ctx: CanvasRenderingContext2D
+						chartArea?: { top: number; bottom: number }
+					}
+				}) => {
+					const { ctx, chartArea } = context.chart
+					if (!chartArea) return `${accent}20`
+					const gradient = ctx.createLinearGradient(
+						0,
+						chartArea.top,
+						0,
+						chartArea.bottom
+					)
+					gradient.addColorStop(0, `${accent}59`)
+					gradient.addColorStop(1, `${accent}05`)
+					return gradient
+				},
 			},
 		],
 	}

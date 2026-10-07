@@ -12,12 +12,12 @@ export default function LandingClan() {
 
 	return (
 		<section
-			className="relative flex min-h-150 flex-col items-center gap-8 overflow-hidden xl:min-h-140"
+			className="relative flex scroll-mt-24 flex-col items-center gap-8 overflow-hidden py-16 md:py-24"
 			id="clan"
 		>
 			<div className="grid w-full grid-cols-1 gap-10 px-2 lg:grid-cols-[1.2fr_1.3fr] lg:gap-16">
 				<div className="flex flex-col gap-4 lg:self-start">
-					<motion.h1
+					<motion.h2
 						animate={{ y: 0, opacity: 1 }}
 						className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
@@ -30,7 +30,7 @@ export default function LandingClan() {
 								</span>
 							),
 						})}
-					</motion.h1>
+					</motion.h2>
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
 						className={`${mtsExtended.className} font-medium text-foreground text-md`}

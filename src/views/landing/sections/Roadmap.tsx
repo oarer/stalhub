@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { mtsExtended } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { type RoadmapItem, RoadmapItems } from '@/constants/roadmap.const'
 import { cn } from '@/lib/cn'
 
@@ -89,61 +89,96 @@ function TimelineDot({ status }: { status: RoadmapItem['status'] }) {
 }
 
 export default function Roadmap() {
+	const t = useTranslations('landing.roadmap')
+	const shouldReduceMotion = useReducedMotion()
+
 	return (
-		<div className="mx-auto max-w-220 px-4 py-12 md:px-6 md:py-20">
-			<ol className="relative space-y-2">
-				<span
-					aria-hidden="true"
-					className="absolute top-0 bottom-0 left-1.75 w-px bg-primary/60 md:hidden"
-				/>
+		<section
+			className="relative flex scroll-mt-24 flex-col py-16 md:py-24"
+			id="roadmap"
+		>
+			<motion.div
+				className="mb-10 flex flex-col gap-4 text-center"
+				initial={{ y: shouldReduceMotion ? 0 : 24, opacity: 0 }}
+				transition={{ duration: 0.5 }}
+				viewport={{ once: true }}
+				whileInView={{ y: 0, opacity: 1 }}
+			>
+				<h2
+					className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
+				>
+					{t.rich('title', {
+						primary: (chunks) => (
+							<span className="text-primary italic">
+								{chunks}
+							</span>
+						),
+					})}
+				</h2>
+				<p
+					className={`${mtsExtended.className} mx-auto max-w-md font-medium text-foreground text-md`}
+				>
+					{t('description')}
+				</p>
+			</motion.div>
+			<div className="mx-auto w-full max-w-220 px-4 md:px-6">
+				<ol className="relative space-y-2">
+					<span
+						aria-hidden="true"
+						className="absolute top-0 bottom-0 left-1.75 w-px bg-primary/60 md:hidden"
+					/>
 
-				<span
-					aria-hidden="true"
-					className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-primary/60 md:block"
-				/>
+					<span
+						aria-hidden="true"
+						className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-primary/60 md:block"
+					/>
 
-				{RoadmapItems.map((item, i) => {
-					const isLeft = i % 2 === 0
+					{RoadmapItems.map((item, i) => {
+						const isLeft = i % 2 === 0
 
-					return (
-						<li className="relative min-h-30" key={item.date}>
-							<div className="flex gap-4 md:hidden">
-								<div className="relative flex w-4 shrink-0 justify-center">
-									<TimelineDot status={item.status} />
-								</div>
+						return (
+							<li className="relative min-h-30" key={item.date}>
+								<div className="flex gap-4 md:hidden">
+									<div className="relative flex w-4 shrink-0 justify-center">
+										<TimelineDot status={item.status} />
+									</div>
 
-								<div className="flex-1 pb-8">
-									<RoadmapContent align="left" item={item} />
-								</div>
-							</div>
-
-							<div className="hidden md:grid md:grid-cols-[1fr_3rem_1fr] md:items-center">
-								<div className="px-6 pr-4">
-									{isLeft && (
-										<RoadmapContent
-											align="right"
-											item={item}
-										/>
-									)}
-								</div>
-
-								<div className="flex justify-center">
-									<TimelineDot status={item.status} />
-								</div>
-
-								<div className="px-6 pl-4">
-									{!isLeft && (
+									<div className="flex-1 pb-8">
 										<RoadmapContent
 											align="left"
 											item={item}
 										/>
-									)}
+									</div>
 								</div>
-							</div>
-						</li>
-					)
-				})}
-			</ol>
-		</div>
+
+								<div className="hidden md:grid md:grid-cols-[1fr_3rem_1fr] md:items-center">
+									<div className="px-6 pr-4">
+										{isLeft && (
+											<RoadmapContent
+												align="right"
+												item={item}
+											/>
+										)}
+									</div>
+
+									<div className="flex justify-center">
+										<TimelineDot status={item.status} />
+									</div>
+
+									<div className="px-6 pl-4">
+										{!isLeft && (
+											<RoadmapContent
+												align="left"
+												item={item}
+											/>
+										)}
+									</div>
+								</div>
+							</li>
+						)
+					})}
+				</ol>
+			</div>
+		</section>
 	)
 }

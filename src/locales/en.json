@@ -132,6 +132,50 @@
         "processing": "Processing",
         "done": "Done"
       }
+    },
+    "personal": {
+      "title": "Personal <primary>analytics</primary>",
+      "subtitle": "Link your character and track your progress: stats are collected automatically",
+      "cta": "Open analytics",
+      "features": {
+        "tracking": {
+          "title": "Auto-tracking",
+          "desc": "Stat snapshots are saved automatically every 12 hours — plus one-click manual refresh."
+        },
+        "dynamics": {
+          "title": "Dynamics",
+          "desc": "K/D, accuracy, headshot and playtime charts: you see values and growth over the period."
+        },
+        "stages": {
+          "title": "Stages",
+          "desc": "Personal and clan stages by map: winrate, sessions and appearances, neatly organized."
+        },
+        "sharing": {
+          "title": "Public link",
+          "desc": "Go public in one click and share a beautiful stats page with friends."
+        }
+      },
+      "stages": {
+        "link": "Link",
+        "snapshot": "Snapshot",
+        "dynamics": "Dynamics"
+      },
+      "demo": {
+        "snapshots": "Snapshots: {n}",
+        "growth": "Growth",
+        "forPeriod": "for period",
+        "chartTitle": "K/D — dynamics",
+        "stats": {
+          "kills": "Kills",
+          "kd": "K/D",
+          "accuracy": "Accuracy",
+          "hours": "Playtime"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "<primary>Roadmap</primary>",
+      "description": "From first concepts to the app release — and beyond"
     }
   },
   "footer": {

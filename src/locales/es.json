@@ -132,6 +132,50 @@
         "processing": "Procesando",
         "done": "Éxito"
       }
+    },
+    "personal": {
+      "title": "Analítica <primary>personal</primary>",
+      "subtitle": "Vincula tu personaje y sigue tu progreso: las estadísticas se recopilan automáticamente",
+      "cta": "Abrir analítica",
+      "features": {
+        "tracking": {
+          "title": "Seguimiento auto",
+          "desc": "Las capturas de estadísticas se guardan automáticamente cada 12 horas, con actualización manual en un clic."
+        },
+        "dynamics": {
+          "title": "Dinámica",
+          "desc": "Gráficos de K/D, precisión, headshots y horas de juego: verás el valor y el crecimiento del período."
+        },
+        "stages": {
+          "title": "Etapas",
+          "desc": "Etapas personales y de clan por mapa: winrate, sesiones y apariciones, todo bien organizado."
+        },
+        "sharing": {
+          "title": "Enlace público",
+          "desc": "Hazte público con un clic y comparte una bonita página de estadísticas con tus amigos."
+        }
+      },
+      "stages": {
+        "link": "Vincular",
+        "snapshot": "Captura",
+        "dynamics": "Dinámica"
+      },
+      "demo": {
+        "snapshots": "Capturas: {n}",
+        "growth": "Crecimiento",
+        "forPeriod": "del período",
+        "chartTitle": "K/D — dinámica",
+        "stats": {
+          "kills": "Asesinatos",
+          "kd": "K/D",
+          "accuracy": "Precisión",
+          "hours": "En juego"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "Hoja <primary>de ruta</primary>",
+      "description": "Desde los primeros conceptos hasta el lanzamiento de la app, y más allá"
     }
   },
   "footer": {

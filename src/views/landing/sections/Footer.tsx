@@ -13,13 +13,13 @@ export default function LandingFooter() {
 
 	return (
 		<section
-			className="relative flex min-h-150 flex-col items-center gap-6 overflow-hidden text-center xl:min-h-140"
+			className="relative flex min-h-screen flex-col items-center gap-6 overflow-hidden py-16 text-center md:py-24"
 			id="contribute"
 		>
 			<FloatingIcons />
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${mtsWide.className} max-w-300 pt-24 font-semibold text-[40px] leading-none sm:text-5xl md:text-6xl`}
+				className={`${mtsWide.className} max-w-300 pt-10 font-semibold text-[40px] leading-none sm:text-5xl md:pt-12 md:text-6xl`}
 				initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.3 }}
 			>
