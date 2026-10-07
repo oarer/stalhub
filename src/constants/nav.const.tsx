@@ -164,14 +164,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 						descriptionKey:
 							'nav.groups.calculators.items.donate.description',
 					},
-					{
-						key: 'text',
-						icon: 'lucide:type',
-						href: '/calcs/text',
-						labelKey: 'nav.groups.calculators.items.text.label',
-						descriptionKey:
-							'nav.groups.calculators.items.text.description',
-					},
 				],
 			},
 			{
@@ -280,6 +272,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 						descriptionKey:
 							'nav.groups.other.items.eforum.description',
 					},
+					{
+						key: 'text',
+						icon: 'lucide:type',
+						href: '/calcs/text',
+						labelKey: 'nav.groups.calculators.items.text.label',
+						descriptionKey:
+							'nav.groups.calculators.items.text.description',
+					},
 				],
 			},
 			{
@@ -301,7 +301,8 @@ export const NAV_STRUCTURE: NavGroup[] = [
 								key: 'clanStats',
 								icon: 'lucide:bar-chart-3',
 								href: '/clans/stats',
-								labelKey: 'nav.groups.clans.items.clanStats.label',
+								labelKey:
+									'nav.groups.clans.items.clanStats.label',
 							},
 							{
 								key: 'clanMaps',
