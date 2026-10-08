@@ -23,7 +23,20 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 		const match = document.cookie.match(/lang=(ru|en|es|fr|ko)/)
 		const loc = match?.[1] ?? 'ru'
 		setLocale(loc)
-		import(`@/locales/${loc}.json`).then((mod) => setMessages(mod.default))
+		import(`@/locales/${loc}.json`).then(
+			(mod) => setMessages(mod.default),
+			() => {
+				setMessages({
+					errors: {
+						oops: 'Oops',
+						globalError: {
+							buttonLabel: 'Retry',
+							description: 'Something went wrong',
+						},
+					},
+				})
+			}
+		)
 	}, [])
 
 	useEffect(() => {
