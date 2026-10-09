@@ -66,6 +66,7 @@ export default function ArtsView() {
 
 	const arts = data?.data ?? []
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
+	const unblurNsfw = tab === 'nsfw' && ageConfirmed
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
@@ -91,7 +92,7 @@ export default function ArtsView() {
 					value={search}
 				/>
 
-				<div className="flex flex-wrap gap-1">
+				<div className="flex gap-2">
 					<Button
 						onClick={() => {
 							setTab('all')
@@ -122,7 +123,7 @@ export default function ArtsView() {
 				</div>
 			</div>
 
-			<div className="flex flex-wrap gap-1">
+			<div className="flex flex-wrap gap-2">
 				{(['newest', 'oldest', 'views', 'stars'] as const).map((s) => (
 					<Button
 						key={s}
@@ -131,7 +132,7 @@ export default function ArtsView() {
 							setPage(1)
 						}}
 						size="sm"
-						variant={sort === s ? 'primary' : 'outline'}
+						variant={sort === s ? 'primary' : 'ghost'}
 					>
 						{t(`arts.sort.${s}`)}
 					</Button>
@@ -209,6 +210,7 @@ export default function ArtsView() {
 															'h-auto w-full transition-all duration-400',
 															art.type ===
 																ArtType.NSFW &&
+																!unblurNsfw &&
 																cn(
 																	'blur-xl',
 																	ageConfirmed &&
@@ -236,6 +238,7 @@ export default function ArtsView() {
 														'h-auto w-full transition-all duration-400',
 														art.type ===
 															ArtType.NSFW &&
+															!unblurNsfw &&
 															cn(
 																'blur-xl',
 																ageConfirmed &&
