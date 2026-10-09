@@ -1,7 +1,7 @@
 'use client'
 
-import { parseStalcraftText } from '@/lib/stalcraft-text'
 import { cn } from '@/lib/cn'
+import { parseStalcraftText } from '@/lib/stalcraft-text'
 
 export function StalcraftText({
 	text,

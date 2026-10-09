@@ -6,9 +6,9 @@ import { CLink } from '@/components/ui/Link'
 import { formatArtPrice } from '@/hooks/useBuildPrices'
 import { getLocale } from '@/lib/getLocale'
 import type { Item } from '@/types/item.type'
-import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
+import { getBuildItemIconUrl, useBuildCardItems } from './useBuildCardItems'
 
 interface HoverBuildCardProps {
 	build: PublicUserBuild
@@ -17,10 +17,6 @@ interface HoverBuildCardProps {
 	containers?: Item[]
 	side?: 'top' | 'bottom' | 'left' | 'right'
 	children: React.ReactNode
-}
-
-function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
 }
 
 export function HoverBuildCard({
@@ -33,60 +29,20 @@ export function HoverBuildCard({
 }: HoverBuildCardProps) {
 	const locale = getLocale()
 
-	const armorItem = build.data.armor
-		? (armorItems?.find((item) => item.id === build.data.armor?.id) ?? null)
-		: null
-	const containerItem = build.data.container
-		? (containers?.find((item) => item.id === build.data.container?.id) ??
-			null)
-		: null
-
-	const armorColor = armorItem?.color
-		? (infoColorMap[armorItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const containerColor = containerItem?.color
-		? (infoColorMap[containerItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const artsMap = artifacts ? new Map(artifacts.map((i) => [i.id, i])) : null
-	const instanceToArt = new Map(
-		build.data.arts.map((a) => [a.instance_id, a])
-	)
-
-	const artifactEntries = (build.data.container?.slots ?? [])
-		.filter((s): s is string => s !== null)
-		.map((instanceId) => {
-			const art = instanceToArt.get(instanceId)
-			if (!art) return null
-			const item = artsMap?.get(art.item_id)
-			if (!item) return null
-			const color =
-				art.quality_class !== undefined
-					? (infoColorMap[art.quality_class as InfoColor] ??
-						infoColorMap[InfoColor.DEFAULT])
-					: infoColorMap[InfoColor.DEFAULT]
-			return {
-				name: messageToString(item.name, locale),
-				color,
-				percent: art.percent,
-				potential: art.potential,
-			}
-		})
-		.filter(
-			(
-				e
-			): e is {
-				name: string
-				color: string
-				percent: number
-				potential: number
-			} => e !== null
-		)
-
-	const hasData = armorItems && containers && artifacts
+	const {
+		armorItem,
+		containerItem,
+		armorColor,
+		containerColor,
+		artifactEntries,
+		hasPreview: hasData,
+	} = useBuildCardItems({
+		build,
+		armorItems,
+		containers,
+		artifacts,
+		locale,
+	})
 
 	return (
 		<HoverCard.Root>
@@ -119,7 +75,7 @@ export function HoverBuildCard({
 											locale
 										)}
 										className="size-8 shrink-0 rounded"
-										src={getIconUrl(armorItem)}
+										src={getBuildItemIconUrl(armorItem)}
 									/>
 									<span
 										className="truncate font-semibold text-sm"
@@ -140,7 +96,7 @@ export function HoverBuildCard({
 											locale
 										)}
 										className="size-8 shrink-0 rounded"
-										src={getIconUrl(containerItem)}
+										src={getBuildItemIconUrl(containerItem)}
 									/>
 									<span
 										className="truncate font-semibold text-sm"

@@ -2,11 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl'
 import { useCallback } from 'react'
-import {
-	getCategoryKey,
-	getDerivedStatKey,
-	getStatLabel,
-} from '../statMeta'
+import { getCategoryKey, getDerivedStatKey, getStatLabel } from '../statMeta'
 
 /** Лейблы метрик и категорий через ключи переводов.
  * Расчётные метрики → personal.stat*, категории → player.category.* */

@@ -213,7 +213,9 @@ function EditorForm({
 			)}
 
 			<EditorToolbar
-				handleSubmit={() => {}}
+				handleSubmit={() => {
+					// submit is handled externally in admin editor
+				}}
 				isDirty={isDirty}
 				isSaving={false}
 				isSubmitPending={false}

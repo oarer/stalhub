@@ -2,10 +2,10 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
-import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import ArtView from '@/views/arts/ArtView'
 
 type PageProps = {

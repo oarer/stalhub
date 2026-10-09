@@ -8,6 +8,7 @@ import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { cn } from '@/lib/cn'
 
@@ -112,8 +113,8 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 						</div>
 					) : (
 						<div className="flex flex-col gap-3">
-							<textarea
-								className="min-h-40 w-full resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-foreground text-sm outline-none transition-colors focus:border-primary"
+							<Textarea
+								className="min-h-40 w-full resize-none border-primary text-foreground"
 								onChange={(e) => setJsonInput(e.target.value)}
 								placeholder='{"name":"my-theme","cssVars":{"light":{...},"dark":{...}}}'
 								value={jsonInput}

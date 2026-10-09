@@ -147,7 +147,9 @@ function CheckBox({
 						</label>
 					)}
 					{description && (
-						<p className={`font-medium text-[11px] text-muted-foreground`}>
+						<p
+							className={`font-medium text-[11px] text-muted-foreground`}
+						>
 							{description}
 						</p>
 					)}

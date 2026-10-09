@@ -22,7 +22,9 @@ export default function NavTabs({
 				<div key={gi}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (
-						<p className={`${unbounded.className} mb-1 px-2 font-body text-[12px] text-muted-foreground uppercase`}>
+						<p
+							className={`${unbounded.className} mb-1 px-2 font-body text-[12px] text-muted-foreground uppercase`}
+						>
 							{t(group.label)}
 						</p>
 					)}

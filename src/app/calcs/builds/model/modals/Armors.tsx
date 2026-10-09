@@ -6,12 +6,9 @@ import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { Combobox } from '@/components/ui/Combobox'
-import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
@@ -26,6 +23,7 @@ import {
 	filterItemsByEffects,
 } from '@/views/calcs/builds/utils/effectFilters'
 import { ListBlock, NumericVariantsCard } from '@/views/items/components/blocks'
+import { ItemPickerPanel } from './ItemPickerPanel'
 
 export default function ArmorModal({ onClose }: ModalProps) {
 	const locale = getLocale()
@@ -64,36 +62,20 @@ export default function ArmorModal({ onClose }: ModalProps) {
 
 	return (
 		<div className="flex gap-4 text-nowrap">
-			<Card.Root className="min-w-75">
-				<Card.Header>
-					<Input
-						className="px-2 text-[14px]"
-						label="ui.input_label"
-						onChange={(e) => setFilter(e.target.value)}
-						value={filter}
-					/>
-					<Combobox
-						className="mt-2"
-						multiple
-						onValuesChange={setSelectedEffectStats}
-						options={effectOptions}
-						placeholder="build.labels.effects"
-						translateOptions={false}
-						values={selectedEffectStats}
-						zIndex={999999}
-					/>
-				</Card.Header>
-
-				<ItemsList
-					className="max-h-127"
-					favoriteType="armor"
-					items={effectFilteredItems}
-					locale={locale}
-					onSelectItem={(id) => setPreviewId(id)}
-					preserveOrder={selectedEffectStats.length > 0}
-					query={filter}
-				/>
-			</Card.Root>
+			<ItemPickerPanel
+				cardClassName="min-w-75"
+				effectOptions={effectOptions}
+				favoriteType="armor"
+				filter={filter}
+				items={effectFilteredItems}
+				listClassName="max-h-127"
+				locale={locale}
+				onFilterChange={setFilter}
+				onSelectedEffectsChange={setSelectedEffectStats}
+				onSelectItem={(id) => setPreviewId(id)}
+				preserveOrder={selectedEffectStats.length > 0}
+				selectedEffects={selectedEffectStats}
+			/>
 
 			<Card.Root className="min-w-80">
 				<Card.Header>

@@ -97,8 +97,7 @@ export default function BuildPriceModal() {
 										className="flex items-center justify-between gap-3 rounded-lg bg-accent/60 px-3 py-2"
 										key={art.instance_id}
 										style={{
-											backgroundColor:
-												`${colorHex}22` || undefined,
+											backgroundColor: `${colorHex}22`,
 										}}
 									>
 										<div className="flex min-w-0 items-center gap-2">

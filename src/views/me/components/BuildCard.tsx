@@ -18,9 +18,9 @@ import { buildApiService } from '@/services/build-api/build-api.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import type { BuildApi } from '@/types/build-api.type'
 import type { Item } from '@/types/item.type'
-import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
+import { getBuildItemIconUrl, useBuildCardItems } from './useBuildCardItems'
 
 interface BuildCardProps {
 	build: BuildApi | PublicUserBuild
@@ -28,10 +28,6 @@ interface BuildCardProps {
 	armorItems?: Item[]
 	containers?: Item[]
 	onDelete?: (id: string) => void
-}
-
-function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
 }
 
 export function BuildCard({
@@ -90,61 +86,20 @@ export function BuildCard({
 		starMutation.mutate()
 	}
 
-	const armorItem = build.data.armor
-		? (armorItems?.find((item) => item.id === build.data.armor?.id) ?? null)
-		: null
-	const containerItem = build.data.container
-		? (containers?.find((item) => item.id === build.data.container?.id) ??
-			null)
-		: null
-
-	const armorColor = armorItem?.color
-		? (infoColorMap[armorItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const containerColor = containerItem?.color
-		? (infoColorMap[containerItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const artsMap = artifacts ? new Map(artifacts.map((i) => [i.id, i])) : null
-
-	const instanceToArt = new Map(
-		build.data.arts.map((a) => [a.instance_id, a])
-	)
-
-	const artifactEntries = (build.data.container?.slots ?? [])
-		.filter((s): s is string => s !== null)
-		.map((instanceId) => {
-			const art = instanceToArt.get(instanceId)
-			if (!art) return null
-			const item = artsMap?.get(art.item_id)
-			if (!item) return null
-			const color =
-				art.quality_class !== undefined
-					? (infoColorMap[art.quality_class as InfoColor] ??
-						infoColorMap[InfoColor.DEFAULT])
-					: infoColorMap[InfoColor.DEFAULT]
-			return {
-				name: messageToString(item.name, locale),
-				color,
-				percent: art.percent,
-				potential: art.potential,
-			}
-		})
-		.filter(
-			(
-				e
-			): e is {
-				name: string
-				color: string
-				percent: number
-				potential: number
-			} => e !== null
-		)
-
-	const hasPreview = armorItems && containers && artifacts
+	const {
+		armorItem,
+		containerItem,
+		armorColor,
+		containerColor,
+		artifactEntries,
+		hasPreview,
+	} = useBuildCardItems({
+		build,
+		armorItems,
+		containers,
+		artifacts,
+		locale,
+	})
 
 	return (
 		<div
@@ -213,7 +168,7 @@ export function BuildCard({
 									)}
 									className="shrink-0"
 									height={120}
-									src={getIconUrl(armorItem)}
+									src={getBuildItemIconUrl(armorItem)}
 									width={120}
 								/>
 							) : (

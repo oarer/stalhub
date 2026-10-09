@@ -11,11 +11,7 @@ import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import { ItemsList } from '@/shared/components/ItemsList'
-import type {
-	Item,
-	Locale,
-	NumericElement,
-} from '@/types/item.type'
+import type { Item, Locale, NumericElement } from '@/types/item.type'
 import {
 	collectListBlocks,
 	messageToString,
@@ -411,7 +407,9 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 
 								<div className="max-h-full flex-1 overflow-y-auto md:max-h-56">
 									<div className="flex flex-col gap-3">
-										{collectListBlocks(previewItem?.infoBlocks)
+										{collectListBlocks(
+											previewItem?.infoBlocks
+										)
 											.filter(
 												(b) =>
 													Array.isArray(b.elements) &&

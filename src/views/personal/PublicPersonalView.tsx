@@ -1,13 +1,14 @@
 'use client'
 
+import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { Icon } from '@iconify/react'
-import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { personalQueries } from '@/queries/personal/personal.queries'
+import { usePersonalLabels } from './hooks/usePersonalLabels'
 import { MetricSelect } from './MetricSelect'
 import { StageSummaryCard } from './StageSummaryCard'
 import { type ChartMode, StatChart } from './StatChart'
@@ -18,7 +19,6 @@ import {
 	OVERVIEW_STATS,
 	toNumber,
 } from './statMeta'
-import { usePersonalLabels } from './hooks/usePersonalLabels'
 
 export function PublicPersonalView({ username }: { username: string }) {
 	const t = useTranslations('personal')
@@ -113,7 +113,11 @@ export function PublicPersonalView({ username }: { username: string }) {
 							{statLabel(id)}
 						</p>
 						<p className="truncate font-semibold text-lg">
-							{formatStatValue(id, lastValues.get(id) ?? 0, locale)}
+							{formatStatValue(
+								id,
+								lastValues.get(id) ?? 0,
+								locale
+							)}
 						</p>
 					</Card.Root>
 				))}
@@ -155,15 +159,14 @@ export function PublicPersonalView({ username }: { username: string }) {
 						value={statId}
 					/>
 					<div className="flex flex-wrap gap-x-4 text-sm">
-						<span className="font-medium">
-							{statLabel(statId)}
-						</span>
+						<span className="font-medium">{statLabel(statId)}</span>
 						<span
 							className={
 								delta >= 0 ? 'text-green-500' : 'text-red-500'
 							}
 						>
-							{formatDelta(statId, delta, locale)} {t('forPeriod')}
+							{formatDelta(statId, delta, locale)}{' '}
+							{t('forPeriod')}
 						</span>
 					</div>
 					<StatChart

@@ -4,13 +4,17 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
+import {
+	AdminEmptyRow,
+	AdminPagination,
+	DeleteConfirmContent,
+} from '../components/AdminTable'
 
 export default function BuildsAdminView() {
 	const t = useTranslations()
@@ -110,50 +114,35 @@ export default function BuildsAdminView() {
 												<Modal.Content
 													fullScreen={false}
 												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.builds.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t.rich(
-																'admin.builds.deleteDescription',
-																{
-																	title: build.title,
-																	strong: (
-																		chunks
-																	) => (
-																		<strong>
-																			{
-																				chunks
-																			}
-																		</strong>
-																	),
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'clan.common.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	build.id
-																)
+													<DeleteConfirmContent
+														cancelLabel={t(
+															'clan.common.cancel'
+														)}
+														confirmLabel={t(
+															'clan.common.delete'
+														)}
+														description={t.rich(
+															'admin.builds.deleteDescription',
+															{
+																title: build.title,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
 															}
-															variant="danger"
-														>
-															{t(
-																'clan.common.delete'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
+														)}
+														onConfirm={() =>
+															deleteMutation.mutate(
+																build.id
+															)
+														}
+														title={t(
+															'admin.builds.deleteTitle'
+														)}
+													/>
 												</Modal.Content>
 											</Modal.Root>
 										</div>
@@ -161,47 +150,21 @@ export default function BuildsAdminView() {
 								</Table.Row>
 							))}
 							{builds.length === 0 && (
-								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.builds.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-								</Table.Row>
+								<AdminEmptyRow
+									colCount={6}
+									message={t('admin.builds.empty')}
+								/>
 							)}
 						</Table.Body>
 					</Table.Root>
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</div>
 	)
 }

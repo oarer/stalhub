@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminNotificationService } from '@/services/admin/notification.service'
@@ -230,8 +231,8 @@ export default function NotificationsAdminView() {
 							<span className="font-semibold text-foreground text-sm">
 								{t('admin.notifications.contentLabel')}
 							</span>
-							<textarea
-								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/50"
+							<Textarea
+								className="min-h-20 resize-none border-primary focus:border-primary/50"
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t(
 									'admin.notifications.contentPlaceholder'

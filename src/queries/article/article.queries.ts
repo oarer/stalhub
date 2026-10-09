@@ -23,7 +23,15 @@ class ArticleQueries {
 		})
 	}
 
-	publicList({ take = 20, page = 1, type }: { take?: number; page?: number; type?: string } = {}) {
+	publicList({
+		take = 20,
+		page = 1,
+		type,
+	}: {
+		take?: number
+		page?: number
+		type?: string
+	} = {}) {
 		return queryOptions<PaginatedResponse<Article>>({
 			queryKey: ['articles', 'public', { take, page, type }],
 			queryFn: () => articleService.publicList({ take, page, type }),

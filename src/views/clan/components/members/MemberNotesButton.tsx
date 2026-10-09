@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
@@ -143,9 +144,9 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 						)}
 
 						{(!note || isEditing) && (
-							<textarea
+							<Textarea
 								autoFocus
-								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/60"
+								className="min-h-20 resize-none border-primary focus:border-primary/60"
 								maxLength={512}
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t('clan.notes.placeholder')}

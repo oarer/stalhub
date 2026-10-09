@@ -38,7 +38,8 @@ class ArtQueries {
 	} = {}) {
 		return queryOptions<PaginatedResponse<Art>>({
 			queryKey: ['arts', 'public', { take, page, tags, type, sort }],
-			queryFn: () => artService.publicList({ take, page, tags, type, sort }),
+			queryFn: () =>
+				artService.publicList({ take, page, tags, type, sort }),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})

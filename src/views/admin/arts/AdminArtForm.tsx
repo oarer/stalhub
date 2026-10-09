@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
@@ -250,8 +251,8 @@ export function AdminArtForm({
 							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.description')}
 							</span>
-							<textarea
-								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
+							<Textarea
+								className="min-h-20 w-full border border-border p-2 font-normal"
 								onChange={(e) => setDescription(e.target.value)}
 								placeholder={t(
 									'admin.arts.form.descriptionPlaceholder'

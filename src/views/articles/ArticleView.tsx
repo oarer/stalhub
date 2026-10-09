@@ -168,7 +168,9 @@ export default function ArticleView({
 								}
 								icon="lucide:star"
 							/>
-							<span className='font-mono font-semibold'>{article.stars_count}</span>
+							<span className="font-mono font-semibold">
+								{article.stars_count}
+							</span>
 						</Button>
 					)}
 

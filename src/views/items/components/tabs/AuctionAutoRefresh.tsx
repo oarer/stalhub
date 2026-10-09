@@ -72,7 +72,7 @@ export default function AuctionAutoRefresh({
 
 	return (
 		<Card.Root>
-			<Card.Content className='flex'>
+			<Card.Content className="flex">
 				<div className="flex min-w-0 flex-1 items-center gap-2">
 					<Switch
 						checked={enabled}

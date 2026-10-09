@@ -2,14 +2,18 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import {
+	articleJsonLd,
+	breadcrumbJsonLd,
+	JsonLd,
+} from '@/components/seo/JsonLd'
+import { SITE_META } from '@/constants/meta'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleQueries } from '@/queries/article/article.queries'
 import { articleService } from '@/services/article/article.service'
-import ArticleView from '@/views/articles/ArticleView'
 import { articleImageUrl } from '@/types/article.type'
-import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd'
-import { SITE_META } from '@/constants/meta'
+import ArticleView from '@/views/articles/ArticleView'
 
 type PageProps = {
 	params: Promise<{ id: string }>
@@ -88,9 +92,9 @@ export default async function ArticlePage({ params }: PageProps) {
 		notFound()
 	}
 
-	const article = queryClient.getQueryData<Awaited<
-		ReturnType<typeof articleService.get>
-	>>(articleQueries.get(id).queryKey)
+	const article = queryClient.getQueryData<
+		Awaited<ReturnType<typeof articleService.get>>
+	>(articleQueries.get(id).queryKey)
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

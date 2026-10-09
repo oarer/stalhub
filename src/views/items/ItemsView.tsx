@@ -37,6 +37,7 @@ import {
 	NumericVariantsCard,
 	TextBlock,
 } from './components/blocks'
+import { clampAutoRefreshInterval } from './components/tabs/AuctionAutoRefresh'
 import ItemTabs from './components/tabs/AuctionTabs'
 
 const AUTO_REFRESH_ENABLED_KEY = 'auction:autoRefresh:enabled'

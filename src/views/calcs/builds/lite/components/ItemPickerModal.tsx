@@ -200,7 +200,9 @@ export function ItemPickerModal({
 							<div className="max-h-full flex-1 overflow-y-auto md:max-h-56">
 								<div className="flex flex-col gap-3">
 									{children ??
-										collectListBlocks(selectedItem?.infoBlocks)
+										collectListBlocks(
+											selectedItem?.infoBlocks
+										)
 											.filter(
 												(b) =>
 													Array.isArray(b.elements) &&

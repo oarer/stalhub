@@ -80,7 +80,11 @@ export default function SwapText({
 
 	useEffect(() => {
 		measureAll()
-		document.fonts?.ready.then(() => measureAll()).catch(() => {})
+		document.fonts?.ready
+			.then(() => measureAll())
+			.catch(() => {
+				// fonts API is optional, layout is already measured
+			})
 		const box = measureBoxRef.current
 		if (!box) return
 		const ro = new ResizeObserver(() => measureAll())

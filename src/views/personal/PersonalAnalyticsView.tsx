@@ -1,12 +1,12 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import Image from 'next/image'
 import {
 	useQuery,
 	useQueryClient,
 	useSuspenseQuery,
 } from '@tanstack/react-query'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -20,6 +20,7 @@ import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { personalQueries } from '@/queries/personal/personal.queries'
 import { personalService } from '@/services/personal/personal.service'
 import { Regions } from '@/types/api.type'
+import { usePersonalLabels } from './hooks/usePersonalLabels'
 import { MetricSelect } from './MetricSelect'
 import { PersonalSessions } from './PersonalSessions'
 import { StageSummaryCard } from './StageSummaryCard'
@@ -32,7 +33,6 @@ import {
 	type SeriesPoint,
 	toNumber,
 } from './statMeta'
-import { usePersonalLabels } from './hooks/usePersonalLabels'
 
 function apiError(e: unknown, fallback: string): string {
 	if (typeof e === 'object' && e !== null && 'response' in e) {
@@ -436,7 +436,11 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 											</p>
 											<p className="truncate font-semibold text-xl">
 												{v !== undefined
-													? formatStatValue(id, v, locale)
+													? formatStatValue(
+															id,
+															v,
+															locale
+														)
 													: '—'}
 											</p>
 											<p
@@ -495,7 +499,11 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 												: 'text-red-500'
 										}
 									>
-										{formatDelta(statId, selectedDelta, locale)}{' '}
+										{formatDelta(
+											statId,
+											selectedDelta,
+											locale
+										)}{' '}
 										{t('forPeriod')}
 									</span>
 								</div>

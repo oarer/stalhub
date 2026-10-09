@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Textarea'
 import { Faction, QuestType } from '@/types/article.type'
 
 export type QuestFieldsValue = {
@@ -77,8 +78,8 @@ export function QuestArticleFields({
 					value={value.reward_money}
 				/>
 			</div>
-			<textarea
-				className="min-h-10 flex-1 resize-none rounded-lg border-2 border-primary/50 bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary"
+			<Textarea
+				className="min-h-10 flex-1 resize-none"
 				onChange={(e) => patch({ reward_text: e.target.value })}
 				placeholder={t('rewardText')}
 				value={value.reward_text}

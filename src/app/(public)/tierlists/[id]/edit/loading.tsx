@@ -1,11 +1,11 @@
 import { Card } from '@/components/ui/Card'
-import { Skeleton } from '@/components/ui/Skeleton'
 import { PageTitleSkeleton } from '@/components/ui/PageSkeletons'
+import { Skeleton } from '@/components/ui/Skeleton'
 
 export default function LoadingTierListEdit() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<PageTitleSkeleton titleClass="h-9 w-56" subtitleClass="h-5 w-72" />
+			<PageTitleSkeleton subtitleClass="h-5 w-72" titleClass="h-9 w-56" />
 			<Card.Root>
 				<Card.Content className="flex flex-col gap-4">
 					<Skeleton className="h-10 w-full" />

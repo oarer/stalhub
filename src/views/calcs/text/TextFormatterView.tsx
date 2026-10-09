@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/Card'
 import { CopyButton } from '@/components/ui/CopyButton'
 import { Divider } from '@/components/ui/Divider'
 import { Tabs } from '@/components/ui/Tabs'
+import { Textarea } from '@/components/ui/Textarea'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { StalcraftText } from '@/components/wiki/StalcraftText'
 import {
@@ -259,8 +260,8 @@ export default function TextFormatterView() {
 						<Card.Description className="text-xs">
 							{t('textFormatter.textHint')}
 						</Card.Description>
-						<textarea
-							className="min-h-24 w-full resize-y rounded-lg border border-primary/50 bg-muted p-3 font-mono font-semibold text-sm outline-none transition-colors focus:border-primary/80"
+						<Textarea
+							className="min-h-24 w-full border bg-muted p-3 font-mono focus:border-primary/80"
 							onChange={(e) => {
 								handleTextChange(e.target.value)
 								requestAnimationFrame(syncSelection)

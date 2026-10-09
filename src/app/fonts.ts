@@ -1,9 +1,4 @@
-import {
-	Montserrat,
-	Raleway,
-	Roboto_Mono,
-	Unbounded,
-} from 'next/font/google'
+import { Montserrat, Raleway, Roboto_Mono, Unbounded } from 'next/font/google'
 import localFont from 'next/font/local'
 
 export const raleway = Raleway({
@@ -32,10 +27,19 @@ export const mono = Roboto_Mono({
 
 export const mtsCompact = localFont({
 	src: [
-		{ path: '../../public/fonts/mts/MTSCompact-Regular.woff2', weight: '400' },
-		{ path: '../../public/fonts/mts/MTSCompact-Medium.woff2', weight: '500' },
+		{
+			path: '../../public/fonts/mts/MTSCompact-Regular.woff2',
+			weight: '400',
+		},
+		{
+			path: '../../public/fonts/mts/MTSCompact-Medium.woff2',
+			weight: '500',
+		},
 		{ path: '../../public/fonts/mts/MTSCompact-Bold.woff2', weight: '700' },
-		{ path: '../../public/fonts/mts/MTSCompact-Black.woff2', weight: '900' },
+		{
+			path: '../../public/fonts/mts/MTSCompact-Black.woff2',
+			weight: '900',
+		},
 	],
 	display: 'swap',
 })
@@ -67,9 +71,18 @@ export const mtsExtended = localFont({
 			path: '../../public/fonts/mts/MTSExtended-Regular.woff2',
 			weight: '400',
 		},
-		{ path: '../../public/fonts/mts/MTSExtended-Medium.woff2', weight: '500' },
-		{ path: '../../public/fonts/mts/MTSExtended-Bold.woff2', weight: '700' },
-		{ path: '../../public/fonts/mts/MTSExtended-Black.woff2', weight: '900' },
+		{
+			path: '../../public/fonts/mts/MTSExtended-Medium.woff2',
+			weight: '500',
+		},
+		{
+			path: '../../public/fonts/mts/MTSExtended-Bold.woff2',
+			weight: '700',
+		},
+		{
+			path: '../../public/fonts/mts/MTSExtended-Black.woff2',
+			weight: '900',
+		},
 	],
 	display: 'swap',
 })

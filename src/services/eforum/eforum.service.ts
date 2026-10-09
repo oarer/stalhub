@@ -7,9 +7,7 @@ import type {
 } from '@/types/eforum.type'
 
 class DevTrackerService {
-	async feed(
-		params: EForumParams = {}
-	): Promise<EForumResponse> {
+	async feed(params: EForumParams = {}): Promise<EForumResponse> {
 		const { data } = await apiClient.get<EForumResponse>(
 			'/api/v1/eforum/latest',
 			{ params }

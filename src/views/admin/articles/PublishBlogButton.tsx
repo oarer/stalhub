@@ -7,6 +7,7 @@ import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { CheckBox } from '@/components/ui/CheckBox'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { articleService } from '@/services/article/article.service'
 
@@ -131,8 +132,8 @@ export default function PublishBlogButton({
 								>
 									{t('blog.publish.digestLabel')}
 								</label>
-								<textarea
-									className="min-h-28 w-full resize-y rounded-lg border border-primary/30 bg-card p-3 text-sm leading-6 outline-none focus:border-primary"
+								<Textarea
+									className="min-h-28 w-full border border-primary/30 p-3 font-normal leading-6"
 									id={`digest-${articleId}`}
 									maxLength={1500}
 									onChange={(e) => setDigest(e.target.value)}

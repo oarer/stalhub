@@ -1,13 +1,13 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
-import type { Metadata } from 'next'
 import type { AxiosError } from 'axios'
+import type { Metadata } from 'next'
+import { dynamicAlternates } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { playerQueries } from '@/queries/player/player.queries'
 import { playerService } from '@/services/player/player.service'
 import type { Regions } from '@/types/api.type'
 import PlayerNotFoundView from '@/views/errors/playerNotFound/PlayerNotFoundView'
 import PlayerView from '@/views/player'
-import { dynamicAlternates } from '@/lib/seo'
 
 export async function generateMetadata({
 	params,

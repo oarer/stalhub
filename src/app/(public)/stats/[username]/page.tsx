@@ -12,7 +12,9 @@ export default async function PublicStatsPage({ params }: PageProps) {
 	const { username } = await params
 	const qc = getQueryClient()
 	try {
-		await qc.prefetchQuery(personalQueries.getPublic(decodeURIComponent(username)))
+		await qc.prefetchQuery(
+			personalQueries.getPublic(decodeURIComponent(username))
+		)
 	} catch {
 		notFound()
 	}

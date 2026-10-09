@@ -78,7 +78,9 @@ export function EditorToolbar({
 				return {
 					icon: '',
 					label: '',
-					action: () => {},
+					action: () => {
+						// separators have no action
+					},
 					separator: true,
 				}
 			}
@@ -169,7 +171,9 @@ export function EditorToolbar({
 			{
 				icon: '',
 				label: '',
-				action: () => {},
+				action: () => {
+					// separators have no action
+				},
 				separator: true,
 			},
 			{

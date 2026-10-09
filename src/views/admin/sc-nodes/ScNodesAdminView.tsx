@@ -12,6 +12,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Switch } from '@/components/ui/Switch'
 import { Table } from '@/components/ui/Table'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminScNodeQueries } from '@/queries/admin/sc-node.queries'
@@ -546,8 +547,8 @@ export default function ScNodesAdminView() {
 							<p className="font-semibold text-foreground text-xs">
 								{t('admin.scNodes.tokens.bulk')}
 							</p>
-							<textarea
-								className="min-h-20 w-full rounded-lg border-2 border-primary bg-background px-3 py-2 font-mono text-xs outline-none placeholder:text-neutral-500 focus:border-sky-500/50"
+							<Textarea
+								className="min-h-20 w-full bg-background font-mono font-normal text-xs placeholder:text-neutral-500 focus:border-sky-500/50"
 								onChange={(e) => setBulkText(e.target.value)}
 								placeholder={t(
 									'admin.scNodes.tokens.bulkPlaceholder'

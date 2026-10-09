@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { Table } from '@/components/ui/Table'
 import { useDebounce } from '@/hooks/useDebounce'
 import { adminBanQueries } from '@/queries/admin/ban.queries'
+import { AdminEmptyRow, AdminPagination } from '../components/AdminTable'
 
 const BAN_RULES = [
 	{ value: 'login_bruteforce', label: 'Login Bruteforce' },
@@ -322,48 +322,21 @@ export default function BansAdminView() {
 								</Table.Row>
 							))}
 							{(!data || data.data.length === 0) && (
-								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.bans.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-								</Table.Row>
+								<AdminEmptyRow
+									colCount={7}
+									message={t('admin.bans.empty')}
+								/>
 							)}
 						</Table.Body>
 					</Table.Root>
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</div>
 	)
 }

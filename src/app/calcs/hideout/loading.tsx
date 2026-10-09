@@ -17,7 +17,10 @@ export default function LoadingHideout() {
 						<div className="flex flex-col gap-3 p-4">
 							<Skeleton className="h-6 w-40" />
 							{Array.from({ length: 8 }).map((_, i) => (
-								<div className="flex justify-between gap-2" key={i}>
+								<div
+									className="flex justify-between gap-2"
+									key={i}
+								>
 									<Skeleton className="h-4 w-24" />
 									<Skeleton className="h-4 w-16" />
 								</div>

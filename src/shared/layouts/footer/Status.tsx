@@ -3,11 +3,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
+import { mtsWide } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { statusQueries } from '@/queries/status/status.queries'
 import type { Service } from '@/types/status.type'
-import { mtsWide } from '@/app/fonts'
 
 export const StatusWidget = () => {
 	const { data, isError } = useQuery(statusQueries.get())

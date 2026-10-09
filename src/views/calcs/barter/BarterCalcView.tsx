@@ -214,7 +214,9 @@ export default function BarterCalcView() {
 					`barter-done-${selectedId}`,
 					JSON.stringify([...next])
 				)
-			} catch {}
+			} catch {
+				// localStorage may be unavailable, state update is enough
+			}
 			return next
 		})
 	}
@@ -307,7 +309,9 @@ export default function BarterCalcView() {
 									localStorage.removeItem(
 										`barter-done-${selectedId}`
 									)
-								} catch {}
+								} catch {
+									// localStorage may be unavailable, state update is enough
+								}
 							}}
 							size="sm"
 							variant="ghost"

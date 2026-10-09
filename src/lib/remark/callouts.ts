@@ -63,23 +63,23 @@ export function remarkCalloutContainers() {
 					: ''
 				: body
 
-		const children: Paragraph[] = contentText.trim()
-			? [
-					{
-						type: 'paragraph',
-						children: [
-							{ type: 'text', value: contentText.trim() },
-						],
-					},
-				]
-			: []
+			const children: Paragraph[] = contentText.trim()
+				? [
+						{
+							type: 'paragraph',
+							children: [
+								{ type: 'text', value: contentText.trim() },
+							],
+						},
+					]
+				: []
 
-		tree.children[i] = {
-			type: 'containerDirective',
-			name: calloutType,
-			attributes: title ? { title } : {},
-			children,
-		} as unknown as RootContent
+			tree.children[i] = {
+				type: 'containerDirective',
+				name: calloutType,
+				attributes: title ? { title } : {},
+				children,
+			} as unknown as RootContent
 		}
 	}
 }

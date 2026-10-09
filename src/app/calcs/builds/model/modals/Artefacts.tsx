@@ -5,11 +5,9 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
-import Input from '@/components/ui/Input'
+import type { ComboboxOption } from '@/components/ui/Combobox'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art, ModalProps } from '@/types/build.type'
 import type { ArtQuality, Item } from '@/types/item.type'
@@ -19,6 +17,7 @@ import { isDebuffColor } from '@/views/calcs/builds/utils/artCalculations'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
 import { filterItemsByEffects } from '@/views/calcs/builds/utils/effectFilters'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
+import { ItemPickerPanel } from './ItemPickerPanel'
 
 export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
@@ -315,36 +314,20 @@ export default function ArtModal({ onClose }: ModalProps) {
 	return (
 		<div className="flex flex-col gap-4 text-nowrap">
 			<div className="z-999 flex flex-col gap-4 md:flex-row">
-				<Card.Root className="w-full md:min-w-70">
-					<Card.Header>
-						<Input
-							className="px-2 text-[14px]"
-							label="ui.input_label"
-							onChange={(e) => setFilter(e.target.value)}
-							value={filter}
-						/>
-						<Combobox
-							className="mt-2"
-							multiple
-							onValuesChange={setSelectedEffectStats}
-							options={effectOptions}
-							placeholder="build.labels.effects"
-							translateOptions={false}
-							values={selectedEffectStats}
-							zIndex={999999}
-						/>
-					</Card.Header>
-
-					<ItemsList
-						className="max-h-90 overflow-y-auto"
-						favoriteType="artefact"
-						items={effectFilteredItems}
-						locale={locale}
-						onSelectItem={handleAdd}
-						preserveOrder={selectedEffectStats.length > 0}
-						query={filter}
-					/>
-				</Card.Root>
+				<ItemPickerPanel
+					cardClassName="w-full md:min-w-70"
+					effectOptions={effectOptions}
+					favoriteType="artefact"
+					filter={filter}
+					items={effectFilteredItems}
+					listClassName="max-h-90 overflow-y-auto"
+					locale={locale}
+					onFilterChange={setFilter}
+					onSelectedEffectsChange={setSelectedEffectStats}
+					onSelectItem={handleAdd}
+					preserveOrder={selectedEffectStats.length > 0}
+					selectedEffects={selectedEffectStats}
+				/>
 
 				<Card.Root className="w-full md:min-w-90">
 					<Button

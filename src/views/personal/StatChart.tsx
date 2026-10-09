@@ -11,8 +11,8 @@ import {
 	PointElement,
 	Tooltip,
 } from 'chart.js'
-import { useTheme } from 'next-themes'
 import { useLocale, useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import { getBaseLineOptions } from '@/lib/chart-theme'
@@ -63,41 +63,44 @@ export function StatChart({
 					})
 		})
 		const accent = mode === 'delta' ? '#22c55e' : '#0092D1'
-	return {
-		labels,
-		datasets: [
-			{
-				label: mode === 'delta' ? `${label} — ${t('chartGrowth')}` : label,
-				data: shown.map((p) => p.v),
-				fill: true,
-				tension: 0,
-				borderWidth: 2.5,
-				pointRadius: 4,
-				pointHoverRadius: 6,
-				borderColor: accent,
-				// Градиентная заливка как в демо на лендинге:
-				// насыщенно под линией -> почти прозрачно к низу.
-				backgroundColor: (context: {
-					chart: {
-						ctx: CanvasRenderingContext2D
-						chartArea?: { top: number; bottom: number }
-					}
-				}) => {
-					const { ctx, chartArea } = context.chart
-					if (!chartArea) return `${accent}20`
-					const gradient = ctx.createLinearGradient(
-						0,
-						chartArea.top,
-						0,
-						chartArea.bottom
-					)
-					gradient.addColorStop(0, `${accent}59`)
-					gradient.addColorStop(1, `${accent}05`)
-					return gradient
+		return {
+			labels,
+			datasets: [
+				{
+					label:
+						mode === 'delta'
+							? `${label} — ${t('chartGrowth')}`
+							: label,
+					data: shown.map((p) => p.v),
+					fill: true,
+					tension: 0,
+					borderWidth: 2.5,
+					pointRadius: 4,
+					pointHoverRadius: 6,
+					borderColor: accent,
+					// Градиентная заливка как в демо на лендинге:
+					// насыщенно под линией -> почти прозрачно к низу.
+					backgroundColor: (context: {
+						chart: {
+							ctx: CanvasRenderingContext2D
+							chartArea?: { top: number; bottom: number }
+						}
+					}) => {
+						const { ctx, chartArea } = context.chart
+						if (!chartArea) return `${accent}20`
+						const gradient = ctx.createLinearGradient(
+							0,
+							chartArea.top,
+							0,
+							chartArea.bottom
+						)
+						gradient.addColorStop(0, `${accent}59`)
+						gradient.addColorStop(1, `${accent}05`)
+						return gradient
+					},
 				},
-			},
-		],
-	}
+			],
+		}
 	}, [shown, label, mode, locale, t])
 
 	const allEqual = shown.length > 1 && shown.every((p) => p.v === shown[0]!.v)

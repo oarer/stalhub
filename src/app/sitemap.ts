@@ -78,7 +78,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	for (const art of arts?.data ?? []) {
 		dynamicEntries.push({
 			url: `${SITE_URL}/arts/${art.id}`,
-			lastModified: art.updated_at ? new Date(art.updated_at) : new Date(),
+			lastModified: art.updated_at
+				? new Date(art.updated_at)
+				: new Date(),
 			changeFrequency: 'weekly',
 			priority: 0.8,
 		})

@@ -86,7 +86,9 @@ export function PersonalDemoCard() {
 						<p
 							className={cn(
 								'text-xs tabular-nums',
-								stat.positive ? 'text-primary' : 'text-destructive'
+								stat.positive
+									? 'text-primary'
+									: 'text-destructive'
 							)}
 						>
 							{stat.delta} · {t('demo.forPeriod')}
@@ -101,9 +103,7 @@ export function PersonalDemoCard() {
 				transition={{ duration: 0.5, delay: 0.5 }}
 			>
 				<div className="flex items-center justify-between px-4 pt-3 pb-1">
-					<p
-						className="font-mono font-semibold text-[13px]"
-					>
+					<p className="font-mono font-semibold text-[13px]">
 						{t('demo.chartTitle')}
 					</p>
 					<span className="font-semibold text-primary text-xs tabular-nums">

@@ -35,7 +35,10 @@ export function PersonalPipelineStages({
 						<div className="flex flex-col items-center gap-2">
 							<PassBox
 								flow={flow}
-								fraction={nodeFraction(PERSONAL_STAGES.length, i)}
+								fraction={nodeFraction(
+									PERSONAL_STAGES.length,
+									i
+								)}
 								frozen={frozen}
 								icon={stage.icon}
 							/>

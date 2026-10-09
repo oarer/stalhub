@@ -11,11 +11,7 @@ import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { BoostButtons, type BoostCategory } from '@/types/build.type'
-import {
-	InfoColor,
-	type Item,
-	infoColorMap,
-} from '@/types/item.type'
+import { InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import {
 	collectListBlocks,
 	collectListElements,

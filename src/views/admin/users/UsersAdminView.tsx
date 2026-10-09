@@ -15,6 +15,7 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminUserService } from '@/services/admin/user.service'
+import { AdminPagination, DeleteConfirmContent } from '../components/AdminTable'
 
 export default function UsersAdminView() {
 	const t = useTranslations()
@@ -152,41 +153,28 @@ export default function UsersAdminView() {
 												<Modal.Content
 													fullScreen={false}
 												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.users.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t(
-																'admin.users.deleteDescription',
-																{
-																	name: user.username,
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'admin.users.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	user.id
-																)
+													<DeleteConfirmContent
+														cancelLabel={t(
+															'admin.users.cancel'
+														)}
+														confirmLabel={t(
+															'admin.users.deleteConfirm'
+														)}
+														description={t(
+															'admin.users.deleteDescription',
+															{
+																name: user.username,
 															}
-															variant="danger"
-														>
-															{t(
-																'admin.users.deleteConfirm'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
+														)}
+														onConfirm={() =>
+															deleteMutation.mutate(
+																user.id
+															)
+														}
+														title={t(
+															'admin.users.deleteTitle'
+														)}
+													/>
 												</Modal.Content>
 											</Modal.Root>
 										</div>
@@ -198,29 +186,11 @@ export default function UsersAdminView() {
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</div>
 	)
 }

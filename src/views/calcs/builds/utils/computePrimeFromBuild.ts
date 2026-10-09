@@ -7,6 +7,19 @@ import { parseItemStats } from './parseArtifact'
 const BULLET_KEY = 'stalker.artefact_properties.factor.bullet_dmg_factor'
 const HEALTH_KEY = 'stalker.artefact_properties.factor.health_bonus'
 
+const KEYS = [BULLET_KEY, HEALTH_KEY]
+
+function accumulateItemKeys(
+	target: Record<string, number>,
+	item: Item,
+	level = 0
+): void {
+	for (const key of KEYS) {
+		const val = getNumericValue(item, key, level)
+		if (val !== 0) target[key] = (target[key] ?? 0) + val
+	}
+}
+
 export function computePrimeFromBuild(
 	build: Build,
 	armors: Item[],
@@ -29,17 +42,11 @@ export function computePrimeFromBuild(
 
 	const armorItem = armors.find((a) => a.id === build.armor?.id)
 	if (armorItem && build.armor) {
-		for (const key of KEYS) {
-			const val = getNumericValue(armorItem, key, build.armor.level ?? 0)
-			if (val !== 0) result[key] = (result[key] ?? 0) + val
-		}
+		accumulateItemKeys(result, armorItem, build.armor.level ?? 0)
 	}
 
 	if (containerItem) {
-		for (const key of KEYS) {
-			const val = getNumericValue(containerItem, key)
-			if (val !== 0) result[key] = (result[key] ?? 0) + val
-		}
+		accumulateItemKeys(result, containerItem)
 	}
 
 	for (const art of build.arts) {
@@ -67,10 +74,7 @@ export function computePrimeFromBuild(
 	for (const boostId of Object.values(build.boost).filter(Boolean)) {
 		const boostItem = consumables.find((c) => c.id === boostId)
 		if (!boostItem) continue
-		for (const key of KEYS) {
-			const val = getNumericValue(boostItem, key)
-			if (val !== 0) result[key] = (result[key] ?? 0) + val
-		}
+		accumulateItemKeys(result, boostItem)
 	}
 
 	const bulletRes = result[BULLET_KEY] ?? 0

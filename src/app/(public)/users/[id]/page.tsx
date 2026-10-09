@@ -3,10 +3,10 @@ import type { AxiosError } from 'axios'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
-import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import UserProfileView from '@/views/users/UserProfileView'
 
 type PageProps = {

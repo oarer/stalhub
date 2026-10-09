@@ -1,11 +1,11 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
 import TierListDetailView from '@/views/tierlists/TierListDetailView'
-import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 
 export async function generateMetadata({
 	params,

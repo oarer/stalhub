@@ -1,6 +1,8 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { breadcrumbJsonLd, JsonLd } from '@/components/seo/JsonLd'
+import { SITE_META } from '@/constants/meta'
 import { generateItemMetadata } from '@/lib/generateItemMetadata'
 import { getLocaleServer } from '@/lib/getLocaleServer'
 import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
@@ -9,8 +11,6 @@ import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
 import type { Item } from '@/types/item.type'
 import ItemsView from '@/views/items'
-import { JsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd'
-import { SITE_META } from '@/constants/meta'
 
 type PageProps = {
 	params: Promise<{ slug: string[] }>
