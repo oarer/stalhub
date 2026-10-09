@@ -24,7 +24,7 @@ export function NotificationItem({
 
 	const content = (
 		<div
-			className={`flex items-start gap-3 rounded-lg border border-primary px-3 py-2.5 transition-colors ${
+			className={`flex items-start gap-3 rounded-lg border border-primary/50 px-3 py-2.5 transition-colors ${
 				!notification.read ? 'bg-primary/5' : 'bg-card'
 			} ${notification.link ? 'cursor-pointer hover:bg-accent' : ''}`}
 			onClick={onClick}

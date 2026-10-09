@@ -479,7 +479,7 @@
 	},
 	"/me/clan": {
 		"title": "Мой клан · StalHub",
-		"description": "Управление вашим кланом StalZone: участники, составы и статистика.",
+		"description": "Управление вашим кланом StalZone: участники, отряды и статистика.",
 		"robots": {
 			"index": false,
 			"follow": false
@@ -502,8 +502,8 @@
 		}
 	},
 	"/me/clan/squads": {
-		"title": "Составы клана · StalHub",
-		"description": "Составы вашего клана.",
+		"title": "Отряды клана · StalHub",
+		"description": "Отряд вашего клана.",
 		"robots": {
 			"index": false,
 			"follow": false

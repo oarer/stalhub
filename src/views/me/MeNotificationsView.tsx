@@ -82,6 +82,7 @@ export default function MeNotificationsView() {
 				</h1>
 				{notifications.some((n) => !n.read) && (
 					<Button
+						className="gap-2"
 						loading={markAllReadMutation.isPending}
 						onClick={() => markAllReadMutation.mutate()}
 						size="sm"
