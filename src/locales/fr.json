@@ -1910,6 +1910,9 @@
     "metaDescription": "Articles publics de la communauté StalHub",
     "byAuthor": "Article de {author}",
     "notFound": "Article introuvable",
+    "toc": {
+      "title": "Sommaire"
+    },
     "comments": {
       "title": "Commentaires ({count})",
       "placeholder": "Écrire un commentaire...",

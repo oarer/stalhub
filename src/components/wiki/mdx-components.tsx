@@ -3,8 +3,9 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { createContext, useContext } from 'react'
+import { createContext, type ReactNode, useContext } from 'react'
 import { cn } from '@/lib/cn'
+import { slugify } from '@/lib/toc'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
 import { Gallery } from './gallery'
@@ -12,13 +13,25 @@ import { QuestMap } from './quest-map'
 
 const PreCodeContext = createContext(false)
 
-function slugify(text: string): string {
-	return text
-		.toLowerCase()
-		.normalize('NFD')
-		.replace(/[\p{M}]/gu, '')
-		.replace(/[^\p{L}\p{N}\s-]/gu, '')
-		.replace(/\s+/g, '-')
+function getHeadingText(children: ReactNode): string {
+	if (children == null || typeof children === 'boolean') return ''
+	if (typeof children === 'string' || typeof children === 'number') {
+		return String(children)
+	}
+	if (Array.isArray(children)) {
+		return children.map(getHeadingText).join('')
+	}
+	if (typeof children === 'object' && 'props' in children) {
+		return getHeadingText(
+			(children as { props?: { children?: ReactNode } }).props?.children
+		)
+	}
+	return ''
+}
+
+function getHeadingId(children: ReactNode): string | undefined {
+	const text = getHeadingText(children).trim()
+	return text ? slugify(text) : undefined
 }
 
 function MdxCode({
@@ -64,8 +77,7 @@ export function useMDXComponents(): MDXComponents {
 			</h1>
 		),
 		h2: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h2
 					className="mt-10 mb-4 scroll-m-20 border-primary border-b pb-2 font-semibold text-3xl tracking-tight first:mt-0"
@@ -77,8 +89,7 @@ export function useMDXComponents(): MDXComponents {
 			)
 		},
 		h3: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h3
 					className="mt-8 mb-4 scroll-m-20 font-semibold text-2xl tracking-tight"
@@ -90,8 +101,7 @@ export function useMDXComponents(): MDXComponents {
 			)
 		},
 		h4: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h4
 					className="mt-6 mb-3 scroll-m-20 font-semibold text-xl tracking-tight"

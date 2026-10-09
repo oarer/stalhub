@@ -1908,6 +1908,9 @@
     "metaDescription": "Публичные статьи сообщества StalHub",
     "byAuthor": "Статья от {author}",
     "notFound": "Статья не найдена",
+    "toc": {
+      "title": "Содержание"
+    },
     "comments": {
       "title": "Комментарии ({count})",
       "placeholder": "Написать комментарий...",

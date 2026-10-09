@@ -6,8 +6,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { MDXRemote } from 'next-mdx-remote'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
+import { ArticleTocAside, ArticleTocMobile, useArticleToc } from '@/components/articles/ArticleToc'
 import BlogCover from '@/components/blog/BlogCover'
 import { Button } from '@/components/ui/Button'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
@@ -40,6 +41,8 @@ export default function ArticleView({
 	const components = useMDXComponents()
 	const [compiledSource, setCompiledSource] = useState<string | null>(null)
 	const [compileError, setCompileError] = useState(false)
+	const contentRef = useRef<HTMLDivElement | null>(null)
+	const { activeId, headings } = useArticleToc(contentRef, compiledSource)
 	const queryClient = getQueryClient()
 	const user = useAuthStore((s) => s.user)
 
@@ -218,34 +221,45 @@ export default function ArticleView({
 				</section>
 			)}
 
-			<div className="min-h-50">
-				{compiledSource ? (
-					<div className="prose prose-neutral dark:prose-invert max-w-none contain-content">
-						<MDXRemote
-							compiledSource={compiledSource}
-							components={components}
-							frontmatter={EMPTY_FRONTMATTER}
-							scope={EMPTY_SCOPE}
-						/>
+			<div className="flex items-start gap-8">
+				<div className="flex min-w-0 flex-1 flex-col gap-4">
+					<ArticleTocMobile activeId={activeId} headings={headings} />
+					<div className="min-h-50" ref={contentRef}>
+						{compiledSource ? (
+							<div className="prose prose-neutral dark:prose-invert max-w-none contain-content">
+								<MDXRemote
+									compiledSource={compiledSource}
+									components={components}
+									frontmatter={EMPTY_FRONTMATTER}
+									scope={EMPTY_SCOPE}
+								/>
+							</div>
+						) : compileError ? (
+							<div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3 text-red-400 text-sm">
+								<Icon className="size-4" icon="lucide:alert-triangle" />
+								<span className="font-medium">
+									{t('articles.loadError')}
+								</span>
+							</div>
+						) : (
+							<div className="flex items-center justify-center gap-2 py-16">
+								<Icon
+									className="size-5 animate-spin text-foreground"
+									icon="lucide:loader-circle"
+								/>
+								<span className="font-medium text-foreground text-sm">
+									{t('articles.loading')}
+								</span>
+							</div>
+						)}
 					</div>
-				) : compileError ? (
-					<div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3 text-red-400 text-sm">
-						<Icon className="size-4" icon="lucide:alert-triangle" />
-						<span className="font-medium">
-							{t('articles.loadError')}
-						</span>
+				</div>
+
+				<aside className="hidden w-72 shrink-0 xl:block">
+					<div className="sticky top-28 max-h-[calc(100dvh-9rem)] overflow-y-auto">
+						<ArticleTocAside activeId={activeId} headings={headings} />
 					</div>
-				) : (
-					<div className="flex items-center justify-center gap-2 py-16">
-						<Icon
-							className="size-5 animate-spin text-foreground"
-							icon="lucide:loader-circle"
-						/>
-						<span className="font-medium text-foreground text-sm">
-							{t('articles.loading')}
-						</span>
-					</div>
-				)}
+				</aside>
 			</div>
 
 			<div className="border-primary border-t pt-6">

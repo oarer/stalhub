@@ -1910,6 +1910,9 @@
     "metaDescription": "StalHub 커뮤니티 공개 게시글",
     "byAuthor": "{author}님의 게시글",
     "notFound": "게시글을 찾을 수 없습니다",
+    "toc": {
+      "title": "목차"
+    },
     "comments": {
       "title": "댓글 ({count})",
       "placeholder": "댓글 작성...",
