@@ -203,7 +203,7 @@
 	},
 	"/calcs/donate": {
 		"title": "Калькулятор доната · StalHub",
-		"description": "Расчёт стоимости доната и наборов в StalZone.",
+		"description": "Расчёт стоимости перевода валюты за донат валюты Stalzone.",
 		"keywords": [
 			"сталкрафт донат",
 			"stalcraft donate",
