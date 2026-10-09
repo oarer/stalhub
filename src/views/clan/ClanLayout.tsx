@@ -15,6 +15,7 @@ import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { clanService } from '@/services/clan/clan.service'
 import { Regions } from '@/types/api.type'
 import type { MyClanProfile, UserClanProfile } from '@/types/clan/clan.type'
+import { ClanStatsDemo } from './components/demo/ClanStatsDemo'
 
 export default function ClanLayout({
 	children,
@@ -70,38 +71,44 @@ export default function ClanLayout({
 
 	if (error || !profile) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
-				<Icon className="text-4xl" icon="lucide:users" />
-				<h1
-					className={`${mtsExtended.className} font-semibold text-xl`}
-				>
-					{t('clan.layout.notLinked.title')}
-				</h1>
-				<p className="font-medium text-foreground text-sm">
-					{t('clan.layout.notLinked.desc')}
-				</p>
-				<Button
-					className="w-full"
-					onClick={() => router.push('/me/settings')}
-				>
-					{t('clan.layout.notLinked.settings')}
-				</Button>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+					<Icon className="text-4xl" icon="lucide:users" />
+					<h1
+						className={`${mtsExtended.className} font-semibold text-xl`}
+					>
+						{t('clan.layout.notLinked.title')}
+					</h1>
+					<p className="font-medium text-foreground text-sm">
+						{t('clan.layout.notLinked.desc')}
+					</p>
+					<Button
+						className="w-full"
+						onClick={() => router.push('/me/settings')}
+					>
+						{t('clan.layout.notLinked.settings')}
+					</Button>
+				</div>
+				<ClanStatsDemo />
 			</div>
 		)
 	}
 
 	if (!profile.clan) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
-				<Icon className="text-4xl" icon="lucide:users" />
-				<h1
-					className={`${mtsExtended.className} font-semibold text-xl`}
-				>
-					{t('clan.layout.notFound.title')}
-				</h1>
-				<p className="font-medium text-foreground text-sm">
-					{t('clan.layout.notFound.desc')}
-				</p>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+					<Icon className="text-4xl" icon="lucide:users" />
+					<h1
+						className={`${mtsExtended.className} font-semibold text-xl`}
+					>
+						{t('clan.layout.notFound.title')}
+					</h1>
+					<p className="whitespace-pre-line font-medium text-foreground text-sm">
+						{t('clan.layout.notFound.desc')}
+					</p>
+				</div>
+				<ClanStatsDemo />
 			</div>
 		)
 	}
@@ -174,10 +181,11 @@ export default function ClanLayout({
 								tag: profile.clan.tag,
 							})}
 						</h1>
-						<p className="font-medium text-foreground text-sm">
+						<p className="whitespace-pre-line font-medium text-foreground text-sm">
 							{t('clan.layout.frozen.descMember')}
 						</p>
 					</div>
+					<ClanStatsDemo />
 				</div>
 			)
 		}

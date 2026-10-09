@@ -2036,7 +2036,10 @@
         "desc": "Votre clan est actuellement gelé, la gestion est indisponible.\nPour obtenir l'accès, cliquez sur le bouton ci-dessous.",
         "activate": "Activer",
         "titleMember": "Le clan <span>[{tag}] {name}</span> est gelé",
-        "descMember": "Votre clan est actuellement gelé, la gestion est indisponible."
+        "descMember": "Votre clan est actuellement gelé, la gestion est indisponible.\nSeul le leader peut dégeler le clan — demandez-lui de cliquer sur « Activer ».",
+        "demoBadge": "Démo",
+        "demoTitle": "À quoi ressemble l'analytique du clan",
+        "demoDesc": "Ci-dessous, la même interface d'analytique avec des données aléatoires, pour comprendre à quoi elle ressemble en général."
       }
     },
     "dashboard": {

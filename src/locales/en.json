@@ -2036,7 +2036,10 @@
         "desc": "Your clan is currently frozen, management features are unavailable.\nTo get access, click the button below.",
         "activate": "Activate",
         "titleMember": "Clan <span>[{tag}] {name}</span> is frozen",
-        "descMember": "Your clan is currently frozen, management features are unavailable."
+        "descMember": "Your clan is currently frozen, management features are unavailable.\nOnly the leader can unfreeze the clan — ask them to press “Activate”.",
+        "demoBadge": "Demo",
+        "demoTitle": "What clan analytics looks like",
+        "demoDesc": "Below is the same analytics UI with random data, so you can see how it looks in general."
       }
     },
     "dashboard": {

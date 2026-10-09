@@ -2036,7 +2036,10 @@
         "desc": "Tu clan está congelado, la gestión no está disponible.\nPara obtener acceso, pulsa el botón de abajo.",
         "activate": "Activar",
         "titleMember": "El clan <span>[{tag}] {name}</span> está congelado",
-        "descMember": "Tu clan está congelado, la gestión no está disponible."
+        "descMember": "Tu clan está congelado, la gestión no está disponible.\nSolo el líder puede descongelar el clan: pídele que pulse «Activar».",
+        "demoBadge": "Demo",
+        "demoTitle": "Cómo se ve la analítica del clan",
+        "demoDesc": "Abajo verás la misma interfaz de analítica con datos aleatorios, para que entiendas cómo se ve en general."
       }
     },
     "dashboard": {

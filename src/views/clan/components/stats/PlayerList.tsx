@@ -385,7 +385,7 @@ export function PlayerList({
 										/>
 									</div>
 								)}
-								<div className="flex flex-col gap-2">
+								<div className="mask-y-from-97% mask-y-to-100% flex max-h-80 flex-col gap-2 overflow-y-scroll">
 									{selectedPlayer.stages
 										.slice()
 										.sort((a, b) =>
