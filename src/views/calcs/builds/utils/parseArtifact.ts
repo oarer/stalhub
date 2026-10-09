@@ -9,6 +9,7 @@ import type {
 	NumericRangeElement,
 } from '@/types/item.type'
 import {
+	collectListBlocks,
 	isNumericElement,
 	isRangeElement,
 	messageToString,
@@ -198,19 +199,15 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 
 	const pushers = createStatPushers()
 
-	for (const block of item.infoBlocks) {
-		if (
-			!block ||
-			!Array.isArray((block as ElementListBlock | AddStatBlock).elements)
-		)
-			continue
+	for (const block of collectListBlocks(item.infoBlocks)) {
+		if (!block) continue
 
 		if (block.type === 'addStat') {
-			processAddStatBlock(block as AddStatBlock, locale, pushers)
+			processAddStatBlock(block, locale, pushers)
 		}
 
 		if (block.type === 'list') {
-			processListBlock(block as ElementListBlock, locale, pushers)
+			processListBlock(block, locale, pushers)
 		}
 	}
 

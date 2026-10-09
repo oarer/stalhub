@@ -1,5 +1,5 @@
 import type {
-	ElementListBlock,
+	InfoBlock,
 	Item,
 	Message,
 	NumericElement,
@@ -52,22 +52,33 @@ export type StatOverride = {
 const getTranslationKey = (name?: Message): string | null =>
 	name?.type === 'translation' ? name.key : null
 
+const collectElements = (blocks: InfoBlock[] | undefined) => {
+	if (!Array.isArray(blocks)) return []
+	const out: NumericElement[] = []
+	for (const block of blocks) {
+		if (!block) continue
+		if (block.type === 'list' || block.type === 'addStat') {
+			for (const el of block.elements ?? []) {
+				if (el.type === 'numeric') out.push(el)
+			}
+		} else if (block.type === 'grouped') {
+			out.push(...collectElements(block.compact))
+			out.push(...collectElements(block.detailed))
+		}
+	}
+	return out
+}
+
 const getNumericElements = (
 	item: Item
 ): (NumericElement & { key: string | null })[] => {
 	const result: (NumericElement & { key: string | null })[] = []
 
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (el.type !== 'numeric') continue
-
-			result.push({
-				...el,
-				key: getTranslationKey(el.name),
-			})
-		}
+	for (const el of collectElements(item.infoBlocks)) {
+		result.push({
+			...el,
+			key: getTranslationKey(el.name),
+		})
 	}
 
 	return result

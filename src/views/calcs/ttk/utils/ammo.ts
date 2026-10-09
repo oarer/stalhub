@@ -1,17 +1,14 @@
-import type { ElementListBlock, Item } from '@/types/item.type'
+import type { Item } from '@/types/item.type'
+import { collectListElements } from '@/utils/itemUtils'
 
 export function getAmmoType(item: Item): string {
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'key-value' &&
-				el.key?.type === 'translation' &&
-				el.key.key === 'weapon.tooltip.weapon.info.ammo_type'
-			) {
-				return el.value?.type === 'translation' ? el.value.key : ''
-			}
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (
+			el.type === 'key-value' &&
+			el.key?.type === 'translation' &&
+			el.key.key === 'weapon.tooltip.weapon.info.ammo_type'
+		) {
+			return el.value?.type === 'translation' ? el.value.key : ''
 		}
 	}
 
@@ -19,17 +16,13 @@ export function getAmmoType(item: Item): string {
 }
 
 export function getAmmoDamageBonus(ammo: Item): number {
-	for (const block of ammo.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'numeric' &&
-				el.name?.type === 'translation' &&
-				el.name.key === 'weapon.tooltip.bullet.stat_name.damage'
-			) {
-				return el.value ?? 0
-			}
+	for (const el of collectListElements(ammo.infoBlocks)) {
+		if (
+			el.type === 'numeric' &&
+			el.name?.type === 'translation' &&
+			el.name.key === 'weapon.tooltip.bullet.stat_name.damage'
+		) {
+			return el.value ?? 0
 		}
 	}
 
@@ -37,17 +30,13 @@ export function getAmmoDamageBonus(ammo: Item): number {
 }
 
 export function getAmmoPenetration(ammo: Item): number {
-	for (const block of ammo.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'numeric' &&
-				el.name?.type === 'translation' &&
-				el.name.key === 'weapon.tooltip.bullet.stat_name.piercing'
-			) {
-				return el.value ?? 0
-			}
+	for (const el of collectListElements(ammo.infoBlocks)) {
+		if (
+			el.type === 'numeric' &&
+			el.name?.type === 'translation' &&
+			el.name.key === 'weapon.tooltip.bullet.stat_name.piercing'
+		) {
+			return el.value ?? 0
 		}
 	}
 

@@ -12,13 +12,15 @@ import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import { ItemsList } from '@/shared/components/ItemsList'
 import type {
-	AddStatBlock,
-	ElementListBlock,
 	Item,
 	Locale,
 	NumericElement,
 } from '@/types/item.type'
-import { messageToString, roundNumber } from '@/utils/itemUtils'
+import {
+	collectListBlocks,
+	messageToString,
+	roundNumber,
+} from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 
 const SLOT_ORDER = [
@@ -42,37 +44,43 @@ const getSlotOrder = (slotKey: string): number => {
 const getIconUrl = (category: string, id: string): string =>
 	`https://cdn.stalhub.dev/db/icons/${category}/${id}.png`
 
-const getAttachmentWeight = (attachment: Item): number => {
-	for (const block of attachment.infoBlocks) {
-		if (block.type !== 'list') continue
+const collectNumericElements = (attachment: Item): NumericElement[] => {
+	const elements: NumericElement[] = []
 
-		for (const el of block.elements ?? []) {
-			if (
-				el.type === 'numeric' &&
-				el.name?.type === 'translation' &&
-				el.name.key === 'core.tooltip.info.weight'
-			) {
-				return typeof el.value === 'number' ? el.value : 0
+	const walk = (blocks: Item['infoBlocks'] | undefined) => {
+		if (!Array.isArray(blocks)) return
+		for (const block of blocks) {
+			if (!block) continue
+			if (block.type === 'list' || block.type === 'addStat') {
+				for (const el of block.elements ?? []) {
+					if (el.type === 'numeric') elements.push(el)
+				}
+			} else if (block.type === 'grouped') {
+				walk(block.compact)
+				walk(block.detailed)
 			}
+		}
+	}
+	walk(attachment.infoBlocks)
+
+	return elements
+}
+
+const getAttachmentWeight = (attachment: Item): number => {
+	for (const el of collectNumericElements(attachment)) {
+		if (
+			el.name?.type === 'translation' &&
+			el.name.key === 'core.tooltip.info.weight'
+		) {
+			return typeof el.value === 'number' ? el.value : 0
 		}
 	}
 
 	return 0
 }
 
-const getModifierElements = (attachment: Item): NumericElement[] => {
-	const elements: NumericElement[] = []
-
-	for (const block of attachment.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of block.elements ?? []) {
-			if (el.type === 'numeric') elements.push(el)
-		}
-	}
-
-	return elements
-}
+const getModifierElements = (attachment: Item): NumericElement[] =>
+	collectNumericElements(attachment)
 
 const formatModifierValue = (el: NumericElement, locale: Locale): string => {
 	const formatted = el.formatted?.value?.[locale]
@@ -403,15 +411,9 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 
 								<div className="max-h-full flex-1 overflow-y-auto md:max-h-56">
 									<div className="flex flex-col gap-3">
-										{previewItem?.infoBlocks
-											?.filter(
-												(
-													b
-												): b is
-													| AddStatBlock
-													| ElementListBlock =>
-													(b.type === 'list' ||
-														b.type === 'addStat') &&
+										{collectListBlocks(previewItem?.infoBlocks)
+											.filter(
+												(b) =>
 													Array.isArray(b.elements) &&
 													b.elements.length > 0
 											)

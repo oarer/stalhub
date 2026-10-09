@@ -14,15 +14,14 @@ import { auctionQueries } from '@/queries/auction/auction.queries'
 import { itemQueries } from '@/queries/item/item.queries'
 import { useModulesStore } from '@/stores/useModules.store'
 import {
-	type AddStatBlock,
 	type DamageDistanceInfoBlock,
-	type ElementListBlock,
 	type InfoBlock,
 	InfoColor,
 	infoColorMap,
 	type TextInfoBlock,
 } from '@/types/item.type'
 import {
+	collectListBlocks,
 	getCategoryLabel,
 	isNumericVariantsBlock,
 	messageToString,
@@ -33,8 +32,11 @@ import {
 	computeStatOverrides,
 	type StatOverride,
 } from './components/attachments/attachmentStats'
-import { ListBlock, NumericVariantsCard, TextBlock } from './components/blocks'
-import { clampAutoRefreshInterval } from './components/tabs/AuctionAutoRefresh'
+import {
+	InfoBlocksRenderer,
+	NumericVariantsCard,
+	TextBlock,
+} from './components/blocks'
 import ItemTabs from './components/tabs/AuctionTabs'
 
 const AUTO_REFRESH_ENABLED_KEY = 'auction:autoRefresh:enabled'
@@ -274,40 +276,24 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 					/>
 				)}
 
-				{data.infoBlocks
-					.filter(
-						(b): b is ElementListBlock =>
-							b.type === 'list' &&
-							Array.isArray(b.elements) &&
-							b.elements.length > 0
-					)
-					.map((block, idx) =>
-						block.elements.some(isNumericVariantsBlock) ? (
-							<NumericVariantsCard
-								key={idx}
-								numericVariants={numericVariants}
-								onChange={setNumericVariants}
-							/>
-						) : null
-					)}
-
-				{data.infoBlocks
-					.filter(
-						(b): b is AddStatBlock | ElementListBlock =>
-							(b.type === 'list' || b.type === 'addStat') &&
-							Array.isArray(b.elements) &&
-							b.elements.length > 0
+				{collectListBlocks(data.infoBlocks)
+					.filter((block) =>
+						block.elements.some(isNumericVariantsBlock)
 					)
 					.map((block, idx) => (
-						<ListBlock
-							block={block}
-							className='text-sm'
+						<NumericVariantsCard
 							key={idx}
-							locale={locale}
 							numericVariants={numericVariants}
-							statOverrides={statOverrides}
+							onChange={setNumericVariants}
 						/>
 					))}
+
+				<InfoBlocksRenderer
+					infoBlocks={data.infoBlocks}
+					locale={locale}
+					numericVariants={numericVariants}
+					statOverrides={statOverrides}
+				/>
 			</div>
 		</section>
 	)

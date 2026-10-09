@@ -1,6 +1,6 @@
 import type { ComboboxOption } from '@/components/ui/Combobox'
 import type { Item, Locale } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import { collectListElements, messageToString } from '@/utils/itemUtils'
 import { HIDDEN_STAT_KEYS } from '../model/components/hooks/itemStatsUtils'
 import { isDebuffColor } from './artCalculations'
 
@@ -43,37 +43,31 @@ export function getEffectsStats(
 ): Record<string, ColoredStat> {
 	const result: Record<string, ColoredStat> = {}
 
-	for (const block of item.infoBlocks ?? []) {
-		if (block.type !== 'list' && block.type !== 'addStat') continue
-		if (!Array.isArray((block as { elements?: unknown[] }).elements))
-			continue
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (!el || !isStatElement(el)) continue
 
-		for (const el of (block as { elements: unknown[] }).elements) {
-			if (!el || !isStatElement(el)) continue
+		const key = getElementKey(el)
+		if (!key) continue
+		if (HIDDEN_STAT_KEYS.has(key)) continue
 
-			const key = getElementKey(el)
-			if (!key) continue
-			if (HIDDEN_STAT_KEYS.has(key)) continue
+		if (!(key in result)) {
+			const colorRaw = (el as { formatted?: { valueColor?: string } })
+				?.formatted?.valueColor
+			const color = colorRaw ? String(colorRaw).replace(/^#/, '') : ''
 
-			if (!(key in result)) {
-				const colorRaw = (el as { formatted?: { valueColor?: string } })
-					?.formatted?.valueColor
-				const color = colorRaw ? String(colorRaw).replace(/^#/, '') : ''
+			let displayName = key
+			try {
+				const name = (el as { name?: unknown })?.name
+				const s = messageToString(name as never, locale)
+				if (s && s.trim().length > 0) displayName = s
+			} catch {
+				// ignore
+			}
 
-				let displayName = key
-				try {
-					const name = (el as { name?: unknown })?.name
-					const s = messageToString(name as never, locale)
-					if (s && s.trim().length > 0) displayName = s
-				} catch {
-					// ignore
-				}
-
-				result[key] = {
-					color,
-					displayName,
-					magnitude: getStatMagnitude(el),
-				}
+			result[key] = {
+				color,
+				displayName,
+				magnitude: getStatMagnitude(el),
 			}
 		}
 	}

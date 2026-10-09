@@ -12,13 +12,15 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { BoostButtons, type BoostCategory } from '@/types/build.type'
 import {
-	type AddStatBlock,
-	type ElementListBlock,
 	InfoColor,
 	type Item,
 	infoColorMap,
 } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import {
+	collectListBlocks,
+	collectListElements,
+	messageToString,
+} from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 import type { StatFilterGroup } from './ItemPickerModal'
 import { ItemPickerModal } from './ItemPickerModal'
@@ -64,20 +66,17 @@ function BoostSelectModal({
 	const effectOptions = useMemo(() => {
 		const map = new Map<string, string>()
 		for (const item of categoryItems) {
-			for (const block of item.infoBlocks) {
-				if (block.type !== 'list' && block.type !== 'addStat') continue
-				for (const el of block.elements) {
-					if (el.type !== 'numeric') continue
-					const name = el.name
-					const key =
-						name.type === 'translation' && name.key
-							? name.key
-							: name.type === 'text' && name.text
-								? name.text
-								: null
-					if (!key || map.has(key)) continue
-					map.set(key, messageToString(name, locale))
-				}
+			for (const el of collectListElements(item.infoBlocks)) {
+				if (el.type !== 'numeric') continue
+				const name = el.name
+				const key =
+					name.type === 'translation' && name.key
+						? name.key
+						: name.type === 'text' && name.text
+							? name.text
+							: null
+				if (!key || map.has(key)) continue
+				map.set(key, messageToString(name, locale))
 			}
 		}
 		return Array.from(map.entries())
@@ -89,23 +88,20 @@ function BoostSelectModal({
 		if (selectedEffects.length === 0) return categoryItems
 		return categoryItems.filter((item) => {
 			const itemKeys = new Set<string>()
-			for (const block of item.infoBlocks) {
-				if (block.type !== 'list' && block.type !== 'addStat') continue
-				for (const el of block.elements) {
-					if (el.type !== 'numeric') continue
-					const name = (
-						el as {
-							name: { type: string; key?: string; text?: string }
-						}
-					).name
-					const key =
-						name.type === 'translation' && name.key
-							? name.key
-							: name.type === 'text' && name.text
-								? name.text
-								: null
-					if (key) itemKeys.add(key)
-				}
+			for (const el of collectListElements(item.infoBlocks)) {
+				if (el.type !== 'numeric') continue
+				const name = (
+					el as {
+						name: { type: string; key?: string; text?: string }
+					}
+				).name
+				const key =
+					name.type === 'translation' && name.key
+						? name.key
+						: name.type === 'text' && name.text
+							? name.text
+							: null
+				if (key) itemKeys.add(key)
 			}
 			return selectedEffects.every((k) => itemKeys.has(k))
 		})
@@ -183,15 +179,9 @@ function BoostSelectModal({
 									)}
 								</p>
 
-								{selectedItemData?.infoBlocks
+								{collectListBlocks(selectedItemData?.infoBlocks)
 									.filter(
-										(
-											b
-										): b is
-											| AddStatBlock
-											| ElementListBlock =>
-											(b.type === 'list' ||
-												b.type === 'addStat') &&
+										(b) =>
 											Array.isArray(b.elements) &&
 											b.elements.length > 0
 									)

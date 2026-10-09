@@ -14,13 +14,12 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
+import { InfoColor, infoColorMap } from '@/types/item.type'
 import {
-	type AddStatBlock,
-	type ElementListBlock,
-	InfoColor,
-	infoColorMap,
-} from '@/types/item.type'
-import { isNumericVariantsBlock, messageToString } from '@/utils/itemUtils'
+	collectListBlocks,
+	isNumericVariantsBlock,
+	messageToString,
+} from '@/utils/itemUtils'
 import {
 	buildEffectFilterMap,
 	buildEffectOptions,
@@ -132,10 +131,9 @@ export default function ArmorModal({ onClose }: ModalProps) {
 
 				<Card.Content className="flex flex-col justify-between gap-2">
 					<div className="flex max-h-120 flex-col gap-2 overflow-y-auto">
-						{selectedItem?.infoBlocks
+						{collectListBlocks(selectedItem?.infoBlocks)
 							.filter(
-								(b): b is ElementListBlock =>
-									b.type === 'list' &&
+								(b) =>
 									Array.isArray(b.elements) &&
 									b.elements.length > 0
 							)
@@ -154,11 +152,9 @@ export default function ArmorModal({ onClose }: ModalProps) {
 									/>
 								) : null
 							)}
-						{selectedItem?.infoBlocks
+						{collectListBlocks(selectedItem?.infoBlocks)
 							.filter(
-								(b): b is AddStatBlock | ElementListBlock =>
-									(b.type === 'list' ||
-										b.type === 'addStat') &&
+								(b) =>
 									Array.isArray(b.elements) &&
 									b.elements.length > 0
 							)

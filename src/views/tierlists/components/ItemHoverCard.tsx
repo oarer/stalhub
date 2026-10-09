@@ -4,15 +4,10 @@ import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import type React from 'react'
 import { HoverCard } from '@/components/ui/HoverCard'
-import type {
-	AddStatBlock,
-	ElementListBlock,
-	Item,
-	Locale,
-} from '@/types/item.type'
+import type { Item, Locale } from '@/types/item.type'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
 import { TIER_RANK_COLORS, type TierRank } from '@/types/tier-list.type'
-import { messageToString } from '@/utils/itemUtils'
+import { collectListBlocks, messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 import { formatTierTtk } from '../utils/tier-ttk'
 
@@ -20,18 +15,10 @@ function getIconUrl(item: Item) {
 	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
 }
 
-const isStatList = (b: unknown): b is AddStatBlock | ElementListBlock => {
-	if (!b || typeof b !== 'object') return false
-	const block = b as { type?: string; elements?: unknown[] }
-	return (
-		(block.type === 'list' || block.type === 'addStat') &&
-		Array.isArray(block.elements) &&
-		(block.elements?.length ?? 0) > 0
-	)
-}
-
 function ItemStats({ item, locale }: { item: Item; locale: Locale }) {
-	const statBlocks = item.infoBlocks.filter(isStatList)
+	const statBlocks = collectListBlocks(item.infoBlocks).filter(
+		(b) => Array.isArray(b.elements) && b.elements.length > 0
+	)
 
 	return (
 		<div className="max-h-72 space-y-1.5 overflow-y-auto pr-1">

@@ -1,5 +1,7 @@
 import { getLocale } from '@/lib/getLocale'
 import type {
+	AddStatBlock,
+	ElementListBlock,
 	InfoBlock,
 	InfoElement,
 	Item,
@@ -80,25 +82,54 @@ const humanizeCategory = (cat?: string) => {
 		.join(' › ')
 }
 
+export type ListLikeBlock = ElementListBlock | AddStatBlock
+
+/** Flatten list-like blocks, recursing into `grouped` (compact + detailed). */
+export const collectListBlocks = (
+	infoBlocks: InfoBlock[] | undefined
+): ListLikeBlock[] => {
+	if (!Array.isArray(infoBlocks)) return []
+	const out: ListLikeBlock[] = []
+	for (const block of infoBlocks) {
+		if (!block) continue
+		if (block.type === 'list' || block.type === 'addStat') {
+			out.push(block)
+		} else if (block.type === 'grouped') {
+			out.push(...collectListBlocks(block.compact))
+			out.push(...collectListBlocks(block.detailed))
+		}
+	}
+	return out
+}
+
+/** All elements of list-like blocks, recursing into `grouped`. */
+export const collectListElements = (
+	infoBlocks: InfoBlock[] | undefined
+): InfoElement[] => {
+	const out: InfoElement[] = []
+	for (const block of collectListBlocks(infoBlocks)) {
+		if (Array.isArray(block.elements)) out.push(...block.elements)
+	}
+	return out
+}
+
+const iterateListElements = collectListElements
+
 const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 	if (!Array.isArray(infoBlocks)) return ''
 
 	const loc = locale ?? getLocale()
 
-	for (const block of infoBlocks) {
-		if (block?.type !== 'list' || !Array.isArray(block?.elements)) continue
+	for (const el of iterateListElements(infoBlocks)) {
+		if (el?.type !== 'key-value') continue
 
-		for (const el of block.elements) {
-			if (el?.type !== 'key-value') continue
-
-			if (
-				el.key?.type === 'translation' &&
-				el.key?.key === 'core.tooltip.info.category'
-			) {
-				if (el.value) {
-					const translated = messageToString(el.value, loc)
-					if (translated) return translated
-				}
+		if (
+			el.key?.type === 'translation' &&
+			el.key?.key === 'core.tooltip.info.category'
+		) {
+			if (el.value) {
+				const translated = messageToString(el.value, loc)
+				if (translated) return translated
 			}
 		}
 	}
@@ -109,18 +140,14 @@ const findCategoryInBlocks = (infoBlocks: InfoBlock[], locale?: Locale) => {
 export const findContSizeInBlocks = (infoBlocks?: InfoBlock[]): number => {
 	if (!Array.isArray(infoBlocks)) return 0
 
-	for (const block of infoBlocks) {
-		if (block?.type !== 'list' || !Array.isArray(block?.elements)) continue
+	for (const el of iterateListElements(infoBlocks)) {
+		if (el?.type !== 'numeric') continue
 
-		for (const el of block.elements) {
-			if (el?.type !== 'numeric') continue
-
-			if (
-				el.name?.type === 'translation' &&
-				el.name.key === 'stalker.tooltip.backpack.info.size'
-			) {
-				return el.value ?? 0
-			}
+		if (
+			el.name?.type === 'translation' &&
+			el.name.key === 'stalker.tooltip.backpack.info.size'
+		) {
+			return el.value ?? 0
 		}
 	}
 

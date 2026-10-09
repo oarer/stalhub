@@ -1,22 +1,19 @@
 import type {
 	DamageDistanceInfoBlock,
-	ElementListBlock,
+	InfoBlock,
 	Item,
 } from '@/types/item.type'
+import { collectListBlocks, collectListElements } from '@/utils/itemUtils'
 import { HOLD_MAX_TIME, isHoldWeapon } from '../constants/ttk'
 
 export function getNumericStat(item: Item, key: string): number {
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'numeric' &&
-				el.name?.type === 'translation' &&
-				el.name.key === key
-			) {
-				return el.value ?? 0
-			}
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (
+			el.type === 'numeric' &&
+			el.name?.type === 'translation' &&
+			el.name.key === key
+		) {
+			return el.value ?? 0
 		}
 	}
 
@@ -30,20 +27,15 @@ export function getDamageVariant(
 ): number {
 	let values: number[] | [number, number][] = []
 
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		for (const el of (block as ElementListBlock).elements ?? []) {
-			if (
-				el.type === 'numericVariants' &&
-				el.name?.type === 'translation' &&
-				el.name.key === 'core.tooltip.stat_name.damage_type.direct'
-			) {
-				values = el.value ?? []
-				break
-			}
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (
+			el.type === 'numericVariants' &&
+			el.name?.type === 'translation' &&
+			el.name.key === 'core.tooltip.stat_name.damage_type.direct'
+		) {
+			values = el.value ?? []
+			break
 		}
-		if (values.length) break
 	}
 
 	if (!values.length) return 0
@@ -68,32 +60,40 @@ export function getDamageBlock(
 ): DamageDistanceInfoBlock | null {
 	if (!item) return null
 
-	for (const block of item.infoBlocks) {
-		if (block.type === 'damage') {
-			return block as DamageDistanceInfoBlock
+	const find = (
+		blocks: InfoBlock[] | undefined
+	): DamageDistanceInfoBlock | null => {
+		if (!Array.isArray(blocks)) return null
+		for (const block of blocks) {
+			if (!block) continue
+			if (block.type === 'damage') {
+				return block as DamageDistanceInfoBlock
+			}
+			if (block.type === 'grouped') {
+				const nested =
+					find(block.compact) ?? find(block.detailed)
+				if (nested) return nested
+			}
 		}
+		return null
 	}
 
-	return null
+	return find(item.infoBlocks)
 }
 
 export function getDamageModifiers(item: Item): {
 	head: number
 	limbs: number
 } {
-	for (const block of item.infoBlocks) {
-		if (block.type !== 'list') continue
-
-		const b = block as ElementListBlock
-
+	for (const block of collectListBlocks(item.infoBlocks)) {
 		if (
-			b.title?.type === 'translation' &&
-			b.title.key === 'weapon.tooltip.weapon.info.damage_modifiers'
+			block.title?.type === 'translation' &&
+			block.title.key === 'weapon.tooltip.weapon.info.damage_modifiers'
 		) {
 			let head = 1.4
 			let limbs = 0.8
 
-			for (const el of b.elements ?? []) {
+			for (const el of block.elements ?? []) {
 				if (el.type !== 'text' || el.text?.type !== 'translation')
 					continue
 

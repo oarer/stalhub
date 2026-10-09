@@ -20,13 +20,11 @@ import {
 	type ModalProps,
 } from '@/types/build.type'
 import {
-	type AddStatBlock,
-	type ElementListBlock,
 	InfoColor,
 	type Item,
 	infoColorMap,
 } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import { collectListBlocks, messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
@@ -103,15 +101,9 @@ function BoostSelectModal({
 										locale
 									)}
 								</p>
-								{selectedItem?.infoBlocks
+								{collectListBlocks(selectedItem?.infoBlocks)
 									.filter(
-										(
-											b
-										): b is
-											| AddStatBlock
-											| ElementListBlock =>
-											(b.type === 'list' ||
-												b.type === 'addStat') &&
+										(b) =>
 											Array.isArray(b.elements) &&
 											b.elements.length > 0
 									)
@@ -199,15 +191,9 @@ function BoostSelectModal({
 
 							<Card.Content className="flex h-full flex-col justify-between">
 								<div className="flex flex-col gap-3">
-									{selectedItem?.infoBlocks
+									{collectListBlocks(selectedItem?.infoBlocks)
 										.filter(
-											(
-												b
-											): b is
-												| AddStatBlock
-												| ElementListBlock =>
-												(b.type === 'list' ||
-													b.type === 'addStat') &&
+											(b) =>
 												Array.isArray(b.elements) &&
 												b.elements.length > 0
 										)

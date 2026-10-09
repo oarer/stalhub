@@ -1,8 +1,6 @@
 'use client'
 
 import type {
-	AddStatBlock,
-	ElementListBlock,
 	InfoElement,
 	Item,
 	Locale,
@@ -10,7 +8,7 @@ import type {
 	NumericRangeElement,
 	NumericVariantsElement,
 } from '@/types/item.type'
-import { messageToString } from '@/utils/itemUtils'
+import { collectListElements, messageToString } from '@/utils/itemUtils'
 
 export const BUILD_HIDDEN_STAT_KEYS = new Set<string>([
 	'stalker.tooltip.item.lifesaver_sniper.info.trigger_damage',
@@ -46,28 +44,12 @@ export const HIDDEN_STAT_KEYS = new Set([
 	'core.tooltip.info.base_price',
 ])
 
-type RelevantBlock = ElementListBlock | AddStatBlock
-
-const isRelevantBlock = (
-	block: NonNullable<Item['infoBlocks']>[number]
-): block is RelevantBlock => {
-	return block.type === 'list' || block.type === 'addStat'
-}
-
-const getBlockElements = (block: RelevantBlock): InfoElement[] => {
-	return Array.isArray(block.elements) ? block.elements : []
-}
-
 const findElementByKey = (item: Item, key: string): InfoElement | null => {
 	if (!item.infoBlocks) return null
 
-	for (const block of item.infoBlocks) {
-		if (!isRelevantBlock(block)) continue
-
-		for (const el of getBlockElements(block)) {
-			if (!el) continue
-			if (getElementKey(el) === key) return el
-		}
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (!el) continue
+		if (getElementKey(el) === key) return el
 	}
 
 	return null
@@ -96,14 +78,10 @@ export function getItemKeys(item: Item): Set<string> {
 	const keys = new Set<string>()
 	if (!item.infoBlocks) return keys
 
-	for (const block of item.infoBlocks) {
-		if (!isRelevantBlock(block)) continue
-
-		for (const el of getBlockElements(block)) {
-			if (!el) continue
-			const key = getElementKey(el)
-			if (key) keys.add(key)
-		}
+	for (const el of collectListElements(item.infoBlocks)) {
+		if (!el) continue
+		const key = getElementKey(el)
+		if (key) keys.add(key)
 	}
 
 	return keys

@@ -15,13 +15,12 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
+import { InfoColor, infoColorMap } from '@/types/item.type'
 import {
-	type AddStatBlock,
-	type ElementListBlock,
-	InfoColor,
-	infoColorMap,
-} from '@/types/item.type'
-import { findContSizeInBlocks, messageToString } from '@/utils/itemUtils'
+	collectListBlocks,
+	findContSizeInBlocks,
+	messageToString,
+} from '@/utils/itemUtils'
 import {
 	buildEffectFilterMap,
 	buildEffectOptions,
@@ -146,11 +145,9 @@ export default function ContModal({ onClose }: ModalProps) {
 
 					<Card.Content className="flex h-full flex-col justify-between">
 						<div className="flex flex-col gap-3">
-							{selectedItem?.infoBlocks
+							{collectListBlocks(selectedItem?.infoBlocks)
 								.filter(
-									(b): b is AddStatBlock | ElementListBlock =>
-										(b.type === 'list' ||
-											b.type === 'addStat') &&
+									(b) =>
 										Array.isArray(b.elements) &&
 										b.elements.length > 0
 								)
