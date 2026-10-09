@@ -1201,10 +1201,11 @@
     }
   },
   "about": {
-    "contacts_title": "Контакты",
+    "contacts_title": "О нас",
     "thanks_title": "Отдельная благодарность",
     "developer_role": "Главный разработчик",
     "designer_role": "Дизайнер",
+    "ad_role": "Пиар-менеджер",
     "contact_us": "Связь с нами",
     "useful_links": "Полезные ссылки",
     "contact_links": {
