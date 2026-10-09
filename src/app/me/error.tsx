@@ -33,7 +33,6 @@ function isUnauthorized(error: unknown): boolean {
 
 export default function MeError({
 	error,
-	reset,
 }: {
 	error: Error & { digest?: string }
 	reset: () => void
@@ -71,7 +70,7 @@ export default function MeError({
 				buttonIcon="lucide:rotate-ccw"
 				buttonLabel={t('errors.globalError.buttonLabel')}
 				description={t('errors.routeError.description')}
-				onButtonClick={reset}
+				onButtonClick={() => window.location.reload()}
 			/>
 		</section>
 	)
