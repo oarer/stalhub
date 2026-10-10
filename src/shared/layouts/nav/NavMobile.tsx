@@ -127,90 +127,96 @@ export default function NavMobile() {
 
 					<motion.div
 						animate={{ opacity: 1, y: 0, scale: 1 }}
-						className="fixed top-8 left-1/2 z-99 flex w-[90%] -translate-x-1/2 flex-col gap-4 xl:w-[30%]"
+						className="fixed top-8 left-1/2 z-99 flex w-[92%] -translate-x-1/2 flex-col gap-4 xl:w-[30%]"
 						exit={{ opacity: 0, y: -10, scale: 0.95 }}
 						initial={{ opacity: 0, y: -10, scale: 0.95 }}
 						ref={menuRef}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
-						<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
-							<Link
-								className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
-								href="/"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								<Image
-									alt="logo"
-									height={34}
-									src={`${svgPath}logo.svg`}
-									width={34}
-								/>
-								<h1
-									className={`${unbounded.className} text-2xl`}
-								>
-									StalHub
-								</h1>
-							</Link>
-						</div>
+						<div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-4">
+							<div className="flex flex-col gap-4 p-1">
+								<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
+									<Link
+										className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
+										href="/"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										<Image
+											alt="logo"
+											height={34}
+											src={`${svgPath}logo.svg`}
+											width={34}
+										/>
+										<h1
+											className={`${unbounded.className} text-2xl`}
+										>
+											StalHub
+										</h1>
+									</Link>
+								</div>
 
-						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-							<Accordion
-								className="flex flex-col gap-4"
-								disableEntranceAnimation
-								items={dropdownItems}
-								selectionMode="single"
-								size="sm"
-							/>
-						</div>
-						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-							<ItemSearchModal
-								trigger={
-									<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
-										<span className="flex items-center gap-3">
+								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+									<Accordion
+										className="flex flex-col gap-4"
+										disableEntranceAnimation
+										items={dropdownItems}
+										selectionMode="single"
+										size="sm"
+									/>
+								</div>
+								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+									<ItemSearchModal
+										trigger={
+											<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
+												<span className="flex items-center gap-3">
+													<Icon
+														className="text-xl"
+														icon="lucide:search"
+													/>
+													<span className="font-semibold">
+														{t(
+															'modals.search.title'
+														)}
+													</span>
+												</span>
+												<Icon
+													className="text-foreground text-lg"
+													icon="lucide:corner-down-left"
+												/>
+											</button>
+										}
+									/>
+									<Accordion
+										className="flex flex-col gap-4"
+										disableEntranceAnimation
+										items={settingsAccordionItems}
+										selectionMode="single"
+										size="sm"
+									/>
+								</div>
+								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+									{MobileLinks.map((link) => (
+										<Link
+											className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"
+											href={link.href}
+											key={link.title}
+											onClick={() => setIsMenuOpen(false)}
+										>
 											<Icon
-												className="text-xl"
-												icon="lucide:search"
+												className="text-2xl"
+												icon={link.iconName}
 											/>
 											<span className="font-semibold">
-												{t('modals.search.title')}
+												{link.title}
 											</span>
-										</span>
-										<Icon
-											className="text-foreground text-lg"
-											icon="lucide:corner-down-left"
-										/>
-									</button>
-								}
-							/>
-							<Accordion
-								className="flex flex-col gap-4"
-								disableEntranceAnimation
-								items={settingsAccordionItems}
-								selectionMode="single"
-								size="sm"
-							/>
-						</div>
-						<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-							{MobileLinks.map((link) => (
-								<Link
-									className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"
-									href={link.href}
-									key={link.title}
-									onClick={() => setIsMenuOpen(false)}
-								>
-									<Icon
-										className="text-2xl"
-										icon={link.iconName}
-									/>
-									<span className="font-semibold">
-										{link.title}
-									</span>
-									<Icon
-										className="ml-auto size-5"
-										icon="lucide:external-link"
-									/>
-								</Link>
-							))}
+											<Icon
+												className="ml-auto size-5"
+												icon="lucide:external-link"
+											/>
+										</Link>
+									))}
+								</div>
+							</div>
 						</div>
 					</motion.div>
 				</>
