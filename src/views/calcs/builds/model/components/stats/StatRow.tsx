@@ -1,7 +1,6 @@
 'use client'
 
 import { memo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { roundNumber } from '../hooks/useBuildStats'
 
