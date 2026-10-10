@@ -58,7 +58,7 @@ export function buildClanDemoData(seed = 42): ClanDemoData {
 		rank: i === 0 ? 'LEADER' : i < 3 ? 'OFFICER' : 'SOLDIER',
 		join_time: null,
 		user_id: i + 100,
-		user: { id: i + 100, username: `user_${i}`, name },
+		user: { id: i + 100, username: `user_${i}`, name, badges: [] },
 		synced_at: new Date().toISOString(),
 	}))
 

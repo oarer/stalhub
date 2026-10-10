@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { articleQueries } from '@/queries/article/article.queries'
 
@@ -60,7 +61,7 @@ export default function ArticlesView() {
 							<div className="flex items-center gap-3 font-medium text-foreground text-xs">
 								<div className="flex items-center gap-1">
 									<Icon icon="lucide:user" />
-									{article.author.username}
+									<Username user={article.author} />
 								</div>
 								<div className="flex items-center gap-1">
 									<Icon icon="lucide:calendar" />

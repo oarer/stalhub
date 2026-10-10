@@ -57,7 +57,7 @@ export interface UserSettings {
 }
 
 export interface UserBadge {
-	id: string
+	id: number
 	name: string
 	icon: string | null
 	image: string | null

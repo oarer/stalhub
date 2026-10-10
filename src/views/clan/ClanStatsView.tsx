@@ -37,6 +37,7 @@ function ClanStatsContent({ clanId }: { clanId: string }) {
 	return (
 		<div className="flex flex-col gap-4">
 			<ClanStatsBody
+				clanId={clanId}
 				grenadeAllTime={grenadeAllTime}
 				grenadeStages={grenadeStages}
 				members={members}

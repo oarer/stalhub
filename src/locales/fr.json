@@ -411,6 +411,10 @@
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "Profil",
+      "logout": "Se déconnecter"
     }
   },
   "map": {
@@ -1911,7 +1915,8 @@
     "byAuthor": "Article de {author}",
     "notFound": "Article introuvable",
     "toc": {
-      "title": "Sommaire"
+      "title": "Sommaire",
+      "collapse": "Réduire"
     },
     "comments": {
       "title": "Commentaires ({count})",
@@ -2133,7 +2138,7 @@
       "noBuilds": "Aucune build",
       "search": "Rechercher",
       "noSquadsHere": "Il n'y a pas encore d'escouades sur cette carte",
-      "createFirstHint": "Créez votre première escouade en cliquant sur «Créer une escouade»",
+      "createFirstHint": "Appuyez sur « Créer » ou sur une carte vide ci-dessous",
       "png": {
         "previewTitle": "Aperçu des escouades",
         "title": "Escouades · {map}",
@@ -2157,8 +2162,31 @@
         "moveError": "Impossible de déplacer le membre",
         "pngError": "Impossible d'enregistrer l'image",
         "pngCopied": "Image copiée",
-        "copyError": "Impossible de copier"
-      }
+        "copyError": "Impossible de copier",
+        "renameError": "Échec du renommage"
+      },
+      "autoName": "Escouade {n}",
+      "quickCreateTitle": "Créer une escouade sur cette carte",
+      "roster": {
+        "title": "Membres",
+        "search": "Rechercher par pseudo",
+        "empty": "Aucun membre",
+        "pickHint": "Cliquez sur un emplacement vide, puis choisissez un membre à gauche",
+        "targetSet": "Emplacement {slot} · {squad}",
+        "absent": "Absent aujourd’hui",
+        "kdHint": "Kills : {kills} · Morts : {deaths} · Parties : {games}"
+      },
+      "squadCount": "Escouades : {count} / {max}",
+      "squadCountHint": "Escouades sur cette carte",
+      "newSquad": "Nouvelle escouade",
+      "squadSlot": "Emplacement {n} / {max}",
+      "freeSlot": "Emplacement libre",
+      "bench": {
+        "title": "Joueurs libres",
+        "empty": "Banc vide — tout le monde est en escouade"
+      },
+      "renameTitle": "Renommer l’escouade",
+      "pickTargetTitle": "Équipement de {name} — choisir l’escouade"
     },
     "sessions": {
       "title": "Guerres de clans",
@@ -2452,6 +2480,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "Aucune donnée d’équipement",
+      "editGear": "Modifier l’équipement"
     }
   },
   "me": {

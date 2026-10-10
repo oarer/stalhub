@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { cn } from '@/lib/cn'
 import type { ClanSchedule } from '@/types/clan/clan.type'
 import { TOURNAMENT_DAYS } from '@/types/clan/clan.type'
@@ -155,7 +156,7 @@ export function KickList({
 													className={`truncate font-mono font-semibold text-foreground text-xs`}
 													href={`/users/${row.user.id}`}
 												>
-													{row.user.name}
+													<Username user={row.user} />
 												</Link>
 											</HoverUserCard>
 										)}

@@ -9,13 +9,18 @@ import type {
 	GrenadeAllTimeResponse,
 	GrenadeStagesResponse,
 } from '@/types/clan/clan.type'
+import type { LoadoutData } from '@/types/loadout/loadout.type'
 import { formatKd } from '../../clan.utils'
+import { useClanGear } from '../../hooks/useClanGear'
+import { useClanGearEdit } from '../../hooks/useClanGearEdit'
 import { StatCard } from '../dashboard/StatCard'
+import { GearEditModals } from '../members/GearEditModals'
 import { type MapStatRow, MapStatsTable } from './MapStatsTable'
 import { PlayerList } from './PlayerList'
 import { buildPlayers } from './stats.utils'
 
 interface ClanStatsBodyProps {
+	clanId?: string
 	stats: ClanStats
 	members: ClanMember[]
 	grenadeAllTime: GrenadeAllTimeResponse
@@ -23,6 +28,7 @@ interface ClanStatsBodyProps {
 }
 
 export function ClanStatsBody({
+	clanId,
 	stats,
 	members,
 	grenadeAllTime,
@@ -99,6 +105,14 @@ export function ClanStatsBody({
 		return map
 	}, [grenadeAllTime])
 
+	const memberByName = useMemo(() => {
+		const map = new Map<string, ClanMember>()
+		for (const m of members ?? []) {
+			map.set(m.name.trim().toLowerCase(), m)
+		}
+		return map
+	}, [members])
+
 	const totalBattles = stats.sessions.reduce(
 		(n, s) => n + s.screenshots.length,
 		0
@@ -155,15 +169,71 @@ export function ClanStatsBody({
 						{t('clan.stats.emptyDesc')}
 					</p>
 				</div>
+			) : clanId ? (
+				<PlayerListWithGear
+					clanId={clanId}
+					grenadeStages={grenadeStages}
+					grenades={grenadeTotals}
+					memberByName={memberByName}
+					members={members}
+					onSelect={setSelected}
+					players={players}
+					selected={selected}
+				/>
 			) : (
 				<PlayerList
 					grenadeStages={grenadeStages}
 					grenades={grenadeTotals}
+					memberByName={memberByName}
 					onSelect={setSelected}
 					players={players}
 					selected={selected}
 				/>
 			)}
 		</div>
+	)
+}
+
+function PlayerListWithGear({
+	clanId,
+	members,
+	...props
+}: {
+	clanId: string
+	members: ClanMember[]
+	grenadeStages: GrenadeStagesResponse
+	grenades: Map<string, number>
+	memberByName: Map<string, ClanMember>
+	players: Parameters<typeof PlayerList>[0]['players']
+	selected: string | null
+	onSelect: (name: string | null) => void
+}) {
+	const { loadoutByUserId, weapons, armors, buildById } =
+		useClanGear(clanId)
+	const gearEdit = useClanGearEdit(clanId)
+
+	const gearByName = useMemo(() => {
+		const map = new Map<string, LoadoutData | null>()
+		for (const m of members ?? []) {
+			if (m.user_id == null) continue
+			map.set(
+				m.name.trim().toLowerCase(),
+				loadoutByUserId.get(m.user_id)?.data ?? null
+			)
+		}
+		return map
+	}, [members, loadoutByUserId])
+
+	return (
+		<>
+			<GearEditModals controller={gearEdit} />
+			<PlayerList
+				{...props}
+				canEditGear={gearEdit.canEditGear}
+				gearByName={gearByName}
+				lookups={{ weapons, armors, buildById }}
+				onEditGear={gearEdit.openGearEdit}
+			/>
+		</>
 	)
 }

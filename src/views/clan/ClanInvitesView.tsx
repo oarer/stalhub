@@ -12,6 +12,7 @@ import { CopyButton } from '@/components/ui/CopyButton'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import Avatar from '@/components/ui/user/Avatar'
+import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -203,7 +204,7 @@ export default function ClanInvitesView() {
 
 					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-foreground text-sm">
 						<span className="font-semibold">
-							{invite.user.name || invite.user.username}
+							<Username user={invite.user} />
 						</span>
 						<span className={`font-mono font-semibold`}>
 							{formatDate(invite.created_at, 'datetime')}

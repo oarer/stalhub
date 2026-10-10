@@ -2,16 +2,19 @@
 
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
+import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { MDXRemote } from 'next-mdx-remote'
 import { useEffect, useRef, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
-import { ArticleTocAside, ArticleTocMobile, useArticleToc } from '@/components/articles/ArticleToc'
+import { ArticleTocAbsolute, ArticleTocMobile, MIN_HEADINGS, useArticleToc } from '@/components/articles/ArticleToc'
 import BlogCover from '@/components/blog/BlogCover'
 import { Button } from '@/components/ui/Button'
+import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { useMDXComponents } from '@/components/wiki/mdx-components'
 import { compileMdx } from '@/lib/actions/mdx'
 import { formatDate } from '@/lib/date'
@@ -43,6 +46,8 @@ export default function ArticleView({
 	const [compileError, setCompileError] = useState(false)
 	const contentRef = useRef<HTMLDivElement | null>(null)
 	const { activeId, headings } = useArticleToc(contentRef, compiledSource)
+	const [tocOpen, setTocOpen] = useState(true)
+	const showToc = headings.length >= MIN_HEADINGS
 	const queryClient = getQueryClient()
 	const user = useAuthStore((s) => s.user)
 
@@ -75,7 +80,7 @@ export default function ArticleView({
 
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<header className="flex flex-col gap-4 border-primary border-b pb-6">
+			<header className="flex flex-col gap-4 pb-6">
 				<Link
 					className="font-medium text-foreground text-sm transition-colors hover:text-primary"
 					href={backHref}
@@ -113,18 +118,17 @@ export default function ArticleView({
 
 				<div className="flex flex-wrap items-center gap-4 font-medium text-sm">
 					<div className="flex items-center gap-2">
-						<Image
-							alt={article.author.username}
-							className="rounded-full"
+						<Avatar
 							height={42}
-							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${article.author.id}`}
-							unoptimized
+							id={article.author.id}
+							username={article.author.username}
 							width={42}
 						/>
 						<HoverUserCard id={article.author.id}>
-							<span className={`font-medium font-mono text-xs`}>
-								{article.author.username}
-							</span>
+							<Username
+								className={`font-medium font-mono text-xs`}
+								user={article.author}
+							/>
 						</HoverUserCard>
 					</div>
 
@@ -221,7 +225,7 @@ export default function ArticleView({
 				</section>
 			)}
 
-			<div className="flex items-start gap-8">
+			<div className="relative flex min-w-0 items-start gap-8">
 				<div className="flex min-w-0 flex-1 flex-col gap-4">
 					<ArticleTocMobile activeId={activeId} headings={headings} />
 					<div className="min-h-50" ref={contentRef}>
@@ -254,12 +258,21 @@ export default function ArticleView({
 						)}
 					</div>
 				</div>
-
-				<aside className="hidden w-72 shrink-0 xl:block">
-					<div className="sticky top-28 max-h-[calc(100dvh-9rem)] overflow-y-auto">
-						<ArticleTocAside activeId={activeId} headings={headings} />
-					</div>
-				</aside>
+				{/* Spacer reserves room for the absolute TOC panel and
+					animates its width on open/close. */}
+				<motion.div
+					animate={{ width: showToc && tocOpen ? 288 : 0 }}
+					aria-hidden
+					className="hidden shrink-0 overflow-hidden xl:block"
+					initial={false}
+					transition={{ duration: 0.3, ease: 'easeOut' }}
+				/>
+				<ArticleTocAbsolute
+					activeId={activeId}
+					headings={headings}
+					onToggle={() => setTocOpen((v) => !v)}
+					open={tocOpen}
+				/>
 			</div>
 
 			<div className="border-primary border-t pt-6">

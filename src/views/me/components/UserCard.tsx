@@ -6,6 +6,7 @@ import { forwardRef } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
+import Username from '@/components/ui/user/Username'
 import { cn } from '@/lib/cn'
 import type { UserCardProps } from '@/types/me.types'
 import type { UserBadge } from '@/types/user.type'
@@ -59,14 +60,20 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 					</div>
 
 					<h2
-						className={`${mtsExtended.className} truncate font-medium text-xl leading-none`}
+						className={`${mtsExtended.className} overflow-visible truncate font-medium text-xl leading-none`}
 					>
-						{user.name}
+						<Username badges={user.badges} roles={'roles' in user ? user.roles : undefined}>
+							{user.name}
+						</Username>
 					</h2>
 
 					{user.name && (
 						<span className="font-semibold text-foreground leading-none">
-							{user.username}
+							<Username
+								plain
+								roles={'roles' in user ? user.roles : undefined}
+								username={user.username}
+							/>
 						</span>
 					)}
 				</div>

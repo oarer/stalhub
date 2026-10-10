@@ -1,3 +1,5 @@
+import type { UserBadge } from './user.type'
+
 export enum ArticleStatus {
 	PENDING = 'PENDING',
 	REVIEW = 'REVIEW',
@@ -130,6 +132,7 @@ interface ArticleAuthor {
 	id: number
 	username: string
 	avatar: string | null
+	badges: UserBadge[]
 }
 
 export interface ArticleCreate {
@@ -186,6 +189,7 @@ interface ArticleCommentAuthor {
 	username: string
 	name: string
 	avatar: string | null
+	badges: UserBadge[]
 }
 
 export interface ArticleCommentCreate {

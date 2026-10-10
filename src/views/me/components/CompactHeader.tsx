@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { mtsExtended } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
+import Username from '@/components/ui/user/Username'
 import type { BannerMode, BannerType, User, UserBadge } from '@/types/user.type'
 import MeBanner from '@/views/me/components/MeBanner'
 
@@ -57,11 +58,11 @@ export default function CompactHeader({
 								<h2
 									className={`${mtsExtended.className} font-medium text-2xl leading-none`}
 								>
-									{user.name}
+									<Username user={user}>{user.name}</Username>
 								</h2>
 								{user.name && (
 									<span className="font-semibold text-foreground leading-none">
-										{user.username}
+										<Username user={user} />
 									</span>
 								)}
 							</div>

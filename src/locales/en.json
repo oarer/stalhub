@@ -411,6 +411,10 @@
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "Profile",
+      "logout": "Log out"
     }
   },
   "map": {
@@ -1911,7 +1915,8 @@
     "byAuthor": "Article by {author}",
     "notFound": "Article not found",
     "toc": {
-      "title": "Contents"
+      "title": "Contents",
+      "collapse": "Collapse"
     },
     "comments": {
       "title": "Comments ({count})",
@@ -2133,7 +2138,7 @@
       "noBuilds": "No builds",
       "search": "Search",
       "noSquadsHere": "No squads on this map yet",
-      "createFirstHint": "Create your first squad by clicking «Create squad»",
+      "createFirstHint": "Press “Create squad” or an empty card below",
       "png": {
         "previewTitle": "Squads preview",
         "title": "Squads · {map}",
@@ -2157,8 +2162,31 @@
         "moveError": "Could not move member",
         "pngError": "Could not save image",
         "pngCopied": "Image copied",
-        "copyError": "Could not copy"
-      }
+        "copyError": "Could not copy",
+        "renameError": "Failed to rename squad"
+      },
+      "autoName": "Squad {n}",
+      "quickCreateTitle": "Create a squad on this map",
+      "roster": {
+        "title": "Members",
+        "search": "Search by nickname",
+        "empty": "No members",
+        "pickHint": "Click an empty squad slot, then pick a member on the left",
+        "targetSet": "Slot {slot} · {squad}",
+        "absent": "Absent today",
+        "kdHint": "Kills: {kills} · Deaths: {deaths} · Games: {games}"
+      },
+      "squadCount": "Squads: {count} / {max}",
+      "squadCountHint": "Squads on this map",
+      "newSquad": "New squad",
+      "squadSlot": "Slot {n} / {max}",
+      "freeSlot": "Free slot",
+      "bench": {
+        "title": "Free players",
+        "empty": "Bench is empty — everyone is in squads"
+      },
+      "renameTitle": "Rename squad",
+      "pickTargetTitle": "{name} gear — choose squad"
     },
     "sessions": {
       "title": "Clan wars",
@@ -2452,6 +2480,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "No loadout data",
+      "editGear": "Edit loadout"
     }
   },
   "me": {

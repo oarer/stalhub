@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { Tabs } from '@/components/ui/Tabs'
+import Username from '@/components/ui/user/Username'
 import { adminBadgeQueries } from '@/queries/admin/badge.queries'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { UserBadgesTab } from './detail/UserBadgesTab'
@@ -42,7 +43,7 @@ export default function UserDetailView({ userId }: Props) {
 					</Button>
 				</Link>
 				<h1 className="break-all font-semibold text-2xl">
-					{user.username}
+					<Username roles={userRoles} username={user.username} />
 				</h1>
 				{user.banned && (
 					<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">

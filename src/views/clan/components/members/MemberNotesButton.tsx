@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
+import Username from '@/components/ui/user/Username'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
 import { clanService } from '@/services/clan/clan.service'
@@ -110,7 +111,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 									<span
 										className={`font-mono font-semibold text-foreground text-xs`}
 									>
-										{note.author.name} ·{' '}
+										<Username user={note.author} /> ·{' '}
 										{formatDate(note.created_at)}
 									</span>
 									<div className="flex gap-1">

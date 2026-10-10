@@ -411,6 +411,10 @@
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "프로필",
+      "logout": "로그아웃"
     }
   },
   "map": {
@@ -1911,7 +1915,8 @@
     "byAuthor": "{author}님의 게시글",
     "notFound": "게시글을 찾을 수 없습니다",
     "toc": {
-      "title": "목차"
+      "title": "목차",
+      "collapse": "접기"
     },
     "comments": {
       "title": "댓글 ({count})",
@@ -2133,7 +2138,7 @@
       "noBuilds": "빌드 없음",
       "search": "검색",
       "noSquadsHere": "이 맵에는 아직 분대가 없습니다",
-      "createFirstHint": "«분대 생성»을 눌러 첫 분대를 만들어 보세요",
+      "createFirstHint": "«분대 만들기»나 아래 빈 카드를 누르세요",
       "png": {
         "previewTitle": "분대 미리보기",
         "title": "분대 · {map}",
@@ -2157,8 +2162,31 @@
         "moveError": "참가자를 이동하지 못했습니다",
         "pngError": "이미지를 저장하지 못했습니다",
         "pngCopied": "이미지가 복사되었습니다",
-        "copyError": "복사하지 못했습니다"
-      }
+        "copyError": "복사하지 못했습니다",
+        "renameError": "이름 변경 실패"
+      },
+      "autoName": "분대 {n}",
+      "quickCreateTitle": "이 맵에 분대 만들기",
+      "roster": {
+        "title": "멤버",
+        "search": "닉네임 검색",
+        "empty": "멤버 없음",
+        "pickHint": "빈 슬롯을 클릭한 뒤 왼쪽에서 멤버를 선택하세요",
+        "targetSet": "슬롯 {slot} · {squad}",
+        "absent": "오늘 불참",
+        "kdHint": "킬: {kills} · 데스: {deaths} · 게임: {games}"
+      },
+      "squadCount": "분대: {count} / {max}",
+      "squadCountHint": "이 맵의 분대",
+      "newSquad": "새 분대",
+      "squadSlot": "슬롯 {n} / {max}",
+      "freeSlot": "빈 슬롯",
+      "bench": {
+        "title": "대기 멤버",
+        "empty": "벤치가 비어 있음 — 전원 분대 배치됨"
+      },
+      "renameTitle": "분대 이름 변경",
+      "pickTargetTitle": "{name} 장비 — 분대 선택"
     },
     "sessions": {
       "title": "클랜전",
@@ -2452,6 +2480,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "장비 데이터 없음",
+      "editGear": "장비 편집"
     }
   },
   "me": {

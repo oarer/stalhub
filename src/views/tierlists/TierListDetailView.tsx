@@ -19,6 +19,7 @@ import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
@@ -168,11 +169,10 @@ export default function TierListDetailView() {
 									width={32}
 								/>
 								<HoverUserCard id={tierList.author.id}>
-									<span
+									<Username
 										className={`font-mono font-semibold text-xs`}
-									>
-										{tierList.author.name}
-									</span>
+										user={tierList.author}
+									/>
 								</HoverUserCard>
 							</div>
 						)}

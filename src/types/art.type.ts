@@ -1,3 +1,5 @@
+import type { UserBadge } from './user.type'
+
 export enum ArtType {
 	DEFAULT = 'DEFAULT',
 	NSFW = 'NSFW',
@@ -28,6 +30,7 @@ export interface ArtAuthor {
 	username: string
 	name: string
 	social_links?: Record<string, string> | null
+	badges: UserBadge[]
 }
 
 export interface ArtCreate {
@@ -87,6 +90,7 @@ export interface ArtCommentAuthor {
 	id: number
 	username: string
 	name: string
+	badges: UserBadge[]
 }
 
 export interface ArtCommentCreate {

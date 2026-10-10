@@ -295,6 +295,14 @@ class ClanService {
 		return data
 	}
 
+	async renameSquad(squadId: number, name: string): Promise<ClanSquad> {
+		const { data } = await apiClient.patch<ClanSquad>(
+			`/api/v1/clan/squads/${squadId}/name`,
+			{ name }
+		)
+		return data
+	}
+
 	async setGearOverride(
 		squadId: number,
 		slot: number,

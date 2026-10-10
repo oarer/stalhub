@@ -8,17 +8,22 @@ import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
+import type { SquadMap } from '@/types/clan/clan.type'
 import { LoadoutEditorModal } from '../me/components/LoadoutEditorModal'
 import { AssignLeaderModal } from './components/squads/AssignLeaderModal'
-import { AssignMemberModal } from './components/squads/AssignMemberModal'
 import { ChangeMapModal } from './components/squads/ChangeMapModal'
-import { CreateSquadModal } from './components/squads/CreateSquadModal'
 import { MapTabs } from './components/squads/MapTabs'
 import { PngPreviewModal } from './components/squads/PngPreviewModal'
 import { SquadCard } from './components/squads/SquadCard'
 import { SquadDndProvider } from './components/squads/SquadDnd'
 import { SquadPngTemplate } from './components/squads/SquadPngTemplate'
-import { SQUAD_MAPS } from './components/squads/squads.const'
+import { SquadRosterPanel } from './components/squads/SquadRosterPanel'
+import {
+	MAX_SQUADS_PER_MAP,
+	SQUAD_MAPS,
+} from './components/squads/squads.const'
+import { GearEditModals } from './components/members/GearEditModals'
+import { useClanGearEdit } from './hooks/useClanGearEdit'
 import { useClanSquads } from './hooks/useClanSquads'
 
 export default function ClanSquadsView() {
@@ -43,8 +48,49 @@ function ClanSquadsContent({
 		clanId,
 		currentUserId
 	)
+	// Leader can manage squads/gear even if their account is not linked
+	// to an officer-ranked member row (colonels are already officers).
+	const canManage = data.isOfficer || data.isLeader
+	const gearEdit = useClanGearEdit(clanId)
 
 	const editingCtx = modals.editingCtx
+
+	const squadsByMap = useMemo(() => {
+		const map = {
+			SMALL_BERDOVKA: 0,
+			KHVOUINOY: 0,
+			NIZINA: 0,
+		} as Record<SquadMap, number>
+		for (const squad of data.squads ?? []) {
+			map[squad.map] = (map[squad.map] ?? 0) + 1
+		}
+		return map
+	}, [data.squads])
+
+	const assignedOnActiveMap = useMemo(() => {
+		const set = new Set<number>()
+		for (const squad of data.squads ?? []) {
+			if (squad.map !== modals.activeMap) continue
+			for (const m of squad.members) {
+				set.add(m.member_id)
+			}
+		}
+		return set
+	}, [data.squads, modals.activeMap])
+
+	const quickCreate = (map: SquadMap) => {
+		const onMap = (data.squads ?? []).filter((s) => s.map === map)
+		if (onMap.length >= MAX_SQUADS_PER_MAP) return
+		const taken = new Set(onMap.map((s) => s.name.trim().toLowerCase()))
+		let n = onMap.length + 1
+		let name = t('clan.squads.autoName', { n })
+		while (taken.has(name.trim().toLowerCase())) {
+			n += 1
+			name = t('clan.squads.autoName', { n })
+		}
+		modals.setActiveMap(map)
+		mutations.createMutation.mutate({ name, map })
+	}
 
 	const gearOverrideForEdit = useMemo(() => {
 		if (!editingCtx) return null
@@ -91,52 +137,174 @@ function ClanSquadsContent({
 						<Icon className="text-lg" icon="lucide:download" />
 						PNG
 					</Button>
-					{data.isOfficer && (
-						<CreateSquadModal
-							isPending={mutations.createMutation.isPending}
-							map={modals.newMap}
-							name={modals.newName}
-							onMapChange={modals.setNewMap}
-							onNameChange={modals.setNewName}
-							onOpenChange={(open) => {
-								if (open) modals.setNewMap(modals.activeMap)
-								modals.setCreateOpen(open)
-							}}
-							onSave={() =>
-								mutations.createMutation.mutate({
-									name: modals.newName.trim(),
-									map: modals.newMap,
-								})
+					{canManage && (
+						<Button
+							className="gap-2"
+							disabled={
+								mutations.createMutation.isPending ||
+								modals.activeSquads.length >= MAX_SQUADS_PER_MAP
 							}
-							open={modals.createOpen}
-						/>
+							loading={mutations.createMutation.isPending}
+							onClick={() => quickCreate(modals.activeMap)}
+							size="md"
+							title={t('clan.squads.quickCreateTitle')}
+							variant="primary"
+						>
+							<Icon className="text-lg" icon="lucide:plus" />
+							{t('clan.squads.create')}
+						</Button>
 					)}
 				</div>
 			</div>
 
-			<AssignMemberModal
-				members={mutations.unassignedMembers(modals.assignSquad?.map)}
-				onAssign={(memberId) => {
-					if (
-						modals.assignSquadId != null &&
-						modals.assignSlot != null
-					) {
-						mutations.assignMutation.mutate({
-							squadId: modals.assignSquadId,
-							member_id: memberId,
-							slot: modals.assignSlot,
-						})
-					}
-				}}
-				onOpenChange={(open) => {
-					if (!open) {
-						modals.setAssignSquadId(null)
-						modals.setAssignSlot(null)
-					}
-				}}
-				slot={modals.assignSlot}
-				squadId={modals.assignSquadId}
-			/>
+			<SquadDndProvider>
+				<div className="flex flex-col items-start gap-4 xl:flex-row">
+					<div className="min-w-0 flex-1 self-stretch">
+						<MapTabs
+							activeMap={modals.activeMap}
+							isCreating={mutations.createMutation.isPending}
+							isOfficer={canManage}
+							onActiveMapChange={modals.setActiveMap}
+							onCreateSquad={quickCreate}
+							squadCount={modals.activeSquads.length}
+							squadsByMap={squadsByMap}
+						>
+							{modals.activeSquads.map((squad) => (
+								<SquadCard
+									absentUserIds={data.absentUserIds}
+									armors={data.armors}
+									buildById={data.buildById}
+									currentUserId={currentUserId}
+									isApprovePending={
+										mutations.approveMutation.isPending
+									}
+									isDeletePending={
+										mutations.deleteMutation.isPending
+									}
+									isJoinPending={
+										mutations.joinMutation.isPending
+									}
+									isLeaderPending={
+										mutations.leaderMutation.isPending
+									}
+									isOfficer={canManage}
+									isRejectPending={
+										mutations.rejectMutation.isPending
+									}
+									isRenamePending={
+										mutations.renameMutation.isPending
+									}
+									kdByName={data.kdByName}
+									key={squad.id}
+									loadoutByUserId={data.loadoutByUserId}
+									myMemberId={data.myMemberId}
+									onApprove={(requestId) =>
+										mutations.approveMutation.mutate(
+											requestId
+										)
+									}
+									onDelete={() =>
+										mutations.deleteMutation.mutate(
+											squad.id
+										)
+									}
+									onRename={(name) =>
+										mutations.renameMutation.mutate({
+											squadId: squad.id,
+											name,
+										})
+									}
+									onEditLoadout={(
+										memberId,
+										squadMemberId,
+										slot
+									) =>
+										modals.setEditingCtx({
+											clanMemberId: memberId,
+											squadMemberId,
+											slot,
+										})
+									}
+									onJoin={() =>
+										mutations.joinMutation.mutate(squad.id)
+									}
+									onMove={mutations.moveMember}
+									onOpenAssign={(slot) => {
+										const cur = modals.assignTarget
+										if (
+											cur?.squadId === squad.id &&
+											cur?.slot === slot
+										) {
+											modals.setAssignTarget(null)
+										} else {
+											modals.setAssignTarget({
+												squadId: squad.id,
+												slot,
+											})
+										}
+									}}
+									onOpenLeader={() =>
+										modals.setLeaderSquadId(squad.id)
+									}
+									onOpenMap={() => {
+										modals.setTargetMap(squad.map)
+										modals.setMapSquadId(squad.id)
+									}}
+									onReject={(requestId) =>
+										mutations.rejectMutation.mutate(
+											requestId
+										)
+									}
+									onRemoveMember={(slot) =>
+										mutations.removeMutation.mutate({
+											squadId: squad.id,
+											slot,
+										})
+									}
+									pendingRequest={
+										data.pendingRequest.get(squad.id) ??
+										false
+									}
+									selectedTarget={modals.assignTarget}
+									squad={squad}
+									weapons={data.weapons}
+								/>
+							))}
+						</MapTabs>
+					</div>
+					<div className="w-full xl:w-80 xl:shrink-0">
+						<SquadRosterPanel
+							absentUserIds={data.absentUserIds}
+							assignedMemberIds={assignedOnActiveMap}
+							canEditGear={gearEdit.canEditGear}
+							canManage={canManage}
+							isAssignPending={mutations.assignMutation.isPending}
+							kdByName={data.kdByName}
+							loadoutByUserId={data.loadoutByUserId}
+							members={data.members ?? []}
+							onClearTarget={() => modals.setAssignTarget(null)}
+							onEditGear={gearEdit.openGearEdit}
+							onPick={(member) => {
+								if (modals.assignTarget) {
+									mutations.assignMutation.mutate({
+										squadId: modals.assignTarget.squadId,
+										member_id: member.id,
+										slot: modals.assignTarget.slot,
+									})
+								}
+							}}
+							selectedTarget={modals.assignTarget}
+							targetSquadName={modals.targetSquad?.name ?? null}
+							onUnassign={(source) =>
+								mutations.removeMutation.mutate({
+									squadId: source.squadId,
+									slot: source.slot,
+								})
+							}
+						/>
+					</div>
+				</div>
+			</SquadDndProvider>
 
 			<AssignLeaderModal
 				isPending={mutations.leaderMutation.isPending}
@@ -161,77 +329,6 @@ function ClanSquadsContent({
 				}}
 				squad={modals.leaderSquad}
 			/>
-
-			<MapTabs
-				activeMap={modals.activeMap}
-				isOfficer={data.isOfficer}
-				onActiveMapChange={modals.setActiveMap}
-				squadCount={modals.activeSquads.length}
-			>
-				<SquadDndProvider>
-					{modals.activeSquads.map((squad) => (
-						<SquadCard
-							absentUserIds={data.absentUserIds}
-							armors={data.armors}
-							buildById={data.buildById}
-							currentUserId={currentUserId}
-							isApprovePending={
-								mutations.approveMutation.isPending
-							}
-							isDeletePending={mutations.deleteMutation.isPending}
-							isJoinPending={mutations.joinMutation.isPending}
-							isLeaderPending={mutations.leaderMutation.isPending}
-							isOfficer={data.isOfficer}
-							isRejectPending={mutations.rejectMutation.isPending}
-							key={squad.id}
-							loadoutByUserId={data.loadoutByUserId}
-							myMemberId={data.myMemberId}
-							onApprove={(requestId) =>
-								mutations.approveMutation.mutate(requestId)
-							}
-							onDelete={() =>
-								mutations.deleteMutation.mutate(squad.id)
-							}
-							onEditLoadout={(memberId, squadMemberId, slot) =>
-								modals.setEditingCtx({
-									clanMemberId: memberId,
-									squadMemberId,
-									slot,
-								})
-							}
-							onJoin={() =>
-								mutations.joinMutation.mutate(squad.id)
-							}
-							onMove={mutations.moveMember}
-							onOpenAssign={(slot) => {
-								modals.setAssignSquadId(squad.id)
-								modals.setAssignSlot(slot)
-							}}
-							onOpenLeader={() =>
-								modals.setLeaderSquadId(squad.id)
-							}
-							onOpenMap={() => {
-								modals.setTargetMap(squad.map)
-								modals.setMapSquadId(squad.id)
-							}}
-							onReject={(requestId) =>
-								mutations.rejectMutation.mutate(requestId)
-							}
-							onRemoveMember={(slot) =>
-								mutations.removeMutation.mutate({
-									squadId: squad.id,
-									slot,
-								})
-							}
-							pendingRequest={
-								data.pendingRequest.get(squad.id) ?? false
-							}
-							squad={squad}
-							weapons={data.weapons}
-						/>
-					))}
-				</SquadDndProvider>
-			</MapTabs>
 
 			<ChangeMapModal
 				isPending={mutations.mapMutation.isPending}
@@ -278,7 +375,7 @@ function ClanSquadsContent({
 					}}
 					onSave={(loadout) => {
 						if (
-							data.isOfficer &&
+							canManage &&
 							modals.editingMember?.user_id !== currentUserId
 						) {
 							mutations.setGearOverrideMutation.mutate({
@@ -324,6 +421,8 @@ function ClanSquadsContent({
 				open={png.showPngModal}
 				previewUrl={png.pngPreviewUrl}
 			/>
+
+			<GearEditModals controller={gearEdit} />
 		</div>
 	)
 }

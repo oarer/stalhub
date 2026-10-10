@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
 import { Pagination } from '@/components/ui/Pagination'
 import { Skeleton } from '@/components/ui/Skeleton'
+import Username from '@/components/ui/user/Username'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { TierItemKind, TierListKind } from '@/types/tier-list.type'
@@ -263,8 +264,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 												className="size-3"
 												icon="lucide:user"
 											/>
-											{tierList.author.name ||
-												tierList.author.username}
+											<Username user={tierList.author} />
 										</span>
 									)}
 									<div className="flex items-center gap-1 text-foreground">

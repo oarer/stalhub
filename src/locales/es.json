@@ -411,6 +411,10 @@
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "Perfil",
+      "logout": "Cerrar sesión"
     }
   },
   "map": {
@@ -1911,7 +1915,8 @@
     "byAuthor": "Artículo de {author}",
     "notFound": "Artículo no encontrado",
     "toc": {
-      "title": "Contenido"
+      "title": "Contenido",
+      "collapse": "Contraer"
     },
     "comments": {
       "title": "Comentarios ({count})",
@@ -2133,7 +2138,7 @@
       "noBuilds": "No hay builds",
       "search": "Buscar",
       "noSquadsHere": "En este mapa aún no hay escuadras",
-      "createFirstHint": "Crea la primera escuadra pulsando «Crear escuadra»",
+      "createFirstHint": "Pulsa «Crear» o una tarjeta vacía abajo",
       "png": {
         "previewTitle": "Vista previa de escuadras",
         "title": "Escuadras · {map}",
@@ -2157,8 +2162,31 @@
         "moveError": "No se pudo mover al miembro",
         "pngError": "No se pudo guardar la imagen",
         "pngCopied": "Imagen copiada",
-        "copyError": "No se pudo copiar"
-      }
+        "copyError": "No se pudo copiar",
+        "renameError": "No se pudo renombrar"
+      },
+      "autoName": "Escuadra {n}",
+      "quickCreateTitle": "Crear una escuadra en este mapa",
+      "roster": {
+        "title": "Miembros",
+        "search": "Buscar por apodo",
+        "empty": "Sin miembros",
+        "pickHint": "Haz clic en un slot vacío y luego elige un miembro a la izquierda",
+        "targetSet": "Slot {slot} · {squad}",
+        "absent": "Ausente hoy",
+        "kdHint": "Asesinatos: {kills} · Muertes: {deaths} · Partidas: {games}"
+      },
+      "squadCount": "Escuadras: {count} / {max}",
+      "squadCountHint": "Escuadras en este mapa",
+      "newSquad": "Nueva escuadra",
+      "squadSlot": "Slot {n} / {max}",
+      "freeSlot": "Slot libre",
+      "bench": {
+        "title": "Jugadores libres",
+        "empty": "Banca vacía — todos están en escuadras"
+      },
+      "renameTitle": "Renombrar escuadra",
+      "pickTargetTitle": "Equipo de {name} — elige escuadra"
     },
     "sessions": {
       "title": "Guerras de clanes",
@@ -2452,6 +2480,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "Sin datos de equipamiento",
+      "editGear": "Editar equipamiento"
     }
   },
   "me": {

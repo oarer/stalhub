@@ -1,5 +1,6 @@
 import type { LoadoutData } from '../loadout/loadout.type'
 import type { Alliance } from '../player.type'
+import type { UserBadge } from '../user.type'
 
 type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
 export type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
@@ -61,6 +62,7 @@ export interface ClanMemberUser {
 	id: number
 	username: string
 	name: string
+	badges: UserBadge[]
 }
 
 export interface MismatchRosterEntry {

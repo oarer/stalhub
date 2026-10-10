@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { formatArtPrice } from '@/hooks/useBuildPrices'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
@@ -266,9 +267,10 @@ export function BuildCard({
 				{author && (
 					<span onClick={(e) => e.stopPropagation()}>
 						<HoverUserCard id={author.id}>
-							<p className={`font-normal text-primary`}>
-								{author.username}
-							</p>
+							<Username
+								className={`font-normal text-primary`}
+								user={author}
+							/>
 						</HoverUserCard>
 					</span>
 				)}

@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
+import Username from '@/components/ui/user/Username'
 import { useDebounce } from '@/hooks/useDebounce'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
@@ -104,7 +105,10 @@ export default function UsersAdminView() {
 											className="font-semibold text-sky-400 hover:underline"
 											href={`/admin/users/${user.id}`}
 										>
-											{user.username}
+											<Username
+												roles={user.roles}
+												username={user.username}
+											/>
 										</Link>
 									</Table.Cell>
 									<Table.Cell>{user.name ?? '—'}</Table.Cell>

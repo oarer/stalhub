@@ -1,20 +1,23 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { useAuthStore } from '@/stores/useAuth.store'
+import type { UserBadge } from '@/types/user.type'
 import { CommentForm } from './CommentForm'
 
 export interface ThreadCommentAuthor {
 	id: number
 	name: string
 	username: string
+	badges: UserBadge[]
 }
 
 export interface ThreadComment {
@@ -32,9 +35,11 @@ function renderContent(text: string) {
 		if (part.match(mentionRegex)) {
 			return (
 				<HoverUserCard key={i} username={part.slice(1)}>
-					<span className={`font-mono font-semibold text-primary`}>
+					<Username
+						className={`font-mono font-semibold text-primary`}
+					>
 						{part}
-					</span>
+					</Username>
 				</HoverUserCard>
 			)
 		}
@@ -158,18 +163,18 @@ function CommentItem({
 			<div className="rounded-lg bg-card px-3 py-2">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2">
-						<Image
-							alt={comment.author.name}
-							className="rounded-full"
+						<Avatar
 							height={42}
-							src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${comment.author.id}`}
-							unoptimized
+							id={comment.author.id}
+							username={comment.author.username}
 							width={42}
 						/>
 						<HoverUserCard id={comment.author.id}>
-							<span className={`font-mono font-semibold text-xs`}>
-								{comment.author.name}
-							</span>
+							<Username
+								className={`font-mono font-semibold text-xs`}
+								user={comment.author}
+								withRemoteBadges
+							/>
 						</HoverUserCard>
 						<span
 							className={`font-mono font-semibold text-foreground text-xs`}

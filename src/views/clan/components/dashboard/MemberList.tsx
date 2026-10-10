@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import type { ClanMember } from '@/types/clan/clan.type'
 import { Section } from '../../../me/components/Section'
 import { RANK_COLORS } from '../../clan.const'
@@ -56,7 +57,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 												className={`font-mono font-semibold text-foreground text-xs`}
 												href={`/users/${member.user.id}`}
 											>
-												{member.user.name}
+												<Username user={member.user} />
 											</Link>
 										</HoverUserCard>
 									)}

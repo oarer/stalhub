@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
 import { Divider } from '@/components/ui/Divider'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { Gallery } from '@/components/wiki/gallery'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
@@ -187,18 +188,16 @@ export default function ArtView({ artId }: ArtViewProps) {
 							</span>
 							{art.author.id !== null ? (
 								<HoverUserCard id={art.author.id}>
-									<span
+									<Username
 										className={`cursor-pointer font-medium font-mono text-sm`}
-									>
-										{art.author.username}
-									</span>
+										user={art.author}
+									/>
 								</HoverUserCard>
 							) : (
-								<span
+								<Username
 									className={`font-medium font-mono text-sm`}
-								>
-									{art.author.name}
-								</span>
+									user={art.author}
+								/>
 							)}
 						</div>
 

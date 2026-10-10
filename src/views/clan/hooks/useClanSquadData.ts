@@ -9,12 +9,15 @@ import { clanQueries } from '@/queries/clan/clan.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
 import type { UserLoadout } from '@/types/loadout/loadout.type'
 import { useClanRoles } from './useClanRoles'
+import { buildPlayers } from '../components/stats/stats.utils'
+import { kdValue } from '../clan.utils'
 
 export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const { data: squads, isLoading } = useSuspenseQuery(
 		clanQueries.getSquads(clanId)
 	)
-	const { members, myMember, myMemberId, isOfficer } = useClanRoles()
+	const { members, myMember, myMemberId, isOfficer, isLeader } =
+		useClanRoles()
 	const { data: todayAbsences } = useSuspenseQuery(
 		clanQueries.getAbsences(clanId, mskDate())
 	)
@@ -27,6 +30,7 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const { data: builds } = useSuspenseQuery(
 		buildApiQueries.list({ take: 500 })
 	)
+	const { data: stats } = useSuspenseQuery(clanQueries.getStats(clanId))
 
 	const memberUserIds = useMemo(
 		() =>
@@ -70,6 +74,23 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 		return map
 	}, [loadouts])
 
+	const kdByName = useMemo(() => {
+		const map = new Map<
+			string,
+			{ kd: number; kills: number; deaths: number; games: number }
+		>()
+		if (!stats) return map
+		for (const p of buildPlayers(stats)) {
+			map.set(p.name.trim().toLowerCase(), {
+				kd: kdValue(p.kills, p.deaths),
+				kills: p.kills,
+				deaths: p.deaths,
+				games: p.stages.length,
+			})
+		}
+		return map
+	}, [stats])
+
 	return {
 		squads,
 		isLoading,
@@ -80,8 +101,10 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 		myBuilds,
 		loadoutByUserId,
 		isOfficer,
+		isLeader,
 		myMemberId,
 		pendingRequest,
 		absentUserIds,
+		kdByName,
 	}
 }

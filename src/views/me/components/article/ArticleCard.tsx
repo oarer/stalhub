@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Badge } from '@/components/ui/Badge'
+import Username from '@/components/ui/user/Username'
 import {
 	MAX_VISIBLE_TAGS,
 	STATUS_VARIANT,
@@ -57,7 +58,11 @@ export function ArticleCard({ article }: ArticleCardProps) {
 					</div>
 				)}
 				<p className={`font-mono font-semibold`}>
-					{author && <span>{author.username} · </span>}
+					{author && (
+						<>
+							<Username user={author} /> ·{' '}
+						</>
+					)}
 					{date && <span>{formatDate(date, 'date')}</span>}
 				</p>
 			</div>

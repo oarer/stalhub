@@ -5,15 +5,19 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { Badge } from '@/components/ui/Badge'
-import { Skeleton } from '@/components/ui/Skeleton'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import type { ClanMemberNoteWithMember } from '@/types/clan/clan.type'
 import { Section } from '../me/components/Section'
 import { RANK_COLORS, RANK_ORDER } from './clan.const'
+import { ClanMemberHoverCard } from './components/members/ClanMemberCard'
+import { GearEditModals } from './components/members/GearEditModals'
 import { MemberActions } from './components/members/MemberActions'
 import { MemberNotesButton } from './components/members/MemberNotesButton'
+import { useClanGear } from './hooks/useClanGear'
+import { useClanGearEdit } from './hooks/useClanGearEdit'
 import { useClanMemberMutations } from './hooks/useClanMemberMutations'
 import { useClanRoles } from './hooks/useClanRoles'
 
@@ -29,9 +33,14 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 	const t = useTranslations()
 	const { isOfficer } = useClanRoles()
 	const { renameMutation, deleteMutation } = useClanMemberMutations(clanId)
-	const { data: members, isLoading } = useSuspenseQuery(
-		clanQueries.getMembers(clanId)
-	)
+	const {
+		members,
+		loadoutByUserId,
+		weapons,
+		armors,
+		buildById,
+	} = useClanGear(clanId)
+	const gearEdit = useClanGearEdit(clanId)
 	const { data: squads } = useSuspenseQuery(clanQueries.getSquads(clanId))
 	const { data: allNotes } = useQuery({
 		...clanQueries.getAllNotes(),
@@ -56,13 +65,13 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 		return map
 	}, [allNotes])
 
-	if (isLoading) {
+	if (members.length === 0) {
 		return (
-			<div className="flex flex-col gap-2">
-				{[...Array(5)].map((_, i) => (
-					<Skeleton className="h-14 w-full" key={i} />
-				))}
-			</div>
+			<Section icon="lucide:users" title={t('clan.members.title')}>
+				<p className="py-4 text-center font-semibold text-muted-foreground text-sm">
+					{t('clan.stats.emptyTitle')}
+				</p>
+			</Section>
 		)
 	}
 
@@ -74,6 +83,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 
 	return (
 		<Section icon="lucide:users" title={t('clan.members.title')}>
+			<GearEditModals controller={gearEdit} />
 			<div className="flex flex-col">
 				{sorted.map((member) => {
 					const note = noteByMemberId.get(member.id)
@@ -97,16 +107,43 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 								)}
 								<div className="flex min-w-0 items-center gap-2">
 									<div className="flex flex-col">
-										<p className="font-semibold text-sm leading-4">
-											{member.name}
-										</p>
+										<ClanMemberHoverCard
+											gear={
+												member.user_id != null
+													? (loadoutByUserId.get(
+															member.user_id
+														)?.data ?? null)
+													: null
+											}
+											lookups={{
+												weapons,
+												armors,
+												buildById,
+											}}
+											member={member}
+											onEditGear={
+												gearEdit.canEditGear(member)
+													? () =>
+															gearEdit.openGearEdit(
+																member
+															)
+													: undefined
+											}
+										>
+											<p className="font-semibold text-sm leading-4">
+												{member.name}
+											</p>
+										</ClanMemberHoverCard>
 										{member.user && (
 											<HoverUserCard id={member.user.id}>
 												<Link
 													className={`font-mono font-semibold text-foreground text-xs`}
 													href={`/users/${member.user.id}`}
 												>
-													{member.user.name}
+													<Username
+														user={member.user}
+														withRemoteBadges
+													/>
 												</Link>
 											</HoverUserCard>
 										)}
