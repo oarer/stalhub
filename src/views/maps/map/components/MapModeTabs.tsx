@@ -45,7 +45,7 @@ export default function MapModeTabs({
 					type="button"
 					variant={mode === item.value ? 'primary' : 'secondary'}
 				>
-					<span className='font-bold'>{item.label}</span>
+					<span className="font-semibold">{item.label}</span>
 					<Icon className="text-lg" icon={item.icon} />
 				</Button>
 			))}

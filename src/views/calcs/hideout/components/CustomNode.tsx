@@ -6,7 +6,6 @@ import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import Input from '@/components/ui/Input'
@@ -59,7 +58,7 @@ const CustomNode = memo(
 							</h2>
 							{data.perCraft && data.perCraft > 1 && (
 								<span
-									className={`${montserrat.className} font-semibold text-[10px] text-text-accent`}
+									className={`font-mono font-semibold text-[10px] text-foreground`}
 								>
 									×{data.perCraft}
 								</span>
@@ -85,7 +84,7 @@ const CustomNode = memo(
 						</div>
 					) : data.quantity && data.quantity > 0 ? (
 						<span
-							className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+							className={`font-mono font-semibold text-foreground text-sm`}
 						>
 							×{data.quantity}
 						</span>
@@ -120,9 +119,7 @@ const CustomNode = memo(
 										{ing.name}
 									</span>
 								</div>
-								<span className={montserrat.className}>
-									×{ing.total}
-								</span>
+								<span className="font-mono">×{ing.total}</span>
 							</div>
 						))}
 					</div>
@@ -135,7 +132,7 @@ const CustomNode = memo(
 				{data.energyPerCraft && (
 					<div className="flex items-center justify-between font-semibold text-sm">
 						<p>{t('hideout.energy')}</p>
-						<span className={montserrat.className}>
+						<span className="font-mono">
 							{data.energyPerCraft *
 								Math.ceil(
 									(data.quantity ?? 0) / (data.perCraft ?? 1)
@@ -162,7 +159,7 @@ const CustomNode = memo(
 								type="number"
 								value={data.price ?? ''}
 							/>
-							<span className={montserrat.className}>
+							<span className="font-mono">
 								{(
 									(data.price ?? 0) * (data.quantity ?? 0)
 								).toLocaleString()}

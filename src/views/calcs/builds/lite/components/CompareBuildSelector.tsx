@@ -67,7 +67,7 @@ export function CompareBuildSelector({
 						className="text-xl"
 						icon="lucide:git-compare-arrows"
 					/>
-					<p className="font-semibold text-md">
+					<p className="font-medium text-md">
 						{t('buildsLite.compare')}
 					</p>
 				</Button>
@@ -86,10 +86,10 @@ export function CompareBuildSelector({
 			{compareBuild && (
 				<div className="flex min-w-0 items-center gap-1 rounded-lg bg-card/50 px-2 py-2 ring-2 ring-primary/50">
 					<Icon
-						className="shrink-0 text-green-500 text-lg"
+						className="shrink-0 text-lg text-primary"
 						icon="lucide:git-compare-arrows"
 					/>
-					<p className="max-w-44 truncate font-semibold text-sm">
+					<p className="max-w-44 truncate font-medium text-sm">
 						{compareBuild.name}
 					</p>
 					<Button

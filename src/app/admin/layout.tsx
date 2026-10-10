@@ -1,5 +1,10 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import AdminSidebar from '@/views/admin/AdminSidebar'
+
+export const metadata: Metadata = {
+	robots: { index: false, follow: false },
+}
 
 export default async function AdminLayout({
 	children,

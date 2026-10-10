@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { memo, useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Tabs } from '@/components/ui/Tabs'
 import type { Build } from '@/types/build.type'
@@ -61,7 +60,7 @@ const CompareValueRow = memo(function CompareValueRow({
 		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3">
 			<span className="truncate">{name}</span>
 			<span
-				className={`${montserrat.className} w-20 rounded-lg px-2 text-right font-semibold`}
+				className={`w-20 rounded-lg px-2 text-right font-medium font-mono`}
 				style={{
 					color: colorFor(aBetter),
 					background: `${colorFor(aBetter)}66`,
@@ -71,7 +70,7 @@ const CompareValueRow = memo(function CompareValueRow({
 				{isPercent ? '%' : ''}
 			</span>
 			<span
-				className={`${montserrat.className} w-20 rounded-lg px-2 text-right font-semibold`}
+				className={`w-20 rounded-lg px-2 text-right font-medium font-mono`}
 				style={{
 					color: colorFor(bBetter),
 					background: `${colorFor(bBetter)}66`,
@@ -88,10 +87,14 @@ function CompareHeaderRow({ nameA, nameB }: { nameA: string; nameB: string }) {
 	const t = useTranslations()
 
 	return (
-		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-primary border-b pb-2">
-			<span className="font-bold">{t('build.stats.title')}</span>
-			<span className="w-20 truncate text-right font-bold">{nameA}</span>
-			<span className="w-20 truncate text-right font-bold">{nameB}</span>
+		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-primary/50 border-b pb-2">
+			<span className="font-semibold">{t('build.stats.title')}</span>
+			<span className="w-20 truncate text-right font-medium">
+				{nameA}
+			</span>
+			<span className="w-20 truncate text-right font-medium">
+				{nameB}
+			</span>
 		</p>
 	)
 }

@@ -38,13 +38,15 @@ class ArticleService {
 	async publicList({
 		take = 20,
 		page = 1,
+		type,
 	}: {
 		take?: number
 		page?: number
+		type?: string
 	} = {}): Promise<PaginatedResponse<Article>> {
 		const { data } = await apiClient.get<PaginatedResponse<Article>>(
 			'/api/v1/articles/public',
-			{ params: { take, page } }
+			{ params: { take, page, type } }
 		)
 		return data
 	}
@@ -124,6 +126,40 @@ class ArticleService {
 
 	async unstar(id: string): Promise<void> {
 		await apiClient.delete(`/api/v1/articles/${id}/star`)
+	}
+
+	async getDigest(id: string): Promise<{
+		digest: string
+		model: string
+		fallback: boolean
+	}> {
+		const { data } = await apiClient.post<{
+			digest: string
+			model: string
+			fallback: boolean
+		}>(`/api/v1/articles/${id}/digest`)
+		return data
+	}
+
+	async publishBlog(
+		id: string,
+		payload: {
+			digest: string
+			targets?: ('tg' | 'ds')[]
+			with_cover?: boolean
+		}
+	): Promise<{
+		url: string
+		withCover: boolean
+		cover_error?: string
+		tg?: { ok: boolean; message_id?: number; error?: string }
+		ds?: { ok: boolean; message_id?: string; error?: string }
+	}> {
+		const { data } = await apiClient.post(
+			`/api/v1/articles/${id}/publish`,
+			payload
+		)
+		return data
 	}
 }
 

@@ -47,7 +47,7 @@ export default function MeBuildsView() {
 			</div>
 
 			{builds?.data.length === 0 ? (
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-semibold text-foreground text-sm">
 					{t('me.builds.noBuilds')}
 				</p>
 			) : (

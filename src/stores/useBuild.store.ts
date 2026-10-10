@@ -482,7 +482,7 @@ export const useBuildStore = create<BuildState>()(
 
 			setSicknessLevel: (key, level) => {
 				set((state) => {
-					const sickness = { ...(state.build.sickness ?? {}) }
+					const sickness = { ...state.build.sickness }
 					if (level <= 0) {
 						delete sickness[key]
 					} else {
@@ -503,7 +503,7 @@ export const useBuildStore = create<BuildState>()(
 
 			removeSickness: (key) => {
 				set((state) => {
-					const sickness = { ...(state.build.sickness ?? {}) }
+					const sickness = { ...state.build.sickness }
 					delete sickness[key]
 					return {
 						build: {

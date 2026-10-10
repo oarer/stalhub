@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import {
 	type InfoColor,
 	type Item,
@@ -102,7 +102,7 @@ export const TierListPngTemplate = forwardRef<
 											/>
 										)}
 										<span
-											className={`${montserrat.className} truncate font-semibold`}
+											className={`truncate font-mono font-semibold`}
 											style={{
 												color: getItemColor(entry),
 											}}

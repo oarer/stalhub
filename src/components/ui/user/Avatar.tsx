@@ -12,11 +12,11 @@ export default function Avatar({
 	className,
 	...props
 }: AvatarCardProps) {
-	return (
+		return (
 		<Image
 			{...props}
 			alt={`${username}'s avatar`}
-			className={cn('rounded-full object-contain', className)}
+			className={cn('shrink-0 rounded-full object-cover', className)}
 			src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${id}`}
 			unoptimized
 		/>

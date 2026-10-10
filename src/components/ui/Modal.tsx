@@ -13,7 +13,7 @@ import {
 	useState,
 } from 'react'
 import { createPortal } from 'react-dom'
-
+import { mtsWide } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 import { Button, type buttonVariants } from './Button'
 
@@ -100,7 +100,7 @@ function ModalTrigger({
 
 	return (
 		<Comp
-			className={cn('font-semibold', className)}
+			className={cn('font-medium', className)}
 			onClick={open}
 			variant={variant}
 		>
@@ -213,7 +213,15 @@ function ModalHeader({ children, className = '' }: Props) {
 
 function ModalTitle({ children, className = '' }: Props) {
 	return (
-		<h1 className={cn('font-semibold text-xl', className)}>{children}</h1>
+		<h1
+			className={cn(
+				mtsWide.className,
+				'font-semibold text-xl',
+				className
+			)}
+		>
+			{children}
+		</h1>
 	)
 }
 
@@ -222,7 +230,7 @@ function ModalDescription({ children, className = '' }: Props) {
 }
 
 function ModalBody({ children, className = '' }: Props) {
-	return <div className={cn('pb-4', className)}>{children}</div>
+	return <div className={cn('pb-4 text-[13px]', className)}>{children}</div>
 }
 
 function ModalFooter({ children, className = '' }: Props) {

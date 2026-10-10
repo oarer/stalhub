@@ -52,7 +52,7 @@ export function MemberActions({
 			<Modal.Root onOpenChange={setRenameOpen} open={renameOpen}>
 				<Modal.Trigger asChild>
 					<Button
-						className="relative cursor-pointer p-1 text-text-accent"
+						className="relative cursor-pointer p-1 text-foreground"
 						onClick={openRename}
 						variant="secondary"
 					>

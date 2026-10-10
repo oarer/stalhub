@@ -3,7 +3,7 @@
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
 import {
 	clearDesktopIntent,
@@ -82,17 +82,17 @@ export default function CallbackPage() {
 			{desktopComplete ? (
 				<div className="flex flex-col items-center gap-3 text-center">
 					<h1
-						className={`${unbounded.className} font-semibold text-2xl`}
+						className={`${mtsExtended.className} font-medium text-2xl`}
 					>
 						{t('auth.success')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('auth.closePage')}
 					</p>
 				</div>
 			) : (
 				<h1
-					className={`${unbounded.className} animate-pulse font-bold text-2xl uppercase tracking-widest`}
+					className={`${mtsExtended.className} animate-pulse font-medium text-2xl uppercase tracking-widest`}
 				>
 					{t('auth.title')}
 				</h1>

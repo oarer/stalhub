@@ -30,7 +30,7 @@ export function ConsumablesSection({
 					<span className="font-semibold text-sm">
 						{t('clan.consumables.boosts.modeLabel')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.consumables.boosts.modeHint')}
 					</span>
 				</div>
@@ -48,7 +48,7 @@ export function ConsumablesSection({
 					<span className="font-semibold text-sm">
 						{t('clan.consumables.grenade.modeLabel')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.consumables.grenade.modeHint')}
 					</span>
 				</div>

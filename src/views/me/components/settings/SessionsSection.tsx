@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { cn } from '@/lib/cn'
@@ -49,15 +48,13 @@ export function SessionsSection({
 						key={session.id}
 					>
 						<div className="flex flex-col gap-1">
-							<span
-								className={`${montserrat.className} font-semibold text-sm`}
-							>
+							<span className={`font-mono font-semibold text-sm`}>
 								{session.browser} · {session.browser_version}
 							</span>
 						</div>
 						{session.ip && (
 							<p
-								className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+								className={`font-mono font-semibold text-foreground text-xs`}
 							>
 								IP:{' '}
 								<span className="blur-xs transition-all hover:blur-none">
@@ -66,7 +63,7 @@ export function SessionsSection({
 							</p>
 						)}
 						<p
-							className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-foreground text-xs`}
 						>
 							<Tooltip.Root>
 								<Tooltip.Trigger>

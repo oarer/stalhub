@@ -6,6 +6,7 @@ import { useMap, useMapEvents } from 'react-leaflet'
 import { Button } from '@/components/ui/Button'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Textarea'
 import type { MarkerPoint, MarkerPolygon, MarkersFile } from '@/types/map.type'
 
 type Props = {
@@ -624,10 +625,11 @@ export default function MarkerEditor({
 					)}
 					{selectedPolygon && (
 						<>
-							<label>
+							<label htmlFor="polygon-popup">
 								Текст полигона
-								<textarea
-									className="w-full rounded border bg-background px-2 py-1"
+								<Textarea
+									className="w-full rounded border border-current bg-background px-2 py-1 font-normal text-base"
+									id="polygon-popup"
 									onChange={(event) =>
 										updatePolygon({
 											popup: event.target.value,

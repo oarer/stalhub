@@ -1,4 +1,5 @@
 import { queryOptions } from '@tanstack/react-query'
+import axios from 'axios'
 import { tierListService } from '@/services/tier-list/tier-list.service'
 
 export const tierListQueries = {
@@ -18,6 +19,17 @@ export const tierListQueries = {
 		queryOptions({
 			queryKey: ['tier-lists', 'mine', params],
 			queryFn: () => tierListService.listMine(params),
+			// 401 тут означает отсутствие/протухшую сессию — ретраи
+			// бессмысленны, каждый лишь дёргает /refresh.
+			retry: (failureCount, error) => {
+				if (
+					axios.isAxiosError(error) &&
+					error.response?.status === 401
+				) {
+					return false
+				}
+				return failureCount < 2
+			},
 		}),
 
 	get: (id: string) =>

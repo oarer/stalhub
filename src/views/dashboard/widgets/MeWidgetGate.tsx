@@ -25,10 +25,10 @@ export function MeWidgetGate({ children }: { children: React.ReactNode }) {
 		return (
 			<div className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
 				<Icon
-					className="size-9 text-text-accent"
+					className="size-9 text-foreground"
 					icon="lucide:lock-keyhole"
 				/>
-				<p className="max-w-60 font-semibold text-sm text-text-accent">
+				<p className="max-w-60 font-semibold text-foreground text-sm">
 					{t('dashboard.loginRequired')}
 				</p>
 				<Link href="/auth">

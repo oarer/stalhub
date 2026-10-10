@@ -8,6 +8,7 @@ import ClanHistoryView from './components/ClanHistoryView'
 import ClanView from './components/ClanView'
 import HeroView from './components/hero/HeroView'
 import OperationsSection from './components/OperationsSection'
+import PlayerSummary from './components/PlayerSummary'
 import StatsView from './components/StatsView'
 
 export default function PlayerView({
@@ -22,6 +23,7 @@ export default function PlayerView({
 	return (
 		<main className="mx-auto max-w-360 gap-12 space-y-6 px-4 pt-42 pb-12 sm:px-6 md:px-8">
 			<HeroView data={data} />
+			<PlayerSummary stats={data.stats} />
 			{data.clan && <ClanView data={data.clan} />}
 			<ClanHistoryView history={data.clan_history ?? []} />
 			<StatsView data={data.stats} />

@@ -86,10 +86,10 @@ export default function MeArticlesView() {
 			{!filteredArticles || filteredArticles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:file-text"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('me.articles.noArticles')}
 					</p>
 					<Link

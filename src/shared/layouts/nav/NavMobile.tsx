@@ -176,7 +176,7 @@ export default function NavMobile() {
 											</span>
 										</span>
 										<Icon
-											className="text-lg text-text-accent"
+											className="text-foreground text-lg"
 											icon="lucide:corner-down-left"
 										/>
 									</button>

@@ -1,8 +1,9 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
+import Username from '@/components/ui/user/Username'
 import type { BannerMode, BannerType, User, UserBadge } from '@/types/user.type'
 import MeBanner from '@/views/me/components/MeBanner'
 
@@ -55,13 +56,13 @@ export default function CompactHeader({
 							</div>
 							<div className="flex flex-col gap-2">
 								<h2
-									className={`${unbounded.className} font-semibold text-2xl leading-none`}
+									className={`${mtsExtended.className} font-medium text-2xl leading-none`}
 								>
-									{user.name}
+									<Username user={user}>{user.name}</Username>
 								</h2>
 								{user.name && (
-									<span className="font-semibold text-text-accent leading-none">
-										{user.username}
+									<span className="font-semibold text-foreground leading-none">
+										<Username user={user} />
 									</span>
 								)}
 							</div>
@@ -100,7 +101,7 @@ export default function CompactHeader({
 							</div>
 						)}
 						<p
-							className={`${montserrat.className} w-fit rounded-md bg-muted px-2.5 py-1 font-semibold text-xs leading-none`}
+							className={`w-fit rounded-md bg-muted px-2.5 py-1 font-mono font-semibold text-xs leading-none`}
 						>
 							ID: {user.id}
 						</p>

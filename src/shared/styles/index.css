@@ -2,6 +2,23 @@
 @plugin '@tailwindcss/typography';
 @import './tokens/colors.css';
 
+/* Stable family for SVG blog covers (next/font emits hashed names,
+   unusable inside SVG strings). */
+@font-face {
+    font-family: 'CoverExtended';
+    src: url('/fonts/mts/MTSExtended-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'CoverExtended';
+    src: url('/fonts/mts/MTSExtended-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer utilities {
@@ -9,6 +26,12 @@
         content-visibility: auto;
         contain-intrinsic-size: 0 500px;
     }
+}
+
+
+@theme {
+    --font-body: 400;
+    --font-mono: var(--font-montserrat);
 }
 
 @layer base {

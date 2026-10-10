@@ -5,7 +5,7 @@ import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
 import Scene from '@/app/calcs/builds/model/Scene'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
@@ -163,14 +163,16 @@ export default function BuildsView() {
 			<div className="grid grid-cols-1 gap-8 lg:grid-cols-[28%_60%]">
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-2">
-						<h1
-							className={`${unbounded.className} text-3xl text-red-500`}
-						>
-							|{' '}
-							{currentBuild
-								? currentBuild.name
-								: t('build.new_build')}
-						</h1>
+						<div className="flex items-center gap-2">
+							<div className="w-1 shrink-0 self-stretch bg-primary" />
+							<h1
+								className={`${mtsExtended.className} font-semibold text-[28px] text-primary leading-none`}
+							>
+								{currentBuild
+									? currentBuild.name
+									: t('build.new_build')}
+							</h1>
+						</div>
 
 						<div className="flex flex-wrap items-center justify-between gap-2">
 							<BuildSelector />

@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Divider } from '@/components/ui/Divider'
 import { Modal } from '@/components/ui/Modal'
@@ -117,7 +116,7 @@ export function SessionRow({
 							</span>
 							{session.total_score != null && (
 								<Badge
-									className={montserrat.className}
+									className="font-mono"
 									variant={'secondary'}
 								>
 									{t('clan.sessions.scorePoints', {
@@ -139,7 +138,7 @@ export function SessionRow({
 							)}
 						</div>
 						<p
-							className={`${montserrat.className} font-semibold text-[11px] text-text-accent`}
+							className={`font-mono font-semibold text-[11px] text-foreground`}
 						>
 							{formatDate(session.started_at)}
 						</p>
@@ -159,7 +158,7 @@ export function SessionRow({
 									{t('clan.sessions.deleteTitle')}
 								</Modal.Title>
 							</Modal.Header>
-							<Modal.Body className="font-semibold">
+							<Modal.Body>
 								{t.rich('clan.sessions.deleteBody', {
 									name: session.map_name
 										? ` «${session.map_name}»`
@@ -167,7 +166,7 @@ export function SessionRow({
 									date: formatDate(session.started_at),
 									span: (chunks) => (
 										<span
-											className={`${montserrat.className} text-primary text-sm`}
+											className={`font-mono text-primary text-sm`}
 										>
 											{chunks}
 										</span>
@@ -212,7 +211,7 @@ export function SessionRow({
 						type="button"
 					>
 						<Icon
-							className={`text-lg text-text-accent transition-transform ${expanded ? 'rotate-90' : ''}`}
+							className={`text-foreground text-lg transition-transform ${expanded ? 'rotate-90' : ''}`}
 							icon="lucide:chevron-right"
 						/>
 					</button>
@@ -282,7 +281,7 @@ export function SessionRow({
 											{t('clan.sessions.attendance')}
 										</p>
 										<span
-											className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+											className={`font-mono font-semibold text-foreground text-xs`}
 										>
 											{t('clan.sessions.presentOf', {
 												present:

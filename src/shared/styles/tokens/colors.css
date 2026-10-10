@@ -1,7 +1,4 @@
 @theme {
-    --font-mono: var(--font-roboto-mono), ui-monospace, SFMono-Regular,
-        "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-
     --radius: 0.625rem;
     --shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 

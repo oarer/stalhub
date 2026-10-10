@@ -127,7 +127,7 @@ export default function ModelsView() {
 	if (isMobile) {
 		return (
 			<section className="mx-auto max-w-360 space-y-6 px-4 pt-32 pb-12 sm:px-6 md:px-8">
-				<h1 className="font-bold text-3xl">{t('title')}</h1>
+				<h1 className="font-semibold text-3xl">{t('title')}</h1>
 				<Alert.Root variant={'destructive'}>
 					<Alert.Description>
 						{t('mobileNotSupported')}
@@ -139,7 +139,7 @@ export default function ModelsView() {
 
 	return (
 		<section className="mx-auto max-w-360 space-y-6 px-4 pt-32 pb-12 sm:px-6 md:px-8">
-			<h1 className="font-bold text-3xl">{t('title')}</h1>
+			<h1 className="font-semibold text-3xl">{t('title')}</h1>
 
 			<Alert.Root variant={'destructive'}>
 				<Alert.Description>{t('textureWarning')}</Alert.Description>

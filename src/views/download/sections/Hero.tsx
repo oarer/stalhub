@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -98,7 +98,7 @@ export default function Hero({
 
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${unbounded.className} font-bold text-3xl tracking-tight sm:text-4xl md:text-nowrap md:text-6xl lg:text-7xl`}
+				className={`${mtsExtended.className} font-semibold text-3xl tracking-tight sm:text-4xl md:text-nowrap md:text-6xl lg:text-7xl`}
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.35 }}
 			>
@@ -116,7 +116,7 @@ export default function Hero({
 
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}
-				className="max-w-2xl px-4 text-center font-semibold text-sm leading-relaxed md:text-xl dark:text-white"
+				className="max-w-2xl px-4 text-center font-medium text-sm leading-relaxed md:text-xl dark:text-white"
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.5 }}
 			>
@@ -130,7 +130,7 @@ export default function Hero({
 					transition={{ duration: 0.6, delay: 0.6 }}
 				>
 					<Card.Root className="gap-3">
-						<p className="flex items-center gap-2 font-semibold text-destructive">
+						<p className="flex items-center gap-2 font-medium text-destructive">
 							<Icon icon="lucide:triangle-alert" />
 							{t('download.app.error')}
 						</p>
@@ -176,16 +176,18 @@ export default function Hero({
 								key="os-buttons"
 								transition={{ duration: 0.25 }}
 							>
-							{windowsAsset && (
-								<WindowsButton asset={windowsAsset} />
-							)}
-							{androidAsset && <AndroidButton asset={androidAsset} />}
-							{linuxAssets.length > 0 && (
-								<LinuxToggleButton
-									onToggle={() => setLinuxOpen(true)}
-									open={false}
-								/>
-							)}
+								{windowsAsset && (
+									<WindowsButton asset={windowsAsset} />
+								)}
+								{androidAsset && (
+									<AndroidButton asset={androidAsset} />
+								)}
+								{linuxAssets.length > 0 && (
+									<LinuxToggleButton
+										onToggle={() => setLinuxOpen(true)}
+										open={false}
+									/>
+								)}
 							</motion.div>
 						)}
 					</AnimatePresence>
@@ -228,9 +230,7 @@ function WindowsButton({ asset }: { asset: DownloadAsset }) {
 				<span className="font-semibold text-lg">
 					{t('download.app.platforms.windows')}
 				</span>
-				<span
-					className={`${montserrat.className} font-medium text-xs opacity-80`}
-				>
+				<span className={`font-medium font-mono text-xs opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>
@@ -257,9 +257,7 @@ function AndroidButton({ asset }: { asset: DownloadAsset }) {
 				<span className="font-semibold text-lg">
 					{t('download.app.platforms.android')}
 				</span>
-				<span
-					className={`${montserrat.className} font-medium text-xs opacity-80`}
-				>
+				<span className={`font-medium font-mono text-xs opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>
@@ -325,9 +323,7 @@ function LinuxOption({ asset }: { asset: DownloadAsset }) {
 				<span className="font-semibold text-lg">
 					{t(`download.app.platforms.${asset.platform}`)}
 				</span>
-				<span
-					className={`${montserrat.className} font-medium text-xs opacity-80`}
-				>
+				<span className={`font-medium font-mono text-xs opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>

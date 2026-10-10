@@ -90,7 +90,7 @@ function LightBoxTrigger({
 
 	return (
 		<Comp
-			className={cn('cursor-pointer font-semibold', className)}
+			className={cn('cursor-pointer font-medium', className)}
 			onClick={open}
 			variant={variant}
 		>

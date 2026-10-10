@@ -43,11 +43,11 @@ export const StatRow = memo(function StatRow({
 
 	return (
 		<p className="flex justify-between">
-			<span>{name}</span>
+			<span className="font-medium text-[13px]">{name}</span>
 			<span className="flex items-center gap-1.5">
 				{shownDelta !== undefined && (
 					<span
-						className={`${montserrat.className} font-semibold text-xs`}
+						className="font-medium text-xs"
 						style={{
 							color: shownDelta >= 0 ? '#53C353' : '#C15252',
 						}}
@@ -58,7 +58,7 @@ export const StatRow = memo(function StatRow({
 					</span>
 				)}
 				<span
-					className={`${montserrat.className} font-semibold`}
+					className={`font-mono font-semibold`}
 					style={{ color: valueColor }}
 				>
 					{shownValue >= 0 && !color ? '+' : ''}

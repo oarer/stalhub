@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { DPIForm } from './components/DPIForm'
 import { convertSens } from './utils/conversion'
 import { games } from './utils/dpi.const'
@@ -34,16 +34,16 @@ export function DPIView({ variant = 'page' }: DPIViewProps) {
 			}
 		>
 			{variant === 'page' && (
-				<div className="text-center">
+				<>
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('dpi.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('dpi.sub_title')}
 					</p>
-				</div>
+				</>
 			)}
 
 			<DPIForm

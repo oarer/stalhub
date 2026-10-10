@@ -30,11 +30,13 @@ class ArtService {
 		page = 1,
 		tags,
 		type,
+		sort,
 	}: {
 		take?: number
 		page?: number
 		tags?: string[]
 		type?: ArtType
+		sort?: 'newest' | 'oldest' | 'views' | 'stars'
 	} = {}): Promise<PaginatedResponse<Art>> {
 		const { data } = await apiClient.get<PaginatedResponse<Art>>(
 			'/api/v1/arts/public',
@@ -44,6 +46,7 @@ class ArtService {
 					page,
 					tags: tags?.length ? tags.join(',') : undefined,
 					type,
+					sort,
 				},
 			}
 		)

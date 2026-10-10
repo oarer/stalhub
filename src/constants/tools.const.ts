@@ -48,4 +48,25 @@ export const toolsList = [
 		desc: 'landing.tools.tool_list.player_search.desc',
 		link: '/player',
 	},
+	{
+		id: 'text',
+		icon: 'lucide:palette',
+		title: 'landing.tools.tool_list.text.title',
+		desc: 'landing.tools.tool_list.text.desc',
+		link: '/calcs/text',
+	},
+	{
+		id: 'barter',
+		icon: 'lucide:repeat',
+		title: 'landing.tools.tool_list.barter.title',
+		desc: 'landing.tools.tool_list.barter.desc',
+		link: '/calcs/barter',
+	},
+	{
+		id: 'donate',
+		icon: 'lucide:gem',
+		title: 'landing.tools.tool_list.donate.title',
+		desc: 'landing.tools.tool_list.donate.desc',
+		link: '/calcs/donate',
+	},
 ]

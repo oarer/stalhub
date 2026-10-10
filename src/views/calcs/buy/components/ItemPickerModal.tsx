@@ -103,7 +103,7 @@ export default function ItemPickerModal({
 					/>
 
 					{loading && !items ? (
-						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-text-accent">
+						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-foreground">
 							<Skeleton className="size-5" />
 							<p>{t('buy.loading')}</p>
 						</div>
@@ -111,7 +111,7 @@ export default function ItemPickerModal({
 						<AnimatePresence>
 							<motion.p
 								animate={{ opacity: 1, y: 0 }}
-								className="py-6 text-center font-semibold text-text-accent"
+								className="py-6 text-center font-semibold text-foreground"
 								exit={{ opacity: 0 }}
 								initial={{ opacity: 0, y: 8 }}
 								transition={{ duration: 0.18 }}
@@ -120,7 +120,7 @@ export default function ItemPickerModal({
 							</motion.p>
 						</AnimatePresence>
 					) : displayed.length === 0 ? (
-						<p className="py-6 text-center font-semibold text-text-accent">
+						<p className="py-6 text-center font-semibold text-foreground">
 							{t('buy.searchHint')}
 						</p>
 					) : (

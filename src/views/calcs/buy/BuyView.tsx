@@ -5,7 +5,7 @@ import { toPng } from 'html-to-image'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { LightBox } from '@/components/ui/LightBox'
@@ -215,7 +215,7 @@ export default function BuyView() {
 	return (
 		<section className="mx-auto flex max-w-300 flex-col gap-4 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${unbounded.className} font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('buy.title')}
 			</h1>

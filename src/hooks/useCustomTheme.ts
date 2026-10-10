@@ -43,8 +43,6 @@ function extractNameFromUrl(url: string): string {
 	try {
 		const u = new URL(url)
 
-		const isTweakcn = u.hostname === 'tweakcn.com'
-
 		const parts = u.pathname.split('/')
 		const last = parts[parts.length - 1]
 

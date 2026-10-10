@@ -14,7 +14,7 @@ export default function ClassicLayout({
 	const customization = user.customization
 
 	return (
-		<section className="mx-auto grid max-w-285 grid-cols-1 gap-8 px-2 pt-28 pb-0 md:px-4 lg:grid-cols-[27%_70%] lg:px-0 lg:pb-12 xl:pt-36">
+		<section className="mx-auto grid max-w-345 grid-cols-1 gap-8 px-2 pt-28 pb-0 md:px-4 lg:grid-cols-[22%_75%] lg:px-0 lg:pb-12 xl:pt-36">
 			<MeSidebar
 				onCardChange={onCardChange}
 				pathname={pathname}

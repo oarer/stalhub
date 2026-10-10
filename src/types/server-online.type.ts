@@ -10,3 +10,16 @@ export type ServerOnlineHistoryPoint = {
 	createdAt: Date
 	online: number
 }
+
+export type ServerOnlinePeak = {
+	date: string
+	region: string
+	peak: number
+}
+
+export type EmissionInfo = {
+	region: string
+	currentStart?: string | null
+	previousStart?: string | null
+	previousEnd?: string | null
+}

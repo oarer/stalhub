@@ -118,47 +118,63 @@ export function getLotPercent(
 	return null
 }
 
+function matchesSelectedModules(
+	lot: SortableLot,
+	selectedModules?: Set<string>
+): boolean {
+	if (!selectedModules?.size) return true
+	const attributes = lot.additional?.attributes ?? []
+	return attributes.some((a) => selectedModules.has(a.definitionId))
+}
+
+function matchesSelectedRarities(
+	lot: SortableLot,
+	selectedRarities?: Set<string>
+): boolean {
+	if (!selectedRarities?.size) return true
+	const rarity = getLotRarityName(lot.additional)
+	return !!rarity && selectedRarities.has(rarity)
+}
+
+function matchesPriceRange(
+	lotPrice: number,
+	price: LotFilters['price']
+): boolean {
+	if (price.min != null && lotPrice < price.min) return false
+	if (price.max != null && lotPrice > price.max) return false
+	return true
+}
+
+function matchesPercentRange(
+	lotPercent: number | null,
+	percent: LotFilters['percent']
+): boolean {
+	if (
+		percent.min != null &&
+		(lotPercent === null || lotPercent < percent.min)
+	)
+		return false
+	if (
+		percent.max != null &&
+		(lotPercent === null || lotPercent > percent.max)
+	)
+		return false
+	return true
+}
+
 export function filterLots<T extends SortableLot>(
 	lots: T[],
 	filters: LotFilters
 ): T[] {
 	const { price, percent, selectedModules, selectedRarities } = filters
 
-	return lots.filter((lot) => {
-		if (selectedModules?.size) {
-			const attributes = lot.additional?.attributes ?? []
-			if (!attributes.some((a) => selectedModules.has(a.definitionId))) {
-				return false
-			}
-		}
-
-		if (selectedRarities?.size) {
-			const rarity = getLotRarityName(lot.additional)
-			if (!rarity || !selectedRarities.has(rarity)) {
-				return false
-			}
-		}
-
-		const lotPrice = getLotPrice(lot)
-		if (price.min != null && lotPrice < price.min) return false
-		if (price.max != null && lotPrice > price.max) return false
-
-		const lotPercent = getLotPercent(lot, selectedModules)
-		if (
-			percent.min != null &&
-			(lotPercent === null || lotPercent < percent.min)
-		) {
-			return false
-		}
-		if (
-			percent.max != null &&
-			(lotPercent === null || lotPercent > percent.max)
-		) {
-			return false
-		}
-
-		return true
-	})
+	return lots.filter(
+		(lot) =>
+			matchesSelectedModules(lot, selectedModules) &&
+			matchesSelectedRarities(lot, selectedRarities) &&
+			matchesPriceRange(getLotPrice(lot), price) &&
+			matchesPercentRange(getLotPercent(lot, selectedModules), percent)
+	)
 }
 
 export function sortLots<T extends SortableLot>(

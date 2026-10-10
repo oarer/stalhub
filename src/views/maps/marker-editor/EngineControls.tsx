@@ -201,7 +201,9 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 
 	return (
 		<div className="order-2 flex h-1/2 w-full shrink-0 flex-col gap-3 overflow-y-auto p-4 md:order-1 md:h-full md:w-80">
-			<p className="font-bold text-foreground text-sm">{t('tools')}</p>
+			<p className="font-semibold text-foreground text-sm">
+				{t('tools')}
+			</p>
 
 			<input
 				accept="image/*"
@@ -369,7 +371,7 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 				{ui?.genStats}
 			</p>
 
-			<p className="font-bold text-foreground text-sm">{t('cfg')}</p>
+			<p className="font-semibold text-foreground text-sm">{t('cfg')}</p>
 			<input
 				accept=".cfg,.json,application/json,text/plain"
 				className="hidden"
@@ -389,7 +391,7 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 				{ui?.cfgStatus}
 			</p>
 
-			<p className="font-bold text-foreground text-sm">
+			<p className="font-semibold text-foreground text-sm">
 				{t('markers', {
 					total: ui?.waypointTotal ?? 0,
 					selected: ui?.selectedCount ?? 0,

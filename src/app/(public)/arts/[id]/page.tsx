@@ -2,6 +2,7 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
@@ -19,15 +20,17 @@ export async function generateMetadata({
 
 	try {
 		const art = await artService.get(id)
-		const images = art.image_url
-			? [
-					{
-						url: `https://cdn.stalhub.dev${art.image_url}`,
-						width: 1200,
-						height: 630,
-					},
-				]
-			: []
+		const gallery =
+			art.image_urls && art.image_urls.length > 0
+				? art.image_urls
+				: art.image_url
+					? [art.image_url]
+					: []
+		const images = gallery.slice(0, 3).map((src) => ({
+			url: `https://cdn.stalhub.dev${src}`,
+			width: 1200,
+			height: 630,
+		}))
 
 		const description = t('arts.byAuthor', {
 			author: art.author.username,
@@ -36,9 +39,11 @@ export async function generateMetadata({
 		return {
 			title: `${art.title} · StalHub`,
 			description,
+			alternates: dynamicAlternates(`/arts/${id}`),
 			openGraph: {
 				title: `${art.title} · StalHub`,
 				description,
+				url: `/arts/${id}`,
 				type: 'article',
 				publishedTime: art.created_at,
 				modifiedTime: art.updated_at,
@@ -46,6 +51,11 @@ export async function generateMetadata({
 				tags: art.tags,
 				images,
 			},
+			twitter: dynamicTwitter({
+				title: `${art.title} · StalHub`,
+				description,
+				images: images.map((img) => img.url),
+			}),
 		}
 	} catch {
 		return {

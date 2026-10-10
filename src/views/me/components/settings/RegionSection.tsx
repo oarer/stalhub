@@ -46,7 +46,7 @@ export function RegionSection({
 						<span className="font-semibold text-sm">
 							{t('me.settings.regionLabel')}
 						</span>
-						<span className="font-semibold text-sm text-text-accent">
+						<span className="font-semibold text-foreground text-sm">
 							{currentRegion ? t('region.' + currentRegion) : '—'}
 						</span>
 					</div>

@@ -1,15 +1,5 @@
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
-import { getQueryClient } from '@/providers/QueryProvider'
-import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import TierListsView from '@/views/tierlists/TierListsView'
 
-export default async function Page() {
-	const queryClient = getQueryClient()
-	await queryClient.fetchQuery(tierListQueries.listMine({ take: 50 }))
-
-	return (
-		<HydrationBoundary state={dehydrate(queryClient)}>
-			<TierListsView mine />
-		</HydrationBoundary>
-	)
+export default function Page() {
+	return <TierListsView mine />
 }

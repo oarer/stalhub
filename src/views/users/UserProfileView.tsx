@@ -79,7 +79,7 @@ export default function UserProfileView({
 						</h2>
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t(
 										'clan.squads.loadoutFields.primaryWeapon'
 									)}
@@ -87,37 +87,37 @@ export default function UserProfileView({
 								{renderItem(loadout.data.weapon_primary)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('users.secondaryWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('clan.squads.loadoutFields.pistol')}
 								</span>
 								{renderItem(loadout.data.weapon_pistol)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('clan.squads.loadoutFields.meleeWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_melee)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('users.bioArmor')}
 								</span>
 								{renderItem(loadout.data.bio_armor)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('users.fatBuild')}
 								</span>
 								{loadout.data.build_fat != null &&
@@ -134,7 +134,7 @@ export default function UserProfileView({
 										}
 										containers={containers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-text-accent">
+										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
 											{
 												buildById.get(
 													String(
@@ -151,7 +151,7 @@ export default function UserProfileView({
 								)}
 							</div>
 							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-sm text-text-accent">
+								<span className="font-semibold text-foreground text-sm">
 									{t('users.speedBuild')}
 								</span>
 								{loadout.data.build_speed != null &&
@@ -168,7 +168,7 @@ export default function UserProfileView({
 										}
 										containers={containers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-text-accent">
+										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
 											{
 												buildById.get(
 													String(
@@ -206,11 +206,11 @@ export default function UserProfileView({
 												? ` [${h.clan_tag}]`
 												: ''}
 										</span>
-										<span className="text-text-accent text-xs">
+										<span className="text-foreground text-xs">
 											{h.rank} · {h.region}
 										</span>
 									</div>
-									<span className="text-text-accent text-xs">
+									<span className="text-foreground text-xs">
 										{h.seen_at.slice(0, 10)}
 									</span>
 								</div>
@@ -227,7 +227,7 @@ export default function UserProfileView({
 					</div>
 
 					{user.builds.length === 0 ? (
-						<p className="font-semibold text-sm text-text-accent">
+						<p className="font-semibold text-foreground text-sm">
 							{t('me.builds.noBuilds')}
 						</p>
 					) : (
@@ -285,7 +285,7 @@ export default function UserProfileView({
 									key={tl.id}
 								>
 									<div className="flex items-center gap-3 rounded-lg border border-muted bg-card p-3 transition-colors hover:border-primary/30">
-										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-lg text-primary">
+										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-semibold text-lg text-primary">
 											<Icon
 												className="size-5"
 												icon="lucide:layout-list"
@@ -295,7 +295,7 @@ export default function UserProfileView({
 											<p className="truncate font-semibold text-sm">
 												{tl.title}
 											</p>
-											<p className="text-text-accent text-xs">
+											<p className="text-foreground text-xs">
 												{tl.entry_count ??
 													tl.entries?.length ??
 													0}{' '}

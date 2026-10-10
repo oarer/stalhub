@@ -8,24 +8,19 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { HoverCard } from '@/components/ui/HoverCard'
-import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
-import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
 import {
 	BoostButtons,
 	type BoostCategory,
 	type ModalProps,
 } from '@/types/build.type'
-import {
-	InfoColor,
-	type Item,
-	infoColorMap,
-} from '@/types/item.type'
+import { InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { collectListBlocks, messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
+import { ItemPickerPanel } from './ItemPickerPanel'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
 
@@ -153,26 +148,17 @@ function BoostSelectModal({
 
 				<Modal.Body>
 					<div className="flex gap-4">
-						<Card.Root className="min-w-95 ring-primary/20">
-							<Card.Header>
-								<Input
-									className="px-2 text-[14px]"
-									label="ui.input_label"
-									onChange={(e) => setFilter(e.target.value)}
-									value={filter}
-								/>
-							</Card.Header>
-
-							<ItemsList
-								className="max-h-90 max-w-90"
-								favoriteType="boost"
-								items={categoryItems}
-								locale={locale}
-								onSelectItem={(id) => setPreviewId(id)}
-								query={filter}
-								selectedItemId={previewId}
-							/>
-						</Card.Root>
+						<ItemPickerPanel
+							cardClassName="min-w-95 ring-primary/20"
+							favoriteType="boost"
+							filter={filter}
+							items={categoryItems}
+							listClassName="max-h-90 max-w-90"
+							locale={locale}
+							onFilterChange={setFilter}
+							onSelectItem={(id) => setPreviewId(id)}
+							selectedItemId={previewId}
+						/>
 						<Card.Root className="min-w-95 ring-primary/20">
 							<Card.Header>
 								<Card.Title

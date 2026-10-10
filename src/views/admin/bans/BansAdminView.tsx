@@ -4,13 +4,14 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { Table } from '@/components/ui/Table'
 import { useDebounce } from '@/hooks/useDebounce'
 import { adminBanQueries } from '@/queries/admin/ban.queries'
+import { AdminEmptyRow, AdminPagination } from '../components/AdminTable'
 
 const BAN_RULES = [
 	{ value: 'login_bruteforce', label: 'Login Bruteforce' },
@@ -43,7 +44,11 @@ export default function BansAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<h1 className="font-semibold text-2xl">{t('admin.bans.title')}</h1>
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
+				{t('admin.bans.title')}
+			</h1>
 
 			{stats && (
 				<div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -56,10 +61,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.total_warnings}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.warnings')}
 								</p>
 							</div>
@@ -74,10 +79,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.total_bans}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.bans')}
 								</p>
 							</div>
@@ -92,10 +97,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.auto_banned_users}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.autoBanned')}
 								</p>
 							</div>
@@ -110,10 +115,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-bold text-2xl">
+								<p className="font-medium font-mono text-2xl">
 									{stats.auto_warned_users}
 								</p>
-								<p className="text-text-accent text-xs">
+								<p className="font-medium text-foreground text-xs">
 									{t('admin.bans.stats.autoWarned')}
 								</p>
 							</div>
@@ -149,7 +154,7 @@ export default function BansAdminView() {
 									<span className="text-sm">
 										{entry.rule}
 									</span>
-									<span className="font-bold text-sm text-text-accent">
+									<span className="font-medium font-mono text-foreground text-sm">
 										{entry._count._all}
 									</span>
 								</div>
@@ -173,7 +178,7 @@ export default function BansAdminView() {
 				<div className="flex gap-1">
 					{(['all', 'auto', 'manual'] as const).map((opt) => (
 						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-semibold text-xs transition-colors ${
+							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
 								auto === opt
 									? 'border-sky-500 bg-sky-500/10 text-sky-400'
 									: 'border-primary hover:border-sky-500/30'
@@ -210,7 +215,7 @@ export default function BansAdminView() {
 					</button>
 					{BAN_RULES.map((r) => (
 						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-semibold text-xs transition-colors ${
+							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
 								rule === r.value
 									? 'border-sky-500 bg-sky-500/10 text-sky-400'
 									: 'border-primary hover:border-sky-500/30'
@@ -263,12 +268,12 @@ export default function BansAdminView() {
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="font-semibold text-sm">
+										<span className="font-medium text-sm">
 											{ban.user?.username ??
 												`#${ban.user_id}`}
 										</span>
 										{ban.user?.name && (
-											<span className="ml-1 text-text-accent text-xs">
+											<span className="ml-1 text-foreground text-xs">
 												({ban.user.name})
 											</span>
 										)}
@@ -317,48 +322,21 @@ export default function BansAdminView() {
 								</Table.Row>
 							))}
 							{(!data || data.data.length === 0) && (
-								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.bans.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-								</Table.Row>
+								<AdminEmptyRow
+									colCount={7}
+									message={t('admin.bans.empty')}
+								/>
 							)}
 						</Table.Body>
 					</Table.Root>
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</div>
 	)
 }

@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import type { MapEval } from '../utils/sessions'
@@ -27,9 +26,7 @@ const row = (
 			<p className="text-muted-foreground text-sm">{label}</p>
 		</div>
 		<Badge variant="secondary">
-			<span className={`${montserrat.className} ${highlightClass ?? ''}`}>
-				{value}
-			</span>
+			<span className={`font-mono ${highlightClass ?? ''}`}>{value}</span>
 		</Badge>
 	</div>
 )
@@ -86,7 +83,7 @@ export function SessionPlan({
 							className="text-green-500 text-lg"
 							icon="lucide:check-circle-2"
 						/>
-						<p className="font-semibold text-green-700 text-sm dark:text-green-400">
+						<p className="font-medium text-green-700 text-sm dark:text-green-400">
 							{t('sessions.already_reached')}
 						</p>
 					</div>
@@ -100,9 +97,7 @@ export function SessionPlan({
 								/>
 								{t('sessions.best_map')}
 							</p>
-							<p
-								className={`${montserrat.className} font-bold text-lg`}
-							>
+							<p className={`font-medium font-mono text-lg`}>
 								{best.map.label}
 							</p>
 						</div>
@@ -113,9 +108,7 @@ export function SessionPlan({
 									className="mr-1 text-muted-foreground"
 									icon="lucide:crosshair"
 								/>
-								<span
-									className={`${montserrat.className} text-xs`}
-								>
+								<span className={`font-mono text-xs`}>
 									{profile.killsTarget} {t('sessions.kills')}
 								</span>
 							</Badge>
@@ -124,9 +117,7 @@ export function SessionPlan({
 									className="mr-1 text-muted-foreground"
 									icon="lucide:handshake"
 								/>
-								<span
-									className={`${montserrat.className} text-xs`}
-								>
+								<span className={`font-mono text-xs`}>
 									{profile.assists} {t('sessions.assists')}
 								</span>
 							</Badge>
@@ -135,9 +126,7 @@ export function SessionPlan({
 									className="mr-1 text-muted-foreground"
 									icon="lucide:flag"
 								/>
-								<span
-									className={`${montserrat.className} text-xs`}
-								>
+								<span className={`font-mono text-xs`}>
 									{profile.caps} {t('sessions.caps')}
 								</span>
 							</Badge>
@@ -146,9 +135,7 @@ export function SessionPlan({
 									className="mr-1 text-muted-foreground"
 									icon="lucide:eye"
 								/>
-								<span
-									className={`${montserrat.className} text-xs`}
-								>
+								<span className={`font-mono text-xs`}>
 									{profile.spots} {t('sessions.spots')}
 								</span>
 							</Badge>
@@ -160,7 +147,7 @@ export function SessionPlan({
 									className="text-amber-500 text-lg"
 									icon="lucide:alert-triangle"
 								/>
-								<p className="font-semibold text-amber-700 text-sm dark:text-amber-400">
+								<p className="font-medium text-amber-700 text-sm dark:text-amber-400">
 									{t('sessions.max_not_reached')}
 								</p>
 							</div>
@@ -197,7 +184,7 @@ export function SessionPlan({
 							'lucide:calendar-range',
 							t('sessions.days_label'),
 							t('sessions.days', { count: days }),
-							'font-bold'
+							'font-medium'
 						)}
 
 						{best.matchesPerDay === 0 && (
@@ -206,7 +193,7 @@ export function SessionPlan({
 									className="text-lg text-red-500"
 									icon="lucide:alert-triangle"
 								/>
-								<p className="font-semibold text-red-700 text-sm dark:text-red-400">
+								<p className="font-medium text-red-700 text-sm dark:text-red-400">
 									{t('sessions.not_enough_matches')}
 								</p>
 							</div>
@@ -228,7 +215,7 @@ export function SessionPlan({
 									variant="secondary"
 								>
 									<span
-										className={`${montserrat.className} text-green-700 dark:text-green-300`}
+										className={`font-mono text-green-700 dark:text-green-300`}
 									>
 										{earned.toLocaleString()}
 										{earned > repNeeded &&

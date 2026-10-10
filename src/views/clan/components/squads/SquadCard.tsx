@@ -2,17 +2,18 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
+import { useState } from 'react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildApi } from '@/types/build-api.type'
 import type { ClanSquad, ClanSquadMember } from '@/types/clan/clan.type'
 import type { Item } from '@/types/item.type'
-import type { UserLoadout } from '@/types/loadout/loadout.type'
+import type { LoadoutData, UserLoadout } from '@/types/loadout/loadout.type'
+import { ClanMemberHoverCard } from '../members/ClanMemberCard'
 import { type DragSource, useDnd, useDraggable, useDroppable } from './SquadDnd'
-import { SquadLoadoutTable } from './SquadLoadoutTable'
-import { SQUAD_MAPS } from './squads.const'
+import { SQUAD_MAPS, SQUAD_SIZE } from './squads.const'
+import { Card } from '@/components/ui/Card'
 
 interface SquadCardProps {
 	squad: ClanSquad
@@ -30,10 +31,17 @@ interface SquadCardProps {
 	isRejectPending: boolean
 	isDeletePending: boolean
 	isLeaderPending: boolean
+	isRenamePending: boolean
+	selectedTarget?: { squadId: number; slot: number } | null
+	kdByName?: Map<
+		string,
+		{ kd: number; kills: number; deaths: number; games: number }
+	>
 	onJoin: () => void
 	onApprove: (requestId: number) => void
 	onReject: (requestId: number) => void
 	onDelete: () => void
+	onRename: (name: string) => void
 	onRemoveMember: (slot: number) => void
 	onOpenAssign: (slot: number) => void
 	onOpenLeader: () => void
@@ -65,10 +73,14 @@ export function SquadCard({
 	isRejectPending,
 	isDeletePending,
 	isLeaderPending,
+	isRenamePending,
+	selectedTarget,
+	kdByName,
 	onJoin,
 	onApprove,
 	onReject,
 	onDelete,
+	onRename,
 	onRemoveMember,
 	onOpenAssign,
 	onOpenLeader,
@@ -77,56 +89,132 @@ export function SquadCard({
 	onMove,
 }: SquadCardProps) {
 	const t = useTranslations()
-	const squadMembers = [...squad.members].sort((a, b) => a.slot - b.slot)
+	const [renaming, setRenaming] = useState(false)
+	const [draft, setDraft] = useState(squad.name)
 	const inSquad =
 		myMemberId != null &&
 		squad.members.some((m) => m.member_id === myMemberId)
 
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
-			<div className="flex items-center justify-between">
-				<div className="flex items-center gap-2">
-					<div className="flex items-center gap-2 font-semibold text-lg">
-						<Icon className="text-xl" icon="lucide:group" />
-						{squad.name}
-					</div>
-					<Badge className={montserrat.className} variant="secondary">
-						{squad.members.length}/5
-					</Badge>
-					<Button
-						className="gap-2"
-						disabled={!isOfficer}
-						onClick={onOpenMap}
-						size={'sm'}
-						title={
-							isOfficer
-								? t('clan.squads.mapChangeTitle')
-								: squad.map
-						}
-						variant={'ghost'}
-					>
-						<Icon
-							className="text-text-accent"
-							icon="lucide:map-pin"
+		<Card.Root>
+			<div className="flex items-center gap-2">
+				<Icon className="shrink-0 text-xl" icon="lucide:swords" />
+				{renaming ? (
+					<>
+						<input
+							autoFocus
+							className="h-7 min-w-0 flex-1 rounded-lg bg-accent/50 px-2 font-semibold text-sm outline-none ring-2 ring-primary/60"
+							disabled={isRenamePending}
+							maxLength={60}
+							onChange={(e) => setDraft(e.target.value)}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									const name = draft.trim()
+									if (
+										name &&
+										name !== squad.name &&
+										!isRenamePending
+									) {
+										onRename(name)
+									}
+									setRenaming(false)
+								}
+								if (e.key === 'Escape') {
+									setDraft(squad.name)
+									setRenaming(false)
+								}
+							}}
+							value={draft}
 						/>
-						<span className="font-semibold">
-							{t(
-								SQUAD_MAPS.find((m) => m.value === squad.map)
-									?.label ?? squad.map
-							)}
-						</span>
+						<Button
+							className="h-7 w-7 shrink-0 p-0"
+							disabled={
+								isRenamePending ||
+								!draft.trim() ||
+								draft.trim() === squad.name
+							}
+							onClick={() => {
+								onRename(draft.trim())
+								setRenaming(false)
+							}}
+							size="sm"
+							title={t('clan.common.save')}
+							variant="primary"
+						>
+							<Icon className="text-base" icon="lucide:check" />
+						</Button>
+						<Button
+							className="h-7 w-7 shrink-0 p-0"
+							onClick={() => {
+								setDraft(squad.name)
+								setRenaming(false)
+							}}
+							size="sm"
+							title={t('clan.common.cancel')}
+							variant="ghost"
+						>
+							<Icon className="text-base" icon="lucide:x" />
+						</Button>
+					</>
+				) : (
+					<>
+						<p className="truncate font-semibold text-[15px]">
+							{squad.name}
+						</p>
 						{isOfficer && (
-							<Icon
-								className="text-text-accent"
-								icon="lucide:chevrons-up-down"
-							/>
+							<Button
+								className="h-6 w-6 shrink-0 p-0"
+								onClick={() => {
+									setDraft(squad.name)
+									setRenaming(true)
+								}}
+								size="sm"
+								title={t('clan.squads.renameTitle')}
+								variant="ghost"
+							>
+								<Icon
+									className="text-sm"
+									icon="lucide:pencil"
+								/>
+							</Button>
 						)}
-					</Button>
-				</div>
-				<div className="flex items-center gap-3">
+					</>
+				)}
+				<Badge className="ml-auto font-mono" variant="secondary">
+					{squad.members.length}/{SQUAD_SIZE}
+				</Badge>
+			</div>
+
+			<div className="flex items-center gap-1">
+				<Button
+					className="h-7 gap-1.5 px-2 text-xs"
+					disabled={!isOfficer}
+					onClick={onOpenMap}
+					size="sm"
+					title={
+						isOfficer ? t('clan.squads.mapChangeTitle') : squad.map
+					}
+					variant="ghost"
+				>
+					<Icon className="text-sm" icon="lucide:map-pin" />
+					<span className="font-semibold">
+						{t(
+							SQUAD_MAPS.find((m) => m.value === squad.map)
+								?.label ?? squad.map
+						)}
+					</span>
+					{isOfficer && (
+						<Icon
+							className="text-sm"
+							icon="lucide:chevrons-up-down"
+						/>
+					)}
+				</Button>
+				<div className="ml-auto flex items-center gap-1">
 					{isOfficer && (
 						<>
 							<Button
+								className="h-7 w-7 p-0"
 								disabled={isLeaderPending}
 								onClick={onOpenLeader}
 								size="sm"
@@ -134,38 +222,36 @@ export function SquadCard({
 								variant="ghost"
 							>
 								<Icon
-									className={`text-lg ${
+									className={`text-base ${
 										squad.leader
 											? 'text-amber-500'
-											: 'text-text-accent'
+											: 'text-foreground'
 									}`}
 									icon="lucide:crown"
 								/>
 							</Button>
-
 							<Button
-								className="ring-transparent"
+								className="h-7 w-7 p-0 ring-transparent"
 								disabled={isDeletePending}
 								onClick={onDelete}
 								size="sm"
 								variant="danger"
 							>
 								<Icon
-									className="text-lg"
+									className="text-base"
 									icon="lucide:trash-2"
 								/>
 							</Button>
 						</>
 					)}
-
 					{myMemberId != null &&
 						!inSquad &&
 						(pendingRequest ? (
 							<Tooltip.Root>
 								<Tooltip.Trigger asChild>
-									<div className="rounded-lg px-3 py-1.5 hover:bg-accent">
+									<div className="rounded-lg px-2 py-1 hover:bg-accent">
 										<Icon
-											className="text-lg"
+											className="text-base"
 											icon="lucide:clock"
 										/>
 									</div>
@@ -176,15 +262,17 @@ export function SquadCard({
 							</Tooltip.Root>
 						) : (
 							<Button
+								className="h-7 w-7 p-0"
 								disabled={
-									isJoinPending || squad.members.length >= 5
+									isJoinPending ||
+									squad.members.length >= SQUAD_SIZE
 								}
 								onClick={onJoin}
 								size="sm"
 								variant="ghost"
 							>
 								<Icon
-									className="text-lg"
+									className="text-base"
 									icon="lucide:user-plus"
 								/>
 							</Button>
@@ -193,69 +281,97 @@ export function SquadCard({
 			</div>
 
 			{isOfficer && squad.requests.length > 0 && (
-				<div className="flex flex-col gap-2">
-					<p className="flex items-center gap-1 font-semibold text-text-accent text-xs">
+				<div className="flex flex-col gap-1">
+					<p className="flex items-center gap-1 font-semibold text-foreground text-xs">
 						<Icon className="text-sm" icon="lucide:inbox" />
 						{t('clan.squads.joinRequests')}
 					</p>
-					<div className="flex flex-col gap-1">
-						{squad.requests.map((request) => (
-							<div
-								className="flex items-center justify-between gap-2 rounded-lg bg-accent/40 px-2 py-1.5"
-								key={request.id}
-							>
-								<div className="flex items-center gap-2">
-									<div className="flex size-7 flex-none items-center justify-center rounded-full bg-accent font-semibold text-xs">
-										{request.member.name.charAt(0)}
-									</div>
-									<p className="font-semibold text-sm">
-										{request.member.name}
-									</p>
-								</div>
-								<div className="flex items-center gap-2">
-									<Button
-										className="gap-2 ring-transparent"
-										disabled={isRejectPending}
-										onClick={() => onReject(request.id)}
-										size="sm"
-										variant={'danger'}
-									>
-										<Icon
-											className="text-lg"
-											icon="lucide:x"
-										/>
-									</Button>
-									<Button
-										className="gap-2"
-										disabled={isApprovePending}
-										onClick={() => onApprove(request.id)}
-										size="sm"
-										variant={'primary'}
-									>
-										<Icon
-											className="text-lg"
-											icon="lucide:check"
-										/>
-									</Button>
-								</div>
+					{squad.requests.map((request) => (
+						<div
+							className="flex items-center justify-between gap-2 rounded-lg bg-accent/40 px-2 py-1.5"
+							key={request.id}
+						>
+							<p className="truncate font-semibold text-sm">
+								{request.member.name}
+							</p>
+							<div className="flex shrink-0 items-center gap-1">
+								<Button
+									className="h-7 w-7 p-0 ring-transparent"
+									disabled={isRejectPending}
+									onClick={() => onReject(request.id)}
+									size="sm"
+									variant="danger"
+								>
+									<Icon
+										className="text-base"
+										icon="lucide:x"
+									/>
+								</Button>
+								<Button
+									className="h-7 w-7 p-0"
+									disabled={isApprovePending}
+									onClick={() => onApprove(request.id)}
+									size="sm"
+									variant="primary"
+								>
+									<Icon
+										className="text-base"
+										icon="lucide:check"
+									/>
+								</Button>
 							</div>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
 			)}
 
-			<div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-				{Array.from({ length: 5 }, (_, slot) => {
+			<div className="flex flex-col gap-1.5">
+				{Array.from({ length: SQUAD_SIZE }, (_, slot) => {
 					const member = squad.members.find((m) => m.slot === slot)
 					const isAbsent =
 						member?.member.user_id != null &&
 						absentUserIds.has(member.member.user_id as number)
+					const gear = member
+						? (member.gear_override ??
+							(member.member.user_id != null
+								? (loadoutByUserId.get(member.member.user_id)
+										?.data ?? null)
+								: null))
+						: null
 					return (
-						<SquadSlot
+						<SquadRow
+							gear={gear}
+							hasOverride={member?.gear_override != null}
 							isAbsent={isAbsent}
 							isOfficer={isOfficer}
+							isSelected={
+								selectedTarget?.squadId === squad.id &&
+								selectedTarget?.slot === slot
+							}
+							kd={
+								member
+									? kdByName?.get(
+											member.member.name
+												.trim()
+												.toLowerCase()
+										)?.kd
+									: undefined
+							}
 							key={slot}
+							lookups={{ weapons, armors, buildById }}
 							member={member}
+							onEditGear={
+								member &&
+								(member.member.user_id === currentUserId ||
+									isOfficer)
+									? () =>
+											onEditLoadout(
+												member.member_id,
+												member.id,
+												member.slot
+											)
+									: undefined
+							}
 							onMove={onMove}
 							onOpenAssign={onOpenAssign}
 							onRemoveMember={onRemoveMember}
@@ -265,29 +381,26 @@ export function SquadCard({
 					)
 				})}
 			</div>
-
-			{squadMembers.length > 0 && (
-				<SquadLoadoutTable
-					armors={armors}
-					buildById={buildById}
-					currentUserId={currentUserId}
-					isOfficer={isOfficer}
-					loadoutByUserId={loadoutByUserId}
-					members={squadMembers}
-					onEditLoadout={onEditLoadout}
-					weapons={weapons}
-				/>
-			)}
-		</div>
+		</Card.Root>
 	)
 }
 
-interface SquadSlotProps {
+interface SquadRowProps {
 	squad: ClanSquad
 	slot: number
 	member: ClanSquadMember | undefined
 	isOfficer: boolean
 	isAbsent: boolean
+	isSelected: boolean
+	gear: LoadoutData | null
+	hasOverride: boolean
+	kd: number | undefined
+	lookups: {
+		weapons: Item[]
+		armors: Item[]
+		buildById: Map<string, BuildApi>
+	}
+	onEditGear?: () => void
 	onRemoveMember: (slot: number) => void
 	onOpenAssign: (slot: number) => void
 	onMove: (
@@ -296,16 +409,22 @@ interface SquadSlotProps {
 	) => void
 }
 
-function SquadSlot({
+function SquadRow({
 	squad,
 	slot,
 	member,
 	isOfficer,
 	isAbsent,
+	isSelected,
+	gear,
+	hasOverride,
+	kd,
+	lookups,
+	onEditGear,
 	onRemoveMember,
 	onOpenAssign,
 	onMove,
-}: SquadSlotProps) {
+}: SquadRowProps) {
 	const t = useTranslations()
 
 	const { dragged } = useDnd()
@@ -326,62 +445,91 @@ function SquadSlot({
 	})
 
 	const isLeader = squad.leader_id === member?.id
-	const cardStyles = member
+	const rowStyles = member
 		? isLeader
-			? 'border-amber-500/60 bg-amber-500/10'
+			? 'border-amber-500/50 bg-amber-500/5'
 			: isAbsent
-				? 'border-destructive/60 bg-destructive/10'
-				: 'border-primary bg-accent/30'
-		: 'border-primary border-dashed'
+				? 'border-destructive/50 bg-destructive/5'
+				: 'border-primary/50'
+		: isSelected
+			? 'border-primary bg-primary/10'
+			: 'border-dashed border-primary/50'
 
 	return (
 		<div
-			{...draggableProps}
 			{...droppableProps}
-			className={`relative flex flex-col items-center gap-1 rounded-lg border p-3 text-center text-sm transition-colors ${cardStyles} ${
-				!member ? 'justify-center' : ''
+			className={`flex items-center gap-1.5 rounded-lg border px-2 py-1.5 transition-colors ${rowStyles} ${
+				isDragging ? 'opacity-40' : ''
 			} ${
-				isDragging
-					? 'opacity-40'
-					: isOfficer
-						? member
-							? 'cursor-grab'
-							: 'cursor-pointer'
-						: ''
-			} ${
-				isOver
+				isOver || isSelected
 					? 'ring-2 ring-sky-500/70'
 					: dragged != null && isOfficer
 						? 'hover:border-sky-500/60'
 						: ''
-			}`}
+			} ${!member && isOfficer ? 'cursor-pointer hover:bg-primary/5' : ''}`}
 			onClick={() => {
 				if (isOfficer && !member) onOpenAssign(slot)
 			}}
 		>
 			{member ? (
 				<>
-					<p className="max-w-24 truncate font-semibold">
-						{member.member.name}
-					</p>
-					<p className="font-semibold text-text-accent text-xs">
-						{t(`player.rank.${member.member.rank}`)}
-					</p>
+					<span
+						{...draggableProps}
+						className={`shrink-0 text-muted-foreground ${isOfficer ? 'cursor-grab' : ''}`}
+					>
+						<Icon
+							className="text-base"
+							icon="lucide:grip-vertical"
+						/>
+					</span>
+					<ClanMemberHoverCard
+						gear={gear}
+						hasOverride={hasOverride}
+						kd={kd}
+						lookups={lookups}
+						member={member.member}
+						onEditGear={onEditGear}
+					>
+						<p className="truncate font-semibold text-sm">
+							{member.member.name}
+						</p>
+					</ClanMemberHoverCard>
+					{isLeader && (
+						<Icon
+							className="shrink-0 text-amber-500 text-base"
+							icon="lucide:crown"
+						/>
+					)}
+					{isAbsent && (
+						<Icon
+							className="shrink-0 text-base text-destructive"
+							icon="lucide:calendar-x"
+						/>
+					)}
+					{kd != null && (
+						<Badge
+							className="ml-auto shrink-0 font-mono"
+							variant="secondary"
+						>
+							{kd.toFixed(2)}
+						</Badge>
+					)}
 					{isOfficer && (
 						<Button
-							className="absolute top-1 right-1 p-1 ring-transparent"
-							onClick={() => onRemoveMember(slot)}
-							variant={'danger'}
+							className={`h-6 w-6 shrink-0 p-0 ring-transparent ${kd == null ? 'ml-auto' : ''}`}
+							onClick={(e) => {
+								e.stopPropagation()
+								onRemoveMember(slot)
+							}}
+							variant="danger"
 						>
 							<Icon className="text-sm" icon="lucide:x" />
 						</Button>
 					)}
 				</>
 			) : (
-				<p
-					className={`${montserrat.className} font-semibold text-sm text-text-accent`}
-				>
-					{t('clan.squads.slot', { slot: slot + 1 })}
+				<p className="truncate px-1 font-mono font-semibold text-muted-foreground text-xs">
+					{t('clan.squads.freeSlot')}
 				</p>
 			)}
 		</div>

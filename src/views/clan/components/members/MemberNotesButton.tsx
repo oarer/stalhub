@@ -4,10 +4,11 @@ import { Icon } from '@iconify/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
+import Username from '@/components/ui/user/Username'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/lib/date'
 import { clanService } from '@/services/clan/clan.service'
@@ -84,7 +85,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 			<Modal.Trigger asChild>
 				<Button
 					className={cn(
-						'relative cursor-pointer p-1 text-text-accent',
+						'relative cursor-pointer p-1 text-foreground',
 						note && 'text-primary!'
 					)}
 					onClick={handleOpen}
@@ -108,9 +109,9 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 								</p>
 								<div className="mt-2 flex items-center justify-between">
 									<span
-										className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+										className={`font-mono font-semibold text-foreground text-xs`}
 									>
-										{note.author.name} ·{' '}
+										<Username user={note.author} /> ·{' '}
 										{formatDate(note.created_at)}
 									</span>
 									<div className="flex gap-1">
@@ -144,9 +145,9 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 						)}
 
 						{(!note || isEditing) && (
-							<textarea
+							<Textarea
 								autoFocus
-								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/60"
+								className="min-h-20 resize-none border-primary focus:border-primary/60"
 								maxLength={512}
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t('clan.notes.placeholder')}
@@ -154,7 +155,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 							/>
 						)}
 						<span
-							className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+							className={`font-mono font-semibold text-foreground text-xs`}
 						>
 							{content.length}/512
 						</span>

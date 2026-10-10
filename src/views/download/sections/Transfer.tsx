@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { CopyButton } from '@/components/ui/CopyButton'
@@ -57,14 +57,14 @@ export default function Transfer() {
 
 	return (
 		<section className="flex flex-col gap-4">
-			<h2
-				className={`${unbounded.className} font-semibold text-2xl tracking-tight`}
+			<h1
+				className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
 			>
 				{t('download.title')}
-			</h2>
+			</h1>
 
 			<Card.Root className="gap-5">
-				<p className="font-medium text-text-accent">
+				<p className="font-medium text-foreground">
 					{t('download.description')}
 				</p>
 
@@ -73,7 +73,7 @@ export default function Transfer() {
 						{t('download.include')}
 					</span>
 					{entriesList.length === 0 ? (
-						<p className="font-semibold text-sm text-text-accent">
+						<p className="font-semibold text-foreground text-sm">
 							{t('download.empty')}
 						</p>
 					) : (
@@ -89,7 +89,7 @@ export default function Transfer() {
 									/>
 									<span>{key}</span>
 									<span
-										className={`${montserrat.className} text-text-accent`}
+										className={`font-mono text-foreground`}
 									>
 										{formatBytes(value.length)}
 									</span>
@@ -98,7 +98,7 @@ export default function Transfer() {
 						</ul>
 					)}
 					<p
-						className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+						className={`font-mono font-semibold text-foreground text-xs`}
 					>
 						{t('download.total', {
 							count: entriesList.length,
@@ -124,7 +124,7 @@ export default function Transfer() {
 					<div className="flex flex-col gap-2">
 						<div className="flex items-center gap-2">
 							<input
-								className={`${montserrat.className} w-full rounded-lg border-2 border-muted bg-card/50 px-3 py-2 font-semibold text-xs`}
+								className={`w-full rounded-lg border-2 border-muted bg-card/50 px-3 py-2 font-mono font-semibold text-xs`}
 								readOnly
 								value={link}
 							/>
@@ -151,7 +151,7 @@ export default function Transfer() {
 								</span>
 							)}
 						</div>
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-semibold text-foreground text-xs">
 							{t('download.hint')}
 						</p>
 					</div>

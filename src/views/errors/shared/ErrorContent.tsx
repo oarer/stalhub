@@ -1,7 +1,7 @@
 import { Icon, type IconifyIcon } from '@iconify/react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 
 type ErrorContentProps = {
@@ -25,12 +25,12 @@ export default function ErrorContent({
 	return (
 		<div className="flex max-w-md flex-col gap-2">
 			<h1
-				className={`${unbounded.className} font-semibold text-3xl uppercase tracking-widest`}
+				className={`${mtsExtended.className} font-semibold text-3xl uppercase tracking-widest`}
 			>
 				{title ?? t('errors.oops')}
 			</h1>
 			<p
-				className={`${unbounded.className} font-semibold text-xl dark:text-foreground/90`}
+				className={`${mtsExtended.className} font-medium text-xl dark:text-foreground/90`}
 			>
 				{description}
 			</p>
@@ -40,9 +40,7 @@ export default function ErrorContent({
 				variant="outline"
 			>
 				<Icon icon={buttonIcon} />
-				<span className={`${montserrat.className} font-semibold`}>
-					{buttonLabel}
-				</span>
+				<span className={`font-mono font-semibold`}>{buttonLabel}</span>
 			</Button>
 		</div>
 	)

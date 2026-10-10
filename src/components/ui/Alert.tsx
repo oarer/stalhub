@@ -67,7 +67,7 @@ function AlertRoot({
 function AlertTitle({ className, ...props }: React.ComponentProps<'p'>) {
 	return (
 		<p
-			className={cn('font-bold text-lg leading-5', className)}
+			className={cn('font-medium text-[15px] leading-5', className)}
 			data-slot="alert-title"
 			{...props}
 		/>
@@ -80,7 +80,7 @@ function AlertDescription({
 }: React.ComponentProps<'div'>) {
 	return (
 		<div
-			className={cn('font-semibold text-sm opacity-90', className)}
+			className={cn('font-medium text-[13px] opacity-90', className)}
 			data-slot="alert-description"
 			{...props}
 		/>

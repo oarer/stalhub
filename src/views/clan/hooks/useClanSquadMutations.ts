@@ -9,7 +9,7 @@ import { loadoutService } from '@/services/loadout/loadout.service'
 import type { ClanMember, ClanSquad, SquadMap } from '@/types/clan/clan.type'
 import type { LoadoutData } from '@/types/loadout/loadout.type'
 import type { DragSource } from '../components/squads/SquadDnd'
-import type { EditingContext } from './useClanSquadModals'
+import type { AssignTarget, EditingContext } from './useClanSquadModals'
 
 interface UseClanSquadMutationsParams {
 	clanId: string
@@ -17,8 +17,7 @@ interface UseClanSquadMutationsParams {
 	members: ClanMember[]
 	setCreateOpen: (open: boolean) => void
 	setNewName: (name: string) => void
-	setAssignSquadId: (id: number | null) => void
-	setAssignSlot: (slot: number | null) => void
+	setAssignTarget: (target: AssignTarget | null) => void
 	setLeaderSquadId: (id: number | null) => void
 	setMapSquadId: (id: number | null) => void
 	setEditingCtx: (ctx: EditingContext | null) => void
@@ -30,8 +29,7 @@ export function useClanSquadMutations({
 	members,
 	setCreateOpen,
 	setNewName,
-	setAssignSquadId,
-	setAssignSlot,
+	setAssignTarget,
 	setLeaderSquadId,
 	setMapSquadId,
 	setEditingCtx,
@@ -56,6 +54,17 @@ export function useClanSquadMutations({
 		},
 		onError: () => {
 			toast.error(t('clan.squads.toasts.createError'))
+		},
+	})
+
+	const renameMutation = useMutation({
+		mutationFn: ({ squadId, name }: { squadId: number; name: string }) =>
+			clanService.renameSquad(squadId, name),
+		onSuccess: () => {
+			invalidate()
+		},
+		onError: () => {
+			toast.error(t('clan.squads.toasts.renameError'))
 		},
 	})
 
@@ -105,9 +114,11 @@ export function useClanSquadMutations({
 			slot: number
 		}) => clanService.assignSquadMember(squadId, member_id, slot),
 		onSuccess: () => {
-			setAssignSquadId(null)
-			setAssignSlot(null)
+			setAssignTarget(null)
 			invalidate()
+		},
+		onError: () => {
+			toast.error(t('clan.squads.toasts.moveError'))
 		},
 	})
 
@@ -195,12 +206,13 @@ export function useClanSquadMutations({
 	) => {
 		if (source.squadId === target.squadId && source.slot === target.slot)
 			return
+		const fromRoster = source.squadId < 0
 		const targetSquad = squads.find((s) => s.id === target.squadId)
 		const occupant = targetSquad?.members.find(
 			(m) => m.slot === target.slot
 		)
 		try {
-			if (occupant) {
+			if (occupant && !fromRoster) {
 				await assignMutation.mutateAsync({
 					squadId: source.squadId,
 					member_id: occupant.member_id,
@@ -219,6 +231,7 @@ export function useClanSquadMutations({
 
 	return {
 		createMutation,
+		renameMutation,
 		joinMutation,
 		approveMutation,
 		rejectMutation,

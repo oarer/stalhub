@@ -1,5 +1,5 @@
-import { Skeleton } from '@/components/ui/Skeleton'
 import { PageTitleSkeleton } from '@/components/ui/PageSkeletons'
+import { Skeleton } from '@/components/ui/Skeleton'
 
 export default function LoadingPlayerSearch() {
 	return (

@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl'
+import { Textarea } from '@/components/ui/Textarea'
 import { cn } from '@/lib/cn'
 import type { EditorTab } from './editor-utils'
 
@@ -25,8 +26,8 @@ export function EditorPane({
 				mobileTab !== 'write' && 'hidden md:flex md:flex-col'
 			)}
 		>
-			<textarea
-				className="h-full w-full resize-none bg-transparent p-4 font-mono text-sm leading-relaxed outline-none placeholder:text-text-accent/40"
+			<Textarea
+				className="h-full w-full resize-none border-0 bg-transparent p-4 font-mono font-normal leading-relaxed placeholder:text-foreground/40"
 				onChange={(e) => onChange(e.target.value)}
 				onScroll={onScroll}
 				placeholder={t('me.articleEditor.placeholder')}

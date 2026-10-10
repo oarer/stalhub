@@ -13,7 +13,9 @@ type ToastOptions = {
 
 const icons = {
 	success: <Icon icon="lucide:circle-check" />,
-	error: <Icon className="text-destructive-foreground" icon="lucide:circle-x" />,
+	error: (
+		<Icon className="text-destructive-foreground" icon="lucide:circle-x" />
+	),
 	info: <Icon className="text-info-foreground" icon="lucide:info" />,
 	loading: (
 		<Icon className="animate-spin text-info" icon="lucide:loader-circle" />
@@ -45,7 +47,7 @@ const showToast = (
 				<div className="flex min-w-0 flex-1 items-center gap-3">
 					<div className="shrink-0 text-lg">{icons[type]}</div>
 
-					<p className="wrap-break-word min-w-0 font-semibold text-card-foreground text-sm">
+					<p className="wrap-break-word min-w-0 font-medium text-[13px] text-card-foreground">
 						{message}
 					</p>
 				</div>

@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { Modal } from '@/components/ui/Modal'
@@ -83,7 +82,7 @@ export default function BuildPriceModal() {
 							{t('build.price_unavailable')}
 						</p>
 					) : rows.length === 0 ? (
-						<p className="py-8 text-center text-text-accent">
+						<p className="py-8 text-center text-foreground">
 							{t('build.price_empty')}
 						</p>
 					) : (
@@ -98,8 +97,7 @@ export default function BuildPriceModal() {
 										className="flex items-center justify-between gap-3 rounded-lg bg-accent/60 px-3 py-2"
 										key={art.instance_id}
 										style={{
-											backgroundColor:
-												`${colorHex}22` || undefined,
+											backgroundColor: `${colorHex}22`,
 										}}
 									>
 										<div className="flex min-w-0 items-center gap-2">
@@ -114,7 +112,7 @@ export default function BuildPriceModal() {
 											/>
 											<div className="flex min-w-0 flex-col">
 												<p
-													className="truncate font-semibold text-sm"
+													className="truncate font-medium text-sm"
 													style={{ color: colorHex }}
 												>
 													{messageToString(
@@ -123,7 +121,7 @@ export default function BuildPriceModal() {
 													)}
 												</p>
 												<p
-													className={`${montserrat.className} font-semibold text-muted-foreground text-xs`}
+													className={`font-medium font-mono text-muted-foreground text-xs`}
 												>
 													{art.percent}%
 													{art.potential > 0
@@ -149,7 +147,7 @@ export default function BuildPriceModal() {
 														</Tooltip.Root>
 													)}
 													<span
-														className={`${montserrat.className} font-bold text-primary text-sm`}
+														className={`font-mono font-semibold text-primary text-sm`}
 													>
 														{formatArtPrice(
 															price.price
@@ -159,7 +157,7 @@ export default function BuildPriceModal() {
 												</>
 											)}
 											{price?.price == null && (
-												<span className="text-sm text-text-accent">
+												<span className="text-foreground text-sm">
 													—
 												</span>
 											)}
@@ -175,18 +173,18 @@ export default function BuildPriceModal() {
 						<Divider />
 						<div className="flex flex-col gap-2 px-1 py-3">
 							<div className="flex items-center justify-between">
-								<p className="font-semibold">
+								<p className="font-medium">
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`${montserrat.className} font-bold text-primary text-xl`}
+									className={`font-mono font-semibold text-primary text-xl`}
 								>
 									{formatArtPrice(total)}₽
 								</p>
 							</div>
 							{updatedAt && (
 								<p
-									className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+									className={`font-medium font-mono text-foreground text-xs`}
 								>
 									{t('build.price_updated')}{' '}
 									{formatDate(updatedAt, 'datetime')}

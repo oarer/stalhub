@@ -3,6 +3,11 @@
     "overview": "Everything in one place",
     "tools_for": "Tools for",
     "need": "Everything you need for",
+    "swap": {
+      "tools": "Tools",
+      "calcs": "Calculators",
+      "analytics": "Analytics"
+    },
     "features": {
       "items": "Items",
       "tools": "Tools",
@@ -74,6 +79,18 @@
         "upgrade": {
           "title": "Upgrade Calculator",
           "desc": "Upgrade chances, attempts and tool costs for artifacts and gear"
+        },
+        "text": {
+          "title": "Formatting",
+          "desc": "§-codes and gradients"
+        },
+        "barter": {
+          "title": "Barter",
+          "desc": "Craft tree"
+        },
+        "donate": {
+          "title": "Donate",
+          "desc": "Best sell value"
         }
       }
     },
@@ -84,6 +101,81 @@
       "month": "Top of the month",
       "views": "views",
       "empty": "No data"
+    },
+    "clan": {
+      "title": "Free <primary>clan analytics</primary>",
+      "subtitle": "Are you a clan leader? Then our solution is perfect for you",
+      "features": {
+        "ai": {
+          "title": "AI analysis",
+          "desc": "We use GPT 6 Sol for sharper stage analysis."
+        },
+        "analytics": {
+          "title": "Analytics",
+          "desc": "The system automatically collects results from every stage and shows them in a convenient view."
+        },
+        "bot": {
+          "title": "Discord bot",
+          "desc": "To save you a trip to the site, we built a handy bot for fast stage uploads."
+        },
+        "grenades": {
+          "title": "Grenades",
+          "desc": "Fast grenade scan after each stage, so you always know if players spend every grenade they were given."
+        }
+      },
+      "stages": {
+        "upload": "Screenshot",
+        "analyze": "AI",
+        "cabinet": "Cabinet"
+      },
+      "demo": {
+        "processing": "Processing",
+        "done": "Done"
+      }
+    },
+    "personal": {
+      "title": "Personal <primary>analytics</primary>",
+      "subtitle": "Link your character and track your progress: stats are collected automatically",
+      "cta": "Open analytics",
+      "features": {
+        "tracking": {
+          "title": "Auto-tracking",
+          "desc": "Stat snapshots are saved automatically every 12 hours — plus one-click manual refresh."
+        },
+        "dynamics": {
+          "title": "Dynamics",
+          "desc": "K/D, accuracy, headshot and playtime charts: you see values and growth over the period."
+        },
+        "stages": {
+          "title": "Stages",
+          "desc": "Personal and clan stages by map: winrate, sessions and appearances, neatly organized."
+        },
+        "sharing": {
+          "title": "Public link",
+          "desc": "Go public in one click and share a beautiful stats page with friends."
+        }
+      },
+      "stages": {
+        "link": "Link",
+        "snapshot": "Snapshot",
+        "dynamics": "Dynamics"
+      },
+      "demo": {
+        "snapshots": "Snapshots: {n}",
+        "growth": "Growth",
+        "forPeriod": "for period",
+        "chartTitle": "K/D — dynamics",
+        "stats": {
+          "kills": "Kills",
+          "kd": "K/D",
+          "accuracy": "Accuracy",
+          "hours": "Playtime"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "<primary>Roadmap</primary>",
+      "description": "From first concepts to the app release — and beyond"
     }
   },
   "footer": {
@@ -129,7 +221,21 @@
     "arts": "Art",
     "groups": {
       "calculators": {
-        "title": "Calculators",
+        "title": "Tools",
+        "categories": {
+          "main": {
+            "title": "Main"
+          },
+          "leveling": {
+            "title": "Progression"
+          },
+          "info": {
+            "title": "Information"
+          },
+          "services": {
+            "title": "Services"
+          }
+        },
         "items": {
           "art": {
             "label": "Builds",
@@ -144,6 +250,10 @@
             "label": "TTK",
             "description": "Weapon efficiency"
           },
+          "buy": {
+            "description": "Creating buyout tables",
+            "label": "Buyout tables"
+          },
           "arsenal": {
             "label": "Arsenal",
             "description": "Arsenal reputation"
@@ -155,6 +265,14 @@
           "barter": {
             "label": "Barter coins",
             "description": "Barter for barter coins"
+          },
+          "donate": {
+            "label": "Donate",
+            "description": "Best sell value"
+          },
+          "text": {
+            "label": "Formatting",
+            "description": "§-codes and gradients"
           },
           "bp": {
             "label": "Season pass",
@@ -187,6 +305,9 @@
           },
           "clans": {
             "label": "Clan list"
+          },
+          "clanStats": {
+            "label": "Clan stats"
           }
         }
       },
@@ -234,8 +355,39 @@
           }
         }
       },
+      "community": {
+        "title": "Resources",
+        "categories": {
+          "resources": {
+            "title": "Official resources",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "News, updates and giveaways"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "Fast technical support"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "Project repository"
+              },
+              "about": {
+                "label": "About us",
+                "description": "Extended project information"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Creative",
+        "categories": {
+          "community": {
+            "title": "Community works"
+          }
+        },
         "items": {
           "articles": {
             "label": "Articles",
@@ -252,9 +404,17 @@
           "tierlists": {
             "label": "Tier Lists",
             "description": "Tier lists by players"
+          },
+          "blog": {
+            "label": "Blog",
+            "description": "News and updates"
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "Profile",
+      "logout": "Log out"
     }
   },
   "map": {
@@ -446,6 +606,16 @@
         "shock_therapy": "Фокусировка",
         "sea_alienation": "Море отчуждения"
       }
+    },
+    "summary": {
+      "title": "Summary",
+      "kd": "K/D",
+      "pvp": "PvP kills",
+      "pve": "PvE kills",
+      "mutants": "mutants",
+      "sessionKd": "Sessions K/D",
+      "colosseumKd": "Colosseum K/D",
+      "games": "games"
     }
   },
   "time": {
@@ -535,6 +705,13 @@
       "details": "пользовательском соглашении",
       "back": "Назад",
       "confirm": "Мне есть 18"
+    },
+    "regular": "Regular",
+    "sort": {
+      "newest": "New",
+      "oldest": "Old",
+      "views": "By views",
+      "stars": "By stars"
     }
   },
   "ui": {
@@ -587,6 +764,13 @@
       "rest": "Not enough for the goal",
       "restEnd": "reputation.",
       "unlimited": "Make up the rest with items without a limit."
+    },
+    "tabs": {
+      "calc": "Calculator",
+      "shop": "Shop"
+    },
+    "shop": {
+      "pick": "Pick"
     }
   },
   "modals": {
@@ -873,7 +1057,61 @@
     "donations": "“+50 levels” sets",
     "reachable": "You make it before the season ends",
     "not_reachable": "Won’t make it: need {daysNeeded} days, {daysLeft} left",
-    "days": "{count, plural, one {# day} other {# days}}"
+    "days": "{count, plural, one {# day} other {# days}}",
+    "target_preset": "{count} lv.",
+    "deadline": "Calculation end date",
+    "season_weeks": "Season: {count} weeks, until Tuesday before the new season.",
+    "play_title": "How often you play",
+    "pace_7": "Casual",
+    "pace_15": "Regular",
+    "pace_25": "Active",
+    "pace_tasks": "{count} tasks",
+    "weekdays": "Play days of week",
+    "weekday_mon": "Mo",
+    "weekday_tue": "Tu",
+    "weekday_wed": "We",
+    "weekday_thu": "Th",
+    "weekday_fri": "Fr",
+    "weekday_sat": "Sa",
+    "weekday_sun": "Su",
+    "boost_title": "Boost",
+    "boost_sub": "Overloads, levels and +50%",
+    "overload_off": "None",
+    "overload_stock": "My stock",
+    "overload_full": "Unlimited",
+    "overload_stock_days": "Overload stock, days",
+    "bonus_on": "Bonus +50% on",
+    "bonus_off": "Bonus +50% off",
+    "bonus_start": "Bonus start",
+    "bonus_days": "Bonus days",
+    "forecast": "Your forecast",
+    "goal": "Your goal: level {level}",
+    "badge_ok": "On pace",
+    "badge_lack": "Behind pace",
+    "headline_lack": "Short by {count} lv.",
+    "sub_lack": "You will miss {xp} XP by the deadline.",
+    "headline_ok": "On track by {date}",
+    "sub_ok": "{count} spare days left.",
+    "headline_done": "Goal reached",
+    "to_deadline": "By {date}",
+    "stat_days": "play days",
+    "stat_pace": "levels / play day",
+    "stat_spare": "spare play days",
+    "tab_progress": "Progress",
+    "tab_calendar": "Calendar",
+    "tab_compare": "Compare",
+    "show_daily": "Show daily breakdown",
+    "hide_daily": "Hide breakdown",
+    "col_date": "Date",
+    "col_tasks": "Tasks",
+    "col_xp": "XP",
+    "col_level": "Level",
+    "mark_overload": "overload",
+    "compare_plan": "Your plan",
+    "compare_no_overload": "No overloads",
+    "compare_no_boost": "No bonus",
+    "compare_calm": "Casual (7/day)",
+    "compare_ok": "ok"
   },
   "sessions": {
     "title": "Session Battles Calculator",
@@ -1678,6 +1916,10 @@
     "metaDescription": "Public articles of the StalHub community",
     "byAuthor": "Article by {author}",
     "notFound": "Article not found",
+    "toc": {
+      "title": "Contents",
+      "collapse": "Collapse"
+    },
     "comments": {
       "title": "Comments ({count})",
       "placeholder": "Write a comment...",
@@ -1804,7 +2046,10 @@
         "desc": "Your clan is currently frozen, management features are unavailable.\nTo get access, click the button below.",
         "activate": "Activate",
         "titleMember": "Clan <span>[{tag}] {name}</span> is frozen",
-        "descMember": "Your clan is currently frozen, management features are unavailable."
+        "descMember": "Your clan is currently frozen, management features are unavailable.\nOnly the leader can unfreeze the clan — ask them to press “Activate”.",
+        "demoBadge": "Demo",
+        "demoTitle": "What clan analytics looks like",
+        "demoDesc": "Below is the same analytics UI with random data, so you can see how it looks in general."
       }
     },
     "dashboard": {
@@ -1895,7 +2140,7 @@
       "noBuilds": "No builds",
       "search": "Search",
       "noSquadsHere": "No squads on this map yet",
-      "createFirstHint": "Create your first squad by clicking «Create squad»",
+      "createFirstHint": "Press “Create squad” or an empty card below",
       "png": {
         "previewTitle": "Squads preview",
         "title": "Squads · {map}",
@@ -1919,8 +2164,31 @@
         "moveError": "Could not move member",
         "pngError": "Could not save image",
         "pngCopied": "Image copied",
-        "copyError": "Could not copy"
-      }
+        "copyError": "Could not copy",
+        "renameError": "Failed to rename squad"
+      },
+      "autoName": "Squad {n}",
+      "quickCreateTitle": "Create a squad on this map",
+      "roster": {
+        "title": "Members",
+        "search": "Search by nickname",
+        "empty": "No members",
+        "pickHint": "Click an empty squad slot, then pick a member on the left",
+        "targetSet": "Slot {slot} · {squad}",
+        "absent": "Absent today",
+        "kdHint": "Kills: {kills} · Deaths: {deaths} · Games: {games}"
+      },
+      "squadCount": "Squads: {count} / {max}",
+      "squadCountHint": "Squads on this map",
+      "newSquad": "New squad",
+      "squadSlot": "Slot {n} / {max}",
+      "freeSlot": "Free slot",
+      "bench": {
+        "title": "Free players",
+        "empty": "Bench is empty — everyone is in squads"
+      },
+      "renameTitle": "Rename squad",
+      "pickTargetTitle": "{name} gear — choose squad"
     },
     "sessions": {
       "title": "Clan wars",
@@ -2214,6 +2482,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "No loadout data",
+      "editGear": "Edit loadout"
     }
   },
   "me": {
@@ -2239,7 +2511,8 @@
       "system": "System",
       "notifications": "Notifications",
       "invites": "Invites",
-      "attendance": "Attendance"
+      "attendance": "Attendance",
+      "analytics": "Analytics"
     },
     "menu": "Menu",
     "home": {
@@ -2291,7 +2564,7 @@
       "image": "Image (URL)",
       "workPlaceholder": "Paste the image link",
       "upload": "Upload",
-      "imageInvalidType": "Only PNG, JPG, WEBP and GIF are supported",
+      "imageInvalidType": "Only PNG, JPG, WEBP, GIF, MP4 and WEBM are supported",
       "workTooLarge": "Maximum file size is 10 MB",
       "workUploaded": "Image uploaded",
       "imageUploadError": "Error uploading image",
@@ -2307,7 +2580,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "Max {count} images per work",
+      "cover": "Cover"
     },
     "artEdit": {
       "title": "Edit work",
@@ -2632,7 +2907,14 @@
       "sort_price": "Price",
       "sort_rarity": "Rarity",
       "range_from": "from",
-      "range_to": "to"
+      "range_to": "to",
+      "autoRefresh": "Auto-refresh",
+      "refreshNow": "Refresh now",
+      "secondsShort": "sec",
+      "nextRefresh": "in {sec}s",
+      "lastUpdate": "Updated: {time}",
+      "minutesShort": "min",
+      "intervalHint": "10s – 5min"
     }
   },
   "users": {
@@ -2738,7 +3020,13 @@
     "schedule": "Schedule:",
     "brawls": "Brawls:",
     "brawlsMandatory": "mandatory",
-    "brawlsOptional": "optional"
+    "brawlsOptional": "optional",
+    "statsTitle": "Clan stats",
+    "statsClans": "Clans",
+    "statsKills": "Kills",
+    "statsEmpty": "No data — no clan opened stats yet",
+    "statsClan": "Clan",
+    "winrateAvg": "Avg winrate"
   },
   "buildsPublic": {
     "title": "Builds",
@@ -2906,7 +3194,27 @@
     "title": "Server online",
     "description": "Online across StalZone regions and servers.",
     "online": "Online",
-    "charts": "Online charts"
+    "charts": "Online charts",
+    "emissions": "Emissions",
+    "emissionCurrent": "Current",
+    "emissionPrev": "Previous",
+    "emissionActive": "Emission active",
+    "emissionInactive": "No emission",
+    "emissionStarted": "Started",
+    "emissionEnded": "Ended",
+    "peaks": "Daily peak online",
+    "peakDate": "Date",
+    "peakRegion": "Region",
+    "peakOnline": "Peak"
+  },
+  "devTracker": {
+    "title": "Developer comments",
+    "description": "Latest developer replies from the official forum.",
+    "allAuthors": "All authors",
+    "refresh": "Refresh",
+    "updated": "Updated",
+    "empty": "Nothing here yet — the forum poll has no records.",
+    "showMore": "Show more"
   },
   "balance": {
     "title": "Balance",
@@ -3104,6 +3412,277 @@
         "android": "Android",
         "other": "Other"
       }
+    }
+  },
+  "personal": {
+    "title": "Personal analytics",
+    "linkHint": "Pick an EXBO character to track. A stats snapshot is saved every 12 hours.",
+    "yourCharacters": "Your characters",
+    "track": "Track",
+    "characterPlaceholder": "Character name",
+    "linkAction": "Link",
+    "linked": "Character linked",
+    "linkError": "Failed to link character",
+    "noSnapshots": "No snapshots yet. Refresh manually or wait for auto collection.",
+    "snapshots": "Snapshots: {n}",
+    "refresh": "Refresh now",
+    "makePublic": "Make public",
+    "makePrivate": "Hide",
+    "unlink": "Unlink",
+    "unlinkConfirm": "Stop tracking this character?",
+    "visibilityOk": "Visibility updated",
+    "copied": "Link copied",
+    "snapshotOk": "Snapshot saved",
+    "snapshotError": "Failed to save snapshot",
+    "stagesTitle": "Stages",
+    "stagesHint": "Sessions: {sessions} · appearances: {appearances} · kills: {kills}",
+    "sessionsTitle": "Personal stage sessions",
+    "sessionPlaceholder": "Map / stage name",
+    "sessionCreate": "Create",
+    "sessionCreated": "Session created",
+    "sessionDeleteConfirm": "Delete session?",
+    "upload": "Screenshot",
+    "screenshotUploaded": "Screenshot uploaded, analysis started",
+    "delete": "Delete",
+    "noSessions": "No sessions yet",
+    "refreshing": "Refreshing…",
+    "privateHint": "Page is hidden. Click “Make public” to share the link.",
+    "dynamics": "Dynamics",
+    "absolute": "Value",
+    "growth": "Growth",
+    "statSearch": "Search metrics…",
+    "all": "All",
+    "nothingFound": "Nothing found",
+    "current": "Now",
+    "forPeriod": "for period",
+    "stageNumber": "Stage №",
+    "win": "Win",
+    "loss": "Loss",
+    "screenshotsCount": "Shots: {n}",
+    "hide": "Hide",
+    "details": "Details",
+    "dropHint": "Drag a screenshot here or click “Screenshot”",
+    "loading": "Loading…",
+    "noScreenshots": "No screenshots yet — upload the first one",
+    "status": "Status",
+    "retry": "Retry",
+    "uploadTitle": "Upload stage",
+    "uploadModeStage": "Stage",
+    "uploadModeQuick": "Quick screenshot",
+    "noDetectedStage": "No stage scheduled right now — type will be set automatically",
+    "quickHint": "Just drop a screenshot: we will create a session, detect the stage from the schedule and run analysis.",
+    "sessionName": "Map name (optional)",
+    "sessionNamePh": "E.g. Small Berdovka",
+    "noSessionsHint": "Click Upload or drop a screenshot — the stage will be detected automatically",
+    "noScreenshotsShort": "No screenshot",
+    "stagesEmpty": "No stage data yet — upload a screenshot via Upload above the session list.",
+    "stagesClan": "Clan",
+    "stagesMap": "Map",
+    "stagesMapsTitle": "Map stats",
+    "winrate": "Winrate",
+    "lowSample": "low sample",
+    "stagesPersonal": "Personal",
+    "tabOverview": "Overview",
+    "tabStages": "Stages",
+    "tabSessions": "Sessions",
+    "tabClans": "By clan",
+    "tabMaps": "By map",
+    "unlinkTitle": "Unlink character?",
+    "unlinkBody": "Stop tracking<span>{name}</span>? Snapshots and personal sessions <danger>will be deleted</danger>.",
+    "cancel": "Cancel",
+    "chartNoData": "No data for the period",
+    "chartUnchanged": "Value unchanged for the period",
+    "chartGrowth": "growth",
+    "statKd": "K/D",
+    "statAccuracy": "Accuracy",
+    "statHsRate": "Headshots %",
+    "derived": "Derived"
+  },
+  "textFormatter": {
+    "title": "Text formatting",
+    "subtitle": "Colored text and gradients (§-codes, §#hex)",
+    "clan": "Clan",
+    "plainLen": "Plain length",
+    "gradient": "Gradient",
+    "gradientText": "Gradient text",
+    "applyGradient": "Apply gradient to selection",
+    "copy": "Copy for game",
+    "clear": "Clear",
+    "preview": "Preview (in-game)",
+    "hint": "§0-F — 16 colors, §#RRGGBB — any hex, §R — reset. Clan desc newline resets color.",
+    "gradientHint": "Select part of the text above, pick colors or a preset, then press the button.",
+    "presets": "Presets",
+    "from": "From",
+    "mid": "Mid",
+    "to": "To",
+    "addMid": "+ Middle color",
+    "removeMid": "− Remove middle",
+    "selected": "Selected",
+    "noSelection": "Nothing selected — select part of the text above",
+    "textTitle": "Text",
+    "textHint": "Enter the text you want to colorize",
+    "chars": "characters",
+    "colored": "colored characters",
+    "previewHint": "This is how the text will look in game",
+    "resultSub": "Copy and paste into the game",
+    "modeSolid": "Solid",
+    "solidHint": "A single color for the whole selection.",
+    "solidBaseHint": "Click to pick the color.",
+    "randomHint": "Random gradient",
+    "wholeHint": "Limit mode: the gradient applies to the whole text at once.",
+    "applyWhole": "Apply to the whole text",
+    "smartTitle": "Smart compression",
+    "smartHint": "Reduces the number of HEX codes so the text fits the selected limit.",
+    "noLimit": "No limit",
+    "exactHint": "Every character gets its exact color. A long result may not fit in game.",
+    "fitsExact": "Fits the limit without compression.",
+    "compressedHint": "Compressed to {runs} HEX codes — fits the limit.",
+    "notFit": "Doesn't fit even in one color — shorten the text.",
+    "emptyText": "Enter some text first.",
+    "overLimit": "Over the limit",
+    "ready": "Ready gradients",
+    "readyHint": "Click to apply",
+    "colorsHint": "Minimum 2 colors. Add intermediate ones for complex transitions.",
+    "colors": "Gradient colors",
+    "addColor": "Add color",
+    "baseColors": "Base colors (click to add into gradient)",
+    "baseColorsHint": "Click a color to add it as a new gradient stop (max 6).",
+    "result": "Result for game (with codes)",
+    "resultHint": "Copy this string into the game. The field above holds plain text only."
+  },
+  "barterCalc": {
+    "title": "Barter calculator",
+    "subtitle": "Pick an item — tree with stages, check off done steps",
+    "search": "Search item",
+    "searchTitle": "Pick item",
+    "select": "Select item",
+    "change": "Change",
+    "pick": "Pick an item from barter list",
+    "tree": "Craft tree (check done)",
+    "totals": "Totals needed",
+    "totalPrice": "Total price",
+    "allDone": "All done!",
+    "reset": "Reset",
+    "calc": "Calculation",
+    "unlimited": "Unlimited",
+    "stock": "Stock",
+    "currency": "Currency",
+    "coins": "Barter coins",
+    "shells": "Shells",
+    "coinsUnit": "coins",
+    "shellsUnit": "shells",
+    "coupon": "Coupon",
+    "noCoupon": "No coupon",
+    "couponRank": {
+      "picklock": "Picklock",
+      "newbie": "Newbie",
+      "stalker": "Stalker",
+      "veteran": "Veteran",
+      "master": "Master"
+    },
+    "couponMismatch": "Coupon rank does not match the item rank",
+    "discount": "Discount",
+    "stockAmount": "Stock (coins/shells)",
+    "offer": "Offer {n}",
+    "best": "Best",
+    "affordable": "Enough",
+    "shortage": "Short {n}",
+    "includeTokens": "Count combat tokens",
+    "tokensNeed": "Tokens needed",
+    "tokensUnit": "tokens",
+    "tokenStock": "Token stock",
+    "tokensEnough": "Covers {have} of {need}",
+    "shortageSerum": "{n} short",
+    "bestPick": "Best spend",
+    "remainder": "Left: {n}",
+    "noCurrency": "No conversion",
+    "piecesUnit": "pcs"
+  },
+  "donateCalc": {
+    "title": "Donate calculator",
+    "subtitle": "Enter stalcoins — best items to sell (price / coin)",
+    "input": "Stalcoins",
+    "hint": "Sorted by price per coin. Packs included.",
+    "item": "Item",
+    "coins": "Coins",
+    "price": "Price",
+    "perCoin": "₽/coin",
+    "count": "Count",
+    "total": "Total",
+    "missing": "Missing in DB"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "StalHub news and updates — {count} posts",
+    "empty": "Nothing yet",
+    "createTitle": "Write post",
+    "createDescription": "Patch note is published immediately (STALHUB type)",
+    "form": {
+      "title": "Title",
+      "image": "Cover (URL)",
+      "tags": "Tags comma separated",
+      "content": "Text (MDX)",
+      "contentPlaceholder": "## What changed...",
+      "create": "Publish"
+    },
+    "toast": {
+      "created": "Patch note published",
+      "createError": "Publish error"
+    },
+    "editor": {
+      "titlePlaceholder": "Change title",
+      "publish": "Publish",
+      "save": "Save",
+      "edit": "Edit",
+      "view": "View",
+      "updated": "Change saved",
+      "updateError": "Save error",
+      "galleryHint": "Headings, lists, tables and image URLs work right away; gallery file upload unlocks after publishing."
+    },
+    "cover": {
+      "title": "Cover panel",
+      "hint": "Custom rows instead of the auto “reading / tags” panel. Everything else stays auto-generated.",
+      "enabled": "Custom panel",
+      "preset": "Preset",
+      "presetAuto": "Auto",
+      "presetBeforeAfter": "Before / After",
+      "presetMetrics": "Metrics",
+      "presetHidden": "Hide panel",
+      "icon": "Icon",
+      "iconNone": "No icon",
+      "iconCustom": "Custom name",
+      "iconNotFound": "Icon not found",
+      "iconHint": "Emoji or short text, e.g. ⚡",
+      "panelTitle": "Panel title",
+      "row": "Row {n}",
+      "rowLabel": "Label",
+      "rowValue": "Value",
+      "rowFill": "Fill, %",
+      "rowAccent": "Accent",
+      "reset": "Reset",
+      "preview": "Preview"
+    },
+    "back": "All posts",
+    "publish": {
+      "button": "To TG/DS",
+      "title": "Publish to TG and DS",
+      "description": "AI will write a short digest — review it and send.",
+      "generate": "Generate",
+      "regenerate": "Retry",
+      "digestLabel": "Digest",
+      "digestPlaceholder": "Short summary of the post...",
+      "telegram": "Telegram",
+      "discord": "Discord",
+      "withCover": "With cover",
+      "send": "Send",
+      "cancel": "Cancel",
+      "generating": "Generating digest...",
+      "sentOk": "Published",
+      "sentWithoutCover": "Sent without cover",
+      "sendError": "Send error",
+      "digestError": "Failed to generate digest",
+      "fallbackHint": "AI unavailable — article excerpt used instead, please review.",
+      "republishWarn": "Resending creates a new post. Review the text before sending."
     }
   }
 }

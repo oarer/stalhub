@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import DropdownMenu from '@/components/ui/DropDown'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -15,6 +15,7 @@ import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { clanService } from '@/services/clan/clan.service'
 import { Regions } from '@/types/api.type'
 import type { MyClanProfile, UserClanProfile } from '@/types/clan/clan.type'
+import { ClanStatsDemo } from './components/demo/ClanStatsDemo'
 
 export default function ClanLayout({
 	children,
@@ -70,34 +71,44 @@ export default function ClanLayout({
 
 	if (error || !profile) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
-				<Icon className="text-4xl" icon="lucide:users" />
-				<h1 className={`${unbounded.className} font-semibold text-xl`}>
-					{t('clan.layout.notLinked.title')}
-				</h1>
-				<p className="font-semibold">
-					{t('clan.layout.notLinked.desc')}
-				</p>
-				<Button
-					className="w-full"
-					onClick={() => router.push('/me/settings')}
-				>
-					{t('clan.layout.notLinked.settings')}
-				</Button>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+					<Icon className="text-4xl" icon="lucide:users" />
+					<h1
+						className={`${mtsExtended.className} font-semibold text-xl`}
+					>
+						{t('clan.layout.notLinked.title')}
+					</h1>
+					<p className="font-medium text-foreground text-sm">
+						{t('clan.layout.notLinked.desc')}
+					</p>
+					<Button
+						className="w-full"
+						onClick={() => router.push('/me/settings')}
+					>
+						{t('clan.layout.notLinked.settings')}
+					</Button>
+				</div>
+				<ClanStatsDemo />
 			</div>
 		)
 	}
 
 	if (!profile.clan) {
 		return (
-			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
-				<Icon className="text-4xl" icon="lucide:users" />
-				<h1 className={`${unbounded.className} font-semibold text-xl`}>
-					{t('clan.layout.notFound.title')}
-				</h1>
-				<p className="font-semibold">
-					{t('clan.layout.notFound.desc')}
-				</p>
+			<div className="flex flex-col gap-4">
+				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+					<Icon className="text-4xl" icon="lucide:users" />
+					<h1
+						className={`${mtsExtended.className} font-semibold text-xl`}
+					>
+						{t('clan.layout.notFound.title')}
+					</h1>
+					<p className="whitespace-pre-line font-medium text-foreground text-sm">
+						{t('clan.layout.notFound.desc')}
+					</p>
+				</div>
+				<ClanStatsDemo />
 			</div>
 		)
 	}
@@ -117,18 +128,18 @@ export default function ClanLayout({
 					/>
 
 					<h1
-						className={`${unbounded.className} font-semibold text-destructive text-xl`}
+						className={`${mtsExtended.className} font-semibold text-destructive text-xl`}
 					>
 						{t('clan.layout.blocked.title')}
 					</h1>
 
-					<p className="whitespace-pre font-semibold">
+					<p className="whitespace-pre font-medium text-sm">
 						{t('clan.layout.blocked.desc')}
 					</p>
 
 					{profile.clan.block_reason && (
 						<p
-							className={`${unbounded.className} font-semibold text-sm uppercase tracking-widest`}
+							className={`${mtsWide.className} font-medium text-[13px] uppercase tracking-widest`}
 						>
 							{t('clan.layout.blocked.reason')}:{' '}
 							{profile.clan.block_reason}
@@ -158,7 +169,7 @@ export default function ClanLayout({
 					<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 						<Icon className="text-4xl" icon="lucide:snowflake" />
 						<h1
-							className={`${unbounded.className} font-semibold text-xl`}
+							className={`${mtsExtended.className} font-semibold text-xl`}
 						>
 							{t.rich('clan.layout.frozen.titleMember', {
 								name: profile.clan.name,
@@ -170,10 +181,11 @@ export default function ClanLayout({
 								tag: profile.clan.tag,
 							})}
 						</h1>
-						<p className="font-semibold">
+						<p className="whitespace-pre-line font-medium text-foreground text-sm">
 							{t('clan.layout.frozen.descMember')}
 						</p>
 					</div>
+					<ClanStatsDemo />
 				</div>
 			)
 		}
@@ -188,7 +200,7 @@ export default function ClanLayout({
 				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:crown" />
 					<h1
-						className={`${unbounded.className} font-semibold text-xl`}
+						className={`${mtsExtended.className} font-semibold text-xl`}
 					>
 						{t.rich('clan.layout.frozen.title', {
 							name: profile.clan.name,
@@ -198,7 +210,7 @@ export default function ClanLayout({
 							tag: profile.clan.tag,
 						})}
 					</h1>
-					<p className="whitespace-pre-line font-semibold">
+					<p className="whitespace-pre-line font-medium text-sm">
 						{t('clan.layout.frozen.desc')}
 					</p>
 					<Button
@@ -240,7 +252,7 @@ function ClanSelector({
 
 	return (
 		<DropdownMenu
-			className={`${montserrat.className} text-sm`}
+			className={`font-mono text-sm`}
 			items={(myClans ?? []).map((c) => ({
 				key: c.clan_id,
 				content: (
@@ -252,7 +264,7 @@ function ClanSelector({
 							}
 						}}
 					>
-						<span className="font-semibold">
+						<span className="font-medium text-sm">
 							[{c.clan.tag}] {c.clan.name}
 						</span>
 						{c.clan_id === profile.clan_id && (

@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -12,6 +12,7 @@ import { CopyButton } from '@/components/ui/CopyButton'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import Avatar from '@/components/ui/user/Avatar'
+import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -67,7 +68,9 @@ export default function ClanInvitesView() {
 		return (
 			<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
 				<Icon className="text-4xl" icon="lucide:shield-alert" />
-				<h1 className="font-semibold text-xl">
+				<h1
+					className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+				>
 					{t('clan.invites.leaderOnly')}
 				</h1>
 			</div>
@@ -111,7 +114,9 @@ export default function ClanInvitesView() {
 			<div className="flex items-center justify-between gap-2">
 				<div className="flex items-center gap-2">
 					<Icon className="text-2xl" icon="lucide:ticket" />
-					<h1 className="font-semibold text-xl">
+					<h1
+						className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+					>
 						{t('clan.invites.title')}
 					</h1>
 				</div>
@@ -121,17 +126,17 @@ export default function ClanInvitesView() {
 				</Button>
 			</div>
 
-			<p className="font-semibold text-text-accent">
+			<p className="font-medium text-foreground text-sm">
 				{t('clan.invites.desc')}
 			</p>
 
 			{invites.length === 0 && (
 				<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-8 text-center">
 					<Icon
-						className="text-3xl text-text-accent"
+						className="text-3xl text-foreground"
 						icon="lucide:ticket"
 					/>
-					<p className="font-semibold text-text-accent">
+					<p className="font-semibold text-foreground">
 						{t('clan.invites.empty')}
 					</p>
 				</div>
@@ -197,19 +202,15 @@ export default function ClanInvitesView() {
 						</div>
 					</div>
 
-					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-accent">
+					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-foreground text-sm">
 						<span className="font-semibold">
-							{invite.user.name || invite.user.username}
+							<Username user={invite.user} />
 						</span>
-						<span
-							className={`${montserrat.className} font-semibold`}
-						>
+						<span className={`font-mono font-semibold`}>
 							{formatDate(invite.created_at, 'datetime')}
 						</span>
 						{invite.claimed_by && (
-							<span
-								className={`${montserrat.className} font-medium`}
-							>
+							<span className={`font-medium font-mono`}>
 								{t('clan.invites.claimed_by')}:{' '}
 								{invite.claimed_by}
 							</span>
@@ -235,23 +236,23 @@ export default function ClanInvitesView() {
 					<Modal.Body className="flex flex-col gap-3">
 						{results === null ? (
 							<>
-								<p className="font-semibold text-text-accent">
+								<p className="font-semibold text-foreground">
 									{t('clan.invites.createdDesc')}
 								</p>
 								{unlinkedMembers.length === 0 ? (
 									<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-6 text-center">
 										<Icon
-											className="text-3xl text-text-accent"
+											className="text-3xl text-foreground"
 											icon="lucide:user-check"
 										/>
-										<p className="font-semibold text-text-accent">
+										<p className="font-semibold text-foreground">
 											{t('clan.invites.noUnlinked')}
 										</p>
 									</div>
 								) : (
 									<>
 										<div className="flex items-center justify-between gap-2">
-											<span className="font-semibold text-sm text-text-accent">
+											<span className="font-semibold text-foreground text-sm">
 												{t(
 													'clan.invites.membersCount',
 													{
@@ -312,7 +313,7 @@ export default function ClanInvitesView() {
 														{m.name}
 													</span>
 													<Badge
-														className={`${montserrat.className} ${RANK_COLORS[m.rank] ?? ''}`}
+														className={`font-mono ${RANK_COLORS[m.rank] ?? ''}`}
 														variant="secondary"
 													>
 														{t(
@@ -323,7 +324,7 @@ export default function ClanInvitesView() {
 											))}
 										</div>
 										<div className="flex items-center justify-between gap-2">
-											<span className="font-semibold text-sm text-text-accent">
+											<span className="font-semibold text-foreground text-sm">
 												{t(
 													'clan.invites.selectedCount',
 													{
@@ -356,7 +357,7 @@ export default function ClanInvitesView() {
 										{t('clan.invites.warning')}
 									</Alert.Description>
 								</Alert.Root>
-								<p className="font-semibold text-text-accent">
+								<p className="font-semibold text-foreground">
 									{t('clan.invites.resultsDesc', {
 										created: createdCount,
 										failed: failedCount,
@@ -441,7 +442,7 @@ function CopyRow({
 }) {
 	return (
 		<div className="flex items-center justify-between gap-2 rounded-md bg-card/60 px-2 py-1">
-			<span className="font-semibold text-sm text-text-accent">
+			<span className="font-semibold text-foreground text-sm">
 				{label}
 			</span>
 			<span className="flex min-w-0 items-center gap-1">

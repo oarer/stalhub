@@ -17,6 +17,7 @@ import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import {
 	alignClass,
@@ -28,7 +29,11 @@ import {
 	useTableSort,
 } from '@/components/ui/Table'
 import { formatDate, mskDate } from '@/lib/date'
-import type { GrenadeStagesResponse } from '@/types/clan/clan.type'
+import type {
+	ClanMember,
+	GrenadeStagesResponse,
+} from '@/types/clan/clan.type'
+import type { LoadoutData } from '@/types/loadout/loadout.type'
 import { STAGE_TYPE_COLORS } from '@/views/clan/clan.const'
 import {
 	formatKd,
@@ -38,6 +43,11 @@ import {
 	kdValue,
 } from '@/views/clan/clan.utils'
 import { Section } from '../../../me/components/Section'
+import {
+	ClanMemberGear,
+	ClanMemberHoverCard,
+	type GearLookups,
+} from '../members/ClanMemberCard'
 import type { PlayerAgg, StageEntry } from './stats.utils'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
@@ -48,6 +58,11 @@ interface PlayerListProps {
 	grenadeStages: GrenadeStagesResponse
 	selected: string | null
 	onSelect: (name: string | null) => void
+	memberByName?: Map<string, ClanMember>
+	gearByName?: Map<string, LoadoutData | null>
+	lookups?: GearLookups | null
+	canEditGear?: (member: ClanMember) => boolean
+	onEditGear?: (member: ClanMember) => void
 }
 
 function stageGrenades(
@@ -92,8 +107,19 @@ export function PlayerList({
 	grenadeStages,
 	selected,
 	onSelect,
+	memberByName,
+	gearByName,
+	lookups,
+	canEditGear,
+	onEditGear,
 }: PlayerListProps) {
 	const selectedPlayer = players.find((p) => p.name === selected) ?? null
+	const selectedMember = selected
+		? (memberByName?.get(selected.trim().toLowerCase()) ?? null)
+		: null
+	const selectedGear = selected
+		? (gearByName?.get(selected.trim().toLowerCase()) ?? null)
+		: null
 	const t = useTranslations()
 
 	const { resolvedTheme } = useTheme()
@@ -198,16 +224,44 @@ export function PlayerList({
 			{
 				accessorKey: 'name',
 				header: t('clan.common.player'),
-				cell: ({ row }) => (
-					<div className="flex items-center gap-2">
-						<span>{row.original.name}</span>
-						<Badge variant="secondary">
-							{t('clan.stats.stageCount', {
-								count: row.original.stages.length,
-							})}
-						</Badge>
-					</div>
-				),
+				cell: ({ row }) => {
+					const member = memberByName?.get(
+						row.original.name.trim().toLowerCase()
+					)
+					const name = <span>{row.original.name}</span>
+					return (
+						<div className="flex items-center gap-2">
+							{member ? (
+								<ClanMemberHoverCard
+									gear={gearByName?.get(
+										row.original.name.trim().toLowerCase()
+									)}
+									kd={kdValue(
+										row.original.kills,
+										row.original.deaths
+									)}
+									lookups={lookups}
+									member={member}
+									onEditGear={
+										onEditGear &&
+										canEditGear?.(member)
+											? () => onEditGear(member)
+											: undefined
+									}
+								>
+									{name}
+								</ClanMemberHoverCard>
+							) : (
+								name
+							)}
+							<Badge variant="secondary">
+								{t('clan.stats.stageCount', {
+									count: row.original.stages.length,
+								})}
+							</Badge>
+						</div>
+					)
+				},
 			},
 			{
 				accessorKey: 'kills',
@@ -286,13 +340,13 @@ export function PlayerList({
 				meta: { align: 'center' satisfies ColumnAlign },
 				cell: () => (
 					<Icon
-						className="text-text-accent"
+						className="text-foreground"
 						icon="lucide:chevron-right"
 					/>
 				),
 			},
 		],
-		[grenades, t]
+		[grenades, t, memberByName, gearByName, lookups, canEditGear, onEditGear]
 	)
 
 	const { table } = useTableSort(players, columns, [
@@ -306,7 +360,7 @@ export function PlayerList({
 					<Table.Header>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<Table.Row
-								className={`${montserrat.className} text-xs`}
+								className={`font-mono text-xs`}
 								key={headerGroup.id}
 							>
 								{headerGroup.headers.map((header) => {
@@ -341,7 +395,7 @@ export function PlayerList({
 					<Table.Body>
 						{table.getRowModel().rows.map((row) => (
 							<Table.Row
-								className={`${montserrat.className} cursor-pointer hover:bg-accent/50`}
+								className={`cursor-pointer font-mono hover:bg-accent/50`}
 								key={row.id}
 								onClick={() => onSelect(row.original.name)}
 							>
@@ -377,6 +431,46 @@ export function PlayerList({
 					<Modal.Body>
 						{selectedPlayer ? (
 							<div className="flex flex-col gap-3">
+								{selectedMember && (
+									<div className="rounded-lg bg-accent/50 px-3 py-2">
+										<div className="mb-1 flex items-center gap-2">
+											<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+												<Icon
+													className="text-base"
+													icon="lucide:shirt"
+												/>
+												{t('clan.squads.loadoutTitle')}
+											</p>
+											{onEditGear &&
+												canEditGear?.(
+													selectedMember
+												) && (
+													<Button
+														className="ml-auto h-7 w-7 p-0"
+														onClick={() =>
+															onEditGear(
+																selectedMember
+															)
+														}
+														size="sm"
+														title={t(
+															'clan.memberCard.editGear'
+														)}
+														variant="ghost"
+													>
+														<Icon
+															className="text-base"
+															icon="lucide:pencil"
+														/>
+													</Button>
+												)}
+										</div>
+										<ClanMemberGear
+											gear={selectedGear}
+											lookups={lookups}
+										/>
+									</div>
+								)}
 								{chartRows.length > 0 && (
 									<div className="h-48">
 										<Bar
@@ -385,7 +479,7 @@ export function PlayerList({
 										/>
 									</div>
 								)}
-								<div className="flex flex-col gap-2">
+								<div className="mask-y-from-97% mask-y-to-100% flex max-h-80 flex-col gap-2 overflow-y-scroll">
 									{selectedPlayer.stages
 										.slice()
 										.sort((a, b) =>
@@ -432,7 +526,7 @@ export function PlayerList({
 														</span>
 													</div>
 													<span
-														className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+														className={`font-mono font-semibold text-foreground text-xs`}
 													>
 														{formatDate(
 															s.started_at
@@ -440,7 +534,7 @@ export function PlayerList({
 													</span>
 												</div>
 												<span
-													className={`${montserrat.className} font-semibold text-sm text-text-accent`}
+													className={`font-mono font-semibold text-foreground text-sm`}
 												>
 													{s.kills}{' '}
 													{t(

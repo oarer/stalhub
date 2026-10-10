@@ -55,7 +55,7 @@ export function FreezeSection({ isPending, onFreeze }: FreezeSectionProps) {
 							{t('clan.settings.freezeConfirmTitle')}
 						</Modal.Title>
 					</Modal.Header>
-					<Modal.Body className="font-semibold">
+					<Modal.Body>
 						{t('clan.settings.freezeConfirmBody')}
 					</Modal.Body>
 					<Modal.Footer>

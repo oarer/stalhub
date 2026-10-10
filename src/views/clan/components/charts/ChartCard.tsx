@@ -1,4 +1,3 @@
-import { montserrat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 
 export function ChartCard({
@@ -20,9 +19,7 @@ export function ChartCard({
 			)}
 		>
 			<div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-				<p className={`${montserrat.className} font-semibold`}>
-					{title}
-				</p>
+				<p className={`font-mono font-semibold`}>{title}</p>
 				{action}
 			</div>
 			<div className="h-64">{children}</div>

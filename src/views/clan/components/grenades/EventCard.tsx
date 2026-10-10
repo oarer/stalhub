@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { type ColumnDef, Table, useTableSort } from '@/components/ui/Table'
 import type { GrenadeBoxEntry, GrenadeStageEvent } from '@/types/clan/clan.type'
@@ -99,9 +98,7 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 				id: `stage_${s.stage}`,
 				header: () => t('clan.grenades.stage', { stage: s.stage }),
 				cell: ({ row }: { row: { original: MemberRow } }) => (
-					<span
-						className={`${montserrat.className} font-semibold text-sm`}
-					>
+					<span className={`font-mono font-semibold text-sm`}>
 						{row.original.stages[i] ?? 0}
 					</span>
 				),
@@ -113,7 +110,7 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 				cell: ({ row }) => (
 					<div className="flex flex-col gap-1">
 						<span
-							className={`${montserrat.className} text-right font-semibold text-sm`}
+							className={`text-right font-mono font-semibold text-sm`}
 						>
 							{row.original.grenades}
 						</span>
@@ -149,12 +146,12 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 	return (
 		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 			<div
-				className={`${montserrat.className} flex items-center gap-2 font-semibold text-lg`}
+				className={`flex items-center gap-2 font-mono font-semibold text-lg`}
 			>
 				<Icon className="text-xl" icon="lucide:bomb" />
 				{t(`clan.stage.${event.event_type}`) || event.event_type} —{' '}
 				{formatDate(event.raid_date)}
-				<Badge className={montserrat.className} variant="secondary">
+				<Badge className="font-mono" variant="secondary">
 					{t('clan.grenades.stageCount', { count: cols })}
 				</Badge>
 			</div>

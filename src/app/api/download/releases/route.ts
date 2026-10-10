@@ -61,18 +61,23 @@ export async function GET() {
 			body: release.body,
 			assets: release.assets
 				.filter((asset) => !SKIP_PATTERN.test(asset.name))
-				.map((asset): DownloadAsset => ({
-					name: asset.name,
-					size: asset.size,
-					downloadCount: asset.download_count,
-					url: asset.browser_download_url,
-					platform: detectPlatform(asset.name),
-				})),
+				.map(
+					(asset): DownloadAsset => ({
+						name: asset.name,
+						size: asset.size,
+						downloadCount: asset.download_count,
+						url: asset.browser_download_url,
+						platform: detectPlatform(asset.name),
+					})
+				),
 		}))
 
 		return NextResponse.json(releases)
 	} catch (err) {
-		const error = err as { response?: { status?: number; data?: { message?: string } }; message?: string }
+		const error = err as {
+			response?: { status?: number; data?: { message?: string } }
+			message?: string
+		}
 		const status = error.response?.status ?? 500
 		const message =
 			error.response?.data?.message ?? error.message ?? 'Unknown error'

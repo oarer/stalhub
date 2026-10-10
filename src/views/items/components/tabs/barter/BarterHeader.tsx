@@ -27,7 +27,7 @@ export function BarterHeader({ level, titles, locale }: Props) {
 							className="flex items-center"
 							key={`${title}-${index}`}
 						>
-							<p className="font-semibold text-text-accent/90">
+							<p className="font-semibold text-foreground/90">
 								{messageToString(title, locale)}
 							</p>
 							{index !== titles.length - 1 && (

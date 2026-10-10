@@ -54,7 +54,7 @@ export function ScreenshotStatusList({
 						</div>
 						{shot.ai_status === 'error' && shot.ai_error ? (
 							<div className="flex items-center gap-2">
-								<p className="font-bold text-destructive text-xs">
+								<p className="font-medium text-destructive text-xs">
 									{shot.ai_error}
 								</p>
 								<Button
@@ -75,7 +75,7 @@ export function ScreenshotStatusList({
 							</div>
 						) : (
 							<span
-								className={`font-semibold text-xs ${status.color}`}
+								className={`font-medium text-xs ${status.color}`}
 							>
 								{t(status.label)}
 							</span>

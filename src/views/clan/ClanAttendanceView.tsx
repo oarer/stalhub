@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Table } from '@/components/ui/Table'
 import { Tooltip } from '@/components/ui/Tooltip'
@@ -88,7 +88,11 @@ function AttendanceContent({
 		<div className="flex flex-col gap-4">
 			<ClanAbsenceView />
 			<div className="flex flex-wrap items-center justify-between gap-3">
-				<h1 className="font-bold text-2xl">{t('title')}</h1>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
+					{t('title')}
+				</h1>
 				<div className="flex items-center gap-2 rounded-xl bg-card p-1">
 					<Button
 						onClick={() => setMonth(shiftMonth(month, -1))}
@@ -97,7 +101,7 @@ function AttendanceContent({
 						<Icon icon="lucide:chevron-left" />
 					</Button>
 					<span
-						className={`${montserrat.className} min-w-40 text-center font-semibold capitalize`}
+						className={`min-w-40 text-center font-medium font-mono text-sm capitalize`}
 					>
 						{monthLabel}
 					</span>
@@ -154,7 +158,7 @@ function AttendanceContent({
 											key={day.date}
 										>
 											<div
-												className={`${montserrat.className} font-semibold`}
+												className={`font-mono font-semibold`}
 											>
 												{Number(day.date.slice(-2))}
 											</div>

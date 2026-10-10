@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -196,7 +195,7 @@ export function SessionForm({ values, onChange }: SessionFormProps) {
 								}
 							>
 								<p
-									className={`${montserrat.className} font-semibold text-xs`}
+									className={`font-mono font-semibold text-xs`}
 								>
 									{boost === 0
 										? t('sessions.boost_off')

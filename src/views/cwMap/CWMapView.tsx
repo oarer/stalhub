@@ -8,7 +8,7 @@ const CWMapEditor = dynamic(() => import('./CWMapEditor'), {
 	loading: () => {
 		const t = useTranslations()
 		return (
-			<div className="flex h-[70vh] items-center justify-center font-semibold text-text-accent">
+			<div className="flex h-[70vh] items-center justify-center font-semibold text-foreground">
 				{t('cwMap.loading')}
 			</div>
 		)

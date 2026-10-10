@@ -55,7 +55,7 @@ type ClanMemberRank =
 interface ClanMember {
 	name: string
 	rank: ClanMemberRank
-	join_time: Date
+	joinTime: Date
 }
 
 interface ClanInfo {
@@ -68,7 +68,7 @@ interface ClanInfo {
 	alliance: string
 	description: string
 	leader: string
-	member_count: number
+	memberCount: number
 }
 
 export interface Clan {

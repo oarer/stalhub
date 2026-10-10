@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import { mtsWide } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 
 export function Section({
@@ -24,7 +25,7 @@ export function Section({
 			{title && (
 				<div
 					className={cn(
-						'flex items-center gap-2 font-semibold text-lg',
+						`${mtsWide.className} flex items-center gap-2 font-medium text-[15px]`,
 						danger && 'text-destructive'
 					)}
 				>

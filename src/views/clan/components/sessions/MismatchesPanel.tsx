@@ -85,7 +85,7 @@ export function MismatchesPanel({ clanId, screenshotId }: Props) {
 						>
 							<Badge variant="secondary">{m.detected_name}</Badge>
 							<Icon
-								className="text-text-accent"
+								className="text-foreground"
 								icon="lucide:arrow-right"
 							/>
 							<Combobox

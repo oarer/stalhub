@@ -46,7 +46,7 @@ export function SessionResultsChart({
 	return (
 		<ChartCard title={t('clan.charts.victoriesByGames')}>
 			{sessionResults.length === 0 ? (
-				<div className="flex h-full items-center justify-center text-sm text-text-accent">
+				<div className="flex h-full items-center justify-center text-foreground text-sm">
 					{t('clan.charts.noGames')}
 				</div>
 			) : (

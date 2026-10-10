@@ -16,6 +16,11 @@ import { adminArtQueries } from '@/queries/admin/art.queries'
 import { adminArtService } from '@/services/admin/art.service'
 import type { Art } from '@/types/art.type'
 import { ArtType } from '@/types/art.type'
+import {
+	AdminEmptyRow,
+	AdminPagination,
+	DeleteConfirmContent,
+} from '../components/AdminTable'
 import { AdminArtForm } from './AdminArtForm'
 
 export default function ArtsAdminView() {
@@ -178,50 +183,35 @@ export default function ArtsAdminView() {
 												<Modal.Content
 													fullScreen={false}
 												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.arts.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t.rich(
-																'admin.arts.deleteDescription',
-																{
-																	title: art.title,
-																	strong: (
-																		chunks
-																	) => (
-																		<strong>
-																			{
-																				chunks
-																			}
-																		</strong>
-																	),
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'clan.common.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	art.id
-																)
+													<DeleteConfirmContent
+														cancelLabel={t(
+															'clan.common.cancel'
+														)}
+														confirmLabel={t(
+															'clan.common.delete'
+														)}
+														description={t.rich(
+															'admin.arts.deleteDescription',
+															{
+																title: art.title,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
 															}
-															variant="danger"
-														>
-															{t(
-																'clan.common.delete'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
+														)}
+														onConfirm={() =>
+															deleteMutation.mutate(
+																art.id
+															)
+														}
+														title={t(
+															'admin.arts.deleteTitle'
+														)}
+													/>
 												</Modal.Content>
 											</Modal.Root>
 										</div>
@@ -229,49 +219,21 @@ export default function ArtsAdminView() {
 								</Table.Row>
 							))}
 							{arts.length === 0 && (
-								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.arts.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-								</Table.Row>
+								<AdminEmptyRow
+									colCount={8}
+									message={t('admin.arts.empty')}
+								/>
 							)}
 						</Table.Body>
 					</Table.Root>
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 
 			<AdminArtForm
 				onOpenChange={setIsCreateOpen}

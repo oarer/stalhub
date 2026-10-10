@@ -7,6 +7,7 @@ import type { BuildApi } from '@/types/build-api.type'
 import type { ClanSquadMember } from '@/types/clan/clan.type'
 import type { Item } from '@/types/item.type'
 import type { LoadoutData, UserLoadout } from '@/types/loadout/loadout.type'
+import { ClanMemberHoverCard } from '../members/ClanMemberCard'
 import { BuildCell, ItemCell, SLEDGEHAMMER_ID } from './ItemCell'
 
 const GRID_TEMPLATE = 'minmax(6rem, 1.2fr) repeat(8, minmax(5.5rem, 1fr)) 2rem'
@@ -31,6 +32,7 @@ interface SquadLoadoutTableProps {
 	buildById: Map<string, BuildApi>
 	currentUserId?: number
 	isOfficer: boolean
+	hideHeader?: boolean
 	onEditLoadout: (
 		memberId: number,
 		squadMemberId: number,
@@ -54,16 +56,19 @@ export function SquadLoadoutTable({
 	buildById,
 	currentUserId,
 	isOfficer,
+	hideHeader = false,
 	onEditLoadout,
 }: SquadLoadoutTableProps) {
 	const t = useTranslations()
 
 	return (
-		<div className="mt-4">
-			<p className="mb-2 flex items-center gap-2 font-semibold text-muted-foreground text-sm">
-				<Icon className="text-base" icon="lucide:shirt" />
-				{t('clan.squads.loadoutTitle')}
-			</p>
+		<div className={hideHeader ? '' : 'mt-4'}>
+			{!hideHeader && (
+				<p className="mb-2 flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+					<Icon className="text-base" icon="lucide:shirt" />
+					{t('clan.squads.loadoutTitle')}
+				</p>
+			)}
 			<div className="overflow-x-auto">
 				<div
 					className="grid min-w-160 items-center gap-2 border-primary border-b px-2 pb-1 font-semibold text-muted-foreground text-xs"
@@ -105,15 +110,34 @@ export function SquadLoadoutTable({
 							key={member.id}
 							style={{ gridTemplateColumns: GRID_TEMPLATE }}
 						>
-							<span className="min-w-0 truncate font-medium text-sm">
-								{member.name}
-								{hasOverride && (
-									<Icon
-										className="ml-1 inline text-md text-primary"
-										icon="lucide:shield-check"
-									/>
-								)}
-							</span>
+							<ClanMemberHoverCard
+								gear={data}
+								hasOverride={hasOverride}
+								lookups={{ weapons, armors, buildById }}
+								member={member}
+								onEditGear={
+									isSelf || isOfficer
+										? () =>
+												onEditLoadout(
+													member.id,
+													squadMember.id,
+													squadMember.slot
+												)
+										: undefined
+								}
+							>
+								<span className="flex min-w-0 items-center gap-1 truncate font-medium text-sm">
+									<span className="truncate">
+										{member.name}
+									</span>
+									{hasOverride && (
+										<Icon
+											className="shrink-0 text-md text-primary"
+											icon="lucide:shield-check"
+										/>
+									)}
+								</span>
+							</ClanMemberHoverCard>
 							<ItemCell item={primary} />
 							<ItemCell item={secondary} />
 							<ItemCell item={pistol} />

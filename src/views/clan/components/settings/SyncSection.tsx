@@ -18,7 +18,7 @@ export function SyncSection({ isPending, onSync }: SyncSectionProps) {
 					<Icon className="text-xl" icon="lucide:refresh-cw" />
 					{t('clan.settings.syncTitle')}
 				</div>
-				<span className="font-semibold text-sm text-text-accent">
+				<span className="font-semibold text-foreground text-sm">
 					{t('clan.settings.syncDesc')}
 				</span>
 			</div>

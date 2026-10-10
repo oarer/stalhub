@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { getLocale } from '@/lib/getLocale'
 import { auctionQueries } from '@/queries/auction/auction.queries'
@@ -37,13 +37,19 @@ import {
 	NumericVariantsCard,
 	TextBlock,
 } from './components/blocks'
+import { clampAutoRefreshInterval } from './components/tabs/AuctionAutoRefresh'
 import ItemTabs from './components/tabs/AuctionTabs'
+
+const AUTO_REFRESH_ENABLED_KEY = 'auction:autoRefresh:enabled'
+const AUTO_REFRESH_INTERVAL_KEY = 'auction:autoRefresh:interval'
 
 type ItemsViewProps = { path: string[]; id: string; githubUrl: string }
 
 export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	const [numericVariants, setNumericVariants] = useState<number>(0)
 	const [selected, setSelected] = useState<Record<string, string>>({})
+	const [autoRefreshEnabled, setAutoRefreshEnabled] = useState(false)
+	const [autoRefreshIntervalSec, setAutoRefreshIntervalSec] = useState(30)
 	const locale = getLocale()
 
 	const modulesLoad = useModulesStore((s) => s.load)
@@ -51,6 +57,44 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 	useEffect(() => {
 		modulesLoad()
 	}, [modulesLoad])
+
+	useEffect(() => {
+		try {
+			const storedEnabled = localStorage.getItem(AUTO_REFRESH_ENABLED_KEY)
+			if (storedEnabled !== null) {
+				setAutoRefreshEnabled(storedEnabled === '1')
+			}
+			const storedInterval = localStorage.getItem(
+				AUTO_REFRESH_INTERVAL_KEY
+			)
+			if (storedInterval !== null) {
+				setAutoRefreshIntervalSec(
+					clampAutoRefreshInterval(Number(storedInterval))
+				)
+			}
+		} catch {
+			// ignore storage errors
+		}
+	}, [])
+
+	const handleAutoRefreshEnabledChange = (enabled: boolean) => {
+		setAutoRefreshEnabled(enabled)
+		try {
+			localStorage.setItem(AUTO_REFRESH_ENABLED_KEY, enabled ? '1' : '0')
+		} catch {
+			// ignore storage errors
+		}
+	}
+
+	const handleAutoRefreshIntervalChange = (sec: number) => {
+		const clamped = clampAutoRefreshInterval(sec)
+		setAutoRefreshIntervalSec(clamped)
+		try {
+			localStorage.setItem(AUTO_REFRESH_INTERVAL_KEY, String(clamped))
+		} catch {
+			// ignore storage errors
+		}
+	}
 
 	const iconUrl = `https://cdn.stalhub.dev/db/icons/${path.join('/')}.png`
 
@@ -60,14 +104,37 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 		data: auctionHistoryInfinite,
 		hasNextPage: historyHasNextPage,
 		fetchNextPage: fetchHistoryNextPage,
-	} = useSuspenseInfiniteQuery(
-		auctionQueries.historyInfinite({ id, limit: 50 })
-	)
+		refetch: refetchHistory,
+		isFetching: isFetchingHistory,
+		dataUpdatedAt: historyUpdatedAt,
+	} = useSuspenseInfiniteQuery({
+		...auctionQueries.historyInfinite({ id, limit: 50 }),
+		refetchInterval: autoRefreshEnabled
+			? clampAutoRefreshInterval(autoRefreshIntervalSec) * 1000
+			: undefined,
+		refetchIntervalInBackground: false,
+	})
 	const {
 		data: auctionCurrentInfinite,
 		hasNextPage: currentHasNextPage,
 		fetchNextPage: fetchCurrentNextPage,
-	} = useSuspenseInfiniteQuery(auctionQueries.lotsInfinite({ id, limit: 50 }))
+		refetch: refetchCurrent,
+		isFetching: isFetchingCurrent,
+		dataUpdatedAt: currentUpdatedAt,
+	} = useSuspenseInfiniteQuery({
+		...auctionQueries.lotsInfinite({ id, limit: 50 }),
+		refetchInterval: autoRefreshEnabled
+			? clampAutoRefreshInterval(autoRefreshIntervalSec) * 1000
+			: undefined,
+		refetchIntervalInBackground: false,
+	})
+
+	const isRefreshing = isFetchingHistory || isFetchingCurrent
+	const lastUpdatedAt = Math.max(historyUpdatedAt, currentUpdatedAt)
+
+	const handleManualRefresh = () => {
+		void Promise.all([refetchHistory(), refetchCurrent()])
+	}
 
 	const auctionCurrent = useMemo(
 		() => auctionCurrentInfinite.pages.flatMap((page) => page.lots),
@@ -135,7 +202,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 						<div className="space-y-2 text-center">
 							<h1
-								className={`${unbounded.className} font-semibold text-xl`}
+								className={`${mtsExtended.className} font-semibold text-xl`}
 								style={{
 									color:
 										infoColorMap[data.color as InfoColor] ||
@@ -144,7 +211,9 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 							>
 								{messageToString(data.name, locale) || data.id}
 							</h1>
-							<p className="font-semibold">{categoryLabel}</p>
+							<p className="font-medium text-foreground text-sm">
+								{categoryLabel}
+							</p>
 						</div>
 					</Card.Header>
 
@@ -170,11 +239,22 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 					<ItemTabs
 						auctionCurrent={auctionCurrent}
 						auctionHistory={auctionHistory}
+						autoRefreshEnabled={autoRefreshEnabled}
+						autoRefreshIntervalSec={autoRefreshIntervalSec}
 						barter={barter}
 						currentHasMore={currentHasNextPage}
 						historyHasMore={historyHasNextPage}
+						isRefreshing={isRefreshing}
+						lastUpdatedAt={lastUpdatedAt}
+						onAutoRefreshEnabledChange={
+							handleAutoRefreshEnabledChange
+						}
+						onAutoRefreshIntervalChange={
+							handleAutoRefreshIntervalChange
+						}
 						onCurrentLoadMore={fetchCurrentNextPage}
 						onHistoryLoadMore={fetchHistoryNextPage}
+						onManualRefresh={handleManualRefresh}
 					/>
 
 					{data.infoBlocks

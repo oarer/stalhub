@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { useDashboardStore } from '@/stores/useDashboard.store'
@@ -28,11 +28,11 @@ export function DashboardView() {
 		<section className="flex h-dvh w-full flex-col">
 			<div className="mx-auto flex w-full max-w-400 flex-col items-center gap-4 px-4 pt-24 pb-5 text-center lg:pt-34">
 				<h1
-					className={`${unbounded.className} font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('dashboard.title')}
 				</h1>
-				<p className="font-semibold text-[16px] text-text-accent">
+				<p className="font-medium text-[16px] text-foreground">
 					{t('dashboard.subtitle')}
 				</p>
 
@@ -73,14 +73,14 @@ export function DashboardView() {
 				) : (
 					<div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-primary border-dashed px-6 py-20 text-center">
 						<Icon
-							className="size-12 text-text-accent"
+							className="size-12 text-foreground"
 							icon="lucide:layout-grid"
 						/>
 						<div className="flex flex-col gap-1">
-							<p className="font-semibold text-lg">
+							<p className="font-medium text-lg">
 								{t('dashboard.emptyTitle')}
 							</p>
-							<p className="font-semibold text-sm text-text-accent">
+							<p className="font-medium text-foreground text-sm">
 								{t('dashboard.emptySubtitle')}
 							</p>
 						</div>

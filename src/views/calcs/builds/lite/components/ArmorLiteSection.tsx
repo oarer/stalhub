@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import type { Armor } from '@/types/build.type'
@@ -52,7 +51,7 @@ export function ArmorLiteSection({
 					/>
 				</div>
 				<div className="flex flex-col justify-center gap-10">
-					<h2 className="text-text-accent">{t('build.no_armor')}</h2>
+					<h2 className="text-foreground">{t('build.no_armor')}</h2>
 					<Button
 						onClick={() => onOpenPicker(null)}
 						variant="secondary"
@@ -76,7 +75,7 @@ export function ArmorLiteSection({
 			</div>
 			<div className="flex flex-col gap-3">
 				<h2
-					className={`${montserrat.className} text-sm`}
+					className="font-medium text-[13px]"
 					style={{
 						color:
 							infoColorMap[armorItem.color as InfoColor] ||
@@ -87,7 +86,7 @@ export function ArmorLiteSection({
 				</h2>
 				<div className="flex items-center gap-2">
 					<Button
-						className={`${montserrat.className} size-8 text-sm`}
+						className="size-8 font-mono text-sm"
 						onClick={() => onSetArmor(armor.id, 0)}
 						size="sm"
 						variant="secondary"
@@ -95,7 +94,7 @@ export function ArmorLiteSection({
 						0
 					</Button>
 					<Button
-						className={`${montserrat.className} size-8 text-sm`}
+						className="size-8 font-mono text-sm"
 						onClick={() => onSetArmor(armor.id, 15)}
 						size="sm"
 						variant="secondary"

@@ -1,5 +1,5 @@
 import type { ChartOptions } from 'chart.js'
-import { montserrat } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 
 function token(name: string): string {
 	if (typeof document === 'undefined') return ''
@@ -19,6 +19,55 @@ export function getChartColors() {
 		},
 		axis: token('--muted-foreground'),
 		grid: token('--muted'),
+	}
+}
+
+const lineTickFont = { size: 11, weight: 'bold' } as const
+
+/** Общая база для линейных графиков в стиле DamageChart: тултип из токенов, без сетки и легенды */
+export function getBaseLineOptions(): ChartOptions<'line'> {
+	const colors = getChartColors()
+
+	return {
+		maintainAspectRatio: false,
+		responsive: true,
+		interaction: { intersect: false, mode: 'index' },
+		plugins: {
+			legend: { display: false },
+			tooltip: {
+				mode: 'nearest',
+				intersect: false,
+				backgroundColor: colors.tooltip.background,
+				titleColor: colors.tooltip.titleColor,
+				bodyColor: colors.tooltip.bodyColor,
+				borderColor: colors.tooltip.borderColor,
+				borderWidth: 2,
+				padding: 12,
+				displayColors: false,
+				titleFont: { size: 13, weight: 'bold' },
+				bodyFont: { size: 12, weight: 'bold' },
+			},
+		},
+		scales: {
+			x: {
+				ticks: {
+					color: colors.axis,
+					maxTicksLimit: 6,
+					maxRotation: 0,
+					font: lineTickFont,
+				},
+				grid: { display: false },
+			},
+			y: {
+				beginAtZero: true,
+				ticks: {
+					color: colors.axis,
+					maxTicksLimit: 6,
+					font: lineTickFont,
+				},
+				grid: { display: false },
+			},
+		},
 	}
 }
 
@@ -42,7 +91,7 @@ export function getBaseBarOptions(title: string): ChartOptions<'bar'> {
 					font: {
 						size: 12,
 						weight: 'bold',
-						family: montserrat.style.fontFamily,
+						family: unbounded.style.fontFamily,
 					},
 				},
 			},

@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import type { ColumnDef } from '@/components/ui/Table'
@@ -52,7 +51,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'kills',
 				header: t('sessions.kills'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{cell.getValue<number>().toLocaleString()}
 					</span>
 				),
@@ -62,7 +61,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'assists',
 				header: t('sessions.assists'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{cell.getValue<number>().toLocaleString()}
 					</span>
 				),
@@ -72,7 +71,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'caps',
 				header: t('sessions.caps'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{cell.getValue<number>().toLocaleString()}
 					</span>
 				),
@@ -82,7 +81,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'timeMatch',
 				header: t('sessions.time_match'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{formatMatchTime(
 							cell.getValue<number>(),
 							t('sessions.hours_short'),
@@ -96,7 +95,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'matchesPerDay',
 				header: t('sessions.matches_per_day_short'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{cell.getValue<number>().toLocaleString()}
 					</span>
 				),
@@ -106,7 +105,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				id: 'repPerDay',
 				header: t('sessions.rep_per_day'),
 				cell: ({ cell }) => (
-					<span className={montserrat.className}>
+					<span className="font-mono">
 						{cell.getValue<number>().toLocaleString()}
 					</span>
 				),
@@ -117,7 +116,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 				header: t('sessions.rep_per_hour'),
 				cell: ({ cell }) => (
 					<Badge variant="secondary">
-						<span className={`${montserrat.className} text-xs`}>
+						<span className={`font-mono text-xs`}>
 							{cell.getValue<number>().toLocaleString('en-US', {
 								maximumFractionDigits: 1,
 							})}
@@ -151,7 +150,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 						{t('sessions.select_maps_hint')}
 					</p>
 				) : (
-					<Table.Root className="font-semibold">
+					<Table.Root className="font-medium">
 						<Table.Header>
 							{table.getHeaderGroups().map((headerGroup) => (
 								<Table.Row key={headerGroup.id}>
@@ -176,7 +175,8 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 								return (
 									<Table.Row
 										className={cn(
-											isBest && 'bg-primary/10 font-bold'
+											isBest &&
+												'bg-primary/10 font-medium'
 										)}
 										key={row.id}
 									>

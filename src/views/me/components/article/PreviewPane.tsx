@@ -50,20 +50,20 @@ export function PreviewPane({
 				) : content.trim() ? (
 					<div className="flex items-center justify-center gap-2 py-16">
 						<Icon
-							className="size-4 animate-spin text-text-accent"
+							className="size-4 animate-spin text-foreground"
 							icon="lucide:loader-circle"
 						/>
-						<p className="font-semibold text-md text-text-accent">
+						<p className="font-semibold text-foreground text-md">
 							{t('me.articleEditor.compiling')}
 						</p>
 					</div>
 				) : (
 					<div className="flex flex-col items-center gap-2 py-16">
 						<Icon
-							className="text-4xl text-text-accent"
+							className="text-4xl text-foreground"
 							icon="lucide:file-text"
 						/>
-						<p className="font-semibold text-md text-text-accent">
+						<p className="font-semibold text-foreground text-md">
 							{t('me.articleEditor.previewHere')}
 						</p>
 					</div>

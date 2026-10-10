@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { MODULE_GROUP_KEYS, useModulesStore } from '@/stores/useModules.store'
 import type { ModuleGroupKey } from '@/types/module.type'
@@ -49,11 +49,11 @@ export function ModulesView({ variant = 'page' }: ModulesViewProps) {
 			{variant === 'page' && (
 				<div className="text-center">
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('modules.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('modules.sub_title')}
 					</p>
 				</div>

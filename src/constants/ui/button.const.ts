@@ -6,15 +6,15 @@ export const buttonVariants = cva(
 		variants: {
 			variant: {
 				primary:
-					'bg-primary text-primary-foreground shadow-md hover:brightness-110 font-semibold',
+					'bg-primary text-primary-foreground hover:bg-transparent hover:text-primary ring-2',
 				secondary:
 					'bg-secondary text-secondary-foreground shadow-sm hover:brightness-110',
 				outline: 'ring-2 ring-primary/40 bg-transparent hover:bg-muted',
 				bordered:
-					'border-2 border-primary bg-primary/15 text-primary font-semibold hover:bg-primary/25',
+					'border-2 border-primary bg-primary/15 text-primary font-medium hover:bg-primary/25',
 				ghost: 'bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground',
 				shadow: 'bg-card text-card-foreground shadow-[0_10px_20px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_25px_-10px_rgba(0,0,0,0.3)] hover:-translate-y-0.5',
-				danger: 'ring-2 ring-destructive text-destructive font-semibold shadow-sm hover:bg-destructive/40 hover:shadow-md bg-card',
+				danger: 'ring-2 ring-destructive text-destructive font-medium shadow-sm hover:bg-destructive/40 hover:shadow-md bg-card',
 				none: 'hover:text-foreground',
 			},
 			disabled: {

@@ -3,6 +3,11 @@
     "overview": "Todo en un solo lugar",
     "tools_for": "Herramientas para",
     "need": "Todo lo necesario para",
+    "swap": {
+      "tools": "Herramientas",
+      "calcs": "Calculadoras",
+      "analytics": "Analítica"
+    },
     "features": {
       "items": "Objetos",
       "tools": "Herramientas",
@@ -74,6 +79,18 @@
         "upgrade": {
           "title": "Calculadora de afinado",
           "desc": "Probabilidades, intentos y coste de herramientas para artefactos y equipo"
+        },
+        "text": {
+          "title": "Formato",
+          "desc": "§ y degradados"
+        },
+        "barter": {
+          "title": "Trueque",
+          "desc": "Árbol"
+        },
+        "donate": {
+          "title": "Donación",
+          "desc": "Mejor valor"
         }
       }
     },
@@ -84,6 +101,81 @@
       "month": "Top del mes",
       "views": "visitas",
       "empty": "Sin datos"
+    },
+    "clan": {
+      "title": "Analítica de clan <primary>gratuita</primary>",
+      "subtitle": "¿Eres líder de un clan? Entonces nuestra solución es perfecta para ti",
+      "features": {
+        "ai": {
+          "title": "Análisis con IA",
+          "desc": "Usamos GPT 6 Sol para un análisis más preciso de las etapas."
+        },
+        "analytics": {
+          "title": "Analítica",
+          "desc": "El sistema recopila automáticamente los resultados de todas las etapas y los muestra de forma cómoda."
+        },
+        "bot": {
+          "title": "Bot de Discord",
+          "desc": "Para no perder tiempo entrando al sitio, creamos un práctico bot para subir etapas rápidamente."
+        },
+        "grenades": {
+          "title": "Granadas",
+          "desc": "Escaneo rápido de granadas tras cada etapa, para saber siempre si los jugadores gastan todas las granadas recibidas."
+        }
+      },
+      "stages": {
+        "upload": "Captura",
+        "analyze": "IA",
+        "cabinet": "Panel"
+      },
+      "demo": {
+        "processing": "Procesando",
+        "done": "Éxito"
+      }
+    },
+    "personal": {
+      "title": "Analítica <primary>personal</primary>",
+      "subtitle": "Vincula tu personaje y sigue tu progreso: las estadísticas se recopilan automáticamente",
+      "cta": "Abrir analítica",
+      "features": {
+        "tracking": {
+          "title": "Seguimiento auto",
+          "desc": "Las capturas de estadísticas se guardan automáticamente cada 12 horas, con actualización manual en un clic."
+        },
+        "dynamics": {
+          "title": "Dinámica",
+          "desc": "Gráficos de K/D, precisión, headshots y horas de juego: verás el valor y el crecimiento del período."
+        },
+        "stages": {
+          "title": "Etapas",
+          "desc": "Etapas personales y de clan por mapa: winrate, sesiones y apariciones, todo bien organizado."
+        },
+        "sharing": {
+          "title": "Enlace público",
+          "desc": "Hazte público con un clic y comparte una bonita página de estadísticas con tus amigos."
+        }
+      },
+      "stages": {
+        "link": "Vincular",
+        "snapshot": "Captura",
+        "dynamics": "Dinámica"
+      },
+      "demo": {
+        "snapshots": "Capturas: {n}",
+        "growth": "Crecimiento",
+        "forPeriod": "del período",
+        "chartTitle": "K/D — dinámica",
+        "stats": {
+          "kills": "Asesinatos",
+          "kd": "K/D",
+          "accuracy": "Precisión",
+          "hours": "En juego"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "Hoja <primary>de ruta</primary>",
+      "description": "Desde los primeros conceptos hasta el lanzamiento de la app, y más allá"
     }
   },
   "footer": {
@@ -129,7 +221,21 @@
     "arts": "Arte",
     "groups": {
       "calculators": {
-        "title": "Calculadoras",
+        "title": "Herramientas",
+        "categories": {
+          "main": {
+            "title": "Principal"
+          },
+          "leveling": {
+            "title": "Progresión"
+          },
+          "info": {
+            "title": "Información"
+          },
+          "services": {
+            "title": "Servicios"
+          }
+        },
         "items": {
           "art": {
             "label": "Builds",
@@ -144,6 +250,10 @@
             "label": "TTK",
             "description": "Eficacia del arma"
           },
+          "buy": {
+            "description": "Creación de tablas de compra",
+            "label": "Tablas de compra"
+          },
           "arsenal": {
             "label": "Arsenal",
             "description": "Reputación del Arsenal"
@@ -155,6 +265,14 @@
           "barter": {
             "label": "Monedas de intercambio",
             "description": "Trueque por monedas de intercambio"
+          },
+          "donate": {
+            "label": "Donación",
+            "description": "Mejor valor"
+          },
+          "text": {
+            "label": "Formato",
+            "description": "§ y degradados"
           },
           "bp": {
             "label": "Pase de temporada",
@@ -187,6 +305,9 @@
           },
           "clans": {
             "label": "Lista de clanes"
+          },
+          "clanStats": {
+            "label": "Clan stats"
           }
         }
       },
@@ -234,8 +355,39 @@
           }
         }
       },
+      "community": {
+        "title": "Recursos",
+        "categories": {
+          "resources": {
+            "title": "Recursos oficiales",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "Noticias, actualizaciones y sorteos"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "Soporte técnico rápido"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "Repositorio del proyecto"
+              },
+              "about": {
+                "label": "Nosotros",
+                "description": "Información ampliada sobre el proyecto"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Творчество",
+        "categories": {
+          "community": {
+            "title": "Trabajos de la comunidad"
+          }
+        },
         "items": {
           "articles": {
             "label": "Статьи",
@@ -252,9 +404,17 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "blog": {
+            "label": "Blog",
+            "description": "Noticias"
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "Perfil",
+      "logout": "Cerrar sesión"
     }
   },
   "map": {
@@ -446,6 +606,16 @@
         "shock_therapy": "Фокусировка",
         "sea_alienation": "Море отчуждения"
       }
+    },
+    "summary": {
+      "title": "Resumen",
+      "kd": "K/D",
+      "pvp": "PvP",
+      "pve": "PvE",
+      "mutants": "mutantes",
+      "sessionKd": "K/D sesiones",
+      "colosseumKd": "K/D coliseo",
+      "games": "partidas"
     }
   },
   "time": {
@@ -535,6 +705,13 @@
       "details": "пользовательском соглашении",
       "back": "Назад",
       "confirm": "Мне есть 18"
+    },
+    "regular": "Normales",
+    "sort": {
+      "newest": "Nuevos",
+      "oldest": "Viejos",
+      "views": "Por vistas",
+      "stars": "Por estrellas"
     }
   },
   "ui": {
@@ -587,6 +764,13 @@
       "rest": "Faltan para la meta",
       "restEnd": "de reputación.",
       "unlimited": "Completa con objetos sin límite."
+    },
+    "tabs": {
+      "calc": "Calculadora",
+      "shop": "Tienda"
+    },
+    "shop": {
+      "pick": "Elegir"
     }
   },
   "modals": {
@@ -873,7 +1057,61 @@
     "donations": "Paquetes «+50 niveles»",
     "reachable": "Llegas antes de que acabe la temporada",
     "not_reachable": "No llegas: faltan {daysNeeded} días, quedan {daysLeft}",
-    "days": "{count, plural, one {# día} other {# días}}"
+    "days": "{count, plural, one {# día} other {# días}}",
+    "target_preset": "{count} nv.",
+    "deadline": "Fecha límite",
+    "season_weeks": "Temporada: {count} semanas.",
+    "play_title": "Frecuencia de juego",
+    "pace_7": "Tranquilo",
+    "pace_15": "Regular",
+    "pace_25": "Activo",
+    "pace_tasks": "{count} tareas",
+    "weekdays": "Días de juego",
+    "weekday_mon": "Lu",
+    "weekday_tue": "Ma",
+    "weekday_wed": "Mi",
+    "weekday_thu": "Ju",
+    "weekday_fri": "Vi",
+    "weekday_sat": "Sá",
+    "weekday_sun": "Do",
+    "boost_title": "Aceleración",
+    "boost_sub": "Sobrecargas, niveles y +50%",
+    "overload_off": "Sin ellas",
+    "overload_stock": "Mi reserva",
+    "overload_full": "Sin límite",
+    "overload_stock_days": "Reserva, días",
+    "bonus_on": "Bono +50% activado",
+    "bonus_off": "Bono +50% desactivado",
+    "bonus_start": "Inicio del bono",
+    "bonus_days": "Días de bono",
+    "forecast": "Tu pronóstico",
+    "goal": "Tu meta: nivel {level}",
+    "badge_ok": "A tiempo",
+    "badge_lack": "Retrasado",
+    "headline_lack": "Faltan {count} nv.",
+    "sub_lack": "Faltarán {xp} XP.",
+    "headline_ok": "A tiempo para el {date}",
+    "sub_ok": "Quedan {count}.",
+    "headline_done": "Meta alcanzada",
+    "to_deadline": "Para el {date}",
+    "stat_days": "días de juego",
+    "stat_pace": "niveles / día",
+    "stat_spare": "días libres",
+    "tab_progress": "Progreso",
+    "tab_calendar": "Calendario",
+    "tab_compare": "Comparar",
+    "show_daily": "Ver por días",
+    "hide_daily": "Ocultar",
+    "col_date": "Fecha",
+    "col_tasks": "Tareas",
+    "col_xp": "XP",
+    "col_level": "Nivel",
+    "mark_overload": "sobrecarga",
+    "compare_plan": "Tu plan",
+    "compare_no_overload": "Sin sobrecargas",
+    "compare_no_boost": "Sin bono",
+    "compare_calm": "Tranquilo (7/día)",
+    "compare_ok": "ok"
   },
   "sessions": {
     "title": "Calculadora de combates de sesión",
@@ -1678,6 +1916,10 @@
     "metaDescription": "Artículos públicos de la comunidad StalHub",
     "byAuthor": "Artículo de {author}",
     "notFound": "Artículo no encontrado",
+    "toc": {
+      "title": "Contenido",
+      "collapse": "Contraer"
+    },
     "comments": {
       "title": "Comentarios ({count})",
       "placeholder": "Escribir un comentario...",
@@ -1804,7 +2046,10 @@
         "desc": "Tu clan está congelado, la gestión no está disponible.\nPara obtener acceso, pulsa el botón de abajo.",
         "activate": "Activar",
         "titleMember": "El clan <span>[{tag}] {name}</span> está congelado",
-        "descMember": "Tu clan está congelado, la gestión no está disponible."
+        "descMember": "Tu clan está congelado, la gestión no está disponible.\nSolo el líder puede descongelar el clan: pídele que pulse «Activar».",
+        "demoBadge": "Demo",
+        "demoTitle": "Cómo se ve la analítica del clan",
+        "demoDesc": "Abajo verás la misma interfaz de analítica con datos aleatorios, para que entiendas cómo se ve en general."
       }
     },
     "dashboard": {
@@ -1895,7 +2140,7 @@
       "noBuilds": "No hay builds",
       "search": "Buscar",
       "noSquadsHere": "En este mapa aún no hay escuadras",
-      "createFirstHint": "Crea la primera escuadra pulsando «Crear escuadra»",
+      "createFirstHint": "Pulsa «Crear» o una tarjeta vacía abajo",
       "png": {
         "previewTitle": "Vista previa de escuadras",
         "title": "Escuadras · {map}",
@@ -1919,8 +2164,31 @@
         "moveError": "No se pudo mover al miembro",
         "pngError": "No se pudo guardar la imagen",
         "pngCopied": "Imagen copiada",
-        "copyError": "No se pudo copiar"
-      }
+        "copyError": "No se pudo copiar",
+        "renameError": "No se pudo renombrar"
+      },
+      "autoName": "Escuadra {n}",
+      "quickCreateTitle": "Crear una escuadra en este mapa",
+      "roster": {
+        "title": "Miembros",
+        "search": "Buscar por apodo",
+        "empty": "Sin miembros",
+        "pickHint": "Haz clic en un slot vacío y luego elige un miembro a la izquierda",
+        "targetSet": "Slot {slot} · {squad}",
+        "absent": "Ausente hoy",
+        "kdHint": "Asesinatos: {kills} · Muertes: {deaths} · Partidas: {games}"
+      },
+      "squadCount": "Escuadras: {count} / {max}",
+      "squadCountHint": "Escuadras en este mapa",
+      "newSquad": "Nueva escuadra",
+      "squadSlot": "Slot {n} / {max}",
+      "freeSlot": "Slot libre",
+      "bench": {
+        "title": "Jugadores libres",
+        "empty": "Banca vacía — todos están en escuadras"
+      },
+      "renameTitle": "Renombrar escuadra",
+      "pickTargetTitle": "Equipo de {name} — elige escuadra"
     },
     "sessions": {
       "title": "Guerras de clanes",
@@ -2214,6 +2482,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "Sin datos de equipamiento",
+      "editGear": "Editar equipamiento"
     }
   },
   "me": {
@@ -2239,7 +2511,8 @@
       "system": "Sistema",
       "notifications": "Notificaciones",
       "invites": "Invitaciones",
-      "attendance": "Asistencia"
+      "attendance": "Asistencia",
+      "analytics": "Analytics"
     },
     "menu": "Menú",
     "home": {
@@ -2291,7 +2564,7 @@
       "image": "Imagen (enlace)",
       "workPlaceholder": "Pega el enlace de la imagen",
       "upload": "Subir",
-      "imageInvalidType": "Solo se admiten PNG, JPG, WEBP y GIF",
+      "imageInvalidType": "Solo se admiten PNG, JPG, WEBP, GIF, MP4 y WEBM",
       "workTooLarge": "El tamaño máximo del archivo es 10 MB",
       "workUploaded": "Imagen subida",
       "imageUploadError": "Error al subir la imagen",
@@ -2307,7 +2580,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "Máximo {count} imágenes por obra",
+      "cover": "Portada"
     },
     "artEdit": {
       "title": "Editar obra",
@@ -2632,7 +2907,14 @@
       "sort_price": "Precio",
       "sort_rarity": "Rareza",
       "range_from": "de",
-      "range_to": "a"
+      "range_to": "a",
+      "autoRefresh": "Actualización automática",
+      "refreshNow": "Actualizar ahora",
+      "secondsShort": "s",
+      "nextRefresh": "en {sec} s",
+      "lastUpdate": "Actualizado: {time}",
+      "minutesShort": "min",
+      "intervalHint": "10 s – 5 min"
     }
   },
   "users": {
@@ -2734,7 +3016,13 @@
     "schedule": "Horario:",
     "brawls": "Peleas:",
     "brawlsMandatory": "obligatorias",
-    "brawlsOptional": "opcionales"
+    "brawlsOptional": "opcionales",
+    "statsTitle": "Clan stats",
+    "statsClans": "Clans",
+    "statsKills": "Kills",
+    "statsEmpty": "No data — no clan opened stats yet",
+    "statsClan": "Clan",
+    "winrateAvg": "Avg winrate"
   },
   "buildsPublic": {
     "title": "Builds",
@@ -2902,7 +3190,18 @@
     "title": "Servidores en línea",
     "description": "En línea en regiones y servidores de StalZone.",
     "online": "En línea",
-    "charts": "Gráficos de en línea"
+    "charts": "Gráficos de en línea",
+    "emissions": "Emisiones",
+    "emissionCurrent": "Actual",
+    "emissionPrev": "Anterior",
+    "emissionActive": "Emisión en curso",
+    "emissionInactive": "Sin emisión",
+    "emissionStarted": "Inició",
+    "emissionEnded": "Terminó",
+    "peaks": "Pico diario",
+    "peakDate": "Fecha",
+    "peakRegion": "Región",
+    "peakOnline": "Pico"
   },
   "balance": {
     "title": "Баланс правки",
@@ -3101,5 +3400,255 @@
         "other": "Otro"
       }
     }
+  },
+  "personal": {
+    "title": "Personal analytics",
+    "linkHint": "Pick an EXBO character to track. A stats snapshot is saved every 12 hours.",
+    "yourCharacters": "Your characters",
+    "track": "Track",
+    "characterPlaceholder": "Character name",
+    "linkAction": "Link",
+    "linked": "Character linked",
+    "linkError": "Failed to link character",
+    "noSnapshots": "No snapshots yet. Refresh manually or wait for auto collection.",
+    "snapshots": "Snapshots: {n}",
+    "refresh": "Refresh now",
+    "makePublic": "Make public",
+    "makePrivate": "Hide",
+    "unlink": "Unlink",
+    "unlinkConfirm": "Stop tracking this character?",
+    "visibilityOk": "Visibility updated",
+    "copied": "Link copied",
+    "snapshotOk": "Snapshot saved",
+    "snapshotError": "Failed to save snapshot",
+    "stagesTitle": "Stages",
+    "stagesHint": "Sessions: {sessions} · appearances: {appearances} · kills: {kills}",
+    "sessionsTitle": "Personal stage sessions",
+    "sessionPlaceholder": "Map / stage name",
+    "sessionCreate": "Create",
+    "sessionCreated": "Session created",
+    "sessionDeleteConfirm": "Delete session?",
+    "upload": "Screenshot",
+    "screenshotUploaded": "Screenshot uploaded, analysis started",
+    "delete": "Delete",
+    "noSessions": "No sessions yet",
+    "refreshing": "Refreshing…",
+    "privateHint": "Page is hidden. Click “Make public” to share the link.",
+    "dynamics": "Dynamics",
+    "absolute": "Value",
+    "growth": "Growth",
+    "statSearch": "Search metrics…",
+    "all": "All",
+    "nothingFound": "Nothing found",
+    "current": "Now",
+    "forPeriod": "for period",
+    "stageNumber": "Stage №",
+    "win": "Win",
+    "loss": "Loss",
+    "screenshotsCount": "Shots: {n}",
+    "hide": "Hide",
+    "details": "Details",
+    "dropHint": "Drag a screenshot here or click “Screenshot”",
+    "loading": "Loading…",
+    "noScreenshots": "No screenshots yet — upload the first one",
+    "status": "Status",
+    "retry": "Retry",
+    "uploadTitle": "Upload stage",
+    "uploadModeStage": "Stage",
+    "uploadModeQuick": "Quick screenshot",
+    "noDetectedStage": "No stage scheduled right now — type will be set automatically",
+    "quickHint": "Just drop a screenshot: we will create a session, detect the stage from the schedule and run analysis.",
+    "sessionName": "Map name (optional)",
+    "sessionNamePh": "E.g. Small Berdovka",
+    "noSessionsHint": "Click Upload or drop a screenshot — the stage will be detected automatically",
+    "noScreenshotsShort": "No screenshot",
+    "stagesEmpty": "No stage data yet — upload a screenshot via Upload above the session list.",
+    "stagesClan": "Clan",
+    "stagesMap": "Map",
+    "stagesMapsTitle": "Map stats",
+    "winrate": "Winrate",
+    "lowSample": "low sample",
+    "stagesPersonal": "Personal",
+    "tabOverview": "Overview",
+    "tabStages": "Stages",
+    "tabSessions": "Sessions",
+    "tabClans": "By clan",
+    "tabMaps": "By map",
+    "unlinkTitle": "Unlink character?",
+    "unlinkBody": "Stop tracking<span>{name}</span>? Snapshots and personal sessions <danger>will be deleted</danger>.",
+    "cancel": "Cancel",
+    "chartNoData": "Sin datos para el período",
+    "chartUnchanged": "Valor sin cambios en el período",
+    "chartGrowth": "crecimiento",
+    "statKd": "K/D",
+    "statAccuracy": "Precisión",
+    "statHsRate": "Tiros a la cabeza %",
+    "derived": "Derivadas"
+  },
+  "textFormatter": {
+    "title": "Formato de texto",
+    "subtitle": "Texto de colores y degradados (§)",
+    "clan": "Clan",
+    "plainLen": "Sin códigos",
+    "gradient": "Degradado",
+    "gradientText": "Texto",
+    "applyGradient": "Aplicar degradado a la selección",
+    "copy": "Copiar",
+    "clear": "Limpiar",
+    "preview": "Vista previa",
+    "hint": "§0-F — 16 colores, §#hex, §R — reset.",
+    "gradientHint": "Selecciona parte del texto, elige colores o un preset y pulsa el botón.",
+    "presets": "Preajustes",
+    "from": "De",
+    "mid": "Medio",
+    "to": "A",
+    "addMid": "+ Color medio",
+    "removeMid": "− Quitar medio",
+    "selected": "Seleccionado",
+    "noSelection": "Nada seleccionado — selecciona parte del texto",
+    "textTitle": "Texto",
+    "textHint": "Escribe el texto que quieras colorear",
+    "chars": "caracteres",
+    "colored": "caracteres con color",
+    "previewHint": "Así se verá el texto en el juego",
+    "resultSub": "Copia y pega en el juego",
+    "modeSolid": "Sólido",
+    "solidHint": "Un solo color para toda la selección.",
+    "solidBaseHint": "Clic para elegir el color.",
+    "randomHint": "Degradado aleatorio",
+    "wholeHint": "Modo límite: el degradado se aplica a todo el texto.",
+    "applyWhole": "Aplicar a todo el texto",
+    "smartTitle": "Compresión inteligente",
+    "smartHint": "Reduce los códigos HEX para que quepa en el límite.",
+    "noLimit": "Sin límite",
+    "exactHint": "Cada carácter recibe su color exacto. Un resultado largo podría no caber.",
+    "fitsExact": "Cabe en el límite sin compresión.",
+    "compressedHint": "Comprimido a {runs} códigos HEX — cabe en el límite.",
+    "notFit": "No cabe ni en un color — acorta el texto.",
+    "emptyText": "Escribe un texto primero.",
+    "overLimit": "Excede el límite",
+    "ready": "Degradados listos",
+    "readyHint": "Clic para aplicar",
+    "colorsHint": "Mínimo 2 colores. Añade intermedios para transiciones complejas.",
+    "colors": "Colores del degradado",
+    "addColor": "Añadir color",
+    "baseColors": "Colores base (clic para añadir al degradado)",
+    "baseColorsHint": "Clic en un color lo añade como parada del degradado (máx. 6).",
+    "result": "Resultado para el juego (con códigos)",
+    "resultHint": "Copia esta línea en el juego. Arriba solo hay texto sin códigos."
+  },
+  "barterCalc": {
+    "title": "Calculadora de trueque",
+    "subtitle": "Elige un objeto",
+    "search": "Buscar",
+    "searchTitle": "Elegir objeto",
+    "select": "Elegir objeto",
+    "change": "Cambiar",
+    "pick": "Elige un objeto",
+    "tree": "Árbol",
+    "totals": "Total",
+    "totalPrice": "Precio total",
+    "allDone": "¡Listo!",
+    "reset": "Restablecer",
+    "calc": "Cálculo",
+    "unlimited": "Ilimitado",
+    "stock": "Reserva",
+    "currency": "Moneda",
+    "coins": "Monedas de trueque",
+    "shells": "Casquillos",
+    "coinsUnit": "mon.",
+    "shellsUnit": "casq.",
+    "coupon": "Cupón",
+    "noCoupon": "Sin cupón",
+    "couponRank": {
+      "picklock": "Ganzúa",
+      "newbie": "Novato",
+      "stalker": "Acechador",
+      "veteran": "Veterano",
+      "master": "Maestro"
+    },
+    "couponMismatch": "El cupón no coincide con el rango del objeto",
+    "discount": "Descuento",
+    "stockAmount": "Reserva (monedas/casquillos)",
+    "offer": "Oferta {n}",
+    "best": "Mejor",
+    "affordable": "Suficiente",
+    "shortage": "Faltan {n}",
+    "includeTokens": "Contar fichas de combate",
+    "tokensNeed": "Fichas necesarias",
+    "tokensUnit": "fichas",
+    "tokenStock": "Reserva de fichas",
+    "tokensEnough": "Cubre {have} de {need}",
+    "shortageSerum": "Faltan {n}",
+    "bestPick": "Mejor gasto",
+    "remainder": "Quedan: {n}",
+    "noCurrency": "Sin conversión",
+    "piecesUnit": "uds."
+  },
+  "donateCalc": {
+    "title": "Calculadora de donación",
+    "subtitle": "Introduce stalcoins",
+    "input": "Stalcoins",
+    "hint": "Por precio/moneda.",
+    "item": "Objeto",
+    "coins": "Monedas",
+    "price": "Precio",
+    "perCoin": "₽/moneda",
+    "count": "Cant.",
+    "total": "Total",
+    "missing": "Faltan"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Noticias — {count} publicaciones",
+    "empty": "Vacío",
+    "createTitle": "Escribir",
+    "createDescription": "Se publica al instante (STALHUB)",
+    "form": {
+      "title": "Título",
+      "image": "Portada (URL)",
+      "tags": "Etiquetas",
+      "content": "Texto (MDX)",
+      "contentPlaceholder": "## Qué cambió...",
+      "create": "Publicar"
+    },
+    "toast": {
+      "created": "Publicado",
+      "createError": "Error"
+    },
+    "editor": {
+      "titlePlaceholder": "Título del cambio",
+      "publish": "Publicar",
+      "save": "Guardar",
+      "edit": "Editar",
+      "view": "Ver",
+      "updated": "Cambio guardado",
+      "updateError": "Error al guardar",
+      "galleryHint": "Encabezados, listas, tablas e imágenes por URL desde el inicio; subir a la galería tras publicar."
+    },
+    "cover": {
+      "title": "Panel de portada",
+      "hint": "Filas personalizadas en lugar del panel automático «lectura / etiquetas». El resto se genera automáticamente.",
+      "enabled": "Panel personalizado",
+      "preset": "Preajuste",
+      "presetAuto": "Auto",
+      "presetBeforeAfter": "Antes / Después",
+      "presetMetrics": "Métricas",
+      "presetHidden": "Ocultar panel",
+      "icon": "Icono",
+      "iconNone": "Sin icono",
+      "iconCustom": "Nombre personalizado",
+      "iconNotFound": "Icono no encontrado",
+      "iconHint": "Emoji o texto corto, p. ej. ⚡",
+      "panelTitle": "Título del panel",
+      "row": "Fila {n}",
+      "rowLabel": "Etiqueta",
+      "rowValue": "Valor",
+      "rowFill": "Relleno, %",
+      "rowAccent": "Acento",
+      "reset": "Restablecer",
+      "preview": "Vista previa"
+    },
+    "back": "Todas"
   }
 }

@@ -10,6 +10,11 @@ export interface EditingContext {
 	slot: number
 }
 
+export interface AssignTarget {
+	squadId: number
+	slot: number
+}
+
 export function useClanSquadModals(
 	squads: ClanSquad[] = [],
 	members: ClanMember[] = []
@@ -33,8 +38,7 @@ export function useClanSquadModals(
 	const [createOpen, setCreateOpen] = useState(false)
 	const [newName, setNewName] = useState('')
 	const [newMap, setNewMap] = useState<SquadMap>('SMALL_BERDOVKA')
-	const [assignSquadId, setAssignSquadId] = useState<number | null>(null)
-	const [assignSlot, setAssignSlot] = useState<number | null>(null)
+	const [assignTarget, setAssignTarget] = useState<AssignTarget | null>(null)
 	const [leaderSquadId, setLeaderSquadId] = useState<number | null>(null)
 	const [mapSquadId, setMapSquadId] = useState<number | null>(null)
 	const [targetMap, setTargetMap] = useState<SquadMap>('SMALL_BERDOVKA')
@@ -46,7 +50,9 @@ export function useClanSquadModals(
 	)
 	const mapSquad = squads.find((s) => s.id === mapSquadId) ?? null
 	const leaderSquad = squads.find((s) => s.id === leaderSquadId) ?? null
-	const assignSquad = squads.find((s) => s.id === assignSquadId) ?? null
+	const targetSquad = assignTarget
+		? (squads.find((s) => s.id === assignTarget.squadId) ?? null)
+		: null
 	const editingMember = editingCtx
 		? (members.find((m) => m.id === editingCtx.clanMemberId) ?? null)
 		: null
@@ -61,10 +67,9 @@ export function useClanSquadModals(
 		setNewName,
 		newMap,
 		setNewMap,
-		assignSquadId,
-		setAssignSquadId,
-		assignSlot,
-		setAssignSlot,
+		assignTarget,
+		setAssignTarget,
+		targetSquad,
 		leaderSquadId,
 		setLeaderSquadId,
 		mapSquadId,
@@ -75,7 +80,6 @@ export function useClanSquadModals(
 		setEditingCtx,
 		mapSquad,
 		leaderSquad,
-		assignSquad,
 		editingMember,
 	}
 }

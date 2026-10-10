@@ -32,6 +32,16 @@ export const contacts: AboutMember[] = [
 			},
 		],
 	},
+	{
+		name: 'scxnews',
+		description: 'about.ad_role',
+		links: [
+			{
+				href: 'https://t.me/Shnyuvsik',
+				icon: 'basil:telegram-outline',
+			},
+		],
+	},
 ]
 
 export const supportLinks: LinkItem[] = [

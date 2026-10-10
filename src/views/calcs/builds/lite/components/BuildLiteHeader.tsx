@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import type { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { CheckBox } from '@/components/ui/CheckBox'
 import { Divider } from '@/components/ui/Divider'
@@ -139,10 +139,15 @@ export function BuildLiteHeader({
 	}
 
 	return (
-		<div className="flex flex-col gap-2">
-			<h1 className={`${unbounded.className} text-3xl text-red-500`}>
-				| {currentBuild ? currentBuild.name : t('build.new_build')}
-			</h1>
+		<div className="flex flex-col gap-4">
+			<div className="flex items-center gap-2">
+				<div className="w-1 shrink-0 self-stretch bg-primary" />
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] text-primary leading-none`}
+				>
+					{currentBuild ? currentBuild.name : t('build.new_build')}
+				</h1>
+			</div>
 			<div
 				className="flex flex-wrap items-center gap-2"
 				data-png-exclude="true"
@@ -222,7 +227,7 @@ export function BuildLiteHeader({
 									<div className="flex flex-col gap-2">
 										{isPublished && (
 											<Button
-												className="flex w-full items-center gap-2 font-semibold"
+												className="flex w-full items-center gap-2"
 												onClick={handleCopyLink}
 												variant="secondary"
 											>
@@ -231,7 +236,7 @@ export function BuildLiteHeader({
 											</Button>
 										)}
 										<Button
-											className="flex w-full items-center gap-2 font-semibold"
+											className="flex w-full items-center gap-2 font-normal"
 											onClick={handleCopyShare}
 											variant="secondary"
 										>
@@ -240,7 +245,7 @@ export function BuildLiteHeader({
 										</Button>
 										{isPublished ? (
 											<Button
-												className="flex w-full items-center gap-2 font-bold"
+												className="flex w-full items-center gap-2 font-normal"
 												loading={
 													updateMutation.isPending
 												}
@@ -270,7 +275,7 @@ export function BuildLiteHeader({
 									</div>
 									<Divider className="my-1" />
 									<div className="flex flex-col gap-2">
-										<p className="font-semibold text-sm text-text-accent">
+										<p className="font-medium text-foreground text-sm">
 											{t('buildsLite.tagsLabel')}
 										</p>
 										<div className="flex flex-wrap gap-2">

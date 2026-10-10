@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
+import { mtsWide } from '@/app/fonts'
 import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { statusQueries } from '@/queries/status/status.queries'
@@ -75,7 +76,7 @@ export const StatusWidget = () => {
 				/>
 			</div>
 
-			<div className="font-semibold text-[13px]">
+			<div className={`${mtsWide.className} font-semibold text-[13px]`}>
 				{isError || !data?.data ? (
 					<p className="text-destructive">
 						{t('status_widget.services_error')}

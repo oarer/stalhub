@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -28,15 +28,15 @@ export default function Releases({
 
 	return (
 		<section className="flex flex-col gap-4">
-			<h2
-				className={`${unbounded.className} font-semibold text-2xl tracking-tight`}
+			<h1
+				className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
 			>
 				{t('download.app.all_releases')}
-			</h2>
+			</h1>
 
 			{loading ? (
 				<Card.Root className="gap-3">
-					<p className="flex items-center gap-2 font-semibold text-text-accent">
+					<p className="flex items-center gap-2 font-semibold text-foreground">
 						<Icon
 							className="animate-spin text-primary"
 							icon="lucide:loader-circle"
@@ -121,7 +121,7 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 
 			{release.assets.length > 0 ? (
 				<div className="flex flex-col gap-2">
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('download.app.files')}
 					</span>
 					<div className="grid gap-2 sm:grid-cols-2">
@@ -141,14 +141,16 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 									<span className="block truncate font-semibold text-sm">
 										{asset.name}
 									</span>
-									<span className={`${montserrat.className} block font-semibold text-muted-foreground text-xs`}>
+									<span
+										className={`block font-mono font-semibold text-muted-foreground text-xs`}
+									>
 										{t(
 											`download.app.platforms.${asset.platform}`
 										)}
 									</span>
 								</span>
 								<span
-									className={`${montserrat.className} shrink-0 font-medium text-muted-foreground text-xs`}
+									className={`shrink-0 font-medium font-mono text-muted-foreground text-xs`}
 								>
 									{formatBytes(asset.size)}
 								</span>

@@ -2,9 +2,6 @@
 	"base": {
 		"title": "StalHub — калькуляторы, сборки и гайды для StalZone",
 		"description": "Инструменты для StalZone (Stalcraft): калькуляторы TTK, сборок, Арсенала, оружия и полезные гайды.",
-		"url": "https://stalhub.dev",
-		"type": "website",
-		"alternateName": ["сталхаб"],
 		"keywords": [
 			"stalcraft",
 			"сталкрафт",
@@ -27,9 +24,22 @@
 			"клановая аналитика"
 		]
 	},
+	"/": {
+		"title": "StalHub — калькуляторы, сборки и гайды для StalZone",
+		"description": "StalHub: калькуляторы урона и TTK, конструктор сборок, бартер, Арсенал, предметы и аукцион, гайды и статьи по StalZone (Stalcraft).",
+		"keywords": [
+			"stalhub",
+			"сталхаб",
+			"stalcraft калькулятор",
+			"сталкрафт калькулятор",
+			"stalzone инструменты",
+			"stalcraft builds",
+			"сталкрафт сборки"
+		]
+	},
 	"/servers": {
-		"title": "Онлайн · StalHub",
-		"description": "Онлайн серверов StalZone: регионы RU, GLOBAL.",
+		"title": "Онлайн серверов StalZone · StalHub",
+		"description": "Онлайн серверов StalZone: регионы RU, GLOBAL. Пинг и статус серверов Stalcraft.",
 		"keywords": [
 			"сталкрафт серверы",
 			"stalcraft servers",
@@ -41,7 +51,7 @@
 		]
 	},
 	"/calcs": {
-		"title": "Калькуляторы · StalHub",
+		"title": "Калькуляторы StalZone · StalHub",
 		"description": "Калькуляторы для StalZone: TTK, сборки, Арсенал и другие игровые расчёты.",
 		"keywords": [
 			"сталкрафт калькуляторы",
@@ -55,7 +65,7 @@
 	},
 	"/calcs/arsenal": {
 		"title": "Калькулятор Арсенала · StalHub",
-		"description": "Расчёт репутации и прогресса Арсенала в StalZone.",
+		"description": "Расчёт репутации и прогресса Арсенала в StalZone: сколько сессий нужно до следующего уровня.",
 		"keywords": [
 			"сталкрафт арсенал",
 			"stalcraft arsenal",
@@ -65,8 +75,19 @@
 			"арсенал сталзон"
 		]
 	},
+	"/calcs/builds": {
+		"title": "Конструктор сборок · StalHub",
+		"description": "Создание и сравнение сборок для StalZone: броня, оружие, артефакты и контейнеры.",
+		"keywords": [
+			"сталкрафт сборки",
+			"stalcraft builds",
+			"сталкрафт билд",
+			"stalcraft build calculator",
+			"сборка сталкрафт"
+		]
+	},
 	"/calcs/builds/lite": {
-		"title": "Калькулятор сборок · StalHub",
+		"title": "Калькулятор сборок (лайт) · StalHub",
 		"description": "Создание и сравнение сборок для StalZone.",
 		"keywords": [
 			"сталкрафт сборки",
@@ -88,8 +109,8 @@
 		]
 	},
 	"/calcs/ttk": {
-		"title": "Калькулятор ТТК · StalHub",
-		"description": "Расчёт времени убийства оружия в StalZone.",
+		"title": "Калькулятор ТТК и урона · StalHub",
+		"description": "Расчёт времени убийства (TTK) и урона оружия в StalZone: сравнение стволов по броне.",
 		"keywords": [
 			"сталкрафт ttk",
 			"stalcraft ttk",
@@ -101,8 +122,8 @@
 		]
 	},
 	"/calcs/dpi": {
-		"title": "Калькулятор DPI · StalHub",
-		"description": "Конвертер чувствительности мыши между играми.",
+		"title": "Калькулятор DPI и чувствительности · StalHub",
+		"description": "Конвертер чувствительности мыши между играми: DPI, eDPI, см на 360 градусов.",
 		"keywords": [
 			"dpi calculator",
 			"калькулятор dpi",
@@ -113,8 +134,8 @@
 		]
 	},
 	"/calcs/modules": {
-		"title": "Калькулятор модулей · StalHub",
-		"description": "Подбор идеальный модулей для оружия.",
+		"title": "Калькулятор модулей оружия · StalHub",
+		"description": "Подбор идеальных модулей для оружия StalZone: прицелы, глушители, рукоятки.",
 		"keywords": [
 			"module calculator",
 			"калькулятор модулей",
@@ -122,22 +143,145 @@
 			"сталкрафт модули"
 		]
 	},
+	"/calcs/barter": {
+		"title": "Калькулятор бартера · StalHub",
+		"description": "Расчёт выгодности бартера в StalZone: себестоимость крафта и цены аукциона.",
+		"keywords": [
+			"сталкрафт бартер",
+			"stalcraft barter",
+			"калькулятор бартера",
+			"бартер сталзон",
+			"stalcraft barter calculator"
+		]
+	},
+	"/calcs/buy": {
+		"title": "Калькулятор закупки · StalHub",
+		"description": "Расчёт стоимости закупки предметов для StalZone: итоговая цена сета.",
+		"keywords": [
+			"сталкрафт закупка",
+			"stalcraft buy calculator",
+			"калькулятор закупки сталкрафт"
+		]
+	},
+	"/calcs/upgrade": {
+		"title": "Калькулятор заточки · StalHub",
+		"description": "Расчёт стоимости и шансов заточки снаряжения в StalZone.",
+		"keywords": [
+			"сталкрафт заточка",
+			"stalcraft upgrade",
+			"калькулятор заточки",
+			"заточка сталзон"
+		]
+	},
+	"/calcs/hideout": {
+		"title": "Калькулятор убежища · StalHub",
+		"description": "Расчёт прокачки убежища в StalZone: ресурсы, время и бонусы построек.",
+		"keywords": [
+			"сталкрафт убежище",
+			"stalcraft hideout",
+			"калькулятор убежища",
+			"убежище сталзон"
+		]
+	},
+	"/calcs/sessions": {
+		"title": "Калькулятор сессий · StalHub",
+		"description": "Планирование игровых сессий в StalZone: фарм, репутация и доход в час.",
+		"keywords": [
+			"сталкрафт сессии",
+			"stalcraft sessions",
+			"калькулятор сессий",
+			"фарм сталзон"
+		]
+	},
+	"/calcs/text": {
+		"title": "Форматирование текста · StalHub",
+		"description": "Форматирование игрового текста для StalZone: цвета, стили и предпросмотр.",
+		"keywords": [
+			"форматирование текста сталкрафт",
+			"stalcraft text formatter"
+		]
+	},
+	"/calcs/donate": {
+		"title": "Калькулятор доната · StalHub",
+		"description": "Расчёт стоимости перевода валюты за донат валюты Stalzone.",
+		"keywords": [
+			"сталкрафт донат",
+			"stalcraft donate",
+			"донат сталзон"
+		]
+	},
 	"/about": {
-		"title": "О нас · StalHub",
-		"description": "Информация о проекте и его участниках"
+		"title": "О проекте StalHub",
+		"description": "Информация о проекте StalHub и его участниках: инструменты для игроков StalZone.",
+		"keywords": [
+			"stalhub о проекте",
+			"сталхаб о нас",
+			"stalhub team"
+		]
 	},
 	"/articles": {
-		"title": "Статьи · StalHub",
-		"description": "Статьи по прохождению сюжетных и вторичных квестов и другая информация",
+		"title": "Статьи и гайды по StalZone · StalHub",
+		"description": "Статьи по прохождению сюжетных и вторичных квестов StalZone и другая полезная информация.",
 		"keywords": [
 			"guides calculator",
 			"гайды сталкрафт",
 			"quests stalcraft",
-			"квесты сталкрафт"
+			"квесты сталкрафт",
+			"гайды сталзон"
+		]
+	},
+	"/blog": {
+		"title": "Блог StalHub",
+		"description": "Новости проекта StalHub, обновления калькуляторов и разборы механик StalZone.",
+		"keywords": [
+			"stalhub блог",
+			"новости сталкрафт",
+			"stalcraft news",
+			"блог сталзон"
+		]
+	},
+	"/arts": {
+		"title": "Рисунки сообщества · StalHub",
+		"description": "Фанатские арты по StalZone от сообщества StalHub: галерея работ игроков.",
+		"keywords": [
+			"сталкрафт арты",
+			"stalcraft art",
+			"арты сталзон",
+			"stalhub arts"
+		]
+	},
+	"/builds": {
+		"title": "Сборки игроков StalZone · StalHub",
+		"description": "Готовые сборки брони и оружия для StalZone от игроков: PvP и PvE сеты.",
+		"keywords": [
+			"сталкрафт сборки",
+			"stalcraft builds",
+			"сборки сталзон",
+			"билд сталкрафт pvp",
+			"билд сталкрафт pve"
+		]
+	},
+	"/tierlists": {
+		"title": "Тирлисты StalZone · StalHub",
+		"description": "Тирлисты оружия и снаряжения StalZone от сообщества: что мета, а что нет.",
+		"keywords": [
+			"сталкрафт тирлист",
+			"stalcraft tier list",
+			"тирлист оружия сталкрафт",
+			"мета сталзон"
+		]
+	},
+	"/clans": {
+		"title": "Кланы StalZone · StalHub",
+		"description": "Каталог кланов StalZone: состав, статистика и набор игроков.",
+		"keywords": [
+			"кланы сталкрафт",
+			"stalcraft clans",
+			"клан сталзон"
 		]
 	},
 	"/operations": {
-		"title": "Операции · StalHub",
+		"title": "Операции StalZone · StalHub",
 		"description": "Просмотр операций игроков StalZone: карта, сложность, участники и награды.",
 		"keywords": [
 			"сталкрафт операции",
@@ -147,13 +291,113 @@
 			"операции сталкрафт"
 		]
 	},
-	"notFound": {
-		"title": "Страница не найдена · StalHub",
-		"description": "Запрашиваемая страница не найдена",
-		"openGraph": {
-			"title": "Страница не найдена · StalHub",
-			"description": "Запрашиваемая страница не найдена"
-		}
+	"/player": {
+		"title": "Поиск игроков StalZone · StalHub",
+		"description": "Поиск статистики игроков StalZone по нику: клан, операции, прогресс.",
+		"keywords": [
+			"статистика игрока сталкрафт",
+			"stalcraft player stats",
+			"поиск игрока сталзон"
+		]
+	},
+	"/eforum": {
+		"title": "Дев-трекер StalZone · StalHub",
+		"description": "Отслеживание сообщений разработчиков StalZone с форумов и Discord: патчи и анонсы.",
+		"keywords": [
+			"дев трекер сталкрафт",
+			"stalcraft dev tracker",
+			"патчи сталзон"
+		]
+	},
+	"/map": {
+		"title": "Интерактивная карта StalZone · StalHub",
+		"description": "Интерактивная карта Зоны StalZone: метки, схроны, точки фарма и маршруты.",
+		"keywords": [
+			"карта сталкрафт",
+			"stalcraft map",
+			"интерактивная карта сталзон",
+			"карта зоны"
+		]
+	},
+	"/maps/cw": {
+		"title": "Карта клановых войн · StalHub",
+		"description": "Карта клановых войн StalZone: территории, контроль и расписание боёв.",
+		"keywords": [
+			"клановые войны сталкрафт",
+			"stalcraft cw map",
+			"кв сталзон"
+		]
+	},
+	"/loot": {
+		"title": "Калькулятор лута · StalHub",
+		"description": "Расчёт лута и фарма в StalZone: доход с точек и маршрутов.",
+		"keywords": [
+			"лут сталкрафт",
+			"stalcraft loot",
+			"фарм сталзон"
+		]
+	},
+	"/balance": {
+		"title": "Баланс оружия StalZone · StalHub",
+		"description": "Сравнение баланса оружия StalZone между патчами: нерфы и баффы.",
+		"keywords": [
+			"баланс сталкрафт",
+			"stalcraft balance",
+			"нерф бафф сталзон"
+		]
+	},
+	"/models": {
+		"title": "3D-модели StalZone · StalHub",
+		"description": "Просмотр 3D-моделей предметов и персонажей StalZone прямо в браузере.",
+		"keywords": [
+			"3d модели сталкрафт",
+			"stalcraft models",
+			"модели сталзон"
+		]
+	},
+	"/items": {
+		"title": "База предметов StalZone · StalHub",
+		"description": "База предметов StalZone: оружие, броня, артефакты — характеристики, бартер и цены аукциона.",
+		"keywords": [
+			"база предметов сталкрафт",
+			"stalcraft items",
+			"предметы сталзон",
+			"оружие сталкрафт характеристики",
+			"аукцион сталкрафт"
+		]
+	},
+	"/download": {
+		"title": "Скачать StalHub",
+		"description": "Десктопное приложение и инструменты StalHub: загрузка для Windows и Linux.",
+		"keywords": [
+			"stalhub скачать",
+			"сталхаб скачать",
+			"stalhub app download"
+		]
+	},
+	"/legal": {
+		"title": "Правовая информация · StalHub",
+		"description": "Правовая информация StalHub: условия использования, конфиденциальность и оферта."
+	},
+	"/legal/privacy": {
+		"title": "Политика конфиденциальности · StalHub",
+		"description": "Политика конфиденциальности StalHub: какие данные мы собираем и как используем."
+	},
+	"/legal/tos": {
+		"title": "Условия использования · StalHub",
+		"description": "Условия использования сервиса StalHub."
+	},
+	"/legal/terms": {
+		"title": "Пользовательское соглашение · StalHub",
+		"description": "Пользовательское соглашение сервиса StalHub."
+	},
+	"/legal/disclaimer": {
+		"title": "Дисклеймер · StalHub",
+		"description": "Дисклеймер StalHub: фанатский проект, не аффилирован с разработчиками StalZone."
+	},
+	"/legal/contacts": {
+		"title": "Контакты · StalHub",
+		"description": "Контакты команды StalHub для связи и предложений."
 	},
 	"/dashboard": {
 		"title": "Дашборд · StalHub",
@@ -167,6 +411,206 @@
 		"openGraph": {
 			"title": "Дашборд · StalHub",
 			"description": "Личный дашборд StalHub: соберите калькуляторы и вкладки личного кабинета в удобном порядке."
+		}
+	},
+	"/me": {
+		"title": "Личный кабинет · StalHub",
+		"description": "Личный кабинет StalHub: сборки, статьи, арты, тирлисты и настройки профиля.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/builds": {
+		"title": "Мои сборки · StalHub",
+		"description": "Ваши сборки для StalZone: создание, редактирование и управление.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/arts": {
+		"title": "Мои арты · StalHub",
+		"description": "Ваши арты на StalHub: загрузка и управление работами.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/arts/new": {
+		"title": "Новый арт · StalHub",
+		"description": "Загрузка нового арта на StalHub.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/articles": {
+		"title": "Мои статьи · StalHub",
+		"description": "Ваши статьи и гайды на StalHub: черновики и публикации.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/articles/new": {
+		"title": "Новая статья · StalHub",
+		"description": "Создание новой статьи или гайда на StalHub.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/tierlists": {
+		"title": "Мои тирлисты · StalHub",
+		"description": "Ваши тирлисты на StalHub: создание и управление.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/tierlists/new": {
+		"title": "Новый тирлист · StalHub",
+		"description": "Создание нового тирлиста на StalHub.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan": {
+		"title": "Мой клан · StalHub",
+		"description": "Управление вашим кланом StalZone: участники, отряды и статистика.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/members": {
+		"title": "Участники клана · StalHub",
+		"description": "Состав вашего клана: участники, роли и активность.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/invites": {
+		"title": "Приглашения в клан · StalHub",
+		"description": "Приглашения и заявки на вступление в ваш клан.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/squads": {
+		"title": "Отряды клана · StalHub",
+		"description": "Отряд вашего клана.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/attendance": {
+		"title": "Посещаемость клана · StalHub",
+		"description": "Учёт посещаемости мероприятий вашего клана.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/sessions": {
+		"title": "Игры клана · StalHub",
+		"description": "Игры вашего клана: анализ и сводка.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/orders": {
+		"title": "Заказы расходников · StalHub",
+		"description": "Заказ расходников для участников клана.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/stats": {
+		"title": "Статистика клана · StalHub",
+		"description": "Статистика вашего клана.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/gold": {
+		"title": "Голд-дропы · StalHub",
+		"description": "Посещаемость голд-дропов.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/grenades": {
+		"title": "Гранаты клана · StalHub",
+		"description": "Учёт гранат вашего клана.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/clan/settings": {
+		"title": "Настройки клана · StalHub",
+		"description": "Настройки вашего клана на StalHub.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/notifications": {
+		"title": "Уведомления · StalHub",
+		"description": "Ваши уведомления.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/settings": {
+		"title": "Настройки профиля · StalHub",
+		"description": "Настройки вашего профиля StalHub.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/stars": {
+		"title": "Избранное · StalHub",
+		"description": "Ваше избранное на StalHub: сохранённые материалы.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/analytics": {
+		"title": "Моя аналитика · StalHub",
+		"description": "Ваша игровая аналитика: статистика персонажа и прогресс.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"/me/onboarding": {
+		"title": "Знакомство со StalHub",
+		"description": "Быстрый старт на StalHub: настройка профиля и первые шаги.",
+		"robots": {
+			"index": false,
+			"follow": false
+		}
+	},
+	"notFound": {
+		"title": "Страница не найдена · StalHub",
+		"description": "Запрашиваемая страница не найдена",
+		"openGraph": {
+			"title": "Страница не найдена · StalHub",
+			"description": "Запрашиваемая страница не найдена"
 		}
 	}
 }

@@ -306,11 +306,10 @@ export function Combobox(props: ComboboxProps) {
 	const selectedLabels = options.filter((o) => selectedSet.has(o.value))
 	const hasSelection = selectedLabels.length > 0
 
-	// ну вот нахуй ты сюда классы въебал
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
-				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-semibold text-sm"
+				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-medium text-[13px]"
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
 				ref={triggerRef}
@@ -375,7 +374,7 @@ export function Combobox(props: ComboboxProps) {
 								<div className="flex items-center gap-2 border-primary/40 border-b-2 px-3 py-2">
 									<Icon icon="lucide:search" />
 									<input
-										className="w-full bg-transparent font-bold outline-none"
+										className="w-full bg-transparent font-medium text-sm outline-none"
 										onChange={(e) =>
 											setSearch(e.target.value)
 										}
@@ -387,7 +386,7 @@ export function Combobox(props: ComboboxProps) {
 								</div>
 
 								{filtered.length === 0 ? (
-									<div className="px-3 py-6 text-center font-bold text-sm">
+									<div className="px-3 py-6 text-center font-medium text-sm">
 										{t(emptyText)}
 									</div>
 								) : (
@@ -415,7 +414,7 @@ export function Combobox(props: ComboboxProps) {
 													) {
 														return (
 															<div
-																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-bold text-muted-foreground text-xs uppercase tracking-wide"
+																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-medium text-[13px] text-muted-foreground uppercase tracking-wide"
 																key={
 																	option.value
 																}
@@ -444,7 +443,7 @@ export function Combobox(props: ComboboxProps) {
 													return (
 														<div
 															className={cn(
-																'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-semibold text-sm transition-colors hover:bg-muted/50',
+																'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-medium text-[13px] transition-colors hover:bg-muted/50',
 																optionDisabled &&
 																	'cursor-not-allowed text-muted-foreground opacity-50',
 																highlightedIndex ===
