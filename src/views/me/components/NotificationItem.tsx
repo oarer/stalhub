@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import { montserrat } from '@/app/fonts'
 import { formatDate } from '@/lib/date'
 import type { Notification } from '@/types/user.type'
 
@@ -25,7 +24,7 @@ export function NotificationItem({
 
 	const content = (
 		<div
-			className={`flex items-start gap-3 rounded-lg border border-primary px-3 py-2.5 transition-colors ${
+			className={`flex items-start gap-3 rounded-lg border border-primary/50 px-3 py-2.5 transition-colors ${
 				!notification.read ? 'bg-primary/5' : 'bg-card'
 			} ${notification.link ? 'cursor-pointer hover:bg-accent' : ''}`}
 			onClick={onClick}
@@ -44,7 +43,7 @@ export function NotificationItem({
 				</div>
 				<p className="font-semibold text-sm">{notification.content}</p>
 				<p
-					className={`${montserrat.className} mt-1 flex items-center gap-2 font-semibold text-[11px] text-text-accent`}
+					className={`mt-1 flex items-center gap-2 font-mono font-semibold text-[11px] text-foreground`}
 				>
 					<span>{notification.author}</span>
 					<span>·</span>

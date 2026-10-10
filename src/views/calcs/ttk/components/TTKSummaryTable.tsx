@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Table } from '@/components/ui/Table'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
@@ -59,7 +58,7 @@ export function TTKSummaryTable({ rows, maxDist }: TTKSummaryTableProps) {
 										style={{ background: row.color }}
 									/>
 									<span
-										className={montserrat.className}
+										className="font-mono"
 										style={{
 											color: infoColorMap[
 												row.weaponColor as InfoColor

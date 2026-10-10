@@ -7,7 +7,14 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Section } from '../Section'
 
-export const SOCIAL_NETWORKS = ['telegram', 'youtube', 'twitch', 'boosty', 'x']
+export const SOCIAL_NETWORKS = [
+	'telegram',
+	'youtube',
+	'twitch',
+	'boosty',
+	'x',
+	'tiktok',
+]
 
 export const SOCIAL_ICONS: Record<string, string> = {
 	telegram: 'mingcute:telegram-fill',
@@ -16,6 +23,7 @@ export const SOCIAL_ICONS: Record<string, string> = {
 	twitch: 'lucide:twitch',
 	boosty: 'simple-icons:boosty',
 	x: 'prime:twitter',
+	tiktok: 'simple-icons:tiktok',
 }
 
 export function SocialLinksSection({
@@ -55,7 +63,7 @@ export function SocialLinksSection({
 	return (
 		<Section icon="lucide:share-2" title={t('me.settings.social_links')}>
 			<div className="flex flex-col gap-2">
-				<p className="font-semibold text-text-accent text-xs">
+				<p className="font-semibold text-foreground text-xs">
 					{t('me.settings.socialLinksDesc')}
 				</p>
 				<div className="flex flex-col gap-2">
@@ -65,7 +73,7 @@ export function SocialLinksSection({
 							key={network}
 						>
 							<Icon
-								className="shrink-0 text-text-accent"
+								className="shrink-0 text-foreground"
 								icon={SOCIAL_ICONS[network] ?? 'lucide:link'}
 							/>
 							<span className="w-20 shrink-0 font-semibold text-sm capitalize">

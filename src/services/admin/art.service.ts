@@ -14,6 +14,7 @@ export interface AdminArtCreate {
 	title: string
 	type?: ArtType
 	image_url?: string | null
+	image_urls?: string[]
 	tags?: string[]
 	description?: string
 	author_id?: number
@@ -25,6 +26,7 @@ export interface AdminArtUpdate {
 	title?: string
 	type?: ArtType
 	image_url?: string | null
+	image_urls?: string[] | null
 	tags?: string[]
 	description?: string
 	author_id?: number | null

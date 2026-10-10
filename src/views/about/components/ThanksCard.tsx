@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import type { AboutMember } from './about.types'
 import { view } from './about.types'
@@ -30,12 +30,12 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 
 			<motion.div className="flex flex-col items-center gap-2" {...view}>
 				<h1
-					className={`${unbounded.className} font-bold text-lg uppercase tracking-widest sm:text-xl`}
+					className={`${mtsExtended.className} font-semibold text-lg uppercase tracking-widest sm:text-xl`}
 				>
 					{name}
 				</h1>
 				<h2
-					className={`${unbounded.className} font-bold text-primary text-sm uppercase tracking-widest`}
+					className={`${mtsWide.className} font-medium text-primary text-sm uppercase tracking-widest`}
 				>
 					{t.rich(description, {
 						br: () => <br />,

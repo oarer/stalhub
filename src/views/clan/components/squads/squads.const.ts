@@ -13,3 +13,7 @@ export const SQUAD_MAPS: { value: SquadMap; label: string; icon: string }[] = [
 	},
 	{ value: 'NIZINA', label: 'clan.maps.NIZINA', icon: 'lucide:mountain' },
 ]
+
+export const MAX_SQUADS_PER_MAP = 6
+
+export const SQUAD_SIZE = 5

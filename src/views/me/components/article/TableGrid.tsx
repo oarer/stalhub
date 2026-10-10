@@ -1,6 +1,5 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { TABLE_MAX } from '@/constants/article_editor.const'
 import { cn } from '@/lib/cn'
 
@@ -14,9 +13,7 @@ export function TableGrid({ onInsert }: TableGridProps) {
 
 	return (
 		<div className="flex flex-col gap-3">
-			<p
-				className={`${montserrat.className} font-semibold text-sm text-text-accent`}
-			>
+			<p className={`font-mono font-semibold text-foreground text-sm`}>
 				{hover[0] > 0 && hover[1] > 0
 					? `${hover[0]} × ${hover[1]}`
 					: t('me.articleEditor.chooseSize')}

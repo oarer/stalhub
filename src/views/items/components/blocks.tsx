@@ -50,7 +50,7 @@ export const TextBlock: React.FC<{ block: TextInfoBlock; locale: Locale }> = ({
 	if (!text) return null
 
 	return (
-		<p className="space-y-2 text-center font-semibold">
+		<p className="space-y-2 text-center font-medium">
 			{text.split('\\n\\n').map((line, i) => (
 				<React.Fragment key={i}>
 					{line}
@@ -70,7 +70,7 @@ export const NumericVariantsCard: React.FC<{
 
 	const content = (
 		<div className="flex items-center justify-between">
-			<p className="font-semibold text-lg">{t('ui.input_sharpening')}</p>
+			<p className="font-medium text-lg">{t('ui.input_sharpening')}</p>
 			<Input
 				className="m-1 w-fit px-2 py-2"
 				max={15}
@@ -136,7 +136,7 @@ export const ListBlock: React.FC<{
 	const content = (
 		<>
 			{messageToString(block.title, locale) && (
-				<p className="font-semibold">
+				<p className="font-medium text-[13px]">
 					{messageToString(block.title, locale)}
 				</p>
 			)}

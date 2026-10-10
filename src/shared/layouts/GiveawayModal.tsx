@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
 import { Modal } from '@/components/ui/Modal'
@@ -31,7 +31,9 @@ export default function GiveawayModal() {
 					<Modal.Header>
 						<Modal.Title className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:sparkles" />
-							<p className={`${unbounded.className} `}>
+							<p
+								className={`${mtsExtended.className} font-semibold text-[15px]`}
+							>
 								{t('test.title')}
 							</p>
 						</Modal.Title>
@@ -45,7 +47,7 @@ export default function GiveawayModal() {
 								src="/images/other/give.jpg"
 							/>
 						</div>
-						<p className="font-semibold">
+						<p className="font-medium text-sm">
 							{t.rich('test.message', {
 								primary: (chunks) => (
 									<span className="text-primary">

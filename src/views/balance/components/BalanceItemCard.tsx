@@ -1,5 +1,4 @@
 import { Icon } from '@iconify/react'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { cn } from '@/lib/cn'
 import type {
@@ -26,7 +25,7 @@ export function BalanceItemCard({ item }: { item: BalanceItemChange }) {
 	return (
 		<Card.Root>
 			<h3
-				className={`${montserrat.className} font-semibold text-lg`}
+				className={`font-medium font-mono text-lg`}
 				style={itemColor ? { color: itemColor } : undefined}
 			>
 				{item.name}
@@ -40,31 +39,31 @@ export function BalanceItemCard({ item }: { item: BalanceItemChange }) {
 						)}
 						key={`${change.label}-${index}`}
 					>
-						<span className="font-semibold">{change.label}</span>
+						<span className="font-medium">{change.label}</span>
 						<span
-							className={`${montserrat.className} flex items-center gap-2 tabular-nums sm:ml-auto`}
+							className={`flex items-center gap-2 font-mono tabular-nums sm:ml-auto`}
 						>
 							{change.type === 'removed' ? (
-								<span className="font-semibold line-through opacity-80">
+								<span className="font-medium line-through opacity-80">
 									{change.oldValue}
 								</span>
 							) : change.type === 'changed' ? (
 								<>
-									<span className="font-semibold text-muted-foreground line-through opacity-80">
+									<span className="font-medium text-muted-foreground line-through opacity-80">
 										{change.oldValue}
 									</span>
 									<Icon
 										className="text-lg"
 										icon="lucide:move-right"
 									/>
-									<span className="font-semibold">
+									<span className="font-medium">
 										{typeof change.newValue === 'number'
 											? change.newValue.toFixed(2)
 											: (change.newValue ?? '—')}
 									</span>
 								</>
 							) : (
-								<span className="font-semibold">
+								<span className="font-medium">
 									+{change.newValue}
 								</span>
 							)}

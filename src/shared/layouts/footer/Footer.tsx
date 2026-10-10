@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import {
 	type FooterLink,
@@ -28,17 +28,17 @@ const BuildHash = () => {
 				icon="mdi:code-tags"
 			/>
 			<span
-				className={`${montserrat.className} font-semibold text-[15px] leading-none`}
+				className={`${mtsWide.className} font-medium text-sm leading-none`}
 			>
 				build@
 				<CLink
-					className="px-0 py-0 font-semibold text-foreground/80 hover:text-primary hover:underline"
+					className="px-0 py-0 font-medium text-foreground/80 hover:text-primary hover:underline"
 					externalIcon={false}
 					href={`https://github.com/oarer/stalhub/tree/${sha}`}
 					title={sha}
 					variant="none"
 				>
-					{sha?.slice(0, 7) ?? 'not found'}
+					{sha?.slice(0, 7) ?? '404'}
 				</CLink>
 			</span>
 		</p>
@@ -50,11 +50,11 @@ const UwuToggle = () => {
 
 	return (
 		<button
-			className={`w-fit cursor-pointer py-0.5 font-semibold text-sm transition-colors duration-500 hover:text-pink-400 ${uwuMode ? 'text-pink-400' : 'text-muted-foreground'}`}
+			className={`${mtsWide.className} w-fit cursor-pointer font-semibold text-sm transition-colors duration-500 hover:text-pink-400 ${uwuMode ? 'text-pink-400' : 'text-muted-foreground'}`}
 			onClick={toggleUwu}
 			type="button"
 		>
-			{uwuMode ? 'uwu' : 'uwu?'}
+			{uwuMode ? 'no uwu plz' : 'uwu?'}
 		</button>
 	)
 }
@@ -71,7 +71,7 @@ const FooterNav = ({
 	return (
 		<nav className="flex flex-col items-start gap-1">
 			<h2
-				className={`${unbounded.className} font-bold text-[15px] text-primary uppercase tracking-widest`}
+				className={`${mtsWide.className} font-bold text-[15px] text-primary uppercase italic tracking-widest`}
 			>
 				{t(titleKey)}
 			</h2>
@@ -90,7 +90,9 @@ const FooterNav = ({
 								className="size-4 shrink-0 text-muted-foreground/70 duration-500 group-hover:text-primary"
 								icon={link.icon}
 							/>
-							<span className="font-semibold text-[14px] text-muted-foreground duration-500 group-hover:text-foreground">
+							<span
+								className={`${mtsWide.className} font-medium text-[14px] text-muted-foreground duration-500 group-hover:text-foreground`}
+							>
 								{t(link.title)}
 							</span>
 						</CLink>
@@ -122,11 +124,11 @@ export default function FooterLayout() {
 
 	return (
 		<footer className="relative mx-auto size-full max-w-[105rem] overflow-hidden px-6 pt-20 pb-24 lg:px-12 lg:pt-28 lg:pb-0">
-			<div className={`${montserrat.className} flex flex-col gap-8`}>
+			<div className="flex flex-col gap-8">
 				<div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
 					<div className="flex flex-col gap-3">
 						<h2
-							className={`${unbounded.className} font-bold text-[15px] text-foreground tracking-widest`}
+							className={`${mtsWide.className} font-semibold text-[15px] text-foreground`}
 						>
 							{t('footer.brand', {
 								year: new Date().getFullYear(),
@@ -136,7 +138,7 @@ export default function FooterLayout() {
 						<div className="flex flex-col gap-2">
 							{footerCredits.map((credit) => (
 								<p
-									className={`${unbounded.className} font-medium text-[13px] text-foreground/80 lowercase leading-none tracking-widest`}
+									className={`${mtsWide.className} font-semibold text-[14px] text-foreground/80 lowercase leading-none tracking-widest`}
 									key={credit.href}
 								>
 									{t(credit.labelKey)}
@@ -156,12 +158,12 @@ export default function FooterLayout() {
 
 					<div className="flex flex-col items-start gap-2">
 						<h2
-							className={`${unbounded.className} font-bold text-[15px] text-primary uppercase tracking-widest`}
+							className={`${mtsWide.className} font-bold text-[15px] text-primary uppercase italic tracking-widest`}
 						>
 							Информация
 						</h2>
-						<BuildHash />
 						<StatusWidget />
+						<BuildHash />
 					</div>
 
 					<FooterNav
@@ -176,11 +178,11 @@ export default function FooterLayout() {
 
 				<div className="flex flex-col gap-1 border-primary/50 border-t py-6">
 					<p
-						className={`${unbounded.className} font-medium text-muted-foreground text-sm`}
+						className={`${mtsExtended.className} font-medium text-muted-foreground text-sm`}
 					>
 						{t('footer.project.with')}
 						<CLink
-							className="relative px-0 py-0 font-semibold text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
+							className="relative px-0 py-0 font-medium text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
 							externalIcon={false}
 							href="https://github.com/oarer/stalhub"
 							variant="none"
@@ -189,7 +191,7 @@ export default function FooterLayout() {
 						</CLink>
 						. {t('footer.project.license')}
 						<CLink
-							className="relative px-0 py-0 font-semibold text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
+							className="relative px-0 py-0 font-medium text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
 							externalIcon={false}
 							href="https://www.gnu.org/licenses/gpl-3.0.html"
 							variant="none"
@@ -199,7 +201,7 @@ export default function FooterLayout() {
 						.
 					</p>
 					<p
-						className={`${unbounded.className} font-semibold text-muted-foreground/80 text-sm tracking-widest`}
+						className={`${mtsExtended.className} font-medium text-muted-foreground/80 text-sm tracking-widest`}
 					>
 						Not an official EXBO East LLC service.
 					</p>
@@ -210,12 +212,12 @@ export default function FooterLayout() {
 				aria-hidden
 				className="hidden w-full text-foreground lg:-ml-3 lg:block"
 				preserveAspectRatio="xMidYMid meet"
-				viewBox="0 0 1000 190"
+				viewBox="0 0 1000 200"
 			>
 				<text
-					className="font-bold"
+					className={`${mtsWide.className} font-bold`}
 					fill="none"
-					fontSize="218"
+					fontSize="180"
 					stroke="currentColor"
 					strokeOpacity="0.08"
 					strokeWidth="4"

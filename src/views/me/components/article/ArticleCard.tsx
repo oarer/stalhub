@@ -3,8 +3,8 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
+import Username from '@/components/ui/user/Username'
 import {
 	MAX_VISIBLE_TAGS,
 	STATUS_VARIANT,
@@ -50,15 +50,19 @@ export function ArticleCard({ article }: ArticleCardProps) {
 				)}
 			</div>
 
-			<div className="flex items-center gap-2 text-text-accent text-xs">
+			<div className="flex items-center gap-2 text-foreground text-xs">
 				{article.stars_count > 0 && (
 					<div className="flex items-center gap-2">
 						<Icon icon="lucide:star" />
 						{article.stars_count}
 					</div>
 				)}
-				<p className={`${montserrat.className} font-semibold`}>
-					{author && <span>{author.username} · </span>}
+				<p className={`font-mono font-semibold`}>
+					{author && (
+						<>
+							<Username user={author} /> ·{' '}
+						</>
+					)}
 					{date && <span>{formatDate(date, 'date')}</span>}
 				</p>
 			</div>
@@ -67,14 +71,14 @@ export function ArticleCard({ article }: ArticleCardProps) {
 				<div className="flex flex-wrap gap-1">
 					{tags.slice(0, MAX_VISIBLE_TAGS).map((tag) => (
 						<span
-							className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+							className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
 							key={tag}
 						>
 							{tag}
 						</span>
 					))}
 					{tags.length > MAX_VISIBLE_TAGS && (
-						<span className="font-semibold text-text-accent text-xs">
+						<span className="font-semibold text-foreground text-xs">
 							+{tags.length - MAX_VISIBLE_TAGS}
 						</span>
 					)}

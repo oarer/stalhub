@@ -16,6 +16,7 @@ export interface DropdownProps {
 	items: DropdownItem[]
 	placement?: 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
 	className?: string
+	titleClass?: string
 	variant?: ButtonVariant
 	blur?: boolean
 	compact?: boolean

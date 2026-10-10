@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
@@ -105,7 +104,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 							width={32}
 						/>
 						<p
-							className="max-w-18 truncate text-center font-semibold text-sm transition-colors sm:max-w-sm"
+							className="max-w-18 truncate text-center text-sm transition-colors sm:max-w-sm"
 							style={{ color: colorHex }}
 						>
 							{messageToString(item.name, locale)}
@@ -113,7 +112,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 
 						{art?.potential !== 0 && (
 							<span
-								className={`${montserrat.className} font-medium text-sm transition-colors`}
+								className={`font-medium font-mono text-sm transition-colors`}
 								style={{ color: colorHex }}
 							>
 								+{art?.potential}
@@ -121,7 +120,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 						)}
 
 						<span
-							className={`${montserrat.className} font-medium text-sm transition-colors`}
+							className={`font-medium font-mono text-sm transition-colors`}
 							style={{ color: colorHex }}
 						>
 							{art?.percent}%
@@ -189,7 +188,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 				</div>
 			) : (
 				<div className="flex flex-col items-center py-1.5">
-					<h2 className="font-bold text-sm text-text-accent/70">
+					<h2 className="font-medium text-foreground/70 text-sm">
 						{t('build.empty_slot')}
 					</h2>
 				</div>

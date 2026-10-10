@@ -3,7 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { memo } from 'react'
-import { montserrat } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import DropdownMenu from '@/components/ui/DropDown'
 import Input from '@/components/ui/Input'
@@ -74,12 +74,12 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 	if (!art || !stats || Object.keys(stats).length === 0) {
 		return (
 			<div className="text-center">
-				<p className="font-bold text-lg text-muted-foreground">
+				<p className="font-medium text-lg text-muted-foreground">
 					{t('modals.builds.no_data')}
 				</p>
 
 				{!container && (
-					<p className="mt-2 font-bold text-lg text-red-400">
+					<p className="mt-2 font-medium text-lg text-red-400">
 						{t('build.needed_cont')}
 					</p>
 				)}
@@ -90,16 +90,26 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 	return (
 		<>
 			<div className="flex w-full items-center justify-between">
-				<p
-					className="max-w-67 truncate font-semibold transition-colors"
-					style={{
-						color:
-							infoColorMap[color as ArtQuality] ||
-							InfoColor.DEFAULT,
-					}}
-				>
-					| {messageToString(itemName, locale)}
-				</p>
+				<div className="flex items-center gap-2">
+					<div
+						className="w-[2.5px] shrink-0 self-stretch"
+						style={{
+							backgroundColor:
+								infoColorMap[color as ArtQuality] ||
+								InfoColor.DEFAULT,
+						}}
+					/>
+					<h1
+						className={`${mtsExtended.className} max-w-67 truncate font-medium text-lg text-primary leading-none`}
+						style={{
+							color:
+								infoColorMap[color as ArtQuality] ||
+								InfoColor.DEFAULT,
+						}}
+					>
+						{messageToString(itemName, locale)}
+					</h1>
+				</div>
 				<div className="flex items-center gap-2">
 					<QualityDropdown
 						art={art}
@@ -125,11 +135,11 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 									className="flex justify-between"
 									key={s.key}
 								>
-									<p className="font-semibold text-sm">
+									<p className="font-medium text-[13px]">
 										{label}
 									</p>
 									<p
-										className={`${montserrat.className} font-medium text-sm`}
+										className="font-medium font-mono text-sm"
 										style={
 											s.color
 												? { color: `#${s.color}` }
@@ -148,13 +158,11 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					<div className="grid grid-cols-3 gap-2">
 						{percentButtons.map((p) => (
 							<button
-								className={`${montserrat.className} w-fit min-w-12 cursor-pointer rounded-md px-3 text-center ring-2 ${p.color} transition-colors`}
+								className={`w-fit min-w-12 cursor-pointer rounded-md px-3 text-center font-mono ring-2 ${p.color} transition-colors`}
 								key={p.value}
 								onClick={() => onPercentChange(p.value)}
 							>
-								<p className="font-semibold text-sm">
-									{p.value}
-								</p>
+								<p className="font-medium text-sm">{p.value}</p>
 							</button>
 						))}
 					</div>
@@ -175,11 +183,11 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					<div className="grid grid-cols-4 gap-2">
 						{potentialButtons.map((p) => (
 							<button
-								className="min-w-9 cursor-pointer rounded-lg bg-muted p-2 text-center ring-2 ring-primary/40 transition-colors hover:bg-accent"
+								className="min-w-9 cursor-pointer rounded-lg bg-muted p-2 text-center font-mono ring-2 ring-primary/40 transition-colors hover:bg-accent"
 								key={p}
 								onClick={() => onPotentialChange(p)}
 							>
-								<p className="font-semibold text-sm">{p}</p>
+								<p className="font-medium text-sm">{p}</p>
 							</button>
 						))}
 					</div>
@@ -252,7 +260,7 @@ function QualityDropdown({
 							style={{ background: colorHex }}
 						/>
 						<p
-							className="font-semibold text-[15px]"
+							className="font-medium text-[13px]"
 							style={{ color: colorHex }}
 						>
 							{t(`arts.${q}`)}

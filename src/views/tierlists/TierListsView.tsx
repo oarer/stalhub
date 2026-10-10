@@ -2,14 +2,16 @@
 
 import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
 import { Pagination } from '@/components/ui/Pagination'
 import { Skeleton } from '@/components/ui/Skeleton'
+import Username from '@/components/ui/user/Username'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { TierItemKind, TierListKind } from '@/types/tier-list.type'
@@ -40,7 +42,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 		setPage(1)
 	}
 
-	const { data, isLoading } = useQuery(
+	const { data, isLoading, isError, error } = useQuery(
 		mine
 			? tierListQueries.listMine({ take: 50, page })
 			: tierListQueries.list({
@@ -52,6 +54,9 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 				})
 	)
 
+	const isUnauthorized =
+		axios.isAxiosError(error) && error.response?.status === 401
+
 	return (
 		<section
 			className={
@@ -61,7 +66,9 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 			}
 		>
 			<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-				<h1 className={`${unbounded.className} font-bold text-3xl`}>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('tierlists.title')}
 				</h1>
 				{(user || mine) && (
@@ -179,13 +186,26 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 						<Skeleton className="h-48 rounded-xl" key={i} />
 					))}
 				</div>
-			) : data?.data.length === 0 ? (
+			) : isError && isUnauthorized ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
+						icon="lucide:log-in"
+					/>
+					<p className="font-medium text-foreground text-sm">
+						{t('auth.error')}
+					</p>
+					<CLink href="/auth" variant="outline">
+						{t('auth.login')}
+					</CLink>
+				</div>
+			) : data?.data.length === 0 || isError ? (
+				<div className="flex flex-col items-center gap-3 py-16">
+					<Icon
+						className="size-10 text-foreground"
 						icon="lucide:layout-list"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('tierlists.empty')}
 					</p>
 				</div>
@@ -199,7 +219,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 								key={tierList.id}
 							>
 								<div className="flex items-center justify-between gap-2">
-									<h2 className="max-w-50 truncate font-semibold text-lg text-text transition-colors group-hover:text-primary">
+									<h2 className="max-w-50 truncate font-medium text-lg text-text transition-colors group-hover:text-primary">
 										{tierList.title}
 									</h2>
 									{tierList.kind === TierListKind.SYSTEM && (
@@ -212,7 +232,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 										</Badge>
 									)}
 								</div>
-								<div className="flex flex-wrap items-center gap-2 text-text-accent text-xs">
+								<div className="flex flex-wrap items-center gap-2 text-foreground text-xs">
 									<Badge variant="secondary">
 										{tierList.item_kind ===
 										TierItemKind.WEAPON
@@ -244,14 +264,13 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 												className="size-3"
 												icon="lucide:user"
 											/>
-											{tierList.author.name ||
-												tierList.author.username}
+											<Username user={tierList.author} />
 										</span>
 									)}
-									<div className="flex items-center gap-1 text-text-accent">
+									<div className="flex items-center gap-1 text-foreground">
 										<Icon icon="lucide:eye" />
 										<span
-											className={`${montserrat.className} font-semibold text-xs`}
+											className={`font-medium font-mono text-xs`}
 										>
 											{tierList.views}
 										</span>

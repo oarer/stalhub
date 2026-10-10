@@ -66,7 +66,7 @@ export function BgVariantSelector({
 			/>
 			<button
 				className={cn(
-					'flex size-6.5 cursor-pointer items-center justify-center bg-accent text-text-accent transition-colors hover:bg-accent/50',
+					'flex size-6.5 cursor-pointer items-center justify-center bg-accent text-foreground transition-colors hover:bg-accent/50',
 					expanded ? 'rounded-t-sm' : 'rounded-sm'
 				)}
 				onClick={() => setExpanded((v) => !v)}
@@ -102,7 +102,7 @@ export function BgVariantSelector({
 										'flex size-5.5 cursor-pointer items-center justify-center rounded-sm transition-colors',
 										variant === key
 											? 'bg-card'
-											: 'text-text-accent hover:bg-card'
+											: 'text-foreground hover:bg-card'
 									)}
 									onClick={() => handleVariantChange(key)}
 									title={t(cfg.label)}

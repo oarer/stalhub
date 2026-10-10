@@ -3,12 +3,14 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import { montserrat } from '@/app/fonts'
+import { montserrat, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
+import { HoverCard } from '@/components/ui/HoverCard'
+import Avatar from '@/components/ui/user/Avatar'
 import useClickOutside from '@/hooks/useClickOutside'
 import { formatDate } from '@/lib/date'
 import { getQueryClient } from '@/providers/QueryProvider'
@@ -24,6 +26,7 @@ const NOTIFICATION_ICONS: Record<number, { icon: string; color: string }> = {
 export default function NavMe() {
 	const { data: user } = useQuery(userQueries.getMe())
 	const t = useTranslations()
+	const router = useRouter()
 
 	const { data: unreadCount } = useQuery({
 		...userQueries.getUnreadCount(),
@@ -53,6 +56,14 @@ export default function NavMe() {
 			queryClient.invalidateQueries({
 				queryKey: ['user', 'notifications', 'unread'],
 			})
+		},
+	})
+
+	const logoutMutation = useMutation({
+		mutationFn: () => userService.deleteAllSessions(),
+		onSuccess: () => {
+			queryClient.clear()
+			router.push('/auth')
 		},
 	})
 
@@ -143,7 +154,7 @@ export default function NavMe() {
 														<span className="size-1.5 shrink-0 rounded-full bg-primary" />
 													)}
 												</div>
-												<p className="font-semibold text-text-accent text-xs">
+												<p className="font-semibold text-foreground text-xs">
 													{n.content}
 												</p>
 												<span
@@ -191,16 +202,65 @@ export default function NavMe() {
 				)}
 			</AnimatePresence>
 
-			<CLink href="/me" variant={'none'}>
-				<Image
-					alt={user.name || 'avatar'}
-					className="rounded-lg border-2 border-primary/60 transition-all duration-300 hover:scale-110 active:scale-95"
-					height={46}
-					src={`${process.env.NEXT_PUBLIC_API}/api/v1/users/avatar/${user.id}`}
-					unoptimized
-					width={46}
-				/>
-			</CLink>
+			<HoverCard.Root closeDelay={150} openDelay={150}>
+				<HoverCard.Trigger asChild>
+					<CLink href="/me" variant={'none'}>
+						<Avatar
+							className="rounded-lg border-2 border-primary/60 transition-all duration-300 hover:scale-110 active:scale-95"
+							height={46}
+							id={user.id}
+							username={user.username}
+							width={46}
+						/>
+					</CLink>
+				</HoverCard.Trigger>
+				<HoverCard.Content
+					align="end"
+					className="w-64 p-2"
+					side="bottom"
+				>
+					<div className="flex flex-col gap-1">
+						<div className="flex items-center gap-2 rounded-lg bg-accent/40 px-3 py-2">
+							<Avatar
+								height={32}
+								id={user.id}
+								username={user.username}
+								width={32}
+							/>
+							<p className="truncate font-semibold text-sm">
+								{user.username}
+							</p>
+						</div>
+						<NavMeQuickLink
+							href="/me/analytics"
+							icon="lucide:bar-chart-3"
+							label={t('me.nav.analytics')}
+						/>
+						<NavMeQuickLink
+							href="/me/clan"
+							icon="lucide:users"
+							label={t('me.nav.clan')}
+						/>
+						<NavMeQuickLink
+							href="/me"
+							icon="lucide:user-round"
+							label={t('nav.userMenu.profile')}
+						/>
+						<button
+							className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left font-semibold text-destructive text-sm transition-colors hover:bg-destructive/10"
+							disabled={logoutMutation.isPending}
+							onClick={() => logoutMutation.mutate()}
+							type="button"
+						>
+							<Icon
+								className="text-lg"
+								icon="lucide:log-out"
+							/>
+							{t('nav.userMenu.logout')}
+						</button>
+					</div>
+				</HoverCard.Content>
+			</HoverCard.Root>
 		</div>
 	) : (
 		<CLink
@@ -210,10 +270,30 @@ export default function NavMe() {
 		>
 			<Icon className="text-xl" icon="lucide:log-in" />
 			<p
-				className={`${montserrat.className} hidden font-semibold text-md md:block`}
+				className={`${mtsWide.className} hidden font-medium text-md md:block`}
 			>
 				{t('auth.title')}
 			</p>
 		</CLink>
+	)
+}
+
+function NavMeQuickLink({
+	href,
+	icon,
+	label,
+}: {
+	href: string
+	icon: string
+	label: string
+}) {
+	return (
+		<Link
+			className="flex items-center gap-3 rounded-lg px-3 py-2 font-semibold text-sm transition-colors hover:bg-accent"
+			href={href}
+		>
+			<Icon className="text-lg text-muted-foreground" icon={icon} />
+			{label}
+		</Link>
 	)
 }

@@ -3,7 +3,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -71,7 +70,7 @@ export default function StatsView({ data }: { data: Stat[] }) {
 						{t('player.stats.title')}
 					</h2>
 					<Badge
-						className={`${montserrat.className} text-xs`}
+						className={`font-mono text-xs`}
 						variant={'secondary'}
 					>
 						{t('player.stats.shown', {
@@ -114,9 +113,7 @@ export default function StatsView({ data }: { data: Stat[] }) {
 							variant={!category ? 'primary' : 'outline'}
 						>
 							{t('player.stats.all')}
-							<span className={montserrat.className}>
-								{stats.length}
-							</span>
+							<span className="font-mono">{stats.length}</span>
 						</Button>
 						{availableCategories.map((item) => (
 							<Button
@@ -131,7 +128,7 @@ export default function StatsView({ data }: { data: Stat[] }) {
 							>
 								<Icon icon={CATEGORY_ICONS[item]} />
 								{t(`player.category.${item}`)}
-								<span className={montserrat.className}>
+								<span className="font-mono">
 									{allGrouped[item]?.length ?? 0}
 								</span>
 							</Button>

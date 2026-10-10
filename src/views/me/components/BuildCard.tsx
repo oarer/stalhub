@@ -4,12 +4,13 @@ import { Icon } from '@iconify/react'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
 import { toast } from '@/components/ui/Toast'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { formatArtPrice } from '@/hooks/useBuildPrices'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
@@ -18,9 +19,9 @@ import { buildApiService } from '@/services/build-api/build-api.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import type { BuildApi } from '@/types/build-api.type'
 import type { Item } from '@/types/item.type'
-import { InfoColor, infoColorMap } from '@/types/item.type'
 import type { PublicUserBuild } from '@/types/user.type'
 import { messageToString } from '@/utils/itemUtils'
+import { getBuildItemIconUrl, useBuildCardItems } from './useBuildCardItems'
 
 interface BuildCardProps {
 	build: BuildApi | PublicUserBuild
@@ -28,10 +29,6 @@ interface BuildCardProps {
 	armorItems?: Item[]
 	containers?: Item[]
 	onDelete?: (id: string) => void
-}
-
-function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
 }
 
 export function BuildCard({
@@ -43,6 +40,7 @@ export function BuildCard({
 }: BuildCardProps) {
 	const locale = getLocale()
 	const t = useTranslations()
+	const router = useRouter()
 	const user = useAuthStore((s) => s.user)
 	const queryClient = getQueryClient()
 
@@ -89,71 +87,31 @@ export function BuildCard({
 		starMutation.mutate()
 	}
 
-	const armorItem = build.data.armor
-		? (armorItems?.find((item) => item.id === build.data.armor?.id) ?? null)
-		: null
-	const containerItem = build.data.container
-		? (containers?.find((item) => item.id === build.data.container?.id) ??
-			null)
-		: null
-
-	const armorColor = armorItem?.color
-		? (infoColorMap[armorItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const containerColor = containerItem?.color
-		? (infoColorMap[containerItem.color as InfoColor] ??
-			infoColorMap[InfoColor.DEFAULT])
-		: infoColorMap[InfoColor.DEFAULT]
-
-	const artsMap = artifacts ? new Map(artifacts.map((i) => [i.id, i])) : null
-
-	const instanceToArt = new Map(
-		build.data.arts.map((a) => [a.instance_id, a])
-	)
-
-	const artifactEntries = (build.data.container?.slots ?? [])
-		.filter((s): s is string => s !== null)
-		.map((instanceId) => {
-			const art = instanceToArt.get(instanceId)
-			if (!art) return null
-			const item = artsMap?.get(art.item_id)
-			if (!item) return null
-			const color =
-				art.quality_class !== undefined
-					? (infoColorMap[art.quality_class as InfoColor] ??
-						infoColorMap[InfoColor.DEFAULT])
-					: infoColorMap[InfoColor.DEFAULT]
-			return {
-				name: messageToString(item.name, locale),
-				color,
-				percent: art.percent,
-				potential: art.potential,
-			}
-		})
-		.filter(
-			(
-				e
-			): e is {
-				name: string
-				color: string
-				percent: number
-				potential: number
-			} => e !== null
-		)
-
-	const hasPreview = armorItems && containers && artifacts
+	const {
+		armorItem,
+		containerItem,
+		armorColor,
+		containerColor,
+		artifactEntries,
+		hasPreview,
+	} = useBuildCardItems({
+		build,
+		armorItems,
+		containers,
+		artifacts,
+		locale,
+	})
 
 	return (
 		<div
-			className={`group relative flex flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
+			className={`group relative flex cursor-pointer flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
 				isOwner && 'border-2 border-primary/40'
 			}`}
+			onClick={() => router.push(`/calcs/builds/lite?build=${build.id}`)}
 		>
 			<div className="flex items-center justify-between gap-2">
 				<Link
-					className="w-fit truncate rounded-lg px-2 py-1 font-semibold text-md text-primary transition-colors hover:bg-accent/20"
+					className="w-fit truncate rounded-lg px-2 py-1 font-medium text-md text-primary transition-colors hover:bg-accent/20"
 					href={`/calcs/builds/lite?build=${build.id}`}
 				>
 					{build.title}
@@ -165,7 +123,7 @@ export function BuildCard({
 						variant={'ghost'}
 					>
 						<Icon
-							className="size-3.5 text-text-accent"
+							className="size-3.5 text-foreground"
 							icon="lucide:link"
 						/>
 					</Button>
@@ -211,12 +169,12 @@ export function BuildCard({
 									)}
 									className="shrink-0"
 									height={120}
-									src={getIconUrl(armorItem)}
+									src={getBuildItemIconUrl(armorItem)}
 									width={120}
 								/>
 							) : (
 								<Icon
-									className="text-lg text-text-accent"
+									className="text-foreground text-lg"
 									icon="lucide:shield"
 								/>
 							)}
@@ -225,13 +183,13 @@ export function BuildCard({
 						<div className="flex items-center">
 							{armorItem ? (
 								<span
-									className="max-w-42 truncate font-semibold"
+									className="max-w-42 truncate font-body"
 									style={{ color: armorColor }}
 								>
 									{messageToString(armorItem.name, locale)}
 								</span>
 							) : (
-								<span className="font-semibold text-muted-foreground">
+								<span className="text-muted-foreground">
 									{t('me.buildCard.noArmor')}
 								</span>
 							)}
@@ -242,7 +200,7 @@ export function BuildCard({
 						<div className="flex items-center truncate">
 							{containerItem ? (
 								<span
-									className="truncate font-bold text-[16px]"
+									className="truncate text-sm"
 									style={{ color: containerColor }}
 								>
 									{messageToString(
@@ -251,7 +209,7 @@ export function BuildCard({
 									)}
 								</span>
 							) : (
-								<span className="font-semibold text-muted-foreground">
+								<span className="font-body text-muted-foreground text-sm">
 									{t('me.buildCard.noContainer')}
 								</span>
 							)}
@@ -263,21 +221,21 @@ export function BuildCard({
 									key={entry.name + i}
 								>
 									<p
-										className="min-w-0 flex-1 truncate font-semibold text-sm transition-colors"
+										className="min-w-0 flex-1 truncate font-body text-sm transition-colors"
 										style={{ color: entry.color }}
 									>
 										{entry.name}
 									</p>
 									{entry.potential !== 0 && (
 										<span
-											className={`${montserrat.className} shrink-0 font-medium text-sm transition-colors`}
+											className={`shrink-0 font-medium font-mono text-sm transition-colors`}
 											style={{ color: entry.color }}
 										>
 											+{entry.potential}
 										</span>
 									)}
 									<span
-										className={`${montserrat.className} shrink-0 font-medium text-sm transition-colors`}
+										className={`shrink-0 font-medium font-mono text-sm transition-colors`}
 										style={{ color: entry.color }}
 									>
 										{entry.percent}%
@@ -285,7 +243,7 @@ export function BuildCard({
 								</div>
 							))
 						) : (
-							<span className="font-semibold text-muted-foreground">
+							<span className="text-muted-foreground">
 								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
@@ -293,33 +251,28 @@ export function BuildCard({
 				</div>
 			)}
 
-			<div className="flex items-center gap-2 text-text-accent text-xs">
+			<div className="flex items-center gap-2 text-foreground text-xs">
 				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
-						<span
-							className={`${montserrat.className} font-semibold text-sm`}
-						>
-							{stars}
-						</span>
+						<span className="text-sm">{stars}</span>
 					</div>
 				)}
 				{build.price !== 0 && (
 					<div className="flex items-center gap-1">
 						<Icon className="text-lg" icon="lucide:coins" />
-						<p className={`${montserrat.className} font-semibold`}>
-							{formatArtPrice(build.price || 0)}₽
-						</p>
+						<p>{formatArtPrice(build.price || 0)}₽</p>
 					</div>
 				)}
 				{author && (
-					<HoverUserCard id={author.id}>
-						<p
-							className={`${montserrat.className} font-semibold text-primary`}
-						>
-							{author.username}
-						</p>
-					</HoverUserCard>
+					<span onClick={(e) => e.stopPropagation()}>
+						<HoverUserCard id={author.id}>
+							<Username
+								className={`font-normal text-primary`}
+								user={author}
+							/>
+						</HoverUserCard>
+					</span>
 				)}
 			</div>
 
@@ -327,7 +280,7 @@ export function BuildCard({
 				<div className="flex flex-wrap gap-1">
 					{build.tags.slice(0, 3).map((tag) => (
 						<span
-							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
 							key={tag}
 						>
 							{t(`builds.tags.${tag}`)}

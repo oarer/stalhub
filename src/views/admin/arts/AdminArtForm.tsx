@@ -7,14 +7,15 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminArtService } from '@/services/admin/art.service'
 import type { AdminUser } from '@/types/admin.type'
-import { type Art, ArtType } from '@/types/art.type'
-import { ArtImageField } from '@/views/me/components/ArtImageField'
+import { type Art, ArtType, getArtImages } from '@/types/art.type'
+import { ArtImagesField } from '@/views/me/components/ArtImagesField'
 import { parseTags } from '@/views/me/components/article/editor-utils'
 import {
 	SOCIAL_ICONS,
@@ -45,7 +46,7 @@ export function AdminArtForm({
 
 	const [title, setTitle] = useState('')
 	const [type, setType] = useState<ArtType>(ArtType.DEFAULT)
-	const [imageUrl, setImageUrl] = useState('')
+	const [imageUrls, setImageUrls] = useState<string[]>([])
 	const [tags, setTags] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -60,7 +61,7 @@ export function AdminArtForm({
 			if (art) {
 				setTitle(art.title)
 				setType(art.type)
-				setImageUrl(art.image_url ?? '')
+				setImageUrls(getArtImages(art))
 				setTags(art.tags.join(', '))
 				setDescription(art.description ?? '')
 				if (art.author.id !== null) {
@@ -82,7 +83,7 @@ export function AdminArtForm({
 			} else {
 				setTitle('')
 				setType(ArtType.DEFAULT)
-				setImageUrl('')
+				setImageUrls([])
 				setTags('')
 				setDescription('')
 				setAuthorMode('guest')
@@ -104,7 +105,8 @@ export function AdminArtForm({
 			adminArtService.create({
 				title: title.trim(),
 				type,
-				image_url: imageUrl.trim() || null,
+				image_url: imageUrls[0] ?? null,
+				image_urls: imageUrls,
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
@@ -131,7 +133,8 @@ export function AdminArtForm({
 			adminArtService.update(art!.id, {
 				title: title.trim(),
 				type,
-				image_url: imageUrl.trim() || null,
+				image_url: imageUrls[0] ?? null,
+				image_urls: imageUrls,
 				tags: parseTags(tags),
 				description: description.trim() || undefined,
 				...(authorMode === 'user'
@@ -183,7 +186,7 @@ export function AdminArtForm({
 					<div className="flex max-h-105 flex-col gap-4 overflow-y-auto pr-1">
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-md text-text-accent"
+								className="font-semibold text-foreground text-md"
 								htmlFor="admin-art-title"
 							>
 								{t('admin.arts.form.name')}
@@ -201,7 +204,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.type')}
 							</span>
 							<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -224,17 +227,17 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.image')}
 							</span>
-							<ArtImageField
-								onChange={setImageUrl}
-								value={imageUrl}
+							<ArtImagesField
+								onChange={setImageUrls}
+								value={imageUrls}
 							/>
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.tags')}
 							</span>
 							<Input
@@ -245,11 +248,11 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.description')}
 							</span>
-							<textarea
-								className="min-h-20 w-full resize-y rounded-lg border border-border bg-card p-2 text-sm outline-none transition-colors focus:border-primary"
+							<Textarea
+								className="min-h-20 w-full border border-border p-2 font-normal"
 								onChange={(e) => setDescription(e.target.value)}
 								placeholder={t(
 									'admin.arts.form.descriptionPlaceholder'
@@ -259,7 +262,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-md text-text-accent">
+							<span className="font-semibold text-foreground text-md">
 								{t('admin.arts.form.author')}
 							</span>
 							<div className="flex gap-1">
@@ -303,7 +306,7 @@ export function AdminArtForm({
 												key={network}
 											>
 												<Icon
-													className="shrink-0 text-text-accent"
+													className="shrink-0 text-foreground"
 													icon={
 														SOCIAL_ICONS[network] ??
 														'lucide:link'
@@ -348,7 +351,7 @@ export function AdminArtForm({
 												variant="ghost"
 											>
 												<Icon
-													className="text-text-accent"
+													className="text-foreground"
 													icon="lucide:x"
 												/>
 											</Button>
@@ -368,7 +371,7 @@ export function AdminArtForm({
 											{userSearch.trim() &&
 												userResults?.data?.length ===
 													0 && (
-													<p className="text-text-accent text-xs">
+													<p className="text-foreground text-xs">
 														{t(
 															'admin.arts.form.authorNotFound'
 														)}
@@ -394,7 +397,7 @@ export function AdminArtForm({
 																{u.name ||
 																	u.username}
 															</span>
-															<span className="text-text-accent text-xs">
+															<span className="text-foreground text-xs">
 																@{u.username}
 															</span>
 														</button>

@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import type { ModuleGroupKey, ModuleRarity } from '@/types/module.type'
@@ -98,88 +97,84 @@ export function AuctionControls({
 	}, [lots, modules])
 
 	return (
-		<div className="flex flex-col gap-4">
-			<div className="flex justify-between">
-				<Combobox
-					className="w-full sm:w-56"
-					onValueChange={(v) =>
-						onSortChange((v || 'default') as AuctionSortKey)
+		<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+			<Combobox
+				className="w-full"
+				onValueChange={(v) =>
+					onSortChange((v || 'default') as AuctionSortKey)
+				}
+				options={SORT_OPTIONS}
+				placeholder="items.auction.sort"
+				value={sort}
+			/>
+
+			<Combobox
+				className="w-full"
+				multiple
+				onValuesChange={(values) =>
+					onSelectedRaritiesChange(values as ModuleRarity[])
+				}
+				options={RARITY_OPTIONS}
+				placeholder="items.auction.sort_rarity"
+				values={selectedRarities}
+			/>
+			<div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:col-span-2">
+				<Input
+					containerClass="min-w-0"
+					inputMode="numeric"
+					label={t('items.auction.range_from')}
+					min={0}
+					onChange={(e) =>
+						onPriceChange({
+							...price,
+							min:
+								e.target.value === ''
+									? undefined
+									: Number(e.target.value),
+						})
 					}
-					options={SORT_OPTIONS}
-					placeholder="items.auction.sort"
-					value={sort}
+					type="number"
+					value={price.min ?? ''}
 				/>
 
-				<Combobox
-					className="w-full sm:w-56"
-					multiple
-					onValuesChange={(values) =>
-						onSelectedRaritiesChange(values as ModuleRarity[])
+				<span className="font-mono font-semibold text-foreground text-xs uppercase tracking-widest">
+					{t('items.auction.sort_price')}
+				</span>
+
+				<Input
+					containerClass="min-w-0"
+					inputMode="numeric"
+					label={t('items.auction.range_to')}
+					min={0}
+					onChange={(e) =>
+						onPriceChange({
+							...price,
+							max:
+								e.target.value === ''
+									? undefined
+									: Number(e.target.value),
+						})
 					}
-					options={RARITY_OPTIONS}
-					placeholder="items.auction.sort_rarity"
-					values={selectedRarities}
+					type="number"
+					value={price.max ?? ''}
 				/>
-				<div className="relative flex items-center gap-2">
-					<Input
-						className="w-full sm:w-21"
-						label={t('items.auction.range_from')}
-						min={0}
-						onChange={(e) =>
-							onPriceChange({
-								...price,
-								min:
-									e.target.value === ''
-										? undefined
-										: Number(e.target.value),
-							})
-						}
-						type="number"
-						value={price.min ?? ''}
-					/>
-
-					<span
-						className={`${montserrat.className} font-bold text-text-accent text-xs uppercase tracking-widest`}
-					>
-						цена
-					</span>
-
-					<Input
-						className="w-full sm:w-21"
-						label={t('items.auction.range_to')}
-						min={0}
-						onChange={(e) =>
-							onPriceChange({
-								...price,
-								max:
-									e.target.value === ''
-										? undefined
-										: Number(e.target.value),
-							})
-						}
-						type="number"
-						value={price.max ?? ''}
-					/>
-				</div>
 			</div>
-			<div className="flex justify-between">
-				{GROUP_ORDER.map((group) => {
-					const options = categoryOptions.get(group)
-					if (!options?.length) return null
+			{GROUP_ORDER.map((group) => {
+				const options = categoryOptions.get(group)
+				if (!options?.length) return null
 
-					return (
-						<Combobox
-							className="w-full sm:w-56"
-							key={group}
-							multiple
-							onValuesChange={onSelectedModulesChange}
-							options={options}
-							placeholder={GROUP_LABEL_KEYS[group]}
-							values={selectedModules}
-						/>
-					)
-				})}
-			</div>
+				return (
+					<Combobox
+						className="w-full"
+						key={group}
+						multiple
+						onValuesChange={onSelectedModulesChange}
+						options={options}
+						placeholder={GROUP_LABEL_KEYS[group]}
+						values={selectedModules}
+					/>
+				)
+			})}
 		</div>
 	)
 }

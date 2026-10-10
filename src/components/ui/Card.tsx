@@ -52,10 +52,7 @@ CardHeader.displayName = 'UI.CardHeader'
 const CardTitle = forwardRef<HTMLDivElement, CardProps>(
 	({ className, children, ...props }, ref) => (
 		<div
-			className={cn(
-				'flex items-center gap-2 font-semibold text-lg',
-				className
-			)}
+			className={cn('flex items-center gap-2 text-lg', className)}
 			ref={ref}
 			{...props}
 		>
@@ -79,7 +76,7 @@ CardDescription.displayName = 'UI.CardDescription'
 const CardContent = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
-			className={cn('font-semibold text-card-foreground', className)}
+			className={cn('text-card-foreground', className)}
 			ref={ref}
 			{...props}
 		/>
@@ -90,10 +87,7 @@ CardContent.displayName = 'UI.CardContent'
 const CardFooter = forwardRef<HTMLDivElement, CardProps>(
 	({ className, ...props }, ref) => (
 		<div
-			className={cn(
-				'flex items-center justify-between font-semibold',
-				className
-			)}
+			className={cn('flex items-center justify-between', className)}
 			ref={ref}
 			{...props}
 		/>

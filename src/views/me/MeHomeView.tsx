@@ -48,7 +48,7 @@ export default function MeHomeView() {
 				title={t('me.home.builds')}
 			>
 				{builds?.data.length === 0 ? (
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('me.home.noBuilds')}
 					</p>
 				) : (

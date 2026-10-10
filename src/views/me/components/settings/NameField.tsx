@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { numbersTxt } from '@/lib/time'
@@ -33,7 +32,7 @@ export function NameField({
 			</span>
 			<div className="flex items-center gap-2">
 				<Input
-					className={`${unbounded.className} max-w-55.5 flex-1 text-[15px]`}
+					className="max-w-55.5 flex-1 text-[15px]"
 					disabled={disabled}
 					onChange={(e) => onChange(e.target.value)}
 					value={value}
@@ -49,7 +48,7 @@ export function NameField({
 				</Button>
 			</div>
 			{cooldownLeft > 0 && (
-				<p className="font-semibold text-text-accent text-xs">
+				<p className="font-semibold text-foreground text-xs">
 					{t('me.settings.nameCooldown')}{' '}
 					{numbersTxt(cooldownLeft, [
 						t('time.day.one'),

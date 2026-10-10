@@ -1,5 +1,6 @@
 import type { LoadoutData } from '../loadout/loadout.type'
 import type { Alliance } from '../player.type'
+import type { UserBadge } from '../user.type'
 
 type ClanStatus = 'FROZEN' | 'ACTIVE' | 'CANCELED'
 export type StageType = 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE'
@@ -61,6 +62,7 @@ export interface ClanMemberUser {
 	id: number
 	username: string
 	name: string
+	badges: UserBadge[]
 }
 
 export interface MismatchRosterEntry {
@@ -481,4 +483,33 @@ export interface ClanBoostOrder {
 
 export interface ClanBoostOrdersResponse {
 	orders: ClanBoostOrder[]
+}
+
+export interface PublicClanStatRow {
+	clan_id: string
+	tag: string
+	name: string
+	sessions: number
+	battles: number
+	wins: number
+	losses: number
+	winrate: number
+	kills: number
+	deaths: number
+	kd: number
+}
+
+export interface PublicClansStats {
+	clans: PublicClanStatRow[]
+	total: {
+		clans: number
+		sessions: number
+		battles: number
+		wins: number
+		losses: number
+		winrate: number
+		kills: number
+		deaths: number
+		kd: number
+	} | null
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import type { ComboboxOption } from '@/components/ui/Combobox'
 import { Combobox } from '@/components/ui/Combobox'
@@ -42,7 +41,7 @@ export function DPIForm({
 			<Card.Content className="flex flex-col gap-3 md:flex-row">
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`${montserrat.className} font-bold text-[12px] text-text-accent uppercase tracking-widest`}
+						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
 					>
 						{t('dpi.from_game')}
 					</span>
@@ -54,7 +53,7 @@ export function DPIForm({
 						value={fromGame}
 					/>
 					<Input
-						className={`${montserrat.className} py-3`}
+						className={`py-3 font-mono`}
 						label="dpi.sens"
 						min={0}
 						onChange={(e) =>
@@ -68,7 +67,7 @@ export function DPIForm({
 
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`${montserrat.className} font-bold text-[12px] text-text-accent uppercase tracking-widest`}
+						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
 					>
 						{t('dpi.to_game')}
 					</span>
@@ -80,12 +79,10 @@ export function DPIForm({
 						value={toGame}
 					/>
 					<div className="relative flex justify-between rounded-lg border-2 border-primary bg-card px-2.5 py-3 pt-3">
-						<span className="absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-bold text-neutral-400 text-sm">
+						<span className="absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-medium text-neutral-400 text-sm">
 							{t('dpi.result')}
 						</span>
-						<p className={`${montserrat.className} text-sm`}>
-							{result}
-						</p>
+						<p className={`font-mono text-sm`}>{result}</p>
 						<CopyButton
 							className="absolute top-2.5 right-2"
 							size={'md'}

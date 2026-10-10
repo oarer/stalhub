@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { type ComponentProps, memo, useMemo } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Accordion } from '@/components/ui/Accordion'
 import { Card } from '@/components/ui/Card'
 import { Tooltip } from '@/components/ui/Tooltip'
@@ -99,9 +98,9 @@ function AccumulationWarnings({
 	if (warnings.length === 0) return null
 
 	return (
-		<div className="flex flex-col gap-1 border-primary border-b pb-2 text-red-400">
+		<div className="flex flex-col gap-1 border-primary border-b pb-2 text-destructive">
 			{warnings.map(({ name }) => (
-				<p className="text-sm" key={name}>
+				<p className="font-medium text-[13px]" key={name}>
 					{name} — {t('build.damaged')}
 				</p>
 			))}
@@ -148,24 +147,26 @@ export const StatsTabContent = memo(function StatsTabContent({
 						<ReactionSelector {...reactionProps} />
 					)}
 				<div className="flex w-full justify-between">
-					<span>{t('build.stats.regen')}</span>
-					<span className={`${montserrat.className} text-primary`}>
+					<span className="font-medium text-[13px]">
+						{t('build.stats.regen')}
+					</span>
+					<span className="font-mono font-semibold text-primary">
 						{hps}%
 					</span>
 				</div>
 				{stopping !== null && (
 					<p className="flex justify-between">
-						<span>{t('build.stats.stopping')}</span>
-						<span
-							className={`${montserrat.className} text-primary`}
-						>
+						<span className="font-medium text-[13px]">
+							{t('build.stats.stopping')}
+						</span>
+						<span className="font-mono font-semibold text-primary">
 							{stopping}%
 						</span>
 					</p>
 				)}
 				<div className="flex flex-col gap-2 border-border border-t pt-2">
 					{stats.length === 0 ? (
-						<p className="font-semibold text-text-accent">
+						<p className="text-foreground">
 							{hasContainer
 								? t('build.stats.no_stats')
 								: t('build.stats.no_container')}
@@ -229,10 +230,10 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 					)}
 				{prime && (
 					<p className="flex justify-between">
-						<span>{t('build.stats.prime')}</span>
-						<span
-							className={`${montserrat.className} text-primary`}
-						>
+						<span className="font-medium text-[13px]">
+							{t('build.stats.prime')}
+						</span>
+						<span className="font-mono font-semibold text-primary">
 							{prime}
 						</span>
 					</p>
@@ -241,17 +242,17 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 					<Tooltip.Root>
 						<Tooltip.Trigger asChild>
 							<div className="flex w-full justify-between">
-								<span>{t('build.stats.regen')}</span>
-								<span
-									className={`${montserrat.className} text-primary`}
-								>
+								<span className="font-medium text-[13px]">
+									{t('build.stats.regen')}
+								</span>
+								<span className="font-mono font-semibold text-primary">
 									{hps}%
 								</span>
 							</div>
 						</Tooltip.Trigger>
 						<Tooltip.Content>
 							{t('build.stats.hps')}:{' '}
-							<span className={`${montserrat.className}`}>
+							<span className={``}>
 								{(prime * (hps / 100)).toFixed(2)}
 							</span>
 						</Tooltip.Content>
@@ -259,27 +260,27 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				)}
 				{stopping !== null && (
 					<p className="flex justify-between">
-						<span>{t('build.stats.stopping')}</span>
-						<span
-							className={`${montserrat.className} text-primary`}
-						>
+						<span className="font-medium text-[13px]">
+							{t('build.stats.stopping')}
+						</span>
+						<span className="font-mono font-semibold text-primary">
 							{stopping}%
 						</span>
 					</p>
 				)}
 				{speed !== null && (
 					<p className="flex justify-between">
-						<span>{t('build.stats.speed')}</span>
-						<span
-							className={`${montserrat.className} text-primary`}
-						>
+						<span className="font-medium text-[13px]">
+							{t('build.stats.speed')}
+						</span>
+						<span className="font-mono font-semibold text-primary">
 							{speed}%
 						</span>
 					</p>
 				)}
 				<div className="flex flex-col gap-2 border-border border-t pt-2">
 					{sortedStats.length === 0 ? (
-						<p className="font-semibold text-text-accent">
+						<p className="text-foreground">
 							{t('build.stats.no_stats')}
 						</p>
 					) : (

@@ -3,8 +3,9 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { createContext, useContext } from 'react'
+import { createContext, type ReactNode, useContext } from 'react'
 import { cn } from '@/lib/cn'
+import { slugify } from '@/lib/toc'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
 import { Gallery } from './gallery'
@@ -12,13 +13,25 @@ import { QuestMap } from './quest-map'
 
 const PreCodeContext = createContext(false)
 
-function slugify(text: string): string {
-	return text
-		.toLowerCase()
-		.normalize('NFD')
-		.replace(/[\p{M}]/gu, '')
-		.replace(/[^\p{L}\p{N}\s-]/gu, '')
-		.replace(/\s+/g, '-')
+function getHeadingText(children: ReactNode): string {
+	if (children == null || typeof children === 'boolean') return ''
+	if (typeof children === 'string' || typeof children === 'number') {
+		return String(children)
+	}
+	if (Array.isArray(children)) {
+		return children.map(getHeadingText).join('')
+	}
+	if (typeof children === 'object' && 'props' in children) {
+		return getHeadingText(
+			(children as { props?: { children?: ReactNode } }).props?.children
+		)
+	}
+	return ''
+}
+
+function getHeadingId(children: ReactNode): string | undefined {
+	const text = getHeadingText(children).trim()
+	return text ? slugify(text) : undefined
 }
 
 function MdxCode({
@@ -57,18 +70,17 @@ export function useMDXComponents(): MDXComponents {
 		QuestMap,
 		h1: ({ children, ...props }) => (
 			<h1
-				className="mb-6 scroll-m-20 font-bold text-4xl tracking-tight lg:text-5xl"
+				className="mb-6 scroll-m-24 text-balance font-bold text-4xl tracking-tight lg:text-5xl"
 				{...props}
 			>
 				{children}
 			</h1>
 		),
 		h2: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h2
-					className="mt-10 mb-4 scroll-m-20 border-primary border-b pb-2 font-semibold text-3xl tracking-tight first:mt-0"
+					className="mt-12 mb-5 scroll-m-24 text-balance border-primary/25 border-b pb-3 font-bold text-2xl tracking-tight first:mt-0 md:text-3xl"
 					id={id}
 					{...props}
 				>
@@ -77,11 +89,10 @@ export function useMDXComponents(): MDXComponents {
 			)
 		},
 		h3: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h3
-					className="mt-8 mb-4 scroll-m-20 font-semibold text-2xl tracking-tight"
+					className="mt-10 mb-4 scroll-m-24 text-balance font-bold text-xl tracking-tight md:text-2xl"
 					id={id}
 					{...props}
 				>
@@ -90,11 +101,10 @@ export function useMDXComponents(): MDXComponents {
 			)
 		},
 		h4: ({ children, ...props }) => {
-			const id =
-				typeof children === 'string' ? slugify(children) : undefined
+			const id = getHeadingId(children)
 			return (
 				<h4
-					className="mt-6 mb-3 scroll-m-20 font-semibold text-xl tracking-tight"
+					className="mt-8 mb-3 scroll-m-24 font-semibold text-lg text-text-accent tracking-tight"
 					id={id}
 					{...props}
 				>
@@ -103,14 +113,22 @@ export function useMDXComponents(): MDXComponents {
 			)
 		},
 		p: ({ children, ...props }) => (
-			<p className="not-first:mt-4 font-semibold leading-7" {...props}>
+			<p
+				className="not-first:mt-5 max-w-[78ch] text-pretty font-normal text-base text-foreground/85 leading-8"
+				{...props}
+			>
 				{children}
 			</p>
+		),
+		strong: ({ children, ...props }) => (
+			<strong className="font-bold text-foreground" {...props}>
+				{children}
+			</strong>
 		),
 		a: ({ href, children, ...props }) => {
 			return (
 				<Link
-					className="font-semibold underline underline-offset-4 transition-opacity hover:opacity-70"
+					className="font-medium text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
 					href={href || ''}
 					{...props}
 				>
@@ -120,7 +138,7 @@ export function useMDXComponents(): MDXComponents {
 		},
 		ul: ({ children, ...props }) => (
 			<ul
-				className="my-4 ml-6 list-disc font-semibold [&>li]:mt-2"
+				className="my-5 ml-6 max-w-[78ch] list-disc space-y-2 marker:text-primary"
 				{...props}
 			>
 				{children}
@@ -128,20 +146,23 @@ export function useMDXComponents(): MDXComponents {
 		),
 		ol: ({ children, ...props }) => (
 			<ol
-				className="my-4 ml-6 list-decimal font-semibold [&>li]:mt-2"
+				className="my-5 ml-6 max-w-[78ch] list-decimal space-y-2 marker:font-semibold marker:text-primary"
 				{...props}
 			>
 				{children}
 			</ol>
 		),
 		li: ({ children, ...props }) => (
-			<li className="font-semibold leading-7" {...props}>
+			<li
+				className="text-pretty font-normal text-base text-foreground/85 leading-8"
+				{...props}
+			>
 				{children}
 			</li>
 		),
 		blockquote: ({ children, ...props }) => (
 			<blockquote
-				className="mt-6 border-l-2 pl-6 font-semibold italic"
+				className="mt-6 max-w-[78ch] rounded-r-xl border-primary/60 border-l-2 bg-card/60 px-6 py-4 text-muted-foreground italic"
 				{...props}
 			>
 				{children}
@@ -149,7 +170,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		code: MdxCode,
 		pre: MdxPre,
-		hr: () => <hr className="my-8 border-primary" />,
+		hr: () => <hr className="my-10 border-primary/25" />,
 		table: ({ children, ...props }) => (
 			<div
 				className="relative w-full overflow-x-auto rounded-lg border-2 border-primary/50 bg-card/50 px-2 backdrop-blur-sm"
@@ -199,7 +220,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		td: ({ children, ...props }) => (
 			<td
-				className="whitespace-nowrap border-primary border-r p-2 align-middle font-semibold last:border-r-0"
+				className="border-primary border-r p-2 align-middle font-normal last:border-r-0"
 				data-slot="table-cell"
 				{...props}
 			>
@@ -223,7 +244,7 @@ export function useMDXComponents(): MDXComponents {
 					{children}
 				</Image>
 				{alt ? (
-					<figcaption className="mt-2 text-center text-neutral-400 text-sm">
+					<figcaption className="mt-2 text-center text-muted-foreground text-sm">
 						{alt}
 					</figcaption>
 				) : null}

@@ -14,7 +14,14 @@ export interface TabGroup {
 
 export const tabGroups: TabGroup[] = [
 	{
-		items: [{ title: 'me.nav.home', href: '/me', icon: 'lucide:home' }],
+		items: [
+			{ title: 'me.nav.home', href: '/me', icon: 'lucide:home' },
+			{
+				title: 'me.nav.analytics',
+				href: '/me/analytics',
+				icon: 'lucide:bar-chart-3',
+			},
+		],
 	},
 	{
 		label: 'me.nav.clan',

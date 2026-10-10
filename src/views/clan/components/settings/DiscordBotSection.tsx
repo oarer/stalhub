@@ -67,7 +67,7 @@ export function DiscordBotSection({
 							</Button>
 						</div>
 					</div>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.botTokenExpires', {
 							minutes: Math.ceil(linkToken.expires_in / 60),
 						})}
@@ -79,7 +79,7 @@ export function DiscordBotSection({
 						<span className="font-semibold text-sm">
 							{t('clan.settings.botLinkLabel')}
 						</span>
-						<span className="font-semibold text-sm text-text-accent">
+						<span className="font-semibold text-foreground text-sm">
 							{t('clan.settings.botLinkHint')}
 						</span>
 					</div>
@@ -99,7 +99,7 @@ export function DiscordBotSection({
 					{t('clan.settings.botGuildsTitle')}
 				</span>
 				{guilds.length === 0 ? (
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.botNoGuilds')}
 					</span>
 				) : (
@@ -111,7 +111,7 @@ export function DiscordBotSection({
 							>
 								<div className="flex min-w-0 items-center gap-2">
 									<Icon
-										className="shrink-0 text-base text-text-accent"
+										className="shrink-0 text-base text-foreground"
 										icon="lucide:server"
 									/>
 									<span className="truncate font-mono text-sm">

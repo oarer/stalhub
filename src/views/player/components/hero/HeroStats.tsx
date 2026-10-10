@@ -10,7 +10,7 @@ export default function HeroStats({ data }: { data: PlayerResponse }) {
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 font-semibold">
+		<div className="flex flex-col gap-2 text-sm">
 			<div className="flex items-center gap-2">
 				<Icon className="text-xl" icon="lucide:user-round-plus" />
 				<span>{t('player.stats.reg')}</span>

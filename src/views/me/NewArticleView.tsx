@@ -90,7 +90,7 @@ export default function NewArticleView() {
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col gap-2">
 					<label
-						className="font-semibold text-md text-text-accent"
+						className="font-semibold text-foreground text-md"
 						htmlFor="article-title"
 					>
 						{t('me.newArticle.name')}
@@ -109,7 +109,7 @@ export default function NewArticleView() {
 				</div>
 
 				<div className="flex flex-col gap-2">
-					<span className="font-semibold text-md text-text-accent">
+					<span className="font-semibold text-foreground text-md">
 						{t('me.newArticle.type')}
 					</span>
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3">

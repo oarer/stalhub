@@ -43,7 +43,7 @@ export function RecruitingSection({
 					<span className="font-semibold text-sm">
 						{t('clan.settings.acceptRequests')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.acceptRequestsHint')}
 					</span>
 				</div>
@@ -101,7 +101,7 @@ export function RecruitingSection({
 					<span className="font-semibold text-sm">
 						{t('clan.settings.paidRecruitment')}
 					</span>
-					<span className="font-semibold text-sm text-text-accent">
+					<span className="font-semibold text-foreground text-sm">
 						{t('clan.settings.paidRecruitmentHint')}
 					</span>
 				</div>

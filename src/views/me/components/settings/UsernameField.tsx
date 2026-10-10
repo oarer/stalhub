@@ -50,7 +50,7 @@ export function UsernameField({
 				</Button>
 			</div>
 			{cooldownLeft > 0 && (
-				<p className="font-semibold text-text-accent text-xs">
+				<p className="font-semibold text-foreground text-xs">
 					{t('me.settings.usernameCooldown')}{' '}
 					{numbersTxt(cooldownLeft, [
 						t('time.day.one'),

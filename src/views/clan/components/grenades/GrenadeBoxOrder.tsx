@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
@@ -146,7 +145,7 @@ export function GrenadeBoxOrder({ clanId }: { clanId: string }) {
 												{box.type}
 											</Table.Cell>
 											<Table.Cell
-												className={`${montserrat.className} text-center font-semibold`}
+												className={`text-center font-mono font-semibold`}
 											>
 												{box.count}/шт
 											</Table.Cell>

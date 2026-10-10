@@ -1,4 +1,5 @@
 import type { Build } from './build.type'
+import type { UserBadge } from './user.type'
 
 export interface BuildApi {
 	id: string
@@ -20,6 +21,7 @@ interface BuildApiAuthor {
 	id: number
 	username: string
 	avatar: string | null
+	badges: UserBadge[]
 }
 
 export interface BuildApiCreate {

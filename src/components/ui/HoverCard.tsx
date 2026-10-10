@@ -16,11 +16,15 @@ import {
 	useRef,
 	useState,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { cn } from '@/lib/cn'
 
 type HoverCardContextValue = {
 	open: boolean
 	setOpen: (v: boolean) => void
+	anchorRef: React.RefObject<HTMLDivElement | null>
+	handleEnter: () => void
+	handleLeave: () => void
 }
 
 const HoverCardContext = createContext<HoverCardContextValue | null>(null)
@@ -60,6 +64,7 @@ const HoverCardRoot = forwardRef<HTMLDivElement, RootProps>(
 		const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen)
 		const isControlled = controlledOpen !== undefined
 		const open = isControlled ? controlledOpen : uncontrolledOpen
+		const anchorRef = useRef<HTMLDivElement | null>(null)
 
 		const setOpen = useCallback(
 			(v: boolean) => {
@@ -77,31 +82,41 @@ const HoverCardRoot = forwardRef<HTMLDivElement, RootProps>(
 			if (closeTimer.current) clearTimeout(closeTimer.current)
 		}, [])
 
-		const handleEnter = () => {
+		const handleEnter = useCallback(() => {
 			clearTimers()
 			openTimer.current = window.setTimeout(() => {
 				setOpen(true)
 			}, openDelay)
-		}
+		}, [clearTimers, openDelay, setOpen])
 
-		const handleLeave = () => {
+		const handleLeave = useCallback(() => {
 			clearTimers()
 			closeTimer.current = window.setTimeout(() => {
 				setOpen(false)
 			}, closeDelay)
-		}
+		}, [clearTimers, closeDelay, setOpen])
 
 		useEffect(() => {
 			return () => clearTimers()
 		}, [clearTimers])
 
+		const setRootRefs = useCallback(
+			(node: HTMLDivElement | null) => {
+				anchorRef.current = node
+				setRef(ref, node)
+			},
+			[ref]
+		)
+
 		return (
-			<HoverCardContext.Provider value={{ open, setOpen }}>
+			<HoverCardContext.Provider
+				value={{ open, setOpen, anchorRef, handleEnter, handleLeave }}
+			>
 				<div
 					className={cn('relative inline-block', className)}
 					onMouseEnter={handleEnter}
 					onMouseLeave={handleLeave}
-					ref={ref}
+					ref={setRootRefs}
 					{...props}
 				>
 					{children}
@@ -184,6 +199,8 @@ type ContentProps = Omit<HTMLMotionProps<'div'>, 'ref'> & {
 	sideOffset?: number
 }
 
+const VIEWPORT_MARGIN = 8
+
 const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 	function HoverCardContent(
 		{
@@ -193,37 +210,149 @@ const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 			align = 'center',
 			sideOffset = 8,
 			children,
+			onMouseEnter,
+			onMouseLeave,
+			style,
 			...props
 		},
 		ref
 	) {
-		const { open } = useHoverCard()
+		const { open, anchorRef, handleEnter, handleLeave } = useHoverCard()
 		const id = useId()
+		const [mounted, setMounted] = useState(false)
+		const [pos, setPos] = useState<{ left: number; top: number } | null>(
+			null
+		)
+		const contentNodeRef = useRef<HTMLDivElement | null>(null)
+
+		useEffect(() => {
+			setMounted(true)
+		}, [])
+
+		useEffect(() => {
+			if (!open) {
+				setPos(null)
+				return
+			}
+			let raf = 0
+			const place = () => {
+				cancelAnimationFrame(raf)
+				raf = requestAnimationFrame(() => {
+					const anchor = anchorRef.current?.getBoundingClientRect()
+					const content =
+						contentNodeRef.current?.getBoundingClientRect()
+					if (!anchor || !content) return
+					const vw = window.innerWidth
+					const vh = window.innerHeight
+					const m = VIEWPORT_MARGIN
+					let left = 0
+					let top = 0
+
+					if (side === 'top' || side === 'bottom') {
+						left =
+							align === 'start'
+								? anchor.left
+								: align === 'end'
+									? anchor.right - content.width
+									: anchor.left +
+										anchor.width / 2 -
+										content.width / 2
+						left = Math.min(
+							Math.max(left, m),
+							Math.max(vw - content.width - m, m)
+						)
+
+						top =
+							side === 'bottom'
+								? anchor.bottom + sideOffset
+								: anchor.top - content.height - sideOffset
+						if (
+							side === 'bottom' &&
+							top + content.height > vh - m &&
+							anchor.top - content.height - sideOffset >= m
+						) {
+							top = anchor.top - content.height - sideOffset
+						}
+						if (
+							side === 'top' &&
+							top < m &&
+							anchor.bottom + sideOffset + content.height <=
+								vh - m
+						) {
+							top = anchor.bottom + sideOffset
+						}
+						top = Math.min(
+							Math.max(top, m),
+							Math.max(vh - content.height - m, m)
+						)
+					} else {
+						top =
+							align === 'start'
+								? anchor.top
+								: align === 'end'
+									? anchor.bottom - content.height
+									: anchor.top +
+										anchor.height / 2 -
+										content.height / 2
+						top = Math.min(
+							Math.max(top, m),
+							Math.max(vh - content.height - m, m)
+						)
+
+						left =
+							side === 'right'
+								? anchor.right + sideOffset
+								: anchor.left - content.width - sideOffset
+						if (
+							side === 'right' &&
+							left + content.width > vw - m &&
+							anchor.left - content.width - sideOffset >= m
+						) {
+							left = anchor.left - content.width - sideOffset
+						}
+						if (
+							side === 'left' &&
+							left < m &&
+							anchor.right + sideOffset + content.width <= vw - m
+						) {
+							left = anchor.right + sideOffset
+						}
+						left = Math.min(
+							Math.max(left, m),
+							Math.max(vw - content.width - m, m)
+						)
+					}
+
+					setPos((prev) =>
+						prev &&
+						Math.abs(prev.left - left) < 0.5 &&
+						Math.abs(prev.top - top) < 0.5
+							? prev
+							: { left, top }
+					)
+				})
+			}
+
+			place()
+			window.addEventListener('scroll', place, true)
+			window.addEventListener('resize', place)
+			const ro =
+				typeof ResizeObserver !== 'undefined'
+					? new ResizeObserver(place)
+					: null
+			if (contentNodeRef.current && ro) {
+				ro.observe(contentNodeRef.current)
+			}
+			return () => {
+				cancelAnimationFrame(raf)
+				window.removeEventListener('scroll', place, true)
+				window.removeEventListener('resize', place)
+				ro?.disconnect()
+			}
+		}, [open, side, align, sideOffset, anchorRef])
 
 		const axis = side === 'top' || side === 'bottom' ? 'y' : 'x'
 		const sign = side === 'top' || side === 'left' ? 1 : -1
-
-		const sideStyle: React.CSSProperties =
-			side === 'bottom'
-				? { top: `calc(100% + ${sideOffset}px)` }
-				: side === 'top'
-					? { bottom: `calc(100% + ${sideOffset}px)` }
-					: side === 'right'
-						? { left: `calc(100% + ${sideOffset}px)` }
-						: { right: `calc(100% + ${sideOffset}px)` }
-
-		const alignClass =
-			side === 'top' || side === 'bottom'
-				? align === 'start'
-					? 'left-0'
-					: align === 'end'
-						? 'right-0'
-						: 'left-1/2 -translate-x-1/2'
-				: align === 'start'
-					? 'top-0'
-					: align === 'end'
-						? 'bottom-0'
-						: 'top-1/2 -translate-y-1/2'
 
 		const motionProps = {
 			animate: {
@@ -250,24 +379,45 @@ const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 			},
 		}
 
+		const setContentRefs = useCallback(
+			(node: HTMLDivElement | null) => {
+				contentNodeRef.current = node
+				setRef(ref, node)
+			},
+			[ref]
+		)
+
 		const contentProps = {
 			...props,
 			className: cn(
-				'absolute z-50',
-				alignClass,
-				'w-64 rounded-lg border-2 border-primary/60 bg-card p-4 shadow-md',
+				'z-50 max-h-[85vh] w-64 overflow-y-auto rounded-lg border-2 border-primary/60 bg-card p-4 shadow-md',
 				className
 			),
 			id: `hover-card-content-${id}`,
 			role: 'dialog',
-			style: {
-				...sideStyle,
-				...props.style,
+			onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
+				onMouseEnter?.(e)
+				handleEnter()
 			},
-			ref,
+			onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+				onMouseLeave?.(e)
+				handleLeave()
+			},
+			style: {
+				position: 'fixed' as const,
+				left: pos?.left ?? 0,
+				top: pos?.top ?? 0,
+				visibility: (pos ? 'visible' : 'hidden') as
+					| 'visible'
+					| 'hidden',
+				...style,
+			},
+			ref: setContentRefs,
 		}
 
-		return (
+		if (!mounted || typeof document === 'undefined') return null
+
+		return createPortal(
 			<AnimatePresence>
 				{open ? (
 					asChild ? (
@@ -288,7 +438,8 @@ const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 						</motion.div>
 					)
 				) : null}
-			</AnimatePresence>
+			</AnimatePresence>,
+			document.body
 		)
 	}
 )

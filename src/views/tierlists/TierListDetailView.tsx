@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -19,6 +19,7 @@ import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
 import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import Username from '@/components/ui/user/Username'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
@@ -129,7 +130,7 @@ export default function TierListDetailView() {
 	if (!tierList) {
 		return (
 			<div className="mx-auto max-w-5xl px-4 py-16 text-center">
-				<p className="text-text-accent">{t('tierlists.notFound')}</p>
+				<p className="text-foreground">{t('tierlists.notFound')}</p>
 			</div>
 		)
 	}
@@ -140,7 +141,7 @@ export default function TierListDetailView() {
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center gap-3">
 						<h1
-							className={`${unbounded.className} font-bold text-3xl`}
+							className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 						>
 							{tierList.title}
 						</h1>
@@ -152,11 +153,11 @@ export default function TierListDetailView() {
 						)}
 					</div>
 					{tierList.description && (
-						<p className="font-semibold text-text-accent">
+						<p className="font-semibold text-foreground">
 							{tierList.description}
 						</p>
 					)}
-					<div className="flex items-center gap-3 text-sm text-text-accent">
+					<div className="flex items-center gap-3 text-foreground text-sm">
 						{tierList.author && (
 							<div className="flex items-center gap-2">
 								<Avatar
@@ -168,19 +169,16 @@ export default function TierListDetailView() {
 									width={32}
 								/>
 								<HoverUserCard id={tierList.author.id}>
-									<span
-										className={`${montserrat.className} font-semibold text-xs`}
-									>
-										{tierList.author.name}
-									</span>
+									<Username
+										className={`font-mono font-semibold text-xs`}
+										user={tierList.author}
+									/>
 								</HoverUserCard>
 							</div>
 						)}
-						<div className="flex items-center gap-1 text-text-accent">
+						<div className="flex items-center gap-1 text-foreground">
 							<Icon icon="lucide:eye" />
-							<span
-								className={`${montserrat.className} font-semibold text-xs`}
-							>
+							<span className={`font-mono font-semibold text-xs`}>
 								{tierList.views}
 							</span>
 						</div>
@@ -343,7 +341,7 @@ function TierListEntryCard({
 				/>
 			)}
 			<span
-				className={`${montserrat.className} truncate font-semibold`}
+				className={`truncate font-mono font-semibold`}
 				style={{ color: infoColorMap[item?.color as InfoColor] }}
 			>
 				{name}
@@ -400,7 +398,7 @@ function RankList({
 				return (
 					<div className="flex gap-2" key={rank}>
 						<div
-							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-bold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
+							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-semibold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
 						>
 							{rank}
 						</div>

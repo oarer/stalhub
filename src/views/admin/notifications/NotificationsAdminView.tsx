@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminNotificationService } from '@/services/admin/notification.service'
@@ -165,11 +166,11 @@ export default function NotificationsAdminView() {
 														{u.username}
 													</span>
 													{u.name && (
-														<span className="text-text-accent text-xs">
+														<span className="text-foreground text-xs">
 															({u.name})
 														</span>
 													)}
-													<span className="text-text-accent text-xs">
+													<span className="text-foreground text-xs">
 														ID: {u.id}
 													</span>
 												</button>
@@ -188,7 +189,7 @@ export default function NotificationsAdminView() {
 															userSearch.toLowerCase()
 														))
 										).length === 0 && (
-											<p className="px-2 py-1 text-sm text-text-accent">
+											<p className="px-2 py-1 text-foreground text-sm">
 												{t(
 													'admin.notifications.notFound'
 												)}
@@ -206,7 +207,7 @@ export default function NotificationsAdminView() {
 											{userSearch}
 										</span>
 										<button
-											className="text-text-accent text-xs hover:underline"
+											className="text-foreground text-xs hover:underline"
 											onClick={() => {
 												setSelectedUserId(null)
 												setUserSearch('')
@@ -227,11 +228,11 @@ export default function NotificationsAdminView() {
 						/>
 
 						<div className="flex flex-col gap-1">
-							<span className="font-semibold text-sm text-text-accent">
+							<span className="font-semibold text-foreground text-sm">
 								{t('admin.notifications.contentLabel')}
 							</span>
-							<textarea
-								className="min-h-20 resize-none rounded-lg border-2 border-primary bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary/50"
+							<Textarea
+								className="min-h-20 resize-none border-primary focus:border-primary/50"
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t(
 									'admin.notifications.contentPlaceholder'

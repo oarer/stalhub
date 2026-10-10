@@ -2,7 +2,7 @@
 
 import type { useTranslations } from 'next-intl'
 import { forwardRef, useMemo } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { unbounded } from '@/app/fonts'
 import {
 	artPriceKey,
 	formatArtPrice,
@@ -134,11 +134,9 @@ export const BuildLitePngTemplate = forwardRef<
 				>
 					{buildName}
 				</h2>
-				<div
-					className={`${montserrat.className} flex gap-3 text-right`}
-				>
+				<div className={`flex gap-3 text-right font-mono`}>
 					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-semibold text-foreground text-xs">
 							{t('build.stats.prime')}
 						</p>
 						<p className="font-bold text-lg text-primary">
@@ -146,13 +144,13 @@ export const BuildLitePngTemplate = forwardRef<
 						</p>
 					</div>
 					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-semibold text-foreground text-xs">
 							{t('build.stats.regen')}
 						</p>
 						<p className="font-bold text-lg text-primary">{hps}%</p>
 					</div>
 					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-text-accent text-xs">
+						<p className="font-semibold text-foreground text-xs">
 							{t('build.stats.stopping')}
 						</p>
 						<p className="font-bold text-lg text-primary">
@@ -228,7 +226,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{itemName}
 													</p>
 													<p
-														className={`${montserrat.className} font-semibold text-sm`}
+														className={`font-mono font-semibold text-sm`}
 														style={{ color }}
 													>
 														{art?.potential
@@ -237,7 +235,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{art?.percent}%
 													</p>
 													<p
-														className={`${montserrat.className} ml-auto font-bold text-primary text-sm`}
+														className={`ml-auto font-bold font-mono text-primary text-sm`}
 													>
 														{price?.source ===
 														'estimate'
@@ -249,7 +247,7 @@ export const BuildLitePngTemplate = forwardRef<
 													</p>
 												</>
 											) : (
-												<p className="py-1.5 font-bold text-sm text-text-accent/70">
+												<p className="py-1.5 font-bold text-foreground/70 text-sm">
 													{t('build.empty_slot')}
 												</p>
 											)}
@@ -297,11 +295,11 @@ export const BuildLitePngTemplate = forwardRef<
 						)}
 						{totalPrice > 0 && (
 							<div className="flex items-center justify-between rounded-lg bg-card px-4 py-1">
-								<p className="font-semibold text-text-accent text-xs">
+								<p className="font-semibold text-foreground text-xs">
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`${montserrat.className} font-bold text-lg text-primary`}
+									className={`font-bold font-mono text-lg text-primary`}
 								>
 									{formatArtPrice(totalPrice)}
 								</p>
@@ -335,7 +333,7 @@ export const BuildLitePngTemplate = forwardRef<
 										>
 											{armorName}
 										</p>
-										<p className="font-semibold text-sm text-text-accent">
+										<p className="font-semibold text-foreground text-sm">
 											{t('build.sharpening')}: +
 											{build.armor.level}
 										</p>

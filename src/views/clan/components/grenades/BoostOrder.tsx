@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
@@ -162,7 +161,7 @@ export function BoostOrder({ settings }: Props) {
 														{order.item_name}
 													</Table.Cell>
 													<Table.Cell
-														className={`${montserrat.className} text-center font-semibold`}
+														className={`text-center font-mono font-semibold`}
 													>
 														{order.count}/шт
 													</Table.Cell>

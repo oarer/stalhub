@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
@@ -33,11 +33,14 @@ export function BuyHeader({
 
 	return (
 		<div className="flex flex-col gap-4">
-			<h1
-				className={`${unbounded.className} text-left text-3xl text-primary`}
-			>
-				| {title || t('buy.title')}
-			</h1>
+			<div className="flex items-center gap-2">
+				<div className="w-1 shrink-0 self-stretch bg-primary" />
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] text-primary leading-none`}
+				>
+					{title || t('buy.title')}
+				</h1>
+			</div>
 
 			<div className="flex flex-col gap-3">
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -57,7 +60,7 @@ export function BuyHeader({
 				</div>
 				<div className="flex flex-wrap items-center gap-2">
 					<Button
-						className="flex gap-2 font-semibold"
+						className="flex gap-2 font-medium"
 						onClick={onAddItem}
 						variant="primary"
 					>
@@ -65,7 +68,7 @@ export function BuyHeader({
 						{t('buy.addItem')}
 					</Button>
 					<Button
-						className="flex gap-2 font-semibold"
+						className="flex gap-2 font-medium"
 						loading={savingPng}
 						onClick={onSavePng}
 						variant="secondary"
@@ -74,7 +77,7 @@ export function BuyHeader({
 						{t('buy.savePng')}
 					</Button>
 					<Button
-						className="flex gap-2 font-semibold"
+						className="flex gap-2 font-medium"
 						onClick={onCopyText}
 						variant="secondary"
 					>
@@ -82,7 +85,7 @@ export function BuyHeader({
 						{t('buy.copyText')}
 					</Button>
 					<Button
-						className="ml-auto flex gap-2 font-semibold"
+						className="ml-auto flex gap-2 font-medium"
 						onClick={onClear}
 						variant="ghost"
 					>
@@ -91,7 +94,7 @@ export function BuyHeader({
 					</Button>
 				</div>
 				{!discord.trim() && (
-					<p className="font-semibold text-muted-foreground text-xs">
+					<p className="font-medium text-muted-foreground text-xs">
 						{t('buy.discordHint')}
 					</p>
 				)}

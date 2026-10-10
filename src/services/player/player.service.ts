@@ -9,7 +9,7 @@ import type {
 class PlayerService {
 	async get({ region, character }: PlayerParams): Promise<PlayerResponse> {
 		const { data } = await apiClient.get<PlayerResponse>(
-			`/api/v1/player/${region}/${character}`,
+			`/api/v1/player/${region}/${encodeURIComponent(character)}`,
 			{ params: { history: true } }
 		)
 		return data

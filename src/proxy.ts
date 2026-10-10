@@ -13,6 +13,11 @@ export function proxy(req: NextRequest) {
 	const requestHeaders = new Headers(req.headers)
 	requestHeaders.set('X-Path', pathname)
 
+	const cookieLocale = req.cookies.get('lang')?.value
+	if (cookieLocale && (LOCALE as readonly string[]).includes(cookieLocale)) {
+		requestHeaders.set('X-Locale', cookieLocale)
+	}
+
 	const intlResponse = intlMiddleware(req)
 
 	if (intlResponse) {

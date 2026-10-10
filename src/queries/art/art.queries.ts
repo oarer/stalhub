@@ -28,15 +28,18 @@ class ArtQueries {
 		page = 1,
 		tags,
 		type,
+		sort,
 	}: {
 		take?: number
 		page?: number
 		tags?: string[]
 		type?: ArtType
+		sort?: 'newest' | 'oldest' | 'views' | 'stars'
 	} = {}) {
 		return queryOptions<PaginatedResponse<Art>>({
-			queryKey: ['arts', 'public', { take, page, tags, type }],
-			queryFn: () => artService.publicList({ take, page, tags, type }),
+			queryKey: ['arts', 'public', { take, page, tags, type, sort }],
+			queryFn: () =>
+				artService.publicList({ take, page, tags, type, sort }),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
 		})

@@ -13,4 +13,6 @@ export interface Item {
 	weight: number
 	currentPrice: number
 	limit?: number
+	id?: string
+	icon?: string
 }

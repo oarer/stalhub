@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsWide } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { Tooltip } from '@/components/ui/Tooltip'
 import type { PlayerStatsResponse } from '@/types/player.type'
@@ -21,7 +21,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 					<Card.Title className="items-center">
 						<Icon icon="lucide:chart-column" />
 						<h1
-							className={`${unbounded.className} font-bold text-[15px] uppercase tracking-tight`}
+							className={`${mtsWide.className} font-medium text-[15px] uppercase tracking-tight`}
 						>
 							{t('playerSearch.popular_title')}
 						</h1>
@@ -38,7 +38,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 							<Card.Title className="items-center">
 								<Icon icon="lucide:clock-fading" />
 								<h1
-									className={`${unbounded.className} font-bold text-[15px] uppercase tracking-tight`}
+									className={`${mtsWide.className} font-medium text-[15px] uppercase tracking-tight`}
 								>
 									{t('playerSearch.recent_title')}
 								</h1>

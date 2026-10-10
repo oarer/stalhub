@@ -2,7 +2,6 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import type { InputHTMLAttributes } from 'react'
 import { useEffect, useId, useRef, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 
 type Props = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
@@ -148,9 +147,9 @@ export default function Input({
 			<input
 				{...rest}
 				className={cn(
-					`peer w-full rounded-lg border-2 border-muted bg-card px-2.5 py-1 font-semibold text-foreground outline-none transition-all duration-500 ease-in-out placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
+					`peer w-full rounded-lg border-2 border-muted bg-card px-2.5 py-1 font-medium text-foreground outline-none transition-all duration-500 ease-in-out placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
 					label && 'pt-3',
-					type === 'number' && `${montserrat.className} text-sm`,
+					type === 'number' && `font-mono font-semibold text-sm`,
 					className
 				)}
 				id={id}
@@ -168,7 +167,7 @@ export default function Input({
 
 			{label && (
 				<label
-					className="pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-bold text-muted-foreground text-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-muted-foreground peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-muted-foreground"
+					className="pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-medium text-muted-foreground text-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-muted-foreground peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-muted-foreground"
 					htmlFor={id}
 				>
 					{t(label)}

@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Accordion } from '@/components/ui/Accordion'
 import { Button } from '@/components/ui/Button'
 import { CheckBox } from '@/components/ui/CheckBox'
@@ -165,7 +164,7 @@ export default function WorldMarkerFilter({
 								size="xs"
 							/>
 							<span
-								className={`${montserrat.className} shrink-0 font-semibold text-[10px] text-muted-foreground`}
+								className={`shrink-0 font-mono font-semibold text-[10px] text-muted-foreground`}
 							>
 								{count}
 							</span>
@@ -203,7 +202,7 @@ export default function WorldMarkerFilter({
 									size="xs"
 								/>
 								<span
-									className={`${montserrat.className} shrink-0 font-semibold text-[10px] text-muted-foreground`}
+									className={`shrink-0 font-mono font-semibold text-[10px] text-muted-foreground`}
 								>
 									{count}
 								</span>
@@ -213,7 +212,6 @@ export default function WorldMarkerFilter({
 				</div>
 			),
 		},
-
 	]
 
 	return (

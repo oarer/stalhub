@@ -5,8 +5,9 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { articleQueries } from '@/queries/article/article.queries'
 
@@ -22,24 +23,26 @@ export default function ArticlesView() {
 
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<div className="flex flex-col gap-2">
-				<h1 className={`${unbounded.className} font-bold text-3xl`}>
+			<>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('articles.title')}
 				</h1>
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-muted-foreground text-sm">
 					{t('articles.publishedCount', {
 						count: data?.total_count ?? 0,
 					})}
 				</p>
-			</div>
+			</>
 
 			{articles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:file-text"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('articles.empty')}
 					</p>
 				</div>
@@ -51,14 +54,14 @@ export default function ArticlesView() {
 							href={`/articles/${article.id}`}
 							key={article.id}
 						>
-							<h2 className="font-semibold text-lg transition-colors group-hover:text-primary">
+							<h2 className="font-medium text-lg transition-colors group-hover:text-primary">
 								{article.title}
 							</h2>
 
-							<div className="flex items-center gap-3 font-semibold text-text-accent text-xs">
+							<div className="flex items-center gap-3 font-medium text-foreground text-xs">
 								<div className="flex items-center gap-1">
 									<Icon icon="lucide:user" />
-									{article.author.username}
+									<Username user={article.author} />
 								</div>
 								<div className="flex items-center gap-1">
 									<Icon icon="lucide:calendar" />
@@ -76,14 +79,14 @@ export default function ArticlesView() {
 								<div className="flex flex-wrap gap-1">
 									{article.tags.slice(0, 5).map((tag) => (
 										<span
-											className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+											className="rounded-md bg-border-secondary px-1.5 py-0.5 font-medium text-foreground text-xs"
 											key={tag}
 										>
 											{tag}
 										</span>
 									))}
 									{article.tags.length > 5 && (
-										<span className="text-text-accent text-xs">
+										<span className="text-foreground text-xs">
 											+{article.tags.length - 5}
 										</span>
 									)}
@@ -104,7 +107,7 @@ export default function ArticlesView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className="text-neutral-400 text-sm">
+					<span className="font-mono text-foreground text-sm">
 						{page} / {totalPages}
 					</span>
 					<Button

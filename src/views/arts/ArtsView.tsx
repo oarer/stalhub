@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import { montserrat, unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -17,20 +17,31 @@ import { cn } from '@/lib/cn'
 import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { artQueries } from '@/queries/art/art.queries'
 import { useNsfwGateStore } from '@/stores/useNsfwGate.store'
-import { ArtType } from '@/types/art.type'
+import { ArtType, getArtImages } from '@/types/art.type'
 
 export default function ArtsView() {
 	const t = useTranslations()
 	const router = useRouter()
 	const [page, setPage] = useState(1)
 	const [search, setSearch] = useState('')
-	const [type, setType] = useState<ArtType | ''>('')
+	const [tab, setTab] = useState<'all' | 'default' | 'nsfw'>('all')
+	const [sort, setSort] = useState<'newest' | 'oldest' | 'views' | 'stars'>(
+		'newest'
+	)
 	const [nsfwGateOpen, setNsfwGateOpen] = useState(false)
+	const pendingTabNsfw = useRef(false)
 	const pendingNsfwId = useRef<string | null>(null)
 	const ageConfirmed = useNsfwGateStore((s) => s.ageConfirmed)
 	const confirmAge = useNsfwGateStore((s) => s.confirmAge)
 	const debouncedSearch = useDebounce(search, 300)
 	const take = 24
+
+	const type: ArtType | undefined =
+		tab === 'nsfw'
+			? ArtType.NSFW
+			: tab === 'default'
+				? ArtType.DEFAULT
+				: undefined
 
 	const tags = debouncedSearch
 		? debouncedSearch
@@ -40,22 +51,35 @@ export default function ArtsView() {
 		: undefined
 
 	const { data, isPending, isPlaceholderData } = useQuery(
-		artQueries.publicList({ take, page, tags, type: type || undefined })
+		artQueries.publicList({ take, page, tags, type, sort })
 	)
+
+	const requestNsfwTab = () => {
+		if (!ageConfirmed) {
+			pendingTabNsfw.current = true
+			setNsfwGateOpen(true)
+			return
+		}
+		setTab('nsfw')
+		setPage(1)
+	}
 
 	const arts = data?.data ?? []
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
+	const unblurNsfw = tab === 'nsfw' && ageConfirmed
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			<div className="flex items-center justify-between">
-				<h1 className={`${unbounded.className} font-bold text-3xl`}>
+			<>
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('arts.title')}
 				</h1>
-				<span className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-muted-foreground text-sm">
 					{t('arts.total', { count: data?.total_count ?? 0 })}
-				</span>
-			</div>
+				</p>
+			</>
 
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<Input
@@ -68,30 +92,51 @@ export default function ArtsView() {
 					value={search}
 				/>
 
-				<div className="flex gap-1">
+				<div className="flex gap-2">
 					<Button
-						className="font-semibold"
 						onClick={() => {
-							setType('')
+							setTab('all')
 							setPage(1)
 						}}
 						size="sm"
-						variant={type === '' ? 'secondary' : 'ghost'}
+						variant={tab === 'all' ? 'secondary' : 'ghost'}
 					>
 						{t('arts.all')}
 					</Button>
 					<Button
-						className="font-semibold"
 						onClick={() => {
-							setType(type === ArtType.NSFW ? '' : ArtType.NSFW)
+							setTab('default')
 							setPage(1)
 						}}
 						size="sm"
-						variant={type === ArtType.NSFW ? 'secondary' : 'ghost'}
+						variant={tab === 'default' ? 'secondary' : 'ghost'}
+					>
+						{t('arts.regular')}
+					</Button>
+					<Button
+						onClick={requestNsfwTab}
+						size="sm"
+						variant={tab === 'nsfw' ? 'secondary' : 'ghost'}
 					>
 						NSFW
 					</Button>
 				</div>
+			</div>
+
+			<div className="flex flex-wrap gap-2">
+				{(['newest', 'oldest', 'views', 'stars'] as const).map((s) => (
+					<Button
+						key={s}
+						onClick={() => {
+							setSort(s)
+							setPage(1)
+						}}
+						size="sm"
+						variant={sort === s ? 'primary' : 'ghost'}
+					>
+						{t(`arts.sort.${s}`)}
+					</Button>
+				))}
 			</div>
 
 			{isPending ? (
@@ -106,10 +151,10 @@ export default function ArtsView() {
 			) : arts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:image"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-foreground text-sm">
 						{t('arts.empty')}
 					</p>
 				</div>
@@ -151,63 +196,87 @@ export default function ArtsView() {
 									NSFW
 								</Badge>
 							)}
-							{art.image_url ? (
-								isVideoUrl(art.image_url) ? (
+							{(() => {
+								const gallery = getArtImages(art)
+								const cover = gallery[0] ?? art.image_url
+								const extraCount = gallery.length - 1
+								return (
 									<>
-										<video
-											className={cn(
-												'h-auto w-full transition-all duration-400',
-												art.type === ArtType.NSFW &&
-													cn(
-														'blur-xl',
-														ageConfirmed &&
-															'hover:blur-none'
-													)
-											)}
-											muted
-											playsInline
-											preload="metadata"
-											src={
-												resolveImageUrl(
-													art.image_url
-												) ?? ''
-											}
-										/>
-										<Icon
-											className="absolute top-1/2 left-1/2 z-2 size-10 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-md"
-											icon="lucide:play"
-										/>
-									</>
-								) : (
-									<Image
-										alt={art.title || 'none'}
-										className={cn(
-											'h-auto w-full transition-all duration-400',
-											art.type === ArtType.NSFW &&
-												cn(
-													'blur-xl',
-													ageConfirmed &&
-														'hover:blur-none'
-												)
+										{cover ? (
+											isVideoUrl(cover) ? (
+												<>
+													<video
+														className={cn(
+															'h-auto w-full transition-all duration-400',
+															art.type ===
+																ArtType.NSFW &&
+																!unblurNsfw &&
+																cn(
+																	'blur-xl',
+																	ageConfirmed &&
+																		'hover:blur-none'
+																)
+														)}
+														muted
+														playsInline
+														preload="metadata"
+														src={
+															resolveImageUrl(
+																cover
+															) ?? ''
+														}
+													/>
+													<Icon
+														className="absolute top-1/2 left-1/2 z-2 size-10 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-md"
+														icon="lucide:play"
+													/>
+												</>
+											) : (
+												<Image
+													alt={art.title || 'none'}
+													className={cn(
+														'h-auto w-full transition-all duration-400',
+														art.type ===
+															ArtType.NSFW &&
+															!unblurNsfw &&
+															cn(
+																'blur-xl',
+																ageConfirmed &&
+																	'hover:blur-none'
+															)
+													)}
+													height={1600}
+													src={
+														resolveImageUrl(
+															cover
+														) ?? ''
+													}
+													unoptimized
+													width={1200}
+												/>
+											)
+										) : (
+											<div className="flex aspect-square w-full items-center justify-center">
+												<Icon
+													className="size-10 text-foreground"
+													icon="lucide:image-off"
+												/>
+											</div>
 										)}
-										height={1600}
-										src={
-											resolveImageUrl(art.image_url) ?? ''
-										}
-										unoptimized
-										width={1200}
-									/>
+										{extraCount > 0 && (
+											<span className="absolute top-2 left-2 z-2 flex items-center gap-1 rounded-md bg-black/60 px-2 py-0.5 font-mono font-semibold text-white text-xs backdrop-blur">
+												<Icon
+													className="size-3.5"
+													icon="lucide:images"
+												/>
+												+{extraCount}
+											</span>
+										)}
+									</>
 								)
-							) : (
-								<div className="flex aspect-square w-full items-center justify-center">
-									<Icon
-										className="size-10 text-text-accent"
-										icon="lucide:image-off"
-									/>
-								</div>
-							)}
+							})()}
 							<div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-linear-to-t from-black/70 to-transparent px-3 pt-8 pb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-								<span className="truncate font-semibold text-sm text-white">
+								<span className="truncate font-medium text-sm text-white">
 									{art.title}
 								</span>
 								{art.stars_count > 0 && (
@@ -232,9 +301,7 @@ export default function ArtsView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span
-						className={`${montserrat.className} text-foreground text-sm`}
-					>
+					<span className={`font-mono text-foreground text-sm`}>
 						{page} / {totalPages}
 					</span>
 					<Button
@@ -250,7 +317,10 @@ export default function ArtsView() {
 
 			<Modal.Root
 				onOpenChange={(open) => {
-					if (!open) setNsfwGateOpen(false)
+					if (!open) {
+						setNsfwGateOpen(false)
+						pendingTabNsfw.current = false
+					}
 				}}
 				open={nsfwGateOpen}
 			>
@@ -262,10 +332,10 @@ export default function ArtsView() {
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body className="flex flex-col gap-2">
-						<p className="font-semibold">
+						<p className="font-medium">
 							{t('arts.nsfwAge.description')}
 						</p>
-						<p className="font-semibold text-foreground text-xs">
+						<p className="font-medium text-foreground text-xs">
 							{t('arts.nsfwAge.terms')}{' '}
 							<Link
 								className="text-primary underline underline-offset-2"
@@ -285,6 +355,12 @@ export default function ArtsView() {
 							onClick={() => {
 								confirmAge()
 								setNsfwGateOpen(false)
+
+								if (pendingTabNsfw.current) {
+									pendingTabNsfw.current = false
+									setTab('nsfw')
+									setPage(1)
+								}
 
 								const id = pendingNsfwId.current
 								pendingNsfwId.current = null

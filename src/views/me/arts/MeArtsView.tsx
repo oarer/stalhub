@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
@@ -17,7 +16,7 @@ import { resolveImageUrl } from '@/lib/imageUrl'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
-import { ArtType } from '@/types/art.type'
+import { ArtType, getArtImages } from '@/types/art.type'
 
 export default function MeArtsView() {
 	const queryClient = getQueryClient()
@@ -50,7 +49,7 @@ export default function MeArtsView() {
 						{t('me.arts.title')}
 					</h1>
 					{arts?.total_count != null && (
-						<span className="text-sm text-text-accent">
+						<span className="text-foreground text-sm">
 							{arts.total_count}
 						</span>
 					)}
@@ -95,10 +94,10 @@ export default function MeArtsView() {
 			{!filteredArts || filteredArts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-text-accent"
+						className="size-10 text-foreground"
 						icon="lucide:palette"
 					/>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('me.arts.noArts')}
 					</p>
 					<CLink
@@ -119,22 +118,39 @@ export default function MeArtsView() {
 							className="flex items-center gap-3 rounded-lg bg-card px-3 py-2 ring-2 ring-primary/30"
 							key={art.id}
 						>
-							{art.image_url ? (
-								<Image
-									alt={art.title}
-									className={cn(
-										'h-14 w-14 rounded-md object-cover',
-										art.type === ArtType.NSFW && 'blur-lg'
+							{(getArtImages(art)[0] ?? art.image_url) ? (
+								<div className="relative h-14 w-14 shrink-0">
+									<Image
+										alt={art.title}
+										className={cn(
+											'h-14 w-14 rounded-md object-cover',
+											art.type === ArtType.NSFW &&
+												'blur-lg'
+										)}
+										height={56}
+										src={
+											resolveImageUrl(
+												getArtImages(art)[0] ??
+													art.image_url
+											) ?? ''
+										}
+										unoptimized
+										width={56}
+									/>
+									{getArtImages(art).length > 1 && (
+										<span className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 rounded-md bg-primary px-1 py-px font-mono font-semibold text-[10px] text-primary-foreground">
+											<Icon
+												className="size-3"
+												icon="lucide:images"
+											/>
+											{getArtImages(art).length}
+										</span>
 									)}
-									height={56}
-									src={resolveImageUrl(art.image_url) ?? ''}
-									unoptimized
-									width={56}
-								/>
+								</div>
 							) : (
 								<div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-border-secondary">
 									<Icon
-										className="size-5 text-text-accent"
+										className="size-5 text-foreground"
 										icon="lucide:image-off"
 									/>
 								</div>
@@ -150,7 +166,7 @@ export default function MeArtsView() {
 									)}
 								</div>
 								<span
-									className={`${montserrat.className} font-semibold text-text-accent text-xs`}
+									className={`font-mono font-semibold text-foreground text-xs`}
 								>
 									{formatDate(art.created_at, 'date')}
 								</span>
@@ -158,7 +174,7 @@ export default function MeArtsView() {
 									<div className="flex flex-wrap gap-1">
 										{art.tags.map((tag) => (
 											<span
-												className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-text-accent text-xs"
+												className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
 												key={tag}
 											>
 												{tag}

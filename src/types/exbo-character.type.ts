@@ -1,5 +1,3 @@
-import type { Regions } from './api.type'
-
 export interface CharacterInformation {
 	id: string
 	name: string

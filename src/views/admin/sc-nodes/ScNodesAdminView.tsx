@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -11,6 +12,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Switch } from '@/components/ui/Switch'
 import { Table } from '@/components/ui/Table'
+import { Textarea } from '@/components/ui/Textarea'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminScNodeQueries } from '@/queries/admin/sc-node.queries'
@@ -188,7 +190,9 @@ export default function ScNodesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1
+					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				>
 					{t('admin.scNodes.title')}
 				</h1>
 				<span className="flex items-center gap-1.5 text-neutral-400 text-sm">
@@ -210,10 +214,10 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.nodes_up}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.nodesUp')}
 							</p>
 						</div>
@@ -228,10 +232,10 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.tokens_up}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.tokensUp')}
 							</p>
 						</div>
@@ -246,10 +250,10 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.quota_per_minute}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.quotaPerMin')}
 							</p>
 						</div>
@@ -264,11 +268,11 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-bold text-2xl">
+							<p className="font-medium font-mono text-2xl">
 								{overview.costs.default}/
 								{overview.costs.auction}
 							</p>
-							<p className="text-text-accent text-xs">
+							<p className="text-foreground text-xs">
 								{t('admin.scNodes.stats.costs')}
 							</p>
 						</div>
@@ -540,11 +544,11 @@ export default function ScNodesAdminView() {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<p className="font-semibold text-text-accent text-xs">
+							<p className="font-semibold text-foreground text-xs">
 								{t('admin.scNodes.tokens.bulk')}
 							</p>
-							<textarea
-								className="min-h-20 w-full rounded-lg border-2 border-primary bg-background px-3 py-2 font-mono text-xs outline-none placeholder:text-neutral-500 focus:border-sky-500/50"
+							<Textarea
+								className="min-h-20 w-full bg-background font-mono font-normal text-xs placeholder:text-neutral-500 focus:border-sky-500/50"
 								onChange={(e) => setBulkText(e.target.value)}
 								placeholder={t(
 									'admin.scNodes.tokens.bulkPlaceholder'

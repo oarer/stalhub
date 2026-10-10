@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card'
-import { Skeleton } from '@/components/ui/Skeleton'
 import { PageTitleSkeleton } from '@/components/ui/PageSkeletons'
+import { Skeleton } from '@/components/ui/Skeleton'
 
 export default function LoadingBalance() {
 	return (

@@ -29,4 +29,3 @@ export function getPlateMaxDurability(plate: Item): number {
 
 	return 0
 }
-

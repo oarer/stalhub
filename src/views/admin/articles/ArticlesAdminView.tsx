@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
@@ -13,6 +14,12 @@ import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
+import {
+	AdminEmptyRow,
+	AdminPagination,
+	DeleteConfirmContent,
+} from '../components/AdminTable'
+import PublishBlogButton from './PublishBlogButton'
 
 const STATUS_OPTIONS = [
 	ArticleStatus.PENDING,
@@ -24,6 +31,7 @@ const STATUS_OPTIONS = [
 
 export default function ArticlesAdminView() {
 	const t = useTranslations()
+	const router = useRouter()
 	const queryClient = getQueryClient()
 	const [page, setPage] = useState(1)
 	const [statusFilter, setStatusFilter] = useState<ArticleStatus | ''>('')
@@ -73,9 +81,19 @@ export default function ArticlesAdminView() {
 				<h1 className="font-semibold text-2xl">
 					{t('admin.articles.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
-					{data?.total_count ?? 0} {t('admin.permissions.total')}
-				</span>
+				<div className="flex items-center gap-2">
+					<span className="text-neutral-400 text-sm">
+						{data?.total_count ?? 0} {t('admin.permissions.total')}
+					</span>
+					<Button
+						onClick={() => router.push('/admin/articles/new')}
+						size="sm"
+						variant="primary"
+					>
+						<Icon icon="lucide:plus" />
+						{t('blog.createTitle')}
+					</Button>
+				</div>
 			</div>
 
 			<div className="flex flex-wrap items-center gap-2">
@@ -169,6 +187,20 @@ export default function ArticlesAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										<div className="flex items-center gap-1">
+											<PublishBlogButton
+												articleId={article.id}
+											/>
+											<Button
+												onClick={() =>
+													router.push(
+														`/admin/articles/${article.id}/edit`
+													)
+												}
+												title={t('blog.editor.edit')}
+												variant="ghost"
+											>
+												<Icon icon="lucide:pencil" />
+											</Button>
 											<Modal.Root>
 												<Modal.Trigger variant="ghost">
 													<Icon icon="lucide:settings" />
@@ -242,50 +274,35 @@ export default function ArticlesAdminView() {
 												<Modal.Content
 													fullScreen={false}
 												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.articles.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t.rich(
-																'admin.articles.deleteDescription',
-																{
-																	title: article.title,
-																	strong: (
-																		chunks
-																	) => (
-																		<strong>
-																			{
-																				chunks
-																			}
-																		</strong>
-																	),
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'clan.common.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	article.id
-																)
+													<DeleteConfirmContent
+														cancelLabel={t(
+															'clan.common.cancel'
+														)}
+														confirmLabel={t(
+															'clan.common.delete'
+														)}
+														description={t.rich(
+															'admin.articles.deleteDescription',
+															{
+																title: article.title,
+																strong: (
+																	chunks
+																) => (
+																	<strong>
+																		{chunks}
+																	</strong>
+																),
 															}
-															variant="danger"
-														>
-															{t(
-																'clan.common.delete'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
+														)}
+														onConfirm={() =>
+															deleteMutation.mutate(
+																article.id
+															)
+														}
+														title={t(
+															'admin.articles.deleteTitle'
+														)}
+													/>
 												</Modal.Content>
 											</Modal.Root>
 										</div>
@@ -293,48 +310,21 @@ export default function ArticlesAdminView() {
 								</Table.Row>
 							))}
 							{filtered.length === 0 && (
-								<Table.Row>
-									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
-											{t('admin.articles.empty')}
-										</span>
-									</Table.Cell>
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-									<Table.Cell />
-								</Table.Row>
+								<AdminEmptyRow
+									colCount={7}
+									message={t('admin.articles.empty')}
+								/>
 							)}
 						</Table.Body>
 					</Table.Root>
 				</div>
 			</Card.Root>
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="text-neutral-400 text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<AdminPagination
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</div>
 	)
 }

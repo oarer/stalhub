@@ -200,7 +200,7 @@ export function ArtifactSlotsLite({
 		<>
 			<div className="flex flex-col gap-2">
 				{title && (
-					<p className="truncate border-primary border-b pb-2 text-center font-bold">
+					<p className="truncate border-primary/50 border-b pb-2 text-center font-semibold">
 						{title}
 					</p>
 				)}
@@ -259,7 +259,7 @@ export function ArtifactSlotsLite({
 							width={34}
 						/>
 					)}
-					<p className="font-semibold text-md">
+					<p className="font-normal text-md">
 						{currentContainer
 							? messageToString(currentContainer.name, locale)
 							: t('build.needed_cont')}

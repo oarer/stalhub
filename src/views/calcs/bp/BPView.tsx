@@ -1,82 +1,99 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
-import { BPForm } from './components/BPForm'
-import { BPPlan } from './components/BPPlan'
+import { useMemo, useState } from 'react'
+import { mtsExtended } from '@/app/fonts'
+import { BPDashboardForm } from './components/BPDashboardForm'
+import { BPForecast } from './components/BPForecast'
+import { ALL_WEEK, type BPFormState } from './components/bp-form-state'
 import {
-	type BPInput,
-	buildBPPlan,
-	computeDaysUntilSeasonEnd,
+	seasonDeadline,
+	seasonStartDate,
+	simulateBP,
+	toISODate,
 } from './utils/bp'
 
 type BPViewProps = {
 	variant?: 'page' | 'widget'
 }
 
-const defaults: Omit<BPInput, 'daysLeft'> = {
-	currentLevel: 1,
-	targetLevel: 200,
-	maxTasksPerDay: 15,
-	donations: 0,
-	overloads: true,
-	boost3d: false,
-}
+const DAY_MS = 86_400_000
 
 export function BPView({ variant = 'page' }: BPViewProps) {
 	const t = useTranslations()
+	const today = useMemo(() => new Date(), [])
+	const todayISO = toISODate(today)
 
-	const [daysLeft, setDaysLeft] = useState<number | null>(null)
-	const [values, setValues] = useState<BPInput>({
-		...defaults,
-		daysLeft: 0,
-	})
+	const [state, setState] = useState<BPFormState>(() => ({
+		currentLevel: 1,
+		targetLevel: 1000,
+		deadlineISO: toISODate(seasonDeadline(today)),
+		tasksPerDay: 25,
+		weekdays: [...ALL_WEEK],
+		overloadMode: 'full',
+		overloadStock: 0,
+		donationPacks: 0,
+		boostOn: true,
+		boostStartISO: todayISO,
+		boostDays: 3,
+	}))
 
-	useEffect(() => {
-		setDaysLeft((prev) => prev ?? computeDaysUntilSeasonEnd(new Date()))
-	}, [])
+	const onChange = (patch: Partial<BPFormState>) =>
+		setState((prev) => ({ ...prev, ...patch }))
 
-	const input: BPInput = useMemo(
-		() => ({ ...values, daysLeft: daysLeft ?? 0 }),
-		[values, daysLeft]
+	const seasonWeeks = useMemo(() => {
+		const start = seasonStartDate(today).getTime()
+		const end = seasonDeadline(today).getTime()
+		return Math.max(1, Math.round((end - start) / (7 * DAY_MS)))
+	}, [today])
+
+	const sim = useMemo(
+		() =>
+			simulateBP({
+				startISO: todayISO,
+				deadlineISO: state.deadlineISO,
+				currentLevel: state.currentLevel,
+				targetLevel: state.targetLevel,
+				tasksPerDay: state.tasksPerDay,
+				weekdays: state.weekdays,
+				overloadMode: state.overloadMode,
+				overloadStock: state.overloadStock,
+				donationPacks: state.donationPacks,
+				boostOn: state.boostOn,
+				boostStartISO: state.boostStartISO,
+				boostDays: state.boostDays,
+			}),
+		[state, todayISO]
 	)
-
-	const onChange = (patch: Partial<BPInput>) => {
-		setValues((prev) => ({ ...prev, ...patch }))
-	}
-
-	const plan = useMemo(() => buildBPPlan(input), [input])
 
 	return (
 		<section
 			className={
 				variant === 'widget'
 					? 'flex flex-col gap-4'
-					: 'mx-auto flex max-w-5xl flex-col gap-10 px-4 pt-32 lg:pt-36'
+					: 'mx-auto flex max-w-7xl flex-col gap-6 px-4 pt-32 pb-12 lg:pt-36'
 			}
 		>
 			{variant === 'page' && (
-				<div className="text-center">
+				<div className="flex flex-col gap-2">
 					<h1
-						className={`${unbounded.className} mb-2 font-semibold text-3xl tracking-tight md:text-3xl xl:text-4xl`}
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 					>
 						{t('bp.title')}
 					</h1>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-medium text-muted-foreground text-sm">
 						{t('bp.sub_title')}
 					</p>
 				</div>
 			)}
-			<div className="grid gap-6 md:grid-cols-2">
-				<BPForm
-					daysLeft={daysLeft}
+			<div className="grid items-start gap-4 lg:grid-cols-[35%_65%]">
+				<BPDashboardForm
 					onChange={onChange}
-					onDaysLeftChange={setDaysLeft}
-					values={values}
+					seasonWeeks={seasonWeeks}
+					state={state}
+					todayISO={todayISO}
 				/>
-
-				<BPPlan plan={plan} />
+				<BPForecast sim={sim} state={state} todayISO={todayISO} />
 			</div>
 		</section>
 	)

@@ -3,6 +3,7 @@ import type { AxiosError } from 'axios'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import { dynamicAlternates, dynamicTwitter } from '@/lib/seo'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
 import { userService } from '@/services/user/user.service'
@@ -34,12 +35,19 @@ export async function generateMetadata({
 		return {
 			title: `${displayName} · StalHub`,
 			description,
+			alternates: dynamicAlternates(`/users/${id}`),
 			openGraph: {
 				title: `${displayName} · StalHub`,
 				description,
+				url: `/users/${id}`,
 				type: 'profile',
 				images: [{ url: avatarUrl, alt: user.username }],
 			},
+			twitter: dynamicTwitter({
+				title: `${displayName} · StalHub`,
+				description,
+				images: [avatarUrl],
+			}),
 		}
 	} catch {
 		return {

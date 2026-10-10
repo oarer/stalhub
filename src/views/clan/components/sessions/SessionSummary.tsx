@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Table } from '@/components/ui/Table'
 import type { StageSummary } from '@/types/clan/clan.type'
 import { formatKd, kdClass } from '@/views/clan/clan.utils'
@@ -32,13 +31,13 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 			</div>
 			{summary.total_score && (
 				<div className="flex flex-col">
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{t('clan.sessions.stageScore', {
 							score: summary.total_score,
 						})}
 						{playerTeam?.name && ` (${playerTeam.name})`}
 					</p>
-					<p className="font-semibold text-sm text-text-accent">
+					<p className="font-semibold text-foreground text-sm">
 						{opponents.length === 1
 							? t('clan.sessions.opponentsOne', {
 									names: opponents
@@ -60,9 +59,9 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 				</div>
 			)}
 			<div className="flex flex-col gap-2 p-3">
-				<Table.Root className={`${montserrat.className} font-semibold`}>
+				<Table.Root className={`font-mono font-semibold`}>
 					<Table.Header>
-						<Table.Row className="text-left text-text-accent">
+						<Table.Row className="text-left text-foreground">
 							<Table.Head>{t('clan.common.player')}</Table.Head>
 							<Table.Head className="text-center">
 								{t('clan.sessions.killsShort')}
@@ -86,13 +85,13 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 						{summary.players.map((p) => (
 							<Table.Row key={p.name}>
 								<Table.Cell>{p.name}</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{p.kills}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{p.deaths}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-text-accent">
+								<Table.Cell className="text-center font-medium text-foreground">
 									{p.assists}
 								</Table.Cell>
 								<Table.Cell

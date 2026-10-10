@@ -3,6 +3,11 @@
     "overview": "모든 것을 한곳에서",
     "tools_for": "도구:",
     "need": "필요한 모든 것",
+    "swap": {
+      "tools": "도구",
+      "calcs": "계산기",
+      "analytics": "분석"
+    },
     "features": {
       "items": "아이템",
       "tools": "도구",
@@ -74,6 +79,18 @@
         "upgrade": {
           "title": "강화 계산기",
           "desc": "유물·장비 강화 확률, 시도 횟수, 도구 비용"
+        },
+        "text": {
+          "title": "서식",
+          "desc": "§와 그라디언트"
+        },
+        "barter": {
+          "title": "물물교환",
+          "desc": "트리"
+        },
+        "donate": {
+          "title": "후원",
+          "desc": "판매 효율"
         }
       }
     },
@@ -84,6 +101,81 @@
       "month": "월간 TOP",
       "views": "조회수",
       "empty": "데이터 없음"
+    },
+    "clan": {
+      "title": "무료 <primary>클랜 분석</primary>",
+      "subtitle": "클랜 리더이신가요? 그렇다면 저희 솔루션이 딱 맞습니다",
+      "features": {
+        "ai": {
+          "title": "AI 분석",
+          "desc": "GPT 6 Sol을 사용해 스테이지를 더 정확하게 분석합니다."
+        },
+        "analytics": {
+          "title": "분석",
+          "desc": "시스템이 모든 스테이지 결과를 자동으로 모아 보기 쉽게 보여줍니다."
+        },
+        "bot": {
+          "title": "Discord 봇",
+          "desc": "사이트에 들어갈 시간 없이 빠르게 스테이지를 업로드할 수 있는 편리한 봇을 만들었습니다."
+        },
+        "grenades": {
+          "title": "수류탄",
+          "desc": "매 스테이지 후 수류탄을 빠르게 스캔해 지급된 수류탄을 모두 썼는지 항상 알 수 있습니다."
+        }
+      },
+      "stages": {
+        "upload": "스크린샷",
+        "analyze": "AI",
+        "cabinet": "캐비닛"
+      },
+      "demo": {
+        "processing": "처리 중",
+        "done": "성공"
+      }
+    },
+    "personal": {
+      "title": "개인 <primary>분석</primary>",
+      "subtitle": "캐릭터를 연결하고 진행 상황을 추적하세요: 스탯이 자동으로 수집됩니다",
+      "cta": "분석 열기",
+      "features": {
+        "tracking": {
+          "title": "자동 추적",
+          "desc": "12시간마다 스탯 스냅샷이 자동 저장되며, 원클릭 수동 갱신도 가능합니다."
+        },
+        "dynamics": {
+          "title": "변화 추이",
+          "desc": "K/D, 명중률, 헤드샷, 플레이 시간 차트: 값과 기간 증가량을 함께 확인하세요."
+        },
+        "stages": {
+          "title": "스테이지",
+          "desc": "맵별 개인/클랜 스테이지: 승률, 세션, 출전 기록을 깔끔하게 정리합니다."
+        },
+        "sharing": {
+          "title": "공개 링크",
+          "desc": "원클릭으로 공개하고 멋진 스탯 페이지를 친구들과 공유하세요."
+        }
+      },
+      "stages": {
+        "link": "연결",
+        "snapshot": "스냅샷",
+        "dynamics": "추이"
+      },
+      "demo": {
+        "snapshots": "스냅샷: {n}",
+        "growth": "상승",
+        "forPeriod": "기간 대비",
+        "chartTitle": "K/D — 추이",
+        "stats": {
+          "kills": "킬",
+          "kd": "K/D",
+          "accuracy": "명중률",
+          "hours": "플레이 시간"
+        }
+      }
+    },
+    "roadmap": {
+      "title": "<primary>로드맵</primary>",
+      "description": "첫 컨셉부터 앱 출시까지, 그리고 그 이후"
     }
   },
   "footer": {
@@ -129,7 +221,21 @@
     "arts": "아트",
     "groups": {
       "calculators": {
-        "title": "계산기",
+        "title": "도구",
+        "categories": {
+          "main": {
+            "title": "기본"
+          },
+          "leveling": {
+            "title": "성장"
+          },
+          "info": {
+            "title": "정보"
+          },
+          "services": {
+            "title": "서비스"
+          }
+        },
         "items": {
           "art": {
             "label": "빌드",
@@ -144,6 +250,10 @@
             "label": "TTK",
             "description": "무기 효율"
           },
+          "buy": {
+            "description": "매입 표 만들기",
+            "label": "매입 표"
+          },
           "arsenal": {
             "label": "아스널",
             "description": "아스널 평판"
@@ -155,6 +265,14 @@
           "barter": {
             "label": "교환 코인",
             "description": "교환 코인으로 물물교환"
+          },
+          "donate": {
+            "label": "후원",
+            "description": "판매 효율"
+          },
+          "text": {
+            "label": "서식",
+            "description": "§와 그라디언트"
           },
           "bp": {
             "label": "시즌 패스",
@@ -187,6 +305,9 @@
           },
           "clans": {
             "label": "클랜 목록"
+          },
+          "clanStats": {
+            "label": "Clan stats"
           }
         }
       },
@@ -234,8 +355,39 @@
           }
         }
       },
+      "community": {
+        "title": "리소스",
+        "categories": {
+          "resources": {
+            "title": "공식 리소스",
+            "items": {
+              "telegram": {
+                "label": "Telegram",
+                "description": "뉴스, 업데이트 및 이벤트"
+              },
+              "discord": {
+                "label": "Discord",
+                "description": "빠른 기술 지원"
+              },
+              "github": {
+                "label": "GitHub",
+                "description": "프로젝트 저장소"
+              },
+              "about": {
+                "label": "소개",
+                "description": "프로젝트 상세 정보"
+              }
+            }
+          }
+        }
+      },
       "creative": {
         "title": "Творчество",
+        "categories": {
+          "community": {
+            "title": "유저 작품"
+          }
+        },
         "items": {
           "articles": {
             "label": "Статьи",
@@ -252,9 +404,17 @@
           "tierlists": {
             "label": "Тир-листы",
             "description": "Тир-листы от игроков"
+          },
+          "blog": {
+            "label": "블로그",
+            "description": "소식"
           }
         }
       }
+    },
+    "userMenu": {
+      "profile": "프로필",
+      "logout": "로그아웃"
     }
   },
   "map": {
@@ -446,6 +606,16 @@
         "shock_therapy": "Фокусировка",
         "sea_alienation": "Море отчуждения"
       }
+    },
+    "summary": {
+      "title": "요약",
+      "kd": "K/D",
+      "pvp": "PvP",
+      "pve": "PvE",
+      "mutants": "돌연변이",
+      "sessionKd": "세션 K/D",
+      "colosseumKd": "콜로세움 K/D",
+      "games": "게임"
     }
   },
   "time": {
@@ -535,6 +705,13 @@
       "details": "пользовательском соглашении",
       "back": "Назад",
       "confirm": "Мне есть 18"
+    },
+    "regular": "일반",
+    "sort": {
+      "newest": "최신",
+      "oldest": "오래된",
+      "views": "조회수순",
+      "stars": "별점순"
     }
   },
   "ui": {
@@ -587,6 +764,13 @@
       "rest": "목표 달성에 부족한 평판:",
       "restEnd": "",
       "unlimited": "한도가 없는 아이템으로 채우세요."
+    },
+    "tabs": {
+      "calc": "계산기",
+      "shop": "상점"
+    },
+    "shop": {
+      "pick": "선택"
     }
   },
   "modals": {
@@ -871,7 +1055,61 @@
     "donations": "\"+50 레벨\" 세트",
     "reachable": "시즌 종료 전에 달성 가능",
     "not_reachable": "불가: {daysNeeded}일 필요, {daysLeft}일 남음",
-    "days": "{count, plural, other {#일}}"
+    "days": "{count, plural, other {#일}}",
+    "target_preset": "{count} Lv.",
+    "deadline": "계산 종료일",
+    "season_weeks": "시즌: {count}주.",
+    "play_title": "플레이 빈도",
+    "pace_7": "가볍게",
+    "pace_15": "꾸준히",
+    "pace_25": "열심히",
+    "pace_tasks": "{count}개 과제",
+    "weekdays": "플레이 요일",
+    "weekday_mon": "월",
+    "weekday_tue": "화",
+    "weekday_wed": "수",
+    "weekday_thu": "목",
+    "weekday_fri": "금",
+    "weekday_sat": "토",
+    "weekday_sun": "일",
+    "boost_title": "가속",
+    "boost_sub": "과부하, 레벨, +50%",
+    "overload_off": "없음",
+    "overload_stock": "내 비축",
+    "overload_full": "무제한",
+    "overload_stock_days": "비축 일수",
+    "bonus_on": "보너스 +50% 켜짐",
+    "bonus_off": "보너스 +50% 꺼짐",
+    "bonus_start": "보너스 시작",
+    "bonus_days": "보너스 일수",
+    "forecast": "예측",
+    "goal": "목표: {level} 레벨",
+    "badge_ok": "순항 중",
+    "badge_lack": "부족",
+    "headline_lack": "{count} Lv. 부족",
+    "sub_lack": "{xp} XP 부족 예상.",
+    "headline_ok": "{date}까지 달성",
+    "sub_ok": "{count}일 여유.",
+    "headline_done": "목표 달성",
+    "to_deadline": "{date}까지",
+    "stat_days": "플레이 일수",
+    "stat_pace": "레벨 / 일",
+    "stat_spare": "여유 일수",
+    "tab_progress": "진행",
+    "tab_calendar": "달력",
+    "tab_compare": "비교",
+    "show_daily": "일자별 보기",
+    "hide_daily": "숨기기",
+    "col_date": "날짜",
+    "col_tasks": "과제",
+    "col_xp": "XP",
+    "col_level": "레벨",
+    "mark_overload": "과부하",
+    "compare_plan": "내 계획",
+    "compare_no_overload": "과부하 없음",
+    "compare_no_boost": "보너스 없음",
+    "compare_calm": "가볍게 (7/일)",
+    "compare_ok": "ok"
   },
   "sessions": {
     "title": "세션 전투 계산기",
@@ -1676,6 +1914,10 @@
     "metaDescription": "StalHub 커뮤니티 공개 게시글",
     "byAuthor": "{author}님의 게시글",
     "notFound": "게시글을 찾을 수 없습니다",
+    "toc": {
+      "title": "목차",
+      "collapse": "접기"
+    },
     "comments": {
       "title": "댓글 ({count})",
       "placeholder": "댓글 작성...",
@@ -1802,7 +2044,10 @@
         "desc": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다.\n액세스를 얻으려면 아래 버튼을 누르세요.",
         "activate": "활성화",
         "titleMember": "클랜 <span>[{tag}] {name}</span>이(가) 동결되었습니다",
-        "descMember": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다."
+        "descMember": "현재 클랜이 동결되어 관리 기능을 사용할 수 없습니다.\n리더만 클랜 동결을 해제할 수 있습니다 — 리더에게 «활성화»를 눌러 달라고 요청하세요.",
+        "demoBadge": "데모",
+        "demoTitle": "클랜 분석 화면 미리보기",
+        "demoDesc": "아래는 동일한 분석 UI를 무작위 데이터로 보여주는 미리보기입니다."
       }
     },
     "dashboard": {
@@ -1893,7 +2138,7 @@
       "noBuilds": "빌드 없음",
       "search": "검색",
       "noSquadsHere": "이 맵에는 아직 분대가 없습니다",
-      "createFirstHint": "«분대 생성»을 눌러 첫 분대를 만들어 보세요",
+      "createFirstHint": "«분대 만들기»나 아래 빈 카드를 누르세요",
       "png": {
         "previewTitle": "분대 미리보기",
         "title": "분대 · {map}",
@@ -1917,8 +2162,31 @@
         "moveError": "참가자를 이동하지 못했습니다",
         "pngError": "이미지를 저장하지 못했습니다",
         "pngCopied": "이미지가 복사되었습니다",
-        "copyError": "복사하지 못했습니다"
-      }
+        "copyError": "복사하지 못했습니다",
+        "renameError": "이름 변경 실패"
+      },
+      "autoName": "분대 {n}",
+      "quickCreateTitle": "이 맵에 분대 만들기",
+      "roster": {
+        "title": "멤버",
+        "search": "닉네임 검색",
+        "empty": "멤버 없음",
+        "pickHint": "빈 슬롯을 클릭한 뒤 왼쪽에서 멤버를 선택하세요",
+        "targetSet": "슬롯 {slot} · {squad}",
+        "absent": "오늘 불참",
+        "kdHint": "킬: {kills} · 데스: {deaths} · 게임: {games}"
+      },
+      "squadCount": "분대: {count} / {max}",
+      "squadCountHint": "이 맵의 분대",
+      "newSquad": "새 분대",
+      "squadSlot": "슬롯 {n} / {max}",
+      "freeSlot": "빈 슬롯",
+      "bench": {
+        "title": "대기 멤버",
+        "empty": "벤치가 비어 있음 — 전원 분대 배치됨"
+      },
+      "renameTitle": "분대 이름 변경",
+      "pickTargetTitle": "{name} 장비 — 분대 선택"
     },
     "sessions": {
       "title": "클랜전",
@@ -2212,6 +2480,10 @@
         "BRAWL": "Потасовка",
         "BASE_CAPTURE": "Захват базы"
       }
+    },
+    "memberCard": {
+      "noGear": "장비 데이터 없음",
+      "editGear": "장비 편집"
     }
   },
   "me": {
@@ -2237,7 +2509,8 @@
       "system": "시스템",
       "notifications": "알림",
       "invites": "초대장",
-      "attendance": "출석"
+      "attendance": "출석",
+      "analytics": "Analytics"
     },
     "menu": "메뉴",
     "home": {
@@ -2289,7 +2562,7 @@
       "image": "이미지 (링크)",
       "workPlaceholder": "이미지 링크를 붙여넣으세요",
       "upload": "업로드",
-      "imageInvalidType": "PNG, JPG, WEBP, GIF만 지원됩니다",
+      "imageInvalidType": "PNG, JPG, WEBP, GIF, MP4, WEBM만 지원됩니다",
       "workTooLarge": "최대 파일 크기는 10MB입니다",
       "workUploaded": "이미지가 업로드되었습니다",
       "imageUploadError": "이미지 업로드 중 오류",
@@ -2305,7 +2578,9 @@
       "videoTooLarge": "Видео слишком большое!",
       "uploading": "Загружено: ",
       "warn": "Не вставляйте ссылки на заблокированные ресурсы!\n Используйте лучше загрузку через сайт.",
-      "work": "Работа"
+      "work": "Работа",
+      "maxImages": "작품당 최대 {count}개의 이미지",
+      "cover": "표지"
     },
     "artEdit": {
       "title": "작품 수정",
@@ -2630,7 +2905,14 @@
       "sort_price": "가격",
       "sort_rarity": "희귀도",
       "range_from": "부터",
-      "range_to": "까지"
+      "range_to": "까지",
+      "autoRefresh": "자동 새로고침",
+      "refreshNow": "지금 새로고침",
+      "secondsShort": "초",
+      "nextRefresh": "{sec}초 후",
+      "lastUpdate": "업데이트: {time}",
+      "minutesShort": "분",
+      "intervalHint": "10초 – 5분"
     }
   },
   "users": {
@@ -2732,7 +3014,13 @@
     "schedule": "일정:",
     "brawls": "난투:",
     "brawlsMandatory": "필수",
-    "brawlsOptional": "선택"
+    "brawlsOptional": "선택",
+    "statsTitle": "Clan stats",
+    "statsClans": "Clans",
+    "statsKills": "Kills",
+    "statsEmpty": "No data — no clan opened stats yet",
+    "statsClan": "Clan",
+    "winrateAvg": "Avg winrate"
   },
   "buildsPublic": {
     "title": "빌드",
@@ -2900,7 +3188,18 @@
     "title": "서버 온라인",
     "description": "StalZone 지역 및 서버의 온라인 현황.",
     "online": "온라인",
-    "charts": "온라인 그래프"
+    "charts": "온라인 그래프",
+    "emissions": "방출",
+    "emissionCurrent": "현재",
+    "emissionPrev": "이전",
+    "emissionActive": "방출 중",
+    "emissionInactive": "방출 없음",
+    "emissionStarted": "시작",
+    "emissionEnded": "종료",
+    "peaks": "일일 최대",
+    "peakDate": "날짜",
+    "peakRegion": "지역",
+    "peakOnline": "최대"
   },
   "balance": {
     "title": "Баланс правки",
@@ -3099,5 +3398,255 @@
         "other": "기타"
       }
     }
+  },
+  "personal": {
+    "title": "Personal analytics",
+    "linkHint": "Pick an EXBO character to track. A stats snapshot is saved every 12 hours.",
+    "yourCharacters": "Your characters",
+    "track": "Track",
+    "characterPlaceholder": "Character name",
+    "linkAction": "Link",
+    "linked": "Character linked",
+    "linkError": "Failed to link character",
+    "noSnapshots": "No snapshots yet. Refresh manually or wait for auto collection.",
+    "snapshots": "Snapshots: {n}",
+    "refresh": "Refresh now",
+    "makePublic": "Make public",
+    "makePrivate": "Hide",
+    "unlink": "Unlink",
+    "unlinkConfirm": "Stop tracking this character?",
+    "visibilityOk": "Visibility updated",
+    "copied": "Link copied",
+    "snapshotOk": "Snapshot saved",
+    "snapshotError": "Failed to save snapshot",
+    "stagesTitle": "Stages",
+    "stagesHint": "Sessions: {sessions} · appearances: {appearances} · kills: {kills}",
+    "sessionsTitle": "Personal stage sessions",
+    "sessionPlaceholder": "Map / stage name",
+    "sessionCreate": "Create",
+    "sessionCreated": "Session created",
+    "sessionDeleteConfirm": "Delete session?",
+    "upload": "Screenshot",
+    "screenshotUploaded": "Screenshot uploaded, analysis started",
+    "delete": "Delete",
+    "noSessions": "No sessions yet",
+    "refreshing": "Refreshing…",
+    "privateHint": "Page is hidden. Click “Make public” to share the link.",
+    "dynamics": "Dynamics",
+    "absolute": "Value",
+    "growth": "Growth",
+    "statSearch": "Search metrics…",
+    "all": "All",
+    "nothingFound": "Nothing found",
+    "current": "Now",
+    "forPeriod": "for period",
+    "stageNumber": "Stage №",
+    "win": "Win",
+    "loss": "Loss",
+    "screenshotsCount": "Shots: {n}",
+    "hide": "Hide",
+    "details": "Details",
+    "dropHint": "Drag a screenshot here or click “Screenshot”",
+    "loading": "Loading…",
+    "noScreenshots": "No screenshots yet — upload the first one",
+    "status": "Status",
+    "retry": "Retry",
+    "uploadTitle": "Upload stage",
+    "uploadModeStage": "Stage",
+    "uploadModeQuick": "Quick screenshot",
+    "noDetectedStage": "No stage scheduled right now — type will be set automatically",
+    "quickHint": "Just drop a screenshot: we will create a session, detect the stage from the schedule and run analysis.",
+    "sessionName": "Map name (optional)",
+    "sessionNamePh": "E.g. Small Berdovka",
+    "noSessionsHint": "Click Upload or drop a screenshot — the stage will be detected automatically",
+    "noScreenshotsShort": "No screenshot",
+    "stagesEmpty": "No stage data yet — upload a screenshot via Upload above the session list.",
+    "stagesClan": "Clan",
+    "stagesMap": "Map",
+    "stagesMapsTitle": "Map stats",
+    "winrate": "Winrate",
+    "lowSample": "low sample",
+    "stagesPersonal": "Personal",
+    "tabOverview": "Overview",
+    "tabStages": "Stages",
+    "tabSessions": "Sessions",
+    "tabClans": "By clan",
+    "tabMaps": "By map",
+    "unlinkTitle": "Unlink character?",
+    "unlinkBody": "Stop tracking<span>{name}</span>? Snapshots and personal sessions <danger>will be deleted</danger>.",
+    "cancel": "Cancel",
+    "chartNoData": "기간 내 데이터 없음",
+    "chartUnchanged": "기간 동안 값 변동 없음",
+    "chartGrowth": "증가",
+    "statKd": "K/D",
+    "statAccuracy": "명중률",
+    "statHsRate": "헤드샷 %",
+    "derived": "파생"
+  },
+  "textFormatter": {
+    "title": "텍스트 서식",
+    "subtitle": "색상 텍스트와 그라디언트 (§)",
+    "clan": "클랜",
+    "plainLen": "코드 제외",
+    "gradient": "그라디언트",
+    "gradientText": "텍스트",
+    "applyGradient": "선택에 그라디언트 적용",
+    "copy": "복사",
+    "clear": "지우기",
+    "preview": "미리보기",
+    "hint": "§0-F — 16색, §#hex, §R — 초기화.",
+    "gradientHint": "위 텍스트 일부를 선택하고 색상/프리셋 후 버튼을 누르세요.",
+    "presets": "프리셋",
+    "from": "시작",
+    "mid": "중간",
+    "to": "끝",
+    "addMid": "+ 중간색",
+    "removeMid": "− 중간 제거",
+    "selected": "선택됨",
+    "noSelection": "선택 없음 — 위 텍스트 일부를 선택하세요",
+    "textTitle": "텍스트",
+    "textHint": "색칠할 텍스트를 입력하세요",
+    "chars": "자",
+    "colored": "색상 문자",
+    "previewHint": "게임에서 이렇게 보입니다",
+    "resultSub": "게임에 복사해 붙여넣으세요",
+    "modeSolid": "단색",
+    "solidHint": "선택 영역에 단일 색상.",
+    "solidBaseHint": "클릭하여 색상 선택.",
+    "randomHint": "무작위 그라디언트",
+    "wholeHint": "제한 모드: 전체 텍스트에 그라디언트가 적용됩니다.",
+    "applyWhole": "전체 텍스트에 적용",
+    "smartTitle": "스마트 압축",
+    "smartHint": "선택한 제한에 맞도록 HEX 코드 수를 줄입니다.",
+    "noLimit": "제한 없음",
+    "exactHint": "각 문자에 정확한 색상이 적용됩니다. 긴 결과는 게임에 맞지 않을 수 있습니다.",
+    "fitsExact": "압축 없이 제한에 맞습니다.",
+    "compressedHint": "{runs}개 HEX 코드로 압축 — 제한에 맞습니다.",
+    "notFit": "단색으로도 맞지 않습니다 — 텍스트를 줄이세요.",
+    "emptyText": "먼저 텍스트를 입력하세요.",
+    "overLimit": "제한 초과",
+    "ready": "준비된 그라디언트",
+    "readyHint": "클릭하여 적용",
+    "colorsHint": "최소 2개 색상. 복잡한 전환을 위해 중간 색상을 추가하세요.",
+    "colors": "그라디언트 색상",
+    "addColor": "색상 추가",
+    "baseColors": "기본 색상 (클릭 시 그라디언트에 추가)",
+    "baseColorsHint": "클릭하면 그라디언트 정류장으로 추가됩니다 (최대 6).",
+    "result": "게임용 결과 (코드 포함)",
+    "resultHint": "이 문자열을 게임에 복사하세요. 위 입력란에는 코드 없는 텍스트만 있습니다."
+  },
+  "barterCalc": {
+    "title": "물물교환 계산기",
+    "subtitle": "아이템 선택",
+    "search": "검색",
+    "searchTitle": "아이템 선택",
+    "select": "아이템 선택",
+    "change": "변경",
+    "pick": "아이템 선택",
+    "tree": "트리",
+    "totals": "합계",
+    "totalPrice": "총 가격",
+    "allDone": "완료!",
+    "reset": "초기화",
+    "calc": "계산",
+    "unlimited": "무제한",
+    "stock": "보유량",
+    "currency": "화폐",
+    "coins": "물물교환 코인",
+    "shells": "탄피",
+    "coinsUnit": "코인",
+    "shellsUnit": "탄피",
+    "coupon": "쿠폰",
+    "noCoupon": "쿠폰 없음",
+    "couponRank": {
+      "picklock": "따개",
+      "newbie": "뉴비",
+      "stalker": "스토커",
+      "veteran": "베테랑",
+      "master": "마스터"
+    },
+    "couponMismatch": "쿠폰 등급이 아이템 등급과 맞지 않음",
+    "discount": "할인",
+    "stockAmount": "보유량 (코인/탄피)",
+    "offer": "오퍼 {n}",
+    "best": "최적",
+    "affordable": "충분",
+    "shortage": "{n} 부족",
+    "includeTokens": "전투 토큰 계산",
+    "tokensNeed": "필요 토큰",
+    "tokensUnit": "토큰",
+    "tokenStock": "토큰 보유량",
+    "tokensEnough": "{need} 중 {have} 가능",
+    "shortageSerum": "{n} 부족",
+    "bestPick": "최적 사용",
+    "remainder": "남음: {n}",
+    "noCurrency": "환산 없음",
+    "piecesUnit": "개"
+  },
+  "donateCalc": {
+    "title": "후원 계산기",
+    "subtitle": "스탈코인 입력",
+    "input": "스탈코인",
+    "hint": "코인당 가격순.",
+    "item": "아이템",
+    "coins": "코인",
+    "price": "가격",
+    "perCoin": "₽/코인",
+    "count": "개수",
+    "total": "합계",
+    "missing": "DB 없음"
+  },
+  "blog": {
+    "title": "블로그",
+    "subtitle": "소식 — {count}개 글",
+    "empty": "비어 있음",
+    "createTitle": "글 쓰기",
+    "createDescription": "즉시 게시됨 (STALHUB)",
+    "form": {
+      "title": "제목",
+      "image": "커버 (URL)",
+      "tags": "태그",
+      "content": "본문 (MDX)",
+      "contentPlaceholder": "## 변경 내용...",
+      "create": "게시"
+    },
+    "toast": {
+      "created": "게시됨",
+      "createError": "오류"
+    },
+    "editor": {
+      "titlePlaceholder": "변경 제목",
+      "publish": "게시",
+      "save": "저장",
+      "edit": "편집",
+      "view": "보기",
+      "updated": "변경 저장됨",
+      "updateError": "저장 오류",
+      "galleryHint": "제목, 목록, 표, 이미지 URL은 바로 사용 가능; 갤러리 업로드는 게시 후 가능."
+    },
+    "cover": {
+      "title": "커버 패널",
+      "hint": "자동 «읽기 / 태그» 패널 대신 사용자 지정 행. 나머지는 자동으로 생성됩니다.",
+      "enabled": "사용자 지정 패널",
+      "preset": "프리셋",
+      "presetAuto": "자동",
+      "presetBeforeAfter": "이전 / 이후",
+      "presetMetrics": "측정 항목",
+      "presetHidden": "패널 숨기기",
+      "icon": "아이콘",
+      "iconNone": "아이콘 없음",
+      "iconCustom": "사용자 지정 이름",
+      "iconNotFound": "아이콘을 찾을 수 없음",
+      "iconHint": "이모지 또는 짧은 텍스트 (예: ⚡)",
+      "panelTitle": "패널 제목",
+      "row": "{n}행",
+      "rowLabel": "라벨",
+      "rowValue": "값",
+      "rowFill": "채우기, %",
+      "rowAccent": "Accent",
+      "reset": "초기화",
+      "preview": "미리보기"
+    },
+    "back": "전체 글"
   }
 }

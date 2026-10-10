@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import type { Absence } from '@/types/clan/clan.type'
 import { EVENT_OPTIONS } from './absence.const'
@@ -19,7 +18,7 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 	return (
 		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
 			<p
-				className={`${montserrat.className} flex items-center gap-2 font-semibold text-[15px]`}
+				className={`flex items-center gap-2 font-mono font-semibold text-[15px]`}
 			>
 				<Icon
 					className="text-lg text-muted-foreground"
@@ -28,7 +27,7 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 				{t('clan.absence.listTitle', { date })}
 			</p>
 			{absences?.length === 0 && (
-				<p className="py-4 text-center font-semibold text-md text-text-accent">
+				<p className="py-4 text-center font-semibold text-foreground text-md">
 					{t('clan.absence.empty')}
 				</p>
 			)}
@@ -49,7 +48,7 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 								<div className="flex flex-wrap gap-1">
 									{absence.events.map((e) => (
 										<Badge
-											className={montserrat.className}
+											className="font-mono"
 											key={e.event_type}
 											variant="secondary"
 										>

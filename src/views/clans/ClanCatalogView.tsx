@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { CheckBox } from '@/components/ui/CheckBox'
 import ClanCard from '@/components/ui/clan/ClanCard'
 import Input from '@/components/ui/Input'
@@ -33,7 +33,9 @@ export default function ClanCatalogView() {
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			<h1 className={`${unbounded.className} font-semibold text-2xl`}>
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
 				{t('clans.title')}
 			</h1>
 
@@ -52,7 +54,9 @@ export default function ClanCatalogView() {
 						className="size-4"
 						onCheckedChange={(prev) => setOnlyRecruiting(prev)}
 					/>
-					<p className="font-semibold">{t('clans.recruiting')}</p>
+					<p className="font-medium text-sm">
+						{t('clans.recruiting')}
+					</p>
 				</div>
 			</div>
 
@@ -63,7 +67,7 @@ export default function ClanCatalogView() {
 					))}
 				</div>
 			) : filtered.length === 0 ? (
-				<p className="font-semibold text-sm text-text-accent">
+				<p className="font-medium text-foreground text-sm">
 					{t('clans.empty')}
 				</p>
 			) : (

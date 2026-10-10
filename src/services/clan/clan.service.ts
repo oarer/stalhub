@@ -31,6 +31,7 @@ import type {
 	MismatchesResponse,
 	MyClanProfile,
 	PublicClan,
+	PublicClansStats,
 	RecruitmentSettings,
 	SquadMap,
 	StageSession,
@@ -294,6 +295,14 @@ class ClanService {
 		return data
 	}
 
+	async renameSquad(squadId: number, name: string): Promise<ClanSquad> {
+		const { data } = await apiClient.patch<ClanSquad>(
+			`/api/v1/clan/squads/${squadId}/name`,
+			{ name }
+		)
+		return data
+	}
+
 	async setGearOverride(
 		squadId: number,
 		slot: number,
@@ -379,6 +388,13 @@ class ClanService {
 	async getPublicClan(clanId: string): Promise<PublicClan | null> {
 		const { data } = await apiClient.get<PublicClan | null>(
 			`/api/v1/clans/${clanId}`
+		)
+		return data
+	}
+
+	async getPublicClansStats(): Promise<PublicClansStats> {
+		const { data } = await apiClient.get<PublicClansStats>(
+			'/api/v1/clans/stats/summary'
 		)
 		return data
 	}

@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -56,7 +56,7 @@ export default function BalanceView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${unbounded.className} font-semibold text-2xl sm:text-3xl`}
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 			>
 				{t('balance.title')}
 			</h1>
@@ -78,7 +78,7 @@ export default function BalanceView() {
 						className="text-4xl text-muted-foreground"
 						icon="lucide:check-check"
 					/>
-					<p className="font-semibold text-muted-foreground">
+					<p className="font-medium text-muted-foreground">
 						{t('balance.empty')}
 					</p>
 				</div>
@@ -94,7 +94,7 @@ export default function BalanceView() {
 									className="text-primary text-xl"
 									icon={CATEGORY_ICONS[group.category]}
 								/>
-								<h2 className="font-semibold text-xl">
+								<h2 className="font-medium text-xl">
 									{t(`balance.categories.${group.category}`)}
 								</h2>
 								<Badge className="ml-2" variant="secondary">

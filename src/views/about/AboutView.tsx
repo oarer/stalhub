@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { unbounded } from '@/app/fonts'
+import { mtsExtended } from '@/app/fonts'
 import GradientText from '@/components/ui/GradientText'
 import {
 	contactLinks,
@@ -23,7 +23,7 @@ export default function AboutView() {
 			<motion.div {...view}>
 				<GradientText
 					animationSpeed={2}
-					className={`${unbounded.className} text-4xl sm:text-5xl`}
+					className={`${mtsExtended.className} text-4xl sm:text-5xl`}
 					colors={['var(--primary)', '#afe3ff']}
 					yoyo={false}
 				>
@@ -40,7 +40,7 @@ export default function AboutView() {
 			<motion.div {...view}>
 				<GradientText
 					animationSpeed={2}
-					className={`${unbounded.className} text-xl sm:text-3xl`}
+					className={`${mtsExtended.className} text-xl sm:text-3xl`}
 					colors={['var(--primary)', '#afe3ff']}
 					yoyo={false}
 				>
@@ -59,7 +59,7 @@ export default function AboutView() {
 					contactLinks={contactLinks}
 					supportLinks={supportLinks}
 				/>
-				<p className="mt-2 font-bold text-background text-xs">
+				<p className="mt-2 font-medium text-background text-xs">
 					{t('about.insideJoke')}
 				</p>
 			</motion.div>
