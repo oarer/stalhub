@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { montserrat, mtsWide } from '@/app/fonts'
-import { CLink } from '@/components/ui/Link'
 import { HoverCard } from '@/components/ui/HoverCard'
+import { CLink } from '@/components/ui/Link'
 import Avatar from '@/components/ui/user/Avatar'
 import useClickOutside from '@/hooks/useClickOutside'
 import { formatDate } from '@/lib/date'
@@ -216,7 +216,7 @@ export default function NavMe() {
 				</HoverCard.Trigger>
 				<HoverCard.Content
 					align="end"
-					className="w-64 p-2"
+					className="z-999 w-64 p-2"
 					side="bottom"
 				>
 					<div className="flex flex-col gap-1">
@@ -252,10 +252,7 @@ export default function NavMe() {
 							onClick={() => logoutMutation.mutate()}
 							type="button"
 						>
-							<Icon
-								className="text-lg"
-								icon="lucide:log-out"
-							/>
+							<Icon className="text-lg" icon="lucide:log-out" />
 							{t('nav.userMenu.logout')}
 						</button>
 					</div>
