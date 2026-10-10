@@ -3,7 +3,6 @@
 import type { MotionValue } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { Fragment } from 'react'
-import { montserrat } from '@/app/fonts'
 import { FlowDot } from '../../clan-analytics/components/FlowDot'
 import { PassBox } from '../../clan-analytics/components/PassBox'
 import { DOTS } from '../../clan-analytics/config'
@@ -43,7 +42,7 @@ export function PersonalPipelineStages({
 								icon={stage.icon}
 							/>
 							<span
-								className={`${montserrat.className} font-semibold text-[11px] text-muted-foreground`}
+								className={`font-mono font-semibold text-[11px] text-muted-foreground`}
 							>
 								{t(`stages.${stage.id}`)}
 							</span>

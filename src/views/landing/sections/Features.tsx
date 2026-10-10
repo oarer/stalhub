@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { montserrat } from '@/app/fonts'
 import { featuresHero } from '@/constants/landing.const'
 
 export default function HeroFeatures() {
@@ -26,9 +25,7 @@ export default function HeroFeatures() {
 						delay: 0.3 + index * 0.3,
 					}}
 				>
-					<div
-						className={`${montserrat.className} font-bold text-xl md:text-4xl`}
-					>
+					<div className={`font-bold font-mono text-xl md:text-4xl`}>
 						{stat.value}
 					</div>
 					<div className="font-semibold text-lg text-muted-foreground lowercase">

@@ -218,7 +218,7 @@ export const ThresholdElement: React.FC<{
 				{name}
 			</p>
 			<p
-				className={`${montserrat.className} font-medium text-nowrap`}
+				className={`text-nowrap font-medium font-mono`}
 				style={{ color: valueColor }}
 			>
 				{display}

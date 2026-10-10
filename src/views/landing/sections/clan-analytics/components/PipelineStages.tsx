@@ -3,7 +3,6 @@
 import type { MotionValue } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { Fragment } from 'react'
-import { montserrat } from '@/app/fonts'
 import { CLAN_STAGES, DOTS } from '../config'
 import { nodeFraction } from '../utils'
 import { FlowDot } from './FlowDot'
@@ -39,7 +38,7 @@ export function PipelineStages({
 								icon={stage.icon}
 							/>
 							<span
-								className={`${montserrat.className} font-semibold text-[11px] text-muted-foreground`}
+								className={`font-mono font-semibold text-[11px] text-muted-foreground`}
 							>
 								{t(`stages.${stage.id}`)}
 							</span>

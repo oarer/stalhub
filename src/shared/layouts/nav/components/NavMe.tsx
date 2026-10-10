@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import { montserrat, mtsWide } from '@/app/fonts'
+import { mtsWide } from '@/app/fonts'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { CLink } from '@/components/ui/Link'
 import Avatar from '@/components/ui/user/Avatar'
@@ -158,7 +158,7 @@ export default function NavMe() {
 													{n.content}
 												</p>
 												<span
-													className={`${montserrat.className} font-semibold text-[10px] text-muted-foreground`}
+													className={`font-mono font-semibold text-[10px] text-muted-foreground`}
 												>
 													{formatDate(
 														n.created_at,
