@@ -71,7 +71,6 @@ export interface UsernameBadge {
 	color: string
 }
 
-/** Палитра из одного цвета бейджа через color-mix. */
 function badgePalette(color: string): { colors: string[]; glow: string } {
 	return {
 		colors: [
@@ -83,10 +82,6 @@ function badgePalette(color: string): { colors: string[]; glow: string } {
 	}
 }
 
-/**
- * Фолбэк-эффект от бейджа: берётся первый бейдж с цветом.
- * Вид — нейтральные искры, цвета — оттенки цвета бейджа.
- */
 function resolveBadgeFx(
 	badges?: UsernameBadge[] | null,
 ): { badge: UsernameBadge; fx: RoleFx } | undefined {
@@ -320,7 +315,6 @@ function HoverScatter({
 }: {
 	fx: RoleFx
 	role: string
-	/** Насколько далеко за границы ника разлетается россыпь (px). */
 	radius: number
 }) {
 	return (
@@ -363,22 +357,8 @@ interface UsernameProps extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
 	badges?: UsernameBadge[] | null
 	color?: string | null
 	disableEffects?: boolean
-	/**
-	 * Выключить вообще всё: ни цветов ролей, ни партиклов —
-	 * просто голый текст. Приоритетнее всех остальных настроек.
-	 */
 	plain?: boolean
-	/**
-	 * Радиус ховер-россыпи в px — насколько далеко за границы
-	 * ника разлетаются партиклы. По умолчанию 16.
-	 */
 	scatterRadius?: number
-	/**
-	 * Подтянуть бейджи с бэка (закешированный getUserByUsername),
-	 * если в переданных данных их нет. Роли бэк для чужих юзеров
-	 * не отдаёт, так что дистанционно находятся только бейджи.
-	 * По умолчанию выключено, чтобы не стрелять запросами из списков.
-	 */
 	withRemoteBadges?: boolean
 }
 
@@ -405,8 +385,6 @@ export default function Username({
 	const resolvedColor = color ?? user?.color
 	const role = resolveRole(resolvedRoles)
 
-	// Дистанционный поиск бейджей — только если поле вообще отсутствует
-	// (новый бэк всегда возвращает массив, пусть и пустой).
 	const lookupUsername = username ?? user?.username ?? null
 	const needRemote =
 		withRemoteBadges &&
@@ -424,16 +402,13 @@ export default function Username({
 		retry: false,
 	})
 	const resolvedBadges = localBadges ?? remoteUser?.badges
-	// Роль первая; если её нет — фолбэк на эффект от бейджа.
 	const badgeFx = role ? undefined : resolveBadgeFx(resolvedBadges)
 	const fx = (role ? ROLE_FX[role] : undefined) ?? badgeFx?.fx
-	// Ключ для детерминированных позиций частиц (роль или бейдж).
 	const fxKey = role ?? (badgeFx ? `badge:${badgeFx.badge.id}` : undefined)
 	const reduceMotion = useReducedMotion()
 
 	useEffect(ensureFxStyles, [])
 
-	// plain выключает вообще всё: ни цветов ролей, ни эффектов.
 	if (plain) {
 		return (
 			<span {...props} className={className} style={style}>
@@ -442,7 +417,6 @@ export default function Username({
 		)
 	}
 
-	// Кастомный цвет важнее ролевых эффектов — оставляем просто текст.
 	if (disableEffects || reduceMotion || !fx || !fxKey || resolvedColor) {
 		return (
 			<span
@@ -466,7 +440,6 @@ export default function Username({
 			)}
 			style={style}
 		>
-			{/* сам ник: цвет роли, либо цвет бейджа при фолбэке */}
 			<span
 				className={cn(
 					'stalhub-text relative z-10',
@@ -480,7 +453,6 @@ export default function Username({
 				{display}
 			</span>
 
-			{/* постоянные партиклы в стиле роли/бейджа */}
 			<span
 				aria-hidden
 				className="stalhub-ambient pointer-events-none absolute -inset-x-2 inset-y-0 overflow-visible"
