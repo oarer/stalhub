@@ -2,8 +2,6 @@
 @plugin '@tailwindcss/typography';
 @import './tokens/colors.css';
 
-/* Stable family for SVG blog covers (next/font emits hashed names,
-   unusable inside SVG strings). */
 @font-face {
     font-family: 'CoverExtended';
     src: url('/fonts/mts/MTSExtended-Medium.woff2') format('woff2');
