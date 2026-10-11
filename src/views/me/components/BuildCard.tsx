@@ -221,7 +221,7 @@ export function BuildCard({
 									key={entry.name + i}
 								>
 									<p
-										className="min-w-0 flex-1 truncate font-body text-sm transition-colors"
+										className="min-w-0 flex-1 font-body text-sm transition-colors"
 										style={{ color: entry.color }}
 									>
 										{entry.name}
