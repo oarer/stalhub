@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
@@ -42,6 +43,36 @@ export function UploadScreenshotModal({
 }: UploadScreenshotModalProps) {
 	const t = useTranslations()
 	const stageCount = uploadType === 'BASE_CAPTURE' ? 4 : 3
+
+	useEffect(() => {
+		if (!open || uploading) return
+
+		const handlePaste = (e: ClipboardEvent) => {
+			const items = e.clipboardData?.items
+			if (!items) return
+
+			for (const item of items) {
+				if (!item.type.startsWith('image/')) continue
+
+				const blob = item.getAsFile()
+				if (!blob) continue
+
+				const ext = item.type.split('/')[1] ?? 'png'
+				const file = new File(
+					[blob],
+					`pasted-${Date.now()}.${ext}`,
+					{ type: item.type }
+				)
+
+				e.preventDefault()
+				onFilesChange(file)
+				return
+			}
+		}
+
+		window.addEventListener('paste', handlePaste)
+		return () => window.removeEventListener('paste', handlePaste)
+	}, [open, uploading, onFilesChange])
 
 	return (
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
