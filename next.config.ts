@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
 			? process.env.NEXT_PUBLIC_CDN_URL
 			: undefined,
 	output: 'standalone',
+	serverExternalPackages: ['@resvg/resvg-js'],
 	allowedDevOrigins: ['192.168.1.40', 'localhost'],
 	images: {
 		qualities: [25, 50, 75, 85, 95, 100],

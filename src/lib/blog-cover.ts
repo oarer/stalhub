@@ -232,7 +232,7 @@ export function buildBlogCoverSvg(data: BlogCoverData): string {
 	const titleSvg = lines
 		.map((line, i) =>
 			`
-			<text x="84" y="${Math.round(titleY + i * lineHeight)}" font-family="'CoverExtended', 'Arial Black', Arial, sans-serif" font-size="${titleSize}" font-weight="500" letter-spacing="-2" fill="#ffffff">${escapeXml(line)}</text>`.trim()
+			<text x="84" y="${Math.round(titleY + i * lineHeight)}" font-family="'CoverExtended', 'MTS Extended', 'Arial Black', Arial, sans-serif" font-size="${titleSize}" font-weight="500" letter-spacing="-2" fill="#ffffff">${escapeXml(line)}</text>`.trim()
 		)
 		.join('\n')
 
@@ -241,7 +241,7 @@ export function buildBlogCoverSvg(data: BlogCoverData): string {
 	const subtitleSvg = subtitleLines
 		.map((line, i) =>
 			`
-			<text x="86" y="${Math.round(subtitleY + i * 38)}" font-family="'CoverExtended', Arial, sans-serif" font-size="29" font-weight="500" fill="rgba(255,255,255,0.62)">${escapeXml(line)}</text>`.trim()
+			<text x="86" y="${Math.round(subtitleY + i * 38)}" font-family="'CoverExtended', 'MTS Extended', Arial, sans-serif" font-size="29" font-weight="500" fill="rgba(255,255,255,0.62)">${escapeXml(line)}</text>`.trim()
 		)
 		.join('\n')
 
@@ -376,7 +376,7 @@ export function buildBlogCoverSvg(data: BlogCoverData): string {
 		<g transform="translate(932,538) scale(0.09)" fill="#ffffff" style="fill:#ffffff">
 			${BRAND_MARK}
 		</g>
-		<text x="992" y="570" font-family="'CoverExtended', Arial, sans-serif" font-size="30" font-weight="500" fill="#ffffff">${escapeXml(brand)}</text>
+		<text x="992" y="570" font-family="'CoverExtended', 'MTS Extended', Arial, sans-serif" font-size="30" font-weight="500" fill="#ffffff">${escapeXml(brand)}</text>
 	</g>
 </svg>`.trim()
 }

@@ -20,7 +20,8 @@ export async function generateMetadata({
 	const { id } = await params
 	const t = await getTranslations()
 
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+	const baseUrl =
+		process.env.NEXT_PUBLIC_BASE_URL || 'https://stalhub.dev'
 	const ogImageUrl = `${baseUrl}/api/og/${id}`
 
 	try {
@@ -39,7 +40,7 @@ export async function generateMetadata({
 						url: ogImageUrl,
 						width: 1200,
 						height: 630,
-						type: 'image/svg+xml' as const,
+						type: 'image/png' as const,
 					},
 				]
 
