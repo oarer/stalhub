@@ -2221,6 +2221,7 @@
       "screenshotLabel": "Captura",
       "fileSelected": "Seleccionado: {name}",
       "selectFile": "Elegir archivo",
+      "fullscreenHint": "Sube una captura de pantalla completa, no solo la tabla de resultados",
       "screenshotId": "Captura #{id}",
       "toasts": {
         "retrySuccess": "Análisis reiniciado",

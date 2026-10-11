@@ -2221,6 +2221,7 @@
       "screenshotLabel": "Capture d'écran",
       "fileSelected": "Sélectionné : {name}",
       "selectFile": "Choisir un fichier",
+      "fullscreenHint": "Faites une capture plein écran, pas seulement le tableau des résultats",
       "screenshotId": "Capture d'écran #{id}",
       "toasts": {
         "retrySuccess": "Analyse relancée",

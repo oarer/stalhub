@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
+import { Alert } from '@/components/ui/Alert'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Tabs } from '@/components/ui/Tabs'
@@ -64,6 +65,13 @@ export function PersonalUploadModal({
 					<Modal.Title>{t('personal.uploadTitle')}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
+					<div className="mb-4">
+						<Alert.Root variant="warning">
+							<Alert.Description>
+								{t('clan.sessions.fullscreenHint')}
+							</Alert.Description>
+						</Alert.Root>
+					</div>
 					<Tabs.Root
 						onValueChange={(v) =>
 							onModeChange(v as PersonalUploadMode)
@@ -206,7 +214,6 @@ export function PersonalUploadModal({
 									onChange={(e) =>
 										onMapNameChange(e.target.value)
 									}
-									placeholder={t('personal.sessionNamePh')}
 									value={mapName}
 								/>
 								<FileDrop

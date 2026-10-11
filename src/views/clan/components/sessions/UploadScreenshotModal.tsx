@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import { Button } from '@/components/ui/Button'
+import { Alert } from '@/components/ui/Alert'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import type { DetectedStage } from '@/constants/stageSchedule'
@@ -86,6 +87,11 @@ export function UploadScreenshotModal({
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex flex-col gap-4">
+						<Alert.Root variant="warning">
+							<Alert.Description>
+								{t('clan.sessions.fullscreenHint')}
+							</Alert.Description>
+						</Alert.Root>
 						{detected && (
 							<div className="flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-sm">
 								<Icon

@@ -2219,6 +2219,7 @@
       "screenshotLabel": "Скриншот",
       "fileSelected": "Выбрано: {name}",
       "selectFile": "Выбрать файл",
+      "fullscreenHint": "Делайте полный скрин экрана, а не только таблицу результатов",
       "screenshotId": "Скриншот #{id}",
       "toasts": {
         "retrySuccess": "Анализ перезапущен",

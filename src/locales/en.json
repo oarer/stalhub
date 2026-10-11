@@ -2221,6 +2221,7 @@
       "screenshotLabel": "Screenshot",
       "fileSelected": "Selected: {name}",
       "selectFile": "Select file",
+      "fullscreenHint": "Upload a full-screen screenshot, not just the results table",
       "screenshotId": "Screenshot #{id}",
       "toasts": {
         "retrySuccess": "Analysis restarted",

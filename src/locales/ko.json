@@ -2221,6 +2221,7 @@
       "screenshotLabel": "스크린샷",
       "fileSelected": "선택됨: {name}",
       "selectFile": "파일 선택",
+      "fullscreenHint": "결과 표만이 아닌 전체 화면 스크린샷을 올려주세요",
       "screenshotId": "스크린샷 #{id}",
       "toasts": {
         "retrySuccess": "분석이 다시 시작되었습니다",
