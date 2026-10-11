@@ -104,14 +104,14 @@ export function BuildCard({
 
 	return (
 		<div
-			className={`group relative flex cursor-pointer flex-col gap-2 rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
+			className={`group relative flex min-w-0 cursor-pointer flex-col gap-2 overflow-hidden rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
 				isOwner && 'border-2 border-primary/40'
 			}`}
 			onClick={() => router.push(`/calcs/builds/lite?build=${build.id}`)}
 		>
-			<div className="flex items-center justify-between gap-2">
+			<div className="flex min-w-0 items-center justify-between gap-2">
 				<Link
-					className="w-fit truncate rounded-lg px-2 py-1 font-medium text-md text-primary transition-colors hover:bg-accent/20"
+					className="min-w-0 flex-1 truncate rounded-lg px-2 py-1 font-medium text-md text-primary transition-colors hover:bg-accent/20"
 					href={`/calcs/builds/lite?build=${build.id}`}
 				>
 					{build.title}
@@ -158,8 +158,8 @@ export function BuildCard({
 			</div>
 
 			{hasPreview && (
-				<div className="grid grid-cols-[1fr_auto_1fr] gap-4">
-					<div className="flex flex-col items-center gap-4">
+				<div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-4">
+					<div className="flex w-full min-w-0 flex-col items-center gap-4 overflow-hidden">
 						<div className="flex items-center gap-2">
 							{armorItem ? (
 								<Image
@@ -180,11 +180,15 @@ export function BuildCard({
 							)}
 						</div>
 
-						<div className="flex items-center">
+						<div className="flex w-full min-w-0 items-center justify-center">
 							{armorItem ? (
 								<span
-									className="max-w-42 truncate font-body"
+									className="max-w-full truncate text-center font-body"
 									style={{ color: armorColor }}
+									title={messageToString(
+										armorItem.name,
+										locale
+									)}
 								>
 									{messageToString(armorItem.name, locale)}
 								</span>
@@ -196,12 +200,16 @@ export function BuildCard({
 						</div>
 					</div>
 					<Divider orientation={'vertical'} />
-					<div className="flex flex-col gap-1">
-						<div className="flex items-center truncate">
+					<div className="flex min-w-0 flex-col gap-1 overflow-hidden">
+						<div className="flex min-w-0 items-center">
 							{containerItem ? (
 								<span
-									className="truncate text-sm"
+									className="min-w-0 flex-1 truncate text-sm"
 									style={{ color: containerColor }}
+									title={messageToString(
+										containerItem.name,
+										locale
+									)}
 								>
 									{messageToString(
 										containerItem.name,
@@ -217,25 +225,26 @@ export function BuildCard({
 						{artifactEntries.length > 0 ? (
 							artifactEntries.map((entry, i) => (
 								<div
-									className="flex items-center gap-1"
+									className="flex min-w-0 items-center gap-1"
 									key={entry.name + i}
 								>
 									<p
-										className="min-w-0 flex-1 font-body text-sm transition-colors"
+										className="min-w-0 flex-1 truncate font-body text-sm transition-colors"
 										style={{ color: entry.color }}
+										title={entry.name}
 									>
 										{entry.name}
 									</p>
 									{entry.potential !== 0 && (
 										<span
-											className={`shrink-0 font-medium font-mono text-sm transition-colors`}
+											className={`shrink-0 whitespace-nowrap font-medium font-mono text-sm transition-colors`}
 											style={{ color: entry.color }}
 										>
 											+{entry.potential}
 										</span>
 									)}
 									<span
-										className={`shrink-0 font-medium font-mono text-sm transition-colors`}
+										className={`shrink-0 whitespace-nowrap font-medium font-mono text-sm transition-colors`}
 										style={{ color: entry.color }}
 									>
 										{entry.percent}%
@@ -243,7 +252,7 @@ export function BuildCard({
 								</div>
 							))
 						) : (
-							<span className="text-muted-foreground">
+							<span className="text-center text-muted-foreground">
 								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
