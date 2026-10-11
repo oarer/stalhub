@@ -23,7 +23,7 @@ export default function Hero() {
 			id="hero"
 		>
 			<div className="mx-auto grid w-full items-center gap-10 lg:grid-cols-[1.15fr_0.95fr] lg:gap-12">
-				<div className="flex min-w-0 flex-col items-center gap-4 text-center lg:items-start lg:text-left">
+				<div className="relative flex min-w-0 flex-col items-center gap-4 text-center lg:items-start lg:text-left">
 					<div className="flex flex-col gap-2">
 						<motion.h1
 							animate={{ y: 0, opacity: 1 }}
@@ -51,6 +51,11 @@ export default function Hero() {
 							{t('landing.sub_title')}
 						</motion.h2>
 					</div>
+					<p
+						className={`absolute -top-5 right-1/3 rotate-15 font-mono font-semibold text-muted-foreground text-sm`}
+					>
+						try aslo stalzone-eco
+					</p>
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
 						className={`${mtsExtended.className} w-full max-w-xl font-medium text-sm leading-relaxed dark:text-white/80`}
