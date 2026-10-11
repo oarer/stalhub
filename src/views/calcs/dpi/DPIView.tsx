@@ -16,7 +16,7 @@ export function DPIView({ variant = 'page' }: DPIViewProps) {
 
 	const [sens, setSens] = useState(1)
 	const [fromGame, setFromGame] = useState('cs-2')
-	const [toGame, setToGame] = useState('stalcraft')
+	const [toGame, setToGame] = useState('stalzone')
 
 	const result = useMemo(() => {
 		const from = games.find((g) => g.slug === fromGame)

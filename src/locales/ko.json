@@ -1407,7 +1407,7 @@
       "providers": {
         "discord": "디스코드",
         "telegram": "텔레그램",
-        "exbo": "엑스보 (STALCRAFT)"
+        "exbo": "엑스보 (Stalzone)"
       },
       "customization": {
         "title": "프로필 사용자 지정",

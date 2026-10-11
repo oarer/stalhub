@@ -8,6 +8,7 @@ import { Tooltip } from '@/components/ui/Tooltip'
 import type { BuildStats } from '../hooks/buildStatsUtils'
 import { BUILD_STAT_COLORS } from '../hooks/itemStatsUtils'
 import { ReactionSelector } from './ReactionSelector'
+import { StatDelta } from './StatDelta'
 import { StatRow } from './StatRow'
 import { groupStatsByCategory, type StatCategoryGroup } from './statsCategories'
 
@@ -98,8 +99,9 @@ function AccumulationWarnings({
 
 		// Лимиты Threshold выражены в сырых единицах
 		// (limit = 10 / (1 - innerProtection)), поэтому триггеримся
-		// по сырой сумме артефактов, а показываем срезанное значение
-		// против базового порога (10, для холода 20).
+		// по сырой сумме артефактов и собственного вклада контейнера,
+		// а показываем срезанное значение против базового порога
+		// (10, для холода 20).
 		const raw = rawStats?.[key] ?? val
 		if (raw > limit) {
 			warnings.push({
@@ -134,6 +136,7 @@ interface StatsTabContentProps {
 	stopping?: number
 	reactionProps?: ComponentProps<typeof ReactionSelector>
 	deltaMap?: Record<string, number>
+	derivedDeltas?: Record<string, number>
 	thresholdLimits?: Record<string, number>
 }
 
@@ -148,6 +151,7 @@ export const StatsTabContent = memo(function StatsTabContent({
 	stopping,
 	reactionProps,
 	deltaMap,
+	derivedDeltas,
 	thresholdLimits,
 }: StatsTabContentProps) {
 	const t = useTranslations()
@@ -171,8 +175,11 @@ export const StatsTabContent = memo(function StatsTabContent({
 					<span className="font-medium text-[13px]">
 						{t('build.stats.regen')}
 					</span>
-					<span className="font-mono font-semibold text-primary">
-						{hps}%
+					<span className="flex items-center gap-1.5">
+						<StatDelta delta={derivedDeltas?.hps} isPercent />
+						<span className="font-mono font-semibold text-primary">
+							{hps}%
+						</span>
 					</span>
 				</div>
 				{stopping !== null && (
@@ -180,8 +187,14 @@ export const StatsTabContent = memo(function StatsTabContent({
 						<span className="font-medium text-[13px]">
 							{t('build.stats.stopping')}
 						</span>
-						<span className="font-mono font-semibold text-primary">
-							{stopping}%
+						<span className="flex items-center gap-1.5">
+							<StatDelta
+								delta={derivedDeltas?.stopping}
+								isPercent
+							/>
+							<span className="font-mono font-semibold text-primary">
+								{stopping}%
+							</span>
 						</span>
 					</p>
 				)}
@@ -218,6 +231,7 @@ interface AllStatsTabContentProps {
 	isPercentMap?: Record<string, boolean>
 	reactionProps?: ComponentProps<typeof ReactionSelector>
 	deltaMap?: Record<string, number>
+	derivedDeltas?: Record<string, number>
 	thresholdLimits?: Record<string, number>
 }
 
@@ -233,6 +247,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 	isPercentMap,
 	reactionProps,
 	deltaMap,
+	derivedDeltas,
 	thresholdLimits,
 }: AllStatsTabContentProps) {
 	const t = useTranslations()
@@ -260,8 +275,11 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 						<span className="font-medium text-[13px]">
 							{t('build.stats.prime')}
 						</span>
-						<span className="font-mono font-semibold text-primary">
-							{prime}
+						<span className="flex items-center gap-1.5">
+							<StatDelta delta={derivedDeltas?.prime} />
+							<span className="font-mono font-semibold text-primary">
+								{prime}
+							</span>
 						</span>
 					</p>
 				)}
@@ -272,8 +290,14 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 								<span className="font-medium text-[13px]">
 									{t('build.stats.regen')}
 								</span>
-								<span className="font-mono font-semibold text-primary">
-									{hps}%
+								<span className="flex items-center gap-1.5">
+									<StatDelta
+										delta={derivedDeltas?.hps}
+										isPercent
+									/>
+									<span className="font-mono font-semibold text-primary">
+										{hps}%
+									</span>
 								</span>
 							</div>
 						</Tooltip.Trigger>
@@ -290,8 +314,14 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 						<span className="font-medium text-[13px]">
 							{t('build.stats.stopping')}
 						</span>
-						<span className="font-mono font-semibold text-primary">
-							{stopping}%
+						<span className="flex items-center gap-1.5">
+							<StatDelta
+								delta={derivedDeltas?.stopping}
+								isPercent
+							/>
+							<span className="font-mono font-semibold text-primary">
+								{stopping}%
+							</span>
 						</span>
 					</p>
 				)}
@@ -300,8 +330,11 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 						<span className="font-medium text-[13px]">
 							{t('build.stats.speed')}
 						</span>
-						<span className="font-mono font-semibold text-primary">
-							{speed}%
+						<span className="flex items-center gap-1.5">
+							<StatDelta delta={derivedDeltas?.speed} isPercent />
+							<span className="font-mono font-semibold text-primary">
+								{speed}%
+							</span>
 						</span>
 					</p>
 				)}

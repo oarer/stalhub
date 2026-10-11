@@ -3,6 +3,7 @@
 import { memo } from 'react'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { roundNumber } from '../hooks/useBuildStats'
+import { StatDelta } from './StatDelta'
 
 interface StatRowProps {
 	keyName: string
@@ -44,18 +45,7 @@ export const StatRow = memo(function StatRow({
 		<p className="flex justify-between">
 			<span className="font-medium text-[13px]">{name}</span>
 			<span className="flex items-center gap-1.5">
-				{shownDelta !== undefined && (
-					<span
-						className="font-medium text-xs"
-						style={{
-							color: shownDelta >= 0 ? '#53C353' : '#C15252',
-						}}
-					>
-						{shownDelta >= 0 ? '+' : ''}
-						{roundNumber(shownDelta)}
-						{isPercent ? '%' : ''}
-					</span>
-				)}
+				<StatDelta delta={shownDelta} isPercent={isPercent} />
 				<span
 					className={`font-mono font-semibold`}
 					style={{ color: valueColor }}

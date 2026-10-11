@@ -82,7 +82,7 @@ function randomHex(): string {
 
 export default function TextFormatterView() {
 	const t = useTranslations()
-	const [raw, setRaw] = useState('Сталкрафт — это круто!')
+	const [raw, setRaw] = useState('Сталзон — это круто!')
 	const [colors, setColors] = useState<string[]>([
 		'#00FF88',
 		'#00AAFF',

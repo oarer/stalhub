@@ -7,6 +7,7 @@ import { mtsExtended } from '@/app/fonts'
 import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import DropdownMenu from '@/components/ui/DropDown'
 import Input from '@/components/ui/Input'
+import { useBuildStore } from '@/stores/useBuild.store'
 import type { ParsedItem, StatBreakdown } from '@/types/artifact.type'
 import { percentButtons, potentialButtons } from '@/types/build.type'
 import type { ArtQuality, Locale, Message } from '@/types/item.type'
@@ -70,6 +71,10 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 	container,
 }: ArtifactStatsPanelProps) {
 	const t = useTranslations()
+	const sicknessDisplay = useBuildStore(
+		(s) => s.defaults.sicknessDisplay ?? 'new'
+	)
+	const legacyAccumulation = sicknessDisplay === 'old'
 
 	if (!art || !stats || Object.keys(stats).length === 0) {
 		return (
@@ -130,6 +135,13 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 						)
 						.map((s) => {
 							const label = parsed?.displayNames?.[s.key] ?? s.key
+							const isAccumulation = s.key
+								.toLowerCase()
+								.includes('accumulation')
+							const shownValue =
+								s.final /
+								(isAccumulation && legacyAccumulation ? 20 : 1)
+							const rounded = roundNumber(shownValue)
 							return (
 								<div
 									className="flex justify-between"
@@ -146,7 +158,8 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 												: undefined
 										}
 									>
-										{roundNumber(s.final)}
+										{rounded > 0 ? '+' : ''}
+										{rounded}
 										{s.isPercent ? '%' : ''}
 									</p>
 								</div>

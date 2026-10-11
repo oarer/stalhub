@@ -15,7 +15,7 @@ export const games: Game[] = [
 	},
 	{ name: 'Aim Gods', slug: 'aim-gods', yawdeg: 0.0023331, yawrad: null },
 	{ name: 'Aim Lab', slug: 'aim-lab', yawdeg: 0.05, yawrad: null },
-	{ name: 'STALCRAFT', slug: 'stalcraft', yawdeg: 0.0066, yawrad: null },
+	{ name: 'STALZONE', slug: 'stalzone', yawdeg: 0.0066, yawrad: null },
 	{ name: 'Aimtastic', slug: 'aimtastic', yawdeg: 0.022, yawrad: null },
 	{ name: 'Apex Legends', slug: 'apex-legends', yawdeg: 0.022, yawrad: null },
 	{ name: 'Arma 3', slug: 'arma-3', yawdeg: null, yawrad: null },

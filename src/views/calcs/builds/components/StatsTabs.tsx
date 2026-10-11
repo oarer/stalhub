@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Tabs } from '@/components/ui/Tabs'
 import { useBuildStats } from '@/views/calcs/builds/model/components/hooks/useBuildStats'
 import {
@@ -24,13 +24,19 @@ export default memo(function StatsTabs() {
 		hasContainer,
 		stats,
 		containerStats,
-		rawArtifactStats,
+		rawAccumulationStats,
 		availableReactions,
 		selectedReaction,
 		thresholdLimits,
 	} = useBuildStats()
 
 	const deltaMap = useStatDeltas(stats)
+
+	const derivedStats = useMemo(
+		() => ({ prime, hps, stopping, speed }),
+		[prime, hps, stopping, speed]
+	)
+	const derivedDeltaMap = useStatDeltas(derivedStats)
 
 	const t = useTranslations()
 
@@ -55,11 +61,12 @@ export default memo(function StatsTabs() {
 			<Tabs.Content value="statsAll">
 				<AllStatsTabContent
 					deltaMap={deltaMap}
+					derivedDeltas={derivedDeltaMap}
 					displayNamesMap={displayNamesMap}
 					hps={hps}
 					isPercentMap={isPercentMap}
 					prime={prime}
-					rawStats={rawArtifactStats}
+					rawStats={rawAccumulationStats}
 					reactionProps={reactionProps}
 					sortedStats={sortedStats}
 					speed={speed}
@@ -71,11 +78,12 @@ export default memo(function StatsTabs() {
 			<Tabs.Content value="statsCont">
 				<StatsTabContent
 					deltaMap={deltaMap}
+					derivedDeltas={derivedDeltaMap}
 					displayNamesMap={displayNamesMap}
 					hasContainer={hasContainer}
 					hps={hps}
 					isPercentMap={isPercentMap}
-					rawStats={rawArtifactStats}
+					rawStats={rawAccumulationStats}
 					reactionProps={reactionProps}
 					stats={sortedContainerStats}
 					statsMap={containerStats}

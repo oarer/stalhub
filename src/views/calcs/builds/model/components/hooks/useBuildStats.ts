@@ -59,8 +59,8 @@ export function useBuildStats(buildOverride?: Build) {
 	}, [allItems, allStatKeys, locale])
 
 	// сырые суммы статов артефактов (до модификаторов контейнера).
-	// Нужны для варнингов накоплений: лимиты Threshold выражены
-	// в сырых единицах (limit = 10 / (1 - innerProtection)).
+	// Нужны для расчёта итоговых статов: к ним применяются модификаторы
+	// контейнера.
 	const rawArtifactStats = useMemo<BuildStats>(() => {
 		const artResult: BuildStats = {}
 		for (const art of build.arts) {
@@ -73,6 +73,27 @@ export function useBuildStats(buildOverride?: Build) {
 		}
 		return artResult
 	}, [build.arts, artefacts, locale])
+
+	// сырые суммы накоплений для варнингов: статы артефактов плюс
+	// собственный вклад контейнера (бывает отрицательным, например вывод
+	// холода). Лимиты Threshold выражены в сырых единицах
+	// (limit = 10 / (1 - innerProtection)), поэтому собственный вклад
+	// контейнера должен смещать сумму до сравнения с лимитом. Отдельно от
+	// rawArtifactStats, чтобы не задваивать вклад контейнера в stats.
+	const rawAccumulationStats = useMemo<BuildStats>(() => {
+		const result: BuildStats = { ...rawArtifactStats }
+
+		if (containerItem) {
+			const containerStats = getStatsFromItem(containerItem, allStatKeys)
+			for (const [key, val] of Object.entries(containerStats)) {
+				if (key.includes('accumulation') && val !== 0) {
+					result[key] = (result[key] ?? 0) + val
+				}
+			}
+		}
+
+		return result
+	}, [rawArtifactStats, containerItem, allStatKeys])
 
 	const stats = useMemo<BuildStats>(() => {
 		// статы армора и контейнера - без модификаторов
@@ -243,6 +264,7 @@ export function useBuildStats(buildOverride?: Build) {
 		stats,
 		containerStats,
 		rawArtifactStats,
+		rawAccumulationStats,
 		displayNamesMap,
 		isPercentMap,
 		sortedStats,

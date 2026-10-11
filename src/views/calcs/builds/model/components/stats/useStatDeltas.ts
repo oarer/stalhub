@@ -1,30 +1,47 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const DELTA_VISIBLE_MS = 4000
+const MIN_DELTA = 0.004
+const EMPTY: Record<string, number> = {}
 
 export function useStatDeltas(
 	current: Record<string, number>
 ): Record<string, number> {
 	const prevRef = useRef<Record<string, number> | null>(null)
+	const [deltas, setDeltas] = useState<Record<string, number>>(EMPTY)
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-	const deltas = useMemo(() => {
+	useEffect(() => {
 		const prev = prevRef.current
-		const result: Record<string, number> = {}
-		if (!prev) return result
+		prevRef.current = current
+		if (!prev) return
 
+		const result: Record<string, number> = {}
 		const allKeys = new Set([...Object.keys(prev), ...Object.keys(current)])
 		for (const key of allKeys) {
-			const prevVal = prev[key] ?? 0
-			const curVal = current[key] ?? 0
-			const diff = roundDelta(curVal - prevVal)
-			if (Math.abs(diff) > 0.004) {
+			const diff = roundDelta((current[key] ?? 0) - (prev[key] ?? 0))
+			if (Math.abs(diff) > MIN_DELTA) {
 				result[key] = diff
 			}
 		}
-		return result
+
+		if (Object.keys(result).length === 0) return
+
+		setDeltas(result)
+		if (timeoutRef.current) clearTimeout(timeoutRef.current)
+		timeoutRef.current = setTimeout(() => {
+			setDeltas(EMPTY)
+			timeoutRef.current = null
+		}, DELTA_VISIBLE_MS)
 	}, [current])
 
-	prevRef.current = current
+	useEffect(() => {
+		return () => {
+			if (timeoutRef.current) clearTimeout(timeoutRef.current)
+		}
+	}, [])
 
 	return deltas
 }
