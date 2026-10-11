@@ -494,23 +494,35 @@ export const DropDownMobile = (
 	t: ReturnType<typeof useTranslations>,
 	onNavigate?: () => void
 ): AccordionItem[] =>
-	NAV_STRUCTURE.map((group) => ({
-		key: group.key,
-		title: t(group.titleKey),
-		icon: group.icon,
-		content: (
-			<>
-				{getGroupItems(group).map((item) => (
-					<CLink
-						className="flex items-center justify-start gap-3 px-2 py-1"
-						href={item.href ?? '#'}
-						key={item.key}
-						onClick={onNavigate}
-					>
-						<Icon className="text-xl" icon={item.icon} />
-						<p>{t(item.labelKey)}</p>
-					</CLink>
-				))}
-			</>
-		),
-	}))
+	NAV_STRUCTURE.flatMap((group) => {
+		const categories: NavCategory[] = group.categories?.length
+			? group.categories
+			: [
+					{
+						key: group.key,
+						titleKey: group.titleKey,
+						items: group.items ?? [],
+					},
+				]
+
+		return categories.map((category) => ({
+			key: `${group.key}-${category.key}`,
+			title: getCategoryTitle(t, category),
+
+			content: (
+				<>
+					{category.items.map((item) => (
+						<CLink
+							className="flex items-center justify-start gap-3 px-2 py-1"
+							href={item.href ?? '#'}
+							key={item.key}
+							onClick={onNavigate}
+						>
+							<Icon className="text-xl" icon={item.icon} />
+							<p>{t(item.labelKey)}</p>
+						</CLink>
+					))}
+				</>
+			),
+		}))
+	})

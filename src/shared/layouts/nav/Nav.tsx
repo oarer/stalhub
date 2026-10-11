@@ -81,7 +81,7 @@ export default function Nav() {
 								width={26}
 							/>
 							<p
-								className={`${mtsWide.className} font-medium text-xl`}
+								className={`${mtsWide.className} hidden font-medium text-xl lg:block`}
 							>
 								Stalhub
 							</p>
