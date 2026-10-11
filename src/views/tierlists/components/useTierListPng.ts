@@ -4,6 +4,7 @@ import { toBlob } from 'html-to-image'
 import { useTranslations } from 'next-intl'
 import { useCallback, useRef, useState } from 'react'
 import { toast } from '@/components/ui/Toast'
+import { getFontEmbedCss } from '@/lib/font-embed'
 
 const IMAGE_PLACEHOLDER =
 	'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E'
@@ -64,9 +65,11 @@ export function useTierListPng() {
 			)
 
 			await new Promise((resolve) => requestAnimationFrame(resolve))
+			const fontEmbedCSS = await getFontEmbedCss(node)
 			const pngBlob = await toBlob(node, {
 				backgroundColor: '#111318',
 				cacheBust: false,
+				fontEmbedCSS,
 				height,
 				imagePlaceholder: IMAGE_PLACEHOLDER,
 				onImageErrorHandler: () => undefined,

@@ -4,6 +4,7 @@ import { toPng } from 'html-to-image'
 import { useTranslations } from 'next-intl'
 import { useCallback, useRef, useState } from 'react'
 import { toast } from '@/components/ui/Toast'
+import { getFontEmbedCss } from '@/lib/font-embed'
 import type { ClanSquad, SquadMap } from '@/types/clan/clan.type'
 
 export function useClanSquadPng(
@@ -27,10 +28,12 @@ export function useClanSquadPng(
 
 			const node = pngTemplateRef.current
 			const { width, height } = node.getBoundingClientRect()
+			const fontEmbedCSS = await getFontEmbedCss(node)
 
 			const dataUrl = await toPng(node, {
 				backgroundColor: '#111318',
 				cacheBust: false,
+				fontEmbedCSS,
 				height,
 				pixelRatio: 2,
 				width,

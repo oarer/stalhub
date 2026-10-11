@@ -12,6 +12,7 @@ import { Divider } from '@/components/ui/Divider'
 import { LightBox } from '@/components/ui/LightBox'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
@@ -308,11 +309,13 @@ export default function BuildsLiteView({
 
 			const node = pngTemplateRef.current
 			const { width, height } = node.getBoundingClientRect()
+			const fontEmbedCSS = await getFontEmbedCss(node)
 
 			const dataUrl = await withTimeout(
 				toPng(node, {
 					backgroundColor: '#111318',
 					cacheBust: false,
+					fontEmbedCSS,
 					height,
 					imagePlaceholder,
 					onImageErrorHandler: () => undefined,

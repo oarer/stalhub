@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/Card'
 import { LightBox } from '@/components/ui/LightBox'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
 import { useBuyStore } from '@/stores/useBuy.store'
 import type { ItemListing } from '@/types/api.type'
@@ -159,11 +160,13 @@ export default function BuyView() {
 
 			const node = pngTemplateRef.current
 			const { width, height } = node.getBoundingClientRect()
+			const fontEmbedCSS = await getFontEmbedCss(node)
 
 			const dataUrl = await withTimeout(
 				toPng(node, {
 					backgroundColor: '#111318',
 					cacheBust: false,
+					fontEmbedCSS,
 					height,
 					imagePlaceholder,
 					onImageErrorHandler: () => undefined,
