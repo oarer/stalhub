@@ -14,24 +14,24 @@ export default function CompactLayout({
 	const customization = user.customization
 
 	return (
-		<div className="flex min-h-dvh">
-			<aside className="sticky top-0 hidden h-dvh w-84 shrink-0 overflow-y-auto border-primary/2 border-r-2 bg-background/80 px-4 pt-38 pb-6 lg:block">
+		<div className="flex min-h-dvh items-start">
+			<aside className="sticky top-0 hidden max-h-dvh w-84 shrink-0 overflow-hidden border-primary/2 border-r-2 bg-background/80 px-4 pt-42 pb-6 lg:block">
 				<MeSidebar
 					onCardChange={onCardChange}
 					pathname={pathname}
-					showBanner
+					showBanner={false}
 					unreadCount={unreadCount}
 					user={user}
 				/>
 			</aside>
 			<div className="min-w-0 flex-1 pt-12">
-				<div className="px-2 pt-28 pb-12 md:px-4">
+				<div className="px-2 pt-24 md:px-4">
 					<MeBanner
 						bannerColor={customization.banner_color}
 						bannerImage={customization.banner_image}
 						bannerMode={customization.banner_mode}
 						bannerType={customization.banner_type}
-						className="mt-8 mb-8 lg:hidden"
+						className="mb-6 lg:mb-4"
 					/>
 					<div className="py-6 lg:py-0">{children}</div>
 				</div>

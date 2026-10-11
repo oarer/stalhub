@@ -17,7 +17,7 @@ export default function NavTabs({
 }: NavTabsProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex h-[55vh] flex-col overflow-y-scroll rounded-lg bg-card px-4 py-3">
+		<div className="flex flex-col rounded-lg bg-card px-4 py-3">
 			{filterTabsByRoles(tabGroups, roles).map((group, gi) => (
 				<div key={gi}>
 					{gi > 0 && <Divider className="my-2" />}
