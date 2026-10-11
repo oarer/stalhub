@@ -2470,6 +2470,16 @@
     "attendance": {
       "title": "Asistencia",
       "member": "Miembro",
+      "weekdaysFilter": "Días de la semana",
+      "weekday": {
+        "0": "Dom",
+        "1": "Lun",
+        "2": "Mar",
+        "3": "Mié",
+        "4": "Jue",
+        "5": "Vie",
+        "6": "Sáb"
+      },
       "empty": "Aún no hay eventos analizados este mes",
       "status": {
         "PRESENT": "Presente",

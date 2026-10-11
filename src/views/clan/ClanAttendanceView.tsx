@@ -3,9 +3,10 @@
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import { Combobox } from '@/components/ui/Combobox'
 import { Table } from '@/components/ui/Table'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -24,6 +25,18 @@ const STATUS_COLOR: Record<AttendanceStatus, string> = {
 	ABSENT: 'text-destructive',
 	EXCUSED: 'text-amber-500',
 	LATE: 'text-sky-500',
+}
+
+const WEEKDAY_ORDER = ['1', '2', '3', '4', '5', '6', '0'] as const
+
+const WEEKDAY_OPTIONS = WEEKDAY_ORDER.map((value) => ({
+	value,
+	label: `clan.attendance.weekday.${value}`,
+}))
+
+function dateWeekday(date: string) {
+	const [year, month, day] = date.split('-').map(Number)
+	return new Date(Date.UTC(year, month - 1, day)).getUTCDay()
 }
 
 function currentMonth() {
@@ -78,11 +91,25 @@ function AttendanceContent({
 	const { data } = useSuspenseQuery(
 		clanQueries.getAttendanceMonth(clanId, month)
 	)
+	const [visibleWeekdays, setVisibleWeekdays] = useState<string[]>(() => [
+		...WEEKDAY_ORDER,
+	])
 	const monthLabel = new Intl.DateTimeFormat(locale, {
 		month: 'long',
 		year: 'numeric',
 		timeZone: 'Europe/Moscow',
 	}).format(new Date(`${month}-01T12:00:00+03:00`))
+
+	const days = useMemo(
+		() =>
+			data.days.filter((day) =>
+				visibleWeekdays.includes(String(dateWeekday(day.date)))
+			),
+		[data.days, visibleWeekdays]
+	)
+
+	const hasSessions = data.days.some((day) => day.sessions.length > 0)
+	const showTable = hasSessions && days.length > 0
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -115,6 +142,19 @@ function AttendanceContent({
 				</div>
 			</div>
 
+			<div className="flex flex-wrap items-center gap-3">
+				<span className="font-semibold text-sm">
+					{t('weekdaysFilter')}
+				</span>
+				<Combobox
+					multiple
+					onValuesChange={setVisibleWeekdays}
+					options={WEEKDAY_OPTIONS}
+					placeholder="clan.attendance.weekdaysFilter"
+					values={visibleWeekdays}
+				/>
+			</div>
+
 			<div className="flex flex-wrap gap-4 rounded-xl bg-card p-3 text-sm">
 				{(
 					[
@@ -136,7 +176,7 @@ function AttendanceContent({
 				))}
 			</div>
 
-			{data.days.every((day) => day.sessions.length === 0) ? (
+			{!showTable ? (
 				<div className="rounded-xl bg-card p-10 text-center text-foreground/60">
 					{t('empty')}
 				</div>
@@ -148,7 +188,7 @@ function AttendanceContent({
 								<Table.Head className="sticky left-0 z-20 min-w-48 bg-card p-3">
 									{t('member')}
 								</Table.Head>
-								{data.days.map((day) => {
+								{days.map((day) => {
 									const date = new Date(
 										`${day.date}T12:00:00+03:00`
 									)
@@ -186,7 +226,7 @@ function AttendanceContent({
 									>
 										{member.name}
 									</Table.Head>
-									{data.days.map((day) => (
+									{days.map((day) => (
 										<Table.Cell
 											className="text-center"
 											key={day.date}

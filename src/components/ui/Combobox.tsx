@@ -45,6 +45,7 @@ interface ComboboxMultipleProps extends ComboboxBaseProps {
 	values?: string[]
 	onValuesChange?: (values: string[]) => void
 	maxSelected?: number
+	maxTagCount?: number
 }
 
 export type ComboboxProps = ComboboxSingleProps | ComboboxMultipleProps
@@ -75,6 +76,7 @@ export function Combobox(props: ComboboxProps) {
 
 	const isMultiple = props.multiple === true
 	const maxSelected = isMultiple ? props.maxSelected : undefined
+	const maxTagCount = isMultiple ? (props.maxTagCount ?? 3) : 0
 
 	const selectedSet = useMemo(() => {
 		if (props.multiple) {
@@ -305,41 +307,59 @@ export function Combobox(props: ComboboxProps) {
 
 	const selectedLabels = options.filter((o) => selectedSet.has(o.value))
 	const hasSelection = selectedLabels.length > 0
+	const visibleTags = selectedLabels.slice(0, maxTagCount)
+	const hiddenCount = selectedLabels.length - visibleTags.length
 
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
-				className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-medium text-[13px]"
+				className="flex min-h-10 w-full cursor-pointer items-center justify-between gap-1 overflow-hidden rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-medium text-[13px]"
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
 				ref={triggerRef}
 				type="button"
 			>
 				{isMultiple ? (
-					<div className="flex w-0 flex-1 gap-1 overflow-hidden">
+					<div
+						className="flex min-w-0 flex-1 flex-nowrap items-center gap-1 overflow-hidden"
+						title={
+							hasSelection
+								? selectedLabels
+										.map((opt) => optionLabel(opt.label))
+										.join(', ')
+								: undefined
+						}
+					>
 						{hasSelection ? (
-							selectedLabels.map((opt) => (
-								<div
-									className="flex min-w-0 shrink items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs"
-									key={opt.value}
-								>
-									<p className="min-w-0 flex-1 truncate">
-										{optionLabel(opt.label)}
-									</p>
-
-									<span
-										className="shrink-0 cursor-pointer"
-										onClick={(e) => {
-											e.stopPropagation()
-											removeTag(opt.value)
-										}}
+							<>
+								{visibleTags.map((opt) => (
+									<div
+										className="flex min-w-0 max-w-30 shrink items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs"
+										key={opt.value}
 									>
-										<Icon icon="lucide:x" />
-									</span>
-								</div>
-							))
+										<p className="min-w-0 flex-1 truncate">
+											{optionLabel(opt.label)}
+										</p>
+
+										<span
+											className="shrink-0 cursor-pointer"
+											onClick={(e) => {
+												e.stopPropagation()
+												removeTag(opt.value)
+											}}
+										>
+											<Icon icon="lucide:x" />
+										</span>
+									</div>
+								))}
+								{hiddenCount > 0 && (
+									<div className="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs">
+										+{hiddenCount}
+									</div>
+								)}
+							</>
 						) : (
-							<span>{t(placeholder)}</span>
+							<span className="truncate">{t(placeholder)}</span>
 						)}
 					</div>
 				) : (
@@ -352,7 +372,7 @@ export function Combobox(props: ComboboxProps) {
 
 				<Icon
 					className={cn(
-						'ml-1 transition-transform',
+						'shrink-0 transition-transform',
 						open && 'rotate-90'
 					)}
 					icon="lucide:chevron-right"

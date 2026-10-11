@@ -2470,6 +2470,16 @@
     "attendance": {
       "title": "Présence",
       "member": "Membre",
+      "weekdaysFilter": "Jours de la semaine",
+      "weekday": {
+        "0": "Dim",
+        "1": "Lun",
+        "2": "Mar",
+        "3": "Mer",
+        "4": "Jeu",
+        "5": "Ven",
+        "6": "Sam"
+      },
       "empty": "Aucun événement analysé ce mois-ci",
       "status": {
         "PRESENT": "Présent",

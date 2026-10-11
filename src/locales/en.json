@@ -2470,6 +2470,16 @@
     "attendance": {
       "title": "Attendance",
       "member": "Member",
+      "weekdaysFilter": "Days of week",
+      "weekday": {
+        "0": "Sun",
+        "1": "Mon",
+        "2": "Tue",
+        "3": "Wed",
+        "4": "Thu",
+        "5": "Fri",
+        "6": "Sat"
+      },
       "empty": "No analyzed events this month yet",
       "status": {
         "PRESENT": "Present",
