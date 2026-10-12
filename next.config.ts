@@ -2,12 +2,14 @@ import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+const isDev = process.env.NODE_ENV === 'development'
 
 const nextConfig: NextConfig = {
 	assetPrefix:
 		process.env.NODE_ENV === 'production'
 			? process.env.NEXT_PUBLIC_CDN_URL
 			: undefined,
+
 	output: 'standalone',
 	serverExternalPackages: ['@resvg/resvg-js'],
 	allowedDevOrigins: ['192.168.1.40', 'localhost'],
@@ -26,29 +28,19 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'github.com',
-				pathname: '/**',
-			},
-			{
-				protocol: 'http',
-				hostname: 'localhost',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'raw.githubusercontent.com',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'avatars.githubusercontent.com',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
 				hostname: 'cdn.stalhub.dev',
 				pathname: '/**',
 			},
+			...(isDev
+				? [
+						{
+							protocol: 'http' as const,
+							hostname: 'localhost',
+							port: '',
+							pathname: '/**',
+						},
+					]
+				: []),
 		],
 	},
 }
