@@ -177,6 +177,9 @@
     "roadmap": {
       "title": "Путь <primary>развития</primary>",
       "description": "От первых концептов до релиза приложения — и дальше"
+    },
+    "sz_report": {
+      "title": "<primary>Новости</primary> по Stalzone"
     }
   },
   "footer": {

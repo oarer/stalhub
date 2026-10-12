@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+__pycache__/
 
 # next.js
 /.next/
@@ -43,4 +46,5 @@ next-env.d.ts
 test.*
 
 public/maps
-scripts/
+scripts/*
+!scripts/run-e2e.py

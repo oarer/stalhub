@@ -68,7 +68,7 @@ export function computePrimeFromBuild(
 
 	for (const key of KEYS) {
 		const val = result[key] ?? 0
-		if (val > 0) result[key] = val * effectiveness
+		if (val !== 0) result[key] = val * effectiveness
 	}
 
 	for (const boostId of Object.values(build.boost).filter(Boolean)) {

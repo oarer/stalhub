@@ -102,14 +102,29 @@ export function applyContainerModifiers(
 	for (const key of Object.keys(stats)) {
 		const currentVal = stats[key] ?? 0
 
-		if (currentVal <= 0 || CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key)) {
+		if (
+			currentVal === 0 ||
+			CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key)
+		) {
 			result[key] = currentVal
 			continue
 		}
 
-		result[key] = CONTAINER_ACCUMULATION_KEYS.has(key)
-			? currentVal * (1 - innerProtection)
-			: currentVal * effectiveness
+		// Накопления заражений (радиация/термо/био/пси): внутренняя защита
+		// гасит только положительный (вредный) вклад. Отрицательный вклад
+		// (вывод заражений контр-артефактами) оставляем как есть.
+		if (CONTAINER_ACCUMULATION_KEYS.has(key)) {
+			result[key] =
+				currentVal > 0
+					? currentVal * (1 - innerProtection)
+					: currentVal
+			continue
+		}
+
+		// Обычные свойства (включая кровотечение и другие отрицательные):
+		// масштабируются эффективностью в обе стороны.
+		// Например: -18.2 при эффективности 115% -> -20.93.
+		result[key] = currentVal * effectiveness
 	}
 
 	return result

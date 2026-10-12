@@ -6,7 +6,14 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "bunx biome lint"
+		"lint": "bunx biome lint",
+		"test": "bun --no-env-file test ./tests",
+		"test:watch": "bun --no-env-file test --watch ./tests",
+		"test:coverage": "bun --no-env-file test --coverage ./tests",
+		"test:typecheck": "tsc --project tsconfig.tests.json",
+		"test:lint": "biome lint tests",
+		"test:e2e": "python3 scripts/run-e2e.py",
+		"test:e2e:list": "bun --no-env-file x --no-install playwright test --list"
 	},
 	"dependencies": {
 		"@iconify-icons/lucide": "^2.0.16",
@@ -52,6 +59,7 @@
 		"zustand": "^5.0.15"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.64.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/typography": "^0.5.20",
 		"@types/jszip": "^3.4.1",
