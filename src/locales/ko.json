@@ -1530,7 +1530,8 @@
       "builds": "빌드",
       "arts": "아트",
       "bans": "차단",
-      "scNodes": "SC 노드"
+      "scNodes": "SC 노드",
+      "auctionHistory": "경매 기록"
     },
     "roles": {
       "title": "역할",
@@ -1860,6 +1861,30 @@
         "bulkLoaded": "로드됨: {created}, 건너뜀: {skipped}",
         "pingFailed": "노드가 응답하지 않습니다"
       }
+    },
+    "auctionHistory": {
+      "title": "경매 기록",
+      "running": "수집 중",
+      "idle": "대기",
+      "refresh": "새로고침",
+      "backfill": "백필",
+      "pending": "남음: {count}",
+      "dealsTotal": "총 거래",
+      "depth": "범위: {from} — {to}",
+      "dbSize": "DB 크기",
+      "dealsSize": "deals 테이블: {size}",
+      "lastSweep": "최근 스위프",
+      "lastBackfill": "최근 백필",
+      "notRunYet": "아직 실행 안 됨",
+      "inserted": "삽입됨",
+      "itemsSeen": "아이템",
+      "requests": "요청",
+      "failed": "실패",
+      "duration": "소요",
+      "finishedAgo": "전",
+      "top": "거래 상위 아이템",
+      "item": "아이템",
+      "dealsCol": "거래"
     }
   },
   "test": {

@@ -1531,7 +1531,8 @@
       "builds": "Сборки",
       "arts": "Творчество",
       "bans": "Баны",
-      "scNodes": "SC-ноды"
+      "scNodes": "SC-ноды",
+      "auctionHistory": "История аукциона"
     },
     "roles": {
       "title": "Роли",
@@ -1861,6 +1862,30 @@
         "bulkLoaded": "Загружено: {created}, пропущено: {skipped}",
         "pingFailed": "Нода не отвечает"
       }
+    },
+    "auctionHistory": {
+      "title": "История аукциона",
+      "running": "Сбор идёт",
+      "idle": "Простой",
+      "refresh": "Обновить",
+      "backfill": "Бэкфилл",
+      "pending": "Осталось: {count}",
+      "dealsTotal": "Всего сделок",
+      "depth": "Глубина: {from} — {to}",
+      "dbSize": "Размер БД",
+      "dealsSize": "таблица deals: {size}",
+      "lastSweep": "Последний свип",
+      "lastBackfill": "Последний бэкфилл",
+      "notRunYet": "Ещё не запускалось",
+      "inserted": "Вставлено",
+      "itemsSeen": "Предметов",
+      "requests": "Запросов",
+      "failed": "Ошибок",
+      "duration": "Длительность",
+      "finishedAgo": "Назад",
+      "top": "Топ предметов по сделкам",
+      "item": "Предмет",
+      "dealsCol": "Сделок"
     }
   },
   "test": {

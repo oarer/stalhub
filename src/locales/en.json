@@ -1530,7 +1530,8 @@
       "builds": "Builds",
       "arts": "Art",
       "bans": "Bans",
-      "scNodes": "SC Nodes"
+      "scNodes": "SC Nodes",
+      "auctionHistory": "Auction history"
     },
     "roles": {
       "title": "Roles",
@@ -1860,6 +1861,30 @@
         "bulkLoaded": "Loaded: {created}, skipped: {skipped}",
         "pingFailed": "Node is not responding"
       }
+    },
+    "auctionHistory": {
+      "title": "Auction history",
+      "running": "Ingesting",
+      "idle": "Idle",
+      "refresh": "Refresh",
+      "backfill": "Backfill",
+      "pending": "Remaining: {count}",
+      "dealsTotal": "Total deals",
+      "depth": "Depth: {from} — {to}",
+      "dbSize": "DB size",
+      "dealsSize": "deals table: {size}",
+      "lastSweep": "Last sweep",
+      "lastBackfill": "Last backfill",
+      "notRunYet": "Not run yet",
+      "inserted": "Inserted",
+      "itemsSeen": "Items",
+      "requests": "Requests",
+      "failed": "Failed",
+      "duration": "Duration",
+      "finishedAgo": "Ago",
+      "top": "Top items by deals",
+      "item": "Item",
+      "dealsCol": "Deals"
     }
   },
   "test": {

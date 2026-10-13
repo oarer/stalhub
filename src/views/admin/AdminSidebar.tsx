@@ -52,6 +52,11 @@ const tabs = [
 		icon: 'lucide:server',
 	},
 	{
+		title: 'admin.sidebar.auctionHistory',
+		href: '/admin/auction-history',
+		icon: 'lucide:database-zap',
+	},
+	{
 		title: 'admin.sidebar.players',
 		href: '/admin/players',
 		icon: 'lucide:gamepad-2',

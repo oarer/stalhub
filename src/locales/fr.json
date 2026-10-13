@@ -1530,7 +1530,8 @@
       "builds": "Builds",
       "arts": "Art",
       "bans": "Bannissements",
-      "scNodes": "Nœuds SC"
+      "scNodes": "Nœuds SC",
+      "auctionHistory": "Historique des enchères"
     },
     "roles": {
       "title": "Rôles",
@@ -1860,6 +1861,30 @@
         "bulkLoaded": "Chargés : {created}, ignorés : {skipped}",
         "pingFailed": "Le nœud ne répond pas"
       }
+    },
+    "auctionHistory": {
+      "title": "Historique des enchères",
+      "running": "Collecte en cours",
+      "idle": "Inactif",
+      "refresh": "Actualiser",
+      "backfill": "Remplissage initial",
+      "pending": "Restants : {count}",
+      "dealsTotal": "Transactions totales",
+      "depth": "Profondeur : {from} — {to}",
+      "dbSize": "Taille BD",
+      "dealsSize": "table deals : {size}",
+      "lastSweep": "Dernier balayage",
+      "lastBackfill": "Dernier remplissage",
+      "notRunYet": "Pas encore exécuté",
+      "inserted": "Insérées",
+      "itemsSeen": "Objets",
+      "requests": "Requêtes",
+      "failed": "Échecs",
+      "duration": "Durée",
+      "finishedAgo": "Il y a",
+      "top": "Top objets par transactions",
+      "item": "Objet",
+      "dealsCol": "Transactions"
     }
   },
   "test": {

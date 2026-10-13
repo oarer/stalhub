@@ -1530,7 +1530,8 @@
       "builds": "Builds",
       "arts": "Arte",
       "bans": "Baneos",
-      "scNodes": "Nodos SC"
+      "scNodes": "Nodos SC",
+      "auctionHistory": "Historial de subastas"
     },
     "roles": {
       "title": "Roles",
@@ -1860,6 +1861,30 @@
         "bulkLoaded": "Cargados: {created}, omitidos: {skipped}",
         "pingFailed": "El nodo no responde"
       }
+    },
+    "auctionHistory": {
+      "title": "Historial de subastas",
+      "running": "Recolectando",
+      "idle": "Inactivo",
+      "refresh": "Actualizar",
+      "backfill": "Relleno inicial",
+      "pending": "Restantes: {count}",
+      "dealsTotal": "Operaciones totales",
+      "depth": "Profundidad: {from} — {to}",
+      "dbSize": "Tamaño BD",
+      "dealsSize": "tabla deals: {size}",
+      "lastSweep": "Último barrido",
+      "lastBackfill": "Último relleno",
+      "notRunYet": "Aún no ejecutado",
+      "inserted": "Insertadas",
+      "itemsSeen": "Objetos",
+      "requests": "Solicitudes",
+      "failed": "Fallos",
+      "duration": "Duración",
+      "finishedAgo": "Hace",
+      "top": "Top objetos por operaciones",
+      "item": "Objeto",
+      "dealsCol": "Operaciones"
     }
   },
   "test": {

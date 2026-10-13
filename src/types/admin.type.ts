@@ -324,3 +324,36 @@ export interface AdminScBulkResult {
 	skipped: number
 	total: number
 }
+
+export interface AdminAuctionHistoryRun {
+	items: number
+	pages: number
+	rows: number
+	inserted: number
+	failed: number
+	startedAt: number
+	finishedAt: number
+}
+
+export interface AdminAuctionHistoryProgress {
+	items: {
+		total: number
+		backfilled: number
+		pending: number
+		backfillPct: number
+	}
+	deals: {
+		total: number
+		oldest: string | null
+		newest: string | null
+	}
+	size: {
+		db: string
+		deals: string
+	}
+	top: { dataPath: string; deals: number }[]
+	enabled: boolean
+	running: boolean
+	lastSweep: AdminAuctionHistoryRun | null
+	lastBackfill: AdminAuctionHistoryRun | null
+}
