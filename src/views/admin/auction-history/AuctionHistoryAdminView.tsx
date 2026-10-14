@@ -138,8 +138,17 @@ export default function AuctionHistoryAdminView() {
 		onError: () => toast.error(t('admin.auctionHistory.censusFailed')),
 	})
 
+	const rollupMutation = useMutation({
+		mutationFn: () => adminAuctionHistoryService.rollup(),
+		onSuccess: () => {
+			toast.success(t('admin.auctionHistory.rollupStarted'))
+			queryClient.invalidateQueries({ queryKey: QUERY_KEY })
+		},
+		onError: () => toast.error(t('admin.auctionHistory.rollupFailed')),
+	})
+
 	const pct = data.items.backfillPct
-	const busy = data.running || data.deepening
+	const busy = data.running || data.deepening || data.rollupRunning
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -151,12 +160,25 @@ export default function AuctionHistoryAdminView() {
 				</h1>
 				<div className="flex items-center gap-2">
 					<Badge variant={busy ? 'primary' : 'secondary'}>
-						{data.deepening
-							? t('admin.auctionHistory.deepening')
-							: data.running
-								? t('admin.auctionHistory.running')
-								: t('admin.auctionHistory.idle')}
+						{data.rollupRunning
+							? t('admin.auctionHistory.rollupRunning')
+							: data.deepening
+								? t('admin.auctionHistory.deepening')
+								: data.running
+									? t('admin.auctionHistory.running')
+									: t('admin.auctionHistory.idle')}
 					</Badge>
+					<Button
+						disabled={
+							data.rollupRunning || rollupMutation.isPending
+						}
+						loading={rollupMutation.isPending}
+						onClick={() => rollupMutation.mutate()}
+						variant="ghost"
+					>
+						<Icon className="text-lg" icon="lucide:calculator" />
+						{t('admin.auctionHistory.rollup')}
+					</Button>
 					<Button
 						onClick={() =>
 							queryClient.invalidateQueries({
@@ -274,6 +296,37 @@ export default function AuctionHistoryAdminView() {
 					run={data.lastDeepen}
 					title={t('admin.auctionHistory.lastDeepen')}
 				/>
+				<Card.Root>
+					<Card.Header>
+						<Card.Title className="text-foreground text-sm">
+							<Icon
+								className="text-lg"
+								icon="lucide:calculator"
+							/>
+							{t('admin.auctionHistory.lastRollup')}
+						</Card.Title>
+					</Card.Header>
+					<Card.Content className="flex flex-col gap-1 p-4 pt-0 text-sm">
+						{!data.lastRollup ? (
+							<p className="text-muted-foreground">
+								{t('admin.auctionHistory.notRunYet')}
+							</p>
+						) : (
+							<>
+								<StatRow
+									label={t('admin.auctionHistory.rollupDays')}
+									value={fmtInt(data.lastRollup.days)}
+								/>
+								<StatRow
+									label={t(
+										'admin.auctionHistory.finishedAgo'
+									)}
+									value={fmtAgo(data.lastRollup.finishedAt)}
+								/>
+							</>
+						)}
+					</Card.Content>
+				</Card.Root>
 			</div>
 
 			<Card.Root>

@@ -1898,7 +1898,13 @@
       "censusFailed": "시작 실패",
       "censusRunning": "센서스 실행 중, 자동 새로고침",
       "censusWithHistory": "기록 있는 아이템",
-      "censusTotal": "EXBO 총 거래"
+      "censusTotal": "EXBO 총 거래",
+      "rollup": "롤업",
+      "rollupStarted": "롤업 시작됨",
+      "rollupFailed": "시작 실패",
+      "rollupRunning": "롤업 실행 중",
+      "lastRollup": "최근 롤업",
+      "rollupDays": "처리된 일수"
     }
   },
   "test": {

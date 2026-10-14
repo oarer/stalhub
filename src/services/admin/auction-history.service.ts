@@ -22,6 +22,13 @@ class AdminAuctionHistoryService {
 		)
 		return data
 	}
+
+	async rollup(): Promise<{ started: boolean }> {
+		const { data } = await apiClient.post<{ started: boolean }>(
+			'/api/v1/auction-history/rollup'
+		)
+		return data
+	}
 }
 
 export const adminAuctionHistoryService = new AdminAuctionHistoryService()

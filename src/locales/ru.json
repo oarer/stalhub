@@ -1899,7 +1899,13 @@
       "censusFailed": "Не удалось запустить",
       "censusRunning": "Перепись идёт, обновится сама",
       "censusWithHistory": "Предметов с историей",
-      "censusTotal": "Всего сделок в EXBO"
+      "censusTotal": "Всего сделок в EXBO",
+      "rollup": "Пересчитать",
+      "rollupStarted": "Роллап запущен",
+      "rollupFailed": "Не удалось запустить",
+      "rollupRunning": "Роллап идёт",
+      "lastRollup": "Последний роллап",
+      "rollupDays": "Дней пересчитано"
     }
   },
   "test": {

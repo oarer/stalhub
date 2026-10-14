@@ -1898,7 +1898,13 @@
       "censusFailed": "No se pudo iniciar",
       "censusRunning": "Censo en curso, se actualizará",
       "censusWithHistory": "Objetos con historial",
-      "censusTotal": "Operaciones EXBO totales"
+      "censusTotal": "Operaciones EXBO totales",
+      "rollup": "Recalcular",
+      "rollupStarted": "Rollup iniciado",
+      "rollupFailed": "No se pudo iniciar",
+      "rollupRunning": "Rollup en curso",
+      "lastRollup": "Último rollup",
+      "rollupDays": "Días procesados"
     }
   },
   "test": {

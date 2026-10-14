@@ -347,6 +347,12 @@ export interface AdminAuctionCensus {
 	top: { id: string; total: number }[]
 }
 
+export interface AdminRollupStats {
+	startedAt: number
+	finishedAt: number
+	days: number
+}
+
 export interface AdminAuctionHistoryProgress {
 	items: {
 		total: number
@@ -373,4 +379,6 @@ export interface AdminAuctionHistoryProgress {
 	lastBackfill: AdminAuctionHistoryRun | null
 	lastDeepen: AdminAuctionHistoryRun | null
 	lastCensus: AdminAuctionCensus | null
+	rollupRunning: boolean
+	lastRollup: AdminRollupStats | null
 }

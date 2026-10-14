@@ -1898,7 +1898,13 @@
       "censusFailed": "Failed to start",
       "censusRunning": "Census running, will refresh",
       "censusWithHistory": "Items with history",
-      "censusTotal": "Total EXBO deals"
+      "censusTotal": "Total EXBO deals",
+      "rollup": "Rollup",
+      "rollupStarted": "Rollup started",
+      "rollupFailed": "Failed to start",
+      "rollupRunning": "Rollup running",
+      "lastRollup": "Last rollup",
+      "rollupDays": "Days rolled"
     }
   },
   "test": {

@@ -1898,7 +1898,13 @@
       "censusFailed": "Échec du lancement",
       "censusRunning": "Recensement en cours, actualisation auto",
       "censusWithHistory": "Objets avec historique",
-      "censusTotal": "Transactions EXBO totales"
+      "censusTotal": "Transactions EXBO totales",
+      "rollup": "Recalculer",
+      "rollupStarted": "Rollup lancé",
+      "rollupFailed": "Échec du lancement",
+      "rollupRunning": "Rollup en cours",
+      "lastRollup": "Dernier rollup",
+      "rollupDays": "Jours traités"
     }
   },
   "test": {
