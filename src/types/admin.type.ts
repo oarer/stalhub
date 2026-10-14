@@ -335,12 +335,25 @@ export interface AdminAuctionHistoryRun {
 	finishedAt: number
 }
 
+export interface AdminAuctionCensus {
+	startedAt: number
+	finishedAt: number
+	items: number
+	withHistory: number
+	withoutHistory: number
+	failed: number
+	exboDeals: number
+	buckets: { label: string; count: number }[]
+	top: { id: string; total: number }[]
+}
+
 export interface AdminAuctionHistoryProgress {
 	items: {
 		total: number
 		backfilled: number
 		pending: number
 		backfillPct: number
+		capped: number
 	}
 	deals: {
 		total: number
@@ -354,6 +367,10 @@ export interface AdminAuctionHistoryProgress {
 	top: { dataPath: string; deals: number }[]
 	enabled: boolean
 	running: boolean
+	deepening: boolean
+	censusRunning: boolean
 	lastSweep: AdminAuctionHistoryRun | null
 	lastBackfill: AdminAuctionHistoryRun | null
+	lastDeepen: AdminAuctionHistoryRun | null
+	lastCensus: AdminAuctionCensus | null
 }

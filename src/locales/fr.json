@@ -1884,7 +1884,21 @@
       "finishedAgo": "Il y a",
       "top": "Top objets par transactions",
       "item": "Objet",
-      "dealsCol": "Transactions"
+      "dealsCol": "Transactions",
+      "deepening": "Approfondissement",
+      "deepen": "Approfondir le top",
+      "deepenHint": "Complète la profondeur des objets chauds (sous hist_oldest, jusqu’à 90 jours / 100k transactions). Lourd, en arrière-plan.",
+      "deepenStarted": "Approfondissement lancé",
+      "deepenFailed": "Échec du lancement",
+      "lastDeepen": "Dernier approfondissement",
+      "capped": "au plafond : {count}",
+      "census": "Recensement EXBO",
+      "censusRun": "Lancer le recensement",
+      "censusStarted": "Recensement lancé (~20 min)",
+      "censusFailed": "Échec du lancement",
+      "censusRunning": "Recensement en cours, actualisation auto",
+      "censusWithHistory": "Objets avec historique",
+      "censusTotal": "Transactions EXBO totales"
     }
   },
   "test": {

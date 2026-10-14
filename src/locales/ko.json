@@ -1884,7 +1884,21 @@
       "finishedAgo": "전",
       "top": "거래 상위 아이템",
       "item": "아이템",
-      "dealsCol": "거래"
+      "dealsCol": "거래",
+      "deepening": "심화 중",
+      "deepen": "상위 심화",
+      "deepenHint": "핫 아이템의 깊이를 보충합니다 (hist_oldest 아래, 최대 90일 / 100k건). 무거운 작업, 백그라운드 실행.",
+      "deepenStarted": "심화 시작됨",
+      "deepenFailed": "시작 실패",
+      "lastDeepen": "최근 심화",
+      "capped": "캡 도달: {count}",
+      "census": "EXBO 센서스",
+      "censusRun": "센서스 실행",
+      "censusStarted": "센서스 시작됨 (~20분)",
+      "censusFailed": "시작 실패",
+      "censusRunning": "센서스 실행 중, 자동 새로고침",
+      "censusWithHistory": "기록 있는 아이템",
+      "censusTotal": "EXBO 총 거래"
     }
   },
   "test": {

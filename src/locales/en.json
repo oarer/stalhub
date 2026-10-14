@@ -1884,7 +1884,21 @@
       "finishedAgo": "Ago",
       "top": "Top items by deals",
       "item": "Item",
-      "dealsCol": "Deals"
+      "dealsCol": "Deals",
+      "deepening": "Deepening",
+      "deepen": "Deepen top",
+      "deepenHint": "Backfills depth for hot items (below hist_oldest, up to 90 days / 100k deals). Heavy, runs in background.",
+      "deepenStarted": "Deepening started",
+      "deepenFailed": "Failed to start",
+      "lastDeepen": "Last deepen",
+      "capped": "capped: {count}",
+      "census": "EXBO census",
+      "censusRun": "Run census",
+      "censusStarted": "Census started (~20 min)",
+      "censusFailed": "Failed to start",
+      "censusRunning": "Census running, will refresh",
+      "censusWithHistory": "Items with history",
+      "censusTotal": "Total EXBO deals"
     }
   },
   "test": {

@@ -1,15 +1,17 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Table } from '@/components/ui/Table'
+import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminAuctionHistoryQueries } from '@/queries/admin/auction-history.queries'
+import { adminAuctionHistoryService } from '@/services/admin/auction-history.service'
 import type { AdminAuctionHistoryRun } from '@/types/admin.type'
 
 const QUERY_KEY = ['admin', 'auction-history']
@@ -118,7 +120,26 @@ export default function AuctionHistoryAdminView() {
 	const queryClient = getQueryClient()
 	const { data } = useSuspenseQuery(adminAuctionHistoryQueries.progress())
 
+	const deepenMutation = useMutation({
+		mutationFn: () => adminAuctionHistoryService.deepen(),
+		onSuccess: () => {
+			toast.success(t('admin.auctionHistory.deepenStarted'))
+			queryClient.invalidateQueries({ queryKey: QUERY_KEY })
+		},
+		onError: () => toast.error(t('admin.auctionHistory.deepenFailed')),
+	})
+
+	const censusMutation = useMutation({
+		mutationFn: () => adminAuctionHistoryService.census(),
+		onSuccess: () => {
+			toast.success(t('admin.auctionHistory.censusStarted'))
+			queryClient.invalidateQueries({ queryKey: QUERY_KEY })
+		},
+		onError: () => toast.error(t('admin.auctionHistory.censusFailed')),
+	})
+
 	const pct = data.items.backfillPct
+	const busy = data.running || data.deepening
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -129,10 +150,12 @@ export default function AuctionHistoryAdminView() {
 					{t('admin.auctionHistory.title')}
 				</h1>
 				<div className="flex items-center gap-2">
-					<Badge variant={data.running ? 'primary' : 'secondary'}>
-						{data.running
-							? t('admin.auctionHistory.running')
-							: t('admin.auctionHistory.idle')}
+					<Badge variant={busy ? 'primary' : 'secondary'}>
+						{data.deepening
+							? t('admin.auctionHistory.deepening')
+							: data.running
+								? t('admin.auctionHistory.running')
+								: t('admin.auctionHistory.idle')}
 					</Badge>
 					<Button
 						onClick={() =>
@@ -171,8 +194,30 @@ export default function AuctionHistoryAdminView() {
 							{t('admin.auctionHistory.pending', {
 								count: fmtInt(data.items.pending),
 							})}
+							{' · '}
+							{t('admin.auctionHistory.capped', {
+								count: fmtInt(data.items.capped),
+							})}
 						</span>
 					</div>
+					<Button
+						disabled={
+							busy ||
+							data.items.capped === 0 ||
+							deepenMutation.isPending
+						}
+						loading={deepenMutation.isPending}
+						onClick={() => deepenMutation.mutate()}
+					>
+						<Icon
+							className="text-lg"
+							icon="lucide:arrow-down-wide-narrow"
+						/>
+						{t('admin.auctionHistory.deepen')}
+					</Button>
+					<p className="text-muted-foreground text-xs">
+						{t('admin.auctionHistory.deepenHint')}
+					</p>
 				</Card.Content>
 			</Card.Root>
 
@@ -224,7 +269,97 @@ export default function AuctionHistoryAdminView() {
 					run={data.lastBackfill}
 					title={t('admin.auctionHistory.lastBackfill')}
 				/>
+				<RunCard
+					icon="lucide:arrow-down-wide-narrow"
+					run={data.lastDeepen}
+					title={t('admin.auctionHistory.lastDeepen')}
+				/>
 			</div>
+
+			<Card.Root>
+				<Card.Header>
+					<Card.Title className="text-foreground text-sm">
+						<Icon
+							className="text-lg"
+							icon="lucide:clipboard-list"
+						/>
+						{t('admin.auctionHistory.census')}
+					</Card.Title>
+				</Card.Header>
+				<Card.Content className="flex flex-col gap-3 p-4 pt-0">
+					<Button
+						disabled={
+							data.censusRunning || censusMutation.isPending
+						}
+						loading={censusMutation.isPending}
+						onClick={() => censusMutation.mutate()}
+					>
+						<Icon
+							className="text-lg"
+							icon="lucide:clipboard-list"
+						/>
+						{t('admin.auctionHistory.censusRun')}
+					</Button>
+					{data.censusRunning && (
+						<p className="text-muted-foreground text-sm">
+							{t('admin.auctionHistory.censusRunning')}
+						</p>
+					)}
+					{data.lastCensus && (
+						<>
+							<div className="flex flex-col gap-1 text-sm">
+								<StatRow
+									label={t(
+										'admin.auctionHistory.censusWithHistory'
+									)}
+									value={`${fmtInt(data.lastCensus.withHistory)} / ${fmtInt(data.lastCensus.items)}`}
+								/>
+								<StatRow
+									label={t(
+										'admin.auctionHistory.censusTotal'
+									)}
+									value={fmtInt(data.lastCensus.exboDeals)}
+								/>
+								<StatRow
+									label={t('admin.auctionHistory.failed')}
+									value={fmtInt(data.lastCensus.failed)}
+								/>
+							</div>
+							<div className="flex flex-col gap-1">
+								{data.lastCensus.buckets.map((b) => {
+									const max = Math.max(
+										1,
+										...data.lastCensus!.buckets.map(
+											(x) => x.count
+										)
+									)
+									return (
+										<div
+											className="flex items-center gap-2 text-xs"
+											key={b.label}
+										>
+											<span className="w-20 shrink-0 font-mono text-muted-foreground">
+												{b.label}
+											</span>
+											<div className="h-2 flex-1 overflow-hidden rounded-full bg-border/20">
+												<div
+													className="h-full rounded-full bg-primary"
+													style={{
+														width: `${Math.round((b.count / max) * 100)}%`,
+													}}
+												/>
+											</div>
+											<span className="w-16 shrink-0 text-right font-mono text-foreground">
+												{fmtInt(b.count)}
+											</span>
+										</div>
+									)
+								})}
+							</div>
+						</>
+					)}
+				</Card.Content>
+			</Card.Root>
 
 			<Card.Root>
 				<Card.Header>

@@ -1884,7 +1884,21 @@
       "finishedAgo": "Hace",
       "top": "Top objetos por operaciones",
       "item": "Objeto",
-      "dealsCol": "Operaciones"
+      "dealsCol": "Operaciones",
+      "deepening": "Profundizando",
+      "deepen": "Profundizar top",
+      "deepenHint": "Completa la profundidad de objetos calientes (bajo hist_oldest, hasta 90 días / 100k operaciones). Pesado, en segundo plano.",
+      "deepenStarted": "Profundización iniciada",
+      "deepenFailed": "No se pudo iniciar",
+      "lastDeepen": "Última profundización",
+      "capped": "en tope: {count}",
+      "census": "Censo EXBO",
+      "censusRun": "Iniciar censo",
+      "censusStarted": "Censo iniciado (~20 min)",
+      "censusFailed": "No se pudo iniciar",
+      "censusRunning": "Censo en curso, se actualizará",
+      "censusWithHistory": "Objetos con historial",
+      "censusTotal": "Operaciones EXBO totales"
     }
   },
   "test": {
