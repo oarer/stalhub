@@ -51,11 +51,11 @@ export default function Hero() {
 							{t('landing.sub_title')}
 						</motion.h2>
 					</div>
-					<p
+					{/* <p
 						className={`absolute -top-5 right-1/3 rotate-15 font-mono font-semibold text-muted-foreground text-sm`}
 					>
 						try aslo stalzone-eco
-					</p>
+					</p> */}
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
 						className={`${mtsExtended.className} w-full max-w-xl font-medium text-sm leading-relaxed dark:text-white/80`}
