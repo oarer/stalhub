@@ -16,8 +16,16 @@ import NavMe from './components/NavMe'
 import NavMobile from './NavMobile'
 
 const SZREPORT_VARIANTS = [
-	{ image: '/images/szreport/report.jpg', titleKey: 'nav.sz_report.news' },
-	{ image: '/images/szreport/promo.jpg', titleKey: 'nav.sz_report.promo' },
+	{
+		image: '/images/szreport/report.jpg',
+		titleKey: 'nav.sz_report.news',
+		href: 'https://t.me/+RNCSnbFYQt1lZDAy',
+	},
+	{
+		image: '/images/szreport/promo.jpg',
+		titleKey: 'nav.sz_report.promo',
+		href: 'https://t.me/+uWz2wu5Biak1ZGEy',
+	},
 ] as const
 
 export default function Nav() {
@@ -101,9 +109,11 @@ export default function Nav() {
 								Stalhub
 							</p>
 						</Link>
-						<Link
+						<a
 							className="block cursor-pointer lg:hidden"
-							href="dsa"
+							href={szReport.href}
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<Image
 								alt="szreport"
@@ -112,7 +122,7 @@ export default function Nav() {
 								src={szReport.image}
 								width={32}
 							/>
-						</Link>
+						</a>
 					</div>
 					<div
 						className="relative hidden items-center lg:flex xl:gap-4"
@@ -133,9 +143,11 @@ export default function Nav() {
 								}
 							/>
 						))}
-						<Link
+						<a
 							className="hidden cursor-pointer items-center gap-2 rounded-lg p-1 transition-colors hover:bg-primary/40 lg:flex"
-							href="dsa"
+							href={szReport.href}
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<Image
 								alt="szreport"
@@ -147,7 +159,7 @@ export default function Nav() {
 							<span className="hidden text-primary xl:block">
 								{t(szReport.titleKey)}
 							</span>
-						</Link>
+						</a>
 					</div>
 					<div className="relative flex items-center justify-end gap-6">
 						<div className="hidden items-center gap-2 lg:flex">

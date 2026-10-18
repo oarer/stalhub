@@ -176,6 +176,32 @@
     "roadmap": {
       "title": "<primary>로드맵</primary>",
       "description": "첫 컨셉부터 앱 출시까지, 그리고 그 이후"
+    },
+    "sz_report": {
+      "title": "Telegram의 STALZONE",
+      "subscribe": "구독하기",
+      "cards": {
+        "promo": {
+          "label": "프로모 코드",
+          "title": "프로모 코드 바",
+          "desc": "모든 플레이어에게 가장 중요한 채널로, 게임 프로모 코드가 올라옵니다. 공식 채널에는 없는 코드가 정말 많아요!"
+        },
+        "news": {
+          "label": "뉴스",
+          "title": "들려오는 Stalzone",
+          "desc": "게임의 미래를 알아야 뒤처지지 않는 모든 소식을 쉽게 알려주는 뉴스 채널입니다."
+        },
+        "trading": {
+          "label": "거래",
+          "title": "«트레이딩» 바",
+          "desc": "게임 내 거래 게시판 - 빠르게 사고팔고 싶을 때 최고의 가격으로 장비를 거래할 수 있는 유용한 공간입니다."
+        },
+        "emissions": {
+          "label": "에미션",
+          "title": "에미션 알림",
+          "desc": "게임 내 에미션 알림 - 게임을 하지 않아도 가장 먼저 에미션 소식을 알 수 있는 유용한 기능입니다."
+        }
+      }
     }
   },
   "footer": {
@@ -415,6 +441,12 @@
     "userMenu": {
       "profile": "프로필",
       "logout": "로그아웃"
+    },
+    "sz_report": {
+      "news": "Stalzone 뉴스",
+      "promo": "Stalzone 프로모코드",
+      "trading": "Stalzone 트레이딩",
+      "emissions": "Stalzone 에미션"
     }
   },
   "map": {

@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import LandingClan from './sections/ClanAnalytics'
 import Hero from './sections/Hero'
 import PersonalAnalytics from './sections/PersonalAnalytics'
+import SZReport from './sections/SZReport'
 
 const Tools = dynamic(() => import('./sections/Tools'))
 const Roadmap = dynamic(() => import('./sections/Roadmap'))
@@ -13,6 +14,7 @@ export default function LandingView() {
 			<Hero />
 			<Tools />
 			<LandingClan />
+			<SZReport />
 			<PersonalAnalytics />
 			<Roadmap />
 			<LandingFooter />

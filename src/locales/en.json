@@ -176,6 +176,32 @@
     "roadmap": {
       "title": "<primary>Roadmap</primary>",
       "description": "From first concepts to the app release — and beyond"
+    },
+    "sz_report": {
+      "title": "STALZONE on Telegram",
+      "subscribe": "Subscribe",
+      "cards": {
+        "promo": {
+          "label": "Promo codes",
+          "title": "Promo Code Bar",
+          "desc": "The most important channel for every player, where game promo codes are posted. Many of them are simply not in the official channel!"
+        },
+        "news": {
+          "label": "News",
+          "title": "Stalzone Overheard",
+          "desc": "A news channel that breaks down everything you need to know about the game's future so you never fall behind."
+        },
+        "trading": {
+          "label": "Trading",
+          "title": "The Trading Bar",
+          "desc": "A classifieds board for in-game trading - a handy thing when you want to buy or sell gear at the best price fast."
+        },
+        "emissions": {
+          "label": "Emissions",
+          "title": "Emission Alerts",
+          "desc": "In-game emission alerts - a great way to be the first to know about an emission, even when you are not playing."
+        }
+      }
     }
   },
   "footer": {
@@ -415,6 +441,12 @@
     "userMenu": {
       "profile": "Profile",
       "logout": "Log out"
+    },
+    "sz_report": {
+      "news": "Stalzone News",
+      "promo": "Stalzone Promocodes",
+      "trading": "Stalzone Trading",
+      "emissions": "Stalzone Emissions"
     }
   },
   "map": {

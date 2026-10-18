@@ -176,6 +176,32 @@
     "roadmap": {
       "title": "Hoja <primary>de ruta</primary>",
       "description": "Desde los primeros conceptos hasta el lanzamiento de la app, y más allá"
+    },
+    "sz_report": {
+      "title": "STALZONE en Telegram",
+      "subscribe": "Suscribirse",
+      "cards": {
+        "promo": {
+          "label": "Promocodes",
+          "title": "Bar de Promocodes",
+          "desc": "El canal más importante para cada jugador, donde se publican códigos promocionales del juego. ¡Muchos simplemente no están en el canal oficial!"
+        },
+        "news": {
+          "label": "Noticias",
+          "title": "Susurrado en Stalzone",
+          "desc": "Un canal de noticias que lo explica todo lo que debes saber sobre el futuro del juego para no quedarte atrás."
+        },
+        "trading": {
+          "label": "Comercio",
+          "title": "Bar «Comercial»",
+          "desc": "Tablón de anuncios para comerciar en el juego - algo útil si quieres comprar o vender equipo rápidamente al mejor precio."
+        },
+        "emissions": {
+          "label": "Emisiones",
+          "title": "Alertas de emisiones",
+          "desc": "Alertas de emisiones en el juego - una forma genial de ser el primero en enterarte, incluso si no estás en partida."
+        }
+      }
     }
   },
   "footer": {
@@ -415,6 +441,12 @@
     "userMenu": {
       "profile": "Perfil",
       "logout": "Cerrar sesión"
+    },
+    "sz_report": {
+      "news": "Noticias de Stalzone",
+      "promo": "Promocodes de Stalzone",
+      "trading": "Comercio de Stalzone",
+      "emissions": "Emisiones de Stalzone"
     }
   },
   "map": {
