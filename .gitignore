@@ -45,6 +45,8 @@ next-env.d.ts
 
 test.*
 
+k6
 public/maps
+public/map3d-engine
 scripts/*
 !scripts/run-e2e.py
