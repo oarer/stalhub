@@ -9,6 +9,7 @@ import { slugify } from '@/lib/toc'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
 import { Gallery } from './gallery'
+import { MermaidDiagram } from './mermaid-diagram'
 import { QuestMap } from './quest-map'
 
 const PreCodeContext = createContext(false)
@@ -67,6 +68,7 @@ export function useMDXComponents(): MDXComponents {
 	return {
 		Callout,
 		Gallery,
+		Mermaid: MermaidDiagram,
 		QuestMap,
 		h1: ({ children, ...props }) => (
 			<h1

@@ -1,5 +1,6 @@
 'use client'
 
+import { MermaidDiagram } from './mermaid-diagram'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -10,6 +11,9 @@ interface CodeBlockProps {
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
 	const language = className?.replace(/language-/, '') || ''
+	if (language === 'mermaid') {
+		return <MermaidDiagram chart={String(children).trim()} />
+	}
 	return (
 		<SyntaxHighlighter
 			customStyle={{

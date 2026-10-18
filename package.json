@@ -39,6 +39,7 @@
 		"html-to-image": "^1.11.13",
 		"jszip": "^3.10.2",
 		"leaflet": "^1.9.4",
+		"mermaid": "^12.2.0",
 		"motion": "^13.5.1",
 		"next": "^16.4.0",
 		"next-intl": "^4.14.9",

@@ -72,10 +72,7 @@ export interface BlogCoverData {
 	mode?: BlogCoverPanelMode | null
 	icon?: string | null
 	iconBody?: string | null
-	/**
-	 * Raw CSS for a `<style>` block (e.g. embedded `@font-face`).
-	 * Needed for standalone SVG contexts (OG images) without page CSS.
-	 */
+
 	fontFaceCss?: string | null
 	seed?: string | number | null
 	brand?: string | null
@@ -108,7 +105,6 @@ export function escapeXml(value: string): string {
 		.replaceAll("'", '&apos;')
 }
 
-/** Deterministic 32-bit hash for decor variation. */
 export function hashSeed(seed: string | number | null | undefined): number {
 	const s = String(seed ?? '')
 	let h = 2166136261
@@ -119,7 +115,6 @@ export function hashSeed(seed: string | number | null | undefined): number {
 	return h >>> 0
 }
 
-/** Strip markdown to plain text for subtitle/excerpt. */
 export function extractExcerpt(markdown: string, maxLen = 140): string {
 	const plain = markdown
 		.replace(/```[\s\S]*?```/g, ' ')
@@ -140,11 +135,6 @@ export function estimateReadingMinutes(markdown: string): number {
 	return Math.max(1, Math.round(words / 180))
 }
 
-/**
- * Hard cap for any wrapped line. With min title size 40 and the 0.8
- * width factor, 20 chars always fit into 660px (20×40×0.8=640),
- * so the size formula can never overflow the panel.
- */
 const HARD_LINE_CAP = 20
 
 function wrapWords(text: string, maxChars: number, maxLines: number): string[] {
