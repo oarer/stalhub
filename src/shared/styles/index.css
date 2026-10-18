@@ -153,3 +153,9 @@
     opacity: 1;
     pointer-events: auto;
 }
+
+.mermaid-wrap .node rect,
+.mermaid-wrap .node polygon {
+	rx: 8px;
+	ry: 8px;
+}

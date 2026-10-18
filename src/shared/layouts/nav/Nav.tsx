@@ -3,6 +3,7 @@
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { mtsWide } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
@@ -14,8 +15,14 @@ import NavDropdown from './components/NavDropdown'
 import NavMe from './components/NavMe'
 import NavMobile from './NavMobile'
 
+const SZREPORT_VARIANTS = [
+	{ image: '/images/szreport/report.jpg', titleKey: 'nav.sz_report.news' },
+	{ image: '/images/szreport/promo.jpg', titleKey: 'nav.sz_report.promo' },
+] as const
+
 export default function Nav() {
 	const svgPath = useSvg()
+	const t = useTranslations()
 
 	const [isScrolled, setIsScrolled] = useState(false)
 	const { scrollY } = useScroll()
@@ -23,11 +30,17 @@ export default function Nav() {
 	const [openMenu, setOpenMenu] = useState<string | null>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
 
+	const [szReportIndex, setSzReportIndex] = useState(0)
+
 	useMotionValueEvent(scrollY, 'change', (latest) => {
 		setIsScrolled(!!latest)
 	})
 
 	const closeMenu = useCallback(() => setOpenMenu(null), [])
+
+	useEffect(() => {
+		setSzReportIndex(Math.floor(Math.random() * SZREPORT_VARIANTS.length))
+	}, [])
 
 	useEffect(() => {
 		if (!openMenu) return
@@ -49,6 +62,8 @@ export default function Nav() {
 			document.removeEventListener('pointerdown', handlePointerDown)
 		}
 	}, [openMenu, closeMenu])
+
+	const szReport = SZREPORT_VARIANTS[szReportIndex]
 
 	return (
 		<motion.header
@@ -76,9 +91,9 @@ export default function Nav() {
 						>
 							<Image
 								alt="logo"
-								height={26}
+								height={28}
 								src={`${svgPath}logo.svg`}
-								width={26}
+								width={28}
 							/>
 							<p
 								className={`${mtsWide.className} hidden font-medium text-xl lg:block`}
@@ -86,9 +101,21 @@ export default function Nav() {
 								Stalhub
 							</p>
 						</Link>
+						<Link
+							className="block cursor-pointer lg:hidden"
+							href="dsa"
+						>
+							<Image
+								alt="szreport"
+								className="rounded-lg"
+								height={32}
+								src={szReport.image}
+								width={32}
+							/>
+						</Link>
 					</div>
 					<div
-						className="relative hidden items-center lg:flex xl:gap-2"
+						className="relative hidden items-center lg:flex xl:gap-4"
 						onMouseLeave={closeMenu}
 						ref={menuRef}
 					>
@@ -106,6 +133,21 @@ export default function Nav() {
 								}
 							/>
 						))}
+						<Link
+							className="hidden cursor-pointer items-center gap-2 rounded-lg p-1 transition-colors hover:bg-primary/40 lg:flex"
+							href="dsa"
+						>
+							<Image
+								alt="szreport"
+								className="rounded-lg"
+								height={32}
+								src={szReport.image}
+								width={32}
+							/>
+							<span className="hidden text-primary xl:block">
+								{t(szReport.titleKey)}
+							</span>
+						</Link>
 					</div>
 					<div className="relative flex items-center justify-end gap-6">
 						<div className="hidden items-center gap-2 lg:flex">
