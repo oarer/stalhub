@@ -20,10 +20,6 @@ const CACHE_HEADERS = {
 	'Cache-Control': 'public, max-age=3600, s-maxage=86400',
 }
 
-// resvg/fontdb cannot parse woff2 (rejects it as malformed), so the route
-// uses a decompressed TTF copy of the cover font (see public/fonts/mts).
-// The SVG font stack is 'CoverExtended', 'MTS Extended', … — browsers use
-// the @font-face woff2, resvg resolves 'MTS Extended' from fontFiles below.
 const COVER_FONT_FILE = join(
 	process.cwd(),
 	'public',

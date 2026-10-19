@@ -236,9 +236,15 @@ export const NAV_STRUCTURE: NavGroup[] = [
 						key: 'maps',
 						icon: 'lucide:map',
 						href: '/map',
-						labelKey: 'nav.groups.other.items.maps.label',
+						labelKey: 'nav.groups.other.items.map.label',
 						descriptionKey:
-							'nav.groups.other.items.maps.description',
+							'nav.groups.other.items.map.description',
+					},
+					{
+						key: 'map3d',
+						icon: 'lucide:map',
+						href: '/map/3d',
+						labelKey: 'nav.groups.other.items.map3d.label',
 					},
 					{
 						key: 'servers',

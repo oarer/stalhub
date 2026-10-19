@@ -28,5 +28,5 @@ export type PaintItem = {
 	>
 }
 
-export const MAP_URL = '/assets-map.json'
-export const CDN = 'https://cdn.stalhub.dev/sc'
+export const MAP_URL = '/public/assets-map.json'
+export const CDN = 'https://static.stalhub.dev/sc'

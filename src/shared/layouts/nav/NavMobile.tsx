@@ -27,6 +27,19 @@ const locales = [
 	{ code: 'ko', title: '한국어', iconName: 'twemoji:flag-south-korea' },
 ]
 
+const SZREPORT_VARIANTS = [
+	{
+		image: '/public/images/szreport/report.jpg',
+		titleKey: 'nav.sz_report.news',
+		href: 'https://t.me/+RNCSnbFYQt1lZDAy',
+	},
+	{
+		image: '/public/images/szreport/promo.jpg',
+		titleKey: 'nav.sz_report.promo',
+		href: 'https://t.me/+uWz2wu5Biak1ZGEy',
+	},
+] as const
+
 export default function NavMobile() {
 	const svgPath = useSvg()
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,10 +51,17 @@ export default function NavMobile() {
 	const { theme, setTheme } = useTheme()
 	const router = useRouter()
 	const [currentLocale, setCurrentLocale] = useState('en')
+	const [szReportIndex, setSzReportIndex] = useState(0)
 
 	useEffect(() => {
 		setCurrentLocale(getLocale())
 	}, [])
+
+	useEffect(() => {
+		setSzReportIndex(Math.floor(Math.random() * SZREPORT_VARIANTS.length))
+	}, [])
+
+	const szReport = SZREPORT_VARIANTS[szReportIndex]
 
 	const handleLocaleChange = useCallback(
 		(locale: string) => {
@@ -70,6 +90,7 @@ export default function NavMobile() {
 								}`}
 								key={loc.code}
 								onClick={() => handleLocaleChange(loc.code)}
+								type="button"
 							>
 								<Icon className="text-xl" icon={loc.iconName} />
 								<p className="font-semibold">{loc.title}</p>
@@ -94,6 +115,7 @@ export default function NavMobile() {
 									setTheme(th.name)
 									setIsMenuOpen(false)
 								}}
+								type="button"
 							>
 								<Icon className="text-xl" icon={th.iconName} />
 								<p className="font-semibold">{t(th.title)}</p>
@@ -156,6 +178,31 @@ export default function NavMobile() {
 								</div>
 
 								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+									<Link
+										className="flex items-center gap-3 transition-all duration-300 hover:opacity-70 active:opacity-50"
+										href={szReport.href}
+										onClick={() => setIsMenuOpen(false)}
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										<Image
+											alt="szreport"
+											className="rounded-lg"
+											height={30}
+											src={szReport.image}
+											width={30}
+										/>
+										<span className="text-primary">
+											{t(szReport.titleKey)}
+										</span>
+										<Icon
+											className="ml-auto size-5"
+											icon="lucide:external-link"
+										/>
+									</Link>
+								</div>
+
+								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
 									<Accordion
 										className="flex flex-col gap-4"
 										disableEntranceAnimation
@@ -167,7 +214,10 @@ export default function NavMobile() {
 								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
 									<ItemSearchModal
 										trigger={
-											<button className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50">
+											<button
+												className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50"
+												type="button"
+											>
 												<span className="flex items-center gap-3">
 													<Icon
 														className="text-xl"

@@ -25,6 +25,12 @@ jobs:
             git reset --hard origin/main
 
             export GIT_COMMIT_SHA=$(git rev-parse HEAD)
+            set -a; . ./.env; set +a
 
-            docker build --build-arg GIT_COMMIT_SHA=$GIT_COMMIT_SHA -t stalhub_frontend:$GIT_COMMIT_SHA .
+            docker build \
+              --build-arg GIT_COMMIT_SHA=$GIT_COMMIT_SHA \
+              --build-arg NEXT_PUBLIC_API=$NEXT_PUBLIC_API \
+              --build-arg NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL \
+              --build-arg NEXT_PUBLIC_CDN_URL=$NEXT_PUBLIC_CDN_URL \
+              -t stalhub_frontend:$GIT_COMMIT_SHA .
             docker stack deploy -c docker-compose.yml stalhub

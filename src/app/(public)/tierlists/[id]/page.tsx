@@ -26,12 +26,12 @@ export async function generateMetadata({
 				description,
 				url: `/tierlists/${id}`,
 				type: 'article',
-				images: ['/images/og/banner.png'],
+				images: ['/public/images/og/banner.png'],
 			},
 			twitter: dynamicTwitter({
 				title,
 				description,
-				images: ['/images/og/banner.png'],
+				images: ['/public/images/og/banner.png'],
 			}),
 		}
 	} catch {

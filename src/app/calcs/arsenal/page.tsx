@@ -1,16 +1,13 @@
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
-import { getQueryClient } from '@/providers/QueryProvider'
-import { arsenalQueries } from '@/queries/calcs/arsenal.queries'
+'use client'
+
+import { Suspense } from 'react'
 import { ArsenalView } from '@/views/calcs/arsenal/ArsenalView'
+import LoadingArsenal from './loading'
 
-export default async function ArsenalPage() {
-	const queryClient = getQueryClient()
-
-	queryClient.fetchQuery(arsenalQueries.get())
-
+export default function ArsenalPage() {
 	return (
-		<HydrationBoundary state={dehydrate(queryClient)}>
+		<Suspense fallback={<LoadingArsenal />}>
 			<ArsenalView />
-		</HydrationBoundary>
+		</Suspense>
 	)
 }

@@ -53,8 +53,8 @@ export default function PlayerError({
 					height={400}
 					src={
 						notFound
-							? '/images/errors/404.png'
-							: '/images/errors/client.png'
+							? '/public/images/errors/404.png'
+							: '/public/images/errors/client.png'
 					}
 					width={400}
 				/>

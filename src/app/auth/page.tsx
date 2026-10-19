@@ -246,7 +246,7 @@ export default function Page() {
 												<Image
 													alt="discord auth"
 													height={20}
-													src="/images/other/discord.png"
+													src="/public/images/other/discord.png"
 													width={20}
 												/>
 												<p className="font-semibold">
@@ -264,7 +264,7 @@ export default function Page() {
 												<Image
 													alt="telegram auth"
 													height={20}
-													src="/images/other/telegram.png"
+													src="/public/images/other/telegram.png"
 													width={20}
 												/>
 												<p className="font-semibold">
@@ -281,7 +281,7 @@ export default function Page() {
 												<Image
 													alt="exbo auth"
 													height={20}
-													src="/images/other/exbo.png"
+													src="/public/images/other/exbo.png"
 													width={20}
 												/>
 												<p className="font-semibold">

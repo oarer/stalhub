@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { type AxiosAdapter, AxiosError, type AxiosResponse } from 'axios'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { useBanStore } from '@/stores/useBan.store'
 
@@ -6,6 +6,7 @@ declare module 'axios' {
 	interface AxiosRequestConfig {
 		skipAuthRefresh?: boolean
 		allowAuthRefresh?: boolean
+		noServerCache?: boolean
 	}
 }
 
@@ -21,6 +22,116 @@ export const apiClient = axios.create({
 	},
 	withCredentials: true,
 })
+
+const SSR_REVALIDATE_SECS = Number(process.env.SSR_REVALIDATE_SECS ?? 60)
+
+const serverFetchAdapter: AxiosAdapter = async (config) => {
+	const method = (config.method ?? 'get').toLowerCase()
+	const url = axios.getUri(config)
+	const timeout = config.timeout ?? 0
+
+	let response: Response
+	let timedOut = false
+	const controller = new AbortController()
+	const timer =
+		timeout > 0
+			? setTimeout(() => {
+					timedOut = true
+					controller.abort()
+				}, timeout)
+			: null
+
+	try {
+		const headers: Record<string, string> = {}
+		const fromConfig = (
+			config.headers as unknown as {
+				toJSON?: () => Record<string, string>
+			}
+		).toJSON?.()
+		for (const [key, value] of Object.entries(fromConfig ?? {})) {
+			if (typeof value === 'string') headers[key] = value
+		}
+
+		const init: RequestInit & { next?: { revalidate: number } } = {
+			method,
+			headers,
+			signal: controller.signal,
+		}
+
+		if (
+			method === 'get' &&
+			config.responseType !== 'arraybuffer' &&
+			config.responseType !== 'blob'
+		) {
+			if (config.noServerCache) {
+				init.cache = 'no-store'
+			} else {
+				init.next = { revalidate: SSR_REVALIDATE_SECS }
+			}
+		}
+
+		response = await fetch(url, init)
+	} catch (err) {
+		if (timedOut) {
+			throw new AxiosError(
+				`timeout of ${timeout}ms exceeded`,
+				'ECONNABORTED',
+				config
+			)
+		}
+		throw new AxiosError(
+			err instanceof Error ? err.message : 'Network Error',
+			'ERR_NETWORK',
+			config
+		)
+	} finally {
+		if (timer) clearTimeout(timer)
+	}
+
+	const text = await response.text()
+	let data: unknown = text
+	try {
+		data = JSON.parse(text)
+	} catch {
+		// не JSON - оставляем
+	}
+
+	const responseHeaders: Record<string, string> = {}
+	response.headers.forEach((value, key) => {
+		responseHeaders[key] = value
+	})
+
+	const axiosResponse: AxiosResponse = {
+		data,
+		status: response.status,
+		statusText: response.statusText,
+		headers: responseHeaders,
+		config,
+		request: response,
+	}
+
+	const validateStatus =
+		config.validateStatus ??
+		((status: number) => status >= 200 && status < 300)
+
+	if (validateStatus(response.status)) {
+		return axiosResponse
+	}
+
+	throw new AxiosError(
+		`Request failed with status code ${response.status}`,
+		String(response.status),
+		config,
+		axiosResponse.request,
+		axiosResponse
+	)
+}
+
+if (typeof window === 'undefined') {
+	apiClient.defaults.adapter = serverFetchAdapter
+
+	axios.defaults.adapter = serverFetchAdapter
+}
 
 let isRefreshing = false
 
@@ -74,9 +185,6 @@ apiClient.interceptors.response.use(
 			return Promise.reject(error)
 		}
 
-		// На сервере (SSR-префетчи) браузерные HttpOnly-куки недоступны,
-		// поэтому refresh заведомо не может успеть: отдаём исходный 401,
-		// а не сбивающий с толку 422 от /refresh без кук.
 		if (typeof window === 'undefined') {
 			return Promise.reject(error)
 		}
@@ -116,8 +224,6 @@ apiClient.interceptors.response.use(
 		} catch (refreshError) {
 			processQueue(refreshError)
 
-			// Сессию восстановить не удалось — больше не считаем
-			// пользователя залогиненным, чтобы UI не врал.
 			useAuthStore.getState().setUser(null)
 
 			return Promise.reject(refreshError)

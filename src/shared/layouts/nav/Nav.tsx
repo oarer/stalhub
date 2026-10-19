@@ -17,12 +17,12 @@ import NavMobile from './NavMobile'
 
 const SZREPORT_VARIANTS = [
 	{
-		image: '/images/szreport/report.jpg',
+		image: '/public/images/szreport/report.jpg',
 		titleKey: 'nav.sz_report.news',
 		href: 'https://t.me/+RNCSnbFYQt1lZDAy',
 	},
 	{
-		image: '/images/szreport/promo.jpg',
+		image: '/public/images/szreport/promo.jpg',
 		titleKey: 'nav.sz_report.promo',
 		href: 'https://t.me/+uWz2wu5Biak1ZGEy',
 	},
@@ -109,25 +109,10 @@ export default function Nav() {
 								Stalhub
 							</p>
 						</Link>
-						<a
-							className="block cursor-pointer lg:hidden"
-							href={szReport.href}
-							rel="noopener noreferrer"
-							target="_blank"
-						>
-							<Image
-								alt="szreport"
-								className="rounded-lg"
-								height={32}
-								src={szReport.image}
-								width={32}
-							/>
-						</a>
 					</div>
 					<div
 						className="relative hidden items-center lg:flex xl:gap-4"
-						onMouseLeave={closeMenu}
-						ref={menuRef}
+
 					>
 						{NAV_STRUCTURE.map((group) => (
 							<NavDropdown

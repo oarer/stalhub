@@ -1,7 +1,7 @@
 export const TILE_SIZE = 256
 
-export const ATLAS_MAP_URL = '/markers/atlas_map_waypoint.png'
-export const ATLAS_SHEET_URL = '/markers/atlas_map_waypoint.sheet.json'
+export const ATLAS_MAP_URL = '/public/markers/atlas_map_waypoint.png'
+export const ATLAS_SHEET_URL = '/public/markers/atlas_map_waypoint.sheet.json'
 
 export type AtlasMapFrame = { x: number; y: number; w: number; h: number }
 

@@ -7,12 +7,12 @@ export const WORLD_MAP: MapConfig = {
 		en: 'Whole Zone',
 	},
 	url: 'https://cdn.stalhub.dev/maps/map/tiles/{z}/{x}/{y}.png',
-	preview_image: '/maps/world.jpg',
+	preview_image: '/public/maps/world.jpg',
 	image: {
 		width: 21504,
 		height: 12288,
 		maxZoom: 15,
 	},
-	markers: '/markers/markers.json',
+	markers: '/public/markers/markers.json',
 	atlasMarkers: true,
 }

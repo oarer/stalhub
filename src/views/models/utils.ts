@@ -154,7 +154,7 @@ export async function downloadAssets(options: {
 	}
 
 	tasks.push(
-		fetchBlob('/stalcraft_paints-1.0.zip').then((blob) => {
+		fetchBlob('/public/stalcraft_paints-1.0.zip').then((blob) => {
 			if (blob) zip.file('stalcraft_paints-1.0.zip', blob)
 		})
 	)

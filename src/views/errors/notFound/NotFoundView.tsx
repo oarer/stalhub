@@ -24,7 +24,7 @@ export default function NotFoundView({ path }: NotFoundProps) {
 					alt="not found"
 					className="rounded-lg bg-neutral-200 p-3 dark:bg-transparent"
 					height={400}
-					src="/images/errors/404.png"
+					src="/public/images/errors/404.png"
 					width={400}
 				/>
 			</div>

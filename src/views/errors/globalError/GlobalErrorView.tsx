@@ -34,7 +34,7 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 						alt="client error"
 						className="rounded-lg bg-neutral-400 p-3 dark:bg-transparent"
 						height={400}
-						src="/images/errors/client.png"
+						src="/public/images/errors/client.png"
 						width={400}
 					/>
 				</div>

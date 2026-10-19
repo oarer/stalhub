@@ -9,7 +9,7 @@ export function BindModel({
 }: {
 	onAnimationsReady?: (animations: THREE.AnimationClip[]) => void
 }) {
-	const { scene, animations } = useGLTF('/models/steve.glb')
+	const { scene, animations } = useGLTF('/public/models/steve.glb')
 	const { actions } = useAnimations(animations, scene)
 
 	useEffect(() => {

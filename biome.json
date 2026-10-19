@@ -21,34 +21,6 @@
 		"expand": "auto",
 		"useEditorconfig": true
 	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": false,
-			"complexity": {
-				"noUselessTypeConstraint": "error"
-			},
-			"correctness": {
-				"noUnusedVariables": "error"
-			},
-			"style": {
-				"noCommonJs": "error",
-				"noNamespace": "error",
-				"useArrayLiterals": "error",
-				"useAsConstAssertion": "error",
-				"useImportType": "error"
-			},
-			"suspicious": {
-				"noExplicitAny": "error",
-				"noExtraNonNullAssertion": "error",
-				"noMisleadingInstantiator": "error",
-				"noNonNullAssertedOptionalChain": "error",
-				"noUnsafeDeclarationMerging": "error",
-				"useNamespaceKeyword": "error"
-			}
-		},
-		"includes": ["**", "!.next/*", "!node_modules", "!dist"]
-	},
 	"javascript": {
 		"formatter": {
 			"jsxQuoteStyle": "double",
@@ -71,7 +43,7 @@
 	},
 	"css": {
 		"formatter": {
-			"enabled": false
+			"enabled": true
 		},
 		"parser": {
 			"tailwindDirectives": true

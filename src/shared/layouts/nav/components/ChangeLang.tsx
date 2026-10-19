@@ -49,6 +49,7 @@ export default function ChangLang() {
 				aria-label="Язык"
 				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
+				type="button"
 			>
 				<div
 					className={`absolute left-1/2 -translate-x-1/2 transition-opacity duration-300 ${
@@ -83,6 +84,7 @@ export default function ChangLang() {
 								className="flex cursor-pointer items-center gap-2 transition-all duration-400 hover:opacity-70 active:opacity-50"
 								key={loc.code}
 								onClick={() => handleChange(loc.code)}
+								type="button"
 							>
 								<Icon
 									className="text-2xl"

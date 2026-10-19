@@ -5,10 +5,16 @@ services:
       dockerfile: Dockerfile
       args:
         GIT_COMMIT_SHA: ${GIT_COMMIT_SHA}
+        NEXT_PUBLIC_API: ${NEXT_PUBLIC_API}
+        NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+        NEXT_PUBLIC_CDN_URL: ${NEXT_PUBLIC_CDN_URL}
     image: stalhub_frontend:${GIT_COMMIT_SHA:-latest}
     environment:
       NODE_ENV: production
       PORT: "3000"
+      STALHUB_BACKEND_URL: ${STALHUB_BACKEND_URL:-http://host.docker.internal:8000/api/v1}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "3000:3000"
     healthcheck:

@@ -65,9 +65,9 @@ function buildBase(locale = 'ru'): Metadata {
 			telephone: false,
 		},
 		icons: {
-			icon: '/favicon.ico',
-			shortcut: '/favicon.ico',
-			apple: '/svg/logo.svg',
+			icon: '/public/favicon.ico',
+			shortcut: '/public/favicon.ico',
+			apple: '/public/svg/logo.svg',
 		},
 		manifest: '/manifest.webmanifest',
 		openGraph: {
@@ -79,7 +79,7 @@ function buildBase(locale = 'ru'): Metadata {
 			description: base.description,
 			images: [
 				{
-					url: '/images/og/banner.png',
+					url: '/public/images/og/banner.png',
 					width: 1200,
 					height: 630,
 					alt: 'StalHub — калькуляторы, сборки и гайды для StalZone',
@@ -90,7 +90,7 @@ function buildBase(locale = 'ru'): Metadata {
 			card: 'summary_large_image',
 			title: base.title,
 			description: base.description,
-			images: ['/images/og/banner.png'],
+			images: ['/public/images/og/banner.png'],
 		},
 		verification: {
 			...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION

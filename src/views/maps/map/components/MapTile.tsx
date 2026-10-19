@@ -93,7 +93,7 @@ export default function MapTile({
 	)
 
 	useEffect(() => {
-		void fetch('/markers/filtered.json')
+		void fetch('/public/markers/filtered.json')
 			.then((response) => response.json())
 			.then((data: unknown) => {
 				if (Array.isArray(data)) {

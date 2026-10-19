@@ -2,9 +2,9 @@
 
 import { Icon } from '@iconify/react'
 import { motion, useReducedMotion } from 'motion/react'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 import { mtsExtended, mtsWide } from '@/app/fonts'
 import { cn } from '@/lib/cn'
 import { SZ_REPORT_CARDS, type SzReportCard } from './sz-report/config'

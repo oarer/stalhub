@@ -47,7 +47,7 @@ export function ArmorLiteSection({
 						fetchPriority="high"
 						fill
 						priority
-						src="/images/other/armor_placeholder.png"
+						src="/public/images/other/armor_placeholder.png"
 					/>
 				</div>
 				<div className="flex flex-col justify-center gap-10">

@@ -44,7 +44,7 @@ export default function GiveawayModal() {
 								alt="dsadas"
 								className="rounded-lg border-2 border-accent/50 object-contain"
 								fill
-								src="/images/other/give.jpg"
+								src="/public/images/other/give.jpg"
 							/>
 						</div>
 						<p className="font-medium text-sm">

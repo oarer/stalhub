@@ -68,7 +68,7 @@ export default function BannedView() {
 					alt="banned"
 					className="rounded-lg bg-neutral-400 p-3 dark:bg-transparent"
 					height={400}
-					src="/images/errors/banned.png"
+					src="/public/images/errors/banned.png"
 					width={400}
 				/>
 			</div>
