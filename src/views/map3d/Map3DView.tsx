@@ -66,7 +66,7 @@ export type Map3DController = {
 
 export const Map3DContext = createContext<Map3DController | null>(null)
 
-import { mapFetch } from '../../../../engine/src/world/static-source.ts'
+import { mapFetch } from './engine-static/static-source.ts'
 
 const KEY = 'stalhub/map3d/settings-v1'
 export default function Map3DView() {

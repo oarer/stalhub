@@ -1,7 +1,7 @@
 'use client'
 import { Icon } from '@iconify/react'
 import { useEffect, useRef, useState } from 'react'
-import { mapAssetUrl } from '../../../../engine/src/world/static-source.ts'
+import { mapAssetUrl } from './engine-static/static-source.ts'
 
 type Point = { x: number; z: number }
 export default function DestinationMap({
