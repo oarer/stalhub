@@ -1,4 +1,3 @@
-import { resolve } from 'node:path'
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
@@ -12,8 +11,6 @@ const nextConfig: NextConfig = {
 			: undefined,
 
 	output: 'standalone',
-	turbopack: { root: resolve(process.cwd(), '..') },
-	outputFileTracingRoot: resolve(process.cwd(), '..'),
 	serverExternalPackages: ['@resvg/resvg-js'],
 	allowedDevOrigins: ['192.168.1.40', 'localhost'],
 	async rewrites() {
