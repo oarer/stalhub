@@ -50,7 +50,9 @@ export async function forwardMapAsset(
 			request.signal.removeEventListener('abort', abort)
 		}
 	try {
-		const headers = new Headers()
+		const headers = new Headers(),
+			accessKey = process.env.MAP3D_ACCESS_KEY
+		if (accessKey) headers.set('x-stalhub-map-key', accessKey)
 		for (const name of [
 			'content-type',
 			'range',

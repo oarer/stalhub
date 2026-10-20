@@ -13,6 +13,7 @@ services:
       NODE_ENV: production
       PORT: "3000"
       STALHUB_BACKEND_URL: ${STALHUB_BACKEND_URL:-http://host.docker.internal:8000/api/v1}
+      MAP3D_ACCESS_KEY: ${MAP3D_ACCESS_KEY}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
