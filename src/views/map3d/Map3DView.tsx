@@ -69,6 +69,9 @@ export const Map3DContext = createContext<Map3DController | null>(null)
 import { mapFetch } from './engine-static/static-source.ts'
 
 const KEY = 'stalhub/map3d/settings-v1'
+const ENGINE_URL = `/map/3d/engine?v=${encodeURIComponent(
+	process.env.NEXT_PUBLIC_GIT_COMMIT_SHA ?? 'dev'
+)}`
 export default function Map3DView() {
 	const query = useSearchParams(),
 		frame = useRef<HTMLIFrameElement>(null),
@@ -480,7 +483,7 @@ export default function Map3DView() {
 					}`}
 					key={`${instance}-${generation}-${preparation?.revision ?? 0}`}
 					ref={frame}
-					src={`/map3d-engine/index.html#instance=${encodeURIComponent(instance)}`}
+					src={`${ENGINE_URL}#instance=${encodeURIComponent(instance)}`}
 					title="3D-карта STALCRAFT"
 				/>
 				{setup && <Map3DSetupPanel />}
