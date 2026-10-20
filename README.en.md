@@ -8,7 +8,7 @@
   <h1>StalHub</h1>
 
   <p>
-    <a href="./README.md">🇷🇺 Русский</a> ·
+    <a href="./README.md">🇷🇺 Ru</a> ·
     <a href="./README.en.md">🇬🇧 English</a>
   </p>
 
