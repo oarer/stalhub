@@ -1,19 +1,18 @@
 'use client'
 
-import { Icon } from '@iconify/react'
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
-import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import {
+	AdminDeleteModal,
 	AdminEmptyRow,
 	AdminPagination,
-	DeleteConfirmContent,
+	AdminTableHeader,
 } from '../components/AdminTable'
 
 export default function BuildsAdminView() {
@@ -54,24 +53,26 @@ export default function BuildsAdminView() {
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
 					<Table.Root>
-						<Table.Header>
-							<Table.Row>
-								<Table.Head>ID</Table.Head>
-								<Table.Head>
-									{t('admin.permissions.name')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.articles.author')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.articles.stars')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.articles.created')}
-								</Table.Head>
-								<Table.Head />
-							</Table.Row>
-						</Table.Header>
+						<AdminTableHeader
+							columns={[
+								{
+									key: 'name',
+									label: t('admin.permissions.name'),
+								},
+								{
+									key: 'author',
+									label: t('admin.articles.author'),
+								},
+								{
+									key: 'stars',
+									label: t('admin.articles.stars'),
+								},
+								{
+									key: 'created',
+									label: t('admin.articles.created'),
+								},
+							]}
+						/>
 						<Table.Body>
 							{builds.map((build) => (
 								<Table.Row key={build.id}>
@@ -104,47 +105,33 @@ export default function BuildsAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										<div className="flex items-center gap-1">
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<DeleteConfirmContent
-														cancelLabel={t(
-															'clan.common.cancel'
-														)}
-														confirmLabel={t(
-															'clan.common.delete'
-														)}
-														description={t.rich(
-															'admin.builds.deleteDescription',
-															{
-																title: build.title,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-														onConfirm={() =>
-															deleteMutation.mutate(
-																build.id
-															)
-														}
-														title={t(
-															'admin.builds.deleteTitle'
-														)}
-													/>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'clan.common.cancel'
+												)}
+												confirmLabel={t(
+													'clan.common.delete'
+												)}
+												description={t.rich(
+													'admin.builds.deleteDescription',
+													{
+														title: build.title,
+														strong: (chunks) => (
+															<strong>
+																{chunks}
+															</strong>
+														),
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														build.id
+													)
+												}
+												title={t(
+													'admin.builds.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>

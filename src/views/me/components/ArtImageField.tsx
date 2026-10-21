@@ -8,6 +8,7 @@ import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { isVideoUrl, resolveImageUrl } from '@/lib/imageUrl'
 import { artService } from '@/services/art/art.service'
+import { UploadProgress } from './UploadProgress'
 
 const ACCEPTED_IMAGE_TYPES = [
 	'image/png',
@@ -102,20 +103,7 @@ export function ArtImageField({
 				</div>
 			</div>
 
-			{uploading && (
-				<div className="flex flex-col gap-1">
-					<div className="flex justify-between text-muted-foreground text-xs">
-						<span>{t('me.newArt.uploading')}</span>
-						<span>{progress}%</span>
-					</div>
-					<div className="h-1.5 w-full overflow-hidden rounded-full bg-accent">
-						<div
-							className="h-full rounded-full bg-linear-to-r from-muted/50 to-primary transition-all duration-200"
-							style={{ width: `${progress}%` }}
-						/>
-					</div>
-				</div>
-			)}
+			{uploading && <UploadProgress progress={progress} />}
 
 			{previewSrc && !uploading && (
 				<div className="relative aspect-video w-full max-w-sm overflow-hidden rounded-lg">

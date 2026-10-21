@@ -19,8 +19,7 @@ type PageProps = {
 export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
-	const { slug } = await params
-	const locale = await getLocaleServer()
+	const [{ slug }, locale] = await Promise.all([params, getLocaleServer()])
 
 	const itemData = await generateItemMetadata(slug, locale)
 	if (!itemData) {

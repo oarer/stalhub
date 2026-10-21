@@ -8,7 +8,6 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
-import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import Username from '@/components/ui/user/Username'
@@ -16,7 +15,11 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminUserService } from '@/services/admin/user.service'
-import { AdminPagination, DeleteConfirmContent } from '../components/AdminTable'
+import {
+	AdminDeleteModal,
+	AdminPagination,
+	AdminTableHeader,
+} from '../components/AdminTable'
 
 export default function UsersAdminView() {
 	const t = useTranslations()
@@ -74,24 +77,26 @@ export default function UsersAdminView() {
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
 					<Table.Root>
-						<Table.Header>
-							<Table.Row>
-								<Table.Head>ID</Table.Head>
-								<Table.Head>
-									{t('admin.users.table.username')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.users.table.name')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.users.table.roles')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.users.table.status')}
-								</Table.Head>
-								<Table.Head />
-							</Table.Row>
-						</Table.Header>
+						<AdminTableHeader
+							columns={[
+								{
+									key: 'username',
+									label: t('admin.users.table.username'),
+								},
+								{
+									key: 'name',
+									label: t('admin.users.table.name'),
+								},
+								{
+									key: 'roles',
+									label: t('admin.users.table.roles'),
+								},
+								{
+									key: 'status',
+									label: t('admin.users.table.status'),
+								},
+							]}
+						/>
 						<Table.Body>
 							{data?.data.map((user) => (
 								<Table.Row key={user.id}>
@@ -147,40 +152,28 @@ export default function UsersAdminView() {
 													<Icon icon="lucide:eye" />
 												</Button>
 											</Link>
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<DeleteConfirmContent
-														cancelLabel={t(
-															'admin.users.cancel'
-														)}
-														confirmLabel={t(
-															'admin.users.deleteConfirm'
-														)}
-														description={t(
-															'admin.users.deleteDescription',
-															{
-																name: user.username,
-															}
-														)}
-														onConfirm={() =>
-															deleteMutation.mutate(
-																user.id
-															)
-														}
-														title={t(
-															'admin.users.deleteTitle'
-														)}
-													/>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'admin.users.cancel'
+												)}
+												confirmLabel={t(
+													'admin.users.deleteConfirm'
+												)}
+												description={t(
+													'admin.users.deleteDescription',
+													{
+														name: user.username,
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														user.id
+													)
+												}
+												title={t(
+													'admin.users.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>

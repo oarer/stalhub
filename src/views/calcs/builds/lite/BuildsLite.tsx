@@ -1,16 +1,12 @@
 'use client'
 
-import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { toPng } from 'html-to-image'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Divider } from '@/components/ui/Divider'
-import { LightBox } from '@/components/ui/LightBox'
-import { Modal } from '@/components/ui/Modal'
+import { PngPreviewModal } from '@/components/ui/PngPreviewModal'
 import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
@@ -576,52 +572,19 @@ export default function BuildsLiteView({
 					t={t}
 				/>
 			</div>
-			<Modal.Root onOpenChange={setShowPngModal} open={showPngModal}>
-				<Modal.Content fullScreen={false}>
-					<Modal.Header>
-						<Modal.Title className="flex items-center gap-2">
-							<Icon icon="lucide:image" />
-							{t('buildsLite.pngPreview')}
-						</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						{pngPreviewUrl && (
-							<LightBox.Root>
-								<LightBox.Trigger asChild>
-									<Image
-										alt="Build preview"
-										className="rounded-lg"
-										height={600}
-										priority
-										src={pngPreviewUrl}
-										width={900}
-									/>
-								</LightBox.Trigger>
-								<LightBox.Content src={pngPreviewUrl} />
-							</LightBox.Root>
-						)}
-					</Modal.Body>
-					<Modal.Footer>
-						<Modal.Close>{t('buildsLite.close')}</Modal.Close>
-						<Button
-							className="flex items-center gap-2"
-							onClick={handleCopyPng}
-							variant="secondary"
-						>
-							<Icon icon="lucide:copy" />
-							{t('build.copy')}
-						</Button>
-						<Button
-							className="flex items-center gap-2"
-							onClick={handleDownloadPng}
-							variant="primary"
-						>
-							<Icon icon="lucide:download" />
-							{t('buildsLite.download')}
-						</Button>
-					</Modal.Footer>
-				</Modal.Content>
-			</Modal.Root>
+			<PngPreviewModal
+				alt="Build preview"
+				closeLabel={t('buildsLite.close')}
+				copyLabel={t('build.copy')}
+				downloadLabel={t('buildsLite.download')}
+				imageClassName="rounded-lg"
+				onCopy={handleCopyPng}
+				onDownload={handleDownloadPng}
+				onOpenChange={setShowPngModal}
+				open={showPngModal}
+				previewUrl={pngPreviewUrl}
+				title={t('buildsLite.pngPreview')}
+			/>
 		</section>
 	)
 }

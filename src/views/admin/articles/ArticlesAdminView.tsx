@@ -15,9 +15,9 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
 import {
+	AdminDeleteModal,
 	AdminEmptyRow,
 	AdminPagination,
-	DeleteConfirmContent,
 } from '../components/AdminTable'
 import PublishBlogButton from './PublishBlogButton'
 
@@ -264,47 +264,33 @@ export default function ArticlesAdminView() {
 												</Modal.Content>
 											</Modal.Root>
 
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<DeleteConfirmContent
-														cancelLabel={t(
-															'clan.common.cancel'
-														)}
-														confirmLabel={t(
-															'clan.common.delete'
-														)}
-														description={t.rich(
-															'admin.articles.deleteDescription',
-															{
-																title: article.title,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-														onConfirm={() =>
-															deleteMutation.mutate(
-																article.id
-															)
-														}
-														title={t(
-															'admin.articles.deleteTitle'
-														)}
-													/>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'clan.common.cancel'
+												)}
+												confirmLabel={t(
+													'clan.common.delete'
+												)}
+												description={t.rich(
+													'admin.articles.deleteDescription',
+													{
+														title: article.title,
+														strong: (chunks) => (
+															<strong>
+																{chunks}
+															</strong>
+														),
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														article.id
+													)
+												}
+												title={t(
+													'admin.articles.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>

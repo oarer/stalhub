@@ -6,7 +6,8 @@ import { useTranslations } from 'next-intl'
 import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import { PersonalDemoCard } from './personal-analytics/components/DemoCard'
-import { PersonalFeatureList } from './personal-analytics/components/FeatureList'
+import { PERSONAL_FEATURES } from './personal-analytics/config'
+import { FeatureList } from './shared/FeatureList'
 
 export default function PersonalAnalytics() {
 	const t = useTranslations('landing.personal')
@@ -54,7 +55,10 @@ export default function PersonalAnalytics() {
 					>
 						{t('subtitle')}
 					</motion.p>
-					<PersonalFeatureList />
+					<FeatureList
+						features={PERSONAL_FEATURES}
+						namespace="landing.personal"
+					/>
 					<motion.div
 						className="flex justify-center sm:justify-end"
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}

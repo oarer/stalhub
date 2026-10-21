@@ -3,26 +3,30 @@
 import type { MotionValue } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { Fragment } from 'react'
-import { CLAN_STAGES, DOTS } from '../config'
-import { nodeFraction } from '../utils'
-import { FlowDot } from './FlowDot'
-import { PassBox } from './PassBox'
+import { FlowDot } from '../clan-analytics/components/FlowDot'
+import { PassBox } from '../clan-analytics/components/PassBox'
+import { DOTS } from '../clan-analytics/config'
+import { nodeFraction } from '../clan-analytics/utils'
 
 export function PipelineStages({
 	flow,
 	frozen,
 	reducedMotion,
+	stages,
+	namespace,
 }: {
 	flow: MotionValue<number>
 	frozen: boolean
 	reducedMotion: boolean
+	stages: ReadonlyArray<{ id: string; icon: string }>
+	namespace: string
 }) {
-	const t = useTranslations('landing.clan')
+	const t = useTranslations(namespace)
 
 	return (
 		<div className="relative">
 			<div className="relative grid grid-cols-[auto_1fr_auto_1fr_auto] items-start">
-				{CLAN_STAGES.map((stage, i) => (
+				{stages.map((stage, i) => (
 					<Fragment key={stage.id}>
 						{i > 0 && (
 							<div
@@ -33,13 +37,11 @@ export function PipelineStages({
 						<div className="flex flex-col items-center gap-2">
 							<PassBox
 								flow={flow}
-								fraction={nodeFraction(CLAN_STAGES.length, i)}
+								fraction={nodeFraction(stages.length, i)}
 								frozen={frozen}
 								icon={stage.icon}
 							/>
-							<span
-								className={`font-mono font-semibold text-[11px] text-muted-foreground`}
-							>
+							<span className="font-mono font-semibold text-[11px] text-muted-foreground">
 								{t(`stages.${stage.id}`)}
 							</span>
 						</div>

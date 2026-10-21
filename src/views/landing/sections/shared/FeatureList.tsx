@@ -3,14 +3,19 @@
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { mtsWide, unbounded } from '@/app/fonts'
-import { PERSONAL_FEATURES } from '../config'
 
-export function PersonalFeatureList() {
-	const t = useTranslations('landing.personal')
+export function FeatureList({
+	features,
+	namespace,
+}: {
+	features: ReadonlyArray<{ id: string; icon: string }>
+	namespace: string
+}) {
+	const t = useTranslations(namespace)
 
 	return (
 		<dl className="flex flex-col border-primary/40 border-t-2">
-			{PERSONAL_FEATURES.map((feature) => (
+			{features.map((feature) => (
 				<div
 					className="flex flex-col gap-2 border-primary/40 border-b-2 py-4"
 					key={feature.id}

@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import BlogCover from '@/components/blog/BlogCover'
-import { Button } from '@/components/ui/Button'
+import { Pagination } from '@/components/ui/Pagination'
 import { formatDate } from '@/lib/date'
 import { articleQueries } from '@/queries/article/article.queries'
 
@@ -128,29 +128,12 @@ export default function BlogView() {
 				</div>
 			)}
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="font-mono text-foreground text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<Pagination
+				labelClassName="font-mono text-foreground text-sm"
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</section>
 	)
 }

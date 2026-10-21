@@ -7,7 +7,6 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
@@ -17,9 +16,9 @@ import { adminArtService } from '@/services/admin/art.service'
 import type { Art } from '@/types/art.type'
 import { ArtType } from '@/types/art.type'
 import {
+	AdminDeleteModal,
 	AdminEmptyRow,
 	AdminPagination,
-	DeleteConfirmContent,
 } from '../components/AdminTable'
 import { AdminArtForm } from './AdminArtForm'
 
@@ -173,47 +172,33 @@ export default function ArtsAdminView() {
 											>
 												<Icon icon="lucide:pencil" />
 											</Button>
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<DeleteConfirmContent
-														cancelLabel={t(
-															'clan.common.cancel'
-														)}
-														confirmLabel={t(
-															'clan.common.delete'
-														)}
-														description={t.rich(
-															'admin.arts.deleteDescription',
-															{
-																title: art.title,
-																strong: (
-																	chunks
-																) => (
-																	<strong>
-																		{chunks}
-																	</strong>
-																),
-															}
-														)}
-														onConfirm={() =>
-															deleteMutation.mutate(
-																art.id
-															)
-														}
-														title={t(
-															'admin.arts.deleteTitle'
-														)}
-													/>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'clan.common.cancel'
+												)}
+												confirmLabel={t(
+													'clan.common.delete'
+												)}
+												description={t.rich(
+													'admin.arts.deleteDescription',
+													{
+														title: art.title,
+														strong: (chunks) => (
+															<strong>
+																{chunks}
+															</strong>
+														),
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														art.id
+													)
+												}
+												title={t(
+													'admin.arts.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>

@@ -1,6 +1,5 @@
 'use client'
 
-import { Icon } from '@iconify/react'
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
@@ -8,6 +7,7 @@ import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
+import { Pagination } from '@/components/ui/Pagination'
 import {
 	BUILD_SORTS,
 	BUILD_TAGS,
@@ -154,29 +154,12 @@ export default function BuildsPublicView() {
 				</div>
 			)}
 
-			{totalPages > 1 && (
-				<div className="flex items-center justify-center gap-2">
-					<Button
-						disabled={page <= 1}
-						onClick={() => setPage((p) => p - 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-left" />
-					</Button>
-					<span className="font-mono text-foreground text-sm">
-						{page} / {totalPages}
-					</span>
-					<Button
-						disabled={page >= totalPages}
-						onClick={() => setPage((p) => p + 1)}
-						size="sm"
-						variant="outline"
-					>
-						<Icon icon="lucide:chevron-right" />
-					</Button>
-				</div>
-			)}
+			<Pagination
+				labelClassName="font-mono text-foreground text-sm"
+				onPageChange={setPage}
+				page={page}
+				totalPages={totalPages}
+			/>
 		</section>
 	)
 }

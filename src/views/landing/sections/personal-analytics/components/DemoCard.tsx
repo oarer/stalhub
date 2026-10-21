@@ -7,9 +7,9 @@ import { mtsExtended } from '@/app/fonts'
 import { Card } from '@/components/ui/Card'
 import { cn } from '@/lib/cn'
 import { useFlow } from '../../clan-analytics/hooks/useFlow'
-import { PERSONAL_DEMO_STATS } from '../config'
+import { PipelineStages } from '../../shared/PipelineStages'
+import { PERSONAL_DEMO_STATS, PERSONAL_STAGES } from '../config'
 import { MiniChart } from './MiniChart'
-import { PersonalPipelineStages } from './PipelineStages'
 
 const rise = {
 	initial: { opacity: 0, y: 16 },
@@ -25,10 +25,12 @@ export function PersonalDemoCard() {
 
 	return (
 		<Card.Root className="gap-4">
-			<PersonalPipelineStages
+			<PipelineStages
 				flow={flow}
 				frozen={frozen}
+				namespace="landing.personal"
 				reducedMotion={frozen}
+				stages={PERSONAL_STAGES}
 			/>
 
 			<motion.div

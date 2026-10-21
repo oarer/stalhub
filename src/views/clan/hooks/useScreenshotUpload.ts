@@ -64,14 +64,17 @@ export function useScreenshotUpload(profile: UserClanProfile) {
 						}:00`
 					).toISOString()
 				: undefined
-			const session = await clanService.createSession({
-				region: profile?.region ?? 'RU',
-				map_name: uploadMapName.trim() || t(`clan.stage.${uploadType}`),
-				stage_number: uploadStage,
-				type: uploadType,
-				started_at: startedAt,
-			})
-			const { default: axios } = await import('axios')
+			const [{ default: axios }, session] = await Promise.all([
+				import('axios'),
+				clanService.createSession({
+					region: profile?.region ?? 'RU',
+					map_name:
+						uploadMapName.trim() || t(`clan.stage.${uploadType}`),
+					stage_number: uploadStage,
+					type: uploadType,
+					started_at: startedAt,
+				}),
+			])
 			const formData = new FormData()
 			formData.append('file', file)
 			await axios.post(

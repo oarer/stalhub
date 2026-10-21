@@ -6,14 +6,15 @@ import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
+import { PngPreviewModal } from '@/components/ui/PngPreviewModal'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import type { SquadMap } from '@/types/clan/clan.type'
 import { LoadoutEditorModal } from '../me/components/LoadoutEditorModal'
+import { GearEditModals } from './components/members/GearEditModals'
 import { AssignLeaderModal } from './components/squads/AssignLeaderModal'
 import { ChangeMapModal } from './components/squads/ChangeMapModal'
 import { MapTabs } from './components/squads/MapTabs'
-import { PngPreviewModal } from './components/squads/PngPreviewModal'
 import { SquadCard } from './components/squads/SquadCard'
 import { SquadDndProvider } from './components/squads/SquadDnd'
 import { SquadPngTemplate } from './components/squads/SquadPngTemplate'
@@ -22,7 +23,6 @@ import {
 	MAX_SQUADS_PER_MAP,
 	SQUAD_MAPS,
 } from './components/squads/squads.const'
-import { GearEditModals } from './components/members/GearEditModals'
 import { useClanGearEdit } from './hooks/useClanGearEdit'
 import { useClanSquads } from './hooks/useClanSquads'
 
@@ -208,12 +208,6 @@ function ClanSquadsContent({
 											squad.id
 										)
 									}
-									onRename={(name) =>
-										mutations.renameMutation.mutate({
-											squadId: squad.id,
-											name,
-										})
-									}
 									onEditLoadout={(
 										memberId,
 										squadMemberId,
@@ -261,6 +255,12 @@ function ClanSquadsContent({
 											slot,
 										})
 									}
+									onRename={(name) =>
+										mutations.renameMutation.mutate({
+											squadId: squad.id,
+											name,
+										})
+									}
 									pendingRequest={
 										data.pendingRequest.get(squad.id) ??
 										false
@@ -293,14 +293,14 @@ function ClanSquadsContent({
 									})
 								}
 							}}
-							selectedTarget={modals.assignTarget}
-							targetSquadName={modals.targetSquad?.name ?? null}
 							onUnassign={(source) =>
 								mutations.removeMutation.mutate({
 									squadId: source.squadId,
 									slot: source.slot,
 								})
 							}
+							selectedTarget={modals.assignTarget}
+							targetSquadName={modals.targetSquad?.name ?? null}
 						/>
 					</div>
 				</div>
@@ -415,11 +415,17 @@ function ClanSquadsContent({
 			</div>
 
 			<PngPreviewModal
+				alt="Squads preview"
+				closeLabel={t('clan.common.close')}
+				copyLabel={t('clan.common.copy')}
+				downloadLabel={t('clan.common.download')}
+				imageClassName="h-auto w-full rounded-md"
 				onCopy={png.handleCopyPng}
 				onDownload={png.handleDownloadPng}
 				onOpenChange={png.setShowPngModal}
 				open={png.showPngModal}
 				previewUrl={png.pngPreviewUrl}
+				title={t('clan.squads.png.previewTitle')}
 			/>
 
 			<GearEditModals controller={gearEdit} />

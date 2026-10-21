@@ -7,7 +7,6 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { CheckBox } from '@/components/ui/CheckBox'
-import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
@@ -16,6 +15,12 @@ import { adminPermissionQueries } from '@/queries/admin/permission.queries'
 import { adminRoleQueries } from '@/queries/admin/role.queries'
 import { adminRoleService } from '@/services/admin/role.service'
 import type { AdminRole } from '@/types/admin.type'
+import {
+	AdminCreateEntityCard,
+	AdminDeleteModal,
+	AdminNameDescriptionEditModal,
+	AdminTableHeader,
+} from '../components/AdminTable'
 
 export default function RolesAdminView() {
 	const t = useTranslations()
@@ -109,62 +114,37 @@ export default function RolesAdminView() {
 				</span>
 			</div>
 
-			<Card.Root>
-				<Card.Header>
-					<Card.Title>
-						<Icon icon="lucide:plus" />
-						{t('admin.roles.create')}
-					</Card.Title>
-				</Card.Header>
-				<Card.Content>
-					<div className="flex flex-col items-stretch gap-3 md:flex-row md:items-end">
-						<div className="flex-1">
-							<Input
-								label="admin.permissions.name"
-								onChange={(
-									e: React.ChangeEvent<HTMLInputElement>
-								) => setCreateName(e.target.value)}
-								value={createName}
-							/>
-						</div>
-						<div className="flex-1">
-							<Input
-								label="admin.permissions.description"
-								onChange={(
-									e: React.ChangeEvent<HTMLInputElement>
-								) => setCreateDescription(e.target.value)}
-								value={createDescription}
-							/>
-						</div>
-						<Button
-							disabled={!createName}
-							loading={createMutation.isPending}
-							onClick={() => createMutation.mutate()}
-						>
-							{t('clan.common.create')}
-						</Button>
-					</div>
-				</Card.Content>
-			</Card.Root>
+			<AdminCreateEntityCard
+				description={createDescription}
+				disabled={!createName}
+				loading={createMutation.isPending}
+				name={createName}
+				onDescriptionChange={setCreateDescription}
+				onNameChange={setCreateName}
+				onSubmit={() => createMutation.mutate()}
+				submitLabel={t('clan.common.create')}
+				title={t('admin.roles.create')}
+			/>
 
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
 					<Table.Root>
-						<Table.Header>
-							<Table.Row>
-								<Table.Head>ID</Table.Head>
-								<Table.Head>
-									{t('admin.permissions.name')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.permissions.description')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.roles.permissions')}
-								</Table.Head>
-								<Table.Head />
-							</Table.Row>
-						</Table.Header>
+						<AdminTableHeader
+							columns={[
+								{
+									key: 'name',
+									label: t('admin.permissions.name'),
+								},
+								{
+									key: 'description',
+									label: t('admin.permissions.description'),
+								},
+								{
+									key: 'permissions',
+									label: t('admin.roles.permissions'),
+								},
+							]}
+						/>
 						<Table.Body>
 							{roles?.map((role) => (
 								<Table.Row key={role.id}>
@@ -206,62 +186,33 @@ export default function RolesAdminView() {
 											>
 												<Icon icon="lucide:pencil" />
 											</Button>
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.roles.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t.rich(
-																'admin.roles.deleteDescription',
-																{
-																	name: role.name,
-																	strong: (
-																		chunks
-																	) => (
-																		<strong>
-																			{
-																				chunks
-																			}
-																		</strong>
-																	),
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'clan.common.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	role.id
-																)
-															}
-															variant="danger"
-														>
-															{t(
-																'clan.common.delete'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'clan.common.cancel'
+												)}
+												confirmLabel={t(
+													'clan.common.delete'
+												)}
+												description={t.rich(
+													'admin.roles.deleteDescription',
+													{
+														name: role.name,
+														strong: (chunks) => (
+															<strong>
+																{chunks}
+															</strong>
+														),
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														role.id
+													)
+												}
+												title={t(
+													'admin.roles.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>
@@ -271,45 +222,20 @@ export default function RolesAdminView() {
 				</div>
 			</Card.Root>
 
-			<Modal.Root
+			<AdminNameDescriptionEditModal
+				cancelLabel={t('clan.common.cancel')}
+				description={editDescription}
+				name={editName}
+				onDescriptionChange={setEditDescription}
+				onNameChange={setEditName}
 				onOpenChange={(o) => {
 					if (!o) setEditRole(null)
 				}}
+				onSave={() => updateMutation.mutate()}
 				open={!!editRole}
-			>
-				<Modal.Content fullScreen={false}>
-					<Modal.Header>
-						<Modal.Title>{t('admin.roles.edit')}</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<div className="flex flex-col gap-4">
-							<Input
-								label="admin.permissions.name"
-								onChange={(
-									e: React.ChangeEvent<HTMLInputElement>
-								) => setEditName(e.target.value)}
-								value={editName}
-							/>
-							<Input
-								label="admin.permissions.description"
-								onChange={(
-									e: React.ChangeEvent<HTMLInputElement>
-								) => setEditDescription(e.target.value)}
-								value={editDescription}
-							/>
-						</div>
-					</Modal.Body>
-					<Modal.Footer>
-						<Modal.Close>{t('clan.common.cancel')}</Modal.Close>
-						<Modal.Action
-							closeOnClick
-							onClick={() => updateMutation.mutate()}
-						>
-							{t('clan.common.save')}
-						</Modal.Action>
-					</Modal.Footer>
-				</Modal.Content>
-			</Modal.Root>
+				saveLabel={t('clan.common.save')}
+				title={t('admin.roles.edit')}
+			/>
 
 			<Modal.Root
 				onOpenChange={(o) => {

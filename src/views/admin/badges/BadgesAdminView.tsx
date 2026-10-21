@@ -16,6 +16,7 @@ import { getQueryClient } from '@/providers/QueryProvider'
 import { adminBadgeQueries } from '@/queries/admin/badge.queries'
 import { adminBadgeService } from '@/services/admin/badge.service'
 import type { AdminBadge } from '@/types/admin.type'
+import { AdminDeleteModal, AdminTableHeader } from '../components/AdminTable'
 
 type BadgeMode = 'icon' | 'image'
 
@@ -278,21 +279,22 @@ export default function BadgesAdminView() {
 			<Card.Root className="overflow-hidden p-0">
 				<div className="overflow-x-auto">
 					<Table.Root>
-						<Table.Header>
-							<Table.Row>
-								<Table.Head>ID</Table.Head>
-								<Table.Head>
-									{t('admin.permissions.name')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.badges.type')}
-								</Table.Head>
-								<Table.Head>
-									{t('admin.badges.color')}
-								</Table.Head>
-								<Table.Head />
-							</Table.Row>
-						</Table.Header>
+						<AdminTableHeader
+							columns={[
+								{
+									key: 'name',
+									label: t('admin.permissions.name'),
+								},
+								{
+									key: 'type',
+									label: t('admin.badges.type'),
+								},
+								{
+									key: 'color',
+									label: t('admin.badges.color'),
+								},
+							]}
+						/>
 						<Table.Body>
 							{badges?.map((badge) => (
 								<Table.Row key={badge.id}>
@@ -356,62 +358,33 @@ export default function BadgesAdminView() {
 											>
 												<Icon icon="lucide:pencil" />
 											</Button>
-											<Modal.Root>
-												<Modal.Trigger variant="ghost">
-													<Icon
-														className="text-red-400"
-														icon="lucide:trash-2"
-													/>
-												</Modal.Trigger>
-												<Modal.Content
-													fullScreen={false}
-												>
-													<Modal.Header>
-														<Modal.Title>
-															{t(
-																'admin.badges.deleteTitle'
-															)}
-														</Modal.Title>
-														<Modal.Description>
-															{t.rich(
-																'admin.badges.deleteDescription',
-																{
-																	name: badge.name,
-																	strong: (
-																		chunks
-																	) => (
-																		<strong>
-																			{
-																				chunks
-																			}
-																		</strong>
-																	),
-																}
-															)}
-														</Modal.Description>
-													</Modal.Header>
-													<Modal.Footer>
-														<Modal.Close>
-															{t(
-																'clan.common.cancel'
-															)}
-														</Modal.Close>
-														<Modal.Action
-															closeOnClick
-															onClick={() =>
-																deleteMutation.mutate(
-																	badge.id
-																)
-															}
-															variant="danger"
-														>
-															{t(
-																'clan.common.delete'
-															)}
-														</Modal.Action>
-													</Modal.Footer>
-												</Modal.Content>
-											</Modal.Root>
+											<AdminDeleteModal
+												cancelLabel={t(
+													'clan.common.cancel'
+												)}
+												confirmLabel={t(
+													'clan.common.delete'
+												)}
+												description={t.rich(
+													'admin.badges.deleteDescription',
+													{
+														name: badge.name,
+														strong: (chunks) => (
+															<strong>
+																{chunks}
+															</strong>
+														),
+													}
+												)}
+												onConfirm={() =>
+													deleteMutation.mutate(
+														badge.id
+													)
+												}
+												title={t(
+													'admin.badges.deleteTitle'
+												)}
+											/>
 										</div>
 									</Table.Cell>
 								</Table.Row>

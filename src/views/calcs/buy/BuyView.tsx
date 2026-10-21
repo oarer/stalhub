@@ -1,15 +1,11 @@
 'use client'
 
-import { Icon } from '@iconify/react'
 import { toPng } from 'html-to-image'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { LightBox } from '@/components/ui/LightBox'
-import { Modal } from '@/components/ui/Modal'
+import { PngPreviewModal } from '@/components/ui/PngPreviewModal'
 import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
@@ -260,52 +256,19 @@ export default function BuyView() {
 				/>
 			</div>
 
-			<Modal.Root onOpenChange={setShowPngModal} open={showPngModal}>
-				<Modal.Content fullScreen={false}>
-					<Modal.Header>
-						<Modal.Title className="flex items-center gap-2">
-							<Icon icon="lucide:image" />
-							{t('buy.pngPreview')}
-						</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						{pngPreviewUrl && (
-							<LightBox.Root>
-								<LightBox.Trigger asChild>
-									<Image
-										alt={t('buy.pngPreview')}
-										className="rounded-lg"
-										height={600}
-										priority
-										src={pngPreviewUrl}
-										width={900}
-									/>
-								</LightBox.Trigger>
-								<LightBox.Content src={pngPreviewUrl} />
-							</LightBox.Root>
-						)}
-					</Modal.Body>
-					<Modal.Footer>
-						<Modal.Close>{t('buy.close')}</Modal.Close>
-						<Button
-							className="flex items-center gap-2"
-							onClick={handleCopyPng}
-							variant="secondary"
-						>
-							<Icon icon="lucide:copy" />
-							{t('buy.copy')}
-						</Button>
-						<Button
-							className="flex items-center gap-2"
-							onClick={handleDownloadPng}
-							variant="primary"
-						>
-							<Icon icon="lucide:download" />
-							{t('buy.download')}
-						</Button>
-					</Modal.Footer>
-				</Modal.Content>
-			</Modal.Root>
+			<PngPreviewModal
+				alt={t('buy.pngPreview')}
+				closeLabel={t('buy.close')}
+				copyLabel={t('buy.copy')}
+				downloadLabel={t('buy.download')}
+				imageClassName="rounded-lg"
+				onCopy={handleCopyPng}
+				onDownload={handleDownloadPng}
+				onOpenChange={setShowPngModal}
+				open={showPngModal}
+				previewUrl={pngPreviewUrl}
+				title={t('buy.pngPreview')}
+			/>
 		</section>
 	)
 }

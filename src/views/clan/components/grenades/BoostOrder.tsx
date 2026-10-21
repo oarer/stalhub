@@ -15,6 +15,7 @@ import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
 import type { ClanSettings } from '@/types/clan/clan.type'
 import { useClanRoles } from '../../hooks/useClanRoles'
+import { OrderTableHeader } from './OrderTableHeader'
 
 interface PendingItem {
 	itemId: string
@@ -133,24 +134,11 @@ export function BoostOrder({ settings }: Props) {
 							<>
 								{orders.length > 0 && (
 									<Table.Root>
-										<Table.Header>
-											<Table.Row>
-												<Table.Head>
-													{t(
-														'clan.grenades.playerName'
-													)}
-												</Table.Head>
-												<Table.Head>
-													{t(
-														'clan.boosts.selectItem'
-													)}
-												</Table.Head>
-												<Table.Head className="w-20 text-center">
-													×
-												</Table.Head>
-												<Table.Head className="w-10" />
-											</Table.Row>
-										</Table.Header>
+										<OrderTableHeader
+											itemLabel={t(
+												'clan.boosts.selectItem'
+											)}
+										/>
 										<Table.Body>
 											{orders.map((order, i) => (
 												<Table.Row key={order.id}>

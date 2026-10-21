@@ -13,6 +13,7 @@ import { toast } from '@/components/ui/Toast'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { clanService } from '@/services/clan/clan.service'
 import { useClanRoles } from '../../hooks/useClanRoles'
+import { OrderTableHeader } from './OrderTableHeader'
 
 interface PendingBox {
 	typeId: string
@@ -121,20 +122,9 @@ export function GrenadeBoxOrder({ clanId }: { clanId: string }) {
 					<div className="flex flex-col gap-4">
 						{boxes.length > 0 && (
 							<Table.Root>
-								<Table.Header>
-									<Table.Row>
-										<Table.Head>
-											{t('clan.grenades.playerName')}
-										</Table.Head>
-										<Table.Head>
-											{t('clan.grenades.boxType')}
-										</Table.Head>
-										<Table.Head className="w-20 text-center">
-											×
-										</Table.Head>
-										<Table.Head className="w-10" />
-									</Table.Row>
-								</Table.Header>
+								<OrderTableHeader
+									itemLabel={t('clan.grenades.boxType')}
+								/>
 								<Table.Body>
 									{boxes.map((box, i) => (
 										<Table.Row key={i}>

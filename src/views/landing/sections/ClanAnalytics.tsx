@@ -4,7 +4,8 @@ import { motion, useReducedMotion } from 'motion/react'
 import { useTranslations } from 'next-intl'
 import { mtsExtended, mtsWide } from '@/app/fonts'
 import { DemoCard } from './clan-analytics/components/DemoCard'
-import { FeatureList } from './clan-analytics/components/FeatureList'
+import { CLAN_FEATURES } from './clan-analytics/config'
+import { FeatureList } from './shared/FeatureList'
 
 export default function LandingClan() {
 	const t = useTranslations('landing.clan')
@@ -39,7 +40,10 @@ export default function LandingClan() {
 					>
 						{t('subtitle')}
 					</motion.p>
-					<FeatureList />
+					<FeatureList
+						features={CLAN_FEATURES}
+						namespace="landing.clan"
+					/>
 				</div>
 				<div className="flex w-full flex-col items-center justify-start gap-4 lg:sticky lg:top-24 lg:self-start dark:text-foreground">
 					<motion.div

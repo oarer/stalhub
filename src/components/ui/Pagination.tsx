@@ -7,10 +7,12 @@ export function Pagination({
 	page,
 	totalPages,
 	onPageChange,
+	labelClassName = 'font-medium font-mono text-muted-foreground text-sm',
 }: {
 	page: number
 	totalPages: number
 	onPageChange: (page: number) => void
+	labelClassName?: string
 }) {
 	if (totalPages <= 1) return null
 
@@ -24,7 +26,7 @@ export function Pagination({
 			>
 				<Icon icon="lucide:chevron-left" />
 			</Button>
-			<span className="font-medium font-mono text-muted-foreground text-sm">
+			<span className={labelClassName}>
 				{page} / {totalPages}
 			</span>
 			<Button

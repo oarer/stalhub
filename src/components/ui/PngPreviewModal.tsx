@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import type { ReactNode } from 'react'
 import { Button } from '@/components/ui/Button'
 import { LightBox } from '@/components/ui/LightBox'
 import { Modal } from '@/components/ui/Modal'
@@ -13,6 +13,12 @@ interface PngPreviewModalProps {
 	onOpenChange: (open: boolean) => void
 	onCopy: () => void
 	onDownload: () => void
+	title: ReactNode
+	alt: string
+	closeLabel: ReactNode
+	copyLabel: ReactNode
+	downloadLabel: ReactNode
+	imageClassName?: string
 }
 
 export function PngPreviewModal({
@@ -21,16 +27,20 @@ export function PngPreviewModal({
 	onOpenChange,
 	onCopy,
 	onDownload,
+	title,
+	alt,
+	closeLabel,
+	copyLabel,
+	downloadLabel,
+	imageClassName,
 }: PngPreviewModalProps) {
-	const t = useTranslations()
-
 	return (
 		<Modal.Root onOpenChange={onOpenChange} open={open}>
 			<Modal.Content fullScreen={false}>
 				<Modal.Header>
 					<Modal.Title className="flex items-center gap-2">
 						<Icon icon="lucide:image" />
-						{t('clan.squads.png.previewTitle')}
+						{title}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
@@ -38,27 +48,27 @@ export function PngPreviewModal({
 						<LightBox.Root>
 							<LightBox.Trigger asChild>
 								<Image
-									alt="Squads preview"
-									className="h-auto w-full rounded-md"
+									alt={alt}
+									className={imageClassName}
 									height={600}
 									priority
 									src={previewUrl}
 									width={900}
 								/>
 							</LightBox.Trigger>
-							<LightBox.Content alt="squads" src={previewUrl} />
+							<LightBox.Content alt={alt} src={previewUrl} />
 						</LightBox.Root>
 					)}
 				</Modal.Body>
 				<Modal.Footer>
-					<Modal.Close>{t('clan.common.close')}</Modal.Close>
+					<Modal.Close>{closeLabel}</Modal.Close>
 					<Button
 						className="flex items-center gap-2"
 						onClick={onCopy}
 						variant="secondary"
 					>
 						<Icon icon="lucide:copy" />
-						{t('clan.common.copy')}
+						{copyLabel}
 					</Button>
 					<Button
 						className="flex items-center gap-2"
@@ -66,7 +76,7 @@ export function PngPreviewModal({
 						variant="primary"
 					>
 						<Icon icon="lucide:download" />
-						{t('clan.common.download')}
+						{downloadLabel}
 					</Button>
 				</Modal.Footer>
 			</Modal.Content>
