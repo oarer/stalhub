@@ -3003,6 +3003,24 @@
       "lastUpdate": "Updated: {time}",
       "minutesShort": "min",
       "intervalHint": "10s – 5min"
+    },
+    "comparison": {
+      "button": "Compare",
+      "title": "Item comparison",
+      "pinned": "Pinned",
+      "pickTitle": "Choose an item to compare",
+      "pickHint": "Only items from the same root category are available",
+      "change": "Change",
+      "retry": "Retry",
+      "catalogLoading": "Loading item catalog...",
+      "catalogError": "Failed to load the item catalog",
+      "catalogEmpty": "No items of the same category to compare",
+      "noResults": "Nothing found",
+      "itemLoading": "Loading item...",
+      "itemError": "Failed to load the item",
+      "categoryMismatch": "This item cannot be compared: categories do not match",
+      "sharpeningNote": "Sharpening applies to both items. Attachments are not included.",
+      "statsTitle": "Stats"
     }
   },
   "users": {

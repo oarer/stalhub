@@ -3003,6 +3003,24 @@
       "lastUpdate": "Mis à jour : {time}",
       "minutesShort": "min",
       "intervalHint": "10 s – 5 min"
+    },
+    "comparison": {
+      "button": "Comparer",
+      "title": "Comparaison d'objets",
+      "pinned": "Épinglé",
+      "pickTitle": "Choisissez un objet à comparer",
+      "pickHint": "Seuls les objets de la même catégorie principale sont disponibles",
+      "change": "Changer",
+      "retry": "Réessayer",
+      "catalogLoading": "Chargement du catalogue d'objets...",
+      "catalogError": "Impossible de charger le catalogue d'objets",
+      "catalogEmpty": "Aucun objet de la même catégorie à comparer",
+      "noResults": "Aucun résultat",
+      "itemLoading": "Chargement de l'objet...",
+      "itemError": "Impossible de charger l'objet",
+      "categoryMismatch": "Cet objet ne peut pas être comparé : les catégories ne correspondent pas",
+      "sharpeningNote": "L'affûtage s'applique aux deux objets. Les accessoires ne sont pas pris en compte.",
+      "statsTitle": "Caractéristiques"
     }
   },
   "users": {

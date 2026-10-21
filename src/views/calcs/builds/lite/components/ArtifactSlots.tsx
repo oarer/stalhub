@@ -109,6 +109,7 @@ export function ArtifactSlotsLite({
 			? [
 					{
 						label: 'build.labels.positive_stats',
+						favoriteType: 'positive-effect' as const,
 						options: positiveOptions,
 						values: selectedPositiveStats,
 						onValuesChange: setSelectedPositiveStats,
@@ -119,6 +120,7 @@ export function ArtifactSlotsLite({
 			? [
 					{
 						label: 'build.labels.negative_stats',
+						favoriteType: 'negative-effect' as const,
 						options: negativeOptions,
 						values: selectedNegativeStats,
 						onValuesChange: setSelectedNegativeStats,
@@ -168,6 +170,7 @@ export function ArtifactSlotsLite({
 		if (containerEffectOptions.positiveOptions.length > 0) {
 			groups.push({
 				label: 'build.labels.positive_stats',
+				favoriteType: 'positive-effect',
 				options: containerEffectOptions.positiveOptions,
 				values: selectedContainerPositiveStats,
 				onValuesChange: setSelectedContainerPositiveStats,
@@ -176,6 +179,7 @@ export function ArtifactSlotsLite({
 		if (containerEffectOptions.negativeOptions.length > 0) {
 			groups.push({
 				label: 'build.labels.negative_stats',
+				favoriteType: 'negative-effect',
 				options: containerEffectOptions.negativeOptions,
 				values: selectedContainerNegativeStats,
 				onValuesChange: setSelectedContainerNegativeStats,

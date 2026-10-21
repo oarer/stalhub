@@ -14,7 +14,12 @@ import {
 	useState,
 } from 'react'
 import { createPortal } from 'react-dom'
+import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
+import {
+	type FavoriteType,
+	useFavoritesStore,
+} from '@/stores/useFavorites.store'
 
 export interface ComboboxOption {
 	value: string
@@ -29,6 +34,7 @@ interface ComboboxBaseProps {
 	searchPlaceholder?: string
 	emptyText?: string
 	translateOptions?: boolean
+	favoriteType?: FavoriteType
 	className?: string
 	disabled?: boolean
 	zIndex?: number
@@ -70,9 +76,22 @@ export function Combobox(props: ComboboxProps) {
 		searchPlaceholder = 'ui.combobox.default.search.button',
 		emptyText = 'ui.combobox.default.search.notFound',
 		translateOptions = true,
+		favoriteType,
 		className,
 		disabled = false,
 	} = props
+
+	const favorites = useFavoritesStore((state) => state.favorites)
+	const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite)
+	const favoriteValues = useMemo(
+		() =>
+			new Set(
+				favorites
+					.filter((favorite) => favorite.type === favoriteType)
+					.map((favorite) => favorite.itemId)
+			),
+		[favorites, favoriteType]
+	)
 
 	const isMultiple = props.multiple === true
 	const maxSelected = isMultiple ? props.maxSelected : undefined
@@ -101,14 +120,41 @@ export function Combobox(props: ComboboxProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null)
 	const parentRef = useRef<HTMLDivElement>(null)
 
+	const sortedOptions = useMemo(() => {
+		if (!favoriteType) return options
+
+		const result: ComboboxOption[] = []
+		let group: ComboboxOption[] = []
+		const appendGroup = () => {
+			group.sort(
+				(a, b) =>
+					Number(favoriteValues.has(b.value)) -
+					Number(favoriteValues.has(a.value))
+			)
+			result.push(...group)
+			group = []
+		}
+
+		for (const option of options) {
+			if (option.type === 'header') {
+				appendGroup()
+				result.push(option)
+			} else {
+				group.push(option)
+			}
+		}
+		appendGroup()
+		return result
+	}, [options, favoriteType, favoriteValues])
+
 	const filtered = useMemo(() => {
-		if (!search) return options
+		if (!search) return sortedOptions
 		const lower = search.toLowerCase()
-		return options.filter((o) => {
+		return sortedOptions.filter((o) => {
 			const label = translateOptions ? t(o.label) : o.label
 			return label.toLowerCase().includes(lower)
 		})
-	}, [options, search, translateOptions, t])
+	}, [sortedOptions, search, translateOptions, t])
 
 	const selectedCount = isMultiple
 		? (props.values?.length ?? 0)
@@ -200,13 +246,15 @@ export function Combobox(props: ComboboxProps) {
 
 		function handleKey(e: KeyboardEvent) {
 			if (e.key === 'Escape') {
+				e.preventDefault()
+				e.stopPropagation()
 				setOpen(false)
 				triggerRef.current?.focus()
 			}
 		}
 
-		document.addEventListener('keydown', handleKey)
-		return () => document.removeEventListener('keydown', handleKey)
+		document.addEventListener('keydown', handleKey, true)
+		return () => document.removeEventListener('keydown', handleKey, true)
 	}, [open])
 
 	const select = useCallback(
@@ -494,11 +542,47 @@ export function Combobox(props: ComboboxProps) {
 																icon="lucide:check"
 															/>
 
-															<span className="truncate text-left">
+															<span className="min-w-0 flex-1 truncate text-left">
 																{optionLabel(
 																	option.label
 																)}
 															</span>
+
+															{favoriteType && (
+																<Button
+																	aria-label={`${t('me.nav.stars')}: ${optionLabel(option.label)}`}
+																	aria-pressed={favoriteValues.has(
+																		option.value
+																	)}
+																	className={cn(
+																		'h-7 w-7 shrink-0 p-0 focus-visible:outline-2 focus-visible:outline-primary',
+																		favoriteValues.has(
+																			option.value
+																		) &&
+																			'text-warning hover:text-warning'
+																	)}
+																	onClick={(event) => {
+																		event.stopPropagation()
+																		toggleFavorite(
+																			favoriteType,
+																			option.value
+																		)
+																	}}
+																	onKeyDown={(event) => {
+																		if (
+																			event.key ===
+																				'Enter' ||
+																			event.key === ' '
+																		) {
+																			event.stopPropagation()
+																		}
+																	}}
+																	type="button"
+																	variant="ghost"
+																>
+																	<Icon icon="lucide:star" />
+																</Button>
+															)}
 														</div>
 													)
 												})}

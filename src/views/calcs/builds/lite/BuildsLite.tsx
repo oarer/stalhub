@@ -175,6 +175,7 @@ export default function BuildsLiteView({
 		if (armorEffectOptions.positiveOptions.length > 0) {
 			groups.push({
 				label: 'build.labels.positive_stats',
+				favoriteType: 'positive-effect',
 				options: armorEffectOptions.positiveOptions,
 				values: selectedArmorPositiveStats,
 				onValuesChange: setSelectedArmorPositiveStats,
@@ -183,6 +184,7 @@ export default function BuildsLiteView({
 		if (armorEffectOptions.negativeOptions.length > 0) {
 			groups.push({
 				label: 'build.labels.negative_stats',
+				favoriteType: 'negative-effect',
 				options: armorEffectOptions.negativeOptions,
 				values: selectedArmorNegativeStats,
 				onValuesChange: setSelectedArmorNegativeStats,

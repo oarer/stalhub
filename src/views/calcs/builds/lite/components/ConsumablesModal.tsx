@@ -12,12 +12,12 @@ import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { BoostButtons, type BoostCategory } from '@/types/build.type'
 import { InfoColor, type Item, infoColorMap } from '@/types/item.type'
-import {
-	collectListBlocks,
-	collectListElements,
-	messageToString,
-} from '@/utils/itemUtils'
+import { collectListBlocks, messageToString } from '@/utils/itemUtils'
 import { ListBlock } from '@/views/items/components/blocks'
+import {
+	buildPositiveNegativeOptions,
+	filterItemsByEffects,
+} from '../../utils/effectFilters'
 import type { StatFilterGroup } from './ItemPickerModal'
 import { ItemPickerModal } from './ItemPickerModal'
 
@@ -57,63 +57,51 @@ function BoostSelectModal({
 		[items, category]
 	)
 
-	const [selectedEffects, setSelectedEffects] = useState<string[]>([])
+	const [selectedPositiveStats, setSelectedPositiveStats] = useState<
+		string[]
+	>([])
+	const [selectedNegativeStats, setSelectedNegativeStats] = useState<
+		string[]
+	>([])
 
-	const effectOptions = useMemo(() => {
-		const map = new Map<string, string>()
-		for (const item of categoryItems) {
-			for (const el of collectListElements(item.infoBlocks)) {
-				if (el.type !== 'numeric') continue
-				const name = el.name
-				const key =
-					name.type === 'translation' && name.key
-						? name.key
-						: name.type === 'text' && name.text
-							? name.text
-							: null
-				if (!key || map.has(key)) continue
-				map.set(key, messageToString(name, locale))
-			}
-		}
-		return Array.from(map.entries())
-			.map(([value, label]) => ({ value, label }))
-			.sort((a, b) => b.label.localeCompare(a.label))
-	}, [categoryItems, locale])
+	const effectOptions = useMemo(
+		() => buildPositiveNegativeOptions(categoryItems, locale),
+		[categoryItems, locale]
+	)
 
-	const statFilteredItems = useMemo(() => {
-		if (selectedEffects.length === 0) return categoryItems
-		return categoryItems.filter((item) => {
-			const itemKeys = new Set<string>()
-			for (const el of collectListElements(item.infoBlocks)) {
-				if (el.type !== 'numeric') continue
-				const name = (
-					el as {
-						name: { type: string; key?: string; text?: string }
-					}
-				).name
-				const key =
-					name.type === 'translation' && name.key
-						? name.key
-						: name.type === 'text' && name.text
-							? name.text
-							: null
-				if (key) itemKeys.add(key)
-			}
-			return selectedEffects.every((k) => itemKeys.has(k))
-		})
-	}, [categoryItems, selectedEffects])
+	const statFilteredItems = useMemo(
+		() =>
+			filterItemsByEffects(
+				categoryItems,
+				locale,
+				selectedPositiveStats,
+				selectedNegativeStats
+			),
+		[categoryItems, locale, selectedPositiveStats, selectedNegativeStats]
+	)
 
-	const statFilters: StatFilterGroup[] | undefined =
-		effectOptions.length > 0
+	const statFilters: StatFilterGroup[] = [
+		...(effectOptions.positiveOptions.length > 0
 			? [
 					{
-						label: 'build.labels.effects',
-						options: effectOptions,
-						values: selectedEffects,
-						onValuesChange: setSelectedEffects,
+						label: 'build.labels.positive_stats',
+						options: effectOptions.positiveOptions,
+						values: selectedPositiveStats,
+						onValuesChange: setSelectedPositiveStats,
 					},
 				]
-			: undefined
+			: []),
+		...(effectOptions.negativeOptions.length > 0
+			? [
+					{
+						label: 'build.labels.negative_stats',
+						options: effectOptions.negativeOptions,
+						values: selectedNegativeStats,
+						onValuesChange: setSelectedNegativeStats,
+					},
+				]
+			: []),
+	]
 
 	const selectedItemData =
 		categoryItems.find((i) => i.id === selectedBoostId) ?? null
@@ -132,13 +120,15 @@ function BoostSelectModal({
 		setShowModal(open)
 		if (!open) {
 			setPreviewId(selectedBoostId)
-			setSelectedEffects([])
+			setSelectedPositiveStats([])
+			setSelectedNegativeStats([])
 		}
 	}
 
 	return (
 		<div className="relative size-14">
 			<Button
+				aria-label={`${t('modals.builds.consumables.pick_boost')} ${t(`boost.${category.split('.').pop()}`)}`}
 				className="size-14 p-2"
 				onClick={() => setShowModal(true)}
 				variant={'secondary'}

@@ -11,6 +11,9 @@ import { BaseModel } from './Base'
 import { BindModel } from './BindModel'
 
 function Loader() {
+	const connected = useThree((state) => state.events.connected)
+	if (!connected) return null
+
 	return (
 		<Html center>
 			<Skeleton className="h-[50vh] w-[60vw] max-w-[320px]" />

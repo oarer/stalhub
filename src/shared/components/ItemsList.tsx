@@ -96,25 +96,25 @@ const Row = ({
 					</p>
 				</div>
 
-				<button
-					className={`cursor-pointer items-center justify-center rounded-full p-1 transition-all hover:-rotate-16 hover:bg-yellow-300/20 ${
-						isFav ? 'bg-yellow-200/20' : ''
-					}`}
-					onClick={(e) => {
-						e.stopPropagation()
-						if (favoriteType) {
-							toggleFavorite(favoriteType, item.id)
-						}
-					}}
-					type="button"
-				>
-					<Icon
-						className={`text-xl ${
-							isFav ? 'text-warning' : 'text-neutral-100'
+				{favoriteType && (
+					<button
+						className={`cursor-pointer items-center justify-center rounded-full p-1 transition-all hover:-rotate-16 hover:bg-yellow-300/20 ${
+							isFav ? 'bg-yellow-200/20' : ''
 						}`}
-						icon="lucide:star"
-					/>
-				</button>
+						onClick={(e) => {
+							e.stopPropagation()
+							toggleFavorite(favoriteType, item.id)
+						}}
+						type="button"
+					>
+						<Icon
+							className={`text-xl ${
+								isFav ? 'text-warning' : 'text-neutral-100'
+							}`}
+							icon="lucide:star"
+						/>
+					</button>
+				)}
 			</div>
 		</div>
 	)

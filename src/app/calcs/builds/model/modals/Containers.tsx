@@ -98,6 +98,7 @@ export default function ContModal({ onClose }: ModalProps) {
 						/>
 						<Combobox
 							className="mt-2"
+							favoriteType="effect"
 							multiple
 							onValuesChange={setSelectedEffectStats}
 							options={effectOptions}

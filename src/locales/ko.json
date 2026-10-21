@@ -3003,6 +3003,24 @@
       "lastUpdate": "업데이트: {time}",
       "minutesShort": "분",
       "intervalHint": "10초 – 5분"
+    },
+    "comparison": {
+      "button": "비교",
+      "title": "아이템 비교",
+      "pinned": "고정됨",
+      "pickTitle": "비교할 아이템을 선택하세요",
+      "pickHint": "같은 최상위 카테고리의 아이템만 선택할 수 있습니다",
+      "change": "변경",
+      "retry": "다시 시도",
+      "catalogLoading": "아이템 목록을 불러오는 중...",
+      "catalogError": "아이템 목록을 불러오지 못했습니다",
+      "catalogEmpty": "비교할 같은 카테고리의 아이템이 없습니다",
+      "noResults": "검색 결과가 없습니다",
+      "itemLoading": "아이템을 불러오는 중...",
+      "itemError": "아이템을 불러오지 못했습니다",
+      "categoryMismatch": "이 아이템은 비교할 수 없습니다: 카테고리가 일치하지 않습니다",
+      "sharpeningNote": "강화는 두 아이템에 모두 적용됩니다. 부착물은 포함되지 않습니다.",
+      "statsTitle": "능력치"
     }
   },
   "users": {

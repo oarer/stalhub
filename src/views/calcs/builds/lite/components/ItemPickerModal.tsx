@@ -21,8 +21,18 @@ import { ListBlock } from '@/views/items/components/blocks'
 export type StatFilterGroup = {
 	label: string
 	options: ComboboxOption[]
+	favoriteType?: FavoriteType
 	values: string[]
 	onValuesChange: (values: string[]) => void
+}
+
+function getStatFilterFavoriteType(
+	group: StatFilterGroup
+): FavoriteType | undefined {
+	if (group.favoriteType) return group.favoriteType
+	if (group.label.endsWith('positive_stats')) return 'positive-effect'
+	if (group.label.endsWith('negative_stats')) return 'negative-effect'
+	return undefined
 }
 
 type ItemPickerModalProps = {
@@ -83,7 +93,7 @@ export function ItemPickerModal({
 		>
 			<Modal.Content className="flex min-h-125 max-w-3xl flex-col">
 				<Modal.Header>
-					<Modal.Title>{t(title)}</Modal.Title>
+					<Modal.Title>{t.has(title) ? t(title) : title}</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body className="flex min-h-0 flex-col gap-4 py-0">
@@ -100,10 +110,14 @@ export function ItemPickerModal({
 							{statFilters.map((group, i) => (
 								<div className="min-w-40 flex-1" key={i}>
 									<Combobox
+										favoriteType={getStatFilterFavoriteType(
+											group
+										)}
 										multiple
 										onValuesChange={group.onValuesChange}
 										options={group.options}
 										placeholder={group.label}
+										translateOptions={false}
 										values={group.values}
 										zIndex={99999999}
 									/>

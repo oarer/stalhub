@@ -10,6 +10,9 @@ export type FavoriteType =
 	| 'armor'
 	| 'weapon'
 	| 'ammo'
+	| 'positive-effect'
+	| 'negative-effect'
+	| 'effect'
 
 type FavoriteItem = {
 	id: string

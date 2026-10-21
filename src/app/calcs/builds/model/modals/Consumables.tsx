@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { HoverCard } from '@/components/ui/HoverCard'
@@ -19,6 +19,11 @@ import {
 } from '@/types/build.type'
 import { InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { collectListBlocks, messageToString } from '@/utils/itemUtils'
+import {
+	buildEffectFilterMap,
+	buildEffectOptions,
+	filterItemsByEffects,
+} from '@/views/calcs/builds/utils/effectFilters'
 import { ListBlock } from '@/views/items/components/blocks'
 import { ItemPickerPanel } from './ItemPickerPanel'
 
@@ -49,11 +54,28 @@ function BoostSelectModal({
 
 	const t = useTranslations()
 
-	const categoryItems = getBoostsByCategory(items, category)
+	const categoryItems = useMemo(
+		() => getBoostsByCategory(items, category),
+		[items, category]
+	)
 	const selectedItem = categoryItems.find((i) => i.id === previewId)
 	const selectedItemData = items.find((i) => i.id === selectedBoostId)
 	const [filter, setFilter] = useState('')
 	const [open, setOpen] = useState(false)
+	const [selectedEffects, setSelectedEffects] = useState<string[]>([])
+	const effectOptions = useMemo(
+		() => buildEffectOptions(categoryItems, locale),
+		[categoryItems, locale]
+	)
+	const effectFilteredItems = useMemo(() => {
+		const { posSet } = buildEffectFilterMap(categoryItems, locale)
+		return filterItemsByEffects(
+			categoryItems,
+			locale,
+			selectedEffects.filter((key) => posSet.has(key)),
+			selectedEffects.filter((key) => !posSet.has(key))
+		)
+	}, [categoryItems, locale, selectedEffects])
 
 	useEffect(() => {
 		setPreviewId(selectedBoostId)
@@ -66,6 +88,11 @@ function BoostSelectModal({
 				className="size-14 cursor-pointer justify-center rounded-xl bg-secondary p-2 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800"
 				variant={'secondary'}
 			>
+				<Button
+					aria-label={`${t('modals.builds.consumables.pick_boost')} ${t(`boost.${category.split('.').pop()}`)}`}
+					type="button"
+					variant="secondary"
+				>
 				{selectedBoostId && selectedItemData ? (
 					<HoverCard.Root>
 						<HoverCard.Trigger>
@@ -135,6 +162,7 @@ function BoostSelectModal({
 				) : (
 					<Icon className="size-7" icon={BoostButtons[category]} />
 				)}
+				</Button>
 			</Modal.Trigger>
 			<Modal.Content className="max-w-206">
 				<Modal.Header>
@@ -150,13 +178,17 @@ function BoostSelectModal({
 					<div className="flex gap-4">
 						<ItemPickerPanel
 							cardClassName="min-w-95 ring-primary/20"
+							effectOptions={effectOptions}
 							favoriteType="boost"
 							filter={filter}
-							items={categoryItems}
+							items={effectFilteredItems}
 							listClassName="max-h-90 max-w-90"
 							locale={locale}
 							onFilterChange={setFilter}
+							onSelectedEffectsChange={setSelectedEffects}
 							onSelectItem={(id) => setPreviewId(id)}
+							preserveOrder={selectedEffects.length > 0}
+							selectedEffects={selectedEffects}
 							selectedItemId={previewId}
 						/>
 						<Card.Root className="min-w-95 ring-primary/20">

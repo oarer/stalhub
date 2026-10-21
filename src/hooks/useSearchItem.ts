@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useItemStore } from '@/stores/items.store'
@@ -33,10 +33,13 @@ function refreshItems(
 	hasStoreItems: boolean,
 	setItems: (items: ItemListing[]) => void,
 	setCommit: (commit: string) => void,
-	setError: (err: string | null) => void
+	setError: (err: string | null) => void,
+	force = false
 ): Promise<void> {
 	const time = Number(localStorage.getItem(LS_TIME))
-	if (time && Date.now() - time < TTL) return Promise.resolve()
+	const isFresh = !!time && Date.now() - time < TTL
+	if (!force && isFresh && (hasStoreItems || readCachedItems()))
+		return Promise.resolve()
 
 	if (!inflight) {
 		inflight = (async () => {
@@ -55,6 +58,7 @@ function refreshItems(
 
 				if (latestSHA === currentSHA && hasData) {
 					localStorage.setItem(LS_TIME, Date.now().toString())
+					setError(null)
 					return
 				}
 
@@ -68,6 +72,7 @@ function refreshItems(
 
 				setItems(freshItems)
 				setCommit(latestSHA)
+				setError(null)
 
 				localStorage.setItem(LS_DATA, JSON.stringify(freshItems))
 				localStorage.setItem(LS_COMMIT, latestSHA)
@@ -80,7 +85,8 @@ function refreshItems(
 			} catch (e) {
 				console.log(e, 'error fetching items')
 				const t = Number(localStorage.getItem(LS_TIME))
-				if (!t || Date.now() - t > TTL)
+				const hasData = hasStoreItems || !!readCachedItems()
+				if (force || !hasData || !t || Date.now() - t > TTL)
 					setError('Не удалось получить актуальные данные')
 			} finally {
 				inflight = null
@@ -138,5 +144,19 @@ export function useSearchItem() {
 		}
 	}, [setItems, setCommit, setError, setLoading])
 
-	return useItemStore()
+	const retry = useCallback(async () => {
+		setError(null)
+		setLoading(true)
+		await refreshItems(
+			commitRef.current,
+			!!itemsRef.current,
+			setItems,
+			setCommit,
+			setError,
+			true
+		)
+		setLoading(false)
+	}, [setItems, setCommit, setError, setLoading])
+
+	return { ...useItemStore(), retry }
 }

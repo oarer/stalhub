@@ -16,6 +16,7 @@ interface ItemPickerPanelProps {
 	filter: string
 	onFilterChange: (value: string) => void
 	effectOptions?: ComboboxOption[]
+	effectFavoriteType?: FavoriteType
 	selectedEffects?: string[]
 	onSelectedEffectsChange?: (values: string[]) => void
 	preserveOrder?: boolean
@@ -32,6 +33,7 @@ export function ItemPickerPanel({
 	filter,
 	onFilterChange,
 	effectOptions,
+	effectFavoriteType = 'effect',
 	selectedEffects,
 	onSelectedEffectsChange,
 	preserveOrder,
@@ -50,6 +52,7 @@ export function ItemPickerPanel({
 				{effectOptions && onSelectedEffectsChange && (
 					<Combobox
 						className="mt-2"
+						favoriteType={effectFavoriteType}
 						multiple
 						onValuesChange={onSelectedEffectsChange}
 						options={effectOptions}

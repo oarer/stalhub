@@ -37,6 +37,7 @@ import {
 	NumericVariantsCard,
 	TextBlock,
 } from './components/blocks'
+import { ItemComparison } from './components/ItemComparison'
 import { clampAutoRefreshInterval } from './components/tabs/AuctionAutoRefresh'
 import ItemTabs from './components/tabs/AuctionTabs'
 
@@ -233,6 +234,12 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 								/>
 							))}
 					</Card.Description>
+
+					<ItemComparison
+						githubUrl={githubUrl}
+						initialSharpening={numericVariants}
+						item={data}
+					/>
 				</Card.Root>
 
 				<div className="flex flex-col gap-4">
