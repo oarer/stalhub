@@ -112,7 +112,8 @@ export default function Nav() {
 					</div>
 					<div
 						className="relative hidden items-center lg:flex xl:gap-4"
-
+						onPointerLeave={closeMenu}
+						ref={menuRef}
 					>
 						{NAV_STRUCTURE.map((group) => (
 							<NavDropdown
@@ -128,7 +129,7 @@ export default function Nav() {
 								}
 							/>
 						))}
-						<a
+						<Link
 							className="hidden cursor-pointer items-center gap-2 rounded-lg p-1 transition-colors hover:bg-primary/40 lg:flex"
 							href={szReport.href}
 							rel="noopener noreferrer"
@@ -144,7 +145,7 @@ export default function Nav() {
 							<span className="hidden text-primary xl:block">
 								{t(szReport.titleKey)}
 							</span>
-						</a>
+						</Link>
 					</div>
 					<div className="relative flex items-center justify-end gap-6">
 						<div className="hidden items-center gap-2 lg:flex">
