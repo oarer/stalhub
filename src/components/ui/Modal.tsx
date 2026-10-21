@@ -143,13 +143,12 @@ function ModalContent({
 			{isOpen && (
 				<div
 					aria-hidden={!isOpen}
-					className={cn(
-						'fixed inset-0 z-9999 flex justify-center',
-						align === 'top'
-							? 'items-start pt-16 sm:pt-20'
-							: 'items-center',
-						!fullScreen && 'px-2'
-					)}
+className={cn(
+    'fixed inset-0 z-9999 flex justify-center',
+    align === 'top' ? 'items-start' : 'items-center',
+    fullScreen ? 'pt-0 sm:pt-20' : 'pt-16 sm:pt-20',
+    !fullScreen && 'px-2'
+)}
 				>
 					<motion.div
 						animate="animate"
