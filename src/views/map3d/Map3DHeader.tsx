@@ -1,5 +1,6 @@
 'use client'
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
 const classNames = {
@@ -20,18 +21,18 @@ export default function Map3DHeader({
 }) {
 	return (
 		<header className="flex min-h-15 w-full items-center gap-2 border-border-secondary border-b px-6 py-3 max-[760px]:gap-1 max-[760px]:px-3 max-[760px]:py-2.5">
-			<a className={`${classNames.tab} ${classNames.focus}`} href="/map">
+			<Link className={`${classNames.tab} ${classNames.focus}`} href="/map">
 				<Icon icon="lucide:map" />
 				2D-карта
-			</a>
-			<a
+			</Link>
+			<Link
 				aria-current="page"
 				className={`${classNames.tab} ${classNames.focus}`}
 				href="/map/3d"
 			>
 				<Icon icon="lucide:box" />
 				{exporting ? 'Экспорт карты' : '3D-исследование'}
-			</a>
+			</Link>
 			<div className="ml-auto flex items-center gap-3">
 				{running && (
 					<Button

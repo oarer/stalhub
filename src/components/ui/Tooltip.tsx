@@ -211,6 +211,8 @@ function TooltipContent({ children }: { children: ReactNode }) {
 		right: { x: -4 },
 	}[position]
 
+	if (typeof document === 'undefined') return null
+
 	return createPortal(
 		<AnimatePresence>
 			{open && (

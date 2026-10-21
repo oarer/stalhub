@@ -77,7 +77,6 @@ function TimelineDot({ status }: { status: RoadmapItem['status'] }) {
 			)}
 			initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
 			transition={{
-				duration: 0.4,
 				type: 'spring',
 				stiffness: 300,
 				damping: 20,

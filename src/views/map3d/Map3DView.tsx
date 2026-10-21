@@ -8,6 +8,7 @@ import {
 	type SetStateAction,
 	useCallback,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 } from 'react'
@@ -104,11 +105,18 @@ export default function Map3DView() {
 		[status, setStatus] = useState('Подготавливаем карту…'),
 		[generation, setGeneration] = useState(0),
 		[exporting, setExporting] = useState(false)
+	const initialTraffic = useMemo(
+		() => ({
+			previous: sumPreparationTraffic(),
+			parent: sumPreparationTraffic(),
+		}),
+		[]
+	)
 	const currentTraffic = useRef<Preparation['network'] | undefined>(
 			undefined
 		),
-		previousTraffic = useRef(sumPreparationTraffic()),
-		parentTraffic = useRef(sumPreparationTraffic()),
+		previousTraffic = useRef(initialTraffic.previous),
+		parentTraffic = useRef(initialTraffic.parent),
 		completedAt = useRef<number | undefined>(undefined)
 	const [sceneWarm, setSceneWarm] = useState<Preparation>()
 	const [preparation, setPreparation] = useState<{

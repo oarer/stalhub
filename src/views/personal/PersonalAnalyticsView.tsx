@@ -8,7 +8,12 @@ import {
 } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useMemo, useState } from 'react'
+import {
+	useEffect,
+	useMemo,
+	useState,
+	useSyncExternalStore,
+} from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -33,6 +38,8 @@ import {
 	type SeriesPoint,
 	toNumber,
 } from './statMeta'
+
+const subscribeToNothing = () => () => undefined
 
 function apiError(e: unknown, fallback: string): string {
 	if (typeof e === 'object' && e !== null && 'response' in e) {
@@ -212,6 +219,12 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 		return map
 	}, [summary, series])
 
+	const origin = useSyncExternalStore(
+		subscribeToNothing,
+		() => window.location.origin,
+		() => ''
+	)
+
 	useEffect(() => {
 		if (statIds.length > 0 && !statIds.includes(statId))
 			setStatId(statIds[0]!)
@@ -263,8 +276,8 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 	}
 
 	const publicUrl =
-		typeof window !== 'undefined' && profile.is_public
-			? `${window.location.origin}/stats/${encodeURIComponent(profile.character_name)}`
+		profile.is_public && origin
+			? `${origin}/stats/${encodeURIComponent(profile.character_name)}`
 			: null
 
 	const keyCards = OVERVIEW_STATS.filter(

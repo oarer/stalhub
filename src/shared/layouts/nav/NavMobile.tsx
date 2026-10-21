@@ -134,7 +134,10 @@ export default function NavMobile() {
 
 	useClickOutside(menuRef, () => setIsMenuOpen(false), buttonRef)
 
-	const menu = createPortal(
+	const menu =
+		typeof document === 'undefined'
+			? null
+			: createPortal(
 		<AnimatePresence>
 			{isMenuOpen && (
 				<>

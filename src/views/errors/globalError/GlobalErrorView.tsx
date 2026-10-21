@@ -13,8 +13,8 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 	const t = useTranslations()
 
 	return (
-		<html className="dark">
-			<body className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-foreground">
+		<div className="dark">
+			<div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-foreground">
 				<GridBackgroundWithBeams
 					cellSize={20}
 					cols={100}
@@ -47,7 +47,7 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 						identifierValue={errorId}
 					/>
 				</div>
-			</body>
-		</html>
+			</div>
+		</div>
 	)
 }
