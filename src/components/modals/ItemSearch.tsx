@@ -207,7 +207,7 @@ export default function ItemSearchModal({
 	return (
 		<Modal.Root onOpenChange={setOpen} open={open}>
 			{trigger ? (
-				<Modal.Trigger asChild variant={'ghost'}>
+				<Modal.Trigger aria-label="Поиск" asChild variant={'ghost'}>
 					{trigger}
 				</Modal.Trigger>
 			) : (
@@ -216,7 +216,11 @@ export default function ItemSearchModal({
 					className="rounded-full p-2"
 					variant={'ghost'}
 				>
-					<Icon className="text-lg" icon="lucide:search" />
+					<Icon
+						aria-label="Поиск"
+						className="text-lg"
+						icon="lucide:search"
+					/>
 				</Modal.Trigger>
 			)}
 
