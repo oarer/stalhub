@@ -20,8 +20,10 @@ export default function DestinationMap({
 		redraw = useRef<() => void>(() => undefined),
 		skipCenter = useRef(false)
 	const [failed, setFailed] = useState(false)
-	selection.current = position
-	callback.current = onSelect
+	useEffect(() => {
+		selection.current = position
+		callback.current = onSelect
+	}, [position, onSelect])
 	useEffect(() => {
 		if (skipCenter.current) skipCenter.current = false
 		else if (Number.isFinite(position.x) && Number.isFinite(position.z)) {

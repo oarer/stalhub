@@ -28,7 +28,6 @@ export function Accordion({
 		useState<string[]>(defaultExpandedKeys)
 	const [heights, setHeights] = useState<Record<string, number>>({})
 	const contentRefs = useRef<Record<string, HTMLDivElement | null>>({})
-	const resizeObservers = useRef<Record<string, ResizeObserver | null>>({})
 
 	const measure = useCallback((key: string) => {
 		const el = contentRefs.current[key]
@@ -38,30 +37,29 @@ export function Accordion({
 	}, [])
 
 	useLayoutEffect(() => {
-		items.forEach((item) => {
-			const key = item.key
-			const el = contentRefs.current[key]
+		if (typeof ResizeObserver === 'undefined') {
+			items.forEach((item) => measure(item.key))
+			return
+		}
 
-			if (resizeObservers.current[key]) {
-				resizeObservers.current[key]?.disconnect()
-				resizeObservers.current[key] = null
+		const keyByElement = new Map<Element, string>()
+		const observer = new ResizeObserver((entries) => {
+			for (const entry of entries) {
+				const key = keyByElement.get(entry.target)
+				if (key) measure(key)
 			}
-
-			if (el && typeof ResizeObserver !== 'undefined') {
-				const ro = new ResizeObserver(() => measure(key))
-				ro.observe(el)
-				resizeObservers.current[key] = ro
-			}
-
-			measure(key)
 		})
 
-		return () => {
-			Object.values(resizeObservers.current).forEach((ro) =>
-				ro?.disconnect()
-			)
-			resizeObservers.current = {}
-		}
+		items.forEach((item) => {
+			const el = contentRefs.current[item.key]
+			if (el) {
+				keyByElement.set(el, item.key)
+				observer.observe(el)
+			}
+			measure(item.key)
+		})
+
+		return () => observer.disconnect()
 	}, [items, measure])
 
 	const handleToggle = useCallback(

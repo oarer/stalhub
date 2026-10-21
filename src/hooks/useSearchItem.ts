@@ -103,8 +103,11 @@ export function useSearchItem() {
 
 	const itemsRef = useRef(items)
 	const commitRef = useRef(commit)
-	itemsRef.current = items
-	commitRef.current = commit
+
+	useEffect(() => {
+		itemsRef.current = items
+		commitRef.current = commit
+	}, [items, commit])
 
 	useEffect(() => {
 		let cancelled = false

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Input from '@/components/ui/Input'
 import type { CatalogResponse } from '@/types/loot.type'
 import { LootCardModal } from './components/LootCardModal'
@@ -42,12 +42,7 @@ const lift = (data: CatalogResponse): TableEntry[] => {
 
 export function LootView({ catalog, name }: LootViewProps) {
 	const [query, setQuery] = useState('')
-	const entriesRef = useRef<TableEntry[] | null>(null)
-	if (entriesRef.current === null) {
-		entriesRef.current = lift(catalog)
-	}
-
-	const entries = entriesRef.current
+	const entries = useMemo(() => lift(catalog), [catalog])
 	let visible = entries
 	if (name) {
 		visible = entries.filter((e) => e.key === name)

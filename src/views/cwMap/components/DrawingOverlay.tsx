@@ -33,15 +33,18 @@ export function DrawingOverlay({
 	const canvasRef = useRef<HTMLCanvasElement | null>(null)
 	const isDrawingRef = useRef(false)
 	const currentRef = useRef(currentElement)
-	currentRef.current = currentElement
 	const elementsRef = useRef(elements)
-	elementsRef.current = elements
 	const toolRef = useRef(tool)
-	toolRef.current = tool
 	const colorRef = useRef(color)
-	colorRef.current = color
 	const lineWidthRef = useRef(lineWidth)
-	lineWidthRef.current = lineWidth
+
+	useEffect(() => {
+		currentRef.current = currentElement
+		elementsRef.current = elements
+		toolRef.current = tool
+		colorRef.current = color
+		lineWidthRef.current = lineWidth
+	}, [currentElement, elements, tool, color, lineWidth])
 
 	const drawArrowHead = useCallback(
 		(

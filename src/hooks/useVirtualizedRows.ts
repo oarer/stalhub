@@ -28,7 +28,10 @@ export function useVirtualizedRows<T>(
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [scrollMargin, setScrollMargin] = useState(0)
 	const onLoadMoreRef = useRef(onLoadMore)
-	onLoadMoreRef.current = onLoadMore
+
+	useEffect(() => {
+		onLoadMoreRef.current = onLoadMore
+	}, [onLoadMore])
 
 	const virtualizer = useWindowVirtualizer({
 		count: rows.length,

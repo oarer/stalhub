@@ -26,7 +26,9 @@ function BoxSelectLayer({
 		tileToLatLng,
 	})
 
-	stateRef.current = { engine, points, tileToLatLng }
+	useEffect(() => {
+		stateRef.current = { engine, points, tileToLatLng }
+	}, [engine, points, tileToLatLng])
 
 	useEffect(() => {
 		map.boxZoom.disable()

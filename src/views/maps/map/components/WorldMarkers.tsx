@@ -82,7 +82,10 @@ export default function WorldMarkers({
 	const tweensRef = useRef<Map<number, number>>(new Map())
 	const selectedUuidRef = useRef<string | null>(null)
 	const selectedPropRef = useRef<string | null>(selectedUuid)
-	selectedPropRef.current = selectedUuid
+
+	useEffect(() => {
+		selectedPropRef.current = selectedUuid
+	}, [selectedUuid])
 	const text = useMarkerText()
 	const settlementText = useSettlementText()
 

@@ -7,7 +7,7 @@ import {
 } from '@oarer/leaflet-webgl-markers'
 import L from 'leaflet'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useMap } from 'react-leaflet'
 import { placeGoalMarker } from '../lib/goalMarker'
 import {
@@ -135,7 +135,9 @@ export default function FilteredWorldMarkers({
 	const goalRef = useRef<L.Marker | null>(null)
 	const tweensRef = useRef<Map<number, number>>(new Map())
 
-	selectedRef.current = selected
+	useEffect(() => {
+		selectedRef.current = selected
+	}, [selected])
 
 	const labelsRef = useRef<Labels>({
 		markerName: (_marker: SourceMarker) => '',
@@ -144,28 +146,37 @@ export default function FilteredWorldMarkers({
 		destinations: '',
 	})
 
-	labelsRef.current = {
-		markerName: (marker) => {
-			if (marker.o) {
-				const key = `go.${marker.o}.name`
-				if (t.has(key)) return t(key)
-			}
-			if (marker.n) {
-				const key = `go.${marker.n}.name`
-				if (t.has(key)) return t(key)
-			}
-			return marker.n ?? marker.o ?? marker.b ?? ''
-		},
-		destName: (loc) => {
-			const key = `location.${loc}.name`
-			return t.has(key) ? t(key) : loc
-		},
-		groupName: (group) => {
-			const key = `group.${group}`
-			return t.has(key) ? t(key) : group
-		},
-		destinations: t.has('info.destinations') ? t('info.destinations') : '',
-	}
+	const labels = useMemo(
+		() => ({
+			markerName: (marker: SourceMarker) => {
+				if (marker.o) {
+					const key = `go.${marker.o}.name`
+					if (t.has(key)) return t(key)
+				}
+				if (marker.n) {
+					const key = `go.${marker.n}.name`
+					if (t.has(key)) return t(key)
+				}
+				return marker.n ?? marker.o ?? marker.b ?? ''
+			},
+			destName: (loc: string) => {
+				const key = `location.${loc}.name`
+				return t.has(key) ? t(key) : loc
+			},
+			groupName: (group: string) => {
+				const key = `group.${group}`
+				return t.has(key) ? t(key) : group
+			},
+			destinations: t.has('info.destinations')
+				? t('info.destinations')
+				: '',
+		}),
+		[t]
+	)
+
+	useEffect(() => {
+		labelsRef.current = labels
+	}, [labels])
 
 	const jumpTo = useCallback(
 		(px: number, py: number) => {
