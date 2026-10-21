@@ -136,18 +136,26 @@ export default function BuildsView() {
 	)
 
 	useEffect(() => {
-		if (imported) return
-		const params = new URLSearchParams(window.location.search)
-		const shareCode = params.get('share')
-		if (shareCode) {
-			setTimeout(() => {
-				importBuild(shareCode).then((success) => {
-					if (success) {
-						setImported(true)
-						window.history.replaceState({}, '', '/calcs/builds')
-					}
-				})
-			}, 100)
+		let cancelled = false
+		let timer: ReturnType<typeof setTimeout> | undefined
+		if (!imported) {
+			const params = new URLSearchParams(window.location.search)
+			const shareCode = params.get('share')
+			if (shareCode) {
+				timer = setTimeout(() => {
+					importBuild(shareCode).then((success) => {
+						if (cancelled) return
+						if (success) {
+							setImported(true)
+							window.history.replaceState({}, '', '/calcs/builds')
+						}
+					})
+				}, 100)
+			}
+		}
+		return () => {
+			cancelled = true
+			clearTimeout(timer)
 		}
 	}, [importBuild, imported])
 

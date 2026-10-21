@@ -36,7 +36,6 @@ export function PersonalSessionRow({
 	}, [session.id])
 
 	useEffect(() => {
-		if (!expanded) return
 		let stopped = false
 		let wasActive = false
 		let timer: ReturnType<typeof setTimeout> | undefined
@@ -53,7 +52,7 @@ export function PersonalSessionRow({
 				onChanged()
 			}
 		}
-		poll()
+		if (expanded) poll()
 		return () => {
 			stopped = true
 			clearTimeout(timer)

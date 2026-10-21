@@ -35,7 +35,6 @@ export function SessionRow({
 	}, [session.id])
 
 	useEffect(() => {
-		if (!expanded) return
 		let stopped = false
 		let wasActive = false
 		let timer: ReturnType<typeof setTimeout> | undefined
@@ -52,7 +51,7 @@ export function SessionRow({
 				onUpload()
 			}
 		}
-		poll()
+		if (expanded) poll()
 		return () => {
 			stopped = true
 			clearTimeout(timer)
