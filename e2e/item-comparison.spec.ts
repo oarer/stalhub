@@ -1,30 +1,42 @@
 import { expect, test } from '@playwright/test'
 
+const WEB_ORIGIN = process.env.E2E_WEB_ORIGIN ?? 'http://localhost:4310'
 const source = { id: '96n2l', category: 'armor/clothes' }
-const translation = (key: string) => ({
+const translation = (key: string, text = key) => ({
 	type: 'translation' as const,
 	key,
 	args: {},
-	lines: { en: key, ru: key },
+	lines: { en: text, ru: text },
 })
+const statsBlock = (protection: number) => [
+	{
+		type: 'list',
+		title: translation('Armor stats'),
+		elements: [
+			{
+				type: 'numeric',
+				name: translation(
+					'weapon.tooltip.weapon.info.stopping_power',
+					'Comparison protection'
+				),
+				value: protection,
+			},
+		],
+	},
+]
+const sourceItem = {
+	id: source.id,
+	category: source.category,
+	name: translation('Source jacket'),
+	color: 'DEFAULT',
+	infoBlocks: statsBlock(100),
+}
 const target = {
 	id: 'comparison-combat',
 	category: 'armor/combat',
 	name: translation('Comparison combat armor'),
 	color: 'DEFAULT',
-	infoBlocks: [
-		{
-			type: 'list',
-			title: translation('Armor stats'),
-			elements: [
-				{
-					type: 'numeric',
-					name: translation('Comparison protection'),
-					value: 123,
-				},
-			],
-		},
-	],
+	infoBlocks: statsBlock(123),
 }
 const listing = [
 	{
@@ -59,9 +71,7 @@ const pixel = Buffer.from(
 )
 
 test.beforeEach(async ({ context }) => {
-	await context.addCookies([
-		{ name: 'lang', value: 'en', url: 'http://localhost:4310' },
-	])
+	await context.addCookies([{ name: 'lang', value: 'en', url: WEB_ORIGIN }])
 	await context.route('**/*', async (route) => {
 		const url = new URL(route.request().url())
 		const path = url.pathname.replace(/\/+/g, '/')
@@ -79,6 +89,8 @@ test.beforeEach(async ({ context }) => {
 		if (url.hostname === 'cdn.stalhub.dev') {
 			if (path === '/db/listing.json')
 				return route.fulfill({ json: listing })
+			if (path.endsWith(`/${source.id}.json`))
+				return route.fulfill({ json: sourceItem })
 			if (path.endsWith(`/${target.id}.json`))
 				return route.fulfill({ json: target })
 			if (path.endsWith('/comparison-forged.json'))
@@ -96,6 +108,7 @@ test.beforeEach(async ({ context }) => {
 						id: 'comparison-scientist',
 						category: 'armor/scientist',
 						name: translation('Comparison scientific armor'),
+						infoBlocks: statsBlock(90),
 					},
 				})
 		}
@@ -132,14 +145,35 @@ test.beforeEach(async ({ context }) => {
 	})
 })
 
-test('compares different armor subcategories, excludes the source and weapons, and rejects forged categories', async ({
+test('opens a dedicated comparison page, filters candidates and highlights differences', async ({
 	page,
 }) => {
 	const errors: string[] = []
 	page.on('pageerror', (error) => errors.push(error.message))
+
 	await page.goto(`/items/${source.category}/${source.id}`)
-	await page.getByRole('button', { name: 'Compare', exact: true }).click()
+	await page
+		.getByRole('button', { name: /Отклонить|Decline/ })
+		.click({ timeout: 3000 })
+		.catch(() => undefined)
+	await expect(
+		page.getByRole('link', { name: 'Compare', exact: true })
+	).toHaveAttribute(
+		'href',
+		`/items/compare?items=${encodeURIComponent(`${source.category}/${source.id}`)}`
+	)
+
+	await page.goto(`/items/compare?items=${source.category}/${source.id}`)
+	await expect(page).toHaveURL(/\/items\/compare\?items=armor/)
+	await expect(
+		page.getByRole('heading', { name: 'Source jacket' })
+	).toBeVisible()
+
+	await page.getByRole('button', { name: 'Choose item', exact: true }).click()
 	const dialog = page.getByRole('dialog')
+	await expect(
+		dialog.getByRole('heading', { name: 'Choose an item' })
+	).toBeVisible()
 	await expect(
 		dialog.getByText('Comparison combat armor', { exact: true })
 	).toBeVisible()
@@ -152,45 +186,89 @@ test('compares different armor subcategories, excludes the source and weapons, a
 	await expect(
 		dialog.getByText('Source jacket', { exact: true })
 	).toHaveCount(0)
+
 	await dialog.getByText('Comparison combat armor', { exact: true }).click()
 	await expect(
-		dialog.getByRole('heading', { name: 'Comparison combat armor' })
+		page.getByRole('heading', { name: 'Comparison combat armor' })
 	).toBeVisible()
+
+	await page.getByRole('button', { name: /Item 3/ }).click()
+	const addDialog = page.getByRole('dialog')
 	await expect(
-		dialog.getByText('Comparison protection', { exact: true })
+		addDialog.getByText('Comparison combat armor', { exact: true })
+	).toHaveCount(0)
+	await addDialog
+		.getByText('Comparison scientific armor', { exact: true })
+		.click()
+
+	await expect(
+		page.getByRole('heading', { name: 'Comparison scientific armor' })
 	).toBeVisible()
-	await expect(dialog.getByText('123', { exact: true })).toBeVisible()
+	await expect(page).toHaveURL(
+		/items=armor%2Fclothes%2F96n2l&items=armor%2Fcombat%2Fcomparison-combat&items=armor%2Fscientist%2Fcomparison-scientist/
+	)
+	await expect(
+		page.getByText('Comparison protection', { exact: true })
+	).toBeVisible()
+	await expect(page.getByText('100', { exact: true })).toBeVisible()
+	await expect(page.getByText('90', { exact: true })).toBeVisible()
+	await expect(page.getByText('123', { exact: true })).toBeVisible()
+
+	const protectionRow = page.locator(
+		'[data-stat-key="weapon.tooltip.weapon.info.stopping_power"]'
+	)
+	await expect(
+		protectionRow.locator('[data-highlight="best"]')
+	).toContainText('123')
+	await expect(
+		protectionRow.locator('[data-highlight="worst"]')
+	).toContainText('90')
+	const bestCell = protectionRow.locator('[data-highlight="best"]')
+	await page.mouse.move(0, 0)
+	await bestCell.hover()
+	await expect(
+		page.getByText('Difference from other items', { exact: true })
+	).toBeVisible()
+	await expect(page.getByText('-23')).toBeVisible()
+	await expect(page.getByText('-33')).toBeVisible()
+	await expect(page.getByText('Best', { exact: true }).first()).toBeVisible()
+	await expect(page.getByText('Worst', { exact: true }).first()).toBeVisible()
+
 	await page.screenshot({
 		path: 'test-results/item-comparison.png',
 		fullPage: true,
 	})
+
+	await page.mouse.move(0, 0)
+	await expect(
+		page.getByText('Difference from other items', { exact: true })
+	).toHaveCount(0)
+
 	await page.setViewportSize({ width: 390, height: 844 })
-	await dialog
-		.getByRole('heading', { name: 'Comparison combat armor' })
-		.scrollIntoViewIfNeeded()
 	await expect(
-		dialog.getByRole('heading', { name: 'Comparison combat armor' })
+		page.getByRole('heading', { name: 'Comparison combat armor' })
 	).toBeVisible()
-	expect(
-		await dialog.evaluate(
-			(element) => element.scrollWidth <= element.clientWidth
+	await expect(
+		page.evaluate(
+			() =>
+				document.documentElement.scrollWidth <=
+				document.documentElement.clientWidth
 		)
-	).toBe(true)
+	).resolves.toBe(true)
 	await page.screenshot({ path: 'test-results/item-comparison-mobile.png' })
+
 	await page.setViewportSize({ width: 1280, height: 720 })
-	await dialog.getByRole('button', { name: 'Change', exact: true }).click()
-	await dialog
-		.getByText('Comparison scientific armor', { exact: true })
+	await page
+		.getByRole('button', { name: 'Change', exact: true })
+		.last()
 		.click()
+	await page.keyboard.press('Escape')
+
+	await page.goto(
+		`/items/compare?items=${source.category}/${source.id}&items=weapon/assault_rifle/comparison-forged`
+	)
 	await expect(
-		dialog.getByRole('heading', { name: 'Comparison scientific armor' })
-	).toBeVisible()
-	await dialog.getByRole('button', { name: 'Change', exact: true }).click()
-	await dialog.getByText('Forged catalog item', { exact: true }).click()
-	await expect(
-		dialog.getByText(
-			'This item cannot be compared: categories do not match'
-		)
+		page.getByText('This item cannot be compared: categories do not match')
 	).toBeVisible()
 	expect(errors).toEqual([])
 })
@@ -212,21 +290,29 @@ test('retries a failed selected target and then shows its stats', async ({
 			return route.fulfill({ json: target })
 		}
 	)
-	await page.goto(`/items/${source.category}/${source.id}`)
-	await page.getByRole('button', { name: 'Compare', exact: true }).click()
-	const dialog = page.getByRole('dialog')
-	await dialog.getByText('Comparison combat armor', { exact: true }).click()
-	await expect(dialog.getByText('Failed to load the item')).toBeVisible()
+
+	await page.goto(`/items/compare?items=${source.category}/${source.id}`)
+	await page.getByRole('button', { name: 'Choose item', exact: true }).click()
+	await page
+		.getByRole('dialog')
+		.getByText('Comparison combat armor', { exact: true })
+		.click()
+
+	await expect(page.getByText('Failed to load the item').last()).toBeVisible()
 	await expect(
-		dialog.getByText('Comparison protection', { exact: true })
+		page.getByText('Comparison protection', { exact: true })
 	).toHaveCount(0)
-	await dialog.getByRole('button', { name: 'Retry', exact: true }).click()
+
+	await page
+		.getByRole('button', { name: 'Retry', exact: true })
+		.last()
+		.click()
 	await expect(
-		dialog.getByRole('heading', { name: 'Comparison combat armor' })
+		page.getByRole('heading', { name: 'Comparison combat armor' })
 	).toBeVisible()
 	await expect(
-		dialog.getByText('Comparison protection', { exact: true })
+		page.getByText('Comparison protection', { exact: true })
 	).toBeVisible()
-	await expect(dialog.getByText('123', { exact: true })).toBeVisible()
+	await expect(page.getByText('123', { exact: true })).toBeVisible()
 	expect(targetRequests).toBe(2)
 })

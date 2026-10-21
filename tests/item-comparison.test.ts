@@ -1,17 +1,24 @@
 import { describe, expect, test } from 'bun:test'
 import type { ItemListing } from '@/types/api.type'
+import type { InfoElement, Item, Message } from '@/types/item.type'
 import { InfoColor } from '@/types/item.type'
 import { messageToString } from '@/utils/itemUtils'
+import { getComparisonDirection } from '@/views/items/components/comparison/comparisonDirection'
 import {
-	clampSharpening,
-	createSelection,
+	buildComparisonSections,
+	countDifferences,
+} from '@/views/items/components/comparison/comparisonStats'
+import {
 	getCatalogStatus,
 	getComparisonCandidates,
 	getRootCategory,
 	isSameRootCategory,
+	MAX_COMPARISON_ITEMS,
+	parseComparisonState,
+	parseItemRef,
 	parseListingPath,
-	resolveSelection,
-	validateComparisonTarget,
+	serializeComparisonState,
+	toComparisonParam,
 } from '@/views/items/components/itemComparisonUtils'
 
 const listing = (data: string, color = InfoColor.DEFAULT): ItemListing => ({
@@ -172,39 +179,6 @@ describe('getComparisonCandidates', () => {
 	})
 })
 
-describe('validateComparisonTarget', () => {
-	const source = { category: 'armor/combat', id: 'aaa' }
-
-	test('accepts a different item of the same root category', () => {
-		expect(
-			validateComparisonTarget(source, {
-				category: 'armor/scientist',
-				id: 'bbb',
-			})
-		).toBe('ok')
-	})
-
-	test('rejects another root category from the loaded JSON', () => {
-		expect(
-			validateComparisonTarget(source, {
-				category: 'weapon/pistol',
-				id: 'eee',
-			})
-		).toBe('category-mismatch')
-	})
-
-	test('rejects the source itself and missing targets', () => {
-		expect(
-			validateComparisonTarget(source, {
-				category: 'armor/combat',
-				id: 'aaa',
-			})
-		).toBe('same-item')
-		expect(validateComparisonTarget(source, null)).toBe('missing')
-		expect(validateComparisonTarget(source, undefined)).toBe('missing')
-	})
-})
-
 describe('getCatalogStatus', () => {
 	test('loading until items or an error arrive', () => {
 		expect(
@@ -232,36 +206,293 @@ describe('getCatalogStatus', () => {
 	})
 })
 
-describe('selection state', () => {
-	test('clampSharpening bounds and sanitizes', () => {
-		expect(clampSharpening(-3)).toBe(0)
-		expect(clampSharpening(7.9)).toBe(7)
-		expect(clampSharpening(99)).toBe(15)
-		expect(clampSharpening(Number.NaN)).toBe(0)
-	})
-
-	test('selection is kept for the same source', () => {
-		const selection = {
-			...createSelection('armor/combat/aaa.json', 3),
-			targetUrl: 'armor/scientist/bbb.json',
-		}
-		expect(resolveSelection(selection, 'armor/combat/aaa.json', 0)).toBe(
-			selection
+describe('item refs and url state', () => {
+	test('parses refs with and without the json extension', () => {
+		expect(parseItemRef('armor/combat/aaa')).toEqual({
+			category: 'armor/combat',
+			id: 'aaa',
+			githubUrl: 'armor/combat/aaa.json',
+		})
+		expect(parseItemRef('/items/armor/combat/aaa.json')?.githubUrl).toBe(
+			'armor/combat/aaa.json'
 		)
+		expect(parseItemRef('armor')).toBeNull()
+		expect(parseItemRef(null)).toBeNull()
 	})
 
-	test('selection and sharpening reset when the source changes', () => {
-		const selection = {
-			...createSelection('armor/combat/aaa.json', 3),
-			sharpening: 9,
-			targetUrl: 'armor/scientist/bbb.json',
+	test('serializes and parses multiple items', () => {
+		const a = parseItemRef('armor/combat/aaa')
+		const b = parseItemRef('armor/scientist/bbb')
+		if (!a || !b) throw new Error('bad fixture')
+
+		const state = { items: [a, b], sharpening: 7 }
+
+		expect(toComparisonParam({ category: 'armor/combat', id: 'aaa' })).toBe(
+			'armor/combat/aaa'
+		)
+		expect(serializeComparisonState(state)).toBe(
+			'items=armor%2Fcombat%2Faaa&items=armor%2Fscientist%2Fbbb&sharpening=7'
+		)
+
+		const parsed = parseComparisonState(
+			new URLSearchParams(serializeComparisonState(state))
+		)
+		expect(parsed.items.map((item) => item.githubUrl)).toEqual([
+			'armor/combat/aaa.json',
+			'armor/scientist/bbb.json',
+		])
+		expect(parsed.sharpening).toBe(7)
+	})
+
+	test('parses legacy a and b params', () => {
+		const parsed = parseComparisonState(
+			new URLSearchParams('a=armor/combat/aaa&b=weapon/pistol/bbb')
+		)
+		expect(parsed.items.map((item) => item.githubUrl)).toEqual([
+			'armor/combat/aaa.json',
+			'weapon/pistol/bbb.json',
+		])
+	})
+
+	test('deduplicates and caps the number of items', () => {
+		const params = new URLSearchParams()
+		for (const id of ['aaa', 'aaa', 'bbb', 'ccc', 'ddd', 'eee']) {
+			params.append('items', `armor/combat/${id}`)
 		}
-		expect(resolveSelection(selection, 'armor/combat/zzz.json', 2)).toEqual(
+		const parsed = parseComparisonState(params)
+		expect(parsed.items).toHaveLength(MAX_COMPARISON_ITEMS)
+		expect(parsed.items.map((item) => item.id)).toEqual([
+			'aaa',
+			'bbb',
+			'ccc',
+			'ddd',
+		])
+	})
+
+	test('clamps sharpening and omits empty values', () => {
+		expect(
+			parseComparisonState(
+				new URLSearchParams('a=armor/combat/aaa&sharpening=99')
+			).sharpening
+		).toBe(15)
+		expect(
+			serializeComparisonState({
+				items: [],
+				sharpening: 0,
+			})
+		).toBe('')
+	})
+})
+
+describe('catalog without a selected source', () => {
+	test('returns every item and excludes the other slot', () => {
+		const all = getComparisonCandidates(catalog, null)
+		expect(all.map((c) => c.githubUrl)).toEqual([
+			'armor/combat/aaa.json',
+			'armor/scientist/bbb.json',
+			'armor/combined/ccc.json',
+			'armor/clothes/ddd.json',
+			'weapon/pistol/eee.json',
+			'weapon/melee/fff.json',
+			'backpacks/ggg.json',
+		])
+
+		const withoutA = getComparisonCandidates(catalog, null, [
+			{ category: 'armor/combat', id: 'aaa' },
+			{ category: 'armor/scientist', id: 'bbb' },
+		])
+		expect(withoutA.map((c) => c.id)).not.toContain('aaa')
+		expect(withoutA.map((c) => c.id)).not.toContain('bbb')
+	})
+})
+
+const message = (text: string): Message => ({
+	type: 'translation',
+	key: text,
+	args: {},
+	lines: { ru: text, en: text },
+})
+
+const makeItem = (id: string, elements: InfoElement[]): Item => ({
+	id,
+	category: 'armor/combat',
+	name: message(id),
+	color: InfoColor.DEFAULT,
+	infoBlocks: [
+		{
+			type: 'list',
+			title: message('Armor stats'),
+			elements,
+		},
+	],
+})
+
+const numeric = (name: string, value: number): InfoElement => ({
+	type: 'numeric',
+	name: message(name),
+	value,
+})
+
+describe('getComparisonDirection', () => {
+	test('detects higher and lower is better stats', () => {
+		expect(getComparisonDirection('core.tooltip.info.weight')).toBe('lower')
+		expect(
+			getComparisonDirection('weapon.tooltip.weapon.info.spread')
+		).toBe('lower')
+		expect(
+			getComparisonDirection('weapon.tooltip.weapon.info.reload_time')
+		).toBe('lower')
+		expect(
+			getComparisonDirection('core.tooltip.stat_name.damage_type.direct')
+		).toBe('higher')
+		expect(
+			getComparisonDirection('weapon.tooltip.weapon.info.rate_of_fire')
+		).toBe('higher')
+		expect(
+			getComparisonDirection('weapon.stat_factor.reload_modifier')
+		).toBe('higher')
+		expect(
+			getComparisonDirection('weapon.stat_factor.shoot_factor_decrement')
+		).toBe('higher')
+		expect(getComparisonDirection('some.unknown.stat')).toBeNull()
+	})
+})
+
+describe('buildComparisonSections', () => {
+	test('aligns stats and finds best and worst values', () => {
+		const a = makeItem('a', [numeric('Damage', 100), numeric('Weight', 5)])
+		const b = makeItem('b', [
+			numeric('Damage', 120),
+			numeric('Weight', 4),
+			numeric('Durability', 50),
+		])
+
+		const sections = buildComparisonSections([a, b], 0, 'en')
+		expect(sections).toHaveLength(1)
+		expect(sections[0].rows.map((row) => row.label)).toEqual([
+			'Damage',
+			'Weight',
+			'Durability',
+		])
+
+		const damage = sections[0].rows[0]
+		expect(damage.values[0]?.text).toBe('100')
+		expect(damage.values[1]?.text).toBe('120')
+		expect(damage.best).toEqual([1])
+		expect(damage.worst).toEqual([0])
+
+		const weight = sections[0].rows[1]
+		expect(weight.best).toEqual([1])
+		expect(weight.worst).toEqual([0])
+
+		const durability = sections[0].rows[2]
+		expect(durability.values[0]).toBeNull()
+		expect(durability.values[1]?.text).toBe('50')
+		expect(durability.best).toEqual([])
+		expect(durability.worst).toEqual([])
+		expect(durability.changed).toBe(true)
+
+		expect(countDifferences(sections)).toBe(3)
+	})
+
+	test('marks tied best and worst values across several items', () => {
+		const items = [
+			makeItem('a', [numeric('Damage', 100)]),
+			makeItem('b', [numeric('Damage', 120)]),
+			makeItem('c', [numeric('Damage', 120)]),
+		]
+
+		const [section] = buildComparisonSections(items, 0, 'en')
+		expect(section.rows[0].values).toHaveLength(3)
+		expect(section.rows[0].best).toEqual([1, 2])
+		expect(section.rows[0].worst).toEqual([0])
+	})
+
+	test('does not highlight stats without a known direction', () => {
+		const a = makeItem('a', [numeric('Protection', 100)])
+		const b = makeItem('b', [numeric('Protection', 120)])
+
+		const [section] = buildComparisonSections([a, b], 0, 'en')
+		expect(section.rows[0].direction).toBeNull()
+		expect(section.rows[0].best).toEqual([])
+		expect(section.rows[0].worst).toEqual([])
+		expect(section.rows[0].changed).toBe(true)
+	})
+
+	test('uses the selected sharpening level for variants', () => {
+		const a = makeItem('a', [
 			{
-				sourceUrl: 'armor/combat/zzz.json',
-				targetUrl: null,
-				sharpening: 2,
-			}
+				type: 'numericVariants',
+				name: message('Damage'),
+				value: [10, 20, 30],
+			},
+		])
+		const b = makeItem('b', [
+			{
+				type: 'numericVariants',
+				name: message('Damage'),
+				value: [15, 25, 35],
+			},
+		])
+
+		const [section] = buildComparisonSections([a, b], 2, 'en')
+		expect(section.rows[0].values[0]?.text).toBe('30')
+		expect(section.rows[0].values[1]?.text).toBe('35')
+		expect(section.rows[0].best).toEqual([1])
+	})
+
+	test('prefers detailed grouped blocks over compact duplicates', () => {
+		const grouped = (id: string, value: number): Item => ({
+			id,
+			category: 'armor/combat',
+			name: message(id),
+			color: InfoColor.DEFAULT,
+			infoBlocks: [
+				{
+					type: 'grouped',
+					compact: [
+						{
+							type: 'list',
+							title: message('Basic'),
+							elements: [numeric('Damage', value)],
+						},
+					],
+					detailed: [
+						{
+							type: 'list',
+							title: message('Damage'),
+							elements: [
+								numeric('Damage', value),
+								numeric('Weight', value / 10),
+							],
+						},
+					],
+				},
+			],
+		})
+
+		const sections = buildComparisonSections(
+			[grouped('a', 100), grouped('b', 120)],
+			0,
+			'en'
 		)
+
+		expect(sections.map((section) => section.title)).toEqual(['Damage'])
+		expect(sections[0].rows.map((row) => row.label)).toEqual([
+			'Damage',
+			'Weight',
+		])
+		expect(sections[0].rows[0].best).toEqual([1])
+	})
+
+	test('marks identical stats as unchanged', () => {
+		const a = makeItem('a', [numeric('Damage', 100)])
+		const b = makeItem('b', [numeric('Damage', 100)])
+
+		const sections = buildComparisonSections([a, b], 0, 'en')
+		expect(sections[0].rows[0].changed).toBe(false)
+		expect(sections[0].rows[0].best).toEqual([])
+		expect(sections[0].rows[0].worst).toEqual([])
+		expect(countDifferences(sections)).toBe(0)
 	})
 })

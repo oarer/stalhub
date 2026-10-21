@@ -18,6 +18,7 @@ import {
 	type InfoBlock,
 	InfoColor,
 	infoColorMap,
+	type Message,
 	type TextInfoBlock,
 } from '@/types/item.type'
 import {
@@ -43,6 +44,9 @@ import ItemTabs from './components/tabs/AuctionTabs'
 
 const AUTO_REFRESH_ENABLED_KEY = 'auction:autoRefresh:enabled'
 const AUTO_REFRESH_INTERVAL_KEY = 'auction:autoRefresh:interval'
+
+const messageKey = (message: Message): string =>
+	message.type === 'translation' ? message.key : message.text
 
 type ItemsViewProps = { path: string[]; id: string; githubUrl: string }
 
@@ -185,6 +189,62 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 	const categoryLabel = getCategoryLabel(data, locale)
 
+	const damageBlocks = useMemo(() => {
+		const counts = new Map<string, number>()
+
+		return data.infoBlocks
+			.filter(
+				(block): block is DamageDistanceInfoBlock =>
+					block.type === 'damage'
+			)
+			.map((block) => {
+				const base = [
+					block.startDamage,
+					block.damageDecreaseStart,
+					block.endDamage,
+					block.damageDecreaseEnd,
+					block.maxDistance,
+				].join(':')
+				const occurrence = counts.get(base) ?? 0
+				counts.set(base, occurrence + 1)
+
+				return { block, key: `${base}#${occurrence}` }
+			})
+	}, [data.infoBlocks])
+
+	const numericVariantBlocks = useMemo(() => {
+		const counts = new Map<string, number>()
+
+		return collectListBlocks(data.infoBlocks)
+			.filter((block) => block.elements.some(isNumericVariantsBlock))
+			.map((block) => {
+				const base = messageKey(block.title)
+				const occurrence = counts.get(base) ?? 0
+				counts.set(base, occurrence + 1)
+
+				return { block, key: `${base}#${occurrence}` }
+			})
+	}, [data.infoBlocks])
+
+	const textBlocks = useMemo(() => {
+		const counts = new Map<string, number>()
+
+		return data.infoBlocks
+			.filter(
+				(b: InfoBlock): b is TextInfoBlock =>
+					b.type === 'text' &&
+					(!!messageToString(b.title, locale) ||
+						!!messageToString(b.text, locale))
+			)
+			.map((block) => {
+				const base = `${messageKey(block.title)}:${messageKey(block.text)}`
+				const occurrence = counts.get(base) ?? 0
+				counts.set(base, occurrence + 1)
+
+				return { block, key: `${base}#${occurrence}` }
+			})
+	}, [data.infoBlocks, locale])
+
 	return (
 		<section className="mx-auto grid max-w-360 grid-cols-1 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 lg:grid-cols-[60%_40%] lg:pt-36">
 			<div className="space-y-4">
@@ -219,24 +279,16 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 					</Card.Header>
 
 					<Card.Description className="py-3">
-						{data.infoBlocks
-							.filter(
-								(b: InfoBlock): b is TextInfoBlock =>
-									b.type === 'text' &&
-									(!!messageToString(b.title, locale) ||
-										!!messageToString(b.text, locale))
-							)
-							.map((block, i) => (
-								<TextBlock
-									block={block}
-									key={i}
-									locale={locale}
-								/>
-							))}
+						{textBlocks.map(({ block, key }) => (
+							<TextBlock
+								block={block}
+								key={key}
+								locale={locale}
+							/>
+						))}
 					</Card.Description>
 
 					<ItemComparison
-						githubUrl={githubUrl}
 						initialSharpening={numericVariants}
 						item={data}
 					/>
@@ -264,14 +316,9 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 						onManualRefresh={handleManualRefresh}
 					/>
 
-					{data.infoBlocks
-						.filter(
-							(block): block is DamageDistanceInfoBlock =>
-								block.type === 'damage'
-						)
-						.map((block, idx) => (
-							<DamageChart block={block} key={idx} />
-						))}
+					{damageBlocks.map(({ block, key }) => (
+						<DamageChart block={block} key={key} />
+					))}
 				</div>
 			</div>
 
@@ -284,17 +331,13 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 					/>
 				)}
 
-				{collectListBlocks(data.infoBlocks)
-					.filter((block) =>
-						block.elements.some(isNumericVariantsBlock)
-					)
-					.map((block, idx) => (
-						<NumericVariantsCard
-							key={idx}
-							numericVariants={numericVariants}
-							onChange={setNumericVariants}
-						/>
-					))}
+				{numericVariantBlocks.map(({ key }) => (
+					<NumericVariantsCard
+						key={key}
+						numericVariants={numericVariants}
+						onChange={setNumericVariants}
+					/>
+				))}
 
 				<InfoBlocksRenderer
 					infoBlocks={data.infoBlocks}
