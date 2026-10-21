@@ -205,20 +205,18 @@ export default function BarterCalcView() {
 	}, [selectedId])
 
 	const toggle = (key: string) => {
-		setDone((prev) => {
-			const next = new Set(prev)
-			if (next.has(key)) next.delete(key)
-			else next.add(key)
-			try {
-				localStorage.setItem(
-					`barter-done-${selectedId}`,
-					JSON.stringify([...next])
-				)
-			} catch {
-				// localStorage may be unavailable, state update is enough
-			}
-			return next
-		})
+		const next = new Set(done)
+		if (next.has(key)) next.delete(key)
+		else next.add(key)
+		setDone(next)
+		try {
+			localStorage.setItem(
+				`barter-done-${selectedId}`,
+				JSON.stringify([...next])
+			)
+		} catch {
+			// localStorage may be unavailable, state update is enough
+		}
 	}
 
 	const { totals, totalMoney, serumNeeded, tokenTotal } = useMemo(() => {

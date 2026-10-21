@@ -94,17 +94,15 @@ export function useClanAbsence(clanId: string, currentUserId?: number) {
 	}, [members, absences])
 
 	const toggleEvent = (value: AbsenceEventType) => {
-		setSelected((prev) => {
-			const next = { ...prev, [value]: !prev[value] }
-			if (!next[value]) {
-				setStageSel((s) => {
-					const n = { ...s }
-					delete n[value]
-					return n
-				})
-			}
-			return next
-		})
+		const next = { ...selected, [value]: !selected[value] }
+		setSelected(next)
+		if (!next[value]) {
+			setStageSel((prev) => {
+				const updated = { ...prev }
+				delete updated[value]
+				return updated
+			})
+		}
 	}
 
 	const toggleStage = (value: AbsenceEventType, stage: number) => {

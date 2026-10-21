@@ -44,7 +44,7 @@ function hexOrRgbToRgba(input: string, alpha = 1): string {
 		} else return s
 		return `rgba(${r}, ${g}, ${b}, ${alpha})`
 	}
-	const rgbMatch = s.match(/rgba?\(\s*([^\)]+)\)/i)
+	const rgbMatch = s.match(/rgba?\(\s*([^)]+)\)/i)
 	if (rgbMatch) {
 		const parts = rgbMatch[1].split(',').map((p) => p.trim())
 		const r = parts[0] ?? '0'
@@ -57,84 +57,92 @@ function hexOrRgbToRgba(input: string, alpha = 1): string {
 	return s
 }
 
-const BeamView = React.memo(function ({
-	beam,
-	cellSize,
-	beamColor,
-	glowColor,
-	glowIntensity,
-	lineWidth,
-	onDone,
-}: {
-	beam: Beam
-	cellSize: number
-	beamColor: string
-	glowColor: string
-	glowIntensity: number
-	lineWidth: number
-	onDone: (id: number) => void
-}) {
-	const finalPos = beam.end - beam.length
-	const blur = Math.max(6, Math.round(beam.length * 0.6 * glowIntensity))
-	const spread = Math.round(beam.length * 0.12 * glowIntensity)
-	const primaryGlow = hexOrRgbToRgba(
+const BeamView = React.memo(
+	({
+		beam,
+		cellSize,
+		beamColor,
 		glowColor,
-		Math.min(1, 0.9 * glowIntensity)
-	)
-	const secondaryGlow = hexOrRgbToRgba(
-		glowColor,
-		Math.min(1, 0.5 * glowIntensity)
-	)
-	const boxShadow = `0 0 ${blur}px ${spread}px ${primaryGlow}, 0 0 ${Math.round(
-		blur * 1.5
-	)}px ${Math.round(spread * 0.7)}px ${secondaryGlow}`
+		glowIntensity,
+		lineWidth,
+		onDone,
+	}: {
+		beam: Beam
+		cellSize: number
+		beamColor: string
+		glowColor: string
+		glowIntensity: number
+		lineWidth: number
+		onDone: (id: number) => void
+	}) => {
+		const finalPos = beam.end - beam.length
+		const blur = Math.max(6, Math.round(beam.length * 0.6 * glowIntensity))
+		const spread = Math.round(beam.length * 0.12 * glowIntensity)
+		const primaryGlow = hexOrRgbToRgba(
+			glowColor,
+			Math.min(1, 0.9 * glowIntensity)
+		)
+		const secondaryGlow = hexOrRgbToRgba(
+			glowColor,
+			Math.min(1, 0.5 * glowIntensity)
+		)
+		const boxShadow = `0 0 ${blur}px ${spread}px ${primaryGlow}, 0 0 ${Math.round(
+			blur * 1.5
+		)}px ${Math.round(spread * 0.7)}px ${secondaryGlow}`
 
-	if (beam.isVertical) {
-		return (
-			<motion.div
-				animate={{ translateY: finalPos, opacity: [0, 1, 0] }}
-				exit={{ opacity: 0 }}
-				initial={{ translateY: beam.start, opacity: 0 }}
-				key={beam.id}
-				onAnimationComplete={() => onDone(beam.id)}
-				style={{
-					position: 'absolute',
-					left: beam.lineIndex * cellSize,
-					width: Math.max(2, lineWidth),
-					height: beam.length,
-					background: beamColor,
-					boxShadow,
-					borderRadius: 1,
-					willChange: 'transform, opacity',
-					pointerEvents: 'none',
-				}}
-				transition={{ duration: beam.duration / 1000, ease: 'linear' }}
-			/>
-		)
-	} else {
-		return (
-			<motion.div
-				animate={{ translateX: finalPos, opacity: [0, 1, 0] }}
-				exit={{ opacity: 0 }}
-				initial={{ translateX: beam.start, opacity: 0 }}
-				key={beam.id}
-				onAnimationComplete={() => onDone(beam.id)}
-				style={{
-					position: 'absolute',
-					top: beam.lineIndex * cellSize - 2,
-					height: Math.max(2, lineWidth),
-					width: beam.length,
-					background: beamColor,
-					boxShadow,
-					borderRadius: 1,
-					willChange: 'transform, opacity',
-					pointerEvents: 'none',
-				}}
-				transition={{ duration: beam.duration / 1000, ease: 'linear' }}
-			/>
-		)
+		if (beam.isVertical) {
+			return (
+				<motion.div
+					animate={{ translateY: finalPos, opacity: [0, 1, 0] }}
+					exit={{ opacity: 0 }}
+					initial={{ translateY: beam.start, opacity: 0 }}
+					key={beam.id}
+					onAnimationComplete={() => onDone(beam.id)}
+					style={{
+						position: 'absolute',
+						left: beam.lineIndex * cellSize,
+						width: Math.max(2, lineWidth),
+						height: beam.length,
+						background: beamColor,
+						boxShadow,
+						borderRadius: 1,
+						willChange: 'transform, opacity',
+						pointerEvents: 'none',
+					}}
+					transition={{
+						duration: beam.duration / 1000,
+						ease: 'linear',
+					}}
+				/>
+			)
+		} else {
+			return (
+				<motion.div
+					animate={{ translateX: finalPos, opacity: [0, 1, 0] }}
+					exit={{ opacity: 0 }}
+					initial={{ translateX: beam.start, opacity: 0 }}
+					key={beam.id}
+					onAnimationComplete={() => onDone(beam.id)}
+					style={{
+						position: 'absolute',
+						top: beam.lineIndex * cellSize - 2,
+						height: Math.max(2, lineWidth),
+						width: beam.length,
+						background: beamColor,
+						boxShadow,
+						borderRadius: 1,
+						willChange: 'transform, opacity',
+						pointerEvents: 'none',
+					}}
+					transition={{
+						duration: beam.duration / 1000,
+						ease: 'linear',
+					}}
+				/>
+			)
+		}
 	}
-})
+)
 
 BeamView.displayName = 'BeamView'
 
@@ -162,21 +170,20 @@ export function GridBackgroundWithBeams({
 			: false
 
 	const addOneBeam = useCallback(() => {
+		const isVertical = Math.random() > 0.5
+		const lineIndex = isVertical
+			? Math.floor(Math.random() * cols)
+			: Math.floor(Math.random() * rows)
+		const totalSpan = isVertical ? totalVerticalSpan : totalHorizontalSpan
+		const maxLen = Math.min(totalSpan * 0.6, cellSize * 1.5)
+		const length = 6 + Math.random() * Math.max(0, maxLen - 6)
+		const start = -length
+		const end = length + Math.random() * Math.max(0, totalSpan - length)
+		const duration = 1000 + Math.random() * 1000
+		const id = idRef.current++
+
 		setBeams((prev) => {
 			if (prev.length >= maxBeams) return prev
-			const isVertical = Math.random() > 0.5
-			const lineIndex = isVertical
-				? Math.floor(Math.random() * cols)
-				: Math.floor(Math.random() * rows)
-			const totalSpan = isVertical
-				? totalVerticalSpan
-				: totalHorizontalSpan
-			const maxLen = Math.min(totalSpan * 0.6, cellSize * 1.5)
-			const length = 6 + Math.random() * Math.max(0, maxLen - 6)
-			const start = -length
-			const end = length + Math.random() * Math.max(0, totalSpan - length)
-			const duration = 1000 + Math.random() * 1000
-			const id = idRef.current++
 			return [
 				...prev,
 				{ id, isVertical, lineIndex, start, end, duration, length },

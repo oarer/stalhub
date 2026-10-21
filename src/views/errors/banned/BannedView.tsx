@@ -21,13 +21,9 @@ export default function BannedView() {
 		setRemaining(expireIn)
 
 		const interval = setInterval(() => {
-			setRemaining((prev) => {
-				if (prev == null || prev <= 0) {
-					clearInterval(interval)
-					return 0
-				}
-				return prev - 1000
-			})
+			setRemaining((prev) =>
+				prev == null ? 0 : Math.max(0, prev - 1000)
+			)
 		}, 1000)
 
 		return () => clearInterval(interval)

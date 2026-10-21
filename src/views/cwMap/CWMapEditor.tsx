@@ -2,7 +2,7 @@
 
 import L from 'leaflet'
 import { useTranslations } from 'next-intl'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import { Accordion } from '@/components/ui/Accordion'
@@ -48,7 +48,7 @@ export default function CWMapEditor() {
 	)
 	const [mapKey, setMapKey] = useState(0)
 	const [showLetterMarkers, setShowLetterMarkers] = useState(true)
-	const [, setHistory] = useState<HistoryEntry[]>([])
+	const historyRef = useRef<HistoryEntry[]>([])
 
 	const selectedMap: MapDef =
 		MAPS.find((m) => m.key === selectedMapKey) ?? MAPS[0]
@@ -79,7 +79,7 @@ export default function CWMapEditor() {
 		setElements([])
 		setCurrentElement(null)
 		setMarkers([])
-		setHistory([])
+		historyRef.current = []
 		setMapKey((k) => k + 1)
 		if (showLetterMarkers) {
 			const newMap = MAPS.find((m) => m.key === key)
@@ -104,10 +104,10 @@ export default function CWMapEditor() {
 				preset: selectedMarkerPreset,
 			}
 			setMarkers((prev) => [...prev, newMarker])
-			setHistory((prev) => [
-				...prev,
+			historyRef.current = [
+				...historyRef.current,
 				{ type: 'add_marker', marker: newMarker },
-			])
+			]
 		},
 		[selectedMarkerPreset]
 	)
@@ -117,25 +117,21 @@ export default function CWMapEditor() {
 	}, [])
 
 	const undo = useCallback(() => {
-		setHistory((prev) => {
-			if (prev.length === 0) return prev
-			const last = prev[prev.length - 1]
-			if (last.type === 'add_element') {
-				setElements((els) =>
-					els.filter((e) => e.id !== last.element.id)
-				)
-			} else if (last.type === 'add_marker') {
-				setMarkers((ms) => ms.filter((m) => m.id !== last.marker.id))
-			}
-			return prev.slice(0, -1)
-		})
+		if (historyRef.current.length === 0) return
+		const last = historyRef.current[historyRef.current.length - 1]
+		if (last.type === 'add_element') {
+			setElements((els) => els.filter((e) => e.id !== last.element.id))
+		} else if (last.type === 'add_marker') {
+			setMarkers((ms) => ms.filter((m) => m.id !== last.marker.id))
+		}
+		historyRef.current = historyRef.current.slice(0, -1)
 	}, [])
 
 	const clearAll = useCallback(() => {
 		setElements([])
 		setCurrentElement(null)
 		setMarkers([])
-		setHistory([])
+		historyRef.current = []
 	}, [])
 
 	const saveToLocal = useCallback(() => {
@@ -280,12 +276,12 @@ export default function CWMapEditor() {
 						elements={elements}
 						lineWidth={lineWidth}
 						markerPreset={selectedMarkerPreset}
-						onAddElement={(el) =>
-							setHistory((prev) => [
-								...prev,
+						onAddElement={(el) => {
+							historyRef.current = [
+								...historyRef.current,
 								{ type: 'add_element', element: el },
-							])
-						}
+							]
+						}}
 						onPlaceMarker={placeMarker}
 						setCurrentElement={setCurrentElement}
 						setElements={setElements}

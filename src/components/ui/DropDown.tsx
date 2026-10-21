@@ -309,12 +309,13 @@ export default function DropdownMenu({
 	const t = useTranslations()
 
 	const toggleDropdown = useCallback(() => {
-		setIsOpen((prev) => {
-			const next = !prev
-			if (!next) setOpenSubmenus(new Set())
-			return next
-		})
+		setIsOpen((prev) => !prev)
 	}, [])
+
+	useEffect(() => {
+		if (isOpen) return
+		setOpenSubmenus((prev) => (prev.size === 0 ? prev : new Set()))
+	}, [isOpen])
 
 	const closeDropdown = useCallback(() => {
 		setIsOpen(false)
