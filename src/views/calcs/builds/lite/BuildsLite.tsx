@@ -109,8 +109,8 @@ export default function BuildsLiteView({
 
 	const t = useTranslations()
 	const locale = getLocale()
-	const [imported, setImported] = useState(false)
-	const [loadedFromApi, setLoadedFromApi] = useState(false)
+	const importedRef = useRef(false)
+	const loadedFromApiRef = useRef(false)
 	const [isSavingPng, setIsSavingPng] = useState(false)
 	const [pngImageSources, setPngImageSources] = useState<
 		Record<string, string>
@@ -140,7 +140,10 @@ export default function BuildsLiteView({
 	const { data: consumables } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
-	const items = (artifactsData as Item[] | undefined) ?? []
+	const items = useMemo(
+		() => (artifactsData as Item[] | undefined) ?? [],
+		[artifactsData]
+	)
 
 	const setArmor = useBuildStore((s) => s.setArmor)
 	const removeArmor = useBuildStore((s) => s.removeArmor)
@@ -213,30 +216,35 @@ export default function BuildsLiteView({
 	} = useLiteArtifacts({ build, items, locale })
 
 	useEffect(() => {
-		if (imported) return
+		if (importedRef.current) return
 
+		let cancelled = false
 		const params = new URLSearchParams(window.location.search)
 		const shareCode = params.get('share')
 		if (!shareCode) return
 
-		setTimeout(() => {
+		const timeoutId = setTimeout(() => {
 			importBuild(shareCode).then((success) => {
-				if (success) {
-					setImported(true)
-					window.history.replaceState({}, '', '/calcs/builds/lite')
-				}
+				if (cancelled || !success) return
+				importedRef.current = true
+				window.history.replaceState({}, '', '/calcs/builds/lite')
 			})
 		}, 100)
-	}, [importBuild, imported])
+
+		return () => {
+			cancelled = true
+			clearTimeout(timeoutId)
+		}
+	}, [importBuild])
 
 	useEffect(() => {
-		if (loadedFromApi) return
+		if (loadedFromApiRef.current) return
 
 		const params = new URLSearchParams(window.location.search)
 		const buildId = params.get('build')
 		if (!buildId) return
 
-		setLoadedFromApi(true)
+		loadedFromApiRef.current = true
 		buildApiService
 			.get(buildId)
 			.then((apiBuild) => {
@@ -252,7 +260,7 @@ export default function BuildsLiteView({
 				toast.error(t('buildsLite.notFound'))
 				window.history.replaceState({}, '', '/calcs/builds/lite')
 			})
-	}, [loadFromApi, loadedFromApi, t])
+	}, [loadFromApi, t])
 
 	const handleSavePng = useCallback(async () => {
 		if (!pngTemplateRef.current || isSavingPng) return
@@ -263,33 +271,36 @@ export default function BuildsLiteView({
 			await document.fonts.ready
 
 			const iconItems = new Map<string, Item>()
+			const artsByInstanceId = new Map(
+				build.arts.map((art) => [art.instance_id, art])
+			)
+			const itemsById = new Map(items.map((item) => [item.id, item]))
+			const containersById = new Map(
+				containers.map((item) => [item.id, item])
+			)
+			const armorById = new Map(armor.map((item) => [item.id, item]))
+			const consumablesById = new Map(
+				consumables.map((item) => [item.id, item])
+			)
 
 			for (const slot of build.container?.slots ?? []) {
-				const art = slot
-					? build.arts.find((item) => item.instance_id === slot)
-					: null
-				const item = art
-					? items.find((candidate) => candidate.id === art.item_id)
-					: null
+				const art = slot ? artsByInstanceId.get(slot) : null
+				const item = art ? itemsById.get(art.item_id) : null
 				if (item) iconItems.set(item.id, item)
 			}
 
 			const containerItem = build.container
-				? containers.find((item) => item.id === build.container?.id)
+				? containersById.get(build.container.id)
 				: null
 			if (containerItem) iconItems.set(containerItem.id, containerItem)
 
-			const armorItem = build.armor
-				? armor.find((item) => item.id === build.armor?.id)
-				: null
+			const armorItem = build.armor ? armorById.get(build.armor.id) : null
 			if (armorItem) iconItems.set(armorItem.id, armorItem)
 
 			for (const boostId of Object.values(build.boost)) {
 				if (!boostId) continue
 
-				const boostItem = consumables.find(
-					(item) => item.id === boostId
-				)
+				const boostItem = consumablesById.get(boostId)
 				if (boostItem) iconItems.set(boostItem.id, boostItem)
 			}
 
@@ -349,6 +360,7 @@ export default function BuildsLiteView({
 		if (!pngPreviewUrl) return
 		try {
 			const res = await fetch(pngPreviewUrl)
+			if (!res.ok) throw new Error('Failed to load PNG')
 			const blob = await res.blob()
 			await navigator.clipboard.write([
 				new ClipboardItem({ 'image/png': blob }),

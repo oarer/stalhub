@@ -20,28 +20,38 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 	)
 
 	useEffect(() => {
+		let cancelled = false
 		const match = document.cookie.match(/lang=(ru|en|es|fr|ko)/)
 		const loc = match?.[1] ?? 'ru'
 		setLocale(loc)
 		import(`@/locales/${loc}.json`).then(
-			(mod) => setMessages(mod.default),
+			(mod) => {
+				if (!cancelled) setMessages(mod.default)
+			},
 			() => {
-				setMessages({
-					errors: {
-						oops: 'Oops',
-						globalError: {
-							buttonLabel: 'Retry',
-							description: 'Something went wrong',
+				if (!cancelled) {
+					setMessages({
+						errors: {
+							oops: 'Oops',
+							globalError: {
+								buttonLabel: 'Retry',
+								description: 'Something went wrong',
+							},
 						},
-					},
-				})
+					})
+				}
 			}
 		)
+
+		return () => {
+			cancelled = true
+		}
 	}, [])
 
 	useEffect(() => {
 		if (process.env.NODE_ENV !== 'production') return
 
+		let cancelled = false
 		const sendError = async () => {
 			try {
 				const parts = [
@@ -59,6 +69,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 				const response = await axios.post('/api/error-report', {
 					content,
 				})
+				if (cancelled) return
 
 				setErrorId(response.data.errorId)
 				console.info('Reported error, ID:', response.data.errorId)
@@ -68,22 +79,30 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 		}
 
 		sendError()
+
+		return () => {
+			cancelled = true
+		}
 	}, [error, path])
 
-	if (!messages) return null
-
 	return (
-		<NextIntlClientProvider
-			getMessageFallback={({ namespace, key }) =>
-				`${namespace ? `${namespace}.` : ''}${key}`
-			}
-			locale={locale}
-			messages={messages}
-			onError={(error) => {
-				if (error.code === 'MISSING_MESSAGE') return
-			}}
-		>
-			<GlobalErrorView errorId={errorId} reset={reset} />
-		</NextIntlClientProvider>
+		<html lang={locale}>
+			<body>
+				{messages ? (
+					<NextIntlClientProvider
+						getMessageFallback={({ namespace, key }) =>
+							`${namespace ? `${namespace}.` : ''}${key}`
+						}
+						locale={locale}
+						messages={messages}
+						onError={(error) => {
+							if (error.code === 'MISSING_MESSAGE') return
+						}}
+					>
+						<GlobalErrorView errorId={errorId} reset={reset} />
+					</NextIntlClientProvider>
+				) : null}
+			</body>
+		</html>
 	)
 }

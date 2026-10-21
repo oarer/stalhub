@@ -30,7 +30,6 @@ const serverFetchAdapter: AxiosAdapter = async (config) => {
 	const url = axios.getUri(config)
 	const timeout = config.timeout ?? 0
 
-	let response: Response
 	let timedOut = false
 	const controller = new AbortController()
 	const timer =
@@ -70,8 +69,53 @@ const serverFetchAdapter: AxiosAdapter = async (config) => {
 			}
 		}
 
-		response = await fetch(url, init)
+		const response = await fetch(url, init)
+		const validateStatus =
+			config.validateStatus ??
+			((status: number) => status >= 200 && status < 300)
+
+		const parseBody = (text: string): unknown => {
+			try {
+				return JSON.parse(text)
+			} catch {
+				return text
+			}
+		}
+
+		const responseHeaders: Record<string, string> = {}
+		response.headers.forEach((value, key) => {
+			responseHeaders[key] = value
+		})
+
+		const createResponse = (data: unknown): AxiosResponse => ({
+			data,
+			status: response.status,
+			statusText: response.statusText,
+			headers: responseHeaders,
+			config,
+			request: response,
+		})
+
+		if (response.ok) {
+			return createResponse(parseBody(await response.text()))
+		} else {
+			if (validateStatus(response.status)) {
+				return createResponse(parseBody(await response.text()))
+			}
+
+			const axiosResponse = createResponse(
+				parseBody(await response.text())
+			)
+			throw new AxiosError(
+				`Request failed with status code ${response.status}`,
+				String(response.status),
+				config,
+				axiosResponse.request,
+				axiosResponse
+			)
+		}
 	} catch (err) {
+		if (err instanceof AxiosError) throw err
 		if (timedOut) {
 			throw new AxiosError(
 				`timeout of ${timeout}ms exceeded`,
@@ -87,44 +131,6 @@ const serverFetchAdapter: AxiosAdapter = async (config) => {
 	} finally {
 		if (timer) clearTimeout(timer)
 	}
-
-	const text = await response.text()
-	let data: unknown = text
-	try {
-		data = JSON.parse(text)
-	} catch {
-		// не JSON - оставляем
-	}
-
-	const responseHeaders: Record<string, string> = {}
-	response.headers.forEach((value, key) => {
-		responseHeaders[key] = value
-	})
-
-	const axiosResponse: AxiosResponse = {
-		data,
-		status: response.status,
-		statusText: response.statusText,
-		headers: responseHeaders,
-		config,
-		request: response,
-	}
-
-	const validateStatus =
-		config.validateStatus ??
-		((status: number) => status >= 200 && status < 300)
-
-	if (validateStatus(response.status)) {
-		return axiosResponse
-	}
-
-	throw new AxiosError(
-		`Request failed with status code ${response.status}`,
-		String(response.status),
-		config,
-		axiosResponse.request,
-		axiosResponse
-	)
 }
 
 if (typeof window === 'undefined') {

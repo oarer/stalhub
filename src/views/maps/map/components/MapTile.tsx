@@ -1,5 +1,6 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import L from 'leaflet'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -84,31 +85,31 @@ export default function MapTile({
 	const [hiddenIcons, setHiddenIcons] = useState<Set<string>>(new Set())
 	const [markerSearch, setMarkerSearch] = useState('')
 	const [selectedUuid, setSelectedUuid] = useState<string | null>(null)
-	const [filteredMarkers, setFilteredMarkers] = useState<SourceMarker[]>([])
-	const [hiddenFilteredTypes, setHiddenFilteredTypes] = useState<Set<string>>(
-		new Set()
-	)
+	const [hiddenFilteredTypesState, setHiddenFilteredTypes] =
+		useState<Set<string> | null>(null)
 	const [hiddenFilteredNames, setHiddenFilteredNames] = useState<Set<string>>(
 		new Set()
 	)
 
-	useEffect(() => {
-		void fetch('/public/markers/filtered.json')
-			.then((response) => response.json())
-			.then((data: unknown) => {
-				if (Array.isArray(data)) {
-					setFilteredMarkers(data)
-					setHiddenFilteredTypes(
-						new Set(
-							data.map((item) =>
-								filteredTypeKey(item as SourceMarker)
-							)
-						)
-					)
-				}
-			})
-			.catch((error) => console.error('Filtered map markers:', error))
-	}, [])
+	const { data: filteredMarkers = [] } = useQuery({
+		queryKey: ['map-filtered-markers'],
+		queryFn: async () => {
+			const response = await fetch('/public/markers/filtered.json')
+			if (!response.ok) {
+				throw new Error(`Filtered map markers: ${response.status}`)
+			}
+			const data: unknown = await response.json()
+			return Array.isArray(data) ? (data as SourceMarker[]) : []
+		},
+		staleTime: Number.POSITIVE_INFINITY,
+	})
+
+	const defaultHiddenFilteredTypes = useMemo(
+		() => new Set(filteredMarkers.map((marker) => filteredTypeKey(marker))),
+		[filteredMarkers]
+	)
+	const hiddenFilteredTypes =
+		hiddenFilteredTypesState ?? defaultHiddenFilteredTypes
 
 	const filteredTypeGroups = useMemo(() => {
 		const groups = new Map<string, Map<string, number>>()

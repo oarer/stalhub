@@ -2,7 +2,7 @@
 
 import { toBlob } from 'html-to-image'
 import { useTranslations } from 'next-intl'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 
@@ -25,17 +25,22 @@ async function imageToDataUrl(url: string): Promise<string | null> {
 	}
 }
 
-function createPreviewUrl(blob: Blob | null): string {
-	if (!blob) throw new Error('Failed to encode PNG')
-	return URL.createObjectURL(blob)
-}
-
 export function useTierListPng() {
 	const t = useTranslations()
 	const [isSavingPng, setIsSavingPng] = useState(false)
+	const [pngPreviewBlob, setPngPreviewBlob] = useState<Blob | null>(null)
 	const [pngPreviewUrl, setPngPreviewUrl] = useState<string | null>(null)
 	const [showPngModal, setShowPngModal] = useState(false)
 	const pngTemplateRef = useRef<HTMLDivElement | null>(null)
+
+	useEffect(() => {
+		if (!pngPreviewBlob) return
+
+		const url = URL.createObjectURL(pngPreviewBlob)
+		setPngPreviewUrl(url)
+
+		return () => URL.revokeObjectURL(url)
+	}, [pngPreviewBlob])
 
 	const handleSavePng = useCallback(async () => {
 		if (!pngTemplateRef.current || isSavingPng) return
@@ -76,13 +81,9 @@ export function useTierListPng() {
 				pixelRatio: 1,
 				width,
 			})
-			const previewUrl = createPreviewUrl(pngBlob)
+			if (!pngBlob) throw new Error('Failed to encode PNG')
 
-			setPngPreviewUrl((previousUrl) => {
-				if (previousUrl?.startsWith('blob:'))
-					URL.revokeObjectURL(previousUrl)
-				return previewUrl
-			})
+			setPngPreviewBlob(pngBlob)
 			setShowPngModal(true)
 		} catch {
 			toast.error(t('tierlists.pngError'))
@@ -95,6 +96,7 @@ export function useTierListPng() {
 		if (!pngPreviewUrl) return
 		try {
 			const res = await fetch(pngPreviewUrl)
+			if (!res.ok) throw new Error('Failed to load PNG')
 			const blob = await res.blob()
 			await navigator.clipboard.write([
 				new ClipboardItem({ 'image/png': blob }),

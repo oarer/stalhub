@@ -52,6 +52,7 @@ export function useClanSquadPng(
 		if (!pngPreviewUrl) return
 		try {
 			const res = await fetch(pngPreviewUrl)
+			if (!res.ok) throw new Error('Failed to load PNG')
 			const blob = await res.blob()
 			await navigator.clipboard.write([
 				new ClipboardItem({ 'image/png': blob }),

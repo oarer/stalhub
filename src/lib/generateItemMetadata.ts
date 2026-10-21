@@ -33,6 +33,7 @@ export async function generateItemMetadata(
 	const res = await fetch(`${GITHUB_RAW_BASE}/listing.json`, {
 		next: { revalidate: 60 },
 	})
+	if (!res.ok) return null
 	const listing: ItemListing[] = await res.json()
 
 	const item = listing.find((i) => i.data === githubUrl)

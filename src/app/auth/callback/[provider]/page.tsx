@@ -28,6 +28,7 @@ export default function CallbackPage() {
 	useEffect(() => {
 		if (called.current) return
 		called.current = true
+		let cancelled = false
 
 		const provider = params.provider as Provider
 		const code = searchParams.get('code')
@@ -61,6 +62,7 @@ export default function CallbackPage() {
 			if (getDesktopIntent()) {
 				try {
 					const url = await issueDesktopLoginUrl()
+					if (cancelled) return
 					clearDesktopIntent()
 					setDesktopComplete(true)
 					window.location.replace(url)
@@ -69,12 +71,17 @@ export default function CallbackPage() {
 					// fall through to web onboarding
 				}
 			}
+			if (cancelled) return
 			window.location.replace('/me/onboarding')
 		}
 
 		handle().catch(() => {
 			toast.error(t('auth.error'), { id: 'auth-error' })
 		})
+
+		return () => {
+			cancelled = true
+		}
 	}, [router, params, searchParams, t])
 
 	return (

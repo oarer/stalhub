@@ -50,6 +50,9 @@ export default function ArtView({ artId }: ArtViewProps) {
 	const [revealed, setRevealed] = useState(false)
 	const [downloading, setDownloading] = useState(false)
 	const [activeIndex, setActiveIndex] = useState(0)
+	const [pageUrl] = useState(() =>
+		typeof window === 'undefined' ? '' : window.location.href
+	)
 
 	const artImages = getArtImages(art)
 
@@ -60,6 +63,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 		setDownloading(true)
 		try {
 			const res = await fetch(url)
+			if (!res.ok) return
 			const blob = await res.blob()
 			const extension =
 				blob.type.split('/')[1]?.replace('+xml', '') ?? 'png'
@@ -143,7 +147,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 					<div className="flex gap-2">
 						<CopyButton
 							className="p-5"
-							text={window.location.href}
+							text={pageUrl}
 							variant={'secondary'}
 						/>
 						<Button
