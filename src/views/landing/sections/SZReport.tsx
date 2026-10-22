@@ -162,7 +162,7 @@ export default function SZReport() {
 				})}
 			</motion.h2>
 			<div
-				className="no-scrollbar flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 xl:grid-cols-4"
+				className="no-scrollbar flex w-full snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain touch-pan-x pb-2 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 xl:grid-cols-4"
 				ref={scrollRef}
 			>
 				{SZ_REPORT_CARDS.map((card, index) => (
