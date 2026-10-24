@@ -17,6 +17,7 @@ import LocaleProvider from '@/providers/LocaleProvider'
 import Providers from '@/providers/providers'
 import { GridBackgroundWithBeams } from '@/shared/Background'
 import Footer from '@/shared/layouts/footer/Footer'
+import Hound from '@/shared/layouts/Hound'
 import ThemeApplier from '@/shared/layouts/nav/components/theme/ThemeApplier'
 import Nav from '@/shared/layouts/nav/Nav'
 /* import PageTransitionEffect from '@/shared/transitionEffects/PageTransitionEffect' */
@@ -69,7 +70,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 						<LocaleProvider locale={locale} messages={messages}>
 							<Providers>
 								<Nav />
-								
+								<Hound />
 								<main className="min-h-screen">{children}</main>
 								<Footer />
 								<CookieConsent />
