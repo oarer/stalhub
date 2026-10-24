@@ -547,7 +547,8 @@
     "search": "검색",
     "popular_title": "인기 플레이어",
     "recent_title": "최근 본 항목",
-    "recent_tooltip": "전체 통계, 서버에서 가져옵니다"
+    "recent_tooltip": "전체 통계, 서버에서 가져옵니다",
+    "compare": "플레이어 비교"
   },
   "player": {
     "hero": {
@@ -648,6 +649,42 @@
       "sessionKd": "세션 K/D",
       "colosseumKd": "콜로세움 K/D",
       "games": "게임"
+    },
+    "comparison": {
+      "button": "비교",
+      "title": "플레이어 비교",
+      "addPlayer": "플레이어 선택",
+      "removePlayer": "플레이어 제거",
+      "openPlayer": "프로필 열기",
+      "change": "변경",
+      "retry": "다시 시도",
+      "clear": "초기화",
+      "pickTitle": "플레이어 선택",
+      "pickSearch": "플레이어 닉네임",
+      "pickHint": "지역과 정확한 플레이어 닉네임을 입력하세요.",
+      "pickAction": "플레이어 추가",
+      "notFound": "플레이어를 찾을 수 없습니다",
+      "loadError": "플레이어를 불러오지 못했습니다",
+      "alreadyAdded": "이미 추가된 플레이어입니다",
+      "selectFirst": "첫 번째 플레이어를 선택하세요",
+      "selectSecond": "비교할 플레이어를 한 명 더 추가하세요",
+      "playerError": "플레이어를 불러오지 못했습니다",
+      "noStats": "비교할 통계를 찾을 수 없습니다",
+      "noDifferences": "모든 통계가 일치합니다",
+      "onlyDifferences": "차이점만",
+      "slotLabel": "플레이어 {index}",
+      "statsTitle": "통계",
+      "deltaHint": "다른 플레이어와의 차이",
+      "better": "더 좋음",
+      "worse": "더 나쁨",
+      "best": "최고",
+      "worst": "최저",
+      "summary": "요약",
+      "kd": "K/D",
+      "sessionKd": "세션 K/D",
+      "colosseumKd": "콜로세움 K/D",
+      "accuracy": "정확도",
+      "headshotAccuracy": "헤드샷 정확도"
     }
   },
   "time": {
@@ -3019,7 +3056,6 @@
       "sharpeningNote": "강화는 선택한 모든 아이템에 적용됩니다. 부착물은 포함되지 않습니다.",
       "statsTitle": "능력치",
       "statsCount": "능력치: {count}",
-      "pageDescription": "여러 StalZone 아이템의 피해량, 방어구, 무게 등 능력치를 한 표에서 비교하세요.",
       "addItem": "아이템 선택",
       "removeItem": "아이템 제거",
       "openItem": "아이템 열기",

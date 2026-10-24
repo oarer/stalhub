@@ -69,10 +69,9 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 						<LocaleProvider locale={locale} messages={messages}>
 							<Providers>
 								<Nav />
-								{/* <PageTransitionEffect> */}
+								
 								<main className="min-h-screen">{children}</main>
 								<Footer />
-								{/* </PageTransitionEffect> */}
 								<CookieConsent />
 							</Providers>
 						</LocaleProvider>

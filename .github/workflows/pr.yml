@@ -56,5 +56,5 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Eslint check
+      - name: Biome check
         run: bun run lint

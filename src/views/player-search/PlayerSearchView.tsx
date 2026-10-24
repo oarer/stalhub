@@ -79,6 +79,15 @@ export default function PlayerSearchView() {
 					<Icon className="text-xl" icon="lucide:search" />
 					{t('playerSearch.search')}
 				</Button>
+				<Button
+					className="flex w-full items-center gap-2"
+					onClick={() => router.push('/player/compare')}
+					size="lg"
+					variant="outline"
+				>
+					<Icon className="text-xl" icon="lucide:git-compare" />
+					{t('playerSearch.compare')}
+				</Button>
 			</div>
 			<PlayersCards popular={popular} recent={recent} />
 		</section>

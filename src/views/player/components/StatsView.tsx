@@ -17,26 +17,7 @@ import {
 	groupPlayerStats,
 	type PlayerStat,
 } from './Stats.utils'
-
-const CATEGORY_ORDER: StatCategory[] = [
-	'SURVIVAL',
-	'COMBAT',
-	'EXPLORATION',
-	'ECONOMY',
-	'SESSION_MODES',
-	'HIDEOUT',
-	'NONE',
-]
-
-const CATEGORY_ICONS: Record<StatCategory, string> = {
-	SURVIVAL: 'lucide:heart-pulse',
-	COMBAT: 'lucide:crosshair',
-	EXPLORATION: 'lucide:map',
-	ECONOMY: 'lucide:coins',
-	SESSION_MODES: 'lucide:gamepad-2',
-	HIDEOUT: 'lucide:warehouse',
-	NONE: 'lucide:circle-help',
-}
+import { CATEGORY_ICONS, CATEGORY_ORDER } from './statCategories'
 
 export default function StatsView({ data }: { data: Stat[] }) {
 	const t = useTranslations()

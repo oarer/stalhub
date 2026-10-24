@@ -2,14 +2,14 @@ import type { Message } from '@/types/item.type'
 import type { DBStats, Stat, StatCategory, StatType } from '@/types/player.type'
 import dbStatsJson from './stats.json'
 
-const dbStats: DBStats[] = dbStatsJson.map((s) => ({
+export const DB_STATS: DBStats[] = dbStatsJson.map((s) => ({
 	id: s.id,
 	category: s.category as StatCategory,
 	type: s.type as StatType,
 	name: s.name as Message,
 }))
 
-export const DB_STATS_BY_ID = dbStats.reduce(
+export const DB_STATS_BY_ID = DB_STATS.reduce(
 	(acc, s) => {
 		acc[s.id] = s
 		return acc

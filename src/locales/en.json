@@ -547,7 +547,8 @@
     "search": "Search",
     "popular_title": "Popular players",
     "recent_title": "Recently viewed",
-    "recent_tooltip": "Overall statistics, taken from the server"
+    "recent_tooltip": "Overall statistics, taken from the server",
+    "compare": "Compare players"
   },
   "player": {
     "hero": {
@@ -648,6 +649,42 @@
       "sessionKd": "Sessions K/D",
       "colosseumKd": "Colosseum K/D",
       "games": "games"
+    },
+    "comparison": {
+      "button": "Compare",
+      "title": "Player comparison",
+      "addPlayer": "Choose player",
+      "removePlayer": "Remove player",
+      "openPlayer": "Open profile",
+      "change": "Change",
+      "retry": "Retry",
+      "clear": "Reset",
+      "pickTitle": "Choose a player",
+      "pickSearch": "Player nickname",
+      "pickHint": "Select a region and enter the exact player nickname.",
+      "pickAction": "Add player",
+      "notFound": "Player not found",
+      "loadError": "Failed to load the player",
+      "alreadyAdded": "This player is already added",
+      "selectFirst": "Choose the first player",
+      "selectSecond": "Add another player to compare",
+      "playerError": "Failed to load the player",
+      "noStats": "No stats to compare could be found",
+      "noDifferences": "All stats match",
+      "onlyDifferences": "Differences only",
+      "slotLabel": "Player {index}",
+      "statsTitle": "Stats",
+      "deltaHint": "Difference from other players",
+      "better": "better",
+      "worse": "worse",
+      "best": "Best",
+      "worst": "Worst",
+      "summary": "Summary",
+      "kd": "K/D",
+      "sessionKd": "Sessions K/D",
+      "colosseumKd": "Colosseum K/D",
+      "accuracy": "Accuracy",
+      "headshotAccuracy": "Headshot accuracy"
     }
   },
   "time": {
@@ -3019,7 +3056,6 @@
       "sharpeningNote": "Sharpening applies to all selected items. Attachments are not included.",
       "statsTitle": "Stats",
       "statsCount": "Stats: {count}",
-      "pageDescription": "Compare the stats of several StalZone items: damage, armor, weight and more in a single table.",
       "addItem": "Choose item",
       "removeItem": "Remove item",
       "openItem": "Open item",

@@ -234,7 +234,6 @@ function LightBoxContent({
 							damping: 30,
 						}}
 					>
-						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							alt={alt}
 							className="block max-h-[90dvh] max-w-[90dvw] select-none object-contain"

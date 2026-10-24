@@ -547,7 +547,8 @@
     "search": "Buscar",
     "popular_title": "Jugadores populares",
     "recent_title": "Vistos recientemente",
-    "recent_tooltip": "Estadística general, tomada del servidor"
+    "recent_tooltip": "Estadística general, tomada del servidor",
+    "compare": "Comparar jugadores"
   },
   "player": {
     "hero": {
@@ -648,6 +649,42 @@
       "sessionKd": "K/D sesiones",
       "colosseumKd": "K/D coliseo",
       "games": "partidas"
+    },
+    "comparison": {
+      "button": "Comparar",
+      "title": "Comparación de jugadores",
+      "addPlayer": "Elegir jugador",
+      "removePlayer": "Quitar jugador",
+      "openPlayer": "Abrir perfil",
+      "change": "Cambiar",
+      "retry": "Reintentar",
+      "clear": "Restablecer",
+      "pickTitle": "Elige un jugador",
+      "pickSearch": "Apodo del jugador",
+      "pickHint": "Indica la región y el apodo exacto del jugador.",
+      "pickAction": "Añadir jugador",
+      "notFound": "Jugador no encontrado",
+      "loadError": "No se pudo cargar el jugador",
+      "alreadyAdded": "Este jugador ya está añadido",
+      "selectFirst": "Elige el primer jugador",
+      "selectSecond": "Añade otro jugador para comparar",
+      "playerError": "No se pudo cargar el jugador",
+      "noStats": "No se encontraron estadísticas para comparar",
+      "noDifferences": "Todas las estadísticas coinciden",
+      "onlyDifferences": "Solo diferencias",
+      "slotLabel": "Jugador {index}",
+      "statsTitle": "Estadísticas",
+      "deltaHint": "Diferencia con otros jugadores",
+      "better": "mejor",
+      "worse": "peor",
+      "best": "Mejor",
+      "worst": "Peor",
+      "summary": "Resumen",
+      "kd": "K/D",
+      "sessionKd": "K/D sesiones",
+      "colosseumKd": "K/D coliseo",
+      "accuracy": "Precisión",
+      "headshotAccuracy": "Precisión a la cabeza"
     }
   },
   "time": {
@@ -3019,7 +3056,6 @@
       "sharpeningNote": "La mejora se aplica a todos los objetos seleccionados. No se incluyen accesorios.",
       "statsTitle": "Características",
       "statsCount": "Características: {count}",
-      "pageDescription": "Compara las características de varios objetos de StalZone: daño, armadura, peso y más en una sola tabla.",
       "addItem": "Elegir objeto",
       "removeItem": "Quitar objeto",
       "openItem": "Abrir objeto",

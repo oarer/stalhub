@@ -130,7 +130,6 @@ export function Gallery({
 				Math.max(normalized.length - 1, 0)
 			)
 		)
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [normalized.length, initialIndex])
 
 	useEffect(() => {

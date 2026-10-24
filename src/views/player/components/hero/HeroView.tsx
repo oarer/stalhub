@@ -2,16 +2,24 @@ import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Card } from '@/components/ui/Card'
+import type { Regions } from '@/types/api.type'
 import type { PlayerResponse } from '@/types/player.type'
 import { allianceColors } from '@/types/player.type'
 import { getStatValue } from '@/utils/player/StatParse'
 import { StalcraftText } from '@/utils/StalcraftText'
 import AchievementsView from '../AchievementsView'
+import { PlayerComparison } from '../PlayerComparison'
 import PlayerNote from '../PlayerNote'
 import HeroCombat from './HeroCombat'
 import HeroStats from './HeroStats'
 
-export default function HeroView({ data }: { data: PlayerResponse }) {
+export default function HeroView({
+	data,
+	region,
+}: {
+	data: PlayerResponse
+	region: Regions
+}) {
 	const t = useTranslations()
 
 	return (
@@ -50,7 +58,13 @@ export default function HeroView({ data }: { data: PlayerResponse }) {
 				</Card.Header>
 
 				<Card.Content className="space-y-6">
-					<HeroStats data={data} />
+					<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+						<HeroStats data={data} />
+						<PlayerComparison
+							character={data.username}
+							region={region}
+						/>
+					</div>
 					<div className="border-primary/60 border-t" />
 					<HeroCombat data={data.stats} />
 					<div className="border-primary/60 border-t" />

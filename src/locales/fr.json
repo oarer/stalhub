@@ -547,7 +547,8 @@
     "search": "Rechercher",
     "popular_title": "Joueurs populaires",
     "recent_title": "Récemment consultés",
-    "recent_tooltip": "Statistiques générales, provenant du serveur"
+    "recent_tooltip": "Statistiques générales, provenant du serveur",
+    "compare": "Comparer les joueurs"
   },
   "player": {
     "hero": {
@@ -648,6 +649,42 @@
       "sessionKd": "K/D sessions",
       "colosseumKd": "K/D Colisée",
       "games": "matchs"
+    },
+    "comparison": {
+      "button": "Comparer",
+      "title": "Comparaison de joueurs",
+      "addPlayer": "Choisir un joueur",
+      "removePlayer": "Retirer le joueur",
+      "openPlayer": "Ouvrir le profil",
+      "change": "Modifier",
+      "retry": "Réessayer",
+      "clear": "Réinitialiser",
+      "pickTitle": "Choisissez un joueur",
+      "pickSearch": "Pseudo du joueur",
+      "pickHint": "Indiquez la région et le pseudo exact du joueur.",
+      "pickAction": "Ajouter le joueur",
+      "notFound": "Joueur introuvable",
+      "loadError": "Impossible de charger le joueur",
+      "alreadyAdded": "Ce joueur est déjà ajouté",
+      "selectFirst": "Choisissez le premier joueur",
+      "selectSecond": "Ajoutez un autre joueur à comparer",
+      "playerError": "Impossible de charger le joueur",
+      "noStats": "Aucune statistique à comparer trouvée",
+      "noDifferences": "Toutes les statistiques correspondent",
+      "onlyDifferences": "Différences uniquement",
+      "slotLabel": "Joueur {index}",
+      "statsTitle": "Statistiques",
+      "deltaHint": "Différence avec les autres joueurs",
+      "better": "mieux",
+      "worse": "moins bien",
+      "best": "Meilleur",
+      "worst": "Pire",
+      "summary": "Résumé",
+      "kd": "K/D",
+      "sessionKd": "K/D sessions",
+      "colosseumKd": "K/D Colisée",
+      "accuracy": "Précision",
+      "headshotAccuracy": "Précision à la tête"
     }
   },
   "time": {
@@ -3019,7 +3056,6 @@
       "sharpeningNote": "L'affûtage s'applique à tous les objets sélectionnés. Les accessoires ne sont pas pris en compte.",
       "statsTitle": "Caractéristiques",
       "statsCount": "Caractéristiques : {count}",
-      "pageDescription": "Comparez les caractéristiques de plusieurs objets StalZone : dégâts, armure, poids et plus encore dans un seul tableau.",
       "addItem": "Choisir un objet",
       "removeItem": "Retirer l'objet",
       "openItem": "Ouvrir l'objet",
