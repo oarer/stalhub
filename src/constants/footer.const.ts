@@ -53,18 +53,24 @@ export const footerDocs: FooterLink[] = [
 export type FooterCredit = {
 	author: string
 	href: string
+	icon: string
 	labelKey: string
+	sound: boolean
 }
 
 export const footerCredits: FooterCredit[] = [
 	{
 		author: '@oarer',
 		href: 'https://oarer.dev',
+		icon: '/public/images/femt.png',
 		labelKey: 'footer.made_by',
+		sound: false,
 	},
 	{
 		author: '@Art3mLapa',
 		href: 'https://github.com/Art3mLapa',
+		icon: '/public/images/other/art3.webp',
 		labelKey: 'footer.design_by',
+		sound: true,
 	},
 ]

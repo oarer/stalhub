@@ -1,13 +1,15 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { mtsExtended, mtsWide } from '@/app/fonts'
 import { CLink } from '@/components/ui/Link'
 import {
+	type FooterCredit,
 	type FooterLink,
 	footerCredits,
 	footerDocs,
@@ -58,6 +60,96 @@ const UwuToggle = () => {
 		</button>
 	)
 }
+
+// чё за хуйню я добавил
+const FooterCreditItem = ({ credit }: { credit: FooterCredit }) => {
+	const t = useTranslations()
+	const { uwuMode } = useUwuStore()
+	const [active, setActive] = useState(false)
+	const itemRef = useRef<HTMLParagraphElement>(null)
+	const blehTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const audioRef = useRef<HTMLAudioElement | null>(null)
+
+	const playBleh = () => {
+		try {
+			if (!credit.sound) return
+
+			if (!audioRef.current) {
+				audioRef.current = new Audio('/public/sounds/bleh.mp3')
+				audioRef.current.preload = 'auto'
+			}
+
+			audioRef.current.currentTime = 0
+			void audioRef.current.play()
+		} catch {
+			// ignore
+		}
+	}
+
+	const handleClick = () => {
+		if (!uwuMode || active) return
+
+		setActive(true)
+		playBleh()
+
+		itemRef.current?.animate(
+			[
+				{ transform: 'translateY(0)' },
+				{ transform: 'translateY(-6px)', offset: 0.2 },
+				{ transform: 'translateY(0)', offset: 0.45 },
+				{ transform: 'translateY(-3px)', offset: 0.65 },
+				{ transform: 'translateY(0)' },
+			],
+			{ duration: 1000, easing: 'ease-out' }
+		)
+
+		if (blehTimeoutRef.current) clearTimeout(blehTimeoutRef.current)
+		blehTimeoutRef.current = setTimeout(() => setActive(false), 1000)
+	}
+
+	return (
+		<button
+			className={`${mtsWide.className} flex items-center gap-2 font-semibold text-[14px] text-foreground/80 lowercase leading-none tracking-widest ${uwuMode ? 'cursor-pointer select-none' : ''}`}
+			onClick={handleClick}
+			onKeyUp={(event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault()
+					handleClick()
+				}
+			}}
+			tabIndex={uwuMode ? 0 : undefined}
+			type="button"
+		>
+			{t(credit.labelKey)}
+			<Link
+				className="text-primary/60 transition-colors duration-500 hover:text-primary"
+				href={credit.href}
+				rel="noopener noreferrer"
+				target="_blank"
+			>
+				{credit.author}
+			</Link>
+			{uwuMode ? (
+				<Image
+					alt=":3"
+					className="inline-block align-middle"
+					height={18}
+					src={credit.icon}
+					width={18}
+				/>
+			) : null}
+		</button>
+	)
+}
+
+const FooterCredits = () => (
+	<div className="flex flex-col gap-2">
+		{footerCredits.map((credit) => (
+			<FooterCreditItem credit={credit} key={credit.href} />
+		))}
+		<UwuToggle />
+	</div>
+)
 
 const FooterNav = ({
 	links,
@@ -135,25 +227,7 @@ export default function FooterLayout() {
 							})}
 						</h2>
 
-						<div className="flex flex-col gap-2">
-							{footerCredits.map((credit) => (
-								<p
-									className={`${mtsWide.className} font-semibold text-[14px] text-foreground/80 lowercase leading-none tracking-widest`}
-									key={credit.href}
-								>
-									{t(credit.labelKey)}
-									<Link
-										className="text-primary/60 transition-colors duration-500 hover:text-primary"
-										href={credit.href}
-										rel="noopener noreferrer"
-										target="_blank"
-									>
-										{credit.author}
-									</Link>
-								</p>
-							))}
-							<UwuToggle />
-						</div>
+						<FooterCredits />
 					</div>
 
 					<div className="flex flex-col items-start gap-2">
@@ -210,6 +284,7 @@ export default function FooterLayout() {
 
 			<svg
 				aria-hidden
+				aria-label="stalhub"
 				className="hidden w-full text-foreground lg:-ml-3 lg:block"
 				preserveAspectRatio="xMidYMid meet"
 				viewBox="0 0 1000 200"
