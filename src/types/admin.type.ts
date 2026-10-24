@@ -382,3 +382,142 @@ export interface AdminAuctionHistoryProgress {
 	rollupRunning: boolean
 	lastRollup: AdminRollupStats | null
 }
+
+export interface AdminDashboardTrendPoint {
+	date: string
+	count: number
+}
+
+export interface AdminDashboardContentTrendPoint {
+	date: string
+	builds: number
+	articles: number
+	arts: number
+}
+
+export interface AdminDashboardBanRule {
+	rule: string
+	severity: 'WARN' | 'BAN'
+	count: number
+}
+
+export interface AdminDashboardServerOnline {
+	region: string
+	server_id: string
+	online: number
+	createdAt?: string
+}
+
+export interface AdminDashboardTopBuild {
+	id: number
+	external_id: string
+	title: string
+	views: number
+	created_at: string
+	author: { id: number; username: string; name: string } | null
+}
+
+export interface AdminDashboardTopArticle {
+	id: number
+	external_id: string
+	title: string
+	views: number
+	status: string
+	created_at: string
+	author: { id: number; username: string; name: string } | null
+}
+
+export interface AdminDashboardTopArt {
+	id: number
+	external_id: string
+	title: string | null
+	views: number
+	created_at: string
+}
+
+export interface AdminDashboardTopPlayer {
+	id: string
+	uuid: string
+	username: string
+	region: string
+	alliance: string
+	views: number
+}
+
+export interface AdminDashboard {
+	generated_at: string
+	trend_days: number
+	users: {
+		total: number
+		new_today: number
+		new_7d: number
+		new_30d: number
+		onboarded: number
+		public_profiles: number
+		active_sessions_24h: number
+		active_sessions_7d: number
+		revoked_sessions: number
+		banned: number
+		auto_banned: number
+		auto_warned: number
+		registration_trend: AdminDashboardTrendPoint[]
+	}
+	content: {
+		builds: { total: number; views: number; new_7d: number }
+		articles: {
+			total: number
+			views: number
+			by_status: Record<string, number>
+		}
+		arts: { total: number; views: number }
+		tier_lists: { total: number; views: number }
+		comments: { total: number; new_7d: number }
+		stars: { total: number }
+		creation_trend: AdminDashboardContentTrendPoint[]
+	}
+	clans: {
+		total: number
+		recruiting: number
+		public: number
+		blocked: number
+		members_total: number
+		by_status: Record<string, number>
+	}
+	moderation: {
+		ban_logs_total: number
+		bans_7d: number
+		warnings_7d: number
+		users_banned: number
+		auto_banned: number
+		auto_warned: number
+		by_rule: AdminDashboardBanRule[]
+	}
+	system: {
+		roles: number
+		permissions: number
+		badges: number
+		notifications: number
+		notifications_read: number
+	}
+	players: {
+		popular_players: number
+		blacklist_size: number
+		player_notes: number
+	}
+	server_online: {
+		latest: AdminDashboardServerOnline[]
+		history_24h: {
+			region: string
+			createdAt: string
+			online: number
+		}[]
+	}
+	top: {
+		builds: AdminDashboardTopBuild[]
+		articles: AdminDashboardTopArticle[]
+		arts: AdminDashboardTopArt[]
+		players: AdminDashboardTopPlayer[]
+	}
+}
+
+export type AdminDashboardRange = 7 | 14 | 30 | 90

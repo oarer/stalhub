@@ -1,5 +1,5 @@
-import AdminUsersView from '@/views/admin/users/UsersAdminView'
+import DashboardAdminView from '@/views/admin/dashboard/DashboardAdminView'
 
 export default function AdminPage() {
-	return <AdminUsersView />
+	return <DashboardAdminView />
 }

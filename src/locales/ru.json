@@ -1601,7 +1601,85 @@
       "arts": "Творчество",
       "bans": "Баны",
       "scNodes": "SC-ноды",
-      "auctionHistory": "История аукциона"
+      "auctionHistory": "История аукциона",
+      "dashboard": "Дашборд",
+      "group": {
+        "overview": "Обзор",
+        "users": "Пользователи",
+        "content": "Контент",
+        "game": "Игровое",
+        "system": "Система"
+      }
+    },
+    "dashboard": {
+      "title": "Дашборд",
+      "generatedAt": "Обновлено: {date}",
+      "range": "{n} дн.",
+      "users": {
+        "total": "Пользователей",
+        "newToday": "Новых за 24ч",
+        "newPeriod": "+{count} за {days} дн.",
+        "activeSessions": "Активных сессий (24ч)",
+        "banned": "В блокировке",
+        "autoBannedShort": "Автобан: {count}",
+        "autoWarnedShort": "Автопредупреждений: {count}",
+        "onboarded": "Завершили онбординг"
+      },
+      "content": {
+        "builds": "Сборки",
+        "articles": "Статьи",
+        "arts": "Арты",
+        "tierLists": "Тир-листы",
+        "comments": "Комментарии",
+        "stars": "Лайки",
+        "new7d": "+{count} за 7 дн."
+      },
+      "viewsShort": "{count} просмотров",
+      "labels": {
+        "registrations": "Регистрации",
+        "builds": "Сборки",
+        "articles": "Статьи",
+        "arts": "Арты"
+      },
+      "clans": {
+        "title": "Кланы",
+        "total": "Всего кланов",
+        "members": "Участников всего",
+        "recruiting": "Набор открыт",
+        "blocked": "Заблокировано"
+      },
+      "moderation": {
+        "title": "Модерация",
+        "banLogs": "Записей в бан-логе",
+        "bans7d": "Банов за 7 дней",
+        "warnings7d": "Предупреждений за 7 дней",
+        "byRule": "Срабатывания по правилам"
+      },
+      "players": {
+        "title": "Игроки",
+        "popular": "Популярные игроки",
+        "blacklist": "Чёрный список",
+        "notes": "Заметки"
+      },
+      "system": {
+        "title": "Система",
+        "roles": "Ролей",
+        "permissions": "Разрешений",
+        "badges": "Бейджей",
+        "notifications": "Уведомлений"
+      },
+      "status": {
+        "pending": "На рассмотрении",
+        "approved": "Одобрено",
+        "review": "Ревью",
+        "denied": "Отклонено",
+        "banned": "Забанено"
+      },
+      "top": {
+        "untitled": "Без названия",
+        "title": "Топ по просмотрам"
+      },
+      "empty": "Нет данных"
     },
     "roles": {
       "title": "Роли",
@@ -3198,7 +3276,16 @@
     "sort": "Сортировка",
     "sort_newest": "Новые",
     "sort_stars": "Звёзды",
-    "sort_price": "Цена"
+    "sort_price": "Цена",
+    "sort_armor": "Броня ↑",
+    "sort_container": "Контейнер ↑",
+    "sort_quality": "Качество ↑",
+    "filter_armor": "Броня",
+    "filter_container": "Контейнер",
+    "filter_arts": "Артефакты",
+    "quality": "Качество",
+    "qualityFrom": "От",
+    "qualityTo": "До"
   },
   "toolsList": {
     "title": "Инструменты",

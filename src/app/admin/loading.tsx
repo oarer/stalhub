@@ -1,6 +1,18 @@
 import { Card } from '@/components/ui/Card'
 import { Skeleton } from '@/components/ui/Skeleton'
 
+const HEAD_SKELETONS = ['a', 'b', 'c', 'd', 'e']
+const ROW_SKELETONS = [
+	'row-a',
+	'row-b',
+	'row-c',
+	'row-d',
+	'row-e',
+	'row-f',
+	'row-g',
+	'row-h',
+]
+
 export default function LoadingAdmin() {
 	return (
 		<div className="flex flex-col gap-6 p-4 pt-24 lg:p-6 lg:pt-28">
@@ -15,14 +27,17 @@ export default function LoadingAdmin() {
 			<Card.Root>
 				<div className="space-y-3 p-4">
 					<div className="flex gap-4">
-						{Array.from({ length: 5 }).map((_, i) => (
-							<Skeleton className="h-5 w-full" key={i} />
+						{HEAD_SKELETONS.map((id) => (
+							<Skeleton className="h-5 w-full" key={id} />
 						))}
 					</div>
-					{Array.from({ length: 8 }).map((_, r) => (
-						<div className="flex gap-4" key={r}>
-							{Array.from({ length: 5 }).map((_, c) => (
-								<Skeleton className="h-8 w-full" key={c} />
+					{ROW_SKELETONS.map((rowId) => (
+						<div className="flex gap-4" key={rowId}>
+							{HEAD_SKELETONS.map((id) => (
+								<Skeleton
+									className="h-8 w-full"
+									key={`${rowId}-${id}`}
+								/>
 							))}
 						</div>
 					))}

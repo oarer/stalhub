@@ -10,71 +10,104 @@ import { createPortal } from 'react-dom'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 
-const tabs = [
+const groups: {
+	title: string
+	tabs: { title: string; href: string; icon: string }[]
+}[] = [
 	{
-		title: 'admin.sidebar.users',
-		href: '/admin/users',
-		icon: 'lucide:users',
+		title: 'admin.sidebar.group.overview',
+		tabs: [
+			{
+				title: 'admin.sidebar.dashboard',
+				href: '/admin',
+				icon: 'lucide:layout-dashboard',
+			},
+		],
 	},
 	{
-		title: 'admin.sidebar.roles',
-		href: '/admin/roles',
-		icon: 'lucide:shield',
+		title: 'admin.sidebar.group.users',
+		tabs: [
+			{
+				title: 'admin.sidebar.users',
+				href: '/admin/users',
+				icon: 'lucide:users',
+			},
+			{
+				title: 'admin.sidebar.roles',
+				href: '/admin/roles',
+				icon: 'lucide:shield',
+			},
+			{
+				title: 'admin.sidebar.permissions',
+				href: '/admin/permissions',
+				icon: 'lucide:key',
+			},
+			{
+				title: 'admin.sidebar.badges',
+				href: '/admin/badges',
+				icon: 'lucide:award',
+			},
+		],
 	},
 	{
-		title: 'admin.sidebar.permissions',
-		href: '/admin/permissions',
-		icon: 'lucide:key',
+		title: 'admin.sidebar.group.content',
+		tabs: [
+			{
+				title: 'admin.sidebar.articles',
+				href: '/admin/articles',
+				icon: 'lucide:book-open',
+			},
+			{
+				title: 'admin.sidebar.builds',
+				href: '/admin/builds',
+				icon: 'lucide:box',
+			},
+			{
+				title: 'admin.sidebar.arts',
+				href: '/admin/arts',
+				icon: 'lucide:palette',
+			},
+		],
 	},
 	{
-		title: 'admin.sidebar.badges',
-		href: '/admin/badges',
-		icon: 'lucide:award',
+		title: 'admin.sidebar.group.game',
+		tabs: [
+			{
+				title: 'admin.sidebar.clans',
+				href: '/admin/clans',
+				icon: 'lucide:flag',
+			},
+			{
+				title: 'admin.sidebar.players',
+				href: '/admin/players',
+				icon: 'lucide:gamepad-2',
+			},
+			{
+				title: 'admin.sidebar.scNodes',
+				href: '/admin/sc-nodes',
+				icon: 'lucide:server',
+			},
+			{
+				title: 'admin.sidebar.auctionHistory',
+				href: '/admin/auction-history',
+				icon: 'lucide:database-zap',
+			},
+		],
 	},
 	{
-		title: 'admin.sidebar.clans',
-		href: '/admin/clans',
-		icon: 'lucide:flag',
-	},
-	{
-		title: 'admin.sidebar.notifications',
-		href: '/admin/notifications',
-		icon: 'lucide:bell',
-	},
-	{
-		title: 'admin.sidebar.bans',
-		href: '/admin/bans',
-		icon: 'lucide:shield-ban',
-	},
-	{
-		title: 'admin.sidebar.scNodes',
-		href: '/admin/sc-nodes',
-		icon: 'lucide:server',
-	},
-	{
-		title: 'admin.sidebar.auctionHistory',
-		href: '/admin/auction-history',
-		icon: 'lucide:database-zap',
-	},
-	{
-		title: 'admin.sidebar.players',
-		href: '/admin/players',
-		icon: 'lucide:gamepad-2',
-	},
-	{
-		title: 'admin.sidebar.articles',
-		href: '/admin/articles',
-		icon: 'lucide:book-open',
-	},
-	{
-		title: 'admin.sidebar.builds',
-		href: '/admin/builds',
-		icon: 'lucide:box',
-	},
-	{
-		title: 'admin.sidebar.arts',
-		href: '/admin/arts',
-		icon: 'lucide:palette',
+		title: 'admin.sidebar.group.system',
+		tabs: [
+			{
+				title: 'admin.sidebar.notifications',
+				href: '/admin/notifications',
+				icon: 'lucide:bell',
+			},
+			{
+				title: 'admin.sidebar.bans',
+				href: '/admin/bans',
+				icon: 'lucide:shield-ban',
+			},
+		],
 	},
 ]
 
@@ -83,24 +116,47 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-1">
-			{tabs.map((tab) => {
-				const isActive = pathname.startsWith(tab.href)
-				return (
-					<Link
-						className={cn(
-							'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500 hover:bg-accent',
-							isActive && 'bg-accent hover:brightness-125'
-						)}
-						href={tab.href}
-						key={tab.href}
-						onClick={onNavigate}
-					>
-						<Icon className="text-xl" icon={tab.icon} />
-						<p className="font-semibold text-sm">{t(tab.title)}</p>
-					</Link>
-				)
-			})}
+		<div className="flex flex-col gap-4">
+			{groups.map((group) => (
+				<div className="flex flex-col gap-1" key={group.title}>
+					<p className="mb-1 px-2 font-semibold text-[11px] text-neutral-500 uppercase tracking-wider">
+						{t(group.title)}
+					</p>
+					{group.tabs.map((tab) => {
+						const isActive =
+							tab.href === '/admin'
+								? pathname === '/admin'
+								: pathname.startsWith(tab.href)
+						return (
+							<Link
+								className={cn(
+									'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500 hover:bg-accent',
+									isActive && 'bg-accent hover:brightness-125'
+								)}
+								href={tab.href}
+								key={tab.href}
+								onClick={onNavigate}
+							>
+								<Icon
+									className={cn(
+										'text-xl',
+										isActive && 'text-primary'
+									)}
+									icon={tab.icon}
+								/>
+								<p
+									className={cn(
+										'font-semibold text-sm',
+										isActive && 'text-primary'
+									)}
+								>
+									{t(tab.title)}
+								</p>
+							</Link>
+						)
+					})}
+				</div>
+			))}
 		</div>
 	)
 }

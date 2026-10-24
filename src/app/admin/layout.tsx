@@ -33,7 +33,7 @@ export default async function AdminLayout({
 				<AdminSidebar />
 			</Suspense>
 			<div className="min-w-0 flex-1 pt-12">
-				<div className="px-4 pt-14 pb-12 md:px-6 lg:px-8 lg:pt-20">
+				<div className="mx-auto w-full max-w-8xl px-4 pt-14 pb-12 md:px-6 lg:px-8 lg:pt-20">
 					{children}
 				</div>
 			</div>

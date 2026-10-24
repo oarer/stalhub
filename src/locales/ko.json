@@ -1600,7 +1600,85 @@
       "arts": "아트",
       "bans": "차단",
       "scNodes": "SC 노드",
-      "auctionHistory": "경매 기록"
+      "auctionHistory": "경매 기록",
+      "dashboard": "대시보드",
+      "group": {
+        "overview": "개요",
+        "users": "사용자",
+        "content": "콘텐츠",
+        "game": "게임",
+        "system": "시스템"
+      }
+    },
+    "dashboard": {
+      "title": "대시보드",
+      "generatedAt": "업데이트: {date}",
+      "range": "{n}일",
+      "users": {
+        "total": "전체 사용자",
+        "newToday": "최근 24시간 신규",
+        "newPeriod": "{days}일간 +{count}",
+        "activeSessions": "활성 세션 (24시간)",
+        "banned": "차단됨",
+        "autoBannedShort": "자동 차단: {count}",
+        "autoWarnedShort": "자동 경고: {count}",
+        "onboarded": "온보딩 완료"
+      },
+      "content": {
+        "builds": "빌드",
+        "articles": "게시글",
+        "arts": "아트",
+        "tierLists": "티어 리스트",
+        "comments": "댓글",
+        "stars": "별점",
+        "new7d": "7일간 +{count}"
+      },
+      "viewsShort": "조회수 {count}",
+      "labels": {
+        "registrations": "가입",
+        "builds": "빌드",
+        "articles": "게시글",
+        "arts": "아트"
+      },
+      "clans": {
+        "title": "클랜",
+        "total": "전체 클랜",
+        "members": "전체 멤버",
+        "recruiting": "모집 중",
+        "blocked": "차단됨"
+      },
+      "moderation": {
+        "title": "관리",
+        "banLogs": "차단 로그",
+        "bans7d": "7일간 차단",
+        "warnings7d": "7일간 경고",
+        "byRule": "규칙별 발생"
+      },
+      "players": {
+        "title": "플레이어",
+        "popular": "인기 플레이어",
+        "blacklist": "블랙리스트",
+        "notes": "메모"
+      },
+      "system": {
+        "title": "시스템",
+        "roles": "역할",
+        "permissions": "권한",
+        "badges": "배지",
+        "notifications": "알림"
+      },
+      "status": {
+        "pending": "대기 중",
+        "approved": "승인됨",
+        "review": "검토",
+        "denied": "거부됨",
+        "banned": "차단됨"
+      },
+      "top": {
+        "untitled": "제목 없음",
+        "title": "조회수 상위"
+      },
+      "empty": "데이터 없음"
     },
     "roles": {
       "title": "역할",
@@ -3193,7 +3271,16 @@
     "sort": "정렬",
     "sort_newest": "최신순",
     "sort_stars": "별점순",
-    "sort_price": "가격순"
+    "sort_price": "가격순",
+    "sort_armor": "방어구 ↑",
+    "sort_container": "컨테이너 ↑",
+    "sort_quality": "품질 ↑",
+    "filter_armor": "방어구",
+    "filter_container": "컨테이너",
+    "filter_arts": "아티팩트",
+    "quality": "품질",
+    "qualityFrom": "최소",
+    "qualityTo": "최대"
   },
   "toolsList": {
     "title": "도구",

@@ -1600,7 +1600,85 @@
       "arts": "Art",
       "bans": "Bannissements",
       "scNodes": "Nœuds SC",
-      "auctionHistory": "Historique des enchères"
+      "auctionHistory": "Historique des enchères",
+      "dashboard": "Tableau de bord",
+      "group": {
+        "overview": "Vue d'ensemble",
+        "users": "Utilisateurs",
+        "content": "Contenu",
+        "game": "Jeu",
+        "system": "Système"
+      }
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "generatedAt": "Mis à jour : {date}",
+      "range": "{n} jours",
+      "users": {
+        "total": "Utilisateurs",
+        "newToday": "Nouveaux (24h)",
+        "newPeriod": "+{count} en {days} jours",
+        "activeSessions": "Sessions actives (24h)",
+        "banned": "Bannis",
+        "autoBannedShort": "Auto-bans : {count}",
+        "autoWarnedShort": "Auto-avertissements : {count}",
+        "onboarded": "Onboarding terminé"
+      },
+      "content": {
+        "builds": "Builds",
+        "articles": "Articles",
+        "arts": "Art",
+        "tierLists": "Listes de tiers",
+        "comments": "Commentaires",
+        "stars": "Stars",
+        "new7d": "+{count} en 7 jours"
+      },
+      "viewsShort": "{count} vues",
+      "labels": {
+        "registrations": "Inscriptions",
+        "builds": "Builds",
+        "articles": "Articles",
+        "arts": "Art"
+      },
+      "clans": {
+        "title": "Clans",
+        "total": "Clans au total",
+        "members": "Membres au total",
+        "recruiting": "Recrutement ouvert",
+        "blocked": "Bloqués"
+      },
+      "moderation": {
+        "title": "Modération",
+        "banLogs": "Entrées du journal de ban",
+        "bans7d": "Bans en 7 jours",
+        "warnings7d": "Avertissements en 7 jours",
+        "byRule": "Déclenchements par règle"
+      },
+      "players": {
+        "title": "Joueurs",
+        "popular": "Joueurs populaires",
+        "blacklist": "Liste noire",
+        "notes": "Notes"
+      },
+      "system": {
+        "title": "Système",
+        "roles": "Rôles",
+        "permissions": "Permissions",
+        "badges": "Badges",
+        "notifications": "Notifications"
+      },
+      "status": {
+        "pending": "En attente",
+        "approved": "Approuvé",
+        "review": "Révision",
+        "denied": "Refusé",
+        "banned": "Banni"
+      },
+      "top": {
+        "untitled": "Sans titre",
+        "title": "Top par vues"
+      },
+      "empty": "Aucune donnée"
     },
     "roles": {
       "title": "Rôles",
@@ -3193,7 +3271,16 @@
     "sort": "Tri",
     "sort_newest": "Nouveaux",
     "sort_stars": "Étoiles",
-    "sort_price": "Prix"
+    "sort_price": "Prix",
+    "sort_armor": "Armure ↑",
+    "sort_container": "Conteneur ↑",
+    "sort_quality": "Qualité ↑",
+    "filter_armor": "Armure",
+    "filter_container": "Conteneur",
+    "filter_arts": "Artefacts",
+    "quality": "Qualité",
+    "qualityFrom": "De",
+    "qualityTo": "À"
   },
   "toolsList": {
     "title": "Outils",

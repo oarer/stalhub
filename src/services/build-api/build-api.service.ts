@@ -15,6 +15,11 @@ class BuildApiService {
 		sort,
 		priceMin,
 		priceMax,
+		armor,
+		container,
+		arts,
+		qualityMin,
+		qualityMax,
 	}: {
 		take?: number
 		page?: number
@@ -22,6 +27,11 @@ class BuildApiService {
 		sort?: BuildSort
 		priceMin?: number
 		priceMax?: number
+		armor?: string[]
+		container?: string[]
+		arts?: string[]
+		qualityMin?: number
+		qualityMax?: number
 	} = {}): Promise<PaginatedResponse<BuildApi>> {
 		const { data } = await apiClient.get<PaginatedResponse<BuildApi>>(
 			'/api/v1/builds',
@@ -33,6 +43,14 @@ class BuildApiService {
 					...(sort && sort !== 'newest' && { sort }),
 					...(priceMin != null && { price_min: priceMin }),
 					...(priceMax != null && { price_max: priceMax }),
+					...(armor && armor.length > 0 && { armor: armor.join(',') }),
+					...(container &&
+						container.length > 0 && {
+							container: container.join(','),
+						}),
+					...(arts && arts.length > 0 && { art: arts.join(',') }),
+					...(qualityMin != null && { quality_min: qualityMin }),
+					...(qualityMax != null && { quality_max: qualityMax }),
 				},
 			}
 		)

@@ -1600,7 +1600,85 @@
       "arts": "Art",
       "bans": "Bans",
       "scNodes": "SC Nodes",
-      "auctionHistory": "Auction history"
+      "auctionHistory": "Auction history",
+      "dashboard": "Dashboard",
+      "group": {
+        "overview": "Overview",
+        "users": "Users",
+        "content": "Content",
+        "game": "Game",
+        "system": "System"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "generatedAt": "Updated: {date}",
+      "range": "{n} days",
+      "users": {
+        "total": "Total users",
+        "newToday": "New in 24h",
+        "newPeriod": "+{count} in {days} days",
+        "activeSessions": "Active sessions (24h)",
+        "banned": "Banned",
+        "autoBannedShort": "Auto-bans: {count}",
+        "autoWarnedShort": "Auto-warnings: {count}",
+        "onboarded": "Onboarded"
+      },
+      "content": {
+        "builds": "Builds",
+        "articles": "Articles",
+        "arts": "Art",
+        "tierLists": "Tier lists",
+        "comments": "Comments",
+        "stars": "Stars",
+        "new7d": "+{count} in 7 days"
+      },
+      "viewsShort": "{count} views",
+      "labels": {
+        "registrations": "Registrations",
+        "builds": "Builds",
+        "articles": "Articles",
+        "arts": "Art"
+      },
+      "clans": {
+        "title": "Clans",
+        "total": "Total clans",
+        "members": "Total members",
+        "recruiting": "Recruiting",
+        "blocked": "Blocked"
+      },
+      "moderation": {
+        "title": "Moderation",
+        "banLogs": "Ban log entries",
+        "bans7d": "Bans in 7 days",
+        "warnings7d": "Warnings in 7 days",
+        "byRule": "Hits by rule"
+      },
+      "players": {
+        "title": "Players",
+        "popular": "Popular players",
+        "blacklist": "Blacklist",
+        "notes": "Notes"
+      },
+      "system": {
+        "title": "System",
+        "roles": "Roles",
+        "permissions": "Permissions",
+        "badges": "Badges",
+        "notifications": "Notifications"
+      },
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "review": "Review",
+        "denied": "Denied",
+        "banned": "Banned"
+      },
+      "top": {
+        "untitled": "Untitled",
+        "title": "Top by views"
+      },
+      "empty": "No data"
     },
     "roles": {
       "title": "Roles",
@@ -3197,7 +3275,16 @@
     "sort": "Sort",
     "sort_newest": "Newest",
     "sort_stars": "Stars",
-    "sort_price": "Price"
+    "sort_price": "Price",
+    "sort_armor": "Armor ↑",
+    "sort_container": "Container ↑",
+    "sort_quality": "Quality ↑",
+    "filter_armor": "Armor",
+    "filter_container": "Container",
+    "filter_arts": "Artifacts",
+    "quality": "Quality",
+    "qualityFrom": "From",
+    "qualityTo": "To"
   },
   "toolsList": {
     "title": "Tools",
