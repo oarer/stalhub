@@ -129,7 +129,7 @@ const FooterCreditItem = ({ credit }: { credit: FooterCredit }) => {
 			>
 				{credit.author}
 			</Link>
-			{uwuMode ? (
+			{uwuMode && credit.icon ? (
 				<Image
 					alt=":3"
 					className="inline-block align-middle"

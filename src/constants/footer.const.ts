@@ -53,7 +53,7 @@ export const footerDocs: FooterLink[] = [
 export type FooterCredit = {
 	author: string
 	href: string
-	icon: string
+	icon?: string
 	labelKey: string
 	sound: boolean
 }
@@ -62,7 +62,6 @@ export const footerCredits: FooterCredit[] = [
 	{
 		author: '@oarer',
 		href: 'https://oarer.dev',
-		icon: '/public/images/femt.png',
 		labelKey: 'footer.made_by',
 		sound: false,
 	},
