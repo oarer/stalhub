@@ -9,10 +9,10 @@ import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { useDebounce } from '@/hooks/useDebounce'
 import { adminClanQueries } from '@/queries/admin/clan.queries'
-import { AdminPagination } from '../components/AdminTable'
 
 export default function ClansAdminView() {
 	const t = useTranslations()
@@ -141,7 +141,7 @@ export default function ClansAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

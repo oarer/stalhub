@@ -8,41 +8,6 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
 
-export function AdminPagination({
-	page,
-	totalPages,
-	onPageChange,
-}: {
-	page: number
-	totalPages: number
-	onPageChange: (page: number) => void
-}) {
-	if (totalPages <= 1) return null
-	return (
-		<div className="flex items-center justify-center gap-2">
-			<Button
-				disabled={page <= 1}
-				onClick={() => onPageChange(page - 1)}
-				size="sm"
-				variant="outline"
-			>
-				<Icon icon="lucide:chevron-left" />
-			</Button>
-			<span className="text-neutral-400 text-sm">
-				{page} / {totalPages}
-			</span>
-			<Button
-				disabled={page >= totalPages}
-				onClick={() => onPageChange(page + 1)}
-				size="sm"
-				variant="outline"
-			>
-				<Icon icon="lucide:chevron-right" />
-			</Button>
-		</div>
-	)
-}
-
 export function AdminEmptyRow({
 	colCount,
 	message,
@@ -56,6 +21,7 @@ export function AdminEmptyRow({
 				<span className="text-neutral-400 text-sm">{message}</span>
 			</Table.Cell>
 			{Array.from({ length: Math.max(colCount - 1, 0) }).map((_, i) => (
+				// biome-ignore lint/suspicious/noArrayIndexKey: static skeleton placeholders
 				<Table.Cell key={i} />
 			))}
 		</Table.Row>

@@ -1608,7 +1608,10 @@
         "content": "Content",
         "game": "Game",
         "system": "System"
-      }
+      },
+      "moderation": "Moderation",
+      "audit": "Audit Log",
+      "health": "Health"
     },
     "dashboard": {
       "title": "Dashboard",
@@ -1622,7 +1625,9 @@
         "banned": "Banned",
         "autoBannedShort": "Auto-bans: {count}",
         "autoWarnedShort": "Auto-warnings: {count}",
-        "onboarded": "Onboarded"
+        "onboarded": "Onboarded",
+        "dau": "Active (DAU)",
+        "wau": "{count} this week"
       },
       "content": {
         "builds": "Builds",
@@ -1930,6 +1935,17 @@
         "broadcastSent": "Notification sent to {count, plural, one {# user} few {# users} many {# users} other {# users}}",
         "sent": "Notification sent",
         "sendError": "Send error"
+      },
+      "target": "By filter",
+      "sendToTarget": "Send to group",
+      "selectRole": "Select a role…",
+      "selectClan": "Select a clan…",
+      "recipients": "Recipients: {count}",
+      "targetKind": {
+        "banned": "Banned",
+        "all": "Everyone",
+        "role": "Role",
+        "clan": "Clan"
       }
     },
     "bans": {
@@ -2052,6 +2068,69 @@
       "rollupRunning": "Rollup running",
       "lastRollup": "Last rollup",
       "rollupDays": "Days rolled"
+    },
+    "health": {
+      "title": "System Health",
+      "generatedAt": "Updated at {date}",
+      "requestsTotal": "HTTP requests",
+      "sinceStart": "since startup",
+      "errorRate": "5xx errors",
+      "fiveXX": "{count} total",
+      "p95": "p95 latency",
+      "scNodes": "SC nodes",
+      "scHealthy": "healthy: {count}/{total}",
+      "dau": "Active (DAU)",
+      "wau": "{count} this week",
+      "runtime": "Runtime",
+      "uptime": "Uptime",
+      "memHeap": "Heap memory",
+      "dbSize": "DB size",
+      "onlineTitle": "Online by region",
+      "topServers": "Top servers",
+      "unresolved": "Unresolved",
+      "bans7d": "Bans, 7d",
+      "autoBanned": "Auto-banned",
+      "queuePending": "Articles in queue",
+      "byStatus": "Response statuses",
+      "cronsTitle": "Background jobs",
+      "cron": {
+        "ok": "OK",
+        "error": "Failed",
+        "unknown": "Never ran"
+      },
+      "scTitle": "SC nodes",
+      "scLastSeen": "Last successful check",
+      "nodeOk": "OK",
+      "nodeError": "Error"
+    },
+    "audit": {
+      "title": "Admin Audit Log",
+      "total": "Total entries: {count}",
+      "search": "Search route, admin…",
+      "all": "All sections",
+      "status": "HTTP status",
+      "empty": "No entries found"
+    },
+    "moderation": {
+      "title": "Moderation",
+      "open": "Open",
+      "error": "Action failed",
+      "empty": "Nothing found",
+      "tabs": {
+        "articles": "Articles",
+        "autoBans": "Auto-bans",
+        "multiaccounts": "Multi-accounts",
+        "comments": "Comments"
+      },
+      "autoBansHint": "Users over inventory/balance threshold in 24h: {count}. Auto-ban is applied automatically, this button removes the flag.",
+      "autoBanCleared": "Auto-ban flag cleared",
+      "autoWarned": "Auto-warned",
+      "clearAutoBan": "Clear flag",
+      "autoBansEmpty": "No auto-bans in 24h",
+      "multiaccountsHint": "Accounts sharing an IP (last {count} days).",
+      "multiaccountsEmpty": "No matches",
+      "searchComments": "Search text or author…",
+      "commentDeleted": "Comment deleted"
     }
   },
   "test": {

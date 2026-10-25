@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react'
 import type { ReactNode } from 'react'
+import { Card } from '@/components/ui/Card'
 import { cn } from '@/lib/cn'
 
 const accents = {
@@ -32,7 +33,7 @@ export function MetricCard({
 	className?: string
 }) {
 	return (
-		<CardShell className={className}>
+		<Card.Root className={className}>
 			<div className="flex items-center gap-3">
 				<div
 					className={cn(
@@ -43,14 +44,18 @@ export function MetricCard({
 					<Icon className="size-5" icon={icon} />
 				</div>
 				<div className="min-w-0">
-					<p className="truncate text-neutral-400 text-xs">{label}</p>
+					<p className="truncate text-muted-foreground text-xs">
+						{label}
+					</p>
 					<p className="font-medium font-mono text-2xl leading-8">
 						{value}
 					</p>
 				</div>
 			</div>
-			{sub && <p className="mt-2 text-neutral-500 text-xs">{sub}</p>}
-		</CardShell>
+			{sub && (
+				<p className="text-muted-foreground/70 text-xs">{sub}</p>
+			)}
+		</Card.Root>
 	)
 }
 
@@ -68,8 +73,8 @@ export function StatCard({
 	className?: string
 }) {
 	return (
-		<CardShell className={className}>
-			<div className="mb-3 flex items-center gap-2">
+		<Card.Root className={className}>
+			<div className="flex items-center gap-2">
 				<div
 					className={cn(
 						'flex size-8 items-center justify-center rounded-lg',
@@ -80,13 +85,13 @@ export function StatCard({
 				</div>
 				<p className="truncate font-semibold">{title}</p>
 			</div>
-			<div className="flex flex-col gap-1.5">
+			<Card.Content className="flex flex-col gap-1.5">
 				{rows.map((row) => (
 					<div
 						className="flex items-baseline justify-between gap-2 text-sm"
 						key={row.label?.toString()}
 					>
-						<span className="truncate text-neutral-400">
+						<span className="truncate text-muted-foreground">
 							{row.label}
 						</span>
 						<span
@@ -100,27 +105,8 @@ export function StatCard({
 						</span>
 					</div>
 				))}
-			</div>
-		</CardShell>
-	)
-}
-
-function CardShell({
-	children,
-	className,
-}: {
-	children: ReactNode
-	className?: string
-}) {
-	return (
-		<div
-			className={cn(
-				'rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/30 md:bg-card/50 md:backdrop-blur-md',
-				className
-			)}
-		>
-			{children}
-		</div>
+			</Card.Content>
+		</Card.Root>
 	)
 }
 
@@ -136,14 +122,14 @@ export function ChartShell({
 	height?: string
 }) {
 	return (
-		<div className="rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/30 md:bg-card/50 md:backdrop-blur-md">
+		<Card.Root>
 			{title && (
-				<div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-					<p className="font-semibold">{title}</p>
+				<div className="flex flex-wrap items-center justify-between gap-2">
+					<p className="truncate font-semibold">{title}</p>
 					{action}
 				</div>
 			)}
 			<div className={height}>{children}</div>
-		</div>
+		</Card.Root>
 	)
 }

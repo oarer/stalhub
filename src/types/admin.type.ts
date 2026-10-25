@@ -461,6 +461,8 @@ export interface AdminDashboard {
 		auto_banned: number
 		auto_warned: number
 		registration_trend: AdminDashboardTrendPoint[]
+		dau_24h: number
+		wau_7d: number
 	}
 	content: {
 		builds: { total: number; views: number; new_7d: number }
@@ -504,14 +506,6 @@ export interface AdminDashboard {
 		blacklist_size: number
 		player_notes: number
 	}
-	server_online: {
-		latest: AdminDashboardServerOnline[]
-		history_24h: {
-			region: string
-			createdAt: string
-			online: number
-		}[]
-	}
 	top: {
 		builds: AdminDashboardTopBuild[]
 		articles: AdminDashboardTopArticle[]
@@ -521,3 +515,182 @@ export interface AdminDashboard {
 }
 
 export type AdminDashboardRange = 7 | 14 | 30 | 90
+
+export interface AdminAuditEntry {
+	id: number
+	actor_id: number | null
+	actor_name: string
+	action: string
+	entity: string
+	entity_id: string | null
+	meta: {
+		status?: number
+		path?: string
+		body?: Record<string, unknown> | null
+	} | null
+	created_at: string
+}
+
+export interface AdminAuditList {
+	data: AdminAuditEntry[]
+	total_count: number
+	page: number
+	take: number
+	facets: { entities: Record<string, number> }
+}
+
+export interface AdminAuditListParams {
+	take?: number
+	page?: number
+	search?: string
+	entity?: string
+	action?: string
+	actor_id?: number
+}
+
+export interface AdminCronStatus {
+	name: string
+	pattern: string
+	timezone?: string
+	last_run_at: string | null
+	last_status: 'ok' | 'error' | 'unknown'
+	last_error: string | null
+	last_duration_ms: number | null
+	runs: number
+	failures: number
+}
+
+export interface AdminScNodeHealth {
+	id: number
+	name: string
+	base_url: string
+	has_api_key: boolean
+	enabled: boolean
+	priority: number
+	timeout_ms: number
+	last_seen_at: string | null
+	last_error: string | null
+	created_at: string
+	updated_at: string
+}
+
+export interface AdminHealth {
+	generated_at: string
+	uptime_seconds: number
+	crons: AdminCronStatus[]
+	runtime: {
+		requests_total: number
+		by_status: Record<string, number>
+		top_5xx: { route: string; count: number }[]
+		p95_seconds: number
+		request_seconds_total: number
+		uptime_seconds: number
+		mem_heap_mb: number
+	}
+	sc_nodes: AdminScNodeHealth[]
+	server_online: {
+		regions: { region: string; online: number; servers: number }[]
+		top_servers: {
+			region: string
+			server_id: string
+			online: number
+		}[]
+	}
+	db_size: string
+	users: {
+		total: number
+		dau_24h: number
+		wau_7d: number
+		active_sessions_24h: number
+		new_30d: number
+		banned: number
+	}
+	moderation: {
+		ban_logs_total: number
+		bans_7d: number
+		warnings_7d: number
+		users_banned: number
+		auto_banned: number
+		auto_warned: number
+	}
+	content: {
+		builds: { total: number; views: number; new_7d: number }
+		articles: {
+			total: number
+			views: number
+			by_status: Record<string, number>
+		}
+		arts: { total: number; views: number }
+		tier_lists: { total: number; views: number }
+		comments: { total: number; new_7d: number }
+	}
+}
+
+export interface AdminModerationArticle {
+	id: number
+	external_id: string
+	title: string
+	type: string
+	status: string
+	views: number
+	created_at: string
+	author: { id: number; username: string; name: string } | null
+}
+
+export interface AdminModerationArticleList {
+	data: AdminModerationArticle[]
+	total_count: number
+	page: number
+	take: number
+}
+
+export interface AdminAutoBanEntry {
+	id: number
+	username: string
+	name: string
+	joined_at: string
+	user_settings: { banned: boolean; auto_warned: boolean } | null
+	roles: { name: string; rank: number }[]
+	discord_auth: { discord_id: string; username: string } | null
+	telegram_auth: { telegram_id: string; login: string } | null
+}
+
+export interface AdminAutoBanList {
+	data: AdminAutoBanEntry[]
+	total_count: number
+	page: number
+	take: number
+}
+
+export interface AdminMultiaccountEntry {
+	ip: string
+	accounts: {
+		id: number
+		username: string
+		name: string
+		banned: boolean
+		last_used_at: string
+	}[]
+	banned_count: number
+}
+
+export interface AdminModerationComment {
+	id: number
+	content: string
+	created_at: string
+	article: { id: number; external_id: string; title: string } | null
+	art: { id: number; title: string } | null
+	profile_user: { id: number; username: string } | null
+	replies: { id: number }[]
+	parent: { id: number } | null
+	author: { id: number; username: string; name: string } | null
+}
+
+export interface AdminModerationCommentList {
+	data: AdminModerationComment[]
+	total_count: number
+	page: number
+	take: number
+}
+
+export type AdminNotificationTargetKind = 'all' | 'role' | 'clan' | 'banned'

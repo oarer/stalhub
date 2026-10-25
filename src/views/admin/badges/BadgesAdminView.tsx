@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
+import { Tabs } from '@/components/ui/Tabs'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
@@ -19,6 +20,38 @@ import type { AdminBadge } from '@/types/admin.type'
 import { AdminDeleteModal, AdminTableHeader } from '../components/AdminTable'
 
 type BadgeMode = 'icon' | 'image'
+
+function ModeTabs({
+	value,
+	onChange,
+}: {
+	value: BadgeMode
+	onChange: (mode: BadgeMode) => void
+}) {
+	const t = useTranslations()
+
+	const modes: { key: BadgeMode; icon: string; labelKey: string }[] = [
+		{ key: 'icon', icon: 'lucide:sparkles', labelKey: 'admin.badges.icon' },
+		{ key: 'image', icon: 'lucide:image', labelKey: 'admin.badges.image' },
+	]
+
+	return (
+		<Tabs.Root onValueChange={(v) => onChange(v as BadgeMode)} value={value}>
+			<Tabs.List className="justify-start p-1">
+				{modes.map((mode) => (
+					<Tabs.Trigger
+						className="gap-1.5 px-2.5 py-1 text-xs"
+						key={mode.key}
+						value={mode.key}
+					>
+						<Icon className="size-3.5" icon={mode.icon} />
+						{t(mode.labelKey)}
+					</Tabs.Trigger>
+				))}
+			</Tabs.List>
+		</Tabs.Root>
+	)
+}
 
 function BadgePreview({
 	name,
@@ -38,10 +71,9 @@ function BadgePreview({
 	return (
 		<Tooltip.Root>
 			<Tooltip.Trigger asChild>
-				<button
+				<div
 					className="flex size-6 items-center justify-center rounded-sm"
 					style={{ backgroundColor: color }}
-					type="button"
 				>
 					{mode === 'icon' ? (
 						<Icon className="size-5 text-neutral-950" icon={icon} />
@@ -55,7 +87,7 @@ function BadgePreview({
 							width={20}
 						/>
 					) : null}
-				</button>
+				</div>
 			</Tooltip.Trigger>
 			<Tooltip.Content>
 				{name || t('admin.badges.defaultName')}
@@ -177,38 +209,10 @@ export default function BadgesAdminView() {
 								<p className="font-semibold text-foreground text-xs">
 									{t('admin.badges.type')}
 								</p>
-								<div className="flex gap-1">
-									<button
-										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
-											createMode === 'icon'
-												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-primary hover:border-sky-500/30'
-										}`}
-										onClick={() => setCreateMode('icon')}
-										type="button"
-									>
-										<Icon
-											className="size-3.5"
-											icon="lucide:sparkles"
-										/>
-										{t('admin.badges.icon')}
-									</button>
-									<button
-										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
-											createMode === 'image'
-												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-primary hover:border-sky-500/30'
-										}`}
-										onClick={() => setCreateMode('image')}
-										type="button"
-									>
-										<Icon
-											className="size-3.5"
-											icon="lucide:image"
-										/>
-										{t('admin.badges.image')}
-									</button>
-								</div>
+								<ModeTabs
+									onChange={setCreateMode}
+									value={createMode}
+								/>
 							</div>
 
 							{createMode === 'icon' ? (
@@ -243,7 +247,7 @@ export default function BadgesAdminView() {
 									value={createColor}
 								/>
 								<Input
-									label="admin.badges.imageUrl"
+									label="admin.badges.color"
 									onChange={(
 										e: React.ChangeEvent<HTMLInputElement>
 									) => setCreateColor(e.target.value)}
@@ -431,38 +435,10 @@ export default function BadgesAdminView() {
 								<span className="font-semibold text-foreground text-xs">
 									{t('admin.badges.type')}
 								</span>
-								<div className="flex gap-1">
-									<button
-										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
-											editMode === 'icon'
-												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-primary hover:border-sky-500/30'
-										}`}
-										onClick={() => setEditMode('icon')}
-										type="button"
-									>
-										<Icon
-											className="size-3.5"
-											icon="lucide:sparkles"
-										/>
-										{t('admin.badges.icon')}
-									</button>
-									<button
-										className={`flex items-center gap-1.5 rounded-lg border-2 px-2.5 py-1.5 font-semibold text-xs transition-colors ${
-											editMode === 'image'
-												? 'border-sky-500 bg-sky-500/10 text-sky-400'
-												: 'border-primary hover:border-sky-500/30'
-										}`}
-										onClick={() => setEditMode('image')}
-										type="button"
-									>
-										<Icon
-											className="size-3.5"
-											icon="lucide:image"
-										/>
-										{t('admin.badges.image')}
-									</button>
-								</div>
+								<ModeTabs
+									onChange={setEditMode}
+									value={editMode}
+								/>
 							</div>
 
 							{editMode === 'icon' ? (

@@ -1608,7 +1608,10 @@
         "content": "콘텐츠",
         "game": "게임",
         "system": "시스템"
-      }
+      },
+      "moderation": "모더레이션",
+      "audit": "감사 로그",
+      "health": "상태"
     },
     "dashboard": {
       "title": "대시보드",
@@ -1622,7 +1625,9 @@
         "banned": "차단됨",
         "autoBannedShort": "자동 차단: {count}",
         "autoWarnedShort": "자동 경고: {count}",
-        "onboarded": "온보딩 완료"
+        "onboarded": "온보딩 완료",
+        "dau": "활성 (DAU)",
+        "wau": "주간 {count}"
       },
       "content": {
         "builds": "빌드",
@@ -1930,6 +1935,17 @@
         "broadcastSent": "{count, plural, one {사용자 #명에게} few {사용자 #명에게} many {사용자 #명에게} other {사용자 #명에게}}",
         "sent": "알림이 전송되었습니다",
         "sendError": "전송 오류"
+      },
+      "target": "필터별",
+      "sendToTarget": "그룹 전송",
+      "selectRole": "역할 선택…",
+      "selectClan": "클랜 선택…",
+      "recipients": "수신자: {count}",
+      "targetKind": {
+        "banned": "차단됨",
+        "all": "전체",
+        "role": "역할",
+        "clan": "클랜"
       }
     },
     "bans": {
@@ -2052,6 +2068,69 @@
       "rollupRunning": "롤업 실행 중",
       "lastRollup": "최근 롤업",
       "rollupDays": "처리된 일수"
+    },
+    "health": {
+      "title": "시스템 상태",
+      "generatedAt": "{date} 기준",
+      "requestsTotal": "HTTP 요청",
+      "sinceStart": "시작 이후",
+      "errorRate": "5xx 오류",
+      "fiveXX": "총 {count}",
+      "p95": "p95 지연",
+      "scNodes": "SC 노드",
+      "scHealthy": "정상: {count}/{total}",
+      "dau": "활성 (DAU)",
+      "wau": "주간 {count}",
+      "runtime": "런타임",
+      "uptime": "가동 시간",
+      "memHeap": "메모리(heap)",
+      "dbSize": "DB 크기",
+      "onlineTitle": "지역별 온라인",
+      "topServers": "상위 서버",
+      "unresolved": "미처리",
+      "bans7d": "7일 차단",
+      "autoBanned": "자동 차단",
+      "queuePending": "대기 중 글",
+      "byStatus": "응답 상태",
+      "cronsTitle": "백그라운드 작업",
+      "cron": {
+        "ok": "정상",
+        "error": "오류",
+        "unknown": "실행 없음"
+      },
+      "scTitle": "SC 노드",
+      "scLastSeen": "마지막 성공 확인",
+      "nodeOk": "정상",
+      "nodeError": "오류"
+    },
+    "audit": {
+      "title": "관리자 감사 로그",
+      "total": "총 {count}건",
+      "search": "경로/관리자 검색…",
+      "all": "전체 섹션",
+      "status": "HTTP 상태",
+      "empty": "기록 없음"
+    },
+    "moderation": {
+      "title": "모더레이션",
+      "open": "열기",
+      "error": "작업 실패",
+      "empty": "결과 없음",
+      "tabs": {
+        "articles": "게시글",
+        "autoBans": "자동 차단",
+        "multiaccounts": "멀티 계정",
+        "comments": "댓글"
+      },
+      "autoBansHint": "24시간 내 임계치 초과 사용자: {count}. 자동 차단이 적용되며, 이 버튼은 표시를 해제합니다.",
+      "autoBanCleared": "자동 차단 해제됨",
+      "autoWarned": "자동 경고됨",
+      "clearAutoBan": "표시 해제",
+      "autoBansEmpty": "24시간 내 자동 차단 없음",
+      "multiaccountsHint": "IP가 겹치는 계정 (최근 {count}일).",
+      "multiaccountsEmpty": "일치 없음",
+      "searchComments": "본문/작성자 검색…",
+      "commentDeleted": "댓글 삭제됨"
     }
   },
   "test": {

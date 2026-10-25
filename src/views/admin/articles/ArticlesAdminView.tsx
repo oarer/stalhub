@@ -9,16 +9,13 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Modal } from '@/components/ui/Modal'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { articleService } from '@/services/article/article.service'
 import { ARTICLE_STATUS_META, ArticleStatus } from '@/types/article.type'
-import {
-	AdminDeleteModal,
-	AdminEmptyRow,
-	AdminPagination,
-} from '../components/AdminTable'
+import { AdminDeleteModal, AdminEmptyRow } from '../components/AdminTable'
 import PublishBlogButton from './PublishBlogButton'
 
 const STATUS_OPTIONS = [
@@ -306,7 +303,7 @@ export default function ArticlesAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

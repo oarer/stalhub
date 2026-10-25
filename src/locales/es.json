@@ -1608,7 +1608,10 @@
         "content": "Contenido",
         "game": "Juego",
         "system": "Sistema"
-      }
+      },
+      "moderation": "Moderación",
+      "audit": "Registro",
+      "health": "Salud"
     },
     "dashboard": {
       "title": "Panel",
@@ -1622,7 +1625,9 @@
         "banned": "Bloqueados",
         "autoBannedShort": "Autobaneos: {count}",
         "autoWarnedShort": "Autoadvertencias: {count}",
-        "onboarded": "Con onboarding"
+        "onboarded": "Con onboarding",
+        "dau": "Activos (DAU)",
+        "wau": "{count} esta semana"
       },
       "content": {
         "builds": "Builds",
@@ -1930,6 +1935,17 @@
         "broadcastSent": "Notificación enviada a {count, plural, one {# usuario} few {# usuarios} many {# usuarios} other {# usuarios}}",
         "sent": "Notificación enviada",
         "sendError": "Error al enviar"
+      },
+      "target": "Por filtro",
+      "sendToTarget": "Enviar al grupo",
+      "selectRole": "Elige un rol…",
+      "selectClan": "Elige un clan…",
+      "recipients": "Destinatarios: {count}",
+      "targetKind": {
+        "banned": "Bloqueados",
+        "all": "Todos",
+        "role": "Rol",
+        "clan": "Clan"
       }
     },
     "bans": {
@@ -2052,6 +2068,69 @@
       "rollupRunning": "Rollup en curso",
       "lastRollup": "Último rollup",
       "rollupDays": "Días procesados"
+    },
+    "health": {
+      "title": "Salud del sistema",
+      "generatedAt": "Actualizado {date}",
+      "requestsTotal": "Peticiones HTTP",
+      "sinceStart": "desde el inicio",
+      "errorRate": "Errores 5xx",
+      "fiveXX": "{count} en total",
+      "p95": "Latencia p95",
+      "scNodes": "Nodos SC",
+      "scHealthy": "saludables: {count}/{total}",
+      "dau": "Activos (DAU)",
+      "wau": "{count} esta semana",
+      "runtime": "Entorno",
+      "uptime": "Uptime",
+      "memHeap": "Memoria (heap)",
+      "dbSize": "Tamaño de BD",
+      "onlineTitle": "Online por región",
+      "topServers": "Top servidores",
+      "unresolved": "Pendiente",
+      "bans7d": "Baneos 7 d.",
+      "autoBanned": "Autobaneados",
+      "queuePending": "Artículos en cola",
+      "byStatus": "Estados de respuesta",
+      "cronsTitle": "Tareas en segundo plano",
+      "cron": {
+        "ok": "OK",
+        "error": "Error",
+        "unknown": "Nunca"
+      },
+      "scTitle": "Nodos SC",
+      "scLastSeen": "Última comprobación",
+      "nodeOk": "OK",
+      "nodeError": "Error"
+    },
+    "audit": {
+      "title": "Registro de acciones",
+      "total": "Total: {count}",
+      "search": "Buscar ruta, admin…",
+      "all": "Todas las secciones",
+      "status": "Estado HTTP",
+      "empty": "Sin registros"
+    },
+    "moderation": {
+      "title": "Moderación",
+      "open": "Abrir",
+      "error": "No se pudo completar",
+      "empty": "Nada encontrado",
+      "tabs": {
+        "articles": "Artículos",
+        "autoBans": "Autobaneos",
+        "multiaccounts": "Multicuentas",
+        "comments": "Comentarios"
+      },
+      "autoBansHint": "Usuarios sobre el umbral en 24h: {count}. El autoban se aplica solo, este botón quita la marca.",
+      "autoBanCleared": "Marca de autoban eliminada",
+      "autoWarned": "Auto-advertido",
+      "clearAutoBan": "Quitar marca",
+      "autoBansEmpty": "Sin autobaneos en 24h",
+      "multiaccountsHint": "Cuentas con la misma IP (últimos {count} días).",
+      "multiaccountsEmpty": "Sin coincidencias",
+      "searchComments": "Buscar texto o autor…",
+      "commentDeleted": "Comentario eliminado"
     }
   },
   "test": {

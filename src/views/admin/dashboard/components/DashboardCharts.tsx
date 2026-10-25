@@ -56,24 +56,8 @@ const PALETTE = {
 	lime: '#84cc16',
 }
 
-const REGION_COLORS = [
-	PALETTE.sky,
-	PALETTE.emerald,
-	PALETTE.amber,
-	PALETTE.violet,
-	PALETTE.cyan,
-]
-
 function shortDate(date: string): string {
 	return date.slice(5)
-}
-
-function shortTime(iso: string): string {
-	const d = new Date(iso)
-	return `${d.getHours().toString().padStart(2, '0')}:${d
-		.getMinutes()
-		.toString()
-		.padStart(2, '0')}`
 }
 
 function useLineOptions() {
@@ -323,49 +307,6 @@ export function ArticleStatusesChart({
 							legend: { display: false },
 						},
 					}}
-				/>
-			)}
-		</ChartShell>
-	)
-}
-
-export function ServerOnlineChart({ history }: { history: OnlinePoint[] }) {
-	const options = useLineOptions()
-
-	const grouped = useMemo(() => {
-		const times = Array.from(
-			new Set(history.map((p) => p.createdAt))
-		).sort()
-		const regions = Array.from(new Set(history.map((p) => p.region)))
-		const map = new Map<string, Map<string, number>>()
-		for (const p of history) {
-			const inner = map.get(p.region) ?? new Map<string, number>()
-			inner.set(p.createdAt, p.online)
-			map.set(p.region, inner)
-		}
-		return { times, regions, map }
-	}, [history])
-
-	return (
-		<ChartShell height="h-64">
-			{history.length === 0 ? (
-				<EmptyChart />
-			) : (
-				<Line
-					data={{
-						labels: grouped.times.map((t) => shortTime(t)),
-						datasets: grouped.regions.map((region, i) => ({
-							...lineDataset(
-								region,
-								[],
-								REGION_COLORS[i % REGION_COLORS.length]
-							),
-							data: grouped.times.map(
-								(t) => grouped.map.get(region)?.get(t) ?? 0
-							),
-						})),
-					}}
-					options={options}
 				/>
 			)}
 		</ChartShell>

@@ -103,9 +103,24 @@ const groups: {
 				icon: 'lucide:bell',
 			},
 			{
+				title: 'admin.sidebar.moderation',
+				href: '/admin/moderation',
+				icon: 'lucide:scan-search',
+			},
+			{
 				title: 'admin.sidebar.bans',
 				href: '/admin/bans',
 				icon: 'lucide:shield-ban',
+			},
+			{
+				title: 'admin.sidebar.audit',
+				href: '/admin/audit',
+				icon: 'lucide:scroll-text',
+			},
+			{
+				title: 'admin.sidebar.health',
+				href: '/admin/health',
+				icon: 'lucide:heart-pulse',
 			},
 		],
 	},

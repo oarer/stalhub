@@ -1609,7 +1609,10 @@
         "content": "Контент",
         "game": "Игровое",
         "system": "Система"
-      }
+      },
+      "moderation": "Модерация",
+      "audit": "Журнал",
+      "health": "Статус"
     },
     "dashboard": {
       "title": "Дашборд",
@@ -1623,7 +1626,9 @@
         "banned": "В блокировке",
         "autoBannedShort": "Автобан: {count}",
         "autoWarnedShort": "Автопредупреждений: {count}",
-        "onboarded": "Завершили онбординг"
+        "onboarded": "Завершили онбординг",
+        "dau": "Активных (DAU)",
+        "wau": "{count} за неделю"
       },
       "content": {
         "builds": "Сборки",
@@ -1931,6 +1936,17 @@
         "broadcastSent": "Уведомление отправлено {count, plural, one {# пользователю} few {# пользователям} many {# пользователям} other {# пользователям}}",
         "sent": "Уведомление отправлено",
         "sendError": "Ошибка отправки"
+      },
+      "target": "По фильтру",
+      "sendToTarget": "Отправить группе",
+      "selectRole": "Выберите роль…",
+      "selectClan": "Выберите клан…",
+      "recipients": "Получателей: {count}",
+      "targetKind": {
+        "banned": "Заблокированные",
+        "all": "Все",
+        "role": "Роль",
+        "clan": "Клан"
       }
     },
     "bans": {
@@ -2053,6 +2069,67 @@
       "rollupRunning": "Роллап идёт",
       "lastRollup": "Последний роллап",
       "rollupDays": "Дней пересчитано"
+    },
+    "health": {
+      "title": "Статус системы",
+      "generatedAt": "Актуально на {date}",
+      "requestsTotal": "HTTP-запросов",
+      "sinceStart": "с момента запуска",
+      "errorRate": "Ошибок 5xx",
+      "fiveXX": "{count} за всё время",
+      "p95": "p95 задержки",
+      "scNodes": "SC-ноды",
+      "scHealthy": "здоровых: {count}/{total}",
+      "dau": "Активных (DAU)",
+      "wau": "{count} за неделю",
+      "runtime": "Среда",
+      "uptime": "Uptime",
+      "memHeap": "Память (heap)",
+      "dbSize": "Размер БД",
+      "unresolved": "Незакрытое",
+      "bans7d": "Банов за 7 дн.",
+      "autoBanned": "Автобанов",
+      "queuePending": "Статей в очереди",
+      "byStatus": "Статусы ответов",
+      "cronsTitle": "Фоновые задачи",
+      "cron": {
+        "ok": "ОК",
+        "error": "Ошибка",
+        "unknown": "Не запускался"
+      },
+      "scTitle": "SC-ноды",
+      "scLastSeen": "Последняя успешная проверка",
+      "nodeOk": "ОК",
+      "nodeError": "Ошибка"
+    },
+    "audit": {
+      "title": "Журнал админ-действий",
+      "total": "Всего записей: {count}",
+      "search": "Поиск по маршруту, админу…",
+      "all": "Все разделы",
+      "status": "HTTP-статус",
+      "empty": "Записей не найдено"
+    },
+    "moderation": {
+      "title": "Модерация",
+      "open": "Открыть",
+      "error": "Не удалось выполнить действие",
+      "empty": "Ничего не найдено",
+      "tabs": {
+        "articles": "Статьи",
+        "autoBans": "Автобаны",
+        "multiaccounts": "Мультиаккаунты",
+        "comments": "Комментарии"
+      },
+      "autoBansHint": "Пользователи, поразившие порог инвентов/баланса за 24ч: {count}. Автобан применяется автоматически, кнопка снимает метку.",
+      "autoBanCleared": "Метка автобана снята",
+      "autoWarned": "Автопредупреждён",
+      "clearAutoBan": "Снять метку",
+      "autoBansEmpty": "Ни одного автобана за сутки",
+      "multiaccountsHint": "Аккаунты, совпадающие по IP (последние {count} дней).",
+      "multiaccountsEmpty": "Совпадений нет",
+      "searchComments": "Поиск по тексту или автору…",
+      "commentDeleted": "Комментарий удалён"
     }
   },
   "test": {

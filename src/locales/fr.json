@@ -1608,7 +1608,10 @@
         "content": "Contenu",
         "game": "Jeu",
         "system": "Système"
-      }
+      },
+      "moderation": "Modération",
+      "audit": "Journal",
+      "health": "Santé"
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -1622,7 +1625,9 @@
         "banned": "Bannis",
         "autoBannedShort": "Auto-bans : {count}",
         "autoWarnedShort": "Auto-avertissements : {count}",
-        "onboarded": "Onboarding terminé"
+        "onboarded": "Onboarding terminé",
+        "dau": "Actifs (DAU)",
+        "wau": "{count} cette semaine"
       },
       "content": {
         "builds": "Builds",
@@ -1930,6 +1935,17 @@
         "broadcastSent": "Notification envoyée à {count, plural, one {# utilisateur} few {# utilisateurs} many {# utilisateurs} other {# utilisateurs}}",
         "sent": "Notification envoyée",
         "sendError": "Erreur d'envoi"
+      },
+      "target": "Par filtre",
+      "sendToTarget": "Envoyer au groupe",
+      "selectRole": "Choisir un rôle…",
+      "selectClan": "Choisir un clan…",
+      "recipients": "Destinataires : {count}",
+      "targetKind": {
+        "banned": "Bannis",
+        "all": "Tout le monde",
+        "role": "Rôle",
+        "clan": "Clan"
       }
     },
     "bans": {
@@ -2052,6 +2068,69 @@
       "rollupRunning": "Rollup en cours",
       "lastRollup": "Dernier rollup",
       "rollupDays": "Jours traités"
+    },
+    "health": {
+      "title": "Santé du système",
+      "generatedAt": "Mis à jour {date}",
+      "requestsTotal": "Requêtes HTTP",
+      "sinceStart": "depuis le démarrage",
+      "errorRate": "Erreurs 5xx",
+      "fiveXX": "{count} au total",
+      "p95": "Latence p95",
+      "scNodes": "Nœuds SC",
+      "scHealthy": "sains : {count}/{total}",
+      "dau": "Actifs (DAU)",
+      "wau": "{count} cette semaine",
+      "runtime": "Environnement",
+      "uptime": "Uptime",
+      "memHeap": "Mémoire (heap)",
+      "dbSize": "Taille BD",
+      "onlineTitle": "En ligne par région",
+      "topServers": "Top serveurs",
+      "unresolved": "En attente",
+      "bans7d": "Banniss. 7 j",
+      "autoBanned": "Auto-bannis",
+      "queuePending": "Articles en file",
+      "byStatus": "Statuts de réponse",
+      "cronsTitle": "Tâches de fond",
+      "cron": {
+        "ok": "OK",
+        "error": "Erreur",
+        "unknown": "Jamais"
+      },
+      "scTitle": "Nœuds SC",
+      "scLastSeen": "Dernier test réussi",
+      "nodeOk": "OK",
+      "nodeError": "Erreur"
+    },
+    "audit": {
+      "title": "Journal des actions admin",
+      "total": "Total : {count}",
+      "search": "Rechercher route, admin…",
+      "all": "Toutes sections",
+      "status": "Statut HTTP",
+      "empty": "Aucune entrée"
+    },
+    "moderation": {
+      "title": "Modération",
+      "open": "Ouvrir",
+      "error": "L'action a échoué",
+      "empty": "Rien trouvé",
+      "tabs": {
+        "articles": "Articles",
+        "autoBans": "Auto-bans",
+        "multiaccounts": "Multi-comptes",
+        "comments": "Commentaires"
+      },
+      "autoBansHint": "Utilisateurs au-dessus du seuil en 24h : {count}. L’auto-ban est appliqué automatiquement, ce bouton retire le marquage.",
+      "autoBanCleared": "Marquage retiré",
+      "autoWarned": "Auto-averti",
+      "clearAutoBan": "Retirer",
+      "autoBansEmpty": "Aucun auto-ban en 24h",
+      "multiaccountsHint": "Comptes partageant une IP ({count} derniers jours).",
+      "multiaccountsEmpty": "Aucun match",
+      "searchComments": "Rechercher texte ou auteur…",
+      "commentDeleted": "Commentaire supprimé"
     }
   },
   "test": {

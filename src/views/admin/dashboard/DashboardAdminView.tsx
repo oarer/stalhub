@@ -13,7 +13,6 @@ import {
 	ArticleStatusesChart,
 	ContentCreatedChart,
 	RegistrationsChart,
-	ServerOnlineChart,
 	ViewsChart,
 } from './components/DashboardCharts'
 import { ChartShell, MetricCard, StatCard } from './components/Shared'
@@ -38,7 +37,7 @@ export default function DashboardAdminView() {
 				range={range}
 			/>
 
-			<section className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
+			<section className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
 				<MetricCard
 					accent="primary"
 					icon="lucide:users"
@@ -66,6 +65,15 @@ export default function DashboardAdminView() {
 					value={numberFmt.format(data.users.active_sessions_24h)}
 				/>
 				<MetricCard
+					accent="cyan"
+					icon="lucide:pulse"
+					label={t('admin.dashboard.users.dau')}
+					sub={t('admin.dashboard.users.wau', {
+						count: numberFmt.format(data.users.wau_7d),
+					})}
+					value={numberFmt.format(data.users.dau_24h)}
+				/>
+				<MetricCard
 					accent="rose"
 					icon="lucide:ban"
 					label={t('admin.dashboard.users.banned')}
@@ -82,9 +90,8 @@ export default function DashboardAdminView() {
 				/>
 			</section>
 
-			<section className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+			<section className="grid grid-cols-1 gap-3">
 				<RegistrationsChart trend={data.users.registration_trend} />
-				<ServerOnlineChart history={data.server_online.history_24h} />
 			</section>
 
 			<section className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">

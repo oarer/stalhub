@@ -6,12 +6,14 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { useDebounce } from '@/hooks/useDebounce'
 import { adminBanQueries } from '@/queries/admin/ban.queries'
-import { AdminEmptyRow, AdminPagination } from '../components/AdminTable'
+import { AdminEmptyRow } from '../components/AdminTable'
 
 const BAN_RULES = [
 	{ value: 'login_bruteforce', label: 'Login Bruteforce' },
@@ -177,58 +179,46 @@ export default function BansAdminView() {
 				</div>
 				<div className="flex gap-1">
 					{(['all', 'auto', 'manual'] as const).map((opt) => (
-						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
+						<Button
+							className={
 								auto === opt
-									? 'border-sky-500 bg-sky-500/10 text-sky-400'
-									: 'border-primary hover:border-sky-500/30'
-							}`}
+									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									: 'text-xs'
+							}
 							key={opt}
 							onClick={() => {
 								setAuto(opt)
 								setPage(1)
 							}}
-							type="button"
+							size="sm"
+							variant="outline"
 						>
 							{opt === 'all'
 								? t('admin.bans.filter.all')
 								: opt === 'auto'
 									? t('admin.bans.filter.auto')
 									: t('admin.bans.filter.manual')}
-						</button>
+						</Button>
 					))}
 				</div>
 				<div className="flex gap-1">
-					<button
-						className={`rounded-lg border-2 px-3 py-1.5 font-semibold text-xs transition-colors ${
-							rule === ''
-								? 'border-sky-500 bg-sky-500/10 text-sky-400'
-								: 'border-primary hover:border-sky-500/30'
-						}`}
-						onClick={() => {
-							setRule('')
-							setPage(1)
-						}}
-						type="button"
-					>
-						{t('admin.bans.filter.allRules')}
-					</button>
-					{BAN_RULES.map((r) => (
-						<button
-							className={`rounded-lg border-2 px-3 py-1.5 font-medium text-xs transition-colors ${
-								rule === r.value
-									? 'border-sky-500 bg-sky-500/10 text-sky-400'
-									: 'border-primary hover:border-sky-500/30'
-							}`}
-							key={r.value}
+					{[undefined, ...BAN_RULES].map((r) => (
+						<Button
+							className={
+								rule === (r?.value ?? '')
+									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									: 'text-xs'
+							}
+							key={r?.value ?? 'all'}
 							onClick={() => {
-								setRule(r.value)
+								setRule(r?.value ?? '')
 								setPage(1)
 							}}
-							type="button"
+							size="sm"
+							variant="outline"
 						>
-							{r.label}
-						</button>
+							{r ? r.label : t('admin.bans.filter.allRules')}
+						</Button>
 					))}
 				</div>
 			</div>
@@ -332,7 +322,7 @@ export default function BansAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

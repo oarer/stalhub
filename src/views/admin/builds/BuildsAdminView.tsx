@@ -4,6 +4,7 @@ import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
@@ -11,7 +12,6 @@ import { buildApiService } from '@/services/build-api/build-api.service'
 import {
 	AdminDeleteModal,
 	AdminEmptyRow,
-	AdminPagination,
 	AdminTableHeader,
 } from '../components/AdminTable'
 
@@ -147,7 +147,7 @@ export default function BuildsAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

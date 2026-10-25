@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import Username from '@/components/ui/user/Username'
@@ -17,7 +18,6 @@ import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminUserService } from '@/services/admin/user.service'
 import {
 	AdminDeleteModal,
-	AdminPagination,
 	AdminTableHeader,
 } from '../components/AdminTable'
 
@@ -183,7 +183,7 @@ export default function UsersAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

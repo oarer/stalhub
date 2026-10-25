@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { Pagination } from '@/components/ui/Pagination'
 import { Table } from '@/components/ui/Table'
 import { toast } from '@/components/ui/Toast'
 import { cn } from '@/lib/cn'
@@ -15,11 +16,7 @@ import { adminArtQueries } from '@/queries/admin/art.queries'
 import { adminArtService } from '@/services/admin/art.service'
 import type { Art } from '@/types/art.type'
 import { ArtType } from '@/types/art.type'
-import {
-	AdminDeleteModal,
-	AdminEmptyRow,
-	AdminPagination,
-} from '../components/AdminTable'
+import { AdminDeleteModal, AdminEmptyRow } from '../components/AdminTable'
 import { AdminArtForm } from './AdminArtForm'
 
 export default function ArtsAdminView() {
@@ -214,7 +211,7 @@ export default function ArtsAdminView() {
 				</div>
 			</Card.Root>
 
-			<AdminPagination
+			<Pagination
 				onPageChange={setPage}
 				page={page}
 				totalPages={totalPages}

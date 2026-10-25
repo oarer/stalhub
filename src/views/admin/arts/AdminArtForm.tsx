@@ -380,8 +380,8 @@ export function AdminArtForm({
 											<div className="flex max-h-44 flex-col gap-1 overflow-y-auto">
 												{(userResults?.data ?? []).map(
 													(u) => (
-														<button
-															className="flex items-center justify-between rounded-lg bg-accent/50 px-3 py-2 text-left transition-colors hover:bg-border/30"
+														<Button
+															className="justify-between bg-accent/50 px-3 py-2 text-left font-normal hover:bg-border/30"
 															key={u.id}
 															onClick={() => {
 																setSelectedUser(
@@ -391,7 +391,7 @@ export function AdminArtForm({
 																	''
 																)
 															}}
-															type="button"
+															variant="ghost"
 														>
 															<span className="font-semibold text-sm">
 																{u.name ||
@@ -400,7 +400,7 @@ export function AdminArtForm({
 															<span className="text-foreground text-xs">
 																@{u.username}
 															</span>
-														</button>
+														</Button>
 													)
 												)}
 											</div>
