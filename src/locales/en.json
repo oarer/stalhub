@@ -243,6 +243,10 @@
     }
   },
   "nav": {
+    "home": "Home",
+    "settings": "Settings",
+    "collapse": "Collapse",
+    "expand": "Expand",
     "articles": "Articles",
     "arts": "Art",
     "groups": {

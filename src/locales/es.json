@@ -243,6 +243,10 @@
     }
   },
   "nav": {
+    "home": "Inicio",
+    "settings": "Ajustes",
+    "collapse": "Contraer",
+    "expand": "Expandir",
     "articles": "Artículos",
     "arts": "Arte",
     "groups": {
