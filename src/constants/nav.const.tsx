@@ -164,6 +164,14 @@ export const NAV_STRUCTURE: NavGroup[] = [
 						descriptionKey:
 							'nav.groups.calculators.items.donate.description',
 					},
+					{
+						key: 'rpu',
+						icon: 'lucide:git-pull-request-draft',
+						href: '/calcs/rpu',
+						labelKey: 'nav.groups.calculators.items.rpu.label',
+						descriptionKey:
+							'nav.groups.calculators.items.rpu.description',
+					},
 				],
 			},
 			{
