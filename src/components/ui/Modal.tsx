@@ -127,14 +127,6 @@ function ModalContent({
 		return () => document.removeEventListener('keydown', onKey)
 	}, [isOpen, close])
 
-	useEffect(() => {
-		if (!isOpen) return
-		const prev = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
-		return () => {
-			document.body.style.overflow = prev
-		}
-	}, [isOpen])
 
 	if (typeof document === 'undefined') return null
 
@@ -143,12 +135,12 @@ function ModalContent({
 			{isOpen && (
 				<div
 					aria-hidden={!isOpen}
-className={cn(
-    'fixed inset-0 z-9999 flex justify-center',
-    align === 'top' ? 'items-start' : 'items-center',
-    fullScreen ? 'pt-0 sm:pt-20' : 'pt-16 sm:pt-20',
-    !fullScreen && 'px-2'
-)}
+					className={cn(
+						'fixed inset-0 z-9999 flex justify-center',
+						align === 'top' ? 'items-start' : 'items-center',
+						fullScreen ? 'pt-0 sm:pt-20' : 'pt-16 sm:pt-20',
+						!fullScreen && 'px-2'
+					)}
 				>
 					<motion.div
 						animate="animate"
