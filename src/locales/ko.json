@@ -1338,6 +1338,15 @@
     "sens": "감도",
     "result": "결과"
   },
+  "rpu": {
+    "title": "RPU 계산기",
+    "sub_title": "플레이 시간, K/D, 전시회 페널티 및 후원 금액으로 RPU 값을 계산하세요",
+    "hours": "시간",
+    "kd": "전체 K/D",
+    "fi": "페널티",
+    "donate": "월 후원 금액",
+    "result": "RPU 값"
+  },
   "modules": {
     "title": "모듈 계산기",
     "sub_title": "무기 모듈을 조합하고 최종 보너스와 비용을 확인하세요",

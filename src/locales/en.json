@@ -1338,6 +1338,15 @@
     "sens": "Sensitivity",
     "result": "Result"
   },
+  "rpu": {
+    "title": "RPU calculator",
+    "sub_title": "Calculate your RPU value from hours, K/D, exhibition penalties and donations",
+    "hours": "Hours",
+    "kd": "Total K/D",
+    "fi": "Penalty)",
+    "donate": "Monthly donations",
+    "result": "RPU value"
+  },
   "modules": {
     "title": "Modules Calculator",
     "sub_title": "Assemble weapon modules and see the resulting bonuses and cost",

@@ -1338,6 +1338,15 @@
     "sens": "Sensibilité",
     "result": "Résultat"
   },
+  "rpu": {
+    "title": "Calculateur de RPU",
+    "sub_title": "Calculez votre valeur de RPU à partir des heures, du K/D, des pénalités d'exposition et des dons",
+    "hours": "Heures",
+    "kd": "K/D total",
+    "fi": "Pénalité",
+    "donate": "Dons du mois",
+    "result": "Valeur de RPU"
+  },
   "modules": {
     "title": "Calculateur de modules",
     "sub_title": "Assemblez les modules d'armes et consultez les bonus finaux et le coût",
