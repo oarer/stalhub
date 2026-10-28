@@ -170,6 +170,14 @@ export default function ItemSearchModal({
 		setVisibleCount(PAGE_STEP)
 	}, [])
 
+	const handleOpenChange = useCallback((nextOpen: boolean) => {
+		setOpen(nextOpen)
+		if (!nextOpen) {
+			setQuery('')
+			setVisibleCount(PAGE_STEP)
+		}
+	}, [])
+
 	const handleClose = useCallback(() => {
 		setOpen(false)
 	}, [])
@@ -205,7 +213,7 @@ export default function ItemSearchModal({
 		query.trim().length > 0
 
 	return (
-		<Modal.Root onOpenChange={setOpen} open={open}>
+		<Modal.Root onOpenChange={handleOpenChange} open={open}>
 			{trigger ? (
 				<Modal.Trigger aria-label="Поиск" asChild variant={'ghost'}>
 					{trigger}
@@ -231,6 +239,7 @@ export default function ItemSearchModal({
 
 				<Modal.Body className="grid gap-4">
 					<Input
+						autoFocus
 						className="p-2"
 						label="modals.search.label"
 						onChange={onChange}
