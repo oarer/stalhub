@@ -5,10 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 const isDev = process.env.NODE_ENV === 'development'
 
 const nextConfig: NextConfig = {
-	assetPrefix:
+/* 	assetPrefix:
 		process.env.NODE_ENV === 'production'
 			? process.env.NEXT_PUBLIC_CDN_URL
-			: undefined,
+			: undefined, */
 
 	output: 'standalone',
 	serverExternalPackages: ['@resvg/resvg-js'],
