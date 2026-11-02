@@ -559,6 +559,30 @@
       "ach": "업적",
       "ach_points": "업적 포인트:"
     },
+    "gear": {
+      "title": "장비",
+      "description": "에서 제공하는 현재 플레이어 장비 및 부착물 (RU 전용)",
+      "upgrade": "강화",
+      "failed_attempts": "실패 시도: {count}",
+      "potential": "잠재력",
+      "percent": "퍼센트",
+      "quality": "품질",
+      "bonus": "보너스",
+      "attachments": "부착물",
+      "empty": "장비를 찾을 수 없습니다",
+      "empty_hint": "플레이어의 공개 장비가 없거나 데이터를 사용할 수 없습니다.",
+      "error": "장비를 불러오지 못했습니다",
+      "error_hint": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요.",
+      "retry": "다시 시도",
+      "slots": {
+        "armor": "방어구",
+        "skin": "스킨",
+        "primary_weapon": "주 무기",
+        "secondary_weapon": "보조 무기",
+        "backpack": "컨테이너",
+        "melee": "근접"
+      }
+    },
     "stats": {
       "title": "통계",
       "reg": "구역 내:",

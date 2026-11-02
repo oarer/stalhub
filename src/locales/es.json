@@ -559,6 +559,30 @@
       "ach": "Logros",
       "ach_points": "Puntos de logros:"
     },
+    "gear": {
+      "title": "Equipamiento",
+      "description": "Equipamiento y accesorios actuales del jugador desde",
+      "upgrade": "Mejora",
+      "failed_attempts": "Intentos fallidos: {count}",
+      "potential": "Potencial",
+      "percent": "Porcentaje",
+      "quality": "Calidad",
+      "bonus": "Bono",
+      "attachments": "Accesorios",
+      "empty": "No se encontró equipamiento",
+      "empty_hint": "El jugador no tiene equipamiento público o los datos no están disponibles.",
+      "error": "No se pudo cargar el equipamiento",
+      "error_hint": "El servicio no está disponible temporalmente. Inténtalo más tarde.",
+      "retry": "Reintentar",
+      "slots": {
+        "armor": "Armadura",
+        "skin": "Aspecto",
+        "primary_weapon": "Arma principal",
+        "secondary_weapon": "Arma secundaria",
+        "backpack": "Contenedor",
+        "melee": "Cuerpo a cuerpo"
+      }
+    },
     "stats": {
       "title": "Estadística",
       "reg": "En la zona:",

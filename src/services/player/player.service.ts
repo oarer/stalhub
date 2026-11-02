@@ -5,12 +5,25 @@ import type {
 	PlayerResponse,
 	PlayerStatsResponse,
 } from '@/types/player.type'
+import type { PlayerGearResponse } from '@/types/playerGear.type'
 
 class PlayerService {
 	async get({ region, character }: PlayerParams): Promise<PlayerResponse> {
 		const { data } = await apiClient.get<PlayerResponse>(
 			`/api/v1/player/${region}/${encodeURIComponent(character)}`,
 			{ params: { history: true } }
+		)
+		return data
+	}
+
+	async getGear({
+		character,
+	}: {
+		character: string
+	}): Promise<PlayerGearResponse> {
+		const { data } = await apiClient.get<PlayerGearResponse>(
+			`/api/v1/uno/players/${character}/gear`,
+			{ timeout: 20_000 }
 		)
 		return data
 	}

@@ -559,6 +559,30 @@
       "ach": "Achievements",
       "ach_points": "Achievement points:"
     },
+    "gear": {
+      "title": "Gear",
+      "description": "Current player gear and attachments from UNO (RU only)",
+      "upgrade": "Upgrade",
+      "failed_attempts": "Failed attempts: {count}",
+      "potential": "Potential",
+      "percent": "Percent",
+      "quality": "Quality",
+      "bonus": "Bonus",
+      "attachments": "Attachments",
+      "empty": "No gear found",
+      "empty_hint": "This player has no public gear or the data is unavailable.",
+      "error": "Failed to load gear",
+      "error_hint": "The UNO service is temporarily unavailable. Try again later.",
+      "retry": "Retry",
+      "slots": {
+        "armor": "Armor",
+        "skin": "Skin",
+        "primary_weapon": "Primary weapon",
+        "secondary_weapon": "Secondary weapon",
+        "backpack": "Container",
+        "melee": "Melee"
+      }
+    },
     "stats": {
       "title": "Statistics",
       "reg": "In zone:",

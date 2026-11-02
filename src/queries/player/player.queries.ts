@@ -7,6 +7,7 @@ import type {
 	PlayerResponse,
 	PlayerStatsResponse,
 } from '@/types/player.type'
+import type { PlayerGearResponse } from '@/types/playerGear.type'
 
 class PlayerQueries {
 	get({ region, character }: PlayerParams) {
@@ -15,6 +16,15 @@ class PlayerQueries {
 			queryFn: () => playerService.get({ region, character }),
 			placeholderData: undefined,
 			staleTime: 1000 * 60,
+		})
+	}
+
+	getGear({ character }: { character: string }) {
+		return queryOptions<PlayerGearResponse>({
+			queryKey: ['player', 'RU', character, 'gear'],
+			queryFn: () => playerService.getGear({ character }),
+			staleTime: 1000 * 60 * 5,
+			retry: 1,
 		})
 	}
 

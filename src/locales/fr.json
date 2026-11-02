@@ -559,6 +559,30 @@
       "ach": "Succès",
       "ach_points": "Points de succès :"
     },
+    "gear": {
+      "title": "Équipement",
+      "description": "Équipement et accessoires actuels du joueur depuis",
+      "upgrade": "Amélioration",
+      "failed_attempts": "Tentatives échouées : {count}",
+      "potential": "Potentiel",
+      "percent": "Pourcentage",
+      "quality": "Qualité",
+      "bonus": "Bonus",
+      "attachments": "Accessoires",
+      "empty": "Aucun équipement trouvé",
+      "empty_hint": "Ce joueur n'a pas d'équipement public ou les données sont indisponibles.",
+      "error": "Impossible de charger l'équipement",
+      "error_hint": "Le service est temporairement indisponible. Réessayez plus tard.",
+      "retry": "Réessayer",
+      "slots": {
+        "armor": "Armure",
+        "skin": "Apparence",
+        "primary_weapon": "Arme principale",
+        "secondary_weapon": "Arme secondaire",
+        "backpack": "Conteneur",
+        "melee": "Corps à corps"
+      }
+    },
     "stats": {
       "title": "Statistiques",
       "reg": "En zone :",
