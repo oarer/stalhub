@@ -1,7 +1,10 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { Divider } from '@/components/ui/Divider'
+import { commissionQueries } from '@/queries/commission/commission.queries'
+import { useAuthStore } from '@/stores/useAuth.store'
 import type { MeLayoutProps } from '@/types/me.types'
 import { getNavTabs } from '@/types/me.types'
 import CompactHeader from '@/views/me/components/CompactHeader'
@@ -13,6 +16,8 @@ export default function ModernLayout({
 	unreadCount,
 }: MeLayoutProps) {
 	const t = useTranslations()
+	const id = useAuthStore((s) => s.user?.id)
+	const { data: capabilities } = useQuery(commissionQueries.capabilities(id))
 	const customization = user.customization
 
 	return (
@@ -26,7 +31,14 @@ export default function ModernLayout({
 						bannerType={customization.banner_type}
 						user={user}
 					/>
-					<LinkTabs tabs={getNavTabs(unreadCount, t, user.roles)} />
+					<LinkTabs
+						tabs={getNavTabs(
+							unreadCount,
+							t,
+							user.roles,
+							capabilities
+						)}
+					/>
 					<Divider />
 				</div>
 				<div className="py-6 lg:px-0 lg:py-0">{children}</div>

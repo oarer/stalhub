@@ -1,11 +1,14 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { unbounded } from '@/app/fonts'
 import { Divider } from '@/components/ui/Divider'
 import { cn } from '@/lib/cn'
+import { commissionQueries } from '@/queries/commission/commission.queries'
+import { useAuthStore } from '@/stores/useAuth.store'
 import type { NavTabsProps } from '@/types/me.types'
 import { filterTabsByRoles, tabGroups } from '@/types/me.types'
 
@@ -16,10 +19,18 @@ export default function NavTabs({
 	onTabClick,
 }: NavTabsProps) {
 	const t = useTranslations()
+	const user = useAuthStore((s) => s.user?.id)
+	const { data: capabilities } = useQuery(
+		commissionQueries.capabilities(user)
+	)
+	const groups = filterTabsByRoles(tabGroups, roles, capabilities)
+	const hrefs = groups.flatMap((group) =>
+		group.items.map((item) => item.href)
+	)
 	return (
 		<div className="flex flex-col rounded-lg bg-card px-4 py-3">
-			{filterTabsByRoles(tabGroups, roles).map((group, gi) => (
-				<div key={gi}>
+			{groups.map((group, gi) => (
+				<div key={group.label ?? group.items[0]?.href}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (
 						<p
@@ -33,7 +44,14 @@ export default function NavTabs({
 							const isActive =
 								tab.href === '/me'
 									? pathname === '/me'
-									: pathname.startsWith(tab.href)
+									: pathname.startsWith(tab.href) &&
+										!hrefs.some(
+											(href) =>
+												href !== tab.href &&
+												href.length > tab.href.length &&
+												href.startsWith(tab.href) &&
+												pathname.startsWith(href)
+										)
 							return (
 								<Link
 									className={cn(

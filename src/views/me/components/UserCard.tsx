@@ -62,7 +62,10 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 					<h2
 						className={`${mtsExtended.className} overflow-visible truncate font-medium text-xl leading-none`}
 					>
-						<Username badges={user.badges} roles={'roles' in user ? user.roles : undefined}>
+						<Username
+							badges={user.badges}
+							roles={'roles' in user ? user.roles : undefined}
+						>
 							{user.name}
 						</Username>
 					</h2>

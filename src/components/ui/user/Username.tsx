@@ -83,7 +83,7 @@ function badgePalette(color: string): { colors: string[]; glow: string } {
 }
 
 function resolveBadgeFx(
-	badges?: UsernameBadge[] | null,
+	badges?: UsernameBadge[] | null
 ): { badge: UsernameBadge; fx: RoleFx } | undefined {
 	const badge = badges?.find((b) => Boolean(b.color))
 	if (!badge) return undefined
@@ -248,6 +248,7 @@ function AmbientParticle({
 			>
 				<svg
 					aria-hidden
+					aria-label="effects"
 					fill="currentColor"
 					height="100%"
 					viewBox="0 0 24 24"
@@ -446,7 +447,9 @@ export default function Username({
 					role && ROLE_USERNAME_CLASS[role]
 				)}
 				style={{
-					...(badgeFx && !role ? { color: badgeFx.badge.color } : null),
+					...(badgeFx && !role
+						? { color: badgeFx.badge.color }
+						: null),
 					filter: `drop-shadow(0 0 8px ${fx.glow})`,
 				}}
 			>

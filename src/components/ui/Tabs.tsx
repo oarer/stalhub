@@ -115,6 +115,7 @@ function TabsTrigger({
 			disabled={disabled}
 			onClick={() => context.onValueChange(value)}
 			role="tab"
+			type="button"
 			{...props}
 		>
 			{children}

@@ -35,7 +35,7 @@ def main():
     env = dict(os.environ)
     # Never inherit application credentials into the child stack.
     for key in list(env):
-        if key.startswith(('NEXT_PUBLIC_', 'S3_', 'SC_', 'EXBO_', 'DISCORD_', 'TELEGRAM_', 'OPENAI_', 'JWT_', 'DATABASE_', 'REDIS_', 'BUN_REDIS_', 'STALHUB_')):
+        if key.startswith(('NEXT_PUBLIC_', 'S3_', 'SC_', 'EXBO_', 'DISCORD_', 'TELEGRAM_', 'OPENAI_', 'JWT_', 'DATABASE_', 'REDIS_', 'BUN_REDIS_', 'STALHUB_', 'TG_', 'BLOG_', 'AUCTION_', 'IMAGE_SERVICE_', 'LAUNCHER_', 'ENCRYPT_')):
             del env[key]
     env.update({
         'STALHUB_E2E': '1', 'NODE_ENV': 'development',
@@ -44,7 +44,7 @@ def main():
         'PORT': '4311', 'WEB_ORIGIN': 'http://localhost:4310',
         'E2E_WEB_ORIGIN': 'http://localhost:4310', 'E2E_API_ORIGIN': 'http://localhost:4311',
         'NEXT_PUBLIC_API': 'http://localhost:4311',
-        'LAUNCHER_SOURCES': 'https://offline.invalid/launcher', 'LAUNCHER_AUTH_QUERY': 'offline',
+        'LAUNCHER_SOURCES': '[]', 'LAUNCHER_AUTH_QUERY': 'offline',
         'OPENAI_API_KEY': 'offline-e2e-not-a-secret', 'JWT_SECRET': 'e2e-only-signing-key-not-for-production',
         'DOTENV_CONFIG_PATH': str(scratch / 'nonexistent.env'), 'NEXT_TELEMETRY_DISABLED': '1',
         'NEXT_FONT_GOOGLE_MOCKED_RESPONSES': str(ROOT / 'e2e/google-fonts.cjs'),
@@ -77,21 +77,39 @@ def main():
         child = subprocess.Popen(args, cwd=cwd, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
         processes.append(child)
 
+    local_pg = None
+    env['COMMISSION_FILES_DIR'] = str(scratch / 'private-files')
     try:
-        for image in ('postgres:17-alpine', 'redis:7-alpine'):
-            run(['docker', 'image', 'inspect', image], stdout=subprocess.DEVNULL)
-        pg = f'stalhub-e2e-pg-{suffix}'
-        run(['docker', 'run', '--rm', '-d', '--name', pg,
-             '-p', '127.0.0.1:55432:5432', '--tmpfs', '/var/lib/postgresql/data',
-             '-e', 'POSTGRES_USER=stalhub_e2e', '-e', 'POSTGRES_PASSWORD=stalhub_e2e',
-             '-e', 'POSTGRES_DB=stalhub_e2e', 'postgres:17-alpine'])
-        containers.append(pg)
-        rd = f'stalhub-e2e-redis-{suffix}'
-        run(['docker', 'run', '--rm', '-d', '--name', rd, '-p', '127.0.0.1:56379:6379',
-             'redis:7-alpine', 'redis-server', '--save', '', '--appendonly', 'no'])
-        containers.append(rd)
-        wait(lambda: subprocess.run(['docker', 'exec', pg, 'pg_isready', '-U', 'stalhub_e2e'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0, 'PostgreSQL')
-        wait(lambda: subprocess.run(['docker', 'exec', rd, 'redis-cli', 'ping'], capture_output=True).stdout.strip() == b'PONG', 'Redis')
+        if '--local-services' in sys.argv:
+            sys.argv.remove('--local-services')
+            redis_binary = shutil.which(os.environ.get('E2E_REDIS_SERVER', 'redis-server'))
+            if not redis_binary or not all(shutil.which(name) for name in ('initdb', 'pg_ctl', 'createdb')):
+                raise RuntimeError('Local mode requires initdb, pg_ctl, createdb and E2E_REDIS_SERVER (or redis-server)')
+            local_pg = scratch / 'pg'
+            run(['initdb', '-D', str(local_pg), '-A', 'trust', '-U', 'stalhub_e2e', '--no-locale', '--encoding=UTF8'], stdout=subprocess.DEVNULL)
+            run(['pg_ctl', '-D', str(local_pg), '-l', str(scratch / 'postgres.log'), '-o', f'-h 127.0.0.1 -p 55432 -k {scratch}', '-w', 'start'])
+            run(['createdb', '-h', '127.0.0.1', '-p', '55432', '-U', 'stalhub_e2e', 'stalhub_e2e'])
+            start([redis_binary, '--bind', '127.0.0.1', '--port', '56379', '--save', '', '--appendonly', 'no', '--dir', str(scratch)], BACKEND, 'redis')
+            def redis_ready():
+                with socket.create_connection(('127.0.0.1', 56379), timeout=1) as connection:
+                    connection.sendall(b'*1\r\n$4\r\nPING\r\n')
+                    return connection.recv(64).startswith(b'+PONG')
+            wait(redis_ready, 'Redis')
+        else:
+            for image in ('postgres:17-alpine', 'redis:7-alpine'):
+                run(['docker', 'image', 'inspect', image], stdout=subprocess.DEVNULL)
+            pg = f'stalhub-e2e-pg-{suffix}'
+            run(['docker', 'run', '--rm', '-d', '--name', pg,
+                 '-p', '127.0.0.1:55432:5432', '--tmpfs', '/var/lib/postgresql/data',
+                 '-e', 'POSTGRES_USER=stalhub_e2e', '-e', 'POSTGRES_PASSWORD=stalhub_e2e',
+                 '-e', 'POSTGRES_DB=stalhub_e2e', 'postgres:17-alpine'])
+            containers.append(pg)
+            rd = f'stalhub-e2e-redis-{suffix}'
+            run(['docker', 'run', '--rm', '-d', '--name', rd, '-p', '127.0.0.1:56379:6379',
+                 'redis:7-alpine', 'redis-server', '--save', '', '--appendonly', 'no'])
+            containers.append(rd)
+            wait(lambda: subprocess.run(['docker', 'exec', pg, 'pg_isready', '-U', 'stalhub_e2e'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0, 'PostgreSQL')
+            wait(lambda: subprocess.run(['docker', 'exec', rd, 'redis-cli', 'ping'], capture_output=True).stdout.strip() == b'PONG', 'Redis')
         run(['bun', '--no-env-file', 'run', 'e2e/setup.ts'], cwd=BACKEND)
         start(['bun', '--no-env-file', 'run', 'e2e/server.ts'], BACKEND, 'backend')
         wait(lambda: healthy('http://localhost:4311/api/v1/health'), 'backend')
@@ -104,8 +122,25 @@ def main():
         for name in ('package.json', 'tsconfig.json', 'next-env.d.ts', 'next.config.ts', 'postcss.config.mjs', 'postcss.config.js'):
             if (ROOT / name).is_file():
                 shutil.copy2(ROOT / name, web / name)
-        start(['bun', '--no-env-file', 'node_modules/next/dist/bin/next', 'dev', '--webpack', '--hostname', '127.0.0.1', '--port', '4310'], web, 'frontend')
-        wait(lambda: healthy('http://localhost:4310/api/health'), 'frontend', 120)
+        if '--production' in sys.argv:
+            sys.argv.remove('--production')
+            env['NODE_ENV'] = 'production'
+            try:
+                run(['bun', '--no-env-file', 'node_modules/next/dist/bin/next', 'build', '--webpack'], cwd=web)
+                start(['bun', '--no-env-file', 'node_modules/next/dist/bin/next', 'start', '--hostname', '127.0.0.1', '--port', '4310'], web, 'frontend')
+            finally:
+                env['NODE_ENV'] = 'development'
+        else:
+            start(['bun', '--no-env-file', 'node_modules/next/dist/bin/next', 'dev', '--webpack', '--hostname', '127.0.0.1', '--port', '4310'], web, 'frontend')
+            wait(lambda: healthy('http://localhost:4310/api/health'), 'frontend', 120)
+            # Warming up routes in dev: webpack compiles each one lazily on
+            # first visit, which makes Fast Refresh perform a full reload and
+            # drops the browser back to a previously rendered page mid-test.
+            for route in ('/artists', '/artists/warmup', '/me', '/me/artist', '/me/commissions', '/me/commissions/warmup', '/me/arbitration', '/me/arbitration/warmup'):
+                try:
+                    urllib.request.urlopen(f'http://localhost:4310{route}', timeout=120)
+                except urllib.error.HTTPError:
+                    pass
         run(['bun', '--no-env-file', 'x', '--no-install', 'playwright', 'test', *sys.argv[1:]])
         print(f'E2E passed. Server logs: {scratch}', flush=True)
     finally:
@@ -119,10 +154,15 @@ def main():
                     child.wait()
         for name in reversed(containers):
             subprocess.run(['docker', 'rm', '-f', name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if local_pg is not None:
+            stopped = subprocess.run(['pg_ctl', '-D', str(local_pg), '-m', 'fast', '-w', 'stop'], env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if stopped.returncode == 0:
+                shutil.rmtree(local_pg, ignore_errors=True)
         for log in logs:
             log.close()
-        # Retain only diagnostic logs, never credentials or a source copy.
+        # Retain diagnostic logs, not source copies or private test attachments.
         shutil.rmtree(scratch / 'web', ignore_errors=True)
+        shutil.rmtree(scratch / 'private-files', ignore_errors=True)
         print(f'Disposable services removed. Logs: {scratch}', flush=True)
 
 

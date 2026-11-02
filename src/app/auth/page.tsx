@@ -18,6 +18,10 @@ import {
 } from '@/services/auth/desktop-auth'
 import { discordAuthService } from '@/services/auth/discord/discord.service'
 import { exboAuthService } from '@/services/auth/exbo/auth.service'
+import {
+	consumeArtistReturn,
+	persistArtistReturn,
+} from '@/services/auth/return-to'
 import { telegramAuthService } from '@/services/auth/telegram/telegram.service'
 import { userService } from '@/services/user/user.service'
 import { mtsExtended } from '../fonts'
@@ -50,6 +54,7 @@ export default function Page() {
 	const isLastStep = step === steps.length - 1
 
 	useEffect(() => {
+		persistArtistReturn()
 		const params = new URLSearchParams(window.location.search)
 		const desktopState = params.get('desktop_state')
 		const codeChallenge = params.get('code_challenge')
@@ -112,7 +117,13 @@ export default function Page() {
 			setDesktopStatus(null)
 			const user = await userService.getMe()
 			const isGuest = user.roles?.some((r) => r.name === 'clan_guest')
-			router.replace(isGuest ? '/me/clan' : '/me')
+			router.replace(
+				isGuest
+					? '/me/clan'
+					: user.onboarded
+						? (consumeArtistReturn() ?? '/me')
+						: '/me/onboarding'
+			)
 		} catch (err) {
 			const message = (
 				err as {

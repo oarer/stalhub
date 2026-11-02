@@ -5,6 +5,7 @@ interface Tab {
 	title: string
 	href: string
 	icon: string
+	capability?: 'author' | 'arbitrate'
 }
 
 export interface TabGroup {
@@ -16,6 +17,11 @@ export const tabGroups: TabGroup[] = [
 	{
 		items: [
 			{ title: 'me.nav.home', href: '/me', icon: 'lucide:home' },
+			{
+				title: 'commissions.orders',
+				href: '/me/commissions',
+				icon: 'lucide:paintbrush',
+			},
 			{
 				title: 'me.nav.analytics',
 				href: '/me/analytics',
@@ -102,6 +108,12 @@ export const tabGroups: TabGroup[] = [
 				icon: 'lucide:palette',
 			},
 			{
+				title: 'commissions.studio',
+				href: '/me/arts/studio',
+				icon: 'lucide:paintbrush',
+				capability: 'author',
+			},
+			{
 				title: 'me.nav.tierlists',
 				href: '/me/tierlists',
 				icon: 'lucide:trophy',
@@ -133,16 +145,24 @@ export const tabGroups: TabGroup[] = [
 export const canAccessArtTab = (roles: { name: string }[]) =>
 	roles.some((r) => r.name === 'author' || r.name === 'admin')
 
+export type CommissionCapabilities = {
+	author?: boolean
+	arbitrate?: boolean
+} | null
+
 export const filterTabsByRoles = (
 	groups: TabGroup[],
-	roles: { name: string }[]
+	roles: { name: string }[],
+	capabilities?: CommissionCapabilities
 ): TabGroup[] => {
 	const showArts = canAccessArtTab(roles)
 	return groups
 		.map((group) => ({
 			...group,
 			items: group.items.filter(
-				(tab) => !(tab.href === '/me/arts' && !showArts)
+				(tab) =>
+					!(tab.href === '/me/arts' && !showArts) &&
+					!(tab.capability && !capabilities?.[tab.capability])
 			),
 		}))
 		.filter((group) => group.items.length > 0)
@@ -151,9 +171,10 @@ export const filterTabsByRoles = (
 export const getNavTabs = (
 	unreadCount: number | null | undefined,
 	translate: (key: string) => string,
-	roles: { name: string }[]
+	roles: { name: string }[],
+	capabilities?: CommissionCapabilities
 ): LinkTab[] =>
-	filterTabsByRoles(tabGroups, roles).map((group) => {
+	filterTabsByRoles(tabGroups, roles, capabilities).map((group) => {
 		const items = group.items.map((tab) => ({
 			title: translate(tab.title),
 			href: tab.href,

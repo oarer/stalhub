@@ -8,6 +8,10 @@ export const DATE_FORMATS = {
 		month: '2-digit',
 		year: 'numeric',
 	},
+	longDate: {
+		day: 'numeric',
+		month: 'long',
+	},
 	datetime: {
 		day: '2-digit',
 		month: '2-digit',

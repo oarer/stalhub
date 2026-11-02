@@ -13,6 +13,7 @@ import Input from '@/components/ui/Input'
 import { toast } from '@/components/ui/Toast'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { userQueries } from '@/queries/user/user.queries'
+import { consumeArtistReturn } from '@/services/auth/return-to'
 import { userService } from '@/services/user/user.service'
 import { Regions } from '@/types/api.type'
 import type {
@@ -117,6 +118,7 @@ function LayoutThumb({ layout }: { layout: Layout }) {
 export default function OnboardingView({ user: userProp }: { user?: User }) {
 	const t = useTranslations()
 	const router = useRouter()
+	const hasRedirected = useRef(false)
 	const queryClient = getQueryClient()
 
 	const { data: queryUser } = useSuspenseQuery(userQueries.getMe())
@@ -227,8 +229,9 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 	}
 
 	useEffect(() => {
-		if (user.onboarded) {
-			router.replace('/me')
+		if (user.onboarded && !hasRedirected.current) {
+			hasRedirected.current = true
+			router.replace(consumeArtistReturn() ?? '/me')
 		}
 	}, [user.onboarded, router])
 

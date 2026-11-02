@@ -8,6 +8,7 @@ import { userService } from '@/services/user/user.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { useBanStore } from '@/stores/useBan.store'
 import BannedView from '@/views/errors/banned/BannedView'
+import CommissionCacheGuard from './CommissionCacheGuard'
 import QueryProvider from './QueryProvider'
 
 interface Props {
@@ -57,6 +58,7 @@ export default function Providers({ children }: Props) {
 	if (isBanned) {
 		return (
 			<QueryProvider>
+				<CommissionCacheGuard />
 				<UwuProvider>
 					<Toaster position="bottom-right" />
 					<BannedView />
@@ -67,6 +69,7 @@ export default function Providers({ children }: Props) {
 
 	return (
 		<QueryProvider>
+			<CommissionCacheGuard />
 			<UwuProvider>
 				<Toaster position="bottom-right" />
 				{children}

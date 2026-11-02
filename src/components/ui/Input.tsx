@@ -17,6 +17,7 @@ export default function Input({
 	value,
 	onChange,
 	onBlur,
+	onKeyDown: propOnKeyDown,
 	step,
 	min,
 	max,
@@ -157,7 +158,7 @@ export default function Input({
 				min={min}
 				onBlur={handleBlur}
 				onChange={handleChange}
-				onKeyDown={handleKeyDown}
+				onKeyDown={propOnKeyDown ?? handleKeyDown}
 				placeholder={computedPlaceholder}
 				ref={inputRef}
 				step={step}

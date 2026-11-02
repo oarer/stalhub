@@ -12,7 +12,7 @@ export function StalcraftText({
 }) {
 	const lines = parseStalcraftText(text)
 	return (
-		<span className={cn('whitespace-pre-wrap break-words', className)}>
+		<span className={cn('wrap-break-word whitespace-pre-wrap', className)}>
 			{lines.map((segs, li) => (
 				<span key={li}>
 					{segs.map((s, si) => (

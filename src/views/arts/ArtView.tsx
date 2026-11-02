@@ -21,6 +21,7 @@ import { artQueries } from '@/queries/art/art.queries'
 import { artService } from '@/services/art/art.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import { ArtType, getArtImages } from '@/types/art.type'
+import ArtistOrderLink from '@/views/commissions/components/ArtistOrderLink'
 import ArtComments from './ArtComments'
 
 const SOCIAL_ICONS: Record<string, string> = {
@@ -185,6 +186,9 @@ export default function ArtView({ artId }: ArtViewProps) {
 						)}
 					</div>
 
+					{art.author.id !== null && art.author.username && (
+						<ArtistOrderLink username={art.author.username} />
+					)}
 					<div className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-2 ring-primary/40">
 						<div className="flex items-center justify-between">
 							<span className="font-medium text-foreground text-sm">

@@ -22,13 +22,14 @@ async function getLocaleFromCookie(): Promise<Locale | undefined> {
 export default getRequestConfig(async () => {
 	const locale = (await getLocaleFromCookie()) ?? defaultLocale
 
-	const [messages, markers] = await Promise.all([
+	const [messages, markers, commissions] = await Promise.all([
 		import(`@/locales/${locale}.json`).then((m) => m.default),
 		import(`@/locales/markers/${locale}.json`).then((m) => m.default),
+		import(`@/locales/commissions/${locale}.json`).then((m) => m.default),
 	])
 
 	return {
 		locale,
-		messages: { ...messages, markers },
+		messages: { ...messages, markers, commissions },
 	}
 })
