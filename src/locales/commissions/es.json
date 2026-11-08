@@ -1,5 +1,6 @@
 {
 	"catalog": "Artistas",
+	"orderCommission": "Encargar una comisión",
 	"catalogDescription": "Explora obras, elige un artista y prepara tu encargo a partir de su lista de precios.",
 	"orders": "Encargos de arte",
 	"studio": "Taller del artista",

@@ -399,13 +399,6 @@ export const NAV_STRUCTURE: NavGroup[] = [
 				titleKey: 'nav.groups.creative.categories.community.title',
 				items: [
 					{
-						key: 'artists',
-						icon: 'lucide:paintbrush',
-						href: '/artists',
-						labelKey: 'commissions.catalog',
-						descriptionKey: 'commissions.catalogDescription',
-					},
-					{
 						key: 'arts',
 						icon: 'lucide:palette',
 						href: '/arts',

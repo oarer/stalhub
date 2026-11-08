@@ -1,5 +1,6 @@
 {
 	"catalog": "Artistes",
+	"orderCommission": "Commander une commission",
 	"catalogDescription": "Découvrez les œuvres, choisissez un artiste et composez une commande à partir de ses tarifs.",
 	"orders": "Commandes artistiques",
 	"studio": "Atelier de l’artiste",

@@ -11,6 +11,7 @@ import { mtsExtended } from '@/app/fonts'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { CLink } from '@/components/ui/Link'
 import { Modal } from '@/components/ui/Modal'
 import { useDebounce } from '@/hooks/useDebounce'
 import { cn } from '@/lib/cn'
@@ -70,16 +71,28 @@ export default function ArtsView() {
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			
-				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			<div className="flex flex-wrap items-end justify-between gap-3">
+				<div className="space-y-1">
+					<h1
+						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					>
+						{t('arts.title')}
+					</h1>
+					<p className="font-medium text-muted-foreground text-sm">
+						{t('arts.total', { count: data?.total_count ?? 0 })}
+					</p>
+				</div>
+
+				<CLink
+					className="gap-2"
+					href="/artists"
+					size="sm"
+					variant="primary"
 				>
-					{t('arts.title')}
-				</h1>
-				<p className="font-medium text-muted-foreground text-sm">
-					{t('arts.total', { count: data?.total_count ?? 0 })}
-				</p>
-			
+					<Icon className="text-lg" icon="lucide:paintbrush" />
+					{t('commissions.orderCommission')}
+				</CLink>
+			</div>
 
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<Input

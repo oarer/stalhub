@@ -1,5 +1,6 @@
 {
 	"catalog": "Artists",
+	"orderCommission": "Order a commission",
 	"catalogDescription": "Browse artwork, choose an artist and build an order from their price list.",
 	"orders": "Art commissions",
 	"studio": "Artist studio",
