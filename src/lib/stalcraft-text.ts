@@ -79,13 +79,13 @@ export function buildMultiGradient(text: string, colors: string[]): string {
 	if (stops.length === 1) return `§${stops[0]}${text}§R`
 	if (chars.length === 1) return `§${stops[0]}${chars[0]}§R`
 	return (
-		chars
+		`${chars
 			.map((ch, i) => {
 				if (ch === '\n') return '\n'
 				const t = i / (chars.length - 1)
 				return `§${colorAtStops(stops, t)}${ch}`
 			})
-			.join('') + '§R'
+			.join('')}§R`
 	)
 }
 

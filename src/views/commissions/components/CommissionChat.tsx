@@ -275,7 +275,6 @@ export default function CommissionChat({
 								key={file.id}
 							>
 								{thumbs[file.id] ? (
-									// biome-ignore lint/performance/noImgElement: blob URL thumbnail
 									<img
 										alt={file.name}
 										className="size-6 rounded-full object-cover"

@@ -489,7 +489,7 @@ export function ImageEditorModal({
 			canvas.toBlob(resolve, 'image/png')
 		)
 		if (!blob) return
-		const name = (file?.name ?? 'image').replace(/\.[^.]+$/, '') + '.png'
+		const name = `${(file?.name ?? 'image').replace(/\.[^.]+$/, '')}.png`
 		onConfirm(new File([blob], name, { type: 'image/png' }))
 	}
 

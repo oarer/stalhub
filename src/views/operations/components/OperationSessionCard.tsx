@@ -31,7 +31,7 @@ export default function OperationSessionCard({
 							icon="lucide:siren"
 						/>
 						<h2 className="truncate font-medium">
-							{t('player.operations.type.' + session.map)}
+							{t(`player.operations.type.${session.map}`)}
 						</h2>
 					</div>
 					<Badge>

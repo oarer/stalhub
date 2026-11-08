@@ -108,7 +108,7 @@ export default function BarterCalcPanel({
 	const bestStockRow =
 		stockEval.rows.find((r) => r.index === stockEval.bestIndex) ?? null
 	const bestStockPick =
-		bestStockRow && bestStockRow.affordable ? bestStockRow : null
+		bestStockRow?.affordable ? bestStockRow : null
 	const stockRemainder = bestStockPick ? stockNum - bestStockPick.total : 0
 	const bestStockOffer = bestStockPick
 		? (offers[bestStockPick.index] ?? null)
@@ -308,8 +308,7 @@ export default function BarterCalcPanel({
 					onCheckedChange={onIncludeTokensChange}
 				/>
 				{includeTokens && (
-					<>
-						{mode === 'unlimited' ? (
+					mode === 'unlimited' ? (
 							<div className="flex items-center justify-between text-sm">
 								<span className="text-foreground">
 									{t('barterCalc.tokensNeed')}
@@ -356,8 +355,7 @@ export default function BarterCalcPanel({
 									</div>
 								)}
 							</div>
-						)}
-					</>
+						)
 				)}
 			</div>
 		</Card.Root>

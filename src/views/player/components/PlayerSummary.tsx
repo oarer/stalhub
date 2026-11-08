@@ -19,7 +19,7 @@ const STAT_KEYS = {
 function num(stats: Stat[], id: string): number {
 	const s = stats.find((x) => x.id === id)
 	const v = Number(s?.value ?? 0)
-	return isNaN(v) ? 0 : v
+	return Number.isNaN(v) ? 0 : v
 }
 
 function kd(k: number, d: number): string {

@@ -141,7 +141,7 @@ export enum Alliance {
 
 export const allianceColors: Record<Alliance, string> = {
 	[Alliance.MERC]:
-		'bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent',
+		'bg-gradient-to-r from-sky-400 to-sky-600 bg-clip-text text-transparent',
 	[Alliance.COVENANT]:
 		'bg-gradient-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent',
 	[Alliance.FREEDOM]:

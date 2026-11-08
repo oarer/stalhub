@@ -32,7 +32,7 @@ export default function AuctionCurrentCards({
 					<LotRow label={t('items.auction.endDate')}>
 						{formatDate(lot.endTime, 'datetime')}
 					</LotRow>
-					{lot.startPrice != 0 && (
+					{lot.startPrice !== 0 && (
 						<LotRow label={t('items.auction.startPrice')}>
 							{formatPrice(lot.startPrice)}
 						</LotRow>

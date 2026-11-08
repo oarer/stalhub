@@ -3,7 +3,7 @@ import axios from 'axios'
 import { NextResponse } from 'next/server'
 import type { StatusResponse } from '@/types/status.type'
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
 	try {
 		const { data } = await axios.get<StatusResponse>(
 			`https://status.stalhub.dev/dashboard-apis/monitor-bars?tags=stalhub,stalhub_cdn&days=1`,

@@ -33,7 +33,7 @@ export const contacts: AboutMember[] = [
 		],
 	},
 	{
-		name: 'scxnews',
+		name: 'shnyuvsik',
 		description: 'about.ad_role',
 		links: [
 			{

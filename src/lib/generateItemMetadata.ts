@@ -37,7 +37,7 @@ export async function generateItemMetadata(
 	const listing: ItemListing[] = await res.json()
 
 	const item = listing.find((i) => i.data === githubUrl)
-	if (!item || !item.name) return null
+	if (!item?.name) return null
 
 	const name = item.name[locale] || item.name.en || item.name.ru
 	if (!name) return null

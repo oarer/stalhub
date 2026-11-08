@@ -1,5 +1,6 @@
 {
 	"catalog": "Художники",
+	"catalogDescription": "Заказать коммишку от художника",
 	"orders": "Заказы",
 	"studio": "Мастерская",
 	"arbitration": "Арбитраж",
@@ -47,7 +48,7 @@
 	"amount": "Стоимость",
 	"minDays": "Минимум дней",
 	"maxDays": "Максимум дней",
-	"selectWorks": "Выберите свои работы для портфолио",
+	"selectWorks": "Работы",
 	"customerSide": "Я заказчик",
 	"artistSide": "Я художник",
 	"allStatuses": "Все статусы",

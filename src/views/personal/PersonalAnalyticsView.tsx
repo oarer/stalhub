@@ -8,12 +8,7 @@ import {
 } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import {
-	useEffect,
-	useMemo,
-	useState,
-	useSyncExternalStore,
-} from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
@@ -214,7 +209,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 		for (const id of ['kd', 'accuracy', 'hs-rate']) {
 			const pts = series[id]
 			if (pts && pts.length >= 2)
-				map.set(id, pts[pts.length - 1]!.v - pts[0]!.v)
+				map.set(id, pts[pts.length - 1]?.v - pts[0]?.v)
 		}
 		return map
 	}, [summary, series])
@@ -281,7 +276,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 			: null
 
 	const keyCards = OVERVIEW_STATS.filter(
-		(id) => series[id] && series[id]!.length > 0
+		(id) => series[id] && series[id]?.length > 0
 	)
 
 	const selectedPoints = series[statId] ?? []

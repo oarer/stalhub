@@ -330,7 +330,9 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 								style={{ color }}
 								title={name}
 							>
-								{name}
+								{name} {' +'}
+								{item.upgrade.level != null &&
+									item.upgrade.level + 1}
 							</Link>
 						) : (
 							<p
@@ -338,18 +340,10 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 								style={{ color }}
 								title={name}
 							>
-								{name}
+								{name}{' +'}
+								{item.upgrade.level != null &&
+									item.upgrade.level + 1}
 							</p>
-						)}
-						{item.upgrade.level != null && (
-							<Badge
-								className="w-fit font-mono text-[10px]"
-								title={upgradeTitle}
-								variant="secondary"
-							>
-								{t('player.gear.upgrade')} +
-								{item.upgrade.level + 1}
-							</Badge>
 						)}
 					</div>
 

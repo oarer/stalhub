@@ -93,7 +93,7 @@ export default function BuildsPublicView() {
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			<>
+			
 				<h1
 					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
@@ -104,7 +104,7 @@ export default function BuildsPublicView() {
 						count: data?.total_count ?? 0,
 					})}
 				</p>
-			</>
+			
 
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">

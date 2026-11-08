@@ -45,7 +45,7 @@ function WaypointList({ waypoints }: { waypoints: WaypointRow[] }) {
 							className="inline-block h-2.5 w-2.5 rounded-sm border border-foreground/45 align-baseline"
 							style={{ background: wp.colorHex }}
 						/>
-						{' ' + wp.colorHex}
+						{` ${wp.colorHex}`}
 					</p>
 					<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
 						X: {wp.x.toFixed(2)} Y: {wp.y.toFixed(2)} Z:{' '}

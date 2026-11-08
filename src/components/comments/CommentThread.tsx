@@ -52,7 +52,7 @@ interface CommentThreadProps {
 	totalCount: number
 	isCreating: boolean
 	translationNamespace: string
-	onCreate: (content: string) => void | Promise<unknown>
+	onCreate: (content: string) => undefined | Promise<unknown>
 	onDelete: (id: number) => void
 }
 

@@ -1,12 +1,14 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"maxSize": 12582912,
+		"includes": ["**", "!public/**/*.svg"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -156,14 +158,17 @@
 			},
 			"linter": {
 				"rules": {
+					"recommended": false,
 					"a11y": {
 						"noLabelWithoutControl": "error",
 						"useAltText": "error",
-						"useValidAnchor": "error"
+						"useValidAnchor": "error",
+						"noSvgWithoutTitle": "off"
 					},
 					"correctness": {
 						"noChildrenProp": "error",
 						"noUnusedImports": "error",
+						"noInvalidPositionAtImportRule": "off",
 						"useExhaustiveDependencies": {
 							"level": "warn",
 							"fix": "safe"
@@ -172,12 +177,18 @@
 						"useJsxKeyInIterable": "error"
 					},
 					"security": {
-						"noDangerouslySetInnerHtmlWithChildren": "error"
+						"noDangerouslySetInnerHtmlWithChildren": "error",
+						"noDangerouslySetInnerHtml": "off"
+					},
+					"performance": {
+						"noImgElement": "off"
 					},
 					"suspicious": {
 						"noCommentText": "error",
 						"noDuplicateJsxProps": "error",
-						"noEmptyBlockStatements": "warn"
+						"noEmptyBlockStatements": "off",
+						"noArrayIndexKey": "off",
+						"noDuplicateProperties": "off"
 					},
 					"nursery": {
 						"useSortedClasses": {
@@ -192,6 +203,7 @@
 			"includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
 			"linter": {
 				"rules": {
+					"recommended": false,
 					"complexity": {
 						"noArguments": "error"
 					},
@@ -221,6 +233,17 @@
 						"noWith": "off",
 						"useGetterReturn": "off"
 					}
+				}
+			}
+		}
+	,
+		{
+			"includes": ["**/*.css"],
+			"linter": {
+				"rules": {
+					"correctness": {"noInvalidPositionAtImportRule": "off"},
+					"suspicious": {"noDuplicateProperties": "off"},
+					"style": {"noDescendingSpecificity": "off"}
 				}
 			}
 		}

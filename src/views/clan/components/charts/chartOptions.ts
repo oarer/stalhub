@@ -20,7 +20,7 @@ export function baseBarOptions(title: string): ChartOptions<'bar'> {
 		plugins: {
 			...base.plugins,
 			tooltip: {
-				...base.plugins!.tooltip,
+				...base.plugins?.tooltip,
 				callbacks: {
 					label: (item: TooltipItem<'bar'>) =>
 						`${item.dataset.label}: ${Number(item.raw ?? 0).toFixed(2)}`,

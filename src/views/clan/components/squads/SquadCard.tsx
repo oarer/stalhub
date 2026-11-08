@@ -102,7 +102,6 @@ export function SquadCard({
 				{renaming ? (
 					<>
 						<input
-							autoFocus
 							className="h-7 min-w-0 flex-1 rounded-lg bg-accent/50 px-2 font-semibold text-sm outline-none ring-2 ring-primary/60"
 							disabled={isRenamePending}
 							maxLength={60}

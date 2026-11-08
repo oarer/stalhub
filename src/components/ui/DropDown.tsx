@@ -48,7 +48,7 @@ const toggleSubmenuKey = (
 			newSet.add(key)
 		} else {
 			for (const k of newSet) {
-				if (k === key || k.startsWith(key + '.')) {
+				if (k === key || k.startsWith(`${key}.`)) {
 					newSet.delete(k)
 				}
 			}

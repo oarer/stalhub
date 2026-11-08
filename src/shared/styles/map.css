@@ -55,8 +55,8 @@
 
 .leaflet-container {
 	.leaflet-overlay-pane svg {
-		max-width: none !important;
-		max-height: none !important;
+		max-width: none;
+		max-height: none;
 	}
 
 	.leaflet-marker-pane img,
@@ -64,8 +64,8 @@
 	.leaflet-tile-pane img,
 	img.leaflet-image-layer,
 	.leaflet-tile {
-		max-width: none !important;
-		max-height: none !important;
+		max-width: none;
+		max-height: none;
 		width: auto;
 		padding: 0;
 	}
@@ -526,8 +526,8 @@ path.leaflet-interactive:focus:not(:focus-visible) {
 }
 
 .leaflet-attribution-flag {
-	display: inline !important;
-	vertical-align: baseline !important;
+	display: inline;
+	vertical-align: baseline;
 	width: 1em;
 	height: 0.6669em;
 	margin-right: 0.277em;

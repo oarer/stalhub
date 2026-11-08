@@ -81,7 +81,10 @@ export default function TierListDetailView() {
 	const { getTtk } = useTierTtk(tierList?.scenario)
 
 	const deleteMutation = useMutation({
-		mutationFn: () => tierListService.delete(tierList!.id),
+		mutationFn: () => {
+			if (!tierList) throw new Error('No tier list')
+			return tierListService.delete(tierList.id)
+		},
 		onSuccess: () => {
 			toast.success(t('tierlists.deleted'))
 			queryClient.invalidateQueries({ queryKey: ['tier-lists'] })

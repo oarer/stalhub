@@ -72,7 +72,7 @@ export function PublicPersonalView({ username }: { username: string }) {
 
 	const points = series[statId] ?? series[ids[0]!] ?? []
 	const delta =
-		points.length >= 2 ? points[points.length - 1]!.v - points[0]!.v : 0
+		points.length >= 2 ? points[points.length - 1]?.v - points[0]?.v : 0
 	const alliance =
 		data.snapshots[data.snapshots.length - 1]?.profile?.alliance ?? null
 

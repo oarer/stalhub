@@ -80,7 +80,7 @@ export const RecipeSidebar = memo(function RecipeSidebar({
 				})
 			}
 
-			catMap.get(catKey)!.recipes.push({
+			catMap.get(catKey)?.recipes.push({
 				id: itemId,
 				name: getName(itemId),
 				icon: getIcon(itemId),

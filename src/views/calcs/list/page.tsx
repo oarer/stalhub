@@ -13,7 +13,7 @@ export default function ToolsListView() {
 
 	return (
 		<section className="mx-auto max-w-7xl space-y-12 px-4 pt-42 pb-12 sm:px-6">
-			<>
+			
 				<h1
 					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
@@ -22,7 +22,7 @@ export default function ToolsListView() {
 				<p className="font-medium text-muted-foreground text-sm">
 					{t('toolsList.subtitle')}
 				</p>
-			</>
+			
 			<div className="grid max-w-355 grid-cols-1 gap-px overflow-hidden rounded-2xl ring-2 ring-primary/30 md:grid-cols-2 lg:grid-cols-3">
 				{toolsList.map((tool, index) => (
 					<motion.div

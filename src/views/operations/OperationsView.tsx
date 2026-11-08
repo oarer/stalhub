@@ -17,7 +17,7 @@ import OperationSessionCard from './components/OperationSessionCard'
 
 const regionOptions = Object.values(Regions).map((region) => ({
 	value: region,
-	label: 'region.' + region,
+	label: `region.${region}`,
 }))
 
 const PAGE_SIZE = 20

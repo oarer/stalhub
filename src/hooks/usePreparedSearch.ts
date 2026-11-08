@@ -32,9 +32,9 @@ export function usePreparedSearch(
 
 	const { preparedEntries: preparedItems, filteredEntries: filteredItems } =
 		useFuseSearch<ItemListing>(items ?? [], query, {
-			getName: (i) => (i.name && i.name[locale]) ?? '',
+			getName: (i) => (i.name?.[locale]) ?? '',
 			getKey: (i) =>
-				`${i.data ?? ''}-${normalizeText((i.name && i.name[locale]) ?? '')}-${i.icon ?? ''}`,
+				`${i.data ?? ''}-${normalizeText((i.name?.[locale]) ?? '')}-${i.icon ?? ''}`,
 			locale,
 			minLength: MIN_LENGTH,
 			threshold,

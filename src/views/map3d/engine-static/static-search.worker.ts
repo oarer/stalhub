@@ -49,7 +49,7 @@ scope.onmessage = async (e) => {
 			load<[number, string][]>(root, 'search-documents', signal),
 			load<{ shards: string[]; count: number }>(
 				root,
-				base + '/search-index/manifest',
+				`${base}/search-index/manifest`,
 				signal
 			),
 		])
@@ -74,7 +74,7 @@ scope.onmessage = async (e) => {
 					if (row[0] >= cursor && rows.length <= limit) rows.push(row)
 				}
 		}
-		const next = rows.length > limit ? rows.pop()![0] : null,
+		const next = rows.length > limit ? rows.pop()?.[0] : null,
 			items = []
 		for (const [, cx, cz, uuid, , fallback] of rows) {
 			if (fallback) {

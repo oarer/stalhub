@@ -136,8 +136,9 @@ export default function BadgesAdminView() {
 	})
 
 	const updateMutation = useMutation({
-		mutationFn: () =>
-			adminBadgeService.update(editBadge!.id, {
+		mutationFn: () => {
+			if (!editBadge) throw new Error('No badge')
+			return adminBadgeService.update(editBadge.id, {
 				name: editName || undefined,
 				icon: editMode === 'icon' ? editIcon : undefined,
 				image:
@@ -147,7 +148,8 @@ export default function BadgesAdminView() {
 							? null
 							: undefined,
 				color: editColor || undefined,
-			}),
+			})
+		},
 		onSuccess: () => {
 			toast.success(t('admin.badges.toast.updated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'badges'] })

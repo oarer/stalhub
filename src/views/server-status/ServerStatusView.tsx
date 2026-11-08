@@ -63,7 +63,7 @@ export default function ServerStatusView() {
 
 	const onlineByRegion = new Map<string, number>()
 	for (const entry of online ?? []) {
-		if (entry.online == null || isNaN(entry.online)) continue
+		if (entry.online == null || Number.isNaN(entry.online)) continue
 		onlineByRegion.set(
 			entry.region,
 			(onlineByRegion.get(entry.region) ?? 0) + entry.online

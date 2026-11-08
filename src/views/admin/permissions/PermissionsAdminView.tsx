@@ -51,11 +51,13 @@ export default function PermissionsAdminView() {
 	})
 
 	const updateMutation = useMutation({
-		mutationFn: () =>
-			adminPermissionService.update(editPerm!.id, {
+		mutationFn: () => {
+			if (!editPerm) throw new Error('No permission')
+			return adminPermissionService.update(editPerm.id, {
 				name: editName,
 				description: editDescription || undefined,
-			}),
+			})
+		},
 		onSuccess: () => {
 			toast.success(t('admin.permissions.toast.updated'))
 			queryClient.invalidateQueries({

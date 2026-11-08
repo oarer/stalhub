@@ -356,7 +356,7 @@ export class MarkerEditorEngine {
 
 	bakeImageToBuffer(): void {
 		const generated = this.store.generated
-		if (!generated || !generated.markers.length) {
+		if (!generated?.markers.length) {
 			this.store.genStats = 'Нечего запекать из картинки'
 			this.syncUi()
 			return
@@ -727,7 +727,7 @@ export class MarkerEditorEngine {
 			zoom: s.zoom,
 			genStats: s.genStats,
 			cfgStatus: s.cfgStatus,
-			generated: Boolean(s.generated && s.generated.markers.length),
+			generated: Boolean(s.generated?.markers.length),
 			hasImage: Boolean(this.lastImageFile),
 			waypoints,
 			points: this.buildPoints(),

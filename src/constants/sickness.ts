@@ -35,7 +35,7 @@ export function computeSicknessEffects(
 
 	for (const [key, level] of Object.entries(sickness)) {
 		const def = SICKNESS[key as SicknessKey]
-		if (!def || !def.properties) continue
+		if (!def?.properties) continue
 		const lvlProps = def.properties[`level_${level}`]
 		if (!lvlProps) continue
 		for (const [shortKey, value] of Object.entries(lvlProps)) {

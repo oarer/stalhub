@@ -21,7 +21,6 @@ export function AdminEmptyRow({
 				<span className="text-neutral-400 text-sm">{message}</span>
 			</Table.Cell>
 			{Array.from({ length: Math.max(colCount - 1, 0) }).map((_, i) => (
-				// biome-ignore lint/suspicious/noArrayIndexKey: static skeleton placeholders
 				<Table.Cell key={i} />
 			))}
 		</Table.Row>

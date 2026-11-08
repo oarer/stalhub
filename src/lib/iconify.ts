@@ -18,7 +18,7 @@ export function parseIconifyName(input: string): ParsedIconName | null {
 
 export function isBundledCoverIcon(input: string): boolean {
 	const parsed = parseIconifyName(input)
-	if (!parsed || parsed.prefix !== 'lucide') return false
+	if (parsed?.prefix !== 'lucide') return false
 	return BUNDLED.has(parsed.name)
 }
 

@@ -25,7 +25,7 @@ export function MetricSelect({
 				? 'DERIVED'
 				: getStatMeta(id, locale).category
 			if (!byCat.has(cat)) byCat.set(cat, [])
-			byCat.get(cat)!.push(id)
+			byCat.get(cat)?.push(id)
 		}
 		const out: ComboboxOption[] = []
 		for (const cat of CATEGORY_ORDER) {

@@ -71,7 +71,6 @@ function CheckBox({
 	}
 
 	const checkboxElement = (
-		// biome-ignore lint/a11y/useSemanticElements: headless button semantics are required by the UI kit
 		<button
 			aria-checked={checked}
 			className={cn(

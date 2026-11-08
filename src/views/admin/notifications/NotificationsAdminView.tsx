@@ -16,13 +16,14 @@ import { adminRoleQueries } from '@/queries/admin/role.queries'
 import { adminUserQueries } from '@/queries/admin/user.queries'
 import { adminNotificationService } from '@/services/admin/notification.service'
 import type { AdminNotificationTargetKind } from '@/types/admin.type'
+import GlobalAnnouncementsManager from './GlobalAnnouncementsManager'
 
 export default function NotificationsAdminView() {
 	const t = useTranslations()
 	const queryClient = useQueryClient()
-	const [mode, setMode] = useState<'broadcast' | 'user' | 'target'>(
-		'broadcast'
-	)
+	const [mode, setMode] = useState<
+		'broadcast' | 'user' | 'target' | 'global'
+	>('broadcast')
 	const [title, setTitle] = useState('')
 	const [content, setContent] = useState('')
 	const [link, setLink] = useState('')
@@ -141,6 +142,21 @@ export default function NotificationsAdminView() {
 
 	const users = usersData?.data ?? []
 
+	if (mode === 'global') {
+		return (
+			<div className="flex flex-col gap-6">
+				<div className="flex items-center justify-between">
+					<h1 className="font-semibold text-2xl">
+						{t('admin.notifications.title')}
+					</h1>
+				</div>
+				<GlobalAnnouncementsManager
+					onBack={() => setMode('broadcast')}
+				/>
+			</div>
+		)
+	}
+
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
@@ -189,6 +205,17 @@ export default function NotificationsAdminView() {
 								<Icon className="size-4" icon="lucide:filter" />
 								{t('admin.notifications.target')}
 							</Button>
+							<Button
+								className="gap-2"
+								onClick={() => setMode('global')}
+								variant="secondary"
+							>
+								<Icon
+									className="size-4"
+									icon="lucide:megaphone"
+								/>
+								{t('admin.notifications.global.mode')}
+							</Button>
 						</div>
 
 						{mode === 'target' && (
@@ -233,12 +260,16 @@ export default function NotificationsAdminView() {
 									<Combobox
 										className="h-10 md:w-80"
 										onValueChange={(value) =>
-											setRoleId(value ? Number(value) : null)
+											setRoleId(
+												value ? Number(value) : null
+											)
 										}
-										options={(rolesData ?? []).map((role) => ({
-											label: role.name,
-											value: String(role.id),
-										}))}
+										options={(rolesData ?? []).map(
+											(role) => ({
+												label: role.name,
+												value: String(role.id),
+											})
+										)}
 										placeholder="admin.notifications.selectRole"
 										translateOptions={false}
 										value={roleId ? String(roleId) : ''}
@@ -297,12 +328,11 @@ export default function NotificationsAdminView() {
 														.includes(
 															userSearch.toLowerCase()
 														) ||
-													(u.name &&
-														u.name
-															.toLowerCase()
-															.includes(
-																userSearch.toLowerCase()
-															))
+													u.name
+														?.toLowerCase()
+														.includes(
+															userSearch.toLowerCase()
+														)
 											)
 											.slice(0, 5)
 											.map((u) => (
@@ -337,12 +367,11 @@ export default function NotificationsAdminView() {
 													.includes(
 														userSearch.toLowerCase()
 													) ||
-												(u.name &&
-													u.name
-														.toLowerCase()
-														.includes(
-															userSearch.toLowerCase()
-														))
+												u.name
+													?.toLowerCase()
+													.includes(
+														userSearch.toLowerCase()
+													)
 										).length === 0 && (
 											<p className="px-2 py-1 text-foreground text-sm">
 												{t(

@@ -80,10 +80,10 @@ export function BuildLiteHeader({
 
 	const publishMutation = useMutation({
 		mutationFn: () => {
-			const name = currentBuild?.name || 'Build'
+			if (!currentBuild) throw new Error('No build')
 			return buildApiService.create({
-				title: name,
-				data: currentBuild!.build,
+				title: currentBuild.name || 'Build',
+				data: currentBuild.build,
 				tags: selectedTags,
 			})
 		},

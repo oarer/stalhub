@@ -40,7 +40,7 @@ export function SessionPlan({
 }: SessionPlanProps) {
 	const t = useTranslations()
 
-	if (!best || !best.map) {
+	if (!best?.map) {
 		return (
 			<Card.Root className="flex flex-col gap-4">
 				<Card.Header>

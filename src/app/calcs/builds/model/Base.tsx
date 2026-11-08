@@ -26,9 +26,21 @@ type BaseModelProps = {
 	}
 	type: ModelType
 	animations?: THREE.AnimationClip[]
+	animationName?: string
 	onSceneReady?: (scene: THREE.Group) => void
 	attachToBone?: string
 	attachObjects?: THREE.Object3D[]
+	attachmentPosition?: [number, number, number]
+	attachmentRotation?: [number, number, number]
+	attachmentScale?: [number, number, number]
+	attachmentSlots?: Array<{
+		bone: string
+		objects: THREE.Object3D[]
+		position?: [number, number, number]
+		rotation?: [number, number, number]
+		scale?: [number, number, number]
+	}>
+	visible?: boolean
 	interactive?: boolean
 	paint?: PaintConfig
 	weapon?: boolean
@@ -59,9 +71,15 @@ export function BaseModel({
 	textures,
 	type,
 	animations,
+	animationName,
 	onSceneReady,
 	attachToBone,
 	attachObjects,
+	attachmentPosition,
+	attachmentRotation,
+	attachmentScale,
+	attachmentSlots,
+	visible = true,
 	interactive = true,
 	paint,
 	weapon,
@@ -493,11 +511,14 @@ export function BaseModel({
 
 		const bone =
 			scene.getObjectByName(attachToBone) ??
-			scene.getObjectByName(attachToBone + '_0')
+			scene.getObjectByName(`${attachToBone}_0`)
 
 		if (!bone || !(bone instanceof THREE.Bone)) return
 
 		const group = new THREE.Group()
+		if (attachmentPosition) group.position.fromArray(attachmentPosition)
+		if (attachmentRotation) group.rotation.fromArray(attachmentRotation)
+		if (attachmentScale) group.scale.fromArray(attachmentScale)
 		for (const obj of attachObjects) {
 			if ((obj as THREE.SkinnedMesh).isSkinnedMesh) {
 				const mesh = obj.clone() as THREE.SkinnedMesh
@@ -513,7 +534,33 @@ export function BaseModel({
 			}
 		}
 		bone.add(group)
-	}, [scene, attachToBone, attachObjects])
+	}, [
+		scene,
+		attachToBone,
+		attachObjects,
+		attachmentPosition,
+		attachmentRotation,
+		attachmentScale,
+	])
+
+	useEffect(() => {
+		if (!attachmentSlots?.length) return
+		const groups: THREE.Group[] = []
+		for (const slot of attachmentSlots) {
+			const bone =
+				scene.getObjectByName(slot.bone) ??
+				scene.getObjectByName(`${slot.bone}_0`)
+			if (!bone || !(bone instanceof THREE.Bone)) continue
+			const group = new THREE.Group()
+			if (slot.position) group.position.fromArray(slot.position)
+			if (slot.rotation) group.rotation.fromArray(slot.rotation)
+			if (slot.scale) group.scale.fromArray(slot.scale)
+			for (const object of slot.objects) group.add(object.clone())
+			bone.add(group)
+			groups.push(group)
+		}
+		return () => groups.forEach((group) => group.parent?.remove(group))
+	}, [scene, attachmentSlots])
 
 	useEffect(() => {
 		if (animations && animations.length > 0) {
@@ -528,7 +575,12 @@ export function BaseModel({
 				const clip = animations.find((a) =>
 					a.name
 						.toLowerCase()
-						.includes('menu_default_stand_unarmed_heavy')
+						.includes(
+							(
+								animationName ??
+								'menu_default_stand_unarmed_heavy'
+							).toLowerCase()
+						)
 				)
 				if (clip) {
 					const action = mixerRef.current.clipAction(clip)
@@ -537,7 +589,7 @@ export function BaseModel({
 				}
 			}
 		}
-	}, [scene, animations])
+	}, [scene, animations, animationName])
 
 	useFrame((_, delta) => {
 		if (mixerRef.current) {
@@ -631,6 +683,7 @@ export function BaseModel({
 		<>
 			<primitive
 				object={scene}
+				visible={visible}
 				{...(interactive
 					? {
 							onClick: (e: ThreeEvent<MouseEvent>) => {

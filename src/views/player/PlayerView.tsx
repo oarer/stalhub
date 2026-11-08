@@ -24,7 +24,12 @@ export default function PlayerView({
 
 	return (
 		<main className="mx-auto max-w-360 gap-12 space-y-6 px-4 pt-42 pb-12 sm:px-6 md:px-8">
-			<HeroView data={data} region={region} />
+			<HeroView
+				character={character}
+				data={data}
+				isRu={isRu}
+				region={region}
+			/>
 			<PlayerSummary stats={data.stats} />
 			{isRu && <PlayerGearView character={character} />}
 			{data.clan && <ClanView data={data.clan} />}

@@ -29,16 +29,16 @@ function extractLocalized(
 	if (typeof name === 'string') return name
 	if (typeof name === 'object') {
 		const o = name as Record<string, unknown>
-		const lines = o['lines'] as Record<string, string> | undefined
+		const lines = o.lines as Record<string, string> | undefined
 		if (lines) {
 			if (lines[locale]) return lines[locale]
-			if (lines['en']) return lines['en']
+			if (lines.en) return lines.en
 			const first = Object.values(lines)[0]
 			if (first) return first
 		}
 		if (typeof o[locale] === 'string') return o[locale] as string
-		if (typeof o['ru'] === 'string') return o['ru'] as string
-		const text = o['text']
+		if (typeof o.ru === 'string') return o.ru as string
+		const text = o.text
 		if (typeof text === 'string' && text) return text
 	}
 	return fallback
@@ -134,7 +134,7 @@ const UNIT_LABELS: Record<string, Record<string, string>> = {
 }
 
 function unitLabel(unit: string, locale: string): string {
-	return UNIT_LABELS[locale]?.[unit] ?? UNIT_LABELS['en']![unit] ?? unit
+	return UNIT_LABELS[locale]?.[unit] ?? UNIT_LABELS.en?.[unit] ?? unit
 }
 
 export function formatStatValue(
@@ -199,7 +199,7 @@ export function formatDelta(
 	const kind = getStatKind(id)
 	if (id === 'kd') return `${sign}${abs.toFixed(2)}`
 	if (id === 'accuracy' || id === 'hs-rate')
-		return `${sign}${(abs * 100).toFixed(1)}${PP_SUFFIX[locale] ?? PP_SUFFIX['en']}`
+		return `${sign}${(abs * 100).toFixed(1)}${PP_SUFFIX[locale] ?? PP_SUFFIX.en}`
 	if (kind === 'DURATION') {
 		const hours = abs / (1000 * 60 * 60)
 		return `${sign}${hours.toLocaleString(locale, { maximumFractionDigits: 1 })} ${unitLabel('hours', locale)}`
@@ -253,7 +253,7 @@ export function buildDerivedSeries(
 	for (const [id, pts] of Object.entries(series)) {
 		for (const p of pts) {
 			if (!byTime.has(p.t)) byTime.set(p.t, new Map())
-			byTime.get(p.t)!.set(id, p.v)
+			byTime.get(p.t)?.set(id, p.v)
 		}
 	}
 	const kd: SeriesPoint[] = []
@@ -271,8 +271,8 @@ export function buildDerivedSeries(
 		acc.push({ t, v: fir > 0 ? hit / fir : 0 })
 		hs.push({ t, v: hit > 0 ? hea / hit : 0 })
 	}
-	out['kd'] = kd
-	out['accuracy'] = acc
+	out.kd = kd
+	out.accuracy = acc
 	out['hs-rate'] = hs
 	return out
 }
@@ -280,6 +280,6 @@ export function buildDerivedSeries(
 export function toDeltaPoints(points: SeriesPoint[]): SeriesPoint[] {
 	return points.map((p, i) => ({
 		t: p.t,
-		v: i === 0 ? 0 : p.v - points[i - 1]!.v,
+		v: i === 0 ? 0 : p.v - points[i - 1]?.v,
 	}))
 }

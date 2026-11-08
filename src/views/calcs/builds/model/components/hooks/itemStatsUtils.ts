@@ -95,7 +95,7 @@ export function getThresholdLimits(
 	if (!item?.infoBlocks) return limits
 
 	for (const el of collectListElements(item.infoBlocks)) {
-		if (!el || el.type !== 'threshold') continue
+		if (el?.type !== 'threshold') continue
 		const key = getElementKey(el)
 		if (!key) continue
 		const limit = Number(el.limit)

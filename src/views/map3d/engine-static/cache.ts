@@ -534,7 +534,7 @@ export class PacketCache {
 							entries: 0,
 							limit: this.maxBytes,
 						}
-						const limit = state!.limit ?? this.maxBytes
+						const limit = state?.limit ?? this.maxBytes
 						if (state!.bytes <= limit) return
 						// Reserve room for subsequent progressive mips so each small write
 						// does not launch another eviction. Tiny quotas retain exact LRU tests.

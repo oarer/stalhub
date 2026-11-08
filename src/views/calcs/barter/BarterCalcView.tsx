@@ -278,11 +278,9 @@ export default function BarterCalcView() {
 					)}
 					<div className="min-w-0 flex-1">
 						{selected ? (
-							<>
-								<div className="truncate font-semibold text-lg">
+							<div className="truncate font-semibold text-lg">
 									{rootFallback}
 								</div>
-							</>
 						) : (
 							<div className="text-foreground text-sm">
 								{t('barterCalc.pick')}

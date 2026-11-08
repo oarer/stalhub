@@ -333,6 +333,19 @@
             "label": "CW 맵",
             "description": "클랜전 맵"
           },
+          "uno": {
+            "label": "UNO leaderboard",
+            "description": "Public clan analytics"
+          },
+          "unoCalendar": {
+            "label": "UNO calendar"
+          },
+          "unoGrids": {
+            "label": "Tournament grids"
+          },
+          "unoSeasons": {
+            "label": "UNO seasons"
+          },
           "clans": {
             "label": "클랜 목록"
           },
@@ -1983,6 +1996,57 @@
         "all": "전체",
         "role": "역할",
         "clan": "클랜"
+      },
+      "global": {
+        "mode": "전체 공지",
+        "title": "전체 공지",
+        "description": "모든 방문자에게 표시되는 고정 공지입니다.",
+        "back": "알림으로 돌아가기",
+        "createTitle": "전체 공지 만들기",
+        "editTitle": "전체 공지 수정",
+        "titleLabel": "공지 제목",
+        "typeLabel": "중요도",
+        "types": {
+          "info": "정보",
+          "warning": "경고",
+          "danger": "위험"
+        },
+        "startsAt": "시작 시간",
+        "expiresAt": "종료 시간 (선택 사항)",
+        "active": "활성",
+        "inactive": "비활성",
+        "contentTitle": "공지 내용",
+        "contentDescription": "파트 순서를 유지하므로 텍스트 사이에 링크를 넣을 수 있습니다.",
+        "addText": "텍스트 추가",
+        "addLink": "링크 추가",
+        "partType": {
+          "text": "텍스트",
+          "link": "링크"
+        },
+        "moveUp": "파트 위로 이동",
+        "moveDown": "파트 아래로 이동",
+        "removePart": "파트 삭제",
+        "textPart": "텍스트 파트",
+        "textPlaceholder": "공지 내용을 입력하세요...",
+        "linkText": "링크 텍스트",
+        "linkHref": "링크 URL",
+        "create": "공지 만들기",
+        "save": "변경 사항 저장",
+        "cancel": "취소",
+        "listTitle": "기존 공지",
+        "loadError": "전체 공지를 불러올 수 없습니다.",
+        "empty": "아직 전체 공지가 없습니다.",
+        "edit": "공지 수정",
+        "delete": "공지 삭제",
+        "schedule": "{starts}부터 {expires}까지",
+        "confirmDelete": "‘{title}’ 공지를 삭제할까요?",
+        "toast": {
+          "created": "전체 공지가 생성되었습니다",
+          "updated": "전체 공지가 수정되었습니다",
+          "deleted": "전체 공지가 삭제되었습니다",
+          "saveError": "전체 공지를 저장할 수 없습니다",
+          "deleteError": "전체 공지를 삭제할 수 없습니다"
+        }
       }
     },
     "bans": {
@@ -4012,5 +4076,312 @@
       "preview": "미리보기"
     },
     "back": "전체 글"
+  },
+  "uno": {
+    "eyebrow": "UNO · public leaderboard",
+    "title": "UNO clans",
+    "description": "A public clan ranking with aggregated mode and map analytics — no personal data.",
+    "sectionNav": "UNO sections",
+    "nav": {
+      "calendar": "Calendar",
+      "grids": "Grids",
+      "seasons": "Seasons"
+    },
+    "modes": {
+      "brawl": "Brawl",
+      "tournament": "Tournament",
+      "baseCapture": "Base capture"
+    },
+    "calendar": {
+      "eyebrow": "UNO · calendar",
+      "title": "UNO calendar",
+      "description": "A safe view of days and modes without player lists.",
+      "empty": "No calendar data for the selected period.",
+      "dayNumber": "Day number",
+      "days": "{count, plural, one {day} other {days}}",
+      "gridsCount": "Grids"
+    },
+    "grids": {
+      "eyebrow": "UNO · tournament grids",
+      "title": "Tournament grids",
+      "description": "Read-only grid summaries and aggregated metadata only.",
+      "modeTitle": "Grids",
+      "empty": "No grids for the selected period.",
+      "total": "Total grids",
+      "date": "Date",
+      "time": "Time",
+      "number": "Number",
+      "groups": "Groups",
+      "detail": {
+        "back": "Back to grids",
+        "fullscreen": "Fullscreen",
+        "groupsTitle": "Grids",
+        "gridNumber": "Grid #{number}",
+        "group": "Grid",
+        "numberShort": "#{number}",
+        "place": "Place",
+        "rank": "Rank",
+        "clan": "Clan",
+        "score": "Score",
+        "result": "Result",
+        "wins": "Wins",
+        "losses": "Losses",
+        "share": "Share",
+        "sleeves": "Sleeves",
+        "coverageComplete": "All grids loaded",
+        "coverageIncomplete": "Loaded {downloaded} of {expected}",
+        "noClans": "No clans found",
+        "noBracket": "Grid layout is unavailable",
+        "stage": "Stage",
+        "rating": "Rating",
+        "missingCards": "Missing cards",
+        "tier": "Tier",
+        "winner": "Winner",
+        "clansTitle": "Grid clans",
+        "upper": "Upper",
+        "lower": "Lower",
+        "status": {
+          "completed": "Completed",
+          "live": "Live"
+        }
+      },
+      "maps": {
+        "smallBerdovka": "Small Berdovka",
+        "smallBerdovka2": "Small Berdovka 2",
+        "khvoiny": "Khvoiny",
+        "nizina": "Nizina",
+        "rozaVetrov": "Roza Vetrov",
+        "kvartaly": "Kvartaly"
+      }
+    },
+    "search": "Search clans",
+    "retry": "Try again",
+    "back": "Back",
+    "unknown": "Not available",
+    "stats": {
+      "clans": "Ranked clans",
+      "visible": "Visible",
+      "updated": "Updated",
+      "rating": "Rating",
+      "rank": "Rank",
+      "winRate": "Win rate",
+      "matches": "Matches",
+      "score": "Score"
+    },
+    "filters": {
+      "region": "Region",
+      "sort": "Sort by",
+      "all": "All regions",
+      "allFactions": "모든 세력",
+      "rating": "Rating",
+      "rank": "Rank",
+      "wins": "Wins",
+      "faction": "Faction",
+      "from": "From",
+      "to": "To",
+      "date": "Date",
+      "mode": "Mode",
+      "allModes": "All modes",
+      "season": "Season",
+      "seasonPlaceholder": "For example, season-1",
+      "timezone": "Timezone",
+      "timezonePlaceholder": "For example, Europe/Moscow",
+      "apply": "Apply"
+    },
+    "table": {
+      "rank": "Rank",
+      "clan": "Clan",
+      "rating": "Rating",
+      "winRate": "Win rate",
+      "matches": "Matches",
+      "faction": "Faction",
+      "members": "Members"
+    },
+    "empty": {
+      "title": "No data yet",
+      "description": "Public UNO results are not available yet.",
+      "filtered": "No clans match these filters.",
+      "section": "There is no aggregated data for this view."
+    },
+    "error": {
+      "title": "UNO is temporarily unavailable",
+      "description": "Public results could not be loaded. Try again later."
+    },
+    "analytics": {
+      "modes": "By mode",
+      "maps": "By map"
+    },
+    "clan": {
+      "empty": "The clan was not found or its public data is unavailable.",
+      "history": {
+        "title": "경기 기록",
+        "description": "모든 경기의 결과, 상대 및 클랜 보상입니다.",
+        "allModes": "모든 모드",
+        "allMaps": "모든 맵",
+        "allResults": "모든 결과",
+        "win": "승리",
+        "loss": "패배",
+        "matches": "경기",
+        "winsLosses": "승리 / 패배",
+        "sleeves": "탄피",
+        "clanMoney": "클랜 자금",
+        "clanInfluence": "영향력",
+        "date": "날짜",
+        "mode": "모드",
+        "map": "맵",
+        "opponents": "상대",
+        "score": "점수",
+        "result": "결과",
+        "stage": "단계",
+        "bye": "상대 없음",
+        "empty": "아직 경기 기록이 없습니다.",
+        "byModes": "모드별",
+        "byMaps": "맵별",
+        "shownOf": "{total}개 중 {shown}개 표시"
+      }
+    },
+    "compare": {
+      "title": "Compare clans",
+      "description": "Enter two clan IDs to compare public aggregated metrics only.",
+      "leftLabel": "First clan ID",
+      "rightLabel": "Second clan ID",
+      "idPlaceholder": "For example, clan-01",
+      "run": "Compare",
+      "hint": "Add two clan IDs above or open this page with left and right query parameters.",
+      "empty": "A comparison is not available for these clans.",
+      "open": "Compare this clan",
+      "openClan": "Open clan",
+      "metric": "Metric",
+      "aggregateTitle": "Head-to-head totals",
+      "aggregateDescription": "Aggregated values returned by UNO for this clan pair.",
+      "metrics": {
+        "rating": "Rating",
+        "position": "Position",
+        "influence": "Influence",
+        "levelRaw": "Level",
+        "memberLimit": "Member limit",
+        "memberCount": "Members",
+        "fights": "Fights",
+        "wins": "Wins",
+        "losses": "Losses",
+        "win_rate": "Win rate",
+        "grids": "Grids",
+        "grids_won": "Grids won",
+        "best_client_place": "Best client place",
+        "average_client_place": "Average client place",
+        "monthly_grids": "Monthly grids"
+      }
+    },
+    "seasons": {
+      "title": "UNO seasons",
+      "description": "Current and archived periods of the public ranking.",
+      "empty": "No seasons found.",
+      "current": "Current",
+      "starts": "Starts",
+      "ends": "Ends",
+      "periodValues": "period values",
+      "interSeason": {
+        "title": "Off-season"
+      },
+      "november2023": {
+        "title": "November 2023"
+      },
+      "december2023": {
+        "title": "December 2023"
+      },
+      "january2024": {
+        "title": "January 2024"
+      },
+      "february2024": {
+        "title": "February 2024"
+      },
+      "march2024": {
+        "title": "March 2024"
+      },
+      "april2024": {
+        "title": "April 2024"
+      },
+      "may2024": {
+        "title": "May 2024"
+      },
+      "june2024": {
+        "title": "June"
+      },
+      "july-august2024": {
+        "title": "July-August"
+      },
+      "september-november2024": {
+        "title": "September-November"
+      },
+      "december-january2024": {
+        "title": "December-January"
+      },
+      "february-march2025": {
+        "title": "February-March '25"
+      },
+      "cw_chill_0": {
+        "title": "Off-season"
+      },
+      "april-may2025": {
+        "title": "April-May '25"
+      },
+      "may-june2025": {
+        "title": "May-June '25"
+      },
+      "july-august2025": {
+        "title": "July-August '25"
+      },
+      "cw_chill_1": {
+        "title": "Off-season"
+      },
+      "spring2025": {
+        "title": "Spring 2025"
+      },
+      "summer2025": {
+        "title": "Summer 2025"
+      },
+      "september2025": {
+        "title": "September 2025"
+      },
+      "october2025": {
+        "title": "October 2025"
+      },
+      "november2025": {
+        "title": "November 2025"
+      },
+      "december2025": {
+        "title": "December 2025"
+      },
+      "january2026": {
+        "title": "January 2026"
+      },
+      "february2026": {
+        "title": "February 2026"
+      },
+      "april2026": {
+        "title": "April 2026"
+      },
+      "may2026": {
+        "title": "May 2026"
+      },
+      "july2026": {
+        "title": "July 2026"
+      },
+      "august2026": {
+        "title": "August 2026"
+      },
+      "september2026": {
+        "title": "September 2026"
+      },
+      "november2026": {
+        "title": "November 2026"
+      },
+      "january2027": {
+        "title": "January 2027"
+      },
+      "february2027": {
+        "title": "February 2027"
+      }
+    }
   }
 }

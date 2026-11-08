@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { randomUUID } from 'crypto'
+import { randomUUID } from 'node:crypto'
 import { type NextRequest, NextResponse } from 'next/server'
 
 const BOT_TOKEN = process.env.TG_BOT_TOKEN

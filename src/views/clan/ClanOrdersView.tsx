@@ -42,15 +42,15 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			const col = box.type
 			if (!byType.has(col)) byType.set(col, new Map())
 			const row = box.name
-			const prev = byType.get(col)!.get(row) ?? 0
-			byType.get(col)!.set(row, prev + box.count)
+			const prev = byType.get(col)?.get(row) ?? 0
+			byType.get(col)?.set(row, prev + box.count)
 		}
 		const cols = [...byType.keys()]
 		const rowNames = [...new Set(boxes.map((b) => b.name))]
 		const rows = rowNames.map((name) => {
 			const cells: Record<string, number> = {}
 			for (const col of cols) {
-				cells[col] = byType.get(col)!.get(name) ?? 0
+				cells[col] = byType.get(col)?.get(name) ?? 0
 			}
 			return { name, cells }
 		})
@@ -63,15 +63,15 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			const col = order.item_name
 			if (!byItem.has(col)) byItem.set(col, new Map())
 			const row = order.player.name
-			const prev = byItem.get(col)!.get(row) ?? 0
-			byItem.get(col)!.set(row, prev + order.count)
+			const prev = byItem.get(col)?.get(row) ?? 0
+			byItem.get(col)?.set(row, prev + order.count)
 		}
 		const cols = [...byItem.keys()]
 		const rowNames = [...new Set(boosts.map((o) => o.player.name))]
 		const rows = rowNames.map((name) => {
 			const cells: Record<string, number> = {}
 			for (const col of cols) {
-				cells[col] = byItem.get(col)!.get(name) ?? 0
+				cells[col] = byItem.get(col)?.get(name) ?? 0
 			}
 			return { name, cells }
 		})

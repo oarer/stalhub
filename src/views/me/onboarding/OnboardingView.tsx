@@ -35,7 +35,7 @@ const USERNAME_PATTERN = /^[a-zA-Z0-9_]{3,32}$/
 
 const regionOptions = Object.values(Regions).map((region) => ({
 	value: region,
-	label: 'region.' + region,
+	label: `region.${region}`,
 }))
 
 const CARD_BACKGROUNDS: { value: CardBackground; label: string }[] = [

@@ -114,7 +114,7 @@ export async function installExternalFixtures(
 	})
 }
 
-export const test = base.extend<{ browserChecks: void }>({
+export const test = base.extend<{ browserChecks: undefined }>({
 	browserChecks: [
 		async ({ context, baseURL }, use, testInfo) => {
 			const errors: string[] = []
@@ -156,7 +156,7 @@ export const test = base.extend<{ browserChecks: void }>({
 				baseURL ?? 'http://localhost:4310',
 				unknown
 			)
-			await use()
+			await use(undefined)
 			await testInfo.attach(
 				'browser-errors-and-blocked-external-requests',
 				{

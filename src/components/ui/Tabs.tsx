@@ -149,7 +149,6 @@ function TabsContent({
 				className
 			)}
 			role="tabpanel"
-			tabIndex={0}
 			{...props}
 		>
 			{children}

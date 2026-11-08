@@ -15,7 +15,7 @@ import PlayersCards from './components/PlayersCards'
 
 const regionOptions = Object.values(Regions).map((region) => ({
 	value: region,
-	label: 'region.' + region,
+	label: `region.${region}`,
 }))
 
 export default function PlayerSearchView() {

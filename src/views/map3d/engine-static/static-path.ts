@@ -1,7 +1,7 @@
 const encode = (s: string) =>
 	encodeURIComponent(s).replace(
 		/[!'()*]/g,
-		(c) => '%' + c.charCodeAt(0).toString(16).toUpperCase()
+		(c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`
 	)
 export function staticResourcePath(key: string): string {
 	const [resource, query = ''] = key.split('?'),

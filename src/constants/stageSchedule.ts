@@ -55,7 +55,7 @@ export function detectStageFromNow(
 	const minutes = date.getHours() * 60 + date.getMinutes()
 	for (const type of TYPE_PRIORITY) {
 		const entry = STAGE_SCHEDULE[type]
-		if (!entry || !entry.days.includes(day)) continue
+		if (!entry?.days.includes(day)) continue
 		for (const w of entry.stages) {
 			const start = toMinutes(w.start[0], w.start[1])
 			const end = toMinutes(w.end[0], w.end[1])

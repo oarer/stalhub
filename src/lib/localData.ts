@@ -194,7 +194,7 @@ export function onLocalDataImport(callback: (url: string) => void): () => void {
 	const desktop = (
 		window as Window & {
 			stalhubDesktop?: {
-				onImport: (cb: (url: string) => void) => (() => void) | void
+				onImport: (cb: (url: string) => void) => (() => void) | undefined
 			}
 		}
 	).stalhubDesktop

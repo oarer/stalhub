@@ -1,13 +1,13 @@
 const permitted =
-	/^(instances(?:\/|$)|maps(?:\/|$)|materials$|shapes$|texture-version$|texture$|sr-texture(?:-hd)?$|model(?:-raw|-texture|-material|-metadata)?$|effect(?:s|\-resource|\-definitions|\-catalog)?(?:\/|$)|notes(?:\/|$)|search(?:\/|$)|health$)/
+	/^(instances(?:\/|$)|maps(?:\/|$)|materials$|shapes$|texture-version$|texture$|sr-texture(?:-hd)?$|model(?:-raw|-texture|-material|-metadata)?$|effect(?:s|-resource|-definitions|-catalog)?(?:\/|$)|notes(?:\/|$)|search(?:\/|$)|health$)/
 
 export function mapBackendOrigin() {
 	const internal = process.env.STALHUB_BACKEND_URL?.replace(/\/$/, '')
-	if (internal) return internal + '/map3d'
+	if (internal) return `${internal}/map3d`
 	const existing = (
 		process.env.NEXT_PUBLIC_API ?? 'http://127.0.0.1:3001'
 	).replace(/\/$/, '')
-	return existing + (existing.endsWith('/api/v1') ? '' : '/api/v1') + '/map3d'
+	return `${existing + (existing.endsWith('/api/v1') ? '' : '/api/v1')}/map3d`
 }
 
 export async function forwardMapAsset(

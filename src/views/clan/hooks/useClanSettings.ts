@@ -25,7 +25,7 @@ export function useClanSettings() {
 	const { profile, isLeader, isOfficer } = useClanRoles()
 	const { data: settings } = useSuspenseQuery(clanQueries.getSettings())
 	const { data: guilds } = useSuspenseQuery(clanQueries.getBotGuilds())
-	const clan = profile!.clan!
+	const clan = profile?.clan!
 
 	const [isPublic, setIsPublic] = useState(clan.is_public ?? false)
 	const [recruiting, setRecruiting] = useState(clan.recruiting ?? false)

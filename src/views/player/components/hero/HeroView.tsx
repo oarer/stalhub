@@ -16,9 +16,13 @@ import HeroStats from './HeroStats'
 export default function HeroView({
 	data,
 	region,
+	character,
+	isRu,
 }: {
 	data: PlayerResponse
 	region: Regions
+	character: string
+	isRu: boolean
 }) {
 	const t = useTranslations()
 

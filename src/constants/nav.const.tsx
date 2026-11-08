@@ -312,6 +312,37 @@ export const NAV_STRUCTURE: NavGroup[] = [
 								labelKey: 'nav.groups.clans.items.clans.label',
 							},
 							{
+								key: 'uno',
+								icon: 'lucide:radar',
+								href: '/uno',
+								labelKey: 'nav.groups.clans.items.uno.label',
+								descriptionKey:
+									'nav.groups.clans.items.uno.description',
+								submenu: [
+									{
+										key: 'uno_calendar',
+										icon: 'lucide:calendar-days',
+										href: '/uno/calendar',
+										labelKey:
+											'nav.groups.clans.items.unoCalendar.label',
+									},
+									{
+										key: 'uno_grids',
+										icon: 'lucide:layers-3',
+										href: '/uno/grids',
+										labelKey:
+											'nav.groups.clans.items.unoGrids.label',
+									},
+									{
+										key: 'uno_seasons',
+										icon: 'lucide:clock-3',
+										href: '/uno/seasons',
+										labelKey:
+											'nav.groups.clans.items.unoSeasons.label',
+									},
+								],
+							},
+							{
 								key: 'clanMaps',
 								icon: 'lucide:map-pinned',
 								href: '/maps/cw',

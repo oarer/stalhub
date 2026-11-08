@@ -36,6 +36,33 @@ export interface PlayerGearAttachment {
 	attributes: PlayerGearAttribute[]
 }
 
+export interface PlayerGearRenderModel {
+	glb: string
+	textures: {
+		diff?: string
+		nrm?: string
+		emi?: string
+		spek?: string
+	}
+}
+
+export interface PlayerGearRenderAttach {
+	bone: string
+	position: [number, number, number]
+	rotation: [number, number, number]
+	scale: [number, number, number]
+	fallback: boolean
+}
+
+export interface PlayerGearRender {
+	model: PlayerGearRenderModel | null
+	armor?: { menuHeavy: boolean }
+	weapon?: {
+		menuClass: 'primary' | 'pistol' | 'melee'
+		attach: PlayerGearRenderAttach
+	}
+}
+
 export interface PlayerGearItem {
 	slot: string
 	slotType: string
@@ -49,6 +76,7 @@ export interface PlayerGearItem {
 	upgradeBonus: number | null
 	randomStats: number | null
 	attachments: PlayerGearAttachment[]
+	render?: PlayerGearRender | null
 }
 
 export interface PlayerGearResponse {

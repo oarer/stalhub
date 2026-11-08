@@ -136,7 +136,7 @@ export function WeaponSlotCard({
 				style={
 					isFocused
 						? ({
-								'--tw-ring-color': color + '80',
+								'--tw-ring-color': `${color}80`,
 							} as CSSProperties)
 						: {}
 				}

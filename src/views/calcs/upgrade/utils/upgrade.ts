@@ -54,7 +54,7 @@ export interface UpgradeResult {
 function armorExpectedAttempts(level: number): number {
 	const { chance, maxAttempts } = armorUpgradeLevels[level]
 	if (chance >= 1) return 1
-	return Math.max(1, (1 - Math.pow(1 - chance, maxAttempts)) / chance)
+	return Math.max(1, (1 - (1 - chance) ** maxAttempts) / chance)
 }
 
 function armorGuaranteeAttempts(level: number): number {

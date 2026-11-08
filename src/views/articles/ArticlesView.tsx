@@ -23,7 +23,7 @@ export default function ArticlesView() {
 
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<>
+			
 				<h1
 					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
 				>
@@ -34,7 +34,7 @@ export default function ArticlesView() {
 						count: data?.total_count ?? 0,
 					})}
 				</p>
-			</>
+			
 
 			{articles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">

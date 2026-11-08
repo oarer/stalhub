@@ -90,7 +90,7 @@ export function generateUniformMarkers(
 }
 
 export function buildMarkerRows(
-	width: number,
+	_width: number,
 	height: number,
 	markers: GeneratedMarker[]
 ): GeneratedMarker[][] {

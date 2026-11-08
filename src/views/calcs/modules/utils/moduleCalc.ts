@@ -157,7 +157,7 @@ function parsePower(p: ExprParser): number {
 	if (peek(p) === '^') {
 		next(p)
 		const exponent = parseUnary(p)
-		return Math.pow(base, exponent)
+		return base ** exponent
 	}
 
 	return base

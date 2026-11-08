@@ -155,7 +155,7 @@ export default function ClanLayout({
 			characters?.some(
 				(c) =>
 					c.username.toLowerCase() ===
-					profile.clan!.leader.toLowerCase()
+					profile.clan?.leader.toLowerCase()
 			) ?? false
 
 		if (!isLeader) {

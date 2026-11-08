@@ -6,22 +6,30 @@ import type * as THREE from 'three'
 
 export function BindModel({
 	onAnimationsReady,
+	animationName,
+	onSceneReady,
 }: {
 	onAnimationsReady?: (animations: THREE.AnimationClip[]) => void
+	animationName?: string
+	onSceneReady?: (scene: THREE.Group) => void
 }) {
-	const { scene, animations } = useGLTF('/public/models/steve.glb')
+	const { scene, animations } = useGLTF('/models/steve.glb')
 	const { actions } = useAnimations(animations, scene)
 
 	useEffect(() => {
+		const wanted = (
+			animationName ?? 'menu_default_stand_unarmed_heavy'
+		).toLowerCase()
 		const animName = Object.keys(actions).find((name) =>
-			name.toLowerCase().includes('menu_default_stand_unarmed_heavy')
+			name.toLowerCase().includes(wanted)
 		)
 		const action = animName ? actions[animName] : null
-		if (action) {
-			action.reset()
-			action.play()
+		if (!action) return
+		action.reset().fadeIn(0.2).play()
+		return () => {
+			action.fadeOut(0.2)
 		}
-	}, [actions])
+	}, [actions, animationName])
 
 	useEffect(() => {
 		scene.traverse((child) => {
@@ -31,9 +39,9 @@ export function BindModel({
 				mesh.receiveShadow = true
 			}
 		})
-
 		onAnimationsReady?.(animations)
-	}, [scene, animations, onAnimationsReady])
+		onSceneReady?.(scene)
+	}, [scene, animations, onAnimationsReady, onSceneReady])
 
 	return <primitive object={scene} position={[0, 0, 0]} scale={1} />
 }

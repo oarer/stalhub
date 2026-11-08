@@ -97,7 +97,7 @@ function resolveVPForKeyParsed(
 	parsed: ParsedItem,
 	key: string
 ): { V: number; P: number } {
-	if (parsed.statRanges && parsed.statRanges[key]) {
+	if (parsed.statRanges?.[key]) {
 		const r = parsed.statRanges[key]
 		return { V: Number(r.v0 ?? 0), P: Number(r.v100 ?? 0) }
 	}
@@ -258,7 +258,7 @@ export function computeArtifactStatsFromParsed(
 	const ctx: StatContext = {
 		R: normalizePercent(art?.percent),
 		K: art?.potential ?? 0,
-		qualityClass: art && art.quality_class,
+		qualityClass: art?.quality_class,
 	}
 
 	const addStatsCount = Object.keys(parsedItem.addStats ?? {}).length

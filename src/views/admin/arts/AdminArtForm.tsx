@@ -129,8 +129,9 @@ export function AdminArtForm({
 	})
 
 	const updateMutation = useMutation({
-		mutationFn: () =>
-			adminArtService.update(art!.id, {
+		mutationFn: () => {
+			if (!art) throw new Error('No art')
+			return adminArtService.update(art.id, {
 				title: title.trim(),
 				type,
 				image_url: imageUrls[0] ?? null,
@@ -146,7 +147,8 @@ export function AdminArtForm({
 									? socials
 									: null,
 						}),
-			}),
+			})
+		},
 		onSuccess: (art) => {
 			toast.success(t('admin.arts.toast.updated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'arts'] })

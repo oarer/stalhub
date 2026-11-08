@@ -165,7 +165,7 @@ function SortableHeader<TData extends RowData>({
 	align?: ColumnAlign
 	children?: React.ReactNode
 } & React.ComponentProps<'th'>) {
-	if (!column || !column.getCanSort()) return null
+	if (!column?.getCanSort()) return null
 
 	return (
 		<th

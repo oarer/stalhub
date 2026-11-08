@@ -243,7 +243,7 @@ export function useHideoutGraph(
 		const structural =
 			!prevNodeIdsRef.current ||
 			newIds.size !== prevNodeIdsRef.current.size ||
-			![...newIds].every((id) => prevNodeIdsRef.current!.has(id))
+			![...newIds].every((id) => prevNodeIdsRef.current?.has(id))
 
 		prevNodeIdsRef.current = newIds
 

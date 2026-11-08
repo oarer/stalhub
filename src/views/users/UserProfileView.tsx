@@ -140,7 +140,7 @@ export default function UserProfileView({
 													String(
 														loadout.data.build_fat
 													)
-												)!.title
+												)?.title
 											}
 										</span>
 									</HoverBuildCard>
@@ -174,7 +174,7 @@ export default function UserProfileView({
 													String(
 														loadout.data.build_speed
 													)
-												)!.title
+												)?.title
 											}
 										</span>
 									</HoverBuildCard>

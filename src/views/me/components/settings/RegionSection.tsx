@@ -11,7 +11,7 @@ import { Section } from '../Section'
 
 const regionOptions = Object.values(Regions).map((region) => ({
 	value: region,
-	label: 'region.' + region,
+	label: `region.${region}`,
 }))
 
 interface RegionSectionProps {
@@ -47,7 +47,7 @@ export function RegionSection({
 							{t('me.settings.regionLabel')}
 						</span>
 						<span className="font-semibold text-foreground text-sm">
-							{currentRegion ? t('region.' + currentRegion) : '—'}
+							{currentRegion ? t(`region.${currentRegion}`) : '—'}
 						</span>
 					</div>
 					<Combobox

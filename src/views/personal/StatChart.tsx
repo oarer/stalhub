@@ -103,12 +103,13 @@ export function StatChart({
 		}
 	}, [shown, label, mode, locale, t])
 
-	const allEqual = shown.length > 1 && shown.every((p) => p.v === shown[0]!.v)
+	const allEqual = shown.length > 1 && shown.every((p) => p.v === shown[0]?.v)
 
 	const base = getBaseLineOptions()
 
 	const options: ChartOptions<'line'> = {
 		...base,
+		animation: allEqual ? false : base.animation,
 		plugins: {
 			...base.plugins,
 			tooltip: {
@@ -145,7 +146,7 @@ export function StatChart({
 			{allEqual && (
 				<p className="mb-1 text-muted-foreground text-xs">
 					{t('chartUnchanged')}:{' '}
-					{formatStatValue(statId, shown[0]!.v, locale)}
+					{formatStatValue(statId, shown[0]?.v, locale)}
 				</p>
 			)}
 			<div className="h-64">
@@ -156,9 +157,9 @@ export function StatChart({
 				/>
 			</div>
 			<div className="mt-1 flex justify-between text-muted-foreground text-xs">
-				<span>{new Date(points[0]!.t).toLocaleString(locale)}</span>
+				<span>{new Date(points[0]?.t).toLocaleString(locale)}</span>
 				<span>
-					{new Date(points[points.length - 1]!.t).toLocaleString(
+					{new Date(points[points.length - 1]?.t).toLocaleString(
 						locale
 					)}
 				</span>

@@ -60,8 +60,7 @@ export function MiniChart() {
 
 	const areaOpacity = Math.max(0, Math.min(1, (progress - 0.25) / 0.75))
 	const dotOpacity = Math.max(0, Math.min(1, (progress - 0.92) / 0.08))
-	// SVG растянут через preserveAspectRatio="none", поэтому точку рисуем
-	// HTML-поверх — иначе круг превращается в овал.
+
 	const dotLeft = `${(last[0] / W) * 100}%`
 	const dotTop = `${(last[1] / H) * 100}%`
 

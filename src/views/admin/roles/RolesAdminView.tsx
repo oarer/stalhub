@@ -56,11 +56,13 @@ export default function RolesAdminView() {
 	})
 
 	const updateMutation = useMutation({
-		mutationFn: () =>
-			adminRoleService.update(editRole!.id, {
+		mutationFn: () => {
+			if (!editRole) throw new Error('No role')
+			return adminRoleService.update(editRole.id, {
 				name: editName,
 				description: editDescription || undefined,
-			}),
+			})
+		},
 		onSuccess: () => {
 			toast.success(t('admin.roles.toast.updated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })
@@ -79,10 +81,12 @@ export default function RolesAdminView() {
 	})
 
 	const assignPermissionsMutation = useMutation({
-		mutationFn: () =>
-			adminRoleService.assignPermissions(permissionsRole!.id, {
+		mutationFn: () => {
+			if (!permissionsRole) throw new Error('No role')
+			return adminRoleService.assignPermissions(permissionsRole.id, {
 				permission_ids: selectedPermissions,
-			}),
+			})
+		},
 		onSuccess: () => {
 			toast.success(t('admin.roles.toast.permissionsUpdated'))
 			queryClient.invalidateQueries({ queryKey: ['admin', 'roles'] })

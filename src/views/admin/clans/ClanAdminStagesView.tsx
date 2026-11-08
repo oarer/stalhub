@@ -65,8 +65,9 @@ function StageEditModal({
 	}
 
 	const updateMutation = useMutation({
-		mutationFn: () =>
-			adminClanService.updateStage(stage!.id, {
+		mutationFn: () => {
+			if (!stage) throw new Error('No stage')
+			return adminClanService.updateStage(stage.id, {
 				map_name: mapName || undefined,
 				type:
 					(type as 'TOURNAMENT' | 'BRAWL' | 'BASE_CAPTURE') ||
@@ -77,7 +78,8 @@ function StageEditModal({
 					: null,
 				ended_at: endedAt ? new Date(endedAt).toISOString() : null,
 				region: region || undefined,
-			}),
+			})
+		},
 		onSuccess: () => {
 			toast.success(t('admin.clans.stages.toast.updated'))
 			invalidate()

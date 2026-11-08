@@ -161,14 +161,13 @@ export function useBuildStats(buildOverride?: Build) {
 		const sicknessEffects = computeSicknessEffects(build.sickness)
 		return applySicknessEffects(result, sicknessEffects)
 	}, [
-		build,
-		armors,
-		containerItem,
-		rawArtifactStats,
-		consumables,
-		allStatKeys,
-		locale,
-		containerModifiers,
+		build, 
+		armors, 
+		containerItem, 
+		rawArtifactStats, 
+		consumables, 
+		allStatKeys, 
+		containerModifiers
 	])
 
 	const containerStats = useMemo<BuildStats>(() => {

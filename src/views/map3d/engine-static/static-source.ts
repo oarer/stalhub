@@ -11,7 +11,7 @@ let config: Promise<SourceConfig | null> | undefined
 export async function staticSourceConfig(): Promise<SourceConfig | null> {
 	// Node tests and server rendering never consult browser deployment config.
 	if (typeof location === 'undefined') return null
-	const key = 'static-source-config/' + location.origin
+	const key = `static-source-config/${location.origin}`
 	return (config ??= fetch('/map3d-engine/static-source.json', {
 		cache: 'no-cache',
 	})
@@ -28,7 +28,7 @@ export async function staticSourceConfig(): Promise<SourceConfig | null> {
 				return null
 			}
 			const root = new URL(
-				value.root.replace(/\/$/, '') + '/',
+				`${value.root.replace(/\/$/, '')}/`,
 				location.href
 			)
 			if (
@@ -113,7 +113,7 @@ function search(
 			reject,
 			cleanup: () => signal?.removeEventListener('abort', abort),
 		})
-		worker!.postMessage({
+		worker?.postMessage({
 			id,
 			root,
 			slug,
@@ -133,7 +133,7 @@ export async function staticMapFetch(
 		prefix = '/api/map3d/'
 	if (
 		!url.pathname.startsWith(prefix) ||
-		url.pathname.startsWith(prefix + 'notes')
+		url.pathname.startsWith(`${prefix}notes`)
 	)
 		return fetcher(input, options)
 	const resource = url.pathname.slice(prefix.length),
@@ -141,7 +141,7 @@ export async function staticMapFetch(
 	if (options.signal?.aborted)
 		throw new DOMException('Request cancelled', 'AbortError')
 	if (resource === 'health') {
-		const response = await fetcher(root + 'manifest.json', {
+		const response = await fetcher(`${root}manifest.json`, {
 			...options,
 			method: 'GET',
 		})
@@ -245,7 +245,7 @@ export async function staticMapFetch(
 	)
 		return new Response(null, { status: 405 })
 	params.sort()
-	const canonical = parts.join('/') + (params.size ? '?' + params : '')
+	const canonical = parts.join('/') + (params.size ? `?${params}` : '')
 	const result = await fetcher(root + staticResourcePath(canonical), {
 		...options,
 		method: method === 'POST' ? 'GET' : method,
@@ -258,7 +258,7 @@ export async function staticMapFetch(
 	) {
 		params.delete('slug')
 		return fetcher(
-			root + staticResourcePath(resource + '?' + params),
+			root + staticResourcePath(`${resource}?${params}`),
 			options
 		)
 	}

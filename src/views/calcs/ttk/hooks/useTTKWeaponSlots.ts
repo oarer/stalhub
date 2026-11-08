@@ -40,7 +40,7 @@ export function useTTKWeaponSlots(
 		updateSlot(slotId, {
 			weaponId,
 			ammoId: currentAmmoCompatible
-				? slot!.ammoId
+				? slot?.ammoId
 				: (pickDefaultAmmo(compatible)?.id ?? ''),
 		})
 		setFocusedSlotId(slotId)
