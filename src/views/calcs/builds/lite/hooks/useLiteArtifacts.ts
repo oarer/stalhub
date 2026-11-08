@@ -39,6 +39,21 @@ export function useLiteArtifacts({
 		Record<string, ArtQuality | undefined>
 	>({})
 
+	const artsByInstanceId = useMemo(
+		() =>
+			new Map<string, Art>(
+				build.arts.map((art) => [art.instance_id, art] as const)
+			),
+		[build.arts]
+	)
+	const itemsById = useMemo(
+		() =>
+			new Map<string, Item>(
+				items.map((item) => [item.id, item] as const)
+			),
+		[items]
+	)
+
 	const getArtAndItemBySlot = useCallback(
 		(slotIndex: number) => {
 			const instanceId = build.container?.slots[slotIndex] ?? null
@@ -52,13 +67,8 @@ export function useLiteArtifacts({
 				}
 			}
 
-			const art =
-				(build.arts as Art[]).find(
-					(a) => a.instance_id === instanceId
-				) ?? null
-			const item = art
-				? (items.find((it) => it.id === art.item_id) ?? null)
-				: null
+			const art = artsByInstanceId.get(instanceId) ?? null
+			const item = art ? (itemsById.get(art.item_id) ?? null) : null
 			const parsed = item ? parseItemStats(item, locale) : null
 
 			return {
@@ -69,7 +79,7 @@ export function useLiteArtifacts({
 				qualityClass: art?.quality_class ?? undefined,
 			}
 		},
-		[build.container?.slots, build.arts, items, locale]
+		[build.container?.slots, artsByInstanceId, itemsById, locale]
 	)
 
 	const selectedStatsData = useMemo(() => {
@@ -116,7 +126,7 @@ export function useLiteArtifacts({
 
 	const handleAdd = (itemId: string) => {
 		if (copyMode) return
-		const item = items.find((it) => it.id === itemId)
+		const item = itemsById.get(itemId)
 		const parsed = item ? parseItemStats(item, locale) : null
 		const addStatKeys = parsed ? Object.keys(parsed.addStats ?? {}) : []
 		const data: Partial<Art> | undefined =

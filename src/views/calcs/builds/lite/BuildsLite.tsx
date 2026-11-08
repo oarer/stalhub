@@ -95,22 +95,21 @@ type BuildsLiteViewProps = {
 export default function BuildsLiteView({
 	variant = 'page',
 }: BuildsLiteViewProps) {
-	const {
-		savedBuilds,
-		currentBuildId,
-		resetBuild,
-		updateBuild,
-		exportBuild,
-		importBuild,
-		loadFromApi,
-		build,
-	} = useBuildStore()
+	const savedBuilds = useBuildStore((s) => s.savedBuilds)
+	const currentBuildId = useBuildStore((s) => s.currentBuildId)
+	const resetBuild = useBuildStore((s) => s.resetBuild)
+	const updateBuild = useBuildStore((s) => s.updateBuild)
+	const exportBuild = useBuildStore((s) => s.exportBuild)
+	const importBuild = useBuildStore((s) => s.importBuild)
+	const loadFromApi = useBuildStore((s) => s.loadFromApi)
+	const build = useBuildStore((s) => s.build)
 
 	const t = useTranslations()
 	const locale = getLocale()
 	const importedRef = useRef(false)
 	const loadedFromApiRef = useRef(false)
 	const [isSavingPng, setIsSavingPng] = useState(false)
+	const [renderPngTemplate, setRenderPngTemplate] = useState(false)
 	const [pngImageSources, setPngImageSources] = useState<
 		Record<string, string>
 	>({})
@@ -276,13 +275,38 @@ export default function BuildsLiteView({
 			})
 	}, [loadFromApi, t])
 
+	const waitForPngTemplate = useCallback(async () => {
+		if (pngTemplateRef.current) return pngTemplateRef.current
+
+		setRenderPngTemplate(true)
+
+		return await new Promise<HTMLDivElement | null>((resolve) => {
+			const startedAt = performance.now()
+			const check = () => {
+				if (pngTemplateRef.current) {
+					resolve(pngTemplateRef.current)
+					return
+				}
+				if (performance.now() - startedAt > 3000) {
+					resolve(null)
+					return
+				}
+				requestAnimationFrame(check)
+			}
+			requestAnimationFrame(check)
+		})
+	}, [])
+
 	const handleSavePng = useCallback(async () => {
-		if (!pngTemplateRef.current || isSavingPng) return
+		if (isSavingPng) return
 
 		setIsSavingPng(true)
 
 		try {
 			await document.fonts.ready
+
+			const node = await waitForPngTemplate()
+			if (!node) return
 
 			const iconItems = new Map<string, Item>()
 			const artsByInstanceId = new Map(
@@ -330,7 +354,6 @@ export default function BuildsLiteView({
 			)
 			await new Promise((resolve) => requestAnimationFrame(resolve))
 
-			const node = pngTemplateRef.current
 			const { width, height } = node.getBoundingClientRect()
 			const fontEmbedCSS = await getFontEmbedCss(node)
 
@@ -352,8 +375,17 @@ export default function BuildsLiteView({
 			setShowPngModal(true)
 		} finally {
 			setIsSavingPng(false)
+			setRenderPngTemplate(false)
 		}
-	}, [armor, build, containers, consumables, isSavingPng, items])
+	}, [
+		armor,
+		build,
+		containers,
+		consumables,
+		isSavingPng,
+		items,
+		waitForPngTemplate,
+	])
 
 	const handleDownloadPng = useCallback(() => {
 		if (!pngPreviewUrl) return
@@ -660,23 +692,25 @@ export default function BuildsLiteView({
 				statFilters={armorStatFilters}
 				title="build.labels.armor_title"
 			/>
-			<div
-				aria-hidden="true"
-				className="pointer-events-none fixed top-0 left-2500"
-			>
-				<BuildLitePngTemplate
-					armorItems={armor}
-					build={build}
-					consumables={consumables}
-					containers={containers}
-					currentBuild={currentBuild}
-					imageSources={pngImageSources}
-					items={items}
-					locale={locale}
-					ref={pngTemplateRef}
-					t={t}
-				/>
-			</div>
+			{renderPngTemplate && (
+				<div
+					aria-hidden="true"
+					className="pointer-events-none fixed top-0 left-2500"
+				>
+					<BuildLitePngTemplate
+						armorItems={armor}
+						build={build}
+						consumables={consumables}
+						containers={containers}
+						currentBuild={currentBuild}
+						imageSources={pngImageSources}
+						items={items}
+						locale={locale}
+						ref={pngTemplateRef}
+						t={t}
+					/>
+				</div>
+			)}
 			<PngPreviewModal
 				alt="Build preview"
 				closeLabel={t('buildsLite.close')}

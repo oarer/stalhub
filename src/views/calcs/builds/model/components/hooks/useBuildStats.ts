@@ -9,6 +9,7 @@ import { getLocale } from '@/lib/getLocale'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Build } from '@/types/build.type'
 import { REACTION_KEYS } from '@/types/build.type'
+import type { Item } from '@/types/item.type'
 import type { BuildStats } from './buildStatsUtils'
 import {
 	applyContainerModifiers,
@@ -32,9 +33,43 @@ export function useBuildStats(buildOverride?: Build) {
 	const { armors, containers, artefacts, consumables, allItems } =
 		useBuildItems()
 
+	const armorsById = useMemo(
+		() =>
+			new Map<string, Item>(
+				armors.map((item) => [item.id, item] as const)
+			),
+		[armors]
+	)
+	const containersById = useMemo(
+		() =>
+			new Map<string, Item>(
+				containers.map((item) => [item.id, item] as const)
+			),
+		[containers]
+	)
+	const artefactsById = useMemo(
+		() =>
+			new Map<string, Item>(
+				artefacts.map((item) => [item.id, item] as const)
+			),
+		[artefacts]
+	)
+	const consumablesById = useMemo(
+		() =>
+			new Map<string, Item>(
+				consumables.map((item) => [item.id, item] as const)
+			),
+		[consumables]
+	)
+
+	const { armor, boost, reaction, sickness } = build
+
 	const containerItem = useMemo(
-		() => containers.find((c) => c.id === build.container?.id),
-		[containers, build.container?.id]
+		() =>
+			build.container?.id
+				? containersById.get(build.container.id)
+				: undefined,
+		[containersById, build.container?.id]
 	)
 
 	const containerModifiers = useContainerModifiers(containerItem)
@@ -47,12 +82,12 @@ export function useBuildStats(buildOverride?: Build) {
 	const allStatKeys = useMemo(() => {
 		return buildAllStatKeys(
 			build,
-			armors,
-			containers,
-			artefacts,
-			consumables
+			armorsById,
+			containersById,
+			artefactsById,
+			consumablesById
 		)
-	}, [build, armors, containers, artefacts, consumables])
+	}, [build, armorsById, containersById, artefactsById, consumablesById])
 
 	const displayNamesMap = useMemo(() => {
 		return buildDisplayNamesMap(allStatKeys, allItems, locale)
@@ -64,7 +99,7 @@ export function useBuildStats(buildOverride?: Build) {
 	const rawArtifactStats = useMemo<BuildStats>(() => {
 		const artResult: BuildStats = {}
 		for (const art of build.arts) {
-			const artStats = computeArtifactStats(art, artefacts, locale)
+			const artStats = computeArtifactStats(art, artefactsById, locale)
 			for (const [key, val] of Object.entries(artStats)) {
 				if (val !== 0) {
 					artResult[key] = (artResult[key] ?? 0) + val
@@ -72,7 +107,7 @@ export function useBuildStats(buildOverride?: Build) {
 			}
 		}
 		return artResult
-	}, [build.arts, artefacts, locale])
+	}, [build.arts, artefactsById, locale])
 
 	// сырые суммы накоплений для варнингов: статы артефактов плюс
 	// собственный вклад контейнера (бывает отрицательным, например вывод
@@ -99,9 +134,9 @@ export function useBuildStats(buildOverride?: Build) {
 		// статы армора и контейнера - без модификаторов
 		const baseResult: BuildStats = {}
 
-		const armorItem = armors.find((a) => a.id === build.armor?.id)
-		if (armorItem && build.armor) {
-			const level = build.armor.level ?? 0
+		const armorItem = armor?.id ? armorsById.get(armor.id) : undefined
+		if (armorItem && armor) {
+			const level = armor.level ?? 0
 			const armorStats = getStatsFromItem(armorItem, allStatKeys, level)
 			for (const [key, val] of Object.entries(armorStats)) {
 				baseResult[key] = (baseResult[key] ?? 0) + val
@@ -128,8 +163,10 @@ export function useBuildStats(buildOverride?: Build) {
 			result[key] = (result[key] ?? 0) + val
 		}
 
-		for (const boostId of Object.values(build.boost).filter(Boolean)) {
-			const boostItem = consumables.find((c) => c.id === boostId)
+		for (const boostId of Object.values(boost).filter((id): id is string =>
+			Boolean(id)
+		)) {
+			const boostItem = consumablesById.get(boostId)
 			if (boostItem) {
 				const boostStats = getStatsFromItem(boostItem, allStatKeys)
 				for (const [key, val] of Object.entries(boostStats)) {
@@ -141,8 +178,8 @@ export function useBuildStats(buildOverride?: Build) {
 		}
 
 		// реакция: если выбрана, её процент прибавляется к живучести и выносливости
-		if (build.reaction) {
-			const reactionVal = result[build.reaction] ?? 0
+		if (reaction) {
+			const reactionVal = result[reaction] ?? 0
 			if (reactionVal !== 0) {
 				result['stalker.artefact_properties.factor.health_bonus'] =
 					(result[
@@ -158,16 +195,19 @@ export function useBuildStats(buildOverride?: Build) {
 		}
 
 		// дебафы (заражения/болезни)
-		const sicknessEffects = computeSicknessEffects(build.sickness)
+		const sicknessEffects = computeSicknessEffects(sickness)
 		return applySicknessEffects(result, sicknessEffects)
 	}, [
-		build, 
-		armors, 
-		containerItem, 
-		rawArtifactStats, 
-		consumables, 
-		allStatKeys, 
-		containerModifiers
+		armor,
+		boost,
+		reaction,
+		sickness,
+		armorsById,
+		containerItem,
+		rawArtifactStats,
+		consumablesById,
+		allStatKeys,
+		containerModifiers,
 	])
 
 	const containerStats = useMemo<BuildStats>(() => {
@@ -175,18 +215,11 @@ export function useBuildStats(buildOverride?: Build) {
 
 		if (!containerItem) return result
 
-		const containerOnlyStats = getStatsFromItem(containerItem, allStatKeys)
-		for (const [key, val] of Object.entries(containerOnlyStats)) {
-			result[key] = val
-		}
-
-		for (const art of build.arts) {
-			const artStats = computeArtifactStats(art, artefacts, locale)
-			for (const [key, val] of Object.entries(artStats)) {
-				if (val !== 0) {
-					result[key] = (result[key] ?? 0) + val
-				}
-			}
+		// свой вклад контейнера + уже посчитанные статы артефактов,
+		// чтобы не пересчитывать артефакты повторно
+		Object.assign(result, getStatsFromItem(containerItem, allStatKeys))
+		for (const [key, val] of Object.entries(rawArtifactStats)) {
+			result[key] = (result[key] ?? 0) + val
 		}
 
 		const modified = applyContainerModifiers(
@@ -195,8 +228,8 @@ export function useBuildStats(buildOverride?: Build) {
 			containerModifiers.innerProtection
 		)
 
-		if (build.reaction) {
-			const reactionVal = modified[build.reaction] ?? 0
+		if (reaction) {
+			const reactionVal = modified[reaction] ?? 0
 			if (reactionVal !== 0) {
 				modified['stalker.artefact_properties.factor.health_bonus'] =
 					(modified[
@@ -211,16 +244,13 @@ export function useBuildStats(buildOverride?: Build) {
 			}
 		}
 
-		return applySicknessEffects(
-			modified,
-			computeSicknessEffects(build.sickness)
-		)
+		return applySicknessEffects(modified, computeSicknessEffects(sickness))
 	}, [
-		build,
+		reaction,
+		sickness,
 		containerItem,
-		artefacts,
+		rawArtifactStats,
 		allStatKeys,
-		locale,
 		containerModifiers,
 	])
 
@@ -250,8 +280,8 @@ export function useBuildStats(buildOverride?: Build) {
 	}, [containerStats, displayNamesMap])
 
 	const isPercentMap = useMemo(
-		() => computeIsPercentMap(build.arts, artefacts, locale),
-		[build.arts, artefacts, locale]
+		() => computeIsPercentMap(build.arts, artefactsById, locale),
+		[build.arts, artefactsById, locale]
 	)
 
 	const availableReactions = useMemo(() => {

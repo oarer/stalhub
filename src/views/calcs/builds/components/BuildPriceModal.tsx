@@ -37,25 +37,34 @@ export default function BuildPriceModal() {
 		[items]
 	)
 
-	const rows = arts
-		.map((art) => {
-			const item = itemsMap.get(art.item_id)
-			if (!item) return null
+	const rows = useMemo(
+		() =>
+			arts
+				.map((art) => {
+					const item = itemsMap.get(art.item_id)
+					if (!item) return null
 
-			const key = artPriceKey(
-				art.item_id,
-				artQualityToQualityIndex[art.quality_class] ?? 0,
-				art.potential ?? 0
-			)
-			const price = priceMap[key]
+					const key = artPriceKey(
+						art.item_id,
+						artQualityToQualityIndex[art.quality_class] ?? 0,
+						art.potential ?? 0
+					)
+					const price = priceMap[key]
 
-			return { art, item, price }
-		})
-		.filter((r): r is NonNullable<typeof r> => r !== null)
+					return { art, item, price }
+				})
+				.filter((r): r is NonNullable<typeof r> => r !== null),
+		[arts, itemsMap, priceMap]
+	)
 
-	const total = rows.reduce(
-		(sum, r) => (r.price?.price != null ? sum + r.price.price : sum),
-		0
+	const total = useMemo(
+		() =>
+			rows.reduce(
+				(sum, r) =>
+					r.price?.price != null ? sum + r.price.price : sum,
+				0
+			),
+		[rows]
 	)
 
 	return (

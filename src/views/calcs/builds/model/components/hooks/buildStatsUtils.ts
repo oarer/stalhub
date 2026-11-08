@@ -15,10 +15,10 @@ export type BuildStats = Record<string, number>
 
 export function computeArtifactStats(
 	art: Art,
-	items: Item[],
+	itemsById: Map<string, Item>,
 	locale: Locale
 ): BuildStats {
-	const item = items.find((i) => i.id === art.item_id)
+	const item = itemsById.get(art.item_id)
 	if (!item) return {}
 
 	const parsed = parseItemStats(item, locale)
@@ -40,12 +40,12 @@ export function computeArtifactStats(
 
 export function computeIsPercentMap(
 	arts: Art[],
-	artefacts: Item[],
+	artefactsById: Map<string, Item>,
 	locale: Locale
 ): Record<string, boolean> {
 	const map: Record<string, boolean> = {}
 	for (const art of arts) {
-		const item = artefacts.find((i) => i.id === art.item_id)
+		const item = artefactsById.get(art.item_id)
 		if (!item) continue
 		const parsed = parseItemStats(item, locale)
 		const stats = computeArtifactStatsFromParsed(
@@ -102,10 +102,7 @@ export function applyContainerModifiers(
 	for (const key of Object.keys(stats)) {
 		const currentVal = stats[key] ?? 0
 
-		if (
-			currentVal === 0 ||
-			CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key)
-		) {
+		if (currentVal === 0 || CONTAINER_MODIFIER_EXCLUDED_KEYS.has(key)) {
 			result[key] = currentVal
 			continue
 		}
@@ -115,9 +112,7 @@ export function applyContainerModifiers(
 		// (вывод заражений контр-артефактами) оставляем как есть.
 		if (CONTAINER_ACCUMULATION_KEYS.has(key)) {
 			result[key] =
-				currentVal > 0
-					? currentVal * (1 - innerProtection)
-					: currentVal
+				currentVal > 0 ? currentVal * (1 - innerProtection) : currentVal
 			continue
 		}
 
@@ -150,38 +145,38 @@ export function getStatsFromItem(
 
 export function buildAllStatKeys(
 	build: Build,
-	armors: Item[],
-	containers: Item[],
-	artefacts: Item[],
-	consumables: Item[]
+	armorsById: Map<string, Item>,
+	containersById: Map<string, Item>,
+	artefactsById: Map<string, Item>,
+	consumablesById: Map<string, Item>
 ): string[] {
 	const keys = new Set<string>()
 
 	if (build.armor?.id) {
-		const armorItem = armors.find((a) => a.id === build.armor?.id)
+		const armorItem = armorsById.get(build.armor.id)
 		if (armorItem) {
 			getItemKeys(armorItem).forEach((k) => keys.add(k))
 		}
 	}
 
 	if (build.container?.id) {
-		const containerItem = containers.find(
-			(c) => c.id === build.container?.id
-		)
+		const containerItem = containersById.get(build.container.id)
 		if (containerItem) {
 			getItemKeys(containerItem).forEach((k) => keys.add(k))
 		}
 	}
 
 	for (const art of build.arts) {
-		const artItem = artefacts.find((a) => a.id === art.item_id)
+		const artItem = artefactsById.get(art.item_id)
 		if (artItem) {
 			getItemKeys(artItem).forEach((k) => keys.add(k))
 		}
 	}
 
-	for (const boostId of Object.values(build.boost).filter(Boolean)) {
-		const boostItem = consumables.find((c) => c.id === boostId)
+	for (const boostId of Object.values(build.boost).filter(
+		(id): id is string => Boolean(id)
+	)) {
+		const boostItem = consumablesById.get(boostId)
 		if (boostItem) {
 			getItemKeys(boostItem).forEach((k) => keys.add(k))
 		}
@@ -192,13 +187,19 @@ export function buildAllStatKeys(
 		.sort()
 }
 
+const keyToItemCache = new WeakMap<Item[], Map<string, Item>>()
+
 function buildKeyToItemMap(allItems: Item[]): Map<string, Item> {
+	const cached = keyToItemCache.get(allItems)
+	if (cached) return cached
+
 	const map = new Map<string, Item>()
 	for (const item of allItems) {
 		for (const key of getItemKeys(item)) {
 			if (!map.has(key)) map.set(key, item)
 		}
 	}
+	keyToItemCache.set(allItems, map)
 	return map
 }
 

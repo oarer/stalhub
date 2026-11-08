@@ -7,7 +7,8 @@ import { Switch } from '@/components/ui/Switch'
 import { useBuildStore } from '@/stores/useBuild.store'
 
 export default function Settings() {
-	const { defaults, setDefaults } = useBuildStore()
+	const defaults = useBuildStore((s) => s.defaults)
+	const setDefaults = useBuildStore((s) => s.setDefaults)
 	const t = useTranslations()
 
 	return (

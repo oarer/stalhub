@@ -37,10 +37,24 @@ function isStatElement(el: unknown): boolean {
 	return type === 'numeric' || type === 'range' || type === 'numericVariants'
 }
 
+const effectsStatsCache = new WeakMap<
+	Item,
+	Map<Locale, Record<string, ColoredStat>>
+>()
+
 export function getEffectsStats(
 	item: Item,
 	locale: Locale
 ): Record<string, ColoredStat> {
+	let byLocale = effectsStatsCache.get(item)
+	if (byLocale) {
+		const cached = byLocale.get(locale)
+		if (cached) return cached
+	} else {
+		byLocale = new Map()
+		effectsStatsCache.set(item, byLocale)
+	}
+
 	const result: Record<string, ColoredStat> = {}
 
 	for (const el of collectListElements(item.infoBlocks)) {
@@ -72,6 +86,7 @@ export function getEffectsStats(
 		}
 	}
 
+	byLocale.set(locale, result)
 	return result
 }
 
@@ -110,12 +125,24 @@ export function buildEffectOptions(
 	items: Item[],
 	locale: Locale
 ): ComboboxOption[] {
-	const { posSet, negSet } = buildEffectFilterMap(items, locale)
+	const effectsMap = buildEffectsMap(items, locale)
+	const posSet = new Set<string>()
+	const negSet = new Set<string>()
+
+	for (const effects of effectsMap.values()) {
+		for (const [key, val] of Object.entries(effects)) {
+			if (isDebuffColor(val.color)) {
+				negSet.add(key)
+			} else {
+				posSet.add(key)
+			}
+		}
+	}
 
 	const posLabels = new Map<string, string>()
 	const negLabels = new Map<string, string>()
 
-	for (const effects of buildEffectsMap(items, locale).values()) {
+	for (const effects of effectsMap.values()) {
 		for (const [key, val] of Object.entries(effects)) {
 			if (negSet.has(key)) {
 				negLabels.set(key, val.displayName)

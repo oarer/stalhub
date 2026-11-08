@@ -21,15 +21,13 @@ import Settings from '../components/Settings'
 import { SicknessSelector } from '../model/components/stats/SicknessSelector'
 
 export default function BuildsView() {
-	const {
-		savedBuilds,
-		currentBuildId,
-		resetBuild,
-		updateBuild,
-		exportBuild,
-		importBuild,
-		build,
-	} = useBuildStore()
+	const savedBuilds = useBuildStore((s) => s.savedBuilds)
+	const currentBuildId = useBuildStore((s) => s.currentBuildId)
+	const resetBuild = useBuildStore((s) => s.resetBuild)
+	const updateBuild = useBuildStore((s) => s.updateBuild)
+	const exportBuild = useBuildStore((s) => s.exportBuild)
+	const importBuild = useBuildStore((s) => s.importBuild)
+	const build = useBuildStore((s) => s.build)
 
 	const [showRenameModal, setShowRenameModal] = useState(false)
 	const [buildName, setBuildName] = useState('')

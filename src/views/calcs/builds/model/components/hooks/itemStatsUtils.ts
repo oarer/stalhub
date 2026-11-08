@@ -44,16 +44,34 @@ export const HIDDEN_STAT_KEYS = new Set([
 	'core.tooltip.info.base_price',
 ])
 
-const findElementByKey = (item: Item, key: string): InfoElement | null => {
-	if (!item.infoBlocks) return null
-
-	for (const el of collectListElements(item.infoBlocks)) {
-		if (!el) continue
-		if (getElementKey(el) === key) return el
+function getElementKey(el: InfoElement): string | null {
+	if ('name' in el && el.name?.type === 'translation') {
+		return el.name.key
 	}
-
 	return null
 }
+
+const elementIndexCache = new WeakMap<Item, Map<string, InfoElement>>()
+
+function getElementIndex(item: Item): Map<string, InfoElement> {
+	const cached = elementIndexCache.get(item)
+	if (cached) return cached
+
+	const index = new Map<string, InfoElement>()
+	if (item.infoBlocks) {
+		for (const el of collectListElements(item.infoBlocks)) {
+			if (!el) continue
+			const key = getElementKey(el)
+			if (key && !index.has(key)) index.set(key, el)
+		}
+	}
+
+	elementIndexCache.set(item, index)
+	return index
+}
+
+const findElementByKey = (item: Item, key: string): InfoElement | null =>
+	getElementIndex(item).get(key) ?? null
 
 function isNumericEl(el: InfoElement): el is NumericElement {
 	return el.type === 'numeric'
@@ -67,24 +85,8 @@ function isNumericVariantsEl(el: InfoElement): el is NumericVariantsElement {
 	return el.type === 'numericVariants'
 }
 
-function getElementKey(el: InfoElement): string | null {
-	if ('name' in el && el.name?.type === 'translation') {
-		return el.name.key
-	}
-	return null
-}
-
 export function getItemKeys(item: Item): Set<string> {
-	const keys = new Set<string>()
-	if (!item.infoBlocks) return keys
-
-	for (const el of collectListElements(item.infoBlocks)) {
-		if (!el) continue
-		const key = getElementKey(el)
-		if (key) keys.add(key)
-	}
-
-	return keys
+	return new Set(getElementIndex(item).keys())
 }
 
 /** Limits (`limit`) of `threshold` elements keyed by stat key. */

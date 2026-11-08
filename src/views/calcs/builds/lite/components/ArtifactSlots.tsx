@@ -104,30 +104,38 @@ export function ArtifactSlotsLite({
 		)
 	}, [items, locale, selectedPositiveStats, selectedNegativeStats])
 
-	const statFilters: StatFilterGroup[] = [
-		...(positiveOptions.length > 0
-			? [
-					{
-						label: 'build.labels.positive_stats',
-						favoriteType: 'positive-effect' as const,
-						options: positiveOptions,
-						values: selectedPositiveStats,
-						onValuesChange: setSelectedPositiveStats,
-					},
-				]
-			: []),
-		...(negativeOptions.length > 0
-			? [
-					{
-						label: 'build.labels.negative_stats',
-						favoriteType: 'negative-effect' as const,
-						options: negativeOptions,
-						values: selectedNegativeStats,
-						onValuesChange: setSelectedNegativeStats,
-					},
-				]
-			: []),
-	]
+	const statFilters = useMemo<StatFilterGroup[]>(
+		() => [
+			...(positiveOptions.length > 0
+				? [
+						{
+							label: 'build.labels.positive_stats',
+							favoriteType: 'positive-effect' as const,
+							options: positiveOptions,
+							values: selectedPositiveStats,
+							onValuesChange: setSelectedPositiveStats,
+						},
+					]
+				: []),
+			...(negativeOptions.length > 0
+				? [
+						{
+							label: 'build.labels.negative_stats',
+							favoriteType: 'negative-effect' as const,
+							options: negativeOptions,
+							values: selectedNegativeStats,
+							onValuesChange: setSelectedNegativeStats,
+						},
+					]
+				: []),
+		],
+		[
+			positiveOptions,
+			negativeOptions,
+			selectedPositiveStats,
+			selectedNegativeStats,
+		]
+	)
 
 	const resetFilters = () => {
 		setSelectedPositiveStats([])

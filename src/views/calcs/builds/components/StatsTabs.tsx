@@ -40,11 +40,14 @@ export default memo(function StatsTabs() {
 
 	const t = useTranslations()
 
-	const reactionProps = {
-		availableReactions,
-		selectedReaction,
-		displayNamesMap,
-	}
+	const reactionProps = useMemo(
+		() => ({
+			availableReactions,
+			selectedReaction,
+			displayNamesMap,
+		}),
+		[availableReactions, selectedReaction, displayNamesMap]
+	)
 
 	return (
 		<Tabs.Root className="w-full" defaultValue="statsAll">

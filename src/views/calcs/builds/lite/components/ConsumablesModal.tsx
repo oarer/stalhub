@@ -26,14 +26,36 @@ import { ItemPickerModal } from './ItemPickerModal'
 
 const CATEGORIES = Object.keys(BoostButtons) as BoostCategory[]
 
-function getBoostsByCategory(items: Item[], category: BoostCategory): Item[] {
-	const catLower = category.toLowerCase()
-	return items.filter((item) => {
-		if (!item.infoBlocks) return false
-		return item.infoBlocks.some((block) =>
-			JSON.stringify(block).toLowerCase().includes(catLower)
-		)
-	})
+const boostSearchCache = new WeakMap<Item, string>()
+
+function getBoostSearchString(item: Item): string {
+	const cached = boostSearchCache.get(item)
+	if (cached !== undefined) return cached
+
+	const search = JSON.stringify(item.infoBlocks).toLowerCase()
+	boostSearchCache.set(item, search)
+	return search
+}
+
+function groupBoostsByCategory(items: Item[]): Map<BoostCategory, Item[]> {
+	const grouped = new Map<BoostCategory, Item[]>(
+		CATEGORIES.map((category) => [category, []])
+	)
+	const lowered = CATEGORIES.map(
+		(category) => [category, category.toLowerCase()] as const
+	)
+
+	for (const item of items) {
+		if (!item.infoBlocks) continue
+		const search = getBoostSearchString(item)
+		for (const [category, catLower] of lowered) {
+			if (search.includes(catLower)) {
+				grouped.get(category)?.push(item)
+			}
+		}
+	}
+
+	return grouped
 }
 
 function categoryLabelKey(category: BoostCategory) {
@@ -415,13 +437,7 @@ export default function ConsumablesModalLite() {
 		string[]
 	>([])
 
-	const itemsByCategory = useMemo(() => {
-		const result = new Map<BoostCategory, Item[]>()
-		for (const category of CATEGORIES) {
-			result.set(category, getBoostsByCategory(items, category))
-		}
-		return result
-	}, [items])
+	const itemsByCategory = useMemo(() => groupBoostsByCategory(items), [items])
 
 	const categoryItems = itemsByCategory.get(activeCategory) ?? []
 
@@ -441,28 +457,31 @@ export default function ConsumablesModalLite() {
 		[categoryItems, locale, selectedPositiveStats, selectedNegativeStats]
 	)
 
-	const statFilters: StatFilterGroup[] = [
-		...(effectOptions.positiveOptions.length > 0
-			? [
-					{
-						label: 'build.labels.positive_stats',
-						options: effectOptions.positiveOptions,
-						values: selectedPositiveStats,
-						onValuesChange: setSelectedPositiveStats,
-					},
-				]
-			: []),
-		...(effectOptions.negativeOptions.length > 0
-			? [
-					{
-						label: 'build.labels.negative_stats',
-						options: effectOptions.negativeOptions,
-						values: selectedNegativeStats,
-						onValuesChange: setSelectedNegativeStats,
-					},
-				]
-			: []),
-	]
+	const statFilters = useMemo<StatFilterGroup[]>(
+		() => [
+			...(effectOptions.positiveOptions.length > 0
+				? [
+						{
+							label: 'build.labels.positive_stats',
+							options: effectOptions.positiveOptions,
+							values: selectedPositiveStats,
+							onValuesChange: setSelectedPositiveStats,
+						},
+					]
+				: []),
+			...(effectOptions.negativeOptions.length > 0
+				? [
+						{
+							label: 'build.labels.negative_stats',
+							options: effectOptions.negativeOptions,
+							values: selectedNegativeStats,
+							onValuesChange: setSelectedNegativeStats,
+						},
+					]
+				: []),
+		],
+		[effectOptions, selectedPositiveStats, selectedNegativeStats]
+	)
 
 	const openPicker = (category: BoostCategory) => {
 		setActiveCategory(category)

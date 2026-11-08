@@ -192,10 +192,21 @@ function processListBlock(
 	}
 }
 
+const parsedItemCache = new WeakMap<Item, Map<Locale, ParsedItem>>()
+
 export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 	if (!item?.infoBlocks || !Array.isArray(item.infoBlocks)) {
 		return createEmptyParsedItem()
 	}
+
+	let byLocale = parsedItemCache.get(item)
+	if (!byLocale) {
+		byLocale = new Map()
+		parsedItemCache.set(item, byLocale)
+	}
+
+	const cached = byLocale.get(locale)
+	if (cached) return cached
 
 	const pushers = createStatPushers()
 
@@ -211,5 +222,7 @@ export function parseItemStats(item: Item, locale: Locale): ParsedItem {
 		}
 	}
 
-	return pushers.toResult()
+	const result = pushers.toResult()
+	byLocale.set(locale, result)
+	return result
 }
