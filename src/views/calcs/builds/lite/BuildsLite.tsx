@@ -25,7 +25,6 @@ import { ArmorLiteSection } from './components/ArmorLiteSection'
 import { ArtifactSlotsLite } from './components/ArtifactSlots'
 import { BuildLiteHeader } from './components/BuildLiteHeader'
 import { BuildLitePngTemplate } from './components/BuildLitePngTemplate'
-import { CompareSlots } from './components/CompareSlots'
 import ConsumablesModalLite from './components/ConsumablesModal'
 import {
 	ItemPickerModal,
@@ -196,24 +195,39 @@ export default function BuildsLiteView({
 		selectedArmorNegativeStats,
 	])
 
+	const [activeArtifactSide, setActiveArtifactSide] = useState<
+		'current' | 'compare'
+	>('current')
+
+	const currentArtifacts = useLiteArtifacts({ build, items, locale })
+	const compareArtifacts = useLiteArtifacts({
+		build: compareBuild?.build ?? build,
+		buildId: compareBuild?.id,
+		defaults: compareBuild?.defaults,
+		items,
+		locale,
+	})
+
+	const activeArtifacts =
+		activeArtifactSide === 'compare' && compareBuild
+			? compareArtifacts
+			: currentArtifacts
+	const activeBuild =
+		activeArtifactSide === 'compare' && compareBuild
+			? compareBuild.build
+			: build
+
 	const {
 		addOptions,
-		copyMode,
-		handleAdd,
-		handleCreateContainer,
 		handlePercentChange,
 		handlePotentialChange,
 		handleQualitySelect,
-		handleSelectSlot,
 		handleSelectedStatsChange,
 		percentState,
 		potentialState,
 		qualityOverrides,
-		removeArt,
-		selectedSlot,
 		selectedStatsData,
-		setCopyMode,
-	} = useLiteArtifacts({ build, items, locale })
+	} = activeArtifacts
 
 	useEffect(() => {
 		if (importedRef.current) return
@@ -399,40 +413,108 @@ export default function BuildsLiteView({
 					{compareBuild ? (
 						<div className="flex w-full flex-col gap-4 lg:flex-row">
 							<Card.Root className="w-full">
-								<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-[1fr_auto]">
-									<ArtifactSlotsLite
-										arts={build.arts as Art[]}
-										containers={containers}
-										copyMode={copyMode}
-										currentContainerId={
-											build.container?.id ?? null
-										}
-										items={items}
-										locale={locale}
-										onCancelCopyMode={() =>
-											setCopyMode(false)
-										}
-										onCreateContainer={
-											handleCreateContainer
-										}
-										onRemove={removeArt}
-										onSelectItem={handleAdd}
-										onSelectSlot={handleSelectSlot}
-										selectedSlot={selectedSlot}
-										setCopyMode={setCopyMode}
-										slots={build.container?.slots ?? []}
-										title={
-											currentBuild?.name ??
-											t('build.new_build')
-										}
-									/>
-									<CompareSlots
-										build={compareBuild.build}
-										containers={containers}
-										items={items}
-										locale={locale}
-										name={compareBuild.name}
-									/>
+								<div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+									<div
+										className={`rounded-xl p-1 transition-all ${
+											activeArtifactSide === 'current'
+												? 'ring-2 ring-primary/40'
+												: ''
+										}`}
+									>
+										<ArtifactSlotsLite
+											arts={build.arts as Art[]}
+											containers={containers}
+											copyMode={currentArtifacts.copyMode}
+											currentContainerId={
+												build.container?.id ?? null
+											}
+											items={items}
+											locale={locale}
+											onCancelCopyMode={() =>
+												currentArtifacts.setCopyMode(
+													false
+												)
+											}
+											onCreateContainer={
+												currentArtifacts.handleCreateContainer
+											}
+											onRemove={
+												currentArtifacts.removeArt
+											}
+											onSelectItem={
+												currentArtifacts.handleAdd
+											}
+											onSelectSlot={(slot) => {
+												setActiveArtifactSide('current')
+												currentArtifacts.handleSelectSlot(
+													slot
+												)
+											}}
+											selectedSlot={
+												currentArtifacts.selectedSlot
+											}
+											setCopyMode={
+												currentArtifacts.setCopyMode
+											}
+											slots={build.container?.slots ?? []}
+											title={
+												currentBuild?.name ??
+												t('build.new_build')
+											}
+										/>
+									</div>
+									<div
+										className={`rounded-xl p-1 transition-all ${
+											activeArtifactSide === 'compare'
+												? 'ring-2 ring-primary/40'
+												: ''
+										}`}
+									>
+										<ArtifactSlotsLite
+											arts={
+												compareBuild.build.arts as Art[]
+											}
+											containers={containers}
+											copyMode={compareArtifacts.copyMode}
+											currentContainerId={
+												compareBuild.build.container
+													?.id ?? null
+											}
+											items={items}
+											locale={locale}
+											onCancelCopyMode={() =>
+												compareArtifacts.setCopyMode(
+													false
+												)
+											}
+											onCreateContainer={
+												compareArtifacts.handleCreateContainer
+											}
+											onRemove={
+												compareArtifacts.removeArt
+											}
+											onSelectItem={
+												compareArtifacts.handleAdd
+											}
+											onSelectSlot={(slot) => {
+												setActiveArtifactSide('compare')
+												compareArtifacts.handleSelectSlot(
+													slot
+												)
+											}}
+											selectedSlot={
+												compareArtifacts.selectedSlot
+											}
+											setCopyMode={
+												compareArtifacts.setCopyMode
+											}
+											slots={
+												compareBuild.build.container
+													?.slots ?? []
+											}
+											title={compareBuild.name}
+										/>
+									</div>
 								</div>
 							</Card.Root>
 							<Card.Root className="w-full">
@@ -440,7 +522,9 @@ export default function BuildsLiteView({
 									addOptions={addOptions}
 									art={selectedStatsData?.art ?? null}
 									color={selectedStatsData?.color}
-									container={build?.container?.id ?? null}
+									container={
+										activeBuild.container?.id ?? null
+									}
 									itemName={selectedStatsData?.itemName}
 									locale={locale}
 									onPercentChange={handlePercentChange}
@@ -467,19 +551,26 @@ export default function BuildsLiteView({
 								<ArtifactSlotsLite
 									arts={build.arts as Art[]}
 									containers={containers}
-									copyMode={copyMode}
+									copyMode={currentArtifacts.copyMode}
 									currentContainerId={
 										build.container?.id ?? null
 									}
 									items={items}
 									locale={locale}
-									onCancelCopyMode={() => setCopyMode(false)}
-									onCreateContainer={handleCreateContainer}
-									onRemove={removeArt}
-									onSelectItem={handleAdd}
-									onSelectSlot={handleSelectSlot}
-									selectedSlot={selectedSlot}
-									setCopyMode={setCopyMode}
+									onCancelCopyMode={() =>
+										currentArtifacts.setCopyMode(false)
+									}
+									onCreateContainer={
+										currentArtifacts.handleCreateContainer
+									}
+									onRemove={currentArtifacts.removeArt}
+									onSelectItem={currentArtifacts.handleAdd}
+									onSelectSlot={(slot) => {
+										setActiveArtifactSide('current')
+										currentArtifacts.handleSelectSlot(slot)
+									}}
+									selectedSlot={currentArtifacts.selectedSlot}
+									setCopyMode={currentArtifacts.setCopyMode}
 									slots={build.container?.slots ?? []}
 								/>
 							</Card.Root>
@@ -488,7 +579,9 @@ export default function BuildsLiteView({
 									addOptions={addOptions}
 									art={selectedStatsData?.art ?? null}
 									color={selectedStatsData?.color}
-									container={build?.container?.id ?? null}
+									container={
+										activeBuild.container?.id ?? null
+									}
 									itemName={selectedStatsData?.itemName}
 									locale={locale}
 									onPercentChange={handlePercentChange}

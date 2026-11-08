@@ -912,7 +912,21 @@
       "consumables": {
         "title": "Choix des renforts",
         "header": "Choisissez un renfort",
-        "pick_boost": "Choix"
+        "pick_boost": "Choix",
+        "boost_list": "Liste des renforts",
+        "boost_info": "Informations",
+        "sets": {
+          "title": "Ensembles",
+          "empty": "Aucun ensemble pour le moment",
+          "save_current": "Enregistrer l'ensemble actuel",
+          "save": "Enregistrer",
+          "cancel": "Annuler",
+          "name_placeholder": "Nom de l'ensemble",
+          "default_name": "Ensemble {index}",
+          "apply": "Appliquer",
+          "delete": "Supprimer",
+          "nothing_to_save": "Sélectionnez d'abord des renforts"
+        }
       },
       "settings": {
         "title": "Paramètres",

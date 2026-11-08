@@ -915,7 +915,21 @@
       "consumables": {
         "title": "Выбор усилений",
         "header": "Выберите усиление",
-        "pick_boost": "Выбор"
+        "pick_boost": "Выбор",
+        "boost_list": "Список бустов",
+        "boost_info": "Информация",
+        "sets": {
+          "title": "Наборы",
+          "empty": "Наборов пока нет",
+          "save_current": "Сохранить набор",
+          "save": "Сохранить",
+          "cancel": "Отмена",
+          "name_placeholder": "Название набора",
+          "default_name": "Набор {index}",
+          "apply": "Применить",
+          "delete": "Удалить",
+          "nothing_to_save": "Сначала выберите бусты"
+        }
       },
       "settings": {
         "title": "Настройки",

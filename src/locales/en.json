@@ -912,7 +912,21 @@
       "consumables": {
         "title": "Boost selection",
         "header": "Select a boost",
-        "pick_boost": "Select"
+        "pick_boost": "Select",
+        "boost_list": "Boost list",
+        "boost_info": "Information",
+        "sets": {
+          "title": "Sets",
+          "empty": "No sets yet",
+          "save_current": "Save current set",
+          "save": "Save",
+          "cancel": "Cancel",
+          "name_placeholder": "Set name",
+          "default_name": "Set {index}",
+          "apply": "Apply",
+          "delete": "Delete",
+          "nothing_to_save": "Select boosts first"
+        }
       },
       "settings": {
         "title": "Settings",

@@ -49,6 +49,10 @@ type ItemPickerModalProps = {
 	actionLabel?: string
 	onConfirm?: (itemId: string) => void
 	children?: ReactNode
+	listHeader?: ReactNode
+	infoHeader?: ReactNode
+	aside?: ReactNode
+	contentClassName?: string
 	statFilters?: StatFilterGroup[]
 }
 
@@ -66,6 +70,10 @@ export function ItemPickerModal({
 	actionLabel = 'modals.builds.pick',
 	onConfirm,
 	children,
+	listHeader,
+	infoHeader,
+	aside,
+	contentClassName,
 	statFilters,
 }: ItemPickerModalProps) {
 	const t = useTranslations()
@@ -91,7 +99,12 @@ export function ItemPickerModal({
 			}}
 			open={showModal}
 		>
-			<Modal.Content className="flex min-h-125 max-w-3xl flex-col">
+			<Modal.Content
+				className={cn(
+					'flex min-h-125 max-w-3xl flex-col',
+					contentClassName
+				)}
+			>
 				<Modal.Header>
 					<Modal.Title>{t.has(title) ? t(title) : title}</Modal.Title>
 				</Modal.Header>
@@ -126,8 +139,16 @@ export function ItemPickerModal({
 						</div>
 					)}
 
-					<div className="relative grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[50%_50%]">
+					<div
+						className={cn(
+							'relative grid min-h-0 grid-cols-1 gap-4',
+							aside
+								? 'md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_18rem]'
+								: 'md:grid-cols-[50%_50%]'
+						)}
+					>
 						<div className="flex w-full flex-col gap-2">
+							{listHeader}
 							<ItemsList
 								className="max-h-[72dvh] sm:h-95"
 								emptyText={t('build.labels.not_found')}
@@ -151,6 +172,8 @@ export function ItemPickerModal({
 									: 'hidden md:flex'
 							)}
 						>
+							{infoHeader}
+
 							<div className="flex items-center justify-between gap-2">
 								<div
 									className={cn(
@@ -248,6 +271,12 @@ export function ItemPickerModal({
 								</Button>
 							)}
 						</div>
+
+						{aside && (
+							<div className="flex h-full min-h-0 w-full flex-col overflow-hidden bg-card px-3 py-3">
+								{aside}
+							</div>
+						)}
 					</div>
 				</Modal.Body>
 			</Modal.Content>

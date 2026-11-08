@@ -28,18 +28,24 @@ type BuildState = {
 
 	setDefaults: (defaults: Partial<BuildDefaults>) => void
 
-	addArt: (id: string, data?: Partial<Art>, placeInSlot?: number) => void
-	updateArt: (id: string, data: Partial<Art>) => void
-	removeArt: (id: string) => void
-	copyArt: (instanceId: string, toSlot: number) => void
+	addArt: (
+		id: string,
+		data?: Partial<Art>,
+		placeInSlot?: number,
+		buildId?: string
+	) => void
+	updateArt: (id: string, data: Partial<Art>, buildId?: string) => void
+	removeArt: (id: string, buildId?: string) => void
+	copyArt: (instanceId: string, toSlot: number, buildId?: string) => void
 
 	setArmor: (id: string, level?: number) => void
 	removeArmor: () => void
 
-	setContainer: (id: string, slotsCount: number) => void
-	removeContainer: () => void
+	setContainer: (id: string, slotsCount: number, buildId?: string) => void
+	removeContainer: (buildId?: string) => void
 
 	setBoost: (category: BoostCategory, boostId: string) => void
+	setBoosts: (boosts: Record<BoostCategory, string | null>) => void
 	removeBoost: (category: BoostCategory) => void
 
 	setReaction: (reaction: NonNullable<Build['reaction']>) => void
@@ -159,6 +165,221 @@ const migrateBuild = (build: Build): Build => ({
 	arts: build.arts.map(toSnakeCaseArt),
 })
 
+type BuildTarget = {
+	build: Build
+	defaults: BuildDefaults
+	savedIndex: number | null
+}
+
+function getBuildTarget(
+	state: BuildState,
+	buildId?: string
+): BuildTarget | null {
+	if (!buildId || buildId === state.currentBuildId) {
+		return {
+			build: state.build,
+			defaults: state.defaults,
+			savedIndex: null,
+		}
+	}
+
+	const savedIndex = state.savedBuilds.findIndex((b) => b.id === buildId)
+	if (savedIndex === -1) return null
+
+	const saved = state.savedBuilds[savedIndex]
+	return {
+		build: saved.build,
+		defaults: saved.defaults,
+		savedIndex,
+	}
+}
+
+function commitBuildTarget(
+	set: (
+		state:
+			| Partial<BuildState>
+			| ((state: BuildState) => Partial<BuildState>)
+	) => void,
+	get: () => BuildState,
+	target: BuildTarget,
+	nextBuild: Build
+) {
+	if (target.savedIndex === null) {
+		set({ build: nextBuild })
+		doAutoSave(set, get)
+		return
+	}
+
+	set((state) => ({
+		savedBuilds: state.savedBuilds.map((saved, index) =>
+			index === target.savedIndex
+				? { ...saved, build: nextBuild, updatedAt: Date.now() }
+				: saved
+		),
+	}))
+}
+
+function addArtToBuild(
+	build: Build,
+	defaults: BuildDefaults,
+	itemId: string,
+	data: Partial<Art>,
+	placeInSlot: number
+): Build | null {
+	const container = build.container
+	if (!container) return null
+	if (placeInSlot < 0 || placeInSlot >= container.slots.length) return null
+
+	const existingInstanceId = container.slots[placeInSlot]
+	const existingArt = build.arts.find(
+		(a) => a.instance_id === existingInstanceId
+	)
+
+	if (existingArt?.item_id === itemId) return build
+
+	const d = defaults.art
+	const percent = data.percent ?? d.percent
+	const instanceId = createInstanceId()
+
+	return {
+		...build,
+		arts: [
+			...build.arts.filter((a) => a.instance_id !== existingInstanceId),
+			{
+				instance_id: instanceId,
+				item_id: itemId,
+				percent,
+				potential: data.potential ?? d.potential,
+				selected_stats: data.selected_stats ?? Array(3).fill(null),
+				quality_class:
+					data.quality_class ?? getQualityByPercent(percent),
+			},
+		],
+		container: {
+			...container,
+			slots: container.slots.map((s, i) =>
+				i === placeInSlot ? instanceId : s
+			),
+		},
+	}
+}
+
+function updateArtInBuild(
+	build: Build,
+	instanceId: string,
+	data: Partial<Art>
+): Build {
+	return {
+		...build,
+		arts: build.arts.map((art) => {
+			if (art.instance_id !== instanceId) return art
+
+			const nextPercent = data.percent ?? art.percent
+
+			return {
+				...art,
+				...data,
+				selected_stats:
+					data.selected_stats ??
+					art.selected_stats ??
+					Array(3).fill(null),
+				quality_class:
+					data.quality_class ??
+					(data.percent != null
+						? getQualityByPercent(nextPercent)
+						: art.quality_class),
+			}
+		}),
+	}
+}
+
+function removeArtFromBuild(build: Build, id: string): Build {
+	const arts = build.arts.filter((a) => a.instance_id !== id)
+
+	const container = build.container
+		? {
+				...build.container,
+				slots: build.container.slots.map((s) => (s === id ? null : s)),
+			}
+		: build.container
+
+	return {
+		...build,
+		arts,
+		container,
+	}
+}
+
+function copyArtInBuild(
+	build: Build,
+	instanceId: string,
+	toSlot: number
+): Build | null {
+	const container = build.container
+	if (!container) return null
+	if (toSlot < 0 || toSlot >= container.slots.length) return null
+
+	const sourceArt = build.arts.find((a) => a.instance_id === instanceId)
+	if (!sourceArt) return null
+
+	const newInstanceId = createInstanceId()
+	const existingInstanceId = container.slots[toSlot]
+
+	return {
+		...build,
+		arts: [
+			...build.arts.filter((a) => a.instance_id !== existingInstanceId),
+			{
+				...sourceArt,
+				instance_id: newInstanceId,
+			},
+		],
+		container: {
+			...container,
+			slots: container.slots.map((s, i) =>
+				i === toSlot ? newInstanceId : s
+			),
+		},
+	}
+}
+
+function setContainerInBuild(
+	build: Build,
+	id: string,
+	slotsCount: number
+): Build {
+	const prevSlots = build.container?.slots ?? []
+
+	let newSlots: (string | null)[]
+
+	if (slotsCount <= prevSlots.length) {
+		newSlots = prevSlots.slice(0, slotsCount)
+	} else {
+		newSlots = [
+			...prevSlots,
+			...Array.from(
+				{ length: slotsCount - prevSlots.length },
+				() => null
+			),
+		]
+	}
+
+	return normalizeBuildArtifacts({
+		...build,
+		container: {
+			id,
+			slots: newSlots,
+		},
+	})
+}
+
+function removeContainerFromBuild(build: Build): Build {
+	return normalizeBuildArtifacts({
+		...build,
+		container: null,
+	})
+}
+
 const doAutoSave = (
 	set: (
 		state:
@@ -218,157 +439,61 @@ export const useBuildStore = create<BuildState>()(
 				doAutoSave(set, get)
 			},
 
-			addArt: (itemId, data = {}, placeInSlot) => {
-				const { container } = get().build
-				if (!container) return false
+			addArt: (itemId, data = {}, placeInSlot, buildId) => {
 				if (placeInSlot == null) return false
-				if (placeInSlot < 0 || placeInSlot >= container.slots.length)
-					return false
 
-				set((state) => {
-					const currContainer = state.build.container
-					if (!currContainer) return { build: state.build }
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return false
 
-					const existingInstanceId = currContainer.slots[placeInSlot]
-					const existingArt = state.build.arts.find(
-						(a) => a.instance_id === existingInstanceId
-					)
-
-					if (existingArt?.item_id === itemId) {
-						return { build: state.build }
-					}
-
-					const d = state.defaults.art
-					const percent = data.percent ?? d.percent
-					const instanceId = createInstanceId()
-
-					return {
-						build: {
-							...state.build,
-							arts: [
-								...state.build.arts.filter(
-									(a) => a.instance_id !== existingInstanceId
-								),
-								{
-									instance_id: instanceId,
-									item_id: itemId,
-									percent,
-									potential: data.potential ?? d.potential,
-									selected_stats:
-										data.selected_stats ??
-										Array(3).fill(null),
-									quality_class:
-										data.quality_class ??
-										getQualityByPercent(percent),
-								},
-							],
-							container: {
-								...currContainer,
-								slots: currContainer.slots.map((s, i) =>
-									i === placeInSlot ? instanceId : s
-								),
-							},
-						},
-					}
-				})
-
-				doAutoSave(set, get)
-				return get().build.container?.slots[placeInSlot] ?? false
-			},
-
-			updateArt: (instanceId, data) => {
-				set((state) => ({
-					build: {
-						...state.build,
-						arts: state.build.arts.map((art) => {
-							if (art.instance_id !== instanceId) return art
-
-							const nextPercent = data.percent ?? art.percent
-
-							return {
-								...art,
-								...data,
-								selected_stats:
-									data.selected_stats ??
-									art.selected_stats ??
-									Array(3).fill(null),
-								quality_class:
-									data.quality_class ??
-									(data.percent != null
-										? getQualityByPercent(nextPercent)
-										: art.quality_class),
-							}
-						}),
-					},
-				}))
-				doAutoSave(set, get)
-			},
-
-			removeArt: (id) => {
-				set((state) => {
-					const newArts = state.build.arts.filter(
-						(a) => a.instance_id !== id
-					)
-
-					const container = state.build.container
-						? {
-								...state.build.container,
-								slots: state.build.container.slots.map((s) =>
-									s === id ? null : s
-								),
-							}
-						: state.build.container
-
-					return {
-						build: {
-							...state.build,
-							arts: newArts,
-							container,
-						},
-					}
-				})
-				doAutoSave(set, get)
-			},
-
-			copyArt: (instanceId, toSlot) => {
-				const { build } = get()
-				const container = build.container
-				if (!container) return
-				if (toSlot < 0 || toSlot >= container.slots.length) return
-
-				const sourceArt = build.arts.find(
-					(a) => a.instance_id === instanceId
+				const nextBuild = addArtToBuild(
+					target.build,
+					target.defaults,
+					itemId,
+					data,
+					placeInSlot
 				)
-				if (!sourceArt) return
+				if (!nextBuild) return false
 
-				const newInstanceId = createInstanceId()
+				commitBuildTarget(set, get, target, nextBuild)
+				return nextBuild.container?.slots[placeInSlot] ?? false
+			},
 
-				set((state) => {
-					const existingInstanceId =
-						state.build.container?.slots[toSlot]
+			updateArt: (instanceId, data, buildId) => {
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return
 
-					return {
-						build: {
-							...state.build,
-							arts: [
-								...state.build.arts.filter(
-									(a) => a.instance_id !== existingInstanceId
-								),
-								{
-									...sourceArt,
-									instance_id: newInstanceId,
-								},
-							],
-							container: {
-								...state.build.container!,
-								slots: state.build.container!.slots.map(
-									(s, i) => (i === toSlot ? newInstanceId : s)
-								),
-							},
-						},
-					}
-				})
-				doAutoSave(set, get)
+				commitBuildTarget(
+					set,
+					get,
+					target,
+					updateArtInBuild(target.build, instanceId, data)
+				)
+			},
+
+			removeArt: (id, buildId) => {
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return
+
+				commitBuildTarget(
+					set,
+					get,
+					target,
+					removeArtFromBuild(target.build, id)
+				)
+			},
+
+			copyArt: (instanceId, toSlot, buildId) => {
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return
+
+				const nextBuild = copyArtInBuild(
+					target.build,
+					instanceId,
+					toSlot
+				)
+				if (!nextBuild) return
+
+				commitBuildTarget(set, get, target, nextBuild)
 			},
 
 			setArmor: (id, level) => {
@@ -393,45 +518,28 @@ export const useBuildStore = create<BuildState>()(
 				doAutoSave(set, get)
 			},
 
-			setContainer: (id: string, slotsCount: number) => {
-				set((state) => {
-					const prevSlots = state.build.container?.slots ?? []
+			setContainer: (id: string, slotsCount: number, buildId) => {
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return
 
-					let newSlots: (string | null)[]
-
-					if (slotsCount <= prevSlots.length) {
-						newSlots = prevSlots.slice(0, slotsCount)
-					} else {
-						newSlots = [
-							...prevSlots,
-							...Array.from(
-								{ length: slotsCount - prevSlots.length },
-								() => null
-							),
-						]
-					}
-
-					return {
-						build: normalizeBuildArtifacts({
-							...state.build,
-							container: {
-								id,
-								slots: newSlots,
-							},
-						}),
-					}
-				})
-				doAutoSave(set, get)
+				commitBuildTarget(
+					set,
+					get,
+					target,
+					setContainerInBuild(target.build, id, slotsCount)
+				)
 			},
 
-			removeContainer: () => {
-				set((state) => ({
-					build: normalizeBuildArtifacts({
-						...state.build,
-						container: null,
-					}),
-				}))
-				doAutoSave(set, get)
+			removeContainer: (buildId) => {
+				const target = getBuildTarget(get(), buildId)
+				if (!target) return
+
+				commitBuildTarget(
+					set,
+					get,
+					target,
+					removeContainerFromBuild(target.build)
+				)
 			},
 
 			setBoost: (category, boostId) => {
@@ -442,6 +550,16 @@ export const useBuildStore = create<BuildState>()(
 							...state.build.boost,
 							[category]: boostId,
 						},
+					},
+				}))
+				doAutoSave(set, get)
+			},
+
+			setBoosts: (boosts) => {
+				set((state) => ({
+					build: {
+						...state.build,
+						boost: { ...boosts },
 					},
 				}))
 				doAutoSave(set, get)

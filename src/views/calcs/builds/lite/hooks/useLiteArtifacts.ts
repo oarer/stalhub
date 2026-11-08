@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from '@/components/ui/Toast'
 import { useBuildStore } from '@/stores/useBuild.store'
-import type { Art, Build } from '@/types/build.type'
+import type { Art, Build, BuildDefaults } from '@/types/build.type'
 import type { ArtQuality, Item, Locale } from '@/types/item.type'
 import { computeArtifactStatsFromParsed } from '@/views/calcs/builds/utils/computeArtifactStats'
 import { parseItemStats } from '@/views/calcs/builds/utils/parseArtifact'
@@ -12,15 +12,20 @@ type UseLiteArtifactsParams = {
 	build: Build
 	items: Item[]
 	locale: Locale
+	buildId?: string
+	defaults?: BuildDefaults
 }
 
 export function useLiteArtifacts({
 	build,
 	items,
 	locale,
+	buildId,
+	defaults: buildDefaults,
 }: UseLiteArtifactsParams) {
 	const addArt = useBuildStore((s) => s.addArt)
-	const defaults = useBuildStore((s) => s.defaults)
+	const storeDefaults = useBuildStore((s) => s.defaults)
+	const defaults = buildDefaults ?? storeDefaults
 	const setContainer = useBuildStore((s) => s.setContainer)
 	const updateArt = useBuildStore((s) => s.updateArt)
 	const removeArt = useBuildStore((s) => s.removeArt)
@@ -120,21 +125,28 @@ export function useLiteArtifacts({
 			addStatKeys.length <= 3
 				? { selected_stats: addStatKeys }
 				: undefined
-		addArt(itemId, data, selectedSlot)
+		addArt(itemId, data, selectedSlot, buildId)
 	}
 
 	const handleCreateContainer = (itemId: string, slotsCount: number) => {
-		setContainer(itemId, slotsCount)
+		setContainer(itemId, slotsCount, buildId)
 		if (selectedSlot >= slotsCount) {
 			setSelectedSlot(Math.max(0, slotsCount - 1))
 		}
 	}
 
+	const handleRemoveArt = useCallback(
+		(instanceId: string) => {
+			removeArt(instanceId, buildId)
+		},
+		[removeArt, buildId]
+	)
+
 	const handleSelectSlot = (slot: number) => {
 		if (copyMode) {
 			const sourceInstanceId = build.container?.slots[selectedSlot]
 			if (sourceInstanceId && slot !== selectedSlot) {
-				copyArt(sourceInstanceId, slot)
+				copyArt(sourceInstanceId, slot, buildId)
 			}
 			setCopyMode(false)
 			toast.dismiss('copy-mode')
@@ -154,12 +166,12 @@ export function useLiteArtifacts({
 			if (!instanceId) return
 
 			if (type === 'percent') {
-				updateArt(instanceId, { percent: value })
+				updateArt(instanceId, { percent: value }, buildId)
 			} else {
-				updateArt(instanceId, { potential: value })
+				updateArt(instanceId, { potential: value }, buildId)
 			}
 		},
-		[updateArt]
+		[updateArt, buildId]
 	)
 
 	const handlePercentChange = useCallback(
@@ -194,9 +206,16 @@ export function useLiteArtifacts({
 			const newStatsCount = Math.floor(value / 5)
 
 			if (instanceId && newStatsCount < oldStatsCount) {
-				updateArt(instanceId, {
-					selected_stats: art?.selected_stats.slice(0, newStatsCount),
-				})
+				updateArt(
+					instanceId,
+					{
+						selected_stats: art?.selected_stats.slice(
+							0,
+							newStatsCount
+						),
+					},
+					buildId
+				)
 			}
 
 			if (value >= 15) {
@@ -204,7 +223,11 @@ export function useLiteArtifacts({
 					selectedStatsData?.parsed?.addStats ?? {}
 				)
 				if (addStatKeys.length <= 3 && instanceId) {
-					updateArt(instanceId, { selected_stats: addStatKeys })
+					updateArt(
+						instanceId,
+						{ selected_stats: addStatKeys },
+						buildId
+					)
 				}
 			}
 
@@ -214,7 +237,7 @@ export function useLiteArtifacts({
 				value,
 			})
 		},
-		[selectedStatsData, updateArt, sendUpdate]
+		[selectedStatsData, updateArt, buildId, sendUpdate]
 	)
 
 	const handleQualitySelect = useCallback(
@@ -225,20 +248,24 @@ export function useLiteArtifacts({
 				...prev,
 				[instanceId]: choice,
 			}))
-			updateArt(instanceId, { quality_class: choice })
+			updateArt(instanceId, { quality_class: choice }, buildId)
 		},
-		[updateArt]
+		[updateArt, buildId]
 	)
 
 	const handleSelectedStatsChange = useCallback(
 		(next: string[]) => {
 			if (selectedStatsData?.instanceId) {
-				updateArt(selectedStatsData.instanceId, {
-					selected_stats: next,
-				})
+				updateArt(
+					selectedStatsData.instanceId,
+					{
+						selected_stats: next,
+					},
+					buildId
+				)
 			}
 		},
-		[selectedStatsData?.instanceId, updateArt]
+		[selectedStatsData?.instanceId, updateArt, buildId]
 	)
 
 	return {
@@ -254,7 +281,7 @@ export function useLiteArtifacts({
 		percentState,
 		potentialState,
 		qualityOverrides,
-		removeArt,
+		removeArt: handleRemoveArt,
 		selectedSlot,
 		selectedStatsData,
 		setCopyMode,

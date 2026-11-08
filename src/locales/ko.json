@@ -912,7 +912,21 @@
       "consumables": {
         "title": "버프 선택",
         "header": "버프 선택",
-        "pick_boost": "선택"
+        "pick_boost": "선택",
+        "boost_list": "버프 목록",
+        "boost_info": "정보",
+        "sets": {
+          "title": "세트",
+          "empty": "아직 세트가 없습니다",
+          "save_current": "현재 세트 저장",
+          "save": "저장",
+          "cancel": "취소",
+          "name_placeholder": "세트 이름",
+          "default_name": "세트 {index}",
+          "apply": "적용",
+          "delete": "삭제",
+          "nothing_to_save": "먼저 버프를 선택하세요"
+        }
       },
       "settings": {
         "title": "설정",

@@ -912,7 +912,21 @@
       "consumables": {
         "title": "Selección de mejoras",
         "header": "Selecciona la mejora",
-        "pick_boost": "Selección"
+        "pick_boost": "Selección",
+        "boost_list": "Lista de mejoras",
+        "boost_info": "Información",
+        "sets": {
+          "title": "Conjuntos",
+          "empty": "Aún no hay conjuntos",
+          "save_current": "Guardar conjunto actual",
+          "save": "Guardar",
+          "cancel": "Cancelar",
+          "name_placeholder": "Nombre del conjunto",
+          "default_name": "Conjunto {index}",
+          "apply": "Aplicar",
+          "delete": "Eliminar",
+          "nothing_to_save": "Primero selecciona mejoras"
+        }
       },
       "settings": {
         "title": "Ajustes",
