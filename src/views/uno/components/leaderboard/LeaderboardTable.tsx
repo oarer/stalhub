@@ -22,17 +22,17 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 			<Table.Root>
 				<Table.Header>
 					<Table.Row>
-						<Table.Head className="px-5">
+						<Table.Head className="w-10 px-2 text-center sm:w-14 sm:px-5">
 							{t('table.rank')}
+						</Table.Head>
+						<Table.Head className="hidden w-14 px-2 text-center sm:table-cell">
+							{t('table.tier')}
 						</Table.Head>
 						<Table.Head className="px-5">
 							{t('table.clan')}
 						</Table.Head>
 						<Table.Head className="hidden px-5 text-right sm:table-cell">
 							{t('table.rating')}
-						</Table.Head>
-						<Table.Head className="hidden w-14 px-2 text-center sm:table-cell">
-							{t('table.tier')}
 						</Table.Head>
 					</Table.Row>
 				</Table.Header>
@@ -49,12 +49,15 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 								key={clan.id}
 								onClick={() => router.push(href)}
 							>
-								<Table.Cell className="px-5">
+								<Table.Cell className="w-10 px-2 text-center align-middle sm:w-14 sm:px-5">
 									<span
-										className={`${mtsWide.className} font-semibold text-primary sm:text-lg`}
+										className={`${mtsWide.className} inline-flex items-center align-middle font-semibold text-primary sm:text-lg`}
 									>
 										{clan.position ?? index + 1}
 									</span>
+								</Table.Cell>
+								<Table.Cell className="hidden w-14 px-2 text-center sm:table-cell">
+									<UnoRank className="text-base" rank={clan.tier} />
 								</Table.Cell>
 								<Table.Cell className="px-5">
 									<Link
@@ -81,9 +84,6 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 								</Table.Cell>
 								<Table.Cell className="hidden px-5 text-right font-mono font-semibold sm:table-cell">
 									{formatUnoValue(clan.rating, locale)}
-								</Table.Cell>
-								<Table.Cell className="hidden w-14 px-2 text-center sm:table-cell">
-									<UnoRank className="text-base" rank={clan.tier} />
 								</Table.Cell>
 							</Table.Row>
 						)
