@@ -31,7 +31,7 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 						<Table.Head className="hidden px-5 text-right sm:table-cell">
 							{t('table.rating')}
 						</Table.Head>
-						<Table.Head className="hidden px-5 sm:table-cell">
+						<Table.Head className="hidden w-14 px-2 text-center sm:table-cell">
 							{t('table.tier')}
 						</Table.Head>
 					</Table.Row>
@@ -82,8 +82,8 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 								<Table.Cell className="hidden px-5 text-right font-mono font-semibold sm:table-cell">
 									{formatUnoValue(clan.rating, locale)}
 								</Table.Cell>
-								<Table.Cell className="hidden px-5 sm:table-cell">
-									<UnoRank rank={clan.tier} />
+								<Table.Cell className="hidden w-14 px-2 text-center sm:table-cell">
+									<UnoRank className="text-base" rank={clan.tier} />
 								</Table.Cell>
 							</Table.Row>
 						)
