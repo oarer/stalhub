@@ -247,7 +247,7 @@ function BoostSetsPanel({
 	}
 
 	return (
-		<div className="flex h-full min-h-0 flex-col gap-3">
+		<div className="flex h-full max-h-[45dvh] min-h-0 flex-col gap-3">
 			<div className="flex items-center justify-between gap-2">
 				<h3 className="font-semibold text-sm">
 					{t('modals.builds.consumables.sets.title')}
