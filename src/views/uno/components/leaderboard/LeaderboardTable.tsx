@@ -10,7 +10,7 @@ import { allianceColors } from '@/types/player.type'
 import type { UnoClanSummary } from '@/types/uno/uno.type'
 import { useUnoLocale } from '../../hooks/useUnoLocale'
 import { formatUnoValue, normalizeUnoFaction } from '../../utils/uno.utils'
-import { UnoFaction } from '../UnoFaction'
+import { UnoRank } from '../UnoRank'
 
 export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 	const t = useTranslations('uno')
@@ -18,7 +18,7 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 	const router = useRouter()
 
 	return (
-		<div className="overflow-hidden rounded-2xl border-2 border-primary/25 bg-card/50 shadow-xl backdrop-blur-md">
+		<div className="rounded-2xl border-2 border-primary/25 bg-card/50 backdrop-blur-md">
 			<Table.Root>
 				<Table.Header>
 					<Table.Row>
@@ -32,7 +32,7 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 							{t('table.rating')}
 						</Table.Head>
 						<Table.Head className="hidden px-5 sm:table-cell">
-							{t('table.faction')}
+							{t('table.tier')}
 						</Table.Head>
 					</Table.Row>
 				</Table.Header>
@@ -83,11 +83,7 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 									{formatUnoValue(clan.rating, locale)}
 								</Table.Cell>
 								<Table.Cell className="hidden px-5 sm:table-cell">
-									<UnoFaction
-										faction={clan.faction}
-										labelClassName={factionColor}
-										size={18}
-									/>
+									<UnoRank rank={clan.tier} />
 								</Table.Cell>
 							</Table.Row>
 						)

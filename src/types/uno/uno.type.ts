@@ -32,6 +32,7 @@ export interface UnoClanSummary {
 	name: string
 	tag: string | null
 	faction: string | null
+	tier: string | null
 	levelRaw: number | string | null
 	influence: number | null
 	memberLimit: number | null

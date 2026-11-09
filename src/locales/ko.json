@@ -4209,6 +4209,7 @@
       "winRate": "Win rate",
       "matches": "Matches",
       "faction": "Faction",
+      "tier": "티어",
       "members": "Members"
     },
     "empty": {

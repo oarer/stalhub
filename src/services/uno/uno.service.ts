@@ -236,6 +236,7 @@ const toSummary = (value: unknown, fallbackId = ''): UnoClanSummary => {
 		name: asString(first(record, ['name', 'clan_name', 'clanName'])) ?? '—',
 		tag: asString(first(record, ['tag', 'clan_tag', 'clanTag'])),
 		faction: asString(first(record, ['faction', 'alliance'])),
+		tier: asString(first(record, ['rank', 'tier', 'clan_tier'])),
 		levelRaw:
 			asNumber(first(record, ['level_raw', 'levelRaw', 'level'])) ??
 			asString(first(record, ['level_raw', 'levelRaw', 'level'])),

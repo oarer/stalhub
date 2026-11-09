@@ -57,7 +57,7 @@ export function alignClass(align: ColumnAlign): string {
 function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
 	return (
 		<div
-			className="relative w-full overflow-x-auto"
+			className="relative w-full overflow-x-auto overflow-y-hidden"
 			data-slot="table-container"
 		>
 			<table

@@ -4209,6 +4209,7 @@
       "winRate": "Win rate",
       "matches": "Matches",
       "faction": "Faction",
+      "tier": "Tier",
       "members": "Members"
     },
     "empty": {
