@@ -41,6 +41,15 @@ export default function UnoCalendarView({
 
 			<UnoDateRangeForm action="/uno/calendar" params={params} />
 
+			{query.data?.season && (
+				<p className="text-muted-foreground text-sm">
+					{t('filters.season')}:{' '}
+					<span className="font-medium text-foreground">
+						{query.data.season}
+					</span>
+				</p>
+			)}
+
 			<UnoFeedback
 				isError={query.isError}
 				isLoading={query.isPending}

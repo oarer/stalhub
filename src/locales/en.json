@@ -4325,6 +4325,7 @@
       "description": "Current and archived periods of the public ranking.",
       "empty": "No seasons found.",
       "current": "Current",
+      "leaderboard": "Top clans",
       "starts": "Starts",
       "ends": "Ends",
       "periodValues": "period values",

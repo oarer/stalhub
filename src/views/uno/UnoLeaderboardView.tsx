@@ -16,7 +16,11 @@ import { UnoEmpty } from './components/UnoEmpty'
 import { UnoFeedback } from './components/UnoFeedback'
 import { UnoPageHeader } from './components/UnoPageHeader'
 
-export default function UnoLeaderboardView() {
+export default function UnoLeaderboardView({
+	season,
+}: {
+	season?: string
+}) {
 	const t = useTranslations('uno')
 	const [search, setSearch] = useState('')
 	const [faction, setFaction] = useState('all')
@@ -27,6 +31,7 @@ export default function UnoLeaderboardView() {
 		unoQueries.leaderboard({
 			limit: LEADERBOARD_LIMIT,
 			q: searchTerm || undefined,
+			season,
 		})
 	)
 
@@ -90,6 +95,15 @@ export default function UnoLeaderboardView() {
 				description={t('description')}
 				title={t('title')}
 			/>
+
+			{query.data?.season && (
+				<p className="text-muted-foreground text-sm">
+					{t('filters.season')}:{' '}
+					<span className="font-medium text-foreground">
+						{query.data.season}
+					</span>
+				</p>
+			)}
 
 			<LeaderboardStats
 				observedAt={query.data?.observedAt}

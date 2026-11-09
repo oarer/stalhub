@@ -4291,6 +4291,7 @@
       "description": "Current and archived periods of the public ranking.",
       "empty": "No seasons found.",
       "current": "Current",
+      "leaderboard": "상위 클랜",
       "starts": "Starts",
       "ends": "Ends",
       "periodValues": "period values",

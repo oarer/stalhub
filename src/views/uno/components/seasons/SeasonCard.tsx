@@ -1,8 +1,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
+import { CLink } from '@/components/ui/Link'
 import { formatDate } from '@/lib/date'
 import { useUnoLocale } from '../../hooks/useUnoLocale'
 import type { SeasonEntry } from './seasons.utils'
@@ -10,13 +12,39 @@ import type { SeasonEntry } from './seasons.utils'
 export function SeasonCard({ season }: { season: SeasonEntry }) {
 	const t = useTranslations('uno')
 	const locale = useUnoLocale()
+	const router = useRouter()
 	const title = t.has(season.title) ? t(season.title) : season.title
+	const gridsQuery = new URLSearchParams({
+		from: season.period[0],
+		to: season.period[1],
+	})
+
+	if (!season.isInterSeason) {
+		gridsQuery.set('season', season.id)
+	}
+
+	const gridsHref = `/uno/grids?${gridsQuery.toString()}`
+
+	const openGrids = () => {
+		router.push(gridsHref)
+	}
+
+	const handleCardKeyDown = (event: React.KeyboardEvent) => {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault()
+			openGrids()
+		}
+	}
 
 	return (
 		<Card.Root
-			className={
+			className={`cursor-pointer transition-all hover:ring-primary/60 ${
 				season.isCurrent ? 'border-primary/70 ring-primary/60' : ''
-			}
+			}`}
+			onClick={openGrids}
+			onKeyDown={handleCardKeyDown}
+			role="link"
+			tabIndex={0}
 		>
 			<div className="flex items-start justify-between gap-3">
 				<h2 className="mt-1 font-semibold text-xl">{title}</h2>
@@ -42,6 +70,21 @@ export function SeasonCard({ season }: { season: SeasonEntry }) {
 					</p>
 				</div>
 			</div>
+			{!season.isInterSeason && (
+				<CLink
+					className="mt-4 w-fit gap-2"
+					href={`/uno?season=${encodeURIComponent(season.id)}`}
+					onClick={(event) => {
+						event.preventDefault()
+						event.stopPropagation()
+						router.push(`/uno?season=${encodeURIComponent(season.id)}`)
+					}}
+					size="sm"
+					variant="outline"
+				>
+					{t('seasons.leaderboard')}
+				</CLink>
+			)}
 		</Card.Root>
 	)
 }

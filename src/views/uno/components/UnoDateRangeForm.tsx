@@ -29,7 +29,7 @@ export function UnoDateRangeForm({
 	return (
 		<form action={action} method="get">
 			<input name="mode" type="hidden" value={mode} />
-			<Card.Root className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+			<Card.Root className="grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
 				<Input
 					className="h-10 pt-3"
 					containerClass="min-w-0"
@@ -59,6 +59,13 @@ export function UnoDateRangeForm({
 					options={MODE_OPTIONS}
 					placeholder="uno.filters.allModes"
 					value={mode}
+				/>
+				<Input
+					className="h-10 pt-3"
+					containerClass="min-w-0"
+					label="uno.filters.season"
+					name="season"
+					value={params.season ?? ''}
 				/>
 				<Button className="self-end" type="submit">
 					{t('filters.apply')}
