@@ -62,7 +62,10 @@ function humanize(value: string) {
 		.replace(/\b\w/g, (letter) => letter.toUpperCase())
 }
 
-function itemColor(db: PlayerGearItemDb | null) {
+function itemColor(db: PlayerGearItemDb | null, percent?: number | null) {
+	if (percent != null) {
+		return infoColorMap[getQualityByPercent(percent)] ?? 'var(--foreground)'
+	}
 	if (!db?.color) return 'var(--foreground)'
 	return infoColorMap[db.color as InfoColor] ?? 'var(--foreground)'
 }
@@ -220,22 +223,22 @@ function GearModuleAttributes({
 	)
 }
 
+function attachmentPercent(attachment: PlayerGearAttachment) {
+	if (attachment.ndmg == null || attachment.quality == null) return null
+	return calcArtifactPercent({
+		ndmg: attachment.ndmg,
+		qlt: attachment.quality,
+	})
+}
+
 function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 	const t = useTranslations()
 	const name = attachment.name ?? attachment.db?.name ?? attachment.itemId
 	if (!name) return null
 
-	const color = itemColor(attachment.db)
+	const percent = attachmentPercent(attachment)
+	const color = itemColor(attachment.db, percent)
 	const href = itemHref(attachment.db)
-	const percent =
-		attachment.ndmg != null && attachment.quality != null
-			? calcArtifactPercent({
-					ndmg: attachment.ndmg,
-					qlt: attachment.quality,
-				})
-			: null
-	const percentColor =
-		percent != null ? infoColorMap[getQualityByPercent(percent)] : undefined
 
 	return (
 		<div className="rounded-lg bg-muted/25 px-2 py-1.5">
@@ -244,7 +247,7 @@ function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 				<div className="min-w-0 flex-1">
 					{href ? (
 						<Link
-							className="block truncate font-semibold text-xs transition-opacity hover:opacity-80"
+							className="block truncate font-semibold text-sm transition-opacity hover:opacity-80"
 							href={href}
 							style={{ color }}
 						>
@@ -260,24 +263,22 @@ function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 					)}
 				</div>
 
-				<div className="flex shrink-0 items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
+				<div className="flex shrink-0 items-center gap-1.5 font-mono text-[12px] text-muted-foreground">
 					{percent != null && (
 						<span
 							className="font-semibold"
-							style={{ color: percentColor }}
+							style={{ color }}
 							title={t('player.gear.percent')}
 						>
 							{percent.toFixed(2)}%
 						</span>
 					)}
 					{attachment.potential != null && (
-						<span title={t('player.gear.potential')}>
+						<span
+							className="font-semibold"
+							title={t('player.gear.potential')}
+						>
 							+{attachment.potential}
-						</span>
-					)}
-					{attachment.upgradeBonus != null && (
-						<span title={t('player.gear.bonus')}>
-							+{attachment.upgradeBonus}
 						</span>
 					)}
 				</div>
@@ -330,9 +331,13 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 								style={{ color }}
 								title={name}
 							>
-								{name} {' +'}
-								{item.upgrade.level != null &&
-									item.upgrade.level + 1}
+								{name}
+								{item.upgrade.level != null && (
+									<>
+										{' +'}
+										{item.upgrade.level + 1}
+									</>
+								)}
 							</Link>
 						) : (
 							<p
@@ -340,9 +345,13 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 								style={{ color }}
 								title={name}
 							>
-								{name}{' +'}
-								{item.upgrade.level != null &&
-									item.upgrade.level + 1}
+								{name}
+								{item.upgrade.level != null && (
+									<>
+										{' +'}
+										{item.upgrade.level + 1}
+									</>
+								)}
 							</p>
 						)}
 					</div>
