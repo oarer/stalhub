@@ -384,15 +384,19 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 			</Modal.Root>
 			{order.cases.map((entry) => (
 				<Card.Root className="gap-3" key={entry.id}>
-					<CLink
-						className="w-fit px-0 font-semibold text-primary"
-						href={`/me/arbitration/${entry.id}`}
-						variant="none"
-					>
-						{t('case')} ·{' '}
-						{entry.kind === 'REVIEW' ? t('review') : order.title}
-					</CLink>
-					<Status value={entry.status} />
+					<div className="flex items-center gap-2">
+						<CLink
+							className="w-fit px-0 font-semibold text-primary"
+							href={`/me/arbitration/${entry.id}`}
+							variant="none"
+						>
+							{t('case')} ·{' '}
+							{entry.kind === 'REVIEW'
+								? t('review')
+								: order.title}
+						</CLink>
+						<Status value={entry.status} />
+					</div>
 					{entry.reason && (
 						<p className="whitespace-pre-wrap text-sm">
 							{entry.reason}
