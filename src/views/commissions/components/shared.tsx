@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Pagination } from '@/components/ui/Pagination'
 import { Textarea } from '@/components/ui/Textarea'
-import { cn } from '@/lib/cn'
 import { commissionService as api } from '@/services/commission/commission.service'
 import { useAuthStore } from '@/stores/useAuth.store'
 import type { CommissionFile } from '@/types/commission.type'
@@ -150,7 +149,7 @@ export function Status({
 	const t = useTranslations('commissions')
 	return (
 		<Badge
-			className={cn('min-w-28', className)}
+			className={className}
 			variant={STATUS_VARIANTS[value] ?? 'secondary'}
 		>
 			{t.has(`statuses.${value}`) ? t(`statuses.${value}`) : value}
