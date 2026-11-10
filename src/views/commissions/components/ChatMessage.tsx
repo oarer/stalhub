@@ -20,9 +20,13 @@ const eventIcon = (kind: string) =>
 export function ChatMessage({
 	message,
 	user,
+	downloadFile,
+	showAuthorBadge = true,
 }: {
 	message: CommissionMessage
 	user: number
+	downloadFile?: (file: CommissionMessage['files'][number]) => Promise<void>
+	showAuthorBadge?: boolean
 }) {
 	const t = useTranslations('commissions')
 	const eventLabel = (kind: string) =>
@@ -45,7 +49,7 @@ export function ChatMessage({
 					</p>
 				)}
 				{message.files.length > 0 && (
-					<FileLinks files={message.files} />
+					<FileLinks download={downloadFile} files={message.files} />
 				)}
 				<time
 					className="text-[10px] text-muted-foreground/60"
@@ -65,7 +69,10 @@ export function ChatMessage({
 							{message.content}
 						</p>
 						{message.files.length > 0 && (
-							<FileLinks files={message.files} />
+							<FileLinks
+								download={downloadFile}
+								files={message.files}
+							/>
 						)}
 						<time
 							className="self-end text-[10px] text-primary-foreground/60"
@@ -91,7 +98,7 @@ export function ChatMessage({
 					<span className="px-1 text-muted-foreground text-xs">
 						{message.author.name || message.author.username}
 					</span>
-					{message.author && (
+					{showAuthorBadge && message.author && (
 						<Badge
 							className="font-medium text-[11px]"
 							variant={'nsfw'}
@@ -105,7 +112,10 @@ export function ChatMessage({
 						{message.content}
 					</p>
 					{message.files.length > 0 && (
-						<FileLinks files={message.files} />
+						<FileLinks
+							download={downloadFile}
+							files={message.files}
+						/>
 					)}
 					<time
 						className="self-end text-[10px] text-muted-foreground/60"

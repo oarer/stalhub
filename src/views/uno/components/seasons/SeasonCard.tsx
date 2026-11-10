@@ -1,7 +1,7 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import { CLink } from '@/components/ui/Link'
@@ -71,19 +71,38 @@ export function SeasonCard({ season }: { season: SeasonEntry }) {
 				</div>
 			</div>
 			{!season.isInterSeason && (
-				<CLink
-					className="mt-4 w-fit gap-2"
-					href={`/uno?season=${encodeURIComponent(season.id)}`}
-					onClick={(event) => {
-						event.preventDefault()
-						event.stopPropagation()
-						router.push(`/uno?season=${encodeURIComponent(season.id)}`)
-					}}
-					size="sm"
-					variant="outline"
-				>
-					{t('seasons.leaderboard')}
-				</CLink>
+				<div className="mt-4 flex flex-wrap gap-2">
+					<CLink
+						className="w-fit gap-2"
+						href={`/uno?season=${encodeURIComponent(season.id)}`}
+						onClick={(event) => {
+							event.preventDefault()
+							event.stopPropagation()
+							router.push(
+								`/uno?season=${encodeURIComponent(season.id)}`
+							)
+						}}
+						size="sm"
+						variant="outline"
+					>
+						{t('seasons.leaderboard')}
+					</CLink>
+					<CLink
+						className="w-fit gap-2"
+						href={`/uno/seasons/tiers?season=${encodeURIComponent(season.id)}`}
+						onClick={(event) => {
+							event.preventDefault()
+							event.stopPropagation()
+							router.push(
+								`/uno/seasons/tiers?season=${encodeURIComponent(season.id)}`
+							)
+						}}
+						size="sm"
+						variant="outline"
+					>
+						{t('seasons.tiers')}
+					</CLink>
+				</div>
 			)}
 		</Card.Root>
 	)

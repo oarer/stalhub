@@ -27,7 +27,11 @@ import type {
 	UnoLeaderboardParams,
 	UnoLeaderboardResponse,
 	UnoMetric,
+	UnoSeasonSubtier,
 	UnoSeasonsResponse,
+	UnoSeasonTier,
+	UnoSeasonTierClan,
+	UnoSeasonTiersResponse,
 	UnoVsParams,
 } from '@/types/uno/uno.type'
 
@@ -766,6 +770,75 @@ const dateRangeQuery = (params: UnoDateRangeParams = {}) => ({
 	season: params.season?.slice(0, UNO_REQUEST_LIMITS.text),
 })
 
+const toSeasonTierClan = (value: unknown): UnoSeasonTierClan | null => {
+	const record = asRecord(value)
+	const id = asString(first(record, ['id']))
+	if (!id) return null
+	return {
+		id,
+		name: asString(first(record, ['name'])) ?? '—',
+		tag: asString(first(record, ['tag'])),
+		faction: asString(first(record, ['faction'])),
+		rating: asNumber(first(record, ['rating'])),
+		position: asNumber(first(record, ['position'])),
+		seasonPosition: asNumber(
+			first(record, ['seasonPosition', 'season_position'])
+		),
+		flag: asBoolean(first(record, ['flag'])),
+		memberCount: asNumber(first(record, ['memberCount', 'member_count'])),
+	}
+}
+
+const toSeasonSubtier = (value: unknown): UnoSeasonSubtier | null => {
+	const record = asRecord(value)
+	const level = asNumber(first(record, ['level']))
+	if (level === null) return null
+	return {
+		level,
+		label: asString(first(record, ['label'])) ?? String(level),
+		fromPosition: asNumber(
+			first(record, ['fromPosition', 'from_position'])
+		),
+		toPosition: asNumber(first(record, ['toPosition', 'to_position'])),
+		ratingMax: asNumber(first(record, ['ratingMax', 'rating_max'])),
+		ratingMin: asNumber(first(record, ['ratingMin', 'rating_min'])),
+		clans: asArray(record.clans)
+			.map(toSeasonTierClan)
+			.filter((clan): clan is UnoSeasonTierClan => clan !== null),
+	}
+}
+
+const toSeasonTier = (value: unknown): UnoSeasonTier | null => {
+	const record = asRecord(value)
+	const rank = asString(first(record, ['rank']))
+	if (!rank) return null
+	return {
+		rank,
+		count: asNumber(first(record, ['count'])) ?? 0,
+		subtiers: asArray(record.subtiers)
+			.map(toSeasonSubtier)
+			.filter((subtier): subtier is UnoSeasonSubtier => subtier !== null),
+	}
+}
+
+const normalizeSeasonTiers = (
+	payload: unknown,
+	fallbackSeason: string
+): UnoSeasonTiersResponse => {
+	const record = asRecord(unwrap(payload))
+	return {
+		season: asString(first(record, ['season'])) ?? fallbackSeason,
+		total: asNumber(first(record, ['total'])),
+		observedAt: asString(first(record, ['observedAt', 'observed_at'])),
+		ratingRulesVersion: asString(
+			first(record, ['ratingRulesVersion', 'rating_rules_version'])
+		),
+		tiers: asArray(record.tiers)
+			.map(toSeasonTier)
+			.filter((tier): tier is UnoSeasonTier => tier !== null),
+	}
+}
+
 class UnoService {
 	async getLeaderboard(
 		params: UnoLeaderboardParams = {}
@@ -965,6 +1038,13 @@ class UnoService {
 				}
 			}),
 		}
+	}
+
+	async getSeasonTiers(season: string): Promise<UnoSeasonTiersResponse> {
+		const { data } = await apiClient.get('/api/v1/uno/season-tiers', {
+			params: { season: season.slice(0, UNO_REQUEST_LIMITS.text) },
+		})
+		return normalizeSeasonTiers(data, season)
 	}
 }
 

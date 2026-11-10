@@ -1675,7 +1675,8 @@
       },
       "moderation": "Modération",
       "audit": "Journal",
-      "health": "Santé"
+      "health": "Santé",
+      "disputes": "Litiges"
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -2246,6 +2247,52 @@
       "multiaccountsEmpty": "Aucun match",
       "searchComments": "Rechercher texte ou auteur…",
       "commentDeleted": "Commentaire supprimé"
+    },
+    "disputes": {
+      "title": "Litiges de commandes",
+      "search": "Rechercher par commande, participant ou motif",
+      "empty": "Aucun litige trouvé",
+      "open": "Ouvrir",
+      "unassigned": "Non attribué",
+      "openedBy": "Ouvert par",
+      "arbiter": "Arbitre",
+      "order": "Commande",
+      "decisions": "Décisions",
+      "upfront": "Acompte",
+      "claimHint": "Ce litige n’est pas attribué. Prenez-le pour rendre une décision.",
+      "assignedHint": "Ce litige est déjà pris par un autre arbitre. Vous pouvez le consulter, mais seul l’arbitre attribué peut agir.",
+      "actionError": "L’action n’a pas pu être effectuée. Actualisez et réessayez.",
+      "stats": {
+        "open": "Ouverts",
+        "resolved": "Résolus",
+        "unassigned": "Non attribués",
+        "assignedToMe": "Mes litiges"
+      },
+      "filter": {
+        "allKinds": "Tous les types",
+        "allStatuses": "Tous les statuts",
+        "all": "Tous",
+        "unassigned": "Non attribués",
+        "me": "Les miens"
+      },
+      "kind": {
+        "order": "Commande",
+        "review": "Avis"
+      },
+      "status": {
+        "open": "Ouvert",
+        "resolved": "Résolu"
+      },
+      "table": {
+        "order": "Commande",
+        "kind": "Type",
+        "status": "Statut",
+        "arbiter": "Arbitre",
+        "created": "Créé"
+      },
+      "conflictHint": "Vous êtes participant à cette commande, vous ne pouvez donc pas prendre le litige ni rendre de décision.",
+      "takeOver": "Reprendre",
+      "takeOverHint": "Ce litige est déjà attribué à un autre arbitre. Vous pouvez le reprendre et rendre une décision."
     }
   },
   "test": {
@@ -4293,6 +4340,20 @@
       "empty": "No seasons found.",
       "current": "Current",
       "leaderboard": "Top clans",
+      "tiers": "Tier list",
+      "tiersDescription": "Tier list automatique de la saison basée sur les rangs officiels des clans.",
+      "tiersEmpty": "Aucune donnée de tier pour cette saison.",
+      "tiersSelect": "Choisissez une saison pour voir sa tier list.",
+      "totalClans": "{count, plural, one {# clan} other {# clans}}",
+      "downloadPng": "Télécharger PNG",
+      "pngTitle": "Aperçu PNG",
+      "pngAlt": "Tier list de la saison UNO",
+      "pngClose": "Fermer",
+      "pngCopy": "Copier",
+      "pngDownload": "Télécharger",
+      "pngCopied": "Image copiée",
+      "pngError": "Échec de l'export PNG",
+      "copyError": "Échec de la copie de l'image",
       "starts": "Starts",
       "ends": "Ends",
       "periodValues": "period values",

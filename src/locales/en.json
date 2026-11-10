@@ -1675,7 +1675,8 @@
       },
       "moderation": "Moderation",
       "audit": "Audit Log",
-      "health": "Health"
+      "health": "Health",
+      "disputes": "Disputes"
     },
     "dashboard": {
       "title": "Dashboard",
@@ -2246,6 +2247,52 @@
       "multiaccountsEmpty": "No matches",
       "searchComments": "Search text or author…",
       "commentDeleted": "Comment deleted"
+    },
+    "disputes": {
+      "title": "Order disputes",
+      "search": "Search by order, participant or reason",
+      "empty": "No disputes found",
+      "open": "Open",
+      "unassigned": "Unassigned",
+      "openedBy": "Opened by",
+      "arbiter": "Arbiter",
+      "order": "Order",
+      "decisions": "Decisions",
+      "upfront": "Upfront",
+      "claimHint": "This dispute is unassigned. Claim it to issue a decision.",
+      "assignedHint": "This dispute is already claimed by another arbiter. You can view it, but only the assigned arbiter can act.",
+      "actionError": "The action could not be completed. Refresh and try again.",
+      "stats": {
+        "open": "Open",
+        "resolved": "Resolved",
+        "unassigned": "Unassigned",
+        "assignedToMe": "Assigned to me"
+      },
+      "filter": {
+        "allKinds": "All kinds",
+        "allStatuses": "All statuses",
+        "all": "All",
+        "unassigned": "Unassigned",
+        "me": "Mine"
+      },
+      "kind": {
+        "order": "Order",
+        "review": "Review"
+      },
+      "status": {
+        "open": "Open",
+        "resolved": "Resolved"
+      },
+      "table": {
+        "order": "Order",
+        "kind": "Kind",
+        "status": "Status",
+        "arbiter": "Arbiter",
+        "created": "Created"
+      },
+      "conflictHint": "You are a participant in this order, so you cannot claim the dispute or issue a decision.",
+      "takeOver": "Take over",
+      "takeOverHint": "This dispute is already assigned to another arbiter. You can take it over and issue a decision."
     }
   },
   "test": {
@@ -4327,6 +4374,20 @@
       "empty": "No seasons found.",
       "current": "Current",
       "leaderboard": "Top clans",
+      "tiers": "Tier list",
+      "tiersDescription": "Automatic season tier list based on the official clan ranks.",
+      "tiersEmpty": "No tier data for this season.",
+      "tiersSelect": "Choose a season to see its tier list.",
+      "totalClans": "{count, plural, one {# clan} other {# clans}}",
+      "downloadPng": "Download PNG",
+      "pngTitle": "PNG preview",
+      "pngAlt": "UNO season tier list",
+      "pngClose": "Close",
+      "pngCopy": "Copy",
+      "pngDownload": "Download",
+      "pngCopied": "Image copied",
+      "pngError": "Failed to export PNG",
+      "copyError": "Failed to copy image",
       "starts": "Starts",
       "ends": "Ends",
       "periodValues": "period values",

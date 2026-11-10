@@ -190,6 +190,42 @@ export interface UnoSeasonsResponse {
 	items: UnoSeason[]
 }
 
+export interface UnoSeasonTierClan {
+	id: string
+	name: string
+	tag: string | null
+	faction: string | null
+	rating: number | null
+	position: number | null
+	seasonPosition: number | null
+	flag: boolean | null
+	memberCount: number | null
+}
+
+export interface UnoSeasonSubtier {
+	level: number
+	label: string
+	fromPosition: number | null
+	toPosition: number | null
+	ratingMax: number | null
+	ratingMin: number | null
+	clans: UnoSeasonTierClan[]
+}
+
+export interface UnoSeasonTier {
+	rank: string
+	count: number
+	subtiers: UnoSeasonSubtier[]
+}
+
+export interface UnoSeasonTiersResponse {
+	season: string
+	total: number | null
+	observedAt: string | null
+	ratingRulesVersion: string | null
+	tiers: UnoSeasonTier[]
+}
+
 export interface UnoLeaderboardParams {
 	q?: string
 	faction?: string

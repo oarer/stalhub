@@ -23,7 +23,9 @@ export function ArbitrationView() {
 	const capabilities = useQuery(queries.capabilities(user))
 	const query = useQuery({
 		...queries.cases(user, page),
-		enabled: !!user && !!capabilities.data?.arbitrate,
+		enabled:
+			!!user &&
+			(!!capabilities.data?.arbitrate || !!capabilities.data?.owner),
 	})
 	const client = useQueryClient()
 	const claim = useMutation({
@@ -47,9 +49,9 @@ export function ArbitrationView() {
 			<Feedback
 				error={query.error || capabilities.error || claim.error}
 			/>
-			{capabilities.data && !capabilities.data.arbitrate && (
-				<p>{t('accessDenied')}</p>
-			)}
+			{capabilities.data &&
+				!capabilities.data.arbitrate &&
+				!capabilities.data.owner && <p>{t('accessDenied')}</p>}
 			{query.isPending && <ListRowsSkeleton count={5} />}
 			{query.data?.data.map((entry) => (
 				<Card.Root className="gap-3" key={entry.id}>
@@ -171,7 +173,8 @@ export function ArbitrationCaseView({ id }: { id: string }) {
 					))}
 					{user &&
 						query.data.assigned_to === user &&
-						capabilities.data?.arbitrate && (
+						(capabilities.data?.arbitrate ||
+							capabilities.data?.owner) && (
 							<ArbitrationDecisionForm
 								entry={query.data}
 								user={user}

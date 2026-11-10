@@ -34,10 +34,11 @@ export const commissionService = {
 	},
 	async capabilities() {
 		return (
-			await apiClient.get<{ author: boolean; arbitrate: boolean }>(
-				`${root}/capabilities`,
-				privateRequest
-			)
+			await apiClient.get<{
+				author: boolean
+				arbitrate: boolean
+				owner: boolean
+			}>(`${root}/capabilities`, privateRequest)
 		).data
 	},
 	async profile() {

@@ -78,7 +78,8 @@ export default function OrdersView() {
 							{t('studio')}
 						</CLink>
 					)}
-					{capabilities.data?.arbitrate && (
+					{(capabilities.data?.arbitrate ||
+						capabilities.data?.owner) && (
 						<CLink
 							className="px-0 text-primary"
 							href="/me/arbitration"

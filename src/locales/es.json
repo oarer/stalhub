@@ -1675,7 +1675,8 @@
       },
       "moderation": "Moderación",
       "audit": "Registro",
-      "health": "Salud"
+      "health": "Salud",
+      "disputes": "Disputas"
     },
     "dashboard": {
       "title": "Panel",
@@ -2246,6 +2247,52 @@
       "multiaccountsEmpty": "Sin coincidencias",
       "searchComments": "Buscar texto o autor…",
       "commentDeleted": "Comentario eliminado"
+    },
+    "disputes": {
+      "title": "Disputas de pedidos",
+      "search": "Buscar por pedido, participante o motivo",
+      "empty": "No se encontraron disputas",
+      "open": "Abrir",
+      "unassigned": "Sin asignar",
+      "openedBy": "Abierta por",
+      "arbiter": "Árbitro",
+      "order": "Pedido",
+      "decisions": "Decisiones",
+      "upfront": "Anticipo",
+      "claimHint": "Esta disputa no está asignada. Tómala para emitir una decisión.",
+      "assignedHint": "Otro árbitro ya tomó esta disputa. Puedes verla, pero solo el árbitro asignado puede actuar.",
+      "actionError": "No se pudo completar la acción. Actualiza e inténtalo de nuevo.",
+      "stats": {
+        "open": "Abiertas",
+        "resolved": "Resueltas",
+        "unassigned": "Sin asignar",
+        "assignedToMe": "Asignadas a mí"
+      },
+      "filter": {
+        "allKinds": "Todos los tipos",
+        "allStatuses": "Todos los estados",
+        "all": "Todas",
+        "unassigned": "Sin asignar",
+        "me": "Mías"
+      },
+      "kind": {
+        "order": "Pedido",
+        "review": "Reseña"
+      },
+      "status": {
+        "open": "Abierta",
+        "resolved": "Resuelta"
+      },
+      "table": {
+        "order": "Pedido",
+        "kind": "Tipo",
+        "status": "Estado",
+        "arbiter": "Árbitro",
+        "created": "Creada"
+      },
+      "conflictHint": "Eres participante de este pedido, por lo que no puedes tomar la disputa ni emitir una decisión.",
+      "takeOver": "Asumir",
+      "takeOverHint": "Esta disputa ya está asignada a otro árbitro. Puedes asumirla y emitir una decisión."
     }
   },
   "test": {
@@ -4293,6 +4340,20 @@
       "empty": "No seasons found.",
       "current": "Current",
       "leaderboard": "Clanes principales",
+      "tiers": "Tier list",
+      "tiersDescription": "Tier list automática de la temporada basada en los rangos oficiales de los clanes.",
+      "tiersEmpty": "No hay datos de tiers para esta temporada.",
+      "tiersSelect": "Elige una temporada para ver su tier list.",
+      "totalClans": "{count, plural, one {# clan} other {# clanes}}",
+      "downloadPng": "Descargar PNG",
+      "pngTitle": "Vista previa PNG",
+      "pngAlt": "Tier list de la temporada UNO",
+      "pngClose": "Cerrar",
+      "pngCopy": "Copiar",
+      "pngDownload": "Descargar",
+      "pngCopied": "Imagen copiada",
+      "pngError": "No se pudo exportar el PNG",
+      "copyError": "No se pudo copiar la imagen",
       "starts": "Starts",
       "ends": "Ends",
       "periodValues": "period values",

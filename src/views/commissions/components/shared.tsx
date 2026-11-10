@@ -157,7 +157,13 @@ export function Status({
 		</Badge>
 	)
 }
-export function FileLinks({ files }: { files: CommissionFile[] }) {
+export function FileLinks({
+	files,
+	download = (file) => api.download(file),
+}: {
+	files: CommissionFile[]
+	download?: (file: CommissionFile) => Promise<void>
+}) {
 	const [error, setError] = useState<unknown>()
 	const t = useTranslations('commissions')
 	if (!files.length) return null
@@ -169,7 +175,7 @@ export function FileLinks({ files }: { files: CommissionFile[] }) {
 					className="w-fit justify-start p-0 text-left font-normal text-sm underline underline-offset-4"
 					key={file.id}
 					onClick={() => {
-						void api.download(file).catch(setError)
+						void download(file).catch(setError)
 					}}
 					type="button"
 					variant="none"

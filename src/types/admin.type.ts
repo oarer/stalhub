@@ -1,4 +1,9 @@
 import type { ClanSchedule } from './clan/clan.type'
+import type {
+	CommissionDecision,
+	CommissionFile,
+	CommissionOrder,
+} from './commission.type'
 
 export interface AdminPermission {
 	id: number
@@ -694,3 +699,87 @@ export interface AdminModerationCommentList {
 }
 
 export type AdminNotificationTargetKind = 'all' | 'role' | 'clan' | 'banned'
+
+export interface AdminDisputePerson {
+	id: number
+	username: string
+	name: string | null
+}
+
+export interface AdminDisputeOrderSummary {
+	id: string
+	title: string
+	status: string
+	currency: string
+	total: number
+	customer: AdminDisputePerson
+	artist: AdminDisputePerson
+}
+
+export interface AdminDispute {
+	id: string
+	order_id: string
+	kind: string
+	status: string
+	reason: string
+	opened_by: number
+	assigned_to: number | null
+	version: number
+	created_at: string
+	updated_at: string
+	order: AdminDisputeOrderSummary
+	opened_by_user: AdminDisputePerson | null
+	assigned_to_user: AdminDisputePerson | null
+}
+
+export interface AdminDisputeListParams {
+	take?: number
+	page?: number
+	status?: string
+	kind?: string
+	assigned?: 'all' | 'unassigned' | 'me'
+	search?: string
+}
+
+export interface AdminDisputeStats {
+	total: number
+	open: number
+	resolved: number
+	order: number
+	review: number
+	unassigned: number
+	assigned_to_me: number
+}
+
+export interface AdminDisputeDetail {
+	id: string
+	order_id: string
+	kind: string
+	status: string
+	reason: string
+	previous_status: string
+	opened_by: number
+	assigned_to: number | null
+	version: number
+	created_at: string
+	updated_at: string
+	decisions: CommissionDecision[]
+	review: { score: number; content: string } | null
+	opened_by_user: AdminDisputePerson | null
+	assigned_to_user: AdminDisputePerson | null
+	order: CommissionOrder & { files: CommissionFile[] }
+}
+
+export interface AdminDisputeMessage {
+	id: number
+	author: AdminDisputePerson
+	kind: string
+	content: string
+	created_at: string
+	files: CommissionFile[]
+}
+
+export interface AdminDisputeMessagePage {
+	data: AdminDisputeMessage[]
+	has_more: boolean
+}

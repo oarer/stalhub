@@ -78,6 +78,11 @@ const groups: {
 				icon: 'lucide:flag',
 			},
 			{
+				title: 'admin.sidebar.disputes',
+				href: '/admin/disputes',
+				icon: 'lucide:scale',
+			},
+			{
 				title: 'admin.sidebar.players',
 				href: '/admin/players',
 				icon: 'lucide:gamepad-2',

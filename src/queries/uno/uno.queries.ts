@@ -98,6 +98,14 @@ class UnoQueries {
 			staleTime: 1000 * 60 * 5,
 		})
 	}
+
+	seasonTiers(season: string) {
+		return queryOptions({
+			queryKey: ['uno', 'season-tiers', season],
+			queryFn: () => unoService.getSeasonTiers(season),
+			staleTime: 1000 * 60 * 5,
+		})
+	}
 }
 
 export const unoQueries = new UnoQueries()

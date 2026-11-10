@@ -143,7 +143,7 @@ export const tabGroups: TabGroup[] = [
 ]
 
 export const canAccessArtTab = (roles: { name: string }[]) =>
-	roles.some((r) => r.name === 'author' || r.name === 'admin')
+	roles.some((r) => r.name === 'author' || r.name === 'admin' || r.name === 'owner')
 
 export type CommissionCapabilities = {
 	author?: boolean
