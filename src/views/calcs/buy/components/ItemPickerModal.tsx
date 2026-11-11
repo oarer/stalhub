@@ -14,6 +14,7 @@ import { useFuseSearch } from '@/hooks/useFuseSearch'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { buyItemKey } from '@/stores/useBuy.store'
 import type { ItemListing } from '@/types/api.type'
 import { infoColorMap } from '@/types/item.type'
@@ -43,8 +44,10 @@ export default function ItemPickerModal({
 
 	const { items, loading } = useSearchItem()
 
+	const visibleItems = useVisibleItems(items)
+
 	const { filteredEntries: filteredItems } = useFuseSearch<ItemListing>(
-		items ?? [],
+		visibleItems ?? [],
 		debouncedQuery,
 		{
 			getKey: (i) => buyItemKey(i),

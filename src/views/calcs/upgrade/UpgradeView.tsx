@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { ARTEFACT_META_KEYS } from '@/constants/artefact_meta.const'
 import { MAX_UPGRADE_LEVEL } from '@/constants/upgrade.const'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { upgradePricesQueries } from '@/queries/calcs/upgrade-prices.queries'
 import { Regions } from '@/types/api.type'
@@ -68,7 +69,7 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 	const artifactsQuery = useSuspenseQuery(
 		itemsQueries.get({ type: 'artefact' })
 	)
-	const artifacts = artifactsQuery.data
+	const artifacts = useVisibleItems(artifactsQuery.data) ?? []
 
 	const pricesQuery = useQuery(upgradePricesQueries.get(Regions.RU))
 	const marketPrices = useMemo(

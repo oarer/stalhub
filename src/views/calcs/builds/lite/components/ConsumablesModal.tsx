@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { type BoostSet, useBoostSetsStore } from '@/stores/useBoostSets.store'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -415,9 +416,10 @@ function BoostSetsPanel({
 }
 
 export default function ConsumablesModalLite() {
-	const { data: items } = useSuspenseQuery(
+	const { data: queryItems } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
+	const items = useVisibleItems(queryItems) ?? []
 	const locale = getLocale()
 	const t = useTranslations()
 

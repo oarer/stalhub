@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/Card'
 import { Combobox } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import { useTTKStore } from '@/stores/useTTK.store'
@@ -17,7 +18,8 @@ export function MannequinControls({ prime }: { prime: number }) {
 	const locale = getLocale()
 	const t = useTranslations()
 
-	const plates = useQuery(itemsQueries.get({ type: 'plates' })).data ?? []
+	const platesQuery = useQuery(itemsQueries.get({ type: 'plates' }))
+	const plates = useVisibleItems(platesQuery.data) ?? []
 	const { savedBuilds } = useBuildStore()
 	const {
 		bulletRes,

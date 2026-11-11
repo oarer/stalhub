@@ -22,6 +22,7 @@ import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import Username from '@/components/ui/user/Username'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
 import { useAuthStore } from '@/stores/useAuth.store'
@@ -64,7 +65,7 @@ export default function TierListDetailView() {
 
 	const { data: tierList, isLoading } = useQuery(tierListQueries.get(id))
 
-	const { data: items } = useQuery({
+	const { data: rawItems } = useQuery({
 		queryKey: ['items', tierList?.item_kind],
 		queryFn: async () => {
 			const type =
@@ -78,6 +79,18 @@ export default function TierListDetailView() {
 		},
 		enabled: Boolean(tierList),
 	})
+	const visibleItems = useVisibleItems(
+		rawItems ? Object.values(rawItems) : undefined
+	)
+	const items = useMemo(
+		() =>
+			visibleItems
+				? Object.fromEntries(
+						visibleItems.map((item) => [item.id, item])
+					)
+				: undefined,
+		[visibleItems]
+	)
 
 	const { getTtk } = useTierTtk(tierList?.scenario)
 

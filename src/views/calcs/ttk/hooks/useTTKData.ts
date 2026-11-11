@@ -3,6 +3,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 
 export function useTTKData() {
@@ -20,14 +21,20 @@ export function useTTKData() {
 		itemsQueries.get({ type: 'consumables' })
 	)
 
+	const visibleWeapons = useVisibleItems(weaponsQuery.data) ?? []
+	const visibleArmors = useVisibleItems(armorsQuery.data) ?? []
+	const visibleContainers = useVisibleItems(containersQuery.data) ?? []
+	const visibleArtefacts = useVisibleItems(artefactsQuery.data) ?? []
+	const visibleConsumables = useVisibleItems(consumablesQuery.data) ?? []
+
 	return {
-		weapons: weaponsQuery.data,
+		weapons: visibleWeapons,
 		allAmmo: ammoQuery.data,
 		plates: platesQuery.data,
-		armors: armorsQuery.data,
-		containers: containersQuery.data,
-		artefacts: artefactsQuery.data,
-		consumables: consumablesQuery.data,
+		armors: visibleArmors,
+		containers: visibleContainers,
+		artefacts: visibleArtefacts,
+		consumables: visibleConsumables,
 		locale: getLocale(),
 		t: useTranslations(),
 	}

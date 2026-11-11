@@ -11,6 +11,7 @@ import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -139,6 +140,9 @@ export default function BuildsLiteView({
 	const { data: consumables } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
+	const visibleArmor = useVisibleItems(armor) ?? []
+	const visibleContainers = useVisibleItems(containers) ?? []
+	const visibleConsumables = useVisibleItems(consumables) ?? []
 	const items = useMemo(
 		() => (artifactsData as Item[] | undefined) ?? [],
 		[artifactsData]
@@ -153,19 +157,24 @@ export default function BuildsLiteView({
 		useState<string[]>([])
 
 	const armorEffectOptions = useMemo(
-		() => buildPositiveNegativeOptions(armor, locale),
-		[armor, locale]
+		() => buildPositiveNegativeOptions(visibleArmor, locale),
+		[visibleArmor, locale]
 	)
 
 	const armorStatFilteredItems = useMemo(
 		() =>
 			filterItemsByEffects(
-				armor,
+				visibleArmor,
 				locale,
 				selectedArmorPositiveStats,
 				selectedArmorNegativeStats
 			),
-		[armor, locale, selectedArmorPositiveStats, selectedArmorNegativeStats]
+		[
+			visibleArmor,
+			locale,
+			selectedArmorPositiveStats,
+			selectedArmorNegativeStats,
+		]
 	)
 
 	const armorStatFilters = useMemo(() => {
@@ -315,11 +324,13 @@ export default function BuildsLiteView({
 			)
 			const itemsById = new Map(items.map((item) => [item.id, item]))
 			const containersById = new Map(
-				containers.map((item) => [item.id, item])
+				visibleContainers.map((item) => [item.id, item])
 			)
-			const armorById = new Map(armor.map((item) => [item.id, item]))
+			const armorById = new Map(
+				visibleArmor.map((item) => [item.id, item])
+			)
 			const consumablesById = new Map(
-				consumables.map((item) => [item.id, item])
+				visibleConsumables.map((item) => [item.id, item])
 			)
 
 			for (const slot of build.container?.slots ?? []) {
@@ -379,10 +390,10 @@ export default function BuildsLiteView({
 			setRenderPngTemplate(false)
 		}
 	}, [
-		armor,
+		visibleArmor,
 		build,
-		containers,
-		consumables,
+		visibleContainers,
+		visibleConsumables,
 		isSavingPng,
 		items,
 		waitForPngTemplate,
@@ -456,7 +467,7 @@ export default function BuildsLiteView({
 									>
 										<ArtifactSlotsLite
 											arts={build.arts as Art[]}
-											containers={containers}
+											containers={visibleContainers}
 											copyMode={currentArtifacts.copyMode}
 											currentContainerId={
 												build.container?.id ?? null
@@ -507,7 +518,7 @@ export default function BuildsLiteView({
 											arts={
 												compareBuild.build.arts as Art[]
 											}
-											containers={containers}
+											containers={visibleContainers}
 											copyMode={compareArtifacts.copyMode}
 											currentContainerId={
 												compareBuild.build.container
@@ -583,7 +594,7 @@ export default function BuildsLiteView({
 							<Card.Root className="w-full">
 								<ArtifactSlotsLite
 									arts={build.arts as Art[]}
-									containers={containers}
+									containers={visibleContainers}
 									copyMode={currentArtifacts.copyMode}
 									currentContainerId={
 										build.container?.id ?? null
@@ -640,7 +651,7 @@ export default function BuildsLiteView({
 						<Card.Content className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
 							<ArmorLiteSection
 								armor={build.armor}
-								armorItems={armor}
+								armorItems={visibleArmor}
 								locale={locale}
 								onOpenPicker={(previewId) => {
 									setArmorPreviewId(previewId)
@@ -699,10 +710,10 @@ export default function BuildsLiteView({
 					className="pointer-events-none fixed top-0 left-2500"
 				>
 					<BuildLitePngTemplate
-						armorItems={armor}
+						armorItems={visibleArmor}
 						build={build}
-						consumables={consumables}
-						containers={containers}
+						consumables={visibleConsumables}
+						containers={visibleContainers}
 						currentBuild={currentBuild}
 						imageSources={pngImageSources}
 						items={items}

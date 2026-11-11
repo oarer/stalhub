@@ -12,6 +12,7 @@ import type { ColumnDef } from '@/components/ui/Table'
 import { flexRender, Table, useTableSort } from '@/components/ui/Table'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { hideoutQueries } from '@/queries/calcs/hideout.queries'
 import type { Recipe } from '@/types/hideout.type'
 import type { Locale } from '@/types/item.type'
@@ -30,6 +31,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 	const t = useTranslations()
 	const { data: hideoutData } = useSuspenseQuery(hideoutQueries.get())
 	const { items } = useSearchItem()
+	const visibleItems = useVisibleItems(items)
 	const locale = getLocale()
 
 	const {
@@ -43,14 +45,14 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 		expandedNodes,
 		manualPrices,
 		handlePriceChange,
-	} = useHideoutGraph(hideoutData, items, locale)
+	} = useHideoutGraph(hideoutData, visibleItems ?? null, locale)
 
 	const ingredients = useMemo<IngredientRows[]>(() => {
-		if (!hideoutData || !items || !selectedItem) return []
+		if (!hideoutData || !visibleItems || !selectedItem) return []
 
 		const localeTyped = locale as Locale
-		const itemMap = new Map<string, (typeof items)[0]>()
-		for (const item of items) {
+		const itemMap = new Map<string, (typeof visibleItems)[0]>()
+		for (const item of visibleItems) {
 			itemMap.set(normalizeItemId(item.data), item)
 		}
 
@@ -127,7 +129,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 		return rows
 	}, [
 		hideoutData,
-		items,
+		visibleItems,
 		selectedItem,
 		desiredQuantity,
 		expandedNodes,
@@ -237,7 +239,7 @@ export function HideoutView({ variant = 'page' }: HideoutViewProps) {
 				<CenterOnNode centerTarget={centerTarget} />
 				<RecipeSidebar
 					hideoutData={hideoutData}
-					items={items}
+					items={visibleItems ?? null}
 					locale={locale}
 					onItemChange={handleItemChange}
 					selectedItem={selectedItem}

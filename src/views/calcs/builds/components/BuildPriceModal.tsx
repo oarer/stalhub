@@ -17,6 +17,7 @@ import {
 import { formatDate } from '@/lib/date'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Item } from '@/types/item.type'
@@ -31,7 +32,8 @@ export default function BuildPriceModal() {
 	const { priceMap, isLoading, isError, updatedAt } = useBuildPrices()
 
 	const { data: itemsData } = useQuery(itemsQueries.get({ type: 'artefact' }))
-	const items = (itemsData as Item[] | undefined) ?? []
+	const items = (useVisibleItems(itemsData as Item[] | undefined) ??
+		[]) as Item[]
 
 	const itemsMap = useMemo(
 		() => new Map(items.map((i) => [i.id, i])),

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import type { ComboboxOption } from '@/components/ui/Combobox'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art, ModalProps } from '@/types/build.type'
@@ -23,7 +24,8 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
 
 	const query = useSuspenseQuery(itemsQueries.get({ type: 'artefact' }))
-	const items = (query.data as Item[] | undefined) ?? []
+	const items = (useVisibleItems(query.data as Item[] | undefined) ??
+		[]) as Item[]
 
 	const addArt = useBuildStore((s) => s.addArt)
 	const defaults = useBuildStore((s) => s.defaults)

@@ -2,6 +2,7 @@
 
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
+import { useVisibleItems } from '@/lib/unoItems'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { clanQueries } from '@/queries/clan/clan.queries'
@@ -27,16 +28,18 @@ export function useGearLookups(): GearLookups {
 	const { data: weapons } = useQuery(itemsQueries.get({ type: 'weapons' }))
 	const { data: armors } = useQuery(itemsQueries.get({ type: 'armor' }))
 	const { data: builds } = useQuery(buildApiQueries.list({ take: 500 }))
+	const visibleWeapons = useVisibleItems(weapons)
+	const visibleArmors = useVisibleItems(armors)
 
 	return useMemo<GearLookups>(
 		() => ({
-			weapons: weapons ?? EMPTY_LOOKUPS.weapons,
-			armors: armors ?? EMPTY_LOOKUPS.armors,
+			weapons: visibleWeapons ?? EMPTY_LOOKUPS.weapons,
+			armors: visibleArmors ?? EMPTY_LOOKUPS.armors,
 			buildById: new Map(
 				(builds?.data ?? []).map((b) => [b.id, b] as const)
 			),
 		}),
-		[weapons, armors, builds]
+		[visibleWeapons, visibleArmors, builds]
 	)
 }
 

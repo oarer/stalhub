@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { ModalProps } from '@/types/build.type'
@@ -29,9 +30,10 @@ export default function ArmorModal({ onClose }: ModalProps) {
 	const locale = getLocale()
 	const t = useTranslations()
 
-	const { data: items } = useSuspenseQuery(
+	const { data: queryItems } = useSuspenseQuery(
 		itemsQueries.get({ type: 'armor' })
 	)
+	const items = useVisibleItems(queryItems) ?? []
 
 	const [filter, setFilter] = useState('')
 	const [numericVariants, setNumericVariants] = useState<number>(0)

@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { ItemsList } from '@/shared/components/ItemsList'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -32,9 +33,10 @@ type Slot = string | null
 
 export default function ContModal({ onClose }: ModalProps) {
 	const locale = getLocale()
-	const { data: items } = useSuspenseQuery(
+	const { data: queryItems } = useSuspenseQuery(
 		itemsQueries.get({ type: 'containers' })
 	)
+	const items = useVisibleItems(queryItems) ?? []
 	const t = useTranslations()
 
 	const [filter, setFilter] = useState('')

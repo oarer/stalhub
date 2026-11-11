@@ -4,6 +4,7 @@ import { normalizeText, useFuseSearch } from '@/hooks/useFuseSearch'
 import { useSearchArticles } from '@/hooks/useSearchArticles'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { type SitePage, useSearchSitePages } from '@/hooks/useSearchSitePages'
+import { useVisibleItems } from '@/lib/unoItems'
 import type { ItemListing } from '@/types/api.type'
 import type { Article } from '@/types/article.type'
 import type { ItemName, Locale } from '@/types/item.type'
@@ -22,7 +23,10 @@ export function usePreparedSearch(
 	const locale: keyof ItemName = opts?.locale ?? 'ru'
 	const threshold = opts?.threshold ?? 0.4
 
-	const { items, loading: itemsLoading, error: itemsError } = useSearchItem()
+	const rawItems = useSearchItem()
+	const items = useVisibleItems(rawItems.items)
+	const loading = rawItems.loading
+	const error = rawItems.error
 	const pages = useSearchSitePages()
 	const {
 		articles,
@@ -32,9 +36,9 @@ export function usePreparedSearch(
 
 	const { preparedEntries: preparedItems, filteredEntries: filteredItems } =
 		useFuseSearch<ItemListing>(items ?? [], query, {
-			getName: (i) => (i.name?.[locale]) ?? '',
+			getName: (i) => i.name?.[locale] ?? '',
 			getKey: (i) =>
-				`${i.data ?? ''}-${normalizeText((i.name?.[locale]) ?? '')}-${i.icon ?? ''}`,
+				`${i.data ?? ''}-${normalizeText(i.name?.[locale] ?? '')}-${i.icon ?? ''}`,
 			locale,
 			minLength: MIN_LENGTH,
 			threshold,
@@ -71,7 +75,7 @@ export function usePreparedSearch(
 		preparedPages,
 		filteredArticles,
 		preparedArticles,
-		loading: itemsLoading || articlesLoading,
-		error: itemsError || articlesError,
+		loading: loading || articlesLoading,
+		error: error || articlesError,
 	}
 }

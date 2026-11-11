@@ -9,10 +9,9 @@ import { mtsWide } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import { NAV_STRUCTURE } from '@/constants/nav.const'
 import useSvg from '@/hooks/useSvg'
-import ChangeLang from './components/ChangeLang'
-import ChangeTheme from './components/ChangeTheme'
 import NavDropdown from './components/NavDropdown'
 import NavMe from './components/NavMe'
+import NavSettings from './components/NavSettings'
 import NavMobile from './NavMobile'
 
 const SZREPORT_VARIANTS = [
@@ -150,8 +149,7 @@ export default function Nav() {
 					<div className="relative flex items-center justify-end gap-6">
 						<div className="hidden items-center gap-2 lg:flex">
 							<ItemSearchModal />
-							<ChangeLang />
-							<ChangeTheme />
+							<NavSettings />
 						</div>
 						<NavMe />
 					</div>

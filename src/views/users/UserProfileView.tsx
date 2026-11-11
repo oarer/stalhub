@@ -5,6 +5,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import ClanCard from '@/components/ui/clan/ClanCard'
 import { CLink } from '@/components/ui/Link'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
@@ -45,6 +46,10 @@ export default function UserProfileView({
 	const { data: weapons } = useSuspenseQuery(
 		itemsQueries.get({ type: 'weapons' })
 	)
+	const visibleArtifacts = useVisibleItems(artifacts)
+	const visibleArmorItems = useVisibleItems(armorItems)
+	const visibleContainers = useVisibleItems(containers)
+	const visibleWeapons = useVisibleItems(weapons)
 	const { data: loadouts } = useSuspenseQuery(
 		loadoutQueries.getMany([user.id])
 	)
@@ -56,7 +61,7 @@ export default function UserProfileView({
 	const bgVariant = user.customization?.card_background ?? 'NONE'
 	const bgColor = user.customization?.card_color ?? '#000000'
 
-	const allItems = [...(weapons ?? []), ...(armorItems ?? [])]
+	const allItems = [...(visibleWeapons ?? []), ...(visibleArmorItems ?? [])]
 	const renderItem = (itemId: string | null) => (
 		<ItemCell item={allItems.find((i: Item) => i.id === itemId)} />
 	)
@@ -136,14 +141,14 @@ export default function UserProfileView({
 									String(loadout.data.build_fat)
 								) ? (
 									<HoverBuildCard
-										armorItems={armorItems}
-										artifacts={artifacts}
+										armorItems={visibleArmorItems}
+										artifacts={visibleArtifacts}
 										build={
 											buildById.get(
 												String(loadout.data.build_fat)
 											)!
 										}
-										containers={containers}
+										containers={visibleContainers}
 									>
 										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
 											{
@@ -170,14 +175,14 @@ export default function UserProfileView({
 									String(loadout.data.build_speed)
 								) ? (
 									<HoverBuildCard
-										armorItems={armorItems}
-										artifacts={artifacts}
+										armorItems={visibleArmorItems}
+										artifacts={visibleArtifacts}
 										build={
 											buildById.get(
 												String(loadout.data.build_speed)
 											)!
 										}
-										containers={containers}
+										containers={visibleContainers}
 									>
 										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
 											{
@@ -245,10 +250,10 @@ export default function UserProfileView({
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
 							{user.builds.map((build) => (
 								<BuildCard
-									armorItems={armorItems}
-									artifacts={artifacts}
+									armorItems={visibleArmorItems}
+									artifacts={visibleArtifacts}
 									build={build}
-									containers={containers}
+									containers={visibleContainers}
 									key={build.id}
 								/>
 							))}

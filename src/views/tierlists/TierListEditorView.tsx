@@ -14,6 +14,7 @@ import Input from '@/components/ui/Input'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { toast } from '@/components/ui/Toast'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { useVisibleItems } from '@/lib/unoItems'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
 import {
@@ -221,7 +222,7 @@ export default function TierListEditorView() {
 		[]
 	)
 
-	const { data: items } = useQuery({
+	const { data: rawItems } = useQuery({
 		queryKey: ['items', itemKind],
 		queryFn: async () => {
 			const type = itemKind === TierItemKind.WEAPON ? 'weapons' : 'armor'
@@ -231,11 +232,20 @@ export default function TierListEditorView() {
 			return data
 		},
 	})
-
-	const itemsList = useMemo(
-		() => (items ? Object.values(items) : []),
-		[items]
+	const visibleItems = useVisibleItems(
+		rawItems ? Object.values(rawItems) : undefined
 	)
+	const items = useMemo(
+		() =>
+			visibleItems
+				? Object.fromEntries(
+						visibleItems.map((item) => [item.id, item])
+					)
+				: undefined,
+		[visibleItems]
+	)
+
+	const itemsList = useMemo(() => visibleItems ?? [], [visibleItems])
 
 	const favoriteType = itemKind === TierItemKind.WEAPON ? 'weapon' : 'armor'
 

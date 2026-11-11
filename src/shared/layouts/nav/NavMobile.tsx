@@ -12,11 +12,13 @@ import { createPortal } from 'react-dom'
 import { unbounded } from '@/app/fonts'
 import ItemSearchModal from '@/components/modals/ItemSearch'
 import { Accordion } from '@/components/ui/Accordion'
+import { Switch } from '@/components/ui/Switch'
 import { DropDownMobile, MobileLinks } from '@/constants/nav.const'
 import { themes } from '@/constants/themes.const'
 import useClickOutside from '@/hooks/useClickOutside'
 import useSvg from '@/hooks/useSvg'
 import { getLocale } from '@/lib/getLocale'
+import { useSettingsStore } from '@/stores/useSettings.store'
 import type { AccordionItem } from '@/types/ui/accordion.type'
 
 const locales = [
@@ -50,6 +52,7 @@ export default function NavMobile() {
 	const t = useTranslations()
 	const { theme, setTheme } = useTheme()
 	const router = useRouter()
+	const { showUno, setShowUno } = useSettingsStore()
 	const [currentLocale, setCurrentLocale] = useState('en')
 	const [szReportIndex, setSzReportIndex] = useState(0)
 
@@ -138,145 +141,179 @@ export default function NavMobile() {
 		typeof document === 'undefined'
 			? null
 			: createPortal(
-		<AnimatePresence>
-			{isMenuOpen && (
-				<>
-					<motion.div
-						animate={{ opacity: 1 }}
-						aria-hidden="true"
-						className="fixed inset-0 z-91 bg-black/40 backdrop-blur-sm"
-						exit={{ opacity: 0 }}
-						initial={{ opacity: 0 }}
-						onClick={() => setIsMenuOpen(false)}
-					/>
+					<AnimatePresence>
+						{isMenuOpen && (
+							<>
+								<motion.div
+									animate={{ opacity: 1 }}
+									aria-hidden="true"
+									className="fixed inset-0 z-91 bg-black/40 backdrop-blur-sm"
+									exit={{ opacity: 0 }}
+									initial={{ opacity: 0 }}
+									onClick={() => setIsMenuOpen(false)}
+								/>
 
-					<motion.div
-						animate={{ opacity: 1, y: 0, scale: 1 }}
-						className="fixed top-8 left-1/2 z-99 flex w-[92%] -translate-x-1/2 flex-col gap-4 xl:w-[30%]"
-						exit={{ opacity: 0, y: -10, scale: 0.95 }}
-						initial={{ opacity: 0, y: -10, scale: 0.95 }}
-						ref={menuRef}
-						transition={{ duration: 0.2, ease: 'easeOut' }}
-					>
-						<div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-4">
-							<div className="flex flex-col gap-4 p-1">
-								<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
-									<Link
-										className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
-										href="/"
-										onClick={() => setIsMenuOpen(false)}
-									>
-										<Image
-											alt="logo"
-											height={34}
-											src={`${svgPath}logo.svg`}
-											width={34}
-										/>
-										<h1
-											className={`${unbounded.className} text-2xl`}
-										>
-											StalHub
-										</h1>
-									</Link>
-								</div>
+								<motion.div
+									animate={{ opacity: 1, y: 0, scale: 1 }}
+									className="fixed top-8 left-1/2 z-99 flex w-[92%] -translate-x-1/2 flex-col gap-4 xl:w-[30%]"
+									exit={{ opacity: 0, y: -10, scale: 0.95 }}
+									initial={{
+										opacity: 0,
+										y: -10,
+										scale: 0.95,
+									}}
+									ref={menuRef}
+									transition={{
+										duration: 0.2,
+										ease: 'easeOut',
+									}}
+								>
+									<div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-4">
+										<div className="flex flex-col gap-4 p-1">
+											<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
+												<Link
+													className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
+													href="/"
+													onClick={() =>
+														setIsMenuOpen(false)
+													}
+												>
+													<Image
+														alt="logo"
+														height={34}
+														src={`${svgPath}logo.svg`}
+														width={34}
+													/>
+													<h1
+														className={`${unbounded.className} text-2xl`}
+													>
+														StalHub
+													</h1>
+												</Link>
+											</div>
 
-								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-									<Link
-										className="flex items-center gap-3 transition-all duration-300 hover:opacity-70 active:opacity-50"
-										href={szReport.href}
-										onClick={() => setIsMenuOpen(false)}
-										rel="noopener noreferrer"
-										target="_blank"
-									>
-										<Image
-											alt="szreport"
-											className="rounded-lg"
-											height={30}
-											src={szReport.image}
-											width={30}
-										/>
-										<span className="text-primary">
-											{t(szReport.titleKey)}
-										</span>
-										<Icon
-											className="ml-auto size-5"
-											icon="lucide:external-link"
-										/>
-									</Link>
-								</div>
+											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+												<Link
+													className="flex items-center gap-3 transition-all duration-300 hover:opacity-70 active:opacity-50"
+													href={szReport.href}
+													onClick={() =>
+														setIsMenuOpen(false)
+													}
+													rel="noopener noreferrer"
+													target="_blank"
+												>
+													<Image
+														alt="szreport"
+														className="rounded-lg"
+														height={30}
+														src={szReport.image}
+														width={30}
+													/>
+													<span className="text-primary">
+														{t(szReport.titleKey)}
+													</span>
+													<Icon
+														className="ml-auto size-5"
+														icon="lucide:external-link"
+													/>
+												</Link>
+											</div>
 
-								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-									<Accordion
-										className="flex flex-col gap-4"
-										disableEntranceAnimation
-										items={dropdownItems}
-										selectionMode="single"
-										size="sm"
-									/>
-								</div>
-								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-									<ItemSearchModal
-										trigger={
-											<button
-												className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50"
-												type="button"
-											>
-												<span className="flex items-center gap-3">
+											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+												<Accordion
+													className="flex flex-col gap-4"
+													disableEntranceAnimation
+													items={dropdownItems}
+													selectionMode="single"
+													size="sm"
+												/>
+											</div>
+											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+												<ItemSearchModal
+													trigger={
+														<button
+															className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50"
+															type="button"
+														>
+															<span className="flex items-center gap-3">
+																<Icon
+																	className="text-xl"
+																	icon="lucide:search"
+																/>
+																<span className="font-semibold">
+																	{t(
+																		'modals.search.title'
+																	)}
+																</span>
+															</span>
+															<Icon
+																className="text-foreground text-lg"
+																icon="lucide:corner-down-left"
+															/>
+														</button>
+													}
+												/>
+												<Accordion
+													className="flex flex-col gap-4"
+													disableEntranceAnimation
+													items={
+														settingsAccordionItems
+													}
+													selectionMode="single"
+													size="sm"
+												/>
+												<div className="flex items-center gap-3 px-2 py-1">
 													<Icon
 														className="text-xl"
-														icon="lucide:search"
+														icon="lucide:radar"
 													/>
-													<span className="font-semibold">
-														{t(
-															'modals.search.title'
+													<p className="font-semibold">
+														{t('nav.uno')}
+													</p>
+													<Switch
+														aria-label={t(
+															'nav.uno'
 														)}
-													</span>
-												</span>
-												<Icon
-													className="text-foreground text-lg"
-													icon="lucide:corner-down-left"
-												/>
-											</button>
-										}
-									/>
-									<Accordion
-										className="flex flex-col gap-4"
-										disableEntranceAnimation
-										items={settingsAccordionItems}
-										selectionMode="single"
-										size="sm"
-									/>
-								</div>
-								<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
-									{MobileLinks.map((link) => (
-										<Link
-											className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"
-											href={link.href}
-											key={link.title}
-											onClick={() => setIsMenuOpen(false)}
-										>
-											<Icon
-												className="text-2xl"
-												icon={link.iconName}
-											/>
-											<span className="font-semibold">
-												{link.title}
-											</span>
-											<Icon
-												className="ml-auto size-5"
-												icon="lucide:external-link"
-											/>
-										</Link>
-									))}
-								</div>
-							</div>
-						</div>
-					</motion.div>
-				</>
-			)}
-		</AnimatePresence>,
-		document.body
-	)
+														checked={showUno}
+														className="ml-auto"
+														onCheckedChange={
+															setShowUno
+														}
+													/>
+												</div>
+											</div>
+											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+												{MobileLinks.map((link) => (
+													<Link
+														className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"
+														href={link.href}
+														key={link.title}
+														onClick={() =>
+															setIsMenuOpen(false)
+														}
+													>
+														<Icon
+															className="text-2xl"
+															icon={link.iconName}
+														/>
+														<span className="font-semibold">
+															{link.title}
+														</span>
+														<Icon
+															className="ml-auto size-5"
+															icon="lucide:external-link"
+														/>
+													</Link>
+												))}
+											</div>
+										</div>
+									</div>
+								</motion.div>
+							</>
+						)}
+					</AnimatePresence>,
+					document.body
+				)
 
 	return (
 		<>

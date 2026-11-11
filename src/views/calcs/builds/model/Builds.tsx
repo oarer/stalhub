@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { toast } from '@/components/ui/Toast'
+import { useVisibleItems } from '@/lib/unoItems'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
@@ -43,8 +44,8 @@ export default function BuildsView() {
 		itemsQueries.get({ type: 'containers' })
 	)
 
-	const armors = armorsQuery.data ?? []
-	const containers = containersQuery.data ?? []
+	const armors = useVisibleItems(armorsQuery.data) ?? []
+	const containers = useVisibleItems(containersQuery.data) ?? []
 
 	const armorItem = armors.find((a) => a.id === build.armor?.id)
 	const containerItem = containers.find((c) => c.id === build.container?.id)

@@ -9,6 +9,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { useSearchItem } from '@/hooks/useSearchItem'
+import { useVisibleItems } from '@/lib/unoItems'
 import { ItemsList } from '@/shared/components/ItemsList'
 import type { Locale } from '@/types/item.type'
 import {
@@ -41,14 +42,15 @@ export function ItemPickerDialog({
 	const t = useTranslations()
 	const [query, setQuery] = useState('')
 	const { items, error, retry } = useSearchItem()
+	const visibleItems = useVisibleItems(items)
 
 	useEffect(() => {
 		if (open) setQuery('')
 	}, [open])
 
 	const candidates = useMemo(
-		() => getComparisonCandidates(items, source, exclude),
-		[items, source, exclude]
+		() => getComparisonCandidates(visibleItems, source, exclude),
+		[visibleItems, source, exclude]
 	)
 	const pickerItems = useMemo(
 		() => candidates.map((candidate) => candidate.item),

@@ -1,6 +1,7 @@
 'use client'
 
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 
 export function useItemsData() {
@@ -14,9 +15,13 @@ export function useItemsData() {
 		itemsQueries.get({ type: 'containers' })
 	)
 
+	const visibleArtifacts = useVisibleItems(artifacts)
+	const visibleArmorItems = useVisibleItems(armorItems)
+	const visibleContainers = useVisibleItems(containers)
+
 	return {
-		artifacts: artifacts ?? [],
-		armorItems: armorItems ?? [],
-		containers: containers ?? [],
+		artifacts: visibleArtifacts ?? [],
+		armorItems: visibleArmorItems ?? [],
+		containers: visibleContainers ?? [],
 	}
 }

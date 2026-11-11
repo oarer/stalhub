@@ -2,6 +2,7 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 
 export function useBuildItems() {
@@ -16,10 +17,10 @@ export function useBuildItems() {
 		itemsQueries.get({ type: 'consumables' })
 	)
 
-	const armors = armorsQuery.data ?? []
-	const containers = containersQuery.data ?? []
-	const artefacts = artefactsQuery.data ?? []
-	const consumables = consumablesQuery.data ?? []
+	const armors = useVisibleItems(armorsQuery.data) ?? []
+	const containers = useVisibleItems(containersQuery.data) ?? []
+	const artefacts = useVisibleItems(artefactsQuery.data) ?? []
+	const consumables = useVisibleItems(consumablesQuery.data) ?? []
 
 	const allItems = useMemo(
 		() => [...armors, ...containers, ...artefacts, ...consumables],

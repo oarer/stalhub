@@ -11,6 +11,7 @@ import { HoverCard } from '@/components/ui/HoverCard'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
+import { useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import {
@@ -259,9 +260,10 @@ function BoostSelectModal({
 }
 
 export default function ConsumablesModal({ onClose }: ModalProps) {
-	const { data: items } = useSuspenseQuery(
+	const { data: queryItems } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
+	const items = useVisibleItems(queryItems) ?? []
 	const t = useTranslations()
 
 	const boost = useBuildStore((s) => s.build.boost)

@@ -2,6 +2,7 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useState } from 'react'
+import { useVisibleItems } from '@/lib/unoItems'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
@@ -32,6 +33,8 @@ export default function MeSettingsView() {
 	const { data: armors } = useSuspenseQuery(
 		itemsQueries.get({ type: 'armor' })
 	)
+	const visibleWeapons = useVisibleItems(weapons)
+	const visibleArmors = useVisibleItems(armors)
 	const { data: builds } = useSuspenseQuery(
 		buildApiQueries.mine({ take: 500 })
 	)
@@ -172,14 +175,14 @@ export default function MeSettingsView() {
 				username={user.username}
 			/>
 			<LoadoutEditorModal
-				armors={armors ?? []}
+				armors={visibleArmors ?? []}
 				builds={builds?.data ?? []}
 				isPending={saveLoadoutMutation.isPending}
 				loadout={loadout}
 				onOpenChange={setIsLoadoutEditorOpen}
 				onSave={(data) => saveLoadoutMutation.mutate(data)}
 				open={isLoadoutEditorOpen}
-				weapons={weapons ?? []}
+				weapons={visibleWeapons ?? []}
 			/>
 		</div>
 	)

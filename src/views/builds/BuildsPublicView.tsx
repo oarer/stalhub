@@ -15,6 +15,7 @@ import {
 	type BuildSort,
 } from '@/constants/builds.const'
 import { getLocale } from '@/lib/getLocale'
+import { useVisibleItems } from '@/lib/unoItems'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import type { Item } from '@/types/item.type'
@@ -87,24 +88,25 @@ export default function BuildsPublicView() {
 	const { data: containers } = useSuspenseQuery(
 		itemsQueries.get({ type: 'containers' })
 	)
+	const visibleArmorItems = useVisibleItems(armorItems)
+	const visibleContainers = useVisibleItems(containers)
+	const visibleArtifacts = useVisibleItems(artifacts)
 
 	const builds = data?.data ?? []
 	const totalPages = data ? Math.ceil(data.total_count / take) : 1
 
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
-			
-				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
-				>
-					{t('buildsPublic.title')}
-				</h1>
-				<p className="font-medium text-muted-foreground text-sm">
-					{t('buildsPublic.total', {
-						count: data?.total_count ?? 0,
-					})}
-				</p>
-			
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
+				{t('buildsPublic.title')}
+			</h1>
+			<p className="font-medium text-muted-foreground text-sm">
+				{t('buildsPublic.total', {
+					count: data?.total_count ?? 0,
+				})}
+			</p>
 
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
@@ -148,7 +150,7 @@ export default function BuildsPublicView() {
 							setPage(1)
 							setArmorFilter(values)
 						}}
-						options={itemOptions(armorItems)}
+						options={itemOptions(visibleArmorItems)}
 						placeholder="buildsPublic.filter_armor"
 						translateOptions={false}
 						values={armorFilter}
@@ -161,7 +163,7 @@ export default function BuildsPublicView() {
 							setPage(1)
 							setContainerFilter(values)
 						}}
-						options={itemOptions(containers)}
+						options={itemOptions(visibleContainers)}
 						placeholder="buildsPublic.filter_container"
 						translateOptions={false}
 						values={containerFilter}
@@ -174,7 +176,7 @@ export default function BuildsPublicView() {
 							setPage(1)
 							setArtFilter(values)
 						}}
-						options={itemOptions(artifacts)}
+						options={itemOptions(visibleArtifacts)}
 						placeholder="buildsPublic.filter_arts"
 						translateOptions={false}
 						values={artFilter}
@@ -236,10 +238,10 @@ export default function BuildsPublicView() {
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{builds.map((build) => (
 						<BuildCard
-							armorItems={armorItems}
-							artifacts={artifacts}
+							armorItems={visibleArmorItems}
+							artifacts={visibleArtifacts}
 							build={build}
-							containers={containers}
+							containers={visibleContainers}
 							key={build.id}
 						/>
 					))}

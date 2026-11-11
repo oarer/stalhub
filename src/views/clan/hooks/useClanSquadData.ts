@@ -3,14 +3,15 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { mskDate } from '@/lib/date'
+import { useVisibleItems } from '@/lib/unoItems'
 import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { clanQueries } from '@/queries/clan/clan.queries'
 import { loadoutQueries } from '@/queries/loadout/loadout.queries'
 import type { UserLoadout } from '@/types/loadout/loadout.type'
-import { useClanRoles } from './useClanRoles'
-import { buildPlayers } from '../components/stats/stats.utils'
 import { kdValue } from '../clan.utils'
+import { buildPlayers } from '../components/stats/stats.utils'
+import { useClanRoles } from './useClanRoles'
 
 export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const { data: squads, isLoading } = useSuspenseQuery(
@@ -27,6 +28,8 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 	const { data: armors } = useSuspenseQuery(
 		itemsQueries.get({ type: 'armor' })
 	)
+	const visibleWeapons = useVisibleItems(weapons)
+	const visibleArmors = useVisibleItems(armors)
 	const { data: builds } = useSuspenseQuery(
 		buildApiQueries.list({ take: 500 })
 	)
@@ -95,8 +98,8 @@ export function useClanSquadData(clanId: string, currentUserId?: number) {
 		squads,
 		isLoading,
 		members,
-		weapons: weapons ?? [],
-		armors: armors ?? [],
+		weapons: visibleWeapons ?? [],
+		armors: visibleArmors ?? [],
 		buildById,
 		myBuilds,
 		loadoutByUserId,
