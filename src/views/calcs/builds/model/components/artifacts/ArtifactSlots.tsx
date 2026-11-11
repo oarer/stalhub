@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Art } from '@/types/build.type'
 import type { Item, Locale } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
@@ -85,7 +86,7 @@ export function ArtifactSlots({
 									<Image
 										alt={messageToString(item.name, locale)}
 										height={44}
-										src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
+										src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 										width={44}
 									/>
 									<div className="flex flex-col items-center">

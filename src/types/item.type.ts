@@ -237,6 +237,8 @@ export interface Item {
 	category: string
 	name: Message
 	color: InfoColor
+	icon?: string
+	uno?: boolean
 	status?: ItemBindStatus
 	infoBlocks: InfoBlock[]
 	model?: Model

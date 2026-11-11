@@ -17,7 +17,8 @@ export interface AuctionParams {
 }
 export interface ItemListing {
 	data: string
-	icon: string
+	icon?: string
+	uno?: boolean
 	name: ItemName
 	color: InfoColor
 }

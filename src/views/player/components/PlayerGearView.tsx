@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { cn } from '@/lib/cn'
+import { getItemIcon } from '@/lib/itemIcon'
 import { playerQueries } from '@/queries/player/player.queries'
 import { useModulesStore } from '@/stores/useModules.store'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
@@ -73,7 +74,10 @@ function itemColor(db: PlayerGearItemDb | null, percent?: number | null) {
 
 function itemIcon(db: PlayerGearItemDb | null) {
 	if (!db?.category || !db.id) return null
-	return `https://cdn.stalhub.dev/db/icons/${db.category}/${db.id}.png`
+	return `https://cdn.stalhub.dev/db${getItemIcon({
+		category: db.category,
+		id: db.id,
+	})}`
 }
 
 function itemHref(db: PlayerGearItemDb | null) {

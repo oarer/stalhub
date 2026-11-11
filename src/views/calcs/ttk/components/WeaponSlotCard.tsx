@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input'
 import Slider from '@/components/ui/Slider'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { WeaponSlot } from '@/stores/useTTK.store'
 import { type InfoColor, type Item, infoColorMap } from '@/types/item.type'
 import { messageToString, roundNumber } from '@/utils/itemUtils'
@@ -96,16 +97,11 @@ export function WeaponSlotCard({
 
 	const weaponIconUrl = useMemo(
 		() =>
-			weapon
-				? `https://cdn.stalhub.dev/db/icons/${weapon.category}/${weapon.id}.png`
-				: null,
+			weapon ? `https://cdn.stalhub.dev/db${getItemIcon(weapon)}` : null,
 		[weapon]
 	)
 	const ammoIconUrl = useMemo(
-		() =>
-			ammo
-				? `https://cdn.stalhub.dev/db/icons/bullet/${ammo.id}.png`
-				: null,
+		() => (ammo ? `https://cdn.stalhub.dev/db${getItemIcon(ammo)}` : null),
 		[ammo]
 	)
 

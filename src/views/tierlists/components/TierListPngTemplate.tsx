@@ -2,6 +2,7 @@
 
 import { forwardRef } from 'react'
 import { unbounded } from '@/app/fonts'
+import { getItemIcon } from '@/lib/itemIcon'
 import {
 	type InfoColor,
 	type Item,
@@ -54,9 +55,7 @@ export const TierListPngTemplate = forwardRef<
 
 	const getItemIconUrl = (entry: TierListEntry) => {
 		const item = items[entry.item_id]
-		return item
-			? `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
-			: null
+		return item ? `https://cdn.stalhub.dev/db${getItemIcon(item)}` : null
 	}
 
 	return (

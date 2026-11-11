@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes'
 import { useMemo, useRef } from 'react'
 import { useFuseSearch } from '@/hooks/useFuseSearch'
 import { cn } from '@/lib/cn'
+import { getItemIcon } from '@/lib/itemIcon'
 import {
 	type FavoriteType,
 	useFavoritesStore,
@@ -80,7 +81,7 @@ const Row = ({
 						alt={messageToString(item.name, locale)}
 						className="h-8 w-8 object-contain"
 						height={32}
-						src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
+						src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 						width={32}
 					/>
 

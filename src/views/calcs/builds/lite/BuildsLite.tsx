@@ -10,6 +10,7 @@ import { PngPreviewModal } from '@/components/ui/PngPreviewModal'
 import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -43,7 +44,7 @@ function isImageEntry(
 }
 
 function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
+	return `https://cdn.stalhub.dev/db${getItemIcon(item)}`
 }
 
 function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {

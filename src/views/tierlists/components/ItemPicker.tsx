@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import Input from '@/components/ui/Input'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Item } from '@/types/item.type'
 
 export function getItemName(item: Item, locale: string): string {
@@ -13,7 +14,7 @@ export function getItemName(item: Item, locale: string): string {
 }
 
 export function getItemIconUrl(item: Item): string {
-	return `${GITHUB_RAW_BASE}/icons/${item.category}/${item.id}.png`
+	return `${GITHUB_RAW_BASE}${getItemIcon(item)}`
 }
 
 export function ItemPicker({

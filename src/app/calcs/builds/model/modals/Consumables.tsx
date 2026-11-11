@@ -10,6 +10,7 @@ import { Card } from '@/components/ui/Card'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { Modal } from '@/components/ui/Modal'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import {
@@ -93,75 +94,80 @@ function BoostSelectModal({
 					type="button"
 					variant="secondary"
 				>
-				{selectedBoostId && selectedItemData ? (
-					<HoverCard.Root>
-						<HoverCard.Trigger>
-							<Image
-								alt={messageToString(
-									selectedItemData.name,
-									locale
-								)}
-								className="h-10 w-10 object-contain"
-								height={42}
-								src={`https://cdn.stalhub.dev/db/icons/${selectedItemData.category}/${selectedItemData.id}.png`}
-								width={42}
-							/>
-						</HoverCard.Trigger>
-						<HoverCard.Content className="min-w-80" side="top">
-							<div className="relative gap-2">
-								<p
-									className="mb-4"
-									style={{
-										color:
-											infoColorMap[
-												selectedItemData.color as InfoColor
-											] || InfoColor.DEFAULT,
-									}}
-								>
-									{messageToString(
+					{selectedBoostId && selectedItemData ? (
+						<HoverCard.Root>
+							<HoverCard.Trigger>
+								<Image
+									alt={messageToString(
 										selectedItemData.name,
 										locale
 									)}
-								</p>
-								{collectListBlocks(selectedItem?.infoBlocks)
-									.filter(
-										(b) =>
-											Array.isArray(b.elements) &&
-											b.elements.length > 0
-									)
-									.filter(
-										(_, idx) =>
-											idx !== 0 && idx !== 5 && idx !== 1
-									)
-									.map((block, idx) => (
-										<ListBlock
-											block={block}
-											className="text-sm"
-											key={idx}
-											locale={locale}
-											numericVariants={0}
-											withCard={false}
+									className="h-10 w-10 object-contain"
+									height={42}
+									src={`https://cdn.stalhub.dev/db${getItemIcon(selectedItemData)}`}
+									width={42}
+								/>
+							</HoverCard.Trigger>
+							<HoverCard.Content className="min-w-80" side="top">
+								<div className="relative gap-2">
+									<p
+										className="mb-4"
+										style={{
+											color:
+												infoColorMap[
+													selectedItemData.color as InfoColor
+												] || InfoColor.DEFAULT,
+										}}
+									>
+										{messageToString(
+											selectedItemData.name,
+											locale
+										)}
+									</p>
+									{collectListBlocks(selectedItem?.infoBlocks)
+										.filter(
+											(b) =>
+												Array.isArray(b.elements) &&
+												b.elements.length > 0
+										)
+										.filter(
+											(_, idx) =>
+												idx !== 0 &&
+												idx !== 5 &&
+												idx !== 1
+										)
+										.map((block, idx) => (
+											<ListBlock
+												block={block}
+												className="text-sm"
+												key={idx}
+												locale={locale}
+												numericVariants={0}
+												withCard={false}
+											/>
+										))}
+									<Button
+										className="absolute -top-1 -right-1 flex size-7 items-center justify-center rounded-full p-0 ring-transparent"
+										onClick={(e) => {
+											onRemove()
+											e.stopPropagation()
+										}}
+										variant={'danger'}
+									>
+										<Icon
+											className="text-lg"
+											icon="lucide:trash"
 										/>
-									))}
-								<Button
-									className="absolute -top-1 -right-1 flex size-7 items-center justify-center rounded-full p-0 ring-transparent"
-									onClick={(e) => {
-										onRemove()
-										e.stopPropagation()
-									}}
-									variant={'danger'}
-								>
-									<Icon
-										className="text-lg"
-										icon="lucide:trash"
-									/>
-								</Button>
-							</div>
-						</HoverCard.Content>
-					</HoverCard.Root>
-				) : (
-					<Icon className="size-7" icon={BoostButtons[category]} />
-				)}
+									</Button>
+								</div>
+							</HoverCard.Content>
+						</HoverCard.Root>
+					) : (
+						<Icon
+							className="size-7"
+							icon={BoostButtons[category]}
+						/>
+					)}
 				</Button>
 			</Modal.Trigger>
 			<Modal.Content className="max-w-206">

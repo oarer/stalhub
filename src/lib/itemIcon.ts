@@ -1,4 +1,10 @@
-import type { ItemListing } from '@/types/api.type'
+type ItemIconSource = {
+	data?: string
+	icon?: string
+	category?: string
+	id?: string
+	uno?: boolean
+}
 
 const ITEMS_PREFIX = 'items/'
 const ICONS_PREFIX = '/icons/'
@@ -15,13 +21,19 @@ export function getItemIconPath(data: string): string {
 	return relative ? `${ICONS_PREFIX}${relative}.png` : ''
 }
 
-export function getItemIcon(
-	item: Pick<ItemListing, 'data'> & Partial<Pick<ItemListing, 'icon'>>
-): string {
-	return item.icon || getItemIconPath(item.data)
-}
+export function getItemIcon(item: ItemIconSource): string {
+	const icon = item.icon?.trim()
+	if (icon) return icon
 
-export function withResolvedItemIcon(item: ItemListing): ItemListing {
-	const icon = getItemIcon(item)
-	return icon === item.icon ? item : { ...item, icon }
+	if (item.data) {
+		const iconFromData = getItemIconPath(item.data)
+		if (iconFromData) return iconFromData
+	}
+
+	if (item.category && item.id) {
+		const prefix = item.uno ? `${ICONS_PREFIX}uno/` : ICONS_PREFIX
+		return `${prefix}${item.category}/${item.id}.png`
+	}
+
+	return ''
 }

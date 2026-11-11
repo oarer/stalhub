@@ -9,6 +9,7 @@ import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Skeleton } from '@/components/ui/Skeleton'
+import { getItemIcon } from '@/lib/itemIcon'
 import {
 	InfoColor,
 	type Item,
@@ -31,8 +32,8 @@ type ItemSlotProps = {
 	onRetry: () => void
 }
 
-const iconUrl = (item: Pick<Item, 'category' | 'id'>) =>
-	`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
+const iconUrl = (item: Pick<Item, 'category' | 'id'> & { icon?: string }) =>
+	`https://cdn.stalhub.dev/db${getItemIcon(item)}`
 
 const categoryFallback = (category: string) =>
 	category

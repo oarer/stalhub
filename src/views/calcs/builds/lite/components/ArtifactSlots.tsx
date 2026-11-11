@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Divider } from '@/components/ui/Divider'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Art } from '@/types/build.type'
 import {
 	InfoColor,
@@ -267,7 +268,7 @@ export function ArtifactSlotsLite({
 						<Image
 							alt="Container icon"
 							height={34}
-							src={`https://cdn.stalhub.dev/db/icons/${currentContainer?.category}/${currentContainer?.id}.png`}
+							src={`https://cdn.stalhub.dev/db${currentContainer ? getItemIcon(currentContainer) : ''}`}
 							width={34}
 						/>
 					)}

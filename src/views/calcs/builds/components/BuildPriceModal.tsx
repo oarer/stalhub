@@ -16,6 +16,7 @@ import {
 } from '@/hooks/useBuildPrices'
 import { formatDate } from '@/lib/date'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Item } from '@/types/item.type'
@@ -116,7 +117,7 @@ export default function BuildPriceModal() {
 													locale
 												)}
 												height={28}
-												src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
+												src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 												width={28}
 											/>
 											<div className="flex min-w-0 flex-col">

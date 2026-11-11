@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Armor } from '@/types/build.type'
 import {
 	InfoColor,
@@ -70,7 +71,7 @@ export function ArmorLiteSection({
 					alt="Armor"
 					className="object-contain"
 					fill
-					src={`https://cdn.stalhub.dev/db/icons/${armorItem.category}/${armor.id}.png`}
+					src={`https://cdn.stalhub.dev/db${getItemIcon(armorItem)}`}
 				/>
 			</div>
 			<div className="flex flex-col gap-3">

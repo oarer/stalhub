@@ -21,6 +21,7 @@ import Avatar from '@/components/ui/user/Avatar'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import Username from '@/components/ui/user/Username'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { getItemIcon } from '@/lib/itemIcon'
 import { tierListQueries } from '@/queries/tier-list/tier-list.queries'
 import { tierListService } from '@/services/tier-list/tier-list.service'
 import { useAuthStore } from '@/stores/useAuth.store'
@@ -339,7 +340,7 @@ function TierListEntryCard({
 					alt={name}
 					className="size-8 shrink-0 object-contain"
 					height={28}
-					src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
+					src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 					width={28}
 				/>
 			)}

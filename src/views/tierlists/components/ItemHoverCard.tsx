@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import type React from 'react'
 import { HoverCard } from '@/components/ui/HoverCard'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Item, Locale } from '@/types/item.type'
 import { type InfoColor, infoColorMap } from '@/types/item.type'
 import { TIER_RANK_COLORS, type TierRank } from '@/types/tier-list.type'
@@ -12,7 +13,7 @@ import { ListBlock } from '@/views/items/components/blocks'
 import { formatTierTtk } from '../utils/tier-ttk'
 
 function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
+	return `https://cdn.stalhub.dev/db${getItemIcon(item)}`
 }
 
 function ItemStats({ item, locale }: { item: Item; locale: Locale }) {

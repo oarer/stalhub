@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 import { Divider } from '@/components/ui/Divider'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { Build } from '@/types/build.type'
 import {
 	InfoColor,
@@ -23,7 +24,7 @@ type CompareSlotsProps = {
 }
 
 function getIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
+	return `https://cdn.stalhub.dev/db${getItemIcon(item)}`
 }
 
 export function CompareSlots({

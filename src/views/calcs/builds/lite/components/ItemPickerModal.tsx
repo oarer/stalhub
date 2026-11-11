@@ -11,6 +11,7 @@ import { Combobox, type ComboboxOption } from '@/components/ui/Combobox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
+import { getItemIcon } from '@/lib/itemIcon'
 import { ItemsList } from '@/shared/components/ItemsList'
 import type { FavoriteType } from '@/stores/useFavorites.store'
 import type { Item, Locale } from '@/types/item.type'
@@ -202,7 +203,7 @@ export function ItemPickerModal({
 													locale
 												)}
 												height={48}
-												src={`https://cdn.stalhub.dev/db/icons/${selectedItem.category}/${selectedItem.id}.png`}
+												src={`https://cdn.stalhub.dev/db${getItemIcon(selectedItem)}`}
 												width={48}
 											/>
 

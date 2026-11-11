@@ -10,6 +10,7 @@ import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { ItemsList } from '@/shared/components/ItemsList'
 import type { Item, Locale, NumericElement } from '@/types/item.type'
 import {
@@ -37,8 +38,8 @@ const getSlotOrder = (slotKey: string): number => {
 	return index === -1 ? SLOT_ORDER.length : index
 }
 
-const getIconUrl = (category: string, id: string): string =>
-	`https://cdn.stalhub.dev/db/icons/${category}/${id}.png`
+const getIconUrl = (item: Pick<Item, 'category' | 'id'> & { icon?: string }) =>
+	`https://cdn.stalhub.dev/db${getItemIcon(item)}`
 
 const collectNumericElements = (attachment: Item): NumericElement[] => {
 	const elements: NumericElement[] = []
@@ -219,10 +220,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 									}
 									className="size-9 object-contain"
 									height={36}
-									src={getIconUrl(
-										selectedAttachment.category,
-										selectedAttachment.id
-									)}
+									src={getIconUrl(selectedAttachment)}
 									width={36}
 								/>
 							) : (
@@ -384,10 +382,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 													locale
 												)}
 												height={48}
-												src={getIconUrl(
-													previewItem.category,
-													previewItem.id
-												)}
+												src={getIconUrl(previewItem)}
 												width={48}
 											/>
 

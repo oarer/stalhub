@@ -10,6 +10,7 @@ import { HoverCard } from '@/components/ui/HoverCard'
 import Input from '@/components/ui/Input'
 import { cn } from '@/lib/cn'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { type BoostSet, useBoostSetsStore } from '@/stores/useBoostSets.store'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -98,7 +99,7 @@ function BoostSlot({
 								)}
 								className="size-12 object-contain"
 								height={42}
-								src={`https://cdn.stalhub.dev/db/icons/${selectedItemData.category}/${selectedItemData.id}.png`}
+								src={`https://cdn.stalhub.dev/db${getItemIcon(selectedItemData)}`}
 								width={42}
 							/>
 						</HoverCard.Trigger>
@@ -306,7 +307,7 @@ function BoostSetsPanel({
 														className="size-7 object-contain"
 														height={28}
 														key={category}
-														src={`https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`}
+														src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 														title={messageToString(
 															item.name,
 															locale

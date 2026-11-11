@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { BuildApi } from '@/types/build-api.type'
 import type { Item, Locale } from '@/types/item.type'
 import { InfoColor, infoColorMap } from '@/types/item.type'
@@ -15,7 +16,7 @@ export interface BuildArtifactEntry {
 }
 
 export function getBuildItemIconUrl(item: Item) {
-	return `https://cdn.stalhub.dev/db/icons/${item.category}/${item.id}.png`
+	return `https://cdn.stalhub.dev/db${getItemIcon(item)}`
 }
 
 function resolveInfoColor(color: string | undefined) {
