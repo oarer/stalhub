@@ -1,4 +1,5 @@
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { ItemListing } from '@/types/api.type'
 import type { Locale } from '@/types/item.type'
 
@@ -28,8 +29,6 @@ export async function generateItemMetadata(
 		? `/items/${slug.join('/')}.json`
 		: `/items/${slug}.json`
 
-	const iconSlug = Array.isArray(slug) ? slug.join('/') : slug
-
 	const res = await fetch(`${GITHUB_RAW_BASE}/listing.json`, {
 		next: { revalidate: 60 },
 	})
@@ -47,6 +46,6 @@ export async function generateItemMetadata(
 	return {
 		name,
 		description,
-		icon: item.icon ?? `/icons/${iconSlug}.png`,
+		icon: getItemIcon(item),
 	}
 }

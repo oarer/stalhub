@@ -13,6 +13,7 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { useFuseSearch } from '@/hooks/useFuseSearch'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { buyItemKey } from '@/stores/useBuy.store'
 import type { ItemListing } from '@/types/api.type'
 import { infoColorMap } from '@/types/item.type'
@@ -152,7 +153,7 @@ export default function ItemPickerModal({
 												className="size-8 object-contain"
 												height={32}
 												loading="lazy"
-												src={`${GITHUB_RAW_BASE}${item.icon}`}
+												src={`${GITHUB_RAW_BASE}${getItemIcon(item)}`}
 												width={32}
 											/>
 											<p

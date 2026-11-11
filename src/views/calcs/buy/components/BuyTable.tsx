@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import { useBuyStore } from '@/stores/useBuy.store'
 import { infoColorMap } from '@/types/item.type'
 
@@ -73,7 +74,7 @@ export function BuyTable() {
 								entry.item.data ??
 								'—'
 							const color = infoColorMap[entry.item.color]
-							const iconUrl = `${GITHUB_RAW_BASE}${entry.item.icon}`
+							const iconUrl = `${GITHUB_RAW_BASE}${getItemIcon(entry.item)}`
 
 							return (
 								<motion.div

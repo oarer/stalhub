@@ -14,6 +14,7 @@ import { usePreparedSearch } from '@/hooks/usePreparedSearch'
 import type { SitePage } from '@/hooks/useSearchSitePages'
 import { formatDate } from '@/lib/date'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { ItemListing } from '@/types/api.type'
 import type { Article } from '@/types/article.type'
 import { infoColorMap } from '@/types/item.type'
@@ -43,7 +44,8 @@ const ItemCard = React.memo(function ItemCard({
 }) {
 	const locale = getLocale()
 	const name = item.name?.[locale] ?? item.data ?? '—'
-	const iconPath = `https://cdn.stalhub.dev/db${item.icon}`
+	const icon = getItemIcon(item)
+	const iconPath = icon ? `https://cdn.stalhub.dev/db${icon}` : ''
 
 	return (
 		<Card.Link

@@ -13,6 +13,7 @@ import Input from '@/components/ui/Input'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { useSearchItem } from '@/hooks/useSearchItem'
 import { getLocale } from '@/lib/getLocale'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { ItemListing } from '@/types/api.type'
 import { infoColorMap } from '@/types/item.type'
 
@@ -115,7 +116,7 @@ function ItemCard({
 						className="size-12 object-contain transition-transform duration-300 group-hover:scale-110"
 						height={48}
 						loading="lazy"
-						src={`https://cdn.stalhub.dev/db${item.icon}`}
+						src={`https://cdn.stalhub.dev/db${getItemIcon(item)}`}
 						width={48}
 					/>
 				</div>
@@ -182,7 +183,7 @@ export default function ItemCatalogView() {
 				grouped.set(key, {
 					key,
 					count: 1,
-					icon: item.icon ?? null,
+					icon: getItemIcon(item) || null,
 				})
 			}
 		}

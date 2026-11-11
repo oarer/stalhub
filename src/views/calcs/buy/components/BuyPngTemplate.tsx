@@ -4,6 +4,7 @@ import type { useTranslations } from 'next-intl'
 import { forwardRef } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { getItemIcon } from '@/lib/itemIcon'
 import type { BuyListItem } from '@/stores/useBuy.store'
 import type { ItemListing } from '@/types/api.type'
 import { infoColorMap, type Locale } from '@/types/item.type'
@@ -18,7 +19,7 @@ type BuyPngTemplateProps = {
 }
 
 export const getBuyIconUrl = (item: ItemListing): string =>
-	`${GITHUB_RAW_BASE}${item.icon}`
+	`${GITHUB_RAW_BASE}${getItemIcon(item)}`
 
 export const formatBuyPrice = (price: number | null): string =>
 	new Intl.NumberFormat('ru-RU').format(price ?? 0)

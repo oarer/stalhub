@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
+import { withResolvedItemIcon } from '@/lib/itemIcon'
 import { useItemStore } from '@/stores/items.store'
 import type { ItemListing } from '@/types/api.type'
 
@@ -22,7 +23,9 @@ function readCachedItems(): ItemListing[] | null {
 	if (!cached) return null
 	try {
 		const parsed: unknown = JSON.parse(cached)
-		return Array.isArray(parsed) ? (parsed as ItemListing[]) : null
+		return Array.isArray(parsed)
+			? (parsed as ItemListing[]).map(withResolvedItemIcon)
+			: null
 	} catch {
 		return null
 	}
@@ -68,7 +71,9 @@ function refreshItems(
 				if (!freshRaw.ok) throw new Error('Listing fetch error')
 				const fresh: unknown = await freshRaw.json()
 				if (!Array.isArray(fresh)) throw new Error('Bad listing')
-				const freshItems = fresh as ItemListing[]
+				const freshItems = (fresh as ItemListing[]).map(
+					withResolvedItemIcon
+				)
 
 				setItems(freshItems)
 				setCommit(latestSHA)
