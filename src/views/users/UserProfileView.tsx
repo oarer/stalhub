@@ -12,6 +12,7 @@ import { userQueries } from '@/queries/user/user.queries'
 import type { Item } from '@/types/item.type'
 import { ItemCell } from '@/views/clan/components/squads/ItemCell'
 import UserCard from '@/views/me/components/UserCard'
+import ProfileMusic from '@/views/player/components/ProfileMedia'
 import { ArticleCard } from '../me/components/article/ArticleCard'
 import { BuildCard } from '../me/components/BuildCard'
 import { HoverBuildCard } from '../me/components/HoverBuildCard'
@@ -69,6 +70,16 @@ export default function UserProfileView({
 					cardColor={bgColor}
 					user={user}
 				/>
+				{user.customization?.music_url && (
+					<ProfileMusic
+						music={{
+							artist: user.customization.music_artist,
+							cover: user.customization.music_cover,
+							title: user.customization.music_title,
+							url: user.customization.music_url,
+						}}
+					/>
+				)}
 				{user.clan && <ClanCard clan={user.clan} />}
 			</div>
 			<div className="flex flex-col gap-4">

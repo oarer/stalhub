@@ -27,7 +27,7 @@ export interface User {
 	customization: UserCustomization
 }
 
-interface UserCustomization {
+export interface UserCustomization {
 	layout: string
 	banner_mode: BannerMode
 	banner_type: BannerType
@@ -36,6 +36,10 @@ interface UserCustomization {
 	card_background: CardBackground
 	card_color: string
 	avatar: string | null
+	music_url: string | null
+	music_title: string | null
+	music_artist: string | null
+	music_cover: string | null
 }
 
 export type Layout = 'CLASSIC' | 'MODERN' | 'COMPACT'
@@ -176,6 +180,11 @@ export interface UpdateUserSettingsDto {
 
 	card_background?: CardBackground
 	card_color?: string
+
+	music_url?: string
+	music_title?: string
+	music_artist?: string
+	music_cover?: string
 
 	social_links?: Record<string, string>
 

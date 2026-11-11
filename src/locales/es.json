@@ -572,6 +572,13 @@
       "ach": "Logros",
       "ach_points": "Puntos de logros:"
     },
+    "music": {
+      "label": "Música del perfil",
+      "play": "Reproducir",
+      "pause": "Pausa",
+      "open": "Abrir fuente",
+      "untitled": "Sin título"
+    },
     "gear": {
       "title": "Equipamiento",
       "description": "Equipamiento y accesorios actuales del jugador desde",
@@ -3089,6 +3096,17 @@
       "bannerModeImage": "Imagen",
       "bannerTypeBackground": "Fondo",
       "bannerTypeHeader": "Cabecera",
+      "profileMusic": "Música del perfil",
+      "profileMusicDesc": "Añade un enlace a la pista (SoundCloud/YouTube/Spotify: título, artista y portada se rellenan automáticamente) o sube tu propio archivo.",
+      "musicUrl": "URL de la pista",
+      "musicTitle": "Título de la pista",
+      "musicArtist": "Artista",
+      "musicCover": "Portada",
+      "musicSave": "Guardar música",
+      "musicUploadTitle": "Subir tu propio archivo",
+      "musicUploadDesc": "MP3/WAV/OGG/M4A/FLAC hasta 8 MB; el archivo se reproduce en tu página de perfil.",
+      "musicUploadButton": "Elegir archivo",
+      "musicRemoveButton": "Quitar archivo",
       "linkAccounts": "Vinculación de cuentas",
       "sessions": "Sesiones",
       "endAll": "Cerrar todas",
@@ -3121,6 +3139,10 @@
       "toastLayoutSaved": "Ajustes de diseño actualizados",
       "toastLayoutSaveError": "Error al guardar el diseño",
       "toastBannerUploaded": "Banner subido",
+      "toastMusicUploaded": "Música subida",
+      "toastMusicUploadError": "No se pudo subir el audio",
+      "toastMusicRemoved": "Música eliminada",
+      "toastMusicRemoveError": "No se pudo eliminar la música",
       "toastBannerUploadError": "Error al subir el banner",
       "toastLoadoutSaved": "Equipamiento guardado",
       "toastLoadoutSaveError": "Error al guardar el equipamiento",
@@ -3333,6 +3355,35 @@
     "compareStop": "Salir de la comparación"
   },
   "items": {
+    "catalog": {
+      "title": "Objetos",
+      "categoryHint": "Elige una categoría para encontrar el objeto que necesitas",
+      "chooseItem": "Elige un objeto de la categoría",
+      "backToCategories": "Todas las categorías",
+      "error": "No se pudo cargar el catálogo de objetos",
+      "retry": "Reintentar",
+      "itemsCount": "objetos",
+      "search": "Buscar en todos los objetos",
+      "empty": "No se encontró nada",
+      "categories": {
+        "weapon": "Armas",
+        "armor": "Armadura",
+        "attachment": "Accesorios",
+        "artefact": "Artefactos",
+        "supply": "Objetos consumibles",
+        "bullet": "Munición",
+        "grenade": "Granadas",
+        "containers": "Contenedores",
+        "backpacks": "Mochilas",
+        "weapon_modules": "Módulos de armas",
+        "medicine": "Medicina",
+        "device": "Dispositivos",
+        "misc": "Varios",
+        "custom": "Personalizado",
+        "other": "Otros"
+      },
+      "searchResults": "Resultados de búsqueda"
+    },
     "auction": {
       "history": "Historial de ventas",
       "current": "Lotes actuales",

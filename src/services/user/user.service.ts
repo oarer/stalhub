@@ -80,6 +80,25 @@ class UserService {
 		return data
 	}
 
+	async uploadMusic(file: File): Promise<{ music_url: string }> {
+		const formData = new FormData()
+		formData.append('file', file)
+		const { data } = await apiClient.post<{ music_url: string }>(
+			'/api/v1/users/@me/music',
+			formData,
+			{
+				headers: { 'Content-Type': 'multipart/form-data' },
+				// Аудио грузится дольше глобальных 10с apiClient.
+				timeout: 0,
+			}
+		)
+		return data
+	}
+
+	async deleteMusic(): Promise<void> {
+		await apiClient.delete('/api/v1/users/@me/music')
+	}
+
 	async deleteAvatar(): Promise<void> {
 		await apiClient.delete('/api/v1/users/@me/avatar')
 	}

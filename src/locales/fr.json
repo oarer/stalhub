@@ -572,6 +572,13 @@
       "ach": "Succès",
       "ach_points": "Points de succès :"
     },
+    "music": {
+      "label": "Musique du profil",
+      "play": "Lire",
+      "pause": "Pause",
+      "open": "Ouvrir la source",
+      "untitled": "Sans titre"
+    },
     "gear": {
       "title": "Équipement",
       "description": "Équipement et accessoires actuels du joueur depuis",
@@ -3089,6 +3096,17 @@
       "bannerModeImage": "Image",
       "bannerTypeBackground": "Fond",
       "bannerTypeHeader": "En-tête",
+      "profileMusic": "Musique du profil",
+      "profileMusicDesc": "Ajoutez un lien vers le morceau (SoundCloud/YouTube/Spotify : titre, artiste et pochette récupérés automatiquement) ou importez votre propre fichier.",
+      "musicUrl": "URL du morceau",
+      "musicTitle": "Titre du morceau",
+      "musicArtist": "Artiste",
+      "musicCover": "Pochette",
+      "musicSave": "Enregistrer la musique",
+      "musicUploadTitle": "Importer votre fichier",
+      "musicUploadDesc": "MP3/WAV/OGG/M4A/FLAC jusqu à 8 Mo ; le fichier est lu directement sur votre page de profil.",
+      "musicUploadButton": "Choisir un fichier",
+      "musicRemoveButton": "Retirer le fichier",
       "linkAccounts": "Liaison des comptes",
       "sessions": "Sessions",
       "endAll": "Tout terminer",
@@ -3121,6 +3139,10 @@
       "toastLayoutSaved": "Paramètres de disposition mis à jour",
       "toastLayoutSaveError": "Erreur lors de l'enregistrement de la disposition",
       "toastBannerUploaded": "Bannière chargée",
+      "toastMusicUploaded": "Musique importée",
+      "toastMusicUploadError": "Échec de l'import audio",
+      "toastMusicRemoved": "Musique supprimée",
+      "toastMusicRemoveError": "Échec de la suppression de la musique",
       "toastBannerUploadError": "Erreur lors du chargement de la bannière",
       "toastLoadoutSaved": "Équipement enregistré",
       "toastLoadoutSaveError": "Erreur lors de l'enregistrement de l'équipement",
@@ -3333,6 +3355,35 @@
     "compareStop": "Quitter la comparaison"
   },
   "items": {
+    "catalog": {
+      "title": "Objets",
+      "categoryHint": "Choisissez une catégorie pour trouver l'objet souhaité",
+      "chooseItem": "Choisissez un objet dans la catégorie",
+      "backToCategories": "Toutes les catégories",
+      "error": "Impossible de charger le catalogue d'objets",
+      "retry": "Réessayer",
+      "itemsCount": "objets",
+      "search": "Rechercher dans tous les objets",
+      "empty": "Aucun résultat",
+      "categories": {
+        "weapon": "Armes",
+        "armor": "Armure",
+        "attachment": "Accessoires",
+        "artefact": "Artefacts",
+        "supply": "Objets consommables",
+        "bullet": "Munitions",
+        "grenade": "Grenades",
+        "containers": "Conteneurs",
+        "backpacks": "Sacs à dos",
+        "weapon_modules": "Modules d'armes",
+        "medicine": "Médecine",
+        "device": "Appareils",
+        "misc": "Divers",
+        "custom": "Personnalisé",
+        "other": "Autres"
+      },
+      "searchResults": "Résultats de recherche"
+    },
     "auction": {
       "history": "Historique des ventes",
       "current": "Lots actuels",

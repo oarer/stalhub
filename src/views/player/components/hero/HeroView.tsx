@@ -10,6 +10,7 @@ import { StalcraftText } from '@/utils/StalcraftText'
 import AchievementsView from '../AchievementsView'
 import { PlayerComparison } from '../PlayerComparison'
 import PlayerNote from '../PlayerNote'
+import ProfileMusic, { ProfileStrings } from '../ProfileMedia'
 import HeroCombat from './HeroCombat'
 import HeroStats from './HeroStats'
 
@@ -32,7 +33,7 @@ export default function HeroView({
 				alt={`${data.alliance} icon`}
 				className="absolute -top-15 -left-20 -z-1 hidden xl:block"
 				height={115}
-				src={`/images/alliance/${data.alliance}.png`} // TODO Rewrite to svg
+				src={`/images/alliance/${data.alliance}.png`}
 				width={115}
 			/>
 			<Card.Root className="z-10 w-full">
@@ -50,18 +51,30 @@ export default function HeroView({
 							/>
 						)}
 					</Card.Title>
-					<Card.Description className="flex items-center gap-2 overflow-x-auto">
-						<Icon
-							className="shrink-0 text-white text-xl"
-							icon="lucide:info"
-						/>
-						<div className="min-w-0">
-							<StalcraftText text={data.status} />
+					<Card.Description className="flex flex-col items-start gap-3">
+						<div className="flex min-w-0 items-start gap-2">
+							<Icon
+								className="mt-0.5 shrink-0 text-white text-xl"
+								icon="lucide:info"
+							/>
+							<div className="min-w-0">
+								<StalcraftText text={data.status} />
+							</div>
 						</div>
+						<ProfileStrings strings={data.strings} />
 					</Card.Description>
 				</Card.Header>
 
 				<Card.Content className="space-y-6">
+					<ProfileMusic music={data.music} />
+					{data.ascii && (
+						<div className="overflow-x-auto rounded-xl border border-primary/20 bg-black/30 p-4">
+							<p className="mb-2 font-mono text-[10px] text-muted-foreground uppercase tracking-[0.18em]">
+								{t('player.ascii.title')}
+							</p>
+							<StalcraftText text={data.ascii} />
+						</div>
+					)}
 					<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 						<HeroStats data={data} />
 						<PlayerComparison

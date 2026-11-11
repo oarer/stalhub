@@ -572,6 +572,13 @@
       "ach": "업적",
       "ach_points": "업적 포인트:"
     },
+    "music": {
+      "label": "프로필 음악",
+      "play": "재생",
+      "pause": "일시정지",
+      "open": "소스 열기",
+      "untitled": "제목 없음"
+    },
     "gear": {
       "title": "장비",
       "description": "에서 제공하는 현재 플레이어 장비 및 부착물 (RU 전용)",
@@ -3089,6 +3096,17 @@
       "bannerModeImage": "이미지",
       "bannerTypeBackground": "배경",
       "bannerTypeHeader": "헤더",
+      "profileMusic": "프로필 음악",
+      "profileMusicDesc": "트랙 링크를 추가하거나(사운드클라우드/유튜브/스포티파이는 제목, 아티스트, 커버가 자동으로 채워짐) 직접 파일을 업로드하세요.",
+      "musicUrl": "트랙 URL",
+      "musicTitle": "트랙 제목",
+      "musicArtist": "아티스트",
+      "musicCover": "커버",
+      "musicSave": "음악 저장",
+      "musicUploadTitle": "직접 파일 업로드",
+      "musicUploadDesc": "MP3/WAV/OGG/M4A/FLAC, 최대 8MB — 파일이 프로필 페이지에서 바로 재생됩니다.",
+      "musicUploadButton": "파일 선택",
+      "musicRemoveButton": "파일 삭제",
       "linkAccounts": "계정 연결",
       "sessions": "세션",
       "endAll": "모두 종료",
@@ -3121,6 +3139,10 @@
       "toastLayoutSaved": "배치 설정이 업데이트되었습니다",
       "toastLayoutSaveError": "배치 저장 중 오류",
       "toastBannerUploaded": "배너가 업로드되었습니다",
+      "toastMusicUploaded": "음악이 업로드되었습니다",
+      "toastMusicUploadError": "오디오 업로드에 실패했습니다",
+      "toastMusicRemoved": "음악이 삭제되었습니다",
+      "toastMusicRemoveError": "음악 삭제에 실패했습니다",
       "toastBannerUploadError": "배너 업로드 중 오류",
       "toastLoadoutSaved": "장비가 저장되었습니다",
       "toastLoadoutSaveError": "장비 저장 중 오류",
@@ -3333,6 +3355,35 @@
     "compareStop": "비교 종료"
   },
   "items": {
+    "catalog": {
+      "title": "아이템",
+      "categoryHint": "카테고리를 선택해 원하는 아이템을 찾으세요",
+      "chooseItem": "카테고리에서 아이템을 선택하세요",
+      "backToCategories": "모든 카테고리",
+      "error": "아이템 카탈로그를 불러오지 못했습니다",
+      "retry": "다시 시도",
+      "itemsCount": "개",
+      "search": "모든 아이템 검색",
+      "empty": "결과가 없습니다",
+      "categories": {
+        "weapon": "무기",
+        "armor": "방어구",
+        "attachment": "부착물",
+        "artefact": "아티팩트",
+        "supply": "소모품",
+        "bullet": "탄약",
+        "grenade": "수류탄",
+        "containers": "컨테이너",
+        "backpacks": "백팩",
+        "weapon_modules": "무기 모듈",
+        "medicine": "의약품",
+        "device": "장치",
+        "misc": "잡화",
+        "custom": "커스텀",
+        "other": "기타"
+      },
+      "searchResults": "검색 결과"
+    },
     "auction": {
       "history": "판매 기록",
       "current": "현재 매물",

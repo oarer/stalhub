@@ -81,5 +81,6 @@ export interface PlayerGearItem {
 
 export interface PlayerGearResponse {
 	name: string
+	strings?: string[]
 	items: PlayerGearItem[]
 }

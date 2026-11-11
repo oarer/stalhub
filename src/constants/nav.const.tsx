@@ -279,6 +279,12 @@ export const NAV_STRUCTURE: NavGroup[] = [
 							'nav.groups.other.items.models.description',
 					},
 					{
+						key: 'items',
+						icon: 'lucide:library',
+						href: '/items',
+						labelKey: 'nav.groups.other.items.items.label',
+					},
+					{
 						key: 'eforum',
 						icon: 'lucide:messages-circle',
 						href: '/eforum',

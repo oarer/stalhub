@@ -572,6 +572,13 @@
       "ach": "Achievements",
       "ach_points": "Achievement points:"
     },
+    "music": {
+      "label": "Profile music",
+      "play": "Play",
+      "pause": "Pause",
+      "open": "Open source",
+      "untitled": "Untitled"
+    },
     "gear": {
       "title": "Gear",
       "description": "Current player gear and attachments from UNO (RU only)",
@@ -3089,6 +3096,17 @@
       "bannerModeImage": "Image",
       "bannerTypeBackground": "Background",
       "bannerTypeHeader": "Header",
+      "profileMusic": "Profile music",
+      "profileMusicDesc": "Add a track link (SoundCloud/YouTube/Spotify — title, artist and cover are fetched automatically) or upload your own file.",
+      "musicUrl": "Track URL",
+      "musicTitle": "Track title",
+      "musicArtist": "Artist",
+      "musicCover": "Cover",
+      "musicSave": "Save music",
+      "musicUploadTitle": "Upload your own file",
+      "musicUploadDesc": "MP3/WAV/OGG/M4A/FLAC up to 8 MB — the file plays right on your profile page.",
+      "musicUploadButton": "Choose file",
+      "musicRemoveButton": "Remove file",
       "linkAccounts": "Linked accounts",
       "sessions": "Sessions",
       "endAll": "End all",
@@ -3121,6 +3139,10 @@
       "toastLayoutSaved": "Layout settings updated",
       "toastLayoutSaveError": "Error saving layout",
       "toastBannerUploaded": "Banner uploaded",
+      "toastMusicUploaded": "Music uploaded",
+      "toastMusicUploadError": "Failed to upload audio",
+      "toastMusicRemoved": "Music removed",
+      "toastMusicRemoveError": "Failed to remove music",
       "toastBannerUploadError": "Error uploading banner",
       "toastLoadoutSaved": "Loadout saved",
       "toastLoadoutSaveError": "Error saving loadout",
@@ -3333,6 +3355,35 @@
     "compareStop": "Exit comparison"
   },
   "items": {
+    "catalog": {
+      "title": "Items",
+      "categoryHint": "Choose a category to find the item you need",
+      "chooseItem": "Choose an item from the category",
+      "backToCategories": "All categories",
+      "error": "Failed to load the item catalog",
+      "retry": "Retry",
+      "itemsCount": "items",
+      "search": "Search all items",
+      "empty": "Nothing found",
+      "categories": {
+        "weapon": "Weapons",
+        "armor": "Armor",
+        "attachment": "Attachments",
+        "artefact": "Artifacts",
+        "supply": "Consumables",
+        "bullet": "Ammo",
+        "grenade": "Grenades",
+        "containers": "Containers",
+        "backpacks": "Backpacks",
+        "weapon_modules": "Weapon modules",
+        "medicine": "Medicine",
+        "device": "Devices",
+        "misc": "Miscellaneous",
+        "custom": "Custom",
+        "other": "Other"
+      },
+      "searchResults": "Search results"
+    },
     "auction": {
       "history": "Sales history",
       "current": "Current lots",

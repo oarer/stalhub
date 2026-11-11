@@ -575,6 +575,13 @@
       "ach": "Достижения",
       "ach_points": "Очков достижений:"
     },
+    "music": {
+      "label": "Музыка профиля",
+      "play": "Включить",
+      "pause": "Пауза",
+      "open": "Источник",
+      "untitled": "Без названия"
+    },
     "gear": {
       "title": "Снаряжение",
       "description": "Текущее снаряжение и обвесы игрока",
@@ -3092,6 +3099,17 @@
       "bannerModeImage": "Изображение",
       "bannerTypeBackground": "Фон",
       "bannerTypeHeader": "Шапка",
+      "profileMusic": "Музыка профиля",
+      "profileMusicDesc": "Добавьте ссылку на трек (SoundCloud/YouTube/Spotify — название, исполнитель и обложка подтянутся сами) или загрузите свой файл.",
+      "musicUrl": "Ссылка на трек",
+      "musicTitle": "Название трека",
+      "musicArtist": "Исполнитель",
+      "musicCover": "Обложка",
+      "musicSave": "Сохранить музыку",
+      "musicUploadTitle": "Загрузить свой файл",
+      "musicUploadDesc": "MP3/WAV/OGG/M4A/FLAC до 8 МБ — файл будет играть прямо на странице профиля.",
+      "musicUploadButton": "Выбрать файл",
+      "musicRemoveButton": "Удалить файл",
       "linkAccounts": "Привязка аккаунтов",
       "sessions": "Сессии",
       "endAll": "Завершить все",
@@ -3124,6 +3142,10 @@
       "toastLayoutSaved": "Настройки расположения обновлены",
       "toastLayoutSaveError": "Ошибка при сохранении расположения",
       "toastBannerUploaded": "Баннер загружен",
+      "toastMusicUploaded": "Музыка загружена",
+      "toastMusicUploadError": "Не удалось загрузить аудио",
+      "toastMusicRemoved": "Музыка удалена",
+      "toastMusicRemoveError": "Не удалось удалить музыку",
       "toastBannerUploadError": "Ошибка при загрузке баннера",
       "toastLoadoutSaved": "Снаряжение сохранено",
       "toastLoadoutSaveError": "Ошибка при сохранении снаряжения",
@@ -3336,6 +3358,35 @@
     "compareStop": "Выйти из сравнения"
   },
   "items": {
+    "catalog": {
+      "title": "Предметы",
+      "categoryHint": "Выберите категорию, чтобы найти нужный предмет",
+      "chooseItem": "Выберите предмет из категории",
+      "backToCategories": "Все категории",
+      "error": "Не удалось загрузить каталог предметов",
+      "retry": "Повторить",
+      "itemsCount": "предметов",
+      "search": "Поиск по всем предметам",
+      "empty": "Ничего не найдено",
+      "categories": {
+        "weapon": "Оружие",
+        "armor": "Броня",
+        "attachment": "Обвесы",
+        "artefact": "Артефакты",
+        "supply": "Расходуемые предметы",
+        "bullet": "Патроны",
+        "grenade": "Гранаты",
+        "containers": "Контейнеры",
+        "backpacks": "Рюкзаки",
+        "weapon_modules": "Модули на оружие",
+        "medicine": "Медицина",
+        "device": "Устройства",
+        "misc": "Разное",
+        "custom": "Особое",
+        "other": "Другое"
+      },
+      "searchResults": "Результаты поиска"
+    },
     "auction": {
       "history": "История продаж",
       "current": "Текущие лоты",

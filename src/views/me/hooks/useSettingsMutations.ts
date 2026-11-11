@@ -124,6 +124,30 @@ export function useSettingsMutations(
 		},
 	})
 
+	const uploadMusicMutation = useMutation({
+		mutationFn: (file: File) => userService.uploadMusic(file),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user'] })
+			toast.success(t('me.settings.toastMusicUploaded'))
+		},
+		onError: (err) => {
+			const message = getApiError(err)
+			if (message) toast.error(message)
+			else toast.error(t('me.settings.toastMusicUploadError'))
+		},
+	})
+
+	const deleteMusicMutation = useMutation({
+		mutationFn: () => userService.deleteMusic(),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['user'] })
+			toast.success(t('me.settings.toastMusicRemoved'))
+		},
+		onError: () => {
+			toast.error(t('me.settings.toastMusicRemoveError'))
+		},
+	})
+
 	const saveLoadoutMutation = useMutation({
 		mutationFn: (data: LoadoutData) =>
 			loadoutService.upsert(data, loadout?.is_public ?? false),
@@ -239,6 +263,8 @@ export function useSettingsMutations(
 		avatarMutation,
 		uploadAvatarMutation,
 		deleteAvatarMutation,
+		uploadMusicMutation,
+		deleteMusicMutation,
 		saveLoadoutMutation,
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,

@@ -7,13 +7,37 @@ import type {
 } from '@/types/player.type'
 import type { PlayerGearResponse } from '@/types/playerGear.type'
 
+type UnifiedPlayerResponse = PlayerResponse & {
+	player?: PlayerResponse
+	uno?: Partial<PlayerResponse>
+	gear?: PlayerGearResponse | null
+}
+
+function normalizePlayerResponse(data: UnifiedPlayerResponse): PlayerResponse {
+	if (!data.player) return data
+
+	return {
+		...data.player,
+		...data.uno,
+		gear: data.gear ?? data.uno?.gear ?? data.player.gear ?? null,
+		strings: data.strings ?? data.uno?.strings ?? data.player.strings,
+		music: data.music ?? data.uno?.music ?? data.player.music,
+		ascii: data.ascii ?? data.uno?.ascii ?? data.player.ascii,
+	}
+}
+
 class PlayerService {
 	async get({ region, character }: PlayerParams): Promise<PlayerResponse> {
-		const { data } = await apiClient.get<PlayerResponse>(
+		const { data } = await apiClient.get<UnifiedPlayerResponse>(
 			`/api/v1/player/${region}/${encodeURIComponent(character)}`,
-			{ params: { history: true } }
+			{
+				params: {
+					history: true,
+					...(region === 'RU' ? { gear: true, strings: true } : {}),
+				},
+			}
 		)
-		return data
+		return normalizePlayerResponse(data)
 	}
 
 	async getGear({

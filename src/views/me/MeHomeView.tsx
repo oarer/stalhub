@@ -8,6 +8,7 @@ import { buildApiQueries } from '@/queries/build-api/build-api.queries'
 import { exboQueries } from '@/queries/exbo/exbo.queries'
 import { userQueries } from '@/queries/user/user.queries'
 import { Regions } from '@/types/api.type'
+import ProfileMusic from '@/views/player/components/ProfileMedia'
 import { ArticleCard } from './components/article/ArticleCard'
 import { BuildCard } from './components/BuildCard'
 import { CharacterCard } from './components/CharacterCard'
@@ -34,6 +35,16 @@ export default function MeHomeView() {
 
 	return (
 		<div className="flex flex-col gap-6">
+			{user.customization?.music_url && (
+				<ProfileMusic
+					music={{
+						artist: user.customization.music_artist,
+						cover: user.customization.music_cover,
+						title: user.customization.music_title,
+						url: user.customization.music_url,
+					}}
+				/>
+			)}
 			{hasExbo && (
 				<Suspense fallback={<CharactersSkeleton />}>
 					<ExboSection

@@ -1,10 +1,18 @@
 import type { Regions } from './api.type'
 import type { ClanHistoryEntry } from './clan/clan.type'
 import type { Message } from './item.type'
+import type { PlayerGearResponse } from './playerGear.type'
 
 export interface PlayerRole {
 	role: Role
 	description: string | null
+}
+
+export interface PlayerMusic {
+	url: string
+	title?: string | null
+	artist?: string | null
+	cover?: string | null
 }
 
 export interface PlayerResponse {
@@ -18,6 +26,10 @@ export interface PlayerResponse {
 	stats: Stat[]
 	role?: PlayerRole
 	clan_history?: ClanHistoryEntry[]
+	gear?: PlayerGearResponse | null
+	strings?: string[]
+	music?: PlayerMusic | string | null
+	ascii?: string | null
 }
 export interface PlayerParams {
 	region: Regions

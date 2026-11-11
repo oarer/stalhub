@@ -15,6 +15,7 @@ import { DangerZoneSection } from './components/settings/DangerZoneSection'
 import { DeleteAccountModal } from './components/settings/DeleteAccountModal'
 import { LinkedAccountsSection } from './components/settings/LinkedAccountsSection'
 import { PersonalizationSection } from './components/settings/PersonalizationSection'
+import { ProfileMusicSection } from './components/settings/ProfileMusicSection'
 import { RegionSection } from './components/settings/RegionSection'
 import { SessionsSection } from './components/settings/SessionsSection'
 import { SocialLinksSection } from './components/settings/SocialLinksSection'
@@ -45,6 +46,8 @@ export default function MeSettingsView() {
 		avatarMutation,
 		uploadAvatarMutation,
 		deleteAvatarMutation,
+		uploadMusicMutation,
+		deleteMusicMutation,
 		saveLoadoutMutation,
 		toggleLoadoutPublicMutation,
 		deleteSessionMutation,
@@ -84,6 +87,14 @@ export default function MeSettingsView() {
 					})
 				}
 				publicProfileChecked={user.settings?.public_profile}
+			/>
+			<ProfileMusicSection
+				isDeletePending={deleteMusicMutation.isPending}
+				isUploadPending={uploadMusicMutation.isPending}
+				music={user.customization}
+				onDeleteFile={() => deleteMusicMutation.mutate()}
+				onSave={(music) => updateMutation.mutate(music)}
+				onUploadFile={(file) => uploadMusicMutation.mutate(file)}
 			/>
 			<AccountSection
 				isPending={profileMutation.isPending}

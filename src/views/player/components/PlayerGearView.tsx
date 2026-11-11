@@ -19,6 +19,7 @@ import type {
 	PlayerGearAttribute,
 	PlayerGearItem,
 	PlayerGearItemDb,
+	PlayerGearResponse,
 } from '@/types/playerGear.type'
 import { calcArtifactPercent, getQualityByPercent } from '@/utils/artUtils'
 import {
@@ -427,12 +428,25 @@ function GearSkeleton() {
 	)
 }
 
-export default function PlayerGearView({ character }: { character: string }) {
+export default function PlayerGearView({
+	character,
+	initialData,
+}: {
+	character: string
+	initialData?: PlayerGearResponse | null
+}) {
 	const t = useTranslations()
 	const loadModules = useModulesStore((state) => state.load)
-	const { data, isLoading, isError, refetch } = useQuery(
-		playerQueries.getGear({ character })
-	)
+	const {
+		data: queryData,
+		isLoading,
+		isError,
+		refetch,
+	} = useQuery({
+		...playerQueries.getGear({ character }),
+		enabled: !initialData,
+	})
+	const data = initialData ?? queryData
 
 	useEffect(() => {
 		void loadModules()

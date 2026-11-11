@@ -31,7 +31,9 @@ export default function PlayerView({
 				region={region}
 			/>
 			<PlayerSummary stats={data.stats} />
-			{isRu && <PlayerGearView character={character} />}
+			{isRu && (
+				<PlayerGearView character={character} initialData={data.gear} />
+			)}
 			{data.clan && <ClanView data={data.clan} />}
 			<ClanHistoryView history={data.clan_history ?? []} />
 			<StatsView data={data.stats} />
