@@ -23,10 +23,23 @@ import { Skeleton } from '../ui/Skeleton'
 
 const PAGE_STEP = 15
 
+const EASE_OUT = [0.22, 0.61, 0.36, 1] as const
+
+const cardSpring = {
+	type: 'spring',
+	stiffness: 420,
+	damping: 34,
+} as const
+
+const sectionTransition = {
+	duration: 0.22,
+	ease: EASE_OUT,
+} as const
+
 const cardVariants = {
-	initial: { opacity: 0, y: 8 },
+	initial: { opacity: 0, y: 6 },
 	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0 },
+	exit: { opacity: 0, y: -4 },
 }
 
 const sectionVariants = {
@@ -53,12 +66,12 @@ const ItemCard = React.memo(function ItemCard({
 			href={item.data.replace(/\.json$/, '')}
 			onClick={close}
 		>
-			<Card.Header className="flex flex-row items-center gap-4 transition-all hover:brightness-75">
+			<Card.Header className="flex flex-row items-center gap-3 transition-all hover:brightness-75">
 				{iconPath && (
 					<Card.Title>
 						<Image
 							alt={name}
-							className="size-12 object-contain"
+							className="size-12 shrink-0 object-contain"
 							height={44}
 							loading="lazy"
 							quality={80}
@@ -68,7 +81,7 @@ const ItemCard = React.memo(function ItemCard({
 					</Card.Title>
 				)}
 				<p
-					className="font-semibold text-lg"
+					className="min-w-0 flex-1 truncate font-semibold text-base"
 					style={{ color: infoColorMap[item.color] }}
 				>
 					{name}
@@ -249,21 +262,29 @@ export default function ItemSearchModal({
 						value={query}
 					/>
 
-					{loading && (
-						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-foreground">
-							<Skeleton className="size-5" />
-							<p>{t('modals.search.loading')}</p>
-						</div>
-					)}
+					<AnimatePresence initial={false} mode="popLayout">
+						{loading && (
+							<motion.div
+								animate={{ opacity: 1 }}
+								className="flex h-24 items-center justify-center gap-2 font-semibold text-foreground"
+								exit={{ opacity: 0 }}
+								initial={{ opacity: 0 }}
+								transition={{ duration: 0.15, ease: 'easeOut' }}
+							>
+								<Skeleton className="size-5" />
+								<p>{t('modals.search.loading')}</p>
+							</motion.div>
+						)}
+					</AnimatePresence>
 
-					<AnimatePresence>
+					<AnimatePresence initial={false} mode="popLayout">
 						{isEmpty && (
 							<motion.p
 								animate="animate"
 								className="text-center font-semibold text-foreground"
 								exit="exit"
 								initial="initial"
-								transition={{ duration: 0.18, ease: 'easeOut' }}
+								transition={sectionTransition}
 								variants={sectionVariants}
 							>
 								{t('modals.search.not_found')}
@@ -271,14 +292,15 @@ export default function ItemSearchModal({
 						)}
 					</AnimatePresence>
 
-					<AnimatePresence>
+					<AnimatePresence initial={false} mode="popLayout">
 						{displayedPages.length > 0 && (
 							<motion.div
 								animate="animate"
 								className="flex flex-col gap-4"
 								exit="exit"
 								initial="initial"
-								transition={{ duration: 0.18, ease: 'easeOut' }}
+								layout
+								transition={sectionTransition}
 								variants={sectionVariants}
 							>
 								<section className="flex flex-col gap-2">
@@ -288,24 +310,27 @@ export default function ItemSearchModal({
 										{t('modals.search.pages')}
 									</h3>
 									<ul className="mask-y-from-95% mask-y-to-100% flex max-h-66 flex-col gap-3 overflow-y-auto p-0.5">
-										{displayedPages.map((page) => (
-											<motion.li
-												animate="animate"
-												initial="initial"
-												key={page.key}
-												layout
-												transition={{
-													duration: 0.2,
-													ease: 'easeOut',
-												}}
-												variants={cardVariants}
-											>
-												<PageCard
-													close={handleClose}
-													page={page}
-												/>
-											</motion.li>
-										))}
+										<AnimatePresence
+											initial={false}
+											mode="popLayout"
+										>
+											{displayedPages.map((page) => (
+												<motion.li
+													animate="animate"
+													exit="exit"
+													initial="initial"
+													key={page.key}
+													layout
+													transition={cardSpring}
+													variants={cardVariants}
+												>
+													<PageCard
+														close={handleClose}
+														page={page}
+													/>
+												</motion.li>
+											))}
+										</AnimatePresence>
 									</ul>
 								</section>
 								<Divider />
@@ -313,65 +338,79 @@ export default function ItemSearchModal({
 						)}
 					</AnimatePresence>
 
-					{displayed.length > 0 && (
-						<ul
-							className="mask-y-from-95% mask-y-to-100% flex max-h-[55dvh] flex-col gap-3 overflow-y-auto p-0.5"
-							onScroll={onScroll}
-							ref={scrollRef}
-						>
-							{displayed.map((item) => (
-								<motion.li
-									animate="animate"
-									initial="initial"
-									key={item.key}
-									layout
-									transition={{
-										duration: 0.2,
-										ease: 'easeOut',
-									}}
-									variants={cardVariants}
+					<AnimatePresence initial={false} mode="popLayout">
+						{displayed.length > 0 && (
+							<motion.ul
+								animate={{ opacity: 1 }}
+								className="mask-y-from-95% mask-y-to-100% grid max-h-[55dvh] grid-cols-2 gap-3 overflow-y-auto p-0.5 sm:grid-cols-3"
+								exit={{ opacity: 0 }}
+								initial={{ opacity: 0 }}
+								layout
+								onScroll={onScroll}
+								ref={scrollRef}
+								transition={{ duration: 0.15, ease: 'easeOut' }}
+							>
+								<AnimatePresence
+									initial={false}
+									mode="popLayout"
 								>
-									<ItemCard close={handleClose} item={item} />
-								</motion.li>
-							))}
-						</ul>
-					)}
+									{displayed.map((item) => (
+										<motion.li
+											animate="animate"
+											exit="exit"
+											initial="initial"
+											key={item.key}
+											layout
+											transition={cardSpring}
+											variants={cardVariants}
+										>
+											<ItemCard
+												close={handleClose}
+												item={item}
+											/>
+										</motion.li>
+									))}
+								</AnimatePresence>
+							</motion.ul>
+						)}
+					</AnimatePresence>
 
-					<AnimatePresence>
+					<AnimatePresence initial={false} mode="popLayout">
 						{displayedArticles.length > 0 && (
 							<motion.section
 								animate="animate"
 								className="flex flex-col gap-2"
 								exit="exit"
 								initial="initial"
-								transition={{
-									duration: 0.18,
-									ease: 'easeOut',
-								}}
+								layout
+								transition={sectionTransition}
 								variants={sectionVariants}
 							>
 								<h3 className="font-semibold text-foreground text-sm uppercase">
 									{t('modals.search.articles')}
 								</h3>
 								<ul className="flex flex-col gap-3">
-									{displayedArticles.map((article) => (
-										<motion.li
-											animate="animate"
-											initial="initial"
-											key={article.key}
-											layout
-											transition={{
-												duration: 0.2,
-												ease: 'easeOut',
-											}}
-											variants={cardVariants}
-										>
-											<ArticleCard
-												article={article}
-												close={handleClose}
-											/>
-										</motion.li>
-									))}
+									<AnimatePresence
+										initial={false}
+										mode="popLayout"
+									>
+										{displayedArticles.map((article) => (
+											<motion.li
+												animate="animate"
+												exit="exit"
+												initial="initial"
+												key={article.key}
+												layout
+												transition={cardSpring}
+												variants={cardVariants}
+											>
+												<ArticleCard
+													article={article}
+													close={handleClose}
+												/>
+											</motion.li>
+										))}
+									</AnimatePresence>
 								</ul>
 							</motion.section>
 						)}

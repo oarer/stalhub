@@ -16,8 +16,25 @@ class AuctionService {
 		offset = 0,
 		additional = true,
 		region = Regions.RU,
+		uno,
 	}: AuctionParams): Promise<LotsResponse> {
 		try {
+			if (uno) {
+				const { data } = await apiClient.get<LotsResponse>(
+					'/api/v1/uno/auction/lots',
+					{
+						params: {
+							item_id: id,
+							limit,
+							offset,
+							sort: 3,
+							region: region === Regions.EU ? 'eu' : undefined,
+						},
+					}
+				)
+				return data
+			}
+
 			const { data } = await apiClient.get<LotsResponse>(
 				`/api/v1/auction/${region}/${id}/lots`,
 				{
@@ -39,7 +56,12 @@ class AuctionService {
 		offset = 0,
 		additional = true,
 		region = Regions.RU,
+		uno,
 	}: AuctionParams): Promise<LotsHistoryResponse> {
+		if (uno) {
+			return { total: 0, prices: [] }
+		}
+
 		try {
 			const { data } = await apiClient.get<LotsHistoryResponse>(
 				`/api/v1/auction/${region}/${id}/history`,

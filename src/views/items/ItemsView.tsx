@@ -105,6 +105,8 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 	const { data } = useSuspenseQuery(itemQueries.byGithubUrl(githubUrl))
 
+	const isUno = path[0] === 'uno' || data.uno === true
+
 	const {
 		data: auctionHistoryInfinite,
 		hasNextPage: historyHasNextPage,
@@ -113,7 +115,11 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 		isFetching: isFetchingHistory,
 		dataUpdatedAt: historyUpdatedAt,
 	} = useSuspenseInfiniteQuery({
-		...auctionQueries.historyInfinite({ id, limit: 50 }),
+		...auctionQueries.historyInfinite({
+			id,
+			limit: 50,
+			uno: isUno,
+		}),
 		refetchInterval: autoRefreshEnabled
 			? clampAutoRefreshInterval(autoRefreshIntervalSec) * 1000
 			: undefined,
@@ -127,7 +133,11 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 		isFetching: isFetchingCurrent,
 		dataUpdatedAt: currentUpdatedAt,
 	} = useSuspenseInfiniteQuery({
-		...auctionQueries.lotsInfinite({ id, limit: 50 }),
+		...auctionQueries.lotsInfinite({
+			id,
+			limit: 50,
+			uno: isUno,
+		}),
 		refetchInterval: autoRefreshEnabled
 			? clampAutoRefreshInterval(autoRefreshIntervalSec) * 1000
 			: undefined,

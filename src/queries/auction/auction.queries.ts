@@ -15,6 +15,7 @@ class AuctionQueries {
 		offset,
 		additional,
 		region,
+		uno,
 	}: AuctionParams & { region?: string }) {
 		return queryOptions<LotsResponse>({
 			queryKey: [
@@ -25,6 +26,7 @@ class AuctionQueries {
 				offset,
 				additional,
 				region,
+				uno,
 			],
 			queryFn: () =>
 				auctionService.getLots({
@@ -33,9 +35,11 @@ class AuctionQueries {
 					offset,
 					additional,
 					region,
+					uno,
 				}),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
+			retry: 1,
 		})
 	}
 
@@ -45,6 +49,7 @@ class AuctionQueries {
 		offset,
 		additional,
 		region,
+		uno,
 	}: AuctionParams & { region?: string }) {
 		return queryOptions<LotsHistoryResponse>({
 			queryKey: [
@@ -55,6 +60,7 @@ class AuctionQueries {
 				offset,
 				additional,
 				region,
+				uno,
 			],
 			queryFn: () =>
 				auctionService.getHistory({
@@ -63,9 +69,11 @@ class AuctionQueries {
 					offset,
 					additional,
 					region,
+					uno,
 				}),
 			placeholderData: keepPreviousData,
 			staleTime: 1000 * 60,
+			retry: 1,
 		})
 	}
 
@@ -74,6 +82,7 @@ class AuctionQueries {
 		limit = 50,
 		additional,
 		region,
+		uno,
 	}: AuctionParams & { region?: string }) {
 		return infiniteQueryOptions<LotsResponse>({
 			queryKey: [
@@ -83,6 +92,7 @@ class AuctionQueries {
 				limit,
 				additional,
 				region,
+				uno,
 			],
 			queryFn: ({ pageParam }) =>
 				auctionService.getLots({
@@ -91,6 +101,7 @@ class AuctionQueries {
 					offset: pageParam as number,
 					additional,
 					region,
+					uno,
 				}),
 			initialPageParam: 0,
 			getNextPageParam: (lastPage, allPages) => {
@@ -101,6 +112,7 @@ class AuctionQueries {
 				return loaded < lastPage.total ? loaded : undefined
 			},
 			staleTime: 1000 * 60,
+			retry: 1,
 		})
 	}
 
@@ -109,6 +121,7 @@ class AuctionQueries {
 		limit = 50,
 		additional,
 		region,
+		uno,
 	}: AuctionParams & { region?: string }) {
 		return infiniteQueryOptions<LotsHistoryResponse>({
 			queryKey: [
@@ -118,6 +131,7 @@ class AuctionQueries {
 				limit,
 				additional,
 				region,
+				uno,
 			],
 			queryFn: ({ pageParam }) =>
 				auctionService.getHistory({
@@ -126,6 +140,7 @@ class AuctionQueries {
 					offset: pageParam as number,
 					additional,
 					region,
+					uno,
 				}),
 			initialPageParam: 0,
 			getNextPageParam: (lastPage, allPages) => {
@@ -136,6 +151,7 @@ class AuctionQueries {
 				return loaded < lastPage.total ? loaded : undefined
 			},
 			staleTime: 1000 * 60,
+			retry: 1,
 		})
 	}
 }

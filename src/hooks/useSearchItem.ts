@@ -6,7 +6,7 @@ import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { useItemStore } from '@/stores/items.store'
 import type { ItemListing } from '@/types/api.type'
 
-const LISTING_URL = `${GITHUB_RAW_BASE}listing.json`
+const LISTING_URL = `${GITHUB_RAW_BASE}/listing.json`
 const COMMITS_API =
 	'https://api.github.com/repos/oarer/sc-db/commits?path=merged/listing.json&page=1&per_page=1'
 
