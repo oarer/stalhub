@@ -1485,6 +1485,43 @@
     }
   },
   "admin": {
+    "metrics": {
+      "title": "Метрики",
+      "updatedAt": "Обновлено: {date}",
+      "autoRefresh": "автообновление каждые 30 с",
+      "refresh": "Обновить",
+      "requestsTotal": "HTTP-запросов",
+      "fiveXX": "из них 5xx: {count}",
+      "errorRate": "Доля ошибок 5xx",
+      "unoRequests": "Запросов к UNO",
+      "upstreamErrors": "ошибок: {count}",
+      "unoErrors": "Ошибок UNO",
+      "ipBlocks": "Блокировок IP",
+      "search": "Поиск по метрикам…",
+      "raw": "Исходный текст",
+      "familiesTitle": "Семейства метрик",
+      "samplesCount": "Выборок: {count}",
+      "sum": "Сумма",
+      "count": "Количество",
+      "avg": "Среднее",
+      "showAll": "Показать все ({count})",
+      "empty": "Метрики не найдены",
+      "loadError": "Не удалось загрузить метрики",
+      "retry": "Повторить",
+      "type": {
+        "counter": "Счётчик",
+        "gauge": "Датчик",
+        "histogram": "Гистограмма",
+        "summary": "Сводка",
+        "untyped": "Без типа"
+      },
+      "filter": {
+        "all": "Все",
+        "counter": "Счётчики",
+        "gauge": "Датчики",
+        "histogram": "Гистограммы"
+      }
+    },
     "permissions": {
       "title": "Разрешения",
       "total": "всего",
@@ -1689,6 +1726,8 @@
       "moderation": "Модерация",
       "audit": "Журнал",
       "health": "Статус",
+      "metrics": "Метрики",
+      "uno": "UNO API",
       "disputes": "Споры"
     },
     "dashboard": {
@@ -2258,6 +2297,50 @@
       "multiaccountsEmpty": "Совпадений нет",
       "searchComments": "Поиск по тексту или автору…",
       "commentDeleted": "Комментарий удалён"
+    },
+    "uno": {
+      "title": "UNO API",
+      "subtitle": "Защита UNO API: активность IP и ручные баны",
+      "bans": {
+        "title": "Ручные баны",
+        "empty": "Ручных банов нет",
+        "unban": "Разбанить",
+        "confirmTitle": "Разбанить IP",
+        "confirmDescription": "Снять ручной бан с {ip}?",
+        "table": {
+          "ip": "IP",
+          "reason": "Причина",
+          "date": "Дата",
+          "bannedBy": "Кем выдан"
+        },
+        "form": {
+          "ip": "IP-адрес",
+          "reason": "Причина (необязательно)",
+          "submit": "Забанить",
+          "invalid": "Введите корректный IP-адрес"
+        }
+      },
+      "stats": {
+        "title": "Активность IP (24 ч)",
+        "total": "IP-адресов: {count}",
+        "updatedAt": "Обновлено {date}",
+        "ban": "Бан",
+        "empty": "Нет данных об активности",
+        "table": {
+          "ip": "IP",
+          "hits": "Запросы",
+          "status": "Статус"
+        },
+        "badge": {
+          "manual": "Ручной бан",
+          "auto": "Автоблок"
+        }
+      },
+      "toast": {
+        "banned": "IP {ip} забанен",
+        "unbanned": "Бан с {ip} снят",
+        "error": "Ошибка UNO API"
+      }
     },
     "disputes": {
       "title": "Споры заказов",

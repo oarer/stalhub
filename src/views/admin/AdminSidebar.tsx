@@ -127,6 +127,16 @@ const groups: {
 				href: '/admin/health',
 				icon: 'lucide:heart-pulse',
 			},
+			{
+				title: 'admin.sidebar.metrics',
+				href: '/admin/metrics',
+				icon: 'lucide:gauge',
+			},
+			{
+				title: 'admin.sidebar.uno',
+				href: '/admin/uno',
+				icon: 'lucide:shield-alert',
+			},
 		],
 	},
 ]

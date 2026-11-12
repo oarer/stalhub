@@ -1480,6 +1480,43 @@
     }
   },
   "admin": {
+    "metrics": {
+      "title": "Métricas",
+      "updatedAt": "Actualizado: {date}",
+      "autoRefresh": "actualización automática cada 30 s",
+      "refresh": "Actualizar",
+      "requestsTotal": "Solicitudes HTTP",
+      "fiveXX": "de ellas 5xx: {count}",
+      "errorRate": "Tasa de errores 5xx",
+      "unoRequests": "Solicitudes al upstream UNO",
+      "upstreamErrors": "errores: {count}",
+      "unoErrors": "Errores del upstream UNO",
+      "ipBlocks": "Bloqueos de IP",
+      "search": "Buscar métricas…",
+      "raw": "Texto sin procesar",
+      "familiesTitle": "Familias de métricas",
+      "samplesCount": "Muestras: {count}",
+      "sum": "Suma",
+      "count": "Recuento",
+      "avg": "Promedio",
+      "showAll": "Mostrar todo ({count})",
+      "empty": "No se encontraron métricas",
+      "loadError": "Error al cargar las métricas",
+      "retry": "Reintentar",
+      "type": {
+        "counter": "Contador",
+        "gauge": "Medidor",
+        "histogram": "Histograma",
+        "summary": "Resumen",
+        "untyped": "Sin tipo"
+      },
+      "filter": {
+        "all": "Todos",
+        "counter": "Contadores",
+        "gauge": "Medidores",
+        "histogram": "Histogramas"
+      }
+    },
     "permissions": {
       "title": "Permisos",
       "total": "total",
@@ -1684,6 +1721,8 @@
       "moderation": "Moderación",
       "audit": "Registro",
       "health": "Salud",
+      "metrics": "Métricas",
+      "uno": "UNO API",
       "disputes": "Disputas"
     },
     "dashboard": {
@@ -2255,6 +2294,50 @@
       "multiaccountsEmpty": "Sin coincidencias",
       "searchComments": "Buscar texto o autor…",
       "commentDeleted": "Comentario eliminado"
+    },
+    "uno": {
+      "title": "UNO API",
+      "subtitle": "Protección de la API UNO: actividad de IP y baneos manuales",
+      "bans": {
+        "title": "Baneos manuales",
+        "empty": "No hay baneos manuales",
+        "unban": "Desbanear",
+        "confirmTitle": "Desbanear IP",
+        "confirmDescription": "¿Quitar el baneo manual de {ip}?",
+        "table": {
+          "ip": "IP",
+          "reason": "Motivo",
+          "date": "Fecha",
+          "bannedBy": "Emitido por"
+        },
+        "form": {
+          "ip": "Dirección IP",
+          "reason": "Motivo (opcional)",
+          "submit": "Banear",
+          "invalid": "Introduce una dirección IP válida"
+        }
+      },
+      "stats": {
+        "title": "Actividad de IP (24 h)",
+        "total": "IPs: {count}",
+        "updatedAt": "Actualizado {date}",
+        "ban": "Banear",
+        "empty": "Sin datos de actividad",
+        "table": {
+          "ip": "IP",
+          "hits": "Solicitudes",
+          "status": "Estado"
+        },
+        "badge": {
+          "manual": "Baneo manual",
+          "auto": "Bloqueo automático"
+        }
+      },
+      "toast": {
+        "banned": "IP {ip} baneada",
+        "unbanned": "Baneo de {ip} eliminado",
+        "error": "Error de la API UNO"
+      }
     },
     "disputes": {
       "title": "Disputas de pedidos",

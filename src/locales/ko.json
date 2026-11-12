@@ -1480,6 +1480,43 @@
     }
   },
   "admin": {
+    "metrics": {
+      "title": "메트릭",
+      "updatedAt": "업데이트: {date}",
+      "autoRefresh": "30초마다 자동 새로고침",
+      "refresh": "새로고침",
+      "requestsTotal": "HTTP 요청 수",
+      "fiveXX": "이 중 5xx: {count}",
+      "errorRate": "5xx 오류율",
+      "unoRequests": "UNO 업스트림 요청",
+      "upstreamErrors": "오류: {count}",
+      "unoErrors": "UNO 업스트림 오류",
+      "ipBlocks": "IP 차단",
+      "search": "메트릭 검색…",
+      "raw": "원본 텍스트",
+      "familiesTitle": "메트릭 패밀리",
+      "samplesCount": "샘플: {count}",
+      "sum": "합계",
+      "count": "개수",
+      "avg": "평균",
+      "showAll": "모두 표시 ({count})",
+      "empty": "메트릭을 찾을 수 없습니다",
+      "loadError": "메트릭을 불러오지 못했습니다",
+      "retry": "다시 시도",
+      "type": {
+        "counter": "카운터",
+        "gauge": "게이지",
+        "histogram": "히스토그램",
+        "summary": "서머리",
+        "untyped": "타입 없음"
+      },
+      "filter": {
+        "all": "전체",
+        "counter": "카운터",
+        "gauge": "게이지",
+        "histogram": "히스토그램"
+      }
+    },
     "permissions": {
       "title": "권한",
       "total": "전체",
@@ -1684,6 +1721,8 @@
       "moderation": "모더레이션",
       "audit": "감사 로그",
       "health": "상태",
+      "metrics": "메트릭",
+      "uno": "UNO API",
       "disputes": "분쟁"
     },
     "dashboard": {
@@ -2255,6 +2294,50 @@
       "multiaccountsEmpty": "일치 없음",
       "searchComments": "본문/작성자 검색…",
       "commentDeleted": "댓글 삭제됨"
+    },
+    "uno": {
+      "title": "UNO API",
+      "subtitle": "UNO API 보호: IP 활동 및 수동 차단",
+      "bans": {
+        "title": "수동 차단",
+        "empty": "수동 차단 내역이 없습니다",
+        "unban": "차단 해제",
+        "confirmTitle": "IP 차단 해제",
+        "confirmDescription": "{ip}의 수동 차단을 해제할까요?",
+        "table": {
+          "ip": "IP",
+          "reason": "사유",
+          "date": "날짜",
+          "bannedBy": "차단자"
+        },
+        "form": {
+          "ip": "IP 주소",
+          "reason": "사유 (선택)",
+          "submit": "차단",
+          "invalid": "올바른 IP 주소를 입력하세요"
+        }
+      },
+      "stats": {
+        "title": "IP 활동 (24시간)",
+        "total": "IP 수: {count}",
+        "updatedAt": "업데이트 {date}",
+        "ban": "차단",
+        "empty": "활동 데이터가 없습니다",
+        "table": {
+          "ip": "IP",
+          "hits": "요청",
+          "status": "상태"
+        },
+        "badge": {
+          "manual": "수동 차단",
+          "auto": "자동 차단"
+        }
+      },
+      "toast": {
+        "banned": "IP {ip}가 차단되었습니다",
+        "unbanned": "{ip} 차단이 해제되었습니다",
+        "error": "UNO API 오류"
+      }
     },
     "disputes": {
       "title": "주문 분쟁",

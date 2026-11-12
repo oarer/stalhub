@@ -14,6 +14,7 @@ export interface AuctionParams {
 	limit?: number
 	offset?: number
 	additional?: boolean
+	uno?: boolean
 }
 export interface ItemListing {
 	data: string

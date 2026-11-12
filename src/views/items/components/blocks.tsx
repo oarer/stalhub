@@ -208,6 +208,44 @@ const BlockAccordion: React.FC<BlockAccordionProps> = ({
 	)
 }
 
+/**
+ * Game tooltips ship two layout modes per grouped block: compact and detailed,
+ * and the compact content is always a subset of the detailed one. Rendering
+ * both would show every stat twice, so compact lists that are fully covered
+ * by the detailed lists are skipped.
+ */
+const translationKey = (msg: unknown): string | null =>
+	typeof msg === 'object' &&
+	msg !== null &&
+	'type' in msg &&
+	msg.type === 'translation'
+		? ((msg as { key?: string }).key ?? null)
+		: null
+
+const elementSignature = (el: InfoElement): string =>
+	JSON.stringify([
+		el.type,
+		'name' in el ? translationKey(el.name) : null,
+		'key' in el ? translationKey(el.key) : null,
+		'value' in el ? (el.value ?? null) : null,
+		'min' in el ? el.min : null,
+		'max' in el ? el.max : null,
+		'limit' in el ? el.limit : null,
+	])
+
+const compactCoveredByDetailed = (
+	compact: ListLikeBlock[],
+	detailed: ListLikeBlock[]
+): boolean => {
+	if (compact.length === 0 || detailed.length === 0) return false
+	const detailedKeys = new Set(
+		detailed.flatMap((b) => (b.elements ?? []).map(elementSignature))
+	)
+	return compact
+		.flatMap((b) => b.elements ?? [])
+		.every((el) => detailedKeys.has(elementSignature(el)))
+}
+
 export const GroupedBlockView: React.FC<GroupedBlockProps> = ({
 	block,
 	locale,
@@ -215,8 +253,11 @@ export const GroupedBlockView: React.FC<GroupedBlockProps> = ({
 	statOverrides,
 	withCard = true,
 }) => {
-	const compact = (block.compact ?? []).filter(hasVisibleElements)
+	const compactAll = (block.compact ?? []).filter(hasVisibleElements)
 	const detailed = (block.detailed ?? []).filter(hasVisibleElements)
+	const compact = compactCoveredByDetailed(compactAll, detailed)
+		? []
+		: compactAll
 
 	if (compact.length === 0 && detailed.length === 0) return null
 

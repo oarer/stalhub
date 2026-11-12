@@ -783,3 +783,33 @@ export interface AdminDisputeMessagePage {
 	data: AdminDisputeMessage[]
 	has_more: boolean
 }
+
+export interface AdminUnoIpStat {
+	ip: string
+	hits: number
+	auto_blocked: boolean
+	manual_banned: boolean
+}
+
+export interface AdminUnoIpStats {
+	generated_at: string
+	window_hours: number
+	total_ips: number
+	items: AdminUnoIpStat[]
+}
+
+export interface AdminUnoBan {
+	ip: string
+	reason: string
+	banned_at: string
+	banned_by: string | null
+}
+
+export interface AdminUnoBanList {
+	items: AdminUnoBan[]
+}
+
+export interface AdminUnoBanInput {
+	ip: string
+	reason?: string
+}

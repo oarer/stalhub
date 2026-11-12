@@ -1480,6 +1480,43 @@
     }
   },
   "admin": {
+    "metrics": {
+      "title": "Metrics",
+      "updatedAt": "Updated at {date}",
+      "autoRefresh": "auto-refresh every 30s",
+      "refresh": "Refresh",
+      "requestsTotal": "HTTP requests",
+      "fiveXX": "of which 5xx: {count}",
+      "errorRate": "5xx error rate",
+      "unoRequests": "UNO upstream requests",
+      "upstreamErrors": "errors: {count}",
+      "unoErrors": "UNO upstream errors",
+      "ipBlocks": "IP blocks",
+      "search": "Search metrics…",
+      "raw": "Raw text",
+      "familiesTitle": "Metric families",
+      "samplesCount": "Samples: {count}",
+      "sum": "Sum",
+      "count": "Count",
+      "avg": "Average",
+      "showAll": "Show all ({count})",
+      "empty": "No metrics found",
+      "loadError": "Failed to load metrics",
+      "retry": "Retry",
+      "type": {
+        "counter": "Counter",
+        "gauge": "Gauge",
+        "histogram": "Histogram",
+        "summary": "Summary",
+        "untyped": "Untyped"
+      },
+      "filter": {
+        "all": "All",
+        "counter": "Counters",
+        "gauge": "Gauges",
+        "histogram": "Histograms"
+      }
+    },
     "permissions": {
       "title": "Permissions",
       "total": "total",
@@ -1684,6 +1721,8 @@
       "moderation": "Moderation",
       "audit": "Audit Log",
       "health": "Health",
+      "metrics": "Metrics",
+      "uno": "UNO API",
       "disputes": "Disputes"
     },
     "dashboard": {
@@ -2255,6 +2294,50 @@
       "multiaccountsEmpty": "No matches",
       "searchComments": "Search text or author…",
       "commentDeleted": "Comment deleted"
+    },
+    "uno": {
+      "title": "UNO API",
+      "subtitle": "UNO API protection: IP activity and manual bans",
+      "bans": {
+        "title": "Manual bans",
+        "empty": "No manual bans",
+        "unban": "Unban",
+        "confirmTitle": "Unban IP",
+        "confirmDescription": "Remove the manual ban from {ip}?",
+        "table": {
+          "ip": "IP",
+          "reason": "Reason",
+          "date": "Date",
+          "bannedBy": "Issued by"
+        },
+        "form": {
+          "ip": "IP address",
+          "reason": "Reason (optional)",
+          "submit": "Ban",
+          "invalid": "Enter a valid IP address"
+        }
+      },
+      "stats": {
+        "title": "IP activity (24 h)",
+        "total": "IPs: {count}",
+        "updatedAt": "Updated {date}",
+        "ban": "Ban",
+        "empty": "No activity data",
+        "table": {
+          "ip": "IP",
+          "hits": "Hits",
+          "status": "Status"
+        },
+        "badge": {
+          "manual": "Manual ban",
+          "auto": "Auto block"
+        }
+      },
+      "toast": {
+        "banned": "IP {ip} banned",
+        "unbanned": "Unbanned {ip}",
+        "error": "UNO API error"
+      }
     },
     "disputes": {
       "title": "Order disputes",
