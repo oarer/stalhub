@@ -140,13 +140,13 @@ export default function BuildsLiteView({
 	const { data: consumables } = useSuspenseQuery(
 		itemsQueries.get({ type: 'consumables' })
 	)
+	const visibleArtifacts = useVisibleItems(
+		artifactsData as Item[] | undefined
+	)
 	const visibleArmor = useVisibleItems(armor) ?? []
 	const visibleContainers = useVisibleItems(containers) ?? []
 	const visibleConsumables = useVisibleItems(consumables) ?? []
-	const items = useMemo(
-		() => (artifactsData as Item[] | undefined) ?? [],
-		[artifactsData]
-	)
+	const items = useMemo(() => visibleArtifacts ?? [], [visibleArtifacts])
 
 	const setArmor = useBuildStore((s) => s.setArmor)
 	const removeArmor = useBuildStore((s) => s.removeArmor)
