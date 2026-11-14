@@ -1,4 +1,4 @@
-import type { UserBadge } from './user.type'
+import type { Author } from './common.type'
 
 export enum TierRank {
 	S = 'S',
@@ -88,17 +88,19 @@ export interface TierList {
 	previous_version?: TierList | null
 	author: TierListAuthor | null
 	views: number
+	stars_count?: number
+	is_starred?: boolean
+	comments_count?: number
+	hidden_from_feed?: boolean
 	entries?: TierListEntry[]
 	entry_count?: number
 	created_at: string
 	updated_at: string
 }
 
-interface TierListAuthor {
+export interface TierListAuthor extends Author {
 	id: number
 	name: string
-	username: string
-	badges: UserBadge[]
 }
 
 export interface TierListCreate {

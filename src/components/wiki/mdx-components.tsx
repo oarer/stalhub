@@ -116,7 +116,7 @@ export function useMDXComponents(): MDXComponents {
 		},
 		p: ({ children, ...props }) => (
 			<p
-				className="not-first:mt-5 max-w-[78ch] text-pretty font-normal text-base text-foreground/85 leading-8"
+				className="not-first:mt-5 max-w-[78ch] text-pretty font-normal text-base text-foreground leading-8"
 				{...props}
 			>
 				{children}

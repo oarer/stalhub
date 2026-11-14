@@ -43,7 +43,8 @@ class BuildApiService {
 					...(sort && sort !== 'newest' && { sort }),
 					...(priceMin != null && { price_min: priceMin }),
 					...(priceMax != null && { price_max: priceMax }),
-					...(armor && armor.length > 0 && { armor: armor.join(',') }),
+					...(armor &&
+						armor.length > 0 && { armor: armor.join(',') }),
 					...(container &&
 						container.length > 0 && {
 							container: container.join(','),
@@ -101,6 +102,14 @@ class BuildApiService {
 
 	async unstar(id: string): Promise<void> {
 		await apiClient.delete(`/api/v1/builds/${id}/star`)
+	}
+
+	async hideFromFeed(id: string): Promise<void> {
+		await apiClient.post(`/api/v1/builds/${id}/hide-from-feed`)
+	}
+
+	async showInFeed(id: string): Promise<void> {
+		await apiClient.delete(`/api/v1/builds/${id}/hide-from-feed`)
 	}
 }
 

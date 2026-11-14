@@ -18,8 +18,15 @@ function parseDate(value: string | undefined): number | null {
 	return Number.isNaN(time) ? null : time
 }
 
-function toIsoDate(time: number) {
-	return new Date(time).toISOString().slice(0, 10)
+export function toIsoDate(time: number): string
+export function toIsoDate(value: string): string
+export function toIsoDate(value: number | string): string {
+	if (typeof value === 'string') {
+		const time = Date.parse(value)
+		if (Number.isNaN(time)) return value
+		return new Date(time).toISOString().slice(0, 10)
+	}
+	return new Date(value).toISOString().slice(0, 10)
 }
 
 function parseSeason(season: SeasonEntry): ParsedSeason | null {

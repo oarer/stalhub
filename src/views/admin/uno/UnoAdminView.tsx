@@ -109,17 +109,11 @@ export default function UnoAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<div>
-				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
-				>
-					{t('admin.uno.title')}
-				</h1>
-				<p className="mt-1 text-neutral-400 text-sm">
-					{t('admin.uno.subtitle')}
-				</p>
-			</div>
-
+			<h1
+				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+			>
+				{t('admin.uno.title')}
+			</h1>
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>

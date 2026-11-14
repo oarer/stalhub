@@ -11,7 +11,7 @@ import { toast } from '@/components/ui/Toast'
 import { getFontEmbedCss } from '@/lib/font-embed'
 import { getLocale } from '@/lib/getLocale'
 import { getItemIcon } from '@/lib/itemIcon'
-import { useVisibleItems } from '@/lib/unoItems'
+import { includeItemsById, useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { buildApiService } from '@/services/build-api/build-api.service'
 import { useBuildStore } from '@/stores/useBuild.store'
@@ -146,7 +146,22 @@ export default function BuildsLiteView({
 	const visibleArmor = useVisibleItems(armor) ?? []
 	const visibleContainers = useVisibleItems(containers) ?? []
 	const visibleConsumables = useVisibleItems(consumables) ?? []
-	const items = useMemo(() => visibleArtifacts ?? [], [visibleArtifacts])
+	const equippedIds = useMemo(
+		() => [
+			...build.arts.map((art) => art.item_id),
+			...(compareBuild?.build.arts ?? []).map((art) => art.item_id),
+		],
+		[build.arts, compareBuild?.build.arts]
+	)
+	const items = useMemo(
+		() =>
+			includeItemsById(
+				visibleArtifacts,
+				artifactsData as Item[] | undefined,
+				equippedIds
+			) ?? [],
+		[visibleArtifacts, artifactsData, equippedIds]
+	)
 
 	const setArmor = useBuildStore((s) => s.setArmor)
 	const removeArmor = useBuildStore((s) => s.removeArmor)

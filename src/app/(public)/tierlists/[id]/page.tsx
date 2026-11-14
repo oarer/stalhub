@@ -16,7 +16,10 @@ export async function generateMetadata({
 	try {
 		const tierList = await tierListService.get(id)
 		const title = `${tierList.title} · StalHub`
-		const description = `Тирлист «${tierList.title}» — распределение предметов StalZone по тирам от сообщества StalHub.`
+		const baseUrl =
+			process.env.NEXT_PUBLIC_BASE_URL || 'https://stalhub.dev'
+		const description = `★ ${tierList.stars_count ?? 0} · 💬 ${tierList.comments_count ?? 0} · от @${tierList.author?.username ?? 'stalhub'}`
+		const image = `${baseUrl}/api/og/tierlist/${id}`
 		return {
 			title,
 			description,
@@ -24,15 +27,11 @@ export async function generateMetadata({
 			openGraph: {
 				title,
 				description,
-				url: `/tierlists/${id}`,
+				url: `${baseUrl}/tierlists/${id}`,
 				type: 'article',
-				images: ['/public/images/og/banner.png'],
+				images: [{ url: image, width: 1200, height: 630 }],
 			},
-			twitter: dynamicTwitter({
-				title,
-				description,
-				images: ['/public/images/og/banner.png'],
-			}),
+			twitter: dynamicTwitter({ title, description, images: [image] }),
 		}
 	} catch {
 		return {

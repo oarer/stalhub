@@ -1539,6 +1539,37 @@
         "deleteError": "Delete error"
       }
     },
+    "achievements": {
+      "title": "Achievements",
+      "create": "Create achievement",
+      "edit": "Edit achievement",
+      "slug": "Slug",
+      "description": "Description",
+      "icon": "Icon",
+      "rarity": "Rarity",
+      "hidden": "Hidden",
+      "hiddenHint": "Hidden until unlocked",
+      "grant": "Grant",
+      "revoke": "Revoke",
+      "grantUser": "Grant to user",
+      "selectAchievement": "Select achievement",
+      "userId": "User ID",
+      "userCount": "Users",
+      "empty": "No achievements",
+      "confirmDelete": "Delete this achievement?",
+      "toast": {
+        "created": "Achievement created",
+        "createError": "Creation error",
+        "updated": "Achievement updated",
+        "updateError": "Update error",
+        "deleted": "Achievement deleted",
+        "deleteError": "Delete error",
+        "granted": "Achievement granted",
+        "grantError": "Grant error",
+        "revoked": "Achievement revoked",
+        "revokeError": "Revoke error"
+      }
+    },
     "users": {
       "title": "Users",
       "total": "total",
@@ -1701,6 +1732,7 @@
       "roles": "Roles",
       "permissions": "Permissions",
       "badges": "Badges",
+      "achievements": "Achievements",
       "clans": "Clans",
       "notifications": "Notifications",
       "players": "Players",
@@ -3537,6 +3569,11 @@
     "bioArmor": "Bio armor",
     "fatBuild": "Heavy build",
     "speedBuild": "Fast build",
+    "achievements": {
+      "title": "Achievements",
+      "empty": "No achievements yet",
+      "locked": "Locked"
+    },
     "comments": {
       "title": "Comments ({count})",
       "placeholder": "Write a comment...",
@@ -4629,5 +4666,138 @@
         "title": "February 2027"
       }
     }
+  },
+  "feed": {
+    "kicker": "Public feed",
+    "title": "New builds and tier lists",
+    "description": "Community work worth opening, saving, and discussing.",
+    "filters": {
+      "label": "Show",
+      "build": "Builds",
+      "tier_list": "Tier lists",
+      "post": "Posts",
+      "eforum": "Forum",
+      "art": "Art"
+    },
+    "sort": {
+      "label": "Sort",
+      "new": "New",
+      "top": "Top"
+    },
+    "types": {
+      "build": "Build",
+      "tier_list": "Tier list",
+      "post": "Post",
+      "art": "Art"
+    },
+    "share": "Share",
+    "copyLink": "Copy link",
+    "buildPreview": "Build preview",
+    "empty": "Nothing here yet.",
+    "error": "The feed could not be loaded.",
+    "comments": {
+      "title": "Comments ({count})",
+      "placeholder": "Write a comment…",
+      "empty": "No comments yet.",
+      "reply": "Reply",
+      "deleteTitle": "Delete this comment?",
+      "cancel": "Cancel",
+      "deleteConfirm": "Delete",
+      "toast": {
+        "added": "Comment added",
+        "addError": "Could not add the comment",
+        "deleted": "Comment deleted",
+        "deleteError": "Could not delete the comment"
+      }
+    },
+    "postUntitled": "Untitled post",
+    "artUntitled": "Untitled art",
+    "contentLabel": "Post text",
+    "preview": "Preview",
+    "rendering": "Rendering…",
+    "attach": {
+      "image": "Image",
+      "uploading": "Uploading…",
+      "remove": "Remove",
+      "uploadError": "Could not upload the image",
+      "attachments": "Attach content",
+      "builds": "Builds",
+      "tierLists": "Tier lists",
+      "search": "Search"
+    },
+    "hide": {
+      "hide": "Hide from feed",
+      "show": "Show in feed",
+      "hideSuccess": "Hidden from feed",
+      "showSuccess": "Visible in feed again"
+    },
+    "sources": {
+      "USER": "Users",
+      "EXBO_TG": "Exbo channel",
+      "STALZONE_REPORT": "Stalzone Report",
+      "OFFICIAL_MEDIA": "Official media",
+      "EFORUM": "Forum"
+    },
+    "attachments": {
+      "build": "build",
+      "tier_list": "tier list"
+    },
+    "copied": "Copied",
+    "noTypes": "Select at least one content type."
+  },
+  "post": {
+    "write": "Write a post",
+    "createTitle": "New post",
+    "editTitle": "Edit post",
+    "titlePlaceholder": "Title (optional)",
+    "contentPlaceholder": "What would you like to share?",
+    "publish": "Publish",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "More actions",
+    "deleteConfirm": "Delete this post?",
+    "untitled": "Untitled post",
+    "contentLabel": "Post text",
+    "preview": "Preview",
+    "rendering": "Rendering…",
+    "attach": {
+      "image": "Image",
+      "uploading": "Uploading…",
+      "remove": "Remove",
+      "uploadError": "Could not upload the image",
+      "attachments": "Attach content",
+      "builds": "Builds",
+      "tierLists": "Tier lists",
+      "search": "Search"
+    },
+    "poll": {
+      "add": "Add poll",
+      "question": "Poll question",
+      "single": "Single choice",
+      "multiple": "Multiple choice",
+      "option": "Option {number}",
+      "addOption": "Add option",
+      "votes": "Votes: {count}",
+      "vote": "Vote",
+      "retract": "Retract vote"
+    },
+    "repost": {
+      "title": "Repost",
+      "placeholder": "Add a comment (optional)",
+      "action": "Repost",
+      "toast": "Repost published",
+      "error": "Could not repost"
+    },
+    "toast": {
+      "created": "Post published",
+      "createError": "Could not publish the post",
+      "updated": "Post updated",
+      "updateError": "Could not update the post",
+      "deleted": "Post deleted",
+      "deleteError": "Could not delete the post"
+    },
+    "editedBy": "edited by @{username}"
   }
 }

@@ -1,5 +1,5 @@
 import type { Build } from './build.type'
-import type { UserBadge } from './user.type'
+import type { Author } from './common.type'
 
 export interface BuildApi {
 	id: string
@@ -13,15 +13,15 @@ export interface BuildApi {
 	author: BuildApiAuthor
 	is_starred: boolean
 	stars_count: number
+	comments_count?: number
+	hidden_from_feed?: boolean
 	created_at: string
 	updated_at: string
 }
 
-interface BuildApiAuthor {
+export interface BuildApiAuthor extends Author {
 	id: number
-	username: string
 	avatar: string | null
-	badges: UserBadge[]
 }
 
 export interface BuildApiCreate {

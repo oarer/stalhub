@@ -47,6 +47,11 @@ const groups: {
 				href: '/admin/badges',
 				icon: 'lucide:award',
 			},
+			{
+				title: 'admin.sidebar.achievements',
+				href: '/admin/achievements',
+				icon: 'lucide:trophy',
+			},
 		],
 	},
 	{

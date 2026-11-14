@@ -17,6 +17,7 @@ import ProfileMusic from '@/views/player/components/ProfileMedia'
 import { ArticleCard } from '../me/components/article/ArticleCard'
 import { BuildCard } from '../me/components/BuildCard'
 import { HoverBuildCard } from '../me/components/HoverBuildCard'
+import UserAchievements from './components/UserAchievements'
 import UserComments from './components/UserComments'
 
 interface UserProfileViewProps {
@@ -325,6 +326,7 @@ export default function UserProfileView({
 					</section>
 				)}
 
+				<UserAchievements userId={user.id} />
 				<UserComments userId={user.id} />
 			</div>
 		</section>

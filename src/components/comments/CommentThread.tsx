@@ -10,14 +10,12 @@ import HoverUserCard from '@/components/ui/user/HoverUserCard'
 import Username from '@/components/ui/user/Username'
 import { formatDate } from '@/lib/date'
 import { useAuthStore } from '@/stores/useAuth.store'
-import type { UserBadge } from '@/types/user.type'
+import type { Author } from '@/types/common.type'
 import { CommentForm } from './CommentForm'
 
-export interface ThreadCommentAuthor {
+export interface ThreadCommentAuthor extends Author {
 	id: number
 	name: string
-	username: string
-	badges: UserBadge[]
 }
 
 export interface ThreadComment {

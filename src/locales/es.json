@@ -4595,5 +4595,138 @@
         "title": "February 2027"
       }
     }
+  },
+  "feed": {
+    "kicker": "Feed público",
+    "title": "Nuevas builds y listas de niveles",
+    "description": "Creaciones de la comunidad para abrir, guardar y comentar.",
+    "filters": {
+      "label": "Mostrar",
+      "build": "Builds",
+      "tier_list": "Listas de niveles",
+      "post": "Publicaciones",
+      "eforum": "Foro",
+      "art": "Arte"
+    },
+    "sort": {
+      "label": "Ordenar",
+      "new": "Nuevas",
+      "top": "Más populares"
+    },
+    "types": {
+      "build": "Build",
+      "tier_list": "Lista de niveles",
+      "post": "Publicación",
+      "art": "Arte"
+    },
+    "share": "Compartir",
+    "copyLink": "Copiar enlace",
+    "buildPreview": "Vista previa de la build",
+    "empty": "Todavía no hay nada aquí.",
+    "error": "No se pudo cargar el feed.",
+    "comments": {
+      "title": "Comentarios ({count})",
+      "placeholder": "Escribe un comentario…",
+      "empty": "Todavía no hay comentarios.",
+      "reply": "Responder",
+      "deleteTitle": "¿Eliminar este comentario?",
+      "cancel": "Cancelar",
+      "deleteConfirm": "Eliminar",
+      "toast": {
+        "added": "Comentario añadido",
+        "addError": "No se pudo añadir el comentario",
+        "deleted": "Comentario eliminado",
+        "deleteError": "No se pudo eliminar el comentario"
+      }
+    },
+    "postUntitled": "Publicación sin título",
+    "artUntitled": "Arte sin título",
+    "contentLabel": "Texto de la publicación",
+    "preview": "Vista previa",
+    "rendering": "Renderizando…",
+    "attach": {
+      "image": "Imagen",
+      "uploading": "Subiendo…",
+      "remove": "Eliminar",
+      "uploadError": "No se pudo subir la imagen",
+      "attachments": "Adjuntar contenido",
+      "builds": "Builds",
+      "tierLists": "Listas de niveles",
+      "search": "Buscar"
+    },
+    "hide": {
+      "hide": "Ocultar del feed",
+      "show": "Mostrar en el feed",
+      "hideSuccess": "Ocultado del feed",
+      "showSuccess": "Visible de nuevo en el feed"
+    },
+    "sources": {
+      "USER": "Usuarios",
+      "EXBO_TG": "Canal Exbo",
+      "STALZONE_REPORT": "Stalzone Report",
+      "OFFICIAL_MEDIA": "Medios oficiales",
+      "EFORUM": "Foro"
+    },
+    "attachments": {
+      "build": "build",
+      "tier_list": "tier list"
+    },
+    "copied": "Copiado",
+    "noTypes": "Selecciona al menos un tipo de contenido."
+  },
+  "post": {
+    "write": "Escribir una publicación",
+    "createTitle": "Nueva publicación",
+    "editTitle": "Editar publicación",
+    "titlePlaceholder": "Título (opcional)",
+    "contentPlaceholder": "¿Qué quieres compartir?",
+    "publish": "Publicar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "actions": "Más acciones",
+    "deleteConfirm": "¿Eliminar esta publicación?",
+    "untitled": "Publicación sin título",
+    "contentLabel": "Texto de la publicación",
+    "preview": "Vista previa",
+    "rendering": "Renderizando…",
+    "attach": {
+      "image": "Imagen",
+      "uploading": "Subiendo…",
+      "remove": "Eliminar",
+      "uploadError": "No se pudo subir la imagen",
+      "attachments": "Adjuntar contenido",
+      "builds": "Builds",
+      "tierLists": "Listas de niveles",
+      "search": "Buscar"
+    },
+    "poll": {
+      "add": "Añadir encuesta",
+      "question": "Pregunta de la encuesta",
+      "single": "Una opción",
+      "multiple": "Varias opciones",
+      "option": "Opción {number}",
+      "addOption": "Añadir opción",
+      "votes": "Votos: {count}",
+      "vote": "Votar",
+      "retract": "Retirar voto"
+    },
+    "repost": {
+      "title": "Repost",
+      "placeholder": "Añade un comentario (opcional)",
+      "action": "Repost",
+      "toast": "Repost publicado",
+      "error": "No se pudo hacer el repost"
+    },
+    "toast": {
+      "created": "Publicación publicada",
+      "createError": "No se pudo publicar la publicación",
+      "updated": "Publicación actualizada",
+      "updateError": "No se pudo actualizar la publicación",
+      "deleted": "Publicación eliminada",
+      "deleteError": "No se pudo eliminar la publicación"
+    },
+    "editedBy": "editado por @{username}"
   }
 }

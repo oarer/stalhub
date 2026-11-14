@@ -1,4 +1,4 @@
-import type { UserBadge } from './user.type'
+import type { Author } from './common.type'
 
 export enum ArtType {
 	DEFAULT = 'DEFAULT',
@@ -25,12 +25,10 @@ export interface Art {
 	updated_at: string
 }
 
-export interface ArtAuthor {
+export interface ArtAuthor extends Author {
 	id: number | null
-	username: string
 	name: string
 	social_links?: Record<string, string> | null
-	badges: UserBadge[]
 }
 
 export interface ArtCreate {
@@ -86,11 +84,9 @@ export interface ArtComment {
 	created_at: string
 }
 
-export interface ArtCommentAuthor {
+export interface ArtCommentAuthor extends Author {
 	id: number
-	username: string
 	name: string
-	badges: UserBadge[]
 }
 
 export interface ArtCommentCreate {

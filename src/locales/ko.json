@@ -4595,5 +4595,138 @@
         "title": "February 2027"
       }
     }
+  },
+  "feed": {
+    "kicker": "공개 피드",
+    "title": "새 빌드와 티어 리스트",
+    "description": "열어 보고 저장하고 함께 이야기할 커뮤니티 작업입니다.",
+    "filters": {
+      "label": "표시",
+      "build": "빌드",
+      "tier_list": "티어 리스트",
+      "post": "게시글",
+      "eforum": "포럼",
+      "art": "아트"
+    },
+    "sort": {
+      "label": "정렬",
+      "new": "최신",
+      "top": "인기"
+    },
+    "types": {
+      "build": "빌드",
+      "tier_list": "티어 리스트",
+      "post": "게시글",
+      "art": "아트"
+    },
+    "share": "공유",
+    "copyLink": "링크 복사",
+    "buildPreview": "빌드 미리보기",
+    "empty": "아직 아무것도 없습니다.",
+    "error": "피드를 불러오지 못했습니다.",
+    "comments": {
+      "title": "댓글 ({count})",
+      "placeholder": "댓글을 작성하세요…",
+      "empty": "아직 댓글이 없습니다.",
+      "reply": "답글",
+      "deleteTitle": "이 댓글을 삭제할까요?",
+      "cancel": "취소",
+      "deleteConfirm": "삭제",
+      "toast": {
+        "added": "댓글이 추가되었습니다",
+        "addError": "댓글을 추가하지 못했습니다",
+        "deleted": "댓글이 삭제되었습니다",
+        "deleteError": "댓글을 삭제하지 못했습니다"
+      }
+    },
+    "postUntitled": "제목 없는 게시글",
+    "artUntitled": "제목 없는 아트",
+    "contentLabel": "게시글 내용",
+    "preview": "미리보기",
+    "rendering": "렌더링 중…",
+    "attach": {
+      "image": "이미지",
+      "uploading": "업로드 중…",
+      "remove": "삭제",
+      "uploadError": "이미지를 업로드하지 못했습니다",
+      "attachments": "콘텐츠 첨부",
+      "builds": "빌드",
+      "tierLists": "티어 리스트",
+      "search": "검색"
+    },
+    "hide": {
+      "hide": "피드에서 숨기기",
+      "show": "피드에 표시",
+      "hideSuccess": "피드에서 숨겼습니다",
+      "showSuccess": "피드에 다시 표시했습니다"
+    },
+    "sources": {
+      "USER": "사용자",
+      "EXBO_TG": "Exbo 채널",
+      "STALZONE_REPORT": "Stalzone Report",
+      "OFFICIAL_MEDIA": "공식 미디어",
+      "EFORUM": "포럼"
+    },
+    "attachments": {
+      "build": "빌드",
+      "tier_list": "티어리스트"
+    },
+    "copied": "복사됨",
+    "noTypes": "콘텐츠 유형을 하나 이상 선택하세요."
+  },
+  "post": {
+    "write": "게시글 작성",
+    "createTitle": "새 게시글",
+    "editTitle": "게시글 수정",
+    "titlePlaceholder": "제목 (선택 사항)",
+    "contentPlaceholder": "무엇을 공유하고 싶나요?",
+    "publish": "게시",
+    "save": "저장",
+    "cancel": "취소",
+    "edit": "수정",
+    "delete": "삭제",
+    "actions": "추가 작업",
+    "deleteConfirm": "이 게시글을 삭제할까요?",
+    "untitled": "제목 없는 게시글",
+    "contentLabel": "게시글 내용",
+    "preview": "미리보기",
+    "rendering": "렌더링 중…",
+    "attach": {
+      "image": "이미지",
+      "uploading": "업로드 중…",
+      "remove": "삭제",
+      "uploadError": "이미지를 업로드하지 못했습니다",
+      "attachments": "콘텐츠 첨부",
+      "builds": "빌드",
+      "tierLists": "티어 리스트",
+      "search": "검색"
+    },
+    "poll": {
+      "add": "투표 추가",
+      "question": "투표 질문",
+      "single": "단일 선택",
+      "multiple": "복수 선택",
+      "option": "옵션 {number}",
+      "addOption": "옵션 추가",
+      "votes": "투표 수: {count}",
+      "vote": "투표",
+      "retract": "투표 취소"
+    },
+    "repost": {
+      "title": "리포스트",
+      "placeholder": "댓글 추가 (선택 사항)",
+      "action": "리포스트",
+      "toast": "리포스트가 게시되었습니다",
+      "error": "리포스트하지 못했습니다"
+    },
+    "toast": {
+      "created": "게시글이 게시되었습니다",
+      "createError": "게시글을 게시하지 못했습니다",
+      "updated": "게시글이 수정되었습니다",
+      "updateError": "게시글을 수정하지 못했습니다",
+      "deleted": "게시글이 삭제되었습니다",
+      "deleteError": "게시글을 삭제하지 못했습니다"
+    },
+    "editedBy": "@{username}이(가) 수정함"
   }
 }

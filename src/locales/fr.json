@@ -4595,5 +4595,138 @@
         "title": "February 2027"
       }
     }
+  },
+  "feed": {
+    "kicker": "Fil public",
+    "title": "Nouveaux builds et tier lists",
+    "description": "Les créations de la communauté à découvrir, enregistrer et commenter.",
+    "filters": {
+      "label": "Afficher",
+      "build": "Builds",
+      "tier_list": "Tier lists",
+      "post": "Publications",
+      "eforum": "Forum",
+      "art": "Art"
+    },
+    "sort": {
+      "label": "Trier",
+      "new": "Récents",
+      "top": "Populaires"
+    },
+    "types": {
+      "build": "Build",
+      "tier_list": "Tier list",
+      "post": "Publication",
+      "art": "Art"
+    },
+    "share": "Partager",
+    "copyLink": "Copier le lien",
+    "buildPreview": "Aperçu du build",
+    "empty": "Il n’y a encore rien ici.",
+    "error": "Le fil n’a pas pu être chargé.",
+    "comments": {
+      "title": "Commentaires ({count})",
+      "placeholder": "Écrire un commentaire…",
+      "empty": "Aucun commentaire pour le moment.",
+      "reply": "Répondre",
+      "deleteTitle": "Supprimer ce commentaire ?",
+      "cancel": "Annuler",
+      "deleteConfirm": "Supprimer",
+      "toast": {
+        "added": "Commentaire ajouté",
+        "addError": "Impossible d’ajouter le commentaire",
+        "deleted": "Commentaire supprimé",
+        "deleteError": "Impossible de supprimer le commentaire"
+      }
+    },
+    "postUntitled": "Publication sans titre",
+    "artUntitled": "Art sans titre",
+    "contentLabel": "Texte de la publication",
+    "preview": "Aperçu",
+    "rendering": "Rendu…",
+    "attach": {
+      "image": "Image",
+      "uploading": "Envoi…",
+      "remove": "Supprimer",
+      "uploadError": "Impossible d’envoyer l’image",
+      "attachments": "Joindre du contenu",
+      "builds": "Builds",
+      "tierLists": "Tier lists",
+      "search": "Rechercher"
+    },
+    "hide": {
+      "hide": "Masquer du fil",
+      "show": "Afficher dans le fil",
+      "hideSuccess": "Masqué du fil",
+      "showSuccess": "À nouveau visible dans le fil"
+    },
+    "sources": {
+      "USER": "Utilisateurs",
+      "EXBO_TG": "Chaîne Exbo",
+      "STALZONE_REPORT": "Stalzone Report",
+      "OFFICIAL_MEDIA": "Médias officiels",
+      "EFORUM": "Forum"
+    },
+    "attachments": {
+      "build": "build",
+      "tier_list": "tier list"
+    },
+    "copied": "Copié",
+    "noTypes": "Sélectionnez au moins un type de contenu."
+  },
+  "post": {
+    "write": "Écrire une publication",
+    "createTitle": "Nouvelle publication",
+    "editTitle": "Modifier la publication",
+    "titlePlaceholder": "Titre (facultatif)",
+    "contentPlaceholder": "Que souhaitez-vous partager ?",
+    "publish": "Publier",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "actions": "Plus d'actions",
+    "deleteConfirm": "Supprimer cette publication ?",
+    "untitled": "Publication sans titre",
+    "contentLabel": "Texte de la publication",
+    "preview": "Aperçu",
+    "rendering": "Rendu…",
+    "attach": {
+      "image": "Image",
+      "uploading": "Envoi…",
+      "remove": "Supprimer",
+      "uploadError": "Impossible d’envoyer l’image",
+      "attachments": "Joindre du contenu",
+      "builds": "Builds",
+      "tierLists": "Tier lists",
+      "search": "Rechercher"
+    },
+    "poll": {
+      "add": "Ajouter un sondage",
+      "question": "Question du sondage",
+      "single": "Choix unique",
+      "multiple": "Choix multiples",
+      "option": "Option {number}",
+      "addOption": "Ajouter une option",
+      "votes": "Votes : {count}",
+      "vote": "Voter",
+      "retract": "Retirer le vote"
+    },
+    "repost": {
+      "title": "Repost",
+      "placeholder": "Ajouter un commentaire (facultatif)",
+      "action": "Repost",
+      "toast": "Repost publié",
+      "error": "Impossible de republier"
+    },
+    "toast": {
+      "created": "Publication publiée",
+      "createError": "Impossible de publier la publication",
+      "updated": "Publication modifiée",
+      "updateError": "Impossible de modifier la publication",
+      "deleted": "Publication supprimée",
+      "deleteError": "Impossible de supprimer la publication"
+    },
+    "editedBy": "modifié par @{username}"
   }
 }

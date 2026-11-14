@@ -131,32 +131,26 @@ function CheckBox({
 
 	if (label || description) {
 		return (
-			<div className="flex items-center gap-3">
+			<label
+				className={cn(
+					'flex cursor-pointer items-center gap-3',
+					disabled && 'cursor-not-allowed opacity-50'
+				)}
+			>
 				{checkboxElement}
-				<div
-					className="flex flex-col gap-1"
-					onClick={!disabled ? handleToggle : undefined}
-				>
+				<div className="flex flex-col gap-1">
 					{label && (
-						<label
-							className={cn(
-								'cursor-pointer select-none font-medium text-sm',
-								disabled && 'cursor-not-allowed opacity-50'
-							)}
-							htmlFor={id}
-						>
+						<span className="select-none font-medium text-sm">
 							{label}
-						</label>
+						</span>
 					)}
 					{description && (
-						<p
-							className={`font-medium text-[11px] text-muted-foreground`}
-						>
+						<p className="font-medium text-[11px] text-muted-foreground">
 							{description}
 						</p>
 					)}
 				</div>
-			</div>
+			</label>
 		)
 	}
 

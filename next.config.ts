@@ -64,6 +64,11 @@ const nextConfig: NextConfig = {
 				hostname: 'cdn.stalhub.dev',
 				pathname: '/**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'forum.exbo.net',
+				pathname: '/**',
+			},
 			...(isDev
 				? [
 						{

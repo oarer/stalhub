@@ -1,4 +1,4 @@
-import type { UserBadge } from './user.type'
+import type { Author } from './common.type'
 
 export enum ArticleStatus {
 	PENDING = 'PENDING',
@@ -128,11 +128,9 @@ export interface Article {
 	updated_at: string
 }
 
-interface ArticleAuthor {
+export interface ArticleAuthor extends Author {
 	id: number
-	username: string
 	avatar: string | null
-	badges: UserBadge[]
 }
 
 export interface ArticleCreate {
@@ -184,12 +182,10 @@ export interface ArticleComment {
 	created_at: string
 }
 
-interface ArticleCommentAuthor {
+export interface ArticleCommentAuthor extends Author {
 	id: number
-	username: string
 	name: string
 	avatar: string | null
-	badges: UserBadge[]
 }
 
 export interface ArticleCommentCreate {

@@ -77,6 +77,22 @@ class TierListService {
 		await apiClient.delete(`/api/v1/tier-lists/${id}`)
 	}
 
+	async star(id: string): Promise<void> {
+		await apiClient.post(`/api/v1/tier-lists/${id}/star`)
+	}
+
+	async unstar(id: string): Promise<void> {
+		await apiClient.delete(`/api/v1/tier-lists/${id}/star`)
+	}
+
+	async hideFromFeed(id: string): Promise<void> {
+		await apiClient.post(`/api/v1/tier-lists/${id}/hide-from-feed`)
+	}
+
+	async showInFeed(id: string): Promise<void> {
+		await apiClient.delete(`/api/v1/tier-lists/${id}/hide-from-feed`)
+	}
+
 	async getTopAuthorOfWeek(): Promise<WeeklyTopsResponse> {
 		const { data } = await apiClient.get<WeeklyTopsResponse>(
 			'/api/v1/authors/week'

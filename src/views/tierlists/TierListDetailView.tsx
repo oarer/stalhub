@@ -7,19 +7,16 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { useMemo } from 'react'
-import { mtsExtended } from '@/app/fonts'
 import { Alert } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { LightBox } from '@/components/ui/LightBox'
 import { CLink } from '@/components/ui/Link'
 import { Modal } from '@/components/ui/Modal'
+import { ShareButton } from '@/components/ui/ShareButton'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { toast } from '@/components/ui/Toast'
 import { Tooltip } from '@/components/ui/Tooltip'
-import Avatar from '@/components/ui/user/Avatar'
-import HoverUserCard from '@/components/ui/user/HoverUserCard'
-import Username from '@/components/ui/user/Username'
 import { GITHUB_RAW_BASE } from '@/constants/github.const'
 import { getItemIcon } from '@/lib/itemIcon'
 import { useVisibleItems } from '@/lib/unoItems'
@@ -41,6 +38,14 @@ import {
 	type TierRank,
 } from '@/types/tier-list.type'
 import { messageToString } from '@/utils/itemUtils'
+import { ActionMenu, ActionMenuItem } from '@/views/feed/ActionMenu'
+import {
+	ContentDetailHeader,
+	DetailShell,
+	DetailStat,
+} from '@/views/feed/ContentDetail'
+import { FeedComments } from '@/views/feed/FeedComments'
+import { HideFeedMenuItem } from '@/views/feed/HideFeed'
 import { ItemHoverCard } from './components/ItemHoverCard'
 import { TierListPngTemplate } from './components/TierListPngTemplate'
 import { useTierListPng } from './components/useTierListPng'
@@ -62,6 +67,16 @@ export default function TierListDetailView() {
 	const queryClient = useQueryClient()
 	const id = params.id as string
 	const locale = useLocale() as Locale
+	const starMutation = useMutation({
+		mutationFn: () => {
+			if (!tierList) return Promise.resolve()
+			return tierList.is_starred
+				? tierListService.unstar(id)
+				: tierListService.star(id)
+		},
+		onSuccess: () =>
+			queryClient.invalidateQueries({ queryKey: ['tier-lists', id] }),
+	})
 
 	const { data: tierList, isLoading } = useQuery(tierListQueries.get(id))
 
@@ -136,11 +151,11 @@ export default function TierListDetailView() {
 
 	if (isLoading) {
 		return (
-			<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
+			<DetailShell wide>
 				<Skeleton className="mb-4 h-10 w-64" />
 				<Skeleton className="mb-2 h-20 w-full" />
 				<Skeleton className="mb-2 h-20 w-full" />
-			</section>
+			</DetailShell>
 		)
 	}
 
@@ -153,52 +168,101 @@ export default function TierListDetailView() {
 	}
 
 	return (
-		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
-			<div className="flex items-start justify-between gap-4">
-				<div className="flex flex-col gap-2">
-					<div className="flex items-center gap-3">
-						<h1
-							className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+		<DetailShell wide>
+			<ContentDetailHeader
+				actions={
+					<>
+						<ShareButton
+							title={tierList.title}
+							url={`/tierlists/${id}`}
+						/>
+						<Button
+							aria-label={t('tierlists.exportPng')}
+							className="p-2.5"
+							disabled={isSavingPng || !items}
+							onClick={handleSavePng}
+							variant="secondary"
 						>
-							{tierList.title}
-						</h1>
-						{tierList.kind === TierListKind.SYSTEM && (
-							<Badge className="gap-2 bg-primary/10 text-primary">
-								<Icon className="size-3" icon="lucide:bot" />
-								{t('tierlists.system')}
-							</Badge>
+							<Icon className="size-5" icon="lucide:image" />
+						</Button>
+						{user && tierList.author?.id === user.id && (
+							<ActionMenu label={t('post.actions')}>
+								{(close) => (
+									<>
+										<CLink
+											className="w-full justify-start gap-2 rounded-lg px-2.5 py-2 font-medium text-sm hover:bg-muted"
+											href={`/me/tierlists/${id}/edit`}
+											onClick={close}
+										>
+											<Icon
+												className="size-4"
+												icon="lucide:pencil"
+											/>
+											{t('tierlists.edit')}
+										</CLink>
+										<HideFeedMenuItem
+											hidden={tierList.hidden_from_feed}
+											id={id}
+											onDone={close}
+											type="tier_list"
+										/>
+										<ActionMenuItem
+											close={close}
+											danger
+											icon="lucide:trash-2"
+											onClick={() =>
+												deleteMutation.mutate()
+											}
+										>
+											{t('post.delete')}
+										</ActionMenuItem>
+									</>
+								)}
+							</ActionMenu>
 						)}
-					</div>
-					{tierList.description && (
-						<p className="font-semibold text-foreground">
-							{tierList.description}
-						</p>
-					)}
-					<div className="flex items-center gap-3 text-foreground text-sm">
-						{tierList.author && (
-							<div className="flex items-center gap-2">
-								<Avatar
-									className="rounded-full"
-									height={32}
-									id={tierList.author.id}
-									unoptimized
-									username={tierList.author.name}
-									width={32}
-								/>
-								<HoverUserCard id={tierList.author.id}>
-									<Username
-										className={`font-mono font-semibold text-xs`}
-										user={tierList.author}
-									/>
-								</HoverUserCard>
-							</div>
+					</>
+				}
+				author={
+					tierList.author
+						? {
+								id: tierList.author.id,
+								username: tierList.author.username,
+								name: tierList.author.name,
+								badges: tierList.author.badges,
+							}
+						: null
+				}
+				createdAt={tierList.created_at}
+				description={tierList.description || null}
+				prefix={
+					tierList.kind === TierListKind.SYSTEM ? (
+						<Badge className="gap-2 bg-primary/10 text-primary">
+							<Icon className="size-3" icon="lucide:bot" />
+							{t('tierlists.system')}
+						</Badge>
+					) : null
+				}
+				stats={
+					<>
+						{user ? (
+							<DetailStat
+								active={tierList.is_starred}
+								disabled={starMutation.isPending}
+								icon="lucide:star"
+								onClick={() => starMutation.mutate()}
+								value={tierList.stars_count ?? 0}
+							/>
+						) : (
+							<DetailStat
+								icon="lucide:star"
+								value={tierList.stars_count ?? 0}
+							/>
 						)}
-						<div className="flex items-center gap-1 text-foreground">
-							<Icon icon="lucide:eye" />
-							<span className={`font-mono font-semibold text-xs`}>
-								{tierList.views}
-							</span>
-						</div>
+						<DetailStat icon="lucide:eye" value={tierList.views} />
+						<DetailStat
+							icon="lucide:message-square"
+							value={tierList.comments_count ?? 0}
+						/>
 						<Badge variant="secondary">
 							{tierList.item_kind === TierItemKind.WEAPON
 								? t('tierlists.weapons')
@@ -214,43 +278,10 @@ export default function TierListDetailView() {
 								{tierList.scenario}
 							</Badge>
 						)}
-					</div>
-				</div>
-				<div className="flex gap-2">
-					<Button
-						className="gap-2 font-semibold"
-						disabled={isSavingPng || !items}
-						onClick={handleSavePng}
-						size="sm"
-						variant="outline"
-					>
-						<Icon className="text-lg" icon="lucide:image" />
-						{t('tierlists.exportPng')}
-					</Button>
-					{user && tierList.author?.id === user.id && (
-						<>
-							<CLink
-								className="gap-2 font-semibold"
-								href={`/me/tierlists/${id}/edit`}
-								variant={'outline'}
-							>
-								<Icon className="size-4" icon="lucide:pencil" />
-								{t('tierlists.edit')}
-							</CLink>
-							<Button
-								className="p-3"
-								onClick={() => deleteMutation.mutate()}
-								variant="danger"
-							>
-								<Icon
-									className="text-lg"
-									icon="lucide:trash-2"
-								/>
-							</Button>
-						</>
-					)}
-				</div>
-			</div>
+					</>
+				}
+				title={tierList.title}
+			/>
 
 			{tierList.kind === TierListKind.SYSTEM && (
 				<Alert.Root>
@@ -279,6 +310,10 @@ export default function TierListDetailView() {
 				prevRanks={prevRanks}
 				t={t}
 			/>
+
+			<div className="border-primary border-t pt-6">
+				<FeedComments id={id} target="tier_list" />
+			</div>
 
 			<Modal.Root onOpenChange={setShowPngModal} open={showPngModal}>
 				<Modal.Content fullScreen={false}>
@@ -318,7 +353,7 @@ export default function TierListDetailView() {
 					</Modal.Footer>
 				</Modal.Content>
 			</Modal.Root>
-		</section>
+		</DetailShell>
 	)
 }
 

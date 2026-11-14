@@ -7,7 +7,7 @@ import { Card } from '@/components/ui/Card'
 import { CLink } from '@/components/ui/Link'
 import { formatDate } from '@/lib/date'
 import { useUnoLocale } from '../../hooks/useUnoLocale'
-import type { SeasonEntry } from './seasons.utils'
+import { type SeasonEntry, toIsoDate } from './seasons.utils'
 
 export function SeasonCard({ season }: { season: SeasonEntry }) {
 	const t = useTranslations('uno')
@@ -15,8 +15,8 @@ export function SeasonCard({ season }: { season: SeasonEntry }) {
 	const router = useRouter()
 	const title = t.has(season.title) ? t(season.title) : season.title
 	const gridsQuery = new URLSearchParams({
-		from: season.period[0],
-		to: season.period[1],
+		from: toIsoDate(season.period[0]),
+		to: toIsoDate(season.period[1]),
 	})
 
 	if (!season.isInterSeason) {

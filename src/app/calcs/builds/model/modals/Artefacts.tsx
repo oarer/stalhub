@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import type { ComboboxOption } from '@/components/ui/Combobox'
 import { getLocale } from '@/lib/getLocale'
-import { useVisibleItems } from '@/lib/unoItems'
+import { includeItemsById, useVisibleItems } from '@/lib/unoItems'
 import { itemsQueries } from '@/queries/calcs/items.queries'
 import { useBuildStore } from '@/stores/useBuild.store'
 import type { Art, ModalProps } from '@/types/build.type'
@@ -24,8 +24,7 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const locale = getLocale()
 
 	const query = useSuspenseQuery(itemsQueries.get({ type: 'artefact' }))
-	const items = (useVisibleItems(query.data as Item[] | undefined) ??
-		[]) as Item[]
+	const visibleItems = useVisibleItems(query.data as Item[] | undefined)
 
 	const addArt = useBuildStore((s) => s.addArt)
 	const defaults = useBuildStore((s) => s.defaults)
@@ -34,6 +33,15 @@ export default function ArtModal({ onClose }: ModalProps) {
 	const updateArt = useBuildStore((s) => s.updateArt)
 	const removeArt = useBuildStore((s) => s.removeArt)
 	const copyArt = useBuildStore((s) => s.copyArt)
+	const equippedItemIds = useMemo(
+		() => build.arts.map((art) => art.item_id),
+		[build.arts]
+	)
+	const items = (includeItemsById(
+		visibleItems,
+		query.data as Item[] | undefined,
+		equippedItemIds
+	) ?? []) as Item[]
 
 	const [selectedSlot, setSelectedSlot] = useState<number>(0)
 	const [copyMode, setCopyMode] = useState(false)
