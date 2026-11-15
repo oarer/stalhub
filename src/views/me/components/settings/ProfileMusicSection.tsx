@@ -115,7 +115,7 @@ export function ProfileMusicSection({
 								/>
 								{t('me.settings.musicUploadTitle')}
 							</p>
-							<p className="mt-0.5 truncate text-muted-foreground text-[11px]">
+							<p className="mt-0.5 truncate text-[11px] text-muted-foreground">
 								{t('me.settings.musicUploadDesc')}
 							</p>
 						</div>
@@ -133,7 +133,10 @@ export function ProfileMusicSection({
 								size="sm"
 								variant="secondary"
 							>
-								<Icon className="text-base" icon="lucide:upload" />
+								<Icon
+									className="text-base"
+									icon="lucide:upload"
+								/>
 								{t('me.settings.musicUploadButton')}
 							</Button>
 							{isUploadedFile && onDeleteFile && (

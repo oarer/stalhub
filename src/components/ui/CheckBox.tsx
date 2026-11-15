@@ -131,7 +131,7 @@ function CheckBox({
 
 	if (label || description) {
 		return (
-			<label
+			<div
 				className={cn(
 					'flex cursor-pointer items-center gap-3',
 					disabled && 'cursor-not-allowed opacity-50'
@@ -150,7 +150,7 @@ function CheckBox({
 						</p>
 					)}
 				</div>
-			</label>
+			</div>
 		)
 	}
 
