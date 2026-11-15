@@ -1,34 +1,69 @@
+'use client'
+
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import type { CSSProperties } from 'react'
 import { Card } from '@/components/ui/Card'
+import { SocialLinks } from '@/components/ui/user/SocialLinks'
+import { useImageLuminance } from '@/hooks/useImageLuminance'
+import { cn } from '@/lib/cn'
 import type { Regions } from '@/types/api.type'
 import type { PlayerResponse } from '@/types/player.type'
 import { allianceColors } from '@/types/player.type'
 import { getStatValue } from '@/utils/player/StatParse'
 import { StalcraftText } from '@/utils/StalcraftText'
 import AchievementsView from '../AchievementsView'
+import PlayerBanBadge from '../PlayerBanBadge'
 import { PlayerComparison } from '../PlayerComparison'
 import PlayerNote from '../PlayerNote'
-import ProfileMusic, { ProfileStrings } from '../ProfileMedia'
+import ProfileDecoration, {
+	ProfileStickers,
+	resolveAssetUrl,
+} from '../ProfileDecoration'
+import { ProfileStrings } from '../ProfileMedia'
 import HeroCombat from './HeroCombat'
 import HeroStats from './HeroStats'
+
+const LIGHT_BG_STYLE: CSSProperties = {
+	color: 'oklch(0.15 0 0)',
+	'--color-foreground': 'oklch(0.15 0 0)',
+	'--color-card-foreground': 'oklch(0.15 0 0)',
+	'--color-muted-foreground': 'oklch(0.45 0 0)',
+} as CSSProperties
+
+const DARK_BG_STYLE: CSSProperties = {
+	color: 'oklch(0.95 0 0)',
+	'--color-foreground': 'oklch(0.95 0 0)',
+	'--color-card-foreground': 'oklch(0.95 0 0)',
+	'--color-muted-foreground': 'oklch(0.78 0 0)',
+} as CSSProperties
 
 export default function HeroView({
 	data,
 	region,
-	character,
-	isRu,
 }: {
 	data: PlayerResponse
 	region: Regions
-	character: string
-	isRu: boolean
 }) {
 	const t = useTranslations()
+	const hasBg = !!data.customization?.background
+	const backgroundUrl = hasBg
+		? resolveAssetUrl(data.customization!.background!)
+		: null
+	const bgLuminance = useImageLuminance(backgroundUrl)
+
+	const textStyle: CSSProperties | undefined = !hasBg
+		? undefined
+		: bgLuminance === 'light'
+			? LIGHT_BG_STYLE
+			: DARK_BG_STYLE
+
+	const statusDefaultColor =
+		hasBg && bgLuminance === 'light' ? '#1a1a1a' : '#ffffff'
 
 	return (
-		<div className="relative">
+		<div className="relative space-y-4">
 			<Image
 				alt={`${data.alliance} icon`}
 				className="absolute -top-15 -left-20 -z-1 hidden xl:block"
@@ -36,53 +71,66 @@ export default function HeroView({
 				src={`/images/alliance/${data.alliance}.png`}
 				width={115}
 			/>
-			<Card.Root className="z-10 w-full">
-				<Card.Header className="space-y-2">
-					<Card.Title className="flex flex-wrap items-center gap-4 font-semibold text-xl md:text-3xl">
-						<span className={allianceColors[data.alliance]}>
-							{t(`player.alliance.${data.alliance}`)}
-						</span>
-						<span>|</span>
-						<span>{data.username}</span>
-						{data?.role && (
-							<PlayerNote
-								data={data.role}
-								username={data.username}
-							/>
-						)}
-					</Card.Title>
-					<Card.Description className="flex flex-col items-start gap-3">
-						<div className="flex min-w-0 items-start gap-2">
-							<Icon
-								className="mt-0.5 shrink-0 text-white text-xl"
-								icon="lucide:info"
-							/>
-							<div className="min-w-0">
-								<StalcraftText text={data.status} />
-							</div>
-						</div>
-						<ProfileStrings strings={data.strings} />
-					</Card.Description>
-				</Card.Header>
-
-				<Card.Content className="space-y-6">
-					<ProfileMusic music={data.music} />
-					{data.ascii && (
-						<div className="overflow-x-auto rounded-xl border border-primary/20 bg-black/30 p-4">
-							<p className="mb-2 font-mono text-[10px] text-muted-foreground uppercase tracking-[0.18em]">
-								{t('player.ascii.title')}
-							</p>
-							<StalcraftText text={data.ascii} />
-						</div>
+			<ProfileDecoration customization={data.customization}>
+				<Card.Root
+					className={cn(
+						'relative z-10 w-full md:backdrop-blur-xs',
+						hasBg && 'bg-card/10 md:bg-card/10',
+						!hasBg && 'bg-card md:bg-card/50'
 					)}
-					<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-						<HeroStats data={data} />
-						<PlayerComparison
-							character={data.username}
-							region={region}
-						/>
+				>
+					<ProfileStickers customization={data.customization} />
+					<div style={textStyle}>
+						<Card.Header className="relative z-10 space-y-2">
+							<Card.Title className="flex flex-wrap items-center gap-4 font-semibold text-xl md:text-3xl">
+								<span className={allianceColors[data.alliance]}>
+									{t(`player.alliance.${data.alliance}`)}
+								</span>
+								<span>|</span>
+								<span>{data.username}</span>
+								{data?.role && (
+									<PlayerNote
+										data={data.role}
+										username={data.username}
+									/>
+								)}
+								{data.exens && (
+									<PlayerBanBadge exens={data.exens} />
+								)}
+							</Card.Title>
+							<Card.Description className="flex flex-col items-start gap-3">
+								<div className="flex w-full min-w-0 items-start gap-2">
+									<Icon
+										className="mt-0.5 shrink-0 text-xl"
+										icon="lucide:info"
+									/>
+									<div className="max-w-full overflow-auto">
+										<StalcraftText
+											defaultColor={statusDefaultColor}
+											text={data.status}
+										/>
+									</div>
+								</div>
+								<SocialLinks links={data.social_links} />
+								<ProfileStrings strings={data.strings} />
+							</Card.Description>
+						</Card.Header>
+
+						<Card.Content className="relative z-10 space-y-6">
+							<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+								<HeroStats data={data} />
+								<PlayerComparison
+									character={data.username}
+									region={region}
+								/>
+							</div>
+						</Card.Content>
 					</div>
-					<div className="border-primary/60 border-t" />
+				</Card.Root>
+			</ProfileDecoration>
+
+			<Card.Root className="w-full bg-card md:bg-card/50">
+				<Card.Content className="space-y-6">
 					<HeroCombat data={data.stats} />
 					<div className="border-primary/60 border-t" />
 					{data.displayedAchievements && (

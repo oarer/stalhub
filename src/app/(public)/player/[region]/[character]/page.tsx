@@ -9,12 +9,21 @@ import type { Regions } from '@/types/api.type'
 import PlayerNotFoundView from '@/views/errors/playerNotFound/PlayerNotFoundView'
 import PlayerView from '@/views/player'
 
+function decodeCharacter(character: string): string {
+	try {
+		return decodeURIComponent(character)
+	} catch {
+		return character
+	}
+}
+
 export async function generateMetadata({
 	params,
 }: {
 	params: Promise<{ region: string; character: string }>
 }): Promise<Metadata> {
-	const { region, character } = await params
+	const { region, character: rawCharacter } = await params
+	const character = decodeCharacter(rawCharacter)
 	const title = `${character} — статистика игрока · StalHub`
 	const description = `Статистика игрока ${character} (${region.toUpperCase()}) в StalZone: клан, операции и прогресс.`
 	try {
@@ -46,7 +55,8 @@ export default async function PlayerPage({
 }: {
 	params: Promise<{ region: string; character: string }>
 }) {
-	const { region, character } = await params
+	const { region, character: rawCharacter } = await params
+	const character = decodeCharacter(rawCharacter)
 
 	const queryClient = getQueryClient()
 	const playerParams = { region: region as Regions, character }

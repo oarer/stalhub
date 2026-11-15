@@ -22,20 +22,22 @@ function normalizePlayerResponse(data: UnifiedPlayerResponse): PlayerResponse {
 		gear: data.gear ?? data.uno?.gear ?? data.player.gear ?? null,
 		strings: data.strings ?? data.uno?.strings ?? data.player.strings,
 		music: data.music ?? data.uno?.music ?? data.player.music,
-		ascii: data.ascii ?? data.uno?.ascii ?? data.player.ascii,
+		exens: data.exens ?? data.uno?.exens ?? data.player.exens,
+		social_links:
+			data.social_links ??
+			data.uno?.social_links ??
+			data.player.social_links,
+		customization:
+			data.customization ??
+			data.uno?.customization ??
+			data.player.customization,
 	}
 }
 
 class PlayerService {
 	async get({ region, character }: PlayerParams): Promise<PlayerResponse> {
 		const { data } = await apiClient.get<UnifiedPlayerResponse>(
-			`/api/v1/player/${region}/${encodeURIComponent(character)}`,
-			{
-				params: {
-					history: true,
-					...(region === 'RU' ? { gear: true, strings: true } : {}),
-				},
-			}
+			`/api/v1/player/${region}/${encodeURIComponent(character)}`
 		)
 		return normalizePlayerResponse(data)
 	}

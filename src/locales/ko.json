@@ -674,6 +674,10 @@
       "scammer_desc": "이 플레이어는 사기꾼입니다",
       "more": "자세한 설명"
     },
+    "ban": {
+      "title": "차단됨",
+      "active": "플레이어 프로필이 차단되었습니다"
+    },
     "clanHistory": {
       "title": "클랜 이력"
     },

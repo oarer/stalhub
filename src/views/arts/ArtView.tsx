@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button'
 import { CopyButton } from '@/components/ui/CopyButton'
 import { Divider } from '@/components/ui/Divider'
 import HoverUserCard from '@/components/ui/user/HoverUserCard'
+import { SocialLinks } from '@/components/ui/user/SocialLinks'
 import Username from '@/components/ui/user/Username'
 import { Gallery } from '@/components/wiki/gallery'
 import { cn } from '@/lib/cn'
@@ -23,21 +24,6 @@ import { useAuthStore } from '@/stores/useAuth.store'
 import { ArtType, getArtImages } from '@/types/art.type'
 import ArtistOrderLink from '@/views/commissions/components/ArtistOrderLink'
 import ArtComments from './ArtComments'
-
-const SOCIAL_ICONS: Record<string, string> = {
-	telegram: 'lucide:send',
-	discord: 'lucide:message-circle',
-	twitter: 'lucide:twitter',
-	x: 'prime:twitter',
-	youtube: 'lucide:youtube',
-	twitch: 'lucide:twitch',
-	boosty: 'simple-icons:boosty',
-	tiktok: 'simple-icons:tiktok',
-}
-
-function socialIcon(network: string) {
-	return SOCIAL_ICONS[network.toLowerCase()] ?? 'lucide:link'
-}
 
 interface ArtViewProps {
 	artId: string
@@ -257,33 +243,10 @@ export default function ArtView({ artId }: ArtViewProps) {
 							</div>
 						</div>
 
-						{art.author.social_links &&
-							Object.keys(art.author.social_links).length > 0 && (
-								<>
-									<Divider />
-									<div className="flex flex-wrap gap-2">
-										{Object.entries(
-											art.author.social_links
-										).map(([network, url]) => (
-											<a
-												className="flex items-center gap-1.5 rounded-md bg-card px-2 py-1 font-medium text-xs transition-colors duration-500 hover:bg-border/50"
-												href={url}
-												key={network}
-												rel="noopener noreferrer"
-												target="_blank"
-											>
-												<Icon
-													className="text-sm"
-													icon={socialIcon(network)}
-												/>
-												<span className="capitalize">
-													{network}
-												</span>
-											</a>
-										))}
-									</div>
-								</>
-							)}
+						<SocialLinks
+							links={art.author.social_links}
+							withDivider
+						/>
 					</div>
 
 					{art.tags.length > 0 && (

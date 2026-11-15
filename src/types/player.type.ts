@@ -15,6 +15,45 @@ export interface PlayerMusic {
 	cover?: string | null
 }
 
+export interface PlayerStickerFlipbook {
+	frames: number
+	rows: number
+	columns: number
+	fps: number
+	frameBlending?: boolean
+	pingPong?: boolean
+}
+
+export interface PlayerSticker {
+	src: string
+	top?: number
+	left?: number
+	right?: number
+	bottom?: number
+	width?: number
+	rotate?: number
+	image_width?: number
+	image_height?: number
+	flipbook?: PlayerStickerFlipbook | null
+}
+
+export interface PlayerCustomization {
+	background?: string | null
+	pattern?: string | null
+	frame?: string | null
+	stickers?: (string | PlayerSticker)[] | null
+}
+
+export interface PlayerExens {
+	available: boolean
+	permanent: boolean
+	reason?: string | null
+	message?: string | null
+	description?: string | null
+	expiresAt?: string | null
+	until?: string | null
+}
+
 export interface PlayerResponse {
 	username: string
 	uuid: string
@@ -29,7 +68,9 @@ export interface PlayerResponse {
 	gear?: PlayerGearResponse | null
 	strings?: string[]
 	music?: PlayerMusic | string | null
-	ascii?: string | null
+	exens?: PlayerExens | null
+	social_links?: Record<string, string> | null
+	customization?: PlayerCustomization | null
 }
 export interface PlayerParams {
 	region: Regions

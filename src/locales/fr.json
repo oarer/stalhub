@@ -674,6 +674,10 @@
       "scammer_desc": "Ce joueur est un arnaqueur",
       "more": "Description plus détaillée"
     },
+    "ban": {
+      "title": "Banni",
+      "active": "Le profil du joueur est banni"
+    },
     "clanHistory": {
       "title": "Historique des clans"
     },

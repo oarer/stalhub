@@ -674,6 +674,10 @@
       "scammer_desc": "This player is a scammer",
       "more": "More detailed description"
     },
+    "ban": {
+      "title": "Banned",
+      "active": "Player profile is banned"
+    },
     "clanHistory": {
       "title": "Clan history"
     },
