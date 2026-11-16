@@ -72,6 +72,11 @@ const groups: {
 				href: '/admin/arts',
 				icon: 'lucide:palette',
 			},
+			{
+				title: 'admin.sidebar.feedSources',
+				href: '/admin/feed-sources',
+				icon: 'lucide:rss',
+			},
 		],
 	},
 	{
@@ -96,11 +101,6 @@ const groups: {
 				title: 'admin.sidebar.scNodes',
 				href: '/admin/sc-nodes',
 				icon: 'lucide:server',
-			},
-			{
-				title: 'admin.sidebar.auctionHistory',
-				href: '/admin/auction-history',
-				icon: 'lucide:database-zap',
 			},
 		],
 	},

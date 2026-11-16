@@ -330,62 +330,29 @@ export interface AdminScBulkResult {
 	total: number
 }
 
-export interface AdminAuctionHistoryRun {
-	items: number
-	pages: number
-	rows: number
-	inserted: number
-	failed: number
-	startedAt: number
-	finishedAt: number
-}
+export type AdminFeedSourceType = 'TG' | 'YOUTUBE'
 
-export interface AdminAuctionCensus {
-	startedAt: number
-	finishedAt: number
-	items: number
-	withHistory: number
-	withoutHistory: number
-	failed: number
-	exboDeals: number
-	buckets: { label: string; count: number }[]
-	top: { id: string; total: number }[]
-}
-
-export interface AdminRollupStats {
-	startedAt: number
-	finishedAt: number
-	days: number
-}
-
-export interface AdminAuctionHistoryProgress {
-	items: {
-		total: number
-		backfilled: number
-		pending: number
-		backfillPct: number
-		capped: number
-	}
-	deals: {
-		total: number
-		oldest: string | null
-		newest: string | null
-	}
-	size: {
-		db: string
-		deals: string
-	}
-	top: { dataPath: string; deals: number }[]
+export interface AdminFeedSource {
+	id: number
+	type: AdminFeedSourceType
+	external_id: string
+	label: string
 	enabled: boolean
-	running: boolean
-	deepening: boolean
-	censusRunning: boolean
-	lastSweep: AdminAuctionHistoryRun | null
-	lastBackfill: AdminAuctionHistoryRun | null
-	lastDeepen: AdminAuctionHistoryRun | null
-	lastCensus: AdminAuctionCensus | null
-	rollupRunning: boolean
-	lastRollup: AdminRollupStats | null
+	last_synced_at: string | null
+	created_at: string
+	updated_at: string
+}
+
+export interface AdminFeedSourceCreate {
+	type: AdminFeedSourceType
+	external_id: string
+	label?: string
+}
+
+export interface AdminFeedSourceUpdate {
+	external_id?: string
+	label?: string
+	enabled?: boolean
 }
 
 export interface AdminDashboardTrendPoint {

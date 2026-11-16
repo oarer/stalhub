@@ -1713,7 +1713,7 @@
       "arts": "아트",
       "bans": "차단",
       "scNodes": "SC 노드",
-      "auctionHistory": "경매 기록",
+      "feedSources": "피드 소스",
       "dashboard": "대시보드",
       "group": {
         "overview": "개요",
@@ -2192,49 +2192,49 @@
         "pingFailed": "노드가 응답하지 않습니다"
       }
     },
-    "auctionHistory": {
-      "title": "경매 기록",
-      "running": "수집 중",
-      "idle": "대기",
-      "refresh": "새로고침",
-      "backfill": "백필",
-      "pending": "남음: {count}",
-      "dealsTotal": "총 거래",
-      "depth": "범위: {from} — {to}",
-      "dbSize": "DB 크기",
-      "dealsSize": "deals 테이블: {size}",
-      "lastSweep": "최근 스위프",
-      "lastBackfill": "최근 백필",
-      "notRunYet": "아직 실행 안 됨",
-      "inserted": "삽입됨",
-      "itemsSeen": "아이템",
-      "requests": "요청",
-      "failed": "실패",
-      "duration": "소요",
-      "finishedAgo": "전",
-      "top": "거래 상위 아이템",
-      "item": "아이템",
-      "dealsCol": "거래",
-      "deepening": "심화 중",
-      "deepen": "상위 심화",
-      "deepenHint": "핫 아이템의 깊이를 보충합니다 (hist_oldest 아래, 최대 90일 / 100k건). 무거운 작업, 백그라운드 실행.",
-      "deepenStarted": "심화 시작됨",
-      "deepenFailed": "시작 실패",
-      "lastDeepen": "최근 심화",
-      "capped": "캡 도달: {count}",
-      "census": "EXBO 센서스",
-      "censusRun": "센서스 실행",
-      "censusStarted": "센서스 시작됨 (~20분)",
-      "censusFailed": "시작 실패",
-      "censusRunning": "센서스 실행 중, 자동 새로고침",
-      "censusWithHistory": "기록 있는 아이템",
-      "censusTotal": "EXBO 총 거래",
-      "rollup": "롤업",
-      "rollupStarted": "롤업 시작됨",
-      "rollupFailed": "시작 실패",
-      "rollupRunning": "롤업 실행 중",
-      "lastRollup": "최근 롤업",
-      "rollupDays": "처리된 일수"
+    "feedSources": {
+      "title": "피드 소스",
+      "count": "소스 {count}개",
+      "form": {
+        "title": "소스 추가",
+        "description": "Telegram 또는 YouTube 채널을 피드에 연결합니다.",
+        "type": "유형",
+        "externalId": "외부 ID",
+        "externalIdHintTG": "@username 또는 숫자 Telegram ID",
+        "externalIdHintYOUTUBE": "YouTube 채널 URL 또는 UC… 채널 ID",
+        "label": "라벨 (선택 사항)",
+        "add": "소스 추가"
+      },
+      "types": {
+        "TG": "Telegram",
+        "YOUTUBE": "YouTube"
+      },
+      "table": {
+        "type": "유형",
+        "externalId": "외부 ID",
+        "label": "라벨",
+        "enabled": "활성화",
+        "lastSynced": "최근 동기화",
+        "createdAt": "생성일",
+        "toggle": "{label} 전환",
+        "on": "켬",
+        "off": "끔",
+        "never": "없음",
+        "sync": "소스 동기화",
+        "delete": "소스 삭제"
+      },
+      "empty": "피드 소스가 없습니다.",
+      "delete": {
+        "title": "소스를 삭제할까요?",
+        "confirm": "삭제"
+      },
+      "toast": {
+        "error": "오류가 발생했습니다",
+        "created": "소스가 추가되었습니다",
+        "deleted": "소스가 삭제되었습니다",
+        "synced": "게시물 {count}개 동기화됨",
+        "syncError": "소스를 동기화할 수 없습니다"
+      }
     },
     "health": {
       "title": "시스템 상태",
@@ -4666,10 +4666,9 @@
     },
     "sources": {
       "USER": "사용자",
-      "EXBO_TG": "Exbo 채널",
-      "STALZONE_REPORT": "Stalzone Report",
-      "OFFICIAL_MEDIA": "공식 미디어",
-      "EFORUM": "포럼"
+      "TG": "Telegram",
+      "YOUTUBE": "YouTube",
+      "EFORUM": "EForum"
     },
     "attachments": {
       "build": "빌드",

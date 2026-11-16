@@ -1745,7 +1745,7 @@
       "arts": "Art",
       "bans": "Bans",
       "scNodes": "SC Nodes",
-      "auctionHistory": "Auction history",
+      "feedSources": "Feed sources",
       "dashboard": "Dashboard",
       "group": {
         "overview": "Overview",
@@ -2224,49 +2224,49 @@
         "pingFailed": "Node is not responding"
       }
     },
-    "auctionHistory": {
-      "title": "Auction history",
-      "running": "Ingesting",
-      "idle": "Idle",
-      "refresh": "Refresh",
-      "backfill": "Backfill",
-      "pending": "Remaining: {count}",
-      "dealsTotal": "Total deals",
-      "depth": "Depth: {from} — {to}",
-      "dbSize": "DB size",
-      "dealsSize": "deals table: {size}",
-      "lastSweep": "Last sweep",
-      "lastBackfill": "Last backfill",
-      "notRunYet": "Not run yet",
-      "inserted": "Inserted",
-      "itemsSeen": "Items",
-      "requests": "Requests",
-      "failed": "Failed",
-      "duration": "Duration",
-      "finishedAgo": "Ago",
-      "top": "Top items by deals",
-      "item": "Item",
-      "dealsCol": "Deals",
-      "deepening": "Deepening",
-      "deepen": "Deepen top",
-      "deepenHint": "Backfills depth for hot items (below hist_oldest, up to 90 days / 100k deals). Heavy, runs in background.",
-      "deepenStarted": "Deepening started",
-      "deepenFailed": "Failed to start",
-      "lastDeepen": "Last deepen",
-      "capped": "capped: {count}",
-      "census": "EXBO census",
-      "censusRun": "Run census",
-      "censusStarted": "Census started (~20 min)",
-      "censusFailed": "Failed to start",
-      "censusRunning": "Census running, will refresh",
-      "censusWithHistory": "Items with history",
-      "censusTotal": "Total EXBO deals",
-      "rollup": "Rollup",
-      "rollupStarted": "Rollup started",
-      "rollupFailed": "Failed to start",
-      "rollupRunning": "Rollup running",
-      "lastRollup": "Last rollup",
-      "rollupDays": "Days rolled"
+    "feedSources": {
+      "title": "Feed sources",
+      "count": "{count} sources",
+      "form": {
+        "title": "Add source",
+        "description": "Connect a Telegram channel or YouTube channel to the feed.",
+        "type": "Type",
+        "externalId": "External ID",
+        "externalIdHintTG": "@username or numeric Telegram ID",
+        "externalIdHintYOUTUBE": "YouTube channel URL or UC… channel ID",
+        "label": "Label (optional)",
+        "add": "Add source"
+      },
+      "types": {
+        "TG": "Telegram",
+        "YOUTUBE": "YouTube"
+      },
+      "table": {
+        "type": "Type",
+        "externalId": "External ID",
+        "label": "Label",
+        "enabled": "Enabled",
+        "lastSynced": "Last synced",
+        "createdAt": "Created",
+        "toggle": "Toggle {label}",
+        "on": "On",
+        "off": "Off",
+        "never": "Never",
+        "sync": "Sync source",
+        "delete": "Delete source"
+      },
+      "empty": "No feed sources yet.",
+      "delete": {
+        "title": "Delete source?",
+        "confirm": "Delete"
+      },
+      "toast": {
+        "error": "Something went wrong",
+        "created": "Source added",
+        "deleted": "Source deleted",
+        "synced": "Synced {count} posts",
+        "syncError": "Could not sync source"
+      }
     },
     "health": {
       "title": "System Health",
@@ -4737,10 +4737,9 @@
     },
     "sources": {
       "USER": "Users",
-      "EXBO_TG": "Exbo channel",
-      "STALZONE_REPORT": "Stalzone Report",
-      "OFFICIAL_MEDIA": "Official media",
-      "EFORUM": "Forum"
+      "TG": "Telegram",
+      "YOUTUBE": "YouTube",
+      "EFORUM": "EForum"
     },
     "attachments": {
       "build": "build",

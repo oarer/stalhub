@@ -2,12 +2,7 @@ import type { BuildApi } from './build-api.type'
 import type { TierList } from './tier-list.type'
 import type { Author } from './common.type'
 
-export type PostSource =
-	| 'USER'
-	| 'EXBO_TG'
-	| 'STALZONE_REPORT'
-	| 'OFFICIAL_MEDIA'
-	| 'EFORUM'
+export type PostSource = 'USER' | 'TG' | 'YOUTUBE' | 'EFORUM'
 
 export type PostPollType = 'single' | 'multiple'
 

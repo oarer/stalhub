@@ -1713,7 +1713,7 @@
       "arts": "Art",
       "bans": "Bannissements",
       "scNodes": "Nœuds SC",
-      "auctionHistory": "Historique des enchères",
+      "feedSources": "Sources du fil",
       "dashboard": "Tableau de bord",
       "group": {
         "overview": "Vue d'ensemble",
@@ -2192,49 +2192,49 @@
         "pingFailed": "Le nœud ne répond pas"
       }
     },
-    "auctionHistory": {
-      "title": "Historique des enchères",
-      "running": "Collecte en cours",
-      "idle": "Inactif",
-      "refresh": "Actualiser",
-      "backfill": "Remplissage initial",
-      "pending": "Restants : {count}",
-      "dealsTotal": "Transactions totales",
-      "depth": "Profondeur : {from} — {to}",
-      "dbSize": "Taille BD",
-      "dealsSize": "table deals : {size}",
-      "lastSweep": "Dernier balayage",
-      "lastBackfill": "Dernier remplissage",
-      "notRunYet": "Pas encore exécuté",
-      "inserted": "Insérées",
-      "itemsSeen": "Objets",
-      "requests": "Requêtes",
-      "failed": "Échecs",
-      "duration": "Durée",
-      "finishedAgo": "Il y a",
-      "top": "Top objets par transactions",
-      "item": "Objet",
-      "dealsCol": "Transactions",
-      "deepening": "Approfondissement",
-      "deepen": "Approfondir le top",
-      "deepenHint": "Complète la profondeur des objets chauds (sous hist_oldest, jusqu’à 90 jours / 100k transactions). Lourd, en arrière-plan.",
-      "deepenStarted": "Approfondissement lancé",
-      "deepenFailed": "Échec du lancement",
-      "lastDeepen": "Dernier approfondissement",
-      "capped": "au plafond : {count}",
-      "census": "Recensement EXBO",
-      "censusRun": "Lancer le recensement",
-      "censusStarted": "Recensement lancé (~20 min)",
-      "censusFailed": "Échec du lancement",
-      "censusRunning": "Recensement en cours, actualisation auto",
-      "censusWithHistory": "Objets avec historique",
-      "censusTotal": "Transactions EXBO totales",
-      "rollup": "Recalculer",
-      "rollupStarted": "Rollup lancé",
-      "rollupFailed": "Échec du lancement",
-      "rollupRunning": "Rollup en cours",
-      "lastRollup": "Dernier rollup",
-      "rollupDays": "Jours traités"
+    "feedSources": {
+      "title": "Sources du fil",
+      "count": "{count} sources",
+      "form": {
+        "title": "Ajouter une source",
+        "description": "Connectez une chaîne Telegram ou YouTube au fil.",
+        "type": "Type",
+        "externalId": "ID externe",
+        "externalIdHintTG": "@username ou ID numérique Telegram",
+        "externalIdHintYOUTUBE": "URL de chaîne YouTube ou ID de chaîne UC…",
+        "label": "Libellé (facultatif)",
+        "add": "Ajouter la source"
+      },
+      "types": {
+        "TG": "Telegram",
+        "YOUTUBE": "YouTube"
+      },
+      "table": {
+        "type": "Type",
+        "externalId": "ID externe",
+        "label": "Libellé",
+        "enabled": "Activée",
+        "lastSynced": "Dernière synchro",
+        "createdAt": "Créée",
+        "toggle": "Modifier {label}",
+        "on": "Oui",
+        "off": "Non",
+        "never": "Jamais",
+        "sync": "Synchroniser la source",
+        "delete": "Supprimer la source"
+      },
+      "empty": "Aucune source du fil pour le moment.",
+      "delete": {
+        "title": "Supprimer la source ?",
+        "confirm": "Supprimer"
+      },
+      "toast": {
+        "error": "Une erreur est survenue",
+        "created": "Source ajoutée",
+        "deleted": "Source supprimée",
+        "synced": "Publications synchronisées : {count}",
+        "syncError": "Impossible de synchroniser la source"
+      }
     },
     "health": {
       "title": "Santé du système",
@@ -4666,10 +4666,9 @@
     },
     "sources": {
       "USER": "Utilisateurs",
-      "EXBO_TG": "Chaîne Exbo",
-      "STALZONE_REPORT": "Stalzone Report",
-      "OFFICIAL_MEDIA": "Médias officiels",
-      "EFORUM": "Forum"
+      "TG": "Telegram",
+      "YOUTUBE": "YouTube",
+      "EFORUM": "EForum"
     },
     "attachments": {
       "build": "build",

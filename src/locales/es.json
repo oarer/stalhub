@@ -1713,7 +1713,7 @@
       "arts": "Arte",
       "bans": "Baneos",
       "scNodes": "Nodos SC",
-      "auctionHistory": "Historial de subastas",
+      "feedSources": "Fuentes del feed",
       "dashboard": "Panel",
       "group": {
         "overview": "Resumen",
@@ -2192,49 +2192,49 @@
         "pingFailed": "El nodo no responde"
       }
     },
-    "auctionHistory": {
-      "title": "Historial de subastas",
-      "running": "Recolectando",
-      "idle": "Inactivo",
-      "refresh": "Actualizar",
-      "backfill": "Relleno inicial",
-      "pending": "Restantes: {count}",
-      "dealsTotal": "Operaciones totales",
-      "depth": "Profundidad: {from} — {to}",
-      "dbSize": "Tamaño BD",
-      "dealsSize": "tabla deals: {size}",
-      "lastSweep": "Último barrido",
-      "lastBackfill": "Último relleno",
-      "notRunYet": "Aún no ejecutado",
-      "inserted": "Insertadas",
-      "itemsSeen": "Objetos",
-      "requests": "Solicitudes",
-      "failed": "Fallos",
-      "duration": "Duración",
-      "finishedAgo": "Hace",
-      "top": "Top objetos por operaciones",
-      "item": "Objeto",
-      "dealsCol": "Operaciones",
-      "deepening": "Profundizando",
-      "deepen": "Profundizar top",
-      "deepenHint": "Completa la profundidad de objetos calientes (bajo hist_oldest, hasta 90 días / 100k operaciones). Pesado, en segundo plano.",
-      "deepenStarted": "Profundización iniciada",
-      "deepenFailed": "No se pudo iniciar",
-      "lastDeepen": "Última profundización",
-      "capped": "en tope: {count}",
-      "census": "Censo EXBO",
-      "censusRun": "Iniciar censo",
-      "censusStarted": "Censo iniciado (~20 min)",
-      "censusFailed": "No se pudo iniciar",
-      "censusRunning": "Censo en curso, se actualizará",
-      "censusWithHistory": "Objetos con historial",
-      "censusTotal": "Operaciones EXBO totales",
-      "rollup": "Recalcular",
-      "rollupStarted": "Rollup iniciado",
-      "rollupFailed": "No se pudo iniciar",
-      "rollupRunning": "Rollup en curso",
-      "lastRollup": "Último rollup",
-      "rollupDays": "Días procesados"
+    "feedSources": {
+      "title": "Fuentes del feed",
+      "count": "Fuentes: {count}",
+      "form": {
+        "title": "Añadir fuente",
+        "description": "Conecta un canal de Telegram o YouTube al feed.",
+        "type": "Tipo",
+        "externalId": "ID externo",
+        "externalIdHintTG": "@username o ID numérico de Telegram",
+        "externalIdHintYOUTUBE": "URL del canal de YouTube o ID UC…",
+        "label": "Etiqueta (opcional)",
+        "add": "Añadir fuente"
+      },
+      "types": {
+        "TG": "Telegram",
+        "YOUTUBE": "YouTube"
+      },
+      "table": {
+        "type": "Tipo",
+        "externalId": "ID externo",
+        "label": "Etiqueta",
+        "enabled": "Activa",
+        "lastSynced": "Última sincronización",
+        "createdAt": "Creada",
+        "toggle": "Cambiar {label}",
+        "on": "Sí",
+        "off": "No",
+        "never": "Nunca",
+        "sync": "Sincronizar fuente",
+        "delete": "Eliminar fuente"
+      },
+      "empty": "Aún no hay fuentes del feed.",
+      "delete": {
+        "title": "¿Eliminar fuente?",
+        "confirm": "Eliminar"
+      },
+      "toast": {
+        "error": "Algo salió mal",
+        "created": "Fuente añadida",
+        "deleted": "Fuente eliminada",
+        "synced": "Publicaciones sincronizadas: {count}",
+        "syncError": "No se pudo sincronizar la fuente"
+      }
     },
     "health": {
       "title": "Salud del sistema",
@@ -4666,10 +4666,9 @@
     },
     "sources": {
       "USER": "Usuarios",
-      "EXBO_TG": "Canal Exbo",
-      "STALZONE_REPORT": "Stalzone Report",
-      "OFFICIAL_MEDIA": "Medios oficiales",
-      "EFORUM": "Foro"
+      "TG": "Telegram",
+      "YOUTUBE": "YouTube",
+      "EFORUM": "EForum"
     },
     "attachments": {
       "build": "build",

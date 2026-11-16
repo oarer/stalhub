@@ -1750,7 +1750,7 @@
       "arts": "Творчество",
       "bans": "Баны",
       "scNodes": "SC-ноды",
-      "auctionHistory": "История аукциона",
+      "feedSources": "Источники ленты",
       "dashboard": "Дашборд",
       "group": {
         "overview": "Обзор",
@@ -2229,49 +2229,49 @@
         "pingFailed": "Нода не отвечает"
       }
     },
-    "auctionHistory": {
-      "title": "История аукциона",
-      "running": "Сбор идёт",
-      "idle": "Простой",
-      "refresh": "Обновить",
-      "backfill": "Бэкфилл",
-      "pending": "Осталось: {count}",
-      "dealsTotal": "Всего сделок",
-      "depth": "Глубина: {from} — {to}",
-      "dbSize": "Размер БД",
-      "dealsSize": "таблица deals: {size}",
-      "lastSweep": "Последний свип",
-      "lastBackfill": "Последний бэкфилл",
-      "notRunYet": "Ещё не запускалось",
-      "inserted": "Вставлено",
-      "itemsSeen": "Предметов",
-      "requests": "Запросов",
-      "failed": "Ошибок",
-      "duration": "Длительность",
-      "finishedAgo": "Назад",
-      "top": "Топ предметов по сделкам",
-      "item": "Предмет",
-      "dealsCol": "Сделок",
-      "deepening": "Углубление",
-      "deepen": "Углубить топ",
-      "deepenHint": "Добирает глубину горячим предметам (ниже hist_oldest, до 90 дней / 100к сделок). Тяжёлая операция, идёт в фоне.",
-      "deepenStarted": "Углубление запущено",
-      "deepenFailed": "Не удалось запустить",
-      "lastDeepen": "Последнее углубление",
-      "capped": "в кэпе: {count}",
-      "census": "Перепись EXBO",
-      "censusRun": "Запустить перепись",
-      "censusStarted": "Перепись запущена (~20 мин)",
-      "censusFailed": "Не удалось запустить",
-      "censusRunning": "Перепись идёт, обновится сама",
-      "censusWithHistory": "Предметов с историей",
-      "censusTotal": "Всего сделок в EXBO",
-      "rollup": "Пересчитать",
-      "rollupStarted": "Роллап запущен",
-      "rollupFailed": "Не удалось запустить",
-      "rollupRunning": "Роллап идёт",
-      "lastRollup": "Последний роллап",
-      "rollupDays": "Дней пересчитано"
+    "feedSources": {
+      "title": "Источники ленты",
+      "count": "Источников: {count}",
+      "form": {
+        "title": "Добавить источник",
+        "description": "Подключите Telegram- или YouTube-канал к ленте.",
+        "type": "Тип",
+        "externalId": "Внешний ID",
+        "externalIdHintTG": "@username или числовой ID Telegram",
+        "externalIdHintYOUTUBE": "URL YouTube-канала или ID канала UC…",
+        "label": "Метка (необязательно)",
+        "add": "Добавить источник"
+      },
+      "types": {
+        "TG": "Telegram",
+        "YOUTUBE": "YouTube"
+      },
+      "table": {
+        "type": "Тип",
+        "externalId": "Внешний ID",
+        "label": "Метка",
+        "enabled": "Включён",
+        "lastSynced": "Последняя синхронизация",
+        "createdAt": "Добавлен",
+        "toggle": "Переключить {label}",
+        "on": "Вкл",
+        "off": "Выкл",
+        "never": "Нет данных",
+        "sync": "Синхронизировать источник",
+        "delete": "Удалить источник"
+      },
+      "empty": "Источники ленты ещё не добавлены.",
+      "delete": {
+        "title": "Удалить источник?",
+        "confirm": "Удалить"
+      },
+      "toast": {
+        "error": "Что-то пошло не так",
+        "created": "Источник добавлен",
+        "deleted": "Источник удалён",
+        "synced": "Синхронизировано постов: {count}",
+        "syncError": "Не удалось синхронизировать источник"
+      }
     },
     "health": {
       "title": "Статус системы",
@@ -4737,10 +4737,9 @@
     },
     "sources": {
       "USER": "Пользователи",
-      "EXBO_TG": "ТГК Exbo",
-      "STALZONE_REPORT": "Stalzone Report",
-      "OFFICIAL_MEDIA": "Официальные медиа",
-      "EFORUM": "Форум"
+      "TG": "Telegram",
+      "YOUTUBE": "YouTube",
+      "EFORUM": "EForum"
     },
     "attachments": {
       "build": "сборка",
