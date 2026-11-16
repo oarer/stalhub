@@ -231,8 +231,7 @@
       "contacts": "Контакты",
       "disclaimer": "Отказ от ответственности"
     },
-    "brand": "© StalHub, {year}",
-    "design_by": "Дизайн сделан "
+    "brand": "© StalHub, {year}"
   },
   "nav": {
     "home": "Главная",
@@ -1353,7 +1352,9 @@
     "contacts_title": "О нас",
     "thanks_title": "Отдельная благодарность",
     "developer_role": "Главный разработчик",
-    "designer_role": "Дизайнер",
+    "uno_developer_role": "Разработка UNO",
+    "support_role": "Поддержал проект",
+    "old_designer_role": "Бывший дизайнер",
     "ad_role": "Пиар-менеджер",
     "contact_us": "Связь с нами",
     "useful_links": "Полезные ссылки",

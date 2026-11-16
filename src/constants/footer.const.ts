@@ -65,11 +65,4 @@ export const footerCredits: FooterCredit[] = [
 		labelKey: 'footer.made_by',
 		sound: false,
 	},
-	{
-		author: '@Art3mLapa',
-		href: 'https://github.com/Art3mLapa',
-		icon: '/public/images/other/art3.webp',
-		labelKey: 'footer.design_by',
-		sound: true,
-	},
 ]

@@ -45,14 +45,10 @@ export function LinksSection({
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
-									<p
-										className={`font-medium font-mono text-sm transition-colors group-hover/link:text-primary`}
-									>
+									<p className="font-medium text-sm transition-colors group-hover/link:text-primary">
 										{t(link.label)}
 									</p>
-									<span
-										className={`font-mono text-foreground text-xs`}
-									>
+									<span className="text-muted-foreground text-xs">
 										{t(link.description)}
 									</span>
 								</div>
@@ -94,14 +90,10 @@ export function LinksSection({
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
-									<p
-										className={`font-medium font-mono text-sm transition-colors group-hover/link:text-primary`}
-									>
+									<p className="font-medium text-sm transition-colors group-hover/link:text-primary">
 										{t(link.label)}
 									</p>
-									<span
-										className={`font-mono text-foreground text-xs`}
-									>
+									<span className="text-muted-foreground text-xs">
 										{t(link.description)}
 									</span>
 								</div>

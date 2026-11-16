@@ -19,15 +19,11 @@ export const contacts: AboutMember[] = [
 		],
 	},
 	{
-		name: 'art3mlapa',
-		description: 'about.designer_role',
+		name: 'teamdima',
+		description: 'about.uno_developer_role',
 		links: [
 			{
-				href: 'https://t.me/jvmdump',
-				icon: 'basil:telegram-outline',
-			},
-			{
-				href: 'https://github.com/art3mLapa',
+				href: 'https://github.com/DeTTK',
 				icon: 'mdi:github',
 			},
 		],
@@ -97,6 +93,30 @@ export const thanks: AboutMember[] = [
 			{
 				href: 'https://t.me/flacee',
 				icon: 'basil:telegram-outline',
+			},
+		],
+	},
+	{
+		name: 'art3mlapa',
+		description: 'about.old_designer_role',
+		links: [
+			{
+				href: 'https://t.me/jvmdump',
+				icon: 'basil:telegram-outline',
+			},
+		],
+	},
+	{
+		name: 'fog',
+		description: 'about.support_role',
+	},
+	{
+		name: 'vrand',
+		description: 'about.support_role',
+		links: [
+			{
+				href: 'https://github.com/vrand1',
+				icon: 'mdi:github',
 			},
 		],
 	},
