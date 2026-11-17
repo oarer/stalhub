@@ -6,9 +6,16 @@ import FeedView from '@/views/feed/FeedView'
 
 export default async function FeedPage() {
 	const queryClient = getQueryClient()
-	await queryClient.prefetchInfiniteQuery(
-		feedQueries.list({ types: [...FEED_CONTENT_TYPES], take: 20, sort: 'new' })
-	)
+	await Promise.all([
+		queryClient.prefetchInfiniteQuery(
+			feedQueries.list({
+				types: [...FEED_CONTENT_TYPES],
+				take: 20,
+				sort: 'new',
+			})
+		),
+		queryClient.prefetchQuery(feedQueries.categories()),
+	])
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>

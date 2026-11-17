@@ -1,6 +1,6 @@
 import type { BuildApi } from './build-api.type'
-import type { TierList } from './tier-list.type'
 import type { Author } from './common.type'
+import type { TierList } from './tier-list.type'
 
 export type PostSource = 'USER' | 'TG' | 'YOUTUBE' | 'EFORUM'
 
@@ -59,6 +59,8 @@ export interface Post {
 	attached_tier_lists?: TierList[]
 	repost_of?: PostRepostOf
 	source: PostSource
+	source_url?: string | null
+	source_avatar_url?: string | null
 	edited_by?: PostEditedBy | null
 	can_manage?: boolean
 }

@@ -1349,7 +1349,7 @@
     "contacts_title": "연락처",
     "thanks_title": "특별 감사",
     "developer_role": "메인 개발자",
-    "designer_role": "디자이너",
+    "old_designer_role": "디자이너",
     "contact_us": "문의하기",
     "useful_links": "유용한 링크",
     "contact_links": {
@@ -1727,7 +1727,8 @@
       "health": "상태",
       "metrics": "메트릭",
       "uno": "UNO API",
-      "disputes": "분쟁"
+      "disputes": "분쟁",
+      "feedCategories": "피드 카테고리"
     },
     "dashboard": {
       "title": "대시보드",
@@ -2388,6 +2389,49 @@
       "conflictHint": "이 주문의 참여자이므로 분쟁을 맡거나 결정을 내릴 수 없습니다.",
       "takeOver": "인계받기",
       "takeOverHint": "이 분쟁은 이미 다른 중재자에게 배정되어 있습니다. 인계받아 결정을 내릴 수 있습니다."
+    },
+    "feedCategories": {
+      "title": "피드 카테고리",
+      "count": "카테고리 {count}개",
+      "form": {
+        "title": "카테고리 추가",
+        "description": "카테고리를 만들고 피드 소스를 연결하세요.",
+        "name": "이름",
+        "position": "순서",
+        "enabled": "활성",
+        "sources": "소스",
+        "sourcesEmpty": "먼저 피드 소스를 추가하세요.",
+        "sourcesPlaceholder": "소스 선택",
+        "sourcesSearch": "소스 검색",
+        "add": "카테고리 추가"
+      },
+      "table": {
+        "name": "이름",
+        "position": "순서",
+        "sources": "소스",
+        "enabled": "활성",
+        "createdAt": "생성일",
+        "toggle": "{name} 전환",
+        "on": "켜짐",
+        "off": "꺼짐",
+        "edit": "카테고리 편집",
+        "delete": "카테고리 삭제"
+      },
+      "empty": "아직 피드 카테고리가 없습니다.",
+      "edit": {
+        "title": "카테고리 편집",
+        "save": "저장"
+      },
+      "delete": {
+        "title": "카테고리를 삭제할까요?",
+        "confirm": "삭제"
+      },
+      "toast": {
+        "error": "문제가 발생했습니다",
+        "created": "카테고리가 생성되었습니다",
+        "updated": "카테고리가 업데이트되었습니다",
+        "deleted": "카테고리가 삭제되었습니다"
+      }
     }
   },
   "test": {
@@ -4604,7 +4648,11 @@
     "kicker": "공개 피드",
     "title": "새 빌드와 티어 리스트",
     "description": "열어 보고 저장하고 함께 이야기할 커뮤니티 작업입니다.",
+    "composer": {
+      "login": "게시글을 작성하려면 로그인하세요"
+    },
     "filters": {
+      "title": "필터",
       "label": "표시",
       "build": "빌드",
       "tier_list": "티어 리스트",
@@ -4675,7 +4723,13 @@
       "tier_list": "티어리스트"
     },
     "copied": "복사됨",
-    "noTypes": "콘텐츠 유형을 하나 이상 선택하세요."
+    "noTypes": "콘텐츠 유형을 하나 이상 선택하세요.",
+    "categories": {
+      "label": "소스 카테고리",
+      "placeholder": "모든 소스",
+      "search": "카테고리 검색",
+      "empty": "카테고리를 찾을 수 없습니다"
+    }
   },
   "post": {
     "write": "게시글 작성",

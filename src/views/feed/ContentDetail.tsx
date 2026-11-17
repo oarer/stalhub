@@ -22,6 +22,8 @@ interface ContentDetailHeaderProps {
 	title: string
 	author?: DetailAuthor | null
 	authorFallback?: string | null
+	authorAvatarUrl?: string | null
+	sourceUrl?: string | null
 	createdAt: string
 	editedBy?: { id: number; username: string } | null
 	description?: ReactNode
@@ -34,6 +36,8 @@ export function ContentDetailHeader({
 	title,
 	author,
 	authorFallback,
+	authorAvatarUrl,
+	sourceUrl,
 	createdAt,
 	editedBy,
 	description,
@@ -72,6 +76,12 @@ export function ContentDetailHeader({
 									width={40}
 								/>
 							</Link>
+						) : authorAvatarUrl ? (
+							<img
+								alt=""
+								className="size-10 shrink-0 rounded-full bg-muted object-cover"
+								src={authorAvatarUrl}
+							/>
 						) : (
 							<span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
 								<Icon
@@ -88,6 +98,15 @@ export function ContentDetailHeader({
 										user={author}
 									/>
 								</HoverUserCard>
+							) : sourceUrl ? (
+								<a
+									className="truncate font-semibold transition-colors hover:text-primary hover:underline"
+									href={sourceUrl}
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									{displayName}
+								</a>
 							) : (
 								<span className="truncate font-semibold">
 									{displayName}

@@ -77,6 +77,11 @@ const groups: {
 				href: '/admin/feed-sources',
 				icon: 'lucide:rss',
 			},
+			{
+				title: 'admin.sidebar.feedCategories',
+				href: '/admin/feed-categories',
+				icon: 'lucide:tags',
+			},
 		],
 	},
 	{

@@ -1,10 +1,10 @@
 'use client'
 
 import type { MDXComponents } from 'mdx/types'
-import Image from 'next/image'
 import Link from 'next/link'
 import { createContext, type ReactNode, useContext } from 'react'
 import { cn } from '@/lib/cn'
+import { resolveImageUrl } from '@/lib/imageUrl'
 import { slugify } from '@/lib/toc'
 import { Callout } from './callout'
 import { CodeBlock } from './code-block'
@@ -229,28 +229,46 @@ export function useMDXComponents(): MDXComponents {
 				{children}
 			</td>
 		),
-		img: ({ children, src, alt, ...props }) => (
-			<figure className="my-6 flex flex-col items-center">
-				<Image
-					alt={alt || ''}
-					className="relative m-0 h-auto w-full"
-					height={900}
-					onLoad={(e) => {
-						e.currentTarget.style.opacity = '1'
-					}}
-					src={src || ''}
-					style={{ opacity: 0 }}
-					width={1600}
-					{...props}
-				>
-					{children}
-				</Image>
-				{alt ? (
-					<figcaption className="mt-2 text-center text-muted-foreground text-sm">
-						{alt}
-					</figcaption>
-				) : null}
-			</figure>
-		),
+		img: ({ children, src, alt, className, ...props }) => {
+			const isCustomEmoji =
+				typeof src === 'string' &&
+				src.startsWith('/uploads/feed/emojis/')
+			if (isCustomEmoji) {
+				return (
+					<img
+						alt={alt || ''}
+						className={cn(
+							'm-0 inline-block h-[1.2em] w-[1.2em] align-[-0.2em]',
+							className
+						)}
+						src={resolveImageUrl(src) ?? src}
+						{...props}
+					/>
+				)
+			}
+			return (
+				<figure className="my-6 flex flex-col items-center">
+					<img
+						alt={alt || ''}
+						className={cn('relative m-0 h-auto w-full', className)}
+						height={900}
+						onLoad={(e) => {
+							e.currentTarget.style.opacity = '1'
+						}}
+						src={src || ''}
+						style={{ opacity: 0 }}
+						width={1600}
+						{...props}
+					>
+						{children}
+					</img>
+					{alt ? (
+						<figcaption className="mt-2 text-center text-muted-foreground text-sm">
+							{alt}
+						</figcaption>
+					) : null}
+				</figure>
+			)
+		},
 	}
 }

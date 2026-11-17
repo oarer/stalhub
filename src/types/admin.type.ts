@@ -355,6 +355,30 @@ export interface AdminFeedSourceUpdate {
 	enabled?: boolean
 }
 
+export interface AdminFeedCategory {
+	id: number
+	name: string
+	enabled: boolean
+	position: number
+	source_ids: number[]
+	created_at: string
+	updated_at: string
+}
+
+export interface AdminFeedCategoryCreate {
+	name: string
+	enabled?: boolean
+	position?: number
+	source_ids?: number[]
+}
+
+export interface AdminFeedCategoryUpdate {
+	name?: string
+	enabled?: boolean
+	position?: number
+	source_ids?: number[]
+}
+
 export interface AdminDashboardTrendPoint {
 	date: string
 	count: number

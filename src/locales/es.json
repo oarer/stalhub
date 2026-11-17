@@ -1349,7 +1349,7 @@
     "contacts_title": "Contactos",
     "thanks_title": "Agradecimientos especiales",
     "developer_role": "Desarrollador principal",
-    "designer_role": "Diseñador",
+    "old_designer_role": "Diseñador",
     "contact_us": "Contacta con nosotros",
     "useful_links": "Enlaces útiles",
     "contact_links": {
@@ -1727,7 +1727,8 @@
       "health": "Salud",
       "metrics": "Métricas",
       "uno": "UNO API",
-      "disputes": "Disputas"
+      "disputes": "Disputas",
+      "feedCategories": "Categorías del feed"
     },
     "dashboard": {
       "title": "Panel",
@@ -2388,6 +2389,49 @@
       "conflictHint": "Eres participante de este pedido, por lo que no puedes tomar la disputa ni emitir una decisión.",
       "takeOver": "Asumir",
       "takeOverHint": "Esta disputa ya está asignada a otro árbitro. Puedes asumirla y emitir una decisión."
+    },
+    "feedCategories": {
+      "title": "Categorías del feed",
+      "count": "{count} categorías",
+      "form": {
+        "title": "Añadir categoría",
+        "description": "Crea una categoría y vincula fuentes del feed.",
+        "name": "Nombre",
+        "position": "Posición",
+        "enabled": "Activa",
+        "sources": "Fuentes",
+        "sourcesEmpty": "Añade primero fuentes del feed.",
+        "sourcesPlaceholder": "Seleccionar fuentes",
+        "sourcesSearch": "Buscar fuentes",
+        "add": "Añadir categoría"
+      },
+      "table": {
+        "name": "Nombre",
+        "position": "Posición",
+        "sources": "Fuentes",
+        "enabled": "Activa",
+        "createdAt": "Creada",
+        "toggle": "Alternar {name}",
+        "on": "Sí",
+        "off": "No",
+        "edit": "Editar categoría",
+        "delete": "Eliminar categoría"
+      },
+      "empty": "Aún no hay categorías del feed.",
+      "edit": {
+        "title": "Editar categoría",
+        "save": "Guardar"
+      },
+      "delete": {
+        "title": "¿Eliminar categoría?",
+        "confirm": "Eliminar"
+      },
+      "toast": {
+        "error": "Algo salió mal",
+        "created": "Categoría creada",
+        "updated": "Categoría actualizada",
+        "deleted": "Categoría eliminada"
+      }
     }
   },
   "test": {
@@ -4604,7 +4648,11 @@
     "kicker": "Feed público",
     "title": "Nuevas builds y listas de niveles",
     "description": "Creaciones de la comunidad para abrir, guardar y comentar.",
+    "composer": {
+      "login": "Inicia sesión para escribir una publicación"
+    },
     "filters": {
+      "title": "Filtros",
       "label": "Mostrar",
       "build": "Builds",
       "tier_list": "Listas de niveles",
@@ -4675,7 +4723,13 @@
       "tier_list": "tier list"
     },
     "copied": "Copiado",
-    "noTypes": "Selecciona al menos un tipo de contenido."
+    "noTypes": "Selecciona al menos un tipo de contenido.",
+    "categories": {
+      "label": "Categorías de fuentes",
+      "placeholder": "Todas las fuentes",
+      "search": "Buscar categorías",
+      "empty": "No se encontraron categorías"
+    }
   },
   "post": {
     "write": "Escribir una publicación",

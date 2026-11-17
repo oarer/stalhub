@@ -84,11 +84,13 @@ export default function PostDetailView({ id }: { id: string }) {
 					</>
 				}
 				author={post.author}
+				authorAvatarUrl={post.source_avatar_url}
 				authorFallback={
-					post.author_name ?? t(`feed.sources.${post.source}`)
+					post.author_name?.trim() || t(`feed.sources.${post.source}`)
 				}
 				createdAt={post.created_at}
 				editedBy={post.edited_by}
+				sourceUrl={post.source_url}
 				stats={
 					<>
 						{user ? (

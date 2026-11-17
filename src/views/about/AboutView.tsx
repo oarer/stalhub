@@ -19,8 +19,8 @@ export default function AboutView() {
 	const t = useTranslations()
 
 	return (
-		<section className="mx-auto max-w-4xl space-y-8 px-4 pt-24 pb-12 sm:px-6 lg:pt-42">
-			<motion.div {...view}>
+		<section className="mx-auto space-y-8 px-4 pt-24 pb-12 sm:px-6 lg:pt-42">
+			<motion.div className="mx-auto max-w-4xl" {...view}>
 				<GradientText
 					animationSpeed={2}
 					className={`${mtsExtended.className} text-4xl sm:text-5xl`}
@@ -31,7 +31,7 @@ export default function AboutView() {
 				</GradientText>
 			</motion.div>
 
-			<ul className="flex flex-col gap-20">
+			<ul className="mx-auto flex max-w-4xl flex-col gap-20">
 				{contacts.map((contact) => (
 					<ContactCard key={contact.name} {...contact} />
 				))}
@@ -48,13 +48,13 @@ export default function AboutView() {
 				</GradientText>
 			</motion.div>
 
-			<ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
+			<ul className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-3">
 				{thanks.map((item) => (
 					<ThanksCard key={item.name} {...item} />
 				))}
 			</ul>
 
-			<motion.div {...view}>
+			<motion.div className="mx-auto max-w-5xl" {...view}>
 				<LinksSection
 					contactLinks={contactLinks}
 					supportLinks={supportLinks}

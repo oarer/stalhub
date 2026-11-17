@@ -1349,7 +1349,7 @@
     "contacts_title": "Contacts",
     "thanks_title": "Special thanks",
     "developer_role": "Lead developer",
-    "designer_role": "Designer",
+    "old_designer_role": "Designer",
     "contact_us": "Contact us",
     "useful_links": "Useful links",
     "contact_links": {
@@ -1759,7 +1759,8 @@
       "health": "Health",
       "metrics": "Metrics",
       "uno": "UNO API",
-      "disputes": "Disputes"
+      "disputes": "Disputes",
+      "feedCategories": "Feed categories"
     },
     "dashboard": {
       "title": "Dashboard",
@@ -2420,6 +2421,49 @@
       "conflictHint": "You are a participant in this order, so you cannot claim the dispute or issue a decision.",
       "takeOver": "Take over",
       "takeOverHint": "This dispute is already assigned to another arbiter. You can take it over and issue a decision."
+    },
+    "feedCategories": {
+      "title": "Feed categories",
+      "count": "{count} categories",
+      "form": {
+        "title": "Add category",
+        "description": "Create a category and bind feed sources to it.",
+        "name": "Name",
+        "position": "Position",
+        "enabled": "Enabled",
+        "sources": "Sources",
+        "sourcesEmpty": "Add feed sources first.",
+        "sourcesPlaceholder": "Select sources",
+        "sourcesSearch": "Search sources",
+        "add": "Add category"
+      },
+      "table": {
+        "name": "Name",
+        "position": "Position",
+        "sources": "Sources",
+        "enabled": "Enabled",
+        "createdAt": "Created",
+        "toggle": "Toggle {name}",
+        "on": "On",
+        "off": "Off",
+        "edit": "Edit category",
+        "delete": "Delete category"
+      },
+      "empty": "No feed categories yet.",
+      "edit": {
+        "title": "Edit category",
+        "save": "Save"
+      },
+      "delete": {
+        "title": "Delete category?",
+        "confirm": "Delete"
+      },
+      "toast": {
+        "error": "Something went wrong",
+        "created": "Category created",
+        "updated": "Category updated",
+        "deleted": "Category deleted"
+      }
     }
   },
   "test": {
@@ -4675,7 +4719,11 @@
     "kicker": "Public feed",
     "title": "New builds and tier lists",
     "description": "Community work worth opening, saving, and discussing.",
+    "composer": {
+      "login": "Sign in to write a post"
+    },
     "filters": {
+      "title": "Filters",
       "label": "Show",
       "build": "Builds",
       "tier_list": "Tier lists",
@@ -4746,7 +4794,13 @@
       "tier_list": "tier list"
     },
     "copied": "Copied",
-    "noTypes": "Select at least one content type."
+    "noTypes": "Select at least one content type.",
+    "categories": {
+      "label": "Source categories",
+      "placeholder": "All sources",
+      "search": "Search categories",
+      "empty": "No categories found"
+    }
   },
   "post": {
     "write": "Write a post",

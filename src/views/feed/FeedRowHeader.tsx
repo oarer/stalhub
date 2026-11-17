@@ -9,11 +9,13 @@ import { EditedMark } from './EditedMark'
 export function FeedRowHeader({
 	author,
 	fallbackName,
+	sourceUrl,
 	createdAt,
 	editedBy,
 }: {
 	author?: Author | null
 	fallbackName?: string | null
+	sourceUrl?: string | null
 	createdAt: string
 	editedBy?: { id: number; username: string } | null
 }) {
@@ -27,6 +29,15 @@ export function FeedRowHeader({
 				<HoverUserCard id={author.id ?? 0}>
 					<Username user={author.id != null ? author : undefined} />
 				</HoverUserCard>
+			) : sourceUrl ? (
+				<a
+					className="truncate font-semibold transition-colors hover:text-primary hover:underline"
+					href={sourceUrl}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					{displayName}
+				</a>
 			) : (
 				<span className="truncate font-semibold">{displayName}</span>
 			)}

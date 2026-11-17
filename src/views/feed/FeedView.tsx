@@ -1,18 +1,17 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { useInfiniteQuery, useMutation } from '@tanstack/react-query'
+import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { mtsExtended } from '@/app/fonts'
 import { Button } from '@/components/ui/Button'
-import { CheckBox } from '@/components/ui/CheckBox'
-import { LightBox } from '@/components/ui/LightBox'
 import { ShareButton } from '@/components/ui/ShareButton'
 import { Skeleton } from '@/components/ui/Skeleton'
 import Avatar from '@/components/ui/user/Avatar'
+import { Gallery } from '@/components/wiki/gallery'
 import { resolveImageUrl } from '@/lib/imageUrl'
 import { getQueryClient } from '@/providers/QueryProvider'
 import { feedQueries } from '@/queries/feed/feed.queries'
@@ -26,6 +25,7 @@ import { FEED_CONTENT_TYPES } from '@/types/feed.type'
 import { ActionMenu } from './ActionMenu'
 import { BuildPreview, TierListPreview } from './ContentPreviews'
 import { FeedComments } from './FeedComments'
+import { FeedFilters } from './FeedFilters'
 import { FeedRowHeader } from './FeedRowHeader'
 import { HideFeedMenuItem } from './HideFeed'
 import { MarkdownContent } from './MarkdownContent'
@@ -45,7 +45,10 @@ export default function FeedView() {
 	const [types, setTypes] = useState<FeedContentType[]>([
 		...FEED_CONTENT_TYPES,
 	])
+	const [categoryIds, setCategoryIds] = useState<number[]>([])
 	const [sort, setSort] = useState<FeedSort>('new')
+	const { data: categoriesData } = useQuery(feedQueries.categories())
+	const categories = categoriesData?.categories ?? []
 	const [expanded, setExpanded] = useState<string | null>(null)
 	const sentinelRef = useRef<HTMLDivElement>(null)
 	const {
@@ -56,7 +59,12 @@ export default function FeedView() {
 		isLoading,
 		isError,
 	} = useInfiniteQuery({
-		...feedQueries.list({ types, sort, take: PAGE_SIZE }),
+		...feedQueries.list({
+			types,
+			categories: categoryIds,
+			sort,
+			take: PAGE_SIZE,
+		}),
 		enabled: types.length > 0,
 	})
 
@@ -68,6 +76,11 @@ export default function FeedView() {
 				: previous.filter((type) => type !== value)
 			return FEED_CONTENT_TYPES.filter((type) => next.includes(type))
 		})
+	}
+
+	const toggleCategories = (ids: number[]) => {
+		setExpanded(null)
+		setCategoryIds(ids)
 	}
 
 	useEffect(() => {
@@ -88,139 +101,136 @@ export default function FeedView() {
 	const items = data?.pages.flatMap((page) => page.data) ?? []
 
 	return (
-		<section className="mx-auto flex max-w-250 flex-col gap-8 px-4 pt-32 pb-12 xl:pt-36">
-			<header className="flex flex-col gap-4">
-				<div className="flex flex-col gap-2">
-					<div className="flex flex-wrap items-end justify-between gap-4">
+		<section className="mx-auto max-w-380 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-[260px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)]">
+				<FeedFilters
+					categories={categories}
+					categoryIds={categoryIds}
+					onCategoriesChange={toggleCategories}
+					onSortChange={setSort}
+					onTypeChange={toggleType}
+					sort={sort}
+					types={types}
+				/>
+				<div className="flex min-w-0 flex-col gap-5">
+					<header className="flex flex-col gap-4">
 						<h1
 							className={`${mtsExtended.className} font-semibold text-4xl text-primary`}
 						>
 							{t('feed.title')}
 						</h1>
-						{user && (
+						{user ? (
 							<PostFormModal
-								trigger={
-									<Button className="gap-2" variant="primary">
-										<Icon icon="lucide:pen-line" />
-										{t('post.write')}
-									</Button>
+								avatar={
+									<Avatar
+										className="size-11"
+										height={44}
+										id={user.id}
+										username={user.username}
+										width={44}
+									/>
 								}
+								inline
 							/>
-						)}
-					</div>
-				</div>
-				<div className="flex flex-wrap items-center justify-between gap-3 border-primary border-b pb-3">
-					<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-						<span className="font-medium text-foreground text-sm">
-							{t('feed.filters.label')}
-						</span>
-						{FEED_CONTENT_TYPES.map((value) => (
-							<CheckBox
-								checked={types.includes(value)}
-								id={`feed-type-${value}`}
-								key={value}
-								label={t(`feed.filters.${value}`)}
-								onCheckedChange={(checked) =>
-									toggleType(value, checked)
-								}
-								size="sm"
-							/>
-						))}
-					</div>
-					<div className="flex items-center gap-2">
-						<span className="font-medium text-foreground text-sm">
-							{t('feed.sort.label')}
-						</span>
-						{(['new', 'top'] as const).map((value) => (
-							<Button
-								key={value}
-								onClick={() => setSort(value)}
-								size="sm"
-								variant={sort === value ? 'secondary' : 'ghost'}
+						) : (
+							<Link
+								className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-card/40 p-4 transition-colors hover:border-primary/50 hover:bg-card"
+								href="/auth"
 							>
-								{t(`feed.sort.${value}`)}
-							</Button>
-						))}
-					</div>
-				</div>
-			</header>
+								<span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-muted">
+									<Icon
+										className="size-5 text-primary/70"
+										icon="lucide:pen-line"
+									/>
+								</span>
+								<span className="min-w-0 flex-1 truncate text-muted-foreground text-sm">
+									{t('feed.composer.login')}
+								</span>
+								<span className="shrink-0 font-medium text-primary text-sm">
+									{t('auth.login')}
+								</span>
+							</Link>
+						)}
+					</header>
 
-			{types.length === 0 ? (
-				<div className="flex flex-col items-center gap-3 py-16 text-center">
-					<Icon
-						className="size-10 text-foreground"
-						icon="lucide:list-filter"
-					/>
-					<p className="font-medium text-foreground text-sm">
-						{t('feed.noTypes')}
-					</p>
-				</div>
-			) : isLoading ? (
-				<div className="flex flex-col">
-					{Array.from({ length: 8 }).map((_, index) => (
-						<div
-							className="flex gap-3 border-primary/15 border-b px-2 py-4"
-							key={index}
-						>
-							<Skeleton className="size-10 rounded-full" />
-							<div className="flex flex-1 flex-col gap-2">
-								<Skeleton className="h-4 w-1/3" />
-								<Skeleton className="h-3 w-full" />
-								<Skeleton className="h-3 w-2/3" />
-							</div>
+					{types.length === 0 ? (
+						<div className="flex flex-col items-center gap-3 py-16 text-center">
+							<Icon
+								className="size-10 text-foreground"
+								icon="lucide:list-filter"
+							/>
+							<p className="font-medium text-foreground text-sm">
+								{t('feed.noTypes')}
+							</p>
 						</div>
-					))}
-				</div>
-			) : isError ? (
-				<div className="flex flex-col items-center gap-3 py-16 text-center">
-					<Icon
-						className="size-10 text-foreground"
-						icon="lucide:cloud-off"
-					/>
-					<p className="font-medium text-foreground text-sm">
-						{t('feed.error')}
-					</p>
-				</div>
-			) : items.length === 0 ? (
-				<div className="flex flex-col items-center gap-3 py-16 text-center">
-					<Icon
-						className="size-10 text-foreground"
-						icon="lucide:radio-tower"
-					/>
-					<p className="font-medium text-foreground text-sm">
-						{t('feed.empty')}
-					</p>
-				</div>
-			) : (
-				<div className="flex flex-col">
-					{items.map((item) => (
-						<FeedCard
-							expanded={expanded === itemKey(item)}
-							item={item}
-							key={itemKey(item)}
-							onComments={() =>
-								setExpanded((value) =>
-									value === itemKey(item)
-										? null
-										: itemKey(item)
-								)
-							}
-							queryClient={queryClient}
-							user={user}
-						/>
-					))}
-					<div className="h-2" ref={sentinelRef} />
-					{isFetchingNextPage && (
-						<div className="flex gap-3 px-2 py-4">
-							<Skeleton className="size-10 rounded-full" />
-							<div className="flex flex-1 flex-col gap-2">
-								<Skeleton className="h-4 w-1/3" />
-								<Skeleton className="h-3 w-full" />
-							</div>
+					) : isLoading ? (
+						<div className="flex flex-col">
+							{Array.from({ length: 8 }).map((_, index) => (
+								<div
+									className="flex gap-3 border-primary/15 border-b px-2 py-4"
+									key={index}
+								>
+									<Skeleton className="size-10 rounded-full" />
+									<div className="flex flex-1 flex-col gap-2">
+										<Skeleton className="h-4 w-1/3" />
+										<Skeleton className="h-3 w-full" />
+										<Skeleton className="h-3 w-2/3" />
+									</div>
+								</div>
+							))}
+						</div>
+					) : isError ? (
+						<div className="flex flex-col items-center gap-3 py-16 text-center">
+							<Icon
+								className="size-10 text-foreground"
+								icon="lucide:cloud-off"
+							/>
+							<p className="font-medium text-foreground text-sm">
+								{t('feed.error')}
+							</p>
+						</div>
+					) : items.length === 0 ? (
+						<div className="flex flex-col items-center gap-3 py-16 text-center">
+							<Icon
+								className="size-10 text-foreground"
+								icon="lucide:radio-tower"
+							/>
+							<p className="font-medium text-foreground text-sm">
+								{t('feed.empty')}
+							</p>
+						</div>
+					) : (
+						<div className="flex flex-col">
+							{items.map((item) => (
+								<FeedCard
+									expanded={expanded === itemKey(item)}
+									item={item}
+									key={itemKey(item)}
+									onComments={() =>
+										setExpanded((value) =>
+											value === itemKey(item)
+												? null
+												: itemKey(item)
+										)
+									}
+									queryClient={queryClient}
+									user={user}
+								/>
+							))}
+							<div className="h-2" ref={sentinelRef} />
+							{isFetchingNextPage && (
+								<div className="flex gap-3 px-2 py-4">
+									<Skeleton className="size-10 rounded-full" />
+									<div className="flex flex-1 flex-col gap-2">
+										<Skeleton className="h-4 w-1/3" />
+										<Skeleton className="h-3 w-full" />
+									</div>
+								</div>
+							)}
 						</div>
 					)}
 				</div>
-			)}
+			</div>
 		</section>
 	)
 }
@@ -318,6 +328,12 @@ function PostCard({
 							width={40}
 						/>
 					</Link>
+				) : post.source_avatar_url ? (
+					<img
+						alt=""
+						className="size-10 shrink-0 rounded-full bg-muted object-cover"
+						src={post.source_avatar_url}
+					/>
 				) : (
 					<div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
 						<Icon
@@ -333,8 +349,10 @@ function PostCard({
 					createdAt={post.created_at}
 					editedBy={post.edited_by}
 					fallbackName={
-						post.author_name ?? t(`feed.sources.${post.source}`)
+						post.author_name?.trim() ||
+						t(`feed.sources.${post.source}`)
 					}
+					sourceUrl={post.source_url}
 				/>
 			}
 			menu={
@@ -416,32 +434,11 @@ function Count({ value }: { value: number | null }) {
 
 function PostImageGallery({ images }: { images: string[] }) {
 	return (
-		<div className="overflow-hidden rounded-xl border border-primary/10 shadow-sm">
-			<div
-				className={`grid gap-0.5 ${images.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}
-			>
-				{images.slice(0, 4).map((url) => (
-					<LightBox.Root key={url}>
-						<LightBox.Trigger asChild>
-							<button
-								className={`group/img relative w-full cursor-zoom-in bg-muted transition-transform hover:scale-[1.01] ${images.length === 1 ? 'aspect-video' : 'aspect-square'}`}
-								type="button"
-							>
-								<Image
-									alt=""
-									className="object-cover transition-opacity group-hover/img:opacity-95"
-									fill
-									sizes="(max-width: 768px) 100vw, 900px"
-									src={`http://localhost:3001${url}`}
-									unoptimized
-								/>
-							</button>
-						</LightBox.Trigger>
-						<LightBox.Content src={url} />
-					</LightBox.Root>
-				))}
-			</div>
-		</div>
+		<Gallery
+			className="my-1 max-w-xl"
+			images={images}
+			resolveUrl={resolveImageUrl}
+		/>
 	)
 }
 

@@ -1349,7 +1349,7 @@
     "contacts_title": "Contacts",
     "thanks_title": "Remerciements particuliers",
     "developer_role": "Développeur principal",
-    "designer_role": "Designer",
+    "old_designer_role": "Designer",
     "contact_us": "Contactez-nous",
     "useful_links": "Liens utiles",
     "contact_links": {
@@ -1727,7 +1727,8 @@
       "health": "Santé",
       "metrics": "Métriques",
       "uno": "UNO API",
-      "disputes": "Litiges"
+      "disputes": "Litiges",
+      "feedCategories": "Catégories du fil"
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -2388,6 +2389,49 @@
       "conflictHint": "Vous êtes participant à cette commande, vous ne pouvez donc pas prendre le litige ni rendre de décision.",
       "takeOver": "Reprendre",
       "takeOverHint": "Ce litige est déjà attribué à un autre arbitre. Vous pouvez le reprendre et rendre une décision."
+    },
+    "feedCategories": {
+      "title": "Catégories du fil",
+      "count": "{count} catégories",
+      "form": {
+        "title": "Ajouter une catégorie",
+        "description": "Créez une catégorie et associez-y des sources du fil.",
+        "name": "Nom",
+        "position": "Position",
+        "enabled": "Active",
+        "sources": "Sources",
+        "sourcesEmpty": "Ajoutez d’abord des sources du fil.",
+        "sourcesPlaceholder": "Sélectionner des sources",
+        "sourcesSearch": "Rechercher des sources",
+        "add": "Ajouter la catégorie"
+      },
+      "table": {
+        "name": "Nom",
+        "position": "Position",
+        "sources": "Sources",
+        "enabled": "Active",
+        "createdAt": "Créée",
+        "toggle": "Basculer {name}",
+        "on": "Oui",
+        "off": "Non",
+        "edit": "Modifier la catégorie",
+        "delete": "Supprimer la catégorie"
+      },
+      "empty": "Aucune catégorie du fil pour le moment.",
+      "edit": {
+        "title": "Modifier la catégorie",
+        "save": "Enregistrer"
+      },
+      "delete": {
+        "title": "Supprimer la catégorie ?",
+        "confirm": "Supprimer"
+      },
+      "toast": {
+        "error": "Une erreur est survenue",
+        "created": "Catégorie créée",
+        "updated": "Catégorie mise à jour",
+        "deleted": "Catégorie supprimée"
+      }
     }
   },
   "test": {
@@ -4604,7 +4648,11 @@
     "kicker": "Fil public",
     "title": "Nouveaux builds et tier lists",
     "description": "Les créations de la communauté à découvrir, enregistrer et commenter.",
+    "composer": {
+      "login": "Connectez-vous pour écrire une publication"
+    },
     "filters": {
+      "title": "Filtres",
       "label": "Afficher",
       "build": "Builds",
       "tier_list": "Tier lists",
@@ -4675,7 +4723,13 @@
       "tier_list": "tier list"
     },
     "copied": "Copié",
-    "noTypes": "Sélectionnez au moins un type de contenu."
+    "noTypes": "Sélectionnez au moins un type de contenu.",
+    "categories": {
+      "label": "Catégories de sources",
+      "placeholder": "Toutes les sources",
+      "search": "Rechercher des catégories",
+      "empty": "Aucune catégorie trouvée"
+    }
   },
   "post": {
     "write": "Écrire une publication",

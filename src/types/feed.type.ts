@@ -14,6 +14,17 @@ export const FEED_CONTENT_TYPES = [
 export type FeedContentType = (typeof FEED_CONTENT_TYPES)[number]
 export type FeedSort = 'new' | 'top'
 
+export interface FeedCategory {
+	id: number
+	name: string
+	position: number
+	sources_count: number
+}
+
+export interface FeedCategoriesResponse {
+	categories: FeedCategory[]
+}
+
 // Типы элементов ленты — упрощённые версии базовых типов
 export type FeedBuild = Pick<
 	BuildApi,
@@ -69,6 +80,8 @@ export type FeedPost = Pick<
 	| 'attached_tier_lists'
 	| 'repost_of'
 	| 'source'
+	| 'source_url'
+	| 'source_avatar_url'
 	| 'edited_by'
 	| 'can_manage'
 >
