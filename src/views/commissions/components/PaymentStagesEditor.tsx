@@ -55,7 +55,7 @@ export function PaymentStagesEditor({
 					)
 				return (
 					<Card.Root
-						className="gap-3 ring-1 ring-border/40"
+						className="ring-border/40 gap-3 ring-1"
 						key={stage.id}
 					>
 						<Field

@@ -63,20 +63,20 @@ export function SocialLinksSection({
 	return (
 		<Section icon="lucide:share-2" title={t('me.settings.socialLinks')}>
 			<div className="flex flex-col gap-2">
-				<p className="font-semibold text-foreground text-xs">
+				<p className="text-foreground text-xs font-semibold">
 					{t('me.settings.socialLinksDesc')}
 				</p>
 				<div className="flex flex-col gap-2">
 					{SOCIAL_NETWORKS.map((network) => (
 						<div
-							className="flex items-center gap-2 rounded-lg bg-accent/50 p-2.5"
+							className="bg-accent/50 flex items-center gap-2 rounded-lg p-2.5"
 							key={network}
 						>
 							<Icon
-								className="shrink-0 text-foreground"
+								className="text-foreground shrink-0"
 								icon={SOCIAL_ICONS[network] ?? 'lucide:link'}
 							/>
-							<span className="w-20 shrink-0 font-semibold text-sm capitalize">
+							<span className="w-20 shrink-0 text-sm font-semibold capitalize">
 								{network}
 							</span>
 							<Input

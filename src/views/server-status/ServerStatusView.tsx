@@ -114,7 +114,7 @@ export default function ServerStatusView() {
 				accessorKey: 'peak',
 				header: t('servers.peakOnline'),
 				cell: ({ row }) => (
-					<span className="font-mono font-semibold text-primary">
+					<span className="text-primary font-mono font-semibold">
 						{row.original.peak.toLocaleString()}
 					</span>
 				),
@@ -129,24 +129,24 @@ export default function ServerStatusView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('servers.title')}
 			</h1>
 
-			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+			<div className="bg-card ring-primary/50 md:bg-card/50 space-y-4 rounded-xl px-5 py-4 shadow-lg ring-2 md:backdrop-blur-md">
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex items-center gap-2">
 						<Icon
 							className="text-primary text-xl"
 							icon="lucide:chart-line"
 						/>
-						<h2 className="font-medium text-lg">
+						<h2 className="text-lg font-medium">
 							{t('servers.charts')}
 						</h2>
 					</div>
 					<Tabs.Root onValueChange={setRange} value={range}>
-						<Tabs.List className="ring-2 ring-primary/30">
+						<Tabs.List className="ring-primary/30 ring-2">
 							{HISTORY_RANGES.map((r) => (
 								<Tabs.Trigger key={r.value} value={r.value}>
 									{r.label}
@@ -163,13 +163,13 @@ export default function ServerStatusView() {
 				)}
 			</div>
 
-			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+			<div className="bg-card ring-primary/50 md:bg-card/50 space-y-4 rounded-xl px-5 py-4 shadow-lg ring-2 md:backdrop-blur-md">
 				<div className="flex items-center gap-2">
 					<Icon
 						className="text-primary text-xl"
 						icon="lucide:radiation"
 					/>
-					<h2 className="font-medium text-lg">
+					<h2 className="text-lg font-medium">
 						{t('servers.emissions')}
 					</h2>
 				</div>
@@ -178,7 +178,7 @@ export default function ServerStatusView() {
 						const isActive = Boolean(data.currentStart)
 						return (
 							<div
-								className="rounded-lg bg-accent/40 p-3 text-sm"
+								className="bg-accent/40 rounded-lg p-3 text-sm"
 								key={data.region}
 							>
 								<div className="flex items-center justify-between gap-2">
@@ -200,14 +200,14 @@ export default function ServerStatusView() {
 									</Badge>
 								</div>
 								{emissions ? (
-									<div className="mt-2 flex flex-col gap-1 text-foreground">
+									<div className="text-foreground mt-2 flex flex-col gap-1">
 										{isActive && data.currentStart ? (
 											<span>
 												{t('servers.emissionStarted')}:{' '}
 												{formatDate(data.currentStart)}
 											</span>
 										) : null}
-										<span className="font-medium text-text">
+										<span className="text-text font-medium">
 											{t('servers.emissionPrev')}:
 										</span>
 										<span>
@@ -228,14 +228,14 @@ export default function ServerStatusView() {
 				</div>
 			</div>
 
-			<div className="space-y-4 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+			<div className="bg-card ring-primary/50 md:bg-card/50 space-y-4 rounded-xl px-5 py-4 shadow-lg ring-2 md:backdrop-blur-md">
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex items-center gap-2">
 						<Icon
 							className="text-primary text-xl"
 							icon="lucide:trophy"
 						/>
-						<h2 className="font-medium text-lg">
+						<h2 className="text-lg font-medium">
 							{t('servers.peaks')}
 						</h2>
 					</div>
@@ -243,7 +243,7 @@ export default function ServerStatusView() {
 						onValueChange={(v) => setPeakDays(Number(v))}
 						value={String(peakDays)}
 					>
-						<Tabs.List className="ring-2 ring-primary/30">
+						<Tabs.List className="ring-primary/30 ring-2">
 							<Tabs.Trigger value="7">7D</Tabs.Trigger>
 							<Tabs.Trigger value="30">30D</Tabs.Trigger>
 						</Tabs.List>
@@ -289,7 +289,7 @@ export default function ServerStatusView() {
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				{displayRegions.map((region) => (
 					<div
-						className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md"
+						className="bg-card ring-primary/50 md:bg-card/50 flex flex-col gap-2 rounded-xl px-5 py-4 shadow-lg ring-2 md:backdrop-blur-md"
 						key={region}
 					>
 						<div className="flex items-center gap-2">
@@ -297,14 +297,14 @@ export default function ServerStatusView() {
 								className={`text-xl ${REGION_COLORS[region] ?? 'text-primary'}`}
 								icon="lucide:map-pin"
 							/>
-							<h2 className="font-medium text-lg">
+							<h2 className="text-lg font-medium">
 								{REGION_LABELS[region]}
 							</h2>
 						</div>
 
 						<div className="flex items-center gap-1.5 font-medium">
 							<Icon
-								className="text-lg text-primary"
+								className="text-primary text-lg"
 								icon="lucide:users"
 							/>
 							<span className="text-muted-foreground text-sm">

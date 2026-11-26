@@ -124,7 +124,7 @@ export function BuildPreview({
 		<div className="flex flex-wrap items-center gap-4">
 			<div className="flex flex-col items-center gap-1">
 				<div
-					className={`${size} flex items-center justify-center rounded-xl border border-primary/20 bg-muted/40 p-1.5`}
+					className={`${size} border-primary/20 bg-muted/40 flex items-center justify-center rounded-xl border p-1.5`}
 				>
 					{armor ? (
 						<Image
@@ -155,7 +155,7 @@ export function BuildPreview({
 
 			<div className="flex flex-col items-center gap-1">
 				<div
-					className={`${size} flex items-center justify-center rounded-xl border border-primary/20 bg-muted/40 p-1.5`}
+					className={`${size} border-primary/20 bg-muted/40 flex items-center justify-center rounded-xl border p-1.5`}
 				>
 					{container ? (
 						<Image
@@ -189,7 +189,7 @@ export function BuildPreview({
 					{arts.length > 0 ? (
 						arts.slice(0, slotCount).map((entry, index) => (
 							<div
-								className="relative rounded-lg border bg-muted/40"
+								className="bg-muted/40 relative rounded-lg border"
 								key={`${entry.item.id}-${index}`}
 								style={{ borderColor: itemColor(entry.item) }}
 								title={itemName(entry.item, locale)}
@@ -203,7 +203,7 @@ export function BuildPreview({
 									width={compact ? 40 : 48}
 								/>
 								<span
-									className="absolute -right-1 -bottom-1 rounded bg-card/95 px-0.5 font-mono text-[9px] shadow-sm"
+									className="bg-card/95 absolute -right-1 -bottom-1 rounded px-0.5 font-mono text-[9px] shadow-sm"
 									style={{ color: itemColor(entry.item) }}
 								>
 									{entry.percent}%
@@ -260,7 +260,7 @@ export function TierListPreview({
 	const shownRanks = compact ? ranks.slice(0, 4) : ranks
 	if (shownRanks.length === 0) {
 		return (
-			<div className="flex items-center gap-2 rounded-xl border border-primary/15 bg-muted/30 px-3 py-2 text-foreground/70 text-xs">
+			<div className="border-primary/15 bg-muted/30 text-foreground/70 flex items-center gap-2 rounded-xl border px-3 py-2 text-xs">
 				<Icon icon="lucide:layout-list" />—
 			</div>
 		)
@@ -274,14 +274,14 @@ export function TierListPreview({
 				return (
 					<div className="flex items-center gap-1.5" key={rank}>
 						<div
-							className={`flex size-7 shrink-0 items-center justify-center rounded-md font-bold text-xs ${colors.bg} ${colors.text}`}
+							className={`flex size-7 shrink-0 items-center justify-center rounded-md text-xs font-bold ${colors.bg} ${colors.text}`}
 						>
 							{rank}
 						</div>
 						<div className="flex min-w-0 flex-wrap items-center gap-1">
 							{items.slice(0, compact ? 8 : 12).map((entry) => (
 								<div
-									className="flex items-center rounded-md border border-primary/15 bg-muted/40 p-0.5"
+									className="border-primary/15 bg-muted/40 flex items-center rounded-md border p-0.5"
 									key={entry.item_id}
 									title={
 										entry.item
@@ -306,7 +306,7 @@ export function TierListPreview({
 								</div>
 							))}
 							{items.length > (compact ? 8 : 12) && (
-								<span className="text-[11px] text-foreground/70">
+								<span className="text-foreground/70 text-[11px]">
 									+{items.length - (compact ? 8 : 12)}
 								</span>
 							)}

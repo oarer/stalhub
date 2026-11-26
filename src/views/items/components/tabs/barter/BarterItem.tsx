@@ -17,12 +17,12 @@ export function BarterItem({ item, amount, locale }: Props) {
 
 	return (
 		<Link
-			className="group flex flex-col items-center gap-3 rounded-xl border-2 border-primary p-2"
+			className="group border-primary flex flex-col items-center gap-3 rounded-xl border-2 p-2"
 			href={`/items${item.category}`}
 		>
 			<Image
 				alt={messageToString(item.lines, locale)}
-				className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
+				className="transition-transform group-hover:scale-110 group-hover:-rotate-5"
 				height={52}
 				src={`https://cdn.stalhub.dev/db/icons${item.category}.png`}
 				width={52}

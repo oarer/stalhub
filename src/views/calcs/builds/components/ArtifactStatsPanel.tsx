@@ -79,12 +79,12 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 	if (!art || !stats || Object.keys(stats).length === 0) {
 		return (
 			<div className="text-center">
-				<p className="font-medium text-lg text-muted-foreground">
+				<p className="text-muted-foreground text-lg font-medium">
 					{t('modals.builds.no_data')}
 				</p>
 
 				{!container && (
-					<p className="mt-2 font-medium text-lg text-red-400">
+					<p className="mt-2 text-lg font-medium text-red-400">
 						{t('build.needed_cont')}
 					</p>
 				)}
@@ -105,7 +105,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 						}}
 					/>
 					<h1
-						className={`${mtsExtended.className} max-w-67 truncate font-medium text-lg text-primary leading-none`}
+						className={`${mtsExtended.className} text-primary max-w-67 truncate text-lg leading-none font-medium`}
 						style={{
 							color:
 								infoColorMap[color as ArtQuality] ||
@@ -147,11 +147,11 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 									className="flex justify-between"
 									key={s.key}
 								>
-									<p className="font-medium text-[13px]">
+									<p className="text-[13px] font-medium">
 										{label}
 									</p>
 									<p
-										className="font-medium font-mono text-sm"
+										className="font-mono text-sm font-medium"
 										style={
 											s.color
 												? { color: `#${s.color}` }
@@ -175,7 +175,7 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 								key={p.value}
 								onClick={() => onPercentChange(p.value)}
 							>
-								<p className="font-medium text-sm">{p.value}</p>
+								<p className="text-sm font-medium">{p.value}</p>
 							</button>
 						))}
 					</div>
@@ -196,11 +196,11 @@ export const ArtifactStatsPanel = memo(function ArtifactStatsPanel({
 					<div className="grid grid-cols-4 gap-2">
 						{potentialButtons.map((p) => (
 							<button
-								className="min-w-9 cursor-pointer rounded-lg bg-muted p-2 text-center font-mono ring-2 ring-primary/40 transition-colors hover:bg-accent"
+								className="bg-muted ring-primary/40 hover:bg-accent min-w-9 cursor-pointer rounded-lg p-2 text-center font-mono ring-2 transition-colors"
 								key={p}
 								onClick={() => onPotentialChange(p)}
 							>
-								<p className="font-medium text-sm">{p}</p>
+								<p className="text-sm font-medium">{p}</p>
 							</button>
 						))}
 					</div>
@@ -273,7 +273,7 @@ function QualityDropdown({
 							style={{ background: colorHex }}
 						/>
 						<p
-							className="font-medium text-[13px]"
+							className="text-[13px] font-medium"
 							style={{ color: colorHex }}
 						>
 							{t(`arts.${q}`)}

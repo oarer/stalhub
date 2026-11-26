@@ -44,7 +44,7 @@ export function ActionMenu({
 				{open && (
 					<motion.div
 						animate={{ opacity: 1, scale: 1 }}
-						className="absolute top-full right-0 z-50 mt-2 flex w-56 flex-col rounded-xl border border-primary/25 bg-card/95 p-1.5 shadow-lg backdrop-blur-xl"
+						className="border-primary/25 bg-card/95 absolute top-full right-0 z-50 mt-2 flex w-56 flex-col rounded-xl border p-1.5 shadow-lg backdrop-blur-xl"
 						exit={{ opacity: 0, scale: 0.95 }}
 						initial={{ opacity: 0, scale: 0.95 }}
 						role="menu"
@@ -78,7 +78,7 @@ export function ActionMenuItem({
 	return (
 		<motion.button
 			animate={{ opacity: 1 }}
-			className={`flex w-full cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-left font-medium text-sm transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-60 ${
+			className={`hover:bg-muted flex w-full cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
 				danger ? 'text-destructive hover:bg-destructive/15' : ''
 			}`}
 			disabled={disabled}

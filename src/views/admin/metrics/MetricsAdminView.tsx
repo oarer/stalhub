@@ -124,10 +124,10 @@ function MetricsContent() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-start justify-between gap-3">
 				<div>
-					<h1 className="font-semibold text-2xl">
+					<h1 className="text-2xl font-semibold">
 						{t('admin.metrics.title')}
 					</h1>
-					<p className="mt-1 text-neutral-400 text-sm">
+					<p className="mt-1 text-sm text-neutral-400">
 						{t('admin.metrics.updatedAt', {
 							date: formatDate(data.fetchedAt, 'time'),
 						})}
@@ -219,10 +219,10 @@ function MetricsContent() {
 					{TYPE_FILTERS.map((filter) => (
 						<button
 							className={cn(
-								'cursor-pointer rounded-lg px-3 py-1.5 font-medium text-sm ring-2 transition-all duration-400',
+								'cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium ring-2 transition-all duration-400',
 								typeFilter === filter
 									? 'bg-primary text-primary-foreground ring-primary'
-									: 'bg-transparent text-muted-foreground ring-primary/40 hover:bg-muted'
+									: 'text-muted-foreground ring-primary/40 hover:bg-muted bg-transparent'
 							)}
 							key={filter}
 							onClick={() => setTypeFilter(filter)}
@@ -249,16 +249,16 @@ function MetricsContent() {
 			</section>
 
 			{showRaw && (
-				<pre className="max-h-96 overflow-auto rounded-lg border border-border bg-card/50 p-3 font-mono text-xs leading-relaxed">
+				<pre className="border-border bg-card/50 max-h-96 overflow-auto rounded-lg border p-3 font-mono text-xs leading-relaxed">
 					{data.text}
 				</pre>
 			)}
 
 			<section className="flex flex-col gap-2">
-				<h2 className="flex items-center gap-2 font-semibold text-lg">
+				<h2 className="flex items-center gap-2 text-lg font-semibold">
 					<Icon icon="lucide:list" />
 					{t('admin.metrics.familiesTitle')}
-					<span className="font-normal text-neutral-400 text-sm">
+					<span className="text-sm font-normal text-neutral-400">
 						{numberFmt.format(filtered.length)}
 					</span>
 				</h2>
@@ -278,7 +278,7 @@ function MetricsContent() {
 					</Button>
 				)}
 				{filtered.length === 0 && (
-					<Card.Root className="items-center text-muted-foreground text-sm">
+					<Card.Root className="text-muted-foreground items-center text-sm">
 						{t('admin.metrics.empty')}
 					</Card.Root>
 				)}
@@ -301,7 +301,7 @@ function FamilyCard({ family }: { family: PromMetricFamily }) {
 			: null
 
 	return (
-		<div className="rounded-lg border border-border bg-card/50">
+		<div className="border-border bg-card/50 rounded-lg border">
 			<button
 				className="flex w-full cursor-pointer items-center gap-2 px-3 py-2 text-left"
 				onClick={() => setOpen((v) => !v)}
@@ -319,22 +319,22 @@ function FamilyCard({ family }: { family: PromMetricFamily }) {
 				</span>
 				<span
 					className={cn(
-						'shrink-0 rounded px-1.5 py-0.5 font-semibold text-[10px] uppercase',
+						'shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase',
 						TYPE_BADGES[family.type]
 					)}
 				>
 					{t(`admin.metrics.type.${family.type}`)}
 				</span>
-				<span className="ml-auto shrink-0 text-neutral-400 text-xs">
+				<span className="ml-auto shrink-0 text-xs text-neutral-400">
 					{t('admin.metrics.samplesCount', {
 						count: numberFmt.format(family.samples.length),
 					})}
 				</span>
 			</button>
 			{open && (
-				<div className="flex flex-col gap-2 border-border/60 border-t px-3 py-2">
+				<div className="border-border/60 flex flex-col gap-2 border-t px-3 py-2">
 					{family.help && (
-						<p className="text-neutral-400 text-xs">
+						<p className="text-xs text-neutral-400">
 							{family.help}
 						</p>
 					)}
@@ -370,7 +370,7 @@ function FamilyCard({ family }: { family: PromMetricFamily }) {
 									<div className="flex min-w-0 flex-wrap gap-1">
 										{labels.map(([key, label]) => (
 											<span
-												className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px] text-neutral-300"
+												className="bg-muted rounded px-1.5 py-0.5 font-mono text-[11px] text-neutral-300"
 												key={`${key}=${label}`}
 											>
 												{`${key}=${label}`}
@@ -393,7 +393,7 @@ function FamilyCard({ family }: { family: PromMetricFamily }) {
 function DerivedRow({ label, value }: { label: string; value: string }) {
 	return (
 		<div className="flex items-center justify-between gap-3 text-sm">
-			<span className="rounded bg-primary/10 px-1.5 py-0.5 font-mono text-[11px] text-primary">
+			<span className="bg-primary/10 text-primary rounded px-1.5 py-0.5 font-mono text-[11px]">
 				{label}
 			</span>
 			<span className="shrink-0 text-right font-mono">{value}</span>
@@ -416,7 +416,7 @@ function MetricsError({
 				<Icon icon="lucide:triangle-alert" />
 				{t('admin.metrics.loadError')}
 			</div>
-			<p className="font-mono text-neutral-400 text-xs">{message}</p>
+			<p className="font-mono text-xs text-neutral-400">{message}</p>
 			<Button onClick={onRetry} size="sm" variant="outline">
 				{t('admin.metrics.retry')}
 			</Button>

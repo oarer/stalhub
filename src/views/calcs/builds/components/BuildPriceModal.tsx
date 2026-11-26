@@ -86,15 +86,15 @@ export default function BuildPriceModal() {
 				</Modal.Header>
 				<Modal.Body>
 					{isLoading ? (
-						<p className="py-8 text-center text-muted-foreground">
+						<p className="text-muted-foreground py-8 text-center">
 							…
 						</p>
 					) : isError ? (
-						<p className="py-8 text-center text-muted-foreground">
+						<p className="text-muted-foreground py-8 text-center">
 							{t('build.price_unavailable')}
 						</p>
 					) : rows.length === 0 ? (
-						<p className="py-8 text-center text-foreground">
+						<p className="text-foreground py-8 text-center">
 							{t('build.price_empty')}
 						</p>
 					) : (
@@ -106,7 +106,7 @@ export default function BuildPriceModal() {
 
 								return (
 									<div
-										className="flex items-center justify-between gap-3 rounded-lg bg-accent/60 px-3 py-2"
+										className="bg-accent/60 flex items-center justify-between gap-3 rounded-lg px-3 py-2"
 										key={art.instance_id}
 										style={{
 											backgroundColor: `${colorHex}22`,
@@ -124,7 +124,7 @@ export default function BuildPriceModal() {
 											/>
 											<div className="flex min-w-0 flex-col">
 												<p
-													className="truncate font-medium text-sm"
+													className="truncate text-sm font-medium"
 													style={{ color: colorHex }}
 												>
 													{messageToString(
@@ -133,7 +133,7 @@ export default function BuildPriceModal() {
 													)}
 												</p>
 												<p
-													className={`font-medium font-mono text-muted-foreground text-xs`}
+													className={`text-muted-foreground font-mono text-xs font-medium`}
 												>
 													{art.percent}%
 													{art.potential > 0
@@ -159,7 +159,7 @@ export default function BuildPriceModal() {
 														</Tooltip.Root>
 													)}
 													<span
-														className={`font-mono font-semibold text-primary text-sm`}
+														className={`text-primary font-mono text-sm font-semibold`}
 													>
 														{formatArtPrice(
 															price.price
@@ -189,14 +189,14 @@ export default function BuildPriceModal() {
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`font-mono font-semibold text-primary text-xl`}
+									className={`text-primary font-mono text-xl font-semibold`}
 								>
 									{formatArtPrice(total)}₽
 								</p>
 							</div>
 							{updatedAt && (
 								<p
-									className={`font-medium font-mono text-foreground text-xs`}
+									className={`text-foreground font-mono text-xs font-medium`}
 								>
 									{t('build.price_updated')}{' '}
 									{formatDate(updatedAt, 'datetime')}

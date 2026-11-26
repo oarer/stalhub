@@ -100,7 +100,7 @@ export function AdminDisputeChat({
 					className="text-muted-foreground text-xl"
 					icon="lucide:messages-square"
 				/>
-				<h2 className="font-semibold text-xl">{t('chat')}</h2>
+				<h2 className="text-xl font-semibold">{t('chat')}</h2>
 			</div>
 			<div className="px-4 pt-3">
 				<Feedback error={initial.error || updates.error} />
@@ -146,7 +146,7 @@ export function AdminDisputeChat({
 				{!messages.length && initial.isSuccess && (
 					<div className="flex flex-col items-center gap-2 py-12 text-center">
 						<Icon
-							className="text-3xl text-muted-foreground"
+							className="text-muted-foreground text-3xl"
 							icon="lucide:message-circle"
 						/>
 						<p className="text-muted-foreground text-sm">
@@ -157,7 +157,7 @@ export function AdminDisputeChat({
 				{messages.map((message) => (
 					<div className="flex flex-col gap-2" key={message.id}>
 						<div className="flex items-center gap-3">
-							<span className="text-[11px] text-muted-foreground">
+							<span className="text-muted-foreground text-[11px]">
 								{formatDate(message.created_at)}
 							</span>
 						</div>
@@ -171,7 +171,7 @@ export function AdminDisputeChat({
 				))}
 			</div>
 			{canWrite && (
-				<div className="flex flex-col gap-2 border-primary/20 border-t px-4 pt-3 pb-4">
+				<div className="border-primary/20 flex flex-col gap-2 border-t px-4 pt-3 pb-4">
 					<Area
 						label={t('comment')}
 						onChange={setContent}

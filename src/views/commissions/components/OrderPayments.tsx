@@ -38,7 +38,7 @@ export function OrderPaymentsCard({
 		.reduce((s, p) => s + p.amount, 0)
 	return (
 		<Card.Root className="gap-4">
-			<h2 className="font-semibold text-xl">{t('payments')}</h2>
+			<h2 className="text-xl font-semibold">{t('payments')}</h2>
 			<p className="text-muted-foreground text-sm">{t('paymentHint')}</p>
 			<dl className="grid gap-2 text-sm">
 				<div className="flex justify-between">
@@ -72,12 +72,12 @@ export function OrderPaymentsCard({
 						)}
 					</div>
 					{payment.instructions && (
-						<p className="wrap-break-word whitespace-pre-wrap text-sm">
+						<p className="text-sm wrap-break-word whitespace-pre-wrap">
 							{payment.instructions}
 						</p>
 					)}
 					{payment.note && (
-						<p className="whitespace-pre-wrap text-muted-foreground text-sm">
+						<p className="text-muted-foreground text-sm whitespace-pre-wrap">
 							{payment.note}
 						</p>
 					)}
@@ -115,7 +115,7 @@ export function OrderRefundsCard({
 	if (!order.refunds.length) return null
 	return (
 		<Card.Root className="gap-3">
-			<h2 className="font-semibold text-xl">{t('refunds')}</h2>
+			<h2 className="text-xl font-semibold">{t('refunds')}</h2>
 			<p className="text-muted-foreground text-sm">{t('refundHint')}</p>
 			{order.refunds.map((refund) => (
 				<div className="flex flex-col gap-2" key={refund.id}>
@@ -126,12 +126,12 @@ export function OrderRefundsCard({
 						</span>
 						<Status value={refund.status} />
 					</div>
-					<span className="flex items-center gap-1.5 text-muted-foreground text-xs">
+					<span className="text-muted-foreground flex items-center gap-1.5 text-xs">
 						<Icon icon="lucide:calendar" />
 						{formatDate(refund.due_at, 'date')}
 					</span>
 					{refund.note && (
-						<p className="whitespace-pre-wrap text-sm">
+						<p className="text-sm whitespace-pre-wrap">
 							{refund.note}
 						</p>
 					)}

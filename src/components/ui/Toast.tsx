@@ -18,7 +18,7 @@ const icons = {
 	),
 	info: <Icon className="text-info-foreground" icon="lucide:info" />,
 	loading: (
-		<Icon className="animate-spin text-info" icon="lucide:loader-circle" />
+		<Icon className="text-info animate-spin" icon="lucide:loader-circle" />
 	),
 }
 
@@ -47,14 +47,14 @@ const showToast = (
 				<div className="flex min-w-0 flex-1 items-center gap-3">
 					<div className="shrink-0 text-lg">{icons[type]}</div>
 
-					<p className="wrap-break-word min-w-0 font-medium text-[13px] text-card-foreground">
+					<p className="text-card-foreground min-w-0 text-[13px] font-medium wrap-break-word">
 						{message}
 					</p>
 				</div>
 
 				{showCloseButton && (
 					<button
-						className="ml-4 shrink-0 cursor-pointer rounded-md font-medium text-muted-foreground text-sm hover:text-foreground"
+						className="text-muted-foreground hover:text-foreground ml-4 shrink-0 cursor-pointer rounded-md text-sm font-medium"
 						onClick={() => sonnerToast.dismiss(id)}
 						type="button"
 					>

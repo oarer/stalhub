@@ -114,7 +114,7 @@ function TreeNode({
 	return (
 		<div
 			className={
-				depth > 0 ? 'ml-4 border-primary/20 border-l-2 pl-3' : ''
+				depth > 0 ? 'border-primary/20 ml-4 border-l-2 pl-3' : ''
 			}
 		>
 			<div
@@ -132,16 +132,16 @@ function TreeNode({
 						width={28}
 					/>
 				)}
-				<span className="font-medium text-sm">
+				<span className="text-sm font-medium">
 					{name} ×{node.amount}
 				</span>
 				{node.money > 0 && (
-					<span className="font-mono font-semibold text-primary text-xs">
+					<span className="text-primary font-mono text-xs font-semibold">
 						{node.money.toLocaleString()} ₽
 					</span>
 				)}
 				{node.level && (
-					<span className="font-mono font-semibold text-foreground text-xs">
+					<span className="text-foreground font-mono text-xs font-semibold">
 						ур. {node.level}
 					</span>
 				)}
@@ -254,7 +254,7 @@ export default function BarterCalcView() {
 	return (
 		<section className="mx-auto flex max-w-300 flex-col gap-4 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('barterCalc.title')}
 			</h1>
@@ -269,7 +269,7 @@ export default function BarterCalcView() {
 							width={40}
 						/>
 					) : (
-						<div className="flex size-10 items-center justify-center rounded-lg bg-accent/40">
+						<div className="bg-accent/40 flex size-10 items-center justify-center rounded-lg">
 							<Icon
 								className="text-foreground text-xl"
 								icon="lucide:package"
@@ -278,7 +278,7 @@ export default function BarterCalcView() {
 					)}
 					<div className="min-w-0 flex-1">
 						{selected ? (
-							<div className="truncate font-semibold text-lg">
+							<div className="truncate text-lg font-semibold">
 									{rootFallback}
 								</div>
 						) : (
@@ -331,18 +331,18 @@ export default function BarterCalcView() {
 			)}
 
 			{!selected ? (
-				<div className="flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-card p-8 text-foreground text-sm">
+				<div className="border-primary/20 bg-card text-foreground flex items-center gap-2 rounded-xl border-2 p-8 text-sm">
 					<Icon icon="lucide:info" />
 					{t('barterCalc.pick')}
 				</div>
 			) : isPending ? (
-				<div className="rounded-xl border-2 border-primary/20 bg-card p-8 text-sm">
+				<div className="border-primary/20 bg-card rounded-xl border-2 p-8 text-sm">
 					…
 				</div>
 			) : tree ? (
 				<>
-					<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-						<div className="mb-2 font-semibold text-sm">
+					<div className="border-primary/20 bg-card rounded-xl border-2 p-4">
+						<div className="mb-2 text-sm font-semibold">
 							{t('barterCalc.tree')}
 						</div>
 						<TreeNode
@@ -355,8 +355,8 @@ export default function BarterCalcView() {
 							rootFallback={rootFallback}
 						/>
 					</div>
-					<div className="rounded-xl border-2 border-primary/20 bg-card p-4">
-						<div className="mb-2 font-semibold text-sm">
+					<div className="border-primary/20 bg-card rounded-xl border-2 p-4">
+						<div className="mb-2 text-sm font-semibold">
 							{t('barterCalc.totals')}
 						</div>
 						{totals.length === 0 ? (
@@ -367,7 +367,7 @@ export default function BarterCalcView() {
 							<div className="flex flex-col gap-1.5">
 								{totals.map((r) => (
 									<div
-										className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm"
+										className="bg-accent/40 flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm"
 										key={r.id}
 									>
 										{r.category && (
@@ -381,22 +381,22 @@ export default function BarterCalcView() {
 										<span className="flex-1 truncate">
 											{r.name}
 										</span>
-										<span className="font-mono font-semibold text-primary">
+										<span className="text-primary font-mono font-semibold">
 											×{r.amount}
 										</span>
 									</div>
 								))}
 							</div>
 						)}
-						<div className="mt-3 flex items-center justify-between rounded-lg bg-accent/60 px-3 py-2.5">
-							<span className="flex items-center gap-2 font-semibold text-sm">
+						<div className="bg-accent/60 mt-3 flex items-center justify-between rounded-lg px-3 py-2.5">
+							<span className="flex items-center gap-2 text-sm font-semibold">
 								<Icon
 									className="text-primary"
 									icon="lucide:coins"
 								/>
 								{t('barterCalc.totalPrice')}
 							</span>
-							<span className="font-bold font-mono text-primary">
+							<span className="text-primary font-mono font-bold">
 								{totalMoney.toLocaleString()} ₽
 							</span>
 						</div>

@@ -31,7 +31,7 @@ export function PreviewPane({
 	return (
 		<div
 			className={cn(
-				'relative my-2 mr-2 min-h-0 flex-1 overflow-y-auto rounded-lg border-2 border-primary/20 bg-card',
+				'border-primary/20 bg-card relative my-2 mr-2 min-h-0 flex-1 overflow-y-auto rounded-lg border-2',
 				mobileTab !== 'preview' && 'hidden md:flex'
 			)}
 			onScroll={onScroll}
@@ -50,26 +50,26 @@ export function PreviewPane({
 				) : content.trim() ? (
 					<div className="flex items-center justify-center gap-2 py-16">
 						<Icon
-							className="size-4 animate-spin text-foreground"
+							className="text-foreground size-4 animate-spin"
 							icon="lucide:loader-circle"
 						/>
-						<p className="font-semibold text-foreground text-md">
+						<p className="text-foreground text-md font-semibold">
 							{t('me.articleEditor.compiling')}
 						</p>
 					</div>
 				) : (
 					<div className="flex flex-col items-center gap-2 py-16">
 						<Icon
-							className="text-4xl text-foreground"
+							className="text-foreground text-4xl"
 							icon="lucide:file-text"
 						/>
-						<p className="font-semibold text-foreground text-md">
+						<p className="text-foreground text-md font-semibold">
 							{t('me.articleEditor.previewHere')}
 						</p>
 					</div>
 				)}
 				{compileError && (
-					<div className="flex items-center gap-2 border-destructive/20 border-t bg-destructive/5 px-4 py-2 text-destructive text-xs">
+					<div className="border-destructive/20 bg-destructive/5 text-destructive flex items-center gap-2 border-t px-4 py-2 text-xs">
 						<Icon className="size-4" icon="lucide:alert-triangle" />
 						<p className="font-semibold">
 							{t('me.articleEditor.mdxError')}

@@ -33,25 +33,25 @@ function MegaItem({ item }: { item: NavItem }) {
 		<div className="min-w-0">
 			{item.href ? (
 				<CLink
-					className="group/link flex items-start justify-start gap-3 rounded-lg px-3 py-2.5 transition-colors duration-200 hover:bg-accent/70"
+					className="group/link hover:bg-accent/70 flex items-start justify-start gap-3 rounded-lg px-3 py-2.5 transition-colors duration-200"
 					externalIcon={false}
 					href={item.href}
 					variant={'none'}
 				>
 					<Icon
 						aria-hidden="true"
-						className="mt-0.5 shrink-0 text-[20px] text-muted-foreground transition-colors group-hover/link:text-primary"
+						className="text-muted-foreground group-hover/link:text-primary mt-0.5 shrink-0 text-[20px] transition-colors"
 						icon={item.icon}
 					/>
 					<span className="flex min-w-0 flex-col gap-1">
 						<span
-							className={`${mtsWide.className} truncate font-semibold text-foreground text-sm leading-tight transition-colors group-hover/link:text-primary`}
+							className={`${mtsWide.className} text-foreground group-hover/link:text-primary truncate text-sm leading-tight font-semibold transition-colors`}
 						>
 							{t(item.labelKey)}
 						</span>
 						{item.descriptionKey && (
 							<span
-								className={`${mtsWide.className} line-clamp-3 font-medium text-muted-foreground text-xs leading-snug`}
+								className={`${mtsWide.className} text-muted-foreground line-clamp-3 text-xs leading-snug font-medium`}
 							>
 								{t(item.descriptionKey)}
 							</span>
@@ -62,18 +62,18 @@ function MegaItem({ item }: { item: NavItem }) {
 				<div className="flex items-start gap-3 px-3 py-2.5">
 					<Icon
 						aria-hidden="true"
-						className="mt-0.5 shrink-0 text-[20px] text-muted-foreground"
+						className="text-muted-foreground mt-0.5 shrink-0 text-[20px]"
 						icon={item.icon}
 					/>
 					<span className="flex min-w-0 flex-col gap-1">
 						<span
-							className={`${mtsWide.className} truncate font-semibold text-foreground text-sm leading-tight transition-colors group-hover/link:text-primary`}
+							className={`${mtsWide.className} text-foreground group-hover/link:text-primary truncate text-sm leading-tight font-semibold transition-colors`}
 						>
 							{t(item.labelKey)}
 						</span>
 						{item.descriptionKey && (
 							<span
-								className={`${mtsWide.className} line-clamp-3 font-medium text-muted-foreground text-xs leading-snug`}
+								className={`${mtsWide.className} text-muted-foreground line-clamp-3 text-xs leading-snug font-medium`}
 							>
 								{t(item.descriptionKey)}
 							</span>
@@ -83,10 +83,10 @@ function MegaItem({ item }: { item: NavItem }) {
 			)}
 
 			{item.submenu && item.submenu.length > 0 && (
-				<div className="ml-3 flex flex-col gap-0.5 border-border border-l pl-2">
+				<div className="border-border ml-3 flex flex-col gap-0.5 border-l pl-2">
 					{item.submenu.map((sub) => (
 						<CLink
-							className="group/sub flex items-center justify-start gap-2 truncate rounded-md px-2 py-1 font-medium text-[13px] text-muted-foreground transition-colors hover:bg-accent/70 hover:text-foreground"
+							className="group/sub text-muted-foreground hover:bg-accent/70 hover:text-foreground flex items-center justify-start gap-2 truncate rounded-md px-2 py-1 text-[13px] font-medium transition-colors"
 							externalIcon={false}
 							href={sub.href ?? '#'}
 							key={sub.key}
@@ -94,11 +94,11 @@ function MegaItem({ item }: { item: NavItem }) {
 						>
 							<Icon
 								aria-hidden="true"
-								className="shrink-0 text-[15px] transition-colors group-hover/sub:text-primary"
+								className="group-hover/sub:text-primary shrink-0 text-[15px] transition-colors"
 								icon={sub.icon}
 							/>
 							<span
-								className={`${mtsWide.className} line-clamp-3 font-medium text-muted-foreground text-xs leading-snug`}
+								className={`${mtsWide.className} text-muted-foreground line-clamp-3 text-xs leading-snug font-medium`}
 							>
 								{t(sub.labelKey)}
 							</span>
@@ -140,10 +140,10 @@ export default function NavDropdown({
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
 				className={cn(
-					`${mtsWide.className} flex cursor-pointer items-center gap-1.5 rounded-lg px-3.5 py-2 font-medium text-[15px] outline-none transition-all duration-200`,
+					`${mtsWide.className} flex cursor-pointer items-center gap-1.5 rounded-lg px-3.5 py-2 text-[15px] font-medium transition-all duration-200 outline-none`,
 					isOpen
 						? 'bg-accent text-foreground'
-						: 'border-transparent text-foreground hover:bg-accent/60'
+						: 'text-foreground hover:bg-accent/60 border-transparent'
 				)}
 				onClick={onToggle}
 				onMouseEnter={onOpen}
@@ -173,7 +173,7 @@ export default function NavDropdown({
 						transition={{ duration: 0.18, ease: 'easeOut' }}
 					>
 						<div
-							className="max-h-[calc(100dvh-7.5rem)] overflow-y-auto rounded-2xl border-2 border-primary/30 bg-card shadow-2xl shadow-muted backdrop-blur-xl"
+							className="border-primary/30 bg-card shadow-muted max-h-[calc(100dvh-7.5rem)] overflow-y-auto rounded-2xl border-2 shadow-2xl backdrop-blur-xl"
 							onMouseLeave={onClose}
 							role="menu"
 						>
@@ -181,7 +181,7 @@ export default function NavDropdown({
 								className={cn(
 									'grid',
 									colCount > 1 &&
-										'divide-x divide-primary/30',
+										'divide-primary/30 divide-x',
 									colCount === 1 && 'grid-cols-1',
 									colCount === 2 && 'grid-cols-2',
 									colCount === 3 &&
@@ -197,7 +197,7 @@ export default function NavDropdown({
 									>
 										{(col.titleKey ?? col.title) && (
 											<p
-												className={`${mtsWide.className} truncate px-3 pt-1 pb-1.5 font-medium text-muted-foreground text-sm`}
+												className={`${mtsWide.className} text-muted-foreground truncate px-3 pt-1 pb-1.5 text-sm font-medium`}
 											>
 												{getCategoryTitle(t, col)}
 											</p>
@@ -213,9 +213,9 @@ export default function NavDropdown({
 							</div>
 
 							{group.href && (
-								<div className="flex items-center justify-between gap-4 border-primary/30 border-t px-5 py-3">
+								<div className="border-primary/30 flex items-center justify-between gap-4 border-t px-5 py-3">
 									<CLink
-										className="group/more flex items-center gap-1.5 font-semibold text-[13.5px] text-primary transition-opacity hover:opacity-80"
+										className="group/more text-primary flex items-center gap-1.5 text-[13.5px] font-semibold transition-opacity hover:opacity-80"
 										externalIcon={false}
 										href={group.href}
 									>

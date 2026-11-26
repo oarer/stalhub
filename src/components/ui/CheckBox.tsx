@@ -140,12 +140,12 @@ function CheckBox({
 				{checkboxElement}
 				<div className="flex flex-col gap-1">
 					{label && (
-						<span className="select-none font-medium text-sm">
+						<span className="text-sm font-medium select-none">
 							{label}
 						</span>
 					)}
 					{description && (
-						<p className="font-medium text-[11px] text-muted-foreground">
+						<p className="text-muted-foreground text-[11px] font-medium">
 							{description}
 						</p>
 					)}

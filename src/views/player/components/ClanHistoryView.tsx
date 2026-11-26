@@ -18,7 +18,7 @@ export default function ClanHistoryView({
 			<Card.Header>
 				<div className="flex items-center gap-2">
 					<Icon className="text-xl" icon="lucide:history" />
-					<h1 className="font-semibold text-xl">
+					<h1 className="text-xl font-semibold">
 						{t('player.clanHistory.title')}
 					</h1>
 				</div>
@@ -26,11 +26,11 @@ export default function ClanHistoryView({
 			<Card.Content className="space-y-2">
 				{history.map((h) => (
 					<div
-						className="flex items-center justify-between rounded-lg bg-card px-3 py-2"
+						className="bg-card flex items-center justify-between rounded-lg px-3 py-2"
 						key={h.id}
 					>
 						<div className="flex flex-col gap-0.5">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{h.clan_name}
 								{h.clan_tag ? ` [${h.clan_tag}]` : ''}
 							</span>
@@ -39,7 +39,7 @@ export default function ClanHistoryView({
 							</span>
 						</div>
 						<span
-							className={`font-mono font-semibold text-foreground text-xs`}
+							className={`text-foreground font-mono text-xs font-semibold`}
 						>
 							{formatDate(h.seen_at)}
 						</span>

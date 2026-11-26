@@ -315,7 +315,7 @@ export function ArticleStatusesChart({
 
 function EmptyChart() {
 	return (
-		<div className="flex h-full items-center justify-center text-neutral-500 text-sm">
+		<div className="flex h-full items-center justify-center text-sm text-neutral-500">
 			—
 		</div>
 	)

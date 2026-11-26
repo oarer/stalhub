@@ -46,11 +46,11 @@ export function TopPlayersChart({
 	return (
 		<ChartCard
 			action={
-				<div className="flex items-center gap-2 rounded-xl bg-muted px-2 py-1.5">
+				<div className="bg-muted flex items-center gap-2 rounded-xl px-2 py-1.5">
 					{METRICS.map((m) => (
 						<Button
 							className={cn(
-								'font-semibold text-card-foreground',
+								'text-card-foreground font-semibold',
 								metric === m.value && 'bg-primary/40'
 							)}
 							key={m.value}
@@ -77,7 +77,7 @@ export function TopPlayersChart({
 			}
 		>
 			{topPlayers.length === 0 ? (
-				<div className="flex h-full items-center justify-center text-foreground text-sm">
+				<div className="text-foreground flex h-full items-center justify-center text-sm">
 					{t('clan.charts.noPlayers')}
 				</div>
 			) : (

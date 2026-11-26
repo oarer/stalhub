@@ -12,7 +12,7 @@ export default function ClanView({ data }: { data: Clan }) {
 			<Card.Header>
 				<div className="flex items-center gap-2">
 					<Icon className="text-xl" icon="lucide:shield-half" />
-					<h1 className="font-semibold text-xl">
+					<h1 className="text-xl font-semibold">
 						{t('player.clan.title')}
 					</h1>
 				</div>
@@ -21,7 +21,7 @@ export default function ClanView({ data }: { data: Clan }) {
 				<div className="grid grid-cols-1 gap-4 pl-7 md:grid-cols-2">
 					<div>
 						<p className="text-sm">{t('player.clan.name')}</p>
-						<p className="font-semibold text-sm">
+						<p className="text-sm font-semibold">
 							[{data.info.tag}] {data.info.name}
 						</p>
 					</div>
@@ -35,25 +35,25 @@ export default function ClanView({ data }: { data: Clan }) {
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.level')}</p>
-						<p className="font-semibold text-sm">
+						<p className="text-sm font-semibold">
 							{data.info.level + 1}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.members')}</p>
-						<p className="font-semibold text-sm">
+						<p className="text-sm font-semibold">
 							{data.info.memberCount}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.leader')}</p>
-						<p className="font-semibold text-sm text-yellow-500">
+						<p className="text-sm font-semibold text-yellow-500">
 							{data.info.leader}
 						</p>
 					</div>
 					<div>
 						<p className="text-sm">{t('player.clan.join_at')}</p>
-						<p className="font-semibold text-sm">
+						<p className="text-sm font-semibold">
 							{formatDate(data.member.joinTime)}
 						</p>
 					</div>

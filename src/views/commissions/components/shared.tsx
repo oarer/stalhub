@@ -171,7 +171,7 @@ export function FileLinks({
 			<Feedback error={error} />
 			{files.map((file) => (
 				<Button
-					className="w-fit justify-start p-0 text-left font-normal text-sm underline underline-offset-4"
+					className="w-fit justify-start p-0 text-left text-sm font-normal underline underline-offset-4"
 					key={file.id}
 					onClick={() => {
 						void download(file).catch(setError)
@@ -257,7 +257,7 @@ export function FilePicker({
 	return (
 		<div className="flex flex-col gap-2">
 			<p className="text-muted-foreground text-xs">{t('filesHint')}</p>
-			<label className="flex w-fit cursor-pointer flex-col gap-2 text-primary text-sm">
+			<label className="text-primary flex w-fit cursor-pointer flex-col gap-2 text-sm">
 				{t('addFiles')}
 				<input
 					accept={commissionFileAccept}
@@ -271,7 +271,7 @@ export function FilePicker({
 			{uploads.progress !== null && (
 				<progress
 					aria-label={t('addFiles')}
-					className="h-2 w-full accent-primary"
+					className="accent-primary h-2 w-full"
 					max={100}
 					value={uploads.progress}
 				/>
@@ -282,7 +282,7 @@ export function FilePicker({
 					className="flex items-center justify-between gap-2"
 					key={file.id}
 				>
-					<span className="break-all text-sm">{file.name}</span>
+					<span className="text-sm break-all">{file.name}</span>
 					<Button
 						disabled={uploads.progress !== null}
 						onClick={() => void uploads.remove(file.id)}

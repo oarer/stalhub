@@ -151,7 +151,7 @@ export default function LogoDrawAnimation() {
 		>
 			<div
 				aria-hidden
-				className="absolute inset-6 rounded-full bg-primary/25 blur-3xl dark:bg-primary/30"
+				className="bg-primary/25 dark:bg-primary/30 absolute inset-6 rounded-full blur-3xl"
 			/>
 
 			<motion.div
@@ -175,7 +175,7 @@ export default function LogoDrawAnimation() {
 
 			<motion.div
 				animate={{ y: [0, -10, 0] }}
-				className="absolute inset-0 text-foreground dark:text-white"
+				className="text-foreground absolute inset-0 dark:text-white"
 				transition={{
 					duration: 6,
 					repeat: Infinity,

@@ -56,7 +56,7 @@ export default function BalanceView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-8 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('balance.title')}
 			</h1>
@@ -73,12 +73,12 @@ export default function BalanceView() {
 					<Skeleton className="h-32 w-full" />
 				</div>
 			) : total === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-12 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+				<div className="bg-card ring-primary/50 md:bg-card/50 flex flex-col items-center gap-2 rounded-xl px-5 py-12 shadow-lg ring-2 md:backdrop-blur-md">
 					<Icon
-						className="text-4xl text-muted-foreground"
+						className="text-muted-foreground text-4xl"
 						icon="lucide:check-check"
 					/>
-					<p className="font-medium text-muted-foreground">
+					<p className="text-muted-foreground font-medium">
 						{t('balance.empty')}
 					</p>
 				</div>
@@ -94,7 +94,7 @@ export default function BalanceView() {
 									className="text-primary text-xl"
 									icon={CATEGORY_ICONS[group.category]}
 								/>
-								<h2 className="font-medium text-xl">
+								<h2 className="text-xl font-medium">
 									{t(`balance.categories.${group.category}`)}
 								</h2>
 								<Badge className="ml-2" variant="secondary">

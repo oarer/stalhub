@@ -118,7 +118,7 @@ const Switch = forwardRef<HTMLButtonElement, ISwitchProps>(
 					{switchElement}
 					<label
 						className={cn(
-							'cursor-pointer select-none font-medium text-sm leading-none',
+							'cursor-pointer text-sm leading-none font-medium select-none',
 							disabled && 'cursor-not-allowed opacity-50'
 						)}
 						htmlFor={id}

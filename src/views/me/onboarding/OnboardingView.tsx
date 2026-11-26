@@ -70,44 +70,44 @@ const stepIcons: Record<StepKey, string> = {
 
 function LayoutThumb({ layout }: { layout: Layout }) {
 	return (
-		<div className="flex h-20 w-full items-start gap-1.5 rounded-lg bg-card p-2">
+		<div className="bg-card flex h-20 w-full items-start gap-1.5 rounded-lg p-2">
 			{layout === 'CLASSIC' && (
 				<>
 					<div className="flex h-full w-14 flex-col gap-1.5">
-						<div className="size-7 shrink-0 rounded-sm bg-border-secondary" />
-						<div className="h-1.5 w-10 rounded bg-border-secondary" />
-						<div className="h-1.5 w-8 rounded bg-border-secondary" />
+						<div className="bg-border-secondary size-7 shrink-0 rounded-sm" />
+						<div className="bg-border-secondary h-1.5 w-10 rounded" />
+						<div className="bg-border-secondary h-1.5 w-8 rounded" />
 					</div>
 					<div className="flex flex-1 flex-col gap-1.5">
-						<div className="h-2 w-16 rounded bg-border-secondary" />
-						<div className="h-1.5 w-full rounded bg-border-secondary" />
-						<div className="h-1.5 w-full rounded bg-border-secondary" />
-						<div className="h-1.5 w-3/4 rounded bg-border-secondary" />
+						<div className="bg-border-secondary h-2 w-16 rounded" />
+						<div className="bg-border-secondary h-1.5 w-full rounded" />
+						<div className="bg-border-secondary h-1.5 w-full rounded" />
+						<div className="bg-border-secondary h-1.5 w-3/4 rounded" />
 					</div>
 				</>
 			)}
 			{layout === 'MODERN' && (
 				<div className="flex h-full w-full flex-col gap-1.5">
-					<div className="flex w-full items-center gap-1.5 rounded-sm bg-accent/40 p-1.5">
-						<div className="size-7 shrink-0 rounded-sm bg-border-secondary" />
-						<div className="h-2 w-20 rounded bg-border-secondary" />
+					<div className="bg-accent/40 flex w-full items-center gap-1.5 rounded-sm p-1.5">
+						<div className="bg-border-secondary size-7 shrink-0 rounded-sm" />
+						<div className="bg-border-secondary h-2 w-20 rounded" />
 					</div>
-					<div className="h-1.5 w-full rounded bg-border-secondary" />
-					<div className="h-1.5 w-full rounded bg-border-secondary" />
+					<div className="bg-border-secondary h-1.5 w-full rounded" />
+					<div className="bg-border-secondary h-1.5 w-full rounded" />
 				</div>
 			)}
 			{layout === 'COMPACT' && (
 				<div className="flex h-full w-full gap-1.5">
-					<div className="flex w-8 flex-col gap-1.5 rounded-sm bg-accent/40 p-1.5">
-						<div className="size-5 shrink-0 rounded-sm bg-border-secondary" />
-						<div className="h-1.5 w-full rounded bg-border-secondary" />
-						<div className="h-1.5 w-full rounded bg-border-secondary" />
+					<div className="bg-accent/40 flex w-8 flex-col gap-1.5 rounded-sm p-1.5">
+						<div className="bg-border-secondary size-5 shrink-0 rounded-sm" />
+						<div className="bg-border-secondary h-1.5 w-full rounded" />
+						<div className="bg-border-secondary h-1.5 w-full rounded" />
 					</div>
 					<div className="flex flex-1 flex-col gap-1.5">
-						<div className="h-5 w-full rounded-sm bg-border-secondary" />
-						<div className="h-2 w-16 rounded bg-border-secondary" />
-						<div className="h-1.5 w-full rounded bg-border-secondary" />
-						<div className="h-1.5 w-3/4 rounded bg-border-secondary" />
+						<div className="bg-border-secondary h-5 w-full rounded-sm" />
+						<div className="bg-border-secondary h-2 w-16 rounded" />
+						<div className="bg-border-secondary h-1.5 w-full rounded" />
+						<div className="bg-border-secondary h-1.5 w-3/4 rounded" />
 					</div>
 				</div>
 			)}
@@ -250,13 +250,13 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 						<div className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:sparkles" />
 							<h1
-								className={`${mtsExtended.className} font-medium text-lg leading-none`}
+								className={`${mtsExtended.className} text-lg leading-none font-medium`}
 							>
 								{t('onboarding.title')}
 							</h1>
 						</div>
 						{!isWelcome && (
-							<span className="font-medium font-mono text-foreground text-sm">
+							<span className="text-foreground font-mono text-sm font-medium">
 								{t('onboarding.stepOf', {
 									current: step + 1,
 									total: steps.length,
@@ -278,7 +278,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 					</div>
 				</header>
 
-				<div className="relative flex min-h-85 overflow-hidden rounded-xl bg-card p-6 ring-1 ring-primary/50">
+				<div className="bg-card ring-primary/50 relative flex min-h-85 overflow-hidden rounded-xl p-6 ring-1">
 					<AnimatePresence initial={false} mode="wait">
 						<motion.div
 							animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -290,18 +290,18 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 						>
 							{currentStep === 'welcome' && (
 								<div className="flex flex-col items-center gap-3 py-4 text-center">
-									<div className="flex size-16 items-center justify-center rounded-full bg-accent/50">
+									<div className="bg-accent/50 flex size-16 items-center justify-center rounded-full">
 										<Icon
 											className="text-4xl"
 											icon="lucide:waves-horizontal"
 										/>
 									</div>
 									<h1
-										className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+										className={`${mtsExtended.className} text-[22px] leading-none font-medium`}
 									>
 										{t('onboarding.welcome.title')}
 									</h1>
-									<p className="font-medium text-foreground text-sm">
+									<p className="text-foreground text-sm font-medium">
 										{t('onboarding.welcome.subtitle')}
 									</p>
 								</div>
@@ -314,7 +314,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											className="text-xl"
 											icon={stepIcons[currentStep]}
 										/>
-										<h2 className="font-semibold text-lg">
+										<h2 className="text-lg font-semibold">
 											{t(
 												`onboarding.step.${currentStep}.title`
 											)}
@@ -323,7 +323,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'name' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t('onboarding.step.name.desc')}
 											</p>
 											<Input
@@ -340,7 +340,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'username' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t(
 													'onboarding.step.username.desc'
 												)}
@@ -357,7 +357,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 											{!USERNAME_PATTERN.test(
 												username
 											) && (
-												<p className="font-semibold text-destructive text-xs">
+												<p className="text-destructive text-xs font-semibold">
 													{t(
 														'me.settings.usernameInvalid'
 													)}
@@ -368,7 +368,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'region' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t(
 													'onboarding.step.region.desc'
 												)}
@@ -384,7 +384,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'layout' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t(
 													'onboarding.step.layout.desc'
 												)}
@@ -411,7 +411,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																option.value
 															}
 														/>
-														<span className="flex items-center gap-1.5 px-1 pt-1.5 font-semibold text-sm">
+														<span className="flex items-center gap-1.5 px-1 pt-1.5 text-sm font-semibold">
 															{layout ===
 																option.value && (
 																<Icon
@@ -429,13 +429,13 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'banner' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t(
 													'onboarding.step.banner.desc'
 												)}
 											</p>
-											<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-												<span className="font-semibold text-sm">
+											<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+												<span className="text-sm font-semibold">
 													{t(
 														'me.settings.bannerType'
 													)}
@@ -453,8 +453,8 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 													value={bannerMode}
 												/>
 											</div>
-											<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-												<span className="font-semibold text-sm">
+											<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+												<span className="text-sm font-semibold">
 													{t(
 														'me.settings.bannerPlacement'
 													)}
@@ -473,21 +473,21 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 												/>
 											</div>
 											{bannerMode === 'COLOR' && (
-												<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-													<span className="font-semibold text-sm">
+												<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+													<span className="text-sm font-semibold">
 														{t(
 															'me.settings.banner_color'
 														)}
 													</span>
 													<label className="relative flex cursor-pointer items-center gap-2">
 														<div
-															className="size-8 rounded-lg ring-2 ring-primary/50"
+															className="ring-primary/50 size-8 rounded-lg ring-2"
 															style={{
 																backgroundColor:
 																	bannerColor,
 															}}
 														/>
-														<span className="font-medium font-mono text-foreground text-sm">
+														<span className="text-foreground font-mono text-sm font-medium">
 															{bannerColor}
 														</span>
 														<input
@@ -505,8 +505,8 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 												</div>
 											)}
 											{bannerMode === 'IMAGE' && (
-												<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-													<span className="font-semibold text-sm">
+												<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+													<span className="text-sm font-semibold">
 														{t(
 															'me.settings.bannerImage'
 														)}
@@ -546,7 +546,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'card' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t('onboarding.step.card.desc')}
 											</p>
 											<div className="flex flex-col gap-2">
@@ -557,7 +557,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 																cardBackground ===
 																option.value
 																	? 'bg-accent/50 ring-accent'
-																	: 'bg-accent/50 ring-transparent hover:ring-primary/50'
+																	: 'bg-accent/50 hover:ring-primary/50 ring-transparent'
 															}`}
 															key={option.value}
 															onClick={() =>
@@ -567,7 +567,7 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 															}
 															type="button"
 														>
-															<span className="flex items-center gap-2 font-semibold text-sm">
+															<span className="flex items-center gap-2 text-sm font-semibold">
 																{cardBackground ===
 																	option.value && (
 																	<Icon
@@ -583,21 +583,21 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 													)
 												)}
 												{cardBackground === 'COLOR' && (
-													<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-														<span className="font-semibold text-sm">
+													<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+														<span className="text-sm font-semibold">
 															{t(
 																'me.settings.card_color'
 															)}
 														</span>
 														<label className="relative flex cursor-pointer items-center gap-2">
 															<div
-																className="size-8 rounded-lg ring-2 ring-primary/50"
+																className="ring-primary/50 size-8 rounded-lg ring-2"
 																style={{
 																	backgroundColor:
 																		cardColor,
 																}}
 															/>
-															<span className="font-medium font-mono text-foreground text-sm">
+															<span className="text-foreground font-mono text-sm font-medium">
 																{cardColor}
 															</span>
 															<input
@@ -622,38 +622,38 @@ export default function OnboardingView({ user: userProp }: { user?: User }) {
 
 									{currentStep === 'finish' && (
 										<>
-											<p className="font-semibold text-foreground text-sm">
+											<p className="text-foreground text-sm font-semibold">
 												{t(
 													'onboarding.step.finish.desc'
 												)}
 											</p>
-											<div className="flex flex-col gap-1.5 rounded-lg bg-accent/50 p-3">
+											<div className="bg-accent/50 flex flex-col gap-1.5 rounded-lg p-3">
 												<div className="flex items-center justify-between">
-													<span className="font-semibold text-sm">
+													<span className="text-sm font-semibold">
 														{t('me.settings.name')}
 													</span>
-													<span className="font-medium font-mono text-foreground text-sm">
+													<span className="text-foreground font-mono text-sm font-medium">
 														{name}
 													</span>
 												</div>
 												<div className="flex items-center justify-between">
-													<span className="font-semibold text-sm">
+													<span className="text-sm font-semibold">
 														{t(
 															'me.settings.username'
 														)}
 													</span>
-													<span className="font-medium font-mono text-foreground text-sm">
+													<span className="text-foreground font-mono text-sm font-medium">
 														{username}
 													</span>
 												</div>
 												{hasExbo && (
 													<div className="flex items-center justify-between">
-														<span className="font-semibold text-sm">
+														<span className="text-sm font-semibold">
 															{t(
 																'me.settings.regionLabel'
 															)}
 														</span>
-														<span className="font-medium font-mono text-foreground text-sm">
+														<span className="text-foreground font-mono text-sm font-medium">
 															{t(
 																'region.' +
 																	region

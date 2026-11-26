@@ -84,7 +84,7 @@ export function UserRolesTab({ userId }: { userId: number }) {
 											>
 												{role.name}
 												{role.description && (
-													<span className="ml-2 text-neutral-400 text-xs">
+													<span className="ml-2 text-xs text-neutral-400">
 														— {role.description}
 													</span>
 												)}
@@ -107,15 +107,15 @@ export function UserRolesTab({ userId }: { userId: number }) {
 					<div className="flex flex-col gap-2">
 						{userRoles.map((role) => (
 							<div
-								className="flex items-center justify-between rounded-lg bg-card/50 px-3 py-2"
+								className="bg-card/50 flex items-center justify-between rounded-lg px-3 py-2"
 								key={role.id}
 							>
 								<div>
-									<p className="font-semibold text-sm">
+									<p className="text-sm font-semibold">
 										{role.name}
 									</p>
 									{role.description && (
-										<p className="text-neutral-400 text-xs">
+										<p className="text-xs text-neutral-400">
 											{role.description}
 										</p>
 									)}
@@ -154,7 +154,7 @@ export function UserRolesTab({ userId }: { userId: number }) {
 						))}
 					</div>
 				) : (
-					<p className="text-neutral-400 text-sm">
+					<p className="text-sm text-neutral-400">
 						{t('admin.userDetail.roles.empty')}
 					</p>
 				)}

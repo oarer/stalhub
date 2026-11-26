@@ -30,7 +30,7 @@ function AuthorCard({
 }) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col items-center gap-3 rounded-xl border border-border/50 bg-background/50 p-5">
+		<div className="border-border/50 bg-background/50 flex flex-col items-center gap-3 rounded-xl border p-5">
 			<Avatar
 				height={84}
 				id={entry.user.id}
@@ -38,21 +38,21 @@ function AuthorCard({
 				width={84}
 			/>
 			<Link
-				className={`${unbounded.className} text-center font-bold text-lg text-primary uppercase tracking-widest`}
+				className={`${unbounded.className} text-primary text-center text-lg font-bold tracking-widest uppercase`}
 				href={`/users/${entry.user.username}`}
 			>
 				<Username user={entry.user} />
 			</Link>
 			<span
-				className={`${unbounded.className} text-center text-xs uppercase tracking-widest`}
+				className={`${unbounded.className} text-center text-xs tracking-widest uppercase`}
 			>
 				{t(`landing.tops.${period}`)} · {entry.views.total}{' '}
 				{t('landing.tops.views')}
 			</span>
-			<div className="flex w-full flex-col gap-2 border-border/50 border-t pt-3">
+			<div className="border-border/50 flex w-full flex-col gap-2 border-t pt-3">
 				{entry.works.map((work) => (
 					<Link
-						className="truncate text-center text-primary text-sm hover:underline"
+						className="text-primary truncate text-center text-sm hover:underline"
 						href={workHref(work)}
 						key={`${work.kind}-${work.id}`}
 					>
@@ -82,25 +82,25 @@ export default function Tops() {
 			>
 				<div className="flex flex-col gap-4">
 					<GradientText
-						className={`${unbounded.className} text-balance font-bold text-3xl tracking-tight md:text-5xl`}
+						className={`${unbounded.className} text-3xl font-bold tracking-tight text-balance md:text-5xl`}
 						colors={['var(--primary)', '#afc7d4']}
 						yoyo={false}
 					>
 						{t('landing.tops.title')}
 					</GradientText>
-					<p className="text-center font-medium text-xl md:text-2xl dark:text-foreground/90">
+					<p className="dark:text-foreground/90 text-center text-xl font-medium md:text-2xl">
 						{t('landing.tops.description')}
 					</p>
 				</div>
 			</motion.div>
 			<div className="flex flex-col gap-4">
 				<h2
-					className={`${unbounded.className} text-center font-bold text-2xl`}
+					className={`${unbounded.className} text-center text-2xl font-bold`}
 				>
 					{t('landing.tops.week')}
 				</h2>
 				{isLoading ? (
-					<div className="h-40 animate-pulse rounded-xl bg-muted" />
+					<div className="bg-muted h-40 animate-pulse rounded-xl" />
 				) : data?.week ? (
 					<AuthorCard entry={data.week} period="week" />
 				) : (
@@ -109,7 +109,7 @@ export default function Tops() {
 			</div>
 			<div className="flex flex-col gap-4">
 				<h2
-					className={`${unbounded.className} text-center font-bold text-2xl`}
+					className={`${unbounded.className} text-center text-2xl font-bold`}
 				>
 					{t('landing.tops.month')}
 				</h2>

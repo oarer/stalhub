@@ -37,7 +37,7 @@ function buildTitle(
 	if (id == null) return <span className="text-muted-foreground">—</span>
 	const title = buildById.get(String(id))?.title
 	if (!title) return <span className="text-muted-foreground">—</span>
-	return <span className="truncate text-primary">{title}</span>
+	return <span className="text-primary truncate">{title}</span>
 }
 
 export function ClanMemberGear({
@@ -55,7 +55,7 @@ export function ClanMemberGear({
 
 	if (!gear) {
 		return (
-			<p className="py-2 text-center font-semibold text-muted-foreground text-xs">
+			<p className="text-muted-foreground py-2 text-center text-xs font-semibold">
 				{t('clan.memberCard.noGear')}
 			</p>
 		)
@@ -81,7 +81,7 @@ export function ClanMemberGear({
 			value:
 				gear.weapon_melee === SLEDGEHAMMER_ID ? (
 					<Icon
-						className="text-lg text-primary"
+						className="text-primary text-lg"
 						icon="lucide:check"
 					/>
 				) : (
@@ -109,17 +109,17 @@ export function ClanMemberGear({
 	return (
 		<div className="flex flex-col">
 			{hasOverride && (
-				<p className="mb-1 flex items-center gap-1 font-semibold text-primary text-xs">
+				<p className="text-primary mb-1 flex items-center gap-1 text-xs font-semibold">
 					<Icon className="text-sm" icon="lucide:shield-check" />
 					{t('clan.squads.editGearOverride')}
 				</p>
 			)}
 			{rows.map((row) => (
 				<div
-					className="flex items-center justify-between gap-3 border-primary/40 border-b py-1 font-semibold text-xs last:border-b-0"
+					className="border-primary/40 flex items-center justify-between gap-3 border-b py-1 text-xs font-semibold last:border-b-0"
 					key={row.label}
 				>
-					<span className="shrink-0 text-muted-foreground">
+					<span className="text-muted-foreground shrink-0">
 						{row.label}
 					</span>
 					<span className="flex min-w-0 items-center justify-end gap-1 truncate text-right">
@@ -166,15 +166,15 @@ export function ClanMemberHoverCard({
 			<HoverCard.Content className="w-72" side={side}>
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center gap-2">
-						<div className="flex size-9 flex-none items-center justify-center rounded-full bg-accent font-semibold text-sm">
+						<div className="bg-accent flex size-9 flex-none items-center justify-center rounded-full text-sm font-semibold">
 							{member.name.charAt(0).toUpperCase()}
 						</div>
 						<div className="flex min-w-0 gap-2">
-							<p className="truncate font-semibold text-sm">
+							<p className="truncate text-sm font-semibold">
 								{member.name}
 								{hasOverride && (
 									<Icon
-										className="ml-1 inline text-md text-primary"
+										className="text-md text-primary ml-1 inline"
 										icon="lucide:shield-check"
 									/>
 								)}

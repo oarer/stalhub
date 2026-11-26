@@ -1,3 +1,4 @@
+import type { AwardCategoryKind, LocalizedText } from './awards.type'
 import type { ClanSchedule } from './clan/clan.type'
 import type {
 	CommissionDecision,
@@ -803,4 +804,171 @@ export interface AdminUnoBanList {
 export interface AdminUnoBanInput {
 	ip: string
 	reason?: string
+}
+
+export interface AdminAwardCampaign {
+	id: string
+	year: number
+	title: string
+	status: 'draft' | 'voting' | 'ended' | 'published'
+	ends_at: string | null
+	created_at: string
+	updated_at: string
+	categories_count: number
+	nominees_count: number
+	votes_count: number
+}
+
+export interface AdminAwardCategory {
+	id: string
+	campaign_id: string
+	slug: string
+	position: number
+	kind: AwardCategoryKind
+	title_i18n: LocalizedText
+	description_i18n: LocalizedText
+	image_url: string | null
+	nominees_count: number
+}
+
+export interface AdminAwardNominee {
+	id: string
+	category_id: string
+	name: string
+	avatar_url: string | null
+	date: string | null
+	patch_url: string | null
+	social_links: { label: string; url: string }[]
+	description_i18n: LocalizedText
+	clan_id: string | null
+	clan_name: string | null
+	clan_tag: string | null
+	clan_member_count: number | null
+	player_uuid: string | null
+	player_region: string | null
+	player_alliance: string | null
+	nominated_by: number | null
+	created_at: string
+	updated_at: string
+}
+
+export interface AdminAwardVote {
+	id: string
+	user: { id: number; username: string }
+	category_id: string
+	nominee_id: string
+	created_at: string
+	excluded_at: string | null
+	excluded_by: number | null
+	exclude_reason: string | null
+}
+
+export interface AdminAwardResultsNominee {
+	id: string
+	name: string
+	avatar_url: string | null
+	votes_count: number
+	place: number | null
+	manual_place: number | null
+	date: string | null
+	patch_url: string | null
+	social_links: { label: string; url: string }[]
+	description_i18n: LocalizedText | null
+	clan_id: string | null
+	clan_name: string | null
+	clan_tag: string | null
+	clan_member_count: number | null
+	clan_faction: string | null
+	player_uuid: string | null
+	player_region: string | null
+	player_alliance: string | null
+}
+
+export interface AdminAwardResultsCategory {
+	id: string
+	slug: string
+	title_i18n: LocalizedText
+	description_i18n: LocalizedText
+	kind: AwardCategoryKind
+	image_url: string | null
+	winner_ids: string[]
+	nominees: AdminAwardResultsNominee[]
+	ties: boolean
+	tie_ids: string[]
+}
+
+export interface AdminAwardResults {
+	campaign_id: string
+	categories: AdminAwardResultsCategory[]
+	can_publish: boolean
+	publish_block_reason: 'tie' | null
+	published_at: string | null
+}
+
+export interface AdminAwardPage<T> {
+	items: T[]
+	next_cursor: string | null
+	has_more: boolean
+}
+
+export interface AdminAwardCampaignList {
+	items: AdminAwardCampaign[]
+}
+
+export interface AdminAwardVoteParams {
+	cursor?: string
+	take?: number
+	category_id?: string
+	nominee_id?: string
+	user_id?: number
+	excluded?: boolean
+	from?: string
+	to?: string
+}
+
+export interface AdminAwardCreateCampaignInput {
+	year: number
+	title?: string
+	ends_at?: string | null
+}
+
+export interface AdminAwardUpdateCampaignInput {
+	title?: string
+	status?: 'draft' | 'voting' | 'ended' | 'published'
+	ends_at?: string | null
+}
+
+export type AdminAwardCategoryKind = 'NOMINEES' | 'UPDATES' | 'CLAN' | 'PLAYER'
+
+export interface AdminAwardCategoryInput {
+	slug?: string
+	position: number
+	kind: AdminAwardCategoryKind
+	title_i18n: LocalizedText
+	description_i18n: LocalizedText
+	image_url: string
+}
+
+export interface AdminAwardNomineeInput {
+	name: string
+	avatar_url?: string | null
+	date?: string | null
+	patch_url?: string | null
+	social_links?: { label: string; url: string }[]
+	description_i18n: LocalizedText
+}
+
+export interface AdminAwardVoteUpdateInput {
+	excluded: boolean
+	reason?: string
+}
+
+export interface AdminAwardPlaceInput {
+	manual_place: number | null
+}
+
+export interface AdminAwardPlaceBulkInput {
+	category_id: string
+	nominee_id: string
+	manual_place: number | null
 }

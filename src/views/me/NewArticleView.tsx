@@ -82,7 +82,7 @@ export default function NewArticleView() {
 				>
 					<Icon className="size-5" icon="lucide:arrow-left" />
 				</Button>
-				<h1 className="font-semibold text-lg">
+				<h1 className="text-lg font-semibold">
 					{t('me.newArticle.title')}
 				</h1>
 			</div>
@@ -90,7 +90,7 @@ export default function NewArticleView() {
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col gap-2">
 					<label
-						className="font-semibold text-foreground text-md"
+						className="text-foreground text-md font-semibold"
 						htmlFor="article-title"
 					>
 						{t('me.newArticle.name')}
@@ -109,7 +109,7 @@ export default function NewArticleView() {
 				</div>
 
 				<div className="flex flex-col gap-2">
-					<span className="font-semibold text-foreground text-md">
+					<span className="text-foreground text-md font-semibold">
 						{t('me.newArticle.type')}
 					</span>
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -117,7 +117,7 @@ export default function NewArticleView() {
 							<Button
 								className={`gap-2 ${
 									type === articleType.value &&
-									'ring-2 ring-primary/80'
+									'ring-primary/80 ring-2'
 								}`}
 								key={articleType.value}
 								onClick={() => setType(articleType.value)}

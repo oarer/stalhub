@@ -51,10 +51,10 @@ export default function AuditAdminView() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-end justify-between gap-4">
 				<div>
-					<h1 className="font-semibold text-2xl">
+					<h1 className="text-2xl font-semibold">
 						{t('admin.audit.title')}
 					</h1>
-					<p className="mt-1 text-neutral-400 text-sm">
+					<p className="mt-1 text-sm text-neutral-400">
 						{t('admin.audit.total', {
 							count: numberFmt.format(data.total_count),
 						})}
@@ -87,7 +87,7 @@ export default function AuditAdminView() {
 					<Row entry={entry} key={entry.id} />
 				))}
 				{data.data.length === 0 && (
-					<p className="py-12 text-center text-neutral-500 text-sm">
+					<p className="py-12 text-center text-sm text-neutral-500">
 						{t('admin.audit.empty')}
 					</p>
 				)}
@@ -171,7 +171,7 @@ function Row({ entry }: { entry: AdminAuditEntry }) {
 		>
 			<span
 				className={cn(
-					'rounded-md px-2 py-0.5 font-mono font-semibold text-[11px]',
+					'rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold',
 					ACTION_COLORS[method] ?? 'bg-muted text-foreground'
 				)}
 			>
@@ -181,20 +181,20 @@ function Row({ entry }: { entry: AdminAuditEntry }) {
 				<span className="text-sm">
 					<span className="font-semibold">{entity}</span>
 					{entry.entity_id && (
-						<span className="font-mono text-neutral-400 text-xs">
+						<span className="font-mono text-xs text-neutral-400">
 							{' '}
 							#{entry.entity_id}
 						</span>
 					)}
 				</span>
 				{details && (
-					<span className="truncate font-mono text-neutral-500 text-xs">
+					<span className="truncate font-mono text-xs text-neutral-500">
 						{JSON.stringify(details)}
 					</span>
 				)}
 			</div>
 			<div className="ml-auto flex items-center gap-3">
-				<span className="text-neutral-400 text-xs">
+				<span className="text-xs text-neutral-400">
 					{entry.actor_name}
 					{entry.actor_id ? ` (#${entry.actor_id})` : ''}
 				</span>

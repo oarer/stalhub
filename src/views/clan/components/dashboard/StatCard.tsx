@@ -10,13 +10,13 @@ export function StatCard({
 	value: number | string
 }) {
 	return (
-		<div className="flex items-center gap-4 rounded-lg bg-card p-4">
+		<div className="bg-card flex items-center gap-4 rounded-lg p-4">
 			<Icon className="text-2xl" icon={icon} />
 			<div>
-				<p className="font-medium text-[13px] text-foreground">
+				<p className="text-foreground text-[13px] font-medium">
 					{label}
 				</p>
-				<p className={`font-medium font-mono text-[15px]`}>{value}</p>
+				<p className={`font-mono text-[15px] font-medium`}>{value}</p>
 			</div>
 		</div>
 	)

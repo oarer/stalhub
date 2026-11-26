@@ -18,7 +18,7 @@ export default function PlayerBanBadge({ exens }: { exens: PlayerExens }) {
 				<Badge className="cursor-help" variant="danger">
 					<Icon className="size-4" icon="lucide:ban" />
 					<span
-						className={`${unbounded.className} font-semibold text-[10px] uppercase leading-relaxed tracking-widest md:text-xs`}
+						className={`${unbounded.className} text-[10px] leading-relaxed font-semibold tracking-widest uppercase md:text-xs`}
 					>
 						{t('player.exens.title')}
 					</span>

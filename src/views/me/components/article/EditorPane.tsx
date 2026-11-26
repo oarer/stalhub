@@ -22,12 +22,12 @@ export function EditorPane({
 	return (
 		<div
 			className={cn(
-				'my-2 ml-2 min-h-0 flex-1 rounded-lg border-2 border-primary/20 bg-card',
+				'border-primary/20 bg-card my-2 ml-2 min-h-0 flex-1 rounded-lg border-2',
 				mobileTab !== 'write' && 'hidden md:flex md:flex-col'
 			)}
 		>
 			<Textarea
-				className="h-full w-full resize-none border-0 bg-transparent p-4 font-mono font-normal leading-relaxed placeholder:text-foreground/40"
+				className="placeholder:text-foreground/40 h-full w-full resize-none border-0 bg-transparent p-4 font-mono leading-relaxed font-normal"
 				onChange={(e) => onChange(e.target.value)}
 				onScroll={onScroll}
 				placeholder={t('me.articleEditor.placeholder')}

@@ -16,7 +16,7 @@ export default function AchievementsView({ data }: { data: Achievements[] }) {
 				return (
 					<div className="flex gap-2" key={ach}>
 						<Badge
-							className={`flex min-w-9 items-center justify-center self-center bg-primary/50 p-2 font-mono text-sms`}
+							className={`bg-primary/50 text-sms flex min-w-9 items-center justify-center self-center p-2 font-mono`}
 						>
 							{achievement.point}
 						</Badge>

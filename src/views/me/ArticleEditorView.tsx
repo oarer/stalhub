@@ -216,7 +216,7 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 				<div className="flex items-center gap-2">
 					<span
 						className={cn(
-							'hidden rounded-full px-2.5 py-0.5 font-semibold text-xs sm:inline-block',
+							'hidden rounded-full px-2.5 py-0.5 text-xs font-semibold sm:inline-block',
 							ARTICLE_STATUS_META[article.status].color
 						)}
 					>
@@ -224,13 +224,13 @@ export default function ArticleEditor({ articleId }: ArticleEditorProps) {
 					</span>
 
 					{isDirty && (
-						<span className="hidden font-semibold text-foreground text-xs sm:inline-block">
+						<span className="text-foreground hidden text-xs font-semibold sm:inline-block">
 							{t('me.articleEditor.notSaved')}
 						</span>
 					)}
 
 					{lastSaved && !isDirty && (
-						<span className="hidden font-semibold text-foreground text-xs sm:inline-block">
+						<span className="text-foreground hidden text-xs font-semibold sm:inline-block">
 							{t('me.articleEditor.saved')}
 						</span>
 					)}

@@ -52,8 +52,8 @@ export function BannerEditorModal({
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body className="flex flex-col gap-2">
-					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-						<span className="font-semibold text-md">
+					<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+						<span className="text-md font-semibold">
 							{t('me.settings.bannerPlacement')}
 						</span>
 						<OptionDropdown
@@ -69,8 +69,8 @@ export function BannerEditorModal({
 							value={banner.type}
 						/>
 					</div>
-					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-						<span className="font-semibold text-md">
+					<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+						<span className="text-md font-semibold">
 							{t('me.settings.bannerType')}
 						</span>
 						<OptionDropdown
@@ -87,16 +87,16 @@ export function BannerEditorModal({
 						/>
 					</div>
 					{banner.mode === 'COLOR' && (
-						<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-							<span className="font-semibold text-md">
+						<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+							<span className="text-md font-semibold">
 								{t('me.settings.banner_color')}
 							</span>
 							<label className="relative flex cursor-pointer items-center gap-2">
 								<div
-									className="size-8 rounded-lg ring-2 ring-primary/50"
+									className="ring-primary/50 size-8 rounded-lg ring-2"
 									style={{ backgroundColor: banner.color }}
 								/>
-								<span className="font-semibold text-foreground text-sm">
+								<span className="text-foreground text-sm font-semibold">
 									{banner.color}
 								</span>
 								<input
@@ -110,8 +110,8 @@ export function BannerEditorModal({
 							</label>
 						</div>
 					)}
-					<div className="flex items-center justify-between rounded-lg bg-accent/50 p-2">
-						<span className="font-semibold text-md">
+					<div className="bg-accent/50 flex items-center justify-between rounded-lg p-2">
+						<span className="text-md font-semibold">
 							{t('me.settings.bannerImage')}
 						</span>
 						<div className="flex items-center gap-2">

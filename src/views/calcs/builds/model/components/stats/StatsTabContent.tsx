@@ -115,9 +115,9 @@ function AccumulationWarnings({
 	if (warnings.length === 0) return null
 
 	return (
-		<div className="flex flex-col gap-1 border-primary border-b pb-2 text-destructive">
+		<div className="border-primary text-destructive flex flex-col gap-1 border-b pb-2">
 			{warnings.map(({ name }) => (
-				<p className="font-medium text-[13px]" key={name}>
+				<p className="text-[13px] font-medium" key={name}>
 					{name} — {t('build.damaged')}
 				</p>
 			))}
@@ -172,19 +172,19 @@ export const StatsTabContent = memo(function StatsTabContent({
 						<ReactionSelector {...reactionProps} />
 					)}
 				<div className="flex w-full justify-between">
-					<span className="font-medium text-[13px]">
+					<span className="text-[13px] font-medium">
 						{t('build.stats.regen')}
 					</span>
 					<span className="flex items-center gap-1.5">
 						<StatDelta delta={derivedDeltas?.hps} isPercent />
-						<span className="font-mono font-semibold text-primary">
+						<span className="text-primary font-mono font-semibold">
 							{hps}%
 						</span>
 					</span>
 				</div>
 				{stopping !== null && (
 					<p className="flex justify-between">
-						<span className="font-medium text-[13px]">
+						<span className="text-[13px] font-medium">
 							{t('build.stats.stopping')}
 						</span>
 						<span className="flex items-center gap-1.5">
@@ -192,13 +192,13 @@ export const StatsTabContent = memo(function StatsTabContent({
 								delta={derivedDeltas?.stopping}
 								isPercent
 							/>
-							<span className="font-mono font-semibold text-primary">
+							<span className="text-primary font-mono font-semibold">
 								{stopping}%
 							</span>
 						</span>
 					</p>
 				)}
-				<div className="flex flex-col gap-2 border-border border-t pt-2">
+				<div className="border-border flex flex-col gap-2 border-t pt-2">
 					{stats.length === 0 ? (
 						<p className="text-foreground">
 							{hasContainer
@@ -272,12 +272,12 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 					)}
 				{prime && (
 					<p className="flex justify-between">
-						<span className="font-medium text-[13px]">
+						<span className="text-[13px] font-medium">
 							{t('build.stats.prime')}
 						</span>
 						<span className="flex items-center gap-1.5">
 							<StatDelta delta={derivedDeltas?.prime} />
-							<span className="font-mono font-semibold text-primary">
+							<span className="text-primary font-mono font-semibold">
 								{prime}
 							</span>
 						</span>
@@ -287,7 +287,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 					<Tooltip.Root>
 						<Tooltip.Trigger asChild>
 							<div className="flex w-full justify-between">
-								<span className="font-medium text-[13px]">
+								<span className="text-[13px] font-medium">
 									{t('build.stats.regen')}
 								</span>
 								<span className="flex items-center gap-1.5">
@@ -295,7 +295,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 										delta={derivedDeltas?.hps}
 										isPercent
 									/>
-									<span className="font-mono font-semibold text-primary">
+									<span className="text-primary font-mono font-semibold">
 										{hps}%
 									</span>
 								</span>
@@ -311,7 +311,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				)}
 				{stopping !== null && (
 					<p className="flex justify-between">
-						<span className="font-medium text-[13px]">
+						<span className="text-[13px] font-medium">
 							{t('build.stats.stopping')}
 						</span>
 						<span className="flex items-center gap-1.5">
@@ -319,7 +319,7 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 								delta={derivedDeltas?.stopping}
 								isPercent
 							/>
-							<span className="font-mono font-semibold text-primary">
+							<span className="text-primary font-mono font-semibold">
 								{stopping}%
 							</span>
 						</span>
@@ -327,18 +327,18 @@ export const AllStatsTabContent = memo(function AllStatsTabContent({
 				)}
 				{speed !== null && (
 					<p className="flex justify-between">
-						<span className="font-medium text-[13px]">
+						<span className="text-[13px] font-medium">
 							{t('build.stats.speed')}
 						</span>
 						<span className="flex items-center gap-1.5">
 							<StatDelta delta={derivedDeltas?.speed} isPercent />
-							<span className="font-mono font-semibold text-primary">
+							<span className="text-primary font-mono font-semibold">
 								{speed}%
 							</span>
 						</span>
 					</p>
 				)}
-				<div className="flex flex-col gap-2 border-border border-t pt-2">
+				<div className="border-border flex flex-col gap-2 border-t pt-2">
 					{sortedStats.length === 0 ? (
 						<p className="text-foreground">
 							{t('build.stats.no_stats')}

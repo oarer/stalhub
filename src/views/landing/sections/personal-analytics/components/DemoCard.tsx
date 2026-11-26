@@ -34,31 +34,31 @@ export function PersonalDemoCard() {
 			/>
 
 			<motion.div
-				className="flex items-center gap-3 rounded-xl bg-accent/50 px-4 py-3"
+				className="bg-accent/50 flex items-center gap-3 rounded-xl px-4 py-3"
 				{...rise}
 				transition={{ duration: 0.5, delay: 0.1 }}
 			>
-				<span className="flex size-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
+				<span className="bg-primary/15 text-primary flex size-10 items-center justify-center rounded-lg">
 					<Icon className="text-xl" icon="lucide:user-round" />
 				</span>
 				<div className="min-w-0 flex-1">
 					<p
-						className={`${mtsExtended.className} truncate font-bold text-[15px]`}
+						className={`${mtsExtended.className} truncate text-[15px] font-bold`}
 					>
 						Pink_Poffinz
 					</p>
-					<p className="truncate text-muted-foreground text-xs">
+					<p className="text-muted-foreground truncate text-xs">
 						RU · {t('demo.snapshots', { n: 42 })}
 					</p>
 				</div>
 				{frozen ? (
-					<span className="flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary text-xs">
+					<span className="bg-primary/10 text-primary flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold">
 						<Icon className="text-sm" icon="lucide:trending-up" />
 						{t('demo.growth')}
 					</span>
 				) : (
 					<motion.span
-						className="flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary text-xs"
+						className="bg-primary/10 text-primary flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold"
 						transition={{
 							duration: 2.4,
 							repeat: Infinity,
@@ -74,7 +74,7 @@ export function PersonalDemoCard() {
 			<div className="grid grid-cols-2 gap-2.5">
 				{PERSONAL_DEMO_STATS.map((stat, i) => (
 					<motion.div
-						className="rounded-xl bg-card px-3.5 py-3 ring-2 ring-primary/30"
+						className="bg-card ring-primary/30 rounded-xl px-3.5 py-3 ring-2"
 						key={stat.id}
 						{...rise}
 						transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}
@@ -82,7 +82,7 @@ export function PersonalDemoCard() {
 						<p className="text-muted-foreground text-xs">
 							{t(`demo.stats.${stat.id}`)}
 						</p>
-						<p className="truncate font-semibold text-xl tabular-nums">
+						<p className="truncate text-xl font-semibold tabular-nums">
 							{stat.value}
 						</p>
 						<p
@@ -100,15 +100,15 @@ export function PersonalDemoCard() {
 			</div>
 
 			<motion.div
-				className="overflow-hidden rounded-xl border border-muted bg-card"
+				className="border-muted bg-card overflow-hidden rounded-xl border"
 				{...rise}
 				transition={{ duration: 0.5, delay: 0.5 }}
 			>
 				<div className="flex items-center justify-between px-4 pt-3 pb-1">
-					<p className="font-mono font-semibold text-[13px]">
+					<p className="font-mono text-[13px] font-semibold">
 						{t('demo.chartTitle')}
 					</p>
-					<span className="font-semibold text-primary text-xs tabular-nums">
+					<span className="text-primary text-xs font-semibold tabular-nums">
 						+0.28 · {t('demo.forPeriod')}
 					</span>
 				</div>

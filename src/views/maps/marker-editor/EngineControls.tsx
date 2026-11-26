@@ -19,7 +19,7 @@ function WaypointList({ waypoints }: { waypoints: WaypointRow[] }) {
 
 	if (!waypoints.length) {
 		return (
-			<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+			<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 				{t('noMarkers')}
 			</p>
 		)
@@ -29,7 +29,7 @@ function WaypointList({ waypoints }: { waypoints: WaypointRow[] }) {
 	const rest = waypoints.length - shown.length
 
 	return (
-		<div className="max-h-64 overflow-y-auto rounded-lg border border-border bg-muted/30">
+		<div className="border-border bg-muted/30 max-h-64 overflow-y-auto rounded-lg border">
 			{shown.map((wp) => (
 				<div
 					className="border-border/60 border-b px-2 py-1.5 text-xs last:border-b-0"
@@ -39,26 +39,26 @@ function WaypointList({ waypoints }: { waypoints: WaypointRow[] }) {
 						{wp.buffer ? '[B] ' : ''}
 						{wp.name}
 					</p>
-					<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+					<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 						{t('color')}{' '}
 						<span
-							className="inline-block h-2.5 w-2.5 rounded-sm border border-foreground/45 align-baseline"
+							className="border-foreground/45 inline-block h-2.5 w-2.5 rounded-sm border align-baseline"
 							style={{ background: wp.colorHex }}
 						/>
 						{` ${wp.colorHex}`}
 					</p>
-					<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+					<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 						X: {wp.x.toFixed(2)} Y: {wp.y.toFixed(2)} Z:{' '}
 						{wp.z.toFixed(2)}
 					</p>
-					<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+					<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 						Tile X: {wp.tileX.toFixed(2)} Tile Z:{' '}
 						{wp.tileZ.toFixed(2)}
 					</p>
 				</div>
 			))}
 			{rest > 0 && (
-				<p className="px-2 py-1.5 font-medium text-muted-foreground text-xs">
+				<p className="text-muted-foreground px-2 py-1.5 text-xs font-medium">
 					{t('moreMarkers', { rest, shown: shown.length })}
 				</p>
 			)}
@@ -145,7 +145,7 @@ function NumberField({
 	return (
 		<input
 			className={cn(
-				'w-full rounded-lg border-2 border-muted bg-card px-2.5 py-1.5 font-semibold text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary',
+				'border-muted bg-card text-foreground placeholder:text-muted-foreground focus:border-primary w-full rounded-lg border-2 px-2.5 py-1.5 font-semibold transition-all duration-300 outline-none',
 				className
 			)}
 			id={id}
@@ -201,7 +201,7 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 
 	return (
 		<div className="order-2 flex h-1/2 w-full shrink-0 flex-col gap-3 overflow-y-auto p-4 md:order-1 md:h-full md:w-80">
-			<p className="font-semibold text-foreground text-sm">
+			<p className="text-foreground text-sm font-semibold">
 				{t('tools')}
 			</p>
 
@@ -220,12 +220,12 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 			>
 				{t('selectImage')}
 			</Button>
-			<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+			<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 				{ui?.sourceNote ?? t('originalNotLoaded')}
 			</p>
 
 			<label
-				className="font-semibold text-muted-foreground text-xs"
+				className="text-muted-foreground text-xs font-semibold"
 				htmlFor="target-width"
 			>
 				{t('targetResolution')}
@@ -265,12 +265,12 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 					value={height}
 				/>
 			</div>
-			<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+			<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 				{width} x {height}
 			</p>
 
 			<label
-				className="font-semibold text-muted-foreground text-xs"
+				className="text-muted-foreground text-xs font-semibold"
 				htmlFor="gen-icon"
 			>
 				{t('icon')}
@@ -301,7 +301,7 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 			</div>
 
 			<label
-				className="font-semibold text-muted-foreground text-xs"
+				className="text-muted-foreground text-xs font-semibold"
 				htmlFor="sticker-scale"
 			>
 				{t('scale')}
@@ -367,11 +367,11 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 					{t('saveCfg')}
 				</Button>
 			</div>
-			<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+			<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 				{ui?.genStats}
 			</p>
 
-			<p className="font-semibold text-foreground text-sm">{t('cfg')}</p>
+			<p className="text-foreground text-sm font-semibold">{t('cfg')}</p>
 			<input
 				accept=".cfg,.json,application/json,text/plain"
 				className="hidden"
@@ -387,11 +387,11 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 			>
 				{t('selectCfg')}
 			</Button>
-			<p className="font-semibold text-muted-foreground text-xs leading-relaxed">
+			<p className="text-muted-foreground text-xs leading-relaxed font-semibold">
 				{ui?.cfgStatus}
 			</p>
 
-			<p className="font-semibold text-foreground text-sm">
+			<p className="text-foreground text-sm font-semibold">
 				{t('markers', {
 					total: ui?.waypointTotal ?? 0,
 					selected: ui?.selectedCount ?? 0,
@@ -399,7 +399,7 @@ export default function EngineControls({ engineOf, ui }: EngineControlsProps) {
 			</p>
 			<WaypointList waypoints={ui?.waypoints ?? []} />
 
-			<p className="font-medium text-muted-foreground text-xs">
+			<p className="text-muted-foreground text-xs font-medium">
 				{t('help')}
 			</p>
 		</div>

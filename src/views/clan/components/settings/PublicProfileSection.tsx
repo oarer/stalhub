@@ -18,8 +18,8 @@ export function PublicProfileSection({
 }: PublicProfileSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
-			<div className="flex items-center gap-2 font-semibold text-lg">
+		<div className="bg-card flex flex-col gap-3 rounded-xl px-5 py-4">
+			<div className="flex items-center gap-2 text-lg font-semibold">
 				<Icon className="text-xl" icon="lucide:eye" />
 				{t('clan.settings.publicTitle')}
 			</div>
@@ -30,12 +30,12 @@ export function PublicProfileSection({
 				</Alert.Description>
 			</Alert.Root>
 
-			<div className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3">
+			<div className="bg-border-secondary/40 flex items-center justify-between gap-3 rounded-lg px-4 py-3">
 				<div className="flex flex-col gap-1">
-					<span className="font-semibold text-sm">
+					<span className="text-sm font-semibold">
 						{t('clan.settings.publicToggle')}
 					</span>
-					<span className="font-semibold text-foreground text-sm">
+					<span className="text-foreground text-sm font-semibold">
 						{t('clan.settings.publicToggleHint')}
 					</span>
 				</div>

@@ -24,9 +24,9 @@ export function NotificationItem({
 
 	const content = (
 		<div
-			className={`flex items-start gap-3 rounded-lg border border-primary/50 px-3 py-2.5 transition-colors ${
+			className={`border-primary/50 flex items-start gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
 				!notification.read ? 'bg-primary/5' : 'bg-card'
-			} ${notification.link ? 'cursor-pointer hover:bg-accent' : ''}`}
+			} ${notification.link ? 'hover:bg-accent cursor-pointer' : ''}`}
 			onClick={onClick}
 		>
 			<div className={`mt-0.5 ${style.color}`}>
@@ -34,16 +34,16 @@ export function NotificationItem({
 			</div>
 			<div className="min-w-0 flex-1 gap-2">
 				<div className="flex items-center gap-2">
-					<p className="font-semibold text-lg">
+					<p className="text-lg font-semibold">
 						{notification.title}
 					</p>
 					{!notification.read && (
-						<span className="size-1.5 rounded-full bg-primary" />
+						<span className="bg-primary size-1.5 rounded-full" />
 					)}
 				</div>
-				<p className="font-semibold text-sm">{notification.content}</p>
+				<p className="text-sm font-semibold">{notification.content}</p>
 				<p
-					className={`mt-1 flex items-center gap-2 font-mono font-semibold text-[11px] text-foreground`}
+					className={`text-foreground mt-1 flex items-center gap-2 font-mono text-[11px] font-semibold`}
 				>
 					<span>{notification.author}</span>
 					<span>·</span>
@@ -53,7 +53,7 @@ export function NotificationItem({
 				</p>
 			</div>
 			<button
-				className="flex shrink-0 items-center justify-center rounded p-1 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+				className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive flex shrink-0 items-center justify-center rounded p-1 transition-colors"
 				onClick={(e) => {
 					e.stopPropagation()
 					onDelete()

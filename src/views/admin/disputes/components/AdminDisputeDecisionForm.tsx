@@ -74,7 +74,7 @@ export function AdminDisputeDecisionForm({
 
 	return (
 		<Card.Root className="gap-4">
-			<h2 className="font-semibold text-lg">
+			<h2 className="text-lg font-semibold">
 				{entry.status === 'OPEN' ? t('decision') : t('reopen')}
 			</h2>
 			<Area

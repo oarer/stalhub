@@ -88,7 +88,7 @@ function PickRow({
 
 	return (
 		<div className="flex min-w-0 items-center gap-2">
-			<span className="w-42 shrink-0 font-semibold text-foreground text-sm">
+			<span className="text-foreground w-42 shrink-0 text-sm font-semibold">
 				{label}
 			</span>
 			<Button
@@ -100,7 +100,7 @@ function PickRow({
 				variant="outline"
 			>
 				<span
-					className={`min-w-0 truncate font-semibold text-sm ${!item && 'text-foreground'}`}
+					className={`min-w-0 truncate text-sm font-semibold ${!item && 'text-foreground'}`}
 					style={
 						item
 							? { color: infoColorMap[item.color as InfoColor] }
@@ -110,7 +110,7 @@ function PickRow({
 					{item ? messageToString(item.name, locale) : '—'}
 				</span>
 				<Icon
-					className="shrink-0 text-foreground text-xs"
+					className="text-foreground shrink-0 text-xs"
 					icon="lucide:chevron-down"
 				/>
 			</Button>
@@ -162,7 +162,7 @@ function BuildPickRow({
 
 	return (
 		<div className="flex min-w-0 items-center gap-2">
-			<span className="w-42 shrink-0 font-semibold text-foreground text-sm">
+			<span className="text-foreground w-42 shrink-0 text-sm font-semibold">
 				{label}
 			</span>
 			<div className="min-w-0 flex-1">

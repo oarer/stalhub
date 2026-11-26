@@ -24,7 +24,7 @@ export function GrenadeTopList({
 		<Section icon="lucide:bomb" title={t('clan.dashboard.grenadesTitle')}>
 			{latestEvent && (
 				<p
-					className={`font-medium font-mono text-[13px] text-foreground`}
+					className={`text-foreground font-mono text-[13px] font-medium`}
 				>
 					{t('clan.dashboard.grenadesLine', {
 						count: latestEvent.stages.length,
@@ -37,7 +37,7 @@ export function GrenadeTopList({
 				</p>
 			)}
 			{grenadeTop.length === 0 ? (
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('clan.dashboard.noGrenades')}
 				</p>
 			) : (
@@ -48,28 +48,28 @@ export function GrenadeTopList({
 							maxTotal > 0 ? (g.total / maxTotal) * 100 : 0
 						return (
 							<div
-								className="flex items-center gap-3 border-muted border-b py-2 last:border-b-0"
+								className="border-muted flex items-center gap-3 border-b py-2 last:border-b-0"
 								key={g.character}
 							>
 								<span
-									className={`w-5 text-center font-medium font-mono text-foreground text-xs`}
+									className={`text-foreground w-5 text-center font-mono text-xs font-medium`}
 								>
 									{i + 1}
 								</span>
 								<div className="flex-1">
 									<div className="flex items-center justify-between">
-										<span className="font-medium text-sm">
+										<span className="text-sm font-medium">
 											{g.character}
 										</span>
 										<span
-											className={`font-medium font-mono text-sm`}
+											className={`font-mono text-sm font-medium`}
 										>
 											{g.total.toLocaleString()}
 										</span>
 									</div>
-									<div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+									<div className="bg-muted mt-1 h-1.5 w-full overflow-hidden rounded-full">
 										<div
-											className="h-full rounded-full bg-linear-to-r from-muted/50 to-primary transition-all"
+											className="from-muted/50 to-primary h-full rounded-full bg-linear-to-r transition-all"
 											style={{ width: `${pct}%` }}
 										/>
 									</div>

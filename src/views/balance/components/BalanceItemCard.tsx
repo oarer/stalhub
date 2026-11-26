@@ -25,7 +25,7 @@ export function BalanceItemCard({ item }: { item: BalanceItemChange }) {
 	return (
 		<Card.Root>
 			<h3
-				className={`font-medium font-mono text-lg`}
+				className={`font-mono text-lg font-medium`}
 				style={itemColor ? { color: itemColor } : undefined}
 			>
 				{item.name}
@@ -49,7 +49,7 @@ export function BalanceItemCard({ item }: { item: BalanceItemChange }) {
 								</span>
 							) : change.type === 'changed' ? (
 								<>
-									<span className="font-medium text-muted-foreground line-through opacity-80">
+									<span className="text-muted-foreground font-medium line-through opacity-80">
 										{change.oldValue}
 									</span>
 									<Icon

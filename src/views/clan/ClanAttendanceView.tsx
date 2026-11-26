@@ -116,11 +116,11 @@ function AttendanceContent({
 			<ClanAbsenceView />
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('title')}
 				</h1>
-				<div className="flex items-center gap-2 rounded-xl bg-card p-1">
+				<div className="bg-card flex items-center gap-2 rounded-xl p-1">
 					<Button
 						onClick={() => setMonth(shiftMonth(month, -1))}
 						variant="secondary"
@@ -128,7 +128,7 @@ function AttendanceContent({
 						<Icon icon="lucide:chevron-left" />
 					</Button>
 					<span
-						className={`min-w-40 text-center font-medium font-mono text-sm capitalize`}
+						className={`min-w-40 text-center font-mono text-sm font-medium capitalize`}
 					>
 						{monthLabel}
 					</span>
@@ -143,7 +143,7 @@ function AttendanceContent({
 			</div>
 
 			<div className="flex flex-wrap items-center gap-3">
-				<span className="font-semibold text-sm">
+				<span className="text-sm font-semibold">
 					{t('weekdaysFilter')}
 				</span>
 				<Combobox
@@ -155,7 +155,7 @@ function AttendanceContent({
 				/>
 			</div>
 
-			<div className="flex flex-wrap gap-4 rounded-xl bg-card p-3 text-sm">
+			<div className="bg-card flex flex-wrap gap-4 rounded-xl p-3 text-sm">
 				{(
 					[
 						'PRESENT',
@@ -177,15 +177,15 @@ function AttendanceContent({
 			</div>
 
 			{!showTable ? (
-				<div className="rounded-xl bg-card p-10 text-center text-foreground/60">
+				<div className="bg-card text-foreground/60 rounded-xl p-10 text-center">
 					{t('empty')}
 				</div>
 			) : (
-				<div className="overflow-hidden rounded-xl bg-card">
+				<div className="bg-card overflow-hidden rounded-xl">
 					<Table.Root className="border-collapse">
 						<Table.Header>
 							<Table.Row>
-								<Table.Head className="sticky left-0 z-20 min-w-48 bg-card p-3">
+								<Table.Head className="bg-card sticky left-0 z-20 min-w-48 p-3">
 									{t('member')}
 								</Table.Head>
 								{days.map((day) => {
@@ -221,7 +221,7 @@ function AttendanceContent({
 							{data.members.map((member) => (
 								<Table.Row key={member.name}>
 									<Table.Head
-										className="sticky left-0 z-10 h-auto min-w-48 bg-card p-3"
+										className="bg-card sticky left-0 z-10 h-auto min-w-48 p-3"
 										scope="row"
 									>
 										{member.name}
@@ -280,7 +280,7 @@ function AttendanceContent({
 																	aria-label={
 																		label
 																	}
-																	className="inline-flex rounded-sm focus-visible:outline-2 focus-visible:outline-primary"
+																	className="focus-visible:outline-primary inline-flex rounded-sm focus-visible:outline-2"
 																	type="button"
 																>
 																	<Icon

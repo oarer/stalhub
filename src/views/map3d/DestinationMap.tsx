@@ -281,17 +281,17 @@ export default function DestinationMap({
 		}
 	}, [map])
 	return (
-		<div className="relative h-[clamp(200px,26vw,390px)] bg-card">
+		<div className="bg-card relative h-[clamp(200px,26vw,390px)]">
 			<canvas
 				aria-label="Место появления: перетащите карту, нажмите на нужную точку. Стрелки двигают карту, Enter выбирает центр."
-				className="block w-full cursor-grab touch-none focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-[-3px] active:cursor-grabbing"
+				className="focus-visible:outline-primary block w-full cursor-grab touch-none focus-visible:outline-3 focus-visible:outline-offset-[-3px] active:cursor-grabbing"
 				ref={canvas}
 				tabIndex={0}
 			/>
 			<div className="absolute top-3 right-3 flex flex-col gap-1">
 				<button
 					aria-label="Приблизить карту"
-					className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg bg-card text-foreground"
+					className="bg-card text-foreground grid h-9 w-9 cursor-pointer place-items-center rounded-lg"
 					onClick={() => {
 						navigation.current.scale = Math.min(
 							4,
@@ -305,7 +305,7 @@ export default function DestinationMap({
 				</button>
 				<button
 					aria-label="Отдалить карту"
-					className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg bg-card text-foreground"
+					className="bg-card text-foreground grid h-9 w-9 cursor-pointer place-items-center rounded-lg"
 					onClick={() => {
 						navigation.current.scale = Math.max(
 							0.18,
@@ -319,7 +319,7 @@ export default function DestinationMap({
 				</button>
 				<button
 					aria-label="Показать выбранную точку"
-					className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg bg-card text-foreground"
+					className="bg-card text-foreground grid h-9 w-9 cursor-pointer place-items-center rounded-lg"
 					onClick={() => {
 						navigation.current.x = position.x
 						navigation.current.z = position.z
@@ -330,7 +330,7 @@ export default function DestinationMap({
 					<Icon icon="lucide:locate-fixed" />
 				</button>
 			</div>
-			<p className="pointer-events-none absolute top-3 left-3 m-0 max-w-[calc(100%-72px)] rounded-lg bg-card px-2.5 py-2 text-[11px] text-foreground">
+			<p className="bg-card text-foreground pointer-events-none absolute top-3 left-3 m-0 max-w-[calc(100%-72px)] rounded-lg px-2.5 py-2 text-[11px]">
 				{failed
 					? 'Часть карты недоступна. Можно выбрать точку или ввести координаты.'
 					: 'Перетаскивайте карту · нажмите, чтобы выбрать место'}

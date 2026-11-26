@@ -81,7 +81,7 @@ const ItemCard = React.memo(function ItemCard({
 					</Card.Title>
 				)}
 				<p
-					className="min-w-0 flex-1 truncate font-semibold text-base"
+					className="min-w-0 flex-1 truncate text-base font-semibold"
 					style={{ color: infoColorMap[item.color] }}
 				>
 					{name}
@@ -100,21 +100,21 @@ const PageCard = React.memo(function PageCard({
 }) {
 	return (
 		<Card.Link
-			className="py-2 transition-all hover:brightness-75 md:dark:bg-accent/70"
+			className="md:dark:bg-accent/70 py-2 transition-all hover:brightness-75"
 			href={page.href}
 			onClick={close}
 		>
 			<Card.Header className="flex flex-row items-center gap-4">
 				<Icon
-					className="shrink-0 text-foreground text-xl"
+					className="text-foreground shrink-0 text-xl"
 					icon={page.icon}
 				/>
 				<div className="flex min-w-0 flex-col gap-1">
-					<p className="truncate font-semibold text-lg">
+					<p className="truncate text-lg font-semibold">
 						{page.title}
 					</p>
 					{(page.groupTitle || page.description) && (
-						<p className="line-clamp-1 font-semibold text-sm">
+						<p className="line-clamp-1 text-sm font-semibold">
 							{[page.groupTitle, page.description]
 								.filter(Boolean)
 								.join(' · ')}
@@ -141,14 +141,14 @@ const ArticleCard = React.memo(function ArticleCard({
 		>
 			<Card.Header className="flex flex-row items-center gap-4">
 				<Icon
-					className="shrink-0 text-foreground text-xl"
+					className="text-foreground shrink-0 text-xl"
 					icon="lucide:file-text"
 				/>
 				<div className="flex min-w-0 flex-col gap-1">
-					<p className="truncate font-semibold text-lg">
+					<p className="truncate text-lg font-semibold">
 						{article.title}
 					</p>
-					<p className="line-clamp-1 text-foreground text-sm">
+					<p className="text-foreground line-clamp-1 text-sm">
 						{article.author?.username}
 						{article.created_at && (
 							<>
@@ -266,7 +266,7 @@ export default function ItemSearchModal({
 						{loading && (
 							<motion.div
 								animate={{ opacity: 1 }}
-								className="flex h-24 items-center justify-center gap-2 font-semibold text-foreground"
+								className="text-foreground flex h-24 items-center justify-center gap-2 font-semibold"
 								exit={{ opacity: 0 }}
 								initial={{ opacity: 0 }}
 								transition={{ duration: 0.15, ease: 'easeOut' }}
@@ -281,7 +281,7 @@ export default function ItemSearchModal({
 						{isEmpty && (
 							<motion.p
 								animate="animate"
-								className="text-center font-semibold text-foreground"
+								className="text-foreground text-center font-semibold"
 								exit="exit"
 								initial="initial"
 								transition={sectionTransition}
@@ -305,11 +305,11 @@ export default function ItemSearchModal({
 							>
 								<section className="flex flex-col gap-2">
 									<h3
-										className={`${unbounded.className} font-semibold text-foreground text-sm uppercase tracking-widest`}
+										className={`${unbounded.className} text-foreground text-sm font-semibold tracking-widest uppercase`}
 									>
 										{t('modals.search.pages')}
 									</h3>
-									<ul className="mask-y-from-95% mask-y-to-100% flex max-h-66 flex-col gap-3 overflow-y-auto p-0.5">
+									<ul className="flex max-h-66 flex-col gap-3 overflow-y-auto mask-y-from-95% mask-y-to-100% p-0.5">
 										<AnimatePresence
 											initial={false}
 											mode="popLayout"
@@ -342,7 +342,7 @@ export default function ItemSearchModal({
 						{displayed.length > 0 && (
 							<motion.ul
 								animate={{ opacity: 1 }}
-								className="mask-y-from-95% mask-y-to-100% grid max-h-[55dvh] grid-cols-2 gap-3 overflow-y-auto p-0.5 sm:grid-cols-3"
+								className="grid max-h-[55dvh] grid-cols-2 gap-3 overflow-y-auto mask-y-from-95% mask-y-to-100% p-0.5 sm:grid-cols-3"
 								exit={{ opacity: 0 }}
 								initial={{ opacity: 0 }}
 								layout
@@ -386,7 +386,7 @@ export default function ItemSearchModal({
 								transition={sectionTransition}
 								variants={sectionVariants}
 							>
-								<h3 className="font-semibold text-foreground text-sm uppercase">
+								<h3 className="text-foreground text-sm font-semibold uppercase">
 									{t('modals.search.articles')}
 								</h3>
 								<ul className="flex flex-col gap-3">

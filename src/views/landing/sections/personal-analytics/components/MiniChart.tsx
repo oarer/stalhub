@@ -113,7 +113,7 @@ export function MiniChart() {
 			</svg>
 			<span
 				aria-hidden="true"
-				className="absolute size-2.5 rounded-full bg-primary"
+				className="bg-primary absolute size-2.5 rounded-full"
 				style={{
 					left: dotLeft,
 					top: dotTop,

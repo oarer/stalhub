@@ -31,7 +31,7 @@ export function ReactionSelector({
 
 	return (
 		<div className="flex flex-col gap-1">
-			<p className="font-semibold text-sm">
+			<p className="text-sm font-semibold">
 				{t('build.reactions.title')}
 			</p>
 			<Combobox

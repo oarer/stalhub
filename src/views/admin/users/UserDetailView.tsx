@@ -42,11 +42,11 @@ export default function UserDetailView({ userId }: Props) {
 						<Icon icon="lucide:arrow-left" />
 					</Button>
 				</Link>
-				<h1 className="break-all font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold break-all">
 					<Username roles={userRoles} username={user.username} />
 				</h1>
 				{user.banned && (
-					<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
+					<span className="rounded-full bg-red-500/10 px-2 py-0.5 text-xs font-semibold text-red-400">
 						{t('admin.users.status.banned')}
 					</span>
 				)}

@@ -16,11 +16,11 @@ export function GridCard({ grid }: { grid: UnoGridSummary }) {
 
 	return (
 		<Card.Link
-			className="group transition-all duration-200 hover:ring-primary"
+			className="group hover:ring-primary transition-all duration-200"
 			href={`/uno/grids/${grid.id}`}
 		>
 			<div className="flex items-start justify-between gap-3">
-				<h2 className="mt-1 font-semibold text-lg transition-colors group-hover:text-primary">
+				<h2 className="group-hover:text-primary mt-1 text-lg font-semibold transition-colors">
 					{grid.mode
 						? t(UNO_MODE_KEYS[grid.mode] ?? 'unknown')
 						: t('unknown')}
@@ -30,7 +30,7 @@ export function GridCard({ grid }: { grid: UnoGridSummary }) {
 						<Badge variant="secondary">{grid.status}</Badge>
 					)}
 					<Icon
-						className="text-muted-foreground transition-colors group-hover:text-primary"
+						className="text-muted-foreground group-hover:text-primary transition-colors"
 						icon="lucide:arrow-up-right"
 					/>
 				</div>
@@ -68,7 +68,7 @@ export function GridCard({ grid }: { grid: UnoGridSummary }) {
 				</div>
 			</div>
 			{grid.metadata.length > 0 && (
-				<div className="mt-4 flex flex-wrap gap-2 border-primary/15 border-t pt-3">
+				<div className="border-primary/15 mt-4 flex flex-wrap gap-2 border-t pt-3">
 					{grid.metadata.slice(0, 3).map((item) => (
 						<Badge key={item.key} variant="secondary">
 							{item.label}:{' '}

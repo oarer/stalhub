@@ -40,13 +40,13 @@ export function UnoPageHeader({
 				<h1
 					className={cn(
 						mtsExtended.className,
-						'font-semibold text-[28px] leading-none sm:text-4xl'
+						'text-[28px] leading-none font-semibold sm:text-4xl'
 					)}
 				>
 					{title}
 				</h1>
 				{description && (
-					<div className="max-w-3xl text-muted-foreground text-sm leading-6">
+					<div className="text-muted-foreground max-w-3xl text-sm leading-6">
 						{description}
 					</div>
 				)}

@@ -57,11 +57,11 @@ export function ArsenalView({ variant = 'page' }: ArsenalViewProps) {
 					<div className="flex flex-wrap items-end justify-between gap-4">
 						<div className="space-y-2">
 							<h1
-								className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+								className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 							>
 								{t('arsenal.title')}
 							</h1>
-							<p className="font-medium text-muted-foreground text-sm">
+							<p className="text-muted-foreground text-sm font-medium">
 								{t('arsenal.sub_title')}
 							</p>
 						</div>

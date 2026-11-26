@@ -60,7 +60,7 @@ const CompareValueRow = memo(function CompareValueRow({
 		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3">
 			<span className="truncate">{name}</span>
 			<span
-				className={`w-20 rounded-lg px-2 text-right font-medium font-mono`}
+				className={`w-20 rounded-lg px-2 text-right font-mono font-medium`}
 				style={{
 					color: colorFor(aBetter),
 					background: `${colorFor(aBetter)}66`,
@@ -70,7 +70,7 @@ const CompareValueRow = memo(function CompareValueRow({
 				{isPercent ? '%' : ''}
 			</span>
 			<span
-				className={`w-20 rounded-lg px-2 text-right font-medium font-mono`}
+				className={`w-20 rounded-lg px-2 text-right font-mono font-medium`}
 				style={{
 					color: colorFor(bBetter),
 					background: `${colorFor(bBetter)}66`,
@@ -87,7 +87,7 @@ function CompareHeaderRow({ nameA, nameB }: { nameA: string; nameB: string }) {
 	const t = useTranslations()
 
 	return (
-		<p className="grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-primary/50 border-b pb-2">
+		<p className="border-primary/50 grid grid-cols-[1fr_5rem_5rem] items-center gap-3 border-b pb-2">
 			<span className="font-semibold">{t('build.stats.title')}</span>
 			<span className="w-20 truncate text-right font-medium">
 				{nameA}
@@ -192,7 +192,7 @@ export function StatsCompare({
 							valueA={Number(statsA.hps)}
 							valueB={Number(statsB.hps)}
 						/>
-						<div className="flex flex-col gap-2 border-border border-t pt-2">
+						<div className="border-border flex flex-col gap-2 border-t pt-2">
 							{allKeys.length === 0 ? (
 								<p className="text-muted-foreground">
 									{t('build.stats.no_stats')}

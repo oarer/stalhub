@@ -78,7 +78,7 @@ export function LotRankBadge({
 
 	return (
 		<div
-			className="self-start rounded-md px-2 py-0.5 font-semibold text-sm"
+			className="self-start rounded-md px-2 py-0.5 text-sm font-semibold"
 			style={{
 				background: `color-mix(in srgb, ${color} 18%, transparent)`,
 				color,
@@ -127,12 +127,12 @@ export function ModuleAttributes({
 
 				return (
 					<div
-						className="flex flex-col gap-1.5 rounded-lg bg-accent/50 p-2.5"
+						className="bg-accent/50 flex flex-col gap-1.5 rounded-lg p-2.5"
 						key={i}
 					>
 						<div className="flex items-center justify-between gap-2">
 							<p
-								className="font-semibold text-sm"
+								className="text-sm font-semibold"
 								style={{ color: RARITY_COLORS[rarity] }}
 							>
 								{name}
@@ -140,14 +140,14 @@ export function ModuleAttributes({
 							<div className="flex items-center gap-2">
 								<span
 									className={cn(
-										'font-semibold text-sm',
+										'text-sm font-semibold',
 										'font-mono'
 									)}
 									style={{ color: RARITY_COLORS[rarity] }}
 								>
 									{pct.toFixed(2)}%
 								</span>
-								<p className="font-semibold text-foreground text-xs">
+								<p className="text-foreground text-xs font-semibold">
 									{groupLabel}
 								</p>
 							</div>
@@ -162,7 +162,7 @@ export function ModuleAttributes({
 								</span>
 								<span
 									className={cn(
-										'font-semibold text-sm',
+										'text-sm font-semibold',
 										'font-mono',
 										stat.sign === '+'
 											? 'text-success'
@@ -197,7 +197,7 @@ export function AdditionalDetails({
 	if (additional.qlt != null) {
 		const percent = calcArtifactPercent(additional)
 		return (
-			<div className="flex items-center justify-between rounded-lg bg-accent/50 px-2.5 py-1.5 text-sm">
+			<div className="bg-accent/50 flex items-center justify-between rounded-lg px-2.5 py-1.5 text-sm">
 				<span className="font-semibold">
 					{t('modals.builds.settings.percent')}
 				</span>

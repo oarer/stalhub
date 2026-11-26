@@ -44,7 +44,7 @@ export default function ClusterItem({
 		>
 			<div className="flex items-center gap-1">
 				<motion.button
-					className="rounded p-1 transition-colors hover:bg-muted/50"
+					className="hover:bg-muted/50 rounded p-1 transition-colors"
 					onClick={() => setIsExpanded(!isExpanded)}
 					whileHover={{ x: 2 }}
 					whileTap={{ scale: 0.95 }}
@@ -76,7 +76,7 @@ export default function ClusterItem({
 						}
 					/>
 
-					<span className="font-medium text-sm transition-colors">
+					<span className="text-sm font-medium transition-colors">
 						{clusterName}
 					</span>
 				</motion.label>

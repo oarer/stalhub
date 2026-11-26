@@ -19,7 +19,7 @@ export default function PersonalAnalytics() {
 			id="personal"
 		>
 			<div className="grid w-full grid-cols-1 gap-10 px-2 lg:grid-cols-[1.3fr_1.2fr] lg:gap-16">
-				<div className="order-2 flex w-full flex-col items-center justify-start gap-4 lg:sticky lg:top-24 lg:order-1 lg:self-start dark:text-foreground">
+				<div className="dark:text-foreground order-2 flex w-full flex-col items-center justify-start gap-4 lg:sticky lg:top-24 lg:order-1 lg:self-start">
 					<motion.div
 						className="w-full"
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
@@ -32,7 +32,7 @@ export default function PersonalAnalytics() {
 				</div>
 				<div className="order-1 flex flex-col gap-4 lg:order-2 lg:self-start">
 					<motion.h2
-						className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
+						className={`${mtsWide.className} text-[40px] leading-none font-semibold sm:text-5xl`}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.1 }}
 						viewport={{ once: true }}
@@ -47,7 +47,7 @@ export default function PersonalAnalytics() {
 						})}
 					</motion.h2>
 					<motion.p
-						className={`${mtsExtended.className} font-medium text-foreground text-md`}
+						className={`${mtsExtended.className} text-foreground text-md font-medium`}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
 						viewport={{ once: true }}

@@ -31,7 +31,7 @@ export function SessionMaps({
 			<Card.Header>
 				<Card.Title>
 					<Icon
-						className="text-neutral-700 text-xl dark:text-neutral-300"
+						className="text-xl text-neutral-700 dark:text-neutral-300"
 						icon="lucide:map"
 					/>
 					<h2>{t('sessions.maps')}</h2>
@@ -79,7 +79,7 @@ export function SessionMaps({
 
 						return (
 							<div
-								className="flex cursor-pointer items-center justify-between gap-2 rounded-lg px-1 py-1 duration-500 hover:bg-muted data-[checked=true]:bg-primary/10"
+								className="hover:bg-muted data-[checked=true]:bg-primary/10 flex cursor-pointer items-center justify-between gap-2 rounded-lg px-1 py-1 duration-500"
 								data-checked={checked}
 								key={map.id}
 								onClick={() => onToggle(map.id)}
@@ -90,7 +90,7 @@ export function SessionMaps({
 										onCheckedChange={() => onToggle(map.id)}
 										size="sm"
 									/>
-									<span className="font-semibold text-sm">
+									<span className="text-sm font-semibold">
 										{map.label}
 									</span>
 								</div>

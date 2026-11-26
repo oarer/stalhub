@@ -82,7 +82,7 @@ export default function HeroView({
 					<ProfileStickers customization={data.customization} />
 					<div style={textStyle}>
 						<Card.Header className="relative z-10 space-y-2">
-							<Card.Title className="flex flex-wrap items-center gap-4 font-semibold text-xl md:text-3xl">
+							<Card.Title className="flex flex-wrap items-center gap-4 text-xl font-semibold md:text-3xl">
 								<span className={allianceColors[data.alliance]}>
 									{t(`player.alliance.${data.alliance}`)}
 								</span>
@@ -129,7 +129,7 @@ export default function HeroView({
 				</Card.Root>
 			</ProfileDecoration>
 
-			<Card.Root className="w-full bg-card md:bg-card/50">
+			<Card.Root className="bg-card md:bg-card/50 w-full">
 				<Card.Content className="space-y-6">
 					<HeroCombat data={data.stats} />
 					<div className="border-primary/60 border-t" />
@@ -140,14 +140,14 @@ export default function HeroView({
 									className="text-xl"
 									icon="lucide:trophy"
 								/>
-								<h1 className="font-semibold text-lg">
+								<h1 className="text-lg font-semibold">
 									{t('player.hero.ach')}
 								</h1>
 							</div>
 							<AchievementsView
 								data={data.displayedAchievements}
 							/>
-							<p className="font-mono font-semibold text-sm">
+							<p className="font-mono text-sm font-semibold">
 								{t('player.hero.ach_points')}{' '}
 								{Number(getStatValue(data.stats, 'ach-points'))}
 							</p>

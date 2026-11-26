@@ -28,7 +28,7 @@ export function ArtistsView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('catalog')}
 			</h1>
@@ -56,7 +56,7 @@ export function ArtistsView() {
 						<ArtistPortfolio artist={artist} compact />
 						<div className="flex items-start justify-between gap-3 px-5">
 							<CLink
-								className={`${mtsExtended.className} px-0 text-lg hover:text-primary`}
+								className={`${mtsExtended.className} hover:text-primary px-0 text-lg`}
 								href={`/artists/${artist.user.username}`}
 								variant="none"
 							>
@@ -65,12 +65,12 @@ export function ArtistsView() {
 							<Badge variant="success">{t('open')}</Badge>
 						</div>
 						{artist.description && (
-							<p className="line-clamp-2 truncate px-5 text-muted-foreground text-sm">
+							<p className="text-muted-foreground line-clamp-2 truncate px-5 text-sm">
 								{artist.description}
 							</p>
 						)}
-						<div className="mt-auto flex flex-wrap justify-between gap-2 border-border/20 border-t px-5 py-3 text-sm">
-							<span className="font-medium text-primary">
+						<div className="border-border/20 mt-auto flex flex-wrap justify-between gap-2 border-t px-5 py-3 text-sm">
+							<span className="text-primary font-medium">
 								{t('from', {
 									price: commissionMoney(
 										Math.min(
@@ -99,7 +99,7 @@ export function ArtistsView() {
 			{query.data?.total === 0 && (
 				<div className="flex flex-col items-center gap-2 py-10 text-center">
 					<Icon
-						className="text-3xl text-muted-foreground"
+						className="text-muted-foreground text-3xl"
 						icon="lucide:brush"
 					/>
 					<p className="text-muted-foreground">{t('empty')}</p>
@@ -121,7 +121,7 @@ export function ArtistView({ username }: { username: string }) {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8">
 			<CLink
-				className="w-fit px-0 text-primary"
+				className="text-primary w-fit px-0"
 				href="/artists"
 				variant="none"
 			>
@@ -146,13 +146,13 @@ export function ArtistView({ username }: { username: string }) {
 						/>
 						<div className="flex-col gap-2">
 							<h1
-								className={`${mtsExtended.className} font-medium text-2xl`}
+								className={`${mtsExtended.className} text-2xl font-medium`}
 							>
 								{query.data.user.name ||
 									query.data.user.username}
 							</h1>
 							{query.data.description && (
-								<p className="max-w-2xl text-muted-foreground">
+								<p className="text-muted-foreground max-w-2xl">
 									{query.data.description}
 								</p>
 							)}
@@ -169,7 +169,7 @@ export function ArtistView({ username }: { username: string }) {
 						<div className="flex min-w-0 flex-col gap-5">
 							{query.data.portfolio?.length ? (
 								<>
-									<h2 className="font-semibold text-xl">
+									<h2 className="text-xl font-semibold">
 										{t('portfolio')}
 									</h2>
 									<ArtistPortfolio artist={query.data} />
@@ -183,7 +183,7 @@ export function ArtistView({ username }: { username: string }) {
 											title: t('terms'),
 											content: (
 												<>
-													<p className="whitespace-pre-wrap text-sm leading-relaxed">
+													<p className="text-sm leading-relaxed whitespace-pre-wrap">
 														{query.data.terms}
 													</p>
 													<p className="text-muted-foreground text-sm">

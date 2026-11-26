@@ -56,7 +56,7 @@ export default function UnoSeasonTiersView({ season }: { season?: string }) {
 					<div className="space-y-1">
 						<p>{t('seasons.tiersDescription')}</p>
 						{periodLabel && (
-							<p className="font-medium text-foreground">
+							<p className="text-foreground font-medium">
 								{periodLabel}
 							</p>
 						)}

@@ -48,7 +48,7 @@ export function ChangeMapModal({
 								variant={'secondary'}
 							>
 								<Icon className="text-lg" icon={map.icon} />
-								<span className="font-semibold text-sm">
+								<span className="text-sm font-semibold">
 									{t(map.label)}
 								</span>
 								{targetMap === map.value && (

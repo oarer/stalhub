@@ -8,10 +8,10 @@ export function SettingRow({
 	children: React.ReactNode
 }) {
 	return (
-		<div className="flex items-center justify-between rounded-lg bg-accent/50 p-4">
+		<div className="bg-accent/50 flex items-center justify-between rounded-lg p-4">
 			<div className="flex flex-col gap-1">
-				<span className="font-semibold text-sm">{title}</span>
-				<span className="font-semibold text-foreground text-xs">
+				<span className="text-sm font-semibold">{title}</span>
+				<span className="text-foreground text-xs font-semibold">
 					{description}
 				</span>
 			</div>

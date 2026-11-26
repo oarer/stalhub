@@ -28,11 +28,11 @@ export function DashboardView() {
 		<section className="flex h-dvh w-full flex-col">
 			<div className="mx-auto flex w-full max-w-400 flex-col items-center gap-4 px-4 pt-24 pb-5 text-center lg:pt-34">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-2xl tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} text-2xl font-semibold tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('dashboard.title')}
 				</h1>
-				<p className="font-medium text-[16px] text-foreground">
+				<p className="text-foreground text-[16px] font-medium">
 					{t('dashboard.subtitle')}
 				</p>
 
@@ -71,16 +71,16 @@ export function DashboardView() {
 				) : hasWidgets ? (
 					<DashboardCanvas />
 				) : (
-					<div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-primary border-dashed px-6 py-20 text-center">
+					<div className="border-primary flex flex-1 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-20 text-center">
 						<Icon
-							className="size-12 text-foreground"
+							className="text-foreground size-12"
 							icon="lucide:layout-grid"
 						/>
 						<div className="flex flex-col gap-1">
-							<p className="font-medium text-lg">
+							<p className="text-lg font-medium">
 								{t('dashboard.emptyTitle')}
 							</p>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{t('dashboard.emptySubtitle')}
 							</p>
 						</div>

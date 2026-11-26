@@ -47,11 +47,11 @@ export default function ArtsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.arts.title')}
 				</h1>
 				<div className="flex items-center gap-2">
-					<span className="text-neutral-400 text-sm">
+					<span className="text-sm text-neutral-400">
 						{data?.total_count ?? 0} {t('admin.permissions.total')}
 					</span>
 					<Button onClick={() => setIsCreateOpen(true)}>
@@ -111,7 +111,7 @@ export default function ArtsAdminView() {
 							{arts.map((art) => (
 								<Table.Row key={art.id}>
 									<Table.Cell>
-										<span className="font-mono text-neutral-400 text-xs">
+										<span className="font-mono text-xs text-neutral-400">
 											{art.id}
 										</span>
 									</Table.Cell>
@@ -134,7 +134,7 @@ export default function ArtsAdminView() {
 									<Table.Cell>
 										<span
 											className={cn(
-												'rounded-full px-2 py-0.5 font-semibold text-xs',
+												'rounded-full px-2 py-0.5 text-xs font-semibold',
 												art.type === ArtType.NSFW
 													? 'bg-red-500/20 text-red-400'
 													: 'bg-border/20 text-primary'
@@ -154,7 +154,7 @@ export default function ArtsAdminView() {
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="text-neutral-400 text-xs">
+										<span className="text-xs text-neutral-400">
 											{new Date(
 												art.created_at
 											).toLocaleDateString('ru-RU')}

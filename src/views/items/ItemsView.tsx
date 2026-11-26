@@ -273,7 +273,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 
 						<div className="space-y-2 text-center">
 							<h1
-								className={`${mtsExtended.className} font-semibold text-xl`}
+								className={`${mtsExtended.className} text-xl font-semibold`}
 								style={{
 									color:
 										infoColorMap[data.color as InfoColor] ||
@@ -282,7 +282,7 @@ export default function ItemsView({ path, id, githubUrl }: ItemsViewProps) {
 							>
 								{messageToString(data.name, locale) || data.id}
 							</h1>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{categoryLabel}
 							</p>
 						</div>

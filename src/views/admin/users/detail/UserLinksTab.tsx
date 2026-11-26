@@ -18,16 +18,16 @@ function LinkedAccount({
 }) {
 	const t = useTranslations()
 	return (
-		<div className="flex items-center rounded-lg bg-card/50 px-3 py-2">
-			<Icon className="shrink-0 text-muted-foreground" icon={icon} />
-			<span className="mx-2 w-24 shrink-0 font-semibold text-sm">
+		<div className="bg-card/50 flex items-center rounded-lg px-3 py-2">
+			<Icon className="text-muted-foreground shrink-0" icon={icon} />
+			<span className="mx-2 w-24 shrink-0 text-sm font-semibold">
 				{name}
 			</span>
 			{value ? (
 				<div className="flex min-w-0 flex-1 flex-col">
 					<span className="truncate text-sm">{value}</span>
 					{detail && (
-						<span className="break-all font-mono text-muted-foreground text-xs">
+						<span className="text-muted-foreground font-mono text-xs break-all">
 							{detail}
 						</span>
 					)}

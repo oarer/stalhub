@@ -35,11 +35,11 @@ export default function TestPage() {
 
 			{/* ==================== NORMAL ==================== */}
 			<div className="flex flex-col gap-8">
-				<h1 className="font-bold text-2xl">UI Components</h1>
+				<h1 className="text-2xl font-bold">UI Components</h1>
 
 				{/* Alert */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Alert</h2>
+					<h2 className="text-lg font-semibold">Alert</h2>
 					<Alert.Root variant="default">
 						<Alert.Title>Default Alert</Alert.Title>
 						<Alert.Description>
@@ -82,7 +82,7 @@ export default function TestPage() {
 
 				{/* Accordion */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Accordion</h2>
+					<h2 className="text-lg font-semibold">Accordion</h2>
 					<Accordion
 						items={[
 							{
@@ -108,7 +108,7 @@ export default function TestPage() {
 
 				{/* Badge */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Badge</h2>
+					<h2 className="text-lg font-semibold">Badge</h2>
 					<div className="flex flex-wrap gap-2">
 						<Badge>Default</Badge>
 						<Badge variant="success">Success</Badge>
@@ -122,7 +122,7 @@ export default function TestPage() {
 
 				{/* Button */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Button</h2>
+					<h2 className="text-lg font-semibold">Button</h2>
 					<div className="flex flex-wrap gap-2">
 						<Button variant="primary">Primary</Button>
 						<Button variant="secondary">Secondary</Button>
@@ -144,7 +144,7 @@ export default function TestPage() {
 
 				{/* Card */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Card</h2>
+					<h2 className="text-lg font-semibold">Card</h2>
 					<Card.Root className="w-full max-w-md">
 						<Card.Header>
 							<Card.Title>Card Title</Card.Title>
@@ -169,7 +169,7 @@ export default function TestPage() {
 
 				{/* CheckBox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">CheckBox</h2>
+					<h2 className="text-lg font-semibold">CheckBox</h2>
 					<div className="flex flex-wrap items-center gap-4">
 						<CheckBox />
 						<CheckBox defaultChecked />
@@ -197,7 +197,7 @@ export default function TestPage() {
 
 				{/* Switch */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Switch</h2>
+					<h2 className="text-lg font-semibold">Switch</h2>
 					<div className="flex flex-wrap items-center gap-4">
 						<Switch />
 						<Switch defaultChecked />
@@ -213,7 +213,7 @@ export default function TestPage() {
 
 				{/* Input */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Input</h2>
+					<h2 className="text-lg font-semibold">Input</h2>
 					<div className="max-w-sm">
 						<Input placeholder="Text input" />
 					</div>
@@ -232,7 +232,7 @@ export default function TestPage() {
 
 				{/* Slider */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Slider</h2>
+					<h2 className="text-lg font-semibold">Slider</h2>
 					<div className="max-w-sm">
 						<Slider
 							onValueChange={setSliderVal}
@@ -246,7 +246,7 @@ export default function TestPage() {
 
 				{/* Divider */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Divider</h2>
+					<h2 className="text-lg font-semibold">Divider</h2>
 					<p>Above</p>
 					<Divider />
 					<p>Below</p>
@@ -261,7 +261,7 @@ export default function TestPage() {
 
 				{/* Skeleton */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Skeleton</h2>
+					<h2 className="text-lg font-semibold">Skeleton</h2>
 					<div className="flex max-w-sm flex-col gap-2">
 						<Skeleton className="h-4 w-3/4" />
 						<Skeleton className="h-4 w-1/2" />
@@ -274,7 +274,7 @@ export default function TestPage() {
 
 				{/* Pagination */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Pagination</h2>
+					<h2 className="text-lg font-semibold">Pagination</h2>
 					<Pagination
 						onPageChange={setPage}
 						page={page}
@@ -286,7 +286,7 @@ export default function TestPage() {
 
 				{/* GradientText */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">GradientText</h2>
+					<h2 className="text-lg font-semibold">GradientText</h2>
 					<GradientText>Animated Gradient Text</GradientText>
 					<GradientText showBorder>With Border</GradientText>
 					<GradientText direction="vertical">
@@ -298,7 +298,7 @@ export default function TestPage() {
 
 				{/* Tooltip */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Tooltip</h2>
+					<h2 className="text-lg font-semibold">Tooltip</h2>
 					<div className="flex flex-wrap gap-4">
 						<Tooltip.Root position="top">
 							<Tooltip.Trigger>Hover top</Tooltip.Trigger>
@@ -323,7 +323,7 @@ export default function TestPage() {
 
 				{/* HoverCard */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">HoverCard</h2>
+					<h2 className="text-lg font-semibold">HoverCard</h2>
 					<HoverCard.Root>
 						<HoverCard.Trigger className="cursor-pointer underline">
 							Hover me
@@ -338,7 +338,7 @@ export default function TestPage() {
 
 				{/* Tabs */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Tabs</h2>
+					<h2 className="text-lg font-semibold">Tabs</h2>
 					<Tabs.Root defaultValue="tab1">
 						<Tabs.List>
 							<Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
@@ -361,7 +361,7 @@ export default function TestPage() {
 
 				{/* CLink */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Link</h2>
+					<h2 className="text-lg font-semibold">Link</h2>
 					<div className="flex flex-wrap gap-3">
 						<CLink href="/">Default</CLink>
 						<CLink href="/" variant="primary">
@@ -389,7 +389,7 @@ export default function TestPage() {
 
 				{/* CopyButton */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">CopyButton</h2>
+					<h2 className="text-lg font-semibold">CopyButton</h2>
 					<div className="flex gap-2">
 						<CopyButton text="Hello world" />
 						<CopyButton text="Outline" variant="outline" />
@@ -401,7 +401,7 @@ export default function TestPage() {
 
 				{/* Combobox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Combobox</h2>
+					<h2 className="text-lg font-semibold">Combobox</h2>
 					<div className="max-w-sm">
 						<Combobox
 							options={[
@@ -419,7 +419,7 @@ export default function TestPage() {
 
 				{/* DropDown */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">DropDown</h2>
+					<h2 className="text-lg font-semibold">DropDown</h2>
 					<DropdownMenu
 						icon="lucide:menu"
 						items={[
@@ -435,7 +435,7 @@ export default function TestPage() {
 
 				{/* Modal */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Modal</h2>
+					<h2 className="text-lg font-semibold">Modal</h2>
 					<Modal.Root>
 						<Modal.Trigger>Open Modal</Modal.Trigger>
 						<Modal.Content>
@@ -460,7 +460,7 @@ export default function TestPage() {
 
 				{/* LightBox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">LightBox</h2>
+					<h2 className="text-lg font-semibold">LightBox</h2>
 					<LightBox.Root>
 						<LightBox.Trigger>Open LightBox</LightBox.Trigger>
 						<LightBox.Content
@@ -473,13 +473,13 @@ export default function TestPage() {
 
 			{/* ==================== DARK:bg-primary на компонентах ==================== */}
 			<div className="flex flex-col gap-8">
-				<h1 className="font-bold text-2xl">
+				<h1 className="text-2xl font-bold">
 					UI Components (dark:bg-primary)
 				</h1>
 
 				{/* Alert */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Alert</h2>
+					<h2 className="text-lg font-semibold">Alert</h2>
 					<Alert.Root className="dark:bg-primary" variant="default">
 						<Alert.Title>Default Alert</Alert.Title>
 						<Alert.Description>
@@ -529,9 +529,9 @@ export default function TestPage() {
 
 				{/* Accordion */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Accordion</h2>
+					<h2 className="text-lg font-semibold">Accordion</h2>
 					<Accordion
-						className="rounded-xl dark:bg-primary"
+						className="dark:bg-primary rounded-xl"
 						items={[
 							{
 								key: '1',
@@ -556,7 +556,7 @@ export default function TestPage() {
 
 				{/* Badge */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Badge</h2>
+					<h2 className="text-lg font-semibold">Badge</h2>
 					<div className="flex flex-wrap gap-2">
 						<Badge className="dark:bg-primary">Default</Badge>
 						<Badge variant="success">Success</Badge>
@@ -570,7 +570,7 @@ export default function TestPage() {
 
 				{/* Button */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Button</h2>
+					<h2 className="text-lg font-semibold">Button</h2>
 					<div className="flex flex-wrap gap-2">
 						<Button className="dark:bg-primary" variant="primary">
 							Primary
@@ -604,8 +604,8 @@ export default function TestPage() {
 
 				{/* Card */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Card</h2>
-					<Card.Root className="w-full max-w-md dark:bg-primary">
+					<h2 className="text-lg font-semibold">Card</h2>
+					<Card.Root className="dark:bg-primary w-full max-w-md">
 						<Card.Header>
 							<Card.Title>Card Title</Card.Title>
 							<Card.Description>
@@ -629,7 +629,7 @@ export default function TestPage() {
 
 				{/* CheckBox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">CheckBox</h2>
+					<h2 className="text-lg font-semibold">CheckBox</h2>
 					<div className="flex flex-wrap items-center gap-4">
 						<CheckBox className="dark:bg-primary" />
 						<CheckBox className="dark:bg-primary" defaultChecked />
@@ -682,7 +682,7 @@ export default function TestPage() {
 
 				{/* Switch */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Switch</h2>
+					<h2 className="text-lg font-semibold">Switch</h2>
 					<div className="flex flex-wrap items-center gap-4">
 						<Switch className="dark:bg-primary" />
 						<Switch className="dark:bg-primary" defaultChecked />
@@ -717,7 +717,7 @@ export default function TestPage() {
 
 				{/* Input */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Input</h2>
+					<h2 className="text-lg font-semibold">Input</h2>
 					<div className="max-w-sm">
 						<Input
 							className="dark:bg-primary"
@@ -751,10 +751,10 @@ export default function TestPage() {
 
 				{/* Slider */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Slider</h2>
+					<h2 className="text-lg font-semibold">Slider</h2>
 					<div className="max-w-sm">
 						<Slider
-							className="rounded-xl p-2 dark:bg-primary"
+							className="dark:bg-primary rounded-xl p-2"
 							onValueChange={setSliderVal}
 							value={sliderVal}
 						/>
@@ -766,7 +766,7 @@ export default function TestPage() {
 
 				{/* Divider */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Divider</h2>
+					<h2 className="text-lg font-semibold">Divider</h2>
 					<p>Above</p>
 					<Divider className="dark:bg-primary" />
 					<p>Below</p>
@@ -784,12 +784,12 @@ export default function TestPage() {
 
 				{/* Skeleton */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Skeleton</h2>
+					<h2 className="text-lg font-semibold">Skeleton</h2>
 					<div className="flex max-w-sm flex-col gap-2">
-						<Skeleton className="h-4 w-3/4 dark:bg-primary" />
-						<Skeleton className="h-4 w-1/2 dark:bg-primary" />
-						<Skeleton className="h-4 w-2/3 dark:bg-primary" />
-						<Skeleton className="h-20 w-full dark:bg-primary" />
+						<Skeleton className="dark:bg-primary h-4 w-3/4" />
+						<Skeleton className="dark:bg-primary h-4 w-1/2" />
+						<Skeleton className="dark:bg-primary h-4 w-2/3" />
+						<Skeleton className="dark:bg-primary h-20 w-full" />
 					</div>
 				</div>
 
@@ -797,8 +797,8 @@ export default function TestPage() {
 
 				{/* Pagination */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Pagination</h2>
-					<div className="inline-flex rounded-xl p-2 dark:bg-primary">
+					<h2 className="text-lg font-semibold">Pagination</h2>
+					<div className="dark:bg-primary inline-flex rounded-xl p-2">
 						<Pagination
 							onPageChange={setPage}
 							page={page}
@@ -811,18 +811,18 @@ export default function TestPage() {
 
 				{/* GradientText */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">GradientText</h2>
-					<GradientText className="rounded-xl p-2 dark:bg-primary">
+					<h2 className="text-lg font-semibold">GradientText</h2>
+					<GradientText className="dark:bg-primary rounded-xl p-2">
 						Animated Gradient Text
 					</GradientText>
 					<GradientText
-						className="rounded-xl p-2 dark:bg-primary"
+						className="dark:bg-primary rounded-xl p-2"
 						showBorder
 					>
 						With Border
 					</GradientText>
 					<GradientText
-						className="rounded-xl p-2 dark:bg-primary"
+						className="dark:bg-primary rounded-xl p-2"
 						direction="vertical"
 					>
 						Vertical Direction
@@ -833,31 +833,31 @@ export default function TestPage() {
 
 				{/* Tooltip */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Tooltip</h2>
+					<h2 className="text-lg font-semibold">Tooltip</h2>
 					<div className="flex flex-wrap gap-4">
 						<Tooltip.Root
-							className="rounded-xl p-2 dark:bg-primary"
+							className="dark:bg-primary rounded-xl p-2"
 							position="top"
 						>
 							<Tooltip.Trigger>Hover top</Tooltip.Trigger>
 							<Tooltip.Content>Top tooltip</Tooltip.Content>
 						</Tooltip.Root>
 						<Tooltip.Root
-							className="rounded-xl p-2 dark:bg-primary"
+							className="dark:bg-primary rounded-xl p-2"
 							position="bottom"
 						>
 							<Tooltip.Trigger>Hover bottom</Tooltip.Trigger>
 							<Tooltip.Content>Bottom tooltip</Tooltip.Content>
 						</Tooltip.Root>
 						<Tooltip.Root
-							className="rounded-xl p-2 dark:bg-primary"
+							className="dark:bg-primary rounded-xl p-2"
 							position="left"
 						>
 							<Tooltip.Trigger>Hover left</Tooltip.Trigger>
 							<Tooltip.Content>Left tooltip</Tooltip.Content>
 						</Tooltip.Root>
 						<Tooltip.Root
-							className="rounded-xl p-2 dark:bg-primary"
+							className="dark:bg-primary rounded-xl p-2"
 							position="right"
 						>
 							<Tooltip.Trigger>Hover right</Tooltip.Trigger>
@@ -870,8 +870,8 @@ export default function TestPage() {
 
 				{/* HoverCard */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">HoverCard</h2>
-					<HoverCard.Root className="rounded-xl p-2 dark:bg-primary">
+					<h2 className="text-lg font-semibold">HoverCard</h2>
+					<HoverCard.Root className="dark:bg-primary rounded-xl p-2">
 						<HoverCard.Trigger className="cursor-pointer underline">
 							Hover me
 						</HoverCard.Trigger>
@@ -885,9 +885,9 @@ export default function TestPage() {
 
 				{/* Tabs */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Tabs</h2>
+					<h2 className="text-lg font-semibold">Tabs</h2>
 					<Tabs.Root
-						className="rounded-xl p-2 dark:bg-primary"
+						className="dark:bg-primary rounded-xl p-2"
 						defaultValue="dark-tab1"
 					>
 						<Tabs.List>
@@ -911,7 +911,7 @@ export default function TestPage() {
 
 				{/* CLink */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Link</h2>
+					<h2 className="text-lg font-semibold">Link</h2>
 					<div className="flex flex-wrap gap-3">
 						<CLink className="dark:bg-primary" href="/">
 							Default
@@ -961,7 +961,7 @@ export default function TestPage() {
 
 				{/* CopyButton */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">CopyButton</h2>
+					<h2 className="text-lg font-semibold">CopyButton</h2>
 					<div className="flex gap-2">
 						<CopyButton
 							className="dark:bg-primary"
@@ -984,7 +984,7 @@ export default function TestPage() {
 
 				{/* Combobox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Combobox</h2>
+					<h2 className="text-lg font-semibold">Combobox</h2>
 					<div className="max-w-sm">
 						<Combobox
 							className="dark:bg-primary"
@@ -1003,7 +1003,7 @@ export default function TestPage() {
 
 				{/* DropDown */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">DropDown</h2>
+					<h2 className="text-lg font-semibold">DropDown</h2>
 					<DropdownMenu
 						className="dark:bg-primary"
 						icon="lucide:menu"
@@ -1020,7 +1020,7 @@ export default function TestPage() {
 
 				{/* Modal */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">Modal</h2>
+					<h2 className="text-lg font-semibold">Modal</h2>
 					<Modal.Root>
 						<Modal.Trigger>Open Modal</Modal.Trigger>
 						<Modal.Content className="dark:bg-primary">
@@ -1045,7 +1045,7 @@ export default function TestPage() {
 
 				{/* LightBox */}
 				<div className="flex flex-col gap-3">
-					<h2 className="font-semibold text-lg">LightBox</h2>
+					<h2 className="text-lg font-semibold">LightBox</h2>
 					<LightBox.Root>
 						<LightBox.Trigger className="dark:bg-primary">
 							Open LightBox

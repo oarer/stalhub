@@ -72,7 +72,7 @@ export function ProfileMusicSection({
 	return (
 		<Section icon="lucide:disc-3" title={t('me.settings.profileMusic')}>
 			<div className="flex flex-col gap-2">
-				<p className="font-semibold text-foreground text-xs">
+				<p className="text-foreground text-xs font-semibold">
 					{t('me.settings.profileMusicDesc')}
 				</p>
 				<div className="grid gap-2 md:grid-cols-2">
@@ -106,16 +106,16 @@ export function ProfileMusicSection({
 					/>
 				</div>
 				{onUploadFile && (
-					<div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-primary/25 bg-primary/5 px-3 py-2.5">
+					<div className="border-primary/25 bg-primary/5 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2.5">
 						<div className="min-w-0">
-							<p className="flex items-center gap-1.5 font-semibold text-[11px]">
+							<p className="flex items-center gap-1.5 text-[11px] font-semibold">
 								<Icon
-									className="text-base text-primary"
+									className="text-primary text-base"
 									icon="lucide:file-audio"
 								/>
 								{t('me.settings.musicUploadTitle')}
 							</p>
-							<p className="mt-0.5 truncate text-[11px] text-muted-foreground">
+							<p className="text-muted-foreground mt-0.5 truncate text-[11px]">
 								{t('me.settings.musicUploadDesc')}
 							</p>
 						</div>
@@ -148,7 +148,7 @@ export function ProfileMusicSection({
 									variant="ghost"
 								>
 									<Icon
-										className="text-base text-destructive"
+										className="text-destructive text-base"
 										icon="lucide:trash-2"
 									/>
 									{t('me.settings.musicRemoveButton')}

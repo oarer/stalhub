@@ -69,7 +69,7 @@ function TierRow({
 	return (
 		<div className="flex gap-2">
 			<div
-				className={`flex size-17 shrink-0 items-center justify-center rounded-lg font-semibold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
+				className={`flex size-17 shrink-0 items-center justify-center rounded-lg text-xl font-semibold ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
 			>
 				{rank}
 			</div>
@@ -82,7 +82,7 @@ function TierRow({
 				}`}
 			>
 				{entries.length === 0 && (
-					<span className="flex items-center px-2 font-semibold text-foreground text-sm">
+					<span className="text-foreground flex items-center px-2 text-sm font-semibold">
 						{t('tierlists.empty')}
 					</span>
 				)}
@@ -125,12 +125,12 @@ function DraggableEntry({
 	const content = (
 		<div
 			{...draggableProps}
-			className={`group flex items-center gap-2 rounded-md border border-muted bg-card px-3 py-2 text-sm transition-colors hover:border-primary/30 ${
+			className={`group border-muted bg-card hover:border-primary/30 flex items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${
 				isDragging ? 'opacity-50' : ''
 			}`}
 		>
 			<Icon
-				className="size-4 cursor-grab text-foreground/50"
+				className="text-foreground/50 size-4 cursor-grab"
 				icon="lucide:grip-vertical"
 			/>
 			{item && (
@@ -354,7 +354,7 @@ export default function TierListEditorView() {
 			<div className="flex flex-col gap-5">
 				<div className="flex items-center justify-between">
 					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+						className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 					>
 						{isEditing
 							? t('tierlists.editor.edit')
@@ -391,7 +391,7 @@ export default function TierListEditorView() {
 					/>
 					<div>
 						<p
-							className={`mb-1 font-mono font-semibold text-muted-foreground text-sm`}
+							className={`text-muted-foreground mb-1 font-mono text-sm font-semibold`}
 						>
 							{t('tierlists.editor.category')}
 						</p>

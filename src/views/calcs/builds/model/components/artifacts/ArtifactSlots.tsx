@@ -76,7 +76,7 @@ export function ArtifactSlots({
 					<div className="relative" key={i}>
 						<button
 							className={cn(
-								'flex h-24 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-primary/40 bg-card/25 p-1 backdrop-blur-sm transition-colors',
+								'border-primary/40 bg-card/25 flex h-24 w-22 cursor-pointer flex-col items-center justify-center rounded-lg border-2 p-1 backdrop-blur-sm transition-colors',
 								borderColor
 							)}
 							onClick={() => onSelectSlot(i)}
@@ -91,14 +91,14 @@ export function ArtifactSlots({
 									/>
 									<div className="flex flex-col items-center">
 										<p
-											className="max-w-16 truncate text-center font-semibold text-xs transition-colors"
+											className="max-w-16 truncate text-center text-xs font-semibold transition-colors"
 											style={{ color: colorHex }}
 										>
 											{messageToString(item.name, locale)}
 										</p>
 										{art?.potential !== 0 && (
 											<span
-												className={`font-mono font-semibold text-xs transition-colors`}
+												className={`font-mono text-xs font-semibold transition-colors`}
 												style={{ color: colorHex }}
 											>
 												+{art?.potential}
@@ -109,7 +109,7 @@ export function ArtifactSlots({
 							) : (
 								<div className="flex flex-col items-center">
 									<Icon
-										className="text-2xl text-muted-foreground"
+										className="text-muted-foreground text-2xl"
 										icon="lucide:circle-question-mark"
 									/>
 								</div>

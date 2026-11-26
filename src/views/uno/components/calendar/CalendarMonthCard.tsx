@@ -35,12 +35,12 @@ export function CalendarMonthCard({
 
 	return (
 		<Card.Root className="gap-0 overflow-hidden p-0">
-			<div className="flex items-end justify-between gap-3 border-primary/20 border-b px-4 py-3">
+			<div className="border-primary/20 flex items-end justify-between gap-3 border-b px-4 py-3">
 				<div>
-					<h3 className="font-semibold text-lg capitalize">
+					<h3 className="text-lg font-semibold capitalize">
 						{formatMonth(locale, month.year, month.month)}
 					</h3>
-					<p className="font-mono font-semibold text-muted-foreground text-xs">
+					<p className="text-muted-foreground font-mono text-xs font-semibold">
 						{formatUnoValue(totalGrids, locale)}{' '}
 						{t('calendar.gridsCount').toLowerCase()}
 					</p>
@@ -51,10 +51,10 @@ export function CalendarMonthCard({
 				</Badge>
 			</div>
 
-			<div className="grid grid-cols-7 border-primary/15 border-b bg-primary/5 px-2 py-2 sm:px-3">
+			<div className="border-primary/15 bg-primary/5 grid grid-cols-7 border-b px-2 py-2 sm:px-3">
 				{weekdays.map((weekday) => (
 					<span
-						className="text-center font-mono font-semibold text-[10px] text-muted-foreground uppercase"
+						className="text-muted-foreground text-center font-mono text-[10px] font-semibold uppercase"
 						key={weekday}
 					>
 						{weekday}
@@ -62,7 +62,7 @@ export function CalendarMonthCard({
 				))}
 			</div>
 
-			<div className="grid grid-cols-7 bg-primary/10">
+			<div className="bg-primary/10 grid grid-cols-7">
 				{cells.map((day) => {
 					if (day < 1) {
 						return <div key={`empty-${day}`} />
@@ -72,11 +72,11 @@ export function CalendarMonthCard({
 					const dateItems = month.byDate.get(dateKey) ?? []
 					return (
 						<div
-							className={`min-h-24 bg-card/75 p-2 ring-1 ring-accent ${dateItems.length > 0 ? 'ring-1 ring-primary/20 ring-inset' : ''}`}
+							className={`bg-card/75 ring-accent min-h-24 p-2 ring-1 ${dateItems.length > 0 ? 'ring-primary/20 ring-1 ring-inset' : ''}`}
 							key={dateKey}
 						>
 							<span
-								className={`font-mono font-semibold text-xs ${dateItems.length > 0 ? 'text-primary' : 'text-muted-foreground'}`}
+								className={`font-mono text-xs font-semibold ${dateItems.length > 0 ? 'text-primary' : 'text-muted-foreground'}`}
 							>
 								{day}
 							</span>
@@ -84,13 +84,13 @@ export function CalendarMonthCard({
 								<div className="mt-2 space-y-1">
 									{dateItems.map((item) => (
 										<div
-											className="truncate rounded bg-primary/10 px-1.5 py-1 font-medium text-[10px]"
+											className="bg-primary/10 truncate rounded px-1.5 py-1 text-[10px] font-medium"
 											key={item.key}
 											title={formatMode(t, item.mode)}
 										>
 											{formatMode(t, item.mode)}
 											{item.gridsCount !== null && (
-												<span className="ml-1 font-mono font-semibold text-muted-foreground">
+												<span className="text-muted-foreground ml-1 font-mono font-semibold">
 													×
 													{formatUnoValue(
 														item.gridsCount,

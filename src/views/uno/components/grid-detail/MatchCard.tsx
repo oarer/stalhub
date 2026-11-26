@@ -37,15 +37,15 @@ export function MatchCard({
 				className={cn(
 					'gap-0 overflow-hidden p-0 ring-1 transition-all duration-200',
 					highlighted
-						? 'shadow-lg shadow-primary/30 ring-primary/60'
-						: 'hover:shadow-lg hover:shadow-primary/30 hover:ring-primary/60'
+						? 'shadow-primary/30 ring-primary/60 shadow-lg'
+						: 'hover:shadow-primary/30 hover:ring-primary/60 hover:shadow-lg'
 				)}
 			>
 				<MatchHeader
 					losses={view.record.losses}
 					wins={view.record.wins}
 				/>
-				<div className="divide-y divide-border-secondary/50">
+				<div className="divide-border-secondary/50 divide-y">
 					{view.match.clans.map((clan) => (
 						<ClanRow
 							clan={clan}

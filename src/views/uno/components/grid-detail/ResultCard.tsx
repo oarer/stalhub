@@ -39,8 +39,8 @@ export function ResultCard({
 				className={cn(
 					'gap-0 overflow-hidden p-0 ring-1 transition-all duration-200',
 					highlighted
-						? 'shadow-lg shadow-primary/30 ring-primary/60'
-						: 'hover:shadow-lg hover:shadow-primary/30 hover:ring-primary/60'
+						? 'shadow-primary/30 ring-primary/60 shadow-lg'
+						: 'hover:shadow-primary/30 hover:ring-primary/60 hover:shadow-lg'
 				)}
 			>
 				<MatchHeader
@@ -48,7 +48,7 @@ export function ResultCard({
 					losses={group.losses}
 					wins={group.wins}
 				/>
-				<div className="divide-y divide-border-secondary/50">
+				<div className="divide-border-secondary/50 divide-y">
 					{group.clans.map((clan) => (
 						<ClanRow
 							clan={clan}

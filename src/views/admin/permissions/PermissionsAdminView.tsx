@@ -88,10 +88,10 @@ export default function PermissionsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.permissions.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
+				<span className="text-sm text-neutral-400">
 					{permissions?.length ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
@@ -127,7 +127,7 @@ export default function PermissionsAdminView() {
 							{permissions?.map((perm) => (
 								<Table.Row key={perm.id}>
 									<Table.Cell>
-										<span className="font-mono text-neutral-400 text-xs">
+										<span className="font-mono text-xs text-neutral-400">
 											{perm.id}
 										</span>
 									</Table.Cell>
@@ -137,7 +137,7 @@ export default function PermissionsAdminView() {
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
+										<span className="text-sm text-neutral-400">
 											{perm.description ?? '—'}
 										</span>
 									</Table.Cell>

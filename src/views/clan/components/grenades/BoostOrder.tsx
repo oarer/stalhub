@@ -176,7 +176,7 @@ export function BoostOrder({ settings }: Props) {
 								)}
 
 								<div className="flex flex-col gap-2">
-									<h4 className="font-semibold text-sm">
+									<h4 className="text-sm font-semibold">
 										{t('clan.boosts.addOrder')}
 									</h4>
 									<Input

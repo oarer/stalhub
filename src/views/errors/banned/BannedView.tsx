@@ -34,7 +34,7 @@ export default function BannedView() {
 			<div className="grid items-center gap-8 md:flex">
 				<div className="flex max-w-sm flex-col gap-2">
 					<h1
-						className={`${mtsExtended.className} text-center font-semibold text-2xl uppercase tracking-widest md:text-left md:text-3xl`}
+						className={`${mtsExtended.className} text-center text-2xl font-semibold tracking-widest uppercase md:text-left md:text-3xl`}
 					>
 						{t('errors.banned.account')}{' '}
 						<span className="text-destructive">
@@ -42,7 +42,7 @@ export default function BannedView() {
 						</span>
 					</h1>
 					<p
-						className={`${mtsExtended.className} text-center font-medium text-md md:text-left md:text-xl dark:text-foreground`}
+						className={`${mtsExtended.className} text-md dark:text-foreground text-center font-medium md:text-left md:text-xl`}
 					>
 						{reason
 							? `${t('errors.banned.reasonPrefix')} ${reason}`
@@ -50,7 +50,7 @@ export default function BannedView() {
 					</p>
 					{remaining != null && remaining > 0 && (
 						<p
-							className={`${mtsExtended.className} text-center font-medium text-sm md:text-left md:text-lg dark:text-muted-foreground`}
+							className={`${mtsExtended.className} dark:text-muted-foreground text-center text-sm font-medium md:text-left md:text-lg`}
 						>
 							{t('errors.banned.remaining')}{' '}
 							{stringTimeDeltaFull(

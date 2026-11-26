@@ -56,7 +56,7 @@ function LevelPicker({
 					type="button"
 					variant={value === level ? 'primary' : 'outline'}
 				>
-					<span className={`font-medium font-mono text-md`}>
+					<span className={`text-md font-mono font-medium`}>
 						{level}
 					</span>
 				</Button>
@@ -78,7 +78,7 @@ function Field({
 		<div className="flex flex-col gap-2">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg text-neutral-400" icon={icon} />
-				<p className="font-medium text-sm">{label}</p>
+				<p className="text-sm font-medium">{label}</p>
 			</div>
 			{children}
 		</div>
@@ -177,7 +177,7 @@ export function UpgradeForm({
 						>
 							<div
 								className={cn(
-									'flex h-full flex-col gap-3 rounded-lg bg-card/70 px-3 py-2.5 ring-2',
+									'bg-card/70 flex h-full flex-col gap-3 rounded-lg px-3 py-2.5 ring-2',
 									costs.useAmplifier
 										? 'ring-primary/60'
 										: 'ring-primary/15'

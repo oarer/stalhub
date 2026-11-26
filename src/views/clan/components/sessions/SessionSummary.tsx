@@ -14,14 +14,14 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 	return (
 		<>
 			<div className="flex items-center justify-between">
-				<p className="font-semibold text-md">
+				<p className="text-md font-semibold">
 					{t('clan.sessions.summary')}
 				</p>
 				<span
-					className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
+					className={`rounded px-1.5 py-0.5 text-xs font-semibold ${
 						summary.victory
-							? 'bg-green-500/20 text-success'
-							: 'bg-red-500/20 text-destructive'
+							? 'text-success bg-green-500/20'
+							: 'text-destructive bg-red-500/20'
 					}`}
 				>
 					{summary.victory
@@ -31,13 +31,13 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 			</div>
 			{summary.total_score && (
 				<div className="flex flex-col">
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{t('clan.sessions.stageScore', {
 							score: summary.total_score,
 						})}
 						{playerTeam?.name && ` (${playerTeam.name})`}
 					</p>
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{opponents.length === 1
 							? t('clan.sessions.opponentsOne', {
 									names: opponents
@@ -61,7 +61,7 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 			<div className="flex flex-col gap-2 p-3">
 				<Table.Root className={`font-mono font-semibold`}>
 					<Table.Header>
-						<Table.Row className="text-left text-foreground">
+						<Table.Row className="text-foreground text-left">
 							<Table.Head>{t('clan.common.player')}</Table.Head>
 							<Table.Head className="text-center">
 								{t('clan.sessions.killsShort')}
@@ -85,13 +85,13 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 						{summary.players.map((p) => (
 							<Table.Row key={p.name}>
 								<Table.Cell>{p.name}</Table.Cell>
-								<Table.Cell className="text-center font-medium text-foreground">
+								<Table.Cell className="text-foreground text-center font-medium">
 									{p.kills}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-foreground">
+								<Table.Cell className="text-foreground text-center font-medium">
 									{p.deaths}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-foreground">
+								<Table.Cell className="text-foreground text-center font-medium">
 									{p.assists}
 								</Table.Cell>
 								<Table.Cell
@@ -99,7 +99,7 @@ export function SessionSummary({ summary }: { summary: StageSummary }) {
 								>
 									{formatKd(p.kills, p.deaths)}
 								</Table.Cell>
-								<Table.Cell className="py-2 text-center font-medium text-muted-foreground">
+								<Table.Cell className="text-muted-foreground py-2 text-center font-medium">
 									{p.score > 0 ? p.score : ''}
 								</Table.Cell>
 							</Table.Row>

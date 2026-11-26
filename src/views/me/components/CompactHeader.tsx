@@ -33,7 +33,7 @@ export default function CompactHeader({
 				/>
 			)}
 
-			<div className="relative h-44 overflow-hidden rounded-lg bg-secondary">
+			<div className="bg-secondary relative h-44 overflow-hidden rounded-lg">
 				{bannerType === 'HEADER' && (
 					<MeBanner
 						bannerColor={bannerColor}
@@ -56,12 +56,12 @@ export default function CompactHeader({
 							</div>
 							<div className="flex flex-col gap-2">
 								<h2
-									className={`${mtsExtended.className} font-medium text-2xl leading-none`}
+									className={`${mtsExtended.className} text-2xl leading-none font-medium`}
 								>
 									<Username user={user}>{user.name}</Username>
 								</h2>
 								{user.name && (
-									<span className="font-semibold text-foreground leading-none">
+									<span className="text-foreground leading-none font-semibold">
 										<Username user={user} />
 									</span>
 								)}
@@ -73,7 +73,7 @@ export default function CompactHeader({
 									<Tooltip.Root key={badge.id}>
 										<Tooltip.Trigger asChild>
 											<button
-												className="flex size-5 items-center justify-center rounded-sm bg-primary"
+												className="bg-primary flex size-5 items-center justify-center rounded-sm"
 												style={{
 													background: badge.color,
 												}}
@@ -101,7 +101,7 @@ export default function CompactHeader({
 							</div>
 						)}
 						<p
-							className={`w-fit rounded-md bg-muted px-2.5 py-1 font-mono font-semibold text-xs leading-none`}
+							className={`bg-muted w-fit rounded-md px-2.5 py-1 font-mono text-xs leading-none font-semibold`}
 						>
 							ID: {user.id}
 						</p>

@@ -30,12 +30,12 @@ export function FeedFilters({
 
 	return (
 		<aside className="flex flex-col gap-4 lg:sticky lg:top-32 lg:self-start">
-			<div className="rounded-2xl border border-primary/20 bg-card/40 p-5">
-				<h2 className="mb-4 font-semibold text-base">
+			<div className="border-primary/20 bg-card/40 rounded-2xl border p-5">
+				<h2 className="mb-4 text-base font-semibold">
 					{t('feed.filters.title')}
 				</h2>
 				<div className="flex flex-col gap-3">
-					<span className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+					<span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
 						{t('feed.filters.label')}
 					</span>
 					{FEED_CONTENT_TYPES.map((value) => (
@@ -52,8 +52,8 @@ export function FeedFilters({
 					))}
 				</div>
 				{categories.length > 0 && (
-					<div className="mt-5 flex flex-col gap-2 border-primary/10 border-t pt-4">
-						<span className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+					<div className="border-primary/10 mt-5 flex flex-col gap-2 border-t pt-4">
+						<span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
 							{t('feed.categories.label')}
 						</span>
 						<Combobox
@@ -74,8 +74,8 @@ export function FeedFilters({
 						/>
 					</div>
 				)}
-				<div className="mt-5 flex flex-col gap-2 border-primary/10 border-t pt-4">
-					<span className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+				<div className="border-primary/10 mt-5 flex flex-col gap-2 border-t pt-4">
+					<span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
 						{t('feed.sort.label')}
 					</span>
 					<div className="grid grid-cols-2 gap-2">

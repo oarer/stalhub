@@ -160,7 +160,7 @@ export function GrenadeBoxOrder({ clanId }: { clanId: string }) {
 						)}
 
 						<div className="flex flex-col gap-2">
-							<h4 className="font-semibold text-sm">
+							<h4 className="text-sm font-semibold">
 								{t('clan.grenades.addBox')}
 							</h4>
 							<Input

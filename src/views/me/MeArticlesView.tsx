@@ -49,11 +49,11 @@ export default function MeArticlesView() {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-xl">
+				<h1 className="text-xl font-semibold">
 					{t('me.articles.title')}
 				</h1>
 				<Link
-					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+					className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-all hover:brightness-120"
 					href="/me/articles/new"
 				>
 					<Icon className="size-4" icon="lucide:plus" />
@@ -86,14 +86,14 @@ export default function MeArticlesView() {
 			{!filteredArticles || filteredArticles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:file-text"
 					/>
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{t('me.articles.noArticles')}
 					</p>
 					<Link
-						className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+						className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-all hover:brightness-120"
 						href="/me/articles/new"
 					>
 						<Icon className="size-4" icon="lucide:plus" />

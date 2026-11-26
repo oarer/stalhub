@@ -34,11 +34,11 @@ export default function MeBuildsView() {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-xl">
+				<h1 className="text-xl font-semibold">
 					{t('me.builds.title')}
 				</h1>
 				<Link
-					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+					className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-all hover:brightness-120"
 					href={'/calcs/builds/lite'}
 				>
 					<Icon className="size-4" icon="lucide:plus" />
@@ -47,7 +47,7 @@ export default function MeBuildsView() {
 			</div>
 
 			{builds?.data.length === 0 ? (
-				<p className="font-semibold text-foreground text-sm">
+				<p className="text-foreground text-sm font-semibold">
 					{t('me.builds.noBuilds')}
 				</p>
 			) : (

@@ -78,7 +78,7 @@ export const KeyValueElement: React.FC<{
 				{key}
 			</p>
 			<p
-				className="max-w-40 truncate text-nowrap font-mono font-semibold"
+				className="max-w-40 truncate font-mono font-semibold text-nowrap"
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{value}
@@ -110,16 +110,16 @@ export const NumericElement: React.FC<{
 			</p>
 			{override ? (
 				<div className="flex items-center gap-1 text-nowrap">
-					<span className="font-mono font-semibold text-foreground text-sm line-through">
+					<span className="text-foreground font-mono text-sm font-semibold line-through">
 						{roundNumber(override.base)}
 					</span>
 					<span aria-hidden="true">→</span>
-					<span className="font-mono font-semibold text-sm">
+					<span className="font-mono text-sm font-semibold">
 						{roundNumber(override.modified)}
 					</span>
 					<span
 						className={cn(
-							'font-mono font-semibold text-sm',
+							'font-mono text-sm font-semibold',
 							override.improved
 								? 'text-emerald-500'
 								: 'text-destructive'
@@ -218,7 +218,7 @@ export const ThresholdElement: React.FC<{
 				{name}
 			</p>
 			<p
-				className={`text-nowrap font-medium font-mono`}
+				className={`font-mono font-medium text-nowrap`}
 				style={{ color: valueColor }}
 			>
 				{display}
@@ -233,7 +233,7 @@ export const FallbackElement: React.FC<{ el: InfoElement }> = ({ el }) => {
 			<span className="font-mono font-semibold">
 				Парсер не смог обработать строки ниже:
 			</span>
-			<pre className="whitespace-pre-wrap font-medium font-mono text-xs">
+			<pre className="font-mono text-xs font-medium whitespace-pre-wrap">
 				{JSON.stringify(el, null, 2)}
 			</pre>
 		</div>
@@ -276,7 +276,7 @@ export const NumericVariantsElementRenderer: React.FC<{
 				{name}
 			</p>
 			<p
-				className="font-mono font-semibold text-md"
+				className="text-md font-mono font-semibold"
 				style={valueColor ? { color: valueColor } : undefined}
 			>
 				{display}

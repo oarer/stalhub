@@ -123,7 +123,7 @@ export default function BarterCalcPanel({
 
 	return (
 		<Card.Root className="gap-4">
-			<Card.Title className="font-semibold text-base">
+			<Card.Title className="text-base font-semibold">
 				{t('barterCalc.calc')}
 			</Card.Title>
 
@@ -179,7 +179,7 @@ export default function BarterCalcPanel({
 				{mode === 'unlimited'
 					? unlimitedRows.map((row) => (
 							<div
-								className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${row.index === bestUnlimited ? 'bg-accent ring-1 ring-primary/50' : 'bg-accent/40'}`}
+								className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${row.index === bestUnlimited ? 'bg-accent ring-primary/50 ring-1' : 'bg-accent/40'}`}
 								key={row.index}
 							>
 								<span className="text-foreground">
@@ -187,17 +187,17 @@ export default function BarterCalcPanel({
 										n: row.index + 1,
 									})}
 								</span>
-								<span className="flex-1 font-mono font-semibold text-primary">
+								<span className="text-primary flex-1 font-mono font-semibold">
 									{row.total.toLocaleString()} {currencyUnit}
 								</span>
 								{row.money > 0 && (
-									<span className="font-mono font-semibold text-foreground text-xs">
+									<span className="text-foreground font-mono text-xs font-semibold">
 										+ {row.money.toLocaleString()} ₽
 									</span>
 								)}
 								{row.index === bestUnlimited &&
 									unlimitedRows.length > 1 && (
-										<span className="rounded bg-primary/20 px-1.5 py-0.5 font-semibold text-primary text-xs">
+										<span className="bg-primary/20 text-primary rounded px-1.5 py-0.5 text-xs font-semibold">
 											{t('barterCalc.best')}
 										</span>
 									)}
@@ -205,7 +205,7 @@ export default function BarterCalcPanel({
 						))
 					: stockEval.rows.map((row) => (
 							<div
-								className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${row.index === stockEval.bestIndex ? 'bg-accent ring-1 ring-primary/50' : 'bg-accent/40'}`}
+								className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${row.index === stockEval.bestIndex ? 'bg-accent ring-primary/50 ring-1' : 'bg-accent/40'}`}
 								key={row.index}
 							>
 								<span className="text-foreground">
@@ -213,27 +213,27 @@ export default function BarterCalcPanel({
 										n: row.index + 1,
 									})}
 								</span>
-								<span className="flex-1 font-mono font-semibold text-primary">
+								<span className="text-primary flex-1 font-mono font-semibold">
 									{row.total.toLocaleString()} {currencyUnit}
 								</span>
 								{row.money > 0 && (
-									<span className="font-mono font-semibold text-foreground text-xs">
+									<span className="text-foreground font-mono text-xs font-semibold">
 										+ {row.money.toLocaleString()} ₽
 									</span>
 								)}
 								{row.affordable ? (
-									<span className="rounded bg-green-500/20 px-1.5 py-0.5 font-semibold text-green-400 text-xs">
+									<span className="rounded bg-green-500/20 px-1.5 py-0.5 text-xs font-semibold text-green-400">
 										{t('barterCalc.affordable')}
 									</span>
 								) : (
-									<span className="rounded bg-red-500/20 px-1.5 py-0.5 font-semibold text-red-400 text-xs">
+									<span className="rounded bg-red-500/20 px-1.5 py-0.5 text-xs font-semibold text-red-400">
 										{t('barterCalc.shortage', {
 											n: row.shortage.toLocaleString(),
 										})}
 									</span>
 								)}
 								{row.index === stockEval.bestIndex && (
-									<span className="rounded bg-primary/20 px-1.5 py-0.5 font-semibold text-primary text-xs">
+									<span className="bg-primary/20 text-primary rounded px-1.5 py-0.5 text-xs font-semibold">
 										{t('barterCalc.best')}
 									</span>
 								)}
@@ -245,7 +245,7 @@ export default function BarterCalcPanel({
 			</div>
 
 			{mode === 'stock' && bestStockPick && bestStockOffer && (
-				<div className="flex flex-col gap-1.5 rounded-lg bg-accent/60 px-3 py-2.5">
+				<div className="bg-accent/60 flex flex-col gap-1.5 rounded-lg px-3 py-2.5">
 					<div className="flex items-center justify-between gap-2 text-sm">
 						<span className="font-semibold">
 							{t('barterCalc.bestPick')}:{' '}
@@ -266,7 +266,7 @@ export default function BarterCalcPanel({
 							item.item_id
 						return (
 							<div
-								className="flex items-center gap-2 rounded-lg bg-accent/40 px-2 py-1.5 text-sm"
+								className="bg-accent/40 flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm"
 								key={item.item_id}
 							>
 								{item.category && (
@@ -278,7 +278,7 @@ export default function BarterCalcPanel({
 									/>
 								)}
 								<span className="flex-1 truncate">{name}</span>
-								<span className="font-mono text-primary">
+								<span className="text-primary font-mono">
 									×
 									{applyDiscount(
 										item.amount,
@@ -293,7 +293,7 @@ export default function BarterCalcPanel({
 							<span className="text-foreground">
 								{t('barterCalc.totalPrice')}
 							</span>
-							<span className="font-mono font-semibold text-primary">
+							<span className="text-primary font-mono font-semibold">
 								{bestStockPick.money.toLocaleString()} ₽
 							</span>
 						</div>
@@ -301,7 +301,7 @@ export default function BarterCalcPanel({
 				</div>
 			)}
 
-			<div className="flex flex-col gap-2 rounded-lg bg-accent/40 px-3 py-2.5">
+			<div className="bg-accent/40 flex flex-col gap-2 rounded-lg px-3 py-2.5">
 				<CheckBox
 					checked={includeTokens}
 					label={t('barterCalc.includeTokens')}
@@ -313,7 +313,7 @@ export default function BarterCalcPanel({
 								<span className="text-foreground">
 									{t('barterCalc.tokensNeed')}
 								</span>
-								<span className="font-mono font-semibold text-primary">
+								<span className="text-primary font-mono font-semibold">
 									{tokenTotal.toLocaleString()}{' '}
 									{t('barterCalc.tokensUnit')}
 								</span>
@@ -338,11 +338,11 @@ export default function BarterCalcPanel({
 										</span>
 										{tokenAffordable >= serumNeeded &&
 										serumNeeded > 0 ? (
-											<span className="rounded bg-green-500/20 px-1.5 py-0.5 font-semibold text-green-400 text-xs">
+											<span className="rounded bg-green-500/20 px-1.5 py-0.5 text-xs font-semibold text-green-400">
 												{t('barterCalc.affordable')}
 											</span>
 										) : (
-											<span className="rounded bg-red-500/20 px-1.5 py-0.5 font-semibold text-red-400 text-xs">
+											<span className="rounded bg-red-500/20 px-1.5 py-0.5 text-xs font-semibold text-red-400">
 												{t('barterCalc.shortageSerum', {
 													n: Math.max(
 														0,

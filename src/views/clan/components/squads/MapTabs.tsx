@@ -53,7 +53,7 @@ export function MapTabs({
 							/>
 							<span className="truncate">{t(map.label)}</span>
 							{(squadsByMap[map.value] ?? 0) > 0 && (
-								<span className="rounded-md bg-accent px-1.5 py-0.5 font-mono font-semibold text-xs">
+								<span className="bg-accent rounded-md px-1.5 py-0.5 font-mono text-xs font-semibold">
 									{squadsByMap[map.value]}
 								</span>
 							)}
@@ -75,17 +75,17 @@ export function MapTabs({
 				{children}
 				{Array.from({ length: placeholderCount }, (_, i) => (
 					<button
-						className="flex min-h-44 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-primary/50 border-dashed bg-card/50 px-5 py-8 text-primary transition-colors hover:border-primary hover:bg-primary/5"
+						className="border-primary/50 bg-card/50 text-primary hover:border-primary hover:bg-primary/5 flex min-h-44 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed px-5 py-8 transition-colors"
 						disabled={isCreating}
 						key={`${activeMap}-new-${squadCount + i}`}
 						onClick={() => onCreateSquad(activeMap)}
 						type="button"
 					>
 						<Icon className="text-2xl" icon="lucide:plus" />
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{t('clan.squads.newSquad')}
 						</span>
-						<span className="font-mono font-semibold text-muted-foreground text-xs">
+						<span className="text-muted-foreground font-mono text-xs font-semibold">
 							{t('clan.squads.squadSlot', {
 								n: squadCount + i + 1,
 								max: MAX_SQUADS_PER_MAP,
@@ -95,13 +95,13 @@ export function MapTabs({
 				))}
 			</div>
 			{squadCount === 0 && (
-				<div className="flex flex-col items-center gap-1 rounded-xl bg-card px-5 py-4 text-center">
+				<div className="bg-card flex flex-col items-center gap-1 rounded-xl px-5 py-4 text-center">
 					<Icon className="text-4xl" icon="lucide:map-pinned" />
-					<h2 className="font-semibold text-lg">
+					<h2 className="text-lg font-semibold">
 						{t('clan.squads.noSquadsHere')}
 					</h2>
 					{isOfficer && (
-						<p className="font-semibold text-foreground text-sm">
+						<p className="text-foreground text-sm font-semibold">
 							{t('clan.squads.createFirstHint')}
 						</p>
 					)}

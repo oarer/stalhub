@@ -228,20 +228,20 @@ export default function ProfileMusic({
 							? t('player.music.pause')
 							: t('player.music.play')
 					}
-					className="group relative size-24 shrink-0 overflow-hidden rounded-lg border border-primary/50 bg-[#101217] shadow-[0_8px_18px_rgba(0,0,0,.3)] outline-none transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-primary sm:size-28"
+					className="group border-primary/50 focus-visible:ring-primary relative size-24 shrink-0 overflow-hidden rounded-lg border bg-[#101217] shadow-[0_8px_18px_rgba(0,0,0,.3)] transition-transform outline-none hover:scale-[1.02] focus-visible:ring-2 sm:size-28"
 					onClick={togglePlayback}
 					type="button"
 				>
 					{model.cover ? (
 						<div
 							aria-hidden="true"
-							className="absolute inset-0 bg-center bg-cover"
+							className="absolute inset-0 bg-cover bg-center"
 							style={{ backgroundImage: `url(${model.cover})` }}
 						/>
 					) : (
 						<div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_35%_25%,#35506b,#11151f_55%,#08090c)]">
 							<Icon
-								className="text-4xl text-primary/70"
+								className="text-primary/70 text-4xl"
 								icon="lucide:disc-3"
 							/>
 						</div>
@@ -265,17 +265,17 @@ export default function ProfileMusic({
 
 				<div className="flex min-w-0 flex-1 flex-col justify-between gap-3 py-0.5">
 					<div className="min-w-0">
-						<p className="mt-1 truncate font-semibold text-sm sm:text-base">
+						<p className="mt-1 truncate text-sm font-semibold sm:text-base">
 							{model.title || t('player.music.untitled')}
 						</p>
 						{model.artist && (
-							<p className="truncate text-muted-foreground text-xs sm:text-sm">
+							<p className="text-muted-foreground truncate text-xs sm:text-sm">
 								{model.artist}
 							</p>
 						)}
 					</div>
 					<a
-						className="flex w-fit items-center gap-1.5 rounded-md bg-primary px-2.5 py-1.5 font-semibold text-[11px] text-primary-foreground transition-opacity hover:opacity-85"
+						className="bg-primary text-primary-foreground flex w-fit items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-semibold transition-opacity hover:opacity-85"
 						href={model.url}
 						rel="noreferrer"
 						target="_blank"

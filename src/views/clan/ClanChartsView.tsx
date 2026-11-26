@@ -137,11 +137,11 @@ function ClanChartsContent({ clanId }: { clanId: string }) {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-wrap items-center justify-between gap-3">
-				<div className="flex items-center gap-2 rounded-xl bg-card px-2 py-1.5">
+				<div className="bg-card flex items-center gap-2 rounded-xl px-2 py-1.5">
 					{([5, 10, 35] as const).map((n) => (
 						<Button
 							className={cn(
-								'font-semibold text-card-foreground',
+								'text-card-foreground font-semibold',
 								topCount === n && 'bg-primary/40'
 							)}
 							key={n}

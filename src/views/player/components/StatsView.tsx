@@ -47,7 +47,7 @@ export default function StatsView({ data }: { data: Stat[] }) {
 						className="text-xl"
 						icon="lucide:chart-no-axes-column"
 					/>
-					<h2 className="font-semibold text-xl">
+					<h2 className="text-xl font-semibold">
 						{t('player.stats.title')}
 					</h2>
 					<Badge
@@ -60,17 +60,17 @@ export default function StatsView({ data }: { data: Stat[] }) {
 						})}
 					</Badge>
 				</div>
-				<p className="font-semibold text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-semibold">
 					{t('player.stats.description')}
 				</p>
 			</Card.Header>
 
 			<Card.Content className="space-y-5">
-				<div className="space-y-3 rounded-xl bg-muted/25 p-3">
+				<div className="bg-muted/25 space-y-3 rounded-xl p-3">
 					<div className="relative">
 						<Icon
 							aria-hidden="true"
-							className="pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2 text-muted-foreground"
+							className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
 							icon="lucide:search"
 						/>
 						<Input
@@ -131,7 +131,7 @@ export default function StatsView({ data }: { data: Stat[] }) {
 				) : (
 					<div className="flex flex-col items-center gap-3 py-10 text-center">
 						<Icon
-							className="text-4xl text-muted-foreground"
+							className="text-muted-foreground text-4xl"
 							icon="lucide:search-x"
 						/>
 						<div>

@@ -43,7 +43,7 @@ export const StatRow = memo(function StatRow({
 
 	return (
 		<p className="flex justify-between">
-			<span className="font-medium text-[13px]">{name}</span>
+			<span className="text-[13px] font-medium">{name}</span>
 			<span className="flex items-center gap-1.5">
 				<StatDelta delta={shownDelta} isPercent={isPercent} />
 				<span

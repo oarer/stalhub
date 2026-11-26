@@ -476,7 +476,7 @@ export default function BuildsLiteView({
 									<div
 										className={`rounded-xl p-1 transition-all ${
 											activeArtifactSide === 'current'
-												? 'ring-2 ring-primary/40'
+												? 'ring-primary/40 ring-2'
 												: ''
 										}`}
 									>
@@ -525,7 +525,7 @@ export default function BuildsLiteView({
 									<div
 										className={`rounded-xl p-1 transition-all ${
 											activeArtifactSide === 'compare'
-												? 'ring-2 ring-primary/40'
+												? 'ring-primary/40 ring-2'
 												: ''
 										}`}
 									>

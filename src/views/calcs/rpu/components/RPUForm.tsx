@@ -77,12 +77,12 @@ export function RPUForm({
 
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`font-medium text-[12px] text-foreground uppercase tracking-widest`}
+						className={`text-foreground text-[12px] font-medium tracking-widest uppercase`}
 					>
 						{t('rpu.result')}
 					</span>
-					<div className="relative flex justify-between rounded-lg border-2 border-primary/50 bg-card px-2.5 py-3 pt-3">
-						<p className="font-medium font-mono text-lg">
+					<div className="border-primary/50 bg-card relative flex justify-between rounded-lg border-2 px-2.5 py-3 pt-3">
+						<p className="font-mono text-lg font-medium">
 							{result}%
 						</p>
 					</div>

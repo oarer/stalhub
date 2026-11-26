@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const accordionVariants = cva(
-	'w-full border rounded-lg overflow-hidden shadow-sm transition-all duration-200',
+	'w-full overflow-hidden rounded-lg border shadow-sm transition-all duration-200',
 	{
 		variants: {
 			variant: {
@@ -14,9 +14,9 @@ export const accordionVariants = cva(
 				ghost: 'bg-muted/20 border-transparent',
 			},
 			size: {
-				sm: 'text-sm px-2 py-1',
-				md: 'text-base px-4 py-3',
-				lg: 'text-lg px-6 py-4',
+				sm: 'px-2 py-1 text-sm',
+				md: 'px-4 py-3 text-base',
+				lg: 'px-6 py-4 text-lg',
 			},
 		},
 		defaultVariants: {
@@ -38,9 +38,9 @@ export const accordionIndicatorVariants = cva(
 				ghost: '',
 			},
 			size: {
-				sm: 'w-4 h-4',
-				md: 'w-5 h-5',
-				lg: 'w-6 h-6',
+				sm: 'h-4 w-4',
+				md: 'h-5 w-5',
+				lg: 'h-6 w-6',
 			},
 			rotated: {
 				true: 'rotate-180',

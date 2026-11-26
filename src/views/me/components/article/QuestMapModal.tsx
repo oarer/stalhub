@@ -58,7 +58,7 @@ export function QuestMapModal({
 				<Modal.Body>
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('map')}
 							</span>
 							<Combobox

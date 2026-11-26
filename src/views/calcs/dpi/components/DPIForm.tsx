@@ -41,7 +41,7 @@ export function DPIForm({
 			<Card.Content className="flex flex-col gap-3 md:flex-row">
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
+						className={`text-foreground font-mono text-[12px] font-medium tracking-widest uppercase`}
 					>
 						{t('dpi.from_game')}
 					</span>
@@ -67,7 +67,7 @@ export function DPIForm({
 
 				<div className="flex w-full flex-col gap-2">
 					<span
-						className={`font-medium font-mono text-[12px] text-foreground uppercase tracking-widest`}
+						className={`text-foreground font-mono text-[12px] font-medium tracking-widest uppercase`}
 					>
 						{t('dpi.to_game')}
 					</span>
@@ -78,8 +78,8 @@ export function DPIForm({
 						placeholder="dpi.pick_game"
 						value={toGame}
 					/>
-					<div className="relative flex justify-between rounded-lg border-2 border-primary bg-card px-2.5 py-3 pt-3">
-						<span className="absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-medium text-neutral-400 text-sm">
+					<div className="border-primary bg-card relative flex justify-between rounded-lg border-2 px-2.5 py-3 pt-3">
+						<span className="absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 text-sm font-medium text-neutral-400">
 							{t('dpi.result')}
 						</span>
 						<p className={`font-mono text-sm`}>{result}</p>

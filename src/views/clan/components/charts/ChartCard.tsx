@@ -14,7 +14,7 @@ export function ChartCard({
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4',
+				'bg-card flex flex-col gap-2 rounded-xl px-5 py-4',
 				className
 			)}
 		>

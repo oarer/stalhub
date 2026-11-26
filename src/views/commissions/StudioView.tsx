@@ -17,7 +17,7 @@ export default function StudioView() {
 	})
 	return (
 		<div className="flex flex-col gap-5">
-			<h1 className="font-semibold text-2xl">{t('studio')}</h1>
+			<h1 className="text-2xl font-semibold">{t('studio')}</h1>
 			<Feedback error={query.error || capabilities.error} />
 			{capabilities.data && !capabilities.data.author ? (
 				<p>{t('accessDenied')}</p>

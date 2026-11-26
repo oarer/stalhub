@@ -32,7 +32,7 @@ export default function GiveawayModal() {
 						<Modal.Title className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:sparkles" />
 							<p
-								className={`${mtsExtended.className} font-semibold text-[15px]`}
+								className={`${mtsExtended.className} text-[15px] font-semibold`}
 							>
 								{t('test.title')}
 							</p>
@@ -42,12 +42,12 @@ export default function GiveawayModal() {
 						<div className="relative min-h-72 w-full">
 							<Image
 								alt="dsadas"
-								className="rounded-lg border-2 border-accent/50 object-contain"
+								className="border-accent/50 rounded-lg border-2 object-contain"
 								fill
 								src="/public/images/other/give.jpg"
 							/>
 						</div>
-						<p className="font-medium text-sm">
+						<p className="text-sm font-medium">
 							{t.rich('test.message', {
 								primary: (chunks) => (
 									<span className="text-primary">

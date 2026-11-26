@@ -33,7 +33,7 @@ export default function Providers({ children }: Props) {
 		let active = true
 
 		userService
-			.getMe({ skipAuthRefresh: true, signal: controller.signal })
+			.getMe({ signal: controller.signal })
 			.then((user) => {
 				if (active) setUser(user)
 			})

@@ -112,14 +112,14 @@ function CompareTab({ base }: { base: BPSimInput }) {
 				const ok = sim.deficitLevels <= 0
 				return (
 					<div
-						className="flex items-center justify-between gap-3 rounded-lg bg-card px-3 py-2.5 ring-2 ring-primary/15"
+						className="bg-card ring-primary/15 flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 ring-2"
 						key={key}
 					>
-						<span className="font-medium text-sm">
+						<span className="text-sm font-medium">
 							{t(`bp.compare_${key}`)}
 						</span>
 						<span className="flex items-center gap-2">
-							<span className="font-mono font-semibold text-sm">
+							<span className="font-mono text-sm font-semibold">
 								{fmtInt(sim.projectedLevel)} {t('bp.levels')}
 							</span>
 							<Badge variant={ok ? 'success' : 'danger'}>
@@ -138,7 +138,7 @@ function CompareTab({ base }: { base: BPSimInput }) {
 function StatCell({ value, hint }: { value: string; hint: string }) {
 	return (
 		<div>
-			<div className="font-bold font-mono text-xl">{value}</div>
+			<div className="font-mono text-xl font-bold">{value}</div>
 			<div className="text-muted-foreground text-xs">{hint}</div>
 		</div>
 	)
@@ -184,7 +184,7 @@ export function BPForecast({
 				<Card.Header className="flex-row items-center justify-between">
 					<Card.Title>
 						<Icon
-							className="text-neutral-700 text-xl dark:text-neutral-300"
+							className="text-xl text-neutral-700 dark:text-neutral-300"
 							icon="lucide:chart-line"
 						/>
 						<h2>{t('bp.forecast')}</h2>
@@ -199,7 +199,7 @@ export function BPForecast({
 						<Card.Description>
 							{t('bp.goal', { level: state.targetLevel })}
 						</Card.Description>
-						<p className="mt-1 font-bold text-[26px] leading-tight">
+						<p className="mt-1 text-[26px] leading-tight font-bold">
 							{alreadyDone
 								? t('bp.headline_done')
 								: ok && sim.reachedISO
@@ -211,7 +211,7 @@ export function BPForecast({
 										})}
 						</p>
 						{!alreadyDone && (
-							<p className="mt-1 text-muted-foreground text-sm">
+							<p className="text-muted-foreground mt-1 text-sm">
 								{ok
 									? t('bp.sub_ok', {
 											count: sim.spareGamingDays,
@@ -224,7 +224,7 @@ export function BPForecast({
 					</div>
 
 					<div className="flex flex-col gap-1.5">
-						<div className="flex items-center justify-between text-muted-foreground text-xs">
+						<div className="text-muted-foreground flex items-center justify-between text-xs">
 							<span>
 								{t('bp.to_deadline', {
 									date: fmtDayMonth(state.deadlineISO),
@@ -234,9 +234,9 @@ export function BPForecast({
 								{fmtInt(sim.projectedLevel)} {t('bp.levels')}
 							</span>
 						</div>
-						<div className="h-1.5 overflow-hidden rounded-full bg-muted">
+						<div className="bg-muted h-1.5 overflow-hidden rounded-full">
 							<div
-								className="h-full rounded-full bg-linear-to-r from-muted/50 to-primary transition-all"
+								className="from-muted/50 to-primary h-full rounded-full bg-linear-to-r transition-all"
 								style={{ width: `${progress}%` }}
 							/>
 						</div>

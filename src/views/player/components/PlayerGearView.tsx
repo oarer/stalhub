@@ -97,7 +97,7 @@ function GearIcon({
 	if (!src) {
 		return (
 			<div
-				className="flex shrink-0 items-center justify-center rounded-lg bg-muted/40 text-muted-foreground"
+				className="bg-muted/40 text-muted-foreground flex shrink-0 items-center justify-center rounded-lg"
 				style={{ width: size, height: size }}
 			>
 				<Icon icon="lucide:package" style={{ fontSize: size / 2 }} />
@@ -179,12 +179,12 @@ function GearModuleAttributes({
 		<div className="mt-2 space-y-1.5">
 			{rows.map((row) => (
 				<div
-					className="rounded-md bg-card/40 px-2 py-1.5"
+					className="bg-card/40 rounded-md px-2 py-1.5"
 					key={row.key}
 				>
 					<div className="flex items-center justify-between gap-2">
 						<span
-							className="truncate font-semibold text-[11px]"
+							className="truncate text-[11px] font-semibold"
 							style={{ color: row.color }}
 						>
 							{row.name}
@@ -206,7 +206,7 @@ function GearModuleAttributes({
 							className="flex items-center justify-between gap-2 text-[10px]"
 							key={stat.label}
 						>
-							<span className="truncate text-muted-foreground">
+							<span className="text-muted-foreground truncate">
 								{stat.label}
 							</span>
 							<span
@@ -246,13 +246,13 @@ function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 	const href = itemHref(attachment.db)
 
 	return (
-		<div className="rounded-lg bg-muted/25 px-2 py-1.5">
+		<div className="bg-muted/25 rounded-lg px-2 py-1.5">
 			<div className="flex items-center gap-2">
 				<GearIcon db={attachment.db} size={28} />
 				<div className="min-w-0 flex-1">
 					{href ? (
 						<Link
-							className="block truncate font-semibold text-sm transition-opacity hover:opacity-80"
+							className="block truncate text-sm font-semibold transition-opacity hover:opacity-80"
 							href={href}
 							style={{ color }}
 						>
@@ -260,7 +260,7 @@ function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 						</Link>
 					) : (
 						<p
-							className="truncate font-semibold text-xs"
+							className="truncate text-xs font-semibold"
 							style={{ color }}
 						>
 							{name}
@@ -268,7 +268,7 @@ function AttachmentRow({ attachment }: { attachment: PlayerGearAttachment }) {
 					)}
 				</div>
 
-				<div className="flex shrink-0 items-center gap-1.5 font-mono text-[12px] text-muted-foreground">
+				<div className="text-muted-foreground flex shrink-0 items-center gap-1.5 font-mono text-[12px]">
 					{percent != null && (
 						<span
 							className="font-semibold"
@@ -325,13 +325,13 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 			<div className="flex min-w-0 items-start gap-3">
 				<GearIcon db={item.db} />
 				<div className="min-w-0 flex-1">
-					<p className="font-semibold text-[10px] text-muted-foreground uppercase tracking-wide">
+					<p className="text-muted-foreground text-[10px] font-semibold tracking-wide uppercase">
 						{slotLabel}
 					</p>
 					<div className="mt-0.5 flex min-w-0 items-center gap-1.5">
 						{href ? (
 							<Link
-								className="truncate font-semibold text-sm transition-opacity hover:opacity-80"
+								className="truncate text-sm font-semibold transition-opacity hover:opacity-80"
 								href={href}
 								style={{ color }}
 								title={name}
@@ -346,7 +346,7 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 							</Link>
 						) : (
 							<p
-								className="truncate font-semibold text-sm"
+								className="truncate text-sm font-semibold"
 								style={{ color }}
 								title={name}
 							>
@@ -395,8 +395,8 @@ function GearItemCard({ item }: { item: PlayerGearItem }) {
 			</div>
 
 			{attachments.length > 0 && (
-				<div className="mt-3 space-y-1 border-primary/20 border-t pt-2">
-					<p className="mb-1 font-semibold text-[10px] text-muted-foreground uppercase tracking-wide">
+				<div className="border-primary/20 mt-3 space-y-1 border-t pt-2">
+					<p className="text-muted-foreground mb-1 text-[10px] font-semibold tracking-wide uppercase">
 						{t('player.gear.attachments')}
 					</p>
 					{attachments.map((attachment) => (
@@ -474,11 +474,11 @@ export default function PlayerGearView({
 			<Card.Header className="gap-1">
 				<div className="flex flex-wrap items-center gap-2">
 					<Icon className="text-xl" icon="lucide:shirt" />
-					<h2 className="font-semibold text-xl">
+					<h2 className="text-xl font-semibold">
 						{t('player.gear.title')}
 					</h2>
 				</div>
-				<p className="font-semibold text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-semibold">
 					{t('player.gear.description')}
 				</p>
 			</Card.Header>
@@ -487,7 +487,7 @@ export default function PlayerGearView({
 				{isError ? (
 					<div className="flex flex-col items-center gap-3 py-8 text-center">
 						<Icon
-							className="text-4xl text-muted-foreground"
+							className="text-muted-foreground text-4xl"
 							icon="lucide:triangle-alert"
 						/>
 						<div>
@@ -510,7 +510,7 @@ export default function PlayerGearView({
 				) : items.length === 0 ? (
 					<div className="flex flex-col items-center gap-3 py-8 text-center">
 						<Icon
-							className="text-4xl text-muted-foreground"
+							className="text-muted-foreground text-4xl"
 							icon="lucide:package-open"
 						/>
 						<div>

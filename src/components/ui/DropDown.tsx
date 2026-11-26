@@ -112,7 +112,7 @@ function DropdownMenuItem({
 	return (
 		<div className="relative">
 			{item.category && (
-				<p className="font-medium text-[13px] text-muted-foreground">
+				<p className="text-muted-foreground text-[13px] font-medium">
 					{renderMaybeTranslate(t, item.category)}
 				</p>
 			)}
@@ -122,8 +122,8 @@ function DropdownMenuItem({
 				aria-expanded={hasSubmenu ? showSubmenu : undefined}
 				aria-haspopup={hasSubmenu ? 'menu' : undefined}
 				className={cn(
-					'flex w-full items-center justify-between rounded-xl text-left font-medium text-[13px] transition-colors',
-					item.disabled && 'cursor-not-allowed text-muted-foreground',
+					'flex w-full items-center justify-between rounded-xl text-left text-[13px] font-medium transition-colors',
+					item.disabled && 'text-muted-foreground cursor-not-allowed',
 					hasSubmenu && 'pr-2'
 				)}
 				exit={{ opacity: 0 }}
@@ -143,7 +143,7 @@ function DropdownMenuItem({
 					>
 						<Icon
 							aria-hidden="true"
-							className="text-[16px] text-muted-foreground"
+							className="text-muted-foreground text-[16px]"
 							icon="lucide:chevron-right"
 						/>
 					</motion.div>
@@ -383,7 +383,7 @@ export default function DropdownMenu({
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
 				aria-label={onlyIcon ? t(title) : undefined}
-				className={`group/btn flex items-center justify-center rounded-full outline-none transition-all duration-300 ${
+				className={`group/btn flex items-center justify-center rounded-full transition-all duration-300 outline-none ${
 					onlyIcon
 						? 'h-10 px-2.5'
 						: compact
@@ -399,7 +399,7 @@ export default function DropdownMenu({
 				{icon && <Icon className="text-xl" icon={icon} />}
 				{onlyIcon ? (
 					<span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover/btn:ml-2 group-hover/btn:max-w-45 group-hover/btn:opacity-100">
-						<span className={cn(titleClass, 'font-medium text-sm')}>
+						<span className={cn(titleClass, 'text-sm font-medium')}>
 							{t(title)}
 						</span>
 					</span>
@@ -408,7 +408,7 @@ export default function DropdownMenu({
 						<p
 							className={cn(
 								titleClass,
-								'font-medium text-[15px]'
+								'text-[15px] font-medium'
 							)}
 						>
 							{t(title)}
@@ -472,7 +472,7 @@ export default function DropdownMenu({
 								<motion.div
 									animate={{ opacity: 1, y: 0 }}
 									className={cn(
-										'fixed inset-x-0 bottom-0 z-70 flex max-h-[80dvh] flex-col gap-1 rounded-t-2xl bg-card p-3 shadow-lg ring-2 ring-primary/40 sm:hidden',
+										'bg-card ring-primary/40 fixed inset-x-0 bottom-0 z-70 flex max-h-[80dvh] flex-col gap-1 rounded-t-2xl p-3 shadow-lg ring-2 sm:hidden',
 										dragY > 0 && 'cursor-grabbing'
 									)}
 									drag="y"
@@ -499,7 +499,7 @@ export default function DropdownMenu({
 										<div className="h-1.5 w-12 rounded-full bg-neutral-600" />
 									</div>
 									<div className="flex shrink-0 items-center justify-between gap-2 px-1 pb-1">
-										<p className="font-medium text-sm">
+										<p className="text-sm font-medium">
 											{t(title)}
 										</p>
 										<button

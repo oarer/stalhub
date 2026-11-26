@@ -54,7 +54,7 @@ export const NumericVariantsCard: React.FC<{
 
 	const content = (
 		<div className="flex items-center justify-between">
-			<p className="font-medium text-lg">{t('ui.input_sharpening')}</p>
+			<p className="text-lg font-medium">{t('ui.input_sharpening')}</p>
 			<Input
 				className="m-1 w-fit px-2 py-2"
 				max={15}
@@ -104,7 +104,7 @@ export const ListBlock: React.FC<{
 	const content = (
 		<>
 			{messageToString(block.title, locale) && (
-				<p className="font-medium text-[13px]">
+				<p className="text-[13px] font-medium">
 					{messageToString(block.title, locale)}
 				</p>
 			)}
@@ -198,7 +198,7 @@ const BlockAccordion: React.FC<BlockAccordionProps> = ({
 	]
 	return (
 		<Accordion
-			className="rounded-lg bg-card px-2 ring-2 ring-primary/30"
+			className="bg-card ring-primary/30 rounded-lg px-2 ring-2"
 			items={items}
 			selectionMode="multiple"
 			size="sm"

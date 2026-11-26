@@ -72,7 +72,7 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 					<div className="flex items-center gap-2">
 						<Icon className="text-lg" icon="lucide:crosshair" />
 						<p
-							className={`${mtsWide.className} font-semibold text-md`}
+							className={`${mtsWide.className} text-md font-semibold`}
 						>
 							{t('ttk.page.weapon')}
 						</p>
@@ -147,7 +147,7 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 									className="text-neutral-400"
 									icon="lucide:plus"
 								/>
-								<p className="font-medium text-neutral-400 text-sm">
+								<p className="text-sm font-medium text-neutral-400">
 									{t('ttk.page.weapon_add')}
 								</p>
 							</Button>
@@ -159,7 +159,7 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 					<div className="flex items-center gap-2">
 						<Icon className="text-lg" icon="lucide:bar-chart-2" />
 						<p
-							className={`${mtsWide.className} font-semibold text-md`}
+							className={`${mtsWide.className} text-md font-semibold`}
 							style={{ color: focusedItemColor }}
 						>
 							{focusedWeapon
@@ -180,7 +180,7 @@ export function TTKView({ variant = 'page' }: TTKViewProps) {
 									weapon={focusedWeapon}
 								/>
 							) : (
-								<p className="py-4 text-center text-neutral-500 text-sm">
+								<p className="py-4 text-center text-sm text-neutral-500">
 									{t('ttk.page.weapon_pick')}
 								</p>
 							)}

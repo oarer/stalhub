@@ -26,11 +26,11 @@ export default function OperationsSection({
 			<Card.Header>
 				<div className="flex items-center gap-2">
 					<Icon className="text-xl" icon="lucide:siren" />
-					<h1 className="font-semibold text-xl">
+					<h1 className="text-xl font-semibold">
 						{t('player.operations.title')}
 					</h1>
 					{data && data.total > 0 && (
-						<span className="rounded-full bg-accent px-2 py-0.5 font-semibold text-xs">
+						<span className="bg-accent rounded-full px-2 py-0.5 text-xs font-semibold">
 							{data.total}
 						</span>
 					)}
@@ -44,12 +44,12 @@ export default function OperationsSection({
 					</>
 				)}
 				{!isLoading && isError && (
-					<p className="font-semibold text-foreground">
+					<p className="text-foreground font-semibold">
 						{t('player.operations.error')}
 					</p>
 				)}
 				{!isLoading && data && data.sessions.length === 0 && (
-					<p className="font-semibold text-foreground">
+					<p className="text-foreground font-semibold">
 						{t('player.operations.empty')}
 					</p>
 				)}

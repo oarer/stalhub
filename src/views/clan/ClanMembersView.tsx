@@ -68,7 +68,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 	if (members.length === 0) {
 		return (
 			<Section icon="lucide:users" title={t('clan.members.title')}>
-				<p className="py-4 text-center font-semibold text-muted-foreground text-sm">
+				<p className="text-muted-foreground py-4 text-center text-sm font-semibold">
 					{t('clan.stats.emptyTitle')}
 				</p>
 			</Section>
@@ -89,7 +89,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 					const note = noteByMemberId.get(member.id)
 					return (
 						<div
-							className="flex items-center justify-between border-primary border-b py-3 last:border-b-0"
+							className="border-primary flex items-center justify-between border-b py-3 last:border-b-0"
 							key={member.id}
 						>
 							<div className="flex min-w-0 items-center gap-3">
@@ -101,7 +101,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 										width={32}
 									/>
 								) : (
-									<div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent/50 font-semibold text-xs">
+									<div className="bg-accent/50 flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold">
 										{member.name.charAt(0).toUpperCase()}
 									</div>
 								)}
@@ -130,14 +130,14 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 													: undefined
 											}
 										>
-											<p className="font-semibold text-sm leading-4">
+											<p className="text-sm leading-4 font-semibold">
 												{member.name}
 											</p>
 										</ClanMemberHoverCard>
 										{member.user && (
 											<HoverUserCard id={member.user.id}>
 												<Link
-													className={`font-mono font-semibold text-foreground text-xs`}
+													className={`text-foreground font-mono text-xs font-semibold`}
 													href={`/users/${member.user.id}`}
 												>
 													<Username
@@ -150,7 +150,7 @@ function ClanMembersContent({ clanId }: { clanId: string }) {
 									</div>
 									{isOfficer && note && (
 										<p
-											className="max-w-60 truncate font-semibold text-muted-foreground text-xs"
+											className="text-muted-foreground max-w-60 truncate text-xs font-semibold"
 											title={note.content}
 										>
 											{note.content}

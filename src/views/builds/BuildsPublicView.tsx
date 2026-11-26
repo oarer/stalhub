@@ -98,11 +98,11 @@ export default function BuildsPublicView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('buildsPublic.title')}
 			</h1>
-			<p className="font-medium text-muted-foreground text-sm">
+			<p className="text-muted-foreground text-sm font-medium">
 				{t('buildsPublic.total', {
 					count: data?.total_count ?? 0,
 				})}
@@ -123,7 +123,7 @@ export default function BuildsPublicView() {
 					/>
 
 					<div className="flex items-center gap-2">
-						<span className="font-medium text-foreground text-sm">
+						<span className="text-foreground text-sm font-medium">
 							{t('buildsPublic.price')}
 						</span>
 						<Input
@@ -183,7 +183,7 @@ export default function BuildsPublicView() {
 					/>
 
 					<div className="flex items-center gap-2">
-						<span className="font-medium text-foreground text-sm">
+						<span className="text-foreground text-sm font-medium">
 							{t('buildsPublic.quality')}
 						</span>
 						<Combobox
@@ -211,7 +211,7 @@ export default function BuildsPublicView() {
 				</div>
 
 				<div className="flex items-center gap-2">
-					<span className="font-medium text-foreground text-sm">
+					<span className="text-foreground text-sm font-medium">
 						{t('buildsPublic.sort')}
 					</span>
 					{BUILD_SORTS.map((value) => (
@@ -231,7 +231,7 @@ export default function BuildsPublicView() {
 			</div>
 
 			{builds.length === 0 ? (
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('me.builds.noBuilds')}
 				</p>
 			) : (

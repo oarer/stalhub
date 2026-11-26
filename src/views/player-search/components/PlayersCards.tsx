@@ -21,7 +21,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 					<Card.Title className="items-center">
 						<Icon icon="lucide:chart-column" />
 						<h1
-							className={`${mtsWide.className} font-medium text-[15px] uppercase tracking-tight`}
+							className={`${mtsWide.className} text-[15px] font-medium tracking-tight uppercase`}
 						>
 							{t('playerSearch.popular_title')}
 						</h1>
@@ -38,7 +38,7 @@ export default function PlayersCards({ popular, recent }: Props) {
 							<Card.Title className="items-center">
 								<Icon icon="lucide:clock-fading" />
 								<h1
-									className={`${mtsWide.className} font-medium text-[15px] uppercase tracking-tight`}
+									className={`${mtsWide.className} text-[15px] font-medium tracking-tight uppercase`}
 								>
 									{t('playerSearch.recent_title')}
 								</h1>

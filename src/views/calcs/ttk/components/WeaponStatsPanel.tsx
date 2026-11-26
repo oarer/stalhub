@@ -82,14 +82,14 @@ const WeaponStatsPanel = memo(function Wsp({
 			<div className="grid grid-cols-2 gap-2">
 				{statsList.map(({ labelKey, value, color }) => (
 					<div
-						className="flex flex-col items-center rounded-lg bg-card py-2"
+						className="bg-card flex flex-col items-center rounded-lg py-2"
 						key={labelKey}
 					>
-						<span className="text-neutral-500 text-xs">
+						<span className="text-xs text-neutral-500">
 							{t(labelKey)}
 						</span>
 						<span
-							className={`font-mono font-semibold text-[17px] ${color}`}
+							className={`font-mono text-[17px] font-semibold ${color}`}
 						>
 							{value}
 						</span>
@@ -97,7 +97,7 @@ const WeaponStatsPanel = memo(function Wsp({
 				))}
 			</div>
 			<Divider />
-			<div className="mask-y-from-95% mask-y-to-100% flex max-h-69.5 flex-col gap-2 overflow-y-auto">
+			<div className="flex max-h-69.5 flex-col gap-2 overflow-y-auto mask-y-from-95% mask-y-to-100%">
 				{filteredBlocks.map((block, idx) => (
 					<ListBlock
 						block={block}

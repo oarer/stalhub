@@ -132,11 +132,11 @@ export default function FeedSourcesAdminView() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('admin.feedSources.title')}
 				</h1>
-				<span className="flex items-center gap-1.5 text-neutral-400 text-sm">
+				<span className="flex items-center gap-1.5 text-sm text-neutral-400">
 					<Icon icon="lucide:rss" />
 					{t('admin.feedSources.count', {
 						count: data.sources.length,
@@ -157,10 +157,10 @@ export default function FeedSourcesAdminView() {
 				<Card.Content>
 					<div className="flex flex-col gap-3">
 						<div className="grid gap-3 md:grid-cols-[10rem_minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
-							<label className="flex flex-col gap-1.5 font-medium text-muted-foreground text-sm">
+							<label className="text-muted-foreground flex flex-col gap-1.5 text-sm font-medium">
 								<span>{t('admin.feedSources.form.type')}</span>
 								<select
-									className="h-9 rounded-lg border-2 border-muted bg-card px-2.5 font-medium text-foreground outline-none transition-colors focus:border-primary/60"
+									className="border-muted bg-card text-foreground focus:border-primary/60 h-9 rounded-lg border-2 px-2.5 font-medium transition-colors outline-none"
 									onChange={(event) =>
 										setType(
 											event.target
@@ -185,7 +185,7 @@ export default function FeedSourcesAdminView() {
 									}
 									value={externalId}
 								/>
-								<p className="mt-1 text-muted-foreground text-xs">
+								<p className="text-muted-foreground mt-1 text-xs">
 									{t(
 										type === 'TG'
 											? 'admin.feedSources.form.externalIdHintTG'

@@ -27,11 +27,11 @@ const BuildHash = () => {
 				icon="mdi:code-tags"
 			/>
 			<span
-				className={`${mtsWide.className} font-medium text-sm leading-none`}
+				className={`${mtsWide.className} text-sm leading-none font-medium`}
 			>
 				build@
 				<CLink
-					className="px-0 py-0 font-medium text-foreground/80 hover:text-primary hover:underline"
+					className="text-foreground/80 hover:text-primary px-0 py-0 font-medium hover:underline"
 					externalIcon={false}
 					href={`https://github.com/oarer/stalhub/tree/${sha}`}
 					title={sha}
@@ -49,7 +49,7 @@ const UwuToggle = () => {
 
 	return (
 		<button
-			className={`${mtsWide.className} w-fit cursor-pointer font-semibold text-sm transition-colors duration-500 hover:text-pink-400 ${uwuMode ? 'text-pink-400' : 'text-muted-foreground'}`}
+			className={`${mtsWide.className} w-fit cursor-pointer text-sm font-semibold transition-colors duration-500 hover:text-pink-400 ${uwuMode ? 'text-pink-400' : 'text-muted-foreground'}`}
 			onClick={toggleUwu}
 			type="button"
 		>
@@ -64,11 +64,11 @@ const FooterCredits = () => {
 	return (
 		<div className="flex flex-col gap-2">
 			<p
-				className={`${mtsWide.className} flex items-center gap-2 font-semibold text-[14px] text-foreground/80 lowercase leading-none tracking-widest`}
+				className={`${mtsWide.className} text-foreground/80 flex items-center gap-2 text-[14px] leading-none font-semibold tracking-widest lowercase`}
 			>
 				{t('footer.made_by')}
 				<Link
-					className="text-primary/60 transition-colors duration-500 hover:text-primary"
+					className="text-primary/60 hover:text-primary transition-colors duration-500"
 					href="https://oarer.dev"
 					rel="noopener noreferrer"
 					target="_blank"
@@ -93,7 +93,7 @@ const FooterNav = ({
 	return (
 		<nav className="flex flex-col items-start gap-1">
 			<h2
-				className={`${mtsWide.className} font-bold text-[15px] text-primary uppercase italic tracking-widest`}
+				className={`${mtsWide.className} text-primary text-[15px] font-bold tracking-widest uppercase italic`}
 			>
 				{t(titleKey)}
 			</h2>
@@ -109,11 +109,11 @@ const FooterNav = ({
 						>
 							<Icon
 								aria-hidden
-								className="size-4 shrink-0 text-muted-foreground/70 duration-500 group-hover:text-primary"
+								className="text-muted-foreground/70 group-hover:text-primary size-4 shrink-0 duration-500"
 								icon={link.icon}
 							/>
 							<span
-								className={`${mtsWide.className} font-medium text-[14px] text-muted-foreground duration-500 group-hover:text-foreground`}
+								className={`${mtsWide.className} text-muted-foreground group-hover:text-foreground text-[14px] font-medium duration-500`}
 							>
 								{t(link.title)}
 							</span>
@@ -150,7 +150,7 @@ export default function FooterLayout() {
 				<div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
 					<div className="flex flex-col gap-3">
 						<h2
-							className={`${mtsWide.className} font-semibold text-[15px] text-foreground`}
+							className={`${mtsWide.className} text-foreground text-[15px] font-semibold`}
 						>
 							{t('footer.brand', {
 								year: new Date().getFullYear(),
@@ -162,7 +162,7 @@ export default function FooterLayout() {
 
 					<div className="flex flex-col items-start gap-2">
 						<h2
-							className={`${mtsWide.className} font-bold text-[15px] text-primary uppercase italic tracking-widest`}
+							className={`${mtsWide.className} text-primary text-[15px] font-bold tracking-widest uppercase italic`}
 						>
 							Информация
 						</h2>
@@ -180,13 +180,13 @@ export default function FooterLayout() {
 					/>
 				</div>
 
-				<div className="flex flex-col gap-1 border-primary/50 border-t py-6">
+				<div className="border-primary/50 flex flex-col gap-1 border-t py-6">
 					<p
-						className={`${mtsExtended.className} font-medium text-muted-foreground text-sm`}
+						className={`${mtsExtended.className} text-muted-foreground text-sm font-medium`}
 					>
 						{t('footer.project.with')}
 						<CLink
-							className="relative px-0 py-0 font-medium text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
+							className="text-foreground after:bg-primary hover:text-primary relative px-0 py-0 text-sm font-medium duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all hover:after:w-full"
 							externalIcon={false}
 							href="https://github.com/oarer/stalhub"
 							variant="none"
@@ -195,7 +195,7 @@ export default function FooterLayout() {
 						</CLink>
 						. {t('footer.project.license')}
 						<CLink
-							className="relative px-0 py-0 font-medium text-foreground text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:text-primary hover:after:w-full"
+							className="text-foreground after:bg-primary hover:text-primary relative px-0 py-0 text-sm font-medium duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all hover:after:w-full"
 							externalIcon={false}
 							href="https://www.gnu.org/licenses/gpl-3.0.html"
 							variant="none"
@@ -205,7 +205,7 @@ export default function FooterLayout() {
 						.
 					</p>
 					<p
-						className={`${mtsExtended.className} font-medium text-muted-foreground/80 text-sm tracking-widest`}
+						className={`${mtsExtended.className} text-muted-foreground/80 text-sm font-medium tracking-widest`}
 					>
 						Not an official EXBO East LLC service.
 					</p>
@@ -215,7 +215,7 @@ export default function FooterLayout() {
 			<svg
 				aria-hidden
 				aria-label="stalhub"
-				className="hidden w-full text-foreground lg:-ml-3 lg:block"
+				className="text-foreground hidden w-full lg:-ml-3 lg:block"
 				preserveAspectRatio="xMidYMid meet"
 				viewBox="0 0 1000 200"
 			>

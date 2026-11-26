@@ -31,7 +31,7 @@ export function FeedRowHeader({
 				</HoverUserCard>
 			) : sourceUrl ? (
 				<a
-					className="truncate font-semibold transition-colors hover:text-primary hover:underline"
+					className="hover:text-primary truncate font-semibold transition-colors hover:underline"
 					href={sourceUrl}
 					rel="noopener noreferrer"
 					target="_blank"
@@ -43,7 +43,7 @@ export function FeedRowHeader({
 			)}
 			<span className="text-foreground">·</span>
 			<time
-				className="shrink-0 text-foreground"
+				className="text-foreground shrink-0"
 				dateTime={createdAt}
 				title={new Date(createdAt).toLocaleString()}
 			>

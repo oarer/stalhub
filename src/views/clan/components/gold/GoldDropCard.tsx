@@ -27,14 +27,14 @@ export function GoldDropCard({
 	const t = useTranslations()
 	const claimed = drop.status === 'CLAIMED'
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+		<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<div className="flex items-center gap-2">
 					<Icon
 						className={`text-xl ${claimed ? 'text-amber-500' : 'text-muted-foreground'}`}
 						icon={claimed ? 'lucide:check-check' : 'lucide:coins'}
 					/>
-					<p className={`font-mono font-semibold text-sm`}>
+					<p className={`font-mono text-sm font-semibold`}>
 						{mskLabel(drop.date)}
 					</p>
 					<Badge variant={claimed ? 'primary' : 'secondary'}>
@@ -83,7 +83,7 @@ export function GoldDropCard({
 				<div className="mt-3 flex flex-wrap gap-1.5">
 					{drop.attendees.map((a) => (
 						<span
-							className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 font-semibold text-xs"
+							className="bg-muted inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold"
 							key={a.id}
 						>
 							{a.member.name}

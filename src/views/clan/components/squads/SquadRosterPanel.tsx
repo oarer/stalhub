@@ -91,7 +91,7 @@ export function SquadRosterPanel({
 			}`}
 		>
 			<div className="flex items-center justify-between gap-2">
-				<p className="font-semibold text-sm uppercase tracking-wide">
+				<p className="text-sm font-semibold tracking-wide uppercase">
 					{t('clan.squads.bench.title')}
 				</p>
 				<Badge className="font-mono" variant="secondary">
@@ -101,10 +101,10 @@ export function SquadRosterPanel({
 
 			{canManage && (
 				<div
-					className={`rounded-lg border px-3 py-2 font-semibold text-xs ${
+					className={`rounded-lg border px-3 py-2 text-xs font-semibold ${
 						selectedTarget
 							? 'border-primary bg-primary/10'
-							: 'border-primary border-dashed text-muted-foreground'
+							: 'border-primary text-muted-foreground border-dashed'
 					}`}
 				>
 					{selectedTarget ? (
@@ -138,7 +138,7 @@ export function SquadRosterPanel({
 
 			<div className="flex max-h-[40vh] flex-col gap-1.5 overflow-y-auto pr-1 lg:max-h-none lg:flex-1">
 				{free.length === 0 && (
-					<p className="py-4 text-center font-semibold text-muted-foreground text-xs">
+					<p className="text-muted-foreground py-4 text-center text-xs font-semibold">
 						{t('clan.squads.bench.empty')}
 					</p>
 				)}
@@ -234,7 +234,7 @@ function BenchRow({
 						: 'border-primary/50'
 				} ${isDragging ? 'opacity-40' : ''} ${
 					pickable
-						? 'cursor-pointer hover:border-primary hover:bg-primary/10'
+						? 'hover:border-primary hover:bg-primary/10 cursor-pointer'
 						: canManage
 							? 'cursor-pointer'
 							: ''
@@ -246,11 +246,11 @@ function BenchRow({
 			>
 				<div className="min-w-0 flex-1">
 					<p
-						className={`truncate font-semibold text-sm ${absent ? 'text-destructive' : ''}`}
+						className={`truncate text-sm font-semibold ${absent ? 'text-destructive' : ''}`}
 					>
 						{member.name}
 					</p>
-					<p className="truncate font-semibold text-[11px] text-muted-foreground">
+					<p className="text-muted-foreground truncate text-[11px] font-semibold">
 						{t(`player.rank.${member.rank}`)}
 					</p>
 				</div>
@@ -265,7 +265,7 @@ function BenchRow({
 				)}
 				{absent && (
 					<Icon
-						className="shrink-0 text-base text-destructive"
+						className="text-destructive shrink-0 text-base"
 						icon="lucide:calendar-x"
 					/>
 				)}

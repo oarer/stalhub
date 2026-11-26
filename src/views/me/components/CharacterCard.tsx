@@ -22,7 +22,7 @@ export function CharacterCard({ character, region }: Props) {
 			className={`${allianceBackground[character.alliance] ?? 'bg-card'} flex items-center gap-3 rounded-lg p-3 transition-all hover:brightness-90`}
 			href={`/player/${region}/${character.username}`}
 		>
-			<div className="rounded-lg bg-card p-1">
+			<div className="bg-card rounded-lg p-1">
 				{character.alliance ? (
 					<Image
 						alt={character.alliance}
@@ -37,13 +37,13 @@ export function CharacterCard({ character, region }: Props) {
 
 			<div className="flex flex-col gap-0.5">
 				<h3
-					className={`${mtsWide.className} truncate font-medium text-md`}
+					className={`${mtsWide.className} text-md truncate font-medium`}
 				>
 					{character.username}
 				</h3>
 
 				{character.clan && (
-					<span className="font-semibold text-muted-foreground text-xs">
+					<span className="text-muted-foreground text-xs font-semibold">
 						{character.clan.info.name} ·{' '}
 						{t(`player.rank.${character.clan.member.rank}`)}
 					</span>

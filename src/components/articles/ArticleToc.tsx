@@ -107,7 +107,7 @@ function TocList({
 					<li className="relative" key={h.id}>
 						{isActive && (
 							<motion.span
-								className="absolute top-1 bottom-1 left-0 w-0.5 rounded-full bg-primary"
+								className="bg-primary absolute top-1 bottom-1 left-0 w-0.5 rounded-full"
 								layoutId={INDICATOR_LAYOUT_ID}
 								transition={{
 									damping: 35,
@@ -123,8 +123,8 @@ function TocList({
 								h.level === 3 && 'pl-6',
 								h.level === 4 && 'pl-9',
 								isActive
-									? 'font-semibold text-primary'
-									: 'font-medium text-foreground/60 hover:text-foreground'
+									? 'text-primary font-semibold'
+									: 'text-foreground/60 hover:text-foreground font-medium'
 							)}
 							href={`#${h.id}`}
 							onClick={(e) => {
@@ -155,20 +155,20 @@ export function ArticleTocMobile({
 	if (headings.length < MIN_HEADINGS) return null
 
 	return (
-		<div className="rounded-xl border-2 border-primary/20 bg-card xl:hidden">
+		<div className="border-primary/20 bg-card rounded-xl border-2 xl:hidden">
 			<button
 				aria-expanded={open}
 				className="flex w-full cursor-pointer items-center justify-between p-4"
 				onClick={() => setOpen((v) => !v)}
 				type="button"
 			>
-				<span className="flex items-center gap-2 font-semibold text-sm">
-					<Icon className="size-4 text-primary" icon="lucide:list" />
+				<span className="flex items-center gap-2 text-sm font-semibold">
+					<Icon className="text-primary size-4" icon="lucide:list" />
 					{t('articles.toc.title')}
 				</span>
 				<Icon
 					className={cn(
-						'size-4 text-foreground transition-transform',
+						'text-foreground size-4 transition-transform',
 						open && 'rotate-180'
 					)}
 					icon="lucide:chevron-down"
@@ -220,23 +220,23 @@ export function ArticleTocAbsolute({
 					<motion.nav
 						animate={{ opacity: 1, x: 0 }}
 						aria-label={t('articles.toc.title')}
-						className="max-h-[calc(100dvh-9rem)] overflow-y-auto rounded-xl border-2 border-primary/20 bg-card p-4 shadow-lg"
+						className="border-primary/20 bg-card max-h-[calc(100dvh-9rem)] overflow-y-auto rounded-xl border-2 p-4 shadow-lg"
 						exit={{ opacity: 0, x: 48 }}
 						initial={{ opacity: 0, x: 48 }}
 						key="toc-panel"
 						transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
 					>
 						<div className="mb-3 flex items-center justify-between">
-							<p className="flex items-center gap-2 font-semibold text-sm">
+							<p className="flex items-center gap-2 text-sm font-semibold">
 								<Icon
-									className="size-4 text-primary"
+									className="text-primary size-4"
 									icon="lucide:list"
 								/>
 								{t('articles.toc.title')}
 							</p>
 							<button
 								aria-label={t('articles.toc.collapse')}
-								className="cursor-pointer rounded-md p-1 text-foreground transition-colors hover:text-primary"
+								className="text-foreground hover:text-primary cursor-pointer rounded-md p-1 transition-colors"
 								onClick={onToggle}
 								type="button"
 							>
@@ -252,7 +252,7 @@ export function ArticleTocAbsolute({
 					<motion.button
 						animate={{ opacity: 1, scale: 1 }}
 						aria-label={t('articles.toc.title')}
-						className="ml-auto flex cursor-pointer rounded-full border-2 border-primary/20 bg-card p-3 text-primary shadow-lg transition-colors hover:border-primary/50"
+						className="border-primary/20 bg-card text-primary hover:border-primary/50 ml-auto flex cursor-pointer rounded-full border-2 p-3 shadow-lg transition-colors"
 						exit={{ opacity: 0, scale: 0.8 }}
 						initial={{ opacity: 0, scale: 0.8 }}
 						key="toc-toggle"

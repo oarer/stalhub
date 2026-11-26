@@ -44,7 +44,7 @@ export function ItemPicker({
 				onChange={(event) => setSearch(event.target.value)}
 				value={search}
 			/>
-			<div className="grid max-h-60 grid-cols-2 gap-1 overflow-y-auto rounded-lg border border-muted p-2 md:grid-cols-3">
+			<div className="border-muted grid max-h-60 grid-cols-2 gap-1 overflow-y-auto rounded-lg border p-2 md:grid-cols-3">
 				{filtered.map((item) => {
 					const name = getItemName(item, locale)
 					const added = existingIds.has(item.id)
@@ -68,7 +68,7 @@ export function ItemPicker({
 					)
 				})}
 				{filtered.length === 0 && (
-					<p className="col-span-full p-3 text-center text-foreground text-sm">
+					<p className="text-foreground col-span-full p-3 text-center text-sm">
 						{t('tierlists.empty')}
 					</p>
 				)}

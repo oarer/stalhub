@@ -89,7 +89,7 @@ function LinkCharacter({ onLinked }: { onLinked: () => void }) {
 	return (
 		<Card.Root className="flex flex-col gap-4 p-5">
 			<div>
-				<h2 className="font-semibold text-lg">{t('title')}</h2>
+				<h2 className="text-lg font-semibold">{t('title')}</h2>
 				<p className="text-muted-foreground text-sm">{t('linkHint')}</p>
 			</div>
 			<div className="flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ function LinkCharacter({ onLinked }: { onLinked: () => void }) {
 					</p>
 					{characters.map((c) => (
 						<button
-							className="flex cursor-pointer items-center justify-between rounded-lg bg-accent px-3 py-2 text-sm transition hover:brightness-110"
+							className="bg-accent flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-sm transition hover:brightness-110"
 							disabled={busy}
 							key={c.uuid}
 							onClick={() => submit(c.username)}
@@ -287,7 +287,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 			<Card.Root className="flex flex-col gap-3 p-5">
 				<div className="flex flex-wrap items-center justify-between gap-3">
 					<div className="flex items-center gap-3">
-						<div className="rounded-lg bg-card p-1">
+						<div className="bg-card rounded-lg p-1">
 							{summary?.last?.profile?.alliance ? (
 								<Image
 									alt={summary.last.profile.alliance}
@@ -300,7 +300,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 							)}
 						</div>
 						<div>
-							<h2 className="font-semibold text-lg">
+							<h2 className="text-lg font-semibold">
 								{profile.character_name}
 							</h2>
 							<p className="text-muted-foreground text-sm">
@@ -348,7 +348,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 									{t.rich('unlinkBody', {
 										name: ` «${profile.character_name}»`,
 										span: (chunks) => (
-											<span className="font-mono font-semibold text-primary text-sm">
+											<span className="text-primary font-mono text-sm font-semibold">
 												{chunks}
 											</span>
 										),
@@ -388,7 +388,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 				</div>
 				{publicUrl ? (
 					<button
-						className="cursor-pointer truncate rounded-lg bg-accent px-3 py-2 text-left text-primary text-sm hover:underline"
+						className="bg-accent text-primary cursor-pointer truncate rounded-lg px-3 py-2 text-left text-sm hover:underline"
 						onClick={() => {
 							navigator.clipboard.writeText(publicUrl)
 							toast.success(t('copied'))
@@ -419,7 +419,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 					{isLoading ? (
 						<Skeleton className="h-64 w-full" />
 					) : (summary?.snapshots ?? 0) === 0 ? (
-						<Card.Root className="p-5 text-muted-foreground text-sm">
+						<Card.Root className="text-muted-foreground p-5 text-sm">
 							{t('noSnapshots')}
 						</Card.Root>
 					) : (
@@ -442,7 +442,7 @@ function AnalyticsContent({ onChanged }: { onChanged: () => void }) {
 											<p className="text-muted-foreground text-xs">
 												{statLabel(id)}
 											</p>
-											<p className="truncate font-semibold text-xl">
+											<p className="truncate text-xl font-semibold">
 												{v !== undefined
 													? formatStatValue(
 															id,

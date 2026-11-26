@@ -20,7 +20,7 @@ export default function LandingFooter() {
 				<FloatingIcons />
 				<motion.h1
 					animate={{ y: 0, opacity: 1 }}
-					className={`${mtsWide.className} max-w-300 pt-10 font-semibold text-[40px] leading-none sm:text-5xl md:pt-12 md:text-6xl`}
+					className={`${mtsWide.className} max-w-300 pt-10 text-[40px] leading-none font-semibold sm:text-5xl md:pt-12 md:text-6xl`}
 					initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 					transition={{ duration: 0.6, delay: 0.3 }}
 				>
@@ -34,13 +34,13 @@ export default function LandingFooter() {
 				</motion.h1>
 				<motion.p
 					animate={{ y: 0, opacity: 1 }}
-					className={`${mtsExtended.className} max-w-lg font-medium text-foreground text-lg`}
+					className={`${mtsExtended.className} text-foreground max-w-lg text-lg font-medium`}
 					initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 					transition={{ duration: 0.6, delay: 0.5 }}
 				>
 					{t('landing.footer.subtitle')}
 				</motion.p>
-				<div className="flex flex-col items-center justify-center gap-4 sm:flex-row dark:text-foreground">
+				<div className="dark:text-foreground flex flex-col items-center justify-center gap-4 sm:flex-row">
 					<motion.div
 						animate={{ y: 0, opacity: 1 }}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}

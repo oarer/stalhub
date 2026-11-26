@@ -36,11 +36,11 @@ export function DPIView({ variant = 'page' }: DPIViewProps) {
 			{variant === 'page' && (
 				<>
 					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+						className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 					>
 						{t('dpi.title')}
 					</h1>
-					<p className="font-medium text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm font-medium">
 						{t('dpi.sub_title')}
 					</p>
 				</>

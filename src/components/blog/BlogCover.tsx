@@ -66,7 +66,7 @@ export default function BlogCover({
 		<div
 			aria-label={title}
 			className={cn(
-				'aspect-1200/630 w-full overflow-hidden rounded-lg bg-card [&>svg]:block [&>svg]:h-full [&>svg]:w-full',
+				'bg-card aspect-1200/630 w-full overflow-hidden rounded-lg [&>svg]:block [&>svg]:h-full [&>svg]:w-full',
 				className
 			)}
 			dangerouslySetInnerHTML={{ __html: svg }}

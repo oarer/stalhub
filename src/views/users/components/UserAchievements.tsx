@@ -13,11 +13,11 @@ export default function UserAchievements({ userId }: { userId: number }) {
 
 	return (
 		<section className="flex flex-col gap-3">
-			<h2 className="font-semibold text-xl">
+			<h2 className="text-xl font-semibold">
 				{t('users.achievements.title')}
 			</h2>
 			{achievements.length > 0 ? (
-				<div className="flex flex-wrap gap-2 rounded-lg bg-card p-3">
+				<div className="bg-card flex flex-wrap gap-2 rounded-lg p-3">
 					{achievements.map(({ achievement, unlocked_at }) => (
 						<AchievementBadge
 							achievement={achievement}
@@ -27,7 +27,7 @@ export default function UserAchievements({ userId }: { userId: number }) {
 					))}
 				</div>
 			) : (
-				<p className="font-semibold text-foreground text-sm">
+				<p className="text-foreground text-sm font-semibold">
 					{t('users.achievements.empty')}
 				</p>
 			)}

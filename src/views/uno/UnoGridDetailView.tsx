@@ -71,7 +71,7 @@ export default function UnoGridDetailView({ gridId }: { gridId: string }) {
 						/>
 
 						{coverage && !coverage.complete && (
-							<div className="border-border-secondary border-b bg-warning/10 px-4 py-2 text-warning text-xs">
+							<div className="border-border-secondary bg-warning/10 text-warning border-b px-4 py-2 text-xs">
 								{t('grids.detail.coverageIncomplete', {
 									downloaded: coverage.downloadedGroups ?? 0,
 									expected: coverage.expectedGroups ?? 0,
@@ -81,7 +81,7 @@ export default function UnoGridDetailView({ gridId }: { gridId: string }) {
 
 						{selectedGroup ? (
 							<>
-								<div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 border-border-secondary border-b p-2">
+								<div className="border-border-secondary grid grid-cols-[1fr_auto_1fr] items-center gap-2 border-b p-2">
 									<div className="justify-self-start">
 										<RankBlock group={selectedGroup} />
 									</div>

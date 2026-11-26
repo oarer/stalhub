@@ -179,10 +179,10 @@ export default function BadgesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.badges.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
+				<span className="text-sm text-neutral-400">
 					{badges?.length ?? 0} {t('admin.permissions.total')}
 				</span>
 			</div>
@@ -208,7 +208,7 @@ export default function BadgesAdminView() {
 							</div>
 
 							<div className="flex flex-col gap-1.5">
-								<p className="font-semibold text-foreground text-xs">
+								<p className="text-foreground text-xs font-semibold">
 									{t('admin.badges.type')}
 								</p>
 								<ModeTabs
@@ -241,7 +241,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex items-center gap-2">
 								<input
-									className="size-9 shrink-0 cursor-pointer rounded border-2 border-primary bg-transparent"
+									className="border-primary size-9 shrink-0 cursor-pointer rounded border-2 bg-transparent"
 									onChange={(e) =>
 										setCreateColor(e.target.value)
 									}
@@ -266,7 +266,7 @@ export default function BadgesAdminView() {
 							</Button>
 						</div>
 
-						<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
+						<div className="bg-card flex items-center gap-2 rounded-lg px-3 py-2 text-sm">
 							<span className="text-foreground">
 								{t('admin.badges.preview')}
 							</span>
@@ -305,7 +305,7 @@ export default function BadgesAdminView() {
 							{badges?.map((badge) => (
 								<Table.Row key={badge.id}>
 									<Table.Cell>
-										<span className="font-mono text-neutral-400 text-xs">
+										<span className="font-mono text-xs text-neutral-400">
 											{badge.id}
 										</span>
 									</Table.Cell>
@@ -321,7 +321,7 @@ export default function BadgesAdminView() {
 										/>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="text-neutral-400 text-xs">
+										<span className="text-xs text-neutral-400">
 											{badge.image ? (
 												<span className="flex items-center gap-1">
 													<Icon
@@ -350,7 +350,7 @@ export default function BadgesAdminView() {
 														badge.color,
 												}}
 											/>
-											<span className="font-mono text-neutral-400 text-xs">
+											<span className="font-mono text-xs text-neutral-400">
 												{badge.color}
 											</span>
 										</div>
@@ -398,7 +398,7 @@ export default function BadgesAdminView() {
 							{(!badges || badges.length === 0) && (
 								<Table.Row>
 									<Table.Cell>
-										<span className="text-neutral-400 text-sm">
+										<span className="text-sm text-neutral-400">
 											{t('admin.badges.empty')}
 										</span>
 									</Table.Cell>
@@ -434,7 +434,7 @@ export default function BadgesAdminView() {
 							/>
 
 							<div className="flex flex-col gap-1.5">
-								<span className="font-semibold text-foreground text-xs">
+								<span className="text-foreground text-xs font-semibold">
 									{t('admin.badges.type')}
 								</span>
 								<ModeTabs
@@ -463,7 +463,7 @@ export default function BadgesAdminView() {
 
 							<div className="flex items-center gap-2">
 								<input
-									className="size-9 shrink-0 cursor-pointer rounded border-2 border-primary bg-transparent"
+									className="border-primary size-9 shrink-0 cursor-pointer rounded border-2 bg-transparent"
 									onChange={(e) =>
 										setEditColor(e.target.value)
 									}
@@ -479,7 +479,7 @@ export default function BadgesAdminView() {
 								/>
 							</div>
 
-							<div className="flex items-center gap-2 rounded-lg bg-card px-3 py-2 text-sm">
+							<div className="bg-card flex items-center gap-2 rounded-lg px-3 py-2 text-sm">
 								<span className="text-foreground">
 									{t('admin.badges.preview')}
 								</span>

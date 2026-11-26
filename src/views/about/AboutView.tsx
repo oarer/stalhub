@@ -59,7 +59,7 @@ export default function AboutView() {
 					contactLinks={contactLinks}
 					supportLinks={supportLinks}
 				/>
-				<p className="mt-2 font-medium text-background text-xs">
+				<p className="text-background mt-2 text-xs font-medium">
 					{t('about.insideJoke')}
 				</p>
 			</motion.div>

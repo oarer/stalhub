@@ -10,7 +10,7 @@ export function SessionCard({ session }: { session: StageSession }) {
 	const t = useTranslations()
 
 	return (
-		<div className="rounded-lg border border-primary/40 bg-card/30 p-3">
+		<div className="border-primary/40 bg-card/30 rounded-lg border p-3">
 			<div className="flex items-start justify-between">
 				<div className="flex flex-col gap-0.5">
 					<div className="flex items-center gap-2">
@@ -21,10 +21,10 @@ export function SessionCard({ session }: { session: StageSession }) {
 							{t(`clan.stage.${session.type}`)}
 						</Badge>
 						<span
-							className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
+							className={`rounded px-1.5 py-0.5 text-xs font-semibold ${
 								session.victory
-									? 'bg-green-500/20 text-success'
-									: 'bg-red-500/20 text-destructive'
+									? 'text-success bg-green-500/20'
+									: 'text-destructive bg-red-500/20'
 							}`}
 						>
 							{session.victory
@@ -36,7 +36,7 @@ export function SessionCard({ session }: { session: StageSession }) {
 						</span>
 					</div>
 					<p
-						className={`font-mono font-semibold text-[11px] text-foreground`}
+						className={`text-foreground font-mono text-[11px] font-semibold`}
 					>
 						{formatDate(session.started_at)}
 					</p>

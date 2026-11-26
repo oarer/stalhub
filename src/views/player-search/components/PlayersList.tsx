@@ -17,11 +17,11 @@ export function PlayersList({ data }: { data: PlayerStatsResponse[] }) {
 			{data.map((p, index) => (
 				<Fragment key={p.uuid}>
 					<Link
-						className="flex items-center gap-3 px-2 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg hover:bg-border/20"
+						className="hover:bg-border/20 flex items-center gap-3 px-2 py-2 transition-colors first:rounded-t-lg last:rounded-b-lg"
 						href={`/player/${p.region}/${p.username}`}
 					>
 						<Badge
-							className={`${unbounded.className} font-semibold text-[10px] uppercase leading-relaxed tracking-widest`}
+							className={`${unbounded.className} text-[10px] leading-relaxed font-semibold tracking-widest uppercase`}
 						>
 							{p.region}
 						</Badge>
@@ -44,7 +44,7 @@ export function PlayersList({ data }: { data: PlayerStatsResponse[] }) {
 								/>
 
 								<span
-									className={`${unbounded.className} hidden font-semibold text-[10px] uppercase leading-relaxed tracking-widest sm:block`}
+									className={`${unbounded.className} hidden text-[10px] leading-relaxed font-semibold tracking-widest uppercase sm:block`}
 								>
 									{t(ROLE_META[p.role].title)}
 								</span>
@@ -53,7 +53,7 @@ export function PlayersList({ data }: { data: PlayerStatsResponse[] }) {
 					</Link>
 
 					{index !== data.length - 1 && (
-						<Divider className="bg-gradient-to-r from-transparent via-border-secondary to-transparent" />
+						<Divider className="via-border-secondary bg-gradient-to-r from-transparent to-transparent" />
 					)}
 				</Fragment>
 			))}

@@ -17,7 +17,7 @@ export function FallbackRanking({ clans }: { clans: UnoGridClan[] }) {
 
 	if (clans.length === 0) {
 		return (
-			<p className="p-4 text-muted-foreground text-sm">
+			<p className="text-muted-foreground p-4 text-sm">
 				{t('grids.detail.noClans')}
 			</p>
 		)
@@ -25,7 +25,7 @@ export function FallbackRanking({ clans }: { clans: UnoGridClan[] }) {
 
 	return (
 		<div className="p-4">
-			<div className="mb-3 text-center text-[11px] text-muted-foreground uppercase tracking-[0.2em]">
+			<div className="text-muted-foreground mb-3 text-center text-[11px] tracking-[0.2em] uppercase">
 				{t('grids.detail.result')}
 			</div>
 			<Card.Root>
@@ -47,7 +47,7 @@ export function FallbackRanking({ clans }: { clans: UnoGridClan[] }) {
 										)}
 										<Link
 											className={cn(
-												'truncate font-medium text-[13px] hover:opacity-80',
+												'truncate text-[13px] font-medium hover:opacity-80',
 												clanColor(clan.faction)
 											)}
 											href={`/uno/clans/${clan.id}`}

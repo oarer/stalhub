@@ -3,8 +3,8 @@ import { Skeleton } from '@/components/ui/Skeleton'
 export default function UnoGridDetailLoading() {
 	return (
 		<section className="mx-auto max-w-380 px-4 pt-32 pb-12 sm:px-6">
-			<div className="overflow-hidden rounded-xl border border-border-secondary">
-				<div className="flex flex-wrap items-center gap-2 border-border-secondary border-b p-2">
+			<div className="border-border-secondary overflow-hidden rounded-xl border">
+				<div className="border-border-secondary flex flex-wrap items-center gap-2 border-b p-2">
 					<Skeleton className="h-9 w-56" />
 					<div className="flex flex-1 items-center justify-center gap-1">
 						<Skeleton className="h-9 w-20" />

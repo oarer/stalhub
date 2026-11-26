@@ -55,11 +55,11 @@ export function CompareSlots({
 
 	return (
 		<div className="flex w-full flex-col gap-2 sm:w-fit">
-			<p className="truncate border-primary/50 border-b pb-2 text-center font-semibold sm:max-w-13">
+			<p className="border-primary/50 truncate border-b pb-2 text-center font-semibold sm:max-w-13">
 				{name}
 			</p>
 			{slots.length === 0 ? (
-				<p className="py-4 text-center text-foreground text-sm">
+				<p className="text-foreground py-4 text-center text-sm">
 					{t('build.stats.no_container')}
 				</p>
 			) : (
@@ -108,14 +108,14 @@ export function CompareSlots({
 										<div className="flex shrink-0 items-center gap-2">
 											{art?.potential !== 0 && (
 												<span
-													className={`font-medium font-mono text-sm`}
+													className={`font-mono text-sm font-medium`}
 													style={{ color: colorHex }}
 												>
 													+{art?.potential}
 												</span>
 											)}
 											<span
-												className={`font-medium font-mono text-sm`}
+												className={`font-mono text-sm font-medium`}
 												style={{ color: colorHex }}
 											>
 												{art?.percent}%
@@ -131,7 +131,7 @@ export function CompareSlots({
 											icon="lucide:circle-question-mark"
 										/>
 									</div>
-									<p className="truncate font-medium text-foreground/70 text-sm sm:hidden">
+									<p className="text-foreground/70 truncate text-sm font-medium sm:hidden">
 										{t('build.empty_slot')}
 									</p>
 								</>
@@ -156,7 +156,7 @@ export function CompareSlots({
 							src={getIconUrl(container)}
 							width={34}
 						/>
-						<p className="truncate font-normal text-md sm:hidden">
+						<p className="text-md truncate font-normal sm:hidden">
 							{messageToString(container.name, locale)}
 						</p>
 					</div>

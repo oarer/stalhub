@@ -52,6 +52,11 @@ const groups: {
 				href: '/admin/achievements',
 				icon: 'lucide:trophy',
 			},
+			{
+				title: 'admin.sidebar.awards',
+				href: '/admin/awards',
+				icon: 'lucide:medal',
+			},
 		],
 	},
 	{
@@ -159,7 +164,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 		<div className="flex flex-col gap-4">
 			{groups.map((group) => (
 				<div className="flex flex-col gap-1" key={group.title}>
-					<p className="mb-1 px-2 font-semibold text-[11px] text-neutral-500 uppercase tracking-wider">
+					<p className="mb-1 px-2 text-[11px] font-semibold tracking-wider text-neutral-500 uppercase">
 						{t(group.title)}
 					</p>
 					{group.tabs.map((tab) => {
@@ -170,7 +175,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 						return (
 							<Link
 								className={cn(
-									'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500 hover:bg-accent',
+									'hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500',
 									isActive && 'bg-accent hover:brightness-125'
 								)}
 								href={tab.href}
@@ -186,7 +191,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 								/>
 								<p
 									className={cn(
-										'font-semibold text-sm',
+										'text-sm font-semibold',
 										isActive && 'text-primary'
 									)}
 								>
@@ -229,7 +234,7 @@ export default function AdminSidebar() {
 		<>
 			<motion.button
 				aria-label="Open admin navigation"
-				className="fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-primary/60 bg-card p-2 shadow-lg backdrop-blur-md lg:hidden"
+				className="border-primary/60 bg-card fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 p-2 shadow-lg backdrop-blur-md lg:hidden"
 				onClick={() => setIsOpen(true)}
 				type="button"
 				whileTap={{ scale: 0.9 }}
@@ -255,7 +260,7 @@ export default function AdminSidebar() {
 					>
 						<motion.aside
 							animate={{ x: isOpen ? 0 : '-100%' }}
-							className="absolute inset-y-0 left-0 z-10 flex w-72 flex-col gap-4 overflow-y-auto bg-card px-4 py-6 pt-32 shadow-xl"
+							className="bg-card absolute inset-y-0 left-0 z-10 flex w-72 flex-col gap-4 overflow-y-auto px-4 py-6 pt-32 shadow-xl"
 							initial={{ x: '-100%' }}
 							transition={{
 								type: 'spring',
@@ -264,7 +269,7 @@ export default function AdminSidebar() {
 							}}
 						>
 							<div className="flex items-center justify-between">
-								<p className="font-semibold text-lg">
+								<p className="text-lg font-semibold">
 									{t('admin.sidebar.title')}
 								</p>
 								<Button
@@ -275,7 +280,7 @@ export default function AdminSidebar() {
 									<Icon className="text-lg" icon="lucide:x" />
 								</Button>
 							</div>
-							<div className="mask-y-from-97% mask-y-to-100% min-h-0 flex-1 overflow-y-auto">
+							<div className="min-h-0 flex-1 overflow-y-auto mask-y-from-97% mask-y-to-100%">
 								<SidebarContent onNavigate={close} />
 							</div>
 						</motion.aside>
@@ -283,7 +288,7 @@ export default function AdminSidebar() {
 					document.body
 				)}
 
-			<aside className="sticky top-0 hidden h-dvh w-64 shrink-0 overflow-y-auto border-primary/2 border-r-2 bg-background/80 px-4 pt-32 pb-6 lg:block">
+			<aside className="border-primary/2 bg-background/80 sticky top-0 hidden h-dvh w-64 shrink-0 overflow-y-auto border-r-2 px-4 pt-32 pb-6 lg:block">
 				<SidebarContent />
 			</aside>
 		</>

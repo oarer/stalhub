@@ -77,7 +77,7 @@ export default function MeNotificationsView() {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-xl">
+				<h1 className="text-xl font-semibold">
 					{t('me.notifications.title')}
 				</h1>
 				{notifications.some((n) => !n.read) && (
@@ -95,7 +95,7 @@ export default function MeNotificationsView() {
 			</div>
 
 			{notifications.length === 0 ? (
-				<p className="py-8 text-center font-semibold text-foreground text-sm">
+				<p className="text-foreground py-8 text-center text-sm font-semibold">
 					{t('me.notifications.empty')}
 				</p>
 			) : (

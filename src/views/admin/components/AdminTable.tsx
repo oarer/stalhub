@@ -18,7 +18,7 @@ export function AdminEmptyRow({
 	return (
 		<Table.Row>
 			<Table.Cell>
-				<span className="text-neutral-400 text-sm">{message}</span>
+				<span className="text-sm text-neutral-400">{message}</span>
 			</Table.Cell>
 			{Array.from({ length: Math.max(colCount - 1, 0) }).map((_, i) => (
 				<Table.Cell key={i} />

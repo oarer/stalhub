@@ -36,6 +36,9 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 	const locale = await getLocale()
 	const messages = await getMessages()
 	const siteUrl = SITE_META.SITE_URL
+	const headersList = await headers()
+	const pathname = headersList.get('X-Path')?.split('?')[0] ?? ''
+	const isCeremony = pathname.startsWith('/admin/ceremony')
 
 	return (
 		<html
@@ -49,14 +52,16 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 			>
 				<JsonLd data={websiteJsonLd(siteUrl)} />
 				<JsonLd data={organizationJsonLd(siteUrl)} />
-				<GridBackgroundWithBeams
-					cellSize={20}
-					cols={100}
-					glowIntensity={1.5}
-					lineWidth={2}
-					maxBeams={4}
-					rows={100}
-				/>
+				{!isCeremony && (
+					<GridBackgroundWithBeams
+						cellSize={20}
+						cols={100}
+						glowIntensity={1.5}
+						lineWidth={2}
+						maxBeams={4}
+						rows={100}
+					/>
+				)}
 				<Script
 					data-website-id="47f7941c-8d8d-4976-8cf0-690dfe79f522"
 					defer
@@ -72,16 +77,20 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 						<LocaleProvider locale={locale} messages={messages}>
 							<Providers>
 								<MiniAppProvider>
-									<MiniAppChrome
-										footer={<Footer />}
-										nav={<Nav />}
-									>
-										{children}
-									</MiniAppChrome>
+									{isCeremony ? (
+										children
+									) : (
+										<MiniAppChrome
+											footer={<Footer />}
+											nav={<Nav />}
+										>
+											{children}
+										</MiniAppChrome>
+									)}
 								</MiniAppProvider>
-								<Hound />
-								<CookieConsent />
 							</Providers>
+							{!isCeremony && <Hound />}
+							{!isCeremony && <CookieConsent />}
 						</LocaleProvider>
 					</ThemeProvider>
 				</Suspense>

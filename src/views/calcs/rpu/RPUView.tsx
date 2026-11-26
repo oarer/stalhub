@@ -34,11 +34,11 @@ export function RPUView({ variant = 'page' }: RPUViewProps) {
 			{variant === 'page' && (
 				<div className="flex flex-col gap-2">
 					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+						className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 					>
 						{t('rpu.title')}
 					</h1>
-					<p className="font-medium text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm font-medium">
 						{t('rpu.sub_title')}
 					</p>
 				</div>

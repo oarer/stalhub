@@ -395,7 +395,7 @@ export function PlayerList({
 					<Table.Body>
 						{table.getRowModel().rows.map((row) => (
 							<Table.Row
-								className={`cursor-pointer font-mono hover:bg-accent/50`}
+								className={`hover:bg-accent/50 cursor-pointer font-mono`}
 								key={row.id}
 								onClick={() => onSelect(row.original.name)}
 							>
@@ -432,9 +432,9 @@ export function PlayerList({
 						{selectedPlayer ? (
 							<div className="flex flex-col gap-3">
 								{selectedMember && (
-									<div className="rounded-lg bg-accent/50 px-3 py-2">
+									<div className="bg-accent/50 rounded-lg px-3 py-2">
 										<div className="mb-1 flex items-center gap-2">
-											<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+											<p className="text-muted-foreground flex items-center gap-2 text-sm font-semibold">
 												<Icon
 													className="text-base"
 													icon="lucide:shirt"
@@ -479,7 +479,7 @@ export function PlayerList({
 										/>
 									</div>
 								)}
-								<div className="mask-y-from-97% mask-y-to-100% flex max-h-80 flex-col gap-2 overflow-y-scroll">
+								<div className="flex max-h-80 flex-col gap-2 overflow-y-scroll mask-y-from-97% mask-y-to-100%">
 									{selectedPlayer.stages
 										.slice()
 										.sort((a, b) =>
@@ -489,7 +489,7 @@ export function PlayerList({
 										)
 										.map((s) => (
 											<div
-												className="flex items-center justify-between rounded-lg bg-accent/50 px-3 py-2"
+												className="bg-accent/50 flex items-center justify-between rounded-lg px-3 py-2"
 												key={`${s.session_id}-${s.map_name}`}
 											>
 												<div className="flex flex-col gap-2">
@@ -510,10 +510,10 @@ export function PlayerList({
 															{s.map_name || '—'}
 														</span>
 														<span
-															className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
+															className={`rounded px-1.5 py-0.5 text-xs font-semibold ${
 																s.victory
-																	? 'bg-green-500/20 text-success'
-																	: 'bg-red-500/20 text-destructive'
+																	? 'text-success bg-green-500/20'
+																	: 'text-destructive bg-red-500/20'
 															}`}
 														>
 															{s.victory
@@ -526,7 +526,7 @@ export function PlayerList({
 														</span>
 													</div>
 													<span
-														className={`font-mono font-semibold text-foreground text-xs`}
+														className={`text-foreground font-mono text-xs font-semibold`}
 													>
 														{formatDate(
 															s.started_at
@@ -534,7 +534,7 @@ export function PlayerList({
 													</span>
 												</div>
 												<span
-													className={`font-mono font-semibold text-foreground text-sm`}
+													className={`text-foreground font-mono text-sm font-semibold`}
 												>
 													{s.kills}{' '}
 													{t(

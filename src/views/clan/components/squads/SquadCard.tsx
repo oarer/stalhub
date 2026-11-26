@@ -102,7 +102,7 @@ export function SquadCard({
 				{renaming ? (
 					<>
 						<input
-							className="h-7 min-w-0 flex-1 rounded-lg bg-accent/50 px-2 font-semibold text-sm outline-none ring-2 ring-primary/60"
+							className="bg-accent/50 ring-primary/60 h-7 min-w-0 flex-1 rounded-lg px-2 text-sm font-semibold ring-2 outline-none"
 							disabled={isRenamePending}
 							maxLength={60}
 							onChange={(e) => setDraft(e.target.value)}
@@ -157,7 +157,7 @@ export function SquadCard({
 					</>
 				) : (
 					<>
-						<p className="truncate font-semibold text-[15px]">
+						<p className="truncate text-[15px] font-semibold">
 							{squad.name}
 						</p>
 						{isOfficer && (
@@ -248,7 +248,7 @@ export function SquadCard({
 						(pendingRequest ? (
 							<Tooltip.Root>
 								<Tooltip.Trigger asChild>
-									<div className="rounded-lg px-2 py-1 hover:bg-accent">
+									<div className="hover:bg-accent rounded-lg px-2 py-1">
 										<Icon
 											className="text-base"
 											icon="lucide:clock"
@@ -281,16 +281,16 @@ export function SquadCard({
 
 			{isOfficer && squad.requests.length > 0 && (
 				<div className="flex flex-col gap-1">
-					<p className="flex items-center gap-1 font-semibold text-foreground text-xs">
+					<p className="text-foreground flex items-center gap-1 text-xs font-semibold">
 						<Icon className="text-sm" icon="lucide:inbox" />
 						{t('clan.squads.joinRequests')}
 					</p>
 					{squad.requests.map((request) => (
 						<div
-							className="flex items-center justify-between gap-2 rounded-lg bg-accent/40 px-2 py-1.5"
+							className="bg-accent/40 flex items-center justify-between gap-2 rounded-lg px-2 py-1.5"
 							key={request.id}
 						>
-							<p className="truncate font-semibold text-sm">
+							<p className="truncate text-sm font-semibold">
 								{request.member.name}
 							</p>
 							<div className="flex shrink-0 items-center gap-1">
@@ -465,7 +465,7 @@ function SquadRow({
 					: dragged != null && isOfficer
 						? 'hover:border-sky-500/60'
 						: ''
-			} ${!member && isOfficer ? 'cursor-pointer hover:bg-primary/5' : ''}`}
+			} ${!member && isOfficer ? 'hover:bg-primary/5 cursor-pointer' : ''}`}
 			onClick={() => {
 				if (isOfficer && !member) onOpenAssign(slot)
 			}}
@@ -474,7 +474,7 @@ function SquadRow({
 				<>
 					<span
 						{...draggableProps}
-						className={`shrink-0 text-muted-foreground ${isOfficer ? 'cursor-grab' : ''}`}
+						className={`text-muted-foreground shrink-0 ${isOfficer ? 'cursor-grab' : ''}`}
 					>
 						<Icon
 							className="text-base"
@@ -489,19 +489,19 @@ function SquadRow({
 						member={member.member}
 						onEditGear={onEditGear}
 					>
-						<p className="truncate font-semibold text-sm">
+						<p className="truncate text-sm font-semibold">
 							{member.member.name}
 						</p>
 					</ClanMemberHoverCard>
 					{isLeader && (
 						<Icon
-							className="shrink-0 text-amber-500 text-base"
+							className="shrink-0 text-base text-amber-500"
 							icon="lucide:crown"
 						/>
 					)}
 					{isAbsent && (
 						<Icon
-							className="shrink-0 text-base text-destructive"
+							className="text-destructive shrink-0 text-base"
 							icon="lucide:calendar-x"
 						/>
 					)}
@@ -527,7 +527,7 @@ function SquadRow({
 					)}
 				</>
 			) : (
-				<p className="truncate px-1 font-mono font-semibold text-muted-foreground text-xs">
+				<p className="text-muted-foreground truncate px-1 font-mono text-xs font-semibold">
 					{t('clan.squads.freeSlot')}
 				</p>
 			)}

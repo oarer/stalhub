@@ -64,14 +64,14 @@ export function SquadLoadoutTable({
 	return (
 		<div className={hideHeader ? '' : 'mt-4'}>
 			{!hideHeader && (
-				<p className="mb-2 flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+				<p className="text-muted-foreground mb-2 flex items-center gap-2 text-sm font-semibold">
 					<Icon className="text-base" icon="lucide:shirt" />
 					{t('clan.squads.loadoutTitle')}
 				</p>
 			)}
 			<div className="overflow-x-auto">
 				<div
-					className="grid min-w-160 items-center gap-2 border-primary border-b px-2 pb-1 font-semibold text-muted-foreground text-xs"
+					className="border-primary text-muted-foreground grid min-w-160 items-center gap-2 border-b px-2 pb-1 text-xs font-semibold"
 					style={{ gridTemplateColumns: GRID_TEMPLATE }}
 				>
 					{HEADERS.map((h) => (
@@ -106,7 +106,7 @@ export function SquadLoadoutTable({
 
 					return (
 						<div
-							className={`grid min-w-160 items-center gap-2 border-primary border-b px-2 py-2 last:border-b-0 ${hasOverride ? 'bg-primary/5' : ''}`}
+							className={`border-primary grid min-w-160 items-center gap-2 border-b px-2 py-2 last:border-b-0 ${hasOverride ? 'bg-primary/5' : ''}`}
 							key={member.id}
 							style={{ gridTemplateColumns: GRID_TEMPLATE }}
 						>
@@ -126,13 +126,13 @@ export function SquadLoadoutTable({
 										: undefined
 								}
 							>
-								<span className="flex min-w-0 items-center gap-1 truncate font-medium text-sm">
+								<span className="flex min-w-0 items-center gap-1 truncate text-sm font-medium">
 									<span className="truncate">
 										{member.name}
 									</span>
 									{hasOverride && (
 										<Icon
-											className="shrink-0 text-md text-primary"
+											className="text-md text-primary shrink-0"
 											icon="lucide:shield-check"
 										/>
 									)}
@@ -143,7 +143,7 @@ export function SquadLoadoutTable({
 							<ItemCell item={pistol} />
 							{hasSledgehammer ? (
 								<Icon
-									className="text-lg text-primary"
+									className="text-primary text-lg"
 									icon="lucide:check-circle-2"
 								/>
 							) : (

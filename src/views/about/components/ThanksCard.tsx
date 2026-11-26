@@ -21,7 +21,7 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 			<motion.div {...view}>
 				<Image
 					alt={name}
-					className="h-30 w-30 rounded-2xl bg-card object-cover shadow-2xl shadow-border/40 ring-2 ring-primary/80 sm:h-52 sm:w-52 lg:h-50 lg:w-50"
+					className="bg-card shadow-border/40 ring-primary/80 h-30 w-30 rounded-2xl object-cover shadow-2xl ring-2 sm:h-52 sm:w-52 lg:h-50 lg:w-50"
 					height={186}
 					src={`/images/avatars/${name}.jpg`}
 					width={186}
@@ -30,12 +30,12 @@ export function ThanksCard({ name, description, links }: AboutMember) {
 
 			<motion.div className="flex flex-col items-center gap-2" {...view}>
 				<h1
-					className={`${mtsExtended.className} font-semibold text-lg uppercase tracking-widest sm:text-xl`}
+					className={`${mtsExtended.className} text-lg font-semibold tracking-widest uppercase sm:text-xl`}
 				>
 					{name}
 				</h1>
 				<h2
-					className={`${mtsWide.className} font-medium text-primary text-sm uppercase tracking-widest`}
+					className={`${mtsWide.className} text-primary text-sm font-medium tracking-widest uppercase`}
 				>
 					{t.rich(description, {
 						br: () => <br />,

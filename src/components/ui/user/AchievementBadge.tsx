@@ -46,12 +46,12 @@ export default function AchievementBadge({
 				<span className="block max-w-60">
 					<strong className="block">{achievement.title}</strong>
 					{achievement.description && (
-						<span className="block text-popover-foreground/75">
+						<span className="text-popover-foreground/75 block">
 							{achievement.description}
 						</span>
 					)}
 					<span
-						className="block font-semibold text-xs"
+						className="block text-xs font-semibold"
 						style={{ color }}
 					>
 						{achievement.rarity}

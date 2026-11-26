@@ -14,7 +14,7 @@ export function OrderBriefCard({ order }: { order: CommissionOrder }) {
 		<Card.Root className="gap-2.5">
 			<h2 className="font-semibold">{t('briefStep')}</h2>
 			{order.brief && (
-				<p className="wrap-break-word whitespace-pre-wrap text-sm">
+				<p className="text-sm wrap-break-word whitespace-pre-wrap">
 					{order.brief}
 				</p>
 			)}
@@ -28,7 +28,7 @@ export function OrderBriefCard({ order }: { order: CommissionOrder }) {
 						>
 							<span>
 								{item.title}
-								<span className="block text-muted-foreground text-xs">
+								<span className="text-muted-foreground block text-xs">
 									{t('days', {
 										min: item.days_min,
 										max: item.days_max,
@@ -57,7 +57,7 @@ export function OrderBriefCard({ order }: { order: CommissionOrder }) {
 							title: t('terms'),
 							content: (
 								<>
-									<p className="whitespace-pre-wrap text-sm">
+									<p className="text-sm whitespace-pre-wrap">
 										{order.terms}
 									</p>
 									<p className="text-sm">

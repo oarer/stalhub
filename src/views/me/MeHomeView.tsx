@@ -59,7 +59,7 @@ export default function MeHomeView() {
 				title={t('me.home.builds')}
 			>
 				{builds?.data.length === 0 ? (
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{t('me.home.noBuilds')}
 					</p>
 				) : (
@@ -116,13 +116,13 @@ function CharactersSkeleton() {
 			<div className="flex flex-col gap-2">
 				{Array.from({ length: 2 }).map((_, i) => (
 					<div
-						className="flex animate-pulse items-center gap-3 rounded-lg bg-card p-3"
+						className="bg-card flex animate-pulse items-center gap-3 rounded-lg p-3"
 						key={i}
 					>
-						<div className="size-9 rounded-lg bg-accent" />
+						<div className="bg-accent size-9 rounded-lg" />
 						<div className="flex flex-col gap-1.5">
-							<div className="h-3 w-32 rounded bg-accent" />
-							<div className="h-2.5 w-20 rounded bg-accent" />
+							<div className="bg-accent h-3 w-32 rounded" />
+							<div className="bg-accent h-2.5 w-20 rounded" />
 						</div>
 					</div>
 				))}

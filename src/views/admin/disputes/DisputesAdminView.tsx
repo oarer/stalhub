@@ -73,7 +73,7 @@ export default function DisputesAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('admin.disputes.title')}
 			</h1>
@@ -89,10 +89,10 @@ export default function DisputesAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.open}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.disputes.stats.open')}
 								</p>
 							</div>
@@ -107,10 +107,10 @@ export default function DisputesAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.resolved}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.disputes.stats.resolved')}
 								</p>
 							</div>
@@ -125,10 +125,10 @@ export default function DisputesAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.unassigned}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.disputes.stats.unassigned')}
 								</p>
 							</div>
@@ -143,10 +143,10 @@ export default function DisputesAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.assigned_to_me}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.disputes.stats.assignedToMe')}
 								</p>
 							</div>
@@ -177,7 +177,7 @@ export default function DisputesAdminView() {
 						<Button
 							className={
 								kind === (value ?? '')
-									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									? 'bg-sky-500/10 text-xs text-sky-400 ring-sky-500'
 									: 'text-xs'
 							}
 							key={value ?? 'all'}
@@ -201,7 +201,7 @@ export default function DisputesAdminView() {
 						<Button
 							className={
 								status === (value ?? '')
-									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									? 'bg-sky-500/10 text-xs text-sky-400 ring-sky-500'
 									: 'text-xs'
 							}
 							key={value ?? 'all'}
@@ -225,7 +225,7 @@ export default function DisputesAdminView() {
 						<Button
 							className={
 								assigned === value
-									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									? 'bg-sky-500/10 text-xs text-sky-400 ring-sky-500'
 									: 'text-xs'
 							}
 							key={value}
@@ -285,13 +285,13 @@ export default function DisputesAdminView() {
 								return (
 									<Table.Row key={entry.id}>
 										<Table.Cell>
-											<span className="font-mono text-neutral-400 text-xs">
+											<span className="font-mono text-xs text-neutral-400">
 												{entry.id}
 											</span>
 										</Table.Cell>
 										<Table.Cell>
 											<div className="flex flex-col">
-												<span className="font-medium text-sm">
+												<span className="text-sm font-medium">
 													{entry.order.title}
 												</span>
 												<span className="text-muted-foreground text-xs">
@@ -305,7 +305,7 @@ export default function DisputesAdminView() {
 															.username
 													}
 												</span>
-												<span className="font-mono text-muted-foreground text-xs">
+												<span className="text-muted-foreground font-mono text-xs">
 													{commissionMoney(
 														entry.order.total,
 														entry.order.currency
@@ -370,7 +370,7 @@ export default function DisputesAdminView() {
 													)}
 												{mine && (
 													<CLink
-														className="px-0 text-primary"
+														className="text-primary px-0"
 														href={`/admin/disputes/${entry.id}`}
 														variant="none"
 													>
@@ -383,7 +383,7 @@ export default function DisputesAdminView() {
 													</CLink>
 												)}
 												<CLink
-													className="px-0 text-primary"
+													className="text-primary px-0"
 													href={`/admin/disputes/${entry.id}`}
 													variant="none"
 												>

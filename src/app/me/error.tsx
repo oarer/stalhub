@@ -51,10 +51,10 @@ export default function MeError({
 		return (
 			<section className="mx-auto flex min-h-dvh w-full max-w-lg flex-col items-center justify-center gap-4 px-4 py-8 text-center">
 				<Icon
-					className="animate-spin text-4xl text-accent"
+					className="text-accent animate-spin text-4xl"
 					icon="lucide:loader-circle"
 				/>
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('auth.error')}
 				</p>
 				<CLink href="/auth" variant="outline">

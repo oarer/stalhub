@@ -39,14 +39,14 @@ function SummaryCard({
 		<Card.Root className="gap-3">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg text-neutral-400" icon={icon} />
-				<p className="font-medium text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-medium">
 					{label}
 				</p>
 			</div>
-			<p className={`font-mono font-semibold text-primary text-xl`}>
+			<p className={`text-primary font-mono text-xl font-semibold`}>
 				{value}
 				{suffix && (
-					<span className="ml-1 font-medium font-mono text-muted-foreground text-sm">
+					<span className="text-muted-foreground ml-1 font-mono text-sm font-medium">
 						{suffix}
 					</span>
 				)}
@@ -130,14 +130,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 				<Card.Header className="flex-row items-center justify-between">
 					<Card.Title>
 						<Icon
-							className="text-neutral-700 text-xl dark:text-neutral-300"
+							className="text-xl text-neutral-700 dark:text-neutral-300"
 							icon="lucide:table-properties"
 						/>
 						<h2>{t('upgrade.result.table.title')}</h2>
 					</Card.Title>
 					<Badge variant="secondary">
 						<span
-							className={`${mtsWide.className} font-medium text-xs uppercase`}
+							className={`${mtsWide.className} text-xs font-medium uppercase`}
 						>
 							{t(
 								isLuck
@@ -205,14 +205,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 							<Table.Row key={row.targetLevel}>
 								<Table.Cell>
 									<span
-										className={`font-medium font-mono text-xs`}
+										className={`font-mono text-xs font-medium`}
 									>
 										{row.targetLevel}
 									</span>
 								</Table.Cell>
 								<Table.Cell>
 									<span
-										className={`font-mono font-semibold text-primary`}
+										className={`text-primary font-mono font-semibold`}
 									>
 										{formatPercent(row.chance)}
 									</span>
@@ -228,14 +228,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 									<>
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-muted-foreground`}
+												className={`text-muted-foreground font-mono font-semibold`}
 											>
 												{format(row.energyPerAttempt)}
 											</span>
 										</Table.Cell>
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-primary`}
+												className={`text-primary font-mono font-semibold`}
 											>
 												{format(row.levelEnergy)}
 											</span>
@@ -245,14 +245,14 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 									<>
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-muted-foreground`}
+												className={`text-muted-foreground font-mono font-semibold`}
 											>
 												{format(row.costPerAttempt)}
 											</span>
 										</Table.Cell>
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-primary`}
+												className={`text-primary font-mono font-semibold`}
 											>
 												{format(row.levelCost)}
 											</span>
@@ -262,12 +262,12 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`font-mono font-semibold text-muted-foreground`}
+											className={`text-muted-foreground font-mono font-semibold`}
 										>
 											{t(`upgrade.items.${row.partsKey}`)}
 										</span>
 										<span
-											className={`ml-1 font-mono font-semibold text-primary`}
+											className={`text-primary ml-1 font-mono font-semibold`}
 										>
 											×{format(row.levelParts)}
 										</span>
@@ -276,12 +276,12 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`font-mono font-semibold text-muted-foreground`}
+											className={`text-muted-foreground font-mono font-semibold`}
 										>
 											{t(`upgrade.items.${row.toolsKey}`)}
 										</span>
 										<span
-											className={`ml-1 font-mono font-semibold text-primary`}
+											className={`text-primary ml-1 font-mono font-semibold`}
 										>
 											×{format(row.levelTools)}
 										</span>
@@ -318,7 +318,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								</Table.Cell>
 								<Table.Cell>
 									<span
-										className={`font-mono font-semibold text-primary`}
+										className={`text-primary font-mono font-semibold`}
 									>
 										{format(result.totalAttempts)}
 									</span>
@@ -328,7 +328,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 										<Table.Cell />
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-primary`}
+												className={`text-primary font-mono font-semibold`}
 											>
 												{format(result.totalEnergy)}
 											</span>
@@ -340,7 +340,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 										<Table.Cell />
 										<Table.Cell className="text-right">
 											<span
-												className={`font-mono font-semibold text-primary`}
+												className={`text-primary font-mono font-semibold`}
 											>
 												{format(result.totalMoney)}
 											</span>
@@ -350,7 +350,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`font-mono font-semibold text-primary`}
+											className={`text-primary font-mono font-semibold`}
 										>
 											{format(result.totalParts)}
 										</span>
@@ -359,7 +359,7 @@ export function UpgradeResult({ result }: UpgradeResultProps) {
 								{!isArtefact && (
 									<Table.Cell className="text-right">
 										<span
-											className={`font-mono font-semibold text-primary`}
+											className={`text-primary font-mono font-semibold`}
 										>
 											{format(result.totalTools)}
 										</span>

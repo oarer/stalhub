@@ -186,7 +186,7 @@ function EditorForm({
 					</Button>
 					{publicHref && (
 						<Link
-							className="hidden text-primary text-sm hover:underline sm:inline"
+							className="text-primary hidden text-sm hover:underline sm:inline"
 							href={publicHref}
 							target="_blank"
 						>
@@ -207,7 +207,7 @@ function EditorForm({
 			</header>
 
 			{isCreate && (
-				<p className="px-4 font-medium text-foreground text-xs">
+				<p className="text-foreground px-4 text-xs font-medium">
 					{t('blog.editor.galleryHint')}
 				</p>
 			)}
@@ -382,7 +382,7 @@ function EditMode({ articleId }: { articleId: string }) {
 			headerBadge={
 				<span
 					className={cn(
-						'hidden rounded-full px-2.5 py-0.5 font-semibold text-xs sm:inline-block',
+						'hidden rounded-full px-2.5 py-0.5 text-xs font-semibold sm:inline-block',
 						ARTICLE_STATUS_META[article.status as ArticleStatus]
 							?.color
 					)}

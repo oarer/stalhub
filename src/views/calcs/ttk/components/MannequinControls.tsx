@@ -45,14 +45,14 @@ export function MannequinControls({ prime }: { prime: number }) {
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center gap-2">
 				<Icon className="text-lg" icon="lucide:person-standing" />
-				<p className={`${mtsWide.className} font-semibold text-md`}>
+				<p className={`${mtsWide.className} text-md font-semibold`}>
 					{t('ttk.page.mannequin')}
 				</p>
 			</div>
 			<Card.Root>
 				<Card.Content className="flex flex-col gap-4">
 					<div className="flex flex-col gap-1.5">
-						<span className="text-neutral-500 text-xs">
+						<span className="text-xs text-neutral-500">
 							{t('ttk.page.bullet_resistance')}
 						</span>
 						<Input
@@ -69,7 +69,7 @@ export function MannequinControls({ prime }: { prime: number }) {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<span className="text-neutral-500 text-xs">
+						<span className="text-xs text-neutral-500">
 							{t('ttk.page.vitality')}
 						</span>
 						<Input
@@ -84,7 +84,7 @@ export function MannequinControls({ prime }: { prime: number }) {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<span className="text-neutral-500 text-xs">
+						<span className="text-xs text-neutral-500">
 							{t('ttk.page.build')}
 						</span>
 						<Combobox
@@ -96,7 +96,7 @@ export function MannequinControls({ prime }: { prime: number }) {
 						/>
 					</div>
 					<div className="flex flex-col gap-1.5">
-						<span className="text-neutral-500 text-xs">
+						<span className="text-xs text-neutral-500">
 							{t('ttk.page.plate')}
 						</span>
 						<Combobox
@@ -107,11 +107,11 @@ export function MannequinControls({ prime }: { prime: number }) {
 							value={plateId}
 						/>
 					</div>
-					<div className="flex items-center justify-between rounded-lg bg-muted px-3 py-2">
-						<span className="text-neutral-400 text-sm">
+					<div className="bg-muted flex items-center justify-between rounded-lg px-3 py-2">
+						<span className="text-sm text-neutral-400">
 							{t('build.stats.prime')}
 						</span>
-						<span className="font-mono font-semibold text-primary text-sm">
+						<span className="text-primary font-mono text-sm font-semibold">
 							{prime.toFixed(1)}
 						</span>
 					</div>

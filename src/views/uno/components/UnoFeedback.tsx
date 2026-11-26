@@ -25,12 +25,12 @@ export function UnoFeedback({
 				{UNO_SKELETON_KEYS.map((key) => (
 					<Card.Root className="gap-0 overflow-hidden p-0" key={key}>
 						<div className="border-border-secondary/60 border-b px-3 py-2">
-							<Skeleton className="h-3 w-20 bg-muted-foreground/15" />
+							<Skeleton className="bg-muted-foreground/15 h-3 w-20" />
 						</div>
 						<div className="space-y-2 p-3">
-							<Skeleton className="h-4 w-full bg-muted-foreground/15" />
-							<Skeleton className="h-4 w-4/5 bg-muted-foreground/15" />
-							<Skeleton className="h-4 w-3/5 bg-muted-foreground/15" />
+							<Skeleton className="bg-muted-foreground/15 h-4 w-full" />
+							<Skeleton className="bg-muted-foreground/15 h-4 w-4/5" />
+							<Skeleton className="bg-muted-foreground/15 h-4 w-3/5" />
 						</div>
 					</Card.Root>
 				))}

@@ -96,7 +96,7 @@ function AnnouncementPreview({
 	content: GlobalNotificationContent[]
 }) {
 	return (
-		<p className="whitespace-pre-wrap text-sm leading-6">
+		<p className="text-sm leading-6 whitespace-pre-wrap">
 			{content.map((part, index) => {
 				if (part.type === 'text') {
 					return (
@@ -279,10 +279,10 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between gap-3">
 				<div>
-					<h2 className="font-semibold text-xl">
+					<h2 className="text-xl font-semibold">
 						{t('admin.notifications.global.title')}
 					</h2>
-					<p className="mt-1 text-muted-foreground text-sm">
+					<p className="text-muted-foreground mt-1 text-sm">
 						{t('admin.notifications.global.description')}
 					</p>
 				</div>
@@ -310,7 +310,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 						/>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-sm">
+							<span className="text-foreground text-sm font-semibold">
 								{t('admin.notifications.global.typeLabel')}
 							</span>
 							<div className="flex flex-wrap gap-2">
@@ -318,7 +318,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 									<Button
 										className={
 											value === type
-												? 'ring-2 ring-primary'
+												? 'ring-primary ring-2'
 												: ''
 										}
 										key={value}
@@ -359,7 +359,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 						<label className="flex w-fit cursor-pointer items-center gap-2 text-sm">
 							<input
 								checked={isActive}
-								className="size-4 accent-primary"
+								className="accent-primary size-4"
 								onChange={(event) =>
 									setIsActive(event.target.checked)
 								}
@@ -373,12 +373,12 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 						<div className="flex flex-col gap-3">
 							<div className="flex items-center justify-between gap-3">
 								<div>
-									<h3 className="font-semibold text-sm">
+									<h3 className="text-sm font-semibold">
 										{t(
 											'admin.notifications.global.contentTitle'
 										)}
 									</h3>
-									<p className="mt-1 text-muted-foreground text-xs">
+									<p className="text-muted-foreground mt-1 text-xs">
 										{t(
 											'admin.notifications.global.contentDescription'
 										)}
@@ -426,11 +426,11 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 
 							{parts.map((part, index) => (
 								<div
-									className="flex flex-col gap-3 rounded-lg border border-primary/20 bg-background/30 p-3"
+									className="border-primary/20 bg-background/30 flex flex-col gap-3 rounded-lg border p-3"
 									key={`${part.type}-${index}`}
 								>
 									<div className="flex items-center justify-between gap-2">
-										<span className="font-semibold text-muted-foreground text-xs">
+										<span className="text-muted-foreground text-xs font-semibold">
 											{index + 1}.{' '}
 											{t(
 												`admin.notifications.global.partType.${part.type}`
@@ -475,7 +475,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 												aria-label={t(
 													'admin.notifications.global.removePart'
 												)}
-												className="size-8 p-0 text-destructive"
+												className="text-destructive size-8 p-0"
 												disabled={parts.length === 1}
 												onClick={() =>
 													removePart(index)
@@ -582,7 +582,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 
 							return (
 								<div
-									className="flex flex-col gap-3 rounded-lg border border-primary/20 bg-background/30 p-4"
+									className="border-primary/20 bg-background/30 flex flex-col gap-3 rounded-lg border p-4"
 									key={announcement.id}
 								>
 									<div className="flex flex-wrap items-start justify-between gap-3">
@@ -619,7 +619,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 																)}
 													</span>
 												</div>
-												<p className="mt-1 text-muted-foreground text-xs">
+												<p className="text-muted-foreground mt-1 text-xs">
 													{t(
 														'admin.notifications.global.schedule',
 														{
@@ -654,7 +654,7 @@ export default function GlobalAnnouncementsManager({ onBack }: Props) {
 												aria-label={t(
 													'admin.notifications.global.delete'
 												)}
-												className="size-9 p-0 text-destructive"
+												className="text-destructive size-9 p-0"
 												disabled={isSaving}
 												onClick={() =>
 													handleDelete(announcement)

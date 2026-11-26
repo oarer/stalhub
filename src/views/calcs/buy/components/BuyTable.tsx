@@ -31,20 +31,20 @@ export function BuyTable() {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="overflow-hidden rounded-xl ring-2 ring-primary/50">
-				<div className="grid grid-cols-[2.5rem_1fr] items-center gap-x-3 border-primary/50 border-b-2 bg-card/80 px-3 py-2 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:px-4">
+			<div className="ring-primary/50 overflow-hidden rounded-xl ring-2">
+				<div className="border-primary/50 bg-card/80 grid grid-cols-[2.5rem_1fr] items-center gap-x-3 border-b-2 px-3 py-2 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:px-4">
 					<p
-						className={`font-medium font-mono text-foreground text-xs uppercase`}
+						className={`text-foreground font-mono text-xs font-medium uppercase`}
 					>
 						№
 					</p>
 					<p
-						className={`font-medium font-mono text-foreground text-xs uppercase`}
+						className={`text-foreground font-mono text-xs font-medium uppercase`}
 					>
 						{t('buy.item')}
 					</p>
 					<p
-						className={`hidden font-medium font-mono text-foreground text-xs uppercase sm:block`}
+						className={`text-foreground hidden font-mono text-xs font-medium uppercase sm:block`}
 					>
 						{t('buy.price')}
 					</p>
@@ -60,7 +60,7 @@ export function BuyTable() {
 							initial={{ opacity: 0 }}
 							key="empty"
 						>
-							<p className="font-medium text-foreground">
+							<p className="text-foreground font-medium">
 								{t('buy.emptyTable')}
 							</p>
 							<p className="text-foreground/60 text-sm">
@@ -79,7 +79,7 @@ export function BuyTable() {
 							return (
 								<motion.div
 									animate={{ opacity: 1, x: 0 }}
-									className="grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-3 gap-y-2 border-primary/20 border-b bg-card/30 px-3 py-2 transition-colors last:border-b-0 hover:bg-card/60 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:gap-y-0 sm:px-4"
+									className="border-primary/20 bg-card/30 hover:bg-card/60 grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-3 gap-y-2 border-b px-3 py-2 transition-colors last:border-b-0 sm:grid-cols-[3rem_1fr_12rem_3rem] sm:gap-x-4 sm:gap-y-0 sm:px-4"
 									exit={{ opacity: 0, x: -10 }}
 									initial={{ opacity: 0, x: -10 }}
 									key={entry.key}
@@ -87,7 +87,7 @@ export function BuyTable() {
 									transition={{ duration: 0.15 }}
 								>
 									<p
-										className={`col-start-1 row-start-1 font-medium font-mono text-foreground text-sm`}
+										className={`text-foreground col-start-1 row-start-1 font-mono text-sm font-medium`}
 									>
 										{index + 1}
 									</p>
@@ -101,7 +101,7 @@ export function BuyTable() {
 											width={36}
 										/>
 										<p
-											className="truncate font-medium text-sm"
+											className="truncate text-sm font-medium"
 											style={{ color }}
 										>
 											{name}

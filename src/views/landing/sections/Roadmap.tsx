@@ -34,7 +34,7 @@ function RoadmapContent({
 			<time
 				className={cn(
 					mtsExtended.className,
-					'font-bold text-xs',
+					'text-xs font-bold',
 					item.status === 'planned'
 						? 'text-neutral-200'
 						: 'text-foreground'
@@ -47,7 +47,7 @@ function RoadmapContent({
 			<h3
 				className={cn(
 					mtsExtended.className,
-					'font-bold text-[16px] uppercase tracking-widest dark:text-white'
+					'text-[16px] font-bold tracking-widest uppercase dark:text-white'
 				)}
 			>
 				{t(item.title)}
@@ -55,7 +55,7 @@ function RoadmapContent({
 
 			{item.description && (
 				<p
-					className={`${mtsExtended.className} w-full max-w-xl font-medium text-muted-foreground text-xs`}
+					className={`${mtsExtended.className} text-muted-foreground w-full max-w-xl text-xs font-medium`}
 				>
 					{t(item.description)}
 				</p>
@@ -70,7 +70,7 @@ function TimelineDot({ status }: { status: RoadmapItem['status'] }) {
 	return (
 		<motion.span
 			className={cn(
-				'z-10 size-4 rounded-full border-2 border-primary bg-card',
+				'border-primary bg-card z-10 size-4 rounded-full border-2',
 				status === 'in-progress' &&
 					'border-primary bg-primary shadow-[0_0_16px_4px_var(--primary)]',
 				status === 'done' && 'border-primary/40 bg-muted'
@@ -104,7 +104,7 @@ export default function Roadmap() {
 				whileInView={{ y: 0, opacity: 1 }}
 			>
 				<h2
-					className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
+					className={`${mtsWide.className} text-[40px] leading-none font-semibold sm:text-5xl`}
 				>
 					{t.rich('title', {
 						primary: (chunks) => (
@@ -115,7 +115,7 @@ export default function Roadmap() {
 					})}
 				</h2>
 				<p
-					className={`${mtsExtended.className} mx-auto max-w-md font-medium text-foreground text-md`}
+					className={`${mtsExtended.className} text-foreground text-md mx-auto max-w-md font-medium`}
 				>
 					{t('description')}
 				</p>
@@ -124,12 +124,12 @@ export default function Roadmap() {
 				<ol className="relative space-y-2">
 					<span
 						aria-hidden="true"
-						className="absolute top-0 bottom-0 left-1.75 w-px bg-primary/60 md:hidden"
+						className="bg-primary/60 absolute top-0 bottom-0 left-1.75 w-px md:hidden"
 					/>
 
 					<span
 						aria-hidden="true"
-						className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-primary/60 md:block"
+						className="bg-primary/60 absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 md:block"
 					/>
 
 					{RoadmapItems.map((item, i) => {

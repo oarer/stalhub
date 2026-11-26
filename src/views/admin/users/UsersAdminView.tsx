@@ -53,10 +53,10 @@ export default function UsersAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.users.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
+				<span className="text-sm text-neutral-400">
 					{data?.total_count ?? 0} {t('admin.users.total')}
 				</span>
 			</div>
@@ -101,7 +101,7 @@ export default function UsersAdminView() {
 							{data?.data.map((user) => (
 								<Table.Row key={user.id}>
 									<Table.Cell>
-										<span className="font-mono text-neutral-400 text-xs">
+										<span className="font-mono text-xs text-neutral-400">
 											{user.id}
 										</span>
 									</Table.Cell>
@@ -121,7 +121,7 @@ export default function UsersAdminView() {
 										<div className="flex flex-wrap gap-1">
 											{user.roles.map((role) => (
 												<span
-													className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs"
+													className="rounded-full bg-sky-400/10 px-2 py-0.5 text-xs font-semibold text-sky-400"
 													key={role.id}
 												>
 													{role.name}
@@ -131,11 +131,11 @@ export default function UsersAdminView() {
 									</Table.Cell>
 									<Table.Cell>
 										{user.banned ? (
-											<span className="rounded-full bg-red-500/10 px-2 py-0.5 font-semibold text-red-400 text-xs">
+											<span className="rounded-full bg-red-500/10 px-2 py-0.5 text-xs font-semibold text-red-400">
 												{t('admin.users.status.banned')}
 											</span>
 										) : (
-											<span className="rounded-full bg-green-500/10 px-2 py-0.5 font-semibold text-green-400 text-xs">
+											<span className="rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-semibold text-green-400">
 												{t('admin.users.status.active')}
 											</span>
 										)}

@@ -122,9 +122,9 @@ export const BuildLitePngTemplate = forwardRef<
 	)
 
 	return (
-		<div className="dark w-7xl bg-background p-8 text-white" ref={ref}>
+		<div className="dark bg-background w-7xl p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3]`}
+				className={`${unbounded.className} text-primary text-2xl font-bold tracking-[3] uppercase`}
 			>
 				stalhub.dev
 			</h1>
@@ -135,25 +135,25 @@ export const BuildLitePngTemplate = forwardRef<
 					{buildName}
 				</h2>
 				<div className={`flex gap-3 text-right font-mono`}>
-					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-foreground text-xs">
+					<div className="bg-card rounded-lg px-4 py-1">
+						<p className="text-foreground text-xs font-semibold">
 							{t('build.stats.prime')}
 						</p>
-						<p className="font-bold text-lg text-primary">
+						<p className="text-primary text-lg font-bold">
 							{prime}
 						</p>
 					</div>
-					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-foreground text-xs">
+					<div className="bg-card rounded-lg px-4 py-1">
+						<p className="text-foreground text-xs font-semibold">
 							{t('build.stats.regen')}
 						</p>
-						<p className="font-bold text-lg text-primary">{hps}%</p>
+						<p className="text-primary text-lg font-bold">{hps}%</p>
 					</div>
-					<div className="rounded-lg bg-card px-4 py-1">
-						<p className="font-semibold text-foreground text-xs">
+					<div className="bg-card rounded-lg px-4 py-1">
+						<p className="text-foreground text-xs font-semibold">
 							{t('build.stats.stopping')}
 						</p>
-						<p className="font-bold text-lg text-primary">
+						<p className="text-primary text-lg font-bold">
 							{stopping}%
 						</p>
 					</div>
@@ -162,9 +162,9 @@ export const BuildLitePngTemplate = forwardRef<
 
 			<div className="grid grid-cols-[40%_1fr] gap-8">
 				<div className="space-y-5">
-					<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
+					<section className="bg-card ring-primary/50 flex flex-col gap-4 rounded-lg p-5 ring-2">
 						<h1
-							className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
+							className={`${unbounded.className} text-md font-bold tracking-widest uppercase`}
 						>
 							{t('build.artifacts')}
 						</h1>
@@ -198,7 +198,7 @@ export const BuildLitePngTemplate = forwardRef<
 
 									return (
 										<div
-											className="flex items-center gap-3 rounded-lg border border-primary/50 bg-card/40 px-2 py-1.5"
+											className="border-primary/50 bg-card/40 flex items-center gap-3 rounded-lg border px-2 py-1.5"
 											key={`${index}-${instanceId ?? 'empty'}`}
 										>
 											{item ? (
@@ -218,7 +218,7 @@ export const BuildLitePngTemplate = forwardRef<
 														}
 													/>
 													<p
-														className="truncate font-semibold text-sm"
+														className="truncate text-sm font-semibold"
 														style={{
 															color,
 														}}
@@ -226,7 +226,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{itemName}
 													</p>
 													<p
-														className={`font-mono font-semibold text-sm`}
+														className={`font-mono text-sm font-semibold`}
 														style={{ color }}
 													>
 														{art?.potential
@@ -235,7 +235,7 @@ export const BuildLitePngTemplate = forwardRef<
 														{art?.percent}%
 													</p>
 													<p
-														className={`ml-auto font-bold font-mono text-primary text-sm`}
+														className={`text-primary ml-auto font-mono text-sm font-bold`}
 													>
 														{price?.source ===
 														'estimate'
@@ -247,7 +247,7 @@ export const BuildLitePngTemplate = forwardRef<
 													</p>
 												</>
 											) : (
-												<p className="py-1.5 font-bold text-foreground/70 text-sm">
+												<p className="text-foreground/70 py-1.5 text-sm font-bold">
 													{t('build.empty_slot')}
 												</p>
 											)}
@@ -282,7 +282,7 @@ export const BuildLitePngTemplate = forwardRef<
 									src={imageSources[containerItem.id]}
 								/>
 								<p
-									className="font-semibold text-sm"
+									className="text-sm font-semibold"
 									style={{ color: containerColor }}
 								>
 									{containerName}
@@ -294,12 +294,12 @@ export const BuildLitePngTemplate = forwardRef<
 							</p>
 						)}
 						{totalPrice > 0 && (
-							<div className="flex items-center justify-between rounded-lg bg-card px-4 py-1">
-								<p className="font-semibold text-foreground text-xs">
+							<div className="bg-card flex items-center justify-between rounded-lg px-4 py-1">
+								<p className="text-foreground text-xs font-semibold">
 									{t('build.price_total')}
 								</p>
 								<p
-									className={`font-bold font-mono text-lg text-primary`}
+									className={`text-primary font-mono text-lg font-bold`}
 								>
 									{formatArtPrice(totalPrice)}
 								</p>
@@ -307,9 +307,9 @@ export const BuildLitePngTemplate = forwardRef<
 						)}
 					</section>
 
-					<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
+					<section className="bg-card ring-primary/50 flex flex-col gap-4 rounded-lg p-5 ring-2">
 						<h1
-							className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
+							className={`${unbounded.className} text-md font-bold tracking-widest uppercase`}
 						>
 							{t('build.armor')}
 						</h1>
@@ -328,28 +328,28 @@ export const BuildLitePngTemplate = forwardRef<
 									/>
 									<div>
 										<p
-											className="max-w-75 truncate font-bold text-lg"
+											className="max-w-75 truncate text-lg font-bold"
 											style={{ color: armorColor }}
 										>
 											{armorName}
 										</p>
-										<p className="font-semibold text-foreground text-sm">
+										<p className="text-foreground text-sm font-semibold">
 											{t('build.sharpening')}: +
 											{build.armor.level}
 										</p>
 									</div>
 								</>
 							) : (
-								<p className="font-semibold text-muted-foreground text-sm">
+								<p className="text-muted-foreground text-sm font-semibold">
 									{t('build.no_armor')}
 								</p>
 							)}
 						</div>
 					</section>
 					{boosts.length > 0 && (
-						<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
+						<section className="bg-card ring-primary/50 flex flex-col gap-4 rounded-lg p-5 ring-2">
 							<h1
-								className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
+								className={`${unbounded.className} text-md font-bold tracking-widest uppercase`}
 							>
 								{t('build.consumables')}
 							</h1>
@@ -357,7 +357,7 @@ export const BuildLitePngTemplate = forwardRef<
 							<div className="grid grid-cols-6 gap-2">
 								{boosts.map(({ category, boostItem }) => (
 									<div
-										className="flex size-14 items-center justify-center rounded-lg bg-card"
+										className="bg-card flex size-14 items-center justify-center rounded-lg"
 										key={category}
 									>
 										<img
@@ -377,13 +377,13 @@ export const BuildLitePngTemplate = forwardRef<
 					)}
 				</div>
 
-				<section className="flex flex-col gap-4 rounded-lg bg-card p-5 ring-2 ring-primary/50">
+				<section className="bg-card ring-primary/50 flex flex-col gap-4 rounded-lg p-5 ring-2">
 					<h1
-						className={`${unbounded.className} font-bold text-md uppercase tracking-widest`}
+						className={`${unbounded.className} text-md font-bold tracking-widest uppercase`}
 					>
 						{t('build.stats.title')}
 					</h1>
-					<div className="flex flex-col gap-1 font-semibold text-foreground text-sm">
+					<div className="text-foreground flex flex-col gap-1 text-sm font-semibold">
 						{sortedStats.length === 0 ? (
 							<p className="text-muted-foreground">
 								{t('build.stats.no_stats')}
@@ -394,7 +394,7 @@ export const BuildLitePngTemplate = forwardRef<
 									className="flex flex-col gap-1"
 									key={group.key}
 								>
-									<p className="border-primary border-b pb-1 font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+									<p className="border-primary text-muted-foreground border-b pb-1 text-xs font-semibold tracking-wider uppercase">
 										{t(
 											`build.stats.categories.${group.key}`
 										)}

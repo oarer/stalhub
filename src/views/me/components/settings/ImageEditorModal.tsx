@@ -527,7 +527,7 @@ export function ImageEditorModal({
 						</div>
 					) : (
 						<>
-							<div className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-accent/50 p-2">
+							<div className="bg-accent/50 flex flex-wrap items-center justify-between gap-2 rounded-lg p-2">
 								<div className="flex items-center gap-1">
 									{tools.map((item) => (
 										<Button
@@ -545,7 +545,7 @@ export function ImageEditorModal({
 												className="text-lg"
 												icon={item.icon}
 											/>
-											<span className="font-semibold text-xs">
+											<span className="text-xs font-semibold">
 												{item.label}
 											</span>
 										</Button>
@@ -564,7 +564,7 @@ export function ImageEditorModal({
 											className="text-lg"
 											icon="lucide:undo-2"
 										/>
-										<span className="hidden font-semibold text-xs sm:inline">
+										<span className="hidden text-xs font-semibold sm:inline">
 											{t('me.settings.editorUndo')}
 										</span>
 									</Button>
@@ -578,7 +578,7 @@ export function ImageEditorModal({
 											className="text-lg"
 											icon="lucide:rotate-ccw"
 										/>
-										<span className="hidden font-semibold text-xs sm:inline">
+										<span className="hidden text-xs font-semibold sm:inline">
 											{t('me.settings.editorReset')}
 										</span>
 									</Button>
@@ -586,7 +586,7 @@ export function ImageEditorModal({
 							</div>
 
 							{(tool === 'brush' || tool === 'fill') && (
-								<div className="flex flex-wrap items-center gap-3 rounded-lg bg-accent/50 p-2">
+								<div className="bg-accent/50 flex flex-wrap items-center gap-3 rounded-lg p-2">
 									<div className="flex items-center gap-1.5">
 										<PALETTE_SWATCHES
 											color={color}
@@ -595,7 +595,7 @@ export function ImageEditorModal({
 										/>
 										<label className="relative flex cursor-pointer items-center">
 											<div
-												className="size-6 rounded-full ring-2 ring-primary/50"
+												className="ring-primary/50 size-6 rounded-full ring-2"
 												style={{
 													backgroundColor: color,
 												}}
@@ -619,7 +619,7 @@ export function ImageEditorModal({
 												step={1}
 												value={brushSize}
 											/>
-											<span className="w-9 text-right font-semibold text-xs">
+											<span className="w-9 text-right text-xs font-semibold">
 												{brushSize}
 											</span>
 										</div>
@@ -639,7 +639,7 @@ export function ImageEditorModal({
 
 							{tool === 'crop' && (
 								<div className="flex items-center justify-between">
-									<span className="font-semibold text-foreground text-xs">
+									<span className="text-foreground text-xs font-semibold">
 										{t('me.settings.editorCropHint')}
 									</span>
 									<Button
@@ -652,7 +652,7 @@ export function ImageEditorModal({
 											className="text-lg"
 											icon="lucide:scissors"
 										/>
-										<span className="font-semibold text-xs">
+										<span className="text-xs font-semibold">
 											{t('me.settings.editorApplyCrop')}
 										</span>
 									</Button>

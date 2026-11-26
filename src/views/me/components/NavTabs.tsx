@@ -28,13 +28,13 @@ export default function NavTabs({
 		group.items.map((item) => item.href)
 	)
 	return (
-		<div className="flex flex-col rounded-lg bg-card px-4 py-3">
+		<div className="bg-card flex flex-col rounded-lg px-4 py-3">
 			{groups.map((group, gi) => (
 				<div key={group.label ?? group.items[0]?.href}>
 					{gi > 0 && <Divider className="my-2" />}
 					{group.label && (
 						<p
-							className={`${unbounded.className} mb-1 px-2 font-body text-[12px] text-muted-foreground uppercase`}
+							className={`${unbounded.className} font-body text-muted-foreground mb-1 px-2 text-[12px] uppercase`}
 						>
 							{t(group.label)}
 						</p>
@@ -55,7 +55,7 @@ export default function NavTabs({
 							return (
 								<Link
 									className={cn(
-										'flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500 hover:bg-accent',
+										'hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-all duration-500',
 										isActive &&
 											'bg-accent hover:brightness-125'
 									)}
@@ -72,7 +72,7 @@ export default function NavTabs({
 									{tab.href === '/me/notifications' &&
 										unreadCount != null &&
 										unreadCount > 0 && (
-											<span className="ml-auto rounded-full bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground text-xs leading-none">
+											<span className="bg-primary text-primary-foreground ml-auto rounded-full px-1.5 py-0.5 text-xs leading-none font-semibold">
 												{unreadCount > 99
 													? '99+'
 													: unreadCount}

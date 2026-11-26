@@ -43,7 +43,7 @@ export function KickList({
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+		<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<div className="flex items-center gap-2">
 					<Icon
@@ -56,7 +56,7 @@ export function KickList({
 					<Tooltip.Root position="top">
 						<Tooltip.Trigger underline={false}>
 							<Icon
-								className="size-4 text-card-foreground"
+								className="text-card-foreground size-4"
 								icon="lucide:circle-help"
 							/>
 						</Tooltip.Trigger>
@@ -98,11 +98,11 @@ export function KickList({
 						</Badge>
 					)}
 				</div>
-				<div className="flex items-center gap-2 rounded-xl bg-muted px-2 py-1.5">
+				<div className="bg-muted flex items-center gap-2 rounded-xl px-2 py-1.5">
 					{ATTENDANCE_FILTERS.map((f) => (
 						<Button
 							className={cn(
-								'font-semibold text-card-foreground',
+								'text-card-foreground font-semibold',
 								attendanceType === f.value && 'bg-primary/40'
 							)}
 							key={f.value}
@@ -117,9 +117,9 @@ export function KickList({
 			</div>
 
 			{rows.length === 0 ? (
-				<div className="flex flex-col items-center gap-3 py-10 text-foreground">
+				<div className="text-foreground flex flex-col items-center gap-3 py-10">
 					<Icon className="text-4xl" icon="lucide:shield-check" />
-					<p className="font-medium text-sm">
+					<p className="text-sm font-medium">
 						{t('clan.charts.noCandidates')}
 					</p>
 				</div>
@@ -128,7 +128,7 @@ export function KickList({
 					<div className="flex min-w-160 flex-col gap-2">
 						{rows.map((row) => (
 							<div
-								className="flex items-center gap-3 rounded-lg bg-accent/50 p-3"
+								className="bg-accent/50 flex items-center gap-3 rounded-lg p-3"
 								key={row.name}
 							>
 								<div className="flex size-9 flex-none items-center justify-center overflow-hidden rounded-full">
@@ -140,20 +140,20 @@ export function KickList({
 											width={36}
 										/>
 									) : (
-										<div className="flex size-9 items-center justify-center rounded-full bg-destructive/15 font-medium text-destructive text-sm">
+										<div className="bg-destructive/15 text-destructive flex size-9 items-center justify-center rounded-full text-sm font-medium">
 											{row.name.charAt(0)}
 										</div>
 									)}
 								</div>
 								<div className="w-44 flex-none">
 									<div className="flex items-center gap-1.5">
-										<p className="truncate font-medium text-sm">
+										<p className="truncate text-sm font-medium">
 											{row.name}
 										</p>
 										{row.user && (
 											<HoverUserCard id={row.user.id}>
 												<Link
-													className={`truncate font-mono font-semibold text-foreground text-xs`}
+													className={`text-foreground truncate font-mono text-xs font-semibold`}
 													href={`/users/${row.user.id}`}
 												>
 													<Username user={row.user} />
@@ -161,7 +161,7 @@ export function KickList({
 											</HoverUserCard>
 										)}
 									</div>
-									<p className="font-semibold text-xs">
+									<p className="text-xs font-semibold">
 										{t(`player.rank.${row.rank}`)}
 									</p>
 								</div>
@@ -193,14 +193,14 @@ export function KickList({
 								</div>
 								<div className="flex w-36 flex-none flex-col gap-1">
 									<div className="flex items-center justify-between gap-2">
-										<span className="font-semibold text-foreground text-xs">
+										<span className="text-foreground text-xs font-semibold">
 											{t('clan.charts.kickChanceLabel')}
 										</span>
-										<span className="font-semibold text-sm">
+										<span className="text-sm font-semibold">
 											{row.chance}%
 										</span>
 									</div>
-									<div className="h-1.5 w-full overflow-hidden rounded-full bg-border-secondary">
+									<div className="bg-border-secondary h-1.5 w-full overflow-hidden rounded-full">
 										<div
 											className={cn(
 												'h-full rounded-full transition-all',

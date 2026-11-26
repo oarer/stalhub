@@ -1,84 +1,93 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { motion } from 'motion/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { CLink } from '@/components/ui/Link'
 import { cn } from '@/lib/cn'
-import type { AwardCandidate } from '../awards.data'
+import { resolveImageUrl } from '@/lib/imageUrl'
+import type { AwardNominee } from '@/types/awards.type'
 
 interface UpdateCardProps {
-	candidate: AwardCandidate
-	index: number
+	candidate: AwardNominee
 	onVote: () => void
 	selected: boolean
+	disabled?: boolean
 }
 
 export function UpdateCard({
 	candidate,
-	index,
 	onVote,
 	selected,
+	disabled = false,
 }: UpdateCardProps) {
+	const t = useTranslations('awards')
+	const avatar = resolveImageUrl(candidate.avatar_url)
+
 	return (
-		<motion.article
+		<article
 			className={cn(
-				'grid overflow-hidden rounded-2xl bg-card shadow-lg ring-2 ring-primary/20 transition-all duration-300 md:grid-cols-[minmax(0,280px)_1fr]',
+				'bg-card ring-primary/20 grid overflow-hidden rounded-2xl shadow-lg ring-2 transition-all duration-300 md:grid-cols-[minmax(0,280px)_1fr]',
 				selected && 'bg-primary/10 ring-primary'
 			)}
-			initial={{ opacity: 0, y: 20 }}
-			transition={{ duration: 0.45, delay: index * 0.06 }}
-			viewport={{ once: true, amount: 0.2 }}
-			whileInView={{ opacity: 1, y: 0 }}
 		>
-			<div className="relative aspect-[16/10] overflow-hidden bg-muted md:aspect-auto md:min-h-56">
-				<Image
-					alt={candidate.name}
-					className="object-cover"
-					fill
-					sizes="(max-width: 768px) 100vw, 280px"
-					src={candidate.image}
-				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent md:bg-gradient-to-r" />
-				<span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-3 py-1 font-medium text-xs backdrop-blur">
+			<div className="bg-muted relative aspect-16/10 overflow-hidden md:aspect-auto md:min-h-56">
+				{avatar ? (
+					<Image
+						alt={candidate.name}
+						className="object-cover"
+						fill
+						sizes="(max-width: 768px) 100vw, 280px"
+						src={avatar}
+					/>
+				) : (
+					<div className="bg-primary/10 flex h-full min-h-56 items-center justify-center">
+						<Icon
+							className="text-primary text-5xl"
+							icon="lucide:package-open"
+						/>
+					</div>
+				)}
+				<div className="from-card/70 absolute inset-0 bg-linear-to-t via-transparent to-transparent md:bg-linear-to-r" />
+				<span className="bg-background/80 absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium backdrop-blur">
 					<Icon
 						className="text-primary text-sm"
 						icon="lucide:package-open"
 					/>
-					Обновление
+					{t('kind.updates')}
 				</span>
 			</div>
 
 			<div className="flex flex-col gap-3 p-5">
 				<div className="flex flex-wrap items-center gap-2">
 					{candidate.date && (
-						<span className="inline-flex items-center gap-1 font-medium text-muted-foreground text-xs">
+						<span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
 							<Icon className="text-sm" icon="lucide:calendar" />
 							{candidate.date}
 						</span>
 					)}
 					{selected && (
-						<span className="inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 font-semibold text-primary-foreground text-xs">
+						<span className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold">
 							<Icon className="text-sm" icon="lucide:check" />
-							Выбрано
+							{t('alreadyVoted')}
 						</span>
 					)}
 				</div>
 
-				<h3 className="font-semibold text-xl tracking-tight">
+				<h3 className="text-xl font-semibold tracking-tight">
 					{candidate.name}
 				</h3>
-				<p className="max-w-2xl text-muted-foreground text-sm">
+				<p className="text-muted-foreground max-w-2xl text-sm">
 					{candidate.description}
 				</p>
 
 				<div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-					{candidate.patchUrl && (
+					{candidate.patch_url && (
 						<CLink
 							className="gap-2"
 							externalIcon={false}
-							href={candidate.patchUrl}
+							href={candidate.patch_url}
 							size="sm"
 							variant="outline"
 						>
@@ -92,6 +101,7 @@ export function UpdateCard({
 					<Button
 						aria-pressed={selected}
 						className="gap-2"
+						disabled={disabled}
 						onClick={onVote}
 						size="sm"
 						variant={selected ? 'primary' : 'bordered'}
@@ -100,10 +110,10 @@ export function UpdateCard({
 							className="text-base"
 							icon={selected ? 'lucide:check' : 'lucide:vote'}
 						/>
-						{selected ? 'Выбран' : 'Выбрать'}
+						{selected ? t('alreadyVoted') : t('vote')}
 					</Button>
 				</div>
 			</div>
-		</motion.article>
+		</article>
 	)
 }

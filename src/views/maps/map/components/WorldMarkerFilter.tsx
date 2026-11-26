@@ -164,7 +164,7 @@ export default function WorldMarkerFilter({
 								size="xs"
 							/>
 							<span
-								className={`shrink-0 font-mono font-semibold text-[10px] text-muted-foreground`}
+								className={`text-muted-foreground shrink-0 font-mono text-[10px] font-semibold`}
 							>
 								{count}
 							</span>
@@ -202,7 +202,7 @@ export default function WorldMarkerFilter({
 									size="xs"
 								/>
 								<span
-									className={`shrink-0 font-mono font-semibold text-[10px] text-muted-foreground`}
+									className={`text-muted-foreground shrink-0 font-mono text-[10px] font-semibold`}
 								>
 									{count}
 								</span>

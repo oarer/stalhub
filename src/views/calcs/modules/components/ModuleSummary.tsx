@@ -85,18 +85,18 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 			<Card.Header>
 				<Card.Title className="justify-start">
 					<Icon className="text-lg" icon="lucide:layers" />
-					<p className="font-semibold text-lg">
+					<p className="text-lg font-semibold">
 						{t('modules.summary')}
 					</p>
 				</Card.Title>
 			</Card.Header>
 			{!hasModules ? (
-				<p className="py-2 text-center font-semibold text-sm">
+				<p className="py-2 text-center text-sm font-semibold">
 					{t('modules.summaryEmpty')}
 				</p>
 			) : (
 				<>
-					<div className="flex items-center justify-between gap-4 rounded-lg bg-accent/50 p-2.5 text-lg">
+					<div className="bg-accent/50 flex items-center justify-between gap-4 rounded-lg p-2.5 text-lg">
 						<div className="flex gap-2">
 							{selectedModules.map(({ key, name, rarity }) => (
 								<span
@@ -117,7 +117,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						/>
 					</div>
 
-					<div className="flex flex-col gap-1 rounded-lg bg-accent/50 p-2.5">
+					<div className="bg-accent/50 flex flex-col gap-1 rounded-lg p-2.5">
 						{Array.from(stats.entries()).map(([key, stat]) => (
 							<div
 								className="flex items-center justify-between gap-2 text-sm"
@@ -144,7 +144,7 @@ export function ModuleSummary({ slots }: ModuleSummaryProps) {
 						))}
 					</div>
 
-					<div className="flex flex-col gap-1 border-primary/40 border-t pt-2 text-sm">
+					<div className="border-primary/40 flex flex-col gap-1 border-t pt-2 text-sm">
 						<div className="flex justify-between">
 							<span className="font-semibold">
 								{t('modules.rerollCost')}

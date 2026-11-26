@@ -70,7 +70,7 @@ export function StageSummaryCard({
 					{stageStats.per_clan.length > 0 ? (
 						<Table.Root className="font-mono font-semibold">
 							<Table.Header>
-								<Table.Row className="text-left text-foreground">
+								<Table.Row className="text-foreground text-left">
 									<Table.Head>{t('stagesClan')}</Table.Head>
 									<Table.Head className="text-center">
 										{tc('clan.sessions.stage')}
@@ -103,16 +103,16 @@ export function StageSummaryCard({
 												: (c.name ??
 													t('stagesPersonal'))}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-foreground">
+										<Table.Cell className="text-foreground text-center font-medium">
 											{c.sessions}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-foreground">
+										<Table.Cell className="text-foreground text-center font-medium">
 											{c.kills}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-foreground">
+										<Table.Cell className="text-foreground text-center font-medium">
 											{c.deaths}
 										</Table.Cell>
-										<Table.Cell className="text-center font-medium text-foreground">
+										<Table.Cell className="text-foreground text-center font-medium">
 											{c.assists}
 										</Table.Cell>
 										<Table.Cell
@@ -120,7 +120,7 @@ export function StageSummaryCard({
 										>
 											{formatKd(c.kills, c.deaths)}
 										</Table.Cell>
-										<Table.Cell className="text-center text-muted-foreground">
+										<Table.Cell className="text-muted-foreground text-center">
 											{formatKda(
 												c.kills,
 												c.deaths,

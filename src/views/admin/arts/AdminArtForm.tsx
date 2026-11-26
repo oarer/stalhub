@@ -188,7 +188,7 @@ export function AdminArtForm({
 					<div className="flex max-h-105 flex-col gap-4 overflow-y-auto pr-1">
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-foreground text-md"
+								className="text-foreground text-md font-semibold"
 								htmlFor="admin-art-title"
 							>
 								{t('admin.arts.form.name')}
@@ -206,7 +206,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('admin.arts.form.type')}
 							</span>
 							<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -215,7 +215,7 @@ export function AdminArtForm({
 										className={cn(
 											'gap-2',
 											type === artType.value &&
-												'ring-2 ring-primary/80'
+												'ring-primary/80 ring-2'
 										)}
 										key={artType.value}
 										onClick={() => setType(artType.value)}
@@ -229,7 +229,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('admin.arts.form.image')}
 							</span>
 							<ArtImagesField
@@ -239,7 +239,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('admin.arts.form.tags')}
 							</span>
 							<Input
@@ -250,11 +250,11 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('admin.arts.form.description')}
 							</span>
 							<Textarea
-								className="min-h-20 w-full border border-border p-2 font-normal"
+								className="border-border min-h-20 w-full border p-2 font-normal"
 								onChange={(e) => setDescription(e.target.value)}
 								placeholder={t(
 									'admin.arts.form.descriptionPlaceholder'
@@ -264,7 +264,7 @@ export function AdminArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('admin.arts.form.author')}
 							</span>
 							<div className="flex gap-1">
@@ -304,17 +304,17 @@ export function AdminArtForm({
 									<div className="flex flex-col gap-1.5">
 										{SOCIAL_NETWORKS.map((network) => (
 											<div
-												className="flex items-center gap-2 rounded-lg bg-accent/50 p-2"
+												className="bg-accent/50 flex items-center gap-2 rounded-lg p-2"
 												key={network}
 											>
 												<Icon
-													className="shrink-0 text-foreground"
+													className="text-foreground shrink-0"
 													icon={
 														SOCIAL_ICONS[network] ??
 														'lucide:link'
 													}
 												/>
-												<span className="w-16 shrink-0 font-semibold text-sm capitalize">
+												<span className="w-16 shrink-0 text-sm font-semibold capitalize">
 													{network}
 												</span>
 												<Input
@@ -340,8 +340,8 @@ export function AdminArtForm({
 							) : (
 								<div className="flex flex-col gap-2">
 									{selectedUser && (
-										<div className="flex items-center justify-between rounded-lg bg-accent/50 px-3 py-2">
-											<span className="font-semibold text-sm">
+										<div className="bg-accent/50 flex items-center justify-between rounded-lg px-3 py-2">
+											<span className="text-sm font-semibold">
 												{selectedUser.name ||
 													selectedUser.username}
 											</span>
@@ -383,7 +383,7 @@ export function AdminArtForm({
 												{(userResults?.data ?? []).map(
 													(u) => (
 														<Button
-															className="justify-between bg-accent/50 px-3 py-2 text-left font-normal hover:bg-border/30"
+															className="bg-accent/50 hover:bg-border/30 justify-between px-3 py-2 text-left font-normal"
 															key={u.id}
 															onClick={() => {
 																setSelectedUser(
@@ -395,7 +395,7 @@ export function AdminArtForm({
 															}}
 															variant="ghost"
 														>
-															<span className="font-semibold text-sm">
+															<span className="text-sm font-semibold">
 																{u.name ||
 																	u.username}
 															</span>

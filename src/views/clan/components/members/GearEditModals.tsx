@@ -42,10 +42,10 @@ export function GearEditModals({
 									onClick={() => controller.pickTarget(target)}
 									variant="secondary"
 								>
-									<span className="truncate font-semibold text-sm">
+									<span className="truncate text-sm font-semibold">
 										{target.squadName}
 									</span>
-									<span className="shrink-0 font-mono font-semibold text-muted-foreground text-xs">
+									<span className="text-muted-foreground shrink-0 font-mono text-xs font-semibold">
 										{t(
 											SQUAD_MAPS.find(
 												(m) => m.value === target.map

@@ -82,7 +82,7 @@ export function MermaidDiagram({ chart }: { chart: string }) {
 	}
 	return (
 		<div
-			className="mermaid-wrap my-6 flex justify-center overflow-x-auto rounded-xl border border-primary/30 bg-card/40 p-4"
+			className="mermaid-wrap border-primary/30 bg-card/40 my-6 flex justify-center overflow-x-auto rounded-xl border p-4"
 			dangerouslySetInnerHTML={{ __html: svg }}
 			style={{ borderRadius: '12px' }}
 		/>

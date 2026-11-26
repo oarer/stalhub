@@ -341,16 +341,16 @@ function DashboardHeader({
 	return (
 		<div className="flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.dashboard.title')}
 				</h1>
-				<p className="mt-1 text-neutral-400 text-sm">
+				<p className="mt-1 text-sm text-neutral-400">
 					{t('admin.dashboard.generatedAt', {
 						date: formatDate(generatedAt, 'datetime'),
 					})}
 				</p>
 			</div>
-			<div className="flex items-center gap-1 rounded-xl bg-muted p-1">
+			<div className="bg-muted flex items-center gap-1 rounded-xl p-1">
 				{RANGES.map((r) => (
 					<Button
 						className={cn(
@@ -382,11 +382,11 @@ function BanRulesCard({
 		<ChartShell title={t('admin.dashboard.moderation.byRule')}>
 			<div className="flex h-full flex-wrap content-start gap-2 overflow-y-auto">
 				{byRule.length === 0 && (
-					<p className="self-center text-neutral-500 text-sm">—</p>
+					<p className="self-center text-sm text-neutral-500">—</p>
 				)}
 				{byRule.map((row) => (
 					<div
-						className="flex items-center gap-2 rounded-lg border border-border bg-card/50 px-3 py-2"
+						className="border-border bg-card/50 flex items-center gap-2 rounded-lg border px-3 py-2"
 						key={`${row.rule}-${row.severity}`}
 					>
 						<Icon
@@ -402,7 +402,7 @@ function BanRulesCard({
 							}
 						/>
 						<span className="text-sm">{row.rule}</span>
-						<span className="font-mono font-semibold text-sm">
+						<span className="font-mono text-sm font-semibold">
 							{numberFmt.format(row.count)}
 						</span>
 					</div>

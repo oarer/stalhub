@@ -233,8 +233,8 @@ function TooltipContent({ children }: { children: ReactNode }) {
 					}}
 					transition={{ duration: 0.15 }}
 				>
-					<div className="wrap-break-word relative max-w-sm rounded-lg bg-popover px-3 py-2 text-popover-foreground backdrop-blur-md">
-						<p className="font-medium text-[13px]">{children}</p>
+					<div className="bg-popover text-popover-foreground relative max-w-sm rounded-lg px-3 py-2 wrap-break-word backdrop-blur-md">
+						<p className="text-[13px] font-medium">{children}</p>
 						<span
 							className={`absolute h-0 w-0 border-8 ${arrowClass}`}
 						/>

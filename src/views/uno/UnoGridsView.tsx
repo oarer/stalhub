@@ -42,7 +42,7 @@ export default function UnoGridsView({
 					<UnoEmpty>{t('grids.empty')}</UnoEmpty>
 				) : (
 					<div className="space-y-3">
-						<div className="flex items-center gap-2 font-mono font-semibold text-muted-foreground text-xs">
+						<div className="text-muted-foreground flex items-center gap-2 font-mono text-xs font-semibold">
 							<Icon icon="lucide:layers-3" />
 							{t('grids.total')}:{' '}
 							{formatUnoValue(

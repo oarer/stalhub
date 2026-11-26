@@ -31,9 +31,9 @@ export const SeasonTiersPngTemplate = forwardRef<
 	ref
 ) {
 	return (
-		<div className="dark w-7xl bg-background p-8 text-white" ref={ref}>
+		<div className="dark bg-background w-7xl p-8 text-white" ref={ref}>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-primary uppercase tracking-[3px]`}
+				className={`${unbounded.className} text-primary text-2xl font-bold tracking-[3px] uppercase`}
 			>
 				stalhub.dev
 			</h1>
@@ -44,7 +44,7 @@ export const SeasonTiersPngTemplate = forwardRef<
 					{seasonTitle}
 				</h2>
 				<div className="flex flex-col items-end gap-1 text-right">
-					<span className="font-semibold text-foreground text-lg">
+					<span className="text-foreground text-lg font-semibold">
 						{tierLabel}
 					</span>
 					{periodLabel && (
@@ -61,7 +61,7 @@ export const SeasonTiersPngTemplate = forwardRef<
 						<div className="flex w-16 shrink-0 items-start justify-center">
 							<span
 								className={cn(
-									'font-black text-5xl leading-none',
+									'text-5xl leading-none font-black',
 									unoRankColor(tier.rank)
 								)}
 							>
@@ -73,7 +73,7 @@ export const SeasonTiersPngTemplate = forwardRef<
 								<div className="flex gap-2" key={subtier.label}>
 									<span
 										className={cn(
-											'w-9 shrink-0 pt-2 text-right font-semibold text-xs',
+											'w-9 shrink-0 pt-2 text-right text-xs font-semibold',
 											unoRankColor(tier.rank)
 										)}
 									>
@@ -94,7 +94,7 @@ export const SeasonTiersPngTemplate = forwardRef<
 				))}
 			</div>
 
-			<footer className="mt-4 flex items-center justify-between text-muted-foreground text-sm">
+			<footer className="text-muted-foreground mt-4 flex items-center justify-between text-sm">
 				<span>stalhub.dev</span>
 				{totalLabel && <span>{totalLabel}</span>}
 			</footer>
@@ -108,13 +108,13 @@ function TierClanChip({ clan }: { clan: UnoSeasonTierClan }) {
 
 	return (
 		<div
-			className="flex h-10 w-52 items-center gap-1 overflow-hidden rounded-lg border border-primary/50 bg-card/40 px-3"
+			className="border-primary/50 bg-card/40 flex h-10 w-52 items-center gap-1 overflow-hidden rounded-lg border px-3"
 			style={{ color: accent }}
 		>
-			<span className="shrink-0 font-bold text-xs">
+			<span className="shrink-0 text-xs font-bold">
 				{clan.tag ? `[${clan.tag}]` : ''}
 			</span>
-			<span className="truncate font-semibold text-sm">{clan.name}</span>
+			<span className="truncate text-sm font-semibold">{clan.name}</span>
 		</div>
 	)
 }

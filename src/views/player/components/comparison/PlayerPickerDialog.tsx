@@ -141,7 +141,7 @@ export function PlayerPickerDialog({
 
 					{error && (
 						<p
-							className="flex items-center gap-2 text-destructive text-sm"
+							className="text-destructive flex items-center gap-2 text-sm"
 							role="alert"
 						>
 							<Icon icon="lucide:triangle-alert" />
@@ -150,7 +150,7 @@ export function PlayerPickerDialog({
 					)}
 
 					{alreadyAdded && !error && (
-						<p className="flex items-center gap-2 text-muted-foreground text-sm">
+						<p className="text-muted-foreground flex items-center gap-2 text-sm">
 							<Icon icon="lucide:info" />
 							{t('player.comparison.alreadyAdded')}
 						</p>

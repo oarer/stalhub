@@ -62,7 +62,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 	return (
 		<Card.Root>
 			<div className="flex items-center justify-between gap-2">
-				<p className="font-medium text-foreground text-sm dark:text-neutral-300">
+				<p className="text-foreground text-sm font-medium dark:text-neutral-300">
 					{label}
 				</p>
 				{slot.moduleKey && (
@@ -88,15 +88,15 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 			/>
 
 			{!module ? (
-				<p className="py-2 text-center font-medium text-foreground text-sm">
+				<p className="text-foreground py-2 text-center text-sm font-medium">
 					{t('modules.not_selected')}
 				</p>
 			) : (
 				<>
 					<div className="flex flex-col gap-1">
-						<p className="font-medium text-lg">{module.lines.ru}</p>
+						<p className="text-lg font-medium">{module.lines.ru}</p>
 						{module.description && (
-							<p className="font-medium text-primary text-xs">
+							<p className="text-primary text-xs font-medium">
 								{module.description.ru}
 							</p>
 						)}
@@ -124,7 +124,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 								value={slot.quality}
 							/>
 							<span
-								className="rounded bg-accent/50 px-3 py-2 font-medium text-sm"
+								className="bg-accent/50 rounded px-3 py-2 text-sm font-medium"
 								style={{ color: RARITY_COLORS[rarity] }}
 							>
 								{t(`arts.ART_QUALITY_${rarity.toUpperCase()}`)}
@@ -153,7 +153,7 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 									</span>
 									<span
 										className={cn(
-											'font-medium text-sm',
+											'text-sm font-medium',
 											'font-mono',
 											stat.type === 'negative'
 												? 'text-red-400'
@@ -171,34 +171,34 @@ export const ModuleGroupCard = memo(function ModuleGroupCard({
 					<Divider />
 					<div className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
 						<div className="flex justify-between">
-							<span className="font-medium text-foreground">
+							<span className="text-foreground font-medium">
 								{t('modules.reroll')}
 							</span>
-							<span className={`font-medium font-mono`}>
+							<span className={`font-mono font-medium`}>
 								{costs.reroll}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-foreground">
+							<span className="text-foreground font-medium">
 								{t('modules.disassemble')}
 							</span>
-							<span className={`font-medium font-mono`}>
+							<span className={`font-mono font-medium`}>
 								{costs.disassemble}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-foreground">
+							<span className="text-foreground font-medium">
 								{t('modules.restore')}
 							</span>
-							<span className={`font-medium font-mono`}>
+							<span className={`font-mono font-medium`}>
 								{costs.restore}
 							</span>
 						</div>
 						<div className="flex justify-between">
-							<span className="font-medium text-foreground">
+							<span className="text-foreground font-medium">
 								{t('modules.category')}
 							</span>
-							<span className={`font-medium font-mono`}>
+							<span className={`font-mono font-medium`}>
 								{costs.category}
 							</span>
 						</div>

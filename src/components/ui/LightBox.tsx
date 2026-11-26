@@ -236,7 +236,7 @@ function LightBoxContent({
 					>
 						<img
 							alt={alt}
-							className="block max-h-[90dvh] max-w-[90dvw] select-none object-contain"
+							className="block max-h-[90dvh] max-w-[90dvw] object-contain select-none"
 							draggable={false}
 							src={src}
 						/>
@@ -248,7 +248,7 @@ function LightBoxContent({
 						onClick={close}
 						variant="ghost"
 					>
-						<Icon className="text-white text-xl" icon="lucide:x" />
+						<Icon className="text-xl text-white" icon="lucide:x" />
 					</Button>
 				</motion.div>
 			)}

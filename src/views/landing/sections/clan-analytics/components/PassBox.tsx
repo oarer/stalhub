@@ -34,7 +34,7 @@ export function PassBox({
 	const borderColor = useMotionTemplate`color-mix(in srgb, var(--primary) ${mix}%, rgba(255,255,255,0.15))`
 	return (
 		<motion.div
-			className="z-1 flex size-12 items-center justify-center rounded-xl border-2 border-muted bg-card text-muted-foreground"
+			className="border-muted bg-card text-muted-foreground z-1 flex size-12 items-center justify-center rounded-xl border-2"
 			style={frozen ? undefined : { borderColor }}
 		>
 			<Icon className="text-xl" icon={icon} />

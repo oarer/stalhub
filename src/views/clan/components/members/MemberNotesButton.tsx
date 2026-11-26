@@ -85,7 +85,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 			<Modal.Trigger asChild>
 				<Button
 					className={cn(
-						'relative cursor-pointer p-1 text-foreground',
+						'text-foreground relative cursor-pointer p-1',
 						note && 'text-primary!'
 					)}
 					onClick={handleOpen}
@@ -103,13 +103,13 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						{note && !isEditing && (
-							<div className="rounded-lg border border-primary bg-card p-3">
-								<p className="whitespace-pre-wrap font-semibold text-sm">
+							<div className="border-primary bg-card rounded-lg border p-3">
+								<p className="text-sm font-semibold whitespace-pre-wrap">
 									{note.content}
 								</p>
 								<div className="mt-2 flex items-center justify-between">
 									<span
-										className={`font-mono font-semibold text-foreground text-xs`}
+										className={`text-foreground font-mono text-xs font-semibold`}
 									>
 										<Username user={note.author} /> ·{' '}
 										{formatDate(note.created_at)}
@@ -147,7 +147,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 						{(!note || isEditing) && (
 							<Textarea
 								autoFocus
-								className="min-h-20 resize-none border-primary focus:border-primary/60"
+								className="border-primary focus:border-primary/60 min-h-20 resize-none"
 								maxLength={512}
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t('clan.notes.placeholder')}
@@ -155,7 +155,7 @@ export function MemberNotesButton({ memberId, memberName, note }: Props) {
 							/>
 						)}
 						<span
-							className={`font-mono font-semibold text-foreground text-xs`}
+							className={`text-foreground font-mono text-xs font-semibold`}
 						>
 							{content.length}/512
 						</span>

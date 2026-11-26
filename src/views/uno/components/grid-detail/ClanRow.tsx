@@ -38,7 +38,7 @@ export function ClanRow({
 				)}
 				<Link
 					className={cn(
-						'truncate font-medium text-[13px] hover:opacity-80',
+						'truncate text-[13px] font-medium hover:opacity-80',
 						clanColor(clan.faction)
 					)}
 					href={`/uno/clans/${clan.id}`}
@@ -46,7 +46,7 @@ export function ClanRow({
 					{clan.name ?? t('unknown')}
 				</Link>
 			</span>
-			<span className="shrink-0 font-mono font-semibold text-[11px] text-muted-foreground">
+			<span className="text-muted-foreground shrink-0 font-mono text-[11px] font-semibold">
 				{formatUnoValue(clan.score, locale)}
 			</span>
 		</div>

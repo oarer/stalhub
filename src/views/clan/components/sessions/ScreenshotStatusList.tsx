@@ -28,7 +28,7 @@ export function ScreenshotStatusList({
 					SCREENSHOT_STATUS.pending
 				return (
 					<div
-						className="flex items-center justify-between rounded-lg bg-accent/30 px-3 py-2"
+						className="bg-accent/30 flex items-center justify-between rounded-lg px-3 py-2"
 						key={shot.id}
 					>
 						<div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ export function ScreenshotStatusList({
 							<div className="flex flex-col">
 								<LightBox.Root>
 									<LightBox.Trigger asChild>
-										<p className="relative text-primary text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:hover:text-sky-400">
+										<p className="text-primary relative text-sm duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all hover:text-sky-600 hover:after:w-full dark:hover:text-sky-400">
 											{t('clan.sessions.screenshotId', {
 												id: shot.id,
 											})}
@@ -54,7 +54,7 @@ export function ScreenshotStatusList({
 						</div>
 						{shot.ai_status === 'error' && shot.ai_error ? (
 							<div className="flex items-center gap-2">
-								<p className="font-medium text-destructive text-xs">
+								<p className="text-destructive text-xs font-medium">
 									{shot.ai_error}
 								</p>
 								<Button
@@ -75,7 +75,7 @@ export function ScreenshotStatusList({
 							</div>
 						) : (
 							<span
-								className={`font-medium text-xs ${status.color}`}
+								className={`text-xs font-medium ${status.color}`}
 							>
 								{t(status.label)}
 							</span>

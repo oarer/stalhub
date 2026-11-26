@@ -90,7 +90,7 @@ export function PersonalSessionRow({
 	const shotCount = session._count?.screenshots ?? 0
 
 	return (
-		<div className="rounded-lg bg-card px-5 py-4">
+		<div className="bg-card rounded-lg px-5 py-4">
 			<div className="flex items-start justify-between">
 				<button
 					className="flex-1 cursor-pointer text-left"
@@ -105,11 +105,11 @@ export function PersonalSessionRow({
 								{session.stage_number ?? '—'}
 							</h3>
 							{session.victory === true ? (
-								<span className="rounded bg-green-500/20 px-1.5 py-0.5 font-semibold text-success text-xs">
+								<span className="text-success rounded bg-green-500/20 px-1.5 py-0.5 text-xs font-semibold">
 									{t('clan.common.victory')}
 								</span>
 							) : session.victory === false ? (
-								<span className="rounded bg-red-500/20 px-1.5 py-0.5 font-semibold text-destructive text-xs">
+								<span className="text-destructive rounded bg-red-500/20 px-1.5 py-0.5 text-xs font-semibold">
 									{t('clan.common.defeat')}
 								</span>
 							) : null}
@@ -135,7 +135,7 @@ export function PersonalSessionRow({
 								</Badge>
 							)}
 						</div>
-						<p className="font-mono font-semibold text-[11px] text-foreground">
+						<p className="text-foreground font-mono text-[11px] font-semibold">
 							{formatDate(session.started_at)}
 						</p>
 					</div>
@@ -161,7 +161,7 @@ export function PersonalSessionRow({
 										: '',
 									date: formatDate(session.started_at),
 									span: (chunks) => (
-										<span className="font-mono font-semibold text-primary text-sm">
+										<span className="text-primary font-mono text-sm font-semibold">
 											{chunks}
 										</span>
 									),
@@ -217,7 +217,7 @@ export function PersonalSessionRow({
 					<Divider />
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-2">
-							<p className="font-semibold text-sm">
+							<p className="text-sm font-semibold">
 								{t('clan.sessions.screenshots')}
 							</p>
 							{session.map_name && (
@@ -288,7 +288,7 @@ function UploadIntoSession({
 
 	return (
 		<label
-			className="inline-flex cursor-pointer items-center gap-2 rounded-lg border-2 border-primary/50 border-dashed px-3 py-2 font-semibold text-sm transition-colors hover:bg-accent/10"
+			className="border-primary/50 hover:bg-accent/10 inline-flex cursor-pointer items-center gap-2 rounded-lg border-2 border-dashed px-3 py-2 text-sm font-semibold transition-colors"
 			title={t('clan.sessions.fullscreenHint')}
 		>
 			{busy || uploadMutation.isPending ? (

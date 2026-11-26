@@ -167,7 +167,7 @@ export function ItemPickerModal({
 
 						<div
 							className={cn(
-								'flex h-full min-h-0 w-full flex-col justify-between gap-3 overflow-hidden bg-card px-3 py-3',
+								'bg-card flex h-full min-h-0 w-full flex-col justify-between gap-3 overflow-hidden px-3 py-3',
 								selectedItem
 									? 'fixed inset-0 z-50 md:static md:flex'
 									: 'hidden md:flex'
@@ -208,7 +208,7 @@ export function ItemPickerModal({
 											/>
 
 											<h2
-												className="font-medium text-md"
+												className="text-md font-medium"
 												style={{
 													color: !isDark
 														? `color-mix(in srgb, ${
@@ -228,7 +228,7 @@ export function ItemPickerModal({
 											</h2>
 										</>
 									) : (
-										<h2 className="font-semibold text-foreground">
+										<h2 className="text-foreground font-semibold">
 											{t(emptyTitle)}
 										</h2>
 									)}
@@ -274,7 +274,7 @@ export function ItemPickerModal({
 						</div>
 
 						{aside && (
-							<div className="flex h-full min-h-0 w-full flex-col overflow-hidden bg-card px-3 py-3">
+							<div className="bg-card flex h-full min-h-0 w-full flex-col overflow-hidden px-3 py-3">
 								{aside}
 							</div>
 						)}

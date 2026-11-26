@@ -51,14 +51,14 @@ export function HoverBuildCard({
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center justify-between">
 						<Link
-							className="truncate font-semibold text-primary transition-colors hover:text-foreground"
+							className="text-primary hover:text-foreground truncate font-semibold transition-colors"
 							href={`/calcs/builds/lite?build=${build.id}`}
 						>
 							{build.title}
 						</Link>
 						{build.price != null && build.price > 0 && (
 							<span
-								className={`shrink-0 font-mono font-semibold text-foreground text-xs`}
+								className={`text-foreground shrink-0 font-mono text-xs font-semibold`}
 							>
 								{formatArtPrice(build.price)}₽
 							</span>
@@ -78,7 +78,7 @@ export function HoverBuildCard({
 										src={getBuildItemIconUrl(armorItem)}
 									/>
 									<span
-										className="truncate font-semibold text-sm"
+										className="truncate text-sm font-semibold"
 										style={{ color: armorColor }}
 									>
 										{messageToString(
@@ -99,7 +99,7 @@ export function HoverBuildCard({
 										src={getBuildItemIconUrl(containerItem)}
 									/>
 									<span
-										className="truncate font-semibold text-sm"
+										className="truncate text-sm font-semibold"
 										style={{ color: containerColor }}
 									>
 										{messageToString(
@@ -117,14 +117,14 @@ export function HoverBuildCard({
 											key={entry.name + i}
 										>
 											<p
-												className="min-w-0 flex-1 truncate font-semibold text-xs"
+												className="min-w-0 flex-1 truncate text-xs font-semibold"
 												style={{ color: entry.color }}
 											>
 												{entry.name}
 											</p>
 											{entry.potential !== 0 && (
 												<span
-													className={`shrink-0 font-medium font-mono text-xs`}
+													className={`shrink-0 font-mono text-xs font-medium`}
 													style={{
 														color: entry.color,
 													}}
@@ -133,7 +133,7 @@ export function HoverBuildCard({
 												</span>
 											)}
 											<span
-												className={`shrink-0 font-medium font-mono text-xs`}
+												className={`shrink-0 font-mono text-xs font-medium`}
 												style={{ color: entry.color }}
 											>
 												{entry.percent}%

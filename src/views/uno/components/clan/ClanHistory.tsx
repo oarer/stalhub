@@ -71,13 +71,13 @@ function HistoryBreakdown({
 							<Table.Cell className="px-3 font-medium">
 								{renderKey(row.key)}
 							</Table.Cell>
-							<Table.Cell className="px-3 text-right font-mono font-semibold text-sm">
+							<Table.Cell className="px-3 text-right font-mono text-sm font-semibold">
 								{formatUnoValue(row.matches, locale)}
 							</Table.Cell>
-							<Table.Cell className="px-3 text-right font-mono font-semibold text-sm">
+							<Table.Cell className="px-3 text-right font-mono text-sm font-semibold">
 								{formatUnoPercent(row.winRate, locale)}
 							</Table.Cell>
-							<Table.Cell className="px-3 text-right font-mono font-semibold text-sm">
+							<Table.Cell className="px-3 text-right font-mono text-sm font-semibold">
 								{formatUnoValue(row.sleeves, locale)}
 							</Table.Cell>
 						</Table.Row>
@@ -149,7 +149,7 @@ export function ClanHistory({ clanId }: { clanId: string }) {
 	return (
 		<div className="space-y-4">
 			<div className="space-y-1">
-				<h2 className="font-semibold text-xl">
+				<h2 className="text-xl font-semibold">
 					{t('clan.history.title')}
 				</h2>
 				<p className="text-muted-foreground text-sm">
@@ -395,7 +395,7 @@ export function ClanHistory({ clanId }: { clanId: string }) {
 													<Table.Row
 														key={`${item.gridId}-${item.group}-${item.stage}-${index}`}
 													>
-														<Table.Cell className="px-3 text-muted-foreground text-sm">
+														<Table.Cell className="text-muted-foreground px-3 text-sm">
 															{formatUnoMskDateTime(
 																item.time ??
 																	item.date,
@@ -453,9 +453,9 @@ export function ClanHistory({ clanId }: { clanId: string }) {
 																		)}
 															</div>
 														</Table.Cell>
-														<Table.Cell className="px-3 text-right font-mono font-semibold text-sm">
+														<Table.Cell className="px-3 text-right font-mono text-sm font-semibold">
 															<div className="flex items-center justify-end gap-1">
-																<span className="font-semibold text-primary">
+																<span className="text-primary font-semibold">
 																	{formatUnoValue(
 																		item
 																			.actor
@@ -467,7 +467,7 @@ export function ClanHistory({ clanId }: { clanId: string }) {
 
 																{opponentScores.length >
 																	0 && (
-																	<span className="font-semibold text-muted-foreground">
+																	<span className="text-muted-foreground font-semibold">
 																		/{' '}
 																		{opponentScores
 																			.map(
@@ -486,7 +486,7 @@ export function ClanHistory({ clanId }: { clanId: string }) {
 																)}
 															</div>
 														</Table.Cell>
-														<Table.Cell className="px-3 text-right font-mono font-semibold text-sm">
+														<Table.Cell className="px-3 text-right font-mono text-sm font-semibold">
 															{formatUnoValue(
 																getHistorySleeves(
 																	item

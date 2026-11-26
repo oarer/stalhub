@@ -79,7 +79,7 @@ export default function BuildDetailView({ id }: { id: string }) {
 							<div className="flex flex-wrap items-center gap-1.5">
 								{build.tags.map((tag) => (
 									<span
-										className="rounded-md bg-border-secondary px-2 py-0.5 text-xs"
+										className="bg-border-secondary rounded-md px-2 py-0.5 text-xs"
 										key={tag}
 									>
 										{tag}
@@ -93,7 +93,7 @@ export default function BuildDetailView({ id }: { id: string }) {
 			/>
 
 			<article className="flex flex-col gap-4">
-				<div className="rounded-2xl border border-primary/20 bg-muted/20 p-4">
+				<div className="border-primary/20 bg-muted/20 rounded-2xl border p-4">
 					<BuildPreview build={build} />
 				</div>
 			</article>

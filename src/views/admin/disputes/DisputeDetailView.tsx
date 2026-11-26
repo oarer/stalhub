@@ -58,7 +58,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 	return (
 		<div className="flex flex-col gap-5">
 			<CLink
-				className="w-fit px-0 text-primary"
+				className="text-primary w-fit px-0"
 				href="/admin/disputes"
 				variant="none"
 			>
@@ -67,7 +67,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 
 			<div className="flex flex-wrap items-center gap-3">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{entry.order.title}
 				</h1>
@@ -95,7 +95,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 					</span>
 				</div>
 				{entry.reason && (
-					<p className="whitespace-pre-wrap text-sm">
+					<p className="text-sm whitespace-pre-wrap">
 						{entry.reason}
 					</p>
 				)}
@@ -133,7 +133,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 					<div className="flex flex-col gap-1">
 						<Badge className="w-fit">{entry.review.score}/5</Badge>
 						{entry.review.content && (
-							<p className="whitespace-pre-wrap text-sm">
+							<p className="text-sm whitespace-pre-wrap">
 								{entry.review.content}
 							</p>
 						)}
@@ -143,7 +143,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 
 			<Card.Root className="gap-3">
 				<div className="flex flex-wrap items-center gap-2">
-					<h2 className="font-semibold text-lg">
+					<h2 className="text-lg font-semibold">
 						{t('admin.disputes.order')}
 					</h2>
 					<Status value={entry.order.status} />
@@ -183,7 +183,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 					)}
 				</div>
 				{entry.order.brief && (
-					<p className="whitespace-pre-wrap text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm whitespace-pre-wrap">
 						{entry.order.brief}
 					</p>
 				)}
@@ -218,7 +218,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 						</span>
 						{entry.order.files.map((file) => (
 							<Button
-								className="w-fit justify-start p-0 text-left font-normal text-sm underline underline-offset-4"
+								className="w-fit justify-start p-0 text-left text-sm font-normal underline underline-offset-4"
 								key={file.id}
 								onClick={() => void download(file)}
 								type="button"
@@ -234,7 +234,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 
 			<div className="grid gap-5 lg:grid-cols-2">
 				<Card.Root className="gap-3">
-					<h2 className="font-semibold text-lg">{tc('payments')}</h2>
+					<h2 className="text-lg font-semibold">{tc('payments')}</h2>
 					{entry.order.payments.length === 0 && (
 						<p className="text-muted-foreground text-sm">
 							{t('admin.disputes.empty')}
@@ -266,7 +266,7 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 					))}
 				</Card.Root>
 				<Card.Root className="gap-3">
-					<h2 className="font-semibold text-lg">{tc('refunds')}</h2>
+					<h2 className="text-lg font-semibold">{tc('refunds')}</h2>
 					{entry.order.refunds.length === 0 && (
 						<p className="text-muted-foreground text-sm">
 							{t('admin.disputes.empty')}
@@ -296,12 +296,12 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 
 			{entry.decisions.length > 0 && (
 				<Card.Root className="gap-3">
-					<h2 className="font-semibold text-lg">
+					<h2 className="text-lg font-semibold">
 						{t('admin.disputes.decisions')}
 					</h2>
 					{entry.decisions.map((decision) => (
 						<div
-							className="flex flex-col gap-1 border-primary/20 border-t pt-3 first:border-t-0 first:pt-0"
+							className="border-primary/20 flex flex-col gap-1 border-t pt-3 first:border-t-0 first:pt-0"
 							key={decision.id}
 						>
 							<div className="flex flex-wrap items-center justify-between gap-2">
@@ -313,12 +313,12 @@ export default function DisputeDetailView({ caseId }: { caseId: string }) {
 								</span>
 							</div>
 							{decision.reason && (
-								<p className="whitespace-pre-wrap text-sm">
+								<p className="text-sm whitespace-pre-wrap">
 									{decision.reason}
 								</p>
 							)}
 							{decision.obligations && (
-								<p className="whitespace-pre-wrap text-muted-foreground text-sm">
+								<p className="text-muted-foreground text-sm whitespace-pre-wrap">
 									{decision.obligations}
 								</p>
 							)}

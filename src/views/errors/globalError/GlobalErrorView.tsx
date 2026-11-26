@@ -14,7 +14,7 @@ export default function GlobalErrorView({ errorId, reset }: GlobalErrorProps) {
 
 	return (
 		<div className="dark">
-			<div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-foreground">
+			<div className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center gap-4 px-6">
 				<GridBackgroundWithBeams
 					cellSize={20}
 					cols={100}

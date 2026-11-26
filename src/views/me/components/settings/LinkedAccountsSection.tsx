@@ -35,7 +35,7 @@ export function LinkedAccountsSection({
 			<div className="flex flex-col gap-2">
 				{PROVIDERS.map((provider) => (
 					<div
-						className="flex items-center justify-between rounded-lg bg-accent/50 p-4"
+						className="bg-accent/50 flex items-center justify-between rounded-lg p-4"
 						key={provider}
 					>
 						<div className="flex items-center gap-3">
@@ -45,7 +45,7 @@ export function LinkedAccountsSection({
 								src={`/images/other/${provider}.png`}
 								width={20}
 							/>
-							<span className="font-semibold text-sm capitalize">
+							<span className="text-sm font-semibold capitalize">
 								{provider}
 							</span>
 						</div>

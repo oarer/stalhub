@@ -13,7 +13,7 @@ export function TableGrid({ onInsert }: TableGridProps) {
 
 	return (
 		<div className="flex flex-col gap-3">
-			<p className={`font-mono font-semibold text-foreground text-sm`}>
+			<p className={`text-foreground font-mono text-sm font-semibold`}>
 				{hover[0] > 0 && hover[1] > 0
 					? `${hover[0]} × ${hover[1]}`
 					: t('me.articleEditor.chooseSize')}

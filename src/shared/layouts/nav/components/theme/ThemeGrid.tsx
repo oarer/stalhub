@@ -64,13 +64,13 @@ export default function ThemeGrid({ onThemeChanged }: ThemeGridProps) {
 
 	return (
 		<div className="flex flex-col gap-2">
-			<p className="font-semibold text-muted-foreground text-xs">
+			<p className="text-muted-foreground text-xs font-semibold">
 				{t('themes.colorThemes')}
 			</p>
 			<div className="grid grid-cols-2 gap-2">
 				{themeList.map((theme) => (
 					<div
-						className={`group relative flex cursor-pointer flex-col gap-2 rounded-lg border-2 bg-card px-3 py-2 text-sm transition-colors hover:bg-accent/20 ${
+						className={`group bg-card hover:bg-accent/20 relative flex cursor-pointer flex-col gap-2 rounded-lg border-2 px-3 py-2 text-sm transition-colors ${
 							store.active === theme.name
 								? 'border-primary/80'
 								: 'border-accent/20'
@@ -81,14 +81,14 @@ export default function ThemeGrid({ onThemeChanged }: ThemeGridProps) {
 						<div className="flex gap-2">
 							<ThemePreview theme={theme} />
 							<Button
-								className="p-1 text-muted-foreground opacity-0 ring-0 transition-opacity group-hover:opacity-100"
+								className="text-muted-foreground p-1 opacity-0 ring-0 transition-opacity group-hover:opacity-100"
 								onClick={(e) => handleDelete(e, theme.name)}
 								variant={'danger'}
 							>
 								<Icon className="text-base" icon="lucide:x" />
 							</Button>
 						</div>
-						<p className="max-w-20 truncate font-semibold text-sm">
+						<p className="max-w-20 truncate text-sm font-semibold">
 							{theme.name}
 						</p>
 					</div>

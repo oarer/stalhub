@@ -21,11 +21,11 @@ export function LinksSection({
 			<div className="flex flex-col gap-2">
 				<motion.h1
 					{...view}
-					className={`${mtsWide.className} flex items-center gap-3 px-3 font-semibold text-[15px] uppercase tracking-wider`}
+					className={`${mtsWide.className} flex items-center gap-3 px-3 text-[15px] font-semibold tracking-wider uppercase`}
 				>
-					<span className="flex items-center rounded-lg bg-card p-2">
+					<span className="bg-card flex items-center rounded-lg p-2">
 						<Icon
-							className="size-5 text-primary"
+							className="text-primary size-5"
 							icon="lucide:link"
 						/>
 					</span>
@@ -41,11 +41,11 @@ export function LinksSection({
 								href={link.href}
 								variant="secondary"
 							>
-								<div className="flex items-center rounded-lg bg-border/10 p-2 text-primary transition-colors duration-300 group-hover/link:bg-border/20">
+								<div className="bg-border/10 text-primary group-hover/link:bg-border/20 flex items-center rounded-lg p-2 transition-colors duration-300">
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
-									<p className="font-medium text-sm transition-colors group-hover/link:text-primary">
+									<p className="group-hover/link:text-primary text-sm font-medium transition-colors">
 										{t(link.label)}
 									</p>
 									<span className="text-muted-foreground text-xs">
@@ -59,18 +59,18 @@ export function LinksSection({
 			</div>
 
 			<Divider
-				className="bg-gradient-to-b from-transparent via-border to-transparent"
+				className="via-border bg-gradient-to-b from-transparent to-transparent"
 				orientation="vertical"
 			/>
 
 			<div className="flex flex-col gap-2" id="links">
 				<motion.h1
 					{...view}
-					className={`${mtsWide.className} flex items-center gap-3 px-3 font-semibold text-[15px] uppercase tracking-wider`}
+					className={`${mtsWide.className} flex items-center gap-3 px-3 text-[15px] font-semibold tracking-wider uppercase`}
 				>
-					<span className="flex items-center rounded-lg bg-card p-2">
+					<span className="bg-card flex items-center rounded-lg p-2">
 						<Icon
-							className="size-5 text-primary"
+							className="text-primary size-5"
 							icon="lucide:link"
 						/>
 					</span>
@@ -86,11 +86,11 @@ export function LinksSection({
 								href={link.href}
 								variant="secondary"
 							>
-								<div className="flex items-center rounded-lg bg-border/10 p-2 text-primary transition-colors duration-300 group-hover/link:bg-border/20">
+								<div className="bg-border/10 text-primary group-hover/link:bg-border/20 flex items-center rounded-lg p-2 transition-colors duration-300">
 									<Icon className="size-5" icon={link.icon} />
 								</div>
 								<div className="flex flex-col">
-									<p className="font-medium text-sm transition-colors group-hover/link:text-primary">
+									<p className="group-hover/link:text-primary text-sm font-medium transition-colors">
 										{t(link.label)}
 									</p>
 									<span className="text-muted-foreground text-xs">

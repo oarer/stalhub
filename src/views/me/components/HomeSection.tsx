@@ -20,13 +20,13 @@ export function HomeSection({
 		<section className="flex flex-col gap-3">
 			<div className="flex items-center justify-between">
 				<h2
-					className={`${mtsWide.className} font-medium text-[16px] ${titleClassName ?? ''}`}
+					className={`${mtsWide.className} text-[16px] font-medium ${titleClassName ?? ''}`}
 				>
 					{title}
 				</h2>
 				{actionHref && actionLabel && (
 					<Link
-						className="font-medium text-[13px] text-foreground hover:underline"
+						className="text-foreground text-[13px] font-medium hover:underline"
 						href={actionHref}
 					>
 						{actionLabel}

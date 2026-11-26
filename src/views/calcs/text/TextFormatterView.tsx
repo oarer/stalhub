@@ -242,7 +242,7 @@ export default function TextFormatterView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('textFormatter.title')}
 			</h1>
@@ -250,9 +250,9 @@ export default function TextFormatterView() {
 			<div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_340px]">
 				<div className="flex min-w-0 flex-col gap-4">
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							<Icon
-								className="size-4 text-muted-foreground"
+								className="text-muted-foreground size-4"
 								icon="lucide:type"
 							/>
 							{t('textFormatter.textTitle')}
@@ -261,7 +261,7 @@ export default function TextFormatterView() {
 							{t('textFormatter.textHint')}
 						</Card.Description>
 						<Textarea
-							className="min-h-24 w-full border bg-muted p-3 font-mono focus:border-primary/80"
+							className="bg-muted focus:border-primary/80 min-h-24 w-full border p-3 font-mono"
 							onChange={(e) => {
 								handleTextChange(e.target.value)
 								requestAnimationFrame(syncSelection)
@@ -272,7 +272,7 @@ export default function TextFormatterView() {
 							ref={areaRef}
 							value={plain}
 						/>
-						<div className="flex items-center justify-between text-muted-foreground text-xs">
+						<div className="text-muted-foreground flex items-center justify-between text-xs">
 							<span>
 								{plain.length} {t('textFormatter.chars')}
 							</span>
@@ -293,7 +293,7 @@ export default function TextFormatterView() {
 											<span className="text-muted-foreground">
 												{t('textFormatter.selected')}:{' '}
 											</span>
-											<span className="break-all font-mono">
+											<span className="font-mono break-all">
 												«{sel.text.slice(0, 80)}
 												{sel.text.length > 80
 													? '…'
@@ -336,7 +336,7 @@ export default function TextFormatterView() {
 					</Card.Root>
 
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							{t('textFormatter.preview')}
 						</Card.Title>
 						<Card.Description className="text-xs">
@@ -346,19 +346,19 @@ export default function TextFormatterView() {
 							className="h-2 w-full rounded-full"
 							style={{ background: previewBar }}
 						/>
-						<div className="min-h-24 rounded-lg bg-muted p-4 font-mono font-semibold text-[15px] leading-relaxed">
+						<div className="bg-muted min-h-24 rounded-lg p-4 font-mono text-[15px] leading-relaxed font-semibold">
 							<StalcraftText text={preview} />
 						</div>
 					</Card.Root>
 
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							{t('textFormatter.result')}
 						</Card.Title>
 						<Card.Description className="text-xs">
 							{t('textFormatter.resultSub')}
 						</Card.Description>
-						<pre className="max-h-48 overflow-auto whitespace-pre-wrap break-all rounded-lg border border-border bg-background p-3 font-mono font-semibold text-xs">
+						<pre className="border-border bg-background max-h-48 overflow-auto rounded-lg border p-3 font-mono text-xs font-semibold break-all whitespace-pre-wrap">
 							{raw}
 						</pre>
 						<div className="flex items-center gap-2">
@@ -398,9 +398,9 @@ export default function TextFormatterView() {
 
 				<div className="flex min-w-0 flex-col gap-4">
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							<Icon
-								className="size-4 text-muted-foreground"
+								className="text-muted-foreground size-4"
 								icon="lucide:palette"
 							/>
 							{t('textFormatter.colors')}
@@ -436,7 +436,7 @@ export default function TextFormatterView() {
 											className="flex items-center gap-2"
 											key={`${i}-${c}`}
 										>
-											<span className="w-3 shrink-0 text-muted-foreground text-xs">
+											<span className="text-muted-foreground w-3 shrink-0 text-xs">
 												{i + 1}
 											</span>
 											<input
@@ -615,9 +615,9 @@ export default function TextFormatterView() {
 					</Card.Root>
 
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							<Icon
-								className="size-4 text-muted-foreground"
+								className="text-muted-foreground size-4"
 								icon="lucide:scissors"
 							/>
 							{t('textFormatter.smartTitle')}
@@ -658,7 +658,7 @@ export default function TextFormatterView() {
 					</Card.Root>
 
 					<Card.Root className="gap-3">
-						<Card.Title className="font-semibold text-sm">
+						<Card.Title className="text-sm font-semibold">
 							{t('textFormatter.ready')}
 						</Card.Title>
 						<Card.Description className="text-xs">

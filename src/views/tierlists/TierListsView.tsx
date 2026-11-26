@@ -67,7 +67,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 		>
 			<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('tierlists.title')}
 				</h1>
@@ -189,10 +189,10 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 			) : isError && isUnauthorized ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:log-in"
 					/>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('auth.error')}
 					</p>
 					<CLink href="/auth" variant="outline">
@@ -202,10 +202,10 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 			) : data?.data.length === 0 || isError ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:layout-list"
 					/>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('tierlists.empty')}
 					</p>
 				</div>
@@ -214,16 +214,16 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 						{data?.data.map((tierList) => (
 							<CLink
-								className="group flex flex-col items-start gap-3 rounded-lg border-2 border-primary/50 bg-card p-4 transition-colors hover:bg-muted"
+								className="group border-primary/50 bg-card hover:bg-muted flex flex-col items-start gap-3 rounded-lg border-2 p-4 transition-colors"
 								href={`/tierlists/${tierList.external_id}`}
 								key={tierList.id}
 							>
 								<div className="flex items-center justify-between gap-2">
-									<h2 className="max-w-50 truncate font-medium text-lg text-text transition-colors group-hover:text-primary">
+									<h2 className="text-text group-hover:text-primary max-w-50 truncate text-lg font-medium transition-colors">
 										{tierList.title}
 									</h2>
 									{tierList.kind === TierListKind.SYSTEM && (
-										<Badge className="shrink-0 gap-2 bg-primary/10 text-primary">
+										<Badge className="bg-primary/10 text-primary shrink-0 gap-2">
 											<Icon
 												className="size-3"
 												icon="lucide:bot"
@@ -232,7 +232,7 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 										</Badge>
 									)}
 								</div>
-								<div className="flex flex-wrap items-center gap-2 text-foreground text-xs">
+								<div className="text-foreground flex flex-wrap items-center gap-2 text-xs">
 									<Badge variant="secondary">
 										{tierList.item_kind ===
 										TierItemKind.WEAPON
@@ -267,10 +267,10 @@ export default function TierListsView({ mine = false }: { mine?: boolean }) {
 											<Username user={tierList.author} />
 										</span>
 									)}
-									<div className="flex items-center gap-1 text-foreground">
+									<div className="text-foreground flex items-center gap-1">
 										<Icon icon="lucide:eye" />
 										<span
-											className={`font-medium font-mono text-xs`}
+											className={`font-mono text-xs font-medium`}
 										>
 											{tierList.views}
 										</span>

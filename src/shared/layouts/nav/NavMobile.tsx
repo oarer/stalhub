@@ -170,7 +170,7 @@ export default function NavMobile() {
 								>
 									<div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-4">
 										<div className="flex flex-col gap-4 p-1">
-											<div className="flex flex-col gap-4 rounded-xl bg-card p-6 shadow-lg ring-2 ring-primary/50">
+											<div className="bg-card ring-primary/50 flex flex-col gap-4 rounded-xl p-6 shadow-lg ring-2">
 												<Link
 													className="flex items-center justify-center gap-3 transition-all duration-500 hover:opacity-80 active:scale-95"
 													href="/"
@@ -192,7 +192,7 @@ export default function NavMobile() {
 												</Link>
 											</div>
 
-											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+											<div className="bg-card ring-primary/50 flex flex-col gap-4 rounded-xl p-4 shadow-lg ring-2">
 												<Link
 													className="flex items-center gap-3 transition-all duration-300 hover:opacity-70 active:opacity-50"
 													href={szReport.href}
@@ -219,7 +219,7 @@ export default function NavMobile() {
 												</Link>
 											</div>
 
-											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+											<div className="bg-card ring-primary/50 flex flex-col gap-4 rounded-xl p-4 shadow-lg ring-2">
 												<Accordion
 													className="flex flex-col gap-4"
 													disableEntranceAnimation
@@ -228,11 +228,11 @@ export default function NavMobile() {
 													size="sm"
 												/>
 											</div>
-											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+											<div className="bg-card ring-primary/50 flex flex-col gap-4 rounded-xl p-4 shadow-lg ring-2">
 												<ItemSearchModal
 													trigger={
 														<button
-															className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 border-primary/30 bg-accent/60 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50"
+															className="border-primary/30 bg-accent/60 flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border-2 px-4 py-2 text-left transition-all duration-300 hover:opacity-70 active:opacity-50"
 															type="button"
 														>
 															<span className="flex items-center gap-3">
@@ -282,7 +282,7 @@ export default function NavMobile() {
 													/>
 												</div>
 											</div>
-											<div className="flex flex-col gap-4 rounded-xl bg-card p-4 shadow-lg ring-2 ring-primary/50">
+											<div className="bg-card ring-primary/50 flex flex-col gap-4 rounded-xl p-4 shadow-lg ring-2">
 												{MobileLinks.map((link) => (
 													<Link
 														className="flex items-center gap-2 transition-all duration-300 hover:opacity-70 active:opacity-50"

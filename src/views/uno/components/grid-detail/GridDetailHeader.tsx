@@ -24,7 +24,7 @@ export function GridDetailHeader({
 	const t = useTranslations('uno')
 
 	return (
-		<div className="grid items-center gap-2 border-border-secondary border-b p-2 lg:grid-cols-[1fr_auto_1fr]">
+		<div className="border-border-secondary grid items-center gap-2 border-b p-2 lg:grid-cols-[1fr_auto_1fr]">
 			<CLink
 				className="w-fit gap-2 px-3 py-2"
 				href="/uno/grids"
@@ -35,7 +35,7 @@ export function GridDetailHeader({
 					className="text-muted-foreground"
 					icon="lucide:layout-grid"
 				/>
-				<span className="font-semibold uppercase tracking-wide">
+				<span className="font-semibold tracking-wide uppercase">
 					{t('grids.modeTitle')}
 				</span>
 			</CLink>

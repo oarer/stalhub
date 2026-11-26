@@ -12,13 +12,13 @@ interface SyncSectionProps {
 export function SyncSection({ isPending, onSync }: SyncSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex items-center justify-between rounded-lg bg-card p-4">
+		<div className="bg-card flex items-center justify-between rounded-lg p-4">
 			<div className="flex flex-col gap-3">
-				<div className="flex items-center gap-2 font-semibold text-lg">
+				<div className="flex items-center gap-2 text-lg font-semibold">
 					<Icon className="text-xl" icon="lucide:refresh-cw" />
 					{t('clan.settings.syncTitle')}
 				</div>
-				<span className="font-semibold text-foreground text-sm">
+				<span className="text-foreground text-sm font-semibold">
 					{t('clan.settings.syncDesc')}
 				</span>
 			</div>

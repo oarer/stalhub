@@ -58,7 +58,7 @@ export function UserSessionsTab({ userId }: { userId: number }) {
 							<Table.Row key={session.id}>
 								<Table.Cell>
 									<span
-										className={`font-mono font-semibold text-neutral-400 text-xs`}
+										className={`font-mono text-xs font-semibold text-neutral-400`}
 									>
 										{session.id}
 									</span>
@@ -70,7 +70,7 @@ export function UserSessionsTab({ userId }: { userId: number }) {
 								</Table.Cell>
 								<Table.Cell>
 									<span
-										className={`max-w-50 truncate font-mono font-semibold text-xs`}
+										className={`max-w-50 truncate font-mono text-xs font-semibold`}
 									>
 										{session.user_agent}
 									</span>

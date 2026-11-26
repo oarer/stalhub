@@ -19,7 +19,7 @@ export default function Tools() {
 			<div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
 				<div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
 					<motion.h2
-						className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
+						className={`${mtsWide.className} text-[40px] leading-none font-semibold sm:text-5xl`}
 						initial={{ y: 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.1 }}
 						viewport={{ once: true }}
@@ -29,7 +29,7 @@ export default function Tools() {
 					</motion.h2>
 
 					<motion.p
-						className={`${mtsExtended.className} font-medium text-foreground text-md`}
+						className={`${mtsExtended.className} text-foreground text-md font-medium`}
 						initial={{ y: 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
 						viewport={{ once: true }}
@@ -60,7 +60,7 @@ export default function Tools() {
 					</motion.div>
 				</div>
 
-				<div className="flex flex-col border-primary/40 border-t-2">
+				<div className="border-primary/40 flex flex-col border-t-2">
 					{tools.map((tool, index) => (
 						<motion.div
 							initial={{ y: 24, opacity: 0 }}
@@ -70,16 +70,16 @@ export default function Tools() {
 							whileInView={{ y: 0, opacity: 1 }}
 						>
 							<Link
-								className="group flex items-center gap-4 border-primary/40 border-b-2 px-2 py-5 transition-colors duration-300 hover:bg-primary/5 sm:gap-5 sm:px-4"
+								className="group border-primary/40 hover:bg-primary/5 flex items-center gap-4 border-b-2 px-2 py-5 transition-colors duration-300 sm:gap-5 sm:px-4"
 								href={tool.link}
 							>
 								<span
-									className={`${mtsExtended.className} hidden w-8 shrink-0 font-bold text-primary/50 text-xs tabular-nums sm:block`}
+									className={`${mtsExtended.className} text-primary/50 hidden w-8 shrink-0 text-xs font-bold tabular-nums sm:block`}
 								>
 									{String(index + 1).padStart(2, '0')}
 								</span>
 
-								<span className="shrink-0 rounded-lg bg-primary/10 p-2.5 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+								<span className="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground shrink-0 rounded-lg p-2.5 transition-colors duration-300">
 									<Icon
 										className="block text-xl"
 										icon={tool.icon}
@@ -88,19 +88,19 @@ export default function Tools() {
 
 								<span className="flex min-w-0 flex-1 flex-col gap-1">
 									<span
-										className={`${mtsExtended.className} font-bold text-[15px] leading-snug sm:text-base`}
+										className={`${mtsExtended.className} text-[15px] leading-snug font-bold sm:text-base`}
 									>
 										{t(tool.title)}
 									</span>
 									<span
-										className={`${mtsWide.className} line-clamp-2 font-medium text-foreground/70 text-sm`}
+										className={`${mtsWide.className} text-foreground/70 line-clamp-2 text-sm font-medium`}
 									>
 										{t(tool.desc)}
 									</span>
 								</span>
 
 								<Icon
-									className="shrink-0 text-muted-foreground text-xl transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary"
+									className="text-muted-foreground group-hover:text-primary shrink-0 text-xl transition-all duration-300 group-hover:translate-x-1"
 									icon="lucide:arrow-up-right"
 								/>
 							</Link>

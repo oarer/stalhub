@@ -94,7 +94,7 @@ export function PersonalUploadModal({
 
 						<Tabs.Content value="quick">
 							<div className="flex flex-col gap-4">
-								<div className="flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-sm">
+								<div className="border-accent/40 bg-accent/10 flex items-center gap-2 rounded-lg border px-3 py-2 text-sm">
 									<Icon
 										className="text-base"
 										icon="lucide:sparkles"
@@ -129,7 +129,7 @@ export function PersonalUploadModal({
 						<Tabs.Content value="stage">
 							<div className="flex flex-col gap-4">
 								{detected && (
-									<div className="flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-sm">
+									<div className="border-accent/40 bg-accent/10 flex items-center gap-2 rounded-lg border px-3 py-2 text-sm">
 										<Icon
 											className="text-base"
 											icon="lucide:sparkles"
@@ -148,7 +148,7 @@ export function PersonalUploadModal({
 									</div>
 								)}
 								<div className="flex flex-col gap-2">
-									<p className="font-semibold text-sm">
+									<p className="text-sm font-semibold">
 										{t('clan.sessions.stageType')}
 									</p>
 									<div className="grid grid-cols-2 gap-2">
@@ -178,7 +178,7 @@ export function PersonalUploadModal({
 									</div>
 								</div>
 								<div className="flex flex-col gap-2">
-									<p className="font-semibold text-sm">
+									<p className="text-sm font-semibold">
 										{t('clan.sessions.stage')}
 									</p>
 									<div className="grid grid-cols-4 gap-2">
@@ -187,7 +187,7 @@ export function PersonalUploadModal({
 											(_, i) => i + 1
 										).map((n) => (
 											<Button
-												className={`py-1 font-semibold text-lg ${
+												className={`py-1 text-lg font-semibold ${
 													uploadStage === n &&
 													'bg-primary/60'
 												}`}
@@ -201,7 +201,7 @@ export function PersonalUploadModal({
 									</div>
 								</div>
 								<Input
-									className="font-mono font-semibold text-[14px]"
+									className="font-mono text-[14px] font-semibold"
 									label="clan.sessions.stageDate"
 									onChange={(e) =>
 										onDateChange(e.target.value)
@@ -261,10 +261,10 @@ function FileDrop({
 	const t = useTranslations()
 	return (
 		<div className="flex flex-col gap-2">
-			<p className="font-semibold text-sm">
+			<p className="text-sm font-semibold">
 				{t('clan.sessions.screenshotLabel')}
 			</p>
-			<label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-primary/50 border-dashed px-3 py-3 font-semibold text-sm transition-colors hover:bg-accent/10">
+			<label className="border-primary/50 hover:bg-accent/10 inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-dashed px-3 py-3 text-sm font-semibold transition-colors">
 				<Icon className="text-lg" icon="lucide:image-plus" />
 				{file
 					? t('clan.sessions.fileSelected', { name: file.name })

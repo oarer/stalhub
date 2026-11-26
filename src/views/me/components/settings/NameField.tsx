@@ -26,8 +26,8 @@ export function NameField({
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-lg bg-accent/50 p-4">
-			<span className="font-semibold text-sm">
+		<div className="bg-accent/50 flex flex-col gap-2 rounded-lg p-4">
+			<span className="text-sm font-semibold">
 				{t('me.settings.name')}
 			</span>
 			<div className="flex items-center gap-2">
@@ -48,7 +48,7 @@ export function NameField({
 				</Button>
 			</div>
 			{cooldownLeft > 0 && (
-				<p className="font-semibold text-foreground text-xs">
+				<p className="text-foreground text-xs font-semibold">
 					{t('me.settings.nameCooldown')}{' '}
 					{numbersTxt(cooldownLeft, [
 						t('time.day.one'),

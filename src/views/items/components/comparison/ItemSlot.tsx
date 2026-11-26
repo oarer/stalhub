@@ -61,14 +61,14 @@ export function ItemSlot({
 	if (!refValue) {
 		return (
 			<button
-				className="group flex min-h-40 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-muted border-dashed bg-card/30 px-5 py-6 text-center transition-colors hover:border-primary/50 hover:bg-card/60"
+				className="group border-muted bg-card/30 hover:border-primary/50 hover:bg-card/60 flex min-h-40 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-5 py-6 text-center transition-colors"
 				onClick={onPick}
 				type="button"
 			>
-				<span className="flex h-12 w-12 items-center justify-center rounded-full bg-muted/60 text-muted-foreground transition-colors group-hover:bg-primary/15 group-hover:text-primary">
+				<span className="bg-muted/60 text-muted-foreground group-hover:bg-primary/15 group-hover:text-primary flex h-12 w-12 items-center justify-center rounded-full transition-colors">
 					<Icon className="text-2xl" icon="lucide:plus" />
 				</span>
-				<span className="font-semibold text-sm">{label}</span>
+				<span className="text-sm font-semibold">{label}</span>
 				<span className="text-muted-foreground text-xs">
 					{t('items.comparison.addItem')}
 				</span>
@@ -106,10 +106,10 @@ export function ItemSlot({
 					<Icon icon="lucide:x" />
 				</Button>
 				<Icon
-					className={`text-3xl text-muted-foreground ${isFetching ? 'animate-spin' : ''}`}
+					className={`text-muted-foreground text-3xl ${isFetching ? 'animate-spin' : ''}`}
 					icon="lucide:triangle-alert"
 				/>
-				<p className="font-medium text-sm">
+				<p className="text-sm font-medium">
 					{t('items.comparison.itemError')}
 				</p>
 				<div className="flex flex-wrap justify-center gap-2">
@@ -158,17 +158,17 @@ export function ItemSlot({
 					width={56}
 				/>
 				<div className="min-w-0 flex-1 space-y-1">
-					<p className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+					<p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
 						{label}
 					</p>
 					<h2
-						className={`${mtsExtended.className} wrap-break-word line-clamp-3 font-semibold text-base leading-tight`}
+						className={`${mtsExtended.className} line-clamp-3 text-base leading-tight font-semibold wrap-break-word`}
 						style={{ color: nameColor }}
 						title={name}
 					>
 						{name}
 					</h2>
-					<p className="truncate font-medium text-muted-foreground text-xs">
+					<p className="text-muted-foreground truncate text-xs font-medium">
 						{getCategoryLabel(item, locale) ||
 							categoryFallback(refValue.category)}
 					</p>
@@ -181,7 +181,7 @@ export function ItemSlot({
 					{t('items.comparison.change')}
 				</Button>
 				<Link
-					className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 font-medium text-muted-foreground text-sm transition-colors hover:bg-muted hover:text-foreground"
+					className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors"
 					href={href}
 				>
 					<Icon icon="lucide:external-link" />

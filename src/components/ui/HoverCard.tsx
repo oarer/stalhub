@@ -390,7 +390,7 @@ const HoverCardContent = forwardRef<HTMLDivElement, ContentProps>(
 		const contentProps = {
 			...props,
 			className: cn(
-				'z-50 max-h-[85vh] w-64 overflow-y-auto rounded-lg border-2 border-primary/60 bg-card p-4 shadow-md',
+				'border-primary/60 bg-card z-50 max-h-[85vh] w-64 overflow-y-auto rounded-lg border-2 p-4 shadow-md',
 				className
 			),
 			id: `hover-card-content-${id}`,

@@ -24,19 +24,19 @@ export function PostAttachments({
 				(build) =>
 					build && (
 						<Link
-							className="flex flex-col gap-2 rounded-2xl border border-primary/20 p-3 transition-colors hover:border-primary/40 hover:bg-muted/20"
+							className="border-primary/20 hover:border-primary/40 hover:bg-muted/20 flex flex-col gap-2 rounded-2xl border p-3 transition-colors"
 							href={`/builds/${build.external_id ?? build.id}`}
 							key={`build-${build.id}`}
 						>
 							<span className="flex items-center gap-2">
 								<Icon
-									className="size-4 shrink-0 text-primary/70"
+									className="text-primary/70 size-4 shrink-0"
 									icon="lucide:boxes"
 								/>
-								<span className="truncate font-semibold text-sm">
+								<span className="truncate text-sm font-semibold">
 									{build.title}
 								</span>
-								<span className="ml-auto shrink-0 text-[11px] text-foreground">
+								<span className="text-foreground ml-auto shrink-0 text-[11px]">
 									{t('feed.attachments.build')}
 								</span>
 							</span>
@@ -48,19 +48,19 @@ export function PostAttachments({
 				(list) =>
 					list && (
 						<Link
-							className="flex flex-col gap-2 rounded-2xl border border-primary/20 p-3 transition-colors hover:border-primary/40 hover:bg-muted/20"
+							className="border-primary/20 hover:border-primary/40 hover:bg-muted/20 flex flex-col gap-2 rounded-2xl border p-3 transition-colors"
 							href={`/tierlists/${list.external_id ?? list.id}`}
 							key={`tier-${list.id}`}
 						>
 							<span className="flex items-center gap-2">
 								<Icon
-									className="size-4 shrink-0 text-primary/70"
+									className="text-primary/70 size-4 shrink-0"
 									icon="lucide:layout-list"
 								/>
-								<span className="truncate font-semibold text-sm">
+								<span className="truncate text-sm font-semibold">
 									{list.title}
 								</span>
-								<span className="ml-auto shrink-0 text-[11px] text-foreground">
+								<span className="text-foreground ml-auto shrink-0 text-[11px]">
 									{t('feed.attachments.tier_list')}
 								</span>
 							</span>

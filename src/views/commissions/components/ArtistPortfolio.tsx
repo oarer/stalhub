@@ -22,10 +22,10 @@ function WorkTile({
 		<LightBox.Root key={art.external_id}>
 			<LightBox.Trigger
 				asChild
-				className="focus-visible:outline-2 focus-visible:outline-primary"
+				className="focus-visible:outline-primary focus-visible:outline-2"
 			>
 				<button
-					className={`relative ${aspect} w-full cursor-zoom-in overflow-hidden rounded-lg bg-muted`}
+					className={`relative ${aspect} bg-muted w-full cursor-zoom-in overflow-hidden rounded-lg`}
 					type="button"
 				>
 					{src && (

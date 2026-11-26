@@ -117,7 +117,7 @@ export default function PublishBlogButton({
 				<Modal.Body>
 					<div className="flex flex-col gap-3">
 						{digestMutation.isPending ? (
-							<div className="flex items-center gap-2 py-6 text-foreground text-sm">
+							<div className="text-foreground flex items-center gap-2 py-6 text-sm">
 								<Icon
 									className="size-4 animate-spin"
 									icon="lucide:loader-circle"
@@ -127,13 +127,13 @@ export default function PublishBlogButton({
 						) : (
 							<>
 								<label
-									className="font-medium text-sm"
+									className="text-sm font-medium"
 									htmlFor={`digest-${articleId}`}
 								>
 									{t('blog.publish.digestLabel')}
 								</label>
 								<Textarea
-									className="min-h-28 w-full border border-primary/30 p-3 font-normal leading-6"
+									className="border-primary/30 min-h-28 w-full border p-3 leading-6 font-normal"
 									id={`digest-${articleId}`}
 									maxLength={1500}
 									onChange={(e) => setDigest(e.target.value)}
@@ -143,7 +143,7 @@ export default function PublishBlogButton({
 									value={digest}
 								/>
 								<div className="flex items-center justify-between">
-									<span className="font-mono text-foreground text-xs">
+									<span className="text-foreground font-mono text-xs">
 										{digest.length}/1500
 									</span>
 									<Button

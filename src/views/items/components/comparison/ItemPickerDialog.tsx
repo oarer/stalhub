@@ -87,7 +87,7 @@ export function ItemPickerDialog({
 				<div className="max-h-[60dvh]">
 					{status === 'loading' && (
 						<div aria-busy="true" className="space-y-2">
-							<p className="font-medium text-sm">
+							<p className="text-sm font-medium">
 								{t('items.comparison.catalogLoading')}
 							</p>
 							{SKELETON_ROWS.map((row) => (
@@ -99,10 +99,10 @@ export function ItemPickerDialog({
 					{status === 'error' && (
 						<Card.Root className="items-center justify-center gap-3 py-8 text-center">
 							<Icon
-								className="text-3xl text-muted-foreground"
+								className="text-muted-foreground text-3xl"
 								icon="lucide:triangle-alert"
 							/>
-							<p className="font-medium text-sm">
+							<p className="text-sm font-medium">
 								{t('items.comparison.catalogError')}
 							</p>
 							<Button
@@ -122,10 +122,10 @@ export function ItemPickerDialog({
 					{status === 'empty' && (
 						<Card.Root className="items-center justify-center gap-3 py-8 text-center">
 							<Icon
-								className="text-3xl text-muted-foreground"
+								className="text-muted-foreground text-3xl"
 								icon="lucide:package-x"
 							/>
-							<p className="font-medium text-sm">
+							<p className="text-sm font-medium">
 								{t('items.comparison.catalogEmpty')}
 							</p>
 						</Card.Root>

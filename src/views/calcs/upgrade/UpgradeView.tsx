@@ -138,11 +138,11 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 			{variant === 'page' && (
 				<>
 					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+						className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 					>
 						{t('upgrade.title')}
 					</h1>
-					<p className="font-medium text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm font-medium">
 						{t('upgrade.subtitle')}
 					</p>
 				</>
@@ -170,7 +170,7 @@ export function UpgradeView({ variant = 'page' }: UpgradeViewProps) {
 					result={result}
 				/>
 			) : (
-				<div className="flex items-center justify-center gap-2 rounded-xl bg-card/50 px-5 py-10 text-muted-foreground ring-2 ring-primary/30">
+				<div className="bg-card/50 text-muted-foreground ring-primary/30 flex items-center justify-center gap-2 rounded-xl px-5 py-10 ring-2">
 					<p className="font-medium">{t('upgrade.empty')}</p>
 				</div>
 			)}

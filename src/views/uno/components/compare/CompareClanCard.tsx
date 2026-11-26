@@ -16,10 +16,10 @@ export function CompareClanCard({ clan }: { clan: UnoClanSummary }) {
 	return (
 		<Card.Root>
 			<Card.Header>
-				<p className="font-mono font-semibold text-muted-foreground text-xs">
+				<p className="text-muted-foreground font-mono text-xs font-semibold">
 					{clan.tag ? `[${clan.tag}]` : clan.id}
 				</p>
-				<Card.Title className="font-semibold text-xl">
+				<Card.Title className="text-xl font-semibold">
 					{clan.name}
 				</Card.Title>
 				<Card.Description className="mt-1">

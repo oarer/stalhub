@@ -79,7 +79,7 @@ export default function PlayerSummary({ stats }: { stats: Stat[] }) {
 			<Card.Header className="gap-1">
 				<div className="flex items-center gap-2">
 					<Icon className="text-xl" icon="lucide:layout-dashboard" />
-					<h2 className="font-semibold text-xl">
+					<h2 className="text-xl font-semibold">
 						{t('player.summary.title')}
 					</h2>
 				</div>
@@ -88,17 +88,17 @@ export default function PlayerSummary({ stats }: { stats: Stat[] }) {
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
 					{cards.map((c) => (
 						<div
-							className="flex flex-col gap-1 rounded-xl bg-accent/40 p-4"
+							className="bg-accent/40 flex flex-col gap-1 rounded-xl p-4"
 							key={c.label}
 						>
-							<div className="flex items-center gap-2 text-foreground text-xs">
+							<div className="text-foreground flex items-center gap-2 text-xs">
 								<Icon icon={c.icon} />
 								<span>{c.label}</span>
 							</div>
-							<div className="font-bold font-mono text-2xl">
+							<div className="font-mono text-2xl font-bold">
 								{c.value}
 							</div>
-							<div className="font-mono font-semibold text-[11px] text-muted-foreground">
+							<div className="text-muted-foreground font-mono text-[11px] font-semibold">
 								{c.hint}
 							</div>
 						</div>

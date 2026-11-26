@@ -87,7 +87,7 @@ function BoostSelectModal({
 		<Modal.Root onOpenChange={setOpen} open={open}>
 			<Modal.Trigger
 				asChild
-				className="size-14 cursor-pointer justify-center rounded-xl bg-secondary p-2 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800"
+				className="bg-secondary size-14 cursor-pointer justify-center rounded-xl p-2 shadow-sm hover:bg-neutral-300 dark:hover:bg-neutral-800"
 				variant={'secondary'}
 			>
 				<Button
@@ -198,7 +198,7 @@ function BoostSelectModal({
 							selectedEffects={selectedEffects}
 							selectedItemId={previewId}
 						/>
-						<Card.Root className="min-w-95 ring-primary/20">
+						<Card.Root className="ring-primary/20 min-w-95">
 							<Card.Header>
 								<Card.Title
 									style={{

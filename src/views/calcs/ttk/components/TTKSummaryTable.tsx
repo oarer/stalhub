@@ -25,9 +25,9 @@ export function TTKSummaryTable({ rows, maxDist }: TTKSummaryTableProps) {
 
 	return (
 		<Card.Root className="z-0">
-			<Table.Root className="w-full font-semibold text-sm">
+			<Table.Root className="w-full text-sm font-semibold">
 				<Table.Header>
-					<Table.Row className="text-left text-neutral-400 text-xs">
+					<Table.Row className="text-left text-xs text-neutral-400">
 						<Table.Head className="pr-4 pb-2">
 							{t('ttk.page.weapon')}
 						</Table.Head>

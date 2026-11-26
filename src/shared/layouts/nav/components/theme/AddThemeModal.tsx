@@ -70,7 +70,7 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 				</Modal.Header>
 
 				<Modal.Body className="flex flex-col gap-2">
-					<div className="flex gap-1 rounded-lg bg-muted/50 p-1">
+					<div className="bg-muted/50 flex gap-1 rounded-lg p-1">
 						<Button
 							className={cn(
 								'w-full',
@@ -114,7 +114,7 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 					) : (
 						<div className="flex flex-col gap-3">
 							<Textarea
-								className="min-h-40 w-full resize-none border-primary text-foreground"
+								className="border-primary text-foreground min-h-40 w-full resize-none"
 								onChange={(e) => setJsonInput(e.target.value)}
 								placeholder='{"name":"my-theme","cssVars":{"light":{...},"dark":{...}}}'
 								value={jsonInput}
@@ -130,7 +130,7 @@ export default function AddThemeModal({ onAdded }: AddThemeModalProps) {
 					)}
 
 					{error && (
-						<p className="mt-2 text-destructive text-sm">{error}</p>
+						<p className="text-destructive mt-2 text-sm">{error}</p>
 					)}
 
 					<Alert.Root>

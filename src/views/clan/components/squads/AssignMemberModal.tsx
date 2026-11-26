@@ -47,14 +47,14 @@ export function AssignMemberModal({
 										onClick={() => onAssign(m.id)}
 										variant={'secondary'}
 									>
-										<div className="flex size-8 items-center justify-center rounded-full bg-card font-semibold text-sm">
+										<div className="bg-card flex size-8 items-center justify-center rounded-full text-sm font-semibold">
 											{m.name.charAt(0)}
 										</div>
 										<div className="flex flex-col text-left">
-											<p className="font-semibold text-sm">
+											<p className="text-sm font-semibold">
 												{m.name}
 											</p>
-											<p className="font-semibold text-muted-foreground text-xs">
+											<p className="text-muted-foreground text-xs font-semibold">
 												{m.user?.name ?? m.rank}
 											</p>
 										</div>

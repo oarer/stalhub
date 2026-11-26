@@ -13,17 +13,17 @@ export default function MeStarsView() {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<h1 className="font-semibold text-xl">{t('me.stars.title')}</h1>
+			<h1 className="text-xl font-semibold">{t('me.stars.title')}</h1>
 
 			{stars?.data.length === 0 ? (
-				<p className="font-semibold text-foreground text-sm">
+				<p className="text-foreground text-sm font-semibold">
 					{t('me.stars.empty')}
 				</p>
 			) : (
 				<div className="flex flex-col gap-2">
 					{stars?.data.map((item) => (
 						<Link
-							className="flex items-center gap-3 rounded-lg border-2 border-primary/50 bg-card p-3 transition-colors hover:bg-accent"
+							className="border-primary/50 bg-card hover:bg-accent flex items-center gap-3 rounded-lg border-2 p-3 transition-colors"
 							href={
 								item.type === 'build'
 									? `/builds/${item.id}`
@@ -54,11 +54,11 @@ export default function MeStarsView() {
 								/>
 							</div>
 							<div className="min-w-0 flex-1">
-								<p className="truncate font-semibold text-sm">
+								<p className="truncate text-sm font-semibold">
 									{item.title}
 								</p>
 								<p
-									className={`font-mono font-semibold text-muted-foreground text-xs`}
+									className={`text-muted-foreground font-mono text-xs font-semibold`}
 								>
 									{item.type === 'build'
 										? t('me.stars.build')
@@ -69,7 +69,7 @@ export default function MeStarsView() {
 								</p>
 							</div>
 							<Icon
-								className="size-4 text-warning"
+								className="text-warning size-4"
 								icon="lucide:star"
 							/>
 						</Link>

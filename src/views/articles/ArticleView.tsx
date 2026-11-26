@@ -82,14 +82,14 @@ export default function ArticleView({
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<header className="flex flex-col gap-4 pb-6">
 				<Link
-					className="font-medium text-foreground text-sm transition-colors hover:text-primary"
+					className="text-foreground hover:text-primary text-sm font-medium transition-colors"
 					href={backHref}
 				>
 					{t(backLabelKey)}
 				</Link>
 
 				<h1
-					className={`${mtsExtended.className} font-semibold text-3xl text-primary`}
+					className={`${mtsExtended.className} text-primary text-3xl font-semibold`}
 				>
 					{article.title}
 				</h1>
@@ -116,7 +116,7 @@ export default function ArticleView({
 					/>
 				)}
 
-				<div className="flex flex-wrap items-center gap-4 font-medium text-sm">
+				<div className="flex flex-wrap items-center gap-4 text-sm font-medium">
 					<div className="flex items-center gap-2">
 						<Avatar
 							height={42}
@@ -126,29 +126,29 @@ export default function ArticleView({
 						/>
 						<HoverUserCard id={article.author.id}>
 							<Username
-								className={`font-medium font-mono text-xs`}
+								className={`font-mono text-xs font-medium`}
 								user={article.author}
 							/>
 						</HoverUserCard>
 					</div>
 
-					<div className="flex items-center gap-1 text-foreground">
+					<div className="text-foreground flex items-center gap-1">
 						<Icon icon="lucide:eye" />
-						<span className={`font-medium font-mono text-xs`}>
+						<span className={`font-mono text-xs font-medium`}>
 							{article.views}
 						</span>
 					</div>
 
-					<div className="flex items-center gap-1 text-foreground">
+					<div className="text-foreground flex items-center gap-1">
 						<Icon icon="lucide:calendar" />
-						<span className={`font-medium font-mono text-xs`}>
+						<span className={`font-mono text-xs font-medium`}>
 							{formatDate(article.created_at, 'datetime')}
 						</span>
 					</div>
 
 					{article.faction && (
 						<span
-							className={`rounded-md px-2 py-0.5 font-medium text-xs ${FACTION_META[article.faction as Faction]?.color ?? ''}`}
+							className={`rounded-md px-2 py-0.5 text-xs font-medium ${FACTION_META[article.faction as Faction]?.color ?? ''}`}
 						>
 							{FACTION_META[article.faction as Faction]?.label ??
 								article.faction}
@@ -182,7 +182,7 @@ export default function ArticleView({
 					)}
 
 					{!user && article.stars_count > 0 && (
-						<div className="flex items-center gap-1 text-foreground">
+						<div className="text-foreground flex items-center gap-1">
 							<Icon icon="lucide:star" />
 							<span>{article.stars_count}</span>
 						</div>
@@ -193,7 +193,7 @@ export default function ArticleView({
 					<div className="flex flex-wrap gap-1.5">
 						{article.tags.map((tag) => (
 							<span
-								className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-foreground text-xs"
+								className="bg-border-secondary text-foreground rounded-md px-2 py-0.5 text-xs font-medium"
 								key={tag}
 							>
 								{tag}
@@ -204,9 +204,9 @@ export default function ArticleView({
 			</header>
 
 			{article.type === ArticleType.QUEST && (
-				<section className="grid gap-4 rounded-xl border-2 border-primary/20 bg-card p-5 md:grid-cols-2">
+				<section className="border-primary/20 bg-card grid gap-4 rounded-xl border-2 p-5 md:grid-cols-2">
 					<div className="flex flex-col gap-2">
-						<h2 className="font-semibold text-xl">
+						<h2 className="text-xl font-semibold">
 							{article.quest_name ?? t('articles.quest.details')}
 						</h2>
 						<span className="text-foreground">
@@ -239,7 +239,7 @@ export default function ArticleView({
 								/>
 							</div>
 						) : compileError ? (
-							<div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3 text-red-400 text-sm">
+							<div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-red-400">
 								<Icon className="size-4" icon="lucide:alert-triangle" />
 								<span className="font-medium">
 									{t('articles.loadError')}
@@ -248,10 +248,10 @@ export default function ArticleView({
 						) : (
 							<div className="flex items-center justify-center gap-2 py-16">
 								<Icon
-									className="size-5 animate-spin text-foreground"
+									className="text-foreground size-5 animate-spin"
 									icon="lucide:loader-circle"
 								/>
-								<span className="font-medium text-foreground text-sm">
+								<span className="text-foreground text-sm font-medium">
 									{t('articles.loading')}
 								</span>
 							</div>

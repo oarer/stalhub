@@ -77,7 +77,7 @@ export default function VirtualPickerModal({
 					/>
 					<div className="h-[60vh]">
 						{filtered.length === 0 ? (
-							<p className="flex h-full items-center justify-center text-muted-foreground text-sm">
+							<p className="text-muted-foreground flex h-full items-center justify-center text-sm">
 								{emptyText}
 							</p>
 						) : (
@@ -120,7 +120,7 @@ export default function VirtualPickerModal({
 												>
 													<button
 														className={cn(
-															'flex h-11 w-full cursor-pointer items-center gap-2 rounded-lg px-3 text-left text-sm transition-colors hover:bg-muted',
+															'hover:bg-muted flex h-11 w-full cursor-pointer items-center gap-2 rounded-lg px-3 text-left text-sm transition-colors',
 															isSelected &&
 																'bg-primary text-primary-foreground hover:bg-primary'
 														)}
@@ -131,7 +131,7 @@ export default function VirtualPickerModal({
 													>
 														{option.color && (
 															<span
-																className="h-4 w-4 shrink-0 rounded-full border border-border"
+																className="border-border h-4 w-4 shrink-0 rounded-full border"
 																style={{
 																	backgroundColor:
 																		option.color,

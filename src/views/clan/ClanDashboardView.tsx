@@ -129,7 +129,7 @@ function ClanDashboardContent({
 						))}
 					</div>
 				) : recentSessions.length === 0 ? (
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{t('clan.common.noGames')}
 					</p>
 				) : (

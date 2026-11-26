@@ -57,8 +57,8 @@ function Notice({
 
 	return (
 		<Card.Root className="items-center justify-center gap-3 py-12 text-center">
-			<Icon className="text-4xl text-muted-foreground" icon={icon} />
-			<p className="max-w-md font-medium text-sm">{text}</p>
+			<Icon className="text-muted-foreground text-4xl" icon={icon} />
+			<p className="max-w-md text-sm font-medium">{text}</p>
 			{(onRetry || onAction) && (
 				<div className="flex flex-wrap justify-center gap-2">
 					{onAction && actionLabel && (
@@ -293,7 +293,7 @@ export default function ItemComparisonView() {
 			<header className="space-y-2">
 				<div className="flex flex-wrap items-end justify-between gap-3">
 					<h1
-						className={`${mtsExtended.className} font-semibold text-2xl md:text-3xl`}
+						className={`${mtsExtended.className} text-2xl font-semibold md:text-3xl`}
 					>
 						{t('items.comparison.title')}
 					</h1>
@@ -350,9 +350,9 @@ export default function ItemComparisonView() {
 					)}
 				</div>
 
-				<div className="flex flex-wrap items-center justify-between gap-3 border-muted border-t pt-3">
+				<div className="border-muted flex flex-wrap items-center justify-between gap-3 border-t pt-3">
 					<label
-						className="flex items-center gap-2 font-medium text-sm"
+						className="flex items-center gap-2 text-sm font-medium"
 						htmlFor={sharpeningId}
 					>
 						{t('ui.input_sharpening')}

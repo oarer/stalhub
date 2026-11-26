@@ -62,11 +62,11 @@ function ClanAbsenceContent({
 		<div className="flex flex-col gap-4">
 			<div>
 				<h1
-					className={`${mtsExtended.className} font-medium text-lg leading-none`}
+					className={`${mtsExtended.className} text-lg leading-none font-medium`}
 				>
 					{t('clan.absence.title')}
 				</h1>
-				<p className="font-semibold text-foreground text-sm">
+				<p className="text-foreground text-sm font-semibold">
 					{t('clan.absence.desc', {
 						hour: String(DEADLINE_MSK_HOUR).padStart(2, '0'),
 					})}

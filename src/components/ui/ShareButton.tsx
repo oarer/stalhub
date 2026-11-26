@@ -36,16 +36,16 @@ export function ShareButton({ url, title }: ShareButtonProps) {
 				<Icon
 					className={`absolute size-5 transition-all duration-200 ${
 						copied
-							? 'rotate-45 scale-50 opacity-0'
-							: 'rotate-0 scale-100 opacity-100'
+							? 'scale-50 rotate-45 opacity-0'
+							: 'scale-100 rotate-0 opacity-100'
 					}`}
 					icon="lucide:share-2"
 				/>
 				<Icon
 					className={`absolute size-5 transition-all duration-200 ${
 						copied
-							? 'rotate-0 scale-100 text-primary opacity-100'
-							: '-rotate-45 scale-50 opacity-0'
+							? 'text-primary scale-100 rotate-0 opacity-100'
+							: 'scale-50 -rotate-45 opacity-0'
 					}`}
 					icon="lucide:check"
 				/>

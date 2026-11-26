@@ -85,7 +85,7 @@ export function StudioForm({ initial }: { initial: ArtistProfile | null }) {
 			}}
 		>
 			<CLink
-				className="w-fit px-0 text-primary"
+				className="text-primary w-fit px-0"
 				href={`/artists/${user?.username}`}
 				variant="none"
 			>
@@ -288,7 +288,7 @@ export function StudioForm({ initial }: { initial: ArtistProfile | null }) {
 			<Feedback error={mutation.error} />
 			<div className="sticky bottom-4 z-10">
 				<Card.Root className="flex-row items-center justify-between gap-3 px-4 py-3">
-					<p className="min-w-0 flex-1 text-muted-foreground text-xs">
+					<p className="text-muted-foreground min-w-0 flex-1 text-xs">
 						{pricesInvalid ||
 						(draft.accepting &&
 							(!prices.length || !draft.terms.trim())) ||

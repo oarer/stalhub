@@ -88,7 +88,7 @@ export function SessionRow({
 	)
 
 	return (
-		<div className="rounded-lg bg-card px-5 py-4">
+		<div className="bg-card rounded-lg px-5 py-4">
 			<div className="flex items-start justify-between">
 				<button
 					className="flex-1 cursor-pointer text-left"
@@ -103,10 +103,10 @@ export function SessionRow({
 								{session.stage_number}
 							</h3>
 							<span
-								className={`rounded px-1.5 py-0.5 font-semibold text-xs ${
+								className={`rounded px-1.5 py-0.5 text-xs font-semibold ${
 									session.victory
-										? 'bg-green-500/20 text-success'
-										: 'bg-red-500/20 text-destructive'
+										? 'text-success bg-green-500/20'
+										: 'text-destructive bg-red-500/20'
 								}`}
 							>
 								{session.victory
@@ -137,7 +137,7 @@ export function SessionRow({
 							)}
 						</div>
 						<p
-							className={`font-mono font-semibold text-[11px] text-foreground`}
+							className={`text-foreground font-mono text-[11px] font-semibold`}
 						>
 							{formatDate(session.started_at)}
 						</p>
@@ -165,7 +165,7 @@ export function SessionRow({
 									date: formatDate(session.started_at),
 									span: (chunks) => (
 										<span
-											className={`font-mono text-primary text-sm`}
+											className={`text-primary font-mono text-sm`}
 										>
 											{chunks}
 										</span>
@@ -222,7 +222,7 @@ export function SessionRow({
 					<Divider />
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-2">
-							<p className="font-semibold text-sm">
+							<p className="text-sm font-semibold">
 								{t('clan.sessions.screenshots')}
 							</p>
 							{session.map_name && (
@@ -241,7 +241,7 @@ export function SessionRow({
 						<div className="flex flex-col gap-2">
 							{[...Array(2)].map((_, i) => (
 								<div
-									className="h-10 w-full animate-pulse rounded-lg bg-accent/50"
+									className="bg-accent/50 h-10 w-full animate-pulse rounded-lg"
 									key={i}
 								/>
 							))}
@@ -276,11 +276,11 @@ export function SessionRow({
 							{detail.attendance.length > 0 && (
 								<>
 									<div className="flex items-center justify-between">
-										<p className="font-semibold text-sm">
+										<p className="text-sm font-semibold">
 											{t('clan.sessions.attendance')}
 										</p>
 										<span
-											className={`font-mono font-semibold text-foreground text-xs`}
+											className={`text-foreground font-mono text-xs font-semibold`}
 										>
 											{t('clan.sessions.presentOf', {
 												present:
@@ -306,8 +306,8 @@ export function SessionRow({
 												<Badge
 													className={
 														a.status === 'PRESENT'
-															? 'bg-green-500/20 text-success'
-															: 'bg-red-500/20 text-destructive'
+															? 'text-success bg-green-500/20'
+															: 'text-destructive bg-red-500/20'
 													}
 													key={a.id}
 													variant="secondary"

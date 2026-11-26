@@ -155,11 +155,11 @@ export default function Page() {
 					{desktopStatus === 'exchanging' ? (
 						<>
 							<Icon
-								className="animate-spin text-4xl text-accent"
+								className="text-accent animate-spin text-4xl"
 								icon="lucide:loader-circle"
 							/>
 							<h1
-								className={`${mtsExtended.className} animate-pulse font-medium text-2xl uppercase tracking-widest`}
+								className={`${mtsExtended.className} animate-pulse text-2xl font-medium tracking-widest uppercase`}
 							>
 								{t('auth.title')}
 							</h1>
@@ -167,15 +167,15 @@ export default function Page() {
 					) : (
 						<>
 							<Icon
-								className="text-4xl text-primary"
+								className="text-primary text-4xl"
 								icon="lucide:circle-check"
 							/>
 							<h1
-								className={`${mtsExtended.className} font-medium text-3xl`}
+								className={`${mtsExtended.className} text-3xl font-medium`}
 							>
 								{t('auth.success')}
 							</h1>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{t('auth.closePage')}
 							</p>
 						</>
@@ -188,7 +188,7 @@ export default function Page() {
 						<div className="flex items-center gap-2">
 							<Icon className="text-2xl" icon="lucide:log-in" />
 							<h1
-								className={`${mtsExtended.className} font-medium text-xl`}
+								className={`${mtsExtended.className} text-xl font-medium`}
 							>
 								{t('auth.title')}
 							</h1>
@@ -215,7 +215,7 @@ export default function Page() {
 						</Alert.Root>
 					</header>
 
-					<div className="relative flex min-h-58 overflow-hidden rounded-xl bg-card p-6 ring-2 ring-primary/50">
+					<div className="bg-card ring-primary/50 relative flex min-h-58 overflow-hidden rounded-xl p-6 ring-2">
 						<AnimatePresence initial={false} mode="wait">
 							<motion.div
 								animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -240,7 +240,7 @@ export default function Page() {
 												className="text-xl"
 												icon={stepIcons[currentStep]}
 											/>
-											<h2 className="font-semibold text-lg">
+											<h2 className="text-lg font-semibold">
 												{t('auth.login')}
 											</h2>
 										</div>
@@ -283,7 +283,7 @@ export default function Page() {
 												</p>
 											</Button>
 											<Button
-												className="gap-2 bg-purple-700/40 text-primary ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
+												className="text-primary gap-2 bg-purple-700/40 ring-2 ring-purple-900 dark:bg-purple-700/40 dark:ring-purple-700"
 												loading={loading === 'exbo'}
 												onClick={() =>
 													handleLogin('exbo')
@@ -310,7 +310,7 @@ export default function Page() {
 												className="text-xl"
 												icon={stepIcons[currentStep]}
 											/>
-											<h2 className="font-semibold text-lg">
+											<h2 className="text-lg font-semibold">
 												{t('auth.loginByPassword')}
 											</h2>
 										</div>
@@ -338,7 +338,7 @@ export default function Page() {
 												value={password}
 											/>
 											{error && (
-												<p className="font-semibold text-destructive text-sm">
+												<p className="text-destructive text-sm font-semibold">
 													{error}
 												</p>
 											)}
@@ -403,7 +403,7 @@ export default function Page() {
 						)}
 					</div>
 					<p
-						className={`font-mono font-semibold text-foreground text-sm`}
+						className={`text-foreground font-mono text-sm font-semibold`}
 					>
 						{t('auth.terms')}{' '}
 						<Link

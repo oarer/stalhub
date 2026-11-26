@@ -29,16 +29,16 @@ export default function Releases({
 	return (
 		<section className="flex flex-col gap-4">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+				className={`${mtsExtended.className} text-[22px] leading-none font-medium`}
 			>
 				{t('download.app.all_releases')}
 			</h1>
 
 			{loading ? (
 				<Card.Root className="gap-3">
-					<p className="flex items-center gap-2 font-semibold text-foreground">
+					<p className="text-foreground flex items-center gap-2 font-semibold">
 						<Icon
-							className="animate-spin text-primary"
+							className="text-primary animate-spin"
 							icon="lucide:loader-circle"
 						/>
 						{t('download.app.loading')}
@@ -46,7 +46,7 @@ export default function Releases({
 				</Card.Root>
 			) : hasError ? (
 				<Card.Root className="gap-3">
-					<p className="flex items-center gap-2 font-semibold text-destructive">
+					<p className="text-destructive flex items-center gap-2 font-semibold">
 						<Icon icon="lucide:triangle-alert" />
 						{t('download.app.error')}
 					</p>
@@ -94,7 +94,7 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<div className="flex flex-wrap items-center gap-2">
 					<Icon className="text-primary text-xl" icon="lucide:tag" />
-					<h3 className="font-semibold text-lg">{release.name}</h3>
+					<h3 className="text-lg font-semibold">{release.name}</h3>
 					{release.prerelease && (
 						<Badge variant="secondary">
 							<Icon
@@ -105,14 +105,14 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 						</Badge>
 					)}
 				</div>
-				<span className="font-semibold text-muted-foreground text-sm">
+				<span className="text-muted-foreground text-sm font-semibold">
 					{t('download.app.published', {
 						date: formatter.format(new Date(release.publishedAt)),
 					})}
 				</span>
 			</div>
 
-			<div className="flex items-center gap-1.5 font-semibold text-muted-foreground text-sm">
+			<div className="text-muted-foreground flex items-center gap-1.5 text-sm font-semibold">
 				<Icon icon="lucide:download" />
 				{t('download.app.downloads', {
 					count: numberFormatter.format(totalDownloads),
@@ -121,28 +121,28 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 
 			{release.assets.length > 0 ? (
 				<div className="flex flex-col gap-2">
-					<span className="font-semibold text-foreground text-sm">
+					<span className="text-foreground text-sm font-semibold">
 						{t('download.app.files')}
 					</span>
 					<div className="grid gap-2 sm:grid-cols-2">
 						{release.assets.map((asset) => (
 							<a
-								className="flex items-center gap-3 rounded-lg bg-accent/40 px-3 py-2 transition-colors hover:bg-accent/70"
+								className="bg-accent/40 hover:bg-accent/70 flex items-center gap-3 rounded-lg px-3 py-2 transition-colors"
 								href={asset.url}
 								key={asset.url}
 								rel="noopener noreferrer"
 								target="_blank"
 							>
 								<Icon
-									className="shrink-0 text-lg text-primary"
+									className="text-primary shrink-0 text-lg"
 									icon={PLATFORM_ICONS[asset.platform]}
 								/>
 								<span className="min-w-0 flex-1">
-									<span className="block truncate font-semibold text-sm">
+									<span className="block truncate text-sm font-semibold">
 										{asset.name}
 									</span>
 									<span
-										className={`block font-mono font-semibold text-muted-foreground text-xs`}
+										className={`text-muted-foreground block font-mono text-xs font-semibold`}
 									>
 										{t(
 											`download.app.platforms.${asset.platform}`
@@ -150,7 +150,7 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 									</span>
 								</span>
 								<span
-									className={`shrink-0 font-medium font-mono text-muted-foreground text-xs`}
+									className={`text-muted-foreground shrink-0 font-mono text-xs font-medium`}
 								>
 									{formatBytes(asset.size)}
 								</span>
@@ -159,7 +159,7 @@ function ReleaseCard({ release }: { release: DownloadRelease }) {
 					</div>
 				</div>
 			) : (
-				<p className="font-semibold text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-semibold">
 					{t('download.app.no_assets')}
 				</p>
 			)}

@@ -148,7 +148,7 @@ export function ArtImagesField({
 						variant="secondary"
 					>
 						<Icon className="size-4" icon="lucide:upload" />
-						<span className="font-semibold text-[13px]">
+						<span className="text-[13px] font-semibold">
 							{t('me.newArt.upload')} ({value.length}/
 							{ART_IMAGES_MAX_COUNT})
 						</span>
@@ -220,14 +220,14 @@ export function ArtImagesField({
 									/>
 								)}
 								{index === 0 && (
-									<span className="absolute top-1.5 left-1.5 rounded-md bg-primary px-1.5 py-0.5 font-semibold text-[11px] text-primary-foreground">
+									<span className="bg-primary text-primary-foreground absolute top-1.5 left-1.5 rounded-md px-1.5 py-0.5 text-[11px] font-semibold">
 										{t('me.newArt.cover')}
 									</span>
 								)}
 								<div className="absolute inset-x-1.5 bottom-1.5 flex justify-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
 									<button
 										aria-label="Move left"
-										className="rounded-md bg-card/90 p-1.5 backdrop-blur transition-colors hover:bg-primary hover:text-primary-foreground disabled:opacity-40"
+										className="bg-card/90 hover:bg-primary hover:text-primary-foreground rounded-md p-1.5 backdrop-blur transition-colors disabled:opacity-40"
 										disabled={index === 0}
 										onClick={() => move(index, -1)}
 										type="button"
@@ -239,7 +239,7 @@ export function ArtImagesField({
 									</button>
 									<button
 										aria-label="Make cover"
-										className="rounded-md bg-card/90 p-1.5 backdrop-blur transition-colors hover:bg-primary hover:text-primary-foreground disabled:opacity-40"
+										className="bg-card/90 hover:bg-primary hover:text-primary-foreground rounded-md p-1.5 backdrop-blur transition-colors disabled:opacity-40"
 										disabled={index === 0}
 										onClick={() => makeCover(index)}
 										type="button"
@@ -251,7 +251,7 @@ export function ArtImagesField({
 									</button>
 									<button
 										aria-label="Move right"
-										className="rounded-md bg-card/90 p-1.5 backdrop-blur transition-colors hover:bg-primary hover:text-primary-foreground disabled:opacity-40"
+										className="bg-card/90 hover:bg-primary hover:text-primary-foreground rounded-md p-1.5 backdrop-blur transition-colors disabled:opacity-40"
 										disabled={index === value.length - 1}
 										onClick={() => move(index, 1)}
 										type="button"
@@ -263,7 +263,7 @@ export function ArtImagesField({
 									</button>
 									<button
 										aria-label="Remove"
-										className="rounded-md bg-card/90 p-1.5 backdrop-blur transition-colors hover:bg-red-500 hover:text-white"
+										className="bg-card/90 rounded-md p-1.5 backdrop-blur transition-colors hover:bg-red-500 hover:text-white"
 										onClick={() => remove(index)}
 										type="button"
 									>

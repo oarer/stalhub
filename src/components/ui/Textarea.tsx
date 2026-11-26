@@ -10,7 +10,7 @@ export function Textarea({ className, ref, ...rest }: TextareaProps) {
 		<textarea
 			{...rest}
 			className={cn(
-				'resize-y rounded-lg border-2 border-primary/50 bg-card px-3 py-2 font-semibold text-sm outline-none transition-colors focus:border-primary',
+				'border-primary/50 bg-card focus:border-primary resize-y rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors outline-none',
 				className
 			)}
 			ref={ref}

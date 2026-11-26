@@ -58,7 +58,7 @@ export default function DonateCalcView() {
 							)}
 						</span>
 						{row.original.amount > 1 && (
-							<span className="font-mono text-foreground text-xs">
+							<span className="text-foreground font-mono text-xs">
 								×{row.original.amount}
 							</span>
 						)}
@@ -117,7 +117,7 @@ export default function DonateCalcView() {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('donateCalc.title')}
 			</h1>

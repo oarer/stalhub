@@ -38,12 +38,12 @@ export default function TOSView({ source }: { source: string }) {
 					/>
 				</div>
 			) : compileError ? (
-				<p className="font-semibold text-red-400 text-sm">
+				<p className="text-sm font-semibold text-red-400">
 					Не удалось загрузить документ
 				</p>
 			) : (
 				<div className="flex items-center justify-center gap-2 py-16">
-					<span className="font-semibold text-foreground text-sm">
+					<span className="text-foreground text-sm font-semibold">
 						Загрузка…
 					</span>
 				</div>

@@ -56,7 +56,7 @@ export default function MobileMeNav() {
 		<>
 			<motion.button
 				aria-label="Open navigation"
-				className="fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-primary/60 bg-card p-2 shadow-lg backdrop-blur-md lg:hidden"
+				className="border-primary/60 bg-card fixed bottom-7 left-1/2 z-99999 flex -translate-x-1/2 cursor-pointer items-center justify-center gap-2 rounded-full border-2 p-2 shadow-lg backdrop-blur-md lg:hidden"
 				onClick={() => setIsOpen(true)}
 				type="button"
 				whileTap={{ scale: 0.9 }}
@@ -81,7 +81,7 @@ export default function MobileMeNav() {
 
 								<motion.aside
 									animate={{ x: 0 }}
-									className="absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 bg-card px-4 py-6 shadow-xl"
+									className="bg-card absolute inset-y-0 left-0 z-10 flex min-w-90 flex-col gap-4 px-4 py-6 shadow-xl"
 									exit={{ x: '-100%' }}
 									initial={{ x: '-100%' }}
 									transition={{
@@ -103,7 +103,7 @@ export default function MobileMeNav() {
 												width={32}
 											/>
 											<h1
-												className={`${unbounded.className} font-semibold text-xl`}
+												className={`${unbounded.className} text-xl font-semibold`}
 											>
 												StalHub
 											</h1>
@@ -126,7 +126,7 @@ export default function MobileMeNav() {
 										user={user}
 									/>
 									<Divider />
-									<div className="mask-y-from-97% mask-y-to-100% min-h-0 flex-1 overflow-y-auto">
+									<div className="min-h-0 flex-1 overflow-y-auto mask-y-from-97% mask-y-to-100%">
 										<NavTabs
 											onTabClick={close}
 											pathname={pathname}

@@ -11,7 +11,7 @@ import { StageHeader } from './StageHeader'
 
 function ColumnHeader({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="border-border-secondary/80 border-b px-3 py-3 text-center text-muted-foreground text-xs">
+		<div className="border-border-secondary/80 text-muted-foreground border-b px-3 py-3 text-center text-xs">
 			{children}
 		</div>
 	)
@@ -25,7 +25,7 @@ function Column({
 	children: React.ReactNode
 }) {
 	return (
-		<div className="min-w-0 border-border-secondary/80 border-t first:border-t-0 lg:border-t-0 lg:border-l lg:first:border-l-0">
+		<div className="border-border-secondary/80 min-w-0 border-t first:border-t-0 lg:border-t-0 lg:border-l lg:first:border-l-0">
 			<ColumnHeader>{header}</ColumnHeader>
 			<div className="space-y-4 p-4">{children}</div>
 		</div>

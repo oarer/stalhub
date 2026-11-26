@@ -34,7 +34,7 @@ export default function ClanCatalogView() {
 	return (
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('clans.title')}
 			</h1>
@@ -54,7 +54,7 @@ export default function ClanCatalogView() {
 						className="size-4"
 						onCheckedChange={(prev) => setOnlyRecruiting(prev)}
 					/>
-					<p className="font-medium text-sm">
+					<p className="text-sm font-medium">
 						{t('clans.recruiting')}
 					</p>
 				</div>
@@ -67,7 +67,7 @@ export default function ClanCatalogView() {
 					))}
 				</div>
 			) : filtered.length === 0 ? (
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('clans.empty')}
 				</p>
 			) : (

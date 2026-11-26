@@ -20,7 +20,7 @@ export default function LandingClan() {
 				<div className="flex flex-col gap-4 lg:self-start">
 					<motion.h2
 						animate={{ y: 0, opacity: 1 }}
-						className={`${mtsWide.className} font-semibold text-[40px] leading-none sm:text-5xl`}
+						className={`${mtsWide.className} text-[40px] leading-none font-semibold sm:text-5xl`}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.3 }}
 					>
@@ -34,7 +34,7 @@ export default function LandingClan() {
 					</motion.h2>
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
-						className={`${mtsExtended.className} font-medium text-foreground text-md`}
+						className={`${mtsExtended.className} text-foreground text-md font-medium`}
 						initial={{ y: shouldReduceMotion ? 0 : 30, opacity: 0 }}
 						transition={{ duration: 0.6, delay: 0.5 }}
 					>
@@ -45,7 +45,7 @@ export default function LandingClan() {
 						namespace="landing.clan"
 					/>
 				</div>
-				<div className="flex w-full flex-col items-center justify-start gap-4 lg:sticky lg:top-24 lg:self-start dark:text-foreground">
+				<div className="dark:text-foreground flex w-full flex-col items-center justify-start gap-4 lg:sticky lg:top-24 lg:self-start">
 					<motion.div
 						animate={{ y: 0, opacity: 1 }}
 						className="w-full"

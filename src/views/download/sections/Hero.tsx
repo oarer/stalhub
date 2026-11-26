@@ -98,7 +98,7 @@ export default function Hero({
 
 			<motion.h1
 				animate={{ y: 0, opacity: 1 }}
-				className={`${mtsExtended.className} font-semibold text-3xl tracking-tight sm:text-4xl md:text-nowrap md:text-6xl lg:text-7xl`}
+				className={`${mtsExtended.className} text-3xl font-semibold tracking-tight sm:text-4xl md:text-6xl md:text-nowrap lg:text-7xl`}
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.35 }}
 			>
@@ -116,7 +116,7 @@ export default function Hero({
 
 			<motion.p
 				animate={{ y: 0, opacity: 1 }}
-				className="max-w-2xl px-4 text-center font-medium text-sm leading-relaxed md:text-xl dark:text-white"
+				className="max-w-2xl px-4 text-center text-sm leading-relaxed font-medium md:text-xl dark:text-white"
 				initial={{ y: 30, opacity: 0 }}
 				transition={{ duration: 0.6, delay: 0.5 }}
 			>
@@ -130,7 +130,7 @@ export default function Hero({
 					transition={{ duration: 0.6, delay: 0.6 }}
 				>
 					<Card.Root className="gap-3">
-						<p className="flex items-center gap-2 font-medium text-destructive">
+						<p className="text-destructive flex items-center gap-2 font-medium">
 							<Icon icon="lucide:triangle-alert" />
 							{t('download.app.error')}
 						</p>
@@ -227,10 +227,10 @@ function WindowsButton({ asset }: { asset: DownloadAsset }) {
 		>
 			<Icon className="text-2xl" icon={PLATFORM_ICONS.windows} />
 			<span className="flex flex-col items-start text-left">
-				<span className="font-semibold text-lg">
+				<span className="text-lg font-semibold">
 					{t('download.app.platforms.windows')}
 				</span>
-				<span className={`font-medium font-mono text-xs opacity-80`}>
+				<span className={`font-mono text-xs font-medium opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>
@@ -254,10 +254,10 @@ function AndroidButton({ asset }: { asset: DownloadAsset }) {
 		>
 			<Icon className="text-2xl" icon={PLATFORM_ICONS.android} />
 			<span className="flex flex-col items-start text-left">
-				<span className="font-semibold text-lg">
+				<span className="text-lg font-semibold">
 					{t('download.app.platforms.android')}
 				</span>
-				<span className={`font-medium font-mono text-xs opacity-80`}>
+				<span className={`font-mono text-xs font-medium opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>
@@ -287,10 +287,10 @@ function LinuxToggleButton({
 		>
 			<Icon className="text-2xl" icon="simple-icons:linux" />
 			<span className="flex flex-col items-start text-left">
-				<span className="font-semibold text-lg">
+				<span className="text-lg font-semibold">
 					{t('download.app.platforms.linux')}
 				</span>
-				<span className="font-medium text-xs opacity-80">
+				<span className="text-xs font-medium opacity-80">
 					{open ? t('download.app.close') : t('download.app.select')}
 				</span>
 			</span>
@@ -316,14 +316,14 @@ function LinuxOption({ asset }: { asset: DownloadAsset }) {
 			target="_blank"
 		>
 			<Icon
-				className="text-2xl text-primary"
+				className="text-primary text-2xl"
 				icon={PLATFORM_ICONS[asset.platform]}
 			/>
 			<span className="flex flex-col items-start text-left">
-				<span className="font-semibold text-lg">
+				<span className="text-lg font-semibold">
 					{t(`download.app.platforms.${asset.platform}`)}
 				</span>
-				<span className={`font-medium font-mono text-xs opacity-80`}>
+				<span className={`font-mono text-xs font-medium opacity-80`}>
 					{formatBytes(asset.size)}
 				</span>
 			</span>

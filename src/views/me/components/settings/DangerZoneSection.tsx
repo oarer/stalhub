@@ -17,13 +17,13 @@ export function DangerZoneSection({
 			icon="lucide:triangle-alert"
 			title={t('me.settings.dangerZone')}
 		>
-			<div className="rounded-lg border-2 border-destructive/20 bg-destructive/10 p-4">
+			<div className="border-destructive/20 bg-destructive/10 rounded-lg border-2 p-4">
 				<div className="flex items-center justify-between">
 					<div className="flex flex-col gap-1">
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{t('me.settings.deleteAccount')}
 						</span>
-						<span className="font-semibold text-destructive text-xs">
+						<span className="text-destructive text-xs font-semibold">
 							{t('me.settings.deleteAccountDesc')}
 						</span>
 					</div>

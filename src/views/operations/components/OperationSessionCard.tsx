@@ -42,7 +42,7 @@ export default function OperationSessionCard({
 					</Badge>
 				</div>
 
-				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-semibold text-muted-foreground text-xs">
+				<div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold">
 					<span className={`flex items-center gap-1 font-mono`}>
 						<Icon className="text-base" icon="lucide:calendar" />
 						{formatDate(session.startTime, 'datetime')}
@@ -67,7 +67,7 @@ export default function OperationSessionCard({
 					<div className="flex flex-wrap gap-1">
 						{session.participants.map((p) => (
 							<span
-								className="rounded-md bg-card px-1.5 py-0.5 font-medium text-foreground text-xs"
+								className="bg-card text-foreground rounded-md px-1.5 py-0.5 text-xs font-medium"
 								key={p.username}
 							>
 								{p.username}

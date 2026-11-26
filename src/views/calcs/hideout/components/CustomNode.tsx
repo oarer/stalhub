@@ -53,12 +53,12 @@ const CustomNode = memo(
 							/>
 						)}
 						<div className="flex flex-col items-start">
-							<h2 className="max-w-32 truncate font-semibold text-lg">
+							<h2 className="max-w-32 truncate text-lg font-semibold">
 								{data.label}
 							</h2>
 							{data.perCraft && data.perCraft > 1 && (
 								<span
-									className={`font-mono font-semibold text-[10px] text-foreground`}
+									className={`text-foreground font-mono text-[10px] font-semibold`}
 								>
 									×{data.perCraft}
 								</span>
@@ -84,7 +84,7 @@ const CustomNode = memo(
 						</div>
 					) : data.quantity && data.quantity > 0 ? (
 						<span
-							className={`font-mono font-semibold text-foreground text-sm`}
+							className={`text-foreground font-mono text-sm font-semibold`}
 						>
 							×{data.quantity}
 						</span>
@@ -99,7 +99,7 @@ const CustomNode = memo(
 					<div className="flex flex-col gap-1">
 						{data.ingredients.map((ing, i) => (
 							<div
-								className="flex items-center justify-between font-semibold text-sm"
+								className="flex items-center justify-between text-sm font-semibold"
 								key={i}
 							>
 								<div className="flex items-center gap-1.5">
@@ -115,7 +115,7 @@ const CustomNode = memo(
 										</div>
 									)}
 
-									<span className="truncate text-text-secondary">
+									<span className="text-text-secondary truncate">
 										{ing.name}
 									</span>
 								</div>
@@ -130,7 +130,7 @@ const CustomNode = memo(
 				)}
 
 				{data.energyPerCraft && (
-					<div className="flex items-center justify-between font-semibold text-sm">
+					<div className="flex items-center justify-between text-sm font-semibold">
 						<p>{t('hideout.energy')}</p>
 						<span className="font-mono">
 							{data.energyPerCraft *
@@ -142,11 +142,11 @@ const CustomNode = memo(
 				)}
 
 				{data.onPriceChange && (
-					<div className="flex items-center justify-between gap-2 font-semibold text-sm">
+					<div className="flex items-center justify-between gap-2 text-sm font-semibold">
 						<p>{t('hideout.cost')}</p>
 						<div className="flex items-center gap-2">
 							<Input
-								className="w-24 bg-card/50 text-sm"
+								className="bg-card/50 w-24 text-sm"
 								min={0}
 								onChange={(e) => {
 									const raw = e.target.value
@@ -187,7 +187,7 @@ const CustomNode = memo(
 					className={cn(
 						'translate-y-0! border-transparent!',
 						data.isRoot
-							? 'translate-y-[2.5px] bg-border!'
+							? 'bg-border! translate-y-[2.5px]'
 							: 'bg-border-secondary!',
 						!data.isExpanded && 'pointer-events-none opacity-0'
 					)}

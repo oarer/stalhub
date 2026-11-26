@@ -81,11 +81,11 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 				header: () => t('clan.grenades.player'),
 				cell: ({ row }) => (
 					<div className="min-w-0 truncate">
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{row.original.name}
 						</span>
 						{row.original.playerBoxGrenades > 0 && (
-							<span className="ml-1 text-muted-foreground text-xs">
+							<span className="text-muted-foreground ml-1 text-xs">
 								({row.original.playerBoxGrenades}{' '}
 								{t('clan.grenades.fromBoxes')})
 							</span>
@@ -98,7 +98,7 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 				id: `stage_${s.stage}`,
 				header: () => t('clan.grenades.stage', { stage: s.stage }),
 				cell: ({ row }: { row: { original: MemberRow } }) => (
-					<span className={`font-mono font-semibold text-sm`}>
+					<span className={`font-mono text-sm font-semibold`}>
 						{row.original.stages[i] ?? 0}
 					</span>
 				),
@@ -110,13 +110,13 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 				cell: ({ row }) => (
 					<div className="flex flex-col gap-1">
 						<span
-							className={`text-right font-mono font-semibold text-sm`}
+							className={`text-right font-mono text-sm font-semibold`}
 						>
 							{row.original.grenades}
 						</span>
-						<div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+						<div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
 							<div
-								className="h-full rounded-full bg-linear-to-r from-muted/50 to-primary"
+								className="from-muted/50 to-primary h-full rounded-full bg-linear-to-r"
 								style={{
 									width: `${
 										maxTotal > 0
@@ -144,9 +144,9 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 	const cols = event.stages.length
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+		<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 			<div
-				className={`flex items-center gap-2 font-mono font-semibold text-lg`}
+				className={`flex items-center gap-2 font-mono text-lg font-semibold`}
 			>
 				<Icon className="text-xl" icon="lucide:bomb" />
 				{t(`clan.stage.${event.event_type}`) || event.event_type} —{' '}
@@ -157,7 +157,7 @@ export function EventCard({ event }: { event: GrenadeStageEvent }) {
 			</div>
 			<BoxesSummary boxes={event.boxes} />
 			{members.length === 0 ? (
-				<p className="py-2 text-muted-foreground text-sm">
+				<p className="text-muted-foreground py-2 text-sm">
 					{t('clan.grenades.noData')}
 				</p>
 			) : (

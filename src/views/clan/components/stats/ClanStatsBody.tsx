@@ -154,18 +154,18 @@ export function ClanStatsBody({
 			</div>
 
 			{mapRows.length > 0 && (
-				<div className="rounded-xl bg-card px-5 py-4">
+				<div className="bg-card rounded-xl px-5 py-4">
 					<MapStatsTable rows={mapRows} />
 				</div>
 			)}
 
 			{players.length === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:bar-chart-3" />
-					<h3 className="font-semibold text-lg">
+					<h3 className="text-lg font-semibold">
 						{t('clan.stats.emptyTitle')}
 					</h3>
-					<p className="font-semibold text-md">
+					<p className="text-md font-semibold">
 						{t('clan.stats.emptyDesc')}
 					</p>
 				</div>

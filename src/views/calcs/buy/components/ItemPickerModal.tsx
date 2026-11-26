@@ -107,7 +107,7 @@ export default function ItemPickerModal({
 					/>
 
 					{loading && !items ? (
-						<div className="flex h-24 items-center justify-center gap-2 font-semibold text-foreground">
+						<div className="text-foreground flex h-24 items-center justify-center gap-2 font-semibold">
 							<Skeleton className="size-5" />
 							<p>{t('buy.loading')}</p>
 						</div>
@@ -115,7 +115,7 @@ export default function ItemPickerModal({
 						<AnimatePresence>
 							<motion.p
 								animate={{ opacity: 1, y: 0 }}
-								className="py-6 text-center font-semibold text-foreground"
+								className="text-foreground py-6 text-center font-semibold"
 								exit={{ opacity: 0 }}
 								initial={{ opacity: 0, y: 8 }}
 								transition={{ duration: 0.18 }}
@@ -124,12 +124,12 @@ export default function ItemPickerModal({
 							</motion.p>
 						</AnimatePresence>
 					) : displayed.length === 0 ? (
-						<p className="py-6 text-center font-semibold text-foreground">
+						<p className="text-foreground py-6 text-center font-semibold">
 							{t('buy.searchHint')}
 						</p>
 					) : (
 						<ul
-							className="mask-y-from-95% mask-y-to-100% flex max-h-110 flex-col gap-2 overflow-y-auto p-0.5"
+							className="flex max-h-110 flex-col gap-2 overflow-y-auto mask-y-from-95% mask-y-to-100% p-0.5"
 							onScroll={onScroll}
 						>
 							{displayed.map((item) => {
@@ -146,7 +146,7 @@ export default function ItemPickerModal({
 										transition={{ duration: 0.15 }}
 									>
 										<button
-											className="flex w-full cursor-pointer items-center gap-4 rounded-lg border-2 border-muted bg-card px-3 py-2 text-left transition-all duration-200 hover:border-primary/50 hover:brightness-125 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+											className="border-muted bg-card hover:border-primary/50 flex w-full cursor-pointer items-center gap-4 rounded-lg border-2 px-3 py-2 text-left transition-all duration-200 hover:brightness-125 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
 											disabled={isAdded}
 											onClick={() => onAdd(item)}
 											type="button"
@@ -160,7 +160,7 @@ export default function ItemPickerModal({
 												width={32}
 											/>
 											<p
-												className="truncate font-semibold text-sm"
+												className="truncate text-sm font-semibold"
 												style={{
 													color: infoColorMap[
 														item.color
@@ -171,7 +171,7 @@ export default function ItemPickerModal({
 											</p>
 											{isAdded && (
 												<Icon
-													className="ml-auto shrink-0 text-lg text-primary"
+													className="text-primary ml-auto shrink-0 text-lg"
 													icon="lucide:check"
 												/>
 											)}

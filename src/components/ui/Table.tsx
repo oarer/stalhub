@@ -93,7 +93,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<'tfoot'>) {
 	return (
 		<tfoot
 			className={cn(
-				'border-primary/20 border-t bg-card/50 font-medium [&>tr]:last:border-b-0',
+				'border-primary/20 bg-card/50 border-t font-medium [&>tr]:last:border-b-0',
 				className
 			)}
 			data-slot="table-footer"
@@ -106,7 +106,7 @@ function TableRow({ className, ...props }: React.ComponentProps<'tr'>) {
 	return (
 		<tr
 			className={cn(
-				'border-primary/20 border-b transition-colors hover:bg-card/50 data-[state=selected]:bg-card',
+				'border-primary/20 hover:bg-card/50 data-[state=selected]:bg-card border-b transition-colors',
 				className
 			)}
 			data-slot="table-row"
@@ -119,7 +119,7 @@ function TableHead({ className, ...props }: React.ComponentProps<'th'>) {
 	return (
 		<th
 			className={cn(
-				'h-10 whitespace-nowrap border-primary/20 border-r px-2 text-left align-middle font-medium text-[13px] last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'border-primary/20 h-10 border-r px-2 text-left align-middle text-[13px] font-medium whitespace-nowrap last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-head"
@@ -132,7 +132,7 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
 	return (
 		<td
 			className={cn(
-				'whitespace-nowrap border-primary/20 border-r p-2 last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
+				'border-primary/20 border-r p-2 whitespace-nowrap last:border-r-0 has-[[role=checkbox]]:pr-0 *:[[role=checkbox]]:translate-y-0.5',
 				className
 			)}
 			data-slot="table-cell"
@@ -170,7 +170,7 @@ function SortableHeader<TData extends RowData>({
 	return (
 		<th
 			className={cn(
-				'cursor-pointer select-none border-primary/20 border-r p-2 transition-colors duration-500 last:border-r-0 hover:bg-accent',
+				'border-primary/20 hover:bg-accent cursor-pointer border-r p-2 transition-colors duration-500 select-none last:border-r-0',
 				className
 			)}
 			onClick={column.getToggleSortingHandler()}

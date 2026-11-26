@@ -82,11 +82,11 @@ function OperationsContent() {
 		<section className="mx-auto flex max-w-4xl flex-col gap-4 px-4 pt-32 pb-12 lg:pt-36">
 			<div className="text-center">
 				<h1
-					className={`${mtsExtended.className} mb-2 font-semibold text-3xl text-primary tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} text-primary mb-2 text-3xl font-semibold tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('operations.title')}
 				</h1>
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('operations.description')}
 				</p>
 			</div>
@@ -99,7 +99,7 @@ function OperationsContent() {
 					value={regionInput}
 				/>
 				<Input
-					className="h-full border-primary/40 py-1"
+					className="border-primary/40 h-full py-1"
 					id="operations-nickname-input"
 					label="operations.nickname"
 					onChange={(e) => setCharacterInput(e.target.value)}
@@ -119,7 +119,7 @@ function OperationsContent() {
 			</Button>
 
 			{!isSearch && (
-				<p className="text-center font-semibold text-foreground text-sm">
+				<p className="text-foreground text-center text-sm font-semibold">
 					{t('operations.prompt')}
 				</p>
 			)}
@@ -128,11 +128,11 @@ function OperationsContent() {
 				<div className="flex flex-col gap-4">
 					<div className="flex items-center gap-2">
 						<Icon className="text-2xl" icon="lucide:siren" />
-						<h2 className="font-medium text-xl">
+						<h2 className="text-xl font-medium">
 							{t('player.operations.title')}
 						</h2>
 						{total > 0 && (
-							<span className="rounded-full bg-accent px-2 py-0.5 font-medium font-mono text-xs">
+							<span className="bg-accent rounded-full px-2 py-0.5 font-mono text-xs font-medium">
 								{total}
 							</span>
 						)}
@@ -148,7 +148,7 @@ function OperationsContent() {
 					{!isLoading && isError && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-medium text-foreground">
+								<p className="text-foreground font-medium">
 									{t('player.operations.error')}
 								</p>
 							</Card.Content>
@@ -158,7 +158,7 @@ function OperationsContent() {
 					{!isLoading && !isError && sessions.length === 0 && (
 						<Card.Root>
 							<Card.Content>
-								<p className="font-medium text-foreground">
+								<p className="text-foreground font-medium">
 									{t('player.operations.empty')}
 								</p>
 							</Card.Content>

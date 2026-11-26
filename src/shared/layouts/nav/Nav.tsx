@@ -78,10 +78,10 @@ export default function Nav() {
 				paddingTop: isScrolled ? '1rem' : '2rem',
 				paddingBottom: isScrolled ? '1rem' : '2rem',
 			}}
-			className={`fixed top-0 z-90 w-full items-center text-foreground backdrop-blur-sm transition-colors duration-500 ${
+			className={`text-foreground fixed top-0 z-90 w-full items-center backdrop-blur-sm transition-colors duration-500 ${
 				isScrolled
-					? 'outline-2 outline-primary/40'
-					: 'outline-2 outline-primary/2'
+					? 'outline-primary/40 outline-2'
+					: 'outline-primary/2 outline-2'
 			}`}
 			initial={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
 			transition={{ duration: 0.7 }}
@@ -103,7 +103,7 @@ export default function Nav() {
 								width={28}
 							/>
 							<p
-								className={`${mtsWide.className} hidden font-medium text-xl lg:block`}
+								className={`${mtsWide.className} hidden text-xl font-medium lg:block`}
 							>
 								Stalhub
 							</p>
@@ -129,7 +129,7 @@ export default function Nav() {
 							/>
 						))}
 						<Link
-							className="hidden cursor-pointer items-center gap-2 rounded-lg p-1 transition-colors hover:bg-primary/40 lg:flex"
+							className="hover:bg-primary/40 hidden cursor-pointer items-center gap-2 rounded-lg p-1 transition-colors lg:flex"
 							href={szReport.href}
 							rel="noopener noreferrer"
 							target="_blank"
@@ -141,7 +141,7 @@ export default function Nav() {
 								src={szReport.image}
 								width={32}
 							/>
-							<span className="hidden text-primary xl:block">
+							<span className="text-primary hidden xl:block">
 								{t(szReport.titleKey)}
 							</span>
 						</Link>

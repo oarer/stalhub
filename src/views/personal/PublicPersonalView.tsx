@@ -80,7 +80,7 @@ export function PublicPersonalView({ username }: { username: string }) {
 		<div className="mx-auto flex max-w-4xl flex-col gap-4 px-2 pt-28 pb-12 xl:pt-36">
 			<Card.Root className="flex flex-col gap-2 p-5">
 				<div className="flex items-center gap-3">
-					<div className="rounded-lg bg-card p-1">
+					<div className="bg-card rounded-lg p-1">
 						{alliance ? (
 							<Image
 								alt={alliance}
@@ -93,7 +93,7 @@ export function PublicPersonalView({ username }: { username: string }) {
 						)}
 					</div>
 					<div>
-						<h1 className="font-semibold text-xl">
+						<h1 className="text-xl font-semibold">
 							{data.profile.character_name}
 						</h1>
 						<p className="text-muted-foreground text-sm">
@@ -112,7 +112,7 @@ export function PublicPersonalView({ username }: { username: string }) {
 						<p className="text-muted-foreground text-xs">
 							{statLabel(id)}
 						</p>
-						<p className="truncate font-semibold text-lg">
+						<p className="truncate text-lg font-semibold">
 							{formatStatValue(
 								id,
 								lastValues.get(id) ?? 0,

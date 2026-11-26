@@ -20,7 +20,7 @@ export default function Map3DHeader({
 	onReset: () => void
 }) {
 	return (
-		<header className="flex min-h-15 w-full items-center gap-2 border-border-secondary border-b px-6 py-3 max-[760px]:gap-1 max-[760px]:px-3 max-[760px]:py-2.5">
+		<header className="border-border-secondary flex min-h-15 w-full items-center gap-2 border-b px-6 py-3 max-[760px]:gap-1 max-[760px]:px-3 max-[760px]:py-2.5">
 			<Link className={`${classNames.tab} ${classNames.focus}`} href="/map">
 				<Icon icon="lucide:map" />
 				2D-карта

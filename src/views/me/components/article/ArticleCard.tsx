@@ -32,7 +32,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
 	return (
 		<Link
-			className="group/card flex flex-col gap-2 rounded-lg bg-card p-3.5 transition-all hover:bg-muted hover:shadow-sm"
+			className="group/card bg-card hover:bg-muted flex flex-col gap-2 rounded-lg p-3.5 transition-all hover:shadow-sm"
 			href={
 				isOwn
 					? `/me/articles/${article.id}/edit`
@@ -40,7 +40,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 			}
 		>
 			<div className="flex items-center gap-2">
-				<h3 className="truncate font-semibold text-sm">
+				<h3 className="truncate text-sm font-semibold">
 					{article.title}
 				</h3>
 				{isOwn && (
@@ -50,7 +50,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 				)}
 			</div>
 
-			<div className="flex items-center gap-2 text-foreground text-xs">
+			<div className="text-foreground flex items-center gap-2 text-xs">
 				{article.stars_count > 0 && (
 					<div className="flex items-center gap-2">
 						<Icon icon="lucide:star" />
@@ -71,14 +71,14 @@ export function ArticleCard({ article }: ArticleCardProps) {
 				<div className="flex flex-wrap gap-1">
 					{tags.slice(0, MAX_VISIBLE_TAGS).map((tag) => (
 						<span
-							className="rounded-md bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
+							className="bg-border-secondary text-foreground rounded-md px-1.5 py-0.5 text-xs font-semibold"
 							key={tag}
 						>
 							{tag}
 						</span>
 					))}
 					{tags.length > MAX_VISIBLE_TAGS && (
-						<span className="font-semibold text-foreground text-xs">
+						<span className="text-foreground text-xs font-semibold">
 							+{tags.length - MAX_VISIBLE_TAGS}
 						</span>
 					)}

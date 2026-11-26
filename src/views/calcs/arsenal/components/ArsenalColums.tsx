@@ -63,11 +63,11 @@ export function getArsenalColumns(
 			header: t('arsenal.table.drop.title'),
 			cell: ({ getValue }) =>
 				!getValue<boolean>() ? (
-					<span className="text-green-400 text-xs">
+					<span className="text-xs text-green-400">
 						{t('arsenal.table.drop.false')}
 					</span>
 				) : (
-					<span className="text-red-400 text-xs">
+					<span className="text-xs text-red-400">
 						{t('arsenal.table.drop.true')}
 					</span>
 				),
@@ -85,7 +85,7 @@ export function getArsenalColumns(
 			accessorKey: 'weight',
 			header: t('arsenal.table.weight'),
 			cell: ({ getValue }) => (
-				<span className="font-mono text-foreground">
+				<span className="text-foreground font-mono">
 					{getValue<number>().toLocaleString()}
 				</span>
 			),
@@ -136,7 +136,7 @@ export function getArsenalColumns(
 						<span className="font-mono text-blue-400">
 							×{row.original.limit}
 						</span>
-						<span className="text-amber-400 text-xs">
+						<span className="text-xs text-amber-400">
 							{t('arsenal.table.maxPerDay')} ·{' '}
 							{getDaysLabel(row.original.days, t)}
 						</span>
@@ -151,7 +151,7 @@ export function getArsenalColumns(
 			cell: ({ getValue }) => {
 				const total = getValue<number>()
 				return (
-					<span className="font-mono text-foreground">
+					<span className="text-foreground font-mono">
 						{total > 0 ? total.toLocaleString() : '-'}
 					</span>
 				)

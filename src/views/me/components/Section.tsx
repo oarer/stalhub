@@ -18,14 +18,14 @@ export function Section({
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-2 rounded-xl bg-card px-5 py-4',
+				'bg-card flex flex-col gap-2 rounded-xl px-5 py-4',
 				className
 			)}
 		>
 			{title && (
 				<div
 					className={cn(
-						`${mtsWide.className} flex items-center gap-2 font-medium text-[15px]`,
+						`${mtsWide.className} flex items-center gap-2 text-[15px] font-medium`,
 						danger && 'text-destructive'
 					)}
 				>

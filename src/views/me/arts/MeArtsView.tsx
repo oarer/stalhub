@@ -45,7 +45,7 @@ export default function MeArtsView() {
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-3">
-					<h1 className="font-semibold text-xl">
+					<h1 className="text-xl font-semibold">
 						{t('me.arts.title')}
 					</h1>
 					{arts?.total_count != null && (
@@ -55,7 +55,7 @@ export default function MeArtsView() {
 					)}
 				</div>
 				<Link
-					className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-all hover:brightness-120"
+					className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-all hover:brightness-120"
 					href="/me/arts/new"
 				>
 					<Icon className="size-4" icon="lucide:plus" />
@@ -94,10 +94,10 @@ export default function MeArtsView() {
 			{!filteredArts || filteredArts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:palette"
 					/>
-					<p className="font-semibold text-foreground text-sm">
+					<p className="text-foreground text-sm font-semibold">
 						{t('me.arts.noArts')}
 					</p>
 					<CLink
@@ -115,7 +115,7 @@ export default function MeArtsView() {
 				<div className="grid grid-cols-1 gap-2">
 					{filteredArts.map((art) => (
 						<div
-							className="flex items-center gap-3 rounded-lg bg-card px-3 py-2 ring-2 ring-primary/30"
+							className="bg-card ring-primary/30 flex items-center gap-3 rounded-lg px-3 py-2 ring-2"
 							key={art.id}
 						>
 							{(getArtImages(art)[0] ?? art.image_url) ? (
@@ -138,7 +138,7 @@ export default function MeArtsView() {
 										width={56}
 									/>
 									{getArtImages(art).length > 1 && (
-										<span className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 rounded-md bg-primary px-1 py-px font-mono font-semibold text-[10px] text-primary-foreground">
+										<span className="bg-primary text-primary-foreground absolute -top-1.5 -right-1.5 flex items-center gap-0.5 rounded-md px-1 py-px font-mono text-[10px] font-semibold">
 											<Icon
 												className="size-3"
 												icon="lucide:images"
@@ -148,9 +148,9 @@ export default function MeArtsView() {
 									)}
 								</div>
 							) : (
-								<div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-border-secondary">
+								<div className="bg-border-secondary flex h-14 w-14 shrink-0 items-center justify-center rounded-md">
 									<Icon
-										className="size-5 text-foreground"
+										className="text-foreground size-5"
 										icon="lucide:image-off"
 									/>
 								</div>
@@ -166,7 +166,7 @@ export default function MeArtsView() {
 									)}
 								</div>
 								<span
-									className={`font-mono font-semibold text-foreground text-xs`}
+									className={`text-foreground font-mono text-xs font-semibold`}
 								>
 									{formatDate(art.created_at, 'date')}
 								</span>
@@ -174,7 +174,7 @@ export default function MeArtsView() {
 									<div className="flex flex-wrap gap-1">
 										{art.tags.map((tag) => (
 											<span
-												className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
+												className="bg-border-secondary text-foreground rounded px-1.5 py-0.5 text-xs font-semibold"
 												key={tag}
 											>
 												{tag}

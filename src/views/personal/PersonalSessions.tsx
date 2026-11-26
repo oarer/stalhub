@@ -58,7 +58,7 @@ export function PersonalSessions({ region }: { region: string }) {
 					</h3>
 					{isFetching && (
 						<Icon
-							className="animate-spin text-base text-foreground"
+							className="text-foreground animate-spin text-base"
 							icon="lucide:loader-circle"
 						/>
 					)}
@@ -113,19 +113,19 @@ export function PersonalSessions({ region }: { region: string }) {
 			</div>
 
 			{!sessions || sessions.length === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-6">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl px-5 py-6">
 					<Icon className="text-4xl" icon="lucide:swords" />
-					<h3 className="font-semibold text-lg">
+					<h3 className="text-lg font-semibold">
 						{t('personal.noSessions')}
 					</h3>
-					<p className="font-semibold text-md">
+					<p className="text-md font-semibold">
 						{t('personal.noSessionsHint')}
 					</p>
 				</div>
 			) : filtered.length === 0 ? (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-6">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl px-5 py-6">
 					<Icon className="text-4xl" icon="lucide:filter-x" />
-					<h3 className="font-semibold text-lg">
+					<h3 className="text-lg font-semibold">
 						{t('personal.noSessions')}
 					</h3>
 				</div>

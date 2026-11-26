@@ -47,7 +47,7 @@ export default function BansAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('admin.bans.title')}
 			</h1>
@@ -63,10 +63,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.total_warnings}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.bans.stats.warnings')}
 								</p>
 							</div>
@@ -81,10 +81,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.total_bans}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.bans.stats.bans')}
 								</p>
 							</div>
@@ -99,10 +99,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.auto_banned_users}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.bans.stats.autoBanned')}
 								</p>
 							</div>
@@ -117,10 +117,10 @@ export default function BansAdminView() {
 								/>
 							</div>
 							<div>
-								<p className="font-medium font-mono text-2xl">
+								<p className="font-mono text-2xl font-medium">
 									{stats.auto_warned_users}
 								</p>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('admin.bans.stats.autoWarned')}
 								</p>
 							</div>
@@ -141,7 +141,7 @@ export default function BansAdminView() {
 						<div className="flex flex-wrap gap-3">
 							{stats.by_rule.map((entry) => (
 								<div
-									className="flex items-center gap-2 rounded-lg border border-border bg-card/50 px-3 py-2"
+									className="border-border bg-card/50 flex items-center gap-2 rounded-lg border px-3 py-2"
 									key={`${entry.rule}-${entry.severity}`}
 								>
 									<Badge
@@ -156,7 +156,7 @@ export default function BansAdminView() {
 									<span className="text-sm">
 										{entry.rule}
 									</span>
-									<span className="font-medium font-mono text-foreground text-sm">
+									<span className="text-foreground font-mono text-sm font-medium">
 										{entry._count._all}
 									</span>
 								</div>
@@ -182,7 +182,7 @@ export default function BansAdminView() {
 						<Button
 							className={
 								auto === opt
-									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									? 'bg-sky-500/10 text-xs text-sky-400 ring-sky-500'
 									: 'text-xs'
 							}
 							key={opt}
@@ -206,7 +206,7 @@ export default function BansAdminView() {
 						<Button
 							className={
 								rule === (r?.value ?? '')
-									? 'bg-sky-500/10 text-sky-400 text-xs ring-sky-500'
+									? 'bg-sky-500/10 text-xs text-sky-400 ring-sky-500'
 									: 'text-xs'
 							}
 							key={r?.value ?? 'all'}
@@ -253,17 +253,17 @@ export default function BansAdminView() {
 							{data?.data.map((ban) => (
 								<Table.Row key={ban.id}>
 									<Table.Cell>
-										<span className="font-mono text-neutral-400 text-xs">
+										<span className="font-mono text-xs text-neutral-400">
 											{ban.id}
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="font-medium text-sm">
+										<span className="text-sm font-medium">
 											{ban.user?.username ??
 												`#${ban.user_id}`}
 										</span>
 										{ban.user?.name && (
-											<span className="ml-1 text-foreground text-xs">
+											<span className="text-foreground ml-1 text-xs">
 												({ban.user.name})
 											</span>
 										)}
@@ -298,12 +298,12 @@ export default function BansAdminView() {
 										</Badge>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="max-w-48 truncate text-neutral-400 text-xs">
+										<span className="max-w-48 truncate text-xs text-neutral-400">
 											{ban.reason || '—'}
 										</span>
 									</Table.Cell>
 									<Table.Cell>
-										<span className="text-neutral-400 text-xs">
+										<span className="text-xs text-neutral-400">
 											{new Date(
 												ban.created_at
 											).toLocaleDateString()}

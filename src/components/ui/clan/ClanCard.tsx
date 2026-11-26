@@ -108,11 +108,11 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			)}
 		>
 			<div className="flex items-center justify-between gap-2">
-				<p className={`truncate font-medium font-mono text-md`}>
+				<p className={`text-md truncate font-mono font-medium`}>
 					[{clan.tag}] {clan.name}
 				</p>
 				{clan.recruiting && (
-					<Badge className="shrink-0 bg-success/15 text-success">
+					<Badge className="bg-success/15 text-success shrink-0">
 						{t('clans.recruiting')}
 					</Badge>
 				)}
@@ -122,14 +122,14 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 				{infoFields.map((field) => (
 					<div className="flex items-center gap-1.5" key={field.key}>
 						<Icon
-							className="size-4 shrink-0 text-foreground"
+							className="text-foreground size-4 shrink-0"
 							icon={field.icon}
 						/>
-						<span className="font-medium text-[13px] text-foreground">
+						<span className="text-foreground text-[13px] font-medium">
 							{t(field.label)}:
 						</span>
 						<span
-							className={`truncate font-medium font-mono text-[13px]`}
+							className={`truncate font-mono text-[13px] font-medium`}
 						>
 							{field.value}
 						</span>
@@ -138,21 +138,21 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 			</div>
 
 			{recruitmentFields.length > 0 && (
-				<div className="flex flex-col gap-2 border-border-secondary border-t pt-3 text-sm">
+				<div className="border-border-secondary flex flex-col gap-2 border-t pt-3 text-sm">
 					{recruitmentFields.map((field) => (
 						<div
 							className="flex items-center gap-1.5"
 							key={field.key}
 						>
 							<Icon
-								className="size-4 shrink-0 text-foreground"
+								className="text-foreground size-4 shrink-0"
 								icon={field.icon}
 							/>
-							<span className="font-medium text-[13px] text-foreground">
+							<span className="text-foreground text-[13px] font-medium">
 								{t(field.label)}:
 							</span>
 							<span
-								className={`truncate font-medium font-mono text-[13px]`}
+								className={`truncate font-mono text-[13px] font-medium`}
 							>
 								{field.value}
 							</span>
@@ -165,14 +165,14 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 				<>
 					<div className="flex items-center gap-1.5 text-sm">
 						<Icon
-							className="size-4 shrink-0 text-foreground"
+							className="text-foreground size-4 shrink-0"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-medium text-[13px] text-foreground">
+						<span className="text-foreground text-[13px] font-medium">
 							{t('clans.schedule')}
 						</span>
 						<span
-							className={`truncate font-medium font-mono text-[13px]`}
+							className={`truncate font-mono text-[13px] font-medium`}
 						>
 							{TOURNAMENT_DAYS + clan.schedule.brawls_per_week} /
 							7
@@ -180,14 +180,14 @@ export default function ClanCard({ clan, className }: ClanCardProps) {
 					</div>
 					<div className="flex items-center gap-1.5 text-sm">
 						<Icon
-							className="size-4 shrink-0 text-foreground"
+							className="text-foreground size-4 shrink-0"
 							icon="lucide:calendar-days"
 						/>
-						<span className="font-medium text-[13px] text-foreground">
+						<span className="text-foreground text-[13px] font-medium">
 							{t('clans.brawls')}
 						</span>
 						<span
-							className={`truncate font-medium font-mono text-[13px]`}
+							className={`truncate font-mono text-[13px] font-medium`}
 						>
 							{clan.schedule.brawls_mandatory
 								? t('clans.brawls_mandatory')

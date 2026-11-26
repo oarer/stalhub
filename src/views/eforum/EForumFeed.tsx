@@ -45,7 +45,7 @@ export default function EForumFeed() {
 		<section className="mx-auto max-w-380 space-y-6 px-4 pt-32 pb-12 sm:px-6">
 			<div className="flex flex-wrap items-center gap-3">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('devTracker.title')}
 				</h1>
@@ -74,7 +74,7 @@ export default function EForumFeed() {
 				/>
 				{data?.updatedAt && (
 					<span
-						className={`font-medium font-mono text-muted-foreground text-xs`}
+						className={`text-muted-foreground font-mono text-xs font-medium`}
 					>
 						{t('devTracker.updated')}: {formatDate(data.updatedAt)}
 					</span>
@@ -88,7 +88,7 @@ export default function EForumFeed() {
 					))}
 				</div>
 			) : items.length === 0 ? (
-				<p className="rounded-xl bg-card px-5 py-8 text-center font-medium text-muted-foreground text-sm">
+				<p className="bg-card text-muted-foreground rounded-xl px-5 py-8 text-center text-sm font-medium">
 					{t('devTracker.empty')}
 				</p>
 			) : (

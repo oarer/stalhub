@@ -16,7 +16,7 @@ export function UnoRank({
 	return (
 		<span
 			className={cn(
-				'py-3 font-semibold text-lg leading-0',
+				'py-3 text-lg leading-0 font-semibold',
 				unoRankColor(rank),
 				className,
 				mtsExtended.className

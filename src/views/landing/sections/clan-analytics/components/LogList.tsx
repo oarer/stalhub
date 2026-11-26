@@ -54,7 +54,7 @@ export function LogList({
 	reducedMotion: boolean
 }) {
 	return (
-		<div className="overflow-hidden rounded-xl border border-muted bg-card">
+		<div className="border-muted bg-card overflow-hidden rounded-xl border">
 			<AnimatePresence initial={false} mode="popLayout">
 				{entries.map((entry, i) => {
 					const processing = i === 0 && entry.status === 'processing'

@@ -44,10 +44,10 @@ export function MetricCard({
 					<Icon className="size-5" icon={icon} />
 				</div>
 				<div className="min-w-0">
-					<p className="truncate text-muted-foreground text-xs">
+					<p className="text-muted-foreground truncate text-xs">
 						{label}
 					</p>
-					<p className="font-medium font-mono text-2xl leading-8">
+					<p className="font-mono text-2xl leading-8 font-medium">
 						{value}
 					</p>
 				</div>
@@ -91,7 +91,7 @@ export function StatCard({
 						className="flex items-baseline justify-between gap-2 text-sm"
 						key={row.label?.toString()}
 					>
-						<span className="truncate text-muted-foreground">
+						<span className="text-muted-foreground truncate">
 							{row.label}
 						</span>
 						<span

@@ -6,24 +6,24 @@ export function QuotedPost({ repost }: { repost: PostRepostOf }) {
 	const images = repost.image_urls ?? []
 	return (
 		<Link
-			className="flex flex-col gap-1.5 rounded-lg border border-primary/20 bg-muted/30 p-3 transition-colors hover:border-primary/40"
+			className="border-primary/20 bg-muted/30 hover:border-primary/40 flex flex-col gap-1.5 rounded-lg border p-3 transition-colors"
 			href={`/posts/${repost.external_id}`}
 		>
-			<span className="flex items-center gap-1.5 font-medium text-primary text-xs">
+			<span className="text-primary flex items-center gap-1.5 text-xs font-medium">
 				{repost.author?.username ?? repost.author_name}
 				<time
-					className="font-mono text-[11px] text-foreground"
+					className="text-foreground font-mono text-[11px]"
 					dateTime={repost.created_at}
 				>
 					{new Date(repost.created_at).toLocaleDateString()}
 				</time>
 			</span>
 			{repost.title && (
-				<span className="font-semibold text-primary text-sm">
+				<span className="text-primary text-sm font-semibold">
 					{repost.title}
 				</span>
 			)}
-			<span className="line-clamp-4 whitespace-pre-wrap text-foreground text-sm">
+			<span className="text-foreground line-clamp-4 text-sm whitespace-pre-wrap">
 				{repost.content}
 			</span>
 			{images.length > 0 && (

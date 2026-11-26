@@ -72,14 +72,14 @@ export default function ClanLayout({
 	if (error || !profile) {
 		return (
 			<div className="flex flex-col gap-4">
-				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+				<div className="bg-card flex flex-col items-center gap-4 rounded-xl p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:users" />
 					<h1
-						className={`${mtsExtended.className} font-semibold text-xl`}
+						className={`${mtsExtended.className} text-xl font-semibold`}
 					>
 						{t('clan.layout.notLinked.title')}
 					</h1>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('clan.layout.notLinked.desc')}
 					</p>
 					<Button
@@ -97,14 +97,14 @@ export default function ClanLayout({
 	if (!profile.clan) {
 		return (
 			<div className="flex flex-col gap-4">
-				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+				<div className="bg-card flex flex-col items-center gap-4 rounded-xl p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:users" />
 					<h1
-						className={`${mtsExtended.className} font-semibold text-xl`}
+						className={`${mtsExtended.className} text-xl font-semibold`}
 					>
 						{t('clan.layout.notFound.title')}
 					</h1>
-					<p className="whitespace-pre-line font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium whitespace-pre-line">
 						{t('clan.layout.notFound.desc')}
 					</p>
 				</div>
@@ -121,25 +121,25 @@ export default function ClanLayout({
 					profile={profile}
 					switchMutation={switchMutation}
 				/>
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card p-8 text-center">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl p-8 text-center">
 					<Icon
-						className="text-4xl text-destructive"
+						className="text-destructive text-4xl"
 						icon="lucide:shield-ban"
 					/>
 
 					<h1
-						className={`${mtsExtended.className} font-semibold text-destructive text-xl`}
+						className={`${mtsExtended.className} text-destructive text-xl font-semibold`}
 					>
 						{t('clan.layout.blocked.title')}
 					</h1>
 
-					<p className="whitespace-pre font-medium text-sm">
+					<p className="text-sm font-medium whitespace-pre">
 						{t('clan.layout.blocked.desc')}
 					</p>
 
 					{profile.clan.block_reason && (
 						<p
-							className={`${mtsWide.className} font-medium text-[13px] uppercase tracking-widest`}
+							className={`${mtsWide.className} text-[13px] font-medium tracking-widest uppercase`}
 						>
 							{t('clan.layout.blocked.reason')}:{' '}
 							{profile.clan.block_reason}
@@ -166,10 +166,10 @@ export default function ClanLayout({
 						profile={profile}
 						switchMutation={switchMutation}
 					/>
-					<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+					<div className="bg-card flex flex-col items-center gap-4 rounded-xl p-8 text-center">
 						<Icon className="text-4xl" icon="lucide:snowflake" />
 						<h1
-							className={`${mtsExtended.className} font-semibold text-xl`}
+							className={`${mtsExtended.className} text-xl font-semibold`}
 						>
 							{t.rich('clan.layout.frozen.titleMember', {
 								name: profile.clan.name,
@@ -181,7 +181,7 @@ export default function ClanLayout({
 								tag: profile.clan.tag,
 							})}
 						</h1>
-						<p className="whitespace-pre-line font-medium text-foreground text-sm">
+						<p className="text-foreground text-sm font-medium whitespace-pre-line">
 							{t('clan.layout.frozen.descMember')}
 						</p>
 					</div>
@@ -197,10 +197,10 @@ export default function ClanLayout({
 					profile={profile}
 					switchMutation={switchMutation}
 				/>
-				<div className="flex flex-col items-center gap-4 rounded-xl bg-card p-8 text-center">
+				<div className="bg-card flex flex-col items-center gap-4 rounded-xl p-8 text-center">
 					<Icon className="text-4xl" icon="lucide:crown" />
 					<h1
-						className={`${mtsExtended.className} font-semibold text-xl`}
+						className={`${mtsExtended.className} text-xl font-semibold`}
 					>
 						{t.rich('clan.layout.frozen.title', {
 							name: profile.clan.name,
@@ -210,7 +210,7 @@ export default function ClanLayout({
 							tag: profile.clan.tag,
 						})}
 					</h1>
-					<p className="whitespace-pre-line font-medium text-sm">
+					<p className="text-sm font-medium whitespace-pre-line">
 						{t('clan.layout.frozen.desc')}
 					</p>
 					<Button
@@ -264,7 +264,7 @@ function ClanSelector({
 							}
 						}}
 					>
-						<span className="font-medium text-sm">
+						<span className="text-sm font-medium">
 							[{c.clan.tag}] {c.clan.name}
 						</span>
 						{c.clan_id === profile.clan_id && (

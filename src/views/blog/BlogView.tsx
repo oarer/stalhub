@@ -26,11 +26,11 @@ export default function BlogView() {
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div className="flex flex-col gap-2">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('blog.title')}
 				</h1>
-				<p className="font-medium text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-medium">
 					{t('blog.subtitle', { count: data?.total_count ?? 0 })}
 				</p>
 			</div>
@@ -38,10 +38,10 @@ export default function BlogView() {
 			{articles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:scroll-text"
 					/>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('blog.empty')}
 					</p>
 				</div>
@@ -53,7 +53,7 @@ export default function BlogView() {
 							href={`/blog/${article.id}`}
 							key={article.id}
 						>
-							<div className="overflow-hidden rounded-lg border-2 border-primary/50 transition-colors group-hover:border-primary">
+							<div className="border-primary/50 group-hover:border-primary overflow-hidden rounded-lg border-2 transition-colors">
 								{article.image_url ? (
 									<div className="relative aspect-1200/630 w-full">
 										<Image
@@ -85,15 +85,15 @@ export default function BlogView() {
 
 							<div className="flex flex-col gap-2 px-1">
 								<div className="flex items-center gap-2">
-									<span className="rounded-md bg-primary/15 px-1.5 py-0.5 font-mono font-semibold text-[11px] text-primary uppercase">
+									<span className="bg-primary/15 text-primary rounded-md px-1.5 py-0.5 font-mono text-[11px] font-semibold uppercase">
 										stalhub
 									</span>
-									<h2 className="font-medium text-lg transition-colors group-hover:text-primary">
+									<h2 className="group-hover:text-primary text-lg font-medium transition-colors">
 										{article.title}
 									</h2>
 								</div>
 
-								<div className="flex items-center gap-3 font-medium text-foreground text-xs">
+								<div className="text-foreground flex items-center gap-3 text-xs font-medium">
 									<div className="flex items-center gap-1">
 										<Icon icon="lucide:calendar" />
 										{formatDate(article.created_at, 'date')}
@@ -114,7 +114,7 @@ export default function BlogView() {
 									<div className="flex flex-wrap gap-1">
 										{article.tags.slice(0, 5).map((tag) => (
 											<span
-												className="rounded-md bg-border-secondary px-1.5 py-0.5 font-medium text-foreground text-xs"
+												className="bg-border-secondary text-foreground rounded-md px-1.5 py-0.5 text-xs font-medium"
 												key={tag}
 											>
 												{tag}

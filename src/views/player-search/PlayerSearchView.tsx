@@ -42,11 +42,11 @@ export default function PlayerSearchView() {
 		<section className="mx-auto flex max-w-4xl flex-col gap-8 px-4 pt-32 pb-12 lg:pt-36">
 			<div className="text-center">
 				<h1
-					className={`${mtsExtended.className} mb-2 font-semibold text-3xl text-primary tracking-tight md:text-3xl xl:text-4xl`}
+					className={`${mtsExtended.className} text-primary mb-2 text-3xl font-semibold tracking-tight md:text-3xl xl:text-4xl`}
 				>
 					{t('playerSearch.title')}
 				</h1>
-				<p className="font-medium text-foreground text-sm">
+				<p className="text-foreground text-sm font-medium">
 					{t('playerSearch.description')}
 				</p>
 			</div>
@@ -61,7 +61,7 @@ export default function PlayerSearchView() {
 					/>
 
 					<Input
-						className="h-full border-primary/40"
+						className="border-primary/40 h-full"
 						id="nickname-input"
 						label="playerSearch.nickname"
 						onChange={(e) => setCharacter(e.target.value)}

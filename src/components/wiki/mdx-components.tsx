@@ -72,7 +72,7 @@ export function useMDXComponents(): MDXComponents {
 		QuestMap,
 		h1: ({ children, ...props }) => (
 			<h1
-				className="mb-6 scroll-m-24 text-balance font-bold text-4xl tracking-tight lg:text-5xl"
+				className="mb-6 scroll-m-24 text-4xl font-bold tracking-tight text-balance lg:text-5xl"
 				{...props}
 			>
 				{children}
@@ -82,7 +82,7 @@ export function useMDXComponents(): MDXComponents {
 			const id = getHeadingId(children)
 			return (
 				<h2
-					className="mt-12 mb-5 scroll-m-24 text-balance border-primary/25 border-b pb-3 font-bold text-2xl tracking-tight first:mt-0 md:text-3xl"
+					className="border-primary/25 mt-12 mb-5 scroll-m-24 border-b pb-3 text-2xl font-bold tracking-tight text-balance first:mt-0 md:text-3xl"
 					id={id}
 					{...props}
 				>
@@ -94,7 +94,7 @@ export function useMDXComponents(): MDXComponents {
 			const id = getHeadingId(children)
 			return (
 				<h3
-					className="mt-10 mb-4 scroll-m-24 text-balance font-bold text-xl tracking-tight md:text-2xl"
+					className="mt-10 mb-4 scroll-m-24 text-xl font-bold tracking-tight text-balance md:text-2xl"
 					id={id}
 					{...props}
 				>
@@ -106,7 +106,7 @@ export function useMDXComponents(): MDXComponents {
 			const id = getHeadingId(children)
 			return (
 				<h4
-					className="mt-8 mb-3 scroll-m-24 font-semibold text-lg text-text-accent tracking-tight"
+					className="text-text-accent mt-8 mb-3 scroll-m-24 text-lg font-semibold tracking-tight"
 					id={id}
 					{...props}
 				>
@@ -116,21 +116,21 @@ export function useMDXComponents(): MDXComponents {
 		},
 		p: ({ children, ...props }) => (
 			<p
-				className="not-first:mt-5 max-w-[78ch] text-pretty font-normal text-base text-foreground leading-8"
+				className="text-foreground max-w-[78ch] text-base leading-8 font-normal text-pretty not-first:mt-5"
 				{...props}
 			>
 				{children}
 			</p>
 		),
 		strong: ({ children, ...props }) => (
-			<strong className="font-bold text-foreground" {...props}>
+			<strong className="text-foreground font-bold" {...props}>
 				{children}
 			</strong>
 		),
 		a: ({ href, children, ...props }) => {
 			return (
 				<Link
-					className="font-medium text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
+					className="text-primary decoration-primary/40 hover:decoration-primary font-medium underline underline-offset-4 transition-colors"
 					href={href || ''}
 					{...props}
 				>
@@ -140,7 +140,7 @@ export function useMDXComponents(): MDXComponents {
 		},
 		ul: ({ children, ...props }) => (
 			<ul
-				className="my-5 ml-6 max-w-[78ch] list-disc space-y-2 marker:text-primary"
+				className="marker:text-primary my-5 ml-6 max-w-[78ch] list-disc space-y-2"
 				{...props}
 			>
 				{children}
@@ -148,7 +148,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		ol: ({ children, ...props }) => (
 			<ol
-				className="my-5 ml-6 max-w-[78ch] list-decimal space-y-2 marker:font-semibold marker:text-primary"
+				className="marker:text-primary my-5 ml-6 max-w-[78ch] list-decimal space-y-2 marker:font-semibold"
 				{...props}
 			>
 				{children}
@@ -156,7 +156,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		li: ({ children, ...props }) => (
 			<li
-				className="text-pretty font-normal text-base text-foreground/85 leading-8"
+				className="text-foreground/85 text-base leading-8 font-normal text-pretty"
 				{...props}
 			>
 				{children}
@@ -164,7 +164,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		blockquote: ({ children, ...props }) => (
 			<blockquote
-				className="mt-6 max-w-[78ch] rounded-r-xl border-primary/60 border-l-2 bg-card/60 px-6 py-4 text-muted-foreground italic"
+				className="border-primary/60 bg-card/60 text-muted-foreground mt-6 max-w-[78ch] rounded-r-xl border-l-2 px-6 py-4 italic"
 				{...props}
 			>
 				{children}
@@ -172,10 +172,10 @@ export function useMDXComponents(): MDXComponents {
 		),
 		code: MdxCode,
 		pre: MdxPre,
-		hr: () => <hr className="my-10 border-primary/25" />,
+		hr: () => <hr className="border-primary/25 my-10" />,
 		table: ({ children, ...props }) => (
 			<div
-				className="relative w-full overflow-x-auto rounded-lg border-2 border-primary/50 bg-card/50 px-2 backdrop-blur-sm"
+				className="border-primary/50 bg-card/50 relative w-full overflow-x-auto rounded-lg border-2 px-2 backdrop-blur-sm"
 				data-slot="table-container"
 				{...props}
 			>
@@ -204,7 +204,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		tr: ({ children, ...props }) => (
 			<tr
-				className="border-primary border-b transition-colors hover:bg-card/50 data-[state=selected]:bg-card"
+				className="border-primary hover:bg-card/50 data-[state=selected]:bg-card border-b transition-colors"
 				data-slot="table-row"
 				{...props}
 			>
@@ -213,7 +213,7 @@ export function useMDXComponents(): MDXComponents {
 		),
 		th: ({ children, ...props }) => (
 			<th
-				className="h-10 whitespace-nowrap border-primary border-r px-2 text-left align-middle font-semibold last:border-r-0"
+				className="border-primary h-10 border-r px-2 text-left align-middle font-semibold whitespace-nowrap last:border-r-0"
 				data-slot="table-head"
 				{...props}
 			>
@@ -263,7 +263,7 @@ export function useMDXComponents(): MDXComponents {
 						{children}
 					</img>
 					{alt ? (
-						<figcaption className="mt-2 text-center text-muted-foreground text-sm">
+						<figcaption className="text-muted-foreground mt-2 text-center text-sm">
 							{alt}
 						</figcaption>
 					) : null}

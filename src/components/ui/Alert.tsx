@@ -37,7 +37,7 @@ function AlertRoot({
 			{resolvedIcon ? (
 				<Icon
 					aria-hidden="true"
-					className="text-(--alert-icon) text-xl"
+					className="text-xl text-(--alert-icon)"
 					icon={resolvedIcon}
 				/>
 			) : (
@@ -49,7 +49,7 @@ function AlertRoot({
 			{dismissible && (
 				<button
 					aria-label="Dismiss alert"
-					className="absolute top-2.5 right-2.5 rounded p-0.5 opacity-60 transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-ring"
+					className="focus-visible:outline-ring absolute top-2.5 right-2.5 rounded p-0.5 opacity-60 transition-opacity hover:opacity-100 focus-visible:outline"
 					onClick={onDismiss}
 					type="button"
 				>
@@ -67,7 +67,7 @@ function AlertRoot({
 function AlertTitle({ className, ...props }: React.ComponentProps<'p'>) {
 	return (
 		<p
-			className={cn('font-medium text-[15px] leading-5', className)}
+			className={cn('text-[15px] leading-5 font-medium', className)}
 			data-slot="alert-title"
 			{...props}
 		/>
@@ -80,7 +80,7 @@ function AlertDescription({
 }: React.ComponentProps<'div'>) {
 	return (
 		<div
-			className={cn('font-medium text-[13px] opacity-90', className)}
+			className={cn('text-[13px] font-medium opacity-90', className)}
 			data-slot="alert-description"
 			{...props}
 		/>

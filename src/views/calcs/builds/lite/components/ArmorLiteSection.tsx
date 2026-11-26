@@ -76,7 +76,7 @@ export function ArmorLiteSection({
 			</div>
 			<div className="flex flex-col gap-3">
 				<h2
-					className="font-medium text-[13px]"
+					className="text-[13px] font-medium"
 					style={{
 						color:
 							infoColorMap[armorItem.color as InfoColor] ||

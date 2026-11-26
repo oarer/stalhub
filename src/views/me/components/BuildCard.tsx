@@ -104,14 +104,14 @@ export function BuildCard({
 
 	return (
 		<div
-			className={`group relative flex min-w-0 cursor-pointer flex-col gap-2 overflow-hidden rounded-lg bg-card p-3 transition-colors hover:bg-muted ${
-				isOwner && 'border-2 border-primary/40'
+			className={`group bg-card hover:bg-muted relative flex min-w-0 cursor-pointer flex-col gap-2 overflow-hidden rounded-lg p-3 transition-colors ${
+				isOwner && 'border-primary/40 border-2'
 			}`}
 			onClick={() => router.push(`/calcs/builds/lite?build=${build.id}`)}
 		>
 			<div className="flex min-w-0 items-center justify-between gap-2">
 				<Link
-					className="min-w-0 flex-1 truncate rounded-lg px-2 py-1 font-medium text-md text-primary transition-colors hover:bg-accent/20"
+					className="text-md text-primary hover:bg-accent/20 min-w-0 flex-1 truncate rounded-lg px-2 py-1 font-medium transition-colors"
 					href={`/calcs/builds/lite?build=${build.id}`}
 				>
 					{build.title}
@@ -123,7 +123,7 @@ export function BuildCard({
 						variant={'ghost'}
 					>
 						<Icon
-							className="size-3.5 text-foreground"
+							className="text-foreground size-3.5"
 							icon="lucide:link"
 						/>
 					</Button>
@@ -149,7 +149,7 @@ export function BuildCard({
 							variant={'danger'}
 						>
 							<Icon
-								className="size-3.5 text-destructive"
+								className="text-destructive size-3.5"
 								icon="lucide:trash-2"
 							/>
 						</Button>
@@ -183,7 +183,7 @@ export function BuildCard({
 						<div className="flex w-full min-w-0 items-center justify-center">
 							{armorItem ? (
 								<span
-									className="max-w-full truncate text-center font-body"
+									className="font-body max-w-full truncate text-center"
 									style={{ color: armorColor }}
 									title={messageToString(
 										armorItem.name,
@@ -229,7 +229,7 @@ export function BuildCard({
 									key={entry.name + i}
 								>
 									<p
-										className="min-w-0 flex-1 truncate font-body text-sm transition-colors"
+										className="font-body min-w-0 flex-1 truncate text-sm transition-colors"
 										style={{ color: entry.color }}
 										title={entry.name}
 									>
@@ -237,14 +237,14 @@ export function BuildCard({
 									</p>
 									{entry.potential !== 0 && (
 										<span
-											className={`shrink-0 whitespace-nowrap font-medium font-mono text-sm transition-colors`}
+											className={`shrink-0 font-mono text-sm font-medium whitespace-nowrap transition-colors`}
 											style={{ color: entry.color }}
 										>
 											+{entry.potential}
 										</span>
 									)}
 									<span
-										className={`shrink-0 whitespace-nowrap font-medium font-mono text-sm transition-colors`}
+										className={`shrink-0 font-mono text-sm font-medium whitespace-nowrap transition-colors`}
 										style={{ color: entry.color }}
 									>
 										{entry.percent}%
@@ -252,7 +252,7 @@ export function BuildCard({
 								</div>
 							))
 						) : (
-							<span className="text-center text-muted-foreground">
+							<span className="text-muted-foreground text-center">
 								{t('me.buildCard.noArtifacts')}
 							</span>
 						)}
@@ -260,7 +260,7 @@ export function BuildCard({
 				</div>
 			)}
 
-			<div className="flex items-center gap-2 text-foreground text-xs">
+			<div className="text-foreground flex items-center gap-2 text-xs">
 				{stars > 0 && (
 					<div className="flex items-center gap-1">
 						<Icon icon="lucide:star" />
@@ -277,7 +277,7 @@ export function BuildCard({
 					<span onClick={(e) => e.stopPropagation()}>
 						<HoverUserCard id={author.id}>
 							<Username
-								className={`font-normal text-primary`}
+								className={`text-primary font-normal`}
 								user={author}
 							/>
 						</HoverUserCard>
@@ -289,7 +289,7 @@ export function BuildCard({
 				<div className="flex flex-wrap gap-1">
 					{build.tags.slice(0, 3).map((tag) => (
 						<span
-							className="rounded bg-border-secondary px-1.5 py-0.5 font-semibold text-foreground text-xs"
+							className="bg-border-secondary text-foreground rounded px-1.5 py-0.5 text-xs font-semibold"
 							key={tag}
 						>
 							{t(`builds.tags.${tag}`)}

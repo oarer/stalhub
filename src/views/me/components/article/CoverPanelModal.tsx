@@ -217,13 +217,13 @@ export function CoverPanelModal({
 				<Modal.Body className="min-h-0 flex-1 overflow-y-auto">
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1.5">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('blog.cover.icon')}
 							</span>
 							<div className="grid grid-cols-6 gap-1.5 sm:grid-cols-7">
 								<button
 									className={cn(
-										'flex items-center justify-center rounded-lg border-2 px-2 py-2.5 font-medium text-xs transition-colors',
+										'flex items-center justify-center rounded-lg border-2 px-2 py-2.5 text-xs font-medium transition-colors',
 										!draft.icon.trim()
 											? 'border-primary bg-primary/10 text-primary'
 											: 'border-primary/20 text-foreground hover:border-primary/50 hover:text-primary'
@@ -279,14 +279,14 @@ export function CoverPanelModal({
 								value={draft.icon}
 							/>
 							{iconNotFound && (
-								<span className="font-medium text-red-400 text-xs">
+								<span className="text-xs font-medium text-red-400">
 									{t('blog.cover.iconNotFound')}
 								</span>
 							)}
 						</div>
 
 						<div className="flex flex-col gap-1.5">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('blog.cover.preset')}
 							</span>
 							<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -295,7 +295,7 @@ export function CoverPanelModal({
 									return (
 										<button
 											className={cn(
-												'flex flex-col items-center gap-1.5 rounded-lg border-2 px-2 py-3 font-medium text-xs transition-colors',
+												'flex flex-col items-center gap-1.5 rounded-lg border-2 px-2 py-3 text-xs font-medium transition-colors',
 												active
 													? 'border-primary bg-primary/10 text-primary'
 													: 'border-primary/20 text-foreground hover:border-primary/50 hover:text-primary'
@@ -330,10 +330,10 @@ export function CoverPanelModal({
 
 								{draft.rows.map((row, i) => (
 									<div
-										className="flex flex-col gap-2 rounded-lg border border-primary/20 p-3"
+										className="border-primary/20 flex flex-col gap-2 rounded-lg border p-3"
 										key={i}
 									>
-										<span className="font-semibold text-sm">
+										<span className="text-sm font-semibold">
 											{t('blog.cover.row', { n: i + 1 })}
 										</span>
 										<div className="grid grid-cols-2 gap-2">
@@ -357,7 +357,7 @@ export function CoverPanelModal({
 											/>
 										</div>
 										<div className="flex items-center gap-3">
-											<span className="w-28 shrink-0 font-medium text-foreground text-xs">
+											<span className="text-foreground w-28 shrink-0 text-xs font-medium">
 												{t('blog.cover.rowFill')}
 											</span>
 											<Slider
@@ -383,7 +383,7 @@ export function CoverPanelModal({
 						)}
 
 						<div className="flex flex-col gap-1.5">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('blog.cover.preview')}
 							</span>
 							<BlogCover

@@ -157,7 +157,7 @@ export default function CommissionChat({
 					className="text-muted-foreground text-xl"
 					icon="lucide:messages-square"
 				/>
-				<h2 className="font-semibold text-xl">{t('chat')}</h2>
+				<h2 className="text-xl font-semibold">{t('chat')}</h2>
 			</div>
 			<div className="px-4 pt-3">
 				<Feedback error={readError || initial.error || updates.error} />
@@ -215,7 +215,7 @@ export default function CommissionChat({
 				{!messages.length && initial.isSuccess && (
 					<div className="flex flex-col items-center gap-2 py-12 text-center">
 						<Icon
-							className="text-3xl text-muted-foreground"
+							className="text-muted-foreground text-3xl"
 							icon="lucide:message-circle"
 						/>
 						<p className="text-muted-foreground text-sm">
@@ -227,7 +227,7 @@ export default function CommissionChat({
 					<Fragment key={group.date}>
 						<div className="flex items-center gap-3">
 							<Divider className="flex-1" />
-							<time className="text-[11px] text-muted-foreground">
+							<time className="text-muted-foreground text-[11px]">
 								{formatDate(group.date, 'longDate')}
 							</time>
 							<Divider className="flex-1" />
@@ -262,7 +262,7 @@ export default function CommissionChat({
 				{uploads.progress !== null && (
 					<progress
 						aria-label={t('addFiles')}
-						className="h-1.5 w-full accent-primary"
+						className="accent-primary h-1.5 w-full"
 						max={100}
 						value={uploads.progress}
 					/>
@@ -271,7 +271,7 @@ export default function CommissionChat({
 					<div className="flex flex-wrap gap-1.5">
 						{files.map((file) => (
 							<span
-								className="flex items-center gap-1 rounded-full bg-muted py-0.5 pr-1 pl-1 text-muted-foreground text-xs"
+								className="bg-muted text-muted-foreground flex items-center gap-1 rounded-full py-0.5 pr-1 pl-1 text-xs"
 								key={file.id}
 							>
 								{thumbs[file.id] ? (
@@ -295,7 +295,7 @@ export default function CommissionChat({
 								</span>
 								<button
 									aria-label={t('remove')}
-									className="cursor-pointer rounded-full p-0.5 transition-colors hover:text-foreground"
+									className="hover:text-foreground cursor-pointer rounded-full p-0.5 transition-colors"
 									disabled={uploads.progress !== null}
 									onClick={() => void uploads.remove(file.id)}
 									type="button"

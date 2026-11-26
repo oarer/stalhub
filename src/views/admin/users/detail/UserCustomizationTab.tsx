@@ -177,7 +177,7 @@ export function UserCustomizationTab({
 						{editCardBackground === 'COLOR' && (
 							<div className="flex items-center gap-3">
 								<input
-									className="h-9 w-16 cursor-pointer rounded border-2 border-primary bg-card"
+									className="border-primary bg-card h-9 w-16 cursor-pointer rounded border-2"
 									onChange={(e) =>
 										setEditCardColor(e.target.value)
 									}
@@ -215,7 +215,7 @@ export function UserCustomizationTab({
 				</Card.Header>
 				<Card.Content>
 					<div className="flex flex-col gap-4">
-						<div className="relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border-2 border-primary">
+						<div className="border-primary relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border-2">
 							{bannerMode === 'COLOR' && (
 								<div
 									className="h-full w-full"
@@ -236,7 +236,7 @@ export function UserCustomizationTab({
 							)}
 							{bannerMode === 'NONE' ||
 								(bannerMode === 'IMAGE' && !bannerImage && (
-									<span className="text-neutral-400 text-sm">
+									<span className="text-sm text-neutral-400">
 										{t('admin.userDetail.banner.noBanner')}
 									</span>
 								))}
@@ -288,7 +288,7 @@ export function UserCustomizationTab({
 						{bannerMode === 'COLOR' && (
 							<div className="flex items-center gap-3">
 								<input
-									className="h-9 w-16 cursor-pointer rounded border-2 border-primary bg-card"
+									className="border-primary bg-card h-9 w-16 cursor-pointer rounded border-2"
 									onChange={(e) =>
 										setBannerColor(e.target.value)
 									}
@@ -314,7 +314,7 @@ export function UserCustomizationTab({
 									}
 									value={bannerImage}
 								/>
-								<label className="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-2 border-primary px-4 py-2 font-semibold text-sm transition-colors duration-300 hover:bg-accent">
+								<label className="border-primary hover:bg-accent flex w-fit cursor-pointer items-center gap-2 rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-colors duration-300">
 									<Icon icon="lucide:upload" />
 									{t('admin.userDetail.banner.upload')}
 									<input

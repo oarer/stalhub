@@ -36,7 +36,7 @@ export function QuestArticleFields({
 	]
 
 	return (
-		<section className="mx-2 flex flex-col gap-3 rounded-xl border-2 border-primary/20 bg-card p-4">
+		<section className="border-primary/20 bg-card mx-2 flex flex-col gap-3 rounded-xl border-2 p-4">
 			<h2 className="flex items-center gap-2 font-semibold">
 				<Icon icon="lucide:map-pinned" />
 				{t('details')}

@@ -86,7 +86,7 @@ export default function AuctionAutoRefresh({
 				<div className="flex items-center gap-2 sm:ms-auto">
 					<span
 						className={cn(
-							'hidden whitespace-nowrap font-mono font-semibold text-muted-foreground text-xs tabular-nums md:inline',
+							'text-muted-foreground hidden font-mono text-xs font-semibold whitespace-nowrap tabular-nums md:inline',
 							!lastUpdatedAt && 'invisible'
 						)}
 					>

@@ -83,7 +83,7 @@ export function ArtForm({
 				>
 					<Icon className="size-5" icon="lucide:arrow-left" />
 				</Button>
-				<h1 className="font-semibold text-lg">{title}</h1>
+				<h1 className="text-lg font-semibold">{title}</h1>
 			</div>
 
 			<div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
@@ -91,7 +91,7 @@ export function ArtForm({
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-foreground text-md"
+								className="text-foreground text-md font-semibold"
 								htmlFor="art-title"
 							>
 								{t('me.newArt.name')}
@@ -106,7 +106,7 @@ export function ArtForm({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<span className="font-semibold text-foreground text-md">
+							<span className="text-foreground text-md font-semibold">
 								{t('me.newArt.type')}
 							</span>
 							<div className="grid grid-cols-2 gap-2">
@@ -130,7 +130,7 @@ export function ArtForm({
 
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-foreground text-md"
+								className="text-foreground text-md font-semibold"
 								htmlFor="art-description"
 							>
 								{t('me.newArt.description')}
@@ -148,7 +148,7 @@ export function ArtForm({
 
 						<div className="flex flex-col gap-2">
 							<label
-								className="font-semibold text-foreground text-md"
+								className="text-foreground text-md font-semibold"
 								htmlFor="art-tags"
 							>
 								{t('me.newArt.tags')}
@@ -170,7 +170,7 @@ export function ArtForm({
 							</Alert.Description>
 						</Alert.Root>
 						<label
-							className="font-semibold text-foreground text-md"
+							className="text-foreground text-md font-semibold"
 							htmlFor="art-image"
 						>
 							{t('me.newArt.image')}

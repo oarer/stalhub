@@ -59,7 +59,7 @@ export function ArtistOrderForm({ artist }: { artist: ArtistProfile }) {
 			}}
 		>
 			<Card.Root className="gap-4">
-				<h2 className="font-semibold text-xl">
+				<h2 className="text-xl font-semibold">
 					{t(step ? 'briefStep' : 'choose')}
 				</h2>
 				{!step ? (
@@ -108,7 +108,7 @@ export function ArtistOrderForm({ artist }: { artist: ArtistProfile }) {
 												</span>
 											)}
 											<span className="flex flex-wrap justify-between gap-2 text-sm">
-												<span className="font-medium text-primary">
+												<span className="text-primary font-medium">
 													{commissionMoney(
 														price.amount,
 														artist.currency
@@ -126,7 +126,7 @@ export function ArtistOrderForm({ artist }: { artist: ArtistProfile }) {
 								)
 							})}
 						</fieldset>
-						<div className="flex justify-between border-border/20 border-t pt-3 font-semibold">
+						<div className="border-border/20 flex justify-between border-t pt-3 font-semibold">
 							<span>{t('total')}</span>
 							<span className="text-primary">
 								{commissionMoney(total, artist.currency)}
@@ -187,7 +187,7 @@ export function ArtistOrderForm({ artist }: { artist: ArtistProfile }) {
 					<p>{t('selfOrder')}</p>
 				) : !user ? (
 					<CLink
-						className="w-fit px-0 text-primary underline"
+						className="text-primary w-fit px-0 underline"
 						href={`/auth?returnUrl=${encodeURIComponent(`/artists/${artist.user.username}`)}`}
 						variant="none"
 					>

@@ -142,11 +142,11 @@ export default function FeedCategoriesAdminView() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('admin.feedCategories.title')}
 				</h1>
-				<span className="flex items-center gap-1.5 text-neutral-400 text-sm">
+				<span className="flex items-center gap-1.5 text-sm text-neutral-400">
 					<Icon icon="lucide:tags" />
 					{t('admin.feedCategories.count', {
 						count: data.categories.length,
@@ -183,7 +183,7 @@ export default function FeedCategoriesAdminView() {
 								type="number"
 								value={position}
 							/>
-							<div className="flex h-9 items-center gap-2 font-medium text-sm">
+							<div className="flex h-9 items-center gap-2 text-sm font-medium">
 								<Switch
 									aria-label={t(
 										'admin.feedCategories.form.enabled'
@@ -198,7 +198,7 @@ export default function FeedCategoriesAdminView() {
 							</div>
 						</div>
 						<div className="flex flex-col gap-2">
-							<span className="font-medium text-muted-foreground text-sm">
+							<span className="text-muted-foreground text-sm font-medium">
 								{t('admin.feedCategories.form.sources')}
 							</span>
 							<Combobox
@@ -259,7 +259,7 @@ export default function FeedCategoriesAdminView() {
 							{data.categories.map((category) => (
 								<Table.Row key={category.id}>
 									<Table.Cell>
-										<span className="font-medium text-sm">
+										<span className="text-sm font-medium">
 											{category.name}
 										</span>
 									</Table.Cell>
@@ -411,7 +411,7 @@ export default function FeedCategoriesAdminView() {
 							type="number"
 							value={editPosition}
 						/>
-						<div className="flex items-center gap-2 font-medium text-sm">
+						<div className="flex items-center gap-2 text-sm font-medium">
 							<Switch
 								aria-label={t(
 									'admin.feedCategories.form.enabled'
@@ -425,7 +425,7 @@ export default function FeedCategoriesAdminView() {
 							</span>
 						</div>
 						<div className="flex flex-col gap-2">
-							<span className="font-medium text-muted-foreground text-sm">
+							<span className="text-muted-foreground text-sm font-medium">
 								{t('admin.feedCategories.form.sources')}
 							</span>
 							<Combobox

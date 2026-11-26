@@ -52,7 +52,7 @@ function SheetRow({
 			onClick={onNavigate}
 		>
 			<Icon className="size-5 shrink-0" icon={icon} />
-			<span className="truncate font-semibold text-sm">{label}</span>
+			<span className="truncate text-sm font-semibold">{label}</span>
 		</Link>
 	)
 }
@@ -156,7 +156,7 @@ export default function MobileNavbar() {
 		<>
 			<nav
 				aria-label={t('me.menu')}
-				className="fixed inset-x-0 bottom-0 z-1000 border-primary/20 border-t bg-card/95 backdrop-blur-xl sm:hidden"
+				className="border-primary/20 bg-card/95 fixed inset-x-0 bottom-0 z-1000 border-t backdrop-blur-xl sm:hidden"
 			>
 				<div className="grid grid-cols-5 pb-[env(safe-area-inset-bottom,0px)]">
 					{tabs.map((tab) => {
@@ -177,7 +177,7 @@ export default function MobileNavbar() {
 									className="size-6 shrink-0"
 									icon={tab.icon}
 								/>
-								<span className="max-w-full truncate font-semibold text-[10px] leading-none">
+								<span className="max-w-full truncate text-[10px] leading-none font-semibold">
 									{tab.label}
 								</span>
 							</Link>
@@ -198,7 +198,7 @@ export default function MobileNavbar() {
 							className="size-6 shrink-0"
 							icon="lucide:more-horizontal"
 						/>
-						<span className="max-w-full truncate font-semibold text-[10px] leading-none">
+						<span className="max-w-full truncate text-[10px] leading-none font-semibold">
 							{t('me.menu')}
 						</span>
 					</button>
@@ -220,7 +220,7 @@ export default function MobileNavbar() {
 						/>
 						<motion.div
 							animate={{ y: 0 }}
-							className="fixed inset-x-0 bottom-0 z-1100 flex max-h-[75dvh] flex-col rounded-t-2xl border-primary/20 border-t bg-card sm:hidden"
+							className="border-primary/20 bg-card fixed inset-x-0 bottom-0 z-1100 flex max-h-[75dvh] flex-col rounded-t-2xl border-t sm:hidden"
 							drag="y"
 							dragConstraints={{ top: 0 }}
 							dragControls={dragControls}
@@ -249,14 +249,14 @@ export default function MobileNavbar() {
 									dragControls.start(event)
 								}
 							>
-								<div className="mx-auto mt-2 h-1 w-10 rounded-full bg-muted-foreground/40" />
+								<div className="bg-muted-foreground/40 mx-auto mt-2 h-1 w-10 rounded-full" />
 								<div className="flex items-center justify-between px-4 pt-1 pb-1">
-									<p className="font-semibold text-sm">
+									<p className="text-sm font-semibold">
 										{t('me.menu')}
 									</p>
 									<button
 										aria-label={t('me.menu')}
-										className="flex size-9 cursor-pointer items-center justify-center rounded-xl text-muted-foreground hover:bg-muted/70"
+										className="text-muted-foreground hover:bg-muted/70 flex size-9 cursor-pointer items-center justify-center rounded-xl"
 										onClick={() => setSheetOpen(false)}
 										type="button"
 									>
@@ -276,7 +276,7 @@ export default function MobileNavbar() {
 											key={group.label ?? groupIndex}
 										>
 											{group.label && (
-												<p className="px-3 pt-1 font-semibold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+												<p className="text-muted-foreground px-3 pt-1 text-[10px] font-semibold tracking-[0.2em] uppercase">
 													{t(group.label)}
 												</p>
 											)}
@@ -304,7 +304,7 @@ export default function MobileNavbar() {
 											className="flex flex-col gap-1"
 											key={group.key}
 										>
-											<p className="px-3 pt-1 font-semibold text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+											<p className="text-muted-foreground px-3 pt-1 text-[10px] font-semibold tracking-[0.2em] uppercase">
 												{t(group.titleKey)}
 											</p>
 											{getGroupItems(group).map((item) => (
@@ -340,7 +340,7 @@ export default function MobileNavbar() {
 										className="size-5 shrink-0"
 										icon="lucide:settings"
 									/>
-									<span className="truncate font-semibold text-sm">
+									<span className="truncate text-sm font-semibold">
 										{t('nav.settings')}
 									</span>
 								</Link>

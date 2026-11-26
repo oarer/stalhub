@@ -21,10 +21,10 @@ export function CalendarYearSection({
 						className="text-primary"
 						icon="lucide:calendar-days"
 					/>
-					<h2 className="font-semibold text-2xl">{year}</h2>
+					<h2 className="text-2xl font-semibold">{year}</h2>
 				</div>
-				<div className="h-px flex-1 bg-primary/20" />
-				<span className="font-mono font-semibold text-muted-foreground text-xs">
+				<div className="bg-primary/20 h-px flex-1" />
+				<span className="text-muted-foreground font-mono text-xs font-semibold">
 					{months.length} / 12
 				</span>
 			</div>

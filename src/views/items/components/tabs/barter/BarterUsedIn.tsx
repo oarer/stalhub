@@ -18,27 +18,27 @@ export function BarterUsedIn({ items, locale }: Props) {
 		<>
 			<Divider />
 			<section className="flex flex-col gap-3">
-				<h2 className="font-semibold text-sm">
+				<h2 className="text-sm font-semibold">
 					{t('barter.used_in')}:
 				</h2>
 
 				<div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
 					{items.map((item) => (
 						<Link
-							className="group flex flex-col items-center gap-3 rounded-xl border-2 border-primary p-2"
+							className="group border-primary flex flex-col items-center gap-3 rounded-xl border-2 p-2"
 							href={`/items${item.category}`}
 							key={item.item_id}
 						>
 							<Image
 								alt={messageToString(item.lines, locale)}
-								className="transition-transform group-hover:-rotate-5 group-hover:scale-110"
+								className="transition-transform group-hover:scale-110 group-hover:-rotate-5"
 								height={52}
 								src={`https://cdn.stalhub.dev/db/icons${item.category}.png`}
 								width={52}
 							/>
 
 							<p
-								className="max-w-24 truncate font-semibold text-sm"
+								className="max-w-24 truncate text-sm font-semibold"
 								style={{
 									color:
 										infoColorMap[

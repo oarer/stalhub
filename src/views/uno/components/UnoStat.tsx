@@ -13,8 +13,8 @@ export function UnoStat({
 			<p
 				className={
 					accent
-						? 'font-semibold text-2xl text-primary'
-						: 'font-semibold text-2xl'
+						? 'text-primary text-2xl font-semibold'
+						: 'text-2xl font-semibold'
 				}
 			>
 				{value}

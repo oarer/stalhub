@@ -19,7 +19,7 @@ function TierClan({ clan }: { clan: UnoSeasonTierClan }) {
 	return (
 		<CLink
 			className={cn(
-				'w-40 shrink-0 justify-start overflow-hidden border border-primary/20 bg-card/40 px-2.5 py-1.5 font-normal text-sm transition-colors hover:border-primary/50 hover:bg-primary/10',
+				'border-primary/20 bg-card/40 hover:border-primary/50 hover:bg-primary/10 w-40 shrink-0 justify-start overflow-hidden border px-2.5 py-1.5 text-sm font-normal transition-colors',
 				color
 			)}
 			href={`/uno/clans/${encodeURIComponent(clan.id)}`}
@@ -39,10 +39,10 @@ function TierClan({ clan }: { clan: UnoSeasonTierClan }) {
 export function SeasonTierTable({ tier }: { tier: UnoSeasonTier }) {
 	return (
 		<div className="flex gap-2 sm:gap-4">
-			<div className="flex w-8 shrink-0 select-none items-start justify-center pt-0.5 sm:w-16 sm:pt-0">
+			<div className="flex w-8 shrink-0 items-start justify-center pt-0.5 select-none sm:w-16 sm:pt-0">
 				<span
 					className={cn(
-						'font-black text-3xl leading-none sm:text-6xl',
+						'text-3xl leading-none font-black sm:text-6xl',
 						unoRankColor(tier.rank)
 					)}
 				>
@@ -54,7 +54,7 @@ export function SeasonTierTable({ tier }: { tier: UnoSeasonTier }) {
 					<div className="flex gap-2" key={subtier.label}>
 						<span
 							className={cn(
-								'w-9 shrink-0 pt-1.5 text-right font-semibold text-xs sm:w-12 sm:text-sm',
+								'w-9 shrink-0 pt-1.5 text-right text-xs font-semibold sm:w-12 sm:text-sm',
 								unoRankColor(tier.rank)
 							)}
 						>

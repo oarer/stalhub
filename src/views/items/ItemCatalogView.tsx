@@ -110,7 +110,7 @@ function ItemCard({
 			href={itemHref(item)}
 		>
 			<div className="flex items-center gap-3 p-3">
-				<div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-muted/60 p-1">
+				<div className="bg-muted/60 flex size-14 shrink-0 items-center justify-center rounded-xl p-1">
 					<Image
 						alt={name}
 						className="size-12 object-contain transition-transform duration-300 group-hover:scale-110"
@@ -122,7 +122,7 @@ function ItemCard({
 				</div>
 				<div className="min-w-0 flex-1">
 					<p
-						className="truncate font-semibold text-sm"
+						className="truncate text-sm font-semibold"
 						style={{ color: infoColorMap[item.color] }}
 					>
 						{name}
@@ -132,7 +132,7 @@ function ItemCard({
 					</p>
 				</div>
 				<Icon
-					className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+					className="text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5"
 					icon="lucide:arrow-up-right"
 				/>
 			</div>
@@ -269,7 +269,7 @@ export default function ItemCatalogView() {
 	const emptyState = (
 		<Card.Root className="items-center gap-2 py-16 text-center">
 			<Icon
-				className="text-4xl text-muted-foreground"
+				className="text-muted-foreground text-4xl"
 				icon="lucide:search-x"
 			/>
 			<p className="font-semibold">{t('items.catalog.empty')}</p>
@@ -280,7 +280,7 @@ export default function ItemCatalogView() {
 		<section className="mx-auto flex max-w-380 flex-col gap-6 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-3xl`}
+					className={`${mtsExtended.className} text-3xl font-semibold`}
 				>
 					{t('items.catalog.title')}
 				</h1>
@@ -298,7 +298,7 @@ export default function ItemCatalogView() {
 
 			<div className="relative w-full max-w-sm">
 				<Icon
-					className="pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2 text-muted-foreground"
+					className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
 					icon="lucide:search"
 				/>
 				<Input
@@ -321,7 +321,7 @@ export default function ItemCatalogView() {
 			{error && !loading && (
 				<Card.Root className="items-center gap-3 py-12 text-center">
 					<Icon
-						className="text-4xl text-muted-foreground"
+						className="text-muted-foreground text-4xl"
 						icon="lucide:database-zap"
 					/>
 					<p className="font-semibold">{t('items.catalog.error')}</p>
@@ -355,12 +355,12 @@ export default function ItemCatalogView() {
 				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 					{categories.map(({ key, count, icon }) => (
 						<button
-							className="group flex items-center gap-4 rounded-xl border border-border/70 bg-card/70 p-4 text-left transition-colors hover:border-primary/60 hover:bg-primary/5"
+							className="group border-border/70 bg-card/70 hover:border-primary/60 hover:bg-primary/5 flex items-center gap-4 rounded-xl border p-4 text-left transition-colors"
 							key={key}
 							onClick={() => selectCategory(key)}
 							type="button"
 						>
-							<div className="flex size-14 shrink-0 items-center justify-center rounded-lg bg-muted/50 p-1">
+							<div className="bg-muted/50 flex size-14 shrink-0 items-center justify-center rounded-lg p-1">
 								{icon ? (
 									<Image
 										alt=""
@@ -381,10 +381,10 @@ export default function ItemCatalogView() {
 								)}
 							</div>
 							<div className="min-w-0">
-								<p className="truncate font-semibold text-base">
+								<p className="truncate text-base font-semibold">
 									{categoryLabel(key)}
 								</p>
-								<p className="mt-1 truncate text-muted-foreground text-sm">
+								<p className="text-muted-foreground mt-1 truncate text-sm">
 									{count} {t('items.catalog.itemsCount')}
 								</p>
 							</div>

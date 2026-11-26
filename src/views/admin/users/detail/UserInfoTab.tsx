@@ -165,9 +165,9 @@ export function UserInfoTab({
 								value={editName}
 							/>
 						</div>
-						<div className="grid grid-cols-1 gap-3 rounded-lg bg-card/50 p-4 md:grid-cols-2">
+						<div className="bg-card/50 grid grid-cols-1 gap-3 rounded-lg p-4 md:grid-cols-2">
 							<div className="flex items-center justify-between gap-2">
-								<span className="flex items-center gap-2 font-semibold text-sm">
+								<span className="flex items-center gap-2 text-sm font-semibold">
 									<Icon
 										className="text-muted-foreground"
 										icon="lucide:check-circle"
@@ -180,7 +180,7 @@ export function UserInfoTab({
 								/>
 							</div>
 							<div className="flex items-center justify-between gap-2">
-								<span className="flex items-center gap-2 font-semibold text-sm">
+								<span className="flex items-center gap-2 text-sm font-semibold">
 									<Icon
 										className="text-muted-foreground"
 										icon="lucide:globe"
@@ -216,16 +216,16 @@ export function UserInfoTab({
 					<div className="flex flex-col gap-3">
 						{SOCIAL_NETWORKS.map((network) => (
 							<div
-								className="flex items-center gap-2 rounded-lg bg-card/50 px-3 py-2"
+								className="bg-card/50 flex items-center gap-2 rounded-lg px-3 py-2"
 								key={network}
 							>
 								<Icon
-									className="shrink-0 text-muted-foreground"
+									className="text-muted-foreground shrink-0"
 									icon={
 										SOCIAL_ICONS[network] ?? 'lucide:link'
 									}
 								/>
-								<span className="w-20 shrink-0 font-semibold text-sm capitalize">
+								<span className="w-20 shrink-0 text-sm font-semibold capitalize">
 									{network}
 								</span>
 								<Input
@@ -265,7 +265,7 @@ export function UserInfoTab({
 				<Card.Content>
 					{user.banned ? (
 						<div className="flex items-center gap-3">
-							<span className="text-red-400 text-sm">
+							<span className="text-sm text-red-400">
 								{t('admin.userDetail.ban.banned')}
 							</span>
 							<Button

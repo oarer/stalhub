@@ -34,7 +34,7 @@ export default function MeSidebar({
 					user={user}
 				/>
 			</div>
-			<div className="mask-y-from-97% mask-y-to-100% me-scroll max-h-[calc(64dvh-9rem)] flex-1 overflow-y-auto rounded-lg pr-1">
+			<div className="me-scroll max-h-[calc(64dvh-9rem)] flex-1 overflow-y-auto rounded-lg mask-y-from-97% mask-y-to-100% pr-1">
 				<NavTabs
 					pathname={pathname}
 					roles={user.roles}

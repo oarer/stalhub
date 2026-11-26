@@ -135,7 +135,7 @@ export function StatChart({
 
 	if (points.length === 0) {
 		return (
-			<div className="py-8 text-center text-muted-foreground text-sm">
+			<div className="text-muted-foreground py-8 text-center text-sm">
 				{t('chartNoData')}
 			</div>
 		)
@@ -144,7 +144,7 @@ export function StatChart({
 	return (
 		<div>
 			{allEqual && (
-				<p className="mb-1 text-muted-foreground text-xs">
+				<p className="text-muted-foreground mb-1 text-xs">
 					{t('chartUnchanged')}:{' '}
 					{formatStatValue(statId, shown[0]?.v, locale)}
 				</p>
@@ -156,7 +156,7 @@ export function StatChart({
 					options={options}
 				/>
 			</div>
-			<div className="mt-1 flex justify-between text-muted-foreground text-xs">
+			<div className="text-muted-foreground mt-1 flex justify-between text-xs">
 				<span>{new Date(points[0]?.t).toLocaleString(locale)}</span>
 				<span>
 					{new Date(points[points.length - 1]?.t).toLocaleString(

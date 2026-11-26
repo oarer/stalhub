@@ -65,7 +65,7 @@ export function OrderReputation({
 								{review.score}/5
 							</Badge>
 							{review.content && (
-								<p className="whitespace-pre-wrap text-sm">
+								<p className="text-sm whitespace-pre-wrap">
 									{review.content}
 								</p>
 							)}

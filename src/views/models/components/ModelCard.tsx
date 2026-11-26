@@ -114,8 +114,8 @@ export function ModelCard({
 							</Button>
 						</div>
 						{modelLoading && (
-							<div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 backdrop-blur-sm">
-								<div className="flex flex-col items-center gap-3 text-muted-foreground">
+							<div className="bg-background/60 absolute inset-0 z-10 flex items-center justify-center backdrop-blur-sm">
+								<div className="text-muted-foreground flex flex-col items-center gap-3">
 									<Icon
 										className="h-8 w-8 animate-spin"
 										icon="lucide:loader-circle"
@@ -128,7 +128,7 @@ export function ModelCard({
 						)}
 					</ModelErrorBoundary>
 				) : (
-					<div className="flex h-full items-center justify-center p-6 text-center text-muted-foreground">
+					<div className="text-muted-foreground flex h-full items-center justify-center p-6 text-center">
 						{t('selectModel')}
 					</div>
 				)}

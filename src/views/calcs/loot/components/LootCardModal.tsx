@@ -21,7 +21,7 @@ export function LootCardModal({ name, payload }: LootCardModalProps) {
 					className="flex flex-col items-start text-start"
 					variant={'secondary'}
 				>
-					<span className="max-w-70 truncate font-semibold text-sm">
+					<span className="max-w-70 truncate text-sm font-semibold">
 						{title}
 					</span>
 					{title !== name && (

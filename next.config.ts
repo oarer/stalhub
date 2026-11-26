@@ -5,10 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 const isDev = process.env.NODE_ENV === 'development'
 
 const nextConfig: NextConfig = {
-/* 	assetPrefix:
+	assetPrefix:
 		process.env.NODE_ENV === 'production'
 			? process.env.NEXT_PUBLIC_CDN_URL
-			: undefined, */
+			: undefined,
 
 	output: 'standalone',
 	serverExternalPackages: ['@resvg/resvg-js'],
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
 	async rewrites() {
 		return [{ source: '/public/:path*', destination: '/:path*' }]
 	},
-	
+
 	// by teamdima
 	async headers() {
 		return [
@@ -47,6 +47,7 @@ const nextConfig: NextConfig = {
 		]
 	},
 	images: {
+		dangerouslyAllowLocalIP: isDev,
 		qualities: [25, 50, 75, 85, 95, 100],
 		remotePatterns: [
 			{
@@ -79,7 +80,7 @@ const nextConfig: NextConfig = {
 						{
 							protocol: 'http' as const,
 							hostname: 'localhost',
-							port: '',
+							port: '3001',
 							pathname: '/**',
 						},
 					]

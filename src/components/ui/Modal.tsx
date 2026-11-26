@@ -10,6 +10,7 @@ import {
 	useCallback,
 	useContext,
 	useEffect,
+	useRef,
 	useState,
 } from 'react'
 import { createPortal } from 'react-dom'
@@ -33,6 +34,7 @@ interface ModalContextType {
 	isOpen: boolean
 	open: () => void
 	close: () => void
+	onExitComplete: () => void
 }
 
 const ModalContext = createContext<ModalContextType | null>(null)
@@ -60,23 +62,43 @@ function ModalRoot({
 	const [isOpen, setIsOpen] = useState<boolean>(
 		typeof controlledOpen === 'boolean' ? controlledOpen : !!defaultOpen
 	)
+	const onOpenChangeRef = useRef(onOpenChange)
+	const pendingClose = useRef(false)
+
+	useEffect(() => {
+		onOpenChangeRef.current = onOpenChange
+	})
 
 	useEffect(() => {
 		if (typeof controlledOpen === 'boolean') {
 			setIsOpen(controlledOpen)
+			if (controlledOpen) pendingClose.current = false
 		}
 	}, [controlledOpen])
 
-	// biome-ignore lint: useExhaustiveDependencies
 	useEffect(() => {
-		onOpenChange?.(isOpen)
+		if (isOpen) {
+			pendingClose.current = false
+			onOpenChangeRef.current?.(true)
+		} else if (!pendingClose.current) {
+			onOpenChangeRef.current?.(false)
+		}
 	}, [isOpen])
 
 	const open = useCallback(() => setIsOpen(true), [])
-	const close = useCallback(() => setIsOpen(false), [])
+	const close = useCallback(() => {
+		pendingClose.current = true
+		setIsOpen(false)
+	}, [])
+
+	const onExitComplete = useCallback(() => {
+		if (!pendingClose.current) return
+		pendingClose.current = false
+		onOpenChangeRef.current?.(false)
+	}, [])
 
 	return (
-		<ModalContext.Provider value={{ isOpen, open, close }}>
+		<ModalContext.Provider value={{ isOpen, open, close, onExitComplete }}>
 			{children}
 		</ModalContext.Provider>
 	)
@@ -116,7 +138,7 @@ function ModalContent({
 	background = '',
 	align = 'center',
 }: Props & { align?: 'center' | 'top' }) {
-	const { isOpen, close } = useModal()
+	const { isOpen, close, onExitComplete } = useModal()
 
 	useEffect(() => {
 		if (!isOpen) return
@@ -127,11 +149,10 @@ function ModalContent({
 		return () => document.removeEventListener('keydown', onKey)
 	}, [isOpen, close])
 
-
 	if (typeof document === 'undefined') return null
 
 	return createPortal(
-		<AnimatePresence>
+		<AnimatePresence onExitComplete={onExitComplete}>
 			{isOpen && (
 				<div
 					aria-hidden={!isOpen}
@@ -145,7 +166,7 @@ function ModalContent({
 					<motion.div
 						animate="animate"
 						className={cn(
-							'absolute inset-0 bg-card/20 backdrop-blur-none sm:backdrop-blur-sm',
+							'bg-card/20 absolute inset-0 backdrop-blur-none sm:backdrop-blur-sm',
 							background
 						)}
 						exit="exit"
@@ -159,9 +180,9 @@ function ModalContent({
 						animate="animate"
 						aria-modal="true"
 						className={cn(
-							'relative z-10 border-primary/40 bg-card pb-4 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
+							'border-primary/40 bg-card relative z-10 pb-4 sm:h-auto sm:rounded-xl sm:border-2 sm:px-6 sm:shadow-2xl',
 							fullScreen
-								? 'h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none sm:border-primary/40'
+								? 'sm:border-primary/40 h-dvh w-screen max-w-none rounded-none border-transparent px-4 shadow-none'
 								: 'w-full max-w-lg rounded-xl border-2 px-6 shadow-2xl',
 							className
 						)}
@@ -207,7 +228,7 @@ function ModalTitle({ children, className = '' }: Props) {
 		<h1
 			className={cn(
 				mtsWide.className,
-				'font-semibold text-xl',
+				'text-xl font-semibold',
 				className
 			)}
 		>

@@ -64,7 +64,7 @@ export default function PostDetailView({ id }: { id: string }) {
 								trigger={
 									<button
 										aria-label={t('post.repost.action')}
-										className="flex cursor-pointer items-center justify-center rounded-lg bg-secondary p-2.5 text-secondary-foreground transition-all duration-300 hover:brightness-110"
+										className="bg-secondary text-secondary-foreground flex cursor-pointer items-center justify-center rounded-lg p-2.5 transition-all duration-300 hover:brightness-110"
 										type="button"
 									>
 										<Icon

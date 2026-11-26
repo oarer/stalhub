@@ -38,7 +38,7 @@ export function SeasonCard({ season }: { season: SeasonEntry }) {
 
 	return (
 		<Card.Root
-			className={`cursor-pointer transition-all hover:ring-primary/60 ${
+			className={`hover:ring-primary/60 cursor-pointer transition-all ${
 				season.isCurrent ? 'border-primary/70 ring-primary/60' : ''
 			}`}
 			onClick={openGrids}
@@ -47,7 +47,7 @@ export function SeasonCard({ season }: { season: SeasonEntry }) {
 			tabIndex={0}
 		>
 			<div className="flex items-start justify-between gap-3">
-				<h2 className="mt-1 font-semibold text-xl">{title}</h2>
+				<h2 className="mt-1 text-xl font-semibold">{title}</h2>
 				{season.isCurrent && (
 					<Badge variant="success">{t('seasons.current')}</Badge>
 				)}

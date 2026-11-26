@@ -50,7 +50,7 @@ export function CreateSquadModal({
 							value={name}
 						/>
 						<div className="flex flex-col gap-2">
-							<p className="font-semibold text-muted-foreground text-sm">
+							<p className="text-muted-foreground text-sm font-semibold">
 								{t('clan.squads.map')}
 							</p>
 							<div className="flex flex-col gap-2">
@@ -68,7 +68,7 @@ export function CreateSquadModal({
 										variant={'secondary'}
 									>
 										<Icon
-											className="text-lg text-muted-foreground"
+											className="text-muted-foreground text-lg"
 											icon={mapOpt.icon}
 										/>
 										{t(mapOpt.label)}

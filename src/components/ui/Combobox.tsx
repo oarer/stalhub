@@ -361,7 +361,7 @@ export function Combobox(props: ComboboxProps) {
 	return (
 		<div className={cn('relative w-full', className)} ref={wrapperRef}>
 			<button
-				className="flex min-h-10 w-full cursor-pointer items-center justify-between gap-1 overflow-hidden rounded-lg border-2 border-primary/40 bg-card px-3 py-2 font-medium text-[13px]"
+				className="border-primary/40 bg-card flex min-h-10 w-full cursor-pointer items-center justify-between gap-1 overflow-hidden rounded-lg border-2 px-3 py-2 text-[13px] font-medium"
 				disabled={disabled}
 				onClick={() => setOpen((prev) => !prev)}
 				ref={triggerRef}
@@ -382,7 +382,7 @@ export function Combobox(props: ComboboxProps) {
 							<>
 								{visibleTags.map((opt) => (
 									<div
-										className="flex min-w-0 max-w-30 shrink items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs"
+										className="bg-muted flex max-w-30 min-w-0 shrink items-center gap-1 rounded px-1.5 py-0.5 text-xs"
 										key={opt.value}
 									>
 										<p className="min-w-0 flex-1 truncate">
@@ -401,7 +401,7 @@ export function Combobox(props: ComboboxProps) {
 									</div>
 								))}
 								{hiddenCount > 0 && (
-									<div className="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs">
+									<div className="bg-muted shrink-0 rounded px-1.5 py-0.5 text-xs">
 										+{hiddenCount}
 									</div>
 								)}
@@ -432,17 +432,17 @@ export function Combobox(props: ComboboxProps) {
 						{open && (
 							<motion.div
 								animate="visible"
-								className="overflow-hidden rounded-lg border-2 border-primary/40 bg-card shadow-xl"
+								className="border-primary/40 bg-card overflow-hidden rounded-lg border-2 shadow-xl"
 								exit="hidden"
 								initial="hidden"
 								ref={dropdownRef}
 								style={dropdownStyle}
 								variants={dropdownVariants}
 							>
-								<div className="flex items-center gap-2 border-primary/40 border-b-2 px-3 py-2">
+								<div className="border-primary/40 flex items-center gap-2 border-b-2 px-3 py-2">
 									<Icon icon="lucide:search" />
 									<input
-										className="w-full bg-transparent font-medium text-sm outline-none"
+										className="w-full bg-transparent text-sm font-medium outline-none"
 										onChange={(e) =>
 											setSearch(e.target.value)
 										}
@@ -454,7 +454,7 @@ export function Combobox(props: ComboboxProps) {
 								</div>
 
 								{filtered.length === 0 ? (
-									<div className="px-3 py-6 text-center font-medium text-sm">
+									<div className="px-3 py-6 text-center text-sm font-medium">
 										{t(emptyText)}
 									</div>
 								) : (
@@ -482,7 +482,7 @@ export function Combobox(props: ComboboxProps) {
 													) {
 														return (
 															<div
-																className="pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 font-medium text-[13px] text-muted-foreground uppercase tracking-wide"
+																className="text-muted-foreground pointer-events-none absolute top-0 left-0 flex w-full items-center px-3 text-[13px] font-medium tracking-wide uppercase"
 																key={
 																	option.value
 																}
@@ -511,9 +511,9 @@ export function Combobox(props: ComboboxProps) {
 													return (
 														<div
 															className={cn(
-																'absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 font-medium text-[13px] transition-colors hover:bg-muted/50',
+																'hover:bg-muted/50 absolute top-0 left-0 flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-[13px] font-medium transition-colors',
 																optionDisabled &&
-																	'cursor-not-allowed text-muted-foreground opacity-50',
+																	'text-muted-foreground cursor-not-allowed opacity-50',
 																highlightedIndex ===
 																	virtualItem.index &&
 																	'bg-muted/50'
@@ -555,7 +555,7 @@ export function Combobox(props: ComboboxProps) {
 																		option.value
 																	)}
 																	className={cn(
-																		'h-7 w-7 shrink-0 p-0 focus-visible:outline-2 focus-visible:outline-primary',
+																		'focus-visible:outline-primary h-7 w-7 shrink-0 p-0 focus-visible:outline-2',
 																		favoriteValues.has(
 																			option.value
 																		) &&

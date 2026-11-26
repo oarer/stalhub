@@ -18,7 +18,7 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 	const router = useRouter()
 
 	return (
-		<div className="rounded-2xl border-2 border-primary/25 bg-card/50 backdrop-blur-md">
+		<div className="border-primary/25 bg-card/50 rounded-2xl border-2 backdrop-blur-md">
 			<Table.Root>
 				<Table.Header>
 					<Table.Row>
@@ -45,13 +45,13 @@ export function LeaderboardTable({ clans }: { clans: UnoClanSummary[] }) {
 							: undefined
 						return (
 							<Table.Row
-								className="cursor-pointer hover:bg-primary/5"
+								className="hover:bg-primary/5 cursor-pointer"
 								key={clan.id}
 								onClick={() => router.push(href)}
 							>
 								<Table.Cell className="w-10 px-2 text-center align-middle sm:w-14 sm:px-5">
 									<span
-										className={`${mtsWide.className} inline-flex items-center align-middle font-semibold text-primary sm:text-lg`}
+										className={`${mtsWide.className} text-primary inline-flex items-center align-middle font-semibold sm:text-lg`}
 									>
 										{clan.position ?? index + 1}
 									</span>

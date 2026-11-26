@@ -91,50 +91,50 @@ export default function UserProfileView({
 			<div className="flex flex-col gap-4">
 				{loadout?.data && (
 					<section className="flex flex-col gap-3">
-						<h2 className="font-semibold text-xl">
+						<h2 className="text-xl font-semibold">
 							{t('clan.squads.loadoutTitle')}
 						</h2>
 						<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t(
 										'clan.squads.loadoutFields.primaryWeapon'
 									)}
 								</span>
 								{renderItem(loadout.data.weapon_primary)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('users.secondaryWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_secondary)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('clan.squads.loadoutFields.pistol')}
 								</span>
 								{renderItem(loadout.data.weapon_pistol)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('clan.squads.loadoutFields.meleeWeapon')}
 								</span>
 								{renderItem(loadout.data.weapon_melee)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('clan.squads.loadoutFields.armor')}
 								</span>
 								{renderItem(loadout.data.armor)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('users.bioArmor')}
 								</span>
 								{renderItem(loadout.data.bio_armor)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('users.fatBuild')}
 								</span>
 								{loadout.data.build_fat != null &&
@@ -151,7 +151,7 @@ export default function UserProfileView({
 										}
 										containers={visibleContainers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
+										<span className="text-primary hover:text-foreground cursor-pointer truncate font-semibold transition-colors">
 											{
 												buildById.get(
 													String(
@@ -167,8 +167,8 @@ export default function UserProfileView({
 									</span>
 								)}
 							</div>
-							<div className="flex items-center justify-between rounded-lg bg-card p-3">
-								<span className="font-semibold text-foreground text-sm">
+							<div className="bg-card flex items-center justify-between rounded-lg p-3">
+								<span className="text-foreground text-sm font-semibold">
 									{t('users.speedBuild')}
 								</span>
 								{loadout.data.build_speed != null &&
@@ -185,7 +185,7 @@ export default function UserProfileView({
 										}
 										containers={visibleContainers}
 									>
-										<span className="cursor-pointer truncate font-semibold text-primary transition-colors hover:text-foreground">
+										<span className="text-primary hover:text-foreground cursor-pointer truncate font-semibold transition-colors">
 											{
 												buildById.get(
 													String(
@@ -207,17 +207,17 @@ export default function UserProfileView({
 
 				{user.clan_history?.length > 0 && (
 					<section className="flex flex-col gap-3">
-						<h2 className="font-semibold text-xl">
+						<h2 className="text-xl font-semibold">
 							{t('player.clanHistory.title')}
 						</h2>
 						<div className="flex flex-col gap-2">
 							{user.clan_history.map((h) => (
 								<div
-									className="flex items-center justify-between rounded-lg bg-card p-3"
+									className="bg-card flex items-center justify-between rounded-lg p-3"
 									key={h.id}
 								>
 									<div className="flex flex-col gap-0.5">
-										<span className="font-semibold text-sm">
+										<span className="text-sm font-semibold">
 											{h.clan_name}
 											{h.clan_tag
 												? ` [${h.clan_tag}]`
@@ -238,13 +238,13 @@ export default function UserProfileView({
 
 				<section className="flex flex-col gap-3">
 					<div className="flex items-center justify-between">
-						<h2 className="font-semibold text-xl">
+						<h2 className="text-xl font-semibold">
 							{t('me.builds.title')}
 						</h2>
 					</div>
 
 					{user.builds.length === 0 ? (
-						<p className="font-semibold text-foreground text-sm">
+						<p className="text-foreground text-sm font-semibold">
 							{t('me.builds.noBuilds')}
 						</p>
 					) : (
@@ -265,7 +265,7 @@ export default function UserProfileView({
 				{user.articles.length > 0 && (
 					<section className="flex flex-col gap-3">
 						<div className="flex items-center justify-between">
-							<h2 className="font-semibold text-xl">
+							<h2 className="text-xl font-semibold">
 								{t('me.home.publishedArticles')}
 							</h2>
 						</div>
@@ -284,7 +284,7 @@ export default function UserProfileView({
 				{tierLists && tierLists.data.length > 0 && (
 					<section className="flex flex-col gap-3">
 						<div className="flex items-center justify-between">
-							<h2 className="font-semibold text-xl">
+							<h2 className="text-xl font-semibold">
 								{t('tierlists.title')}
 							</h2>
 							<CLink
@@ -301,15 +301,15 @@ export default function UserProfileView({
 									href={`/tierlists/${tl.external_id}`}
 									key={tl.id}
 								>
-									<div className="flex items-center gap-3 rounded-lg border border-muted bg-card p-3 transition-colors hover:border-primary/30">
-										<div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-semibold text-lg text-primary">
+									<div className="border-muted bg-card hover:border-primary/30 flex items-center gap-3 rounded-lg border p-3 transition-colors">
+										<div className="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-lg text-lg font-semibold">
 											<Icon
 												className="size-5"
 												icon="lucide:layout-list"
 											/>
 										</div>
 										<div className="min-w-0 flex-1">
-											<p className="truncate font-semibold text-sm">
+											<p className="truncate text-sm font-semibold">
 												{tl.title}
 											</p>
 											<p className="text-foreground text-xs">

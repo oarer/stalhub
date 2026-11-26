@@ -25,10 +25,10 @@ export function FreezeSection({ isPending, onFreeze }: FreezeSectionProps) {
 			<div className="rounded-lg border-2 border-red-500/20 bg-red-400/20 p-4">
 				<div className="flex items-center justify-between">
 					<div className="flex flex-col gap-1">
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{t('clan.settings.freezeLabel')}
 						</span>
-						<span className="font-semibold text-destructive text-sm">
+						<span className="text-destructive text-sm font-semibold">
 							{t('clan.settings.freezeDesc')}
 						</span>
 					</div>

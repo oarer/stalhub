@@ -132,7 +132,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 						<Icon icon="lucide:arrow-left" />
 					</Button>
 				</Link>
-				<h1 className="break-all font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold break-all">
 					{clan?.name}
 					{clan?.tag && (
 						<span className="ml-2 text-lg text-neutral-400">
@@ -297,7 +297,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 								</div>
 
 								{clan?.level ? (
-									<div className="flex flex-wrap gap-2 text-neutral-400 text-sm">
+									<div className="flex flex-wrap gap-2 text-sm text-neutral-400">
 										<span>
 											{t('admin.clans.detail.level')}:{' '}
 											<span className="font-semibold text-neutral-200">
@@ -360,7 +360,7 @@ export default function ClanAdminDetailView({ clanId }: Props) {
 								</Card.Title>
 							</Card.Header>
 							<Card.Content>
-								<p className="text-red-400 text-sm">
+								<p className="text-sm text-red-400">
 									{t('admin.clans.detail.block.reason')}:{' '}
 									{clan.block_reason || '—'}
 								</p>

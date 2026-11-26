@@ -177,7 +177,7 @@ function BoostCategoryTabs({
 
 	return (
 		<div className="flex flex-col gap-1">
-			<p className="font-medium text-muted-foreground text-sm">
+			<p className="text-muted-foreground text-sm font-medium">
 				{t('modals.builds.consumables.boost_list')}
 			</p>
 			<div className="grid grid-cols-6 gap-1">
@@ -251,7 +251,7 @@ function BoostSetsPanel({
 	return (
 		<div className="flex h-full max-h-[45dvh] min-h-0 flex-col gap-3">
 			<div className="flex items-center justify-between gap-2">
-				<h3 className="font-semibold text-sm">
+				<h3 className="text-sm font-semibold">
 					{t('modals.builds.consumables.sets.title')}
 				</h3>
 				<span className="text-muted-foreground text-xs">
@@ -261,7 +261,7 @@ function BoostSetsPanel({
 
 			<div className="min-h-0 flex-1 overflow-y-auto">
 				{sets.length === 0 ? (
-					<p className="px-2 py-6 text-center text-muted-foreground text-sm">
+					<p className="text-muted-foreground px-2 py-6 text-center text-sm">
 						{t('modals.builds.consumables.sets.empty')}
 					</p>
 				) : (
@@ -286,11 +286,11 @@ function BoostSetsPanel({
 
 							return (
 								<div
-									className="flex flex-col gap-2 rounded-lg border-2 border-primary/20 bg-card p-2"
+									className="border-primary/20 bg-card flex flex-col gap-2 rounded-lg border-2 p-2"
 									key={boostSet.id}
 								>
 									<p
-										className="truncate font-medium text-sm"
+										className="truncate text-sm font-medium"
 										title={boostSet.name}
 									>
 										{boostSet.name}
@@ -406,7 +406,7 @@ function BoostSetsPanel({
 					</Button>
 				)}
 				{selectedCount === 0 && (
-					<p className="mt-2 text-center text-muted-foreground text-xs">
+					<p className="text-muted-foreground mt-2 text-center text-xs">
 						{t('modals.builds.consumables.sets.nothing_to_save')}
 					</p>
 				)}
@@ -543,7 +543,7 @@ export default function ConsumablesModalLite() {
 				emptyTitle="modals.builds.consumables.header"
 				favoriteType="boost"
 				infoHeader={
-					<p className="font-medium text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm font-medium">
 						{t('modals.builds.consumables.boost_info')}
 					</p>
 				}

@@ -64,7 +64,7 @@ export function SocialLinks({
 								variant: 'secondary',
 								size: 'sm',
 							}),
-							'gap-1.5 font-medium text-xs'
+							'gap-1.5 text-xs font-medium'
 						)}
 						href={url.trim()}
 						key={network}

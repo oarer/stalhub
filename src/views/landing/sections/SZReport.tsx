@@ -33,7 +33,7 @@ function ChannelCard({
 
 	return (
 		<motion.a
-			className="group flex h-full w-[85vw] shrink-0 snap-start flex-col overflow-hidden rounded-xl border border-border/60 bg-card/60 transition-colors duration-300 hover:border-primary/40 sm:w-auto sm:shrink sm:snap-none"
+			className="group border-border/60 bg-card/60 hover:border-primary/40 flex h-full w-[85vw] shrink-0 snap-start flex-col overflow-hidden rounded-xl border transition-colors duration-300 sm:w-auto sm:shrink sm:snap-none"
 			href={card.href}
 			rel="noopener noreferrer"
 			target="_blank"
@@ -52,18 +52,18 @@ function ChannelCard({
 				<div className={cn('flex items-center gap-3', card.accent)}>
 					<span aria-hidden="true" className="h-px w-6 bg-current" />
 					<span
-						className={`${mtsExtended.className} font-bold text-xs uppercase tracking-widest`}
+						className={`${mtsExtended.className} text-xs font-bold tracking-widest uppercase`}
 					>
 						{t(`cards.${card.id}.label`)}
 					</span>
 				</div>
 				<h3
-					className={`${mtsWide.className} font-bold text-xl sm:text-2xl`}
+					className={`${mtsWide.className} text-xl font-bold sm:text-2xl`}
 				>
 					{t(`cards.${card.id}.title`)}
 				</h3>
 				<p
-					className={`${mtsExtended.className} font-medium text-muted-foreground text-sm leading-relaxed`}
+					className={`${mtsExtended.className} text-muted-foreground text-sm leading-relaxed font-medium`}
 				>
 					{t(`cards.${card.id}.desc`)}
 				</p>
@@ -74,7 +74,7 @@ function ChannelCard({
 					)}
 				>
 					<span
-						className={`${mtsExtended.className} flex items-center gap-2 font-bold text-xs uppercase tracking-widest`}
+						className={`${mtsExtended.className} flex items-center gap-2 text-xs font-bold tracking-widest uppercase`}
 					>
 						<Icon
 							aria-hidden="true"
@@ -152,7 +152,7 @@ export default function SZReport() {
 			id="szreport"
 		>
 			<motion.h2
-				className={`${mtsWide.className} text-center font-bold text-[40px] leading-none sm:text-5xl`}
+				className={`${mtsWide.className} text-center text-[40px] leading-none font-bold sm:text-5xl`}
 				{...rise(shouldReduceMotion)}
 			>
 				{t.rich('title', {

@@ -75,7 +75,7 @@ export function BarterRecipe({
 						/>
 					</div>
 				)}
-				<p className="font-mono font-semibold text-sm">
+				<p className="font-mono text-sm font-semibold">
 					{t('barter.money')}:{' '}
 					{formatBarterAmount(
 						applyDiscount(

@@ -31,7 +31,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 				<div className="flex flex-col">
 					{members.slice(0, 10).map((member) => (
 						<div
-							className="flex items-center justify-between border-primary/50 border-b py-2.5 last:border-b-0"
+							className="border-primary/50 flex items-center justify-between border-b py-2.5 last:border-b-0"
 							key={member.id}
 						>
 							<div className="flex items-center gap-3">
@@ -43,18 +43,18 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 										width={32}
 									/>
 								) : (
-									<div className="flex size-8 items-center justify-center rounded-full bg-accent/50 font-semibold text-xs">
+									<div className="bg-accent/50 flex size-8 items-center justify-center rounded-full text-xs font-semibold">
 										{member.name.charAt(0).toUpperCase()}
 									</div>
 								)}
 								<div>
-									<p className="font-semibold text-sm">
+									<p className="text-sm font-semibold">
 										{member.name}
 									</p>
 									{member.user && (
 										<HoverUserCard id={member.user.id}>
 											<Link
-												className={`font-mono font-semibold text-foreground text-xs`}
+												className={`text-foreground font-mono text-xs font-semibold`}
 												href={`/users/${member.user.id}`}
 											>
 												<Username user={member.user} />
@@ -73,7 +73,7 @@ export function MemberList({ members, isLoading }: MemberListProps) {
 					))}
 					{members.length > 10 && (
 						<p
-							className={`mt-2 text-center font-mono font-semibold text-foreground text-xs`}
+							className={`text-foreground mt-2 text-center font-mono text-xs font-semibold`}
 						>
 							{t('clan.members.more', {
 								count: members.length - 10,

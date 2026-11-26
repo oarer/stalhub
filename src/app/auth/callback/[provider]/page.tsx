@@ -89,17 +89,17 @@ export default function CallbackPage() {
 			{desktopComplete ? (
 				<div className="flex flex-col items-center gap-3 text-center">
 					<h1
-						className={`${mtsExtended.className} font-medium text-2xl`}
+						className={`${mtsExtended.className} text-2xl font-medium`}
 					>
 						{t('auth.success')}
 					</h1>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('auth.closePage')}
 					</p>
 				</div>
 			) : (
 				<h1
-					className={`${mtsExtended.className} animate-pulse font-medium text-2xl uppercase tracking-widest`}
+					className={`${mtsExtended.className} animate-pulse text-2xl font-medium tracking-widest uppercase`}
 				>
 					{t('auth.title')}
 				</h1>

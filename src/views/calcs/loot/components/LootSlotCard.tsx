@@ -13,7 +13,7 @@ export function LootSlotCard({ label, slot }: LootSlotCardProps) {
 	const items = sortedByPct(slot)
 
 	return (
-		<div className="rounded-lg bg-accent/40 p-2">
+		<div className="bg-accent/40 rounded-lg p-2">
 			<div className="flex items-center justify-between text-sm">
 				<span className="font-semibold">{label}</span>
 				<span className={`font-mono font-semibold`}>
@@ -44,20 +44,20 @@ function LootItemRow({ item }: { item: CatalogItem }) {
 	return (
 		<tr className="border-primary/50 border-t">
 			<td
-				className="whitespace-nowrap py-1 pr-3 font-semibold"
+				className="py-1 pr-3 font-semibold whitespace-nowrap"
 				style={qualityColor ? { color: qualityColor } : undefined}
 			>
 				{name || String(id)}
 			</td>
 			<td
-				className={`whitespace-nowrap py-1 pr-3 text-right font-mono font-semibold`}
+				className={`py-1 pr-3 text-right font-mono font-semibold whitespace-nowrap`}
 			>
 				{formattedPct(item.pct)}
 			</td>
 			{item.stack?.stackSize !== undefined &&
 				item.stack.stackSize > 1 && (
 					<td
-						className={`whitespace-nowrap py-1 text-right font-mono font-semibold opacity-60`}
+						className={`py-1 text-right font-mono font-semibold whitespace-nowrap opacity-60`}
 					>
 						x{item.stack.stackSize}
 					</td>

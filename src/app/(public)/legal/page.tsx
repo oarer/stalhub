@@ -29,16 +29,16 @@ const docs = [
 export default function LegalIndexPage() {
 	return (
 		<section className="mx-auto w-full max-w-4xl px-4 pt-34 pb-12 sm:px-6">
-			<h1 className="font-semibold text-2xl">Документы</h1>
+			<h1 className="text-2xl font-semibold">Документы</h1>
 			<div className="mt-6 flex flex-col gap-4">
 				{docs.map((doc) => (
 					<Link
-						className="rounded-xl border border-border p-4 transition-colors hover:border-primary"
+						className="border-border hover:border-primary rounded-xl border p-4 transition-colors"
 						href={doc.href}
 						key={doc.href}
 					>
 						<p className="font-semibold">{doc.title}</p>
-						<p className="mt-1 text-muted-foreground text-sm">
+						<p className="text-muted-foreground mt-1 text-sm">
 							{doc.description}
 						</p>
 					</Link>

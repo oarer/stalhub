@@ -74,11 +74,11 @@ export default function ArtsView() {
 			<div className="flex flex-wrap items-end justify-between gap-3">
 				<div className="space-y-1">
 					<h1
-						className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+						className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 					>
 						{t('arts.title')}
 					</h1>
-					<p className="font-medium text-muted-foreground text-sm">
+					<p className="text-muted-foreground text-sm font-medium">
 						{t('arts.total', { count: data?.total_count ?? 0 })}
 					</p>
 				</div>
@@ -156,7 +156,7 @@ export default function ArtsView() {
 				<div className="columns-2 gap-3 sm:columns-4">
 					{Array.from({ length: take }).map((_, i) => (
 						<div
-							className="mb-3 aspect-square animate-pulse rounded-lg bg-card"
+							className="bg-card mb-3 aspect-square animate-pulse rounded-lg"
 							key={i}
 						/>
 					))}
@@ -164,10 +164,10 @@ export default function ArtsView() {
 			) : arts.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:image"
 					/>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('arts.empty')}
 					</p>
 				</div>
@@ -180,7 +180,7 @@ export default function ArtsView() {
 				>
 					{arts.map((art) => (
 						<Link
-							className="group relative mb-3 block cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-card ring-2 ring-primary/30 duration-200 hover:ring-primary/70"
+							className="group bg-card ring-primary/30 hover:ring-primary/70 relative mb-3 block cursor-pointer break-inside-avoid overflow-hidden rounded-lg ring-2 duration-200"
 							href={`/arts/${art.id}`}
 							key={art.id}
 							onClick={
@@ -271,13 +271,13 @@ export default function ArtsView() {
 										) : (
 											<div className="flex aspect-square w-full items-center justify-center">
 												<Icon
-													className="size-10 text-foreground"
+													className="text-foreground size-10"
 													icon="lucide:image-off"
 												/>
 											</div>
 										)}
 										{extraCount > 0 && (
-											<span className="absolute top-2 left-2 z-2 flex items-center gap-1 rounded-md bg-black/60 px-2 py-0.5 font-mono font-semibold text-white text-xs backdrop-blur">
+											<span className="absolute top-2 left-2 z-2 flex items-center gap-1 rounded-md bg-black/60 px-2 py-0.5 font-mono text-xs font-semibold text-white backdrop-blur">
 												<Icon
 													className="size-3.5"
 													icon="lucide:images"
@@ -289,7 +289,7 @@ export default function ArtsView() {
 								)
 							})()}
 							<div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-linear-to-t from-black/70 to-transparent px-3 pt-8 pb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-								<span className="truncate font-medium text-sm text-white">
+								<span className="truncate text-sm font-medium text-white">
 									{art.title}
 								</span>
 								{art.stars_count > 0 && (
@@ -314,7 +314,7 @@ export default function ArtsView() {
 					>
 						<Icon icon="lucide:chevron-left" />
 					</Button>
-					<span className={`font-mono text-foreground text-sm`}>
+					<span className={`text-foreground font-mono text-sm`}>
 						{page} / {totalPages}
 					</span>
 					<Button
@@ -348,7 +348,7 @@ export default function ArtsView() {
 						<p className="font-medium">
 							{t('arts.nsfwAge.description')}
 						</p>
-						<p className="font-medium text-foreground text-xs">
+						<p className="text-foreground text-xs font-medium">
 							{t('arts.nsfwAge.terms')}{' '}
 							<Link
 								className="text-primary underline underline-offset-2"

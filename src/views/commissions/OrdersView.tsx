@@ -34,7 +34,7 @@ export default function OrdersView() {
 	const query = useQuery(queries.orders(user, side, page, status))
 	return (
 		<div className="flex flex-col gap-5">
-			<h1 className="font-semibold text-2xl">{t('orders')}</h1>
+			<h1 className="text-2xl font-semibold">{t('orders')}</h1>
 			<div className="flex flex-wrap items-center gap-3">
 				<Tabs.Root
 					onValueChange={(value) => {
@@ -71,7 +71,7 @@ export default function OrdersView() {
 				<div className="ml-auto flex items-center gap-3">
 					{capabilities.data?.author && (
 						<CLink
-							className="px-0 text-primary"
+							className="text-primary px-0"
 							href="/me/arts/studio"
 							variant="none"
 						>
@@ -81,7 +81,7 @@ export default function OrdersView() {
 					{(capabilities.data?.arbitrate ||
 						capabilities.data?.owner) && (
 						<CLink
-							className="px-0 text-primary"
+							className="text-primary px-0"
 							href="/me/arbitration"
 							variant="none"
 						>
@@ -111,7 +111,7 @@ export default function OrdersView() {
 								</Badge>
 							)}
 						</h2>
-						<p className="truncate text-muted-foreground text-sm">
+						<p className="text-muted-foreground truncate text-sm">
 							{t(side === 'artist' ? 'customer' : 'artist')}:{' '}
 							{side === 'artist'
 								? order.customer.name || order.customer.username
@@ -122,11 +122,11 @@ export default function OrdersView() {
 							value={order.status}
 						/>
 					</div>
-					<span className="hidden shrink-0 font-medium text-sm md:block">
+					<span className="hidden shrink-0 text-sm font-medium md:block">
 						{commissionMoney(order.total, order.currency)}
 					</span>
 					<Icon
-						className="hidden shrink-0 text-muted-foreground md:block"
+						className="text-muted-foreground hidden shrink-0 md:block"
 						icon="lucide:chevron-right"
 					/>
 				</Card.Link>
@@ -134,7 +134,7 @@ export default function OrdersView() {
 			{query.data?.total === 0 && (
 				<div className="flex flex-col items-center gap-2 py-10 text-center">
 					<Icon
-						className="text-3xl text-muted-foreground"
+						className="text-muted-foreground text-3xl"
 						icon="lucide:inbox"
 					/>
 					<p className="text-muted-foreground">{t('empty')}</p>

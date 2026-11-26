@@ -100,19 +100,19 @@ function ClanGoldContent({ clanId }: { clanId: string }) {
 		<div className="flex flex-col gap-4">
 			<div>
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('clan.gold.title')}
 				</h1>
-				<p className="font-semibold text-foreground text-sm">
+				<p className="text-foreground text-sm font-semibold">
 					{t('clan.gold.desc')}
 				</p>
 			</div>
 
 			{drops?.length === 0 && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:coins" />
-					<h3 className="font-semibold text-lg">
+					<h3 className="text-lg font-semibold">
 						{t('clan.gold.empty')}
 					</h3>
 				</div>

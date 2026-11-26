@@ -42,7 +42,7 @@ export function PaintSettingsCard({
 				>
 					{currentPaintName || t('notSelected')}
 				</Button>
-				<span className="font-semibold text-muted-foreground text-sm">
+				<span className="text-muted-foreground text-sm font-semibold">
 					{t('scale')}
 				</span>
 				<Input

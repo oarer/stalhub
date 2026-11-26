@@ -86,7 +86,7 @@ const Row = ({
 					/>
 
 					<p
-						className="max-w-50 truncate font-medium text-sm"
+						className="max-w-50 truncate text-sm font-medium"
 						style={{
 							color: !isDark
 								? `color-mix(in srgb, ${itemColor} 70%, var(--foreground))`
@@ -197,13 +197,13 @@ export function ItemsList({
 	return (
 		<div className="h-full min-h-0 w-full">
 			{emptyText && sortedItems.length === 0 ? (
-				<p className="flex h-full items-center justify-center font-medium text-foreground text-sm">
+				<p className="text-foreground flex h-full items-center justify-center text-sm font-medium">
 					{emptyText}
 				</p>
 			) : (
 				<div
 					className={cn(
-						'mask-y-from-97% mask-y-to-100% w-full overflow-auto',
+						'w-full overflow-auto mask-y-from-97% mask-y-to-100%',
 						className
 					)}
 					ref={parentRef}

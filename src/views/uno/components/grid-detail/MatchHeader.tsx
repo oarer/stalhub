@@ -21,7 +21,7 @@ export function MatchHeader({
 		>
 			<span
 				className={cn(
-					'text-[9px] uppercase tracking-[0.16em]',
+					'text-[9px] tracking-[0.16em] uppercase',
 					accent ? 'text-success/80' : 'text-muted-foreground'
 				)}
 			>
@@ -29,7 +29,7 @@ export function MatchHeader({
 			</span>
 			<span
 				className={cn(
-					'font-mono font-semibold text-[11px]',
+					'font-mono text-[11px] font-semibold',
 					accent ? 'text-success' : 'text-foreground'
 				)}
 			>
@@ -37,7 +37,7 @@ export function MatchHeader({
 			</span>
 			<span
 				className={cn(
-					'text-right text-[9px] uppercase tracking-[0.16em]',
+					'text-right text-[9px] tracking-[0.16em] uppercase',
 					accent ? 'text-success/80' : 'text-muted-foreground'
 				)}
 			>

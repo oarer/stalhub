@@ -110,7 +110,7 @@ export default function UnoAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+				className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 			>
 				{t('admin.uno.title')}
 			</h1>
@@ -150,7 +150,7 @@ export default function UnoAdminView() {
 						</Button>
 					</div>
 					{formError && (
-						<p className="text-rose-400 text-xs">{formError}</p>
+						<p className="text-xs text-rose-400">{formError}</p>
 					)}
 
 					<div className="overflow-x-auto">
@@ -181,12 +181,12 @@ export default function UnoAdminView() {
 											</span>
 										</Table.Cell>
 										<Table.Cell>
-											<span className="max-w-64 truncate text-neutral-400 text-xs">
+											<span className="max-w-64 truncate text-xs text-neutral-400">
 												{ban.reason || '—'}
 											</span>
 										</Table.Cell>
 										<Table.Cell>
-											<span className="text-neutral-400 text-xs">
+											<span className="text-xs text-neutral-400">
 												{formatDate(
 													ban.banned_at,
 													'datetime'
@@ -194,7 +194,7 @@ export default function UnoAdminView() {
 											</span>
 										</Table.Cell>
 										<Table.Cell>
-											<span className="text-neutral-400 text-xs">
+											<span className="text-xs text-neutral-400">
 												{ban.banned_by ?? '—'}
 											</span>
 										</Table.Cell>
@@ -233,7 +233,7 @@ export default function UnoAdminView() {
 							<Icon icon="lucide:activity" />
 							{t('admin.uno.stats.title')}
 						</Card.Title>
-						<div className="flex flex-wrap items-center gap-3 text-neutral-400 text-xs">
+						<div className="flex flex-wrap items-center gap-3 text-xs text-neutral-400">
 							<span>
 								{t('admin.uno.stats.total', {
 									count: numberFmt.format(stats.total_ips),
@@ -276,21 +276,21 @@ export default function UnoAdminView() {
 											</span>
 										</Table.Cell>
 										<Table.Cell>
-											<span className="font-medium font-mono text-sm">
+											<span className="font-mono text-sm font-medium">
 												{numberFmt.format(stat.hits)}
 											</span>
 										</Table.Cell>
 										<Table.Cell>
 											<div className="flex flex-wrap gap-1.5">
 												{stat.manual_banned && (
-													<span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-medium text-rose-400 text-xs">
+													<span className="rounded-full bg-rose-500/10 px-2 py-0.5 text-xs font-medium text-rose-400">
 														{t(
 															'admin.uno.stats.badge.manual'
 														)}
 													</span>
 												)}
 												{stat.auto_blocked && (
-													<span className="rounded-full bg-amber-500/10 px-2 py-0.5 font-medium text-amber-400 text-xs">
+													<span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">
 														{t(
 															'admin.uno.stats.badge.auto'
 														)}
@@ -298,7 +298,7 @@ export default function UnoAdminView() {
 												)}
 												{!stat.manual_banned &&
 													!stat.auto_blocked && (
-														<span className="text-neutral-400 text-xs">
+														<span className="text-xs text-neutral-400">
 															—
 														</span>
 													)}
@@ -392,7 +392,7 @@ export default function UnoAdminView() {
 							/>
 						</div>
 						{formError && (
-							<p className="text-rose-400 text-xs">{formError}</p>
+							<p className="text-xs text-rose-400">{formError}</p>
 						)}
 						<Modal.Action
 							closeOnClick

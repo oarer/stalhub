@@ -44,7 +44,7 @@ export default function UnoCalendarView({
 			{query.data?.season && (
 				<p className="text-muted-foreground text-sm">
 					{t('filters.season')}:{' '}
-					<span className="font-medium text-foreground">
+					<span className="text-foreground font-medium">
 						{query.data.season}
 					</span>
 				</p>

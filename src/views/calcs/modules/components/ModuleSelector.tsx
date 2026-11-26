@@ -132,7 +132,7 @@ export default function ModuleSelector() {
 	return (
 		<DropdownMenu
 			blur={false}
-			className="font-semibold text-[15px]"
+			className="text-[15px] font-semibold"
 			icon="lucide:layers"
 			items={items}
 			placement="bottom-start"

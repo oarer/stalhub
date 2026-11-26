@@ -42,19 +42,19 @@ export function SessionsSection({
 				{sessions?.map((session) => (
 					<div
 						className={cn(
-							'flex flex-col gap-2 rounded-lg bg-accent/50 p-4',
-							session.is_self && 'border-2 border-primary/50'
+							'bg-accent/50 flex flex-col gap-2 rounded-lg p-4',
+							session.is_self && 'border-primary/50 border-2'
 						)}
 						key={session.id}
 					>
 						<div className="flex flex-col gap-1">
-							<span className={`font-mono font-semibold text-sm`}>
+							<span className={`font-mono text-sm font-semibold`}>
 								{session.browser} · {session.browser_version}
 							</span>
 						</div>
 						{session.ip && (
 							<p
-								className={`font-mono font-semibold text-foreground text-xs`}
+								className={`text-foreground font-mono text-xs font-semibold`}
 							>
 								IP:{' '}
 								<span className="blur-xs transition-all hover:blur-none">
@@ -63,7 +63,7 @@ export function SessionsSection({
 							</p>
 						)}
 						<p
-							className={`font-mono font-semibold text-foreground text-xs`}
+							className={`text-foreground font-mono text-xs font-semibold`}
 						>
 							<Tooltip.Root>
 								<Tooltip.Trigger>

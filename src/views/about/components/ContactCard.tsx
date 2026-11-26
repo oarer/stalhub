@@ -25,7 +25,7 @@ export function ContactCard({ name, description, links }: AboutMember) {
 				<motion.div {...view}>
 					<Image
 						alt={name}
-						className="h-40 w-40 rounded-2xl bg-card object-cover shadow-2xl shadow-border/40 ring-2 ring-primary/80 sm:h-52 sm:w-52 lg:h-56.5 lg:w-56.5"
+						className="bg-card shadow-border/40 ring-primary/80 h-40 w-40 rounded-2xl object-cover shadow-2xl ring-2 sm:h-52 sm:w-52 lg:h-56.5 lg:w-56.5"
 						height={226}
 						src={`/images/avatars/${name}.jpg`}
 						width={226}
@@ -37,12 +37,12 @@ export function ContactCard({ name, description, links }: AboutMember) {
 					{...view}
 				>
 					<h2
-						className={`${mtsExtended.className} font-semibold text-xl uppercase tracking-widest sm:text-2xl`}
+						className={`${mtsExtended.className} text-xl font-semibold tracking-widest uppercase sm:text-2xl`}
 					>
 						{name}
 					</h2>
 					<h3
-						className={`${mtsWide.className} font-medium text-primary text-sm uppercase tracking-widest`}
+						className={`${mtsWide.className} text-primary text-sm font-medium tracking-widest uppercase`}
 					>
 						{t(description)}
 					</h3>
@@ -64,10 +64,10 @@ export function ContactCard({ name, description, links }: AboutMember) {
 				</motion.div>
 			</motion.div>
 
-			<motion.div className="perspective-dramatic group" {...view}>
+			<motion.div className="group perspective-dramatic" {...view}>
 				<Image
 					alt={`${name} quote`}
-					className="group-hover:transform-[translateZ(0)] max-h-65 w-full min-w-80 -rotate-y-2 rounded-xl bg-card p-2 shadow-2xl shadow-accent ring-2 ring-muted transition-transform duration-500 md:min-w-lg"
+					className="bg-card shadow-accent ring-muted max-h-65 w-full min-w-80 -rotate-y-2 rounded-xl p-2 shadow-2xl ring-2 transition-transform duration-500 group-hover:transform-[translateZ(0)] md:min-w-lg"
 					height={512}
 					quality={100}
 					src={`/images/avatars/quote/${name}.png`}

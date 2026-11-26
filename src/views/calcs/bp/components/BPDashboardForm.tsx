@@ -31,7 +31,7 @@ function Group({
 }) {
 	return (
 		<div className="flex flex-col gap-3">
-			<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+			<p className="text-muted-foreground flex items-center gap-2 text-sm font-semibold">
 				<Icon className="text-lg" icon={icon} />
 				{title}
 			</p>
@@ -53,7 +53,7 @@ export function BPDashboardForm({
 			<Card.Header>
 				<Card.Title>
 					<Icon
-						className="text-neutral-700 text-xl dark:text-neutral-300"
+						className="text-xl text-neutral-700 dark:text-neutral-300"
 						icon="lucide:sliders-horizontal"
 					/>
 					<h2>{t('bp.data')}</h2>
@@ -106,7 +106,7 @@ export function BPDashboardForm({
 										: 'secondary'
 								}
 							>
-								<span className="font-mono font-semibold text-xs">
+								<span className="font-mono text-xs font-semibold">
 									{t('bp.target_preset', {
 										count: preset,
 									})}
@@ -171,10 +171,10 @@ export function BPDashboardForm({
 										: 'secondary'
 								}
 							>
-								<span className="font-semibold text-xs">
+								<span className="text-xs font-semibold">
 									{t(`bp.pace_${preset}`)}
 								</span>
-								<span className="font-mono font-semibold text-[11px] opacity-70">
+								<span className="font-mono text-[11px] font-semibold opacity-70">
 									{t('bp.pace_tasks', { count: preset })}
 								</span>
 							</Button>
@@ -202,7 +202,7 @@ export function BPDashboardForm({
 									type="button"
 									variant={active ? 'primary' : 'secondary'}
 								>
-									<span className="font-mono font-semibold text-xs">
+									<span className="font-mono text-xs font-semibold">
 										{t(`bp.weekday_${key}`)}
 									</span>
 								</Button>
@@ -220,11 +220,11 @@ export function BPDashboardForm({
 							icon: 'lucide:rocket',
 							content: (
 								<div className="flex flex-col gap-4 px-2">
-									<p className="-mt-1 text-muted-foreground text-xs">
+									<p className="text-muted-foreground -mt-1 text-xs">
 										{t('bp.boost_sub')}
 									</p>
 									<div className="flex flex-col gap-2">
-										<p className="font-semibold text-muted-foreground text-sm">
+										<p className="text-muted-foreground text-sm font-semibold">
 											{t('bp.overloads')}
 										</p>
 										<div className="grid grid-cols-3 gap-2">
@@ -251,7 +251,7 @@ export function BPDashboardForm({
 															: 'secondary'
 													}
 												>
-													<span className="font-semibold text-xs">
+													<span className="text-xs font-semibold">
 														{t(
 															`bp.overload_${mode}`
 														)}
@@ -282,7 +282,7 @@ export function BPDashboardForm({
 									</div>
 
 									<div className="flex flex-col gap-2">
-										<p className="font-semibold text-muted-foreground text-sm">
+										<p className="text-muted-foreground text-sm font-semibold">
 											{t('bp.donations')}
 										</p>
 										<div className="grid grid-cols-4 gap-2">
@@ -304,7 +304,7 @@ export function BPDashboardForm({
 															: 'secondary'
 													}
 												>
-													<span className="font-mono font-semibold text-xs">
+													<span className="font-mono text-xs font-semibold">
 														{packs === 0
 															? '0'
 															: `+${packs * 50}`}
@@ -314,7 +314,7 @@ export function BPDashboardForm({
 										</div>
 									</div>
 
-									<div className="flex items-center justify-between gap-3 rounded-lg bg-card px-3 py-2.5">
+									<div className="bg-card flex items-center justify-between gap-3 rounded-lg px-3 py-2.5">
 										<CheckBox
 											checked={state.boostOn}
 											description={t('bp.boost_3d_desc')}

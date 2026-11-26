@@ -25,12 +25,12 @@ export default function ErrorContent({
 	return (
 		<div className="flex max-w-md flex-col gap-2">
 			<h1
-				className={`${mtsExtended.className} font-semibold text-3xl uppercase tracking-widest`}
+				className={`${mtsExtended.className} text-3xl font-semibold tracking-widest uppercase`}
 			>
 				{title ?? t('errors.oops')}
 			</h1>
 			<p
-				className={`${mtsExtended.className} font-medium text-xl dark:text-foreground/90`}
+				className={`${mtsExtended.className} dark:text-foreground/90 text-xl font-medium`}
 			>
 				{description}
 			</p>

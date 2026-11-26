@@ -58,29 +58,29 @@ export default function Transfer() {
 	return (
 		<section className="flex flex-col gap-4">
 			<h1
-				className={`${mtsExtended.className} font-medium text-[22px] leading-none`}
+				className={`${mtsExtended.className} text-[22px] leading-none font-medium`}
 			>
 				{t('download.title')}
 			</h1>
 
 			<Card.Root className="gap-5">
-				<p className="font-medium text-foreground">
+				<p className="text-foreground font-medium">
 					{t('download.description')}
 				</p>
 
 				<div className="flex flex-col gap-1">
-					<span className="font-semibold text-sm">
+					<span className="text-sm font-semibold">
 						{t('download.include')}
 					</span>
 					{entriesList.length === 0 ? (
-						<p className="font-semibold text-foreground text-sm">
+						<p className="text-foreground text-sm font-semibold">
 							{t('download.empty')}
 						</p>
 					) : (
 						<ul className="flex flex-wrap gap-2">
 							{entriesList.map(([key, value]) => (
 								<li
-									className="flex items-center gap-1.5 rounded-lg bg-accent/50 px-2.5 py-1 font-semibold text-xs"
+									className="bg-accent/50 flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold"
 									key={key}
 								>
 									<Icon
@@ -89,7 +89,7 @@ export default function Transfer() {
 									/>
 									<span>{key}</span>
 									<span
-										className={`font-mono text-foreground`}
+										className={`text-foreground font-mono`}
 									>
 										{formatBytes(value.length)}
 									</span>
@@ -98,7 +98,7 @@ export default function Transfer() {
 						</ul>
 					)}
 					<p
-						className={`font-mono font-semibold text-foreground text-xs`}
+						className={`text-foreground font-mono text-xs font-semibold`}
 					>
 						{t('download.total', {
 							count: entriesList.length,
@@ -124,7 +124,7 @@ export default function Transfer() {
 					<div className="flex flex-col gap-2">
 						<div className="flex items-center gap-2">
 							<input
-								className={`w-full rounded-lg border-2 border-muted bg-card/50 px-3 py-2 font-mono font-semibold text-xs`}
+								className={`border-muted bg-card/50 w-full rounded-lg border-2 px-3 py-2 font-mono text-xs font-semibold`}
 								readOnly
 								value={link}
 							/>
@@ -145,13 +145,13 @@ export default function Transfer() {
 								{t('download.open')}
 							</a>
 							{oversize && (
-								<span className="flex items-center gap-1.5 font-semibold text-destructive text-sm">
+								<span className="text-destructive flex items-center gap-1.5 text-sm font-semibold">
 									<Icon icon="lucide:triangle-alert" />
 									{t('download.oversize')}
 								</span>
 							)}
 						</div>
-						<p className="font-semibold text-foreground text-xs">
+						<p className="text-foreground text-xs font-semibold">
 							{t('download.hint')}
 						</p>
 					</div>

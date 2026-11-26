@@ -34,9 +34,9 @@ export function BuyHeader({
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center gap-2">
-				<div className="w-1 shrink-0 self-stretch bg-primary" />
+				<div className="bg-primary w-1 shrink-0 self-stretch" />
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] text-primary leading-none`}
+					className={`${mtsExtended.className} text-primary text-[28px] leading-none font-semibold`}
 				>
 					{title || t('buy.title')}
 				</h1>
@@ -94,7 +94,7 @@ export function BuyHeader({
 					</Button>
 				</div>
 				{!discord.trim() && (
-					<p className="font-medium text-muted-foreground text-xs">
+					<p className="text-muted-foreground text-xs font-medium">
 						{t('buy.discordHint')}
 					</p>
 				)}

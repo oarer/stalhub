@@ -42,8 +42,8 @@ export function ArbitrationView() {
 	})
 	return (
 		<div className="flex flex-col gap-5">
-			<h1 className="font-semibold text-2xl">{t('arbitration')}</h1>
-			<p className="max-w-2xl text-muted-foreground text-sm">
+			<h1 className="text-2xl font-semibold">{t('arbitration')}</h1>
+			<p className="text-muted-foreground max-w-2xl text-sm">
 				{t('externalOnly')}
 			</p>
 			<Feedback
@@ -72,7 +72,7 @@ export function ArbitrationView() {
 					</div>
 					{entry.assigned_to === user ? (
 						<CLink
-							className="w-fit px-0 text-primary"
+							className="text-primary w-fit px-0"
 							href={`/me/arbitration/${entry.id}`}
 							variant="none"
 						>
@@ -93,7 +93,7 @@ export function ArbitrationView() {
 			{query.data?.total === 0 && (
 				<div className="flex flex-col items-center gap-2 py-10 text-center">
 					<Icon
-						className="text-3xl text-muted-foreground"
+						className="text-muted-foreground text-3xl"
 						icon="lucide:scale"
 					/>
 					<p className="text-muted-foreground">{t('empty')}</p>
@@ -116,7 +116,7 @@ export function ArbitrationCaseView({ id }: { id: string }) {
 	const capabilities = useQuery(queries.capabilities(user))
 	return (
 		<div className="flex flex-col gap-5">
-			<h1 className="font-semibold text-2xl">{t('arbitration')}</h1>
+			<h1 className="text-2xl font-semibold">{t('arbitration')}</h1>
 			<Feedback error={query.error} />
 			{query.isPending && <ListRowsSkeleton />}
 			{query.data && (
@@ -125,13 +125,13 @@ export function ArbitrationCaseView({ id }: { id: string }) {
 					<Card.Root className="gap-3">
 						<h2 className="font-semibold">{t('caseReason')}</h2>
 						{query.data.reason && (
-							<p className="whitespace-pre-wrap text-sm">
+							<p className="text-sm whitespace-pre-wrap">
 								{query.data.reason}
 							</p>
 						)}
 						{query.data.order_id && (
 							<CLink
-								className="w-fit px-0 text-primary"
+								className="text-primary w-fit px-0"
 								href={`/me/commissions/${query.data.order_id}`}
 								variant="none"
 							>
@@ -144,7 +144,7 @@ export function ArbitrationCaseView({ id }: { id: string }) {
 									{query.data.review.score}/5
 								</Badge>
 								{query.data.review.content && (
-									<p className="whitespace-pre-wrap text-sm">
+									<p className="text-sm whitespace-pre-wrap">
 										{query.data.review.content}
 									</p>
 								)}
@@ -157,12 +157,12 @@ export function ArbitrationCaseView({ id }: { id: string }) {
 								{t(`outcomes.${decision.outcome}`)}
 							</h2>
 							{decision.reason && (
-								<p className="whitespace-pre-wrap text-sm">
+								<p className="text-sm whitespace-pre-wrap">
 									{decision.reason}
 								</p>
 							)}
 							{decision.obligations && (
-								<p className="whitespace-pre-wrap text-muted-foreground text-sm">
+								<p className="text-muted-foreground text-sm whitespace-pre-wrap">
 									{decision.obligations}
 								</p>
 							)}

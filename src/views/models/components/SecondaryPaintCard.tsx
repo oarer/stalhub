@@ -30,7 +30,7 @@ export function SecondaryPaintCard({
 					onCheckedChange={onEnabledChange}
 				/>
 				<div className="flex items-center justify-between gap-3">
-					<span className="font-semibold text-muted-foreground text-sm">
+					<span className="text-muted-foreground text-sm font-semibold">
 						{t('secondaryColor')}
 					</span>
 					<div className="flex items-center gap-2">
@@ -46,7 +46,7 @@ export function SecondaryPaintCard({
 								<Icon icon="lucide:undo-2" />
 							</Button>
 						)}
-						<label className="relative h-8 w-8 cursor-pointer overflow-hidden rounded-lg border-2 border-muted transition-colors hover:border-primary">
+						<label className="border-muted hover:border-primary relative h-8 w-8 cursor-pointer overflow-hidden rounded-lg border-2 transition-colors">
 							<input
 								className="absolute inset-0 cursor-pointer opacity-0"
 								disabled={!secondaryEnabled}

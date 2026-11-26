@@ -190,7 +190,7 @@ export default function TierListDetailView() {
 								{(close) => (
 									<>
 										<CLink
-											className="w-full justify-start gap-2 rounded-lg px-2.5 py-2 font-medium text-sm hover:bg-muted"
+											className="hover:bg-muted w-full justify-start gap-2 rounded-lg px-2.5 py-2 text-sm font-medium"
 											href={`/me/tierlists/${id}/edit`}
 											onClick={close}
 										>
@@ -236,7 +236,7 @@ export default function TierListDetailView() {
 				description={tierList.description || null}
 				prefix={
 					tierList.kind === TierListKind.SYSTEM ? (
-						<Badge className="gap-2 bg-primary/10 text-primary">
+						<Badge className="bg-primary/10 text-primary gap-2">
 							<Icon className="size-3" icon="lucide:bot" />
 							{t('tierlists.system')}
 						</Badge>
@@ -377,9 +377,9 @@ function TierListEntryCard({
 
 	const content = (
 		<div
-			className={`flex items-center gap-2 rounded-md border bg-card px-3 py-1.5 text-sm transition-colors hover:border-primary/30 ${
+			className={`bg-card hover:border-primary/30 flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm transition-colors ${
 				changed
-					? 'border-primary/40 ring-1 ring-primary/30'
+					? 'border-primary/40 ring-primary/30 ring-1'
 					: 'border-muted'
 			}`}
 		>
@@ -450,13 +450,13 @@ function RankList({
 				return (
 					<div className="flex gap-2" key={rank}>
 						<div
-							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-semibold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
+							className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg text-xl font-semibold ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
 						>
 							{rank}
 						</div>
-						<div className="flex min-h-14 flex-1 flex-wrap gap-2 rounded-lg border border-muted bg-card/50 p-2">
+						<div className="border-muted bg-card/50 flex min-h-14 flex-1 flex-wrap gap-2 rounded-lg border p-2">
 							{entries.length === 0 && (
-								<span className="flex items-center px-2 font-semibold text-foreground text-sm">
+								<span className="text-foreground flex items-center px-2 text-sm font-semibold">
 									{t('tierlists.empty')}
 								</span>
 							)}

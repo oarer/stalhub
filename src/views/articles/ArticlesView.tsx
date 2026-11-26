@@ -25,11 +25,11 @@ export default function ArticlesView() {
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('articles.title')}
 				</h1>
-				<p className="font-medium text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-medium">
 					{t('articles.publishedCount', {
 						count: data?.total_count ?? 0,
 					})}
@@ -39,10 +39,10 @@ export default function ArticlesView() {
 			{articles.length === 0 ? (
 				<div className="flex flex-col items-center gap-3 py-16">
 					<Icon
-						className="size-10 text-foreground"
+						className="text-foreground size-10"
 						icon="lucide:file-text"
 					/>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('articles.empty')}
 					</p>
 				</div>
@@ -50,15 +50,15 @@ export default function ArticlesView() {
 				<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 					{articles.map((article) => (
 						<Link
-							className="group flex flex-col gap-3 rounded-lg border-2 border-primary/50 bg-card p-4 transition-colors hover:bg-accent/70"
+							className="group border-primary/50 bg-card hover:bg-accent/70 flex flex-col gap-3 rounded-lg border-2 p-4 transition-colors"
 							href={`/articles/${article.id}`}
 							key={article.id}
 						>
-							<h2 className="font-medium text-lg transition-colors group-hover:text-primary">
+							<h2 className="group-hover:text-primary text-lg font-medium transition-colors">
 								{article.title}
 							</h2>
 
-							<div className="flex items-center gap-3 font-medium text-foreground text-xs">
+							<div className="text-foreground flex items-center gap-3 text-xs font-medium">
 								<div className="flex items-center gap-1">
 									<Icon icon="lucide:user" />
 									<Username user={article.author} />
@@ -79,7 +79,7 @@ export default function ArticlesView() {
 								<div className="flex flex-wrap gap-1">
 									{article.tags.slice(0, 5).map((tag) => (
 										<span
-											className="rounded-md bg-border-secondary px-1.5 py-0.5 font-medium text-foreground text-xs"
+											className="bg-border-secondary text-foreground rounded-md px-1.5 py-0.5 text-xs font-medium"
 											key={tag}
 										>
 											{tag}

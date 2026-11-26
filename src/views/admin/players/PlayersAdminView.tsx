@@ -91,7 +91,7 @@ export default function PlayersAdminView() {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<h1 className="font-semibold text-2xl">
+			<h1 className="text-2xl font-semibold">
 				{t('admin.players.title')}
 			</h1>
 
@@ -152,7 +152,7 @@ export default function PlayersAdminView() {
 
 			<div>
 				<div className="mb-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-					<h2 className="font-semibold text-lg">
+					<h2 className="text-lg font-semibold">
 						{t('admin.players.rolesTitle')}
 					</h2>
 					<Combobox
@@ -195,7 +195,7 @@ export default function PlayersAdminView() {
 												</span>
 											</Table.Cell>
 											<Table.Cell>
-												<span className="rounded-full bg-sky-400/10 px-2 py-0.5 font-semibold text-sky-400 text-xs">
+												<span className="rounded-full bg-sky-400/10 px-2 py-0.5 text-xs font-semibold text-sky-400">
 													{player.role}
 												</span>
 											</Table.Cell>
@@ -207,7 +207,7 @@ export default function PlayersAdminView() {
 								) : (
 									<Table.Row>
 										<Table.Cell>
-											<span className="text-neutral-400 text-sm">
+											<span className="text-sm text-neutral-400">
 												{t('admin.players.empty')}
 											</span>
 										</Table.Cell>
@@ -222,7 +222,7 @@ export default function PlayersAdminView() {
 			</div>
 
 			<div>
-				<h2 className="mb-4 font-semibold text-lg">
+				<h2 className="mb-4 text-lg font-semibold">
 					{t('admin.players.blacklist')}
 				</h2>
 

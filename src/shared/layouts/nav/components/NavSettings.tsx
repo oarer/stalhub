@@ -56,7 +56,7 @@ export default function NavSettings() {
 		<div className="relative" ref={menuRef}>
 			<button
 				aria-label="Настройки"
-				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
+				className="hover:bg-muted/60 relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:opacity-100 active:opacity-50"
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
 			>
 				<div
@@ -79,7 +79,7 @@ export default function NavSettings() {
 				{isMenuOpen && (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="absolute top-12 right-0 z-20 flex max-h-[calc(100dvh-6rem)] origin-top-right flex-row items-stretch gap-4 overflow-y-auto rounded-2xl bg-card/95 p-4 shadow-lg ring-2 ring-primary/30 backdrop-blur-xl"
+						className="bg-card/95 ring-primary/30 absolute top-12 right-0 z-20 flex max-h-[calc(100dvh-6rem)] origin-top-right flex-row items-stretch gap-4 overflow-y-auto rounded-2xl p-4 shadow-lg ring-2 backdrop-blur-xl"
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
@@ -97,7 +97,7 @@ export default function NavSettings() {
 										icon={loc.iconName}
 									/>
 									<p
-										className={`font-semibold text-sm ${
+										className={`text-sm font-semibold ${
 											currentLocale === loc.code
 												? 'text-primary'
 												: ''
@@ -128,7 +128,7 @@ export default function NavSettings() {
 											icon={th.iconName}
 										/>
 										<p
-											className={`font-semibold text-sm ${
+											className={`text-sm font-semibold ${
 												theme === th.name
 													? 'text-primary'
 													: ''
@@ -149,7 +149,7 @@ export default function NavSettings() {
 
 						<div className="flex w-36 flex-col items-center justify-center gap-3 px-2">
 							<Icon className="text-3xl" icon="lucide:radar" />
-							<p className="text-center font-semibold text-sm">
+							<p className="text-center text-sm font-semibold">
 								{t('nav.uno')}
 							</p>
 							<Switch

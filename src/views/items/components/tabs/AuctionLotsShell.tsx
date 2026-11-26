@@ -21,7 +21,7 @@ export function LotRow({
 }) {
 	return (
 		<div className="flex justify-between gap-2 text-sm">
-			<span className="font-semibold text-foreground">{label}</span>
+			<span className="text-foreground font-semibold">{label}</span>
 			<span className={cn('font-semibold', 'font-mono')}>{children}</span>
 		</div>
 	)
@@ -47,7 +47,7 @@ export function AuctionLotsShell<
 		return (
 			<Card.Root className="py-2">
 				<Card.Header>
-					<Card.Title className="justify-center text-foreground text-md">
+					<Card.Title className="text-foreground text-md justify-center">
 						{t('modals.builds.no_data')}
 					</Card.Title>
 				</Card.Header>

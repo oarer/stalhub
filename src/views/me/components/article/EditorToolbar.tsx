@@ -188,7 +188,7 @@ export function EditorToolbar({
 
 	return (
 		<div className="flex items-center justify-between px-2">
-			<div className="flex items-center gap-2 rounded-lg bg-card p-1 px-2">
+			<div className="bg-card flex items-center gap-2 rounded-lg p-1 px-2">
 				{toolbarActions.map((action, i) =>
 					action.separator ? (
 						<Divider
@@ -198,7 +198,7 @@ export function EditorToolbar({
 						/>
 					) : (
 						<button
-							className="flex size-8 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent/50 hover:text-text"
+							className="text-foreground hover:bg-accent/50 hover:text-text flex size-8 cursor-pointer items-center justify-center rounded-md transition-colors"
 							key={action.label}
 							onClick={() => {
 								const ta = textareaRef.current
@@ -212,7 +212,7 @@ export function EditorToolbar({
 					)
 				)}
 			</div>
-			<div className="flex items-center gap-2 rounded-lg bg-card p-1 px-2">
+			<div className="bg-card flex items-center gap-2 rounded-lg p-1 px-2">
 				<Button
 					className="p-2"
 					onClick={() => setTagsModalOpen(true)}
@@ -291,14 +291,14 @@ export function EditorToolbar({
 						<div className="flex flex-col gap-1.5">
 							{HOTKEYS.map((h) => (
 								<div
-									className="flex items-center justify-between rounded-md px-0.5 py-1.5 transition-colors hover:bg-accent/30"
+									className="hover:bg-accent/30 flex items-center justify-between rounded-md px-0.5 py-1.5 transition-colors"
 									key={h.shortcut}
 								>
-									<span className="font-semibold text-sm">
+									<span className="text-sm font-semibold">
 										{t(h.label)}
 									</span>
 									<kbd
-										className={`rounded-md border border-primary bg-card px-2 py-0.5 font-mono font-semibold text-foreground text-xs`}
+										className={`border-primary bg-card text-foreground rounded-md border px-2 py-0.5 font-mono text-xs font-semibold`}
 									>
 										{h.shortcut}
 									</kbd>

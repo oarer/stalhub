@@ -141,9 +141,9 @@ export function BuildLiteHeader({
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center gap-2">
-				<div className="w-1 shrink-0 self-stretch bg-primary" />
+				<div className="bg-primary w-1 shrink-0 self-stretch" />
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] text-primary leading-none`}
+					className={`${mtsExtended.className} text-primary text-[28px] leading-none font-semibold`}
 				>
 					{currentBuild ? currentBuild.name : t('build.new_build')}
 				</h1>
@@ -275,7 +275,7 @@ export function BuildLiteHeader({
 									</div>
 									<Divider className="my-1" />
 									<div className="flex flex-col gap-2">
-										<p className="font-medium text-foreground text-sm">
+										<p className="text-foreground text-sm font-medium">
 											{t('buildsLite.tagsLabel')}
 										</p>
 										<div className="flex flex-wrap gap-2">

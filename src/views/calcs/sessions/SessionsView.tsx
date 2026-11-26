@@ -76,11 +76,11 @@ export function SessionsView() {
 		<section className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-32 pb-12 lg:pt-36">
 			
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('sessions.title')}
 				</h1>
-				<p className="font-medium text-muted-foreground text-sm">
+				<p className="text-muted-foreground text-sm font-medium">
 					{t('sessions.sub_title')}
 				</p>
 			

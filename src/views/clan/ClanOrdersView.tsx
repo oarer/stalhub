@@ -101,28 +101,28 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			)}
 
 			{!hasBoxes && !hasBoosts && (
-				<div className="flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4">
+				<div className="bg-card flex flex-col items-center gap-2 rounded-xl px-5 py-4">
 					<Icon className="text-4xl" icon="lucide:clipboard-list" />
-					<h3 className="font-medium text-lg">
+					<h3 className="text-lg font-medium">
 						{t('clan.orders.emptyTitle')}
 					</h3>
-					<p className="font-medium text-foreground text-sm">
+					<p className="text-foreground text-sm font-medium">
 						{t('clan.orders.emptyDesc')}
 					</p>
 				</div>
 			)}
 
 			{hasBoxes && (
-				<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+				<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 					<h3
-						className={`${mtsWide.className} font-medium text-[15px]`}
+						className={`${mtsWide.className} text-[15px] font-medium`}
 					>
 						{t('clan.grenades.boxOrderTitle')}
 					</h3>
 					<Table.Root>
 						<Table.Header>
 							<Table.Row>
-								<Table.Head className="sticky left-0 z-1 bg-card">
+								<Table.Head className="bg-card sticky left-0 z-1">
 									{t('clan.grenades.playerName')}
 								</Table.Head>
 								{grenadeColumns.map((col) => (
@@ -138,12 +138,12 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 						<Table.Body>
 							{grenadeRows.map((row) => (
 								<Table.Row key={row.name}>
-									<Table.Cell className="sticky left-0 z-1 bg-card font-medium text-sm">
+									<Table.Cell className="bg-card sticky left-0 z-1 text-sm font-medium">
 										{row.name}
 									</Table.Cell>
 									{grenadeColumns.map((col) => (
 										<Table.Cell
-											className="text-center font-medium font-mono text-sm"
+											className="text-center font-mono text-sm font-medium"
 											key={col}
 										>
 											{row.cells[col] > 0
@@ -159,16 +159,16 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 			)}
 
 			{hasBoosts && (
-				<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+				<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 					<h3
-						className={`${mtsWide.className} font-medium text-[15px]`}
+						className={`${mtsWide.className} text-[15px] font-medium`}
 					>
 						{t('clan.boosts.title')}
 					</h3>
 					<Table.Root>
 						<Table.Header>
 							<Table.Row>
-								<Table.Head className="sticky left-0 z-1 bg-card">
+								<Table.Head className="bg-card sticky left-0 z-1">
 									{t('clan.grenades.playerName')}
 								</Table.Head>
 								{boostColumns.map((col) => (
@@ -184,12 +184,12 @@ function ClanOrdersContent({ clanId }: { clanId: string }) {
 						<Table.Body>
 							{boostRows.map((row) => (
 								<Table.Row key={row.name}>
-									<Table.Cell className="sticky left-0 z-1 bg-card font-medium text-sm">
+									<Table.Cell className="bg-card sticky left-0 z-1 text-sm font-medium">
 										{row.name}
 									</Table.Cell>
 									{boostColumns.map((col) => (
 										<Table.Cell
-											className="text-center font-medium font-mono text-sm"
+											className="text-center font-mono text-sm font-medium"
 											key={col}
 										>
 											{row.cells[col] > 0

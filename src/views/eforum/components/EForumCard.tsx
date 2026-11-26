@@ -29,7 +29,7 @@ export function renderWithMentions(text: string) {
 			const username = part.slice(1)
 			return (
 				<a
-					className={`font-mono font-semibold text-primary hover:underline`}
+					className={`text-primary font-mono font-semibold hover:underline`}
 					href={profileUrl(username)}
 					key={i}
 					rel="noreferrer"
@@ -56,7 +56,7 @@ function ForumAvatar({
 	if (!href) {
 		return (
 			<span
-				className="flex shrink-0 items-center justify-center rounded-full bg-primary/10 font-semibold text-[10px] text-primary uppercase"
+				className="bg-primary/10 text-primary flex shrink-0 items-center justify-center rounded-full text-[10px] font-semibold uppercase"
 				style={{ height: size, width: size }}
 			>
 				{username.slice(0, 2)}
@@ -87,7 +87,7 @@ function QuoteBlock({ quote }: { quote: EForumQuote }) {
 						username={name}
 					/>
 					<a
-						className={`font-mono font-semibold text-muted-foreground text-xs hover:text-primary`}
+						className={`text-muted-foreground hover:text-primary font-mono text-xs font-semibold`}
 						href={
 							quote.authorUrl ??
 							(quote.author ? profileUrl(quote.author) : '#')
@@ -100,7 +100,7 @@ function QuoteBlock({ quote }: { quote: EForumQuote }) {
 					</a>
 				</div>
 			)}
-			<p className="whitespace-pre-line font-semibold">
+			<p className="font-semibold whitespace-pre-line">
 				{renderWithMentions(quote.text)}
 			</p>
 		</div>
@@ -135,7 +135,7 @@ export default function DevTrackerCard({
 	const title = comment.discussion.title
 
 	return (
-		<article className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4 shadow-lg ring-2 ring-primary/50 md:bg-card/50 md:backdrop-blur-md">
+		<article className="bg-card ring-primary/50 md:bg-card/50 flex flex-col gap-3 rounded-xl px-5 py-4 shadow-lg ring-2 md:backdrop-blur-md">
 			<header className="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<a
 					className="flex items-center gap-2"
@@ -148,19 +148,19 @@ export default function DevTrackerCard({
 						username={comment.author.displayName}
 					/>
 					<span
-						className={`font-mono font-semibold text-primary text-sm hover:underline`}
+						className={`text-primary font-mono text-sm font-semibold hover:underline`}
 					>
 						{comment.author.displayName}
 					</span>
 				</a>
 				<span
-					className={`font-mono font-semibold text-muted-foreground text-xs`}
+					className={`text-muted-foreground font-mono text-xs font-semibold`}
 				>
 					{formatDate(comment.createdAt)}
 				</span>
 				{comment.link && (
 					<CLink
-						className="ml-auto text-muted-foreground text-xs transition-colors hover:text-primary"
+						className="text-muted-foreground hover:text-primary ml-auto text-xs transition-colors"
 						href={comment.link}
 						rel="noreferrer"
 						target="_blank"
@@ -171,7 +171,7 @@ export default function DevTrackerCard({
 			</header>
 
 			{title && (
-				<p className="font-semibold text-muted-foreground text-xs">
+				<p className="text-muted-foreground text-xs font-semibold">
 					{title}
 				</p>
 			)}
@@ -184,7 +184,7 @@ export default function DevTrackerCard({
 					/>
 				) : block.text ? (
 					<p
-						className="whitespace-pre-line font-semibold text-sm"
+						className="text-sm font-semibold whitespace-pre-line"
 						key={`t-${i}`}
 					>
 						{renderWithMentions(block.text)}
@@ -196,7 +196,7 @@ export default function DevTrackerCard({
 				<div className="flex flex-col gap-1">
 					{comment.videos.map((src) => (
 						<a
-							className="flex items-center gap-1.5 text-primary text-sm hover:underline"
+							className="text-primary flex items-center gap-1.5 text-sm hover:underline"
 							href={src}
 							key={src}
 							rel="noreferrer"

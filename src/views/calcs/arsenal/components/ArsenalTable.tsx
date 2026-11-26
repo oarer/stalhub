@@ -16,7 +16,7 @@ export function ArsenalTable({ table }: Props) {
 				<Table.Header>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<Table.Row
-							className="text-left text-neutral-400 text-xs"
+							className="text-left text-xs text-neutral-400"
 							key={headerGroup.id}
 						>
 							{headerGroup.headers.map((header) =>

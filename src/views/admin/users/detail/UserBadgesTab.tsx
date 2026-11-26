@@ -123,11 +123,11 @@ export function UserBadgesTab({ userId }: { userId: number }) {
 					<div className="flex flex-col gap-2">
 						{userBadges.map((badge) => (
 							<div
-								className="flex items-center justify-between rounded-lg bg-card/50 px-3 py-2"
+								className="bg-card/50 flex items-center justify-between rounded-lg px-3 py-2"
 								key={badge.id}
 							>
 								<div
-									className="flex items-center gap-1.5 rounded-md px-2 py-0.5 font-semibold text-xs"
+									className="flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold"
 									style={{
 										backgroundColor: `${badge.color}15`,
 										color: badge.color,
@@ -184,7 +184,7 @@ export function UserBadgesTab({ userId }: { userId: number }) {
 						))}
 					</div>
 				) : (
-					<p className="text-neutral-400 text-sm">
+					<p className="text-sm text-neutral-400">
 						{t('admin.userDetail.badges.empty')}
 					</p>
 				)}

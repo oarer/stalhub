@@ -97,7 +97,7 @@ const ModifiersPreview: React.FC<{ attachment: Item; locale: Locale }> = ({
 	if (modifiers.length === 0) return null
 
 	return (
-		<p className="mt-1 line-clamp-1 text-foreground text-xs dark:text-muted-foreground">
+		<p className="text-foreground dark:text-muted-foreground mt-1 line-clamp-1 text-xs">
 			{modifiers
 				.map((el) => {
 					const name = messageToString(el.name, locale)
@@ -205,7 +205,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 
 					return (
 						<button
-							className="flex w-full cursor-pointer items-center gap-3 rounded-lg border-2 border-primary/40 bg-card/40 p-2 text-left transition-colors hover:border-text-accent/50"
+							className="border-primary/40 bg-card/40 hover:border-text-accent/50 flex w-full cursor-pointer items-center gap-3 rounded-lg border-2 p-2 text-left transition-colors"
 							key={slotKey}
 							onClick={() => openSlot(slotKey)}
 							type="button"
@@ -224,19 +224,19 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 									width={36}
 								/>
 							) : (
-								<div className="flex size-9 shrink-0 items-center justify-center rounded-md border-2 border-primary/60 border-dashed text-foreground">
+								<div className="border-primary/60 text-foreground flex size-9 shrink-0 items-center justify-center rounded-md border-2 border-dashed">
 									<Icon icon="lucide:plus" />
 								</div>
 							)}
 
 							<div className="min-h-10 min-w-0 flex-1">
-								<h3 className="font-semibold text-foreground text-sm uppercase tracking-wide dark:text-muted-foreground">
+								<h3 className="text-foreground dark:text-muted-foreground text-sm font-semibold tracking-wide uppercase">
 									{t(`attachments.slot.${slotKey}`)}
 								</h3>
 
 								{selectedAttachment ? (
 									<>
-										<p className="truncate font-semibold text-sm">
+										<p className="truncate text-sm font-semibold">
 											{messageToString(
 												selectedAttachment.name,
 												locale
@@ -255,7 +255,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 							</div>
 
 							<Icon
-								className="shrink-0 text-foreground"
+								className="text-foreground shrink-0"
 								icon="lucide:chevron-right"
 							/>
 						</button>
@@ -295,7 +295,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 							)
 						})}
 					</ul>
-					<p className="mt-1 text-foreground dark:text-muted-foreground">
+					<p className="text-foreground dark:text-muted-foreground mt-1">
 						{t('attachments.total_weight')}:{' '}
 						{roundNumber(
 							selectedIds.reduce((sum, id) => {
@@ -354,7 +354,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 
 							<div
 								className={cn(
-									'flex h-full min-h-0 w-full flex-col gap-3 overflow-hidden bg-card px-3 py-3',
+									'bg-card flex h-full min-h-0 w-full flex-col gap-3 overflow-hidden px-3 py-3',
 									previewItem
 										? 'fixed inset-0 z-50 md:static md:flex'
 										: 'hidden md:flex'
@@ -386,7 +386,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 												width={48}
 											/>
 
-											<h2 className="font-semibold text-lg">
+											<h2 className="text-lg font-semibold">
 												{messageToString(
 													previewItem.name,
 													locale
@@ -394,7 +394,7 @@ const AttachmentsBuilder: React.FC<AttachmentsBuilderProps> = ({
 											</h2>
 										</>
 									) : (
-										<h2 className="font-semibold text-foreground">
+										<h2 className="text-foreground font-semibold">
 											{t('attachments.select_prompt')}
 										</h2>
 									)}

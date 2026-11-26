@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.8/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -8,7 +8,10 @@
 	"files": {
 		"ignoreUnknown": false,
 		"maxSize": 12582912,
-		"includes": ["**", "!public/**/*.svg"]
+		"includes": [
+			"**",
+			"!public/**/*.svg"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -53,7 +56,9 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+			"includes": [
+				"**/*.{js,mjs,cjs,ts,jsx,tsx}"
+			],
 			"javascript": {
 				"globals": [
 					"onanimationend",
@@ -191,7 +196,7 @@
 						"noDuplicateProperties": "off"
 					},
 					"nursery": {
-						"useSortedClasses": {
+						"useTailwindSortedClasses": {
 							"level": "error",
 							"fix": "safe"
 						}
@@ -200,7 +205,12 @@
 			}
 		},
 		{
-			"includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+			"includes": [
+				"**/*.ts",
+				"**/*.tsx",
+				"**/*.mts",
+				"**/*.cts"
+			],
 			"linter": {
 				"rules": {
 					"recommended": false,
@@ -235,15 +245,22 @@
 					}
 				}
 			}
-		}
-	,
+		},
 		{
-			"includes": ["**/*.css"],
+			"includes": [
+				"**/*.css"
+			],
 			"linter": {
 				"rules": {
-					"correctness": {"noInvalidPositionAtImportRule": "off"},
-					"suspicious": {"noDuplicateProperties": "off"},
-					"style": {"noDescendingSpecificity": "off"}
+					"correctness": {
+						"noInvalidPositionAtImportRule": "off"
+					},
+					"suspicious": {
+						"noDuplicateProperties": "off"
+					},
+					"style": {
+						"noDescendingSpecificity": "off"
+					}
 				}
 			}
 		}

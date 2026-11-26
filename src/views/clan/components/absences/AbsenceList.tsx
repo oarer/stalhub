@@ -16,33 +16,33 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+		<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 			<p
-				className={`flex items-center gap-2 font-mono font-semibold text-[15px]`}
+				className={`flex items-center gap-2 font-mono text-[15px] font-semibold`}
 			>
 				<Icon
-					className="text-lg text-muted-foreground"
+					className="text-muted-foreground text-lg"
 					icon="lucide:calendar-x"
 				/>
 				{t('clan.absence.listTitle', { date })}
 			</p>
 			{absences?.length === 0 && (
-				<p className="py-4 text-center font-semibold text-foreground text-md">
+				<p className="text-foreground text-md py-4 text-center font-semibold">
 					{t('clan.absence.empty')}
 				</p>
 			)}
 			<div className="flex flex-col gap-2">
 				{absences?.map((absence) => (
 					<div
-						className="flex items-center gap-3 rounded-lg bg-secondary/50 p-3"
+						className="bg-secondary/50 flex items-center gap-3 rounded-lg p-3"
 						key={absence.id}
 					>
-						<div className="flex size-9 flex-none items-center justify-center rounded-full bg-primary/20 font-semibold">
+						<div className="bg-primary/20 flex size-9 flex-none items-center justify-center rounded-full font-semibold">
 							{memberName(absence.user_id).charAt(0)}
 						</div>
 						<div className="flex flex-col">
 							<div className="flex gap-2">
-								<p className="font-semibold text-sm">
+								<p className="text-sm font-semibold">
 									{memberName(absence.user_id)}
 								</p>
 								<div className="flex flex-wrap gap-1">
@@ -67,7 +67,7 @@ export function AbsenceList({ date, absences, memberName }: AbsenceListProps) {
 								</div>
 							</div>
 							{absence.note && (
-								<p className="font-semibold text-muted-foreground text-xs">
+								<p className="text-muted-foreground text-xs font-semibold">
 									{absence.note}
 								</p>
 							)}

@@ -48,7 +48,7 @@ export function MapStatsTable({ rows }: { rows: MapStatRow[] }) {
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<p className="font-semibold text-md">
+				<p className="text-md font-semibold">
 					{t('personal.stagesMapsTitle')}
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -98,10 +98,10 @@ export function MapStatsTable({ rows }: { rows: MapStatRow[] }) {
 										</span>
 									)}
 								</Table.Cell>
-								<Table.Cell className="text-center font-medium text-foreground">
+								<Table.Cell className="text-foreground text-center font-medium">
 									{r.sessions}
 								</Table.Cell>
-								<Table.Cell className="text-center font-mono font-semibold text-foreground">
+								<Table.Cell className="text-foreground text-center font-mono font-semibold">
 									<span className="text-primary">
 										{r.wins}
 									</span>

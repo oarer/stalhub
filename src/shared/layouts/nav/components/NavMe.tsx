@@ -102,23 +102,23 @@ function GlobalNotificationItem({
 	const style = GLOBAL_NOTIFICATION_ICONS[notification.type]
 
 	return (
-		<div className="flex items-start gap-2.5 border-primary-foreground border-b bg-primary/5 px-3 py-2.5 last:rounded-b-xl last:border-b-0">
+		<div className="border-primary-foreground bg-primary/5 flex items-start gap-2.5 border-b px-3 py-2.5 last:rounded-b-xl last:border-b-0">
 			<div className={`mt-1 shrink-0 ${style.color}`}>
 				<Icon className="size-4" icon={style.icon} />
 			</div>
 			<div className="min-w-0">
 				<div className="flex items-center gap-1.5">
-					<p className="truncate font-bold text-[14px]">
+					<p className="truncate text-[14px] font-bold">
 						{notification.title}
 					</p>
-					<span className="shrink-0 rounded-full bg-primary/15 px-1.5 py-0.5 font-semibold text-[10px] text-primary">
+					<span className="bg-primary/15 text-primary shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-semibold">
 						{t('me.notifications.global')}
 					</span>
 				</div>
-				<p className="font-semibold text-foreground text-xs">
+				<p className="text-foreground text-xs font-semibold">
 					<GlobalNotificationContent content={notification.content} />
 				</p>
-				<span className="font-mono font-semibold text-[10px] text-muted-foreground">
+				<span className="text-muted-foreground font-mono text-[10px] font-semibold">
 					{formatDate(notification.starts_at, 'datetime')}
 				</span>
 			</div>
@@ -143,13 +143,13 @@ function GuestNotifications({
 			<button
 				aria-expanded={open}
 				aria-label={t('me.notifications.title')}
-				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
+				className="hover:bg-muted/60 relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:opacity-100 active:opacity-50"
 				onClick={() => setOpen((value) => !value)}
 				type="button"
 			>
 				<Icon className="text-2xl" icon="lucide:bell" />
 				{notifications.length > 0 && (
-					<span className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary font-bold text-[10px] text-primary-foreground leading-none">
+					<span className="bg-primary text-primary-foreground absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full text-[10px] leading-none font-bold">
 						{notifications.length > 99
 							? '99+'
 							: notifications.length}
@@ -160,19 +160,19 @@ function GuestNotifications({
 				{open && (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 border-primary/40 bg-card/95 shadow-lg backdrop-blur-lg"
+						className="border-primary/40 bg-card/95 absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 shadow-lg backdrop-blur-lg"
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
 						<div className="border-primary/40 border-b px-4 py-3">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('me.notifications.title')}
 							</span>
 						</div>
 						<div className="max-h-80 overflow-y-auto">
 							{!hasNotifications ? (
-								<p className="px-4 py-6 text-center font-semibold text-muted-foreground text-sm">
+								<p className="text-muted-foreground px-4 py-6 text-center text-sm font-semibold">
 									{t('me.notifications.empty')}
 								</p>
 							) : (
@@ -251,7 +251,7 @@ export default function NavMe() {
 	return user ? (
 		<div className="relative flex items-center gap-2" ref={menuRef}>
 			<button
-				className="relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:bg-muted/60 hover:opacity-100 active:opacity-50"
+				className="hover:bg-muted/60 relative flex cursor-pointer items-center justify-center rounded-full p-5 opacity-70 duration-500 hover:opacity-100 active:opacity-50"
 				onClick={() => setOpen(!open)}
 			>
 				<div
@@ -261,7 +261,7 @@ export default function NavMe() {
 				>
 					<Icon className="text-2xl" icon="lucide:bell" />
 					{notificationCount > 0 && (
-						<span className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary font-bold text-[10px] text-primary-foreground leading-none">
+						<span className="bg-primary text-primary-foreground absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full text-[10px] leading-none font-bold">
 							{notificationCount > 99 ? '99+' : notificationCount}
 						</span>
 					)}
@@ -279,17 +279,17 @@ export default function NavMe() {
 				{open && (
 					<motion.div
 						animate={{ opacity: 1 }}
-						className="absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 border-primary/40 bg-card/95 shadow-lg backdrop-blur-lg"
+						className="border-primary/40 bg-card/95 absolute top-12 right-0 z-20 flex w-80 origin-top-right flex-col rounded-2xl border-2 shadow-lg backdrop-blur-lg"
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}
 						transition={{ duration: 0.2, ease: 'easeOut' }}
 					>
-						<div className="flex items-center justify-between border-primary/40 border-b px-4 py-3">
-							<span className="font-semibold text-sm">
+						<div className="border-primary/40 flex items-center justify-between border-b px-4 py-3">
+							<span className="text-sm font-semibold">
 								{t('me.nav.notifications')}
 							</span>
 							<Link
-								className="font-bold text-primary/90 text-xs hover:underline"
+								className="text-primary/90 text-xs font-bold hover:underline"
 								href="/me/notifications"
 								onClick={() => setOpen(false)}
 							>
@@ -299,7 +299,7 @@ export default function NavMe() {
 
 						<div className="max-h-80 overflow-y-auto">
 							{!hasNotifications ? (
-								<p className="px-4 py-6 text-center font-semibold text-muted-foreground text-sm">
+								<p className="text-muted-foreground px-4 py-6 text-center text-sm font-semibold">
 									{t('me.notifications.empty')}
 								</p>
 							) : (
@@ -334,18 +334,18 @@ export default function NavMe() {
 												</div>
 												<div className="min-w-0">
 													<div className="flex items-center gap-1.5">
-														<p className="truncate font-bold text-[14px]">
+														<p className="truncate text-[14px] font-bold">
 															{n.title}
 														</p>
 														{!n.read && (
-															<span className="size-1.5 shrink-0 rounded-full bg-primary" />
+															<span className="bg-primary size-1.5 shrink-0 rounded-full" />
 														)}
 													</div>
-													<p className="font-semibold text-foreground text-xs">
+													<p className="text-foreground text-xs font-semibold">
 														{n.content}
 													</p>
 													<span
-														className={`font-mono font-semibold text-[10px] text-muted-foreground`}
+														className={`text-muted-foreground font-mono text-[10px] font-semibold`}
 													>
 														{formatDate(
 															n.created_at,
@@ -394,7 +394,7 @@ export default function NavMe() {
 				<HoverCard.Trigger asChild>
 					<CLink href="/me" variant={'none'}>
 						<Avatar
-							className="rounded-lg border-2 border-primary/60 transition-all duration-300 hover:scale-110 active:scale-95"
+							className="border-primary/60 rounded-lg border-2 transition-all duration-300 hover:scale-110 active:scale-95"
 							height={46}
 							id={user.id}
 							username={user.username}
@@ -408,14 +408,14 @@ export default function NavMe() {
 					side="bottom"
 				>
 					<div className="flex flex-col gap-1">
-						<div className="flex items-center gap-2 rounded-lg bg-accent/40 px-3 py-2">
+						<div className="bg-accent/40 flex items-center gap-2 rounded-lg px-3 py-2">
 							<Avatar
 								height={32}
 								id={user.id}
 								username={user.username}
 								width={32}
 							/>
-							<p className="truncate font-semibold text-sm">
+							<p className="truncate text-sm font-semibold">
 								{user.username}
 							</p>
 						</div>
@@ -435,7 +435,7 @@ export default function NavMe() {
 							label={t('nav.userMenu.profile')}
 						/>
 						<button
-							className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left font-semibold text-destructive text-sm transition-colors hover:bg-destructive/10"
+							className="text-destructive hover:bg-destructive/10 flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors"
 							disabled={logoutMutation.isPending}
 							onClick={() => logoutMutation.mutate()}
 							type="button"
@@ -457,7 +457,7 @@ export default function NavMe() {
 			>
 				<Icon className="text-xl" icon="lucide:log-in" />
 				<p
-					className={`${mtsWide.className} hidden font-medium text-md md:block`}
+					className={`${mtsWide.className} text-md hidden font-medium md:block`}
 				>
 					{t('auth.title')}
 				</p>
@@ -477,10 +477,10 @@ function NavMeQuickLink({
 }) {
 	return (
 		<Link
-			className="flex items-center gap-3 rounded-lg px-3 py-2 font-semibold text-sm transition-colors hover:bg-accent"
+			className="hover:bg-accent flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors"
 			href={href}
 		>
-			<Icon className="text-lg text-muted-foreground" icon={icon} />
+			<Icon className="text-muted-foreground text-lg" icon={icon} />
 			{label}
 		</Link>
 	)

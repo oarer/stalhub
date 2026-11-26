@@ -70,7 +70,7 @@ const dailyInputs: {
 
 const group = (icon: string, title: string, children: React.ReactNode) => (
 	<div className="flex flex-col gap-3">
-		<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+		<p className="text-muted-foreground flex items-center gap-2 text-sm font-semibold">
 			<Icon className="text-lg" icon={icon} />
 			{title}
 		</p>
@@ -86,7 +86,7 @@ export function SessionForm({ values, onChange }: SessionFormProps) {
 			<Card.Header>
 				<Card.Title>
 					<Icon
-						className="text-neutral-700 text-xl dark:text-neutral-300"
+						className="text-xl text-neutral-700 dark:text-neutral-300"
 						icon="lucide:sliders-horizontal"
 					/>
 					<h2>{t('sessions.data')}</h2>
@@ -175,7 +175,7 @@ export function SessionForm({ values, onChange }: SessionFormProps) {
 				)}
 
 				<div className="flex flex-col gap-3">
-					<p className="flex items-center gap-2 font-semibold text-muted-foreground text-sm">
+					<p className="text-muted-foreground flex items-center gap-2 text-sm font-semibold">
 						<Icon className="text-lg" icon="lucide:timer-reset" />
 						{t('sessions.spartak_brawl')}
 					</p>
@@ -195,7 +195,7 @@ export function SessionForm({ values, onChange }: SessionFormProps) {
 								}
 							>
 								<p
-									className={`font-mono font-semibold text-xs`}
+									className={`font-mono text-xs font-semibold`}
 								>
 									{boost === 0
 										? t('sessions.boost_off')
@@ -209,7 +209,7 @@ export function SessionForm({ values, onChange }: SessionFormProps) {
 					</p>
 				</div>
 
-				<div className="flex items-center justify-between gap-3 rounded-lg bg-card px-3 py-2.5">
+				<div className="bg-card flex items-center justify-between gap-3 rounded-lg px-3 py-2.5">
 					<CheckBox
 						checked={values.includeCaptures}
 						label={t('sessions.include_captures')}

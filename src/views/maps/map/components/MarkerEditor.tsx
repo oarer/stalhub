@@ -362,7 +362,7 @@ export default function MarkerEditor({
 	}
 
 	const editor = (
-		<div className="flex w-full flex-col gap-2 border-primary/20 border-t-2 pt-3 text-xs">
+		<div className="border-primary/20 flex w-full flex-col gap-2 border-t-2 pt-3 text-xs">
 			<Button
 				onClick={() => {
 					setEnabled((value) => !value)
@@ -386,7 +386,7 @@ export default function MarkerEditor({
 						<div className="mt-2 flex max-h-64 flex-col gap-2 overflow-y-auto">
 							{groups.map(({ cluster, group }) => (
 								<div
-									className="rounded border border-primary/20 p-2"
+									className="border-primary/20 rounded border p-2"
 									key={`${cluster.id}:${group.id}`}
 								>
 									<button
@@ -410,7 +410,7 @@ export default function MarkerEditor({
 									<div className="mt-1 flex flex-col gap-1 pl-2">
 										{group.markers.map((marker, index) => (
 											<button
-												className="truncate text-left text-[11px] hover:text-primary"
+												className="hover:text-primary truncate text-left text-[11px]"
 												key={String(marker.id ?? index)}
 												onClick={() =>
 													selectObject({
@@ -432,7 +432,7 @@ export default function MarkerEditor({
 										{(group.polygons ?? []).map(
 											(polygon, index) => (
 												<button
-													className="truncate text-left text-[11px] hover:text-primary"
+													className="hover:text-primary truncate text-left text-[11px]"
 													key={String(
 														polygon.id ?? index
 													)}
@@ -586,7 +586,7 @@ export default function MarkerEditor({
 							<label>
 								Текст popup
 								<input
-									className="w-full rounded border bg-background px-2 py-1"
+									className="bg-background w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										updateMarker({
 											popup: event.target.value,
@@ -598,7 +598,7 @@ export default function MarkerEditor({
 							<label>
 								URL иконки всей группы
 								<input
-									className="w-full rounded border bg-background px-2 py-1"
+									className="bg-background w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										updateGroupIcon(event.target.value)
 									}
@@ -612,7 +612,7 @@ export default function MarkerEditor({
 							<label>
 								URL картинки popup
 								<input
-									className="w-full rounded border bg-background px-2 py-1"
+									className="bg-background w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										updateMarker({
 											popupImage: event.target.value,
@@ -628,7 +628,7 @@ export default function MarkerEditor({
 							<label htmlFor="polygon-popup">
 								Текст полигона
 								<Textarea
-									className="w-full rounded border border-current bg-background px-2 py-1 font-normal text-base"
+									className="bg-background w-full rounded border border-current px-2 py-1 text-base font-normal"
 									id="polygon-popup"
 									onChange={(event) =>
 										updatePolygon({
@@ -641,7 +641,7 @@ export default function MarkerEditor({
 							<label>
 								Цвет
 								<input
-									className="h-8 w-full rounded border bg-background px-2 py-1"
+									className="bg-background h-8 w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										updatePolygon({
 											color: event.target.value,
@@ -653,7 +653,7 @@ export default function MarkerEditor({
 								/>
 							</label>
 							<button
-								className="rounded bg-secondary px-2 py-1"
+								className="bg-secondary rounded px-2 py-1"
 								onClick={() =>
 									window.dispatchEvent(
 										new CustomEvent(
@@ -681,7 +681,7 @@ export default function MarkerEditor({
 					)}
 					{(selectedMarker || selectedPolygon) && (
 						<button
-							className="rounded bg-destructive px-2 py-1 text-destructive-foreground"
+							className="bg-destructive text-destructive-foreground rounded px-2 py-1"
 							onClick={deleteSelection}
 							type="button"
 						>
@@ -689,7 +689,7 @@ export default function MarkerEditor({
 						</button>
 					)}
 					<button
-						className="rounded bg-secondary px-2 py-1"
+						className="bg-secondary rounded px-2 py-1"
 						onClick={download}
 						type="button"
 					>

@@ -31,14 +31,14 @@ const DashboardNodeView = memo(function DashboardNodeView({
 				minWidth={def.minWidth}
 			/>
 
-			<div className="group relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-card shadow-lg ring-2 ring-primary/60">
-				<div className="flex shrink-0 cursor-move touch-none select-none items-center justify-between gap-2 border-primary border-b px-3 py-2">
+			<div className="group bg-card ring-primary/60 relative flex h-full w-full flex-col overflow-hidden rounded-xl shadow-lg ring-2">
+				<div className="border-primary flex shrink-0 cursor-move touch-none items-center justify-between gap-2 border-b px-3 py-2 select-none">
 					<div className="flex min-w-0 items-center gap-2">
 						<Icon
-							className="shrink-0 text-lg text-primary"
+							className="text-primary shrink-0 text-lg"
 							icon={def.icon}
 						/>
-						<p className="truncate font-semibold text-sm">
+						<p className="truncate text-sm font-semibold">
 							{t(def.titleKey)}
 						</p>
 					</div>
@@ -46,7 +46,7 @@ const DashboardNodeView = memo(function DashboardNodeView({
 					<div className="flex shrink-0 items-center gap-1">
 						<Link
 							aria-label={t('dashboard.openFull')}
-							className="nodrag flex size-7 items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent hover:text-text"
+							className="nodrag text-foreground hover:bg-accent hover:text-text flex size-7 items-center justify-center rounded-md transition-colors"
 							href={def.fullPath}
 							title={t('dashboard.openFull')}
 						>

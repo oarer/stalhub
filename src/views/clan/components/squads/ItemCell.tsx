@@ -11,7 +11,7 @@ export function ItemCell({ item }: { item: Item | undefined }) {
 	}
 	return (
 		<span
-			className={`flex min-w-0 items-center gap-1 truncate font-mono font-semibold text-sm`}
+			className={`flex min-w-0 items-center gap-1 truncate font-mono text-sm font-semibold`}
 		>
 			<span
 				className="truncate"
@@ -35,7 +35,7 @@ export function BuildCell({
 	}
 	return (
 		<Link
-			className="truncate font-semibold text-primary"
+			className="text-primary truncate font-semibold"
 			href={`/calcs/builds/lite?build=${id}`}
 		>
 			{title}

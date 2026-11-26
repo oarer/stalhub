@@ -76,7 +76,7 @@ export const StatusWidget = () => {
 				/>
 			</div>
 
-			<div className={`${mtsWide.className} font-semibold text-[13px]`}>
+			<div className={`${mtsWide.className} text-[13px] font-semibold`}>
 				{isError || !data?.data ? (
 					<p className="text-destructive">
 						{t('status_widget.services_error')}

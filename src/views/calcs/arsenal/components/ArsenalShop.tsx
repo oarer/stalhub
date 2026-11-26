@@ -27,11 +27,11 @@ export function ArsenalShop({
 		<div className="flex flex-col gap-6">
 			{groups.map((g) => (
 				<div
-					className="flex flex-col gap-3 rounded-xl border-2 border-primary/20 bg-card p-5"
+					className="border-primary/20 bg-card flex flex-col gap-3 rounded-xl border-2 p-5"
 					key={g.rep}
 				>
 					<div className="flex items-center justify-between gap-2">
-						<h3 className="font-mono font-semibold text-lg text-primary">
+						<h3 className="text-primary font-mono text-lg font-semibold">
 							{g.rep.toLocaleString()}
 						</h3>
 						<Button
@@ -45,7 +45,7 @@ export function ArsenalShop({
 					<div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
 						{g.items.map((it) => (
 							<div
-								className="flex items-center gap-2 rounded-lg bg-accent/40 p-2"
+								className="bg-accent/40 flex items-center gap-2 rounded-lg p-2"
 								key={it.id}
 							>
 								<Image
@@ -55,7 +55,7 @@ export function ArsenalShop({
 									src={it.icon}
 									width={36}
 								/>
-								<span className="font-medium text-xs">
+								<span className="text-xs font-medium">
 									{it.ru}
 								</span>
 							</div>
@@ -64,9 +64,9 @@ export function ArsenalShop({
 				</div>
 			))}
 
-			<div className="flex flex-col gap-3 rounded-xl border-2 border-primary/20 bg-card p-5">
+			<div className="border-primary/20 bg-card flex flex-col gap-3 rounded-xl border-2 p-5">
 				<div className="flex items-center justify-between gap-2">
-					<h3 className="font-mono font-semibold text-lg text-primary">
+					<h3 className="text-primary font-mono text-lg font-semibold">
 						{(30_000).toLocaleString()}
 					</h3>
 					<Button
@@ -80,19 +80,19 @@ export function ArsenalShop({
 				<div className="flex flex-col gap-2">
 					{ARSENAL_SHOP_30K.map((ex, i) => (
 						<div
-							className="flex flex-wrap items-center gap-2 rounded-lg bg-accent/40 p-2"
+							className="bg-accent/40 flex flex-wrap items-center gap-2 rounded-lg p-2"
 							key={i}
 						>
 							<div className="flex flex-wrap items-center gap-1.5">
 								{ex.give.map((g, index) => (
 									<Fragment key={g.id}>
 										{index > 0 && (
-											<span className="font-bold text-muted-foreground">
+											<span className="text-muted-foreground font-bold">
 												/
 											</span>
 										)}
 
-										<span className="flex items-center gap-1.5 rounded-md bg-background px-2 py-1">
+										<span className="bg-background flex items-center gap-1.5 rounded-md px-2 py-1">
 											<Image
 												alt={g.ru}
 												height={28}
@@ -110,14 +110,14 @@ export function ArsenalShop({
 								className="text-primary"
 								icon="lucide:arrow-right"
 							/>
-							<span className="flex items-center gap-1.5 rounded-md bg-background px-2 py-1 ring-1 ring-primary/40">
+							<span className="bg-background ring-primary/40 flex items-center gap-1.5 rounded-md px-2 py-1 ring-1">
 								<Image
 									alt={ex.get.ru}
 									height={28}
 									src={ex.get.icon}
 									width={28}
 								/>
-								<span className="font-semibold text-xs">
+								<span className="text-xs font-semibold">
 									{ex.get.ru}
 								</span>
 							</span>

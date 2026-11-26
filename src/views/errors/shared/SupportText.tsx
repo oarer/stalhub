@@ -21,7 +21,7 @@ export default function SupportText({
 	const t = useTranslations()
 
 	return (
-		<p className="text-center font-semibold text-xs uppercase tracking-widest dark:text-muted-foreground">
+		<p className="dark:text-muted-foreground text-center text-xs font-semibold tracking-widest uppercase">
 			{identifierLabel} <br />
 			{t('errors.support.thenContact')}{' '}
 			<Link
@@ -36,7 +36,7 @@ export default function SupportText({
 			{identifierPrefix.toLowerCase()} <br />
 			{identifierValue ? (
 				<button
-					className="cursor-pointer text-muted-foreground uppercase tracking-widest"
+					className="text-muted-foreground cursor-pointer tracking-widest uppercase"
 					onClick={() =>
 						navigator.clipboard.writeText(identifierValue)
 					}

@@ -29,10 +29,10 @@ export default function HealthAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div>
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.health.title')}
 				</h1>
-				<p className="mt-1 text-neutral-400 text-sm">
+				<p className="mt-1 text-sm text-neutral-400">
 					{t('admin.health.generatedAt', {
 						date: formatDate(data.generated_at, 'time'),
 					})}
@@ -161,7 +161,7 @@ function StatusCodes({ statuses }: { statuses: Record<string, number> }) {
 
 	return (
 		<section className="flex flex-col gap-2">
-			<h2 className="flex items-center gap-2 font-semibold text-lg">
+			<h2 className="flex items-center gap-2 text-lg font-semibold">
 				<Icon icon="lucide:pie-chart" />
 				{t('admin.health.byStatus')}
 			</h2>
@@ -182,7 +182,7 @@ function StatusCodes({ statuses }: { statuses: Record<string, number> }) {
 							>
 								{code}
 							</span>
-							<div className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-muted">
+							<div className="bg-muted h-2 min-w-0 flex-1 overflow-hidden rounded-full">
 								<div
 									className={cn(
 										'h-full rounded-full',
@@ -196,7 +196,7 @@ function StatusCodes({ statuses }: { statuses: Record<string, number> }) {
 							<span className="w-16 text-right font-mono text-xs">
 								{pct}%
 							</span>
-							<span className="w-20 text-right font-mono text-neutral-400 text-xs">
+							<span className="w-20 text-right font-mono text-xs text-neutral-400">
 								{count}
 							</span>
 						</div>
@@ -212,21 +212,21 @@ function CronsTable({ crons }: { crons: AdminCronStatus[] }) {
 
 	return (
 		<section className="flex flex-col gap-2">
-			<h2 className="flex items-center gap-2 font-semibold text-lg">
+			<h2 className="flex items-center gap-2 text-lg font-semibold">
 				<Icon icon="lucide:watch" />
 				{t('admin.health.cronsTitle')}
 			</h2>
 			<div className="grid grid-cols-1 gap-2 text-sm md:grid-cols-2 xl:grid-cols-3">
 				{crons.map((cron) => (
 					<div
-						className="flex items-center justify-between gap-3 rounded-lg border border-primary/40 bg-card/50 px-3 py-2"
+						className="border-primary/40 bg-card/50 flex items-center justify-between gap-3 rounded-lg border px-3 py-2"
 						key={cron.name}
 					>
 						<div className="flex min-w-0 flex-col">
 							<span className="truncate font-mono text-sm">
 								{cron.name}
 							</span>
-							<span className="text-neutral-400 text-xs">
+							<span className="text-xs text-neutral-400">
 								{cron.pattern}
 								{cron.timezone ? ` · ${cron.timezone}` : ''}
 							</span>
@@ -234,7 +234,7 @@ function CronsTable({ crons }: { crons: AdminCronStatus[] }) {
 						<div className="flex shrink-0 flex-col items-end gap-0.5">
 							<span
 								className={cn(
-									'flex items-center gap-1 font-semibold text-xs',
+									'flex items-center gap-1 text-xs font-semibold',
 									cron.last_status === 'ok' &&
 										'text-emerald-400',
 									cron.last_status === 'error' &&
@@ -246,7 +246,7 @@ function CronsTable({ crons }: { crons: AdminCronStatus[] }) {
 								<Icon icon={statusIcon(cron.last_status)} />
 								{t(`admin.health.cron.${cron.last_status}`)}
 							</span>
-							<span className="text-neutral-400 text-xs">
+							<span className="text-xs text-neutral-400">
 								{cron.last_run_at
 									? formatDate(cron.last_run_at, 'time')
 									: '—'}
@@ -285,7 +285,7 @@ function ScNodes({
 
 	return (
 		<section className="flex flex-col gap-2">
-			<h2 className="flex items-center gap-2 font-semibold text-lg">
+			<h2 className="flex items-center gap-2 text-lg font-semibold">
 				<Icon icon="lucide:server" />
 				{t('admin.health.scTitle')}
 			</h2>
@@ -293,7 +293,7 @@ function ScNodes({
 				{nodes.map((node) => (
 					<div
 						className={cn(
-							'flex items-center justify-between gap-3 rounded-lg border border-border bg-card/50 px-3 py-2',
+							'border-border bg-card/50 flex items-center justify-between gap-3 rounded-lg border px-3 py-2',
 							!node.enabled && 'opacity-50'
 						)}
 						key={node.id}
@@ -302,14 +302,14 @@ function ScNodes({
 							<span className="truncate font-semibold">
 								{node.name}
 							</span>
-							<span className="truncate text-neutral-400 text-xs">
+							<span className="truncate text-xs text-neutral-400">
 								{node.base_url}
 							</span>
 						</div>
 						<div className="flex shrink-0 flex-col items-end gap-0.5">
 							<span
 								className={cn(
-									'flex items-center gap-1 font-semibold text-xs',
+									'flex items-center gap-1 text-xs font-semibold',
 									!node.last_error && 'text-emerald-400',
 									node.last_error && 'text-rose-400'
 								)}
@@ -326,7 +326,7 @@ function ScNodes({
 									: t('admin.health.nodeOk')}
 							</span>
 							<span
-								className="text-neutral-400 text-xs"
+								className="text-xs text-neutral-400"
 								title={dirtyLabel}
 							>
 								{node.last_seen_at
@@ -337,7 +337,7 @@ function ScNodes({
 					</div>
 				))}
 				{nodes.length === 0 && (
-					<span className="text-neutral-400 text-sm">—</span>
+					<span className="text-sm text-neutral-400">—</span>
 				)}
 			</div>
 		</section>

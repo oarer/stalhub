@@ -115,7 +115,7 @@ export default function FeedView() {
 				<div className="flex min-w-0 flex-col gap-5">
 					<header className="flex flex-col gap-4">
 						<h1
-							className={`${mtsExtended.className} font-semibold text-4xl text-primary`}
+							className={`${mtsExtended.className} text-primary text-4xl font-semibold`}
 						>
 							{t('feed.title')}
 						</h1>
@@ -134,19 +134,19 @@ export default function FeedView() {
 							/>
 						) : (
 							<Link
-								className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-card/40 p-4 transition-colors hover:border-primary/50 hover:bg-card"
+								className="border-primary/20 bg-card/40 hover:border-primary/50 hover:bg-card flex items-center gap-3 rounded-2xl border p-4 transition-colors"
 								href="/auth"
 							>
-								<span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-muted">
+								<span className="bg-muted flex size-11 shrink-0 items-center justify-center rounded-full">
 									<Icon
-										className="size-5 text-primary/70"
+										className="text-primary/70 size-5"
 										icon="lucide:pen-line"
 									/>
 								</span>
-								<span className="min-w-0 flex-1 truncate text-muted-foreground text-sm">
+								<span className="text-muted-foreground min-w-0 flex-1 truncate text-sm">
 									{t('feed.composer.login')}
 								</span>
-								<span className="shrink-0 font-medium text-primary text-sm">
+								<span className="text-primary shrink-0 text-sm font-medium">
 									{t('auth.login')}
 								</span>
 							</Link>
@@ -156,10 +156,10 @@ export default function FeedView() {
 					{types.length === 0 ? (
 						<div className="flex flex-col items-center gap-3 py-16 text-center">
 							<Icon
-								className="size-10 text-foreground"
+								className="text-foreground size-10"
 								icon="lucide:list-filter"
 							/>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{t('feed.noTypes')}
 							</p>
 						</div>
@@ -167,7 +167,7 @@ export default function FeedView() {
 						<div className="flex flex-col">
 							{Array.from({ length: 8 }).map((_, index) => (
 								<div
-									className="flex gap-3 border-primary/15 border-b px-2 py-4"
+									className="border-primary/15 flex gap-3 border-b px-2 py-4"
 									key={index}
 								>
 									<Skeleton className="size-10 rounded-full" />
@@ -182,20 +182,20 @@ export default function FeedView() {
 					) : isError ? (
 						<div className="flex flex-col items-center gap-3 py-16 text-center">
 							<Icon
-								className="size-10 text-foreground"
+								className="text-foreground size-10"
 								icon="lucide:cloud-off"
 							/>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{t('feed.error')}
 							</p>
 						</div>
 					) : items.length === 0 ? (
 						<div className="flex flex-col items-center gap-3 py-16 text-center">
 							<Icon
-								className="size-10 text-foreground"
+								className="text-foreground size-10"
 								icon="lucide:radio-tower"
 							/>
-							<p className="font-medium text-foreground text-sm">
+							<p className="text-foreground text-sm font-medium">
 								{t('feed.empty')}
 							</p>
 						</div>
@@ -266,7 +266,7 @@ function FeedRow({
 	menu?: React.ReactNode
 }) {
 	return (
-		<article className="group/post flex gap-4 border-primary/10 border-b px-4 py-5 transition-all hover:bg-card">
+		<article className="group/post border-primary/10 hover:bg-card flex gap-4 border-b px-4 py-5 transition-all">
 			<div className="flex w-10 shrink-0 flex-col items-center gap-1">
 				{avatar}
 			</div>
@@ -331,13 +331,13 @@ function PostCard({
 				) : post.source_avatar_url ? (
 					<img
 						alt=""
-						className="size-10 shrink-0 rounded-full bg-muted object-cover"
+						className="bg-muted size-10 shrink-0 rounded-full object-cover"
 						src={post.source_avatar_url}
 					/>
 				) : (
-					<div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
+					<div className="bg-muted flex size-10 shrink-0 items-center justify-center rounded-full">
 						<Icon
-							className="size-5 text-primary/70"
+							className="text-primary/70 size-5"
 							icon="lucide:radio-tower"
 						/>
 					</div>
@@ -370,7 +370,7 @@ function PostCard({
 		>
 			{post.title && (
 				<Link href={href}>
-					<h2 className="font-semibold text-sm sm:text-base">
+					<h2 className="text-sm font-semibold sm:text-base">
 						{post.title}
 					</h2>
 				</Link>
@@ -419,7 +419,7 @@ function PostCard({
 				user={user}
 			/>
 			{expanded && (
-				<div className="mt-2 border-primary/20 border-t pt-4">
+				<div className="border-primary/20 mt-2 border-t pt-4">
 					<FeedComments id={post.external_id} target="post" />
 				</div>
 			)}
@@ -479,9 +479,9 @@ function ArtCard({
 						/>
 					</Link>
 				) : (
-					<div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
+					<div className="bg-muted flex size-10 shrink-0 items-center justify-center rounded-full">
 						<Icon
-							className="size-5 text-primary/70"
+							className="text-primary/70 size-5"
 							icon="lucide:palette"
 						/>
 					</div>
@@ -497,7 +497,7 @@ function ArtCard({
 		>
 			<Link className="group block" href={href}>
 				{image ? (
-					<div className="relative mt-2 aspect-video overflow-hidden rounded-xl border border-primary/10 bg-muted shadow-sm transition-shadow group-hover:shadow-md">
+					<div className="border-primary/10 bg-muted relative mt-2 aspect-video overflow-hidden rounded-xl border shadow-sm transition-shadow group-hover:shadow-md">
 						<Image
 							alt={art.title || t('feed.artUntitled')}
 							className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
@@ -508,20 +508,20 @@ function ArtCard({
 						/>
 					</div>
 				) : (
-					<div className="mt-2 flex aspect-video items-center justify-center rounded-xl border border-primary/10 bg-muted">
+					<div className="border-primary/10 bg-muted mt-2 flex aspect-video items-center justify-center rounded-xl border">
 						<Icon
-							className="size-10 text-primary/50"
+							className="text-primary/50 size-10"
 							icon="lucide:image-off"
 						/>
 					</div>
 				)}
 				{art.title && (
-					<h2 className="mt-2.5 font-semibold text-base leading-snug">
+					<h2 className="mt-2.5 text-base leading-snug font-semibold">
 						{art.title}
 					</h2>
 				)}
 				{art.description && (
-					<p className="mt-0.5 line-clamp-2 text-foreground/80 text-sm leading-relaxed">
+					<p className="text-foreground/80 mt-0.5 line-clamp-2 text-sm leading-relaxed">
 						{art.description}
 					</p>
 				)}
@@ -539,7 +539,7 @@ function ArtCard({
 				user={user}
 			/>
 			{expanded && (
-				<div className="mt-2 border-primary/20 border-t pt-4">
+				<div className="border-primary/20 mt-2 border-t pt-4">
 					<FeedComments id={art.id} target="art" />
 				</div>
 			)}
@@ -604,9 +604,9 @@ function BuildOrTierListCard({
 						/>
 					</Link>
 				) : (
-					<div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
+					<div className="bg-muted flex size-10 shrink-0 items-center justify-center rounded-full">
 						<Icon
-							className="size-5 text-primary/70"
+							className="text-primary/70 size-5"
 							icon={
 								isBuild ? 'lucide:boxes' : 'lucide:layout-list'
 							}
@@ -642,7 +642,7 @@ function BuildOrTierListCard({
 		>
 			<Link className="group block" href={href}>
 				{preview ? (
-					<div className="relative mt-2 aspect-video overflow-hidden rounded-xl border border-primary/10 bg-muted shadow-sm transition-shadow group-hover:shadow-md">
+					<div className="border-primary/10 bg-muted relative mt-2 aspect-video overflow-hidden rounded-xl border shadow-sm transition-shadow group-hover:shadow-md">
 						<Image
 							alt={title}
 							className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
@@ -653,11 +653,11 @@ function BuildOrTierListCard({
 						/>
 					</div>
 				) : isBuild && item.build ? (
-					<div className="mt-2 rounded-xl border border-primary/10 bg-muted/30 p-4 shadow-sm transition-all group-hover:border-primary/20 group-hover:bg-muted/40">
+					<div className="border-primary/10 bg-muted/30 group-hover:border-primary/20 group-hover:bg-muted/40 mt-2 rounded-xl border p-4 shadow-sm transition-all">
 						<BuildPreview build={item.build} compact />
 					</div>
 				) : item.tier_list ? (
-					<div className="mt-2 rounded-xl border border-primary/10 bg-muted/30 p-4 shadow-sm transition-all group-hover:border-primary/20 group-hover:bg-muted/40">
+					<div className="border-primary/10 bg-muted/30 group-hover:border-primary/20 group-hover:bg-muted/40 mt-2 rounded-xl border p-4 shadow-sm transition-all">
 						<TierListPreview
 							compact
 							entries={item.tier_list.entries}
@@ -665,20 +665,20 @@ function BuildOrTierListCard({
 						/>
 					</div>
 				) : (
-					<div className="mt-2 flex aspect-video items-center justify-center rounded-xl border border-primary/10 bg-linear-to-br from-primary/5 via-card to-muted">
+					<div className="border-primary/10 from-primary/5 via-card to-muted mt-2 flex aspect-video items-center justify-center rounded-xl border bg-linear-to-br">
 						<Icon
-							className="size-10 text-primary/50"
+							className="text-primary/50 size-10"
 							icon={
 								isBuild ? 'lucide:boxes' : 'lucide:layout-list'
 							}
 						/>
 					</div>
 				)}
-				<h2 className="mt-2.5 font-semibold text-base leading-snug">
+				<h2 className="mt-2.5 text-base leading-snug font-semibold">
 					{title}
 				</h2>
 				{!isBuild && content.description && (
-					<p className="mt-0.5 line-clamp-2 text-foreground/80 text-sm leading-relaxed">
+					<p className="text-foreground/80 mt-0.5 line-clamp-2 text-sm leading-relaxed">
 						{content.description}
 					</p>
 				)}
@@ -696,7 +696,7 @@ function BuildOrTierListCard({
 				user={user}
 			/>
 			{expanded && (
-				<div className="mt-2 border-primary/20 border-t pt-4">
+				<div className="border-primary/20 mt-2 border-t pt-4">
 					<FeedComments id={String(content.id)} target={item.type} />
 				</div>
 			)}
@@ -757,7 +757,7 @@ function FeedActions({
 					<Count value={starsCount || null} />
 				</Button>
 			) : (
-				<span className="flex items-center gap-1.5 px-3 py-2 text-foreground text-sm">
+				<span className="text-foreground flex items-center gap-1.5 px-3 py-2 text-sm">
 					<Icon className="size-4" icon="lucide:heart" />
 					<Count value={starsCount || null} />
 				</span>

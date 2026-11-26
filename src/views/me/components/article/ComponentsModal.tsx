@@ -108,7 +108,7 @@ export function ComponentsModal({
 					<Modal.Body>
 						<div className="grid grid-cols-2 gap-2">
 							<button
-								className="flex cursor-pointer items-center gap-3 rounded-lg border-2 border-primary/30 p-3 text-left transition-colors hover:bg-primary/10"
+								className="border-primary/30 hover:bg-primary/10 flex cursor-pointer items-center gap-3 rounded-lg border-2 p-3 text-left transition-colors"
 								onClick={() => setQuestMapOpen(true)}
 								type="button"
 							>
@@ -116,12 +116,12 @@ export function ComponentsModal({
 									className="size-5 shrink-0"
 									icon="lucide:map-pinned"
 								/>
-								<p className="font-semibold text-sm">
+								<p className="text-sm font-semibold">
 									Quest map
 								</p>
 							</button>
 							<button
-								className="flex cursor-pointer items-center gap-3 rounded-lg border-2 border-primary/30 p-3 text-left transition-colors hover:bg-primary/10"
+								className="border-primary/30 hover:bg-primary/10 flex cursor-pointer items-center gap-3 rounded-lg border-2 p-3 text-left transition-colors"
 								disabled={isUploadingGallery}
 								onClick={() => galleryInputRef.current?.click()}
 								type="button"
@@ -130,7 +130,7 @@ export function ComponentsModal({
 									className="size-5 shrink-0"
 									icon="lucide:images"
 								/>
-								<p className="font-semibold text-sm">Gallery</p>
+								<p className="text-sm font-semibold">Gallery</p>
 							</button>
 							<input
 								accept="image/jpeg,image/png,image/webp,image/gif"
@@ -158,7 +158,7 @@ export function ComponentsModal({
 										className="size-5 shrink-0"
 										icon={item.icon}
 									/>
-									<p className="font-semibold text-sm capitalize">
+									<p className="text-sm font-semibold capitalize">
 										{item.type}
 									</p>
 								</button>

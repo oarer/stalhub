@@ -67,7 +67,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 	return (
 		<div
 			className={cn(
-				'flex w-full cursor-pointer items-center rounded-lg border-2 bg-card/25 px-2 py-1.5 backdrop-blur-sm transition-all duration-500 hover:bg-card'
+				'bg-card/25 hover:bg-card flex w-full cursor-pointer items-center rounded-lg border-2 px-2 py-1.5 backdrop-blur-sm transition-all duration-500'
 			)}
 			onClick={() => {
 				if (copyMode) {
@@ -113,7 +113,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 
 						{art?.potential !== 0 && (
 							<span
-								className={`font-medium font-mono text-sm transition-colors`}
+								className={`font-mono text-sm font-medium transition-colors`}
 								style={{ color: colorHex }}
 							>
 								+{art?.potential}
@@ -121,7 +121,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 						)}
 
 						<span
-							className={`font-medium font-mono text-sm transition-colors`}
+							className={`font-mono text-sm font-medium transition-colors`}
 							style={{ color: colorHex }}
 						>
 							{art?.percent}%
@@ -189,7 +189,7 @@ const ArtifactSlotRow = memo(function ArtifactSlotRow({
 				</div>
 			) : (
 				<div className="flex flex-col items-center py-1.5">
-					<h2 className="font-medium text-foreground/70 text-sm">
+					<h2 className="text-foreground/70 text-sm font-medium">
 						{t('build.empty_slot')}
 					</h2>
 				</div>

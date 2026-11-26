@@ -137,7 +137,7 @@ export default function WorldMarkerEditor({
 	}
 
 	const editor = (
-		<div className="flex w-full flex-col gap-2 border-primary/20 border-t-2 pt-3 text-xs">
+		<div className="border-primary/20 flex w-full flex-col gap-2 border-t-2 pt-3 text-xs">
 			<Button
 				onClick={() => {
 					setEnabled((value) => !value)
@@ -201,7 +201,7 @@ export default function WorldMarkerEditor({
 								settlementText(
 									selectedSpot.settlement ?? ''
 								) !== (selectedSpot.settlement ?? '')) && (
-								<p className="rounded bg-primary/10 px-2 py-1">
+								<p className="bg-primary/10 rounded px-2 py-1">
 									{text(selectedSpot.title_key)}
 									{selectedSpot.settlement ? (
 										<>
@@ -216,7 +216,7 @@ export default function WorldMarkerEditor({
 							<label>
 								{t('titleField')}
 								<input
-									className="w-full rounded border bg-background px-2 py-1"
+									className="bg-background w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										patchSelected({
 											title_key: event.target.value,
@@ -228,7 +228,7 @@ export default function WorldMarkerEditor({
 							<label>
 								{t('settlementField')}
 								<input
-									className="w-full rounded border bg-background px-2 py-1"
+									className="bg-background w-full rounded border px-2 py-1"
 									onChange={(event) =>
 										patchSelected({
 											settlement: event.target.value,
@@ -259,7 +259,7 @@ export default function WorldMarkerEditor({
 					)}
 					{(selectedSpot || mode === 'move') && (
 						<button
-							className="rounded bg-destructive px-2 py-1 text-destructive-foreground"
+							className="bg-destructive text-destructive-foreground rounded px-2 py-1"
 							disabled={!selectedSpot}
 							onClick={deleteSelected}
 							type="button"
@@ -268,7 +268,7 @@ export default function WorldMarkerEditor({
 						</button>
 					)}
 					<button
-						className="rounded bg-secondary px-2 py-1"
+						className="bg-secondary rounded px-2 py-1"
 						onClick={download}
 						type="button"
 					>

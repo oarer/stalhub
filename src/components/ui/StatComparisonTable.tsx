@@ -129,7 +129,7 @@ const ValueCell = ({
 				highlight === 'best' &&
 					'bg-emerald-500/10 font-semibold text-emerald-600 dark:text-emerald-400',
 				highlight === 'worst' &&
-					'bg-destructive/10 font-semibold text-destructive'
+					'bg-destructive/10 text-destructive font-semibold'
 			)}
 			data-highlight={highlight ?? undefined}
 			title={
@@ -144,7 +144,7 @@ const ValueCell = ({
 		>
 			<span
 				className={cn(
-					'min-w-0 truncate font-mono font-semibold text-sm',
+					'min-w-0 truncate font-mono text-sm font-semibold',
 					!value && 'text-muted-foreground'
 				)}
 			>
@@ -162,17 +162,17 @@ const ValueCell = ({
 			<HoverCard.Content align="center" className="w-72" side="bottom">
 				<div className="space-y-2">
 					<div className="space-y-0.5">
-						<p className="font-medium text-sm">{label}</p>
+						<p className="text-sm font-medium">{label}</p>
 						<p className="text-muted-foreground text-xs">
 							{columnName}:{' '}
-							<span className="font-mono font-semibold text-foreground">
+							<span className="text-foreground font-mono font-semibold">
 								{value?.text}
 							</span>
 						</p>
 					</div>
 
 					<div className="border-muted border-t pt-2">
-						<p className="mb-1.5 font-medium text-[11px] text-muted-foreground uppercase tracking-wide">
+						<p className="text-muted-foreground mb-1.5 text-[11px] font-medium tracking-wide uppercase">
 							{t(`${namespace}.deltaHint`)}
 						</p>
 						<div className="space-y-1">
@@ -192,7 +192,7 @@ const ValueCell = ({
 										key={difference.key}
 									>
 										<span
-											className="truncate text-muted-foreground"
+											className="text-muted-foreground truncate"
 											title={difference.name}
 										>
 											{difference.name}
@@ -247,7 +247,7 @@ export function StatComparisonTable({
 				return (
 					<Card.Root className="gap-3" key={section.key}>
 						<div className="flex items-center justify-between gap-3">
-							<h2 className="font-semibold text-base">
+							<h2 className="text-base font-semibold">
 								{section.title || t(`${namespace}.statsTitle`)}
 							</h2>
 							<Badge variant="secondary">
@@ -262,15 +262,15 @@ export function StatComparisonTable({
 								style={{ minWidth: 180 + columns.length * 110 }}
 							>
 								<div
-									className="grid items-center gap-2 border-muted border-b px-2 pb-1"
+									className="border-muted grid items-center gap-2 border-b px-2 pb-1"
 									style={gridStyle}
 								>
-									<span className="font-medium text-muted-foreground text-xs">
+									<span className="text-muted-foreground text-xs font-medium">
 										{t(`${namespace}.statsTitle`)}
 									</span>
 									{columns.map((column) => (
 										<span
-											className="truncate text-right font-medium text-muted-foreground text-xs"
+											className="text-muted-foreground truncate text-right text-xs font-medium"
 											key={column.key}
 											title={column.name}
 										>
@@ -291,7 +291,7 @@ export function StatComparisonTable({
 										style={gridStyle}
 									>
 										<p
-											className="min-w-0 truncate font-medium text-sm"
+											className="min-w-0 truncate text-sm font-medium"
 											title={row.label}
 										>
 											{row.label}

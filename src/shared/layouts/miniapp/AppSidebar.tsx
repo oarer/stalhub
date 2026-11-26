@@ -132,7 +132,7 @@ function SidebarLink({
 		>
 			<Icon className="size-5 shrink-0" icon={item.icon} />
 			<SlideLabel
-				className="truncate font-semibold text-sm"
+				className="truncate text-sm font-semibold"
 				collapsed={collapsed}
 			>
 				{t(item.labelKey)}
@@ -234,7 +234,7 @@ export default function AppSidebar() {
 	return (
 		<aside
 			className={cn(
-				'fixed inset-y-0 left-0 z-80 hidden w-16 flex-col gap-2 overflow-hidden border-primary/20 border-r bg-card/90 px-2 py-3 shadow-xl backdrop-blur-xl transition-[width,padding] duration-500 ease-in-out sm:flex',
+				'border-primary/20 bg-card/90 fixed inset-y-0 left-0 z-80 hidden w-16 flex-col gap-2 overflow-hidden border-r px-2 py-3 shadow-xl backdrop-blur-xl transition-[width,padding] duration-500 ease-in-out sm:flex',
 				!isCollapsed && 'sm:w-72 sm:px-4'
 			)}
 		>
@@ -249,7 +249,7 @@ export default function AppSidebar() {
 					width={32}
 				/>
 				<SlideLabel
-					className={`${unbounded.className} font-bold text-md tracking-widest`}
+					className={`${unbounded.className} text-md font-bold tracking-widest`}
 					collapsed={isCollapsed}
 				>
 					STALHUB
@@ -259,7 +259,7 @@ export default function AppSidebar() {
 			{user ? (
 				<Link
 					className={cn(
-						'flex items-center gap-3 rounded-xl bg-accent/50 transition-colors hover:bg-muted',
+						'bg-accent/50 hover:bg-muted flex items-center gap-3 rounded-xl transition-colors',
 						isCollapsed
 							? 'justify-center p-1'
 							: 'p-2 sm:justify-start',
@@ -271,7 +271,7 @@ export default function AppSidebar() {
 					<Image
 						alt={user.name || user.username}
 						className={cn(
-							'shrink-0 rounded-lg border border-primary/50 object-cover',
+							'border-primary/50 shrink-0 rounded-lg border object-cover',
 							isCollapsed ? 'size-8' : 'size-10'
 						)}
 						height={40}
@@ -284,7 +284,7 @@ export default function AppSidebar() {
 							{user.name || user.username}
 						</p>
 						<p
-							className={`${montserrat.className} truncate font-semibold text-muted-foreground text-xs`}
+							className={`${montserrat.className} text-muted-foreground truncate text-xs font-semibold`}
 						>
 							@{user.username}
 						</p>
@@ -293,7 +293,7 @@ export default function AppSidebar() {
 			) : (
 				<Link
 					className={cn(
-						'mb-3 flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-3 font-semibold text-primary-foreground transition-opacity hover:opacity-85',
+						'bg-primary text-primary-foreground mb-3 flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 font-semibold transition-opacity hover:opacity-85',
 						!isCollapsed && 'sm:justify-start'
 					)}
 					href="/auth"
@@ -324,7 +324,7 @@ export default function AppSidebar() {
 						{unreadCount != null && unreadCount > 0 && (
 							<span
 								className={cn(
-									'absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 font-bold text-[10px] leading-none',
+									'absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] leading-none font-bold',
 									isNotificationsRoute
 										? 'bg-primary-foreground text-primary'
 										: 'bg-primary text-primary-foreground'
@@ -335,7 +335,7 @@ export default function AppSidebar() {
 						)}
 					</span>
 					<SlideLabel
-						className="truncate font-semibold text-sm"
+						className="truncate text-sm font-semibold"
 						collapsed={isCollapsed}
 					>
 						{t('me.nav.notifications')}
@@ -345,7 +345,7 @@ export default function AppSidebar() {
 
 			<div
 				className={cn(
-					'grid gap-1 rounded-xl bg-muted/40 p-1 transition-all duration-300',
+					'bg-muted/40 grid gap-1 rounded-xl p-1 transition-all duration-300',
 					isCollapsed ? 'grid-cols-1' : 'grid-cols-2'
 				)}
 			>
@@ -380,7 +380,7 @@ export default function AppSidebar() {
 					? NAV_STRUCTURE.map((group, groupIndex) => (
 							<section key={group.key}>
 								<GroupHeader
-									className={`${unbounded.className} hidden font-semibold text-[10px] text-muted-foreground uppercase tracking-[0.2em] sm:block`}
+									className={`${unbounded.className} text-muted-foreground hidden text-[10px] font-semibold tracking-[0.2em] uppercase sm:block`}
 									collapsed={isCollapsed}
 									showDivider={groupIndex > 0}
 									title={
@@ -410,7 +410,7 @@ export default function AppSidebar() {
 								key={group.label ?? index}
 							>
 								<GroupHeader
-									className={`${unbounded.className} hidden font-semibold text-[10px] text-muted-foreground uppercase tracking-[0.2em] sm:block`}
+									className={`${unbounded.className} text-muted-foreground hidden text-[10px] font-semibold tracking-[0.2em] uppercase sm:block`}
 									collapsed={isCollapsed}
 									showDivider={index > 0}
 									title={
@@ -439,7 +439,7 @@ export default function AppSidebar() {
 													icon={tab.icon}
 												/>
 												<SlideLabel
-													className="truncate font-semibold text-sm"
+													className="truncate text-sm font-semibold"
 													collapsed={isCollapsed}
 												>
 													{t(tab.title)}
@@ -471,7 +471,7 @@ export default function AppSidebar() {
 				>
 					<Icon className="size-5 shrink-0" icon="lucide:settings" />
 					<SlideLabel
-						className="truncate font-semibold text-sm"
+						className="truncate text-sm font-semibold"
 						collapsed={isCollapsed}
 					>
 						{t('nav.settings')}

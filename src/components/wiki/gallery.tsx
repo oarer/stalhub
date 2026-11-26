@@ -154,11 +154,11 @@ export function Gallery({
 	return (
 		<div
 			className={cn(
-				'not-prose my-6 w-full overflow-hidden rounded-xl border border-primary/50',
+				'not-prose border-primary/50 my-6 w-full overflow-hidden rounded-xl border',
 				className
 			)}
 		>
-			<div className="group relative aspect-video overflow-hidden bg-muted">
+			<div className="group bg-muted relative aspect-video overflow-hidden">
 				{current.isVideo ? (
 					<video
 						className={cn(
@@ -214,8 +214,8 @@ export function Gallery({
 							aria-label="Previous image"
 							className={cn(
 								'absolute top-1/2 left-3 -translate-y-1/2',
-								'rounded-full bg-card p-2 text-card-foreground shadow-sm backdrop-blur',
-								'transition-all hover:bg-primary hover:text-primary-foreground',
+								'bg-card text-card-foreground rounded-full p-2 shadow-sm backdrop-blur',
+								'hover:bg-primary hover:text-primary-foreground transition-all',
 								'cursor-pointer md:opacity-0 md:group-hover:opacity-100'
 							)}
 							onClick={previous}
@@ -228,8 +228,8 @@ export function Gallery({
 							aria-label="Next image"
 							className={cn(
 								'absolute top-1/2 right-3 -translate-y-1/2',
-								'rounded-full bg-card p-2 text-card-foreground shadow-sm backdrop-blur',
-								'transition-all hover:bg-primary hover:text-primary-foreground',
+								'bg-card text-card-foreground rounded-full p-2 shadow-sm backdrop-blur',
+								'hover:bg-primary hover:text-primary-foreground transition-all',
 								'cursor-pointer md:opacity-0 md:group-hover:opacity-100'
 							)}
 							onClick={next}
@@ -239,7 +239,7 @@ export function Gallery({
 						</button>
 
 						<p
-							className={`absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-card/50 px-3 py-1 font-mono font-semibold text-xs`}
+							className={`bg-card/50 absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 font-mono text-xs font-semibold`}
 						>
 							{safeIndex + 1} / {normalized.length}
 						</p>

@@ -20,11 +20,11 @@ export function MarkdownContent({
 	if (!source.trim()) return null
 	if (!compiledSource) {
 		return compileError ? (
-			<p className="whitespace-pre-wrap text-foreground text-sm">
+			<p className="text-foreground text-sm whitespace-pre-wrap">
 				{source}
 			</p>
 		) : (
-			<div className="flex items-center gap-2 text-foreground text-sm">
+			<div className="text-foreground flex items-center gap-2 text-sm">
 				<Icon
 					className="size-4 animate-spin"
 					icon="lucide:loader-circle"

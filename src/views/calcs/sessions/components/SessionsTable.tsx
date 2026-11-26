@@ -137,7 +137,7 @@ export function SessionsTable({ rankings, bestMapId }: SessionsTableProps) {
 			<Card.Header>
 				<Card.Title>
 					<Icon
-						className="text-neutral-700 text-xl dark:text-neutral-300"
+						className="text-xl text-neutral-700 dark:text-neutral-300"
 						icon="lucide:table"
 					/>
 					<h2>{t('sessions.comparison')}</h2>

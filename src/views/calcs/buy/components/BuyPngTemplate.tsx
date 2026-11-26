@@ -30,22 +30,22 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 		ref
 	) {
 		return (
-			<div className="dark w-7xl bg-background p-8 text-white" ref={ref}>
+			<div className="dark bg-background w-7xl p-8 text-white" ref={ref}>
 				<div className="mb-6 flex items-end justify-between gap-8">
 					<h2
-						className={`${mtsExtended.className} mb-6 max-w-190 font-medium text-3xl text-primary`}
+						className={`${mtsExtended.className} text-primary mb-6 max-w-190 text-3xl font-medium`}
 					>
 						{title || t('buy.title')}
 					</h2>
 					{discord ? (
 						<div className="flex items-center gap-3">
 							<p
-								className={`font-medium font-mono text-foreground text-sm`}
+								className={`text-foreground font-mono text-sm font-medium`}
 							>
 								{t('buy.discord')}
 							</p>
 							<p
-								className={`rounded-lg bg-card px-4 py-1 font-mono font-semibold text-primary text-sm`}
+								className={`bg-card text-primary rounded-lg px-4 py-1 font-mono text-sm font-semibold`}
 							>
 								{discord}
 							</p>
@@ -55,25 +55,25 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 
 				{items.length === 0 ? (
 					<p
-						className={`rounded-lg bg-card p-8 text-center font-medium font-mono text-foreground`}
+						className={`bg-card text-foreground rounded-lg p-8 text-center font-mono font-medium`}
 					>
 						{t('buy.emptyTable')}
 					</p>
 				) : (
-					<div className="overflow-hidden rounded-lg ring-2 ring-primary/50">
-						<div className="grid grid-cols-[3rem_1fr_14rem] items-center border-primary/50 border-b bg-card px-4 py-2">
+					<div className="ring-primary/50 overflow-hidden rounded-lg ring-2">
+						<div className="border-primary/50 bg-card grid grid-cols-[3rem_1fr_14rem] items-center border-b px-4 py-2">
 							<p
-								className={`font-medium font-mono text-foreground text-xs uppercase`}
+								className={`text-foreground font-mono text-xs font-medium uppercase`}
 							>
 								№
 							</p>
 							<p
-								className={`font-medium font-mono text-foreground text-xs uppercase`}
+								className={`text-foreground font-mono text-xs font-medium uppercase`}
 							>
 								{t('buy.item')}
 							</p>
 							<p
-								className={`text-right font-medium font-mono text-foreground text-xs uppercase`}
+								className={`text-foreground text-right font-mono text-xs font-medium uppercase`}
 							>
 								{t('buy.price')}
 							</p>
@@ -88,11 +88,11 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 
 							return (
 								<div
-									className="grid grid-cols-[3rem_1fr_14rem] items-center border-primary/30 border-b bg-card/40 px-4 py-2 last:border-b-0"
+									className="border-primary/30 bg-card/40 grid grid-cols-[3rem_1fr_14rem] items-center border-b px-4 py-2 last:border-b-0"
 									key={entry.key}
 								>
 									<p
-										className={`font-medium font-mono text-foreground text-sm`}
+										className={`text-foreground font-mono text-sm font-medium`}
 									>
 										{index + 1}
 									</p>
@@ -105,14 +105,14 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 											src={imageSources[entry.key]}
 										/>
 										<p
-											className="truncate font-medium text-sm"
+											className="truncate text-sm font-medium"
 											style={{ color }}
 										>
 											{name}
 										</p>
 									</div>
 									<p
-										className={`text-right font-bold font-mono text-lg text-primary`}
+										className={`text-primary text-right font-mono text-lg font-bold`}
 									>
 										{formatBuyPrice(entry.price)}₽
 									</p>
@@ -123,7 +123,7 @@ export const BuyPngTemplate = forwardRef<HTMLDivElement, BuyPngTemplateProps>(
 				)}
 
 				<p
-					className={`mt-6 text-center font-mono font-semibold text-foreground/60 text-xs`}
+					className={`text-foreground/60 mt-6 text-center font-mono text-xs font-semibold`}
 				>
 					stalhub.dev
 				</p>

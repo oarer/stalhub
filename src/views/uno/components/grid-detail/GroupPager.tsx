@@ -21,7 +21,7 @@ export function GroupPager({
 
 	return (
 		<div className="flex flex-wrap items-center gap-2">
-			<span className="text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+			<span className="text-muted-foreground text-[10px] tracking-[0.2em] uppercase">
 				{t('grids.detail.group')}:
 			</span>
 			<Pagination

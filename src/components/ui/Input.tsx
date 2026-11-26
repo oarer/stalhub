@@ -148,9 +148,9 @@ export default function Input({
 			<input
 				{...rest}
 				className={cn(
-					`peer w-full rounded-lg border-2 border-muted bg-card px-2.5 py-1 font-medium text-foreground outline-none transition-all duration-500 ease-in-out placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
+					`peer border-muted bg-card text-foreground placeholder:text-muted-foreground w-full rounded-lg border-2 px-2.5 py-1 font-medium transition-all duration-500 ease-in-out outline-none disabled:cursor-not-allowed disabled:opacity-50`,
 					label && 'pt-3',
-					type === 'number' && `font-mono font-semibold text-sm`,
+					type === 'number' && `font-mono text-sm font-semibold`,
 					className
 				)}
 				id={id}
@@ -168,7 +168,7 @@ export default function Input({
 
 			{label && (
 				<label
-					className="pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 font-medium text-muted-foreground text-sm duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-muted-foreground peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-muted-foreground"
+					className="text-muted-foreground peer-placeholder-shown:text-muted-foreground peer-focus:text-muted-foreground pointer-events-none absolute inset-s-1 top-2 z-10 origin-left -translate-y-2.5 scale-75 transform px-2 text-sm font-medium duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-2.5 peer-focus:scale-75 peer-focus:px-2"
 					htmlFor={id}
 				>
 					{t(label)}
@@ -179,7 +179,7 @@ export default function Input({
 				<div className="absolute top-1/2 right-2 flex -translate-y-1/2 flex-col">
 					<button
 						aria-label="increase"
-						className="flex cursor-pointer items-center justify-center text-muted-foreground duration-500 hover:text-foreground"
+						className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center justify-center duration-500"
 						onClick={() => handleStep('up')}
 						type="button"
 					>
@@ -188,7 +188,7 @@ export default function Input({
 
 					<button
 						aria-label="decrease"
-						className="flex cursor-pointer items-center justify-center text-muted-foreground duration-500 hover:text-foreground"
+						className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center justify-center duration-500"
 						onClick={() => handleStep('down')}
 						type="button"
 					>
@@ -199,7 +199,7 @@ export default function Input({
 
 			{type === 'password' && (
 				<button
-					className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
+					className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
 					onClick={togglePassword}
 					type="button"
 				>

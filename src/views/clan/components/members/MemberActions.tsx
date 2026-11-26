@@ -52,7 +52,7 @@ export function MemberActions({
 			<Modal.Root onOpenChange={setRenameOpen} open={renameOpen}>
 				<Modal.Trigger asChild>
 					<Button
-						className="relative cursor-pointer p-1 text-foreground"
+						className="text-foreground relative cursor-pointer p-1"
 						onClick={openRename}
 						variant="secondary"
 					>
@@ -93,7 +93,7 @@ export function MemberActions({
 			<Modal.Root onOpenChange={setDeleteOpen} open={deleteOpen}>
 				<Modal.Trigger asChild>
 					<Button
-						className="relative cursor-pointer p-1 text-destructive"
+						className="text-destructive relative cursor-pointer p-1"
 						onClick={() => setDeleteOpen(true)}
 						variant="secondary"
 					>
@@ -107,7 +107,7 @@ export function MemberActions({
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<p className="font-semibold text-sm">
+						<p className="text-sm font-semibold">
 							{t('clan.members.deleteConfirm', {
 								name: member.name,
 							})}

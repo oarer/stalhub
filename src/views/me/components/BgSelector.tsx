@@ -66,7 +66,7 @@ export function BgVariantSelector({
 			/>
 			<button
 				className={cn(
-					'flex size-6.5 cursor-pointer items-center justify-center bg-accent text-foreground transition-colors hover:bg-accent/50',
+					'bg-accent text-foreground hover:bg-accent/50 flex size-6.5 cursor-pointer items-center justify-center transition-colors',
 					expanded ? 'rounded-t-sm' : 'rounded-sm'
 				)}
 				onClick={() => setExpanded((v) => !v)}
@@ -83,7 +83,7 @@ export function BgVariantSelector({
 					<motion.div
 						animate={{ opacity: 1, scale: 1 }}
 						className={cn(
-							'absolute top-full left-1/2 z-99 flex -translate-x-1/2 flex-col gap-1 bg-accent p-0.5',
+							'bg-accent absolute top-full left-1/2 z-99 flex -translate-x-1/2 flex-col gap-1 p-0.5',
 							expanded ? 'rounded-b-sm' : 'rounded-sm'
 						)}
 						exit={{ opacity: 0, scale: 0.95 }}

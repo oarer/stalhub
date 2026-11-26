@@ -28,20 +28,20 @@ export function DiscordBotSection({
 }: DiscordBotSectionProps) {
 	const t = useTranslations()
 	return (
-		<div className="flex flex-col gap-3 rounded-xl bg-card px-5 py-4">
-			<div className="flex items-center gap-2 font-semibold text-lg">
+		<div className="bg-card flex flex-col gap-3 rounded-xl px-5 py-4">
+			<div className="flex items-center gap-2 text-lg font-semibold">
 				<Icon className="text-xl" icon="lucide:bot" />
 				{t('clan.settings.botTitle')}
 			</div>
 
 			{linkToken ? (
-				<div className="flex flex-col gap-2 rounded-lg bg-border-secondary/40 p-4">
+				<div className="bg-border-secondary/40 flex flex-col gap-2 rounded-lg p-4">
 					<div className="flex items-center justify-between gap-3">
 						<div className="flex flex-col gap-1">
-							<span className="font-semibold text-sm">
+							<span className="text-sm font-semibold">
 								{t('clan.settings.botCommandLabel')}
 							</span>
-							<code className="w-fit break-all rounded-lg bg-card p-2 font-mono text-sm">
+							<code className="bg-card w-fit rounded-lg p-2 font-mono text-sm break-all">
 								{linkToken.command}
 							</code>
 						</div>
@@ -67,19 +67,19 @@ export function DiscordBotSection({
 							</Button>
 						</div>
 					</div>
-					<span className="font-semibold text-foreground text-sm">
+					<span className="text-foreground text-sm font-semibold">
 						{t('clan.settings.botTokenExpires', {
 							minutes: Math.ceil(linkToken.expires_in / 60),
 						})}
 					</span>
 				</div>
 			) : (
-				<div className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3">
+				<div className="bg-border-secondary/40 flex items-center justify-between gap-3 rounded-lg px-4 py-3">
 					<div className="flex flex-col gap-1">
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{t('clan.settings.botLinkLabel')}
 						</span>
-						<span className="font-semibold text-foreground text-sm">
+						<span className="text-foreground text-sm font-semibold">
 							{t('clan.settings.botLinkHint')}
 						</span>
 					</div>
@@ -95,23 +95,23 @@ export function DiscordBotSection({
 			)}
 
 			<div className="flex flex-col gap-2">
-				<span className="font-semibold text-sm">
+				<span className="text-sm font-semibold">
 					{t('clan.settings.botGuildsTitle')}
 				</span>
 				{guilds.length === 0 ? (
-					<span className="font-semibold text-foreground text-sm">
+					<span className="text-foreground text-sm font-semibold">
 						{t('clan.settings.botNoGuilds')}
 					</span>
 				) : (
 					<div className="flex flex-col gap-2">
 						{guilds.map((guild) => (
 							<div
-								className="flex items-center justify-between gap-3 rounded-lg bg-border-secondary/40 px-4 py-3"
+								className="bg-border-secondary/40 flex items-center justify-between gap-3 rounded-lg px-4 py-3"
 								key={guild.guild_id}
 							>
 								<div className="flex min-w-0 items-center gap-2">
 									<Icon
-										className="shrink-0 text-base text-foreground"
+										className="text-foreground shrink-0 text-base"
 										icon="lucide:server"
 									/>
 									<span className="truncate font-mono text-sm">

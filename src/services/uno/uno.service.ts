@@ -873,6 +873,20 @@ class UnoService {
 		return toSummaries(data)
 	}
 
+	async searchClans(
+		query: string,
+		signal?: AbortSignal
+	): Promise<UnoClanSummary[]> {
+		const { data } = await apiClient.get('/api/v1/uno/clans', {
+			params: {
+				q: query.slice(0, UNO_REQUEST_LIMITS.text),
+				limit: 8,
+			},
+			signal,
+		})
+		return toSummaries(data)
+	}
+
 	async getClan(clanId: string): Promise<UnoClanResponse> {
 		const { data } = await apiClient.get(
 			`/api/v1/uno/clans/${encodeURIComponent(clanId)}`

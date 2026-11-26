@@ -35,13 +35,13 @@ function UsageBar({ used, total }: { used: number; total: number }) {
 				: 'bg-emerald-500'
 	return (
 		<div className="flex items-center gap-2">
-			<div className="h-2 min-w-24 flex-1 overflow-hidden rounded-full bg-border/20">
+			<div className="bg-border/20 h-2 min-w-24 flex-1 overflow-hidden rounded-full">
 				<div
 					className={`h-full rounded-full transition-all ${color}`}
 					style={{ width: `${pct}%` }}
 				/>
 			</div>
-			<span className="font-mono text-neutral-400 text-xs">
+			<span className="font-mono text-xs text-neutral-400">
 				{used}/{total}
 			</span>
 		</div>
@@ -191,11 +191,11 @@ export default function ScNodesAdminView() {
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('admin.scNodes.title')}
 				</h1>
-				<span className="flex items-center gap-1.5 text-neutral-400 text-sm">
+				<span className="flex items-center gap-1.5 text-sm text-neutral-400">
 					<Icon
 						className="size-4 animate-spin"
 						icon="lucide:refresh-cw"
@@ -214,7 +214,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-medium font-mono text-2xl">
+							<p className="font-mono text-2xl font-medium">
 								{overview.nodes_up}
 							</p>
 							<p className="text-foreground text-xs">
@@ -232,7 +232,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-medium font-mono text-2xl">
+							<p className="font-mono text-2xl font-medium">
 								{overview.tokens_up}
 							</p>
 							<p className="text-foreground text-xs">
@@ -250,7 +250,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-medium font-mono text-2xl">
+							<p className="font-mono text-2xl font-medium">
 								{overview.quota_per_minute}
 							</p>
 							<p className="text-foreground text-xs">
@@ -268,7 +268,7 @@ export default function ScNodesAdminView() {
 							/>
 						</div>
 						<div>
-							<p className="font-medium font-mono text-2xl">
+							<p className="font-mono text-2xl font-medium">
 								{overview.costs.default}/
 								{overview.costs.auction}
 							</p>
@@ -364,19 +364,19 @@ export default function ScNodesAdminView() {
 										return (
 											<Table.Row key={node.id}>
 												<Table.Cell>
-													<span className="font-semibold text-sm">
+													<span className="text-sm font-semibold">
 														{node.name}
 													</span>
-													<span className="ml-2 font-mono text-neutral-400 text-xs">
+													<span className="ml-2 font-mono text-xs text-neutral-400">
 														prio {node.priority}
 													</span>
 												</Table.Cell>
 												<Table.Cell>
-													<span className="font-mono text-neutral-400 text-xs">
+													<span className="font-mono text-xs text-neutral-400">
 														{node.base_url}
 													</span>
 													{node.last_error && (
-														<p className="max-w-64 truncate text-red-400 text-xs">
+														<p className="max-w-64 truncate text-xs text-red-400">
 															{node.last_error}
 														</p>
 													)}
@@ -411,7 +411,7 @@ export default function ScNodesAdminView() {
 														</Badge>
 													</div>
 													{node.last_seen_at && (
-														<p className="mt-1 text-neutral-400 text-xs">
+														<p className="mt-1 text-xs text-neutral-400">
 															{new Date(
 																node.last_seen_at
 															).toLocaleString()}
@@ -426,7 +426,7 @@ export default function ScNodesAdminView() {
 															}
 															used={node.used}
 														/>
-														<p className="mt-1 font-mono text-neutral-400 text-xs">
+														<p className="mt-1 font-mono text-xs text-neutral-400">
 															{secondsUntil(
 																node.reset_at
 															)}
@@ -452,14 +452,14 @@ export default function ScNodesAdminView() {
 														</Button>
 														{ping &&
 															(ping.ok ? (
-																<span className="font-mono text-emerald-400 text-xs">
+																<span className="font-mono text-xs text-emerald-400">
 																	{
 																		ping.latency_ms
 																	}
 																	ms
 																</span>
 															) : (
-																<span className="text-red-400 text-xs">
+																<span className="text-xs text-red-400">
 																	fail
 																</span>
 															))}
@@ -485,7 +485,7 @@ export default function ScNodesAdminView() {
 									{overview.nodes.length === 0 && (
 										<Table.Row>
 											<Table.Cell>
-												<span className="text-neutral-400 text-sm">
+												<span className="text-sm text-neutral-400">
 													{t(
 														'admin.scNodes.nodes.empty'
 													)}
@@ -544,11 +544,11 @@ export default function ScNodesAdminView() {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<p className="font-semibold text-foreground text-xs">
+							<p className="text-foreground text-xs font-semibold">
 								{t('admin.scNodes.tokens.bulk')}
 							</p>
 							<Textarea
-								className="min-h-20 w-full bg-background font-mono font-normal text-xs placeholder:text-neutral-500 focus:border-sky-500/50"
+								className="bg-background min-h-20 w-full font-mono text-xs font-normal placeholder:text-neutral-500 focus:border-sky-500/50"
 								onChange={(e) => setBulkText(e.target.value)}
 								placeholder={t(
 									'admin.scNodes.tokens.bulkPlaceholder'
@@ -596,11 +596,11 @@ export default function ScNodesAdminView() {
 											key={token.id}
 										>
 											<Table.Cell>
-												<span className="font-semibold text-sm">
+												<span className="text-sm font-semibold">
 													{token.label ||
 														`token #${token.id}`}
 												</span>
-												<span className="ml-2 font-mono text-neutral-400 text-xs">
+												<span className="ml-2 font-mono text-xs text-neutral-400">
 													…{token.tail}
 												</span>
 											</Table.Cell>
@@ -615,7 +615,7 @@ export default function ScNodesAdminView() {
 												</div>
 											</Table.Cell>
 											<Table.Cell>
-												<span className="font-mono text-neutral-400 text-xs">
+												<span className="font-mono text-xs text-neutral-400">
 													{secondsUntil(
 														token.reset_at
 													)}
@@ -654,7 +654,7 @@ export default function ScNodesAdminView() {
 									{overview.tokens.length === 0 && (
 										<Table.Row>
 											<Table.Cell>
-												<span className="text-neutral-400 text-sm">
+												<span className="text-sm text-neutral-400">
 													{t(
 														'admin.scNodes.tokens.empty'
 													)}

@@ -42,7 +42,7 @@ export default function ModerationAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div>
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.moderation.title')}
 				</h1>
 			</div>
@@ -95,7 +95,7 @@ function ArticlesQueue() {
 				{ARTICLE_STATUSES.map((status_) => (
 					<Button
 						className={cn(
-							'font-semibold text-xs',
+							'text-xs font-semibold',
 							
 						)}
 						key={status_}
@@ -118,10 +118,10 @@ function ArticlesQueue() {
 						key={article.id}
 					>
 						<div className="flex min-w-0 flex-col">
-							<span className="truncate font-semibold text-sm">
+							<span className="truncate text-sm font-semibold">
 								{article.title}
 							</span>
-							<span className="truncate text-muted-foreground text-xs">
+							<span className="text-muted-foreground truncate text-xs">
 								{article.author?.username ?? '—'}
 								{' · '}
 								{formatDate(article.created_at, 'date')}
@@ -145,7 +145,7 @@ function ArticlesQueue() {
 					</Card.Root>
 				))}
 				{data.data.length === 0 && (
-					<p className="py-12 text-center text-muted-foreground text-sm">
+					<p className="text-muted-foreground py-12 text-center text-sm">
 						{t('admin.moderation.empty')}
 					</p>
 				)}
@@ -182,7 +182,7 @@ function AutoBans() {
 
 	return (
 		<div className="flex flex-col gap-4">
-			<div className="rounded-xl bg-card px-4 py-3 text-muted-foreground text-sm shadow-sm">
+			<div className="bg-card text-muted-foreground rounded-xl px-4 py-3 text-sm shadow-sm">
 				{t('admin.moderation.autoBansHint', {
 					count: numberFmt.format(data.total_count),
 				})}
@@ -195,15 +195,15 @@ function AutoBans() {
 						key={entry.id}
 					>
 						<div className="flex min-w-0 flex-col">
-							<span className="truncate font-semibold text-sm">
+							<span className="truncate text-sm font-semibold">
 								{entry.username}
 								{entry.name && (
-									<span className="ml-2 text-muted-foreground text-xs">
+									<span className="text-muted-foreground ml-2 text-xs">
 										{entry.name}
 									</span>
 								)}
 							</span>
-							<span className="truncate font-mono text-muted-foreground text-xs">
+							<span className="text-muted-foreground truncate font-mono text-xs">
 								#{entry.id} ·{' '}
 								{formatDate(entry.joined_at, 'date')}
 								{entry.discord_auth?.username &&
@@ -246,7 +246,7 @@ function AutoBans() {
 					</Card.Root>
 				))}
 				{data.data.length === 0 && (
-					<p className="py-12 text-center text-muted-foreground text-sm">
+					<p className="text-muted-foreground py-12 text-center text-sm">
 						{t('admin.moderation.autoBansEmpty')}
 					</p>
 				)}
@@ -285,7 +285,7 @@ function Multiaccounts() {
 								)}
 								icon="lucide:network"
 							/>
-							<span className="font-mono font-semibold text-sm">
+							<span className="font-mono text-sm font-semibold">
 								{group.ip}
 							</span>
 							<span className="text-muted-foreground text-xs">
@@ -296,7 +296,7 @@ function Multiaccounts() {
 							{group.accounts.map((account) => (
 								<Link
 									className={cn(
-										'rounded-full px-2 py-0.5 font-semibold text-xs',
+										'rounded-full px-2 py-0.5 text-xs font-semibold',
 										account.banned
 											? 'bg-rose-500/10 text-rose-400'
 											: 'bg-muted text-card-foreground hover:text-primary'
@@ -313,7 +313,7 @@ function Multiaccounts() {
 					</Card.Root>
 				))}
 				{data.data.length === 0 && (
-					<p className="py-12 text-center text-muted-foreground text-sm">
+					<p className="text-muted-foreground py-12 text-center text-sm">
 						{t('admin.moderation.multiaccountsEmpty')}
 					</p>
 				)}
@@ -376,7 +376,7 @@ function Comments() {
 							<span className="line-clamp-2 text-sm">
 								{comment.content}
 							</span>
-							<span className="truncate text-muted-foreground text-xs">
+							<span className="text-muted-foreground truncate text-xs">
 								{comment.author?.username ?? '—'} ·{' '}
 								{formatDate(comment.created_at, 'datetime')}
 								{comment.article
@@ -399,7 +399,7 @@ function Comments() {
 					</Card.Root>
 				))}
 				{filtered.length === 0 && (
-					<p className="py-12 text-center text-muted-foreground text-sm">
+					<p className="text-muted-foreground py-12 text-center text-sm">
 						{t('admin.moderation.empty')}
 					</p>
 				)}

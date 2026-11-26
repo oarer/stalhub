@@ -127,7 +127,7 @@ export default function ModelsView() {
 	if (isMobile) {
 		return (
 			<section className="mx-auto max-w-360 space-y-6 px-4 pt-32 pb-12 sm:px-6 md:px-8">
-				<h1 className="font-semibold text-3xl">{t('title')}</h1>
+				<h1 className="text-3xl font-semibold">{t('title')}</h1>
 				<Alert.Root variant={'destructive'}>
 					<Alert.Description>
 						{t('mobileNotSupported')}
@@ -139,7 +139,7 @@ export default function ModelsView() {
 
 	return (
 		<section className="mx-auto max-w-360 space-y-6 px-4 pt-32 pb-12 sm:px-6 md:px-8">
-			<h1 className="font-semibold text-3xl">{t('title')}</h1>
+			<h1 className="text-3xl font-semibold">{t('title')}</h1>
 
 			<Alert.Root variant={'destructive'}>
 				<Alert.Description>{t('textureWarning')}</Alert.Description>
@@ -156,7 +156,7 @@ export default function ModelsView() {
 						<Card.Header className="space-y-3">
 							<Card.Title>{t('model')}</Card.Title>
 							<div className="flex items-center justify-between gap-3">
-								<p className="min-w-0 flex-1 truncate font-semibold text-sm">
+								<p className="min-w-0 flex-1 truncate text-sm font-semibold">
 									{model
 										? (model.names[locale] ??
 											model.names.en ??

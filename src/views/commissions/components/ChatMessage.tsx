@@ -38,13 +38,13 @@ export function ChatMessage({
 
 	if (message.kind !== 'CHAT') {
 		return (
-			<article className="mx-auto flex w-full max-w-[45%] flex-col items-center gap-1.5 rounded-xl border border-border/40 bg-muted/30 px-4 py-3 text-center">
-				<span className="flex items-center gap-1.5 font-medium text-primary/90 text-sm">
+			<article className="border-border/40 bg-muted/30 mx-auto flex w-full max-w-[45%] flex-col items-center gap-1.5 rounded-xl border px-4 py-3 text-center">
+				<span className="text-primary/90 flex items-center gap-1.5 text-sm font-medium">
 					<Icon icon={eventIcon(message.kind)} />
 					{eventLabel(message.kind)}
 				</span>
 				{message.content && (
-					<p className="wrap-break-word whitespace-pre-wrap text-muted-foreground text-xs">
+					<p className="text-muted-foreground text-xs wrap-break-word whitespace-pre-wrap">
 						{message.content}
 					</p>
 				)}
@@ -52,7 +52,7 @@ export function ChatMessage({
 					<FileLinks download={downloadFile} files={message.files} />
 				)}
 				<time
-					className="text-[10px] text-muted-foreground/60"
+					className="text-muted-foreground/60 text-[10px]"
 					dateTime={message.created_at}
 				>
 					{formatDate(message.created_at)}
@@ -64,8 +64,8 @@ export function ChatMessage({
 		return (
 			<article className="flex justify-end">
 				<div className="flex max-w-[85%] flex-col items-end gap-1">
-					<div className="flex flex-col gap-0.5 rounded-2xl rounded-br-md bg-primary px-3.5 py-2.5 text-primary-foreground">
-						<p className="wrap-break-word whitespace-pre-wrap text-sm leading-snug">
+					<div className="bg-primary text-primary-foreground flex flex-col gap-0.5 rounded-2xl rounded-br-md px-3.5 py-2.5">
+						<p className="text-sm leading-snug wrap-break-word whitespace-pre-wrap">
 							{message.content}
 						</p>
 						{message.files.length > 0 && (
@@ -75,7 +75,7 @@ export function ChatMessage({
 							/>
 						)}
 						<time
-							className="self-end text-[10px] text-primary-foreground/60"
+							className="text-primary-foreground/60 self-end text-[10px]"
 							dateTime={message.created_at}
 						>
 							{formatDate(message.created_at)}
@@ -95,20 +95,20 @@ export function ChatMessage({
 			/>
 			<div className="flex max-w-[85%] flex-col items-start gap-2">
 				<div className="flex items-center gap-2">
-					<span className="px-1 text-muted-foreground text-xs">
+					<span className="text-muted-foreground px-1 text-xs">
 						{message.author.name || message.author.username}
 					</span>
 					{showAuthorBadge && message.author && (
 						<Badge
-							className="font-medium text-[11px]"
+							className="text-[11px] font-medium"
 							variant={'nsfw'}
 						>
 							{t('artist')}
 						</Badge>
 					)}
 				</div>
-				<div className="flex flex-col gap-0.5 rounded-2xl rounded-bl-md bg-muted px-3.5 py-2.5">
-					<p className="wrap-break-word whitespace-pre-wrap text-sm leading-snug">
+				<div className="bg-muted flex flex-col gap-0.5 rounded-2xl rounded-bl-md px-3.5 py-2.5">
+					<p className="text-sm leading-snug wrap-break-word whitespace-pre-wrap">
 						{message.content}
 					</p>
 					{message.files.length > 0 && (
@@ -118,7 +118,7 @@ export function ChatMessage({
 						/>
 					)}
 					<time
-						className="self-end text-[10px] text-muted-foreground/60"
+						className="text-muted-foreground/60 self-end text-[10px]"
 						dateTime={message.created_at}
 					>
 						{formatDate(message.created_at)}

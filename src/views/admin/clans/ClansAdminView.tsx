@@ -34,10 +34,10 @@ export default function ClansAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.clans.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
+				<span className="text-sm text-neutral-400">
 					{data?.total_count ?? 0} {t('admin.clans.total')}
 				</span>
 			</div>

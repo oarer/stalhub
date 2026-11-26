@@ -182,7 +182,7 @@ export default function ContModal({ onClose }: ModalProps) {
 			>
 				<Modal.Content>
 					<Modal.Header>
-						<Modal.Title className="text-2xl text-destructive">
+						<Modal.Title className="text-destructive text-2xl">
 							{t('modals.builds.container.warn_modal.warn')}
 						</Modal.Title>
 						<Modal.Description className="font-semibold">

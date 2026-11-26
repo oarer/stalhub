@@ -137,7 +137,7 @@ export function AuctionControls({
 					value={price.min ?? ''}
 				/>
 
-				<span className="font-mono font-semibold text-foreground text-xs uppercase tracking-widest">
+				<span className="text-foreground font-mono text-xs font-semibold tracking-widest uppercase">
 					{t('items.auction.sort_price')}
 				</span>
 

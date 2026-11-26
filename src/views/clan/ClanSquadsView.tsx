@@ -116,7 +116,7 @@ function ClanSquadsContent({
 		<div className="flex flex-col gap-4">
 			<div className="flex items-center justify-between">
 				<h1
-					className={`${mtsExtended.className} font-semibold text-[28px] leading-none`}
+					className={`${mtsExtended.className} text-[28px] leading-none font-semibold`}
 				>
 					{t('clan.squads.title')}
 				</h1>

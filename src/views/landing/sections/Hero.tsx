@@ -27,7 +27,7 @@ export default function Hero() {
 					<div className="flex flex-col gap-2">
 						<motion.h1
 							animate={{ y: 0, opacity: 1 }}
-							className={`${mtsWide.className} flex w-full min-w-0 flex-col items-center gap-1 text-balance font-bold text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:items-start xl:text-6xl`}
+							className={`${mtsWide.className} flex w-full min-w-0 flex-col items-center gap-1 text-4xl leading-[1.1] font-bold tracking-tight text-balance sm:text-5xl lg:items-start xl:text-6xl`}
 							initial={{ y: 24, opacity: 0 }}
 							transition={{ duration: 0.5 }}
 						>
@@ -44,7 +44,7 @@ export default function Hero() {
 						</motion.h1>
 						<motion.h2
 							animate={{ y: 0, opacity: 1 }}
-							className={`${mtsWide.className} flex w-full min-w-0 flex-col items-center gap-1 text-balance font-bold text-[19px] tracking-tight lg:items-start lg:text-[25px] xl:text-3xl`}
+							className={`${mtsWide.className} flex w-full min-w-0 flex-col items-center gap-1 text-[19px] font-bold tracking-tight text-balance lg:items-start lg:text-[25px] xl:text-3xl`}
 							initial={{ y: 24, opacity: 0 }}
 							transition={{ duration: 0.5, delay: 0.08 }}
 						>
@@ -58,7 +58,7 @@ export default function Hero() {
 					</p> */}
 					<motion.p
 						animate={{ y: 0, opacity: 1 }}
-						className={`${mtsExtended.className} w-full max-w-xl font-medium text-sm leading-relaxed dark:text-white/80`}
+						className={`${mtsExtended.className} w-full max-w-xl text-sm leading-relaxed font-medium dark:text-white/80`}
 						initial={{ y: 24, opacity: 0 }}
 						transition={{ duration: 0.5, delay: 0.15 }}
 					>
@@ -77,12 +77,12 @@ export default function Hero() {
 								key={stat.label}
 							>
 								<p
-									className={`${mtsWide.className} truncate font-bold text-2xl text-primary tabular-nums tracking-tight`}
+									className={`${mtsWide.className} text-primary truncate text-2xl font-bold tracking-tight tabular-nums`}
 								>
 									{stat.value}
 								</p>
 								<p
-									className={`${mtsExtended.className} mt-1 font-medium text-xs sm:text-sm`}
+									className={`${mtsExtended.className} mt-1 text-xs font-medium sm:text-sm`}
 								>
 									{t(stat.label)}
 								</p>

@@ -53,14 +53,14 @@ export function AssignLeaderModal({
 									variant={'secondary'}
 								>
 									<div className="flex items-center gap-2">
-										<div className="flex size-8 items-center justify-center rounded-full bg-card font-semibold text-sm">
+										<div className="bg-card flex size-8 items-center justify-center rounded-full text-sm font-semibold">
 											{m.member.name.charAt(0)}
 										</div>
 										<div className="flex flex-col text-left">
-											<p className="font-semibold text-sm">
+											<p className="text-sm font-semibold">
 												{m.member.name}
 											</p>
-											<p className="font-semibold text-muted-foreground text-xs">
+											<p className="text-muted-foreground text-xs font-semibold">
 												{m.member.rank}
 											</p>
 										</div>

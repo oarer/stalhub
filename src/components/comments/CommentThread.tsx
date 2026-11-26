@@ -34,7 +34,7 @@ function renderContent(text: string) {
 			return (
 				<HoverUserCard key={i} username={part.slice(1)}>
 					<Username
-						className={`font-mono font-semibold text-primary`}
+						className={`text-primary font-mono font-semibold`}
 					>
 						{part}
 					</Username>
@@ -97,7 +97,7 @@ export function CommentThread({
 
 	return (
 		<div className="flex flex-col gap-4">
-			<h3 className="font-semibold text-lg">
+			<h3 className="text-lg font-semibold">
 				{t(`${ns}.comments.title`, { count: totalCount })}
 			</h3>
 
@@ -127,7 +127,7 @@ export function CommentThread({
 				))}
 
 				{comments.length === 0 && (
-					<p className="py-4 text-center font-semibold text-foreground text-sm">
+					<p className="text-foreground py-4 text-center text-sm font-semibold">
 						{t(`${ns}.comments.empty`)}
 					</p>
 				)}
@@ -158,7 +158,7 @@ function CommentItem({
 
 	return (
 		<div className="flex flex-col gap-2">
-			<div className="rounded-lg bg-card px-3 py-2">
+			<div className="bg-card rounded-lg px-3 py-2">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2">
 						<Avatar
@@ -169,13 +169,13 @@ function CommentItem({
 						/>
 						<HoverUserCard id={comment.author.id}>
 							<Username
-								className={`font-mono font-semibold text-xs`}
+								className={`font-mono text-xs font-semibold`}
 								user={comment.author}
 								withRemoteBadges
 							/>
 						</HoverUserCard>
 						<span
-							className={`font-mono font-semibold text-foreground text-xs`}
+							className={`text-foreground font-mono text-xs font-semibold`}
 						>
 							{formatDate(comment.created_at)}
 						</span>
@@ -223,13 +223,13 @@ function CommentItem({
 						)}
 					</div>
 				</div>
-				<p className="mt-2 whitespace-pre-wrap font-semibold text-sm">
+				<p className="mt-2 text-sm font-semibold whitespace-pre-wrap">
 					{renderContent(comment.content)}
 				</p>
 			</div>
 
 			{replies.length > 0 && (
-				<div className="ml-6 flex flex-col gap-2 border-primary border-l-2 pl-3">
+				<div className="border-primary ml-6 flex flex-col gap-2 border-l-2 pl-3">
 					{replies.map((reply) => (
 						<CommentItem
 							admin={admin}

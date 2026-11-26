@@ -54,7 +54,7 @@ export function ContentDetailHeader({
 				<div className="flex min-w-0 flex-col gap-2.5">
 					<div className="flex flex-wrap items-center gap-2.5">
 						<h1
-							className={`${mtsExtended.className} font-semibold text-3xl text-primary`}
+							className={`${mtsExtended.className} text-primary text-3xl font-semibold`}
 						>
 							{title}
 						</h1>
@@ -79,13 +79,13 @@ export function ContentDetailHeader({
 						) : authorAvatarUrl ? (
 							<img
 								alt=""
-								className="size-10 shrink-0 rounded-full bg-muted object-cover"
+								className="bg-muted size-10 shrink-0 rounded-full object-cover"
 								src={authorAvatarUrl}
 							/>
 						) : (
-							<span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
+							<span className="bg-muted flex size-10 shrink-0 items-center justify-center rounded-full">
 								<Icon
-									className="size-5 text-primary/70"
+									className="text-primary/70 size-5"
 									icon="lucide:radio-tower"
 								/>
 							</span>
@@ -100,7 +100,7 @@ export function ContentDetailHeader({
 								</HoverUserCard>
 							) : sourceUrl ? (
 								<a
-									className="truncate font-semibold transition-colors hover:text-primary hover:underline"
+									className="hover:text-primary truncate font-semibold transition-colors hover:underline"
 									href={sourceUrl}
 									rel="noopener noreferrer"
 									target="_blank"
@@ -115,7 +115,7 @@ export function ContentDetailHeader({
 
 							<span className="text-foreground">·</span>
 							<time
-								className="shrink-0 text-foreground"
+								className="text-foreground shrink-0"
 								dateTime={createdAt}
 								title={new Date(createdAt).toLocaleString()}
 							>
@@ -132,7 +132,7 @@ export function ContentDetailHeader({
 				)}
 			</div>
 			{stats && (
-				<div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-foreground text-sm">
+				<div className="text-foreground flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
 					{stats}
 				</div>
 			)}
@@ -187,7 +187,7 @@ export function DetailStat({
 	return (
 		<button
 			aria-label={label}
-			className={`flex cursor-pointer items-center gap-1.5 transition-colors hover:text-primary disabled:opacity-60 ${active ? 'text-primary' : ''}`}
+			className={`hover:text-primary flex cursor-pointer items-center gap-1.5 transition-colors disabled:opacity-60 ${active ? 'text-primary' : ''}`}
 			disabled={disabled}
 			onClick={onClick}
 			title={label}

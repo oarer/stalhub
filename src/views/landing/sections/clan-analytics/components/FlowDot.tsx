@@ -17,7 +17,7 @@ export function FlowDot({
 	})
 	return (
 		<motion.span
-			className="absolute top-0 size-1.5 rounded-full bg-primary shadow-[0_0_8px_2px_var(--primary)]"
+			className="bg-primary absolute top-0 size-1.5 rounded-full shadow-[0_0_8px_2px_var(--primary)]"
 			style={{ left, opacity, marginLeft: -3 }}
 		/>
 	)

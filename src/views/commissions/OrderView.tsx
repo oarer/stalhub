@@ -44,7 +44,7 @@ export default function OrderView({ id }: { id: string }) {
 	return (
 		<div className="flex min-w-0 flex-col gap-5">
 			<CLink
-				className="w-fit px-0 text-primary"
+				className="text-primary w-fit px-0"
 				href="/me/commissions"
 				variant="none"
 			>
@@ -197,7 +197,7 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 			<div className="flex flex-col gap-4">
 				<div className="flex items-center gap-2">
 					<h1
-						className={`${mtsExtended.className} wrap-break-word font-medium text-2xl`}
+						className={`${mtsExtended.className} text-2xl font-medium wrap-break-word`}
 					>
 						{order.title}
 					</h1>
@@ -206,7 +206,7 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 						value={order.status}
 					/>
 					{order.due_at && (
-						<span className="flex items-center gap-1.5 text-muted-foreground text-sm">
+						<span className="text-muted-foreground flex items-center gap-1.5 text-sm">
 							<Icon icon="lucide:calendar" />
 							{t('deadline')}: {formatDate(order.due_at, 'date')}
 						</span>
@@ -386,7 +386,7 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 				<Card.Root className="gap-3" key={entry.id}>
 					<div className="flex items-center gap-2">
 						<CLink
-							className="w-fit px-0 font-semibold text-primary"
+							className="text-primary w-fit px-0 font-semibold"
 							href={`/me/arbitration/${entry.id}`}
 							variant="none"
 						>
@@ -398,7 +398,7 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 						<Status value={entry.status} />
 					</div>
 					{entry.reason && (
-						<p className="whitespace-pre-wrap text-sm">
+						<p className="text-sm whitespace-pre-wrap">
 							{entry.reason}
 						</p>
 					)}
@@ -409,12 +409,12 @@ function OrderBody({ order, user }: { order: CommissionOrder; user: number }) {
 								{t(`outcomes.${decision.outcome}`)}
 							</p>
 							{decision.reason && (
-								<p className="whitespace-pre-wrap text-sm">
+								<p className="text-sm whitespace-pre-wrap">
 									{decision.reason}
 								</p>
 							)}
 							{decision.obligations && (
-								<p className="whitespace-pre-wrap text-muted-foreground text-sm">
+								<p className="text-muted-foreground text-sm whitespace-pre-wrap">
 									{decision.obligations}
 								</p>
 							)}

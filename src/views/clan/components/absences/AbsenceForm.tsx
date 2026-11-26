@@ -44,7 +44,7 @@ export function AbsenceForm({
 	const t = useTranslations()
 
 	return (
-		<div className="flex flex-col gap-2 rounded-xl bg-card px-5 py-4">
+		<div className="bg-card flex flex-col gap-2 rounded-xl px-5 py-4">
 			<p className="font-semibold">{t('clan.absence.myAbsence')}</p>
 			<div className="flex flex-col gap-3">
 				<Input
@@ -74,7 +74,7 @@ export function AbsenceForm({
 											: 'lucide:square'
 									}
 								/>
-								<span className="font-semibold text-sm">
+								<span className="text-sm font-semibold">
 									{t(opt.label)}
 								</span>
 							</div>
@@ -91,7 +91,7 @@ export function AbsenceForm({
 											<Button
 												className={cn(
 													'font-mono',
-													'rounded-full px-3 py-1 font-semibold text-xs',
+													'rounded-full px-3 py-1 text-xs font-semibold',
 													active &&
 														'bg-primary/20 text-primary'
 												)}

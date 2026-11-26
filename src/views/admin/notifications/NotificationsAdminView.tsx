@@ -146,7 +146,7 @@ export default function NotificationsAdminView() {
 		return (
 			<div className="flex flex-col gap-6">
 				<div className="flex items-center justify-between">
-					<h1 className="font-semibold text-2xl">
+					<h1 className="text-2xl font-semibold">
 						{t('admin.notifications.title')}
 					</h1>
 				</div>
@@ -160,7 +160,7 @@ export default function NotificationsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex items-center justify-between">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.notifications.title')}
 				</h1>
 			</div>
@@ -295,7 +295,7 @@ export default function NotificationsAdminView() {
 								)}
 
 								{estimateData && !targetMissing && (
-									<p className="flex items-center gap-1.5 text-neutral-400 text-sm">
+									<p className="flex items-center gap-1.5 text-sm text-neutral-400">
 										<Icon
 											className="size-4 text-sky-400"
 											icon="lucide:users"
@@ -319,7 +319,7 @@ export default function NotificationsAdminView() {
 									value={userSearch}
 								/>
 								{userSearch && !selectedUserId && (
-									<div className="flex flex-col gap-1 rounded-lg border border-primary bg-card p-1">
+									<div className="border-primary bg-card flex flex-col gap-1 rounded-lg border p-1">
 										{users
 											.filter(
 												(u) =>
@@ -373,7 +373,7 @@ export default function NotificationsAdminView() {
 														userSearch.toLowerCase()
 													)
 										).length === 0 && (
-											<p className="px-2 py-1 text-foreground text-sm">
+											<p className="text-foreground px-2 py-1 text-sm">
 												{t(
 													'admin.notifications.notFound'
 												)}
@@ -391,7 +391,7 @@ export default function NotificationsAdminView() {
 											{userSearch}
 										</span>
 										<Button
-											className="h-auto p-0 text-foreground text-xs underline-offset-2 hover:underline"
+											className="text-foreground h-auto p-0 text-xs underline-offset-2 hover:underline"
 											onClick={() => {
 												setSelectedUserId(null)
 												setUserSearch('')
@@ -412,11 +412,11 @@ export default function NotificationsAdminView() {
 						/>
 
 						<div className="flex flex-col gap-1">
-							<span className="font-semibold text-foreground text-sm">
+							<span className="text-foreground text-sm font-semibold">
 								{t('admin.notifications.contentLabel')}
 							</span>
 							<Textarea
-								className="min-h-20 resize-none border-primary focus:border-primary/50"
+								className="border-primary focus:border-primary/50 min-h-20 resize-none"
 								onChange={(e) => setContent(e.target.value)}
 								placeholder={t(
 									'admin.notifications.contentPlaceholder'

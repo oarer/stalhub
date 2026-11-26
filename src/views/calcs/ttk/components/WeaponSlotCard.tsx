@@ -139,7 +139,7 @@ export function WeaponSlotCard({
 			>
 				<Card.Content className="flex min-w-0 gap-3">
 					{weapon && weaponIconUrl && (
-						<div className="flex h-21.5 w-21.5 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-card">
+						<div className="bg-card flex h-21.5 w-21.5 shrink-0 items-center justify-center overflow-hidden rounded-lg">
 							<Image
 								alt={messageToString(weapon.name, locale)}
 								className="h-full w-full object-contain p-2"
@@ -175,7 +175,7 @@ export function WeaponSlotCard({
 								</span>
 
 								<Icon
-									className="shrink-0 text-foreground text-xs"
+									className="text-foreground shrink-0 text-xs"
 									icon="lucide:chevron-down"
 								/>
 							</Button>
@@ -195,10 +195,10 @@ export function WeaponSlotCard({
 						</div>
 
 						{weapon && CUSTOM_ROF_MAP[weapon.id] && (
-							<div className="flex items-center gap-1 rounded-lg p-1 ring-2 ring-muted">
+							<div className="ring-muted flex items-center gap-1 rounded-lg p-1 ring-2">
 								<Button
 									className={cn(
-										'w-full font-semibold text-sm',
+										'w-full text-sm font-semibold',
 										!slot.useBurstRof
 											? 'bg-border/40 dark:text-neutral-200'
 											: 'hover:text-neutral-200'
@@ -213,7 +213,7 @@ export function WeaponSlotCard({
 
 								<Button
 									className={cn(
-										'w-full font-semibold text-sm',
+										'w-full text-sm font-semibold',
 										slot.useBurstRof
 											? 'bg-border/40 dark:text-neutral-200'
 											: 'hover:text-neutral-200'
@@ -231,9 +231,9 @@ export function WeaponSlotCard({
 
 						{weapon &&
 							(compatibleAmmo.length === 1 ? (
-								<div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-primary/40 bg-card px-2 py-1.5 text-xs">
+								<div className="border-primary/40 bg-card flex min-w-0 items-center gap-2 rounded-lg border-2 px-2 py-1.5 text-xs">
 									<Icon
-										className="shrink-0 text-foreground"
+										className="text-foreground shrink-0"
 										icon="lucide:zap"
 									/>
 									<span className="min-w-0 truncate font-semibold">
@@ -273,7 +273,7 @@ export function WeaponSlotCard({
 										</div>
 
 										<span
-											className={`min-w-0 truncate font-semibold text-sm ${
+											className={`min-w-0 truncate text-sm font-semibold ${
 												!ammo ? 'text-foreground' : ''
 											}`}
 										>
@@ -286,13 +286,13 @@ export function WeaponSlotCard({
 										</span>
 
 										<Icon
-											className="shrink-0 text-foreground"
+											className="text-foreground shrink-0"
 											icon="lucide:chevron-down"
 										/>
 									</Button>
 
 									<Input
-										className="w-20 shrink-0 rounded-lg border-primary/40"
+										className="border-primary/40 w-20 shrink-0 rounded-lg"
 										label="ui.input_sharpening"
 										max={15}
 										min={0}
@@ -308,9 +308,9 @@ export function WeaponSlotCard({
 							))}
 
 						{weapon && (
-							<div className="flex flex-col gap-1 rounded-lg p-2 ring-2 ring-muted">
+							<div className="ring-muted flex flex-col gap-1 rounded-lg p-2 ring-2">
 								<div className="flex items-center justify-between gap-2">
-									<span className="font-semibold text-neutral-400 text-xs">
+									<span className="text-xs font-semibold text-neutral-400">
 										{t('ttk.page.module_concept')}
 									</span>
 									{slot.moduleKey && (
@@ -368,7 +368,7 @@ export function WeaponSlotCard({
 												value={slot.moduleQuality}
 											/>
 											<span
-												className="rounded bg-accent/50 px-2 py-1.5 font-semibold text-xs"
+												className="bg-accent/50 rounded px-2 py-1.5 text-xs font-semibold"
 												style={{
 													color: RARITY_COLORS[
 														moduleRarity
@@ -431,13 +431,13 @@ export function WeaponSlotCard({
 						)}
 
 						{weapon && isHoldWeapon(weapon.id) && (
-							<div className="flex flex-col gap-1 rounded-lg p-2 ring-2 ring-muted">
+							<div className="ring-muted flex flex-col gap-1 rounded-lg p-2 ring-2">
 								<div className="flex items-center justify-between">
-									<span className="font-semibold text-neutral-400 text-xs">
+									<span className="text-xs font-semibold text-neutral-400">
 										{t('ttk.page.hold_time')}
 									</span>
 									<span
-										className={`font-mono font-semibold text-xs`}
+										className={`font-mono text-xs font-semibold`}
 									>
 										{roundNumber(slot.holdTime)} с
 									</span>

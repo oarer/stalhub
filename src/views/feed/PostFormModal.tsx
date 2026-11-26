@@ -274,7 +274,7 @@ export function PostFormModal({
 			)}
 			{!inline && (
 				<div className="flex items-center justify-between gap-2">
-					<span className="font-medium text-sm">
+					<span className="text-sm font-medium">
 						{t('post.contentLabel')}
 					</span>
 					<Button
@@ -287,7 +287,7 @@ export function PostFormModal({
 				</div>
 			)}
 			{preview ? (
-				<div className="min-h-36 rounded-lg border border-primary/20 bg-card p-3">
+				<div className="border-primary/20 bg-card min-h-36 rounded-lg border p-3">
 					<MarkdownContent content={content} />
 				</div>
 			) : (
@@ -444,9 +444,9 @@ export function PostFormModal({
 				</div>
 			)}
 			<Reveal gap={inline ? 12 : 16} open={!inline || pollEnabled}>
-				<div className="flex flex-col gap-2 rounded-lg border border-primary/20 p-3">
+				<div className="border-primary/20 flex flex-col gap-2 rounded-lg border p-3">
 					{!inline && (
-						<label className="flex items-center gap-2 font-medium text-sm">
+						<label className="flex items-center gap-2 text-sm font-medium">
 							<input
 								checked={pollEnabled}
 								onChange={(event) =>
@@ -537,8 +537,8 @@ export function PostFormModal({
 				</div>
 			</Reveal>
 			<Reveal gap={inline ? 12 : 16} open={!inline || attachmentsOpen}>
-				<div className="flex flex-col gap-2 rounded-lg border border-primary/20 p-3">
-					<span className="font-medium text-sm">
+				<div className="border-primary/20 flex flex-col gap-2 rounded-lg border p-3">
+					<span className="text-sm font-medium">
 						{t('post.attach.attachments')}
 					</span>
 					<Input
@@ -687,7 +687,7 @@ export function PostFormModal({
 
 	if (inline) {
 		return (
-			<div className="flex gap-3 rounded-2xl border border-primary/20 bg-card/40 p-4">
+			<div className="border-primary/20 bg-card/40 flex gap-3 rounded-2xl border p-4">
 				{avatar && <div className="shrink-0 pt-1">{avatar}</div>}
 				<div className="flex min-w-0 flex-1 flex-col gap-3">
 					{formFields}

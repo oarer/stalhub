@@ -18,7 +18,7 @@ export const StatDelta = memo(function StatDelta({
 			{delta !== undefined && (
 				<motion.span
 					animate={{ opacity: 1, x: 0 }}
-					className="font-medium text-xs"
+					className="text-xs font-medium"
 					exit={{ opacity: 0, x: 4 }}
 					initial={{ opacity: 0, x: 4 }}
 					style={{ color: delta >= 0 ? '#53C353' : '#C15252' }}

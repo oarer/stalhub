@@ -141,7 +141,7 @@ export default function Slider({
 			aria-valuemin={min}
 			aria-valuenow={value}
 			className={cn(
-				'group relative flex h-6 w-full cursor-pointer touch-none select-none items-center outline-none',
+				'group relative flex h-6 w-full cursor-pointer touch-none items-center outline-none select-none',
 				disabled && 'cursor-not-allowed opacity-50',
 				className
 			)}
@@ -154,15 +154,15 @@ export default function Slider({
 			role="slider"
 			tabIndex={disabled ? -1 : 0}
 		>
-			<div className="relative h-1.5 w-full rounded-full bg-border-secondary">
+			<div className="bg-border-secondary relative h-1.5 w-full rounded-full">
 				<div
-					className="absolute inset-y-0 left-0 rounded-full bg-border/50"
+					className="bg-border/50 absolute inset-y-0 left-0 rounded-full"
 					style={{ width: `${percent}%` }}
 				/>
 			</div>
 
 			<div
-				className="pointer-events-none absolute h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-border shadow-md transition-transform group-focus-within:scale-110 group-hover:scale-110"
+				className="bg-border pointer-events-none absolute h-3.5 w-3.5 -translate-x-1/2 rounded-full shadow-md transition-transform group-focus-within:scale-110 group-hover:scale-110"
 				style={{ left: `${percent}%` }}
 			/>
 		</div>

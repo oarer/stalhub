@@ -60,15 +60,15 @@ export const TierListPngTemplate = forwardRef<
 
 	return (
 		<div
-			className="flex w-4xl flex-col gap-4 bg-card p-8 text-white"
+			className="bg-card flex w-4xl flex-col gap-4 p-8 text-white"
 			ref={ref}
 		>
 			<h1
-				className={`${unbounded.className} font-bold text-2xl text-primary uppercase`}
+				className={`${unbounded.className} text-primary text-2xl font-bold uppercase`}
 			>
 				stalhub.dev
 			</h1>
-			<h2 className={`${unbounded.className} text-3xl text-destructive`}>
+			<h2 className={`${unbounded.className} text-destructive text-3xl`}>
 				{title}
 			</h2>
 			<div className="flex flex-col gap-2">
@@ -78,14 +78,14 @@ export const TierListPngTemplate = forwardRef<
 					return (
 						<div className="flex gap-2" key={rank}>
 							<div
-								className={`flex size-14 shrink-0 items-center justify-center rounded-lg font-bold text-xl ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
+								className={`flex size-14 shrink-0 items-center justify-center rounded-lg text-xl font-bold ring-2 ${colors.bg} ${colors.text} ${colors.ring}`}
 							>
 								{rank}
 							</div>
-							<div className="flex min-h-14 flex-1 flex-wrap items-center gap-2 rounded-lg border border-muted bg-card/50 p-2">
+							<div className="border-muted bg-card/50 flex min-h-14 flex-1 flex-wrap items-center gap-2 rounded-lg border p-2">
 								{items.map((entry) => (
 									<div
-										className="flex items-center gap-2 rounded-md border border-muted bg-card px-3 py-1 text-sm"
+										className="border-muted bg-card flex items-center gap-2 rounded-md border px-3 py-1 text-sm"
 										key={entry.id}
 									>
 										{getItemIconUrl(entry) && (

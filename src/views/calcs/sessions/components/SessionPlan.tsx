@@ -20,7 +20,7 @@ const row = (
 	value: string,
 	highlightClass?: string
 ) => (
-	<div className="flex items-center justify-between rounded-lg bg-card px-3 py-2.5">
+	<div className="bg-card flex items-center justify-between rounded-lg px-3 py-2.5">
 		<div className="flex items-center gap-2">
 			<Icon className="text-lg text-neutral-400" icon={icon} />
 			<p className="text-muted-foreground text-sm">{label}</p>
@@ -46,7 +46,7 @@ export function SessionPlan({
 				<Card.Header>
 					<Card.Title>
 						<Icon
-							className="text-neutral-700 text-xl dark:text-neutral-300"
+							className="text-xl text-neutral-700 dark:text-neutral-300"
 							icon="lucide:route"
 						/>
 						<h2>{t('sessions.plan')}</h2>
@@ -69,7 +69,7 @@ export function SessionPlan({
 			<Card.Header>
 				<Card.Title>
 					<Icon
-						className="text-neutral-700 text-xl dark:text-neutral-300"
+						className="text-xl text-neutral-700 dark:text-neutral-300"
 						icon="lucide:route"
 					/>
 					<h2>{t('sessions.plan')}</h2>
@@ -80,32 +80,32 @@ export function SessionPlan({
 				{targetReached ? (
 					<div className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2.5 dark:bg-green-900/20">
 						<Icon
-							className="text-green-500 text-lg"
+							className="text-lg text-green-500"
 							icon="lucide:check-circle-2"
 						/>
-						<p className="font-medium text-green-700 text-sm dark:text-green-400">
+						<p className="text-sm font-medium text-green-700 dark:text-green-400">
 							{t('sessions.already_reached')}
 						</p>
 					</div>
 				) : (
 					<>
-						<div className="flex flex-col gap-1 rounded-lg bg-primary/10 px-3 py-2.5">
-							<p className="flex items-center gap-2 text-muted-foreground text-sm">
+						<div className="bg-primary/10 flex flex-col gap-1 rounded-lg px-3 py-2.5">
+							<p className="text-muted-foreground flex items-center gap-2 text-sm">
 								<Icon
 									className="text-lg"
 									icon="lucide:swords"
 								/>
 								{t('sessions.best_map')}
 							</p>
-							<p className={`font-medium font-mono text-lg`}>
+							<p className={`font-mono text-lg font-medium`}>
 								{best.map.label}
 							</p>
 						</div>
 
-						<div className="flex flex-wrap gap-1.5 rounded-lg bg-card px-3 py-2.5">
+						<div className="bg-card flex flex-wrap gap-1.5 rounded-lg px-3 py-2.5">
 							<Badge variant="secondary">
 								<Icon
-									className="mr-1 text-muted-foreground"
+									className="text-muted-foreground mr-1"
 									icon="lucide:crosshair"
 								/>
 								<span className={`font-mono text-xs`}>
@@ -114,7 +114,7 @@ export function SessionPlan({
 							</Badge>
 							<Badge variant="secondary">
 								<Icon
-									className="mr-1 text-muted-foreground"
+									className="text-muted-foreground mr-1"
 									icon="lucide:handshake"
 								/>
 								<span className={`font-mono text-xs`}>
@@ -123,7 +123,7 @@ export function SessionPlan({
 							</Badge>
 							<Badge variant="secondary">
 								<Icon
-									className="mr-1 text-muted-foreground"
+									className="text-muted-foreground mr-1"
 									icon="lucide:flag"
 								/>
 								<span className={`font-mono text-xs`}>
@@ -132,7 +132,7 @@ export function SessionPlan({
 							</Badge>
 							<Badge variant="secondary">
 								<Icon
-									className="mr-1 text-muted-foreground"
+									className="text-muted-foreground mr-1"
 									icon="lucide:eye"
 								/>
 								<span className={`font-mono text-xs`}>
@@ -144,10 +144,10 @@ export function SessionPlan({
 						{!best.maxReached && (
 							<div className="flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2.5 dark:bg-amber-900/20">
 								<Icon
-									className="text-amber-500 text-lg"
+									className="text-lg text-amber-500"
 									icon="lucide:alert-triangle"
 								/>
-								<p className="font-medium text-amber-700 text-sm dark:text-amber-400">
+								<p className="text-sm font-medium text-amber-700 dark:text-amber-400">
 									{t('sessions.max_not_reached')}
 								</p>
 							</div>
@@ -193,7 +193,7 @@ export function SessionPlan({
 									className="text-lg text-red-500"
 									icon="lucide:alert-triangle"
 								/>
-								<p className="font-medium text-red-700 text-sm dark:text-red-400">
+								<p className="text-sm font-medium text-red-700 dark:text-red-400">
 									{t('sessions.not_enough_matches')}
 								</p>
 							</div>
@@ -203,7 +203,7 @@ export function SessionPlan({
 							<div className="flex items-center justify-between rounded-lg bg-green-50 px-3 py-2.5 dark:bg-green-900/20">
 								<div className="flex items-center gap-2">
 									<Icon
-										className="text-green-500 text-lg"
+										className="text-lg text-green-500"
 										icon="lucide:flag-checkered"
 									/>
 									<p className="text-muted-foreground text-xs">

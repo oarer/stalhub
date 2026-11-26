@@ -123,9 +123,9 @@ export default function CalibrationTool({
 	}
 
 	return (
-		<div className="pointer-events-auto absolute right-3 bottom-12 z-1000 flex max-w-80 flex-col gap-2 rounded-md bg-card/90 p-3 text-xs shadow-lg ring-1 ring-primary/30 backdrop-blur-md">
+		<div className="bg-card/90 ring-primary/30 pointer-events-auto absolute right-3 bottom-12 z-1000 flex max-w-80 flex-col gap-2 rounded-md p-3 text-xs shadow-lg ring-1 backdrop-blur-md">
 			<button
-				className="rounded bg-primary px-2 py-1 text-primary-foreground"
+				className="bg-primary text-primary-foreground rounded px-2 py-1"
 				onClick={() => setEnabled((value) => !value)}
 				type="button"
 			>
@@ -136,7 +136,7 @@ export default function CalibrationTool({
 					<div className="flex gap-1">
 						{(['x', 'y'] as Axis[]).map((value) => (
 							<button
-								className="rounded bg-secondary px-2 py-1 disabled:opacity-50"
+								className="bg-secondary rounded px-2 py-1 disabled:opacity-50"
 								disabled={axis === value}
 								key={value}
 								onClick={() => {
@@ -163,7 +163,7 @@ export default function CalibrationTool({
 						</p>
 					)}
 					<button
-						className="rounded bg-secondary px-2 py-1 disabled:opacity-50"
+						className="bg-secondary rounded px-2 py-1 disabled:opacity-50"
 						disabled={points.length !== 2}
 						onClick={download}
 						type="button"

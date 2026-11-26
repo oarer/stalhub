@@ -86,7 +86,7 @@ function FormFields({
 				value={value.icon}
 			/>
 			<div className="flex flex-col gap-1.5">
-				<span className="font-semibold text-foreground text-xs">
+				<span className="text-foreground text-xs font-semibold">
 					{t('admin.achievements.rarity')}
 				</span>
 				<Combobox
@@ -114,7 +114,7 @@ function FormFields({
 function RarityBadge({ rarity }: { rarity: AchievementRarity }) {
 	return (
 		<span
-			className="inline-flex items-center gap-1 rounded-md px-2 py-1 font-semibold text-xs"
+			className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold"
 			style={{
 				backgroundColor: `${ACHIEVEMENT_RARITY_COLORS[rarity]}20`,
 				color: ACHIEVEMENT_RARITY_COLORS[rarity],
@@ -279,10 +279,10 @@ export default function AchievementsAdminView() {
 	return (
 		<div className="flex flex-col gap-6">
 			<div className="flex flex-wrap items-center justify-between gap-2">
-				<h1 className="font-semibold text-2xl">
+				<h1 className="text-2xl font-semibold">
 					{t('admin.achievements.title')}
 				</h1>
-				<span className="text-neutral-400 text-sm">
+				<span className="text-sm text-neutral-400">
 					{achievements.length} {t('admin.permissions.total')}
 				</span>
 			</div>
@@ -325,7 +325,7 @@ export default function AchievementsAdminView() {
 				<Card.Content>
 					<div className="flex flex-col gap-3 md:flex-row md:items-end">
 						<div className="flex flex-1 flex-col gap-1.5">
-							<span className="font-semibold text-foreground text-xs">
+							<span className="text-foreground text-xs font-semibold">
 								{t('admin.achievements.title')}
 							</span>
 							<Combobox
@@ -402,7 +402,7 @@ export default function AchievementsAdminView() {
 						{achievements.map((achievement) => (
 							<Table.Row key={achievement.id}>
 								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
+									<span className="font-mono text-xs text-neutral-400">
 										{achievement.id}
 									</span>
 								</Table.Cell>
@@ -414,7 +414,7 @@ export default function AchievementsAdminView() {
 												{achievement.title}
 											</p>
 											{achievement.description && (
-												<p className="max-w-60 truncate text-foreground text-xs">
+												<p className="text-foreground max-w-60 truncate text-xs">
 													{achievement.description}
 												</p>
 											)}
@@ -422,7 +422,7 @@ export default function AchievementsAdminView() {
 									</div>
 								</Table.Cell>
 								<Table.Cell>
-									<span className="font-mono text-neutral-400 text-xs">
+									<span className="font-mono text-xs text-neutral-400">
 										{achievement.slug}
 									</span>
 								</Table.Cell>
@@ -431,7 +431,7 @@ export default function AchievementsAdminView() {
 								</Table.Cell>
 								<Table.Cell>
 									{achievement.hidden ? (
-										<span className="flex items-center gap-1 text-amber-400 text-xs">
+										<span className="flex items-center gap-1 text-xs text-amber-400">
 											<Icon
 												className="size-3.5"
 												icon="lucide:eye-off"
@@ -484,7 +484,7 @@ export default function AchievementsAdminView() {
 						{!isPending && achievements.length === 0 && (
 							<Table.Row>
 								<Table.Cell>
-									<span className="text-neutral-400 text-sm">
+									<span className="text-sm text-neutral-400">
 										{t('admin.achievements.empty')}
 									</span>
 								</Table.Cell>

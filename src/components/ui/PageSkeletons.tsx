@@ -62,7 +62,7 @@ export function ArticleCardsSkeleton({ count = 4 }: { count?: number }) {
 		<div className="grid grid-cols-1 gap-3 md:grid-cols-2">
 			{Array.from({ length: count }).map((_, i) => (
 				<div
-					className="flex flex-col gap-3 rounded-lg border-2 border-primary/50 bg-card p-4"
+					className="border-primary/50 bg-card flex flex-col gap-3 rounded-lg border-2 p-4"
 					key={i}
 				>
 					<Skeleton className="h-6 w-3/4" />

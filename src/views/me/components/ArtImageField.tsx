@@ -90,7 +90,7 @@ export function ArtImageField({
 						variant="secondary"
 					>
 						<Icon className="size-4" icon="lucide:upload" />
-						<span className="font-semibold text-lg">
+						<span className="text-lg font-semibold">
 							{t('me.newArt.upload')}
 						</span>
 					</Button>

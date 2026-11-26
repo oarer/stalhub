@@ -9,7 +9,7 @@ function Loading() {
 	return (
 		<section className="relative mx-auto mt-26 mb-12 flex max-w-380 flex-col gap-10 px-4 pt-12 xl:mt-0 dark:text-white/70">
 			<div className="mx-auto flex items-center gap-4 xl:px-0 xl:pt-42.5 xl:pb-15">
-				<p className="font-semibold text-2xl">{t('map.loading')}</p>
+				<p className="text-2xl font-semibold">{t('map.loading')}</p>
 			</div>
 		</section>
 	)

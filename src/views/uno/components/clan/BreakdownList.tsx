@@ -43,10 +43,10 @@ export function BreakdownList({
 							<Table.Cell className="px-5 font-medium">
 								{item.label}
 							</Table.Cell>
-							<Table.Cell className="px-5 text-right font-mono font-semibold text-sm">
+							<Table.Cell className="px-5 text-right font-mono text-sm font-semibold">
 								{formatUnoPercent(item.winRate, locale)}
 							</Table.Cell>
-							<Table.Cell className="hidden px-5 text-right font-mono font-semibold text-muted-foreground text-sm sm:table-cell">
+							<Table.Cell className="text-muted-foreground hidden px-5 text-right font-mono text-sm font-semibold sm:table-cell">
 								{formatUnoValue(item.matches, locale)}
 							</Table.Cell>
 						</Table.Row>

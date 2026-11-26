@@ -20,7 +20,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 		<div
 			{...props}
 			className={cn(
-				'relative flex flex-col gap-2 overflow-hidden rounded-lg bg-card px-4 py-6',
+				'bg-card relative flex flex-col gap-2 overflow-hidden rounded-lg px-4 py-6',
 				className
 			)}
 			ref={ref}
@@ -60,7 +60,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 					</div>
 
 					<h2
-						className={`${mtsExtended.className} overflow-visible truncate font-medium text-xl leading-none`}
+						className={`${mtsExtended.className} truncate overflow-visible text-xl leading-none font-medium`}
 					>
 						<Username
 							badges={user.badges}
@@ -71,7 +71,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 					</h2>
 
 					{user.name && (
-						<span className="font-semibold text-foreground leading-none">
+						<span className="text-foreground leading-none font-semibold">
 							<Username
 								plain
 								roles={'roles' in user ? user.roles : undefined}
@@ -83,12 +83,12 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 
 				<div className="flex flex-col gap-2">
 					{user.badges.length > 0 && (
-						<div className="flex w-fit items-center gap-2 rounded-md bg-card/50 p-1 backdrop-blur-sm">
+						<div className="bg-card/50 flex w-fit items-center gap-2 rounded-md p-1 backdrop-blur-sm">
 							{user.badges.map((badge: UserBadge) => (
 								<Tooltip.Root key={badge.id}>
 									<Tooltip.Trigger asChild>
 										<button
-											className="flex size-6 items-center justify-center rounded-sm bg-primary"
+											className="bg-primary flex size-6 items-center justify-center rounded-sm"
 											style={{ background: badge.color }}
 										>
 											{badge.icon ? (
@@ -115,7 +115,7 @@ export default forwardRef<HTMLDivElement, UserCardProps>(function UserCard(
 						</div>
 					)}
 					<p
-						className={`rounded-lg bg-card px-2 py-2 font-mono font-semibold text-card-foreground text-sm leading-none`}
+						className={`bg-card text-card-foreground rounded-lg px-2 py-2 font-mono text-sm leading-none font-semibold`}
 					>
 						ID: {user.id}
 					</p>

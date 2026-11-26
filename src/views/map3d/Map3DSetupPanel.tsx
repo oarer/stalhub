@@ -52,7 +52,7 @@ export default function Map3DSetupPanel() {
 		field = `w-full min-w-0 rounded-lg border border-border-secondary bg-card px-3 py-2.5 text-foreground [font:inherit] tabular-nums focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[3px]`
 
 	return (
-		<div className="relative mx-auto grid max-w-350 grid-cols-[minmax(0,1fr)_minmax(420px,540px)] gap-16 px-10 pt-12 pb-16 max-[1000px]:grid-cols-[minmax(0,1fr)_minmax(380px,1fr)] max-[760px]:grid-cols-1 max-[1000px]:gap-8 max-[760px]:gap-7 max-[1000px]:px-6 max-[760px]:px-5 max-[1000px]:py-8 max-[760px]:pt-7">
+		<div className="relative mx-auto grid max-w-350 grid-cols-[minmax(0,1fr)_minmax(420px,540px)] gap-16 px-10 pt-12 pb-16 max-[1000px]:grid-cols-[minmax(0,1fr)_minmax(380px,1fr)] max-[1000px]:gap-8 max-[1000px]:px-6 max-[1000px]:py-8 max-[760px]:grid-cols-1 max-[760px]:gap-7 max-[760px]:px-5 max-[760px]:pt-7">
 			<div className="flex flex-col gap-6">
 				<div className="relative h-fit rounded-lg">
 					<DestinationMap
@@ -75,9 +75,9 @@ export default function Map3DSetupPanel() {
 							z: Number(coordinates[2].replace(',', '.')),
 						}}
 					/>
-					<div className="relative flex items-center gap-3 rounded-b-lg bg-card px-5 pb-5 max-[1000px]:flex-wrap max-[760px]:p-3.5">
+					<div className="bg-card relative flex items-center gap-3 rounded-b-lg px-5 pb-5 max-[1000px]:flex-wrap max-[760px]:p-3.5">
 						<Icon
-							className="text-2xl text-primary"
+							className="text-primary text-2xl"
 							icon="lucide:map-pin"
 						/>
 						<span className="text-[13px] leading-[1.6]">
@@ -87,7 +87,7 @@ export default function Map3DSetupPanel() {
 								{coordinates[0]}, {coordinates[2]}
 							</strong>
 						</span>
-						<span className="ml-auto text-[13px] text-muted-foreground leading-[1.6]">
+						<span className="text-muted-foreground ml-auto text-[13px] leading-[1.6]">
 							Карта {instance}
 						</span>
 					</div>
@@ -104,7 +104,7 @@ export default function Map3DSetupPanel() {
 									? 'Подготовим выбранное место'
 									: 'Загружаем выбранную область'}
 						</strong>
-						<span className="whitespace-nowrap text-primary tabular-nums">
+						<span className="text-primary whitespace-nowrap tabular-nums">
 							{trafficLabel(
 								sceneWarm?.network.transferBytes ??
 									sumPreparationTraffic(
@@ -115,7 +115,7 @@ export default function Map3DSetupPanel() {
 							по сети за эту настройку
 						</span>
 					</div>
-					<p className="mt-2 mb-4 max-w-none text-muted-foreground text-xs leading-[1.6]">
+					<p className="text-muted-foreground mt-2 mb-4 max-w-none text-xs leading-[1.6]">
 						{folder
 							? 'Дальний обзор, объекты и текстуры сразу в выбранном качестве.'
 							: 'Дальний обзор, объекты и текстуры в низком разрешении.'}{' '}
@@ -149,14 +149,14 @@ export default function Map3DSetupPanel() {
 										</dd>
 										<progress
 											aria-label={`${label}: загружено ${done} из ${total}`}
-											className="mt-1.5 block h-1 w-full accent-primary"
+											className="accent-primary mt-1.5 block h-1 w-full"
 											max={Math.max(1, Number(total))}
 											value={Number(done)}
 										/>
 									</div>
 								))}
 							</dl>
-							<div className="my-3.5 text-muted-foreground">
+							<div className="text-muted-foreground my-3.5">
 								Вариантов моделей готово:{' '}
 								{sceneWarm.world.objects?.templates ?? 0} ·
 								Текстур готово:{' '}
@@ -189,7 +189,7 @@ export default function Map3DSetupPanel() {
 										</div>
 									))}
 								</dl>
-								<p className="my-2 mb-4 max-w-none text-muted-foreground text-xs leading-[1.6]">
+								<p className="text-muted-foreground my-2 mb-4 max-w-none text-xs leading-[1.6]">
 									Обращений к кэшу:{' '}
 									{sceneWarm.world.cacheHits ?? 0}. Из
 									HTTP-кэша: {sceneWarm.network.httpCacheHits}{' '}
@@ -199,7 +199,7 @@ export default function Map3DSetupPanel() {
 							</details>
 							{!!sceneWarm.world.failed && (
 								<p
-									className="my-2 mb-4 max-w-none text-muted-foreground text-xs leading-[1.6]"
+									className="text-muted-foreground my-2 mb-4 max-w-none text-xs leading-[1.6]"
 									role="status"
 								>
 									Не удалось загрузить часть ресурсов (
@@ -210,7 +210,7 @@ export default function Map3DSetupPanel() {
 						</>
 					) : (
 						<p
-							className="my-2 mb-4 max-w-none text-muted-foreground text-xs leading-[1.6]"
+							className="text-muted-foreground my-2 mb-4 max-w-none text-xs leading-[1.6]"
 							role="status"
 						>
 							{ready
@@ -226,8 +226,8 @@ export default function Map3DSetupPanel() {
 					launch()
 				}}
 			>
-				<h2 className="font-bold text-2xl">Графика и ресурсы</h2>
-				<p className="mt-2.5 mb-6.5 text-[13px] text-muted-foreground leading-[1.7]">
+				<h2 className="text-2xl font-bold">Графика и ресурсы</h2>
+				<p className="text-muted-foreground mt-2.5 mb-6.5 text-[13px] leading-[1.7]">
 					{folder
 						? 'Из папки игры текстуры загружаются сразу в выбранном качестве.'
 						: 'Текстуры появляются сразу и постепенно улучшаются до выбранного качества.'}
@@ -271,9 +271,9 @@ export default function Map3DSetupPanel() {
 						/>
 					</div>
 				</div>
-				<div className="mt-7 mb-4.5 flex items-center gap-3 border-border-secondary border-y py-4.5 max-[760px]:flex-wrap">
+				<div className="border-border-secondary mt-7 mb-4.5 flex items-center gap-3 border-y py-4.5 max-[760px]:flex-wrap">
 					<Icon
-						className="shrink-0 text-2xl text-primary"
+						className="text-primary shrink-0 text-2xl"
 						icon="lucide:folder-open"
 					/>
 					<div className="flex-1 max-[760px]:min-w-45">
@@ -282,7 +282,7 @@ export default function Map3DSetupPanel() {
 								? folder.name
 								: 'Ресурсы с вашего компьютера'}
 						</strong>
-						<p className="mt-1 text-muted-foreground text-xs leading-[1.6]">
+						<p className="text-muted-foreground mt-1 text-xs leading-[1.6]">
 							{folder
 								? 'Папка подключена. Недостающие ресурсы подгрузятся с сервера.'
 								: 'Выберите папку игры для быстрой загрузки. Файлы останутся на вашем компьютере.'}
@@ -358,7 +358,7 @@ export default function Map3DSetupPanel() {
 					/>
 				</div>
 				<details className="mt-6" open>
-					<summary className="mb-3.5 cursor-pointer font-semibold text-sm">
+					<summary className="mb-3.5 cursor-pointer text-sm font-semibold">
 						Место появления
 					</summary>
 					<div>
@@ -404,10 +404,10 @@ export default function Map3DSetupPanel() {
 							</label>
 						))}
 					</div>
-					<label className="mt-3 flex items-center gap-2 text-[13px] text-muted-foreground">
+					<label className="text-muted-foreground mt-3 flex items-center gap-2 text-[13px]">
 						<input
 							checked={autoHeight}
-							className="h-4 w-4 accent-primary"
+							className="accent-primary h-4 w-4"
 							onChange={(e) => setAutoHeight(e.target.checked)}
 							type="checkbox"
 						/>
@@ -435,7 +435,7 @@ export default function Map3DSetupPanel() {
 								? 'Отправиться в Зону'
 								: 'Войти, пока идёт загрузка'}
 					</Button>
-					<small className="mt-2.5 block text-center text-muted-foreground text-xs">
+					<small className="text-muted-foreground mt-2.5 block text-center text-xs">
 						{folder
 							? 'Используем выбранную папку игры'
 							: 'Без папки игры ресурсы загрузятся с сервера'}

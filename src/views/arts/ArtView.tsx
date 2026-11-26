@@ -84,7 +84,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 	return (
 		<section className="mx-auto flex max-w-380 flex-col gap-8 px-4 pt-32 pb-12 md:px-8 xl:pt-36">
 			<div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-				<div className="min-w-0 overflow-hidden rounded-xl bg-card ring-2 ring-primary/40">
+				<div className="bg-card ring-primary/40 min-w-0 overflow-hidden rounded-xl ring-2">
 					{artImages.length > 0 ? (
 						<Gallery
 							alt={art.title || 'art'}
@@ -101,7 +101,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 					) : (
 						<div className="flex aspect-square items-center justify-center">
 							<Icon
-								className="size-12 text-foreground"
+								className="text-foreground size-12"
 								icon="lucide:image-off"
 							/>
 						</div>
@@ -113,14 +113,14 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-col gap-0">
 							{art.title && (
 								<h1
-									className={`${mtsExtended.className} min-w-0 font-semibold text-2xl text-primary`}
+									className={`${mtsExtended.className} text-primary min-w-0 text-2xl font-semibold`}
 								>
 									{art.title}
 								</h1>
 							)}
 							{art.description && (
 								<h2
-									className={`min-w-0 font-medium font-mono text-sm`}
+									className={`min-w-0 font-mono text-sm font-medium`}
 								>
 									{art.description}
 								</h2>
@@ -175,21 +175,21 @@ export default function ArtView({ artId }: ArtViewProps) {
 					{art.author.id !== null && art.author.username && (
 						<ArtistOrderLink username={art.author.username} />
 					)}
-					<div className="flex flex-col gap-2 rounded-xl bg-card p-4 ring-2 ring-primary/40">
+					<div className="bg-card ring-primary/40 flex flex-col gap-2 rounded-xl p-4 ring-2">
 						<div className="flex items-center justify-between">
-							<span className="font-medium text-foreground text-sm">
+							<span className="text-foreground text-sm font-medium">
 								{t('arts.author')}
 							</span>
 							{art.author.id !== null ? (
 								<HoverUserCard id={art.author.id}>
 									<Username
-										className={`cursor-pointer font-medium font-mono text-sm`}
+										className={`cursor-pointer font-mono text-sm font-medium`}
 										user={art.author}
 									/>
 								</HoverUserCard>
 							) : (
 								<Username
-									className={`font-medium font-mono text-sm`}
+									className={`font-mono text-sm font-medium`}
 									user={art.author}
 								/>
 							)}
@@ -199,44 +199,44 @@ export default function ArtView({ artId }: ArtViewProps) {
 
 						<div className="grid grid-cols-3 gap-4">
 							<div>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('arts.stars')}
 								</p>
 								<p
-									className={`font-medium font-mono text-foreground text-sm`}
+									className={`text-foreground font-mono text-sm font-medium`}
 								>
 									{art.stars_count}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('arts.views')}
 								</p>
 								<p
-									className={`font-medium font-mono text-foreground text-sm`}
+									className={`text-foreground font-mono text-sm font-medium`}
 								>
 									{art.views}
 								</p>
 							</div>
 
 							<div>
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('arts.comments.aside')}
 								</p>
 								<p
-									className={`font-medium font-mono text-foreground text-sm`}
+									className={`text-foreground font-mono text-sm font-medium`}
 								>
 									{art.comments_count ?? 0}
 								</p>
 							</div>
 
 							<div className="col-span-2">
-								<p className="font-medium text-foreground text-xs">
+								<p className="text-foreground text-xs font-medium">
 									{t('arts.publishedAt')}
 								</p>
 								<p
-									className={`font-medium font-mono text-foreground text-sm`}
+									className={`text-foreground font-mono text-sm font-medium`}
 								>
 									{formatDate(art.created_at)}
 								</p>
@@ -253,7 +253,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 						<div className="flex flex-wrap gap-1.5">
 							{art.tags.map((tag) => (
 								<Link
-									className="rounded-md bg-border-secondary px-2 py-0.5 font-medium text-foreground text-xs transition-colors hover:text-primary"
+									className="bg-border-secondary text-foreground hover:text-primary rounded-md px-2 py-0.5 text-xs font-medium transition-colors"
 									href={`/arts?search=${encodeURIComponent(tag)}`}
 									key={tag}
 								>
@@ -279,7 +279,7 @@ export default function ArtView({ artId }: ArtViewProps) {
 			</div>
 
 			<div
-				className="flex scroll-mt-28 flex-col gap-4 border-primary border-t pt-6"
+				className="border-primary flex scroll-mt-28 flex-col gap-4 border-t pt-6"
 				id="art-comments"
 			>
 				<ArtComments artId={artId} />

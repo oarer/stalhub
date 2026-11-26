@@ -41,12 +41,12 @@ export function RegionSection({
 					</Alert.Description>
 				</Alert.Root>
 
-				<div className="flex items-center justify-between gap-3 rounded-lg bg-accent/50 px-4 py-3">
+				<div className="bg-accent/50 flex items-center justify-between gap-3 rounded-lg px-4 py-3">
 					<div className="flex flex-col gap-1">
-						<span className="font-semibold text-sm">
+						<span className="text-sm font-semibold">
 							{t('me.settings.regionLabel')}
 						</span>
-						<span className="font-semibold text-foreground text-sm">
+						<span className="text-foreground text-sm font-semibold">
 							{currentRegion ? t(`region.${currentRegion}`) : '—'}
 						</span>
 					</div>

@@ -31,7 +31,7 @@ export function PipelineStages({
 						{i > 0 && (
 							<div
 								aria-hidden="true"
-								className="mx-2 mt-6 border-foreground/50 border-t-2 border-dotted"
+								className="border-foreground/50 mx-2 mt-6 border-t-2 border-dotted"
 							/>
 						)}
 						<div className="flex flex-col items-center gap-2">
@@ -41,7 +41,7 @@ export function PipelineStages({
 								frozen={frozen}
 								icon={stage.icon}
 							/>
-							<span className="font-mono font-semibold text-[11px] text-muted-foreground">
+							<span className="text-muted-foreground font-mono text-[11px] font-semibold">
 								{t(`stages.${stage.id}`)}
 							</span>
 						</div>
@@ -50,7 +50,7 @@ export function PipelineStages({
 			</div>
 			<div className="pointer-events-none absolute inset-x-1 top-5.25 h-1.5">
 				{reducedMotion ? (
-					<span className="absolute top-0 left-1/2 size-1.5 rounded-full bg-primary" />
+					<span className="bg-primary absolute top-0 left-1/2 size-1.5 rounded-full" />
 				) : (
 					Array.from({ length: DOTS }, (_, k) => (
 						<FlowDot flow={flow} key={k} offset={k / DOTS} />

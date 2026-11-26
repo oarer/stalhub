@@ -31,7 +31,7 @@ export default function MapModeTabs({
 		<motion.div
 			animate={{ opacity: 1, y: 0 }}
 			className={cn(
-				'flex flex-col gap-1 border-primary/30 border-b-2 pb-3',
+				'border-primary/30 flex flex-col gap-1 border-b-2 pb-3',
 				className
 			)}
 			initial={{ opacity: 0, y: -10 }}
