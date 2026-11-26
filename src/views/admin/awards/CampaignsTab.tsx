@@ -2,8 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { CheckBox } from '@/components/ui/CheckBox'
 import Input from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { Table } from '@/components/ui/Table'
@@ -46,12 +48,14 @@ export default function CampaignsTab({
 	const [year, setYear] = useState(new Date().getFullYear())
 	const [title, setTitle] = useState('')
 	const [endsAt, setEndsAt] = useState('')
+	const [isTest, setIsTest] = useState(false)
 
 	const startCreate = () => {
 		setEditing(null)
 		setYear(new Date().getFullYear())
 		setTitle('')
 		setEndsAt('')
+		setIsTest(false)
 		setOpen(true)
 	}
 	const startEdit = (campaign: AdminAwardCampaign) => {
@@ -59,6 +63,7 @@ export default function CampaignsTab({
 		setYear(campaign.year)
 		setTitle(campaign.title)
 		setEndsAt(localDate(campaign.ends_at))
+		setIsTest(campaign.is_test)
 		setOpen(true)
 	}
 	const save = () => {
@@ -68,7 +73,7 @@ export default function CampaignsTab({
 			update.mutate(
 				{
 					id: editing.id,
-					input: { title: title.trim(), ends_at },
+					input: { title: title.trim(), ends_at, is_test: isTest },
 				},
 				{
 					onSuccess: () => {
@@ -79,7 +84,7 @@ export default function CampaignsTab({
 			)
 		else
 			create.mutate(
-				{ year, title: title.trim(), ends_at },
+				{ year, title: title.trim(), ends_at, is_test: isTest },
 				{
 					onSuccess: () => {
 						setOpen(false)
@@ -133,7 +138,16 @@ export default function CampaignsTab({
 									key={c.id}
 								>
 									<Table.Cell>{c.year}</Table.Cell>
-									<Table.Cell>{c.title}</Table.Cell>
+									<Table.Cell>
+										<div className="flex items-center gap-2">
+											<span>{c.title}</span>
+											{c.is_test && (
+												<Badge variant="secondary">
+													{t('admin.awards.testBadge')}
+												</Badge>
+											)}
+										</div>
+									</Table.Cell>
 									<Table.Cell>
 										{t(`awards.status.${status}`)}
 									</Table.Cell>
@@ -250,6 +264,12 @@ export default function CampaignsTab({
 							onChange={(e) => setEndsAt(e.target.value)}
 							type="datetime-local"
 							value={endsAt}
+						/>
+						<CheckBox
+							checked={isTest}
+							description={t('admin.awards.testCampaignHint')}
+							label={t('admin.awards.testCampaign')}
+							onCheckedChange={setIsTest}
 						/>
 						<div className="flex justify-end gap-2">
 							<Button

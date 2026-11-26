@@ -809,6 +809,7 @@ export interface AdminUnoBanInput {
 export interface AdminAwardCampaign {
 	id: string
 	year: number
+	is_test: boolean
 	title: string
 	status: 'draft' | 'voting' | 'ended' | 'published'
 	ends_at: string | null
@@ -930,12 +931,14 @@ export interface AdminAwardCreateCampaignInput {
 	year: number
 	title?: string
 	ends_at?: string | null
+	is_test?: boolean
 }
 
 export interface AdminAwardUpdateCampaignInput {
 	title?: string
 	status?: 'draft' | 'voting' | 'ended' | 'published'
 	ends_at?: string | null
+	is_test?: boolean
 }
 
 export type AdminAwardCategoryKind = 'NOMINEES' | 'UPDATES' | 'CLAN' | 'PLAYER'

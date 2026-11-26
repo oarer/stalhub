@@ -63,7 +63,7 @@ export default function AwardsAdminView() {
 								}
 								options={data.items.map((item) => ({
 									value: item.id,
-									label: `${item.year} · ${item.title}`,
+									label: `${item.year} · ${item.title}${item.is_test ? ` · ${t('admin.awards.testBadge')}` : ''}`,
 								}))}
 								placeholder="admin.awards.selectCampaign"
 								translateOptions={false}

@@ -2552,7 +2552,10 @@
       "manualPlace": "Место вручную",
       "socialLabel": "Название",
       "socialUrl": "Ссылка",
-      "slug": "Slug"
+      "slug": "Slug",
+      "testCampaign": "Тестовая кампания",
+      "testCampaignHint": "Разрешает несколько кампаний за один год. Не отображается публично.",
+      "testBadge": "ТЕСТ"
     }
   },
   "test": {

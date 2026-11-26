@@ -2515,7 +2515,10 @@
       "manualPlace": "Place manuelle",
       "socialLabel": "Libellé",
       "socialUrl": "URL",
-      "slug": "Slug"
+      "slug": "Slug",
+      "testCampaign": "Campagne de test",
+      "testCampaignHint": "Permet plusieurs campagnes pour une année. Jamais visible publiquement.",
+      "testBadge": "TEST"
     }
   },
   "test": {

@@ -2547,7 +2547,10 @@
       "manualPlace": "Manual place",
       "socialLabel": "Label",
       "socialUrl": "URL",
-      "slug": "Slug"
+      "slug": "Slug",
+      "testCampaign": "Test campaign",
+      "testCampaignHint": "Allows multiple campaigns in one year. Never shown publicly.",
+      "testBadge": "TEST"
     }
   },
   "test": {
